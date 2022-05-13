@@ -101,19 +101,19 @@ func (o *Action) UnmarshalJSON(b []byte) error {
 	if Id, ok := ActionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ActionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if IntegrationId, ok := ActionMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-	
+    
 	if Category, ok := ActionMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Contract, ok := ActionMap["contract"].(map[string]interface{}); ok {
 		ContractString, _ := json.Marshal(Contract)
 		json.Unmarshal(ContractString, &o.Contract)
@@ -127,7 +127,7 @@ func (o *Action) UnmarshalJSON(b []byte) error {
 	if Secure, ok := ActionMap["secure"].(bool); ok {
 		o.Secure = &Secure
 	}
-	
+    
 	if Config, ok := ActionMap["config"].(map[string]interface{}); ok {
 		ConfigString, _ := json.Marshal(Config)
 		json.Unmarshal(ConfigString, &o.Config)
@@ -136,7 +136,7 @@ func (o *Action) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ActionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

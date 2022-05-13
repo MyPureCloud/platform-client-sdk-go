@@ -45,11 +45,11 @@ func (o *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) Unmarsh
 	if ContactColumnName, ok := DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap["contactColumnName"].(string); ok {
 		o.ContactColumnName = &ContactColumnName
 	}
-	
+    
 	if DataActionField, ok := DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap["dataActionField"].(string); ok {
 		o.DataActionField = &DataActionField
 	}
-	
+    
 
 	return nil
 }

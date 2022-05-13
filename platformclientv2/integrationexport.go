@@ -50,7 +50,7 @@ func (o *Integrationexport) UnmarshalJSON(b []byte) error {
 	if ShouldExportScreenRecordings, ok := IntegrationexportMap["shouldExportScreenRecordings"].(bool); ok {
 		o.ShouldExportScreenRecordings = &ShouldExportScreenRecordings
 	}
-	
+    
 
 	return nil
 }

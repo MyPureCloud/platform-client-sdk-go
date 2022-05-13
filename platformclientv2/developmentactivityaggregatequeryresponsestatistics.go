@@ -67,17 +67,17 @@ func (o *Developmentactivityaggregatequeryresponsestatistics) UnmarshalJSON(b []
 		MinFloat32 := float32(Min)
 		o.Min = &MinFloat32
 	}
-	
+    
 	if Max, ok := DevelopmentactivityaggregatequeryresponsestatisticsMap["max"].(float64); ok {
 		MaxFloat32 := float32(Max)
 		o.Max = &MaxFloat32
 	}
-	
+    
 	if Sum, ok := DevelopmentactivityaggregatequeryresponsestatisticsMap["sum"].(float64); ok {
 		SumFloat32 := float32(Sum)
 		o.Sum = &SumFloat32
 	}
-	
+    
 
 	return nil
 }

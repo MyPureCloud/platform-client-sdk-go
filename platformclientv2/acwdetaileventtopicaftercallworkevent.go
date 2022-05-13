@@ -202,47 +202,47 @@ func (o *Acwdetaileventtopicaftercallworkevent) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := AcwdetaileventtopicaftercallworkeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := AcwdetaileventtopicaftercallworkeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := AcwdetaileventtopicaftercallworkeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := AcwdetaileventtopicaftercallworkeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := AcwdetaileventtopicaftercallworkeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := AcwdetaileventtopicaftercallworkeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := AcwdetaileventtopicaftercallworkeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := AcwdetaileventtopicaftercallworkeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := AcwdetaileventtopicaftercallworkeventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := AcwdetaileventtopicaftercallworkeventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := AcwdetaileventtopicaftercallworkeventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := AcwdetaileventtopicaftercallworkeventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -256,27 +256,27 @@ func (o *Acwdetaileventtopicaftercallworkevent) UnmarshalJSON(b []byte) error {
 	if Subject, ok := AcwdetaileventtopicaftercallworkeventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := AcwdetaileventtopicaftercallworkeventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if UserId, ok := AcwdetaileventtopicaftercallworkeventMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if QueueId, ok := AcwdetaileventtopicaftercallworkeventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if WrapupCode, ok := AcwdetaileventtopicaftercallworkeventMap["wrapupCode"].(string); ok {
 		o.WrapupCode = &WrapupCode
 	}
-	
+    
 	if WrapupNotes, ok := AcwdetaileventtopicaftercallworkeventMap["wrapupNotes"].(string); ok {
 		o.WrapupNotes = &WrapupNotes
 	}
-	
+    
 	if WrapupDurationMs, ok := AcwdetaileventtopicaftercallworkeventMap["wrapupDurationMs"].(float64); ok {
 		WrapupDurationMsInt := int(WrapupDurationMs)
 		o.WrapupDurationMs = &WrapupDurationMsInt

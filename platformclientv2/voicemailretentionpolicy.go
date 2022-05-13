@@ -45,7 +45,7 @@ func (o *Voicemailretentionpolicy) UnmarshalJSON(b []byte) error {
 	if VoicemailRetentionPolicyType, ok := VoicemailretentionpolicyMap["voicemailRetentionPolicyType"].(string); ok {
 		o.VoicemailRetentionPolicyType = &VoicemailRetentionPolicyType
 	}
-	
+    
 	if NumberOfDays, ok := VoicemailretentionpolicyMap["numberOfDays"].(float64); ok {
 		NumberOfDaysInt := int(NumberOfDays)
 		o.NumberOfDays = &NumberOfDaysInt

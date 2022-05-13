@@ -118,11 +118,11 @@ func (o *Createcoachingappointmentrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreatecoachingappointmentrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := CreatecoachingappointmentrequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateStartString, ok := CreatecoachingappointmentrequestMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart
@@ -136,7 +136,7 @@ func (o *Createcoachingappointmentrequest) UnmarshalJSON(b []byte) error {
 	if FacilitatorId, ok := CreatecoachingappointmentrequestMap["facilitatorId"].(string); ok {
 		o.FacilitatorId = &FacilitatorId
 	}
-	
+    
 	if AttendeeIds, ok := CreatecoachingappointmentrequestMap["attendeeIds"].([]interface{}); ok {
 		AttendeeIdsString, _ := json.Marshal(AttendeeIds)
 		json.Unmarshal(AttendeeIdsString, &o.AttendeeIds)

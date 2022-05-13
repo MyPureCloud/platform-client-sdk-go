@@ -53,15 +53,15 @@ func (o *Skillstoremove) UnmarshalJSON(b []byte) error {
 	if Name, ok := SkillstoremoveMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Id, ok := SkillstoremoveMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := SkillstoremoveMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -136,23 +136,23 @@ func (o *Dialersequenceconfigchangecampaignsequence) UnmarshalJSON(b []byte) err
 	if Status, ok := DialersequenceconfigchangecampaignsequenceMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if StopMessage, ok := DialersequenceconfigchangecampaignsequenceMap["stopMessage"].(string); ok {
 		o.StopMessage = &StopMessage
 	}
-	
+    
 	if Repeat, ok := DialersequenceconfigchangecampaignsequenceMap["repeat"].(bool); ok {
 		o.Repeat = &Repeat
 	}
-	
+    
 	if Id, ok := DialersequenceconfigchangecampaignsequenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialersequenceconfigchangecampaignsequenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialersequenceconfigchangecampaignsequenceMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

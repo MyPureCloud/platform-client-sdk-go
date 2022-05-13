@@ -129,23 +129,23 @@ func (o *Edgelineentitylisting) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := EdgelineentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := EdgelineentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := EdgelineentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := EdgelineentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := EdgelineentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := EdgelineentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

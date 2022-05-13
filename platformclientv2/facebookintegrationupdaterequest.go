@@ -85,11 +85,11 @@ func (o *Facebookintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := FacebookintegrationupdaterequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FacebookintegrationupdaterequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := FacebookintegrationupdaterequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -103,15 +103,15 @@ func (o *Facebookintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 	if PageAccessToken, ok := FacebookintegrationupdaterequestMap["pageAccessToken"].(string); ok {
 		o.PageAccessToken = &PageAccessToken
 	}
-	
+    
 	if UserAccessToken, ok := FacebookintegrationupdaterequestMap["userAccessToken"].(string); ok {
 		o.UserAccessToken = &UserAccessToken
 	}
-	
+    
 	if SelfUri, ok := FacebookintegrationupdaterequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

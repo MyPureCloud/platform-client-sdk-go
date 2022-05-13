@@ -72,7 +72,7 @@ func (o *Gamificationscorecardchangetopicperformancemetric) UnmarshalJSON(b []by
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32
 	}
-	
+    
 	if PunctualityEvents, ok := GamificationscorecardchangetopicperformancemetricMap["punctualityEvents"].([]interface{}); ok {
 		PunctualityEventsString, _ := json.Marshal(PunctualityEvents)
 		json.Unmarshal(PunctualityEventsString, &o.PunctualityEvents)

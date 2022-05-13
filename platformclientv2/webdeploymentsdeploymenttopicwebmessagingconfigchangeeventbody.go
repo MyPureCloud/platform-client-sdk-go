@@ -53,15 +53,15 @@ func (o *Webdeploymentsdeploymenttopicwebmessagingconfigchangeeventbody) Unmarsh
 	if Id, ok := WebdeploymentsdeploymenttopicwebmessagingconfigchangeeventbodyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := WebdeploymentsdeploymenttopicwebmessagingconfigchangeeventbodyMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if Status, ok := WebdeploymentsdeploymenttopicwebmessagingconfigchangeeventbodyMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

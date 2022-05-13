@@ -61,7 +61,7 @@ func (o *Textbotchannel) UnmarshalJSON(b []byte) error {
 	if Name, ok := TextbotchannelMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if InputModes, ok := TextbotchannelMap["inputModes"].([]interface{}); ok {
 		InputModesString, _ := json.Marshal(InputModes)
 		json.Unmarshal(InputModesString, &o.InputModes)

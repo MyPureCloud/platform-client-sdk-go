@@ -78,7 +78,7 @@ func (o *Journeywebeventsnotificationeventaction) UnmarshalJSON(b []byte) error 
 	if Id, ok := JourneywebeventsnotificationeventactionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if createdDateString, ok := JourneywebeventsnotificationeventactionMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate
@@ -87,15 +87,15 @@ func (o *Journeywebeventsnotificationeventaction) UnmarshalJSON(b []byte) error 
 	if State, ok := JourneywebeventsnotificationeventactionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if MediaType, ok := JourneywebeventsnotificationeventactionMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Prompt, ok := JourneywebeventsnotificationeventactionMap["prompt"].(string); ok {
 		o.Prompt = &Prompt
 	}
-	
+    
 
 	return nil
 }

@@ -117,11 +117,11 @@ func (o *Twitterintegrationrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := TwitterintegrationrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TwitterintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := TwitterintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -135,31 +135,31 @@ func (o *Twitterintegrationrequest) UnmarshalJSON(b []byte) error {
 	if AccessTokenKey, ok := TwitterintegrationrequestMap["accessTokenKey"].(string); ok {
 		o.AccessTokenKey = &AccessTokenKey
 	}
-	
+    
 	if AccessTokenSecret, ok := TwitterintegrationrequestMap["accessTokenSecret"].(string); ok {
 		o.AccessTokenSecret = &AccessTokenSecret
 	}
-	
+    
 	if ConsumerKey, ok := TwitterintegrationrequestMap["consumerKey"].(string); ok {
 		o.ConsumerKey = &ConsumerKey
 	}
-	
+    
 	if ConsumerSecret, ok := TwitterintegrationrequestMap["consumerSecret"].(string); ok {
 		o.ConsumerSecret = &ConsumerSecret
 	}
-	
+    
 	if Tier, ok := TwitterintegrationrequestMap["tier"].(string); ok {
 		o.Tier = &Tier
 	}
-	
+    
 	if EnvName, ok := TwitterintegrationrequestMap["envName"].(string); ok {
 		o.EnvName = &EnvName
 	}
-	
+    
 	if SelfUri, ok := TwitterintegrationrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

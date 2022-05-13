@@ -37,7 +37,7 @@ func (o *Transcripturl) UnmarshalJSON(b []byte) error {
 	if Url, ok := TranscripturlMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 
 	return nil
 }

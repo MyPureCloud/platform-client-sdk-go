@@ -61,7 +61,7 @@ func (o *Auditchange) UnmarshalJSON(b []byte) error {
 	if Property, ok := AuditchangeMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if Entity, ok := AuditchangeMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

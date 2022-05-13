@@ -45,7 +45,7 @@ func (o *Entry) UnmarshalJSON(b []byte) error {
 	if Value, ok := EntryMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Count, ok := EntryMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

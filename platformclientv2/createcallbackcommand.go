@@ -126,11 +126,11 @@ func (o *Createcallbackcommand) UnmarshalJSON(b []byte) error {
 	if ScriptId, ok := CreatecallbackcommandMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if QueueId, ok := CreatecallbackcommandMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if RoutingData, ok := CreatecallbackcommandMap["routingData"].(map[string]interface{}); ok {
 		RoutingDataString, _ := json.Marshal(RoutingData)
 		json.Unmarshal(RoutingDataString, &o.RoutingData)
@@ -139,7 +139,7 @@ func (o *Createcallbackcommand) UnmarshalJSON(b []byte) error {
 	if CallbackUserName, ok := CreatecallbackcommandMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := CreatecallbackcommandMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -153,11 +153,11 @@ func (o *Createcallbackcommand) UnmarshalJSON(b []byte) error {
 	if CountryCode, ok := CreatecallbackcommandMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
 	}
-	
+    
 	if ValidateCallbackNumbers, ok := CreatecallbackcommandMap["validateCallbackNumbers"].(bool); ok {
 		o.ValidateCallbackNumbers = &ValidateCallbackNumbers
 	}
-	
+    
 	if Data, ok := CreatecallbackcommandMap["data"].(map[string]interface{}); ok {
 		DataString, _ := json.Marshal(Data)
 		json.Unmarshal(DataString, &o.Data)
@@ -166,11 +166,11 @@ func (o *Createcallbackcommand) UnmarshalJSON(b []byte) error {
 	if CallerId, ok := CreatecallbackcommandMap["callerId"].(string); ok {
 		o.CallerId = &CallerId
 	}
-	
+    
 	if CallerIdName, ok := CreatecallbackcommandMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
 	}
-	
+    
 
 	return nil
 }

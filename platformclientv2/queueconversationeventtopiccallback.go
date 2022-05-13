@@ -262,23 +262,23 @@ func (o *Queueconversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if State, ok := QueueconversationeventtopiccallbackMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := QueueconversationeventtopiccallbackMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Direction, ok := QueueconversationeventtopiccallbackMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Held, ok := QueueconversationeventtopiccallbackMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationeventtopiccallbackMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationeventtopiccallbackMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -302,27 +302,27 @@ func (o *Queueconversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if CallbackUserName, ok := QueueconversationeventtopiccallbackMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if ScriptId, ok := QueueconversationeventtopiccallbackMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationeventtopiccallbackMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if ExternalCampaign, ok := QueueconversationeventtopiccallbackMap["externalCampaign"].(bool); ok {
 		o.ExternalCampaign = &ExternalCampaign
 	}
-	
+    
 	if SkipEnabled, ok := QueueconversationeventtopiccallbackMap["skipEnabled"].(bool); ok {
 		o.SkipEnabled = &SkipEnabled
 	}
-	
+    
 	if Provider, ok := QueueconversationeventtopiccallbackMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if TimeoutSeconds, ok := QueueconversationeventtopiccallbackMap["timeoutSeconds"].(float64); ok {
 		TimeoutSecondsInt := int(TimeoutSeconds)
 		o.TimeoutSeconds = &TimeoutSecondsInt
@@ -346,7 +346,7 @@ func (o *Queueconversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if AutomatedCallbackConfigId, ok := QueueconversationeventtopiccallbackMap["automatedCallbackConfigId"].(string); ok {
 		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
 	}
-	
+    
 	if Wrapup, ok := QueueconversationeventtopiccallbackMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
@@ -360,15 +360,15 @@ func (o *Queueconversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := QueueconversationeventtopiccallbackMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if CallerId, ok := QueueconversationeventtopiccallbackMap["callerId"].(string); ok {
 		o.CallerId = &CallerId
 	}
-	
+    
 	if CallerIdName, ok := QueueconversationeventtopiccallbackMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
 	}
-	
+    
 
 	return nil
 }

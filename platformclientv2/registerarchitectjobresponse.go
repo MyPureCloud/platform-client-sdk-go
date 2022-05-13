@@ -61,11 +61,11 @@ func (o *Registerarchitectjobresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := RegisterarchitectjobresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if PresignedUrl, ok := RegisterarchitectjobresponseMap["presignedUrl"].(string); ok {
 		o.PresignedUrl = &PresignedUrl
 	}
-	
+    
 	if Headers, ok := RegisterarchitectjobresponseMap["headers"].(map[string]interface{}); ok {
 		HeadersString, _ := json.Marshal(Headers)
 		json.Unmarshal(HeadersString, &o.Headers)
@@ -74,7 +74,7 @@ func (o *Registerarchitectjobresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := RegisterarchitectjobresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

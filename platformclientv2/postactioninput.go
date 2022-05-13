@@ -77,15 +77,15 @@ func (o *Postactioninput) UnmarshalJSON(b []byte) error {
 	if Category, ok := PostactioninputMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Name, ok := PostactioninputMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if IntegrationId, ok := PostactioninputMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-	
+    
 	if Config, ok := PostactioninputMap["config"].(map[string]interface{}); ok {
 		ConfigString, _ := json.Marshal(Config)
 		json.Unmarshal(ConfigString, &o.Config)
@@ -99,7 +99,7 @@ func (o *Postactioninput) UnmarshalJSON(b []byte) error {
 	if Secure, ok := PostactioninputMap["secure"].(bool); ok {
 		o.Secure = &Secure
 	}
-	
+    
 
 	return nil
 }

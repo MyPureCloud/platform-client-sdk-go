@@ -45,7 +45,7 @@ func (a LanguagesApi) DeleteLanguage(languageId string) (*APIResponse, error) {
 
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageId' when calling LanguagesApi->DeleteLanguage")
 	}
 
@@ -98,8 +98,6 @@ func (a LanguagesApi) DeleteLanguage(languageId string) (*APIResponse, error) {
 // DeleteRoutingLanguage invokes DELETE /api/v2/routing/languages/{languageId}
 //
 // Delete Language
-//
-// 
 func (a LanguagesApi) DeleteRoutingLanguage(languageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +109,7 @@ func (a LanguagesApi) DeleteRoutingLanguage(languageId string) (*APIResponse, er
 
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageId' when calling LanguagesApi->DeleteRoutingLanguage")
 	}
 
@@ -178,7 +176,7 @@ func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, e
 
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageId' when calling LanguagesApi->GetLanguage")
 	}
 
@@ -312,8 +310,6 @@ func (a LanguagesApi) GetLanguages(pageSize int, pageNumber int, sortOrder strin
 // GetLanguagesTranslations invokes GET /api/v2/languages/translations
 //
 // Get all available languages for translation
-//
-// 
 func (a LanguagesApi) GetLanguagesTranslations() (*Availabletranslations, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -379,8 +375,6 @@ func (a LanguagesApi) GetLanguagesTranslations() (*Availabletranslations, *APIRe
 // GetLanguagesTranslationsBuiltin invokes GET /api/v2/languages/translations/builtin
 //
 // Get the builtin translation for a language
-//
-// 
 func (a LanguagesApi) GetLanguagesTranslationsBuiltin(language string) (*map[string]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -392,7 +386,7 @@ func (a LanguagesApi) GetLanguagesTranslationsBuiltin(language string) (*map[str
 
 	// verify the required parameter 'language' is set
 	if &language == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'language' when calling LanguagesApi->GetLanguagesTranslationsBuiltin")
 	}
 
@@ -453,8 +447,6 @@ func (a LanguagesApi) GetLanguagesTranslationsBuiltin(language string) (*map[str
 // GetLanguagesTranslationsOrganization invokes GET /api/v2/languages/translations/organization
 //
 // Get effective translation for an organization by language
-//
-// 
 func (a LanguagesApi) GetLanguagesTranslationsOrganization(language string) (*map[string]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -466,7 +458,7 @@ func (a LanguagesApi) GetLanguagesTranslationsOrganization(language string) (*ma
 
 	// verify the required parameter 'language' is set
 	if &language == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'language' when calling LanguagesApi->GetLanguagesTranslationsOrganization")
 	}
 
@@ -527,8 +519,6 @@ func (a LanguagesApi) GetLanguagesTranslationsOrganization(language string) (*ma
 // GetLanguagesTranslationsUser invokes GET /api/v2/languages/translations/users/{userId}
 //
 // Get effective language translation for a user
-//
-// 
 func (a LanguagesApi) GetLanguagesTranslationsUser(userId string) (*map[string]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -541,7 +531,7 @@ func (a LanguagesApi) GetLanguagesTranslationsUser(userId string) (*map[string]i
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling LanguagesApi->GetLanguagesTranslationsUser")
 	}
 
@@ -600,8 +590,6 @@ func (a LanguagesApi) GetLanguagesTranslationsUser(userId string) (*map[string]i
 // GetRoutingLanguage invokes GET /api/v2/routing/languages/{languageId}
 //
 // Get language
-//
-// 
 func (a LanguagesApi) GetRoutingLanguage(languageId string) (*Language, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -614,7 +602,7 @@ func (a LanguagesApi) GetRoutingLanguage(languageId string) (*Language, *APIResp
 
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageId' when calling LanguagesApi->GetRoutingLanguage")
 	}
 
@@ -686,7 +674,7 @@ func (a LanguagesApi) PostLanguages(body Language) (*Language, *APIResponse, err
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguagesApi->PostLanguages")
 	}
 

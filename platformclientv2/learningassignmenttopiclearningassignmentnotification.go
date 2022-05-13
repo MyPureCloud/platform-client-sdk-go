@@ -142,7 +142,7 @@ func (o *Learningassignmenttopiclearningassignmentnotification) UnmarshalJSON(b 
 	if Id, ok := LearningassignmenttopiclearningassignmentnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := LearningassignmenttopiclearningassignmentnotificationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -161,7 +161,7 @@ func (o *Learningassignmenttopiclearningassignmentnotification) UnmarshalJSON(b 
 	if State, ok := LearningassignmenttopiclearningassignmentnotificationMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateRecommendedForCompletionString, ok := LearningassignmenttopiclearningassignmentnotificationMap["dateRecommendedForCompletion"].(string); ok {
 		DateRecommendedForCompletion, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateRecommendedForCompletionString)
 		o.DateRecommendedForCompletion = &DateRecommendedForCompletion
@@ -190,7 +190,7 @@ func (o *Learningassignmenttopiclearningassignmentnotification) UnmarshalJSON(b 
 	if IsOverdue, ok := LearningassignmenttopiclearningassignmentnotificationMap["isOverdue"].(bool); ok {
 		o.IsOverdue = &IsOverdue
 	}
-	
+    
 
 	return nil
 }

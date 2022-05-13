@@ -150,23 +150,23 @@ func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
 	if CalibrationId, ok := AnalyticsevaluationMap["calibrationId"].(string); ok {
 		o.CalibrationId = &CalibrationId
 	}
-	
+    
 	if ContextId, ok := AnalyticsevaluationMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Deleted, ok := AnalyticsevaluationMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-	
+    
 	if EvaluationId, ok := AnalyticsevaluationMap["evaluationId"].(string); ok {
 		o.EvaluationId = &EvaluationId
 	}
-	
+    
 	if EvaluatorId, ok := AnalyticsevaluationMap["evaluatorId"].(string); ok {
 		o.EvaluatorId = &EvaluatorId
 	}
-	
+    
 	if eventTimeString, ok := AnalyticsevaluationMap["eventTime"].(string); ok {
 		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
 		o.EventTime = &EventTime
@@ -175,27 +175,27 @@ func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
 	if FormId, ok := AnalyticsevaluationMap["formId"].(string); ok {
 		o.FormId = &FormId
 	}
-	
+    
 	if FormName, ok := AnalyticsevaluationMap["formName"].(string); ok {
 		o.FormName = &FormName
 	}
-	
+    
 	if QueueId, ok := AnalyticsevaluationMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if Released, ok := AnalyticsevaluationMap["released"].(bool); ok {
 		o.Released = &Released
 	}
-	
+    
 	if Rescored, ok := AnalyticsevaluationMap["rescored"].(bool); ok {
 		o.Rescored = &Rescored
 	}
-	
+    
 	if UserId, ok := AnalyticsevaluationMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if OTotalCriticalScore, ok := AnalyticsevaluationMap["oTotalCriticalScore"].(float64); ok {
 		OTotalCriticalScoreInt := int(OTotalCriticalScore)
 		o.OTotalCriticalScore = &OTotalCriticalScoreInt

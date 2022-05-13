@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -10,6 +11,10 @@ import (
 type Edgemetricstopicedgemetrics struct { 
 	// Edge
 	Edge *Edgemetricstopicurireference `json:"edge,omitempty"`
+
+
+	// EventTime
+	EventTime *time.Time `json:"eventTime,omitempty"`
 
 
 	// UpTimeMsec
@@ -42,8 +47,18 @@ func (o *Edgemetricstopicedgemetrics) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricstopicedgemetrics
 	
+	EventTime := new(string)
+	if o.EventTime != nil {
+		
+		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Edge *Edgemetricstopicurireference `json:"edge,omitempty"`
+		
+		EventTime *string `json:"eventTime,omitempty"`
 		
 		UpTimeMsec *int `json:"upTimeMsec,omitempty"`
 		
@@ -59,6 +74,8 @@ func (o *Edgemetricstopicedgemetrics) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		Edge: o.Edge,
+		
+		EventTime: EventTime,
 		
 		UpTimeMsec: o.UpTimeMsec,
 		
@@ -85,6 +102,11 @@ func (o *Edgemetricstopicedgemetrics) UnmarshalJSON(b []byte) error {
 	if Edge, ok := EdgemetricstopicedgemetricsMap["edge"].(map[string]interface{}); ok {
 		EdgeString, _ := json.Marshal(Edge)
 		json.Unmarshal(EdgeString, &o.Edge)
+	}
+	
+	if eventTimeString, ok := EdgemetricstopicedgemetricsMap["eventTime"].(string); ok {
+		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
+		o.EventTime = &EventTime
 	}
 	
 	if UpTimeMsec, ok := EdgemetricstopicedgemetricsMap["upTimeMsec"].(float64); ok {

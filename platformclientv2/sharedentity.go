@@ -37,7 +37,7 @@ func (o *Sharedentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := SharedentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

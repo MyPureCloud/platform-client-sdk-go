@@ -204,15 +204,15 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
 	if Id, ok := MinerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MinerMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Language, ok := MinerMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if dateCreatedString, ok := MinerMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -221,7 +221,7 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
 	if Status, ok := MinerMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if conversationsDateRangeStartString, ok := MinerMap["conversationsDateRangeStart"].(string); ok {
 		ConversationsDateRangeStart, _ := time.Parse("2006-01-02", conversationsDateRangeStartString)
 		o.ConversationsDateRangeStart = &ConversationsDateRangeStart
@@ -240,15 +240,15 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
 	if Message, ok := MinerMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if ConversationDataUploaded, ok := MinerMap["conversationDataUploaded"].(bool); ok {
 		o.ConversationDataUploaded = &ConversationDataUploaded
 	}
-	
+    
 	if MediaType, ok := MinerMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if QueueIds, ok := MinerMap["queueIds"].([]interface{}); ok {
 		QueueIdsString, _ := json.Marshal(QueueIds)
 		json.Unmarshal(QueueIdsString, &o.QueueIds)
@@ -272,7 +272,7 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MinerMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

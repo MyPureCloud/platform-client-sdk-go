@@ -190,11 +190,11 @@ func (o *Oauthclient) UnmarshalJSON(b []byte) error {
 	if Id, ok := OauthclientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OauthclientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if AccessTokenValiditySeconds, ok := OauthclientMap["accessTokenValiditySeconds"].(float64); ok {
 		AccessTokenValiditySecondsInt := int(AccessTokenValiditySeconds)
 		o.AccessTokenValiditySeconds = &AccessTokenValiditySecondsInt
@@ -203,7 +203,7 @@ func (o *Oauthclient) UnmarshalJSON(b []byte) error {
 	if Description, ok := OauthclientMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if RegisteredRedirectUri, ok := OauthclientMap["registeredRedirectUri"].([]interface{}); ok {
 		RegisteredRedirectUriString, _ := json.Marshal(RegisteredRedirectUri)
 		json.Unmarshal(RegisteredRedirectUriString, &o.RegisteredRedirectUri)
@@ -212,7 +212,7 @@ func (o *Oauthclient) UnmarshalJSON(b []byte) error {
 	if Secret, ok := OauthclientMap["secret"].(string); ok {
 		o.Secret = &Secret
 	}
-	
+    
 	if RoleIds, ok := OauthclientMap["roleIds"].([]interface{}); ok {
 		RoleIdsString, _ := json.Marshal(RoleIds)
 		json.Unmarshal(RoleIdsString, &o.RoleIds)
@@ -241,7 +241,7 @@ func (o *Oauthclient) UnmarshalJSON(b []byte) error {
 	if AuthorizedGrantType, ok := OauthclientMap["authorizedGrantType"].(string); ok {
 		o.AuthorizedGrantType = &AuthorizedGrantType
 	}
-	
+    
 	if Scope, ok := OauthclientMap["scope"].([]interface{}); ok {
 		ScopeString, _ := json.Marshal(Scope)
 		json.Unmarshal(ScopeString, &o.Scope)
@@ -255,7 +255,7 @@ func (o *Oauthclient) UnmarshalJSON(b []byte) error {
 	if State, ok := OauthclientMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateToDeleteString, ok := OauthclientMap["dateToDelete"].(string); ok {
 		DateToDelete, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateToDeleteString)
 		o.DateToDelete = &DateToDelete
@@ -264,7 +264,7 @@ func (o *Oauthclient) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OauthclientMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

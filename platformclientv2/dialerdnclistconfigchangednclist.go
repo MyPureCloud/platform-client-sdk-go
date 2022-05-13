@@ -160,11 +160,11 @@ func (o *Dialerdnclistconfigchangednclist) UnmarshalJSON(b []byte) error {
 	if DncSourceType, ok := DialerdnclistconfigchangednclistMap["dncSourceType"].(string); ok {
 		o.DncSourceType = &DncSourceType
 	}
-	
+    
 	if LoginId, ok := DialerdnclistconfigchangednclistMap["loginId"].(string); ok {
 		o.LoginId = &LoginId
 	}
-	
+    
 	if DncCodes, ok := DialerdnclistconfigchangednclistMap["dncCodes"].([]interface{}); ok {
 		DncCodesString, _ := json.Marshal(DncCodes)
 		json.Unmarshal(DncCodesString, &o.DncCodes)
@@ -173,11 +173,11 @@ func (o *Dialerdnclistconfigchangednclist) UnmarshalJSON(b []byte) error {
 	if LicenseId, ok := DialerdnclistconfigchangednclistMap["licenseId"].(string); ok {
 		o.LicenseId = &LicenseId
 	}
-	
+    
 	if ContactMethod, ok := DialerdnclistconfigchangednclistMap["contactMethod"].(string); ok {
 		o.ContactMethod = &ContactMethod
 	}
-	
+    
 	if Division, ok := DialerdnclistconfigchangednclistMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -186,11 +186,11 @@ func (o *Dialerdnclistconfigchangednclist) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialerdnclistconfigchangednclistMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialerdnclistconfigchangednclistMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialerdnclistconfigchangednclistMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

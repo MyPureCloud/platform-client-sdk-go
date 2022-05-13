@@ -222,11 +222,11 @@ func (o *Line) UnmarshalJSON(b []byte) error {
 	if Id, ok := LineMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LineMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := LineMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -235,7 +235,7 @@ func (o *Line) UnmarshalJSON(b []byte) error {
 	if Description, ok := LineMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := LineMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -254,23 +254,23 @@ func (o *Line) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := LineMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := LineMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := LineMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := LineMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := LineMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Properties, ok := LineMap["properties"].(map[string]interface{}); ok {
 		PropertiesString, _ := json.Marshal(Properties)
 		json.Unmarshal(PropertiesString, &o.Properties)
@@ -319,7 +319,7 @@ func (o *Line) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LineMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

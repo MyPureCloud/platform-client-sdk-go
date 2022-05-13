@@ -110,7 +110,7 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 	if UserInput, ok := ReportingturnMap["userInput"].(string); ok {
 		o.UserInput = &UserInput
 	}
-	
+    
 	if BotPrompts, ok := ReportingturnMap["botPrompts"].([]interface{}); ok {
 		BotPromptsString, _ := json.Marshal(BotPrompts)
 		json.Unmarshal(BotPromptsString, &o.BotPrompts)
@@ -119,7 +119,7 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 	if SessionId, ok := ReportingturnMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if AskAction, ok := ReportingturnMap["askAction"].(map[string]interface{}); ok {
 		AskActionString, _ := json.Marshal(AskAction)
 		json.Unmarshal(AskActionString, &o.AskAction)
@@ -143,7 +143,7 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 	if AskActionResult, ok := ReportingturnMap["askActionResult"].(string); ok {
 		o.AskActionResult = &AskActionResult
 	}
-	
+    
 	if Conversation, ok := ReportingturnMap["conversation"].(map[string]interface{}); ok {
 		ConversationString, _ := json.Marshal(Conversation)
 		json.Unmarshal(ConversationString, &o.Conversation)

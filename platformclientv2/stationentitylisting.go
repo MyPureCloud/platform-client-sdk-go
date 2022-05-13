@@ -129,23 +129,23 @@ func (o *Stationentitylisting) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := StationentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := StationentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := StationentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := StationentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := StationentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := StationentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

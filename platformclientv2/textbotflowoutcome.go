@@ -86,11 +86,11 @@ func (o *Textbotflowoutcome) UnmarshalJSON(b []byte) error {
 	if OutcomeId, ok := TextbotflowoutcomeMap["outcomeId"].(string); ok {
 		o.OutcomeId = &OutcomeId
 	}
-	
+    
 	if OutcomeValue, ok := TextbotflowoutcomeMap["outcomeValue"].(string); ok {
 		o.OutcomeValue = &OutcomeValue
 	}
-	
+    
 	if dateStartString, ok := TextbotflowoutcomeMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart

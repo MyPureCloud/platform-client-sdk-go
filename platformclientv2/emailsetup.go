@@ -37,7 +37,7 @@ func (o *Emailsetup) UnmarshalJSON(b []byte) error {
 	if RootDomain, ok := EmailsetupMap["rootDomain"].(string); ok {
 		o.RootDomain = &RootDomain
 	}
-	
+    
 
 	return nil
 }

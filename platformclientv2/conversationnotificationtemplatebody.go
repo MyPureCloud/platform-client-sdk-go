@@ -45,7 +45,7 @@ func (o *Conversationnotificationtemplatebody) UnmarshalJSON(b []byte) error {
 	if Text, ok := ConversationnotificationtemplatebodyMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Parameters, ok := ConversationnotificationtemplatebodyMap["parameters"].([]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)

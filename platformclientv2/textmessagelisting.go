@@ -129,23 +129,23 @@ func (o *Textmessagelisting) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := TextmessagelistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := TextmessagelistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := TextmessagelistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := TextmessagelistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := TextmessagelistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := TextmessagelistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

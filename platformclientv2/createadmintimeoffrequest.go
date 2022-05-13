@@ -86,7 +86,7 @@ func (o *Createadmintimeoffrequest) UnmarshalJSON(b []byte) error {
 	if Status, ok := CreateadmintimeoffrequestMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Users, ok := CreateadmintimeoffrequestMap["users"].([]interface{}); ok {
 		UsersString, _ := json.Marshal(Users)
 		json.Unmarshal(UsersString, &o.Users)
@@ -95,11 +95,11 @@ func (o *Createadmintimeoffrequest) UnmarshalJSON(b []byte) error {
 	if ActivityCodeId, ok := CreateadmintimeoffrequestMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Notes, ok := CreateadmintimeoffrequestMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if FullDayManagementUnitDates, ok := CreateadmintimeoffrequestMap["fullDayManagementUnitDates"].([]interface{}); ok {
 		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
 		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)

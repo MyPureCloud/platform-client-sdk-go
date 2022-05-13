@@ -278,31 +278,31 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if Id, ok := QueueconversationeventtopiccallMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := QueueconversationeventtopiccallMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Recording, ok := QueueconversationeventtopiccallMap["recording"].(bool); ok {
 		o.Recording = &Recording
 	}
-	
+    
 	if RecordingState, ok := QueueconversationeventtopiccallMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Muted, ok := QueueconversationeventtopiccallMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}
-	
+    
 	if Confined, ok := QueueconversationeventtopiccallMap["confined"].(bool); ok {
 		o.Confined = &Confined
 	}
-	
+    
 	if Held, ok := QueueconversationeventtopiccallMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if ErrorInfo, ok := QueueconversationeventtopiccallMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
@@ -311,7 +311,7 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := QueueconversationeventtopiccallMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationeventtopiccallMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -320,11 +320,11 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if Direction, ok := QueueconversationeventtopiccallMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DocumentId, ok := QueueconversationeventtopiccallMap["documentId"].(string); ok {
 		o.DocumentId = &DocumentId
 	}
-	
+    
 	if Self, ok := QueueconversationeventtopiccallMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -338,15 +338,15 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if Provider, ok := QueueconversationeventtopiccallMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationeventtopiccallMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationeventtopiccallMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if connectedTimeString, ok := QueueconversationeventtopiccallMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime
@@ -370,7 +370,7 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if UuiData, ok := QueueconversationeventtopiccallMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
 	}
-	
+    
 	if bargedTimeString, ok := QueueconversationeventtopiccallMap["bargedTime"].(string); ok {
 		BargedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", bargedTimeString)
 		o.BargedTime = &BargedTime
@@ -389,11 +389,11 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := QueueconversationeventtopiccallMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if AgentAssistantId, ok := QueueconversationeventtopiccallMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 
 	return nil
 }

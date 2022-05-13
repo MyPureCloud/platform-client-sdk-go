@@ -45,7 +45,7 @@ func (o *Createtimeofflimitrequest) UnmarshalJSON(b []byte) error {
 	if Granularity, ok := CreatetimeofflimitrequestMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if DefaultLimitMinutes, ok := CreatetimeofflimitrequestMap["defaultLimitMinutes"].(float64); ok {
 		DefaultLimitMinutesInt := int(DefaultLimitMinutes)
 		o.DefaultLimitMinutes = &DefaultLimitMinutesInt

@@ -53,7 +53,7 @@ func (o *Queueobservationqueryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := QueueobservationqueryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := QueueobservationqueryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

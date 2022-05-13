@@ -45,7 +45,7 @@ func (o *Aggregateviewdata) UnmarshalJSON(b []byte) error {
 	if Name, ok := AggregateviewdataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Stats, ok := AggregateviewdataMap["stats"].(map[string]interface{}); ok {
 		StatsString, _ := json.Marshal(Stats)
 		json.Unmarshal(StatsString, &o.Stats)

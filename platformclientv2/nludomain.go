@@ -118,15 +118,15 @@ func (o *Nludomain) UnmarshalJSON(b []byte) error {
 	if Id, ok := NludomainMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := NludomainMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Language, ok := NludomainMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if DraftVersion, ok := NludomainMap["draftVersion"].(map[string]interface{}); ok {
 		DraftVersionString, _ := json.Marshal(DraftVersion)
 		json.Unmarshal(DraftVersionString, &o.DraftVersion)
@@ -150,11 +150,11 @@ func (o *Nludomain) UnmarshalJSON(b []byte) error {
 	if EngineVersion, ok := NludomainMap["engineVersion"].(string); ok {
 		o.EngineVersion = &EngineVersion
 	}
-	
+    
 	if SelfUri, ok := NludomainMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

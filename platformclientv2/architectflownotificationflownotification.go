@@ -93,19 +93,19 @@ func (o *Architectflownotificationflownotification) UnmarshalJSON(b []byte) erro
 	if Id, ok := ArchitectflownotificationflownotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectflownotificationflownotificationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ArchitectflownotificationflownotificationMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Deleted, ok := ArchitectflownotificationflownotificationMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-	
+    
 	if CheckedInVersion, ok := ArchitectflownotificationflownotificationMap["checkedInVersion"].(map[string]interface{}); ok {
 		CheckedInVersionString, _ := json.Marshal(CheckedInVersion)
 		json.Unmarshal(CheckedInVersionString, &o.CheckedInVersion)

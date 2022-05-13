@@ -45,11 +45,11 @@ func (o *Dialogflowparameter) UnmarshalJSON(b []byte) error {
 	if Name, ok := DialogflowparameterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := DialogflowparameterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

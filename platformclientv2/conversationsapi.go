@@ -32,8 +32,6 @@ func NewConversationsApiWithConfig(config *Configuration) *ConversationsApi {
 // DeleteAnalyticsConversationsDetailsJob invokes DELETE /api/v2/analytics/conversations/details/jobs/{jobId}
 //
 // Delete/cancel an async request
-//
-// 
 func (a ConversationsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a ConversationsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'jobId' when calling ConversationsApi->DeleteAnalyticsConversationsDetailsJob")
 	}
 
@@ -98,8 +96,6 @@ func (a ConversationsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (
 // DeleteConversationParticipantCode invokes DELETE /api/v2/conversations/{conversationId}/participants/{participantId}/codes/{addCommunicationCode}
 //
 // Delete a code used to add a communication to this participant
-//
-// 
 func (a ConversationsApi) DeleteConversationParticipantCode(conversationId string, participantId string, addCommunicationCode string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -113,17 +109,17 @@ func (a ConversationsApi) DeleteConversationParticipantCode(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->DeleteConversationParticipantCode")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->DeleteConversationParticipantCode")
 	}
 	// verify the required parameter 'addCommunicationCode' is set
 	if &addCommunicationCode == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'addCommunicationCode' when calling ConversationsApi->DeleteConversationParticipantCode")
 	}
 
@@ -176,8 +172,6 @@ func (a ConversationsApi) DeleteConversationParticipantCode(conversationId strin
 // DeleteConversationParticipantFlaggedreason invokes DELETE /api/v2/conversations/{conversationId}/participants/{participantId}/flaggedreason
 //
 // Remove flagged reason from conversation participant.
-//
-// 
 func (a ConversationsApi) DeleteConversationParticipantFlaggedreason(conversationId string, participantId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -190,12 +184,12 @@ func (a ConversationsApi) DeleteConversationParticipantFlaggedreason(conversatio
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->DeleteConversationParticipantFlaggedreason")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->DeleteConversationParticipantFlaggedreason")
 	}
 
@@ -248,8 +242,6 @@ func (a ConversationsApi) DeleteConversationParticipantFlaggedreason(conversatio
 // DeleteConversationsCallParticipantConsult invokes DELETE /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult
 //
 // Cancel the transfer
-//
-// 
 func (a ConversationsApi) DeleteConversationsCallParticipantConsult(conversationId string, participantId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -262,12 +254,12 @@ func (a ConversationsApi) DeleteConversationsCallParticipantConsult(conversation
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->DeleteConversationsCallParticipantConsult")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->DeleteConversationsCallParticipantConsult")
 	}
 
@@ -320,8 +312,6 @@ func (a ConversationsApi) DeleteConversationsCallParticipantConsult(conversation
 // DeleteConversationsEmailMessagesDraftAttachment invokes DELETE /api/v2/conversations/emails/{conversationId}/messages/draft/attachments/{attachmentId}
 //
 // Delete attachment from draft
-//
-// 
 func (a ConversationsApi) DeleteConversationsEmailMessagesDraftAttachment(conversationId string, attachmentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -334,12 +324,12 @@ func (a ConversationsApi) DeleteConversationsEmailMessagesDraftAttachment(conver
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->DeleteConversationsEmailMessagesDraftAttachment")
 	}
 	// verify the required parameter 'attachmentId' is set
 	if &attachmentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'attachmentId' when calling ConversationsApi->DeleteConversationsEmailMessagesDraftAttachment")
 	}
 
@@ -392,8 +382,6 @@ func (a ConversationsApi) DeleteConversationsEmailMessagesDraftAttachment(conver
 // DeleteConversationsMessagingIntegrationsFacebookIntegrationId invokes DELETE /api/v2/conversations/messaging/integrations/facebook/{integrationId}
 //
 // Delete a Facebook messaging integration
-//
-// 
 func (a ConversationsApi) DeleteConversationsMessagingIntegrationsFacebookIntegrationId(integrationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -405,7 +393,7 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsFacebookIntegr
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->DeleteConversationsMessagingIntegrationsFacebookIntegrationId")
 	}
 
@@ -458,8 +446,6 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsFacebookIntegr
 // DeleteConversationsMessagingIntegrationsLineIntegrationId invokes DELETE /api/v2/conversations/messaging/integrations/line/{integrationId}
 //
 // Delete a LINE messenger integration
-//
-// 
 func (a ConversationsApi) DeleteConversationsMessagingIntegrationsLineIntegrationId(integrationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -471,7 +457,7 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsLineIntegratio
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->DeleteConversationsMessagingIntegrationsLineIntegrationId")
 	}
 
@@ -537,7 +523,7 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsOpenIntegratio
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->DeleteConversationsMessagingIntegrationsOpenIntegrationId")
 	}
 
@@ -590,8 +576,6 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsOpenIntegratio
 // DeleteConversationsMessagingIntegrationsTwitterIntegrationId invokes DELETE /api/v2/conversations/messaging/integrations/twitter/{integrationId}
 //
 // Delete a Twitter messaging integration
-//
-// 
 func (a ConversationsApi) DeleteConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -603,7 +587,7 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsTwitterIntegra
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->DeleteConversationsMessagingIntegrationsTwitterIntegrationId")
 	}
 
@@ -656,8 +640,6 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsTwitterIntegra
 // DeleteConversationsMessagingIntegrationsWhatsappIntegrationId invokes DELETE /api/v2/conversations/messaging/integrations/whatsapp/{integrationId}
 //
 // Delete a WhatsApp messaging integration
-//
-// 
 func (a ConversationsApi) DeleteConversationsMessagingIntegrationsWhatsappIntegrationId(integrationId string) (*Whatsappintegration, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -670,7 +652,7 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsWhatsappIntegr
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->DeleteConversationsMessagingIntegrationsWhatsappIntegrationId")
 	}
 
@@ -729,8 +711,6 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsWhatsappIntegr
 // DeleteConversationsMessagingSupportedcontentSupportedContentId invokes DELETE /api/v2/conversations/messaging/supportedcontent/{supportedContentId}
 //
 // Delete a supported content profile
-//
-// 
 func (a ConversationsApi) DeleteConversationsMessagingSupportedcontentSupportedContentId(supportedContentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -742,7 +722,7 @@ func (a ConversationsApi) DeleteConversationsMessagingSupportedcontentSupportedC
 
 	// verify the required parameter 'supportedContentId' is set
 	if &supportedContentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'supportedContentId' when calling ConversationsApi->DeleteConversationsMessagingSupportedcontentSupportedContentId")
 	}
 
@@ -795,8 +775,6 @@ func (a ConversationsApi) DeleteConversationsMessagingSupportedcontentSupportedC
 // GetAnalyticsConversationDetails invokes GET /api/v2/analytics/conversations/{conversationId}/details
 //
 // Get a conversation by id
-//
-// 
 func (a ConversationsApi) GetAnalyticsConversationDetails(conversationId string) (*Analyticsconversationwithoutattributes, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -809,7 +787,7 @@ func (a ConversationsApi) GetAnalyticsConversationDetails(conversationId string)
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetAnalyticsConversationDetails")
 	}
 
@@ -868,8 +846,6 @@ func (a ConversationsApi) GetAnalyticsConversationDetails(conversationId string)
 // GetAnalyticsConversationsDetails invokes GET /api/v2/analytics/conversations/details
 //
 // Gets multiple conversations by id
-//
-// 
 func (a ConversationsApi) GetAnalyticsConversationsDetails(id []string) (*Analyticsconversationwithoutattributesmultigetresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -937,8 +913,6 @@ func (a ConversationsApi) GetAnalyticsConversationsDetails(id []string) (*Analyt
 // GetAnalyticsConversationsDetailsJob invokes GET /api/v2/analytics/conversations/details/jobs/{jobId}
 //
 // Get status for async query for conversation details
-//
-// 
 func (a ConversationsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -951,7 +925,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*As
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling ConversationsApi->GetAnalyticsConversationsDetailsJob")
 	}
 
@@ -1010,8 +984,6 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*As
 // GetAnalyticsConversationsDetailsJobResults invokes GET /api/v2/analytics/conversations/details/jobs/{jobId}/results
 //
 // Fetch a page of results for an async query
-//
-// 
 func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1024,7 +996,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId strin
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling ConversationsApi->GetAnalyticsConversationsDetailsJobResults")
 	}
 
@@ -1087,8 +1059,6 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId strin
 // GetAnalyticsConversationsDetailsJobsAvailability invokes GET /api/v2/analytics/conversations/details/jobs/availability
 //
 // Lookup the datalake availability date and time
-//
-// 
 func (a ConversationsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*Dataavailabilityresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1154,8 +1124,6 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*D
 // GetConversation invokes GET /api/v2/conversations/{conversationId}
 //
 // Get conversation
-//
-// 
 func (a ConversationsApi) GetConversation(conversationId string) (*Conversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1168,7 +1136,7 @@ func (a ConversationsApi) GetConversation(conversationId string) (*Conversation,
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversation")
 	}
 
@@ -1227,8 +1195,6 @@ func (a ConversationsApi) GetConversation(conversationId string) (*Conversation,
 // GetConversationParticipantSecureivrsession invokes GET /api/v2/conversations/{conversationId}/participants/{participantId}/secureivrsessions/{secureSessionId}
 //
 // Fetch info on a secure session
-//
-// 
 func (a ConversationsApi) GetConversationParticipantSecureivrsession(conversationId string, participantId string, secureSessionId string) (*Securesession, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1243,17 +1209,17 @@ func (a ConversationsApi) GetConversationParticipantSecureivrsession(conversatio
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationParticipantSecureivrsession")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationParticipantSecureivrsession")
 	}
 	// verify the required parameter 'secureSessionId' is set
 	if &secureSessionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'secureSessionId' when calling ConversationsApi->GetConversationParticipantSecureivrsession")
 	}
 
@@ -1312,8 +1278,6 @@ func (a ConversationsApi) GetConversationParticipantSecureivrsession(conversatio
 // GetConversationParticipantSecureivrsessions invokes GET /api/v2/conversations/{conversationId}/participants/{participantId}/secureivrsessions
 //
 // Get a list of secure sessions for this participant.
-//
-// 
 func (a ConversationsApi) GetConversationParticipantSecureivrsessions(conversationId string, participantId string) (*Securesessionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1327,12 +1291,12 @@ func (a ConversationsApi) GetConversationParticipantSecureivrsessions(conversati
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationParticipantSecureivrsessions")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationParticipantSecureivrsessions")
 	}
 
@@ -1391,8 +1355,6 @@ func (a ConversationsApi) GetConversationParticipantSecureivrsessions(conversati
 // GetConversationParticipantWrapup invokes GET /api/v2/conversations/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
-//
-// 
 func (a ConversationsApi) GetConversationParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1406,12 +1368,12 @@ func (a ConversationsApi) GetConversationParticipantWrapup(conversationId string
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationParticipantWrapup")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationParticipantWrapup")
 	}
 
@@ -1472,8 +1434,6 @@ func (a ConversationsApi) GetConversationParticipantWrapup(conversationId string
 // GetConversationParticipantWrapupcodes invokes GET /api/v2/conversations/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
-//
-// 
 func (a ConversationsApi) GetConversationParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1487,12 +1447,12 @@ func (a ConversationsApi) GetConversationParticipantWrapupcodes(conversationId s
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationParticipantWrapupcodes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationParticipantWrapupcodes")
 	}
 
@@ -1551,8 +1511,6 @@ func (a ConversationsApi) GetConversationParticipantWrapupcodes(conversationId s
 // GetConversations invokes GET /api/v2/conversations
 //
 // Get active conversations for the logged in user
-//
-// 
 func (a ConversationsApi) GetConversations(communicationType string) (*Conversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1620,8 +1578,6 @@ func (a ConversationsApi) GetConversations(communicationType string) (*Conversat
 // GetConversationsCall invokes GET /api/v2/conversations/calls/{conversationId}
 //
 // Get call conversation
-//
-// 
 func (a ConversationsApi) GetConversationsCall(conversationId string) (*Callconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1634,7 +1590,7 @@ func (a ConversationsApi) GetConversationsCall(conversationId string) (*Callconv
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCall")
 	}
 
@@ -1693,8 +1649,6 @@ func (a ConversationsApi) GetConversationsCall(conversationId string) (*Callconv
 // GetConversationsCallParticipantWrapup invokes GET /api/v2/conversations/calls/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
-//
-// 
 func (a ConversationsApi) GetConversationsCallParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1708,12 +1662,12 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapup(conversationId s
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCallParticipantWrapup")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsCallParticipantWrapup")
 	}
 
@@ -1774,8 +1728,6 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapup(conversationId s
 // GetConversationsCallParticipantWrapupcodes invokes GET /api/v2/conversations/calls/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
-//
-// 
 func (a ConversationsApi) GetConversationsCallParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1789,12 +1741,12 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapupcodes(conversatio
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCallParticipantWrapupcodes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsCallParticipantWrapupcodes")
 	}
 
@@ -1853,8 +1805,6 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapupcodes(conversatio
 // GetConversationsCallback invokes GET /api/v2/conversations/callbacks/{conversationId}
 //
 // Get callback conversation
-//
-// 
 func (a ConversationsApi) GetConversationsCallback(conversationId string) (*Callbackconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1867,7 +1817,7 @@ func (a ConversationsApi) GetConversationsCallback(conversationId string) (*Call
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCallback")
 	}
 
@@ -1926,8 +1876,6 @@ func (a ConversationsApi) GetConversationsCallback(conversationId string) (*Call
 // GetConversationsCallbackParticipantWrapup invokes GET /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
-//
-// 
 func (a ConversationsApi) GetConversationsCallbackParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1941,12 +1889,12 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapup(conversation
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCallbackParticipantWrapup")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsCallbackParticipantWrapup")
 	}
 
@@ -2007,8 +1955,6 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapup(conversation
 // GetConversationsCallbackParticipantWrapupcodes invokes GET /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
-//
-// 
 func (a ConversationsApi) GetConversationsCallbackParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2022,12 +1968,12 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapupcodes(convers
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCallbackParticipantWrapupcodes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsCallbackParticipantWrapupcodes")
 	}
 
@@ -2086,8 +2032,6 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapupcodes(convers
 // GetConversationsCallbacks invokes GET /api/v2/conversations/callbacks
 //
 // Get active callback conversations for the logged in user
-//
-// 
 func (a ConversationsApi) GetConversationsCallbacks() (*Callbackconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2153,8 +2097,6 @@ func (a ConversationsApi) GetConversationsCallbacks() (*Callbackconversationenti
 // GetConversationsCalls invokes GET /api/v2/conversations/calls
 //
 // Get active call conversations for the logged in user
-//
-// 
 func (a ConversationsApi) GetConversationsCalls() (*Callconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2220,8 +2162,6 @@ func (a ConversationsApi) GetConversationsCalls() (*Callconversationentitylistin
 // GetConversationsCallsHistory invokes GET /api/v2/conversations/calls/history
 //
 // Get call history
-//
-// 
 func (a ConversationsApi) GetConversationsCallsHistory(pageSize int, pageNumber int, interval string, expand []string) (*Callhistoryconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2295,8 +2235,6 @@ func (a ConversationsApi) GetConversationsCallsHistory(pageSize int, pageNumber 
 // GetConversationsCallsMaximumconferenceparties invokes GET /api/v2/conversations/calls/maximumconferenceparties
 //
 // Get the maximum number of participants that this user can have on a conference
-//
-// 
 func (a ConversationsApi) GetConversationsCallsMaximumconferenceparties() (*Maxparticipants, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2362,8 +2300,6 @@ func (a ConversationsApi) GetConversationsCallsMaximumconferenceparties() (*Maxp
 // GetConversationsChat invokes GET /api/v2/conversations/chats/{conversationId}
 //
 // Get chat conversation
-//
-// 
 func (a ConversationsApi) GetConversationsChat(conversationId string) (*Chatconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2376,7 +2312,7 @@ func (a ConversationsApi) GetConversationsChat(conversationId string) (*Chatconv
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsChat")
 	}
 
@@ -2450,12 +2386,12 @@ func (a ConversationsApi) GetConversationsChatMessage(conversationId string, mes
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsChatMessage")
 	}
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling ConversationsApi->GetConversationsChatMessage")
 	}
 
@@ -2528,7 +2464,7 @@ func (a ConversationsApi) GetConversationsChatMessages(conversationId string, af
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsChatMessages")
 	}
 
@@ -2595,8 +2531,6 @@ func (a ConversationsApi) GetConversationsChatMessages(conversationId string, af
 // GetConversationsChatParticipantWrapup invokes GET /api/v2/conversations/chats/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
-//
-// 
 func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2610,12 +2544,12 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId s
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsChatParticipantWrapup")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsChatParticipantWrapup")
 	}
 
@@ -2676,8 +2610,6 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId s
 // GetConversationsChatParticipantWrapupcodes invokes GET /api/v2/conversations/chats/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
-//
-// 
 func (a ConversationsApi) GetConversationsChatParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2691,12 +2623,12 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapupcodes(conversatio
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsChatParticipantWrapupcodes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsChatParticipantWrapupcodes")
 	}
 
@@ -2755,8 +2687,6 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapupcodes(conversatio
 // GetConversationsChats invokes GET /api/v2/conversations/chats
 //
 // Get active chat conversations for the logged in user
-//
-// 
 func (a ConversationsApi) GetConversationsChats() (*Chatconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2822,8 +2752,6 @@ func (a ConversationsApi) GetConversationsChats() (*Chatconversationentitylistin
 // GetConversationsCobrowsesession invokes GET /api/v2/conversations/cobrowsesessions/{conversationId}
 //
 // Get cobrowse conversation
-//
-// 
 func (a ConversationsApi) GetConversationsCobrowsesession(conversationId string) (*Cobrowseconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2836,7 +2764,7 @@ func (a ConversationsApi) GetConversationsCobrowsesession(conversationId string)
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCobrowsesession")
 	}
 
@@ -2895,8 +2823,6 @@ func (a ConversationsApi) GetConversationsCobrowsesession(conversationId string)
 // GetConversationsCobrowsesessionParticipantWrapup invokes GET /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
-//
-// 
 func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2910,12 +2836,12 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conve
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCobrowsesessionParticipantWrapup")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsCobrowsesessionParticipantWrapup")
 	}
 
@@ -2976,8 +2902,6 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conve
 // GetConversationsCobrowsesessionParticipantWrapupcodes invokes GET /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
-//
-// 
 func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2991,12 +2915,12 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapupcodes(
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsCobrowsesessionParticipantWrapupcodes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsCobrowsesessionParticipantWrapupcodes")
 	}
 
@@ -3055,8 +2979,6 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapupcodes(
 // GetConversationsCobrowsesessions invokes GET /api/v2/conversations/cobrowsesessions
 //
 // Get active cobrowse conversations for the logged in user
-//
-// 
 func (a ConversationsApi) GetConversationsCobrowsesessions() (*Cobrowseconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3122,8 +3044,6 @@ func (a ConversationsApi) GetConversationsCobrowsesessions() (*Cobrowseconversat
 // GetConversationsEmail invokes GET /api/v2/conversations/emails/{conversationId}
 //
 // Get email conversation
-//
-// 
 func (a ConversationsApi) GetConversationsEmail(conversationId string) (*Emailconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3136,7 +3056,7 @@ func (a ConversationsApi) GetConversationsEmail(conversationId string) (*Emailco
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsEmail")
 	}
 
@@ -3195,8 +3115,6 @@ func (a ConversationsApi) GetConversationsEmail(conversationId string) (*Emailco
 // GetConversationsEmailMessage invokes GET /api/v2/conversations/emails/{conversationId}/messages/{messageId}
 //
 // Get conversation message
-//
-// 
 func (a ConversationsApi) GetConversationsEmailMessage(conversationId string, messageId string) (*Emailmessage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3210,12 +3128,12 @@ func (a ConversationsApi) GetConversationsEmailMessage(conversationId string, me
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsEmailMessage")
 	}
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling ConversationsApi->GetConversationsEmailMessage")
 	}
 
@@ -3274,8 +3192,6 @@ func (a ConversationsApi) GetConversationsEmailMessage(conversationId string, me
 // GetConversationsEmailMessages invokes GET /api/v2/conversations/emails/{conversationId}/messages
 //
 // Get conversation messages
-//
-// 
 func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (*Emailmessagelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3288,7 +3204,7 @@ func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsEmailMessages")
 	}
 
@@ -3347,8 +3263,6 @@ func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (
 // GetConversationsEmailMessagesDraft invokes GET /api/v2/conversations/emails/{conversationId}/messages/draft
 //
 // Get conversation draft reply
-//
-// 
 func (a ConversationsApi) GetConversationsEmailMessagesDraft(conversationId string) (*Emailmessage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3361,7 +3275,7 @@ func (a ConversationsApi) GetConversationsEmailMessagesDraft(conversationId stri
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsEmailMessagesDraft")
 	}
 
@@ -3420,8 +3334,6 @@ func (a ConversationsApi) GetConversationsEmailMessagesDraft(conversationId stri
 // GetConversationsEmailParticipantWrapup invokes GET /api/v2/conversations/emails/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
-//
-// 
 func (a ConversationsApi) GetConversationsEmailParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3435,12 +3347,12 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapup(conversationId 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsEmailParticipantWrapup")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsEmailParticipantWrapup")
 	}
 
@@ -3501,8 +3413,6 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapup(conversationId 
 // GetConversationsEmailParticipantWrapupcodes invokes GET /api/v2/conversations/emails/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
-//
-// 
 func (a ConversationsApi) GetConversationsEmailParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3516,12 +3426,12 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapupcodes(conversati
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsEmailParticipantWrapupcodes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsEmailParticipantWrapupcodes")
 	}
 
@@ -3580,8 +3490,6 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapupcodes(conversati
 // GetConversationsEmailSettings invokes GET /api/v2/conversations/emails/{conversationId}/settings
 //
 // Get emails settings for a given conversation
-//
-// 
 func (a ConversationsApi) GetConversationsEmailSettings(conversationId string) (*Emailssettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3594,7 +3502,7 @@ func (a ConversationsApi) GetConversationsEmailSettings(conversationId string) (
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsEmailSettings")
 	}
 
@@ -3653,8 +3561,6 @@ func (a ConversationsApi) GetConversationsEmailSettings(conversationId string) (
 // GetConversationsEmails invokes GET /api/v2/conversations/emails
 //
 // Get active email conversations for the logged in user
-//
-// 
 func (a ConversationsApi) GetConversationsEmails() (*Emailconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3720,8 +3626,6 @@ func (a ConversationsApi) GetConversationsEmails() (*Emailconversationentitylist
 // GetConversationsMessage invokes GET /api/v2/conversations/messages/{conversationId}
 //
 // Get message conversation
-//
-// 
 func (a ConversationsApi) GetConversationsMessage(conversationId string) (*Messageconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3734,7 +3638,7 @@ func (a ConversationsApi) GetConversationsMessage(conversationId string) (*Messa
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsMessage")
 	}
 
@@ -3809,17 +3713,17 @@ func (a ConversationsApi) GetConversationsMessageCommunicationMessagesMediaMedia
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsMessageCommunicationMessagesMediaMediaId")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->GetConversationsMessageCommunicationMessagesMediaMediaId")
 	}
 	// verify the required parameter 'mediaId' is set
 	if &mediaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'mediaId' when calling ConversationsApi->GetConversationsMessageCommunicationMessagesMediaMediaId")
 	}
 
@@ -3878,8 +3782,6 @@ func (a ConversationsApi) GetConversationsMessageCommunicationMessagesMediaMedia
 // GetConversationsMessageDetails invokes GET /api/v2/conversations/messages/{messageId}/details
 //
 // Get message
-//
-// 
 func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3892,7 +3794,7 @@ func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Mes
 
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling ConversationsApi->GetConversationsMessageDetails")
 	}
 
@@ -3951,8 +3853,6 @@ func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Mes
 // GetConversationsMessageMessage invokes GET /api/v2/conversations/messages/{conversationId}/messages/{messageId}
 //
 // Get conversation message
-//
-// 
 func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, messageId string) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3966,12 +3866,12 @@ func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsMessageMessage")
 	}
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling ConversationsApi->GetConversationsMessageMessage")
 	}
 
@@ -4030,8 +3930,6 @@ func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, 
 // GetConversationsMessageParticipantWrapup invokes GET /api/v2/conversations/messages/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
-//
-// 
 func (a ConversationsApi) GetConversationsMessageParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4045,12 +3943,12 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapup(conversationI
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsMessageParticipantWrapup")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsMessageParticipantWrapup")
 	}
 
@@ -4111,8 +4009,6 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapup(conversationI
 // GetConversationsMessageParticipantWrapupcodes invokes GET /api/v2/conversations/messages/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
-//
-// 
 func (a ConversationsApi) GetConversationsMessageParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4126,12 +4022,12 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapupcodes(conversa
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsMessageParticipantWrapupcodes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->GetConversationsMessageParticipantWrapupcodes")
 	}
 
@@ -4190,8 +4086,6 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapupcodes(conversa
 // GetConversationsMessages invokes GET /api/v2/conversations/messages
 //
 // Get active message conversations for the logged in user
-//
-// 
 func (a ConversationsApi) GetConversationsMessages() (*Messageconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4257,8 +4151,6 @@ func (a ConversationsApi) GetConversationsMessages() (*Messageconversationentity
 // GetConversationsMessagingFacebookApp invokes GET /api/v2/conversations/messaging/facebook/app
 //
 // Get Genesys Facebook App Id
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingFacebookApp() (*Facebookappcredentials, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4324,8 +4216,6 @@ func (a ConversationsApi) GetConversationsMessagingFacebookApp() (*Facebookappcr
 // GetConversationsMessagingIntegrations invokes GET /api/v2/conversations/messaging/integrations
 //
 // Get a list of Integrations
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pageNumber int, expand string, supportedContentId string) (*Messagingintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4399,8 +4289,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pa
 // GetConversationsMessagingIntegrationsFacebook invokes GET /api/v2/conversations/messaging/integrations/facebook
 //
 // Get a list of Facebook Integrations
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize int, pageNumber int, expand string, supportedContentId string) (*Facebookintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4474,8 +4362,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize
 // GetConversationsMessagingIntegrationsFacebookIntegrationId invokes GET /api/v2/conversations/messaging/integrations/facebook/{integrationId}
 //
 // Get a Facebook messaging integration
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrationId(integrationId string, expand string) (*Facebookintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4488,7 +4374,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrati
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->GetConversationsMessagingIntegrationsFacebookIntegrationId")
 	}
 
@@ -4549,8 +4435,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrati
 // GetConversationsMessagingIntegrationsLine invokes GET /api/v2/conversations/messaging/integrations/line
 //
 // Get a list of LINE messenger Integrations
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int, pageNumber int, expand string, supportedContentId string) (*Lineintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4624,8 +4508,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int
 // GetConversationsMessagingIntegrationsLineIntegrationId invokes GET /api/v2/conversations/messaging/integrations/line/{integrationId}
 //
 // Get a LINE messenger integration
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId(integrationId string, expand string) (*Lineintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4638,7 +4520,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->GetConversationsMessagingIntegrationsLineIntegrationId")
 	}
 
@@ -4788,7 +4670,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsOpenIntegrationId
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->GetConversationsMessagingIntegrationsOpenIntegrationId")
 	}
 
@@ -4849,8 +4731,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsOpenIntegrationId
 // GetConversationsMessagingIntegrationsTwitter invokes GET /api/v2/conversations/messaging/integrations/twitter
 //
 // Get a list of Twitter Integrations
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize int, pageNumber int, expand string, supportedContentId string) (*Twitterintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4924,8 +4804,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize 
 // GetConversationsMessagingIntegrationsTwitterIntegrationId invokes GET /api/v2/conversations/messaging/integrations/twitter/{integrationId}
 //
 // Get a Twitter messaging integration
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string, expand string) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4938,7 +4816,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegratio
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->GetConversationsMessagingIntegrationsTwitterIntegrationId")
 	}
 
@@ -4999,8 +4877,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegratio
 // GetConversationsMessagingIntegrationsWhatsapp invokes GET /api/v2/conversations/messaging/integrations/whatsapp
 //
 // Get a list of WhatsApp Integrations
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize int, pageNumber int, expand string, supportedContentId string) (*Whatsappintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5074,8 +4950,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize
 // GetConversationsMessagingIntegrationsWhatsappIntegrationId invokes GET /api/v2/conversations/messaging/integrations/whatsapp/{integrationId}
 //
 // Get a WhatsApp messaging integration
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrationId(integrationId string, expand string) (*Whatsappintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5088,7 +4962,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrati
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->GetConversationsMessagingIntegrationsWhatsappIntegrationId")
 	}
 
@@ -5149,8 +5023,6 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrati
 // GetConversationsMessagingSticker invokes GET /api/v2/conversations/messaging/stickers/{messengerType}
 //
 // Get a list of Messaging Stickers
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string, pageSize int, pageNumber int) (*Messagingstickerentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5163,7 +5035,7 @@ func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string,
 
 	// verify the required parameter 'messengerType' is set
 	if &messengerType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messengerType' when calling ConversationsApi->GetConversationsMessagingSticker")
 	}
 
@@ -5226,8 +5098,6 @@ func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string,
 // GetConversationsMessagingSupportedcontent invokes GET /api/v2/conversations/messaging/supportedcontent
 //
 // Get a list of Supported Content profiles
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingSupportedcontent(pageSize int, pageNumber int) (*Supportedcontentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5296,7 +5166,7 @@ func (a ConversationsApi) GetConversationsMessagingSupportedcontent(pageSize int
 
 // GetConversationsMessagingSupportedcontentDefault invokes GET /api/v2/conversations/messaging/supportedcontent/default
 //
-// Get the organization&#39;s default supported content profile that will be used as the default when creating an integration.
+// Get the organization's default supported content profile that will be used as the default when creating an integration.
 //
 // When an integration is created a supported content ID may be assigned to it. If the supported content ID is not supplied, the default supported content profile will be assigned to it.
 func (a ConversationsApi) GetConversationsMessagingSupportedcontentDefault() (*Supportedcontent, *APIResponse, error) {
@@ -5364,8 +5234,6 @@ func (a ConversationsApi) GetConversationsMessagingSupportedcontentDefault() (*S
 // GetConversationsMessagingSupportedcontentSupportedContentId invokes GET /api/v2/conversations/messaging/supportedcontent/{supportedContentId}
 //
 // Get a supported content profile
-//
-// 
 func (a ConversationsApi) GetConversationsMessagingSupportedcontentSupportedContentId(supportedContentId string) (*Supportedcontent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5378,7 +5246,7 @@ func (a ConversationsApi) GetConversationsMessagingSupportedcontentSupportedCont
 
 	// verify the required parameter 'supportedContentId' is set
 	if &supportedContentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'supportedContentId' when calling ConversationsApi->GetConversationsMessagingSupportedcontentSupportedContentId")
 	}
 
@@ -5518,17 +5386,17 @@ func (a ConversationsApi) PatchConversationParticipant(conversationId string, pa
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationParticipant")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationParticipant")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationParticipant")
 	}
 
@@ -5584,8 +5452,6 @@ func (a ConversationsApi) PatchConversationParticipant(conversationId string, pa
 // PatchConversationParticipantAttributes invokes PATCH /api/v2/conversations/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-//
-// 
 func (a ConversationsApi) PatchConversationParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5598,17 +5464,17 @@ func (a ConversationsApi) PatchConversationParticipantAttributes(conversationId 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationParticipantAttributes")
 	}
 
@@ -5664,8 +5530,6 @@ func (a ConversationsApi) PatchConversationParticipantAttributes(conversationId 
 // PatchConversationsCall invokes PATCH /api/v2/conversations/calls/{conversationId}
 //
 // Update a conversation by setting its recording state, merging in other conversations to create a conference, or disconnecting all of the participants
-//
-// 
 func (a ConversationsApi) PatchConversationsCall(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5678,12 +5542,12 @@ func (a ConversationsApi) PatchConversationsCall(conversationId string, body Con
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCall")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCall")
 	}
 
@@ -5745,8 +5609,6 @@ func (a ConversationsApi) PatchConversationsCall(conversationId string, body Con
 // PatchConversationsCallParticipant invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
-//
-// 
 func (a ConversationsApi) PatchConversationsCallParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5759,17 +5621,17 @@ func (a ConversationsApi) PatchConversationsCallParticipant(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipant")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipant")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallParticipant")
 	}
 
@@ -5825,8 +5687,6 @@ func (a ConversationsApi) PatchConversationsCallParticipant(conversationId strin
 // PatchConversationsCallParticipantAttributes invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-//
-// 
 func (a ConversationsApi) PatchConversationsCallParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5839,17 +5699,17 @@ func (a ConversationsApi) PatchConversationsCallParticipantAttributes(conversati
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
 	}
 
@@ -5904,39 +5764,37 @@ func (a ConversationsApi) PatchConversationsCallParticipantAttributes(conversati
 
 // PatchConversationsCallParticipantCommunication invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant&#39;s communication by disconnecting it.
-//
-// 
-func (a ConversationsApi) PatchConversationsCallParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*Empty, *APIResponse, error) {
+// Update conversation participant's communication by disconnecting it.
+func (a ConversationsApi) PatchConversationsCallParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipantCommunication")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipantCommunication")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsCallParticipantCommunication")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallParticipantCommunication")
 	}
 
@@ -5979,14 +5837,14 @@ func (a ConversationsApi) PatchConversationsCallParticipantCommunication(convers
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5998,8 +5856,6 @@ func (a ConversationsApi) PatchConversationsCallParticipantCommunication(convers
 // PatchConversationsCallParticipantConsult invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult
 //
 // Change who can speak
-//
-// 
 func (a ConversationsApi) PatchConversationsCallParticipantConsult(conversationId string, participantId string, body Consulttransferupdate) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6013,17 +5869,17 @@ func (a ConversationsApi) PatchConversationsCallParticipantConsult(conversationI
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipantConsult")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipantConsult")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallParticipantConsult")
 	}
 
@@ -6085,8 +5941,6 @@ func (a ConversationsApi) PatchConversationsCallParticipantConsult(conversationI
 // PatchConversationsCallback invokes PATCH /api/v2/conversations/callbacks/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
-//
-// 
 func (a ConversationsApi) PatchConversationsCallback(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6099,12 +5953,12 @@ func (a ConversationsApi) PatchConversationsCallback(conversationId string, body
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallback")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallback")
 	}
 
@@ -6166,8 +6020,6 @@ func (a ConversationsApi) PatchConversationsCallback(conversationId string, body
 // PatchConversationsCallbackParticipant invokes PATCH /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
-//
-// 
 func (a ConversationsApi) PatchConversationsCallbackParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6180,17 +6032,17 @@ func (a ConversationsApi) PatchConversationsCallbackParticipant(conversationId s
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallbackParticipant")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallbackParticipant")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallbackParticipant")
 	}
 
@@ -6246,8 +6098,6 @@ func (a ConversationsApi) PatchConversationsCallbackParticipant(conversationId s
 // PatchConversationsCallbackParticipantAttributes invokes PATCH /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-//
-// 
 func (a ConversationsApi) PatchConversationsCallbackParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6260,17 +6110,17 @@ func (a ConversationsApi) PatchConversationsCallbackParticipantAttributes(conver
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
 	}
 
@@ -6325,39 +6175,37 @@ func (a ConversationsApi) PatchConversationsCallbackParticipantAttributes(conver
 
 // PatchConversationsCallbackParticipantCommunication invokes PATCH /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant&#39;s communication by disconnecting it.
-//
-// 
-func (a ConversationsApi) PatchConversationsCallbackParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*Empty, *APIResponse, error) {
+// Update conversation participant's communication by disconnecting it.
+func (a ConversationsApi) PatchConversationsCallbackParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/communications/{communicationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallbackParticipantCommunication")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallbackParticipantCommunication")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsCallbackParticipantCommunication")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallbackParticipantCommunication")
 	}
 
@@ -6400,14 +6248,14 @@ func (a ConversationsApi) PatchConversationsCallbackParticipantCommunication(con
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -6419,8 +6267,6 @@ func (a ConversationsApi) PatchConversationsCallbackParticipantCommunication(con
 // PatchConversationsCallbacks invokes PATCH /api/v2/conversations/callbacks
 //
 // Update a scheduled callback
-//
-// 
 func (a ConversationsApi) PatchConversationsCallbacks(body Patchcallbackrequest) (*Patchcallbackresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6432,7 +6278,7 @@ func (a ConversationsApi) PatchConversationsCallbacks(body Patchcallbackrequest)
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallbacks")
 	}
 
@@ -6494,8 +6340,6 @@ func (a ConversationsApi) PatchConversationsCallbacks(body Patchcallbackrequest)
 // PatchConversationsChat invokes PATCH /api/v2/conversations/chats/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
-//
-// 
 func (a ConversationsApi) PatchConversationsChat(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6508,12 +6352,12 @@ func (a ConversationsApi) PatchConversationsChat(conversationId string, body Con
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsChat")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsChat")
 	}
 
@@ -6575,8 +6419,6 @@ func (a ConversationsApi) PatchConversationsChat(conversationId string, body Con
 // PatchConversationsChatParticipant invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
-//
-// 
 func (a ConversationsApi) PatchConversationsChatParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6589,17 +6431,17 @@ func (a ConversationsApi) PatchConversationsChatParticipant(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsChatParticipant")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsChatParticipant")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsChatParticipant")
 	}
 
@@ -6655,8 +6497,6 @@ func (a ConversationsApi) PatchConversationsChatParticipant(conversationId strin
 // PatchConversationsChatParticipantAttributes invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-//
-// 
 func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6669,17 +6509,17 @@ func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversati
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
 	}
 
@@ -6734,39 +6574,37 @@ func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversati
 
 // PatchConversationsChatParticipantCommunication invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant&#39;s communication by disconnecting it.
-//
-// 
-func (a ConversationsApi) PatchConversationsChatParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*Empty, *APIResponse, error) {
+// Update conversation participant's communication by disconnecting it.
+func (a ConversationsApi) PatchConversationsChatParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsChatParticipantCommunication")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsChatParticipantCommunication")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsChatParticipantCommunication")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsChatParticipantCommunication")
 	}
 
@@ -6809,14 +6647,14 @@ func (a ConversationsApi) PatchConversationsChatParticipantCommunication(convers
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -6828,8 +6666,6 @@ func (a ConversationsApi) PatchConversationsChatParticipantCommunication(convers
 // PatchConversationsCobrowsesession invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
-//
-// 
 func (a ConversationsApi) PatchConversationsCobrowsesession(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6842,12 +6678,12 @@ func (a ConversationsApi) PatchConversationsCobrowsesession(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCobrowsesession")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCobrowsesession")
 	}
 
@@ -6909,8 +6745,6 @@ func (a ConversationsApi) PatchConversationsCobrowsesession(conversationId strin
 // PatchConversationsCobrowsesessionParticipant invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
-//
-// 
 func (a ConversationsApi) PatchConversationsCobrowsesessionParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6923,12 +6757,12 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipant(conversat
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipant")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipant")
 	}
 
@@ -6984,8 +6818,6 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipant(conversat
 // PatchConversationsCobrowsesessionParticipantAttributes invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-//
-// 
 func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6998,12 +6830,12 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantAttributes")
 	}
 
@@ -7058,39 +6890,37 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes
 
 // PatchConversationsCobrowsesessionParticipantCommunication invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant&#39;s communication by disconnecting it.
-//
-// 
-func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*Empty, *APIResponse, error) {
+// Update conversation participant's communication by disconnecting it.
+func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantCommunication")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantCommunication")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantCommunication")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantCommunication")
 	}
 
@@ -7133,14 +6963,14 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantCommunicat
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7152,8 +6982,6 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantCommunicat
 // PatchConversationsEmail invokes PATCH /api/v2/conversations/emails/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
-//
-// 
 func (a ConversationsApi) PatchConversationsEmail(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7166,12 +6994,12 @@ func (a ConversationsApi) PatchConversationsEmail(conversationId string, body Co
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsEmail")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsEmail")
 	}
 
@@ -7233,8 +7061,6 @@ func (a ConversationsApi) PatchConversationsEmail(conversationId string, body Co
 // PatchConversationsEmailParticipant invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
-//
-// 
 func (a ConversationsApi) PatchConversationsEmailParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7247,17 +7073,17 @@ func (a ConversationsApi) PatchConversationsEmailParticipant(conversationId stri
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsEmailParticipant")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsEmailParticipant")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsEmailParticipant")
 	}
 
@@ -7313,8 +7139,6 @@ func (a ConversationsApi) PatchConversationsEmailParticipant(conversationId stri
 // PatchConversationsEmailParticipantAttributes invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-//
-// 
 func (a ConversationsApi) PatchConversationsEmailParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7327,17 +7151,17 @@ func (a ConversationsApi) PatchConversationsEmailParticipantAttributes(conversat
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
 	}
 
@@ -7392,39 +7216,37 @@ func (a ConversationsApi) PatchConversationsEmailParticipantAttributes(conversat
 
 // PatchConversationsEmailParticipantCommunication invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant&#39;s communication by disconnecting it.
-//
-// 
-func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*Empty, *APIResponse, error) {
+// Update conversation participant's communication by disconnecting it.
+func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsEmailParticipantCommunication")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsEmailParticipantCommunication")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsEmailParticipantCommunication")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsEmailParticipantCommunication")
 	}
 
@@ -7467,14 +7289,14 @@ func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conver
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7486,8 +7308,6 @@ func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conver
 // PatchConversationsMessage invokes PATCH /api/v2/conversations/messages/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
-//
-// 
 func (a ConversationsApi) PatchConversationsMessage(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7500,12 +7320,12 @@ func (a ConversationsApi) PatchConversationsMessage(conversationId string, body 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsMessage")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessage")
 	}
 
@@ -7567,8 +7387,6 @@ func (a ConversationsApi) PatchConversationsMessage(conversationId string, body 
 // PatchConversationsMessageParticipant invokes PATCH /api/v2/conversations/messages/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
-//
-// 
 func (a ConversationsApi) PatchConversationsMessageParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7581,12 +7399,12 @@ func (a ConversationsApi) PatchConversationsMessageParticipant(conversationId st
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsMessageParticipant")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsMessageParticipant")
 	}
 
@@ -7642,8 +7460,6 @@ func (a ConversationsApi) PatchConversationsMessageParticipant(conversationId st
 // PatchConversationsMessageParticipantAttributes invokes PATCH /api/v2/conversations/messages/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-//
-// 
 func (a ConversationsApi) PatchConversationsMessageParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7656,12 +7472,12 @@ func (a ConversationsApi) PatchConversationsMessageParticipantAttributes(convers
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsMessageParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsMessageParticipantAttributes")
 	}
 
@@ -7716,39 +7532,37 @@ func (a ConversationsApi) PatchConversationsMessageParticipantAttributes(convers
 
 // PatchConversationsMessageParticipantCommunication invokes PATCH /api/v2/conversations/messages/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant&#39;s communication by disconnecting it.
-//
-// 
-func (a ConversationsApi) PatchConversationsMessageParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*Empty, *APIResponse, error) {
+// Update conversation participant's communication by disconnecting it.
+func (a ConversationsApi) PatchConversationsMessageParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/participants/{participantId}/communications/{communicationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsMessageParticipantCommunication")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsMessageParticipantCommunication")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsMessageParticipantCommunication")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessageParticipantCommunication")
 	}
 
@@ -7791,14 +7605,14 @@ func (a ConversationsApi) PatchConversationsMessageParticipantCommunication(conv
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7810,8 +7624,6 @@ func (a ConversationsApi) PatchConversationsMessageParticipantCommunication(conv
 // PatchConversationsMessagingIntegrationsFacebookIntegrationId invokes PATCH /api/v2/conversations/messaging/integrations/facebook/{integrationId}
 //
 // Update Facebook messaging integration
-//
-// 
 func (a ConversationsApi) PatchConversationsMessagingIntegrationsFacebookIntegrationId(integrationId string, body Facebookintegrationupdaterequest) (*Facebookintegration, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7824,12 +7636,12 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsFacebookIntegra
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PatchConversationsMessagingIntegrationsFacebookIntegrationId")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessagingIntegrationsFacebookIntegrationId")
 	}
 
@@ -7905,12 +7717,12 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsOpenIntegration
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PatchConversationsMessagingIntegrationsOpenIntegrationId")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessagingIntegrationsOpenIntegrationId")
 	}
 
@@ -7972,8 +7784,6 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsOpenIntegration
 // PatchConversationsMessagingIntegrationsTwitterIntegrationId invokes PATCH /api/v2/conversations/messaging/integrations/twitter/{integrationId}
 //
 // Update Twitter messaging integration
-//
-// 
 func (a ConversationsApi) PatchConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string, body Twitterintegrationrequest) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7986,12 +7796,12 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsTwitterIntegrat
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PatchConversationsMessagingIntegrationsTwitterIntegrationId")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessagingIntegrationsTwitterIntegrationId")
 	}
 
@@ -8067,12 +7877,12 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsWhatsappIntegra
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PatchConversationsMessagingIntegrationsWhatsappIntegrationId")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessagingIntegrationsWhatsappIntegrationId")
 	}
 
@@ -8134,8 +7944,6 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsWhatsappIntegra
 // PatchConversationsMessagingSupportedcontentSupportedContentId invokes PATCH /api/v2/conversations/messaging/supportedcontent/{supportedContentId}
 //
 // Update a supported content profile
-//
-// 
 func (a ConversationsApi) PatchConversationsMessagingSupportedcontentSupportedContentId(supportedContentId string, body Supportedcontent) (*Supportedcontent, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -8148,12 +7956,12 @@ func (a ConversationsApi) PatchConversationsMessagingSupportedcontentSupportedCo
 
 	// verify the required parameter 'supportedContentId' is set
 	if &supportedContentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'supportedContentId' when calling ConversationsApi->PatchConversationsMessagingSupportedcontentSupportedContentId")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessagingSupportedcontentSupportedContentId")
 	}
 
@@ -8215,8 +8023,6 @@ func (a ConversationsApi) PatchConversationsMessagingSupportedcontentSupportedCo
 // PostAnalyticsConversationDetailsProperties invokes POST /api/v2/analytics/conversations/{conversationId}/details/properties
 //
 // Index conversation properties
-//
-// 
 func (a ConversationsApi) PostAnalyticsConversationDetailsProperties(conversationId string, body Propertyindexrequest) (*Propertyindexrequest, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8229,12 +8035,12 @@ func (a ConversationsApi) PostAnalyticsConversationDetailsProperties(conversatio
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostAnalyticsConversationDetailsProperties")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostAnalyticsConversationDetailsProperties")
 	}
 
@@ -8296,8 +8102,6 @@ func (a ConversationsApi) PostAnalyticsConversationDetailsProperties(conversatio
 // PostAnalyticsConversationsAggregatesQuery invokes POST /api/v2/analytics/conversations/aggregates/query
 //
 // Query for conversation aggregates
-//
-// 
 func (a ConversationsApi) PostAnalyticsConversationsAggregatesQuery(body Conversationaggregationquery) (*Conversationaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8309,7 +8113,7 @@ func (a ConversationsApi) PostAnalyticsConversationsAggregatesQuery(body Convers
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostAnalyticsConversationsAggregatesQuery")
 	}
 
@@ -8371,8 +8175,6 @@ func (a ConversationsApi) PostAnalyticsConversationsAggregatesQuery(body Convers
 // PostAnalyticsConversationsDetailsJobs invokes POST /api/v2/analytics/conversations/details/jobs
 //
 // Query for conversation details asynchronously
-//
-// 
 func (a ConversationsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconversationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8384,7 +8186,7 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconver
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostAnalyticsConversationsDetailsJobs")
 	}
 
@@ -8446,8 +8248,6 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconver
 // PostAnalyticsConversationsDetailsQuery invokes POST /api/v2/analytics/conversations/details/query
 //
 // Query for conversation details
-//
-// 
 func (a ConversationsApi) PostAnalyticsConversationsDetailsQuery(body Conversationquery) (*Analyticsconversationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8459,7 +8259,7 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsQuery(body Conversati
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostAnalyticsConversationsDetailsQuery")
 	}
 
@@ -8521,8 +8321,6 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsQuery(body Conversati
 // PostConversationAssign invokes POST /api/v2/conversations/{conversationId}/assign
 //
 // Attempts to manually assign a specified conversation to a specified user.  Ignores bullseye ring, PAR score, skills, and languages.
-//
-// 
 func (a ConversationsApi) PostConversationAssign(conversationId string, body Conversationuser) (*string, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8535,12 +8333,12 @@ func (a ConversationsApi) PostConversationAssign(conversationId string, body Con
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationAssign")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationAssign")
 	}
 
@@ -8602,8 +8400,6 @@ func (a ConversationsApi) PostConversationAssign(conversationId string, body Con
 // PostConversationDisconnect invokes POST /api/v2/conversations/{conversationId}/disconnect
 //
 // Performs a full conversation teardown. Issues disconnect requests for any connected media. Applies a system wrap-up code to any participants that are pending wrap-up. This is not intended to be the normal way of ending interactions but is available in the event of problems with the application to allow a resynchronization of state across all components. It is recommended that users submit a support case if they are relying on this endpoint systematically as there is likely something that needs investigation.
-//
-// 
 func (a ConversationsApi) PostConversationDisconnect(conversationId string) (*string, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8616,7 +8412,7 @@ func (a ConversationsApi) PostConversationDisconnect(conversationId string) (*st
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationDisconnect")
 	}
 
@@ -8675,8 +8471,6 @@ func (a ConversationsApi) PostConversationDisconnect(conversationId string) (*st
 // PostConversationParticipantCallbacks invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/callbacks
 //
 // Create a new callback for the specified participant on the conversation.
-//
-// 
 func (a ConversationsApi) PostConversationParticipantCallbacks(conversationId string, participantId string, body Createcallbackonconversationcommand) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8689,12 +8483,12 @@ func (a ConversationsApi) PostConversationParticipantCallbacks(conversationId st
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationParticipantCallbacks")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationParticipantCallbacks")
 	}
 
@@ -8750,8 +8544,6 @@ func (a ConversationsApi) PostConversationParticipantCallbacks(conversationId st
 // PostConversationParticipantDigits invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/digits
 //
 // Sends DTMF to the participant
-//
-// 
 func (a ConversationsApi) PostConversationParticipantDigits(conversationId string, participantId string, body Digits) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8764,12 +8556,12 @@ func (a ConversationsApi) PostConversationParticipantDigits(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationParticipantDigits")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationParticipantDigits")
 	}
 
@@ -8825,8 +8617,6 @@ func (a ConversationsApi) PostConversationParticipantDigits(conversationId strin
 // PostConversationParticipantReplace invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// 
 func (a ConversationsApi) PostConversationParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8839,17 +8629,17 @@ func (a ConversationsApi) PostConversationParticipantReplace(conversationId stri
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationParticipantReplace")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationParticipantReplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationParticipantReplace")
 	}
 
@@ -8905,8 +8695,6 @@ func (a ConversationsApi) PostConversationParticipantReplace(conversationId stri
 // PostConversationParticipantSecureivrsessions invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/secureivrsessions
 //
 // Create secure IVR session. Only a participant in the conversation can invoke a secure IVR.
-//
-// 
 func (a ConversationsApi) PostConversationParticipantSecureivrsessions(conversationId string, participantId string, body Createsecuresession) (*Securesession, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8920,12 +8708,12 @@ func (a ConversationsApi) PostConversationParticipantSecureivrsessions(conversat
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationParticipantSecureivrsessions")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationParticipantSecureivrsessions")
 	}
 
@@ -8987,8 +8775,6 @@ func (a ConversationsApi) PostConversationParticipantSecureivrsessions(conversat
 // PostConversationsCall invokes POST /api/v2/conversations/calls/{conversationId}
 //
 // Place a new call as part of a callback conversation.
-//
-// 
 func (a ConversationsApi) PostConversationsCall(conversationId string, body Callcommand) (*Conversation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9001,12 +8787,12 @@ func (a ConversationsApi) PostConversationsCall(conversationId string, body Call
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCall")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCall")
 	}
 
@@ -9068,8 +8854,6 @@ func (a ConversationsApi) PostConversationsCall(conversationId string, body Call
 // PostConversationsCallParticipantCoach invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/coach
 //
 // Listen in on the conversation from the point of view of a given participant while speaking to just the given participant.
-//
-// 
 func (a ConversationsApi) PostConversationsCallParticipantCoach(conversationId string, participantId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9082,12 +8866,12 @@ func (a ConversationsApi) PostConversationsCallParticipantCoach(conversationId s
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCallParticipantCoach")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsCallParticipantCoach")
 	}
 
@@ -9140,8 +8924,6 @@ func (a ConversationsApi) PostConversationsCallParticipantCoach(conversationId s
 // PostConversationsCallParticipantConsult invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult
 //
 // Initiate and update consult transfer
-//
-// 
 func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId string, participantId string, body Consulttransfer) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9155,17 +8937,17 @@ func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCallParticipantConsult")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsCallParticipantConsult")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCallParticipantConsult")
 	}
 
@@ -9227,8 +9009,6 @@ func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId
 // PostConversationsCallParticipantMonitor invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/monitor
 //
 // Listen in on the conversation from the point of view of a given participant.
-//
-// 
 func (a ConversationsApi) PostConversationsCallParticipantMonitor(conversationId string, participantId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9241,12 +9021,12 @@ func (a ConversationsApi) PostConversationsCallParticipantMonitor(conversationId
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCallParticipantMonitor")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsCallParticipantMonitor")
 	}
 
@@ -9299,8 +9079,6 @@ func (a ConversationsApi) PostConversationsCallParticipantMonitor(conversationId
 // PostConversationsCallParticipantReplace invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// 
 func (a ConversationsApi) PostConversationsCallParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9313,17 +9091,17 @@ func (a ConversationsApi) PostConversationsCallParticipantReplace(conversationId
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCallParticipantReplace")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsCallParticipantReplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCallParticipantReplace")
 	}
 
@@ -9379,8 +9157,6 @@ func (a ConversationsApi) PostConversationsCallParticipantReplace(conversationId
 // PostConversationsCallParticipants invokes POST /api/v2/conversations/calls/{conversationId}/participants
 //
 // Add participants to a conversation
-//
-// 
 func (a ConversationsApi) PostConversationsCallParticipants(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9393,12 +9169,12 @@ func (a ConversationsApi) PostConversationsCallParticipants(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCallParticipants")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCallParticipants")
 	}
 
@@ -9460,8 +9236,6 @@ func (a ConversationsApi) PostConversationsCallParticipants(conversationId strin
 // PostConversationsCallbackParticipantReplace invokes POST /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// 
 func (a ConversationsApi) PostConversationsCallbackParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9474,17 +9248,17 @@ func (a ConversationsApi) PostConversationsCallbackParticipantReplace(conversati
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCallbackParticipantReplace")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsCallbackParticipantReplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCallbackParticipantReplace")
 	}
 
@@ -9540,8 +9314,6 @@ func (a ConversationsApi) PostConversationsCallbackParticipantReplace(conversati
 // PostConversationsCallbacks invokes POST /api/v2/conversations/callbacks
 //
 // Create a Callback
-//
-// 
 func (a ConversationsApi) PostConversationsCallbacks(body Createcallbackcommand) (*Createcallbackresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9553,7 +9325,7 @@ func (a ConversationsApi) PostConversationsCallbacks(body Createcallbackcommand)
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCallbacks")
 	}
 
@@ -9615,8 +9387,6 @@ func (a ConversationsApi) PostConversationsCallbacks(body Createcallbackcommand)
 // PostConversationsCallbacksBulkDisconnect invokes POST /api/v2/conversations/callbacks/bulk/disconnect
 //
 // Disconnect multiple scheduled callbacks
-//
-// 
 func (a ConversationsApi) PostConversationsCallbacksBulkDisconnect(body Bulkcallbackdisconnectrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9627,7 +9397,7 @@ func (a ConversationsApi) PostConversationsCallbacksBulkDisconnect(body Bulkcall
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCallbacksBulkDisconnect")
 	}
 
@@ -9683,8 +9453,6 @@ func (a ConversationsApi) PostConversationsCallbacksBulkDisconnect(body Bulkcall
 // PostConversationsCallbacksBulkUpdate invokes POST /api/v2/conversations/callbacks/bulk/update
 //
 // Update multiple scheduled callbacks
-//
-// 
 func (a ConversationsApi) PostConversationsCallbacksBulkUpdate(body Bulkcallbackpatchrequest) (*Bulkcallbackpatchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9696,7 +9464,7 @@ func (a ConversationsApi) PostConversationsCallbacksBulkUpdate(body Bulkcallback
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCallbacksBulkUpdate")
 	}
 
@@ -9758,8 +9526,6 @@ func (a ConversationsApi) PostConversationsCallbacksBulkUpdate(body Bulkcallback
 // PostConversationsCalls invokes POST /api/v2/conversations/calls
 //
 // Create a call conversation
-//
-// 
 func (a ConversationsApi) PostConversationsCalls(body Createcallrequest) (*Createcallresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9771,7 +9537,7 @@ func (a ConversationsApi) PostConversationsCalls(body Createcallrequest) (*Creat
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsCalls")
 	}
 
@@ -9833,8 +9599,6 @@ func (a ConversationsApi) PostConversationsCalls(body Createcallrequest) (*Creat
 // PostConversationsChatCommunicationMessages invokes POST /api/v2/conversations/chats/{conversationId}/communications/{communicationId}/messages
 //
 // Send a message on behalf of a communication in a chat conversation.
-//
-// 
 func (a ConversationsApi) PostConversationsChatCommunicationMessages(conversationId string, communicationId string, body Createwebchatmessagerequest) (*Webchatmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9848,17 +9612,17 @@ func (a ConversationsApi) PostConversationsChatCommunicationMessages(conversatio
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsChatCommunicationMessages")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationsChatCommunicationMessages")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsChatCommunicationMessages")
 	}
 
@@ -9920,8 +9684,6 @@ func (a ConversationsApi) PostConversationsChatCommunicationMessages(conversatio
 // PostConversationsChatCommunicationTyping invokes POST /api/v2/conversations/chats/{conversationId}/communications/{communicationId}/typing
 //
 // Send a typing-indicator on behalf of a communication in a chat conversation.
-//
-// 
 func (a ConversationsApi) PostConversationsChatCommunicationTyping(conversationId string, communicationId string) (*Webchattyping, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9935,12 +9697,12 @@ func (a ConversationsApi) PostConversationsChatCommunicationTyping(conversationI
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsChatCommunicationTyping")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationsChatCommunicationTyping")
 	}
 
@@ -9999,8 +9761,6 @@ func (a ConversationsApi) PostConversationsChatCommunicationTyping(conversationI
 // PostConversationsChatParticipantReplace invokes POST /api/v2/conversations/chats/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// 
 func (a ConversationsApi) PostConversationsChatParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10013,17 +9773,17 @@ func (a ConversationsApi) PostConversationsChatParticipantReplace(conversationId
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsChatParticipantReplace")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsChatParticipantReplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsChatParticipantReplace")
 	}
 
@@ -10079,8 +9839,6 @@ func (a ConversationsApi) PostConversationsChatParticipantReplace(conversationId
 // PostConversationsChats invokes POST /api/v2/conversations/chats
 //
 // Create a web chat conversation
-//
-// 
 func (a ConversationsApi) PostConversationsChats(body Createwebchatrequest) (*Chatconversation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10092,7 +9850,7 @@ func (a ConversationsApi) PostConversationsChats(body Createwebchatrequest) (*Ch
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsChats")
 	}
 
@@ -10154,8 +9912,6 @@ func (a ConversationsApi) PostConversationsChats(body Createwebchatrequest) (*Ch
 // PostConversationsCobrowsesessionParticipantReplace invokes POST /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// 
 func (a ConversationsApi) PostConversationsCobrowsesessionParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10168,12 +9924,12 @@ func (a ConversationsApi) PostConversationsCobrowsesessionParticipantReplace(con
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCobrowsesessionParticipantReplace")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsCobrowsesessionParticipantReplace")
 	}
 
@@ -10229,8 +9985,6 @@ func (a ConversationsApi) PostConversationsCobrowsesessionParticipantReplace(con
 // PostConversationsEmailInboundmessages invokes POST /api/v2/conversations/emails/{conversationId}/inboundmessages
 //
 // Send an email to an external conversation. An external conversation is one where the provider is not PureCloud based. This endpoint allows the sender of the external email to reply or send a new message to the existing conversation. The new message will be treated as part of the existing conversation and chained to it.
-//
-// 
 func (a ConversationsApi) PostConversationsEmailInboundmessages(conversationId string, body Inboundmessagerequest) (*Emailconversation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10243,12 +9997,12 @@ func (a ConversationsApi) PostConversationsEmailInboundmessages(conversationId s
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsEmailInboundmessages")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsEmailInboundmessages")
 	}
 
@@ -10310,8 +10064,6 @@ func (a ConversationsApi) PostConversationsEmailInboundmessages(conversationId s
 // PostConversationsEmailMessages invokes POST /api/v2/conversations/emails/{conversationId}/messages
 //
 // Send an email reply
-//
-// 
 func (a ConversationsApi) PostConversationsEmailMessages(conversationId string, body Emailmessage) (*Emailmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10324,12 +10076,12 @@ func (a ConversationsApi) PostConversationsEmailMessages(conversationId string, 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsEmailMessages")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsEmailMessages")
 	}
 
@@ -10391,8 +10143,6 @@ func (a ConversationsApi) PostConversationsEmailMessages(conversationId string, 
 // PostConversationsEmailMessagesDraftAttachmentsCopy invokes POST /api/v2/conversations/emails/{conversationId}/messages/draft/attachments/copy
 //
 // Copy attachments from an email message to the current draft.
-//
-// 
 func (a ConversationsApi) PostConversationsEmailMessagesDraftAttachmentsCopy(conversationId string, body Copyattachmentsrequest) (*Emailmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10405,12 +10155,12 @@ func (a ConversationsApi) PostConversationsEmailMessagesDraftAttachmentsCopy(con
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsEmailMessagesDraftAttachmentsCopy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsEmailMessagesDraftAttachmentsCopy")
 	}
 
@@ -10472,8 +10222,6 @@ func (a ConversationsApi) PostConversationsEmailMessagesDraftAttachmentsCopy(con
 // PostConversationsEmailParticipantReplace invokes POST /api/v2/conversations/emails/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// 
 func (a ConversationsApi) PostConversationsEmailParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10486,17 +10234,17 @@ func (a ConversationsApi) PostConversationsEmailParticipantReplace(conversationI
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsEmailParticipantReplace")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsEmailParticipantReplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsEmailParticipantReplace")
 	}
 
@@ -10565,7 +10313,7 @@ func (a ConversationsApi) PostConversationsEmails(body Createemailrequest) (*Ema
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsEmails")
 	}
 
@@ -10627,8 +10375,6 @@ func (a ConversationsApi) PostConversationsEmails(body Createemailrequest) (*Ema
 // PostConversationsFaxes invokes POST /api/v2/conversations/faxes
 //
 // Create Fax Conversation
-//
-// 
 func (a ConversationsApi) PostConversationsFaxes(body Faxsendrequest) (*Faxsendresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10640,7 +10386,7 @@ func (a ConversationsApi) PostConversationsFaxes(body Faxsendrequest) (*Faxsendr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsFaxes")
 	}
 
@@ -10717,17 +10463,17 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversa
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsMessageCommunicationMessages")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationsMessageCommunicationMessages")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessageCommunicationMessages")
 	}
 
@@ -10804,12 +10550,12 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessagesMedia(con
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsMessageCommunicationMessagesMedia")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationsMessageCommunicationMessagesMedia")
 	}
 
@@ -10882,7 +10628,7 @@ func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId st
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsMessageMessagesBulk")
 	}
 
@@ -10944,8 +10690,6 @@ func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId st
 // PostConversationsMessageParticipantReplace invokes POST /api/v2/conversations/messages/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// 
 func (a ConversationsApi) PostConversationsMessageParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10958,17 +10702,17 @@ func (a ConversationsApi) PostConversationsMessageParticipantReplace(conversatio
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsMessageParticipantReplace")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsMessageParticipantReplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessageParticipantReplace")
 	}
 
@@ -11037,7 +10781,7 @@ func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessaging
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessages")
 	}
 
@@ -11112,7 +10856,7 @@ func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlesso
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagesAgentless")
 	}
 
@@ -11187,7 +10931,7 @@ func (a ConversationsApi) PostConversationsMessagesInboundOpen(body Opennormaliz
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagesInboundOpen")
 	}
 
@@ -11249,8 +10993,6 @@ func (a ConversationsApi) PostConversationsMessagesInboundOpen(body Opennormaliz
 // PostConversationsMessagingIntegrationsFacebook invokes POST /api/v2/conversations/messaging/integrations/facebook
 //
 // Create a Facebook Integration
-//
-// 
 func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Facebookintegrationrequest) (*Facebookintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11262,7 +11004,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Fa
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagingIntegrationsFacebook")
 	}
 
@@ -11324,8 +11066,6 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Fa
 // PostConversationsMessagingIntegrationsLine invokes POST /api/v2/conversations/messaging/integrations/line
 //
 // Create a LINE messenger Integration
-//
-// 
 func (a ConversationsApi) PostConversationsMessagingIntegrationsLine(body Lineintegrationrequest) (*Lineintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11337,7 +11077,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsLine(body Linein
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagingIntegrationsLine")
 	}
 
@@ -11412,7 +11152,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsOpen(body Openin
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagingIntegrationsOpen")
 	}
 
@@ -11474,8 +11214,6 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsOpen(body Openin
 // PostConversationsMessagingIntegrationsTwitter invokes POST /api/v2/conversations/messaging/integrations/twitter
 //
 // Create a Twitter Integration
-//
-// 
 func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twitterintegrationrequest) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11487,7 +11225,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twi
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagingIntegrationsTwitter")
 	}
 
@@ -11562,7 +11300,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsWhatsapp(body Wh
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagingIntegrationsWhatsapp")
 	}
 
@@ -11624,8 +11362,6 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsWhatsapp(body Wh
 // PostConversationsMessagingSupportedcontent invokes POST /api/v2/conversations/messaging/supportedcontent
 //
 // Create a Supported Content profile
-//
-// 
 func (a ConversationsApi) PostConversationsMessagingSupportedcontent(body Supportedcontent) (*Supportedcontent, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11637,7 +11373,7 @@ func (a ConversationsApi) PostConversationsMessagingSupportedcontent(body Suppor
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagingSupportedcontent")
 	}
 
@@ -11699,8 +11435,6 @@ func (a ConversationsApi) PostConversationsMessagingSupportedcontent(body Suppor
 // PutConversationParticipantFlaggedreason invokes PUT /api/v2/conversations/{conversationId}/participants/{participantId}/flaggedreason
 //
 // Set flagged reason on conversation participant to indicate bad conversation quality.
-//
-// 
 func (a ConversationsApi) PutConversationParticipantFlaggedreason(conversationId string, participantId string) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -11713,12 +11447,12 @@ func (a ConversationsApi) PutConversationParticipantFlaggedreason(conversationId
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PutConversationParticipantFlaggedreason")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PutConversationParticipantFlaggedreason")
 	}
 
@@ -11771,8 +11505,6 @@ func (a ConversationsApi) PutConversationParticipantFlaggedreason(conversationId
 // PutConversationTags invokes PUT /api/v2/conversations/{conversationId}/tags
 //
 // Update the tags on a conversation.
-//
-// 
 func (a ConversationsApi) PutConversationTags(conversationId string, body Conversationtagsupdate) (*string, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -11785,12 +11517,12 @@ func (a ConversationsApi) PutConversationTags(conversationId string, body Conver
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PutConversationTags")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationTags")
 	}
 
@@ -11852,38 +11584,36 @@ func (a ConversationsApi) PutConversationTags(conversationId string, body Conver
 // PutConversationsCallParticipantCommunicationUuidata invokes PUT /api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/uuidata
 //
 // Set uuiData to be sent on future commands.
-//
-// 
-func (a ConversationsApi) PutConversationsCallParticipantCommunicationUuidata(conversationId string, participantId string, communicationId string, body Setuuidatarequest) (*Empty, *APIResponse, error) {
+func (a ConversationsApi) PutConversationsCallParticipantCommunicationUuidata(conversationId string, participantId string, communicationId string, body Setuuidatarequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/uuidata"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PutConversationsCallParticipantCommunicationUuidata")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PutConversationsCallParticipantCommunicationUuidata")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PutConversationsCallParticipantCommunicationUuidata")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationsCallParticipantCommunicationUuidata")
 	}
 
@@ -11926,14 +11656,14 @@ func (a ConversationsApi) PutConversationsCallParticipantCommunicationUuidata(co
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -11945,8 +11675,6 @@ func (a ConversationsApi) PutConversationsCallParticipantCommunicationUuidata(co
 // PutConversationsEmailMessagesDraft invokes PUT /api/v2/conversations/emails/{conversationId}/messages/draft
 //
 // Update conversation draft reply
-//
-// 
 func (a ConversationsApi) PutConversationsEmailMessagesDraft(conversationId string, body Emailmessage) (*Emailmessage, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -11959,12 +11687,12 @@ func (a ConversationsApi) PutConversationsEmailMessagesDraft(conversationId stri
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PutConversationsEmailMessagesDraft")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationsEmailMessagesDraft")
 	}
 
@@ -12026,8 +11754,6 @@ func (a ConversationsApi) PutConversationsEmailMessagesDraft(conversationId stri
 // PutConversationsMessagingIntegrationsLineIntegrationId invokes PUT /api/v2/conversations/messaging/integrations/line/{integrationId}
 //
 // Update a LINE messenger integration
-//
-// 
 func (a ConversationsApi) PutConversationsMessagingIntegrationsLineIntegrationId(integrationId string, body Lineintegrationrequest) (*Lineintegration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -12040,12 +11766,12 @@ func (a ConversationsApi) PutConversationsMessagingIntegrationsLineIntegrationId
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PutConversationsMessagingIntegrationsLineIntegrationId")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationsMessagingIntegrationsLineIntegrationId")
 	}
 
@@ -12106,7 +11832,7 @@ func (a ConversationsApi) PutConversationsMessagingIntegrationsLineIntegrationId
 
 // PutConversationsMessagingSupportedcontentDefault invokes PUT /api/v2/conversations/messaging/supportedcontent/default
 //
-// Set the organization&#39;s default supported content profile that may be assigned to an integration when it is created.
+// Set the organization's default supported content profile that may be assigned to an integration when it is created.
 //
 // When an integration is created a supported content ID may be assigned to it. If the supported content ID is not supplied, the default supported content profile will be assigned to it.
 func (a ConversationsApi) PutConversationsMessagingSupportedcontentDefault(body Supportedcontentreference) (*Supportedcontent, *APIResponse, error) {
@@ -12120,7 +11846,7 @@ func (a ConversationsApi) PutConversationsMessagingSupportedcontentDefault(body 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationsMessagingSupportedcontentDefault")
 	}
 
@@ -12195,7 +11921,7 @@ func (a ConversationsApi) PutConversationsMessagingThreadingtimeline(body Conver
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationsMessagingThreadingtimeline")
 	}
 

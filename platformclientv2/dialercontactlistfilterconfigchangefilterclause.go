@@ -45,7 +45,7 @@ func (o *Dialercontactlistfilterconfigchangefilterclause) UnmarshalJSON(b []byte
 	if FilterType, ok := DialercontactlistfilterconfigchangefilterclauseMap["filterType"].(string); ok {
 		o.FilterType = &FilterType
 	}
-	
+    
 	if Predicates, ok := DialercontactlistfilterconfigchangefilterclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

@@ -69,15 +69,15 @@ func (o *Domainpermissioncollection) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainpermissioncollectionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainpermissioncollectionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Domain, ok := DomainpermissioncollectionMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if PermissionMap, ok := DomainpermissioncollectionMap["permissionMap"].(map[string]interface{}); ok {
 		PermissionMapString, _ := json.Marshal(PermissionMap)
 		json.Unmarshal(PermissionMapString, &o.PermissionMap)
@@ -86,7 +86,7 @@ func (o *Domainpermissioncollection) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DomainpermissioncollectionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -182,11 +182,11 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagingcampaignMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagingcampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := MessagingcampaignMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -210,7 +210,7 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if CampaignStatus, ok := MessagingcampaignMap["campaignStatus"].(string); ok {
 		o.CampaignStatus = &CampaignStatus
 	}
-	
+    
 	if CallableTimeSet, ok := MessagingcampaignMap["callableTimeSet"].(map[string]interface{}); ok {
 		CallableTimeSetString, _ := json.Marshal(CallableTimeSet)
 		json.Unmarshal(CallableTimeSetString, &o.CallableTimeSet)
@@ -229,7 +229,7 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if AlwaysRunning, ok := MessagingcampaignMap["alwaysRunning"].(bool); ok {
 		o.AlwaysRunning = &AlwaysRunning
 	}
-	
+    
 	if ContactSorts, ok := MessagingcampaignMap["contactSorts"].([]interface{}); ok {
 		ContactSortsString, _ := json.Marshal(ContactSorts)
 		json.Unmarshal(ContactSortsString, &o.ContactSorts)
@@ -258,7 +258,7 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MessagingcampaignMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

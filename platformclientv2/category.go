@@ -37,7 +37,7 @@ func (o *Category) UnmarshalJSON(b []byte) error {
 	if Name, ok := CategoryMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

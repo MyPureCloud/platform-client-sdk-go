@@ -85,11 +85,11 @@ func (o *Learningmodulerequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := LearningmodulerequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := LearningmodulerequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CompletionTimeInDays, ok := LearningmodulerequestMap["completionTimeInDays"].(float64); ok {
 		CompletionTimeInDaysInt := int(CompletionTimeInDays)
 		o.CompletionTimeInDays = &CompletionTimeInDaysInt
@@ -103,7 +103,7 @@ func (o *Learningmodulerequest) UnmarshalJSON(b []byte) error {
 	if VarType, ok := LearningmodulerequestMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if AssessmentForm, ok := LearningmodulerequestMap["assessmentForm"].(map[string]interface{}); ok {
 		AssessmentFormString, _ := json.Marshal(AssessmentForm)
 		json.Unmarshal(AssessmentFormString, &o.AssessmentForm)

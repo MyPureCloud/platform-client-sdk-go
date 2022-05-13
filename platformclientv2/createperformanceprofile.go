@@ -126,11 +126,11 @@ func (o *Createperformanceprofile) UnmarshalJSON(b []byte) error {
 	if Id, ok := CreateperformanceprofileMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CreateperformanceprofileMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := CreateperformanceprofileMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -139,7 +139,7 @@ func (o *Createperformanceprofile) UnmarshalJSON(b []byte) error {
 	if Description, ok := CreateperformanceprofileMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if MetricOrders, ok := CreateperformanceprofileMap["metricOrders"].([]interface{}); ok {
 		MetricOrdersString, _ := json.Marshal(MetricOrders)
 		json.Unmarshal(MetricOrdersString, &o.MetricOrders)
@@ -158,7 +158,7 @@ func (o *Createperformanceprofile) UnmarshalJSON(b []byte) error {
 	if Active, ok := CreateperformanceprofileMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if MemberCount, ok := CreateperformanceprofileMap["memberCount"].(float64); ok {
 		MemberCountInt := int(MemberCount)
 		o.MemberCount = &MemberCountInt
@@ -172,7 +172,7 @@ func (o *Createperformanceprofile) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CreateperformanceprofileMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

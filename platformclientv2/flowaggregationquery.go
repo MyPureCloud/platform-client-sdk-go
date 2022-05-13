@@ -101,15 +101,15 @@ func (o *Flowaggregationquery) UnmarshalJSON(b []byte) error {
 	if Interval, ok := FlowaggregationqueryMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Granularity, ok := FlowaggregationqueryMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if TimeZone, ok := FlowaggregationqueryMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if GroupBy, ok := FlowaggregationqueryMap["groupBy"].([]interface{}); ok {
 		GroupByString, _ := json.Marshal(GroupBy)
 		json.Unmarshal(GroupByString, &o.GroupBy)
@@ -128,7 +128,7 @@ func (o *Flowaggregationquery) UnmarshalJSON(b []byte) error {
 	if FlattenMultivaluedDimensions, ok := FlowaggregationqueryMap["flattenMultivaluedDimensions"].(bool); ok {
 		o.FlattenMultivaluedDimensions = &FlattenMultivaluedDimensions
 	}
-	
+    
 	if Views, ok := FlowaggregationqueryMap["views"].([]interface{}); ok {
 		ViewsString, _ := json.Marshal(Views)
 		json.Unmarshal(ViewsString, &o.Views)
@@ -137,7 +137,7 @@ func (o *Flowaggregationquery) UnmarshalJSON(b []byte) error {
 	if AlternateTimeDimension, ok := FlowaggregationqueryMap["alternateTimeDimension"].(string); ok {
 		o.AlternateTimeDimension = &AlternateTimeDimension
 	}
-	
+    
 
 	return nil
 }

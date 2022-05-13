@@ -45,7 +45,7 @@ func (o *Textbotoutputprompts) UnmarshalJSON(b []byte) error {
 	if OutputLanguage, ok := TextbotoutputpromptsMap["outputLanguage"].(string); ok {
 		o.OutputLanguage = &OutputLanguage
 	}
-	
+    
 	if TextPrompts, ok := TextbotoutputpromptsMap["textPrompts"].(map[string]interface{}); ok {
 		TextPromptsString, _ := json.Marshal(TextPrompts)
 		json.Unmarshal(TextPromptsString, &o.TextPrompts)

@@ -69,11 +69,11 @@ func (o *Patchactiontarget) UnmarshalJSON(b []byte) error {
 	if Id, ok := PatchactiontargetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PatchactiontargetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ServiceLevel, ok := PatchactiontargetMap["serviceLevel"].(map[string]interface{}); ok {
 		ServiceLevelString, _ := json.Marshal(ServiceLevel)
 		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
@@ -87,7 +87,7 @@ func (o *Patchactiontarget) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PatchactiontargetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

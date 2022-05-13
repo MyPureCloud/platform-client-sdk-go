@@ -182,39 +182,39 @@ func (o *Queueconversationsocialexpressioneventtopicchat) UnmarshalJSON(b []byte
 	if State, ok := QueueconversationsocialexpressioneventtopicchatMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := QueueconversationsocialexpressioneventtopicchatMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Provider, ok := QueueconversationsocialexpressioneventtopicchatMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationsocialexpressioneventtopicchatMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationsocialexpressioneventtopicchatMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if RoomId, ok := QueueconversationsocialexpressioneventtopicchatMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if AvatarImageUrl, ok := QueueconversationsocialexpressioneventtopicchatMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 	if Held, ok := QueueconversationsocialexpressioneventtopicchatMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationsocialexpressioneventtopicchatMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationsocialexpressioneventtopicchatMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -248,7 +248,7 @@ func (o *Queueconversationsocialexpressioneventtopicchat) UnmarshalJSON(b []byte
 	if AfterCallWorkRequired, ok := QueueconversationsocialexpressioneventtopicchatMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

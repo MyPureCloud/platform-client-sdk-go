@@ -61,11 +61,11 @@ func (o *Flowexecutionlaunchresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowexecutionlaunchresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowexecutionlaunchresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if FlowVersion, ok := FlowexecutionlaunchresponseMap["flowVersion"].(map[string]interface{}); ok {
 		FlowVersionString, _ := json.Marshal(FlowVersion)
 		json.Unmarshal(FlowVersionString, &o.FlowVersion)
@@ -74,7 +74,7 @@ func (o *Flowexecutionlaunchresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowexecutionlaunchresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

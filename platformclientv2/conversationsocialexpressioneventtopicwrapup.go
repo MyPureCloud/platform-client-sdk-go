@@ -78,11 +78,11 @@ func (o *Conversationsocialexpressioneventtopicwrapup) UnmarshalJSON(b []byte) e
 	if Code, ok := ConversationsocialexpressioneventtopicwrapupMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Notes, ok := ConversationsocialexpressioneventtopicwrapupMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Tags, ok := ConversationsocialexpressioneventtopicwrapupMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)

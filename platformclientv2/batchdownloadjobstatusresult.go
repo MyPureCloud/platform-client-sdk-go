@@ -85,11 +85,11 @@ func (o *Batchdownloadjobstatusresult) UnmarshalJSON(b []byte) error {
 	if Id, ok := BatchdownloadjobstatusresultMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if JobId, ok := BatchdownloadjobstatusresultMap["jobId"].(string); ok {
 		o.JobId = &JobId
 	}
-	
+    
 	if ExpectedResultCount, ok := BatchdownloadjobstatusresultMap["expectedResultCount"].(float64); ok {
 		ExpectedResultCountInt := int(ExpectedResultCount)
 		o.ExpectedResultCount = &ExpectedResultCountInt
@@ -113,7 +113,7 @@ func (o *Batchdownloadjobstatusresult) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BatchdownloadjobstatusresultMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

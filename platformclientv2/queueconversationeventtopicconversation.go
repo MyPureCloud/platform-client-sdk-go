@@ -77,7 +77,7 @@ func (o *Queueconversationeventtopicconversation) UnmarshalJSON(b []byte) error 
 	if Id, ok := QueueconversationeventtopicconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MaxParticipants, ok := QueueconversationeventtopicconversationMap["maxParticipants"].(float64); ok {
 		MaxParticipantsInt := int(MaxParticipants)
 		o.MaxParticipants = &MaxParticipantsInt
@@ -91,15 +91,15 @@ func (o *Queueconversationeventtopicconversation) UnmarshalJSON(b []byte) error 
 	if RecordingState, ok := QueueconversationeventtopicconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Address, ok := QueueconversationeventtopicconversationMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if ExternalTag, ok := QueueconversationeventtopicconversationMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 
 	return nil
 }

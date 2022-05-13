@@ -61,19 +61,19 @@ func (o *Reportingturnknowledgedocument) UnmarshalJSON(b []byte) error {
 	if Id, ok := ReportingturnknowledgedocumentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Question, ok := ReportingturnknowledgedocumentMap["question"].(string); ok {
 		o.Question = &Question
 	}
-	
+    
 	if Answer, ok := ReportingturnknowledgedocumentMap["answer"].(string); ok {
 		o.Answer = &Answer
 	}
-	
+    
 	if Confidence, ok := ReportingturnknowledgedocumentMap["confidence"].(float64); ok {
 		o.Confidence = &Confidence
 	}
-	
+    
 
 	return nil
 }

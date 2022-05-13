@@ -37,7 +37,7 @@ func (o *Copyworkplanrotationrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := CopyworkplanrotationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

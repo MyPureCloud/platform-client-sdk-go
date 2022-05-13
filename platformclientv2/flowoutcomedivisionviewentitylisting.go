@@ -129,23 +129,23 @@ func (o *Flowoutcomedivisionviewentitylisting) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := FlowoutcomedivisionviewentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := FlowoutcomedivisionviewentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := FlowoutcomedivisionviewentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := FlowoutcomedivisionviewentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := FlowoutcomedivisionviewentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := FlowoutcomedivisionviewentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

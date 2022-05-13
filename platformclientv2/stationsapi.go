@@ -32,8 +32,6 @@ func NewStationsApiWithConfig(config *Configuration) *StationsApi {
 // DeleteStationAssociateduser invokes DELETE /api/v2/stations/{stationId}/associateduser
 //
 // Unassigns the user assigned to this station
-//
-// 
 func (a StationsApi) DeleteStationAssociateduser(stationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a StationsApi) DeleteStationAssociateduser(stationId string) (*APIResponse
 
 	// verify the required parameter 'stationId' is set
 	if &stationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'stationId' when calling StationsApi->DeleteStationAssociateduser")
 	}
 
@@ -98,8 +96,6 @@ func (a StationsApi) DeleteStationAssociateduser(stationId string) (*APIResponse
 // GetStation invokes GET /api/v2/stations/{stationId}
 //
 // Get station.
-//
-// 
 func (a StationsApi) GetStation(stationId string) (*Station, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a StationsApi) GetStation(stationId string) (*Station, *APIResponse, error
 
 	// verify the required parameter 'stationId' is set
 	if &stationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'stationId' when calling StationsApi->GetStation")
 	}
 
@@ -171,8 +167,6 @@ func (a StationsApi) GetStation(stationId string) (*Station, *APIResponse, error
 // GetStations invokes GET /api/v2/stations
 //
 // Get the list of available stations.
-//
-// 
 func (a StationsApi) GetStations(pageSize int, pageNumber int, sortBy string, name string, userSelectable string, webRtcUserId string, id string, lineAppearanceId string) (*Stationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -253,9 +247,7 @@ func (a StationsApi) GetStations(pageSize int, pageNumber int, sortBy string, na
 
 // GetStationsSettings invokes GET /api/v2/stations/settings
 //
-// Get an organization&#39;s StationSettings
-//
-// 
+// Get an organization's StationSettings
 func (a StationsApi) GetStationsSettings() (*Stationsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -320,9 +312,7 @@ func (a StationsApi) GetStationsSettings() (*Stationsettings, *APIResponse, erro
 
 // PatchStationsSettings invokes PATCH /api/v2/stations/settings
 //
-// Patch an organization&#39;s StationSettings
-//
-// 
+// Patch an organization's StationSettings
 func (a StationsApi) PatchStationsSettings(body Stationsettings) (*Stationsettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -334,7 +324,7 @@ func (a StationsApi) PatchStationsSettings(body Stationsettings) (*Stationsettin
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling StationsApi->PatchStationsSettings")
 	}
 

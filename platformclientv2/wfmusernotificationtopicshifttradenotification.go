@@ -110,19 +110,19 @@ func (o *Wfmusernotificationtopicshifttradenotification) UnmarshalJSON(b []byte)
 	if WeekDate, ok := WfmusernotificationtopicshifttradenotificationMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 	if TradeId, ok := WfmusernotificationtopicshifttradenotificationMap["tradeId"].(string); ok {
 		o.TradeId = &TradeId
 	}
-	
+    
 	if OneSided, ok := WfmusernotificationtopicshifttradenotificationMap["oneSided"].(bool); ok {
 		o.OneSided = &OneSided
 	}
-	
+    
 	if NewState, ok := WfmusernotificationtopicshifttradenotificationMap["newState"].(string); ok {
 		o.NewState = &NewState
 	}
-	
+    
 	if InitiatingUser, ok := WfmusernotificationtopicshifttradenotificationMap["initiatingUser"].(map[string]interface{}); ok {
 		InitiatingUserString, _ := json.Marshal(InitiatingUser)
 		json.Unmarshal(InitiatingUserString, &o.InitiatingUser)

@@ -134,11 +134,11 @@ func (o *Organizationpresence) UnmarshalJSON(b []byte) error {
 	if Id, ok := OrganizationpresenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OrganizationpresenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if LanguageLabels, ok := OrganizationpresenceMap["languageLabels"].(map[string]interface{}); ok {
 		LanguageLabelsString, _ := json.Marshal(LanguageLabels)
 		json.Unmarshal(LanguageLabelsString, &o.LanguageLabels)
@@ -147,15 +147,15 @@ func (o *Organizationpresence) UnmarshalJSON(b []byte) error {
 	if SystemPresence, ok := OrganizationpresenceMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 	if Deactivated, ok := OrganizationpresenceMap["deactivated"].(bool); ok {
 		o.Deactivated = &Deactivated
 	}
-	
+    
 	if Primary, ok := OrganizationpresenceMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 	if CreatedBy, ok := OrganizationpresenceMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -179,7 +179,7 @@ func (o *Organizationpresence) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OrganizationpresenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

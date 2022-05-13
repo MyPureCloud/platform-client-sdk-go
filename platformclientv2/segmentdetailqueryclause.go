@@ -45,7 +45,7 @@ func (o *Segmentdetailqueryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SegmentdetailqueryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := SegmentdetailqueryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

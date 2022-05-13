@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -10,6 +11,10 @@ import (
 type Wfmbuscheduletopicbuschedulemetadata struct { 
 	// Id
 	Id *string `json:"id,omitempty"`
+
+
+	// WeekDate
+	WeekDate *time.Time `json:"weekDate,omitempty"`
 
 
 	// WeekCount
@@ -46,8 +51,18 @@ func (o *Wfmbuscheduletopicbuschedulemetadata) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuscheduletopicbuschedulemetadata
 	
+	WeekDate := new(string)
+	if o.WeekDate != nil {
+		
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		WeekDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
 		
 		WeekCount *int `json:"weekCount,omitempty"`
 		
@@ -65,6 +80,8 @@ func (o *Wfmbuscheduletopicbuschedulemetadata) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		Id: o.Id,
+		
+		WeekDate: WeekDate,
 		
 		WeekCount: o.WeekCount,
 		
@@ -93,6 +110,11 @@ func (o *Wfmbuscheduletopicbuschedulemetadata) UnmarshalJSON(b []byte) error {
 	if Id, ok := WfmbuscheduletopicbuschedulemetadataMap["id"].(string); ok {
 		o.Id = &Id
 	}
+    
+	if weekDateString, ok := WfmbuscheduletopicbuschedulemetadataMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", weekDateString)
+		o.WeekDate = &WeekDate
+	}
 	
 	if WeekCount, ok := WfmbuscheduletopicbuschedulemetadataMap["weekCount"].(float64); ok {
 		WeekCountInt := int(WeekCount)
@@ -102,11 +124,11 @@ func (o *Wfmbuscheduletopicbuschedulemetadata) UnmarshalJSON(b []byte) error {
 	if Description, ok := WfmbuscheduletopicbuschedulemetadataMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := WfmbuscheduletopicbuschedulemetadataMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if ShortTermForecast, ok := WfmbuscheduletopicbuschedulemetadataMap["shortTermForecast"].(map[string]interface{}); ok {
 		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
 		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)

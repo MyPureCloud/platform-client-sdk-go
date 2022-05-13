@@ -101,39 +101,39 @@ func (o *Referrer) UnmarshalJSON(b []byte) error {
 	if Url, ok := ReferrerMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Domain, ok := ReferrerMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if Hostname, ok := ReferrerMap["hostname"].(string); ok {
 		o.Hostname = &Hostname
 	}
-	
+    
 	if Keywords, ok := ReferrerMap["keywords"].(string); ok {
 		o.Keywords = &Keywords
 	}
-	
+    
 	if Pathname, ok := ReferrerMap["pathname"].(string); ok {
 		o.Pathname = &Pathname
 	}
-	
+    
 	if QueryString, ok := ReferrerMap["queryString"].(string); ok {
 		o.QueryString = &QueryString
 	}
-	
+    
 	if Fragment, ok := ReferrerMap["fragment"].(string); ok {
 		o.Fragment = &Fragment
 	}
-	
+    
 	if Name, ok := ReferrerMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Medium, ok := ReferrerMap["medium"].(string); ok {
 		o.Medium = &Medium
 	}
-	
+    
 
 	return nil
 }

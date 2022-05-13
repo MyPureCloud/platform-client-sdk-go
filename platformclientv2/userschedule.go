@@ -79,7 +79,7 @@ func (o *Userschedule) UnmarshalJSON(b []byte) error {
 	if Delete, ok := UserscheduleMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 	if Metadata, ok := UserscheduleMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
@@ -88,7 +88,7 @@ func (o *Userschedule) UnmarshalJSON(b []byte) error {
 	if WorkPlanId, ok := UserscheduleMap["workPlanId"].(string); ok {
 		o.WorkPlanId = &WorkPlanId
 	}
-	
+    
 
 	return nil
 }

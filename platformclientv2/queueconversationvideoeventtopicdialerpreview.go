@@ -69,19 +69,19 @@ func (o *Queueconversationvideoeventtopicdialerpreview) UnmarshalJSON(b []byte) 
 	if Id, ok := QueueconversationvideoeventtopicdialerpreviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ContactId, ok := QueueconversationvideoeventtopicdialerpreviewMap["contactId"].(string); ok {
 		o.ContactId = &ContactId
 	}
-	
+    
 	if ContactListId, ok := QueueconversationvideoeventtopicdialerpreviewMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if CampaignId, ok := QueueconversationvideoeventtopicdialerpreviewMap["campaignId"].(string); ok {
 		o.CampaignId = &CampaignId
 	}
-	
+    
 	if PhoneNumberColumns, ok := QueueconversationvideoeventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)

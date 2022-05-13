@@ -157,27 +157,27 @@ func (o *Condition) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConditionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Inverted, ok := ConditionMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
 	}
-	
+    
 	if AttributeName, ok := ConditionMap["attributeName"].(string); ok {
 		o.AttributeName = &AttributeName
 	}
-	
+    
 	if Value, ok := ConditionMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if ValueType, ok := ConditionMap["valueType"].(string); ok {
 		o.ValueType = &ValueType
 	}
-	
+    
 	if Operator, ok := ConditionMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Codes, ok := ConditionMap["codes"].([]interface{}); ok {
 		CodesString, _ := json.Marshal(Codes)
 		json.Unmarshal(CodesString, &o.Codes)
@@ -186,11 +186,11 @@ func (o *Condition) UnmarshalJSON(b []byte) error {
 	if Property, ok := ConditionMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if PropertyType, ok := ConditionMap["propertyType"].(string); ok {
 		o.PropertyType = &PropertyType
 	}
-	
+    
 	if DataAction, ok := ConditionMap["dataAction"].(map[string]interface{}); ok {
 		DataActionString, _ := json.Marshal(DataAction)
 		json.Unmarshal(DataActionString, &o.DataAction)
@@ -199,19 +199,19 @@ func (o *Condition) UnmarshalJSON(b []byte) error {
 	if DataNotFoundResolution, ok := ConditionMap["dataNotFoundResolution"].(bool); ok {
 		o.DataNotFoundResolution = &DataNotFoundResolution
 	}
-	
+    
 	if ContactIdField, ok := ConditionMap["contactIdField"].(string); ok {
 		o.ContactIdField = &ContactIdField
 	}
-	
+    
 	if CallAnalysisResultField, ok := ConditionMap["callAnalysisResultField"].(string); ok {
 		o.CallAnalysisResultField = &CallAnalysisResultField
 	}
-	
+    
 	if AgentWrapupField, ok := ConditionMap["agentWrapupField"].(string); ok {
 		o.AgentWrapupField = &AgentWrapupField
 	}
-	
+    
 	if ContactColumnToDataActionFieldMappings, ok := ConditionMap["contactColumnToDataActionFieldMappings"].([]interface{}); ok {
 		ContactColumnToDataActionFieldMappingsString, _ := json.Marshal(ContactColumnToDataActionFieldMappings)
 		json.Unmarshal(ContactColumnToDataActionFieldMappingsString, &o.ContactColumnToDataActionFieldMappings)

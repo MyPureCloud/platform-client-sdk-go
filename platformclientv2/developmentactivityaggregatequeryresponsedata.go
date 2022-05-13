@@ -45,7 +45,7 @@ func (o *Developmentactivityaggregatequeryresponsedata) UnmarshalJSON(b []byte) 
 	if Interval, ok := DevelopmentactivityaggregatequeryresponsedataMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Metrics, ok := DevelopmentactivityaggregatequeryresponsedataMap["metrics"].([]interface{}); ok {
 		MetricsString, _ := json.Marshal(Metrics)
 		json.Unmarshal(MetricsString, &o.Metrics)

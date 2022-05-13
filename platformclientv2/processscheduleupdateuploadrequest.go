@@ -53,7 +53,7 @@ func (o *Processscheduleupdateuploadrequest) UnmarshalJSON(b []byte) error {
 	if UploadKey, ok := ProcessscheduleupdateuploadrequestMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 	if TeamIds, ok := ProcessscheduleupdateuploadrequestMap["teamIds"].([]interface{}); ok {
 		TeamIdsString, _ := json.Marshal(TeamIds)
 		json.Unmarshal(TeamIdsString, &o.TeamIds)

@@ -45,7 +45,7 @@ func (o *Knowledge) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := KnowledgeMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if KnowledgeBase, ok := KnowledgeMap["knowledgeBase"].(map[string]interface{}); ok {
 		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)

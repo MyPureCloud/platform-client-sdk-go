@@ -93,15 +93,15 @@ func (o *Device) UnmarshalJSON(b []byte) error {
 	if Category, ok := DeviceMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if VarType, ok := DeviceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if IsMobile, ok := DeviceMap["isMobile"].(bool); ok {
 		o.IsMobile = &IsMobile
 	}
-	
+    
 	if ScreenHeight, ok := DeviceMap["screenHeight"].(float64); ok {
 		ScreenHeightInt := int(ScreenHeight)
 		o.ScreenHeight = &ScreenHeightInt
@@ -115,15 +115,15 @@ func (o *Device) UnmarshalJSON(b []byte) error {
 	if Fingerprint, ok := DeviceMap["fingerprint"].(string); ok {
 		o.Fingerprint = &Fingerprint
 	}
-	
+    
 	if OsFamily, ok := DeviceMap["osFamily"].(string); ok {
 		o.OsFamily = &OsFamily
 	}
-	
+    
 	if OsVersion, ok := DeviceMap["osVersion"].(string); ok {
 		o.OsVersion = &OsVersion
 	}
-	
+    
 
 	return nil
 }

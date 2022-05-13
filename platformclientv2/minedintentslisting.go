@@ -66,15 +66,15 @@ func (o *Minedintentslisting) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := MinedintentslistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := MinedintentslistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := MinedintentslistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

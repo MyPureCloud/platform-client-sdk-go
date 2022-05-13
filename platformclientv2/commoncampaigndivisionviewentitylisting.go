@@ -129,23 +129,23 @@ func (o *Commoncampaigndivisionviewentitylisting) UnmarshalJSON(b []byte) error 
 	if LastUri, ok := CommoncampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := CommoncampaigndivisionviewentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := CommoncampaigndivisionviewentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := CommoncampaigndivisionviewentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := CommoncampaigndivisionviewentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := CommoncampaigndivisionviewentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

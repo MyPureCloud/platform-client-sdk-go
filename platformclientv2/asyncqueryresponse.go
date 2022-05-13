@@ -37,7 +37,7 @@ func (o *Asyncqueryresponse) UnmarshalJSON(b []byte) error {
 	if JobId, ok := AsyncqueryresponseMap["jobId"].(string); ok {
 		o.JobId = &JobId
 	}
-	
+    
 
 	return nil
 }

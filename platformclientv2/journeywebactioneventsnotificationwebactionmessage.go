@@ -148,23 +148,23 @@ func (o *Journeywebactioneventsnotificationwebactionmessage) UnmarshalJSON(b []b
 	if ErrorCode, ok := JourneywebactioneventsnotificationwebactionmessageMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if ErrorMessage, ok := JourneywebactioneventsnotificationwebactionmessageMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if UserAgentString, ok := JourneywebactioneventsnotificationwebactionmessageMap["userAgentString"].(string); ok {
 		o.UserAgentString = &UserAgentString
 	}
-	
+    
 	if IpAddress, ok := JourneywebactioneventsnotificationwebactionmessageMap["ipAddress"].(string); ok {
 		o.IpAddress = &IpAddress
 	}
-	
+    
 	if IpOrganization, ok := JourneywebactioneventsnotificationwebactionmessageMap["ipOrganization"].(string); ok {
 		o.IpOrganization = &IpOrganization
 	}
-	
+    
 	if Browser, ok := JourneywebactioneventsnotificationwebactionmessageMap["browser"].(map[string]interface{}); ok {
 		BrowserString, _ := json.Marshal(Browser)
 		json.Unmarshal(BrowserString, &o.Browser)

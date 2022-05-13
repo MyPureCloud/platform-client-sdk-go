@@ -69,15 +69,15 @@ func (o *Knowledgecategoryrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := KnowledgecategoryrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KnowledgecategoryrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := KnowledgecategoryrequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Parent, ok := KnowledgecategoryrequestMap["parent"].(map[string]interface{}); ok {
 		ParentString, _ := json.Marshal(Parent)
 		json.Unmarshal(ParentString, &o.Parent)
@@ -86,7 +86,7 @@ func (o *Knowledgecategoryrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := KnowledgecategoryrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -61,15 +61,15 @@ func (o *Voicemailmediainfo) UnmarshalJSON(b []byte) error {
 	if Id, ok := VoicemailmediainfoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MediaFileUri, ok := VoicemailmediainfoMap["mediaFileUri"].(string); ok {
 		o.MediaFileUri = &MediaFileUri
 	}
-	
+    
 	if MediaImageUri, ok := VoicemailmediainfoMap["mediaImageUri"].(string); ok {
 		o.MediaImageUri = &MediaImageUri
 	}
-	
+    
 	if WaveformData, ok := VoicemailmediainfoMap["waveformData"].([]interface{}); ok {
 		WaveformDataString, _ := json.Marshal(WaveformData)
 		json.Unmarshal(WaveformDataString, &o.WaveformData)

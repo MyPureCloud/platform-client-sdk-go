@@ -53,15 +53,15 @@ func (o *Dialercontactlistconfigchangecontactphonenumbercolumn) UnmarshalJSON(b 
 	if ColumnName, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if CallableTimeColumn, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["callableTimeColumn"].(string); ok {
 		o.CallableTimeColumn = &CallableTimeColumn
 	}
-	
+    
 
 	return nil
 }

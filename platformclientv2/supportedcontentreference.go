@@ -61,15 +61,15 @@ func (o *Supportedcontentreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := SupportedcontentreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SupportedcontentreferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := SupportedcontentreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if MediaTypes, ok := SupportedcontentreferenceMap["mediaTypes"].(map[string]interface{}); ok {
 		MediaTypesString, _ := json.Marshal(MediaTypes)
 		json.Unmarshal(MediaTypesString, &o.MediaTypes)

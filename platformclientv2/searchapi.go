@@ -32,8 +32,6 @@ func NewSearchApiWithConfig(config *Configuration) *SearchApi {
 // GetDocumentationGknSearch invokes GET /api/v2/documentation/gkn/search
 //
 // Search gkn documentation using the q64 value returned from a previous search
-//
-// 
 func (a SearchApi) GetDocumentationGknSearch(q64 string) (*Gkndocumentationsearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a SearchApi) GetDocumentationGknSearch(q64 string) (*Gkndocumentationsearc
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetDocumentationGknSearch")
 	}
 
@@ -101,8 +99,6 @@ func (a SearchApi) GetDocumentationGknSearch(q64 string) (*Gkndocumentationsearc
 // GetDocumentationSearch invokes GET /api/v2/documentation/search
 //
 // Search documentation using the q64 value returned from a previous search
-//
-// 
 func (a SearchApi) GetDocumentationSearch(q64 string) (*Documentationsearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -114,7 +110,7 @@ func (a SearchApi) GetDocumentationSearch(q64 string) (*Documentationsearchrespo
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetDocumentationSearch")
 	}
 
@@ -170,8 +166,6 @@ func (a SearchApi) GetDocumentationSearch(q64 string) (*Documentationsearchrespo
 // GetGroupsSearch invokes GET /api/v2/groups/search
 //
 // Search groups using the q64 value returned from a previous search
-//
-// 
 func (a SearchApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -183,7 +177,7 @@ func (a SearchApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetGroupsSearch")
 	}
 
@@ -246,8 +240,6 @@ func (a SearchApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 // GetLocationsSearch invokes GET /api/v2/locations/search
 //
 // Search locations using the q64 value returned from a previous search
-//
-// 
 func (a SearchApi) GetLocationsSearch(q64 string, expand []string) (*Locationssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -259,7 +251,7 @@ func (a SearchApi) GetLocationsSearch(q64 string, expand []string) (*Locationsse
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetLocationsSearch")
 	}
 
@@ -322,8 +314,6 @@ func (a SearchApi) GetLocationsSearch(q64 string, expand []string) (*Locationsse
 // GetSearch invokes GET /api/v2/search
 //
 // Search using the q64 value returned from a previous search.
-//
-// 
 func (a SearchApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -335,7 +325,7 @@ func (a SearchApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonno
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetSearch")
 	}
 
@@ -400,8 +390,6 @@ func (a SearchApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonno
 // GetSearchSuggest invokes GET /api/v2/search/suggest
 //
 // Suggest resources using the q64 value returned from a previous suggest query.
-//
-// 
 func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -413,7 +401,7 @@ func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetSearchSuggest")
 	}
 
@@ -478,8 +466,6 @@ func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (
 // GetUsersSearch invokes GET /api/v2/users/search
 //
 // Search users using the q64 value returned from a previous search
-//
-// 
 func (a SearchApi) GetUsersSearch(q64 string, expand []string, integrationPresenceSource string) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -491,7 +477,7 @@ func (a SearchApi) GetUsersSearch(q64 string, expand []string, integrationPresen
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetUsersSearch")
 	}
 
@@ -556,8 +542,6 @@ func (a SearchApi) GetUsersSearch(q64 string, expand []string, integrationPresen
 // GetVoicemailSearch invokes GET /api/v2/voicemail/search
 //
 // Search voicemails using the q64 value returned from a previous search
-//
-// 
 func (a SearchApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemailssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -569,7 +553,7 @@ func (a SearchApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemailss
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SearchApi->GetVoicemailSearch")
 	}
 
@@ -632,8 +616,6 @@ func (a SearchApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemailss
 // PostAnalyticsConversationsTranscriptsQuery invokes POST /api/v2/analytics/conversations/transcripts/query
 //
 // Search resources.
-//
-// 
 func (a SearchApi) PostAnalyticsConversationsTranscriptsQuery(body Transcriptconversationdetailsearchrequest) (*Analyticsconversationwithoutattributesmultigetresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -645,7 +627,7 @@ func (a SearchApi) PostAnalyticsConversationsTranscriptsQuery(body Transcriptcon
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostAnalyticsConversationsTranscriptsQuery")
 	}
 
@@ -707,8 +689,6 @@ func (a SearchApi) PostAnalyticsConversationsTranscriptsQuery(body Transcriptcon
 // PostDocumentationGknSearch invokes POST /api/v2/documentation/gkn/search
 //
 // Search gkn documentation
-//
-// 
 func (a SearchApi) PostDocumentationGknSearch(body Gkndocumentationsearchrequest) (*Gkndocumentationsearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -720,7 +700,7 @@ func (a SearchApi) PostDocumentationGknSearch(body Gkndocumentationsearchrequest
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostDocumentationGknSearch")
 	}
 
@@ -777,8 +757,6 @@ func (a SearchApi) PostDocumentationGknSearch(body Gkndocumentationsearchrequest
 // PostDocumentationSearch invokes POST /api/v2/documentation/search
 //
 // Search documentation
-//
-// 
 func (a SearchApi) PostDocumentationSearch(body Documentationsearchrequest) (*Documentationsearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -790,7 +768,7 @@ func (a SearchApi) PostDocumentationSearch(body Documentationsearchrequest) (*Do
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostDocumentationSearch")
 	}
 
@@ -847,8 +825,6 @@ func (a SearchApi) PostDocumentationSearch(body Documentationsearchrequest) (*Do
 // PostGroupsSearch invokes POST /api/v2/groups/search
 //
 // Search groups
-//
-// 
 func (a SearchApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -860,7 +836,7 @@ func (a SearchApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostGroupsSearch")
 	}
 
@@ -922,8 +898,6 @@ func (a SearchApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 // PostKnowledgeKnowledgebaseSearch invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/search
 //
 // Search Documents
-//
-// 
 func (a SearchApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, body Knowledgesearchrequest) (*Knowledgesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -936,7 +910,7 @@ func (a SearchApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, body
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling SearchApi->PostKnowledgeKnowledgebaseSearch")
 	}
 
@@ -998,8 +972,6 @@ func (a SearchApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, body
 // PostLocationsSearch invokes POST /api/v2/locations/search
 //
 // Search locations
-//
-// 
 func (a SearchApi) PostLocationsSearch(body Locationsearchrequest) (*Locationssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1011,7 +983,7 @@ func (a SearchApi) PostLocationsSearch(body Locationsearchrequest) (*Locationsse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostLocationsSearch")
 	}
 
@@ -1073,8 +1045,6 @@ func (a SearchApi) PostLocationsSearch(body Locationsearchrequest) (*Locationsse
 // PostSearch invokes POST /api/v2/search
 //
 // Search resources.
-//
-// 
 func (a SearchApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1086,7 +1056,7 @@ func (a SearchApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearch
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostSearch")
 	}
 
@@ -1150,8 +1120,6 @@ func (a SearchApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearch
 // PostSearchSuggest invokes POST /api/v2/search/suggest
 //
 // Suggest resources.
-//
-// 
 func (a SearchApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1163,7 +1131,7 @@ func (a SearchApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (*
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostSearchSuggest")
 	}
 
@@ -1227,8 +1195,6 @@ func (a SearchApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (*
 // PostSpeechandtextanalyticsTranscriptsSearch invokes POST /api/v2/speechandtextanalytics/transcripts/search
 //
 // Search resources.
-//
-// 
 func (a SearchApi) PostSpeechandtextanalyticsTranscriptsSearch(body Transcriptsearchrequest) (*Jsonsearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1240,7 +1206,7 @@ func (a SearchApi) PostSpeechandtextanalyticsTranscriptsSearch(body Transcriptse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostSpeechandtextanalyticsTranscriptsSearch")
 	}
 
@@ -1302,8 +1268,6 @@ func (a SearchApi) PostSpeechandtextanalyticsTranscriptsSearch(body Transcriptse
 // PostUsersSearch invokes POST /api/v2/users/search
 //
 // Search users
-//
-// 
 func (a SearchApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1315,7 +1279,7 @@ func (a SearchApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostUsersSearch")
 	}
 
@@ -1377,8 +1341,6 @@ func (a SearchApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse
 // PostVoicemailSearch invokes POST /api/v2/voicemail/search
 //
 // Search voicemails
-//
-// 
 func (a SearchApi) PostVoicemailSearch(body Voicemailsearchrequest) (*Voicemailssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1390,7 +1352,7 @@ func (a SearchApi) PostVoicemailSearch(body Voicemailsearchrequest) (*Voicemails
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SearchApi->PostVoicemailSearch")
 	}
 

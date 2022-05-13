@@ -70,11 +70,11 @@ func (o *Trunkmetricsregisters) UnmarshalJSON(b []byte) error {
 	if ProxyAddress, ok := TrunkmetricsregistersMap["proxyAddress"].(string); ok {
 		o.ProxyAddress = &ProxyAddress
 	}
-	
+    
 	if RegisterState, ok := TrunkmetricsregistersMap["registerState"].(bool); ok {
 		o.RegisterState = &RegisterState
 	}
-	
+    
 	if registerStateTimeString, ok := TrunkmetricsregistersMap["registerStateTime"].(string); ok {
 		RegisterStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", registerStateTimeString)
 		o.RegisterStateTime = &RegisterStateTime

@@ -85,19 +85,19 @@ func (o *Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker) UnmarshalJSON(b []b
 	if TimeOffRequestId, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
-	
+    
 	if ManagementUnitDate, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["managementUnitDate"].(string); ok {
 		o.ManagementUnitDate = &ManagementUnitDate
 	}
-	
+    
 	if ActivityCodeId, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if IsPaid, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["isPaid"].(bool); ok {
 		o.IsPaid = &IsPaid
 	}
-	
+    
 	if LengthInMinutes, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt
@@ -106,11 +106,11 @@ func (o *Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker) UnmarshalJSON(b []b
 	if Description, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Paid, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["paid"].(bool); ok {
 		o.Paid = &Paid
 	}
-	
+    
 
 	return nil
 }

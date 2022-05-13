@@ -86,15 +86,15 @@ func (o *Wfmagentscheduleupdatetopicwfmscheduleshift) UnmarshalJSON(b []byte) er
 	if WeekDate, ok := WfmagentscheduleupdatetopicwfmscheduleshiftMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 	if WeekScheduleId, ok := WfmagentscheduleupdatetopicwfmscheduleshiftMap["weekScheduleId"].(string); ok {
 		o.WeekScheduleId = &WeekScheduleId
 	}
-	
+    
 	if Id, ok := WfmagentscheduleupdatetopicwfmscheduleshiftMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if startDateString, ok := WfmagentscheduleupdatetopicwfmscheduleshiftMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate

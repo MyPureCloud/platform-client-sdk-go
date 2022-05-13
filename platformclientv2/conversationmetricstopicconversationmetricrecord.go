@@ -670,7 +670,7 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if Metric, ok := ConversationmetricstopicconversationmetricrecordMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if metricDateString, ok := ConversationmetricstopicconversationmetricrecordMap["metricDate"].(string); ok {
 		MetricDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", metricDateString)
 		o.MetricDate = &MetricDate
@@ -684,7 +684,7 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if RecordId, ok := ConversationmetricstopicconversationmetricrecordMap["recordId"].(string); ok {
 		o.RecordId = &RecordId
 	}
-	
+    
 	if ActiveSkillIds, ok := ConversationmetricstopicconversationmetricrecordMap["activeSkillIds"].([]interface{}); ok {
 		ActiveSkillIdsString, _ := json.Marshal(ActiveSkillIds)
 		json.Unmarshal(ActiveSkillIdsString, &o.ActiveSkillIds)
@@ -693,15 +693,15 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if AddressFrom, ok := ConversationmetricstopicconversationmetricrecordMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if AddressTo, ok := ConversationmetricstopicconversationmetricrecordMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AgentAssistantId, ok := ConversationmetricstopicconversationmetricrecordMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 	if AgentBullseyeRing, ok := ConversationmetricstopicconversationmetricrecordMap["agentBullseyeRing"].(float64); ok {
 		AgentBullseyeRingInt := int(AgentBullseyeRing)
 		o.AgentBullseyeRing = &AgentBullseyeRingInt
@@ -710,43 +710,43 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if AgentOwned, ok := ConversationmetricstopicconversationmetricrecordMap["agentOwned"].(bool); ok {
 		o.AgentOwned = &AgentOwned
 	}
-	
+    
 	if Ani, ok := ConversationmetricstopicconversationmetricrecordMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if AssignerId, ok := ConversationmetricstopicconversationmetricrecordMap["assignerId"].(string); ok {
 		o.AssignerId = &AssignerId
 	}
-	
+    
 	if Authenticated, ok := ConversationmetricstopicconversationmetricrecordMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
 	}
-	
+    
 	if ConversationId, ok := ConversationmetricstopicconversationmetricrecordMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ConversationInitiator, ok := ConversationmetricstopicconversationmetricrecordMap["conversationInitiator"].(string); ok {
 		o.ConversationInitiator = &ConversationInitiator
 	}
-	
+    
 	if ConvertedFrom, ok := ConversationmetricstopicconversationmetricrecordMap["convertedFrom"].(string); ok {
 		o.ConvertedFrom = &ConvertedFrom
 	}
-	
+    
 	if ConvertedTo, ok := ConversationmetricstopicconversationmetricrecordMap["convertedTo"].(string); ok {
 		o.ConvertedTo = &ConvertedTo
 	}
-	
+    
 	if CustomerParticipation, ok := ConversationmetricstopicconversationmetricrecordMap["customerParticipation"].(bool); ok {
 		o.CustomerParticipation = &CustomerParticipation
 	}
-	
+    
 	if DeliveryStatus, ok := ConversationmetricstopicconversationmetricrecordMap["deliveryStatus"].(string); ok {
 		o.DeliveryStatus = &DeliveryStatus
 	}
-	
+    
 	if DestinationAddresses, ok := ConversationmetricstopicconversationmetricrecordMap["destinationAddresses"].([]interface{}); ok {
 		DestinationAddressesString, _ := json.Marshal(DestinationAddresses)
 		json.Unmarshal(DestinationAddressesString, &o.DestinationAddresses)
@@ -755,11 +755,11 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if Direction, ok := ConversationmetricstopicconversationmetricrecordMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := ConversationmetricstopicconversationmetricrecordMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if DivisionIds, ok := ConversationmetricstopicconversationmetricrecordMap["divisionIds"].([]interface{}); ok {
 		DivisionIdsString, _ := json.Marshal(DivisionIds)
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
@@ -768,11 +768,11 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if Dnis, ok := ConversationmetricstopicconversationmetricrecordMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if EdgeId, ok := ConversationmetricstopicconversationmetricrecordMap["edgeId"].(string); ok {
 		o.EdgeId = &EdgeId
 	}
-	
+    
 	if EligibleAgentCounts, ok := ConversationmetricstopicconversationmetricrecordMap["eligibleAgentCounts"].([]interface{}); ok {
 		EligibleAgentCountsString, _ := json.Marshal(EligibleAgentCounts)
 		json.Unmarshal(EligibleAgentCountsString, &o.EligibleAgentCounts)
@@ -781,11 +781,11 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if ExtendedDeliveryStatus, ok := ConversationmetricstopicconversationmetricrecordMap["extendedDeliveryStatus"].(string); ok {
 		o.ExtendedDeliveryStatus = &ExtendedDeliveryStatus
 	}
-	
+    
 	if ExternalContactId, ok := ConversationmetricstopicconversationmetricrecordMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalMediaCount, ok := ConversationmetricstopicconversationmetricrecordMap["externalMediaCount"].(float64); ok {
 		ExternalMediaCountInt := int(ExternalMediaCount)
 		o.ExternalMediaCount = &ExternalMediaCountInt
@@ -794,43 +794,43 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if ExternalOrganizationId, ok := ConversationmetricstopicconversationmetricrecordMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if ExternalTag, ok := ConversationmetricstopicconversationmetricrecordMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 	if FirstQueue, ok := ConversationmetricstopicconversationmetricrecordMap["firstQueue"].(bool); ok {
 		o.FirstQueue = &FirstQueue
 	}
-	
+    
 	if FlaggedReason, ok := ConversationmetricstopicconversationmetricrecordMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if FlowInType, ok := ConversationmetricstopicconversationmetricrecordMap["flowInType"].(string); ok {
 		o.FlowInType = &FlowInType
 	}
-	
+    
 	if FlowOutType, ok := ConversationmetricstopicconversationmetricrecordMap["flowOutType"].(string); ok {
 		o.FlowOutType = &FlowOutType
 	}
-	
+    
 	if GroupId, ok := ConversationmetricstopicconversationmetricrecordMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 	if InteractionType, ok := ConversationmetricstopicconversationmetricrecordMap["interactionType"].(string); ok {
 		o.InteractionType = &InteractionType
 	}
-	
+    
 	if JourneyActionId, ok := ConversationmetricstopicconversationmetricrecordMap["journeyActionId"].(string); ok {
 		o.JourneyActionId = &JourneyActionId
 	}
-	
+    
 	if JourneyActionMapId, ok := ConversationmetricstopicconversationmetricrecordMap["journeyActionMapId"].(string); ok {
 		o.JourneyActionMapId = &JourneyActionMapId
 	}
-	
+    
 	if JourneyActionMapVersion, ok := ConversationmetricstopicconversationmetricrecordMap["journeyActionMapVersion"].(float64); ok {
 		JourneyActionMapVersionInt := int(JourneyActionMapVersion)
 		o.JourneyActionMapVersion = &JourneyActionMapVersionInt
@@ -839,19 +839,19 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if JourneyCustomerId, ok := ConversationmetricstopicconversationmetricrecordMap["journeyCustomerId"].(string); ok {
 		o.JourneyCustomerId = &JourneyCustomerId
 	}
-	
+    
 	if JourneyCustomerIdType, ok := ConversationmetricstopicconversationmetricrecordMap["journeyCustomerIdType"].(string); ok {
 		o.JourneyCustomerIdType = &JourneyCustomerIdType
 	}
-	
+    
 	if JourneyCustomerSessionId, ok := ConversationmetricstopicconversationmetricrecordMap["journeyCustomerSessionId"].(string); ok {
 		o.JourneyCustomerSessionId = &JourneyCustomerSessionId
 	}
-	
+    
 	if JourneyCustomerSessionIdType, ok := ConversationmetricstopicconversationmetricrecordMap["journeyCustomerSessionIdType"].(string); ok {
 		o.JourneyCustomerSessionIdType = &JourneyCustomerSessionIdType
 	}
-	
+    
 	if KnowledgeBaseIds, ok := ConversationmetricstopicconversationmetricrecordMap["knowledgeBaseIds"].([]interface{}); ok {
 		KnowledgeBaseIdsString, _ := json.Marshal(KnowledgeBaseIds)
 		json.Unmarshal(KnowledgeBaseIdsString, &o.KnowledgeBaseIds)
@@ -865,51 +865,51 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if MediaType, ok := ConversationmetricstopicconversationmetricrecordMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if MessageType, ok := ConversationmetricstopicconversationmetricrecordMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if OriginatingDirection, ok := ConversationmetricstopicconversationmetricrecordMap["originatingDirection"].(string); ok {
 		o.OriginatingDirection = &OriginatingDirection
 	}
-	
+    
 	if OutboundCampaignId, ok := ConversationmetricstopicconversationmetricrecordMap["outboundCampaignId"].(string); ok {
 		o.OutboundCampaignId = &OutboundCampaignId
 	}
-	
+    
 	if OutboundContactId, ok := ConversationmetricstopicconversationmetricrecordMap["outboundContactId"].(string); ok {
 		o.OutboundContactId = &OutboundContactId
 	}
-	
+    
 	if OutboundContactListId, ok := ConversationmetricstopicconversationmetricrecordMap["outboundContactListId"].(string); ok {
 		o.OutboundContactListId = &OutboundContactListId
 	}
-	
+    
 	if ParticipantName, ok := ConversationmetricstopicconversationmetricrecordMap["participantName"].(string); ok {
 		o.ParticipantName = &ParticipantName
 	}
-	
+    
 	if PeerId, ok := ConversationmetricstopicconversationmetricrecordMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if Provider, ok := ConversationmetricstopicconversationmetricrecordMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Purpose, ok := ConversationmetricstopicconversationmetricrecordMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if QueueId, ok := ConversationmetricstopicconversationmetricrecordMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if Remote, ok := ConversationmetricstopicconversationmetricrecordMap["remote"].(string); ok {
 		o.Remote = &Remote
 	}
-	
+    
 	if RemovedSkillIds, ok := ConversationmetricstopicconversationmetricrecordMap["removedSkillIds"].([]interface{}); ok {
 		RemovedSkillIdsString, _ := json.Marshal(RemovedSkillIds)
 		json.Unmarshal(RemovedSkillIdsString, &o.RemovedSkillIds)
@@ -918,11 +918,11 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if Reoffered, ok := ConversationmetricstopicconversationmetricrecordMap["reoffered"].(bool); ok {
 		o.Reoffered = &Reoffered
 	}
-	
+    
 	if RequestedLanguageId, ok := ConversationmetricstopicconversationmetricrecordMap["requestedLanguageId"].(string); ok {
 		o.RequestedLanguageId = &RequestedLanguageId
 	}
-	
+    
 	if RequestedRoutingSkillIds, ok := ConversationmetricstopicconversationmetricrecordMap["requestedRoutingSkillIds"].([]interface{}); ok {
 		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
 		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
@@ -936,7 +936,7 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if RoomId, ok := ConversationmetricstopicconversationmetricrecordMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if RoutingPriority, ok := ConversationmetricstopicconversationmetricrecordMap["routingPriority"].(float64); ok {
 		RoutingPriorityInt := int(RoutingPriority)
 		o.RoutingPriority = &RoutingPriorityInt
@@ -950,7 +950,7 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if SelectedAgentId, ok := ConversationmetricstopicconversationmetricrecordMap["selectedAgentId"].(string); ok {
 		o.SelectedAgentId = &SelectedAgentId
 	}
-	
+    
 	if SelectedAgentRank, ok := ConversationmetricstopicconversationmetricrecordMap["selectedAgentRank"].(float64); ok {
 		SelectedAgentRankInt := int(SelectedAgentRank)
 		o.SelectedAgentRank = &SelectedAgentRankInt
@@ -959,31 +959,31 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if SelfServed, ok := ConversationmetricstopicconversationmetricrecordMap["selfServed"].(bool); ok {
 		o.SelfServed = &SelfServed
 	}
-	
+    
 	if SessionDnis, ok := ConversationmetricstopicconversationmetricrecordMap["sessionDnis"].(string); ok {
 		o.SessionDnis = &SessionDnis
 	}
-	
+    
 	if SessionId, ok := ConversationmetricstopicconversationmetricrecordMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if StationId, ok := ConversationmetricstopicconversationmetricrecordMap["stationId"].(string); ok {
 		o.StationId = &StationId
 	}
-	
+    
 	if TeamId, ok := ConversationmetricstopicconversationmetricrecordMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if UsedRouting, ok := ConversationmetricstopicconversationmetricrecordMap["usedRouting"].(string); ok {
 		o.UsedRouting = &UsedRouting
 	}
-	
+    
 	if UserId, ok := ConversationmetricstopicconversationmetricrecordMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if WaitingInteractionCounts, ok := ConversationmetricstopicconversationmetricrecordMap["waitingInteractionCounts"].([]interface{}); ok {
 		WaitingInteractionCountsString, _ := json.Marshal(WaitingInteractionCounts)
 		json.Unmarshal(WaitingInteractionCountsString, &o.WaitingInteractionCounts)
@@ -992,7 +992,7 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	if WrapUpCode, ok := ConversationmetricstopicconversationmetricrecordMap["wrapUpCode"].(string); ok {
 		o.WrapUpCode = &WrapUpCode
 	}
-	
+    
 	if ProposedAgents, ok := ConversationmetricstopicconversationmetricrecordMap["proposedAgents"].([]interface{}); ok {
 		ProposedAgentsString, _ := json.Marshal(ProposedAgents)
 		json.Unmarshal(ProposedAgentsString, &o.ProposedAgents)

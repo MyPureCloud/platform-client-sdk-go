@@ -87,11 +87,11 @@ func (o *Campaignstats) UnmarshalJSON(b []byte) error {
 	if EffectiveIdleAgents, ok := CampaignstatsMap["effectiveIdleAgents"].(float64); ok {
 		o.EffectiveIdleAgents = &EffectiveIdleAgents
 	}
-	
+    
 	if AdjustedCallsPerAgent, ok := CampaignstatsMap["adjustedCallsPerAgent"].(float64); ok {
 		o.AdjustedCallsPerAgent = &AdjustedCallsPerAgent
 	}
-	
+    
 	if OutstandingCalls, ok := CampaignstatsMap["outstandingCalls"].(float64); ok {
 		OutstandingCallsInt := int(OutstandingCalls)
 		o.OutstandingCalls = &OutstandingCallsInt

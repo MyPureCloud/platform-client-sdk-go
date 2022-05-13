@@ -45,7 +45,7 @@ func (o *Wfmuserscheduleadherenceupdatedteamtopicactivitycodereference) Unmarsha
 	if Id, ok := WfmuserscheduleadherenceupdatedteamtopicactivitycodereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SecondaryPresences, ok := WfmuserscheduleadherenceupdatedteamtopicactivitycodereferenceMap["secondaryPresences"].([]interface{}); ok {
 		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
 		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)

@@ -37,7 +37,7 @@ func (o *Ucicon) UnmarshalJSON(b []byte) error {
 	if Vector, ok := UciconMap["vector"].(string); ok {
 		o.Vector = &Vector
 	}
-	
+    
 
 	return nil
 }

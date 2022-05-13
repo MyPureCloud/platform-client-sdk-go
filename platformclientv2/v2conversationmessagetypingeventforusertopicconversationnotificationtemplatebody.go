@@ -45,7 +45,7 @@ func (o *V2conversationmessagetypingeventforusertopicconversationnotificationtem
 	if Text, ok := V2conversationmessagetypingeventforusertopicconversationnotificationtemplatebodyMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Parameters, ok := V2conversationmessagetypingeventforusertopicconversationnotificationtemplatebodyMap["parameters"].([]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)

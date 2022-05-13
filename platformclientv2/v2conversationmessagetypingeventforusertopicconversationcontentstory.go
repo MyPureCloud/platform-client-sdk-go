@@ -53,15 +53,15 @@ func (o *V2conversationmessagetypingeventforusertopicconversationcontentstory) U
 	if VarType, ok := V2conversationmessagetypingeventforusertopicconversationcontentstoryMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Url, ok := V2conversationmessagetypingeventforusertopicconversationcontentstoryMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if ReplyToId, ok := V2conversationmessagetypingeventforusertopicconversationcontentstoryMap["replyToId"].(string); ok {
 		o.ReplyToId = &ReplyToId
 	}
-	
+    
 
 	return nil
 }

@@ -238,15 +238,15 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) UnmarshalJSON(b []b
 	if Id, ok := QueueconversationsocialexpressioneventtopicmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := QueueconversationsocialexpressioneventtopicmessageMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Held, ok := QueueconversationsocialexpressioneventtopicmessageMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if ErrorInfo, ok := QueueconversationsocialexpressioneventtopicmessageMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
@@ -255,19 +255,19 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) UnmarshalJSON(b []b
 	if Provider, ok := QueueconversationsocialexpressioneventtopicmessageMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationsocialexpressioneventtopicmessageMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationsocialexpressioneventtopicmessageMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationsocialexpressioneventtopicmessageMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationsocialexpressioneventtopicmessageMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -301,19 +301,19 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) UnmarshalJSON(b []b
 	if MessagesTranscriptUri, ok := QueueconversationsocialexpressioneventtopicmessageMap["messagesTranscriptUri"].(string); ok {
 		o.MessagesTranscriptUri = &MessagesTranscriptUri
 	}
-	
+    
 	if VarType, ok := QueueconversationsocialexpressioneventtopicmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if RecipientCountry, ok := QueueconversationsocialexpressioneventtopicmessageMap["recipientCountry"].(string); ok {
 		o.RecipientCountry = &RecipientCountry
 	}
-	
+    
 	if RecipientType, ok := QueueconversationsocialexpressioneventtopicmessageMap["recipientType"].(string); ok {
 		o.RecipientType = &RecipientType
 	}
-	
+    
 	if JourneyContext, ok := QueueconversationsocialexpressioneventtopicmessageMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -332,11 +332,11 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) UnmarshalJSON(b []b
 	if AfterCallWorkRequired, ok := QueueconversationsocialexpressioneventtopicmessageMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if AgentAssistantId, ok := QueueconversationsocialexpressioneventtopicmessageMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 
 	return nil
 }

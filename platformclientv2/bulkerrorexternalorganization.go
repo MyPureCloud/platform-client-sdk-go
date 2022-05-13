@@ -77,11 +77,11 @@ func (o *Bulkerrorexternalorganization) UnmarshalJSON(b []byte) error {
 	if Code, ok := BulkerrorexternalorganizationMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := BulkerrorexternalorganizationMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Status, ok := BulkerrorexternalorganizationMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -90,7 +90,7 @@ func (o *Bulkerrorexternalorganization) UnmarshalJSON(b []byte) error {
 	if Retryable, ok := BulkerrorexternalorganizationMap["retryable"].(bool); ok {
 		o.Retryable = &Retryable
 	}
-	
+    
 	if Entity, ok := BulkerrorexternalorganizationMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

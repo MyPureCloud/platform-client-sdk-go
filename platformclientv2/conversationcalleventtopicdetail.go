@@ -61,19 +61,19 @@ func (o *Conversationcalleventtopicdetail) UnmarshalJSON(b []byte) error {
 	if ErrorCode, ok := ConversationcalleventtopicdetailMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if FieldName, ok := ConversationcalleventtopicdetailMap["fieldName"].(string); ok {
 		o.FieldName = &FieldName
 	}
-	
+    
 	if EntityId, ok := ConversationcalleventtopicdetailMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if EntityName, ok := ConversationcalleventtopicdetailMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 
 	return nil
 }

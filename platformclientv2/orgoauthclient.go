@@ -150,11 +150,11 @@ func (o *Orgoauthclient) UnmarshalJSON(b []byte) error {
 	if Id, ok := OrgoauthclientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OrgoauthclientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := OrgoauthclientMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -178,7 +178,7 @@ func (o *Orgoauthclient) UnmarshalJSON(b []byte) error {
 	if AuthorizedGrantType, ok := OrgoauthclientMap["authorizedGrantType"].(string); ok {
 		o.AuthorizedGrantType = &AuthorizedGrantType
 	}
-	
+    
 	if Scope, ok := OrgoauthclientMap["scope"].([]interface{}); ok {
 		ScopeString, _ := json.Marshal(Scope)
 		json.Unmarshal(ScopeString, &o.Scope)
@@ -192,7 +192,7 @@ func (o *Orgoauthclient) UnmarshalJSON(b []byte) error {
 	if State, ok := OrgoauthclientMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateToDeleteString, ok := OrgoauthclientMap["dateToDelete"].(string); ok {
 		DateToDelete, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateToDeleteString)
 		o.DateToDelete = &DateToDelete

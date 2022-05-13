@@ -77,11 +77,11 @@ func (o *Gkndocumentationsearchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := GkndocumentationsearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := GkndocumentationsearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := GkndocumentationsearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

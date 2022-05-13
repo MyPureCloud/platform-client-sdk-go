@@ -37,7 +37,7 @@ func (o *Executerecordingjobsquery) UnmarshalJSON(b []byte) error {
 	if State, ok := ExecuterecordingjobsqueryMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 
 	return nil
 }

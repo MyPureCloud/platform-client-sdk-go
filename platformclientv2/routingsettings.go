@@ -37,7 +37,7 @@ func (o *Routingsettings) UnmarshalJSON(b []byte) error {
 	if ResetAgentScoreOnPresenceChange, ok := RoutingsettingsMap["resetAgentScoreOnPresenceChange"].(bool); ok {
 		o.ResetAgentScoreOnPresenceChange = &ResetAgentScoreOnPresenceChange
 	}
-	
+    
 
 	return nil
 }

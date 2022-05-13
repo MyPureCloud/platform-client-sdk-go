@@ -45,7 +45,7 @@ func (o *Createsharerequestmember) UnmarshalJSON(b []byte) error {
 	if MemberType, ok := CreatesharerequestmemberMap["memberType"].(string); ok {
 		o.MemberType = &MemberType
 	}
-	
+    
 	if Member, ok := CreatesharerequestmemberMap["member"].(map[string]interface{}); ok {
 		MemberString, _ := json.Marshal(Member)
 		json.Unmarshal(MemberString, &o.Member)

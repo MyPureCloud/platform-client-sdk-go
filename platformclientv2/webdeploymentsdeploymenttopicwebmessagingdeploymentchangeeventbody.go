@@ -53,7 +53,7 @@ func (o *Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody) Unm
 	if Id, ok := WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Configuration, ok := WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap["configuration"].(map[string]interface{}); ok {
 		ConfigurationString, _ := json.Marshal(Configuration)
 		json.Unmarshal(ConfigurationString, &o.Configuration)
@@ -62,7 +62,7 @@ func (o *Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody) Unm
 	if Status, ok := WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

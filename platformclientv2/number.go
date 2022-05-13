@@ -45,11 +45,11 @@ func (o *Number) UnmarshalJSON(b []byte) error {
 	if Start, ok := NumberMap["start"].(string); ok {
 		o.Start = &Start
 	}
-	
+    
 	if End, ok := NumberMap["end"].(string); ok {
 		o.End = &End
 	}
-	
+    
 
 	return nil
 }

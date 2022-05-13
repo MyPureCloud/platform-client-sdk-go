@@ -69,11 +69,11 @@ func (o *Location) UnmarshalJSON(b []byte) error {
 	if Id, ok := LocationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if FloorplanId, ok := LocationMap["floorplanId"].(string); ok {
 		o.FloorplanId = &FloorplanId
 	}
-	
+    
 	if Coordinates, ok := LocationMap["coordinates"].(map[string]interface{}); ok {
 		CoordinatesString, _ := json.Marshal(Coordinates)
 		json.Unmarshal(CoordinatesString, &o.Coordinates)
@@ -82,7 +82,7 @@ func (o *Location) UnmarshalJSON(b []byte) error {
 	if Notes, ok := LocationMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if LocationDefinition, ok := LocationMap["locationDefinition"].(map[string]interface{}); ok {
 		LocationDefinitionString, _ := json.Marshal(LocationDefinition)
 		json.Unmarshal(LocationDefinitionString, &o.LocationDefinition)

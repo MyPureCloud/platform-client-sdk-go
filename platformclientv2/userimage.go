@@ -45,11 +45,11 @@ func (o *Userimage) UnmarshalJSON(b []byte) error {
 	if Resolution, ok := UserimageMap["resolution"].(string); ok {
 		o.Resolution = &Resolution
 	}
-	
+    
 	if ImageUri, ok := UserimageMap["imageUri"].(string); ok {
 		o.ImageUri = &ImageUri
 	}
-	
+    
 
 	return nil
 }

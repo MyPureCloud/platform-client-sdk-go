@@ -66,7 +66,7 @@ func (o *Phonechangetopicphone) UnmarshalJSON(b []byte) error {
 	if Id, ok := PhonechangetopicphoneMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Status, ok := PhonechangetopicphoneMap["status"].(map[string]interface{}); ok {
 		StatusString, _ := json.Marshal(Status)
 		json.Unmarshal(StatusString, &o.Status)

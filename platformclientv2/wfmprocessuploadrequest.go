@@ -37,7 +37,7 @@ func (o *Wfmprocessuploadrequest) UnmarshalJSON(b []byte) error {
 	if UploadKey, ok := WfmprocessuploadrequestMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 
 	return nil
 }

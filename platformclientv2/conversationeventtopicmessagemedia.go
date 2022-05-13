@@ -69,11 +69,11 @@ func (o *Conversationeventtopicmessagemedia) UnmarshalJSON(b []byte) error {
 	if Url, ok := ConversationeventtopicmessagemediaMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if MediaType, ok := ConversationeventtopicmessagemediaMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ContentLengthBytes, ok := ConversationeventtopicmessagemediaMap["contentLengthBytes"].(float64); ok {
 		ContentLengthBytesInt := int(ContentLengthBytes)
 		o.ContentLengthBytes = &ContentLengthBytesInt
@@ -82,11 +82,11 @@ func (o *Conversationeventtopicmessagemedia) UnmarshalJSON(b []byte) error {
 	if Name, ok := ConversationeventtopicmessagemediaMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Id, ok := ConversationeventtopicmessagemediaMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

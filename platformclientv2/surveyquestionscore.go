@@ -93,11 +93,11 @@ func (o *Surveyquestionscore) UnmarshalJSON(b []byte) error {
 	if QuestionId, ok := SurveyquestionscoreMap["questionId"].(string); ok {
 		o.QuestionId = &QuestionId
 	}
-	
+    
 	if AnswerId, ok := SurveyquestionscoreMap["answerId"].(string); ok {
 		o.AnswerId = &AnswerId
 	}
-	
+    
 	if Score, ok := SurveyquestionscoreMap["score"].(float64); ok {
 		ScoreInt := int(Score)
 		o.Score = &ScoreInt
@@ -106,11 +106,11 @@ func (o *Surveyquestionscore) UnmarshalJSON(b []byte) error {
 	if MarkedNA, ok := SurveyquestionscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
 	}
-	
+    
 	if AssistedAnswerId, ok := SurveyquestionscoreMap["assistedAnswerId"].(string); ok {
 		o.AssistedAnswerId = &AssistedAnswerId
 	}
-	
+    
 	if NpsScore, ok := SurveyquestionscoreMap["npsScore"].(float64); ok {
 		NpsScoreInt := int(NpsScore)
 		o.NpsScore = &NpsScoreInt
@@ -119,11 +119,11 @@ func (o *Surveyquestionscore) UnmarshalJSON(b []byte) error {
 	if NpsTextAnswer, ok := SurveyquestionscoreMap["npsTextAnswer"].(string); ok {
 		o.NpsTextAnswer = &NpsTextAnswer
 	}
-	
+    
 	if FreeTextAnswer, ok := SurveyquestionscoreMap["freeTextAnswer"].(string); ok {
 		o.FreeTextAnswer = &FreeTextAnswer
 	}
-	
+    
 
 	return nil
 }

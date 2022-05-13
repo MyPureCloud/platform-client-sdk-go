@@ -37,7 +37,7 @@ func (o *Nludetectioninput) UnmarshalJSON(b []byte) error {
 	if Text, ok := NludetectioninputMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 
 	return nil
 }

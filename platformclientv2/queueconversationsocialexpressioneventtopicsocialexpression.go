@@ -198,51 +198,51 @@ func (o *Queueconversationsocialexpressioneventtopicsocialexpression) UnmarshalJ
 	if State, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SocialMediaId, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["socialMediaId"].(string); ok {
 		o.SocialMediaId = &SocialMediaId
 	}
-	
+    
 	if SocialMediaHub, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["socialMediaHub"].(string); ok {
 		o.SocialMediaHub = &SocialMediaHub
 	}
-	
+    
 	if SocialUserName, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["socialUserName"].(string); ok {
 		o.SocialUserName = &SocialUserName
 	}
-	
+    
 	if PreviewText, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["previewText"].(string); ok {
 		o.PreviewText = &PreviewText
 	}
-	
+    
 	if RecordingId, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if Held, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if Provider, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -271,7 +271,7 @@ func (o *Queueconversationsocialexpressioneventtopicsocialexpression) UnmarshalJ
 	if AfterCallWorkRequired, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

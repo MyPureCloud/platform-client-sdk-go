@@ -61,11 +61,11 @@ func (o *Auditqueryrequest) UnmarshalJSON(b []byte) error {
 	if Interval, ok := AuditqueryrequestMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if ServiceName, ok := AuditqueryrequestMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-	
+    
 	if Filters, ok := AuditqueryrequestMap["filters"].([]interface{}); ok {
 		FiltersString, _ := json.Marshal(Filters)
 		json.Unmarshal(FiltersString, &o.Filters)

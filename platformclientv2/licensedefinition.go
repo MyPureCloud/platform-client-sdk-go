@@ -77,11 +77,11 @@ func (o *Licensedefinition) UnmarshalJSON(b []byte) error {
 	if Id, ok := LicensedefinitionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Description, ok := LicensedefinitionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Permissions, ok := LicensedefinitionMap["permissions"].(map[string]interface{}); ok {
 		PermissionsString, _ := json.Marshal(Permissions)
 		json.Unmarshal(PermissionsString, &o.Permissions)
@@ -100,7 +100,7 @@ func (o *Licensedefinition) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LicensedefinitionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

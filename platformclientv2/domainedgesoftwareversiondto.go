@@ -102,15 +102,15 @@ func (o *Domainedgesoftwareversiondto) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainedgesoftwareversiondtoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainedgesoftwareversiondtoMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if EdgeVersion, ok := DomainedgesoftwareversiondtoMap["edgeVersion"].(string); ok {
 		o.EdgeVersion = &EdgeVersion
 	}
-	
+    
 	if publishDateString, ok := DomainedgesoftwareversiondtoMap["publishDate"].(string); ok {
 		PublishDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", publishDateString)
 		o.PublishDate = &PublishDate
@@ -119,19 +119,19 @@ func (o *Domainedgesoftwareversiondto) UnmarshalJSON(b []byte) error {
 	if EdgeUri, ok := DomainedgesoftwareversiondtoMap["edgeUri"].(string); ok {
 		o.EdgeUri = &EdgeUri
 	}
-	
+    
 	if Current, ok := DomainedgesoftwareversiondtoMap["current"].(bool); ok {
 		o.Current = &Current
 	}
-	
+    
 	if LatestRelease, ok := DomainedgesoftwareversiondtoMap["latestRelease"].(bool); ok {
 		o.LatestRelease = &LatestRelease
 	}
-	
+    
 	if SelfUri, ok := DomainedgesoftwareversiondtoMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

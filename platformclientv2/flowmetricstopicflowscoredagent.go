@@ -50,7 +50,7 @@ func (o *Flowmetricstopicflowscoredagent) UnmarshalJSON(b []byte) error {
 	if ScoredAgentId, ok := FlowmetricstopicflowscoredagentMap["scoredAgentId"].(string); ok {
 		o.ScoredAgentId = &ScoredAgentId
 	}
-	
+    
 
 	return nil
 }

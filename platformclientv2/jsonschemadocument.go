@@ -93,23 +93,23 @@ func (o *Jsonschemadocument) UnmarshalJSON(b []byte) error {
 	if Id, ok := JsonschemadocumentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Schema, ok := JsonschemadocumentMap["$schema"].(string); ok {
 		o.Schema = &Schema
 	}
-	
+    
 	if Title, ok := JsonschemadocumentMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := JsonschemadocumentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if VarType, ok := JsonschemadocumentMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Required, ok := JsonschemadocumentMap["required"].([]interface{}); ok {
 		RequiredString, _ := json.Marshal(Required)
 		json.Unmarshal(RequiredString, &o.Required)

@@ -53,15 +53,15 @@ func (o *Workspacecreate) UnmarshalJSON(b []byte) error {
 	if Name, ok := WorkspacecreateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Bucket, ok := WorkspacecreateMap["bucket"].(string); ok {
 		o.Bucket = &Bucket
 	}
-	
+    
 	if Description, ok := WorkspacecreateMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 
 	return nil
 }

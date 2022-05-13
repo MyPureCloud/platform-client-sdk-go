@@ -118,19 +118,19 @@ func (o *Note) UnmarshalJSON(b []byte) error {
 	if Id, ok := NoteMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if EntityId, ok := NoteMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if EntityType, ok := NoteMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if NoteText, ok := NoteMap["noteText"].(string); ok {
 		o.NoteText = &NoteText
 	}
-	
+    
 	if modifyDateString, ok := NoteMap["modifyDate"].(string); ok {
 		ModifyDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifyDateString)
 		o.ModifyDate = &ModifyDate
@@ -154,7 +154,7 @@ func (o *Note) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := NoteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

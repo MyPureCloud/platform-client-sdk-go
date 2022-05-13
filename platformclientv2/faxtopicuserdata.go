@@ -45,11 +45,11 @@ func (o *Faxtopicuserdata) UnmarshalJSON(b []byte) error {
 	if Id, ok := FaxtopicuserdataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FaxtopicuserdataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

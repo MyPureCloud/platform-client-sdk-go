@@ -45,11 +45,11 @@ func (o *Evententity) UnmarshalJSON(b []byte) error {
 	if EntityType, ok := EvententityMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if Id, ok := EvententityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Facet) UnmarshalJSON(b []byte) error {
 	if Name, ok := FacetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := FacetMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

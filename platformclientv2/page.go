@@ -110,15 +110,15 @@ func (o *Page) UnmarshalJSON(b []byte) error {
 	if Id, ok := PageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PageMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VersionId, ok := PageMap["versionId"].(string); ok {
 		o.VersionId = &VersionId
 	}
-	
+    
 	if createdDateString, ok := PageMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate
@@ -142,7 +142,7 @@ func (o *Page) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

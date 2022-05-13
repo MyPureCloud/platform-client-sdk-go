@@ -77,11 +77,11 @@ func (o *Createwebchatconversationrequest) UnmarshalJSON(b []byte) error {
 	if OrganizationId, ok := CreatewebchatconversationrequestMap["organizationId"].(string); ok {
 		o.OrganizationId = &OrganizationId
 	}
-	
+    
 	if DeploymentId, ok := CreatewebchatconversationrequestMap["deploymentId"].(string); ok {
 		o.DeploymentId = &DeploymentId
 	}
-	
+    
 	if RoutingTarget, ok := CreatewebchatconversationrequestMap["routingTarget"].(map[string]interface{}); ok {
 		RoutingTargetString, _ := json.Marshal(RoutingTarget)
 		json.Unmarshal(RoutingTargetString, &o.RoutingTarget)
@@ -95,7 +95,7 @@ func (o *Createwebchatconversationrequest) UnmarshalJSON(b []byte) error {
 	if MemberAuthToken, ok := CreatewebchatconversationrequestMap["memberAuthToken"].(string); ok {
 		o.MemberAuthToken = &MemberAuthToken
 	}
-	
+    
 	if JourneyContext, ok := CreatewebchatconversationrequestMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)

@@ -117,39 +117,39 @@ func (o *Adfs) UnmarshalJSON(b []byte) error {
 	if Id, ok := AdfsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AdfsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := AdfsMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if IssuerURI, ok := AdfsMap["issuerURI"].(string); ok {
 		o.IssuerURI = &IssuerURI
 	}
-	
+    
 	if SsoTargetURI, ok := AdfsMap["ssoTargetURI"].(string); ok {
 		o.SsoTargetURI = &SsoTargetURI
 	}
-	
+    
 	if SloURI, ok := AdfsMap["sloURI"].(string); ok {
 		o.SloURI = &SloURI
 	}
-	
+    
 	if SloBinding, ok := AdfsMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
 	}
-	
+    
 	if RelyingPartyIdentifier, ok := AdfsMap["relyingPartyIdentifier"].(string); ok {
 		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
-	
+    
 	if Certificate, ok := AdfsMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 	if Certificates, ok := AdfsMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
@@ -158,7 +158,7 @@ func (o *Adfs) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AdfsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Callbackdisconnectidentifier) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := CallbackdisconnectidentifierMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if CallbackId, ok := CallbackdisconnectidentifierMap["callbackId"].(string); ok {
 		o.CallbackId = &CallbackId
 	}
-	
+    
 
 	return nil
 }

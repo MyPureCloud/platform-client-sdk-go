@@ -115,7 +115,7 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) UnmarshalJSON(b []b
 	if TimeZone, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if Campaign, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["campaign"].(map[string]interface{}); ok {
 		CampaignString, _ := json.Marshal(Campaign)
 		json.Unmarshal(CampaignString, &o.Campaign)
@@ -124,11 +124,11 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) UnmarshalJSON(b []b
 	if Id, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

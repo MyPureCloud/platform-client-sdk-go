@@ -77,11 +77,11 @@ func (o *Bulkerrorrelationship) UnmarshalJSON(b []byte) error {
 	if Code, ok := BulkerrorrelationshipMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := BulkerrorrelationshipMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Status, ok := BulkerrorrelationshipMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -90,7 +90,7 @@ func (o *Bulkerrorrelationship) UnmarshalJSON(b []byte) error {
 	if Retryable, ok := BulkerrorrelationshipMap["retryable"].(bool); ok {
 		o.Retryable = &Retryable
 	}
-	
+    
 	if Entity, ok := BulkerrorrelationshipMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

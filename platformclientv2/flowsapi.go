@@ -32,8 +32,6 @@ func NewFlowsApiWithConfig(config *Configuration) *FlowsApi {
 // PostAnalyticsFlowsAggregatesQuery invokes POST /api/v2/analytics/flows/aggregates/query
 //
 // Query for flow aggregates
-//
-// 
 func (a FlowsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquery) (*Flowaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a FlowsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquery) (
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling FlowsApi->PostAnalyticsFlowsAggregatesQuery")
 	}
 
@@ -107,8 +105,6 @@ func (a FlowsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquery) (
 // PostAnalyticsFlowsObservationsQuery invokes POST /api/v2/analytics/flows/observations/query
 //
 // Query for flow observations
-//
-// 
 func (a FlowsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationquery) (*Flowobservationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -120,7 +116,7 @@ func (a FlowsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationquery)
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling FlowsApi->PostAnalyticsFlowsObservationsQuery")
 	}
 

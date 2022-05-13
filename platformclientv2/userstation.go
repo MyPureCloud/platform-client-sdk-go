@@ -102,15 +102,15 @@ func (o *Userstation) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserstationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserstationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := UserstationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if AssociatedUser, ok := UserstationMap["associatedUser"].(map[string]interface{}); ok {
 		AssociatedUserString, _ := json.Marshal(AssociatedUser)
 		json.Unmarshal(AssociatedUserString, &o.AssociatedUser)

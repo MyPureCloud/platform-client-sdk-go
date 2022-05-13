@@ -53,15 +53,15 @@ func (o *Importscriptstatusresponse) UnmarshalJSON(b []byte) error {
 	if Url, ok := ImportscriptstatusresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Succeeded, ok := ImportscriptstatusresponseMap["succeeded"].(bool); ok {
 		o.Succeeded = &Succeeded
 	}
-	
+    
 	if Message, ok := ImportscriptstatusresponseMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

@@ -134,19 +134,19 @@ func (o *Program) UnmarshalJSON(b []byte) error {
 	if Id, ok := ProgramMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ProgramMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ProgramMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := ProgramMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if Topics, ok := ProgramMap["topics"].([]interface{}); ok {
 		TopicsString, _ := json.Marshal(Topics)
 		json.Unmarshal(TopicsString, &o.Topics)
@@ -180,7 +180,7 @@ func (o *Program) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ProgramMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

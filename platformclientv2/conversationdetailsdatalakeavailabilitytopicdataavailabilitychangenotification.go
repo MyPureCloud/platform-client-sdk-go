@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -7,15 +8,31 @@ import (
 )
 
 // Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification
-type Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification struct { }
+type Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification struct { 
+	// DataAvailabilityDate - Date and time before which data is guaranteed to be available in the datalake
+	DataAvailabilityDate *time.Time `json:"dataAvailabilityDate,omitempty"`
+
+}
 
 func (o *Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification
 	
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(o),
+	DataAvailabilityDate := new(string)
+	if o.DataAvailabilityDate != nil {
+		
+		*DataAvailabilityDate = timeutil.Strftime(o.DataAvailabilityDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DataAvailabilityDate = nil
+	}
+	
+	return json.Marshal(&struct { 
+		DataAvailabilityDate *string `json:"dataAvailabilityDate,omitempty"`
+		*Alias
+	}{ 
+		DataAvailabilityDate: DataAvailabilityDate,
+		Alias:    (*Alias)(o),
 	})
 }
 
@@ -24,6 +41,11 @@ func (o *Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotif
 	err := json.Unmarshal(b, &ConversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotificationMap)
 	if err != nil {
 		return err
+	}
+	
+	if dataAvailabilityDateString, ok := ConversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotificationMap["dataAvailabilityDate"].(string); ok {
+		DataAvailabilityDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", dataAvailabilityDateString)
+		o.DataAvailabilityDate = &DataAvailabilityDate
 	}
 	
 

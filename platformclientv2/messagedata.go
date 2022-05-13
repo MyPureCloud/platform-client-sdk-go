@@ -174,15 +174,15 @@ func (o *Messagedata) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagedataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagedataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ProviderMessageId, ok := MessagedataMap["providerMessageId"].(string); ok {
 		o.ProviderMessageId = &ProviderMessageId
 	}
-	
+    
 	if timestampString, ok := MessagedataMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
@@ -191,27 +191,27 @@ func (o *Messagedata) UnmarshalJSON(b []byte) error {
 	if FromAddress, ok := MessagedataMap["fromAddress"].(string); ok {
 		o.FromAddress = &FromAddress
 	}
-	
+    
 	if ToAddress, ok := MessagedataMap["toAddress"].(string); ok {
 		o.ToAddress = &ToAddress
 	}
-	
+    
 	if Direction, ok := MessagedataMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if MessengerType, ok := MessagedataMap["messengerType"].(string); ok {
 		o.MessengerType = &MessengerType
 	}
-	
+    
 	if TextBody, ok := MessagedataMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if Status, ok := MessagedataMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Media, ok := MessagedataMap["media"].([]interface{}); ok {
 		MediaString, _ := json.Marshal(Media)
 		json.Unmarshal(MediaString, &o.Media)
@@ -240,11 +240,11 @@ func (o *Messagedata) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := MessagedataMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if SelfUri, ok := MessagedataMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

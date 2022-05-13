@@ -78,11 +78,11 @@ func (o *Queueconversationcalleventtopicwrapup) UnmarshalJSON(b []byte) error {
 	if Code, ok := QueueconversationcalleventtopicwrapupMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Notes, ok := QueueconversationcalleventtopicwrapupMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Tags, ok := QueueconversationcalleventtopicwrapupMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)

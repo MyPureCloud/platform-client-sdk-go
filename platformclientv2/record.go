@@ -53,15 +53,15 @@ func (o *Record) UnmarshalJSON(b []byte) error {
 	if Name, ok := RecordMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := RecordMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := RecordMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

@@ -61,11 +61,11 @@ func (o *Objectivetemplate) UnmarshalJSON(b []byte) error {
 	if Id, ok := ObjectivetemplateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ObjectivetemplateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Zones, ok := ObjectivetemplateMap["zones"].([]interface{}); ok {
 		ZonesString, _ := json.Marshal(Zones)
 		json.Unmarshal(ZonesString, &o.Zones)
@@ -74,7 +74,7 @@ func (o *Objectivetemplate) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ObjectivetemplateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Callforwardingeventtarget) UnmarshalJSON(b []byte) error {
 	if VarType, ok := CallforwardingeventtargetMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := CallforwardingeventtargetMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

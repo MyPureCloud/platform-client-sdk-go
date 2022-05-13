@@ -85,7 +85,7 @@ func (o *Webmessagingchannel) UnmarshalJSON(b []byte) error {
 	if MessageId, ok := WebmessagingchannelMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 
 	return nil
 }

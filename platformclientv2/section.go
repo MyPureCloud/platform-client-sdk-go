@@ -66,15 +66,15 @@ func (o *Section) UnmarshalJSON(b []byte) error {
 	if InstructionText, ok := SectionMap["instructionText"].(string); ok {
 		o.InstructionText = &InstructionText
 	}
-	
+    
 	if Key, ok := SectionMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if State, ok := SectionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 
 	return nil
 }

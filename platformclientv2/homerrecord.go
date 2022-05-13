@@ -446,11 +446,11 @@ func (o *Homerrecord) UnmarshalJSON(b []byte) error {
 	if Id, ok := HomerrecordMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := HomerrecordMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateString, ok := HomerrecordMap["date"].(string); ok {
 		Date, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateString)
 		o.Date = &Date
@@ -459,195 +459,195 @@ func (o *Homerrecord) UnmarshalJSON(b []byte) error {
 	if MilliTs, ok := HomerrecordMap["milliTs"].(string); ok {
 		o.MilliTs = &MilliTs
 	}
-	
+    
 	if MicroTs, ok := HomerrecordMap["microTs"].(string); ok {
 		o.MicroTs = &MicroTs
 	}
-	
+    
 	if Method, ok := HomerrecordMap["method"].(string); ok {
 		o.Method = &Method
 	}
-	
+    
 	if ReplyReason, ok := HomerrecordMap["replyReason"].(string); ok {
 		o.ReplyReason = &ReplyReason
 	}
-	
+    
 	if Ruri, ok := HomerrecordMap["ruri"].(string); ok {
 		o.Ruri = &Ruri
 	}
-	
+    
 	if RuriUser, ok := HomerrecordMap["ruriUser"].(string); ok {
 		o.RuriUser = &RuriUser
 	}
-	
+    
 	if RuriDomain, ok := HomerrecordMap["ruriDomain"].(string); ok {
 		o.RuriDomain = &RuriDomain
 	}
-	
+    
 	if FromUser, ok := HomerrecordMap["fromUser"].(string); ok {
 		o.FromUser = &FromUser
 	}
-	
+    
 	if FromDomain, ok := HomerrecordMap["fromDomain"].(string); ok {
 		o.FromDomain = &FromDomain
 	}
-	
+    
 	if FromTag, ok := HomerrecordMap["fromTag"].(string); ok {
 		o.FromTag = &FromTag
 	}
-	
+    
 	if ToUser, ok := HomerrecordMap["toUser"].(string); ok {
 		o.ToUser = &ToUser
 	}
-	
+    
 	if ToDomain, ok := HomerrecordMap["toDomain"].(string); ok {
 		o.ToDomain = &ToDomain
 	}
-	
+    
 	if ToTag, ok := HomerrecordMap["toTag"].(string); ok {
 		o.ToTag = &ToTag
 	}
-	
+    
 	if PidUser, ok := HomerrecordMap["pidUser"].(string); ok {
 		o.PidUser = &PidUser
 	}
-	
+    
 	if ContactUser, ok := HomerrecordMap["contactUser"].(string); ok {
 		o.ContactUser = &ContactUser
 	}
-	
+    
 	if AuthUser, ok := HomerrecordMap["authUser"].(string); ok {
 		o.AuthUser = &AuthUser
 	}
-	
+    
 	if Callid, ok := HomerrecordMap["callid"].(string); ok {
 		o.Callid = &Callid
 	}
-	
+    
 	if CallidAleg, ok := HomerrecordMap["callidAleg"].(string); ok {
 		o.CallidAleg = &CallidAleg
 	}
-	
+    
 	if Via1, ok := HomerrecordMap["via1"].(string); ok {
 		o.Via1 = &Via1
 	}
-	
+    
 	if Via1Branch, ok := HomerrecordMap["via1Branch"].(string); ok {
 		o.Via1Branch = &Via1Branch
 	}
-	
+    
 	if Cseq, ok := HomerrecordMap["cseq"].(string); ok {
 		o.Cseq = &Cseq
 	}
-	
+    
 	if Diversion, ok := HomerrecordMap["diversion"].(string); ok {
 		o.Diversion = &Diversion
 	}
-	
+    
 	if Reason, ok := HomerrecordMap["reason"].(string); ok {
 		o.Reason = &Reason
 	}
-	
+    
 	if ContentType, ok := HomerrecordMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Auth, ok := HomerrecordMap["auth"].(string); ok {
 		o.Auth = &Auth
 	}
-	
+    
 	if UserAgent, ok := HomerrecordMap["userAgent"].(string); ok {
 		o.UserAgent = &UserAgent
 	}
-	
+    
 	if SourceIp, ok := HomerrecordMap["sourceIp"].(string); ok {
 		o.SourceIp = &SourceIp
 	}
-	
+    
 	if SourcePort, ok := HomerrecordMap["sourcePort"].(string); ok {
 		o.SourcePort = &SourcePort
 	}
-	
+    
 	if DestinationIp, ok := HomerrecordMap["destinationIp"].(string); ok {
 		o.DestinationIp = &DestinationIp
 	}
-	
+    
 	if DestinationPort, ok := HomerrecordMap["destinationPort"].(string); ok {
 		o.DestinationPort = &DestinationPort
 	}
-	
+    
 	if ContactIp, ok := HomerrecordMap["contactIp"].(string); ok {
 		o.ContactIp = &ContactIp
 	}
-	
+    
 	if ContactPort, ok := HomerrecordMap["contactPort"].(string); ok {
 		o.ContactPort = &ContactPort
 	}
-	
+    
 	if OriginatorIp, ok := HomerrecordMap["originatorIp"].(string); ok {
 		o.OriginatorIp = &OriginatorIp
 	}
-	
+    
 	if OriginatorPort, ok := HomerrecordMap["originatorPort"].(string); ok {
 		o.OriginatorPort = &OriginatorPort
 	}
-	
+    
 	if CorrelationId, ok := HomerrecordMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if Proto, ok := HomerrecordMap["proto"].(string); ok {
 		o.Proto = &Proto
 	}
-	
+    
 	if Family, ok := HomerrecordMap["family"].(string); ok {
 		o.Family = &Family
 	}
-	
+    
 	if RtpStat, ok := HomerrecordMap["rtpStat"].(string); ok {
 		o.RtpStat = &RtpStat
 	}
-	
+    
 	if VarType, ok := HomerrecordMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Node, ok := HomerrecordMap["node"].(string); ok {
 		o.Node = &Node
 	}
-	
+    
 	if Trans, ok := HomerrecordMap["trans"].(string); ok {
 		o.Trans = &Trans
 	}
-	
+    
 	if Dbnode, ok := HomerrecordMap["dbnode"].(string); ok {
 		o.Dbnode = &Dbnode
 	}
-	
+    
 	if Msg, ok := HomerrecordMap["msg"].(string); ok {
 		o.Msg = &Msg
 	}
-	
+    
 	if SourceAlias, ok := HomerrecordMap["sourceAlias"].(string); ok {
 		o.SourceAlias = &SourceAlias
 	}
-	
+    
 	if DestinationAlias, ok := HomerrecordMap["destinationAlias"].(string); ok {
 		o.DestinationAlias = &DestinationAlias
 	}
-	
+    
 	if ConversationId, ok := HomerrecordMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := HomerrecordMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SelfUri, ok := HomerrecordMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Facetinfo) UnmarshalJSON(b []byte) error {
 	if Name, ok := FacetinfoMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Entries, ok := FacetinfoMap["entries"].([]interface{}); ok {
 		EntriesString, _ := json.Marshal(Entries)
 		json.Unmarshal(EntriesString, &o.Entries)

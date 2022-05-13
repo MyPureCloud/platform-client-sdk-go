@@ -53,15 +53,15 @@ func (o *Agenttimeoffrequestpatch) UnmarshalJSON(b []byte) error {
 	if MarkedAsRead, ok := AgenttimeoffrequestpatchMap["markedAsRead"].(bool); ok {
 		o.MarkedAsRead = &MarkedAsRead
 	}
-	
+    
 	if Status, ok := AgenttimeoffrequestpatchMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Notes, ok := AgenttimeoffrequestpatchMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 
 	return nil
 }

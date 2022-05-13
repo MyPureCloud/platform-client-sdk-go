@@ -50,7 +50,7 @@ func (o *Apiusagequeryresult) UnmarshalJSON(b []byte) error {
 	if QueryStatus, ok := ApiusagequeryresultMap["queryStatus"].(string); ok {
 		o.QueryStatus = &QueryStatus
 	}
-	
+    
 
 	return nil
 }

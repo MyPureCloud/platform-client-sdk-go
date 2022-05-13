@@ -45,7 +45,7 @@ func (o *Ttssettings) UnmarshalJSON(b []byte) error {
 	if DefaultEngine, ok := TtssettingsMap["defaultEngine"].(string); ok {
 		o.DefaultEngine = &DefaultEngine
 	}
-	
+    
 	if LanguageOverrides, ok := TtssettingsMap["languageOverrides"].([]interface{}); ok {
 		LanguageOverridesString, _ := json.Marshal(LanguageOverrides)
 		json.Unmarshal(LanguageOverridesString, &o.LanguageOverrides)

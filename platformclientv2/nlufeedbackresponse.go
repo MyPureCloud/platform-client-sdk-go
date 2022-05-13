@@ -86,11 +86,11 @@ func (o *Nlufeedbackresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := NlufeedbackresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Text, ok := NlufeedbackresponseMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Intents, ok := NlufeedbackresponseMap["intents"].([]interface{}); ok {
 		IntentsString, _ := json.Marshal(Intents)
 		json.Unmarshal(IntentsString, &o.Intents)
@@ -109,7 +109,7 @@ func (o *Nlufeedbackresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := NlufeedbackresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

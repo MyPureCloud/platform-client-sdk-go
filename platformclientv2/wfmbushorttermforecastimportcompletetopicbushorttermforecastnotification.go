@@ -53,7 +53,7 @@ func (o *Wfmbushorttermforecastimportcompletetopicbushorttermforecastnotificatio
 	if Status, ok := WfmbushorttermforecastimportcompletetopicbushorttermforecastnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Result, ok := WfmbushorttermforecastimportcompletetopicbushorttermforecastnotificationMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)
@@ -62,7 +62,7 @@ func (o *Wfmbushorttermforecastimportcompletetopicbushorttermforecastnotificatio
 	if OperationId, ok := WfmbushorttermforecastimportcompletetopicbushorttermforecastnotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 
 	return nil
 }

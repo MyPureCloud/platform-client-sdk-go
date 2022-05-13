@@ -53,11 +53,11 @@ func (o *Stateventflowtopicmetricstats) UnmarshalJSON(b []byte) error {
 	if Metric, ok := StateventflowtopicmetricstatsMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Qualifier, ok := StateventflowtopicmetricstatsMap["qualifier"].(string); ok {
 		o.Qualifier = &Qualifier
 	}
-	
+    
 	if Stats, ok := StateventflowtopicmetricstatsMap["stats"].(map[string]interface{}); ok {
 		StatsString, _ := json.Marshal(Stats)
 		json.Unmarshal(StatsString, &o.Stats)

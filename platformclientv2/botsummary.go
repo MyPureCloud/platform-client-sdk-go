@@ -61,19 +61,19 @@ func (o *Botsummary) UnmarshalJSON(b []byte) error {
 	if Name, ok := BotsummaryMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Id, ok := BotsummaryMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Description, ok := BotsummaryMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if BotCompositeTag, ok := BotsummaryMap["botCompositeTag"].(string); ok {
 		o.BotCompositeTag = &BotCompositeTag
 	}
-	
+    
 
 	return nil
 }

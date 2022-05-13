@@ -58,7 +58,7 @@ func (o *Workdayvaluestrenditem) UnmarshalJSON(b []byte) error {
 	if Value, ok := WorkdayvaluestrenditemMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

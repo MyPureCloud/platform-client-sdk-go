@@ -37,7 +37,7 @@ func (o *Policyupdate) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := PolicyupdateMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

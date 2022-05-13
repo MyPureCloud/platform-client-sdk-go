@@ -69,11 +69,11 @@ func (o *Authzsubject) UnmarshalJSON(b []byte) error {
 	if Id, ok := AuthzsubjectMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AuthzsubjectMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Grants, ok := AuthzsubjectMap["grants"].([]interface{}); ok {
 		GrantsString, _ := json.Marshal(Grants)
 		json.Unmarshal(GrantsString, &o.Grants)
@@ -87,7 +87,7 @@ func (o *Authzsubject) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AuthzsubjectMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -182,11 +182,11 @@ func (o *Did) UnmarshalJSON(b []byte) error {
 	if Id, ok := DidMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DidMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DidMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Did) UnmarshalJSON(b []byte) error {
 	if Description, ok := DidMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := DidMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,27 +214,27 @@ func (o *Did) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := DidMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := DidMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := DidMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := DidMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := DidMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if PhoneNumber, ok := DidMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if DidPool, ok := DidMap["didPool"].(map[string]interface{}); ok {
 		DidPoolString, _ := json.Marshal(DidPool)
 		json.Unmarshal(DidPoolString, &o.DidPool)
@@ -248,11 +248,11 @@ func (o *Did) UnmarshalJSON(b []byte) error {
 	if OwnerType, ok := DidMap["ownerType"].(string); ok {
 		o.OwnerType = &OwnerType
 	}
-	
+    
 	if SelfUri, ok := DidMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

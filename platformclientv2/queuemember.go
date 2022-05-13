@@ -93,11 +93,11 @@ func (o *Queuemember) UnmarshalJSON(b []byte) error {
 	if Id, ok := QueuememberMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueuememberMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if User, ok := QueuememberMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -111,11 +111,11 @@ func (o *Queuemember) UnmarshalJSON(b []byte) error {
 	if Joined, ok := QueuememberMap["joined"].(bool); ok {
 		o.Joined = &Joined
 	}
-	
+    
 	if MemberBy, ok := QueuememberMap["memberBy"].(string); ok {
 		o.MemberBy = &MemberBy
 	}
-	
+    
 	if RoutingStatus, ok := QueuememberMap["routingStatus"].(map[string]interface{}); ok {
 		RoutingStatusString, _ := json.Marshal(RoutingStatus)
 		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
@@ -124,7 +124,7 @@ func (o *Queuemember) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := QueuememberMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

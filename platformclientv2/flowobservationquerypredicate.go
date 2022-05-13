@@ -69,19 +69,19 @@ func (o *Flowobservationquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := FlowobservationquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := FlowobservationquerypredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Operator, ok := FlowobservationquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := FlowobservationquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := FlowobservationquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

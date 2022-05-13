@@ -146,51 +146,51 @@ func (o *Voicemailenddetaileventtopicvoicemailendevent) UnmarshalJSON(b []byte) 
 	if ConversationId, ok := VoicemailenddetaileventtopicvoicemailendeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := VoicemailenddetaileventtopicvoicemailendeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := VoicemailenddetaileventtopicvoicemailendeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if DisconnectType, ok := VoicemailenddetaileventtopicvoicemailendeventMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if MediaType, ok := VoicemailenddetaileventtopicvoicemailendeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := VoicemailenddetaileventtopicvoicemailendeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := VoicemailenddetaileventtopicvoicemailendeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := VoicemailenddetaileventtopicvoicemailendeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := VoicemailenddetaileventtopicvoicemailendeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if UserId, ok := VoicemailenddetaileventtopicvoicemailendeventMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if QueueId, ok := VoicemailenddetaileventtopicvoicemailendeventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if DivisionId, ok := VoicemailenddetaileventtopicvoicemailendeventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if VoicemailDurationMs, ok := VoicemailenddetaileventtopicvoicemailendeventMap["voicemailDurationMs"].(float64); ok {
 		VoicemailDurationMsInt := int(VoicemailDurationMs)
 		o.VoicemailDurationMs = &VoicemailDurationMsInt

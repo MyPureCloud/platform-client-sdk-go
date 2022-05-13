@@ -53,15 +53,15 @@ func (o *Edgemetricsdisk) UnmarshalJSON(b []byte) error {
 	if AvailableBytes, ok := EdgemetricsdiskMap["availableBytes"].(float64); ok {
 		o.AvailableBytes = &AvailableBytes
 	}
-	
+    
 	if PartitionName, ok := EdgemetricsdiskMap["partitionName"].(string); ok {
 		o.PartitionName = &PartitionName
 	}
-	
+    
 	if TotalBytes, ok := EdgemetricsdiskMap["totalBytes"].(float64); ok {
 		o.TotalBytes = &TotalBytes
 	}
-	
+    
 
 	return nil
 }

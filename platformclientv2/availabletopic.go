@@ -141,11 +141,11 @@ func (o *Availabletopic) UnmarshalJSON(b []byte) error {
 	if Description, ok := AvailabletopicMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Id, ok := AvailabletopicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if PermissionDetails, ok := AvailabletopicMap["permissionDetails"].([]interface{}); ok {
 		PermissionDetailsString, _ := json.Marshal(PermissionDetails)
 		json.Unmarshal(PermissionDetailsString, &o.PermissionDetails)
@@ -159,19 +159,19 @@ func (o *Availabletopic) UnmarshalJSON(b []byte) error {
 	if RequiresDivisionPermissions, ok := AvailabletopicMap["requiresDivisionPermissions"].(bool); ok {
 		o.RequiresDivisionPermissions = &RequiresDivisionPermissions
 	}
-	
+    
 	if RequiresAnyValidator, ok := AvailabletopicMap["requiresAnyValidator"].(bool); ok {
 		o.RequiresAnyValidator = &RequiresAnyValidator
 	}
-	
+    
 	if Enforced, ok := AvailabletopicMap["enforced"].(bool); ok {
 		o.Enforced = &Enforced
 	}
-	
+    
 	if Visibility, ok := AvailabletopicMap["visibility"].(string); ok {
 		o.Visibility = &Visibility
 	}
-	
+    
 	if Schema, ok := AvailabletopicMap["schema"].(map[string]interface{}); ok {
 		SchemaString, _ := json.Marshal(Schema)
 		json.Unmarshal(SchemaString, &o.Schema)
@@ -180,11 +180,11 @@ func (o *Availabletopic) UnmarshalJSON(b []byte) error {
 	if RequiresCurrentUser, ok := AvailabletopicMap["requiresCurrentUser"].(bool); ok {
 		o.RequiresCurrentUser = &RequiresCurrentUser
 	}
-	
+    
 	if RequiresCurrentUserOrPermission, ok := AvailabletopicMap["requiresCurrentUserOrPermission"].(bool); ok {
 		o.RequiresCurrentUserOrPermission = &RequiresCurrentUserOrPermission
 	}
-	
+    
 	if Transports, ok := AvailabletopicMap["transports"].([]interface{}); ok {
 		TransportsString, _ := json.Marshal(Transports)
 		json.Unmarshal(TransportsString, &o.Transports)

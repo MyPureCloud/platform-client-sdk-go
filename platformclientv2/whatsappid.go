@@ -50,7 +50,7 @@ func (o *Whatsappid) UnmarshalJSON(b []byte) error {
 	if DisplayName, ok := WhatsappidMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 
 	return nil
 }

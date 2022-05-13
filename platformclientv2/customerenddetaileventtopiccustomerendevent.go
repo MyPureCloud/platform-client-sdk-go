@@ -194,59 +194,59 @@ func (o *Customerenddetaileventtopiccustomerendevent) UnmarshalJSON(b []byte) er
 	if ConversationId, ok := CustomerenddetaileventtopiccustomerendeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := CustomerenddetaileventtopiccustomerendeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := CustomerenddetaileventtopiccustomerendeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if DisconnectType, ok := CustomerenddetaileventtopiccustomerendeventMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if MediaType, ok := CustomerenddetaileventtopiccustomerendeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ExternalOrganizationId, ok := CustomerenddetaileventtopiccustomerendeventMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if ExternalContactId, ok := CustomerenddetaileventtopiccustomerendeventMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if Provider, ok := CustomerenddetaileventtopiccustomerendeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := CustomerenddetaileventtopiccustomerendeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := CustomerenddetaileventtopiccustomerendeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := CustomerenddetaileventtopiccustomerendeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := CustomerenddetaileventtopiccustomerendeventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := CustomerenddetaileventtopiccustomerendeventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := CustomerenddetaileventtopiccustomerendeventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := CustomerenddetaileventtopiccustomerendeventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -260,11 +260,11 @@ func (o *Customerenddetaileventtopiccustomerendevent) UnmarshalJSON(b []byte) er
 	if Subject, ok := CustomerenddetaileventtopiccustomerendeventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := CustomerenddetaileventtopiccustomerendeventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if InteractingDurationMs, ok := CustomerenddetaileventtopiccustomerendeventMap["interactingDurationMs"].(float64); ok {
 		InteractingDurationMsInt := int(InteractingDurationMs)
 		o.InteractingDurationMs = &InteractingDurationMsInt

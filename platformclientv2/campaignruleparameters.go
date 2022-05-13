@@ -61,19 +61,19 @@ func (o *Campaignruleparameters) UnmarshalJSON(b []byte) error {
 	if Operator, ok := CampaignruleparametersMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := CampaignruleparametersMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Priority, ok := CampaignruleparametersMap["priority"].(string); ok {
 		o.Priority = &Priority
 	}
-	
+    
 	if DialingMode, ok := CampaignruleparametersMap["dialingMode"].(string); ok {
 		o.DialingMode = &DialingMode
 	}
-	
+    
 
 	return nil
 }

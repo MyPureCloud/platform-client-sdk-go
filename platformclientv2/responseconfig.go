@@ -71,11 +71,11 @@ func (o *Responseconfig) UnmarshalJSON(b []byte) error {
 	if SuccessTemplate, ok := ResponseconfigMap["successTemplate"].(string); ok {
 		o.SuccessTemplate = &SuccessTemplate
 	}
-	
+    
 	if SuccessTemplateUri, ok := ResponseconfigMap["successTemplateUri"].(string); ok {
 		o.SuccessTemplateUri = &SuccessTemplateUri
 	}
-	
+    
 
 	return nil
 }

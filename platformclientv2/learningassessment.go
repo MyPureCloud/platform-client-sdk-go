@@ -118,19 +118,19 @@ func (o *Learningassessment) UnmarshalJSON(b []byte) error {
 	if AssessmentId, ok := LearningassessmentMap["assessmentId"].(string); ok {
 		o.AssessmentId = &AssessmentId
 	}
-	
+    
 	if ContextId, ok := LearningassessmentMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if AssessmentFormId, ok := LearningassessmentMap["assessmentFormId"].(string); ok {
 		o.AssessmentFormId = &AssessmentFormId
 	}
-	
+    
 	if Status, ok := LearningassessmentMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Answers, ok := LearningassessmentMap["answers"].(map[string]interface{}); ok {
 		AnswersString, _ := json.Marshal(Answers)
 		json.Unmarshal(AnswersString, &o.Answers)

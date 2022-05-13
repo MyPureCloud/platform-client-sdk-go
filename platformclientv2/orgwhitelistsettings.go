@@ -45,7 +45,7 @@ func (o *Orgwhitelistsettings) UnmarshalJSON(b []byte) error {
 	if EnableWhitelist, ok := OrgwhitelistsettingsMap["enableWhitelist"].(bool); ok {
 		o.EnableWhitelist = &EnableWhitelist
 	}
-	
+    
 	if DomainWhitelist, ok := OrgwhitelistsettingsMap["domainWhitelist"].([]interface{}); ok {
 		DomainWhitelistString, _ := json.Marshal(DomainWhitelist)
 		json.Unmarshal(DomainWhitelistString, &o.DomainWhitelist)

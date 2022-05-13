@@ -85,11 +85,11 @@ func (o *Dialogflowagent) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialogflowagentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialogflowagentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Project, ok := DialogflowagentMap["project"].(map[string]interface{}); ok {
 		ProjectString, _ := json.Marshal(Project)
 		json.Unmarshal(ProjectString, &o.Project)
@@ -113,7 +113,7 @@ func (o *Dialogflowagent) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DialogflowagentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

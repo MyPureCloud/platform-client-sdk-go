@@ -93,31 +93,31 @@ func (o *Participantmetrics) UnmarshalJSON(b []byte) error {
 	if AgentDurationPercentage, ok := ParticipantmetricsMap["agentDurationPercentage"].(float64); ok {
 		o.AgentDurationPercentage = &AgentDurationPercentage
 	}
-	
+    
 	if CustomerDurationPercentage, ok := ParticipantmetricsMap["customerDurationPercentage"].(float64); ok {
 		o.CustomerDurationPercentage = &CustomerDurationPercentage
 	}
-	
+    
 	if SilenceDurationPercentage, ok := ParticipantmetricsMap["silenceDurationPercentage"].(float64); ok {
 		o.SilenceDurationPercentage = &SilenceDurationPercentage
 	}
-	
+    
 	if IvrDurationPercentage, ok := ParticipantmetricsMap["ivrDurationPercentage"].(float64); ok {
 		o.IvrDurationPercentage = &IvrDurationPercentage
 	}
-	
+    
 	if AcdDurationPercentage, ok := ParticipantmetricsMap["acdDurationPercentage"].(float64); ok {
 		o.AcdDurationPercentage = &AcdDurationPercentage
 	}
-	
+    
 	if OvertalkDurationPercentage, ok := ParticipantmetricsMap["overtalkDurationPercentage"].(float64); ok {
 		o.OvertalkDurationPercentage = &OvertalkDurationPercentage
 	}
-	
+    
 	if OtherDurationPercentage, ok := ParticipantmetricsMap["otherDurationPercentage"].(float64); ok {
 		o.OtherDurationPercentage = &OtherDurationPercentage
 	}
-	
+    
 	if OvertalkCount, ok := ParticipantmetricsMap["overtalkCount"].(float64); ok {
 		OvertalkCountInt := int(OvertalkCount)
 		o.OvertalkCount = &OvertalkCountInt

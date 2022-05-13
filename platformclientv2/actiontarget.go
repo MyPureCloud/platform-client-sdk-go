@@ -134,11 +134,11 @@ func (o *Actiontarget) UnmarshalJSON(b []byte) error {
 	if Id, ok := ActiontargetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ActiontargetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UserData, ok := ActiontargetMap["userData"].([]interface{}); ok {
 		UserDataString, _ := json.Marshal(UserData)
 		json.Unmarshal(UserDataString, &o.UserData)
@@ -152,11 +152,11 @@ func (o *Actiontarget) UnmarshalJSON(b []byte) error {
 	if State, ok := ActiontargetMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Description, ok := ActiontargetMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if ServiceLevel, ok := ActiontargetMap["serviceLevel"].(map[string]interface{}); ok {
 		ServiceLevelString, _ := json.Marshal(ServiceLevel)
 		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
@@ -170,7 +170,7 @@ func (o *Actiontarget) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ActiontargetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if createdDateString, ok := ActiontargetMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

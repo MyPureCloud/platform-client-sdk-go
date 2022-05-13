@@ -45,11 +45,11 @@ func (o *Botslot) UnmarshalJSON(b []byte) error {
 	if Name, ok := BotslotMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := BotslotMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

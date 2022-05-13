@@ -132,16 +132,16 @@ func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) UnmarshalJSON(b []b
 		MaxLineUtilizationFloat32 := float32(MaxLineUtilization)
 		o.MaxLineUtilization = &MaxLineUtilizationFloat32
 	}
-	
+    
 	if AbandonSeconds, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["abandonSeconds"].(float64); ok {
 		AbandonSecondsFloat32 := float32(AbandonSeconds)
 		o.AbandonSeconds = &AbandonSecondsFloat32
 	}
-	
+    
 	if ComplianceAbandonRateDenominator, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["complianceAbandonRateDenominator"].(string); ok {
 		o.ComplianceAbandonRateDenominator = &ComplianceAbandonRateDenominator
 	}
-	
+    
 	if AutomaticTimeZoneMapping, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["automaticTimeZoneMapping"].(map[string]interface{}); ok {
 		AutomaticTimeZoneMappingString, _ := json.Marshal(AutomaticTimeZoneMapping)
 		json.Unmarshal(AutomaticTimeZoneMappingString, &o.AutomaticTimeZoneMapping)
@@ -150,11 +150,11 @@ func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) UnmarshalJSON(b []b
 	if Id, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

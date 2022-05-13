@@ -85,11 +85,11 @@ func (o *Webchatguestmediarequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebchatguestmediarequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WebchatguestmediarequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Types, ok := WebchatguestmediarequestMap["types"].([]interface{}); ok {
 		TypesString, _ := json.Marshal(Types)
 		json.Unmarshal(TypesString, &o.Types)
@@ -98,19 +98,19 @@ func (o *Webchatguestmediarequest) UnmarshalJSON(b []byte) error {
 	if State, ok := WebchatguestmediarequestMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if CommunicationId, ok := WebchatguestmediarequestMap["communicationId"].(string); ok {
 		o.CommunicationId = &CommunicationId
 	}
-	
+    
 	if SecurityKey, ok := WebchatguestmediarequestMap["securityKey"].(string); ok {
 		o.SecurityKey = &SecurityKey
 	}
-	
+    
 	if SelfUri, ok := WebchatguestmediarequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

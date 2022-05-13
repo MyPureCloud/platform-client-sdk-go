@@ -93,15 +93,15 @@ func (o *Topicrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := TopicrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := TopicrequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Strictness, ok := TopicrequestMap["strictness"].(string); ok {
 		o.Strictness = &Strictness
 	}
-	
+    
 	if ProgramIds, ok := TopicrequestMap["programIds"].([]interface{}); ok {
 		ProgramIdsString, _ := json.Marshal(ProgramIds)
 		json.Unmarshal(ProgramIdsString, &o.ProgramIds)
@@ -115,11 +115,11 @@ func (o *Topicrequest) UnmarshalJSON(b []byte) error {
 	if Dialect, ok := TopicrequestMap["dialect"].(string); ok {
 		o.Dialect = &Dialect
 	}
-	
+    
 	if Participants, ok := TopicrequestMap["participants"].(string); ok {
 		o.Participants = &Participants
 	}
-	
+    
 	if Phrases, ok := TopicrequestMap["phrases"].([]interface{}); ok {
 		PhrasesString, _ := json.Marshal(Phrases)
 		json.Unmarshal(PhrasesString, &o.Phrases)

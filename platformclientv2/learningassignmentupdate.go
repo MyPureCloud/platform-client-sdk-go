@@ -45,7 +45,7 @@ func (o *Learningassignmentupdate) UnmarshalJSON(b []byte) error {
 	if State, ok := LearningassignmentupdateMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Assessment, ok := LearningassignmentupdateMap["assessment"].(map[string]interface{}); ok {
 		AssessmentString, _ := json.Marshal(Assessment)
 		json.Unmarshal(AssessmentString, &o.Assessment)

@@ -45,11 +45,11 @@ func (o *Edgemetricstopicurireference) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgemetricstopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgemetricstopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

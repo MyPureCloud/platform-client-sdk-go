@@ -80,7 +80,7 @@ func (o *Aftercallwork) UnmarshalJSON(b []byte) error {
 	if State, ok := AftercallworkMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 
 	return nil
 }

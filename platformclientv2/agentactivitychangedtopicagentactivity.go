@@ -86,7 +86,7 @@ func (o *Agentactivitychangedtopicagentactivity) UnmarshalJSON(b []byte) error {
 	if Id, ok := AgentactivitychangedtopicagentactivityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if RoutingStatus, ok := AgentactivitychangedtopicagentactivityMap["routingStatus"].(map[string]interface{}); ok {
 		RoutingStatusString, _ := json.Marshal(RoutingStatus)
 		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)

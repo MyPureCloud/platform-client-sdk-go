@@ -45,11 +45,11 @@ func (o *Klaxonheartbeatrulestopicnotificationuser) UnmarshalJSON(b []byte) erro
 	if Id, ok := KlaxonheartbeatrulestopicnotificationuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DisplayName, ok := KlaxonheartbeatrulestopicnotificationuserMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 
 	return nil
 }

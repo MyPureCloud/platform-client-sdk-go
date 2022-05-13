@@ -94,11 +94,11 @@ func (o *Historyentry) UnmarshalJSON(b []byte) error {
 	if Action, ok := HistoryentryMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if Resource, ok := HistoryentryMap["resource"].(string); ok {
 		o.Resource = &Resource
 	}
-	
+    
 	if timestampString, ok := HistoryentryMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
@@ -117,11 +117,11 @@ func (o *Historyentry) UnmarshalJSON(b []byte) error {
 	if Version, ok := HistoryentryMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if Secure, ok := HistoryentryMap["secure"].(bool); ok {
 		o.Secure = &Secure
 	}
-	
+    
 
 	return nil
 }

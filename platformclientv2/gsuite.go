@@ -117,39 +117,39 @@ func (o *Gsuite) UnmarshalJSON(b []byte) error {
 	if Id, ok := GsuiteMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GsuiteMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := GsuiteMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if IssuerURI, ok := GsuiteMap["issuerURI"].(string); ok {
 		o.IssuerURI = &IssuerURI
 	}
-	
+    
 	if SsoTargetURI, ok := GsuiteMap["ssoTargetURI"].(string); ok {
 		o.SsoTargetURI = &SsoTargetURI
 	}
-	
+    
 	if SloURI, ok := GsuiteMap["sloURI"].(string); ok {
 		o.SloURI = &SloURI
 	}
-	
+    
 	if SloBinding, ok := GsuiteMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
 	}
-	
+    
 	if RelyingPartyIdentifier, ok := GsuiteMap["relyingPartyIdentifier"].(string); ok {
 		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
-	
+    
 	if Certificate, ok := GsuiteMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 	if Certificates, ok := GsuiteMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
@@ -158,7 +158,7 @@ func (o *Gsuite) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GsuiteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

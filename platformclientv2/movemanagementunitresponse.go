@@ -50,7 +50,7 @@ func (o *Movemanagementunitresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := MovemanagementunitresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

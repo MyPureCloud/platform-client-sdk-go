@@ -45,11 +45,11 @@ func (o *Buintradayforecastdata) UnmarshalJSON(b []byte) error {
 	if Offered, ok := BuintradayforecastdataMap["offered"].(float64); ok {
 		o.Offered = &Offered
 	}
-	
+    
 	if AverageHandleTimeSeconds, ok := BuintradayforecastdataMap["averageHandleTimeSeconds"].(float64); ok {
 		o.AverageHandleTimeSeconds = &AverageHandleTimeSeconds
 	}
-	
+    
 
 	return nil
 }

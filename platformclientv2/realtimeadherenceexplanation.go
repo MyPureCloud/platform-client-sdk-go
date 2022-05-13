@@ -78,7 +78,7 @@ func (o *Realtimeadherenceexplanation) UnmarshalJSON(b []byte) error {
 	if Id, ok := RealtimeadherenceexplanationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if startDateString, ok := RealtimeadherenceexplanationMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -92,11 +92,11 @@ func (o *Realtimeadherenceexplanation) UnmarshalJSON(b []byte) error {
 	if Status, ok := RealtimeadherenceexplanationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if SelfUri, ok := RealtimeadherenceexplanationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

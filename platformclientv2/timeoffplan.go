@@ -101,11 +101,11 @@ func (o *Timeoffplan) UnmarshalJSON(b []byte) error {
 	if Id, ok := TimeoffplanMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TimeoffplanMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ActivityCodeIds, ok := TimeoffplanMap["activityCodeIds"].([]interface{}); ok {
 		ActivityCodeIdsString, _ := json.Marshal(ActivityCodeIds)
 		json.Unmarshal(ActivityCodeIdsString, &o.ActivityCodeIds)
@@ -119,7 +119,7 @@ func (o *Timeoffplan) UnmarshalJSON(b []byte) error {
 	if AutoApprovalRule, ok := TimeoffplanMap["autoApprovalRule"].(string); ok {
 		o.AutoApprovalRule = &AutoApprovalRule
 	}
-	
+    
 	if DaysBeforeStartToExpireFromWaitlist, ok := TimeoffplanMap["daysBeforeStartToExpireFromWaitlist"].(float64); ok {
 		DaysBeforeStartToExpireFromWaitlistInt := int(DaysBeforeStartToExpireFromWaitlist)
 		o.DaysBeforeStartToExpireFromWaitlist = &DaysBeforeStartToExpireFromWaitlistInt
@@ -128,7 +128,7 @@ func (o *Timeoffplan) UnmarshalJSON(b []byte) error {
 	if Active, ok := TimeoffplanMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if Metadata, ok := TimeoffplanMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
@@ -137,7 +137,7 @@ func (o *Timeoffplan) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TimeoffplanMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

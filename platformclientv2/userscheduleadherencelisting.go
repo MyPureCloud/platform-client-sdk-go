@@ -50,7 +50,7 @@ func (o *Userscheduleadherencelisting) UnmarshalJSON(b []byte) error {
 	if DownloadUrl, ok := UserscheduleadherencelistingMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 
 	return nil
 }

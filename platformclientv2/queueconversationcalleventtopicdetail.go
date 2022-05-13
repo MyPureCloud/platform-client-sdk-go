@@ -61,19 +61,19 @@ func (o *Queueconversationcalleventtopicdetail) UnmarshalJSON(b []byte) error {
 	if ErrorCode, ok := QueueconversationcalleventtopicdetailMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if FieldName, ok := QueueconversationcalleventtopicdetailMap["fieldName"].(string); ok {
 		o.FieldName = &FieldName
 	}
-	
+    
 	if EntityId, ok := QueueconversationcalleventtopicdetailMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if EntityName, ok := QueueconversationcalleventtopicdetailMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 
 	return nil
 }

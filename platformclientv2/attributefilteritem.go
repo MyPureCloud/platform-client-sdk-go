@@ -53,11 +53,11 @@ func (o *Attributefilteritem) UnmarshalJSON(b []byte) error {
 	if Id, ok := AttributefilteritemMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Operator, ok := AttributefilteritemMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Values, ok := AttributefilteritemMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

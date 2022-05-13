@@ -45,11 +45,11 @@ func (o *Dialersequencescheduleconfigchangescheduleinterval) UnmarshalJSON(b []b
 	if Start, ok := DialersequencescheduleconfigchangescheduleintervalMap["start"].(string); ok {
 		o.Start = &Start
 	}
-	
+    
 	if End, ok := DialersequencescheduleconfigchangescheduleintervalMap["end"].(string); ok {
 		o.End = &End
 	}
-	
+    
 
 	return nil
 }

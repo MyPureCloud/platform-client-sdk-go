@@ -85,31 +85,31 @@ func (o *Contentattachment) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContentattachmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MediaType, ok := ContentattachmentMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Url, ok := ContentattachmentMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Mime, ok := ContentattachmentMap["mime"].(string); ok {
 		o.Mime = &Mime
 	}
-	
+    
 	if Text, ok := ContentattachmentMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Sha256, ok := ContentattachmentMap["sha256"].(string); ok {
 		o.Sha256 = &Sha256
 	}
-	
+    
 	if Filename, ok := ContentattachmentMap["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 
 	return nil
 }

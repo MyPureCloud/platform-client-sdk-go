@@ -77,28 +77,28 @@ func (o *Architectsystempromptresourcenotificationsystempromptresourcenotificati
 	if PromptId, ok := ArchitectsystempromptresourcenotificationsystempromptresourcenotificationMap["promptId"].(string); ok {
 		o.PromptId = &PromptId
 	}
-	
+    
 	if Id, ok := ArchitectsystempromptresourcenotificationsystempromptresourcenotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Language, ok := ArchitectsystempromptresourcenotificationsystempromptresourcenotificationMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if MediaUri, ok := ArchitectsystempromptresourcenotificationsystempromptresourcenotificationMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if UploadStatus, ok := ArchitectsystempromptresourcenotificationsystempromptresourcenotificationMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 	if DurationSeconds, ok := ArchitectsystempromptresourcenotificationsystempromptresourcenotificationMap["durationSeconds"].(float64); ok {
 		DurationSecondsFloat32 := float32(DurationSeconds)
 		o.DurationSeconds = &DurationSecondsFloat32
 	}
-	
+    
 
 	return nil
 }

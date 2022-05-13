@@ -117,23 +117,23 @@ func (o *Businessunitactivitycode) UnmarshalJSON(b []byte) error {
 	if Id, ok := BusinessunitactivitycodeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BusinessunitactivitycodeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Active, ok := BusinessunitactivitycodeMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if DefaultCode, ok := BusinessunitactivitycodeMap["defaultCode"].(bool); ok {
 		o.DefaultCode = &DefaultCode
 	}
-	
+    
 	if Category, ok := BusinessunitactivitycodeMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if LengthInMinutes, ok := BusinessunitactivitycodeMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt
@@ -142,15 +142,15 @@ func (o *Businessunitactivitycode) UnmarshalJSON(b []byte) error {
 	if CountsAsPaidTime, ok := BusinessunitactivitycodeMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if CountsAsWorkTime, ok := BusinessunitactivitycodeMap["countsAsWorkTime"].(bool); ok {
 		o.CountsAsWorkTime = &CountsAsWorkTime
 	}
-	
+    
 	if AgentTimeOffSelectable, ok := BusinessunitactivitycodeMap["agentTimeOffSelectable"].(bool); ok {
 		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
 	}
-	
+    
 	if Metadata, ok := BusinessunitactivitycodeMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
@@ -159,7 +159,7 @@ func (o *Businessunitactivitycode) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BusinessunitactivitycodeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

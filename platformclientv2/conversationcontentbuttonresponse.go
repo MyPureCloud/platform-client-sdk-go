@@ -53,15 +53,15 @@ func (o *Conversationcontentbuttonresponse) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationcontentbuttonresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := ConversationcontentbuttonresponseMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := ConversationcontentbuttonresponseMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 
 	return nil
 }

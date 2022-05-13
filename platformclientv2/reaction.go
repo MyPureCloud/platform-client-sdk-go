@@ -53,15 +53,15 @@ func (o *Reaction) UnmarshalJSON(b []byte) error {
 	if Data, ok := ReactionMap["data"].(string); ok {
 		o.Data = &Data
 	}
-	
+    
 	if Name, ok := ReactionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ReactionType, ok := ReactionMap["reactionType"].(string); ok {
 		o.ReactionType = &ReactionType
 	}
-	
+    
 
 	return nil
 }

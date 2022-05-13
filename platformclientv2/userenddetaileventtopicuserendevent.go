@@ -234,51 +234,51 @@ func (o *Userenddetaileventtopicuserendevent) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := UserenddetaileventtopicuserendeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := UserenddetaileventtopicuserendeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := UserenddetaileventtopicuserendeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if DisconnectType, ok := UserenddetaileventtopicuserendeventMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if MediaType, ok := UserenddetaileventtopicuserendeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := UserenddetaileventtopicuserendeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := UserenddetaileventtopicuserendeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := UserenddetaileventtopicuserendeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := UserenddetaileventtopicuserendeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := UserenddetaileventtopicuserendeventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := UserenddetaileventtopicuserendeventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := UserenddetaileventtopicuserendeventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := UserenddetaileventtopicuserendeventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -292,23 +292,23 @@ func (o *Userenddetaileventtopicuserendevent) UnmarshalJSON(b []byte) error {
 	if Subject, ok := UserenddetaileventtopicuserendeventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := UserenddetaileventtopicuserendeventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if UserId, ok := UserenddetaileventtopicuserendeventMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if DivisionId, ok := UserenddetaileventtopicuserendeventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if QueueId, ok := UserenddetaileventtopicuserendeventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if InteractingDurationMs, ok := UserenddetaileventtopicuserendeventMap["interactingDurationMs"].(float64); ok {
 		InteractingDurationMsInt := int(InteractingDurationMs)
 		o.InteractingDurationMs = &InteractingDurationMsInt

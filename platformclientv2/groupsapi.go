@@ -32,8 +32,6 @@ func NewGroupsApiWithConfig(config *Configuration) *GroupsApi {
 // DeleteGroup invokes DELETE /api/v2/groups/{groupId}
 //
 // Delete group
-//
-// 
 func (a GroupsApi) DeleteGroup(groupId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a GroupsApi) DeleteGroup(groupId string) (*APIResponse, error) {
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->DeleteGroup")
 	}
 
@@ -98,26 +96,24 @@ func (a GroupsApi) DeleteGroup(groupId string) (*APIResponse, error) {
 // DeleteGroupMembers invokes DELETE /api/v2/groups/{groupId}/members
 //
 // Remove members
-//
-// 
-func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*Empty, *APIResponse, error) {
+func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/members"
 	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->DeleteGroupMembers")
 	}
 	// verify the required parameter 'ids' is set
 	if &ids == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'ids' when calling GroupsApi->DeleteGroupMembers")
 	}
 
@@ -159,14 +155,14 @@ func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*Empty, *APIR
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -178,8 +174,6 @@ func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*Empty, *APIR
 // GetFieldconfig invokes GET /api/v2/fieldconfig
 //
 // Fetch field config for an entity type
-//
-// 
 func (a GroupsApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -191,7 +185,7 @@ func (a GroupsApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, e
 
 	// verify the required parameter 'varType' is set
 	if &varType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'varType' when calling GroupsApi->GetFieldconfig")
 	}
 
@@ -252,8 +246,6 @@ func (a GroupsApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, e
 // GetGroup invokes GET /api/v2/groups/{groupId}
 //
 // Get group
-//
-// 
 func (a GroupsApi) GetGroup(groupId string) (*Group, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -266,7 +258,7 @@ func (a GroupsApi) GetGroup(groupId string) (*Group, *APIResponse, error) {
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->GetGroup")
 	}
 
@@ -325,8 +317,6 @@ func (a GroupsApi) GetGroup(groupId string) (*Group, *APIResponse, error) {
 // GetGroupIndividuals invokes GET /api/v2/groups/{groupId}/individuals
 //
 // Get all individuals associated with the group
-//
-// 
 func (a GroupsApi) GetGroupIndividuals(groupId string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -339,7 +329,7 @@ func (a GroupsApi) GetGroupIndividuals(groupId string) (*Userentitylisting, *API
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->GetGroupIndividuals")
 	}
 
@@ -398,8 +388,6 @@ func (a GroupsApi) GetGroupIndividuals(groupId string) (*Userentitylisting, *API
 // GetGroupMembers invokes GET /api/v2/groups/{groupId}/members
 //
 // Get group members, includes individuals, owners, and dynamically included people
-//
-// 
 func (a GroupsApi) GetGroupMembers(groupId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -412,7 +400,7 @@ func (a GroupsApi) GetGroupMembers(groupId string, pageSize int, pageNumber int,
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->GetGroupMembers")
 	}
 
@@ -493,7 +481,7 @@ func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->GetGroupProfile")
 	}
 
@@ -554,8 +542,6 @@ func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile
 // GetGroups invokes GET /api/v2/groups
 //
 // Get a group list
-//
-// 
 func (a GroupsApi) GetGroups(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string) (*Groupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -631,8 +617,6 @@ func (a GroupsApi) GetGroups(pageSize int, pageNumber int, id []string, jabberId
 // GetGroupsSearch invokes GET /api/v2/groups/search
 //
 // Search groups using the q64 value returned from a previous search
-//
-// 
 func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -644,7 +628,7 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling GroupsApi->GetGroupsSearch")
 	}
 
@@ -782,26 +766,24 @@ func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, 
 // PostGroupMembers invokes POST /api/v2/groups/{groupId}/members
 //
 // Add members
-//
-// 
-func (a GroupsApi) PostGroupMembers(groupId string, body Groupmembersupdate) (*Empty, *APIResponse, error) {
+func (a GroupsApi) PostGroupMembers(groupId string, body Groupmembersupdate) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/members"
 	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->PostGroupMembers")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GroupsApi->PostGroupMembers")
 	}
 
@@ -844,14 +826,14 @@ func (a GroupsApi) PostGroupMembers(groupId string, body Groupmembersupdate) (*E
 	// body params
 	postBody = &body
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -863,8 +845,6 @@ func (a GroupsApi) PostGroupMembers(groupId string, body Groupmembersupdate) (*E
 // PostGroups invokes POST /api/v2/groups
 //
 // Create a group
-//
-// 
 func (a GroupsApi) PostGroups(body Groupcreate) (*Group, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -876,7 +856,7 @@ func (a GroupsApi) PostGroups(body Groupcreate) (*Group, *APIResponse, error) {
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GroupsApi->PostGroups")
 	}
 
@@ -938,8 +918,6 @@ func (a GroupsApi) PostGroups(body Groupcreate) (*Group, *APIResponse, error) {
 // PostGroupsSearch invokes POST /api/v2/groups/search
 //
 // Search groups
-//
-// 
 func (a GroupsApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -951,7 +929,7 @@ func (a GroupsApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GroupsApi->PostGroupsSearch")
 	}
 
@@ -1013,8 +991,6 @@ func (a GroupsApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 // PutGroup invokes PUT /api/v2/groups/{groupId}
 //
 // Update group
-//
-// 
 func (a GroupsApi) PutGroup(groupId string, body Groupupdate) (*Group, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1027,7 +1003,7 @@ func (a GroupsApi) PutGroup(groupId string, body Groupupdate) (*Group, *APIRespo
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GroupsApi->PutGroup")
 	}
 

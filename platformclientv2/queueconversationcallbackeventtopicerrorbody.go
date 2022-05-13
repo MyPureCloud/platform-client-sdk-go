@@ -109,11 +109,11 @@ func (o *Queueconversationcallbackeventtopicerrorbody) UnmarshalJSON(b []byte) e
 	if Message, ok := QueueconversationcallbackeventtopicerrorbodyMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Code, ok := QueueconversationcallbackeventtopicerrorbodyMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Status, ok := QueueconversationcallbackeventtopicerrorbodyMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -122,15 +122,15 @@ func (o *Queueconversationcallbackeventtopicerrorbody) UnmarshalJSON(b []byte) e
 	if EntityId, ok := QueueconversationcallbackeventtopicerrorbodyMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if EntityName, ok := QueueconversationcallbackeventtopicerrorbodyMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 	if MessageWithParams, ok := QueueconversationcallbackeventtopicerrorbodyMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := QueueconversationcallbackeventtopicerrorbodyMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -139,7 +139,7 @@ func (o *Queueconversationcallbackeventtopicerrorbody) UnmarshalJSON(b []byte) e
 	if ContextId, ok := QueueconversationcallbackeventtopicerrorbodyMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Details, ok := QueueconversationcallbackeventtopicerrorbodyMap["details"].([]interface{}); ok {
 		DetailsString, _ := json.Marshal(Details)
 		json.Unmarshal(DetailsString, &o.Details)

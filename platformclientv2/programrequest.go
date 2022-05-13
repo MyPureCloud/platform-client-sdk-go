@@ -61,11 +61,11 @@ func (o *Programrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := ProgramrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ProgramrequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if TopicIds, ok := ProgramrequestMap["topicIds"].([]interface{}); ok {
 		TopicIdsString, _ := json.Marshal(TopicIds)
 		json.Unmarshal(TopicIdsString, &o.TopicIds)

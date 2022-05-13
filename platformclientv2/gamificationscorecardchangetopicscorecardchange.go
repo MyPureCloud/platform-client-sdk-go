@@ -77,23 +77,23 @@ func (o *Gamificationscorecardchangetopicscorecardchange) UnmarshalJSON(b []byte
 	if Workday, ok := GamificationscorecardchangetopicscorecardchangeMap["workday"].(string); ok {
 		o.Workday = &Workday
 	}
-	
+    
 	if DivisionId, ok := GamificationscorecardchangetopicscorecardchangeMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if TeamId, ok := GamificationscorecardchangetopicscorecardchangeMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if PerformanceProfileId, ok := GamificationscorecardchangetopicscorecardchangeMap["performanceProfileId"].(string); ok {
 		o.PerformanceProfileId = &PerformanceProfileId
 	}
-	
+    
 	if UserId, ok := GamificationscorecardchangetopicscorecardchangeMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if PerformanceMetrics, ok := GamificationscorecardchangetopicscorecardchangeMap["performanceMetrics"].([]interface{}); ok {
 		PerformanceMetricsString, _ := json.Marshal(PerformanceMetrics)
 		json.Unmarshal(PerformanceMetricsString, &o.PerformanceMetrics)

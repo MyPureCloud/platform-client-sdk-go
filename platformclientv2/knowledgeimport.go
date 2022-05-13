@@ -142,27 +142,27 @@ func (o *Knowledgeimport) UnmarshalJSON(b []byte) error {
 	if Id, ok := KnowledgeimportMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KnowledgeimportMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UploadKey, ok := KnowledgeimportMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 	if FileType, ok := KnowledgeimportMap["fileType"].(string); ok {
 		o.FileType = &FileType
 	}
-	
+    
 	if IgnoreHeaders, ok := KnowledgeimportMap["ignoreHeaders"].(bool); ok {
 		o.IgnoreHeaders = &IgnoreHeaders
 	}
-	
+    
 	if Status, ok := KnowledgeimportMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Report, ok := KnowledgeimportMap["report"].(map[string]interface{}); ok {
 		ReportString, _ := json.Marshal(Report)
 		json.Unmarshal(ReportString, &o.Report)
@@ -176,7 +176,7 @@ func (o *Knowledgeimport) UnmarshalJSON(b []byte) error {
 	if LanguageCode, ok := KnowledgeimportMap["languageCode"].(string); ok {
 		o.LanguageCode = &LanguageCode
 	}
-	
+    
 	if dateCreatedString, ok := KnowledgeimportMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -190,7 +190,7 @@ func (o *Knowledgeimport) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := KnowledgeimportMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

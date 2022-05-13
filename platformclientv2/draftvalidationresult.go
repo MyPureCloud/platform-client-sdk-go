@@ -45,7 +45,7 @@ func (o *Draftvalidationresult) UnmarshalJSON(b []byte) error {
 	if Valid, ok := DraftvalidationresultMap["valid"].(bool); ok {
 		o.Valid = &Valid
 	}
-	
+    
 	if Errors, ok := DraftvalidationresultMap["errors"].([]interface{}); ok {
 		ErrorsString, _ := json.Marshal(Errors)
 		json.Unmarshal(ErrorsString, &o.Errors)

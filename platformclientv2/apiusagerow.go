@@ -142,27 +142,27 @@ func (o *Apiusagerow) UnmarshalJSON(b []byte) error {
 	if ClientId, ok := ApiusagerowMap["clientId"].(string); ok {
 		o.ClientId = &ClientId
 	}
-	
+    
 	if ClientName, ok := ApiusagerowMap["clientName"].(string); ok {
 		o.ClientName = &ClientName
 	}
-	
+    
 	if OrganizationId, ok := ApiusagerowMap["organizationId"].(string); ok {
 		o.OrganizationId = &OrganizationId
 	}
-	
+    
 	if UserId, ok := ApiusagerowMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if TemplateUri, ok := ApiusagerowMap["templateUri"].(string); ok {
 		o.TemplateUri = &TemplateUri
 	}
-	
+    
 	if HttpMethod, ok := ApiusagerowMap["httpMethod"].(string); ok {
 		o.HttpMethod = &HttpMethod
 	}
-	
+    
 	if Status200, ok := ApiusagerowMap["status200"].(float64); ok {
 		Status200Int := int(Status200)
 		o.Status200 = &Status200Int

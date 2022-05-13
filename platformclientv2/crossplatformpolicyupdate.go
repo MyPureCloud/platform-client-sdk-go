@@ -37,7 +37,7 @@ func (o *Crossplatformpolicyupdate) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := CrossplatformpolicyupdateMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

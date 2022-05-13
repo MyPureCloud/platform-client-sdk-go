@@ -50,7 +50,7 @@ func (o *Facebookid) UnmarshalJSON(b []byte) error {
 	if DisplayName, ok := FacebookidMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 
 	return nil
 }

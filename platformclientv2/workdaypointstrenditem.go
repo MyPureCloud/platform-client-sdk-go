@@ -58,7 +58,7 @@ func (o *Workdaypointstrenditem) UnmarshalJSON(b []byte) error {
 	if Points, ok := WorkdaypointstrenditemMap["points"].(float64); ok {
 		o.Points = &Points
 	}
-	
+    
 
 	return nil
 }

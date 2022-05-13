@@ -61,11 +61,11 @@ func (o *Smsconfig) UnmarshalJSON(b []byte) error {
 	if MessageColumn, ok := SmsconfigMap["messageColumn"].(string); ok {
 		o.MessageColumn = &MessageColumn
 	}
-	
+    
 	if PhoneColumn, ok := SmsconfigMap["phoneColumn"].(string); ok {
 		o.PhoneColumn = &PhoneColumn
 	}
-	
+    
 	if SenderSmsPhoneNumber, ok := SmsconfigMap["senderSmsPhoneNumber"].(map[string]interface{}); ok {
 		SenderSmsPhoneNumberString, _ := json.Marshal(SenderSmsPhoneNumber)
 		json.Unmarshal(SenderSmsPhoneNumberString, &o.SenderSmsPhoneNumber)

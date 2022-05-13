@@ -79,11 +79,11 @@ func (o *Unpublishedprogramsentitylisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UnpublishedprogramsentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if NextUri, ok := UnpublishedprogramsentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := UnpublishedprogramsentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

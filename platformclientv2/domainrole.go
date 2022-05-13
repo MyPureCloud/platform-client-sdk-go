@@ -45,11 +45,11 @@ func (o *Domainrole) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainroleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainroleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

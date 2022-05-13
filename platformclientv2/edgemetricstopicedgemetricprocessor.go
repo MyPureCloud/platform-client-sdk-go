@@ -69,7 +69,7 @@ func (o *Edgemetricstopicedgemetricprocessor) UnmarshalJSON(b []byte) error {
 	if CpuId, ok := EdgemetricstopicedgemetricprocessorMap["cpuId"].(string); ok {
 		o.CpuId = &CpuId
 	}
-	
+    
 	if IdleTimePct, ok := EdgemetricstopicedgemetricprocessorMap["idleTimePct"].(float64); ok {
 		IdleTimePctInt := int(IdleTimePct)
 		o.IdleTimePct = &IdleTimePctInt

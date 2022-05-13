@@ -58,11 +58,11 @@ func (o *Replacerequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := ReplacerequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if AuthToken, ok := ReplacerequestMap["authToken"].(string); ok {
 		o.AuthToken = &AuthToken
 	}
-	
+    
 
 	return nil
 }

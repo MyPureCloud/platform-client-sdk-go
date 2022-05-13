@@ -45,11 +45,11 @@ func (o *Dialercampaignprogresseventurireference) UnmarshalJSON(b []byte) error 
 	if Id, ok := DialercampaignprogresseventurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialercampaignprogresseventurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Contactaddressableentityref) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContactaddressableentityrefMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ContactaddressableentityrefMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

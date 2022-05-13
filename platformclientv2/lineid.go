@@ -50,7 +50,7 @@ func (o *Lineid) UnmarshalJSON(b []byte) error {
 	if DisplayName, ok := LineidMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 
 	return nil
 }

@@ -32,21 +32,19 @@ func NewSCIMApiWithConfig(config *Configuration) *SCIMApi {
 // DeleteScimUser invokes DELETE /api/v2/scim/users/{userId}
 //
 // Delete a user
-//
-// 
-func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResponse, error) {
+func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/users/{userId}"
 	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->DeleteScimUser")
 	}
 
@@ -69,7 +67,7 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -91,14 +89,14 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 	// header params "If-Match"
 	headerParams["If-Match"] = ifMatch
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -110,21 +108,19 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 // DeleteScimV2User invokes DELETE /api/v2/scim/v2/users/{userId}
 //
 // Delete a user
-//
-// 
-func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*Empty, *APIResponse, error) {
+func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/users/{userId}"
 	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->DeleteScimV2User")
 	}
 
@@ -147,7 +143,7 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*Empty, *APIRe
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -169,14 +165,14 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*Empty, *APIRe
 	// header params "If-Match"
 	headerParams["If-Match"] = ifMatch
 
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -188,8 +184,6 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*Empty, *APIRe
 // GetScimGroup invokes GET /api/v2/scim/groups/{groupId}
 //
 // Get a group
-//
-// 
 func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttributes []string, ifNoneMatch string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -202,7 +196,7 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->GetScimGroup")
 	}
 
@@ -229,7 +223,7 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -270,8 +264,6 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 // GetScimGroups invokes GET /api/v2/scim/groups
 //
 // Get a list of groups
-//
-// 
 func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, excludedAttributes []string, filter string) (*Scimgrouplistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -311,7 +303,7 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -348,8 +340,6 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 // GetScimResourcetype invokes GET /api/v2/scim/resourcetypes/{resourceType}
 //
 // Get a resource type
-//
-// 
 func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcetype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -362,7 +352,7 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 
 	// verify the required parameter 'resourceType' is set
 	if &resourceType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'resourceType' when calling SCIMApi->GetScimResourcetype")
 	}
 
@@ -385,7 +375,7 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -422,8 +412,6 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 // GetScimResourcetypes invokes GET /api/v2/scim/resourcetypes
 //
 // Get a list of resource types
-//
-// 
 func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -453,7 +441,7 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -490,8 +478,6 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 // GetScimSchema invokes GET /api/v2/scim/schemas/{schemaId}
 //
 // Get a SCIM schema
-//
-// 
 func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -504,7 +490,7 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling SCIMApi->GetScimSchema")
 	}
 
@@ -527,7 +513,7 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -564,8 +550,6 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 // GetScimSchemas invokes GET /api/v2/scim/schemas
 //
 // Get a list of SCIM schemas
-//
-// 
 func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -597,7 +581,7 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -633,9 +617,7 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 
 // GetScimServiceproviderconfig invokes GET /api/v2/scim/serviceproviderconfig
 //
-// Get a service provider&#39;s configuration
-//
-// 
+// Get a service provider's configuration
 func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimserviceproviderconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -665,7 +647,7 @@ func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimservicep
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -706,8 +688,6 @@ func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimservicep
 // GetScimUser invokes GET /api/v2/scim/users/{userId}
 //
 // Get a user
-//
-// 
 func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttributes []string, ifNoneMatch string) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -720,7 +700,7 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->GetScimUser")
 	}
 
@@ -747,7 +727,7 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -829,7 +809,7 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -866,8 +846,6 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 // GetScimV2Group invokes GET /api/v2/scim/v2/groups/{groupId}
 //
 // Get a group
-//
-// 
 func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAttributes []string, ifNoneMatch string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -880,7 +858,7 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->GetScimV2Group")
 	}
 
@@ -907,7 +885,7 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -948,8 +926,6 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 // GetScimV2Groups invokes GET /api/v2/scim/v2/groups
 //
 // Get a list of groups
-//
-// 
 func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attributes []string, excludedAttributes []string) (*Scimgrouplistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -961,7 +937,7 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 
 	// verify the required parameter 'filter' is set
 	if &filter == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filter' when calling SCIMApi->GetScimV2Groups")
 	}
 
@@ -994,7 +970,7 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1031,8 +1007,6 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 // GetScimV2Resourcetype invokes GET /api/v2/scim/v2/resourcetypes/{resourceType}
 //
 // Get a resource type
-//
-// 
 func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresourcetype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1045,7 +1019,7 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 
 	// verify the required parameter 'resourceType' is set
 	if &resourceType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'resourceType' when calling SCIMApi->GetScimV2Resourcetype")
 	}
 
@@ -1068,7 +1042,7 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1105,8 +1079,6 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 // GetScimV2Resourcetypes invokes GET /api/v2/scim/v2/resourcetypes
 //
 // Get a list of resource types
-//
-// 
 func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1136,7 +1108,7 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1173,8 +1145,6 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 // GetScimV2Schema invokes GET /api/v2/scim/v2/schemas/{schemaId}
 //
 // Get a SCIM schema
-//
-// 
 func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1187,7 +1157,7 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling SCIMApi->GetScimV2Schema")
 	}
 
@@ -1210,7 +1180,7 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1247,8 +1217,6 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 // GetScimV2Schemas invokes GET /api/v2/scim/v2/schemas
 //
 // Get a list of SCIM schemas
-//
-// 
 func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1280,7 +1248,7 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1316,9 +1284,7 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 
 // GetScimV2Serviceproviderconfig invokes GET /api/v2/scim/v2/serviceproviderconfig
 //
-// Get a service provider&#39;s configuration
-//
-// 
+// Get a service provider's configuration
 func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimserviceproviderconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1348,7 +1314,7 @@ func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimservic
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1389,8 +1355,6 @@ func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimservic
 // GetScimV2User invokes GET /api/v2/scim/v2/users/{userId}
 //
 // Get a user
-//
-// 
 func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttributes []string, ifNoneMatch string) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1403,7 +1367,7 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->GetScimV2User")
 	}
 
@@ -1430,7 +1394,7 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1512,7 +1476,7 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
+	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1549,8 +1513,6 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 // PatchScimGroup invokes PATCH /api/v2/scim/groups/{groupId}
 //
 // Modify a group
-//
-// 
 func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1563,12 +1525,12 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->PatchScimGroup")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PatchScimGroup")
 	}
 
@@ -1635,8 +1597,6 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 // PatchScimUser invokes PATCH /api/v2/scim/users/{userId}
 //
 // Modify a user
-//
-// 
 func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch string) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1649,12 +1609,12 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->PatchScimUser")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PatchScimUser")
 	}
 
@@ -1721,8 +1681,6 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 // PatchScimV2Group invokes PATCH /api/v2/scim/v2/groups/{groupId}
 //
 // Modify a group
-//
-// 
 func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMatch string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1735,12 +1693,12 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->PatchScimV2Group")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PatchScimV2Group")
 	}
 
@@ -1807,8 +1765,6 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 // PatchScimV2User invokes PATCH /api/v2/scim/v2/users/{userId}
 //
 // Modify a user
-//
-// 
 func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch string) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1821,12 +1777,12 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->PatchScimV2User")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PatchScimV2User")
 	}
 
@@ -1893,8 +1849,6 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 // PostScimUsers invokes POST /api/v2/scim/users
 //
 // Create a user
-//
-// 
 func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1906,7 +1860,7 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PostScimUsers")
 	}
 
@@ -1969,8 +1923,6 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 // PostScimV2Users invokes POST /api/v2/scim/v2/users
 //
 // Create a user
-//
-// 
 func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1982,7 +1934,7 @@ func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIRespon
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PostScimV2Users")
 	}
 
@@ -2045,8 +1997,6 @@ func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIRespon
 // PutScimGroup invokes PUT /api/v2/scim/groups/{groupId}
 //
 // Replace a group
-//
-// 
 func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2059,12 +2009,12 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->PutScimGroup")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PutScimGroup")
 	}
 
@@ -2131,8 +2081,6 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 // PutScimUser invokes PUT /api/v2/scim/users/{userId}
 //
 // Replace a user
-//
-// 
 func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2145,12 +2093,12 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->PutScimUser")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PutScimUser")
 	}
 
@@ -2217,8 +2165,6 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 // PutScimV2Group invokes PUT /api/v2/scim/v2/groups/{groupId}
 //
 // Replace a group
-//
-// 
 func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2231,12 +2177,12 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->PutScimV2Group")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PutScimV2Group")
 	}
 
@@ -2303,8 +2249,6 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 // PutScimV2User invokes PUT /api/v2/scim/v2/users/{userId}
 //
 // Replace a user
-//
-// 
 func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (*Scimv2user, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2317,12 +2261,12 @@ func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling SCIMApi->PutScimV2User")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PutScimV2User")
 	}
 

@@ -90,15 +90,15 @@ func (o *Conversationmessageeventtopicerrordetails) UnmarshalJSON(b []byte) erro
 	if Code, ok := ConversationmessageeventtopicerrordetailsMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := ConversationmessageeventtopicerrordetailsMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if MessageWithParams, ok := ConversationmessageeventtopicerrordetailsMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := ConversationmessageeventtopicerrordetailsMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -107,11 +107,11 @@ func (o *Conversationmessageeventtopicerrordetails) UnmarshalJSON(b []byte) erro
 	if ContextId, ok := ConversationmessageeventtopicerrordetailsMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Uri, ok := ConversationmessageeventtopicerrordetailsMap["uri"].(string); ok {
 		o.Uri = &Uri
 	}
-	
+    
 
 	return nil
 }

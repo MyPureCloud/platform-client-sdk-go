@@ -45,7 +45,7 @@ func (o *Queueobservationqueryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := QueueobservationqueryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := QueueobservationqueryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

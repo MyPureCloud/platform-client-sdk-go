@@ -170,67 +170,67 @@ func (o *Outbounddetaileventtopicoutboundinitevent) UnmarshalJSON(b []byte) erro
 	if ConversationId, ok := OutbounddetaileventtopicoutboundiniteventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := OutbounddetaileventtopicoutboundiniteventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := OutbounddetaileventtopicoutboundiniteventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := OutbounddetaileventtopicoutboundiniteventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := OutbounddetaileventtopicoutboundiniteventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := OutbounddetaileventtopicoutboundiniteventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := OutbounddetaileventtopicoutboundiniteventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := OutbounddetaileventtopicoutboundiniteventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := OutbounddetaileventtopicoutboundiniteventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := OutbounddetaileventtopicoutboundiniteventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if Subject, ok := OutbounddetaileventtopicoutboundiniteventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := OutbounddetaileventtopicoutboundiniteventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if OutboundCampaignId, ok := OutbounddetaileventtopicoutboundiniteventMap["outboundCampaignId"].(string); ok {
 		o.OutboundCampaignId = &OutboundCampaignId
 	}
-	
+    
 	if DivisionId, ok := OutbounddetaileventtopicoutboundiniteventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if OutboundContactListId, ok := OutbounddetaileventtopicoutboundiniteventMap["outboundContactListId"].(string); ok {
 		o.OutboundContactListId = &OutboundContactListId
 	}
-	
+    
 	if OutboundContactId, ok := OutbounddetaileventtopicoutboundiniteventMap["outboundContactId"].(string); ok {
 		o.OutboundContactId = &OutboundContactId
 	}
-	
+    
 
 	return nil
 }

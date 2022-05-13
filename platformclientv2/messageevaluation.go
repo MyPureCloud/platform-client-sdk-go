@@ -78,19 +78,19 @@ func (o *Messageevaluation) UnmarshalJSON(b []byte) error {
 	if ContactColumn, ok := MessageevaluationMap["contactColumn"].(string); ok {
 		o.ContactColumn = &ContactColumn
 	}
-	
+    
 	if ContactAddress, ok := MessageevaluationMap["contactAddress"].(string); ok {
 		o.ContactAddress = &ContactAddress
 	}
-	
+    
 	if MessageType, ok := MessageevaluationMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if WrapupCodeId, ok := MessageevaluationMap["wrapupCodeId"].(string); ok {
 		o.WrapupCodeId = &WrapupCodeId
 	}
-	
+    
 	if timestampString, ok := MessageevaluationMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp

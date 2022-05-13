@@ -53,11 +53,11 @@ func (o *Cobrowsesettings) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := CobrowsesettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if AllowAgentControl, ok := CobrowsesettingsMap["allowAgentControl"].(bool); ok {
 		o.AllowAgentControl = &AllowAgentControl
 	}
-	
+    
 	if MaskSelectors, ok := CobrowsesettingsMap["maskSelectors"].([]interface{}); ok {
 		MaskSelectorsString, _ := json.Marshal(MaskSelectors)
 		json.Unmarshal(MaskSelectorsString, &o.MaskSelectors)

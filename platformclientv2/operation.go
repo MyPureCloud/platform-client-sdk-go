@@ -109,11 +109,11 @@ func (o *Operation) UnmarshalJSON(b []byte) error {
 	if Id, ok := OperationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Complete, ok := OperationMap["complete"].(bool); ok {
 		o.Complete = &Complete
 	}
-	
+    
 	if User, ok := OperationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -127,11 +127,11 @@ func (o *Operation) UnmarshalJSON(b []byte) error {
 	if ErrorMessage, ok := OperationMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if ErrorCode, ok := OperationMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if ErrorDetails, ok := OperationMap["errorDetails"].([]interface{}); ok {
 		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
 		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
@@ -145,11 +145,11 @@ func (o *Operation) UnmarshalJSON(b []byte) error {
 	if ActionName, ok := OperationMap["actionName"].(string); ok {
 		o.ActionName = &ActionName
 	}
-	
+    
 	if ActionStatus, ok := OperationMap["actionStatus"].(string); ok {
 		o.ActionStatus = &ActionStatus
 	}
-	
+    
 
 	return nil
 }

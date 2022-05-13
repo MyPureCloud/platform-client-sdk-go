@@ -125,15 +125,15 @@ func (o *Policyactions) UnmarshalJSON(b []byte) error {
 	if RetainRecording, ok := PolicyactionsMap["retainRecording"].(bool); ok {
 		o.RetainRecording = &RetainRecording
 	}
-	
+    
 	if DeleteRecording, ok := PolicyactionsMap["deleteRecording"].(bool); ok {
 		o.DeleteRecording = &DeleteRecording
 	}
-	
+    
 	if AlwaysDelete, ok := PolicyactionsMap["alwaysDelete"].(bool); ok {
 		o.AlwaysDelete = &AlwaysDelete
 	}
-	
+    
 	if AssignEvaluations, ok := PolicyactionsMap["assignEvaluations"].([]interface{}); ok {
 		AssignEvaluationsString, _ := json.Marshal(AssignEvaluations)
 		json.Unmarshal(AssignEvaluationsString, &o.AssignEvaluations)

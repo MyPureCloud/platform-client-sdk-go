@@ -45,11 +45,11 @@ func (o *Patchuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := PatchuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if AcdAutoAnswer, ok := PatchuserMap["acdAutoAnswer"].(bool); ok {
 		o.AcdAutoAnswer = &AcdAutoAnswer
 	}
-	
+    
 
 	return nil
 }

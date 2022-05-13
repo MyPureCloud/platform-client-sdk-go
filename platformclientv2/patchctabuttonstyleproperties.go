@@ -69,23 +69,23 @@ func (o *Patchctabuttonstyleproperties) UnmarshalJSON(b []byte) error {
 	if Color, ok := PatchctabuttonstylepropertiesMap["color"].(string); ok {
 		o.Color = &Color
 	}
-	
+    
 	if Font, ok := PatchctabuttonstylepropertiesMap["font"].(string); ok {
 		o.Font = &Font
 	}
-	
+    
 	if FontSize, ok := PatchctabuttonstylepropertiesMap["fontSize"].(string); ok {
 		o.FontSize = &FontSize
 	}
-	
+    
 	if TextAlign, ok := PatchctabuttonstylepropertiesMap["textAlign"].(string); ok {
 		o.TextAlign = &TextAlign
 	}
-	
+    
 	if BackgroundColor, ok := PatchctabuttonstylepropertiesMap["backgroundColor"].(string); ok {
 		o.BackgroundColor = &BackgroundColor
 	}
-	
+    
 
 	return nil
 }

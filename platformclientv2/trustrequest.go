@@ -94,7 +94,7 @@ func (o *Trustrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrustrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if CreatedBy, ok := TrustrequestMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -123,7 +123,7 @@ func (o *Trustrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TrustrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

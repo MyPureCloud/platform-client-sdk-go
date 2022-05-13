@@ -69,19 +69,19 @@ func (o *Userdetailquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := UserdetailquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := UserdetailquerypredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Operator, ok := UserdetailquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := UserdetailquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := UserdetailquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

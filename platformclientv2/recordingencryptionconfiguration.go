@@ -85,23 +85,23 @@ func (o *Recordingencryptionconfiguration) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecordingencryptionconfigurationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Url, ok := RecordingencryptionconfigurationMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if ApiId, ok := RecordingencryptionconfigurationMap["apiId"].(string); ok {
 		o.ApiId = &ApiId
 	}
-	
+    
 	if ApiKey, ok := RecordingencryptionconfigurationMap["apiKey"].(string); ok {
 		o.ApiKey = &ApiKey
 	}
-	
+    
 	if KeyConfigurationType, ok := RecordingencryptionconfigurationMap["keyConfigurationType"].(string); ok {
 		o.KeyConfigurationType = &KeyConfigurationType
 	}
-	
+    
 	if LastError, ok := RecordingencryptionconfigurationMap["lastError"].(map[string]interface{}); ok {
 		LastErrorString, _ := json.Marshal(LastError)
 		json.Unmarshal(LastErrorString, &o.LastError)
@@ -110,7 +110,7 @@ func (o *Recordingencryptionconfiguration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := RecordingencryptionconfigurationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

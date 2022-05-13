@@ -32,8 +32,6 @@ func NewWebMessagingApiWithConfig(config *Configuration) *WebMessagingApi {
 // GetWebmessagingMessages invokes GET /api/v2/webmessaging/messages
 //
 // Get the messages for a web messaging session.
-//
-// 
 func (a WebMessagingApi) GetWebmessagingMessages(pageSize int, pageNumber int) (*Webmessagingmessageentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

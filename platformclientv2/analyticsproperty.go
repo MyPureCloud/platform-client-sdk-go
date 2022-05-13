@@ -53,15 +53,15 @@ func (o *Analyticsproperty) UnmarshalJSON(b []byte) error {
 	if Property, ok := AnalyticspropertyMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if PropertyType, ok := AnalyticspropertyMap["propertyType"].(string); ok {
 		o.PropertyType = &PropertyType
 	}
-	
+    
 	if Value, ok := AnalyticspropertyMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

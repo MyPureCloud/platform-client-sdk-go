@@ -70,7 +70,7 @@ func (o *Scimmetadata) UnmarshalJSON(b []byte) error {
 	if ResourceType, ok := ScimmetadataMap["resourceType"].(string); ok {
 		o.ResourceType = &ResourceType
 	}
-	
+    
 	if lastModifiedString, ok := ScimmetadataMap["lastModified"].(string); ok {
 		LastModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", lastModifiedString)
 		o.LastModified = &LastModified
@@ -79,11 +79,11 @@ func (o *Scimmetadata) UnmarshalJSON(b []byte) error {
 	if Location, ok := ScimmetadataMap["location"].(string); ok {
 		o.Location = &Location
 	}
-	
+    
 	if Version, ok := ScimmetadataMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 
 	return nil
 }

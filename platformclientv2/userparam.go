@@ -45,11 +45,11 @@ func (o *Userparam) UnmarshalJSON(b []byte) error {
 	if Key, ok := UserparamMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if Value, ok := UserparamMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

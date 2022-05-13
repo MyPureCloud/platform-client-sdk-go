@@ -61,19 +61,19 @@ func (o *Purecloud) UnmarshalJSON(b []byte) error {
 	if Id, ok := PurecloudMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PurecloudMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := PurecloudMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if SelfUri, ok := PurecloudMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -53,7 +53,7 @@ func (o *Buservicelevel) UnmarshalJSON(b []byte) error {
 	if Include, ok := BuservicelevelMap["include"].(bool); ok {
 		o.Include = &Include
 	}
-	
+    
 	if Percent, ok := BuservicelevelMap["percent"].(float64); ok {
 		PercentInt := int(Percent)
 		o.Percent = &PercentInt

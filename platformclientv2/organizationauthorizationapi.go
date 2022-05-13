@@ -32,8 +32,6 @@ func NewOrganizationAuthorizationApiWithConfig(config *Configuration) *Organizat
 // DeleteOrgauthorizationTrustee invokes DELETE /api/v2/orgauthorization/trustees/{trusteeOrgId}
 //
 // Delete Org Trust
-//
-// 
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustee(trusteeOrgId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustee(trusteeOrgId
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrustee")
 	}
 
@@ -98,8 +96,6 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustee(trusteeOrgId
 // DeleteOrgauthorizationTrusteeCloneduser invokes DELETE /api/v2/orgauthorization/trustees/{trusteeOrgId}/clonedusers/{trusteeUserId}
 //
 // Deletes cloned user
-//
-// 
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeCloneduser(trusteeOrgId string, trusteeUserId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -112,12 +108,12 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeCloneduser(tr
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrusteeCloneduser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrusteeCloneduser")
 	}
 
@@ -170,8 +166,6 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeCloneduser(tr
 // DeleteOrgauthorizationTrusteeUser invokes DELETE /api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}
 //
 // Delete Trustee User
-//
-// 
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUser(trusteeOrgId string, trusteeUserId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -184,12 +178,12 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUser(trusteeO
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrusteeUser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrusteeUser")
 	}
 
@@ -242,8 +236,6 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUser(trusteeO
 // DeleteOrgauthorizationTrusteeUserRoles invokes DELETE /api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roles
 //
 // Delete Trustee User Roles
-//
-// 
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUserRoles(trusteeOrgId string, trusteeUserId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -256,12 +248,12 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUserRoles(tru
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrusteeUserRoles")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrusteeUserRoles")
 	}
 
@@ -314,8 +306,6 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUserRoles(tru
 // DeleteOrgauthorizationTrustor invokes DELETE /api/v2/orgauthorization/trustors/{trustorOrgId}
 //
 // Delete Org Trust
-//
-// 
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustor(trustorOrgId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -327,7 +317,7 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustor(trustorOrgId
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrustor")
 	}
 
@@ -380,8 +370,6 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustor(trustorOrgId
 // DeleteOrgauthorizationTrustorCloneduser invokes DELETE /api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers/{trusteeUserId}
 //
 // Delete Cloned User
-//
-// 
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorCloneduser(trustorOrgId string, trusteeUserId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -394,12 +382,12 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorCloneduser(tr
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrustorCloneduser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrustorCloneduser")
 	}
 
@@ -452,8 +440,6 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorCloneduser(tr
 // DeleteOrgauthorizationTrustorUser invokes DELETE /api/v2/orgauthorization/trustors/{trustorOrgId}/users/{trusteeUserId}
 //
 // Delete Trustee User
-//
-// 
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorUser(trustorOrgId string, trusteeUserId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -466,12 +452,12 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorUser(trustorO
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrustorUser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->DeleteOrgauthorizationTrustorUser")
 	}
 
@@ -524,8 +510,6 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorUser(trustorO
 // GetOrgauthorizationPairing invokes GET /api/v2/orgauthorization/pairings/{pairingId}
 //
 // Get Pairing Info
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationPairing(pairingId string) (*Trustrequest, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -538,7 +522,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationPairing(pairingId strin
 
 	// verify the required parameter 'pairingId' is set
 	if &pairingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'pairingId' when calling OrganizationAuthorizationApi->GetOrgauthorizationPairing")
 	}
 
@@ -597,8 +581,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationPairing(pairingId strin
 // GetOrgauthorizationTrustee invokes GET /api/v2/orgauthorization/trustees/{trusteeOrgId}
 //
 // Get Org Trust
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustee(trusteeOrgId string) (*Trustee, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -611,7 +593,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustee(trusteeOrgId st
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustee")
 	}
 
@@ -684,7 +666,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeClonedusers(trus
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrusteeClonedusers")
 	}
 
@@ -743,8 +725,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeClonedusers(trus
 // GetOrgauthorizationTrusteeUser invokes GET /api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}
 //
 // Get Trustee User
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUser(trusteeOrgId string, trusteeUserId string) (*Trustuser, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -758,12 +738,12 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUser(trusteeOrgI
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrusteeUser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrusteeUser")
 	}
 
@@ -822,8 +802,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUser(trusteeOrgI
 // GetOrgauthorizationTrusteeUserRoles invokes GET /api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roles
 //
 // Get Trustee User Roles
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUserRoles(trusteeOrgId string, trusteeUserId string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -837,12 +815,12 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUserRoles(truste
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrusteeUserRoles")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrusteeUserRoles")
 	}
 
@@ -901,8 +879,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUserRoles(truste
 // GetOrgauthorizationTrusteeUsers invokes GET /api/v2/orgauthorization/trustees/{trusteeOrgId}/users
 //
 // The list of trustee users for this organization (i.e. users granted access to this organization).
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrgId string, pageSize int, pageNumber int) (*Trustuserentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -915,7 +891,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrg
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrusteeUsers")
 	}
 
@@ -978,8 +954,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrg
 // GetOrgauthorizationTrustees invokes GET /api/v2/orgauthorization/trustees
 //
 // The list of trustees for this organization (i.e. organizations granted access to this organization).
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustees(pageSize int, pageNumber int) (*Trustentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1049,8 +1023,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustees(pageSize int, 
 // GetOrgauthorizationTrusteesDefault invokes GET /api/v2/orgauthorization/trustees/default
 //
 // Get organization authorization trust with Customer Care, if one exists.
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteesDefault() (*Trustee, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1116,8 +1088,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteesDefault() (*Tru
 // GetOrgauthorizationTrustor invokes GET /api/v2/orgauthorization/trustors/{trustorOrgId}
 //
 // Get Org Trust
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustor(trustorOrgId string) (*Trustor, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1130,7 +1100,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustor(trustorOrgId st
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustor")
 	}
 
@@ -1189,8 +1159,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustor(trustorOrgId st
 // GetOrgauthorizationTrustorCloneduser invokes GET /api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers/{trusteeUserId}
 //
 // Get Cloned User
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorCloneduser(trustorOrgId string, trusteeUserId string) (*Cloneduser, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1204,12 +1172,12 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorCloneduser(trust
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustorCloneduser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustorCloneduser")
 	}
 
@@ -1268,8 +1236,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorCloneduser(trust
 // GetOrgauthorizationTrustorClonedusers invokes GET /api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers
 //
 // The list of cloned users in the trustor organization (i.e. users with a native user record).
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorClonedusers(trustorOrgId string) (*Cloneduserentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1282,7 +1248,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorClonedusers(trus
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustorClonedusers")
 	}
 
@@ -1341,8 +1307,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorClonedusers(trus
 // GetOrgauthorizationTrustorUser invokes GET /api/v2/orgauthorization/trustors/{trustorOrgId}/users/{trusteeUserId}
 //
 // Get Trustee User
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUser(trustorOrgId string, trusteeUserId string) (*Trustuser, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1356,12 +1320,12 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUser(trustorOrgI
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustorUser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustorUser")
 	}
 
@@ -1420,8 +1384,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUser(trustorOrgI
 // GetOrgauthorizationTrustorUsers invokes GET /api/v2/orgauthorization/trustors/{trustorOrgId}/users
 //
 // The list of users in the trustor organization (i.e. users granted access).
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrgId string, pageSize int, pageNumber int) (*Trustuserentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1434,7 +1396,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrg
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->GetOrgauthorizationTrustorUsers")
 	}
 
@@ -1497,8 +1459,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrg
 // GetOrgauthorizationTrustors invokes GET /api/v2/orgauthorization/trustors
 //
 // The list of organizations that have authorized/trusted your organization.
-//
-// 
 func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustors(pageSize int, pageNumber int) (*Trustorentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1568,8 +1528,6 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustors(pageSize int, 
 // PostOrgauthorizationPairings invokes POST /api/v2/orgauthorization/pairings
 //
 // A pairing id is created by the trustee and given to the trustor to create a trust.
-//
-// 
 func (a OrganizationAuthorizationApi) PostOrgauthorizationPairings(body Trustrequestcreate) (*Trustrequest, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1581,7 +1539,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationPairings(body Trustreq
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationAuthorizationApi->PostOrgauthorizationPairings")
 	}
 
@@ -1643,8 +1601,6 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationPairings(body Trustreq
 // PostOrgauthorizationTrusteeUsers invokes POST /api/v2/orgauthorization/trustees/{trusteeOrgId}/users
 //
 // Add a user to the trust.
-//
-// 
 func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeUsers(trusteeOrgId string, body Trustmembercreate) (*Trustuser, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1657,12 +1613,12 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeUsers(trusteeOr
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->PostOrgauthorizationTrusteeUsers")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationAuthorizationApi->PostOrgauthorizationTrusteeUsers")
 	}
 
@@ -1724,8 +1680,6 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeUsers(trusteeOr
 // PostOrgauthorizationTrustees invokes POST /api/v2/orgauthorization/trustees
 //
 // Create a new organization authorization trust. This is required to grant other organizations access to your organization.
-//
-// 
 func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustees(body Trustcreate) (*Trustee, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1737,7 +1691,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustees(body Trustcre
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationAuthorizationApi->PostOrgauthorizationTrustees")
 	}
 
@@ -1799,20 +1753,18 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustees(body Trustcre
 // PostOrgauthorizationTrusteesAudits invokes POST /api/v2/orgauthorization/trustees/audits
 //
 // Get Org Trustee Audits
-//
-// 
-func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Trusteeauditqueryrequest, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Auditqueryresponse, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Trusteeauditqueryrequest, pageSize int, pageNumber int, sortBy string, sortOrder string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/audits"
-	defaultReturn := new(Auditqueryresponse)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationAuthorizationApi->PostOrgauthorizationTrusteesAudits")
 	}
 
@@ -1863,14 +1815,14 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Tr
 	// body params
 	postBody = &body
 
-	var successPayload *Auditqueryresponse
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Auditqueryresponse" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1882,8 +1834,6 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Tr
 // PostOrgauthorizationTrusteesDefault invokes POST /api/v2/orgauthorization/trustees/default
 //
 // Create a new organization authorization trust with Customer Care. This is required to grant your regional Customer Care organization access to your organization.
-//
-// 
 func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesDefault(assignDefaultRole bool, autoExpire bool) (*Trustee, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1953,20 +1903,18 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesDefault(assign
 // PostOrgauthorizationTrustorAudits invokes POST /api/v2/orgauthorization/trustor/audits
 //
 // Get Org Trustor Audits
-//
-// 
-func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Trustorauditqueryrequest, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Auditqueryresponse, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Trustorauditqueryrequest, pageSize int, pageNumber int, sortBy string, sortOrder string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustor/audits"
-	defaultReturn := new(Auditqueryresponse)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationAuthorizationApi->PostOrgauthorizationTrustorAudits")
 	}
 
@@ -2017,14 +1965,14 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Tru
 	// body params
 	postBody = &body
 
-	var successPayload *Auditqueryresponse
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Auditqueryresponse" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2036,8 +1984,6 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Tru
 // PutOrgauthorizationTrustee invokes PUT /api/v2/orgauthorization/trustees/{trusteeOrgId}
 //
 // Update Org Trust
-//
-// 
 func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustee(trusteeOrgId string, body Trustupdate) (*Trustee, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2050,12 +1996,12 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustee(trusteeOrgId st
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrustee")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrustee")
 	}
 
@@ -2117,8 +2063,6 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustee(trusteeOrgId st
 // PutOrgauthorizationTrusteeUserRoledivisions invokes PUT /api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roledivisions
 //
 // Update Trustee User Roles
-//
-// 
 func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoledivisions(trusteeOrgId string, trusteeUserId string, body Roledivisiongrants) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2132,17 +2076,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoledivision
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrusteeUserRoledivisions")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrusteeUserRoledivisions")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrusteeUserRoledivisions")
 	}
 
@@ -2204,8 +2148,6 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoledivision
 // PutOrgauthorizationTrusteeUserRoles invokes PUT /api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roles
 //
 // Update Trustee User Roles
-//
-// 
 func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoles(trusteeOrgId string, trusteeUserId string, body []string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2219,12 +2161,12 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoles(truste
 
 	// verify the required parameter 'trusteeOrgId' is set
 	if &trusteeOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeOrgId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrusteeUserRoles")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrusteeUserRoles")
 	}
 	// verify the required parameter 'body' is set
@@ -2291,8 +2233,6 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoles(truste
 // PutOrgauthorizationTrustorCloneduser invokes PUT /api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers/{trusteeUserId}
 //
 // Creates a clone of the trustee user in the trustor org.
-//
-// 
 func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorCloneduser(trustorOrgId string, trusteeUserId string) (*Cloneduser, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2306,12 +2246,12 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorCloneduser(trust
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrustorCloneduser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrustorCloneduser")
 	}
 
@@ -2370,8 +2310,6 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorCloneduser(trust
 // PutOrgauthorizationTrustorUser invokes PUT /api/v2/orgauthorization/trustors/{trustorOrgId}/users/{trusteeUserId}
 //
 // Add a Trustee user to the trust.
-//
-// 
 func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorUser(trustorOrgId string, trusteeUserId string) (*Trustuser, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2385,12 +2323,12 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorUser(trustorOrgI
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrustorUser")
 	}
 	// verify the required parameter 'trusteeUserId' is set
 	if &trusteeUserId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trusteeUserId' when calling OrganizationAuthorizationApi->PutOrgauthorizationTrustorUser")
 	}
 

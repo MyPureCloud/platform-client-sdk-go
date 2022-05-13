@@ -222,31 +222,31 @@ func (o *Recordingmetadata) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecordingmetadataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := RecordingmetadataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ConversationId, ok := RecordingmetadataMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if Path, ok := RecordingmetadataMap["path"].(string); ok {
 		o.Path = &Path
 	}
-	
+    
 	if StartTime, ok := RecordingmetadataMap["startTime"].(string); ok {
 		o.StartTime = &StartTime
 	}
-	
+    
 	if EndTime, ok := RecordingmetadataMap["endTime"].(string); ok {
 		o.EndTime = &EndTime
 	}
-	
+    
 	if Media, ok := RecordingmetadataMap["media"].(string); ok {
 		o.Media = &Media
 	}
-	
+    
 	if Annotations, ok := RecordingmetadataMap["annotations"].([]interface{}); ok {
 		AnnotationsString, _ := json.Marshal(Annotations)
 		json.Unmarshal(AnnotationsString, &o.Annotations)
@@ -255,7 +255,7 @@ func (o *Recordingmetadata) UnmarshalJSON(b []byte) error {
 	if FileState, ok := RecordingmetadataMap["fileState"].(string); ok {
 		o.FileState = &FileState
 	}
-	
+    
 	if restoreExpirationTimeString, ok := RecordingmetadataMap["restoreExpirationTime"].(string); ok {
 		RestoreExpirationTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", restoreExpirationTimeString)
 		o.RestoreExpirationTime = &RestoreExpirationTime
@@ -269,7 +269,7 @@ func (o *Recordingmetadata) UnmarshalJSON(b []byte) error {
 	if ArchiveMedium, ok := RecordingmetadataMap["archiveMedium"].(string); ok {
 		o.ArchiveMedium = &ArchiveMedium
 	}
-	
+    
 	if deleteDateString, ok := RecordingmetadataMap["deleteDate"].(string); ok {
 		DeleteDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deleteDateString)
 		o.DeleteDate = &DeleteDate
@@ -298,11 +298,11 @@ func (o *Recordingmetadata) UnmarshalJSON(b []byte) error {
 	if SessionId, ok := RecordingmetadataMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if SelfUri, ok := RecordingmetadataMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

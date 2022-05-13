@@ -117,19 +117,19 @@ func (o *Groupupdate) UnmarshalJSON(b []byte) error {
 	if Id, ok := GroupupdateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GroupupdateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := GroupupdateMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if State, ok := GroupupdateMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Version, ok := GroupupdateMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -148,11 +148,11 @@ func (o *Groupupdate) UnmarshalJSON(b []byte) error {
 	if RulesVisible, ok := GroupupdateMap["rulesVisible"].(bool); ok {
 		o.RulesVisible = &RulesVisible
 	}
-	
+    
 	if Visibility, ok := GroupupdateMap["visibility"].(string); ok {
 		o.Visibility = &Visibility
 	}
-	
+    
 	if OwnerIds, ok := GroupupdateMap["ownerIds"].([]interface{}); ok {
 		OwnerIdsString, _ := json.Marshal(OwnerIds)
 		json.Unmarshal(OwnerIdsString, &o.OwnerIds)
@@ -161,7 +161,7 @@ func (o *Groupupdate) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GroupupdateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

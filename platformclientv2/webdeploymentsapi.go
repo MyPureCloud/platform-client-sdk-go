@@ -32,8 +32,6 @@ func NewWebDeploymentsApiWithConfig(config *Configuration) *WebDeploymentsApi {
 // DeleteWebdeploymentsConfiguration invokes DELETE /api/v2/webdeployments/configurations/{configurationId}
 //
 // Delete all versions of a configuration
-//
-// 
 func (a WebDeploymentsApi) DeleteWebdeploymentsConfiguration(configurationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsConfiguration(configurationId str
 
 	// verify the required parameter 'configurationId' is set
 	if &configurationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'configurationId' when calling WebDeploymentsApi->DeleteWebdeploymentsConfiguration")
 	}
 
@@ -98,8 +96,6 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsConfiguration(configurationId str
 // DeleteWebdeploymentsDeployment invokes DELETE /api/v2/webdeployments/deployments/{deploymentId}
 //
 // Delete a deployment
-//
-// 
 func (a WebDeploymentsApi) DeleteWebdeploymentsDeployment(deploymentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +107,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeployment(deploymentId string) (
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'deploymentId' when calling WebDeploymentsApi->DeleteWebdeploymentsDeployment")
 	}
 
@@ -164,8 +160,6 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeployment(deploymentId string) (
 // GetWebdeploymentsConfigurationVersion invokes GET /api/v2/webdeployments/configurations/{configurationId}/versions/{versionId}
 //
 // Get a configuration version
-//
-// 
 func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersion(configurationId string, versionId string) (*Webdeploymentconfigurationversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -179,12 +173,12 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersion(configurationId
 
 	// verify the required parameter 'configurationId' is set
 	if &configurationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configurationId' when calling WebDeploymentsApi->GetWebdeploymentsConfigurationVersion")
 	}
 	// verify the required parameter 'versionId' is set
 	if &versionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling WebDeploymentsApi->GetWebdeploymentsConfigurationVersion")
 	}
 
@@ -257,7 +251,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationI
 
 	// verify the required parameter 'configurationId' is set
 	if &configurationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configurationId' when calling WebDeploymentsApi->GetWebdeploymentsConfigurationVersions")
 	}
 
@@ -316,8 +310,6 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationI
 // GetWebdeploymentsConfigurationVersionsDraft invokes GET /api/v2/webdeployments/configurations/{configurationId}/versions/draft
 //
 // Get the configuration draft
-//
-// 
 func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configurationId string) (*Webdeploymentconfigurationversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -330,7 +322,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configura
 
 	// verify the required parameter 'configurationId' is set
 	if &configurationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configurationId' when calling WebDeploymentsApi->GetWebdeploymentsConfigurationVersionsDraft")
 	}
 
@@ -389,8 +381,6 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configura
 // GetWebdeploymentsConfigurations invokes GET /api/v2/webdeployments/configurations
 //
 // View configuration drafts
-//
-// 
 func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished bool) (*Webdeploymentconfigurationversionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -458,8 +448,6 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished boo
 // GetWebdeploymentsDeployment invokes GET /api/v2/webdeployments/deployments/{deploymentId}
 //
 // Get a deployment
-//
-// 
 func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*Webdeployment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -472,7 +460,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*We
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WebDeploymentsApi->GetWebdeploymentsDeployment")
 	}
 
@@ -531,8 +519,6 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*We
 // GetWebdeploymentsDeployments invokes GET /api/v2/webdeployments/deployments
 //
 // Get deployments
-//
-// 
 func (a WebDeploymentsApi) GetWebdeploymentsDeployments() (*Webdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -598,8 +584,6 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployments() (*Webdeploymententityl
 // PostWebdeploymentsConfigurationVersionsDraftPublish invokes POST /api/v2/webdeployments/configurations/{configurationId}/versions/draft/publish
 //
 // Publish the configuration draft and create a new version
-//
-// 
 func (a WebDeploymentsApi) PostWebdeploymentsConfigurationVersionsDraftPublish(configurationId string) (*Webdeploymentconfigurationversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -612,7 +596,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurationVersionsDraftPublish(c
 
 	// verify the required parameter 'configurationId' is set
 	if &configurationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configurationId' when calling WebDeploymentsApi->PostWebdeploymentsConfigurationVersionsDraftPublish")
 	}
 
@@ -671,8 +655,6 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurationVersionsDraftPublish(c
 // PostWebdeploymentsConfigurations invokes POST /api/v2/webdeployments/configurations
 //
 // Create a configuration draft
-//
-// 
 func (a WebDeploymentsApi) PostWebdeploymentsConfigurations(configurationVersion Webdeploymentconfigurationversion) (*Webdeploymentconfigurationversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -684,7 +666,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurations(configurationVersion
 
 	// verify the required parameter 'configurationVersion' is set
 	if &configurationVersion == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configurationVersion' when calling WebDeploymentsApi->PostWebdeploymentsConfigurations")
 	}
 
@@ -746,8 +728,6 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurations(configurationVersion
 // PostWebdeploymentsDeployments invokes POST /api/v2/webdeployments/deployments
 //
 // Create a deployment
-//
-// 
 func (a WebDeploymentsApi) PostWebdeploymentsDeployments(deployment Webdeployment) (*Webdeployment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -759,7 +739,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsDeployments(deployment Webdeploymen
 
 	// verify the required parameter 'deployment' is set
 	if &deployment == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deployment' when calling WebDeploymentsApi->PostWebdeploymentsDeployments")
 	}
 
@@ -821,8 +801,6 @@ func (a WebDeploymentsApi) PostWebdeploymentsDeployments(deployment Webdeploymen
 // PutWebdeploymentsConfigurationVersionsDraft invokes PUT /api/v2/webdeployments/configurations/{configurationId}/versions/draft
 //
 // Update the configuration draft
-//
-// 
 func (a WebDeploymentsApi) PutWebdeploymentsConfigurationVersionsDraft(configurationId string, configurationVersion Webdeploymentconfigurationversion) (*Webdeploymentconfigurationversion, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -835,12 +813,12 @@ func (a WebDeploymentsApi) PutWebdeploymentsConfigurationVersionsDraft(configura
 
 	// verify the required parameter 'configurationId' is set
 	if &configurationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configurationId' when calling WebDeploymentsApi->PutWebdeploymentsConfigurationVersionsDraft")
 	}
 	// verify the required parameter 'configurationVersion' is set
 	if &configurationVersion == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configurationVersion' when calling WebDeploymentsApi->PutWebdeploymentsConfigurationVersionsDraft")
 	}
 
@@ -902,8 +880,6 @@ func (a WebDeploymentsApi) PutWebdeploymentsConfigurationVersionsDraft(configura
 // PutWebdeploymentsDeployment invokes PUT /api/v2/webdeployments/deployments/{deploymentId}
 //
 // Update a deployment
-//
-// 
 func (a WebDeploymentsApi) PutWebdeploymentsDeployment(deploymentId string, deployment Webdeployment) (*Webdeployment, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -916,12 +892,12 @@ func (a WebDeploymentsApi) PutWebdeploymentsDeployment(deploymentId string, depl
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WebDeploymentsApi->PutWebdeploymentsDeployment")
 	}
 	// verify the required parameter 'deployment' is set
 	if &deployment == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deployment' when calling WebDeploymentsApi->PutWebdeploymentsDeployment")
 	}
 

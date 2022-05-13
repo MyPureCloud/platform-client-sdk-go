@@ -86,19 +86,19 @@ func (o *Sentimentfeedback) UnmarshalJSON(b []byte) error {
 	if Id, ok := SentimentfeedbackMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Phrase, ok := SentimentfeedbackMap["phrase"].(string); ok {
 		o.Phrase = &Phrase
 	}
-	
+    
 	if Dialect, ok := SentimentfeedbackMap["dialect"].(string); ok {
 		o.Dialect = &Dialect
 	}
-	
+    
 	if FeedbackValue, ok := SentimentfeedbackMap["feedbackValue"].(string); ok {
 		o.FeedbackValue = &FeedbackValue
 	}
-	
+    
 	if dateCreatedString, ok := SentimentfeedbackMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

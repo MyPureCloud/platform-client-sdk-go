@@ -53,7 +53,7 @@ func (o *Resolutiondetailqueryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ResolutiondetailqueryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := ResolutiondetailqueryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

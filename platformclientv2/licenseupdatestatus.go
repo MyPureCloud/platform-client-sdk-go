@@ -53,15 +53,15 @@ func (o *Licenseupdatestatus) UnmarshalJSON(b []byte) error {
 	if UserId, ok := LicenseupdatestatusMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if LicenseId, ok := LicenseupdatestatusMap["licenseId"].(string); ok {
 		o.LicenseId = &LicenseId
 	}
-	
+    
 	if Result, ok := LicenseupdatestatusMap["result"].(string); ok {
 		o.Result = &Result
 	}
-	
+    
 
 	return nil
 }

@@ -69,7 +69,7 @@ func (o *Patchaction) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := PatchactionMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ActionTemplate, ok := PatchactionMap["actionTemplate"].(map[string]interface{}); ok {
 		ActionTemplateString, _ := json.Marshal(ActionTemplate)
 		json.Unmarshal(ActionTemplateString, &o.ActionTemplate)

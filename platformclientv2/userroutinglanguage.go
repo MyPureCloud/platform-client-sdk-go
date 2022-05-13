@@ -77,27 +77,27 @@ func (o *Userroutinglanguage) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserroutinglanguageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserroutinglanguageMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Proficiency, ok := UserroutinglanguageMap["proficiency"].(float64); ok {
 		o.Proficiency = &Proficiency
 	}
-	
+    
 	if State, ok := UserroutinglanguageMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if LanguageUri, ok := UserroutinglanguageMap["languageUri"].(string); ok {
 		o.LanguageUri = &LanguageUri
 	}
-	
+    
 	if SelfUri, ok := UserroutinglanguageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

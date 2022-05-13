@@ -45,11 +45,11 @@ func (o *Searchsort) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := SearchsortMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := SearchsortMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 
 	return nil
 }

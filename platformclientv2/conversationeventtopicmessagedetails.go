@@ -94,7 +94,7 @@ func (o *Conversationeventtopicmessagedetails) UnmarshalJSON(b []byte) error {
 	if MessageId, ok := ConversationeventtopicmessagedetailsMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 	if messageTimeString, ok := ConversationeventtopicmessagedetailsMap["messageTime"].(string); ok {
 		MessageTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", messageTimeString)
 		o.MessageTime = &MessageTime
@@ -103,7 +103,7 @@ func (o *Conversationeventtopicmessagedetails) UnmarshalJSON(b []byte) error {
 	if MessageStatus, ok := ConversationeventtopicmessagedetailsMap["messageStatus"].(string); ok {
 		o.MessageStatus = &MessageStatus
 	}
-	
+    
 	if MessageSegmentCount, ok := ConversationeventtopicmessagedetailsMap["messageSegmentCount"].(float64); ok {
 		MessageSegmentCountInt := int(MessageSegmentCount)
 		o.MessageSegmentCount = &MessageSegmentCountInt

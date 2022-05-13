@@ -61,11 +61,11 @@ func (o *Wfmbuscheduletopicbuschedulegenerationresultsummary) UnmarshalJSON(b []
 	if Failed, ok := WfmbuscheduletopicbuschedulegenerationresultsummaryMap["failed"].(bool); ok {
 		o.Failed = &Failed
 	}
-	
+    
 	if RunId, ok := WfmbuscheduletopicbuschedulegenerationresultsummaryMap["runId"].(string); ok {
 		o.RunId = &RunId
 	}
-	
+    
 	if MessageCount, ok := WfmbuscheduletopicbuschedulegenerationresultsummaryMap["messageCount"].(float64); ok {
 		MessageCountInt := int(MessageCount)
 		o.MessageCount = &MessageCountInt

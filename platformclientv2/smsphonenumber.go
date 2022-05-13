@@ -270,27 +270,27 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 	if Id, ok := SmsphonenumberMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SmsphonenumberMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if PhoneNumber, ok := SmsphonenumberMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if PhoneNumberType, ok := SmsphonenumberMap["phoneNumberType"].(string); ok {
 		o.PhoneNumberType = &PhoneNumberType
 	}
-	
+    
 	if ProvisionedThroughPureCloud, ok := SmsphonenumberMap["provisionedThroughPureCloud"].(bool); ok {
 		o.ProvisionedThroughPureCloud = &ProvisionedThroughPureCloud
 	}
-	
+    
 	if PhoneNumberStatus, ok := SmsphonenumberMap["phoneNumberStatus"].(string); ok {
 		o.PhoneNumberStatus = &PhoneNumberStatus
 	}
-	
+    
 	if Capabilities, ok := SmsphonenumberMap["capabilities"].([]interface{}); ok {
 		CapabilitiesString, _ := json.Marshal(Capabilities)
 		json.Unmarshal(CapabilitiesString, &o.Capabilities)
@@ -299,7 +299,7 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 	if CountryCode, ok := SmsphonenumberMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
 	}
-	
+    
 	if dateCreatedString, ok := SmsphonenumberMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -343,7 +343,7 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 	if AutoRenewable, ok := SmsphonenumberMap["autoRenewable"].(string); ok {
 		o.AutoRenewable = &AutoRenewable
 	}
-	
+    
 	if AddressId, ok := SmsphonenumberMap["addressId"].(map[string]interface{}); ok {
 		AddressIdString, _ := json.Marshal(AddressId)
 		json.Unmarshal(AddressIdString, &o.AddressId)
@@ -352,7 +352,7 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 	if ShortCodeBillingType, ok := SmsphonenumberMap["shortCodeBillingType"].(string); ok {
 		o.ShortCodeBillingType = &ShortCodeBillingType
 	}
-	
+    
 	if ProvisioningStatus, ok := SmsphonenumberMap["provisioningStatus"].(map[string]interface{}); ok {
 		ProvisioningStatusString, _ := json.Marshal(ProvisioningStatus)
 		json.Unmarshal(ProvisioningStatusString, &o.ProvisioningStatus)
@@ -361,23 +361,23 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 	if Country, ok := SmsphonenumberMap["country"].(string); ok {
 		o.Country = &Country
 	}
-	
+    
 	if SupportsSms, ok := SmsphonenumberMap["supportsSms"].(bool); ok {
 		o.SupportsSms = &SupportsSms
 	}
-	
+    
 	if SupportsMms, ok := SmsphonenumberMap["supportsMms"].(bool); ok {
 		o.SupportsMms = &SupportsMms
 	}
-	
+    
 	if SupportsVoice, ok := SmsphonenumberMap["supportsVoice"].(bool); ok {
 		o.SupportsVoice = &SupportsVoice
 	}
-	
+    
 	if SelfUri, ok := SmsphonenumberMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

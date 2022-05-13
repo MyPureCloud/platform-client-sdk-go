@@ -45,11 +45,11 @@ func (o *V2conversationmessagetypingeventforusertopicconversationrecipientadditi
 	if VarType, ok := V2conversationmessagetypingeventforusertopicconversationrecipientadditionalidentifierMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := V2conversationmessagetypingeventforusertopicconversationrecipientadditionalidentifierMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

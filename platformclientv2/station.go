@@ -149,27 +149,27 @@ func (o *Station) UnmarshalJSON(b []byte) error {
 	if Id, ok := StationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := StationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := StationMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Status, ok := StationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if UserId, ok := StationMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if WebRtcUserId, ok := StationMap["webRtcUserId"].(string); ok {
 		o.WebRtcUserId = &WebRtcUserId
 	}
-	
+    
 	if PrimaryEdge, ok := StationMap["primaryEdge"].(map[string]interface{}); ok {
 		PrimaryEdgeString, _ := json.Marshal(PrimaryEdge)
 		json.Unmarshal(PrimaryEdgeString, &o.PrimaryEdge)
@@ -183,11 +183,11 @@ func (o *Station) UnmarshalJSON(b []byte) error {
 	if VarType, ok := StationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if LineAppearanceId, ok := StationMap["lineAppearanceId"].(string); ok {
 		o.LineAppearanceId = &LineAppearanceId
 	}
-	
+    
 	if WebRtcMediaDscp, ok := StationMap["webRtcMediaDscp"].(float64); ok {
 		WebRtcMediaDscpInt := int(WebRtcMediaDscp)
 		o.WebRtcMediaDscp = &WebRtcMediaDscpInt
@@ -196,11 +196,11 @@ func (o *Station) UnmarshalJSON(b []byte) error {
 	if WebRtcPersistentEnabled, ok := StationMap["webRtcPersistentEnabled"].(bool); ok {
 		o.WebRtcPersistentEnabled = &WebRtcPersistentEnabled
 	}
-	
+    
 	if WebRtcForceTurn, ok := StationMap["webRtcForceTurn"].(bool); ok {
 		o.WebRtcForceTurn = &WebRtcForceTurn
 	}
-	
+    
 	if WebRtcCallAppearances, ok := StationMap["webRtcCallAppearances"].(float64); ok {
 		WebRtcCallAppearancesInt := int(WebRtcCallAppearances)
 		o.WebRtcCallAppearances = &WebRtcCallAppearancesInt
@@ -209,7 +209,7 @@ func (o *Station) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := StationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

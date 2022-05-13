@@ -45,11 +45,11 @@ func (o *Divisionreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := DivisionreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := DivisionreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

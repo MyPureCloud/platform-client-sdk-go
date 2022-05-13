@@ -32,8 +32,6 @@ func NewSuggestApiWithConfig(config *Configuration) *SuggestApi {
 // GetSearch invokes GET /api/v2/search
 //
 // Search using the q64 value returned from a previous search.
-//
-// 
 func (a SuggestApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a SuggestApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonn
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SuggestApi->GetSearch")
 	}
 
@@ -110,8 +108,6 @@ func (a SuggestApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonn
 // GetSearchSuggest invokes GET /api/v2/search/suggest
 //
 // Suggest resources using the q64 value returned from a previous suggest query.
-//
-// 
 func (a SuggestApi) GetSearchSuggest(q64 string, expand []string, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -123,7 +119,7 @@ func (a SuggestApi) GetSearchSuggest(q64 string, expand []string, profile bool) 
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling SuggestApi->GetSearchSuggest")
 	}
 
@@ -188,8 +184,6 @@ func (a SuggestApi) GetSearchSuggest(q64 string, expand []string, profile bool) 
 // PostSearch invokes POST /api/v2/search
 //
 // Search resources.
-//
-// 
 func (a SuggestApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -201,7 +195,7 @@ func (a SuggestApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearc
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SuggestApi->PostSearch")
 	}
 
@@ -265,8 +259,6 @@ func (a SuggestApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearc
 // PostSearchSuggest invokes POST /api/v2/search/suggest
 //
 // Suggest resources.
-//
-// 
 func (a SuggestApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -278,7 +270,7 @@ func (a SuggestApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SuggestApi->PostSearchSuggest")
 	}
 

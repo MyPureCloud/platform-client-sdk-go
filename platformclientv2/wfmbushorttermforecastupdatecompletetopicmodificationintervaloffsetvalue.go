@@ -51,7 +51,7 @@ func (o *Wfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalu
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32
 	}
-	
+    
 
 	return nil
 }

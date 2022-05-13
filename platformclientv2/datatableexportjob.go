@@ -126,11 +126,11 @@ func (o *Datatableexportjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := DatatableexportjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DatatableexportjobMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Owner, ok := DatatableexportjobMap["owner"].(map[string]interface{}); ok {
 		OwnerString, _ := json.Marshal(Owner)
 		json.Unmarshal(OwnerString, &o.Owner)
@@ -139,7 +139,7 @@ func (o *Datatableexportjob) UnmarshalJSON(b []byte) error {
 	if Status, ok := DatatableexportjobMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if dateCreatedString, ok := DatatableexportjobMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -153,7 +153,7 @@ func (o *Datatableexportjob) UnmarshalJSON(b []byte) error {
 	if DownloadURI, ok := DatatableexportjobMap["downloadURI"].(string); ok {
 		o.DownloadURI = &DownloadURI
 	}
-	
+    
 	if ErrorInformation, ok := DatatableexportjobMap["errorInformation"].(map[string]interface{}); ok {
 		ErrorInformationString, _ := json.Marshal(ErrorInformation)
 		json.Unmarshal(ErrorInformationString, &o.ErrorInformation)
@@ -167,7 +167,7 @@ func (o *Datatableexportjob) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DatatableexportjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

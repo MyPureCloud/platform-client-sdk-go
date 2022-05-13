@@ -53,7 +53,7 @@ func (o *Presencedetailqueryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := PresencedetailqueryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := PresencedetailqueryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

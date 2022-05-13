@@ -25,7 +25,7 @@ type Queueusereventtopicqueuemember struct {
 
 
 	// AdditionalProperties
-	AdditionalProperties *map[string]Queueusereventtopicobject `json:"additionalProperties,omitempty"`
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -43,7 +43,7 @@ func (o *Queueusereventtopicqueuemember) MarshalJSON() ([]byte, error) {
 		
 		Joined *bool `json:"joined,omitempty"`
 		
-		AdditionalProperties *map[string]Queueusereventtopicobject `json:"additionalProperties,omitempty"`
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -69,7 +69,7 @@ func (o *Queueusereventtopicqueuemember) UnmarshalJSON(b []byte) error {
 	if Id, ok := QueueusereventtopicqueuememberMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := QueueusereventtopicqueuememberMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -78,11 +78,11 @@ func (o *Queueusereventtopicqueuemember) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := QueueusereventtopicqueuememberMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if Joined, ok := QueueusereventtopicqueuememberMap["joined"].(bool); ok {
 		o.Joined = &Joined
 	}
-	
+    
 	if AdditionalProperties, ok := QueueusereventtopicqueuememberMap["additionalProperties"].(map[string]interface{}); ok {
 		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
 		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)

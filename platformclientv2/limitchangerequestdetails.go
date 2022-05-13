@@ -166,39 +166,39 @@ func (o *Limitchangerequestdetails) UnmarshalJSON(b []byte) error {
 	if Id, ok := LimitchangerequestdetailsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Key, ok := LimitchangerequestdetailsMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if Namespace, ok := LimitchangerequestdetailsMap["namespace"].(string); ok {
 		o.Namespace = &Namespace
 	}
-	
+    
 	if RequestedValue, ok := LimitchangerequestdetailsMap["requestedValue"].(float64); ok {
 		o.RequestedValue = &RequestedValue
 	}
-	
+    
 	if Description, ok := LimitchangerequestdetailsMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SupportCaseUrl, ok := LimitchangerequestdetailsMap["supportCaseUrl"].(string); ok {
 		o.SupportCaseUrl = &SupportCaseUrl
 	}
-	
+    
 	if CreatedBy, ok := LimitchangerequestdetailsMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if Status, ok := LimitchangerequestdetailsMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if CurrentValue, ok := LimitchangerequestdetailsMap["currentValue"].(float64); ok {
 		o.CurrentValue = &CurrentValue
 	}
-	
+    
 	if dateCreatedString, ok := LimitchangerequestdetailsMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -217,15 +217,15 @@ func (o *Limitchangerequestdetails) UnmarshalJSON(b []byte) error {
 	if LastChangedBy, ok := LimitchangerequestdetailsMap["lastChangedBy"].(string); ok {
 		o.LastChangedBy = &LastChangedBy
 	}
-	
+    
 	if RejectReason, ok := LimitchangerequestdetailsMap["rejectReason"].(string); ok {
 		o.RejectReason = &RejectReason
 	}
-	
+    
 	if SelfUri, ok := LimitchangerequestdetailsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

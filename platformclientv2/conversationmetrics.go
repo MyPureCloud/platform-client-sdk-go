@@ -74,15 +74,15 @@ func (o *Conversationmetrics) UnmarshalJSON(b []byte) error {
 	if SentimentScore, ok := ConversationmetricsMap["sentimentScore"].(float64); ok {
 		o.SentimentScore = &SentimentScore
 	}
-	
+    
 	if SentimentTrend, ok := ConversationmetricsMap["sentimentTrend"].(float64); ok {
 		o.SentimentTrend = &SentimentTrend
 	}
-	
+    
 	if SentimentTrendClass, ok := ConversationmetricsMap["sentimentTrendClass"].(string); ok {
 		o.SentimentTrendClass = &SentimentTrendClass
 	}
-	
+    
 	if ParticipantMetrics, ok := ConversationmetricsMap["participantMetrics"].(map[string]interface{}); ok {
 		ParticipantMetricsString, _ := json.Marshal(ParticipantMetrics)
 		json.Unmarshal(ParticipantMetricsString, &o.ParticipantMetrics)

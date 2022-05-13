@@ -53,7 +53,7 @@ func (o *Edgemetricstopicedgemetricdisk) UnmarshalJSON(b []byte) error {
 	if PartitionName, ok := EdgemetricstopicedgemetricdiskMap["partitionName"].(string); ok {
 		o.PartitionName = &PartitionName
 	}
-	
+    
 	if AvailableBytes, ok := EdgemetricstopicedgemetricdiskMap["availableBytes"].(float64); ok {
 		AvailableBytesInt := int(AvailableBytes)
 		o.AvailableBytes = &AvailableBytesInt

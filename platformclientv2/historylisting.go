@@ -206,11 +206,11 @@ func (o *Historylisting) UnmarshalJSON(b []byte) error {
 	if Id, ok := HistorylistingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Complete, ok := HistorylistingMap["complete"].(bool); ok {
 		o.Complete = &Complete
 	}
-	
+    
 	if User, ok := HistorylistingMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -224,11 +224,11 @@ func (o *Historylisting) UnmarshalJSON(b []byte) error {
 	if ErrorMessage, ok := HistorylistingMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if ErrorCode, ok := HistorylistingMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if ErrorDetails, ok := HistorylistingMap["errorDetails"].([]interface{}); ok {
 		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
 		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
@@ -242,23 +242,23 @@ func (o *Historylisting) UnmarshalJSON(b []byte) error {
 	if ActionName, ok := HistorylistingMap["actionName"].(string); ok {
 		o.ActionName = &ActionName
 	}
-	
+    
 	if ActionStatus, ok := HistorylistingMap["actionStatus"].(string); ok {
 		o.ActionStatus = &ActionStatus
 	}
-	
+    
 	if Name, ok := HistorylistingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := HistorylistingMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if System, ok := HistorylistingMap["system"].(bool); ok {
 		o.System = &System
 	}
-	
+    
 	if startedString, ok := HistorylistingMap["started"].(string); ok {
 		Started, _ := time.Parse("2006-01-02T15:04:05.999999Z", startedString)
 		o.Started = &Started

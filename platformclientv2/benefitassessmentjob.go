@@ -86,11 +86,11 @@ func (o *Benefitassessmentjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := BenefitassessmentjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := BenefitassessmentjobMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateCreatedString, ok := BenefitassessmentjobMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -104,7 +104,7 @@ func (o *Benefitassessmentjob) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BenefitassessmentjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

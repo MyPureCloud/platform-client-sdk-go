@@ -91,11 +91,11 @@ func (o *Outofofficeeventoutofoffice) UnmarshalJSON(b []byte) error {
 	if Active, ok := OutofofficeeventoutofofficeMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if Indefinite, ok := OutofofficeeventoutofofficeMap["indefinite"].(bool); ok {
 		o.Indefinite = &Indefinite
 	}
-	
+    
 	if startDateString, ok := OutofofficeeventoutofofficeMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate

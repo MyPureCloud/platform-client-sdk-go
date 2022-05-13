@@ -45,11 +45,11 @@ func (o *Klaxoninteractionstatsalertstopicnotificationuser) UnmarshalJSON(b []by
 	if Id, ok := KlaxoninteractionstatsalertstopicnotificationuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DisplayName, ok := KlaxoninteractionstatsalertstopicnotificationuserMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 
 	return nil
 }

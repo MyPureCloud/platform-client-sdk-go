@@ -117,23 +117,23 @@ func (o *Weekschedule) UnmarshalJSON(b []byte) error {
 	if Id, ok := WeekscheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := WeekscheduleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if WeekDate, ok := WeekscheduleMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 	if Description, ok := WeekscheduleMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := WeekscheduleMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if GenerationResults, ok := WeekscheduleMap["generationResults"].(map[string]interface{}); ok {
 		GenerationResultsString, _ := json.Marshal(GenerationResults)
 		json.Unmarshal(GenerationResultsString, &o.GenerationResults)

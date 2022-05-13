@@ -69,19 +69,19 @@ func (o *Queueconversationeventtopicattachment) UnmarshalJSON(b []byte) error {
 	if AttachmentId, ok := QueueconversationeventtopicattachmentMap["attachmentId"].(string); ok {
 		o.AttachmentId = &AttachmentId
 	}
-	
+    
 	if Name, ok := QueueconversationeventtopicattachmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContentUri, ok := QueueconversationeventtopicattachmentMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if ContentType, ok := QueueconversationeventtopicattachmentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := QueueconversationeventtopicattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt

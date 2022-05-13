@@ -126,24 +126,24 @@ func (o *Klaxonheartbeatalertstopicheartbeatalert) UnmarshalJSON(b []byte) error
 	if Id, ok := KlaxonheartbeatalertstopicheartbeatalertMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KlaxonheartbeatalertstopicheartbeatalertMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SenderId, ok := KlaxonheartbeatalertstopicheartbeatalertMap["senderId"].(string); ok {
 		o.SenderId = &SenderId
 	}
-	
+    
 	if HeartBeatTimeoutInMinutes, ok := KlaxonheartbeatalertstopicheartbeatalertMap["heartBeatTimeoutInMinutes"].(float64); ok {
 		HeartBeatTimeoutInMinutesFloat32 := float32(HeartBeatTimeoutInMinutes)
 		o.HeartBeatTimeoutInMinutes = &HeartBeatTimeoutInMinutesFloat32
 	}
-	
+    
 	if RuleId, ok := KlaxonheartbeatalertstopicheartbeatalertMap["ruleId"].(string); ok {
 		o.RuleId = &RuleId
 	}
-	
+    
 	if startDateString, ok := KlaxonheartbeatalertstopicheartbeatalertMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -167,7 +167,7 @@ func (o *Klaxonheartbeatalertstopicheartbeatalert) UnmarshalJSON(b []byte) error
 	if RuleType, ok := KlaxonheartbeatalertstopicheartbeatalertMap["ruleType"].(string); ok {
 		o.RuleType = &RuleType
 	}
-	
+    
 
 	return nil
 }

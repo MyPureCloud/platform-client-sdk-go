@@ -50,7 +50,7 @@ func (o *Subscriberresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := SubscriberresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

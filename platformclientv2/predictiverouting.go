@@ -37,7 +37,7 @@ func (o *Predictiverouting) UnmarshalJSON(b []byte) error {
 	if RespectSkills, ok := PredictiveroutingMap["respectSkills"].(bool); ok {
 		o.RespectSkills = &RespectSkills
 	}
-	
+    
 
 	return nil
 }

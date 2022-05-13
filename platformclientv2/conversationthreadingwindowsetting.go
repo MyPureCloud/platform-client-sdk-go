@@ -45,7 +45,7 @@ func (o *Conversationthreadingwindowsetting) UnmarshalJSON(b []byte) error {
 	if MessengerType, ok := ConversationthreadingwindowsettingMap["messengerType"].(string); ok {
 		o.MessengerType = &MessengerType
 	}
-	
+    
 	if TimeoutInMinutes, ok := ConversationthreadingwindowsettingMap["timeoutInMinutes"].(float64); ok {
 		TimeoutInMinutesInt := int(TimeoutInMinutes)
 		o.TimeoutInMinutes = &TimeoutInMinutesInt

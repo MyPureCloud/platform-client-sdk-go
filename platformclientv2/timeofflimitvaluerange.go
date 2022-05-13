@@ -111,7 +111,7 @@ func (o *Timeofflimitvaluerange) UnmarshalJSON(b []byte) error {
 	if Granularity, ok := TimeofflimitvaluerangeMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if LimitMinutesPerInterval, ok := TimeofflimitvaluerangeMap["limitMinutesPerInterval"].([]interface{}); ok {
 		LimitMinutesPerIntervalString, _ := json.Marshal(LimitMinutesPerInterval)
 		json.Unmarshal(LimitMinutesPerIntervalString, &o.LimitMinutesPerInterval)

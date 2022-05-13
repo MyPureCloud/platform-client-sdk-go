@@ -45,11 +45,11 @@ func (o *Queueconversationeventtopicurireference) UnmarshalJSON(b []byte) error 
 	if Id, ok := QueueconversationeventtopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationeventtopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

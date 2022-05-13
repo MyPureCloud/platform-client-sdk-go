@@ -45,11 +45,11 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationnotificatio
 	if Name, ok := V2conversationmessagetypingeventforworkflowtopicconversationnotificationtemplateparameterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Text, ok := V2conversationmessagetypingeventforworkflowtopicconversationnotificationtemplateparameterMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 
 	return nil
 }

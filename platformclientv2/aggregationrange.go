@@ -46,12 +46,12 @@ func (o *Aggregationrange) UnmarshalJSON(b []byte) error {
 		GteFloat32 := float32(Gte)
 		o.Gte = &GteFloat32
 	}
-	
+    
 	if Lt, ok := AggregationrangeMap["lt"].(float64); ok {
 		LtFloat32 := float32(Lt)
 		o.Lt = &LtFloat32
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Learningassignmentreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningassignmentreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := LearningassignmentreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

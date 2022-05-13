@@ -158,11 +158,11 @@ func (o *Edgelogsjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgelogsjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgelogsjobMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EdgelogsjobMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -171,7 +171,7 @@ func (o *Edgelogsjob) UnmarshalJSON(b []byte) error {
 	if Description, ok := EdgelogsjobMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EdgelogsjobMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -190,23 +190,23 @@ func (o *Edgelogsjob) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EdgelogsjobMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EdgelogsjobMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EdgelogsjobMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EdgelogsjobMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EdgelogsjobMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Files, ok := EdgelogsjobMap["files"].([]interface{}); ok {
 		FilesString, _ := json.Marshal(Files)
 		json.Unmarshal(FilesString, &o.Files)
@@ -215,7 +215,7 @@ func (o *Edgelogsjob) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EdgelogsjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

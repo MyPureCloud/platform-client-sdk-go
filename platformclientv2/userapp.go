@@ -69,11 +69,11 @@ func (o *Userapp) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserappMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserappMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if IntegrationType, ok := UserappMap["integrationType"].(map[string]interface{}); ok {
 		IntegrationTypeString, _ := json.Marshal(IntegrationType)
 		json.Unmarshal(IntegrationTypeString, &o.IntegrationType)
@@ -87,7 +87,7 @@ func (o *Userapp) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UserappMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

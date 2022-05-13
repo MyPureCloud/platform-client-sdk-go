@@ -84,7 +84,7 @@ func (o *Userbestpointsitem) UnmarshalJSON(b []byte) error {
 	if GranularityType, ok := UserbestpointsitemMap["granularityType"].(string); ok {
 		o.GranularityType = &GranularityType
 	}
-	
+    
 	if Points, ok := UserbestpointsitemMap["points"].(float64); ok {
 		PointsInt := int(Points)
 		o.Points = &PointsInt

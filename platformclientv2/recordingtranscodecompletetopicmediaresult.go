@@ -61,15 +61,15 @@ func (o *Recordingtranscodecompletetopicmediaresult) UnmarshalJSON(b []byte) err
 	if ChannelId, ok := RecordingtranscodecompletetopicmediaresultMap["channelId"].(string); ok {
 		o.ChannelId = &ChannelId
 	}
-	
+    
 	if WaveUri, ok := RecordingtranscodecompletetopicmediaresultMap["waveUri"].(string); ok {
 		o.WaveUri = &WaveUri
 	}
-	
+    
 	if MediaUri, ok := RecordingtranscodecompletetopicmediaresultMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if WaveformData, ok := RecordingtranscodecompletetopicmediaresultMap["waveformData"].([]interface{}); ok {
 		WaveformDataString, _ := json.Marshal(WaveformData)
 		json.Unmarshal(WaveformDataString, &o.WaveformData)

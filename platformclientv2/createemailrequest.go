@@ -157,15 +157,15 @@ func (o *Createemailrequest) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := CreateemailrequestMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if FlowId, ok := CreateemailrequestMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if Provider, ok := CreateemailrequestMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if SkillIds, ok := CreateemailrequestMap["skillIds"].([]interface{}); ok {
 		SkillIdsString, _ := json.Marshal(SkillIds)
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
@@ -174,7 +174,7 @@ func (o *Createemailrequest) UnmarshalJSON(b []byte) error {
 	if LanguageId, ok := CreateemailrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}
-	
+    
 	if Priority, ok := CreateemailrequestMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
@@ -188,39 +188,39 @@ func (o *Createemailrequest) UnmarshalJSON(b []byte) error {
 	if ToAddress, ok := CreateemailrequestMap["toAddress"].(string); ok {
 		o.ToAddress = &ToAddress
 	}
-	
+    
 	if ToName, ok := CreateemailrequestMap["toName"].(string); ok {
 		o.ToName = &ToName
 	}
-	
+    
 	if FromAddress, ok := CreateemailrequestMap["fromAddress"].(string); ok {
 		o.FromAddress = &FromAddress
 	}
-	
+    
 	if FromName, ok := CreateemailrequestMap["fromName"].(string); ok {
 		o.FromName = &FromName
 	}
-	
+    
 	if Subject, ok := CreateemailrequestMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if Direction, ok := CreateemailrequestMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if HtmlBody, ok := CreateemailrequestMap["htmlBody"].(string); ok {
 		o.HtmlBody = &HtmlBody
 	}
-	
+    
 	if TextBody, ok := CreateemailrequestMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if ExternalContactId, ok := CreateemailrequestMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 
 	return nil
 }

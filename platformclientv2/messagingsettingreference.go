@@ -126,15 +126,15 @@ func (o *Messagingsettingreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagingsettingreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagingsettingreferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := MessagingsettingreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if dateCreatedString, ok := MessagingsettingreferenceMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -148,7 +148,7 @@ func (o *Messagingsettingreference) UnmarshalJSON(b []byte) error {
 	if Version, ok := MessagingsettingreferenceMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if CreatedBy, ok := MessagingsettingreferenceMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)

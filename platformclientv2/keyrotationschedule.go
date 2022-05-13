@@ -61,19 +61,19 @@ func (o *Keyrotationschedule) UnmarshalJSON(b []byte) error {
 	if Id, ok := KeyrotationscheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KeyrotationscheduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Period, ok := KeyrotationscheduleMap["period"].(string); ok {
 		o.Period = &Period
 	}
-	
+    
 	if SelfUri, ok := KeyrotationscheduleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

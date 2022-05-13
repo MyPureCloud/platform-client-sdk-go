@@ -53,7 +53,7 @@ func (o *Licenseassignmentrequest) UnmarshalJSON(b []byte) error {
 	if LicenseId, ok := LicenseassignmentrequestMap["licenseId"].(string); ok {
 		o.LicenseId = &LicenseId
 	}
-	
+    
 	if UserIdsAdd, ok := LicenseassignmentrequestMap["userIdsAdd"].([]interface{}); ok {
 		UserIdsAddString, _ := json.Marshal(UserIdsAdd)
 		json.Unmarshal(UserIdsAddString, &o.UserIdsAdd)

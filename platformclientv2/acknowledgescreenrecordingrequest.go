@@ -53,15 +53,15 @@ func (o *Acknowledgescreenrecordingrequest) UnmarshalJSON(b []byte) error {
 	if ParticipantJid, ok := AcknowledgescreenrecordingrequestMap["participantJid"].(string); ok {
 		o.ParticipantJid = &ParticipantJid
 	}
-	
+    
 	if RoomId, ok := AcknowledgescreenrecordingrequestMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if ConversationId, ok := AcknowledgescreenrecordingrequestMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 
 	return nil
 }

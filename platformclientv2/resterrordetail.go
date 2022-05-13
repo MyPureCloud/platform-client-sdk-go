@@ -45,11 +45,11 @@ func (o *Resterrordetail) UnmarshalJSON(b []byte) error {
 	if VarError, ok := ResterrordetailMap["error"].(string); ok {
 		o.VarError = &VarError
 	}
-	
+    
 	if Details, ok := ResterrordetailMap["details"].(string); ok {
 		o.Details = &Details
 	}
-	
+    
 
 	return nil
 }

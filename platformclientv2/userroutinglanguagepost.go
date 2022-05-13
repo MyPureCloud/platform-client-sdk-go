@@ -61,19 +61,19 @@ func (o *Userroutinglanguagepost) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserroutinglanguagepostMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Proficiency, ok := UserroutinglanguagepostMap["proficiency"].(float64); ok {
 		o.Proficiency = &Proficiency
 	}
-	
+    
 	if LanguageUri, ok := UserroutinglanguagepostMap["languageUri"].(string); ok {
 		o.LanguageUri = &LanguageUri
 	}
-	
+    
 	if SelfUri, ok := UserroutinglanguagepostMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

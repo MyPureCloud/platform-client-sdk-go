@@ -37,7 +37,7 @@ func (o *Faxtopicworkspacedata) UnmarshalJSON(b []byte) error {
 	if Id, ok := FaxtopicworkspacedataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

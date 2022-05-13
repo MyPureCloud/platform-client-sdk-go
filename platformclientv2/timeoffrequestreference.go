@@ -45,11 +45,11 @@ func (o *Timeoffrequestreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := TimeoffrequestreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := TimeoffrequestreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Publishform) UnmarshalJSON(b []byte) error {
 	if Published, ok := PublishformMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if Id, ok := PublishformMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

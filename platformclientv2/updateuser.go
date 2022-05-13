@@ -197,11 +197,11 @@ func (o *Updateuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := UpdateuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UpdateuserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Chat, ok := UpdateuserMap["chat"].(map[string]interface{}); ok {
 		ChatString, _ := json.Marshal(Chat)
 		json.Unmarshal(ChatString, &o.Chat)
@@ -210,11 +210,11 @@ func (o *Updateuser) UnmarshalJSON(b []byte) error {
 	if Department, ok := UpdateuserMap["department"].(string); ok {
 		o.Department = &Department
 	}
-	
+    
 	if Email, ok := UpdateuserMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if PrimaryContactInfo, ok := UpdateuserMap["primaryContactInfo"].([]interface{}); ok {
 		PrimaryContactInfoString, _ := json.Marshal(PrimaryContactInfo)
 		json.Unmarshal(PrimaryContactInfoString, &o.PrimaryContactInfo)
@@ -228,15 +228,15 @@ func (o *Updateuser) UnmarshalJSON(b []byte) error {
 	if Title, ok := UpdateuserMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Username, ok := UpdateuserMap["username"].(string); ok {
 		o.Username = &Username
 	}
-	
+    
 	if Manager, ok := UpdateuserMap["manager"].(string); ok {
 		o.Manager = &Manager
 	}
-	
+    
 	if Images, ok := UpdateuserMap["images"].([]interface{}); ok {
 		ImagesString, _ := json.Marshal(Images)
 		json.Unmarshal(ImagesString, &o.Images)
@@ -265,11 +265,11 @@ func (o *Updateuser) UnmarshalJSON(b []byte) error {
 	if State, ok := UpdateuserMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if AcdAutoAnswer, ok := UpdateuserMap["acdAutoAnswer"].(bool); ok {
 		o.AcdAutoAnswer = &AcdAutoAnswer
 	}
-	
+    
 	if Certifications, ok := UpdateuserMap["certifications"].([]interface{}); ok {
 		CertificationsString, _ := json.Marshal(Certifications)
 		json.Unmarshal(CertificationsString, &o.Certifications)
@@ -288,7 +288,7 @@ func (o *Updateuser) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UpdateuserMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

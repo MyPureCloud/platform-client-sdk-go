@@ -46,12 +46,12 @@ func (o *Wfmbuintradaydataupdatetopicbuintradayforecastdata) UnmarshalJSON(b []b
 		OfferedFloat32 := float32(Offered)
 		o.Offered = &OfferedFloat32
 	}
-	
+    
 	if AverageHandleTimeSeconds, ok := WfmbuintradaydataupdatetopicbuintradayforecastdataMap["averageHandleTimeSeconds"].(float64); ok {
 		AverageHandleTimeSecondsFloat32 := float32(AverageHandleTimeSeconds)
 		o.AverageHandleTimeSeconds = &AverageHandleTimeSecondsFloat32
 	}
-	
+    
 
 	return nil
 }

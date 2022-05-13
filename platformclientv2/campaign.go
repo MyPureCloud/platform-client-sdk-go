@@ -310,11 +310,11 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if Id, ok := CampaignMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := CampaignMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -343,7 +343,7 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if DialingMode, ok := CampaignMap["dialingMode"].(string); ok {
 		o.DialingMode = &DialingMode
 	}
-	
+    
 	if Script, ok := CampaignMap["script"].(map[string]interface{}); ok {
 		ScriptString, _ := json.Marshal(Script)
 		json.Unmarshal(ScriptString, &o.Script)
@@ -362,7 +362,7 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if CampaignStatus, ok := CampaignMap["campaignStatus"].(string); ok {
 		o.CampaignStatus = &CampaignStatus
 	}
-	
+    
 	if PhoneColumns, ok := CampaignMap["phoneColumns"].([]interface{}); ok {
 		PhoneColumnsString, _ := json.Marshal(PhoneColumns)
 		json.Unmarshal(PhoneColumnsString, &o.PhoneColumns)
@@ -371,7 +371,7 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if AbandonRate, ok := CampaignMap["abandonRate"].(float64); ok {
 		o.AbandonRate = &AbandonRate
 	}
-	
+    
 	if DncLists, ok := CampaignMap["dncLists"].([]interface{}); ok {
 		DncListsString, _ := json.Marshal(DncLists)
 		json.Unmarshal(DncListsString, &o.DncLists)
@@ -395,11 +395,11 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if CallerName, ok := CampaignMap["callerName"].(string); ok {
 		o.CallerName = &CallerName
 	}
-	
+    
 	if CallerAddress, ok := CampaignMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if OutboundLineCount, ok := CampaignMap["outboundLineCount"].(float64); ok {
 		OutboundLineCountInt := int(OutboundLineCount)
 		o.OutboundLineCount = &OutboundLineCountInt
@@ -413,7 +413,7 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if SkipPreviewDisabled, ok := CampaignMap["skipPreviewDisabled"].(bool); ok {
 		o.SkipPreviewDisabled = &SkipPreviewDisabled
 	}
-	
+    
 	if PreviewTimeOutSeconds, ok := CampaignMap["previewTimeOutSeconds"].(float64); ok {
 		PreviewTimeOutSecondsInt := int(PreviewTimeOutSeconds)
 		o.PreviewTimeOutSeconds = &PreviewTimeOutSecondsInt
@@ -422,7 +422,7 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if AlwaysRunning, ok := CampaignMap["alwaysRunning"].(bool); ok {
 		o.AlwaysRunning = &AlwaysRunning
 	}
-	
+    
 	if ContactSort, ok := CampaignMap["contactSort"].(map[string]interface{}); ok {
 		ContactSortString, _ := json.Marshal(ContactSort)
 		json.Unmarshal(ContactSortString, &o.ContactSort)
@@ -441,7 +441,7 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if CallAnalysisLanguage, ok := CampaignMap["callAnalysisLanguage"].(string); ok {
 		o.CallAnalysisLanguage = &CallAnalysisLanguage
 	}
-	
+    
 	if Priority, ok := CampaignMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
@@ -460,7 +460,7 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

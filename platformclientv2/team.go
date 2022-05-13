@@ -110,11 +110,11 @@ func (o *Team) UnmarshalJSON(b []byte) error {
 	if Id, ok := TeamMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TeamMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := TeamMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -123,7 +123,7 @@ func (o *Team) UnmarshalJSON(b []byte) error {
 	if Description, ok := TeamMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateCreatedString, ok := TeamMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -142,7 +142,7 @@ func (o *Team) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TeamMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

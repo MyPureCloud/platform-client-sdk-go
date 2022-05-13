@@ -53,7 +53,7 @@ func (o *Queueconversationeventtopicdisconnectreason) UnmarshalJSON(b []byte) er
 	if VarType, ok := QueueconversationeventtopicdisconnectreasonMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Code, ok := QueueconversationeventtopicdisconnectreasonMap["code"].(float64); ok {
 		CodeInt := int(Code)
 		o.Code = &CodeInt
@@ -62,7 +62,7 @@ func (o *Queueconversationeventtopicdisconnectreason) UnmarshalJSON(b []byte) er
 	if Phrase, ok := QueueconversationeventtopicdisconnectreasonMap["phrase"].(string); ok {
 		o.Phrase = &Phrase
 	}
-	
+    
 
 	return nil
 }

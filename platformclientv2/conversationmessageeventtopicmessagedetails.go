@@ -109,7 +109,7 @@ func (o *Conversationmessageeventtopicmessagedetails) UnmarshalJSON(b []byte) er
 	if MessageStatus, ok := ConversationmessageeventtopicmessagedetailsMap["messageStatus"].(string); ok {
 		o.MessageStatus = &MessageStatus
 	}
-	
+    
 	if Media, ok := ConversationmessageeventtopicmessagedetailsMap["media"].([]interface{}); ok {
 		MediaString, _ := json.Marshal(Media)
 		json.Unmarshal(MediaString, &o.Media)

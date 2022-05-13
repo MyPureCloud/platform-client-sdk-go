@@ -294,11 +294,11 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := CreatequeuerequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CreatequeuerequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := CreatequeuerequestMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -307,7 +307,7 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	if Description, ok := CreatequeuerequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateCreatedString, ok := CreatequeuerequestMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -321,11 +321,11 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := CreatequeuerequestMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := CreatequeuerequestMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if MemberCount, ok := CreatequeuerequestMap["memberCount"].(float64); ok {
 		MemberCountInt := int(MemberCount)
 		o.MemberCount = &MemberCountInt
@@ -364,7 +364,7 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	if SkillEvaluationMethod, ok := CreatequeuerequestMap["skillEvaluationMethod"].(string); ok {
 		o.SkillEvaluationMethod = &SkillEvaluationMethod
 	}
-	
+    
 	if QueueFlow, ok := CreatequeuerequestMap["queueFlow"].(map[string]interface{}); ok {
 		QueueFlowString, _ := json.Marshal(QueueFlow)
 		json.Unmarshal(QueueFlowString, &o.QueueFlow)
@@ -393,23 +393,23 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	if AutoAnswerOnly, ok := CreatequeuerequestMap["autoAnswerOnly"].(bool); ok {
 		o.AutoAnswerOnly = &AutoAnswerOnly
 	}
-	
+    
 	if EnableTranscription, ok := CreatequeuerequestMap["enableTranscription"].(bool); ok {
 		o.EnableTranscription = &EnableTranscription
 	}
-	
+    
 	if EnableManualAssignment, ok := CreatequeuerequestMap["enableManualAssignment"].(bool); ok {
 		o.EnableManualAssignment = &EnableManualAssignment
 	}
-	
+    
 	if CallingPartyName, ok := CreatequeuerequestMap["callingPartyName"].(string); ok {
 		o.CallingPartyName = &CallingPartyName
 	}
-	
+    
 	if CallingPartyNumber, ok := CreatequeuerequestMap["callingPartyNumber"].(string); ok {
 		o.CallingPartyNumber = &CallingPartyNumber
 	}
-	
+    
 	if DefaultScripts, ok := CreatequeuerequestMap["defaultScripts"].(map[string]interface{}); ok {
 		DefaultScriptsString, _ := json.Marshal(DefaultScripts)
 		json.Unmarshal(DefaultScriptsString, &o.DefaultScripts)
@@ -428,11 +428,11 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	if SourceQueueId, ok := CreatequeuerequestMap["sourceQueueId"].(string); ok {
 		o.SourceQueueId = &SourceQueueId
 	}
-	
+    
 	if SelfUri, ok := CreatequeuerequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

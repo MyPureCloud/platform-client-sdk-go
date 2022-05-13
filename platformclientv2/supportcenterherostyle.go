@@ -45,11 +45,11 @@ func (o *Supportcenterherostyle) UnmarshalJSON(b []byte) error {
 	if BackgroundColor, ok := SupportcenterherostyleMap["backgroundColor"].(string); ok {
 		o.BackgroundColor = &BackgroundColor
 	}
-	
+    
 	if TextColor, ok := SupportcenterherostyleMap["textColor"].(string); ok {
 		o.TextColor = &TextColor
 	}
-	
+    
 
 	return nil
 }

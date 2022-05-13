@@ -50,7 +50,7 @@ func (o *Invalidassignment) UnmarshalJSON(b []byte) error {
 	if Message, ok := InvalidassignmentMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

@@ -69,11 +69,11 @@ func (o *Subjectdivisiongrants) UnmarshalJSON(b []byte) error {
 	if Id, ok := SubjectdivisiongrantsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SubjectdivisiongrantsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Divisions, ok := SubjectdivisiongrantsMap["divisions"].([]interface{}); ok {
 		DivisionsString, _ := json.Marshal(Divisions)
 		json.Unmarshal(DivisionsString, &o.Divisions)
@@ -82,11 +82,11 @@ func (o *Subjectdivisiongrants) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SubjectdivisiongrantsMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if SelfUri, ok := SubjectdivisiongrantsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -61,7 +61,7 @@ func (o *Documentupload) UnmarshalJSON(b []byte) error {
 	if Name, ok := DocumentuploadMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Workspace, ok := DocumentuploadMap["workspace"].(map[string]interface{}); ok {
 		WorkspaceString, _ := json.Marshal(Workspace)
 		json.Unmarshal(WorkspaceString, &o.Workspace)

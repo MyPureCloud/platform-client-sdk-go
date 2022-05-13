@@ -45,11 +45,11 @@ func (o *Architectdependencytrackingbuildnotificationclient) UnmarshalJSON(b []b
 	if Id, ok := ArchitectdependencytrackingbuildnotificationclientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectdependencytrackingbuildnotificationclientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

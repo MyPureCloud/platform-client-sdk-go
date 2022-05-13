@@ -53,15 +53,15 @@ func (o *Helplink) UnmarshalJSON(b []byte) error {
 	if Uri, ok := HelplinkMap["uri"].(string); ok {
 		o.Uri = &Uri
 	}
-	
+    
 	if Title, ok := HelplinkMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := HelplinkMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Settingdirection) UnmarshalJSON(b []byte) error {
 	if Inbound, ok := SettingdirectionMap["inbound"].(string); ok {
 		o.Inbound = &Inbound
 	}
-	
+    
 	if Outbound, ok := SettingdirectionMap["outbound"].(string); ok {
 		o.Outbound = &Outbound
 	}
-	
+    
 
 	return nil
 }

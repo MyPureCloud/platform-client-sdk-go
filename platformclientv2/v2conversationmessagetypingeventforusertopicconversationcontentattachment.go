@@ -85,31 +85,31 @@ func (o *V2conversationmessagetypingeventforusertopicconversationcontentattachme
 	if Id, ok := V2conversationmessagetypingeventforusertopicconversationcontentattachmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MediaType, ok := V2conversationmessagetypingeventforusertopicconversationcontentattachmentMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Url, ok := V2conversationmessagetypingeventforusertopicconversationcontentattachmentMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Mime, ok := V2conversationmessagetypingeventforusertopicconversationcontentattachmentMap["mime"].(string); ok {
 		o.Mime = &Mime
 	}
-	
+    
 	if Text, ok := V2conversationmessagetypingeventforusertopicconversationcontentattachmentMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Sha256, ok := V2conversationmessagetypingeventforusertopicconversationcontentattachmentMap["sha256"].(string); ok {
 		o.Sha256 = &Sha256
 	}
-	
+    
 	if Filename, ok := V2conversationmessagetypingeventforusertopicconversationcontentattachmentMap["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 
 	return nil
 }

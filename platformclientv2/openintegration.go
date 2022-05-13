@@ -174,11 +174,11 @@ func (o *Openintegration) UnmarshalJSON(b []byte) error {
 	if Id, ok := OpenintegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OpenintegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := OpenintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -192,11 +192,11 @@ func (o *Openintegration) UnmarshalJSON(b []byte) error {
 	if OutboundNotificationWebhookUrl, ok := OpenintegrationMap["outboundNotificationWebhookUrl"].(string); ok {
 		o.OutboundNotificationWebhookUrl = &OutboundNotificationWebhookUrl
 	}
-	
+    
 	if OutboundNotificationWebhookSignatureSecretToken, ok := OpenintegrationMap["outboundNotificationWebhookSignatureSecretToken"].(string); ok {
 		o.OutboundNotificationWebhookSignatureSecretToken = &OutboundNotificationWebhookSignatureSecretToken
 	}
-	
+    
 	if WebhookHeaders, ok := OpenintegrationMap["webhookHeaders"].(map[string]interface{}); ok {
 		WebhookHeadersString, _ := json.Marshal(WebhookHeaders)
 		json.Unmarshal(WebhookHeadersString, &o.WebhookHeaders)
@@ -205,7 +205,7 @@ func (o *Openintegration) UnmarshalJSON(b []byte) error {
 	if Status, ok := OpenintegrationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Recipient, ok := OpenintegrationMap["recipient"].(map[string]interface{}); ok {
 		RecipientString, _ := json.Marshal(Recipient)
 		json.Unmarshal(RecipientString, &o.Recipient)
@@ -234,7 +234,7 @@ func (o *Openintegration) UnmarshalJSON(b []byte) error {
 	if CreateStatus, ok := OpenintegrationMap["createStatus"].(string); ok {
 		o.CreateStatus = &CreateStatus
 	}
-	
+    
 	if CreateError, ok := OpenintegrationMap["createError"].(map[string]interface{}); ok {
 		CreateErrorString, _ := json.Marshal(CreateError)
 		json.Unmarshal(CreateErrorString, &o.CreateError)
@@ -243,7 +243,7 @@ func (o *Openintegration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OpenintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

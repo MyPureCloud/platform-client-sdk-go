@@ -53,15 +53,15 @@ func (o *Scimphonenumber) UnmarshalJSON(b []byte) error {
 	if Value, ok := ScimphonenumberMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarType, ok := ScimphonenumberMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Primary, ok := ScimphonenumberMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 
 	return nil
 }

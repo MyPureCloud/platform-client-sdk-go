@@ -45,11 +45,11 @@ func (o *Edgechangetopicedge) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgechangetopicedgeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if OnlineStatus, ok := EdgechangetopicedgeMap["onlineStatus"].(string); ok {
 		o.OnlineStatus = &OnlineStatus
 	}
-	
+    
 
 	return nil
 }

@@ -63,7 +63,7 @@ func (o *Connectrate) UnmarshalJSON(b []byte) error {
 	if ConnectRatio, ok := ConnectrateMap["connectRatio"].(float64); ok {
 		o.ConnectRatio = &ConnectRatio
 	}
-	
+    
 
 	return nil
 }

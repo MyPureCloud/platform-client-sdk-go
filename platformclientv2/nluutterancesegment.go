@@ -45,7 +45,7 @@ func (o *Nluutterancesegment) UnmarshalJSON(b []byte) error {
 	if Text, ok := NluutterancesegmentMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Entity, ok := NluutterancesegmentMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

@@ -59,7 +59,7 @@ func (o *Headcountinterval) UnmarshalJSON(b []byte) error {
 	if Value, ok := HeadcountintervalMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

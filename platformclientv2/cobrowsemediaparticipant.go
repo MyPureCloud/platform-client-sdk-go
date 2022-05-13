@@ -390,15 +390,15 @@ func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
 	if Id, ok := CobrowsemediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CobrowsemediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := CobrowsemediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := CobrowsemediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -422,31 +422,31 @@ func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
 	if Purpose, ok := CobrowsemediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := CobrowsemediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := CobrowsemediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := CobrowsemediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := CobrowsemediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := CobrowsemediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := CobrowsemediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := CobrowsemediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -485,7 +485,7 @@ func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
 	if WrapupSkipped, ok := CobrowsemediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := CobrowsemediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -494,7 +494,7 @@ func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
 	if Provider, ok := CobrowsemediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := CobrowsemediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -513,11 +513,11 @@ func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
 	if Peer, ok := CobrowsemediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if FlaggedReason, ok := CobrowsemediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := CobrowsemediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -541,11 +541,11 @@ func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
 	if CobrowseSessionId, ok := CobrowsemediaparticipantMap["cobrowseSessionId"].(string); ok {
 		o.CobrowseSessionId = &CobrowseSessionId
 	}
-	
+    
 	if CobrowseRole, ok := CobrowsemediaparticipantMap["cobrowseRole"].(string); ok {
 		o.CobrowseRole = &CobrowseRole
 	}
-	
+    
 	if Controlling, ok := CobrowsemediaparticipantMap["controlling"].([]interface{}); ok {
 		ControllingString, _ := json.Marshal(Controlling)
 		json.Unmarshal(ControllingString, &o.Controlling)
@@ -554,7 +554,7 @@ func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
 	if ViewerUrl, ok := CobrowsemediaparticipantMap["viewerUrl"].(string); ok {
 		o.ViewerUrl = &ViewerUrl
 	}
-	
+    
 	if providerEventTimeString, ok := CobrowsemediaparticipantMap["providerEventTime"].(string); ok {
 		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
 		o.ProviderEventTime = &ProviderEventTime

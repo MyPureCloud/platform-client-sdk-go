@@ -190,15 +190,15 @@ func (o *Reportschedule) UnmarshalJSON(b []byte) error {
 	if Id, ok := ReportscheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ReportscheduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if QuartzCronExpression, ok := ReportscheduleMap["quartzCronExpression"].(string); ok {
 		o.QuartzCronExpression = &QuartzCronExpression
 	}
-	
+    
 	if nextFireTimeString, ok := ReportscheduleMap["nextFireTime"].(string); ok {
 		NextFireTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", nextFireTimeString)
 		o.NextFireTime = &NextFireTime
@@ -217,35 +217,35 @@ func (o *Reportschedule) UnmarshalJSON(b []byte) error {
 	if Description, ok := ReportscheduleMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if TimeZone, ok := ReportscheduleMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if TimePeriod, ok := ReportscheduleMap["timePeriod"].(string); ok {
 		o.TimePeriod = &TimePeriod
 	}
-	
+    
 	if Interval, ok := ReportscheduleMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if ReportFormat, ok := ReportscheduleMap["reportFormat"].(string); ok {
 		o.ReportFormat = &ReportFormat
 	}
-	
+    
 	if Locale, ok := ReportscheduleMap["locale"].(string); ok {
 		o.Locale = &Locale
 	}
-	
+    
 	if Enabled, ok := ReportscheduleMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if ReportId, ok := ReportscheduleMap["reportId"].(string); ok {
 		o.ReportId = &ReportId
 	}
-	
+    
 	if Parameters, ok := ReportscheduleMap["parameters"].(map[string]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)
@@ -259,7 +259,7 @@ func (o *Reportschedule) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ReportscheduleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

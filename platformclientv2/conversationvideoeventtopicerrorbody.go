@@ -109,11 +109,11 @@ func (o *Conversationvideoeventtopicerrorbody) UnmarshalJSON(b []byte) error {
 	if Message, ok := ConversationvideoeventtopicerrorbodyMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Code, ok := ConversationvideoeventtopicerrorbodyMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Status, ok := ConversationvideoeventtopicerrorbodyMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -122,15 +122,15 @@ func (o *Conversationvideoeventtopicerrorbody) UnmarshalJSON(b []byte) error {
 	if EntityId, ok := ConversationvideoeventtopicerrorbodyMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if EntityName, ok := ConversationvideoeventtopicerrorbodyMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 	if MessageWithParams, ok := ConversationvideoeventtopicerrorbodyMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := ConversationvideoeventtopicerrorbodyMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -139,7 +139,7 @@ func (o *Conversationvideoeventtopicerrorbody) UnmarshalJSON(b []byte) error {
 	if ContextId, ok := ConversationvideoeventtopicerrorbodyMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Details, ok := ConversationvideoeventtopicerrorbodyMap["details"].([]interface{}); ok {
 		DetailsString, _ := json.Marshal(Details)
 		json.Unmarshal(DetailsString, &o.Details)

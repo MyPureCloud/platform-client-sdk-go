@@ -85,11 +85,11 @@ func (o *Evaluationquestionscore) UnmarshalJSON(b []byte) error {
 	if QuestionId, ok := EvaluationquestionscoreMap["questionId"].(string); ok {
 		o.QuestionId = &QuestionId
 	}
-	
+    
 	if AnswerId, ok := EvaluationquestionscoreMap["answerId"].(string); ok {
 		o.AnswerId = &AnswerId
 	}
-	
+    
 	if Score, ok := EvaluationquestionscoreMap["score"].(float64); ok {
 		ScoreInt := int(Score)
 		o.Score = &ScoreInt
@@ -98,19 +98,19 @@ func (o *Evaluationquestionscore) UnmarshalJSON(b []byte) error {
 	if MarkedNA, ok := EvaluationquestionscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
 	}
-	
+    
 	if AssistedAnswerId, ok := EvaluationquestionscoreMap["assistedAnswerId"].(string); ok {
 		o.AssistedAnswerId = &AssistedAnswerId
 	}
-	
+    
 	if FailedKillQuestion, ok := EvaluationquestionscoreMap["failedKillQuestion"].(bool); ok {
 		o.FailedKillQuestion = &FailedKillQuestion
 	}
-	
+    
 	if Comments, ok := EvaluationquestionscoreMap["comments"].(string); ok {
 		o.Comments = &Comments
 	}
-	
+    
 
 	return nil
 }

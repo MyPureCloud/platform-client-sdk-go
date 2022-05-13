@@ -69,11 +69,11 @@ func (o *Commoncampaign) UnmarshalJSON(b []byte) error {
 	if Id, ok := CommoncampaignMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CommoncampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := CommoncampaignMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -82,11 +82,11 @@ func (o *Commoncampaign) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := CommoncampaignMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if SelfUri, ok := CommoncampaignMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

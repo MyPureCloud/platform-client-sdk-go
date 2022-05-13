@@ -69,7 +69,7 @@ func (o *Dnclistimportstatusimportstatus) UnmarshalJSON(b []byte) error {
 	if ImportState, ok := DnclistimportstatusimportstatusMap["importState"].(string); ok {
 		o.ImportState = &ImportState
 	}
-	
+    
 	if TotalRecords, ok := DnclistimportstatusimportstatusMap["totalRecords"].(float64); ok {
 		TotalRecordsInt := int(TotalRecords)
 		o.TotalRecords = &TotalRecordsInt
@@ -88,7 +88,7 @@ func (o *Dnclistimportstatusimportstatus) UnmarshalJSON(b []byte) error {
 	if FailureReason, ok := DnclistimportstatusimportstatusMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
 	}
-	
+    
 
 	return nil
 }

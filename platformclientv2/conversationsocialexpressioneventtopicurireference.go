@@ -45,11 +45,11 @@ func (o *Conversationsocialexpressioneventtopicurireference) UnmarshalJSON(b []b
 	if Id, ok := ConversationsocialexpressioneventtopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationsocialexpressioneventtopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

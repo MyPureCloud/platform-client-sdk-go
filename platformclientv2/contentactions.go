@@ -53,15 +53,15 @@ func (o *Contentactions) UnmarshalJSON(b []byte) error {
 	if Url, ok := ContentactionsMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if UrlTarget, ok := ContentactionsMap["urlTarget"].(string); ok {
 		o.UrlTarget = &UrlTarget
 	}
-	
+    
 	if Textback, ok := ContentactionsMap["textback"].(string); ok {
 		o.Textback = &Textback
 	}
-	
+    
 
 	return nil
 }

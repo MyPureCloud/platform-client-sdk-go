@@ -61,11 +61,11 @@ func (o *V2conversationmessagetypingeventforusertopicconversationnotificationtem
 	if VarType, ok := V2conversationmessagetypingeventforusertopicconversationnotificationtemplateheaderMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := V2conversationmessagetypingeventforusertopicconversationnotificationtemplateheaderMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Media, ok := V2conversationmessagetypingeventforusertopicconversationnotificationtemplateheaderMap["media"].(map[string]interface{}); ok {
 		MediaString, _ := json.Marshal(Media)
 		json.Unmarshal(MediaString, &o.Media)

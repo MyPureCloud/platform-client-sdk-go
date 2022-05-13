@@ -37,7 +37,7 @@ func (o *Textbotturnreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := TextbotturnreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

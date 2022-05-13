@@ -85,7 +85,7 @@ func (o *Wfmbuintradaydataupdatetopicbuintradaydatagroup) UnmarshalJSON(b []byte
 	if MediaType, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ForecastDataSummary, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["forecastDataSummary"].(map[string]interface{}); ok {
 		ForecastDataSummaryString, _ := json.Marshal(ForecastDataSummary)
 		json.Unmarshal(ForecastDataSummaryString, &o.ForecastDataSummary)

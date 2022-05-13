@@ -32,8 +32,6 @@ func NewIntegrationsApiWithConfig(config *Configuration) *IntegrationsApi {
 // DeleteIntegration invokes DELETE /api/v2/integrations/{integrationId}
 //
 // Delete integration.
-//
-// 
 func (a IntegrationsApi) DeleteIntegration(integrationId string) (*Integration, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -46,7 +44,7 @@ func (a IntegrationsApi) DeleteIntegration(integrationId string) (*Integration, 
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->DeleteIntegration")
 	}
 
@@ -105,8 +103,6 @@ func (a IntegrationsApi) DeleteIntegration(integrationId string) (*Integration, 
 // DeleteIntegrationsAction invokes DELETE /api/v2/integrations/actions/{actionId}
 //
 // Delete an Action
-//
-// 
 func (a IntegrationsApi) DeleteIntegrationsAction(actionId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -118,7 +114,7 @@ func (a IntegrationsApi) DeleteIntegrationsAction(actionId string) (*APIResponse
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->DeleteIntegrationsAction")
 	}
 
@@ -171,8 +167,6 @@ func (a IntegrationsApi) DeleteIntegrationsAction(actionId string) (*APIResponse
 // DeleteIntegrationsActionDraft invokes DELETE /api/v2/integrations/actions/{actionId}/draft
 //
 // Delete a Draft
-//
-// 
 func (a IntegrationsApi) DeleteIntegrationsActionDraft(actionId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -184,7 +178,7 @@ func (a IntegrationsApi) DeleteIntegrationsActionDraft(actionId string) (*APIRes
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->DeleteIntegrationsActionDraft")
 	}
 
@@ -237,8 +231,6 @@ func (a IntegrationsApi) DeleteIntegrationsActionDraft(actionId string) (*APIRes
 // DeleteIntegrationsCredential invokes DELETE /api/v2/integrations/credentials/{credentialId}
 //
 // Delete a set of credentials
-//
-// 
 func (a IntegrationsApi) DeleteIntegrationsCredential(credentialId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -250,7 +242,7 @@ func (a IntegrationsApi) DeleteIntegrationsCredential(credentialId string) (*API
 
 	// verify the required parameter 'credentialId' is set
 	if &credentialId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'credentialId' when calling IntegrationsApi->DeleteIntegrationsCredential")
 	}
 
@@ -303,8 +295,6 @@ func (a IntegrationsApi) DeleteIntegrationsCredential(credentialId string) (*API
 // GetIntegration invokes GET /api/v2/integrations/{integrationId}
 //
 // Get integration.
-//
-// 
 func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -317,7 +307,7 @@ func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, page
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->GetIntegration")
 	}
 
@@ -388,8 +378,6 @@ func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, page
 // GetIntegrationConfigCurrent invokes GET /api/v2/integrations/{integrationId}/config/current
 //
 // Get integration configuration.
-//
-// 
 func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Integrationconfiguration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -402,7 +390,7 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->GetIntegrationConfigCurrent")
 	}
 
@@ -461,8 +449,6 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 // GetIntegrations invokes GET /api/v2/integrations
 //
 // List integrations
-//
-// 
 func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -540,8 +526,6 @@ func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy st
 // GetIntegrationsAction invokes GET /api/v2/integrations/actions/{actionId}
 //
 // Retrieves a single Action matching id.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, includeConfig bool) (*Action, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -554,7 +538,7 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->GetIntegrationsAction")
 	}
 
@@ -617,8 +601,6 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 // GetIntegrationsActionDraft invokes GET /api/v2/integrations/actions/{actionId}/draft
 //
 // Retrieve a Draft
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand string, includeConfig bool) (*Action, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -631,7 +613,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->GetIntegrationsActionDraft")
 	}
 
@@ -694,8 +676,6 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 // GetIntegrationsActionDraftSchema invokes GET /api/v2/integrations/actions/{actionId}/draft/schemas/{fileName}
 //
 // Retrieve schema for a Draft based on filename.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileName string) (*Jsonschemadocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -709,12 +689,12 @@ func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileN
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->GetIntegrationsActionDraftSchema")
 	}
 	// verify the required parameter 'fileName' is set
 	if &fileName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'fileName' when calling IntegrationsApi->GetIntegrationsActionDraftSchema")
 	}
 
@@ -773,8 +753,6 @@ func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileN
 // GetIntegrationsActionDraftTemplate invokes GET /api/v2/integrations/actions/{actionId}/draft/templates/{fileName}
 //
 // Retrieve templates for a Draft based on filename.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionDraftTemplate(actionId string, fileName string) (*string, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -788,12 +766,12 @@ func (a IntegrationsApi) GetIntegrationsActionDraftTemplate(actionId string, fil
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->GetIntegrationsActionDraftTemplate")
 	}
 	// verify the required parameter 'fileName' is set
 	if &fileName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'fileName' when calling IntegrationsApi->GetIntegrationsActionDraftTemplate")
 	}
 
@@ -852,8 +830,6 @@ func (a IntegrationsApi) GetIntegrationsActionDraftTemplate(actionId string, fil
 // GetIntegrationsActionDraftValidation invokes GET /api/v2/integrations/actions/{actionId}/draft/validation
 //
 // Validate current Draft configuration.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (*Draftvalidationresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -866,7 +842,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->GetIntegrationsActionDraftValidation")
 	}
 
@@ -925,8 +901,6 @@ func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (
 // GetIntegrationsActionSchema invokes GET /api/v2/integrations/actions/{actionId}/schemas/{fileName}
 //
 // Retrieve schema for an action based on filename.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName string) (*Jsonschemadocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -940,12 +914,12 @@ func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName s
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->GetIntegrationsActionSchema")
 	}
 	// verify the required parameter 'fileName' is set
 	if &fileName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'fileName' when calling IntegrationsApi->GetIntegrationsActionSchema")
 	}
 
@@ -1004,8 +978,6 @@ func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName s
 // GetIntegrationsActionTemplate invokes GET /api/v2/integrations/actions/{actionId}/templates/{fileName}
 //
 // Retrieve text of templates for an action based on filename.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName string) (*string, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1019,12 +991,12 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->GetIntegrationsActionTemplate")
 	}
 	// verify the required parameter 'fileName' is set
 	if &fileName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'fileName' when calling IntegrationsApi->GetIntegrationsActionTemplate")
 	}
 
@@ -1083,8 +1055,6 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 // GetIntegrationsActions invokes GET /api/v2/integrations/actions
 //
 // Retrieves all actions associated with filters passed in via query param.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1172,8 +1142,6 @@ func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, ne
 // GetIntegrationsActionsCategories invokes GET /api/v2/integrations/actions/categories
 //
 // Retrieves all categories of available Actions
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, secure string) (*Categoryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1253,8 +1221,6 @@ func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int, pageNumb
 // GetIntegrationsActionsDrafts invokes GET /api/v2/integrations/actions/drafts
 //
 // Retrieves all action drafts associated with the filters passed in via query param.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1342,8 +1308,6 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber i
 // GetIntegrationsBotconnectorIntegrationIdBot invokes GET /api/v2/integrations/botconnector/{integrationId}/bots/{botId}
 //
 // Get a specific botConnector bot, plus versions, for this integration
-//
-// 
 func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBot(integrationId string, botId string, version string) (*Botconnectorbot, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1357,12 +1321,12 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBot(integration
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->GetIntegrationsBotconnectorIntegrationIdBot")
 	}
 	// verify the required parameter 'botId' is set
 	if &botId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'botId' when calling IntegrationsApi->GetIntegrationsBotconnectorIntegrationIdBot")
 	}
 
@@ -1423,8 +1387,6 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBot(integration
 // GetIntegrationsBotconnectorIntegrationIdBotVersions invokes GET /api/v2/integrations/botconnector/{integrationId}/bots/{botId}/versions
 //
 // Get a list of bot versions for a bot
-//
-// 
 func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotVersions(integrationId string, botId string, pageNumber int, pageSize int) (*Botconnectorbotversionsummaryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1438,12 +1400,12 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotVersions(int
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->GetIntegrationsBotconnectorIntegrationIdBotVersions")
 	}
 	// verify the required parameter 'botId' is set
 	if &botId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'botId' when calling IntegrationsApi->GetIntegrationsBotconnectorIntegrationIdBotVersions")
 	}
 
@@ -1506,8 +1468,6 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotVersions(int
 // GetIntegrationsBotconnectorIntegrationIdBots invokes GET /api/v2/integrations/botconnector/{integrationId}/bots
 //
 // Get a list of botConnector bots for this integration
-//
-// 
 func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBots(integrationId string) (*Botlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1520,7 +1480,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBots(integratio
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->GetIntegrationsBotconnectorIntegrationIdBots")
 	}
 
@@ -1579,8 +1539,6 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBots(integratio
 // GetIntegrationsBotconnectorIntegrationIdBotsSummaries invokes GET /api/v2/integrations/botconnector/{integrationId}/bots/summaries
 //
 // Get a summary list of botConnector bots for this integration
-//
-// 
 func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotsSummaries(integrationId string, pageNumber int, pageSize int) (*Botconnectorbotsummaryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1593,7 +1551,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotsSummaries(i
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->GetIntegrationsBotconnectorIntegrationIdBotsSummaries")
 	}
 
@@ -1656,8 +1614,6 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotsSummaries(i
 // GetIntegrationsClientapps invokes GET /api/v2/integrations/clientapps
 //
 // List permitted client app integrations for the logged in user
-//
-// 
 func (a IntegrationsApi) GetIntegrationsClientapps(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Clientappentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1814,8 +1770,6 @@ func (a IntegrationsApi) GetIntegrationsClientappsUnifiedcommunications(pageSize
 // GetIntegrationsCredential invokes GET /api/v2/integrations/credentials/{credentialId}
 //
 // Get a single credential with sensitive fields redacted
-//
-// 
 func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Credential, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1828,7 +1782,7 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 
 	// verify the required parameter 'credentialId' is set
 	if &credentialId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'credentialId' when calling IntegrationsApi->GetIntegrationsCredential")
 	}
 
@@ -1887,8 +1841,6 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 // GetIntegrationsCredentials invokes GET /api/v2/integrations/credentials
 //
 // List multiple sets of credentials
-//
-// 
 func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int, pageSize int) (*Credentialinfolisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1958,8 +1910,6 @@ func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int, pageSize int
 // GetIntegrationsCredentialsTypes invokes GET /api/v2/integrations/credentials/types
 //
 // List all credential types
-//
-// 
 func (a IntegrationsApi) GetIntegrationsCredentialsTypes() (*Credentialtypelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2025,8 +1975,6 @@ func (a IntegrationsApi) GetIntegrationsCredentialsTypes() (*Credentialtypelisti
 // GetIntegrationsEventlog invokes GET /api/v2/integrations/eventlog
 //
 // List all events
-//
-// 
 func (a IntegrationsApi) GetIntegrationsEventlog(pageSize int, pageNumber int, sortBy string, sortOrder string, entityId string) (*Integrationevententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2102,8 +2050,6 @@ func (a IntegrationsApi) GetIntegrationsEventlog(pageSize int, pageNumber int, s
 // GetIntegrationsEventlogEventId invokes GET /api/v2/integrations/eventlog/{eventId}
 //
 // Get a single event
-//
-// 
 func (a IntegrationsApi) GetIntegrationsEventlogEventId(eventId string) (*Integrationevent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2116,7 +2062,7 @@ func (a IntegrationsApi) GetIntegrationsEventlogEventId(eventId string) (*Integr
 
 	// verify the required parameter 'eventId' is set
 	if &eventId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'eventId' when calling IntegrationsApi->GetIntegrationsEventlogEventId")
 	}
 
@@ -2175,8 +2121,6 @@ func (a IntegrationsApi) GetIntegrationsEventlogEventId(eventId string) (*Integr
 // GetIntegrationsSpeechDialogflowAgent invokes GET /api/v2/integrations/speech/dialogflow/agents/{agentId}
 //
 // Get details about a Dialogflow agent
-//
-// 
 func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*Dialogflowagent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2189,7 +2133,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*
 
 	// verify the required parameter 'agentId' is set
 	if &agentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'agentId' when calling IntegrationsApi->GetIntegrationsSpeechDialogflowAgent")
 	}
 
@@ -2247,9 +2191,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*
 
 // GetIntegrationsSpeechDialogflowAgents invokes GET /api/v2/integrations/speech/dialogflow/agents
 //
-// Get a list of Dialogflow agents in the customers&#39; Google accounts
-//
-// 
+// Get a list of Dialogflow agents in the customers' Google accounts
 func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int, pageSize int, name string) (*Dialogflowagentsummaryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2321,8 +2263,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int, p
 // GetIntegrationsSpeechLexBotAlias invokes GET /api/v2/integrations/speech/lex/bot/alias/{aliasId}
 //
 // Get details about a Lex bot alias
-//
-// 
 func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexbotalias, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2335,7 +2275,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexb
 
 	// verify the required parameter 'aliasId' is set
 	if &aliasId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'aliasId' when calling IntegrationsApi->GetIntegrationsSpeechLexBotAlias")
 	}
 
@@ -2393,9 +2333,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexb
 
 // GetIntegrationsSpeechLexBotBotIdAliases invokes GET /api/v2/integrations/speech/lex/bot/{botId}/aliases
 //
-// Get a list of aliases for a bot in the customer&#39;s AWS accounts
-//
-// 
+// Get a list of aliases for a bot in the customer's AWS accounts
 func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, pageNumber int, pageSize int, status string, name string) (*Lexbotaliasentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2408,7 +2346,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, p
 
 	// verify the required parameter 'botId' is set
 	if &botId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'botId' when calling IntegrationsApi->GetIntegrationsSpeechLexBotBotIdAliases")
 	}
 
@@ -2474,9 +2412,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, p
 
 // GetIntegrationsSpeechLexBots invokes GET /api/v2/integrations/speech/lex/bots
 //
-// Get a list of Lex bots in the customers&#39; AWS accounts
-//
-// 
+// Get a list of Lex bots in the customers' AWS accounts
 func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int, pageSize int, name string) (*Lexbotentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2548,8 +2484,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int, pageSize i
 // GetIntegrationsSpeechTtsEngine invokes GET /api/v2/integrations/speech/tts/engines/{engineId}
 //
 // Get details about a TTS engine
-//
-// 
 func (a IntegrationsApi) GetIntegrationsSpeechTtsEngine(engineId string, includeVoices bool) (*Ttsengineentity, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2562,7 +2496,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngine(engineId string, include
 
 	// verify the required parameter 'engineId' is set
 	if &engineId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'engineId' when calling IntegrationsApi->GetIntegrationsSpeechTtsEngine")
 	}
 
@@ -2623,8 +2557,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngine(engineId string, include
 // GetIntegrationsSpeechTtsEngineVoice invokes GET /api/v2/integrations/speech/tts/engines/{engineId}/voices/{voiceId}
 //
 // Get details about a specific voice for a TTS engine
-//
-// 
 func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, voiceId string) (*Ttsvoiceentity, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2638,12 +2570,12 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, vo
 
 	// verify the required parameter 'engineId' is set
 	if &engineId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'engineId' when calling IntegrationsApi->GetIntegrationsSpeechTtsEngineVoice")
 	}
 	// verify the required parameter 'voiceId' is set
 	if &voiceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'voiceId' when calling IntegrationsApi->GetIntegrationsSpeechTtsEngineVoice")
 	}
 
@@ -2702,8 +2634,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, vo
 // GetIntegrationsSpeechTtsEngineVoices invokes GET /api/v2/integrations/speech/tts/engines/{engineId}/voices
 //
 // Get a list of voices for a TTS engine
-//
-// 
 func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, pageNumber int, pageSize int) (*Ttsvoiceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2716,7 +2646,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, p
 
 	// verify the required parameter 'engineId' is set
 	if &engineId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'engineId' when calling IntegrationsApi->GetIntegrationsSpeechTtsEngineVoices")
 	}
 
@@ -2779,8 +2709,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, p
 // GetIntegrationsSpeechTtsEngines invokes GET /api/v2/integrations/speech/tts/engines
 //
 // Get a list of TTS engines enabled for org
-//
-// 
 func (a IntegrationsApi) GetIntegrationsSpeechTtsEngines(pageNumber int, pageSize int, includeVoices bool, name string, language string) (*Ttsengineentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2856,8 +2784,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngines(pageNumber int, pageSiz
 // GetIntegrationsSpeechTtsSettings invokes GET /api/v2/integrations/speech/tts/settings
 //
 // Get TTS settings for an org
-//
-// 
 func (a IntegrationsApi) GetIntegrationsSpeechTtsSettings() (*Ttssettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2923,8 +2849,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsSettings() (*Ttssettings, *APIR
 // GetIntegrationsType invokes GET /api/v2/integrations/types/{typeId}
 //
 // Get integration type.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsType(typeId string) (*Integrationtype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2937,7 +2861,7 @@ func (a IntegrationsApi) GetIntegrationsType(typeId string) (*Integrationtype, *
 
 	// verify the required parameter 'typeId' is set
 	if &typeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'typeId' when calling IntegrationsApi->GetIntegrationsType")
 	}
 
@@ -2996,8 +2920,6 @@ func (a IntegrationsApi) GetIntegrationsType(typeId string) (*Integrationtype, *
 // GetIntegrationsTypeConfigschema invokes GET /api/v2/integrations/types/{typeId}/configschemas/{configType}
 //
 // Get properties config schema for an integration type.
-//
-// 
 func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configType string) (*Jsonschemadocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3011,12 +2933,12 @@ func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configTy
 
 	// verify the required parameter 'typeId' is set
 	if &typeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'typeId' when calling IntegrationsApi->GetIntegrationsTypeConfigschema")
 	}
 	// verify the required parameter 'configType' is set
 	if &configType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'configType' when calling IntegrationsApi->GetIntegrationsTypeConfigschema")
 	}
 
@@ -3075,8 +2997,6 @@ func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configTy
 // GetIntegrationsTypes invokes GET /api/v2/integrations/types
 //
 // List integration types
-//
-// 
 func (a IntegrationsApi) GetIntegrationsTypes(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integrationtypeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3154,8 +3074,6 @@ func (a IntegrationsApi) GetIntegrationsTypes(pageSize int, pageNumber int, sort
 // GetIntegrationsUserapps invokes GET /api/v2/integrations/userapps
 //
 // List permitted user app integrations for the logged in user
-//
-// 
 func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, appHost string) (*Userappentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3235,9 +3153,7 @@ func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int, pageNumber int, s
 // PatchIntegration invokes PATCH /api/v2/integrations/{integrationId}
 //
 // Update an integration.
-//
-// 
-func (a IntegrationsApi) PatchIntegration(integrationId string, body Integration, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integration, *APIResponse, error) {
+func (a IntegrationsApi) PatchIntegration(integrationId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, body Integration) (*Integration, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}"
@@ -3249,7 +3165,7 @@ func (a IntegrationsApi) PatchIntegration(integrationId string, body Integration
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->PatchIntegration")
 	}
 
@@ -3323,8 +3239,6 @@ func (a IntegrationsApi) PatchIntegration(integrationId string, body Integration
 // PatchIntegrationsAction invokes PATCH /api/v2/integrations/actions/{actionId}
 //
 // Patch an Action
-//
-// 
 func (a IntegrationsApi) PatchIntegrationsAction(actionId string, body Updateactioninput) (*Action, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3337,12 +3251,12 @@ func (a IntegrationsApi) PatchIntegrationsAction(actionId string, body Updateact
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->PatchIntegrationsAction")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PatchIntegrationsAction")
 	}
 
@@ -3404,8 +3318,6 @@ func (a IntegrationsApi) PatchIntegrationsAction(actionId string, body Updateact
 // PatchIntegrationsActionDraft invokes PATCH /api/v2/integrations/actions/{actionId}/draft
 //
 // Update an existing Draft
-//
-// 
 func (a IntegrationsApi) PatchIntegrationsActionDraft(actionId string, body Updatedraftinput) (*Action, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3418,12 +3330,12 @@ func (a IntegrationsApi) PatchIntegrationsActionDraft(actionId string, body Upda
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->PatchIntegrationsActionDraft")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PatchIntegrationsActionDraft")
 	}
 
@@ -3485,8 +3397,6 @@ func (a IntegrationsApi) PatchIntegrationsActionDraft(actionId string, body Upda
 // PostIntegrations invokes POST /api/v2/integrations
 //
 // Create an integration.
-//
-// 
 func (a IntegrationsApi) PostIntegrations(body Createintegrationrequest) (*Integration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3555,8 +3465,6 @@ func (a IntegrationsApi) PostIntegrations(body Createintegrationrequest) (*Integ
 // PostIntegrationsActionDraft invokes POST /api/v2/integrations/actions/{actionId}/draft
 //
 // Create a new Draft from existing Action
-//
-// 
 func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3569,7 +3477,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, 
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->PostIntegrationsActionDraft")
 	}
 
@@ -3628,8 +3536,6 @@ func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, 
 // PostIntegrationsActionDraftPublish invokes POST /api/v2/integrations/actions/{actionId}/draft/publish
 //
 // Publish a Draft and make it the active Action configuration
-//
-// 
 func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, body Publishdraftinput) (*Action, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3642,12 +3548,12 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->PostIntegrationsActionDraftPublish")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PostIntegrationsActionDraftPublish")
 	}
 
@@ -3709,8 +3615,6 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 // PostIntegrationsActionDraftTest invokes POST /api/v2/integrations/actions/{actionId}/draft/test
 //
 // Test the execution of a draft. Responses will show execution steps broken out with intermediate results to help in debugging.
-//
-// 
 func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body interface{}) (*Testexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3723,12 +3627,12 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->PostIntegrationsActionDraftTest")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PostIntegrationsActionDraftTest")
 	}
 
@@ -3790,8 +3694,6 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 // PostIntegrationsActionExecute invokes POST /api/v2/integrations/actions/{actionId}/execute
 //
 // Execute Action and return response from 3rd party.  Responses will follow the schemas defined on the Action for success and error.
-//
-// 
 func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body interface{}) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3804,12 +3706,12 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->PostIntegrationsActionExecute")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PostIntegrationsActionExecute")
 	}
 
@@ -3871,8 +3773,6 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 // PostIntegrationsActionTest invokes POST /api/v2/integrations/actions/{actionId}/test
 //
 // Test the execution of an action. Responses will show execution steps broken out with intermediate results to help in debugging.
-//
-// 
 func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interface{}) (*Testexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3885,12 +3785,12 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 
 	// verify the required parameter 'actionId' is set
 	if &actionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionId' when calling IntegrationsApi->PostIntegrationsActionTest")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PostIntegrationsActionTest")
 	}
 
@@ -3952,8 +3852,6 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 // PostIntegrationsActions invokes POST /api/v2/integrations/actions
 //
 // Create a new Action
-//
-// 
 func (a IntegrationsApi) PostIntegrationsActions(body Postactioninput) (*Action, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3965,7 +3863,7 @@ func (a IntegrationsApi) PostIntegrationsActions(body Postactioninput) (*Action,
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PostIntegrationsActions")
 	}
 
@@ -4027,8 +3925,6 @@ func (a IntegrationsApi) PostIntegrationsActions(body Postactioninput) (*Action,
 // PostIntegrationsActionsDrafts invokes POST /api/v2/integrations/actions/drafts
 //
 // Create a new Draft
-//
-// 
 func (a IntegrationsApi) PostIntegrationsActionsDrafts(body Postactioninput) (*Action, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4040,7 +3936,7 @@ func (a IntegrationsApi) PostIntegrationsActionsDrafts(body Postactioninput) (*A
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PostIntegrationsActionsDrafts")
 	}
 
@@ -4102,8 +3998,6 @@ func (a IntegrationsApi) PostIntegrationsActionsDrafts(body Postactioninput) (*A
 // PostIntegrationsCredentials invokes POST /api/v2/integrations/credentials
 //
 // Create a set of credentials
-//
-// 
 func (a IntegrationsApi) PostIntegrationsCredentials(body Credential) (*Credentialinfo, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4172,8 +4066,6 @@ func (a IntegrationsApi) PostIntegrationsCredentials(body Credential) (*Credenti
 // PostIntegrationsWorkforcemanagementVendorconnection invokes POST /api/v2/integrations/workforcemanagement/vendorconnection
 //
 // Add a vendor connection
-//
-// 
 func (a IntegrationsApi) PostIntegrationsWorkforcemanagementVendorconnection(body Vendorconnectionrequest) (*Useractioncategoryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4242,8 +4134,6 @@ func (a IntegrationsApi) PostIntegrationsWorkforcemanagementVendorconnection(bod
 // PutIntegrationConfigCurrent invokes PUT /api/v2/integrations/{integrationId}/config/current
 //
 // Update integration configuration.
-//
-// 
 func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body Integrationconfiguration) (*Integrationconfiguration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4256,7 +4146,7 @@ func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body 
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->PutIntegrationConfigCurrent")
 	}
 
@@ -4318,8 +4208,6 @@ func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body 
 // PutIntegrationsBotconnectorIntegrationIdBots invokes PUT /api/v2/integrations/botconnector/{integrationId}/bots
 //
 // Set a list of botConnector bots plus versions for this integration
-//
-// 
 func (a IntegrationsApi) PutIntegrationsBotconnectorIntegrationIdBots(integrationId string, botList Botlist) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4331,12 +4219,12 @@ func (a IntegrationsApi) PutIntegrationsBotconnectorIntegrationIdBots(integratio
 
 	// verify the required parameter 'integrationId' is set
 	if &integrationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'integrationId' when calling IntegrationsApi->PutIntegrationsBotconnectorIntegrationIdBots")
 	}
 	// verify the required parameter 'botList' is set
 	if &botList == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'botList' when calling IntegrationsApi->PutIntegrationsBotconnectorIntegrationIdBots")
 	}
 
@@ -4392,8 +4280,6 @@ func (a IntegrationsApi) PutIntegrationsBotconnectorIntegrationIdBots(integratio
 // PutIntegrationsCredential invokes PUT /api/v2/integrations/credentials/{credentialId}
 //
 // Update a set of credentials
-//
-// 
 func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Credential) (*Credentialinfo, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4406,7 +4292,7 @@ func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Cre
 
 	// verify the required parameter 'credentialId' is set
 	if &credentialId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'credentialId' when calling IntegrationsApi->PutIntegrationsCredential")
 	}
 
@@ -4468,8 +4354,6 @@ func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Cre
 // PutIntegrationsSpeechTtsSettings invokes PUT /api/v2/integrations/speech/tts/settings
 //
 // Update TTS settings for an org
-//
-// 
 func (a IntegrationsApi) PutIntegrationsSpeechTtsSettings(body Ttssettings) (*Ttssettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4481,7 +4365,7 @@ func (a IntegrationsApi) PutIntegrationsSpeechTtsSettings(body Ttssettings) (*Tt
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IntegrationsApi->PutIntegrationsSpeechTtsSettings")
 	}
 

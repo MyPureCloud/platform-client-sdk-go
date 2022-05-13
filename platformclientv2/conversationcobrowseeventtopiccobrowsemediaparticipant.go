@@ -398,15 +398,15 @@ func (o *Conversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJSON(b
 	if Id, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -430,31 +430,31 @@ func (o *Conversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJSON(b
 	if Purpose, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -493,7 +493,7 @@ func (o *Conversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJSON(b
 	if WrapupSkipped, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -502,7 +502,7 @@ func (o *Conversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJSON(b
 	if Provider, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -526,15 +526,15 @@ func (o *Conversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJSON(b
 	if Peer, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -553,15 +553,15 @@ func (o *Conversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJSON(b
 	if CobrowseSessionId, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["cobrowseSessionId"].(string); ok {
 		o.CobrowseSessionId = &CobrowseSessionId
 	}
-	
+    
 	if CobrowseRole, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["cobrowseRole"].(string); ok {
 		o.CobrowseRole = &CobrowseRole
 	}
-	
+    
 	if ViewerUrl, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["viewerUrl"].(string); ok {
 		o.ViewerUrl = &ViewerUrl
 	}
-	
+    
 	if providerEventTimeString, ok := ConversationcobrowseeventtopiccobrowsemediaparticipantMap["providerEventTime"].(string); ok {
 		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
 		o.ProviderEventTime = &ProviderEventTime

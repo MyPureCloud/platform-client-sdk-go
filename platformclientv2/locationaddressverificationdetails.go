@@ -78,7 +78,7 @@ func (o *Locationaddressverificationdetails) UnmarshalJSON(b []byte) error {
 	if Status, ok := LocationaddressverificationdetailsMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if dateFinishedString, ok := LocationaddressverificationdetailsMap["dateFinished"].(string); ok {
 		DateFinished, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateFinishedString)
 		o.DateFinished = &DateFinished
@@ -92,7 +92,7 @@ func (o *Locationaddressverificationdetails) UnmarshalJSON(b []byte) error {
 	if Service, ok := LocationaddressverificationdetailsMap["service"].(string); ok {
 		o.Service = &Service
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Items) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ItemsMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Pattern, ok := ItemsMap["pattern"].(string); ok {
 		o.Pattern = &Pattern
 	}
-	
+    
 
 	return nil
 }

@@ -109,11 +109,11 @@ func (o *Errorbody) UnmarshalJSON(b []byte) error {
 	if Message, ok := ErrorbodyMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Code, ok := ErrorbodyMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Status, ok := ErrorbodyMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -122,15 +122,15 @@ func (o *Errorbody) UnmarshalJSON(b []byte) error {
 	if EntityId, ok := ErrorbodyMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if EntityName, ok := ErrorbodyMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 	if MessageWithParams, ok := ErrorbodyMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := ErrorbodyMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -139,7 +139,7 @@ func (o *Errorbody) UnmarshalJSON(b []byte) error {
 	if ContextId, ok := ErrorbodyMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Details, ok := ErrorbodyMap["details"].([]interface{}); ok {
 		DetailsString, _ := json.Marshal(Details)
 		json.Unmarshal(DetailsString, &o.Details)

@@ -53,7 +53,7 @@ func (o *Generatebuforecastrequest) UnmarshalJSON(b []byte) error {
 	if Description, ok := GeneratebuforecastrequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if WeekCount, ok := GeneratebuforecastrequestMap["weekCount"].(float64); ok {
 		WeekCountInt := int(WeekCount)
 		o.WeekCount = &WeekCountInt
@@ -62,7 +62,7 @@ func (o *Generatebuforecastrequest) UnmarshalJSON(b []byte) error {
 	if CanUseForScheduling, ok := GeneratebuforecastrequestMap["canUseForScheduling"].(bool); ok {
 		o.CanUseForScheduling = &CanUseForScheduling
 	}
-	
+    
 
 	return nil
 }

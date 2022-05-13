@@ -366,15 +366,15 @@ func (o *Conversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []byte)
 	if Id, ok := ConversationchateventtopicchatmediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationchateventtopicchatmediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := ConversationchateventtopicchatmediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := ConversationchateventtopicchatmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -398,31 +398,31 @@ func (o *Conversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []byte)
 	if Purpose, ok := ConversationchateventtopicchatmediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := ConversationchateventtopicchatmediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := ConversationchateventtopicchatmediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := ConversationchateventtopicchatmediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := ConversationchateventtopicchatmediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := ConversationchateventtopicchatmediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := ConversationchateventtopicchatmediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := ConversationchateventtopicchatmediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -461,7 +461,7 @@ func (o *Conversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []byte)
 	if WrapupSkipped, ok := ConversationchateventtopicchatmediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := ConversationchateventtopicchatmediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -470,7 +470,7 @@ func (o *Conversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []byte)
 	if Provider, ok := ConversationchateventtopicchatmediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := ConversationchateventtopicchatmediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -494,15 +494,15 @@ func (o *Conversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []byte)
 	if Peer, ok := ConversationchateventtopicchatmediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := ConversationchateventtopicchatmediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := ConversationchateventtopicchatmediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := ConversationchateventtopicchatmediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -521,11 +521,11 @@ func (o *Conversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []byte)
 	if RoomId, ok := ConversationchateventtopicchatmediaparticipantMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if AvatarImageUrl, ok := ConversationchateventtopicchatmediaparticipantMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 
 	return nil
 }

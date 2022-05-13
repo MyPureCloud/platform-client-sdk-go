@@ -66,15 +66,15 @@ func (o *Categorylisting) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := CategorylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := CategorylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := CategorylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

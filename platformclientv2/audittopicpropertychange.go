@@ -53,7 +53,7 @@ func (o *Audittopicpropertychange) UnmarshalJSON(b []byte) error {
 	if Property, ok := AudittopicpropertychangeMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if OldValues, ok := AudittopicpropertychangeMap["oldValues"].([]interface{}); ok {
 		OldValuesString, _ := json.Marshal(OldValues)
 		json.Unmarshal(OldValuesString, &o.OldValues)

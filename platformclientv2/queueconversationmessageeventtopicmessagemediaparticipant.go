@@ -382,15 +382,15 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
 	if Id, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -414,31 +414,31 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
 	if Purpose, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -477,7 +477,7 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
 	if WrapupSkipped, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -486,7 +486,7 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
 	if Provider, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -510,15 +510,15 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
 	if Peer, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -542,15 +542,15 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
 	if VarType, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if RecipientCountry, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["recipientCountry"].(string); ok {
 		o.RecipientCountry = &RecipientCountry
 	}
-	
+    
 	if RecipientType, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["recipientType"].(string); ok {
 		o.RecipientType = &RecipientType
 	}
-	
+    
 
 	return nil
 }

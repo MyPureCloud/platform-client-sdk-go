@@ -90,27 +90,27 @@ func (o *Usertokenstopictokennotification) UnmarshalJSON(b []byte) error {
 	if IpAddress, ok := UsertokenstopictokennotificationMap["ipAddress"].(string); ok {
 		o.IpAddress = &IpAddress
 	}
-	
+    
 	if DateCreated, ok := UsertokenstopictokennotificationMap["dateCreated"].(string); ok {
 		o.DateCreated = &DateCreated
 	}
-	
+    
 	if TokenExpirationDate, ok := UsertokenstopictokennotificationMap["tokenExpirationDate"].(string); ok {
 		o.TokenExpirationDate = &TokenExpirationDate
 	}
-	
+    
 	if SessionId, ok := UsertokenstopictokennotificationMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if ClientId, ok := UsertokenstopictokennotificationMap["clientId"].(string); ok {
 		o.ClientId = &ClientId
 	}
-	
+    
 	if TokenHash, ok := UsertokenstopictokennotificationMap["tokenHash"].(string); ok {
 		o.TokenHash = &TokenHash
 	}
-	
+    
 
 	return nil
 }

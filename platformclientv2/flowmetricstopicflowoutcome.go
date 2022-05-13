@@ -53,15 +53,15 @@ func (o *Flowmetricstopicflowoutcome) UnmarshalJSON(b []byte) error {
 	if FlowOutcome, ok := FlowmetricstopicflowoutcomeMap["flowOutcome"].(string); ok {
 		o.FlowOutcome = &FlowOutcome
 	}
-	
+    
 	if FlowOutcomeId, ok := FlowmetricstopicflowoutcomeMap["flowOutcomeId"].(string); ok {
 		o.FlowOutcomeId = &FlowOutcomeId
 	}
-	
+    
 	if FlowOutcomeValue, ok := FlowmetricstopicflowoutcomeMap["flowOutcomeValue"].(string); ok {
 		o.FlowOutcomeValue = &FlowOutcomeValue
 	}
-	
+    
 
 	return nil
 }

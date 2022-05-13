@@ -50,7 +50,7 @@ func (o *Urlcondition) UnmarshalJSON(b []byte) error {
 	if Operator, ok := UrlconditionMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 
 	return nil
 }

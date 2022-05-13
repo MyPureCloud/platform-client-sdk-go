@@ -85,31 +85,31 @@ func (o *Openmessagingfromrecipient) UnmarshalJSON(b []byte) error {
 	if Nickname, ok := OpenmessagingfromrecipientMap["nickname"].(string); ok {
 		o.Nickname = &Nickname
 	}
-	
+    
 	if Id, ok := OpenmessagingfromrecipientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IdType, ok := OpenmessagingfromrecipientMap["idType"].(string); ok {
 		o.IdType = &IdType
 	}
-	
+    
 	if FirstName, ok := OpenmessagingfromrecipientMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}
-	
+    
 	if LastName, ok := OpenmessagingfromrecipientMap["lastName"].(string); ok {
 		o.LastName = &LastName
 	}
-	
+    
 	if Image, ok := OpenmessagingfromrecipientMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Email, ok := OpenmessagingfromrecipientMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 
 	return nil
 }

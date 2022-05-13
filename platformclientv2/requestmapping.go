@@ -61,19 +61,19 @@ func (o *Requestmapping) UnmarshalJSON(b []byte) error {
 	if Name, ok := RequestmappingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if AttributeType, ok := RequestmappingMap["attributeType"].(string); ok {
 		o.AttributeType = &AttributeType
 	}
-	
+    
 	if MappingType, ok := RequestmappingMap["mappingType"].(string); ok {
 		o.MappingType = &MappingType
 	}
-	
+    
 	if Value, ok := RequestmappingMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

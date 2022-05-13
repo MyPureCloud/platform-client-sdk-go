@@ -262,11 +262,11 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 	if Id, ok := SiteMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SiteMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := SiteMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -275,7 +275,7 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 	if Description, ok := SiteMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := SiteMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -294,23 +294,23 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := SiteMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := SiteMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := SiteMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := SiteMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := SiteMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if PrimarySites, ok := SiteMap["primarySites"].([]interface{}); ok {
 		PrimarySitesString, _ := json.Marshal(PrimarySites)
 		json.Unmarshal(PrimarySitesString, &o.PrimarySites)
@@ -349,7 +349,7 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 	if MediaRegionsUseLatencyBased, ok := SiteMap["mediaRegionsUseLatencyBased"].(bool); ok {
 		o.MediaRegionsUseLatencyBased = &MediaRegionsUseLatencyBased
 	}
-	
+    
 	if Location, ok := SiteMap["location"].(map[string]interface{}); ok {
 		LocationString, _ := json.Marshal(Location)
 		json.Unmarshal(LocationString, &o.Location)
@@ -358,7 +358,7 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 	if Managed, ok := SiteMap["managed"].(bool); ok {
 		o.Managed = &Managed
 	}
-	
+    
 	if NtpSettings, ok := SiteMap["ntpSettings"].(map[string]interface{}); ok {
 		NtpSettingsString, _ := json.Marshal(NtpSettings)
 		json.Unmarshal(NtpSettingsString, &o.NtpSettings)
@@ -367,11 +367,11 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 	if MediaModel, ok := SiteMap["mediaModel"].(string); ok {
 		o.MediaModel = &MediaModel
 	}
-	
+    
 	if CoreSite, ok := SiteMap["coreSite"].(bool); ok {
 		o.CoreSite = &CoreSite
 	}
-	
+    
 	if SiteConnections, ok := SiteMap["siteConnections"].([]interface{}); ok {
 		SiteConnectionsString, _ := json.Marshal(SiteConnections)
 		json.Unmarshal(SiteConnectionsString, &o.SiteConnections)
@@ -380,7 +380,7 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SiteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

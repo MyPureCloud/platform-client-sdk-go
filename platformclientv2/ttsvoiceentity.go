@@ -85,19 +85,19 @@ func (o *Ttsvoiceentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := TtsvoiceentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TtsvoiceentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Gender, ok := TtsvoiceentityMap["gender"].(string); ok {
 		o.Gender = &Gender
 	}
-	
+    
 	if Language, ok := TtsvoiceentityMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Engine, ok := TtsvoiceentityMap["engine"].(map[string]interface{}); ok {
 		EngineString, _ := json.Marshal(Engine)
 		json.Unmarshal(EngineString, &o.Engine)
@@ -106,11 +106,11 @@ func (o *Ttsvoiceentity) UnmarshalJSON(b []byte) error {
 	if IsDefault, ok := TtsvoiceentityMap["isDefault"].(bool); ok {
 		o.IsDefault = &IsDefault
 	}
-	
+    
 	if SelfUri, ok := TtsvoiceentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

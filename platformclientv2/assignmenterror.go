@@ -50,7 +50,7 @@ func (o *Assignmenterror) UnmarshalJSON(b []byte) error {
 	if Message, ok := AssignmenterrorMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

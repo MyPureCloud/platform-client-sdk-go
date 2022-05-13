@@ -66,11 +66,11 @@ func (o *Attributedetaileventtopicattributeupdateevent) UnmarshalJSON(b []byte) 
 	if ConversationId, ok := AttributedetaileventtopicattributeupdateeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := AttributedetaileventtopicattributeupdateeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if Attributes, ok := AttributedetaileventtopicattributeupdateeventMap["attributes"].(map[string]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)

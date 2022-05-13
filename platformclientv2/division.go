@@ -53,15 +53,15 @@ func (o *Division) UnmarshalJSON(b []byte) error {
 	if Id, ok := DivisionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DivisionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := DivisionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

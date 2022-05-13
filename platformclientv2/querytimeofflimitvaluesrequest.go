@@ -53,11 +53,11 @@ func (o *Querytimeofflimitvaluesrequest) UnmarshalJSON(b []byte) error {
 	if TimeOffLimitId, ok := QuerytimeofflimitvaluesrequestMap["timeOffLimitId"].(string); ok {
 		o.TimeOffLimitId = &TimeOffLimitId
 	}
-	
+    
 	if ActivityCodeId, ok := QuerytimeofflimitvaluesrequestMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if DateRanges, ok := QuerytimeofflimitvaluesrequestMap["dateRanges"].([]interface{}); ok {
 		DateRangesString, _ := json.Marshal(DateRanges)
 		json.Unmarshal(DateRangesString, &o.DateRanges)

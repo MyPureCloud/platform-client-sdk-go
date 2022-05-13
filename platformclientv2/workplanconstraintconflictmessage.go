@@ -45,7 +45,7 @@ func (o *Workplanconstraintconflictmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := WorkplanconstraintconflictmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Arguments, ok := WorkplanconstraintconflictmessageMap["arguments"].([]interface{}); ok {
 		ArgumentsString, _ := json.Marshal(Arguments)
 		json.Unmarshal(ArgumentsString, &o.Arguments)

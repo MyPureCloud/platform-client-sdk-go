@@ -118,12 +118,12 @@ func (o *Statisticalsummary) UnmarshalJSON(b []byte) error {
 		MaxFloat32 := float32(Max)
 		o.Max = &MaxFloat32
 	}
-	
+    
 	if Min, ok := StatisticalsummaryMap["min"].(float64); ok {
 		MinFloat32 := float32(Min)
 		o.Min = &MinFloat32
 	}
-	
+    
 	if Count, ok := StatisticalsummaryMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt
@@ -143,32 +143,32 @@ func (o *Statisticalsummary) UnmarshalJSON(b []byte) error {
 		SumFloat32 := float32(Sum)
 		o.Sum = &SumFloat32
 	}
-	
+    
 	if Current, ok := StatisticalsummaryMap["current"].(float64); ok {
 		CurrentFloat32 := float32(Current)
 		o.Current = &CurrentFloat32
 	}
-	
+    
 	if Ratio, ok := StatisticalsummaryMap["ratio"].(float64); ok {
 		RatioFloat32 := float32(Ratio)
 		o.Ratio = &RatioFloat32
 	}
-	
+    
 	if Numerator, ok := StatisticalsummaryMap["numerator"].(float64); ok {
 		NumeratorFloat32 := float32(Numerator)
 		o.Numerator = &NumeratorFloat32
 	}
-	
+    
 	if Denominator, ok := StatisticalsummaryMap["denominator"].(float64); ok {
 		DenominatorFloat32 := float32(Denominator)
 		o.Denominator = &DenominatorFloat32
 	}
-	
+    
 	if Target, ok := StatisticalsummaryMap["target"].(float64); ok {
 		TargetFloat32 := float32(Target)
 		o.Target = &TargetFloat32
 	}
-	
+    
 
 	return nil
 }

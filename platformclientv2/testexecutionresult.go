@@ -76,7 +76,7 @@ func (o *Testexecutionresult) UnmarshalJSON(b []byte) error {
 	if Success, ok := TestexecutionresultMap["success"].(bool); ok {
 		o.Success = &Success
 	}
-	
+    
 
 	return nil
 }

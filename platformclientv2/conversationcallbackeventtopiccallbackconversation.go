@@ -61,11 +61,11 @@ func (o *Conversationcallbackeventtopiccallbackconversation) UnmarshalJSON(b []b
 	if Id, ok := ConversationcallbackeventtopiccallbackconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationcallbackeventtopiccallbackconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := ConversationcallbackeventtopiccallbackconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)

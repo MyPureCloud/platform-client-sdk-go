@@ -37,7 +37,7 @@ func (o *Contentmanagementworkspacedocumentstopicworkspacedata) UnmarshalJSON(b 
 	if Id, ok := ContentmanagementworkspacedocumentstopicworkspacedataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

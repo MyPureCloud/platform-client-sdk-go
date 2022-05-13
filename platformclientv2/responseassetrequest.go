@@ -45,11 +45,11 @@ func (o *Responseassetrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := ResponseassetrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if DivisionId, ok := ResponseassetrequestMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 
 	return nil
 }

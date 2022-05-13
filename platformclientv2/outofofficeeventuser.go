@@ -37,7 +37,7 @@ func (o *Outofofficeeventuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := OutofofficeeventuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

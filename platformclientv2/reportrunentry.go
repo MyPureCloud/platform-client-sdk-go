@@ -126,15 +126,15 @@ func (o *Reportrunentry) UnmarshalJSON(b []byte) error {
 	if Id, ok := ReportrunentryMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ReportrunentryMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ReportId, ok := ReportrunentryMap["reportId"].(string); ok {
 		o.ReportId = &ReportId
 	}
-	
+    
 	if runTimeString, ok := ReportrunentryMap["runTime"].(string); ok {
 		RunTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", runTimeString)
 		o.RunTime = &RunTime
@@ -143,11 +143,11 @@ func (o *Reportrunentry) UnmarshalJSON(b []byte) error {
 	if RunStatus, ok := ReportrunentryMap["runStatus"].(string); ok {
 		o.RunStatus = &RunStatus
 	}
-	
+    
 	if ErrorMessage, ok := ReportrunentryMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if RunDurationMsec, ok := ReportrunentryMap["runDurationMsec"].(float64); ok {
 		RunDurationMsecInt := int(RunDurationMsec)
 		o.RunDurationMsec = &RunDurationMsecInt
@@ -156,19 +156,19 @@ func (o *Reportrunentry) UnmarshalJSON(b []byte) error {
 	if ReportUrl, ok := ReportrunentryMap["reportUrl"].(string); ok {
 		o.ReportUrl = &ReportUrl
 	}
-	
+    
 	if ReportFormat, ok := ReportrunentryMap["reportFormat"].(string); ok {
 		o.ReportFormat = &ReportFormat
 	}
-	
+    
 	if ScheduleUri, ok := ReportrunentryMap["scheduleUri"].(string); ok {
 		o.ScheduleUri = &ScheduleUri
 	}
-	
+    
 	if SelfUri, ok := ReportrunentryMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

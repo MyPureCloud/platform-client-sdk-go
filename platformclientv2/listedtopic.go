@@ -142,23 +142,23 @@ func (o *Listedtopic) UnmarshalJSON(b []byte) error {
 	if Id, ok := ListedtopicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ListedtopicMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ListedtopicMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := ListedtopicMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if Strictness, ok := ListedtopicMap["strictness"].(string); ok {
 		o.Strictness = &Strictness
 	}
-	
+    
 	if ProgramsCount, ok := ListedtopicMap["programsCount"].(float64); ok {
 		ProgramsCountInt := int(ProgramsCount)
 		o.ProgramsCount = &ProgramsCountInt
@@ -172,11 +172,11 @@ func (o *Listedtopic) UnmarshalJSON(b []byte) error {
 	if Dialect, ok := ListedtopicMap["dialect"].(string); ok {
 		o.Dialect = &Dialect
 	}
-	
+    
 	if Participants, ok := ListedtopicMap["participants"].(string); ok {
 		o.Participants = &Participants
 	}
-	
+    
 	if PhrasesCount, ok := ListedtopicMap["phrasesCount"].(float64); ok {
 		PhrasesCountInt := int(PhrasesCount)
 		o.PhrasesCount = &PhrasesCountInt
@@ -195,7 +195,7 @@ func (o *Listedtopic) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ListedtopicMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

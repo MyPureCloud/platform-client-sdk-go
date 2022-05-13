@@ -53,15 +53,15 @@ func (o *Contactsort) UnmarshalJSON(b []byte) error {
 	if FieldName, ok := ContactsortMap["fieldName"].(string); ok {
 		o.FieldName = &FieldName
 	}
-	
+    
 	if Direction, ok := ContactsortMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Numeric, ok := ContactsortMap["numeric"].(bool); ok {
 		o.Numeric = &Numeric
 	}
-	
+    
 
 	return nil
 }

@@ -85,31 +85,31 @@ func (o *Contact) UnmarshalJSON(b []byte) error {
 	if Address, ok := ContactMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Display, ok := ContactMap["display"].(string); ok {
 		o.Display = &Display
 	}
-	
+    
 	if MediaType, ok := ContactMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if VarType, ok := ContactMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Extension, ok := ContactMap["extension"].(string); ok {
 		o.Extension = &Extension
 	}
-	
+    
 	if CountryCode, ok := ContactMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
 	}
-	
+    
 	if Integration, ok := ContactMap["integration"].(string); ok {
 		o.Integration = &Integration
 	}
-	
+    
 
 	return nil
 }

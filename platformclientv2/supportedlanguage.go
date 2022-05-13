@@ -45,11 +45,11 @@ func (o *Supportedlanguage) UnmarshalJSON(b []byte) error {
 	if Language, ok := SupportedlanguageMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if IsDefault, ok := SupportedlanguageMap["isDefault"].(bool); ok {
 		o.IsDefault = &IsDefault
 	}
-	
+    
 
 	return nil
 }

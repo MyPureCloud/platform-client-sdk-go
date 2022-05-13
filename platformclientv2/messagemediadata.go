@@ -93,19 +93,19 @@ func (o *Messagemediadata) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagemediadataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagemediadataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Url, ok := MessagemediadataMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if MediaType, ok := MessagemediadataMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ContentLengthBytes, ok := MessagemediadataMap["contentLengthBytes"].(float64); ok {
 		ContentLengthBytesInt := int(ContentLengthBytes)
 		o.ContentLengthBytes = &ContentLengthBytesInt
@@ -114,15 +114,15 @@ func (o *Messagemediadata) UnmarshalJSON(b []byte) error {
 	if UploadUrl, ok := MessagemediadataMap["uploadUrl"].(string); ok {
 		o.UploadUrl = &UploadUrl
 	}
-	
+    
 	if Status, ok := MessagemediadataMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if SelfUri, ok := MessagemediadataMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

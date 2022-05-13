@@ -69,19 +69,19 @@ func (o *Routingstatusdetailquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := RoutingstatusdetailquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := RoutingstatusdetailquerypredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Operator, ok := RoutingstatusdetailquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := RoutingstatusdetailquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := RoutingstatusdetailquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

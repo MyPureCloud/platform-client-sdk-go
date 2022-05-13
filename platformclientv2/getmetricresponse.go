@@ -63,7 +63,7 @@ func (o *Getmetricresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GetmetricresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

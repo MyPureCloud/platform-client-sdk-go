@@ -133,15 +133,15 @@ func (o *Shifttradesettings) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := ShifttradesettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if AutoReview, ok := ShifttradesettingsMap["autoReview"].(bool); ok {
 		o.AutoReview = &AutoReview
 	}
-	
+    
 	if AllowDirectTrades, ok := ShifttradesettingsMap["allowDirectTrades"].(bool); ok {
 		o.AllowDirectTrades = &AllowDirectTrades
 	}
-	
+    
 	if MinHoursInFuture, ok := ShifttradesettingsMap["minHoursInFuture"].(float64); ok {
 		MinHoursInFutureInt := int(MinHoursInFuture)
 		o.MinHoursInFuture = &MinHoursInFutureInt
@@ -150,35 +150,35 @@ func (o *Shifttradesettings) UnmarshalJSON(b []byte) error {
 	if UnequalPaid, ok := ShifttradesettingsMap["unequalPaid"].(string); ok {
 		o.UnequalPaid = &UnequalPaid
 	}
-	
+    
 	if OneSided, ok := ShifttradesettingsMap["oneSided"].(string); ok {
 		o.OneSided = &OneSided
 	}
-	
+    
 	if WeeklyMinPaidViolations, ok := ShifttradesettingsMap["weeklyMinPaidViolations"].(string); ok {
 		o.WeeklyMinPaidViolations = &WeeklyMinPaidViolations
 	}
-	
+    
 	if WeeklyMaxPaidViolations, ok := ShifttradesettingsMap["weeklyMaxPaidViolations"].(string); ok {
 		o.WeeklyMaxPaidViolations = &WeeklyMaxPaidViolations
 	}
-	
+    
 	if RequiresMatchingQueues, ok := ShifttradesettingsMap["requiresMatchingQueues"].(bool); ok {
 		o.RequiresMatchingQueues = &RequiresMatchingQueues
 	}
-	
+    
 	if RequiresMatchingLanguages, ok := ShifttradesettingsMap["requiresMatchingLanguages"].(bool); ok {
 		o.RequiresMatchingLanguages = &RequiresMatchingLanguages
 	}
-	
+    
 	if RequiresMatchingSkills, ok := ShifttradesettingsMap["requiresMatchingSkills"].(bool); ok {
 		o.RequiresMatchingSkills = &RequiresMatchingSkills
 	}
-	
+    
 	if RequiresMatchingPlanningGroups, ok := ShifttradesettingsMap["requiresMatchingPlanningGroups"].(bool); ok {
 		o.RequiresMatchingPlanningGroups = &RequiresMatchingPlanningGroups
 	}
-	
+    
 	if ActivityCategoryRules, ok := ShifttradesettingsMap["activityCategoryRules"].([]interface{}); ok {
 		ActivityCategoryRulesString, _ := json.Marshal(ActivityCategoryRules)
 		json.Unmarshal(ActivityCategoryRulesString, &o.ActivityCategoryRules)

@@ -70,7 +70,7 @@ func (o *Userstate) UnmarshalJSON(b []byte) error {
 	if State, ok := UserstateMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Version, ok := UserstateMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -79,7 +79,7 @@ func (o *Userstate) UnmarshalJSON(b []byte) error {
 	if StateChangeReason, ok := UserstateMap["stateChangeReason"].(string); ok {
 		o.StateChangeReason = &StateChangeReason
 	}
-	
+    
 	if stateChangeDateString, ok := UserstateMap["stateChangeDate"].(string); ok {
 		StateChangeDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", stateChangeDateString)
 		o.StateChangeDate = &StateChangeDate

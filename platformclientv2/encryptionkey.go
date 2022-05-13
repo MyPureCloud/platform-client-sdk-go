@@ -110,11 +110,11 @@ func (o *Encryptionkey) UnmarshalJSON(b []byte) error {
 	if Id, ok := EncryptionkeyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EncryptionkeyMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if createDateString, ok := EncryptionkeyMap["createDate"].(string); ok {
 		CreateDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createDateString)
 		o.CreateDate = &CreateDate
@@ -123,7 +123,7 @@ func (o *Encryptionkey) UnmarshalJSON(b []byte) error {
 	if KeydataSummary, ok := EncryptionkeyMap["keydataSummary"].(string); ok {
 		o.KeydataSummary = &KeydataSummary
 	}
-	
+    
 	if User, ok := EncryptionkeyMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -137,15 +137,15 @@ func (o *Encryptionkey) UnmarshalJSON(b []byte) error {
 	if KeyConfigurationType, ok := EncryptionkeyMap["keyConfigurationType"].(string); ok {
 		o.KeyConfigurationType = &KeyConfigurationType
 	}
-	
+    
 	if KmsKeyArn, ok := EncryptionkeyMap["kmsKeyArn"].(string); ok {
 		o.KmsKeyArn = &KmsKeyArn
 	}
-	
+    
 	if SelfUri, ok := EncryptionkeyMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

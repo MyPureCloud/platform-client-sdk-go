@@ -93,7 +93,7 @@ func (o *Userlistschedulerequestbody) UnmarshalJSON(b []byte) error {
 	if LoadFullWeeks, ok := UserlistschedulerequestbodyMap["loadFullWeeks"].(bool); ok {
 		o.LoadFullWeeks = &LoadFullWeeks
 	}
-	
+    
 
 	return nil
 }

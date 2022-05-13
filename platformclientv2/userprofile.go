@@ -94,15 +94,15 @@ func (o *Userprofile) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserprofileMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserprofileMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if State, ok := UserprofileMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateModifiedString, ok := UserprofileMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
@@ -121,7 +121,7 @@ func (o *Userprofile) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UserprofileMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

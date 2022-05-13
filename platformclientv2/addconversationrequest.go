@@ -37,7 +37,7 @@ func (o *Addconversationrequest) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := AddconversationrequestMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 
 	return nil
 }

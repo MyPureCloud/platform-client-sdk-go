@@ -77,11 +77,11 @@ func (o *Flowoutcome) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowoutcomeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowoutcomeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := FlowoutcomeMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -90,7 +90,7 @@ func (o *Flowoutcome) UnmarshalJSON(b []byte) error {
 	if Description, ok := FlowoutcomeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CurrentOperation, ok := FlowoutcomeMap["currentOperation"].(map[string]interface{}); ok {
 		CurrentOperationString, _ := json.Marshal(CurrentOperation)
 		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)
@@ -99,7 +99,7 @@ func (o *Flowoutcome) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowoutcomeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

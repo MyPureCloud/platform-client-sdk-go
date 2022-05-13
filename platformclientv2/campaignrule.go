@@ -134,11 +134,11 @@ func (o *Campaignrule) UnmarshalJSON(b []byte) error {
 	if Id, ok := CampaignruleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CampaignruleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := CampaignruleMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -172,15 +172,15 @@ func (o *Campaignrule) UnmarshalJSON(b []byte) error {
 	if MatchAnyConditions, ok := CampaignruleMap["matchAnyConditions"].(bool); ok {
 		o.MatchAnyConditions = &MatchAnyConditions
 	}
-	
+    
 	if Enabled, ok := CampaignruleMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if SelfUri, ok := CampaignruleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

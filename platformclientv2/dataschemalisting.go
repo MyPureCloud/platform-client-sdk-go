@@ -63,7 +63,7 @@ func (o *Dataschemalisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DataschemalistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

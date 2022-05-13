@@ -53,15 +53,15 @@ func (o *Whatsappavailablephonenumberdetails) UnmarshalJSON(b []byte) error {
 	if Name, ok := WhatsappavailablephonenumberdetailsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if PhoneNumber, ok := WhatsappavailablephonenumberdetailsMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if Status, ok := WhatsappavailablephonenumberdetailsMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

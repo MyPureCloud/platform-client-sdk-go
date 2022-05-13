@@ -198,27 +198,27 @@ func (o *Video) UnmarshalJSON(b []byte) error {
 	if State, ok := VideoMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := VideoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Context, ok := VideoMap["context"].(string); ok {
 		o.Context = &Context
 	}
-	
+    
 	if AudioMuted, ok := VideoMap["audioMuted"].(bool); ok {
 		o.AudioMuted = &AudioMuted
 	}
-	
+    
 	if VideoMuted, ok := VideoMap["videoMuted"].(bool); ok {
 		o.VideoMuted = &VideoMuted
 	}
-	
+    
 	if SharingScreen, ok := VideoMap["sharingScreen"].(bool); ok {
 		o.SharingScreen = &SharingScreen
 	}
-	
+    
 	if PeerCount, ok := VideoMap["peerCount"].(float64); ok {
 		PeerCountInt := int(PeerCount)
 		o.PeerCount = &PeerCountInt
@@ -227,7 +227,7 @@ func (o *Video) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := VideoMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startAlertingTimeString, ok := VideoMap["startAlertingTime"].(string); ok {
 		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
 		o.StartAlertingTime = &StartAlertingTime
@@ -246,11 +246,11 @@ func (o *Video) UnmarshalJSON(b []byte) error {
 	if Provider, ok := VideoMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if PeerId, ok := VideoMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if Msids, ok := VideoMap["msids"].([]interface{}); ok {
 		MsidsString, _ := json.Marshal(Msids)
 		json.Unmarshal(MsidsString, &o.Msids)
@@ -274,7 +274,7 @@ func (o *Video) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := VideoMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

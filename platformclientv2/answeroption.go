@@ -61,11 +61,11 @@ func (o *Answeroption) UnmarshalJSON(b []byte) error {
 	if Id, ok := AnsweroptionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Text, ok := AnsweroptionMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Value, ok := AnsweroptionMap["value"].(float64); ok {
 		ValueInt := int(Value)
 		o.Value = &ValueInt

@@ -67,11 +67,11 @@ func (o *Architectjobmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ArchitectjobmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := ArchitectjobmessageMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 
 	return nil
 }

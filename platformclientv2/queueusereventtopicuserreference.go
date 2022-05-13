@@ -37,7 +37,7 @@ func (o *Queueusereventtopicuserreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := QueueusereventtopicuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

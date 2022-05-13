@@ -45,11 +45,11 @@ func (o *Detectednamedentityvalue) UnmarshalJSON(b []byte) error {
 	if Raw, ok := DetectednamedentityvalueMap["raw"].(string); ok {
 		o.Raw = &Raw
 	}
-	
+    
 	if Resolved, ok := DetectednamedentityvalueMap["resolved"].(string); ok {
 		o.Resolved = &Resolved
 	}
-	
+    
 
 	return nil
 }

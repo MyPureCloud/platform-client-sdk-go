@@ -61,19 +61,19 @@ func (o *Conversationassociation) UnmarshalJSON(b []byte) error {
 	if ExternalContactId, ok := ConversationassociationMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ConversationId, ok := ConversationassociationMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if CommunicationId, ok := ConversationassociationMap["communicationId"].(string); ok {
 		o.CommunicationId = &CommunicationId
 	}
-	
+    
 	if MediaType, ok := ConversationassociationMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 
 	return nil
 }

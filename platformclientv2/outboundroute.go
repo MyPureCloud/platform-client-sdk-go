@@ -198,11 +198,11 @@ func (o *Outboundroute) UnmarshalJSON(b []byte) error {
 	if Id, ok := OutboundrouteMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OutboundrouteMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := OutboundrouteMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -211,7 +211,7 @@ func (o *Outboundroute) UnmarshalJSON(b []byte) error {
 	if Description, ok := OutboundrouteMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := OutboundrouteMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -230,23 +230,23 @@ func (o *Outboundroute) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := OutboundrouteMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := OutboundrouteMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := OutboundrouteMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := OutboundrouteMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := OutboundrouteMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if ClassificationTypes, ok := OutboundrouteMap["classificationTypes"].([]interface{}); ok {
 		ClassificationTypesString, _ := json.Marshal(ClassificationTypes)
 		json.Unmarshal(ClassificationTypesString, &o.ClassificationTypes)
@@ -255,11 +255,11 @@ func (o *Outboundroute) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := OutboundrouteMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Distribution, ok := OutboundrouteMap["distribution"].(string); ok {
 		o.Distribution = &Distribution
 	}
-	
+    
 	if ExternalTrunkBases, ok := OutboundrouteMap["externalTrunkBases"].([]interface{}); ok {
 		ExternalTrunkBasesString, _ := json.Marshal(ExternalTrunkBases)
 		json.Unmarshal(ExternalTrunkBasesString, &o.ExternalTrunkBases)
@@ -273,11 +273,11 @@ func (o *Outboundroute) UnmarshalJSON(b []byte) error {
 	if Managed, ok := OutboundrouteMap["managed"].(bool); ok {
 		o.Managed = &Managed
 	}
-	
+    
 	if SelfUri, ok := OutboundrouteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

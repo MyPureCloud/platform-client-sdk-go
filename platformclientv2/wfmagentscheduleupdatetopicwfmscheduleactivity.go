@@ -86,7 +86,7 @@ func (o *Wfmagentscheduleupdatetopicwfmscheduleactivity) UnmarshalJSON(b []byte)
 	if ActivityCodeId, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if startDateString, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -95,7 +95,7 @@ func (o *Wfmagentscheduleupdatetopicwfmscheduleactivity) UnmarshalJSON(b []byte)
 	if CountsAsPaidTime, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if LengthInMinutes, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt
@@ -104,11 +104,11 @@ func (o *Wfmagentscheduleupdatetopicwfmscheduleactivity) UnmarshalJSON(b []byte)
 	if TimeOffRequestId, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
-	
+    
 	if Description, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 
 	return nil
 }

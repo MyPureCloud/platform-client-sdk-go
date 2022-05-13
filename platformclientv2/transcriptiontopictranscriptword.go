@@ -70,7 +70,7 @@ func (o *Transcriptiontopictranscriptword) UnmarshalJSON(b []byte) error {
 		ConfidenceFloat32 := float32(Confidence)
 		o.Confidence = &ConfidenceFloat32
 	}
-	
+    
 	if StartTimeMs, ok := TranscriptiontopictranscriptwordMap["startTimeMs"].(float64); ok {
 		StartTimeMsInt := int(StartTimeMs)
 		o.StartTimeMs = &StartTimeMsInt
@@ -89,7 +89,7 @@ func (o *Transcriptiontopictranscriptword) UnmarshalJSON(b []byte) error {
 	if Word, ok := TranscriptiontopictranscriptwordMap["word"].(string); ok {
 		o.Word = &Word
 	}
-	
+    
 
 	return nil
 }

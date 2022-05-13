@@ -69,19 +69,19 @@ func (o *Queueconversationsocialexpressioneventtopicattachment) UnmarshalJSON(b 
 	if AttachmentId, ok := QueueconversationsocialexpressioneventtopicattachmentMap["attachmentId"].(string); ok {
 		o.AttachmentId = &AttachmentId
 	}
-	
+    
 	if Name, ok := QueueconversationsocialexpressioneventtopicattachmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContentUri, ok := QueueconversationsocialexpressioneventtopicattachmentMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if ContentType, ok := QueueconversationsocialexpressioneventtopicattachmentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := QueueconversationsocialexpressioneventtopicattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt

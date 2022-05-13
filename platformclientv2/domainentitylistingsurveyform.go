@@ -129,23 +129,23 @@ func (o *Domainentitylistingsurveyform) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := DomainentitylistingsurveyformMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := DomainentitylistingsurveyformMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := DomainentitylistingsurveyformMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := DomainentitylistingsurveyformMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := DomainentitylistingsurveyformMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := DomainentitylistingsurveyformMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

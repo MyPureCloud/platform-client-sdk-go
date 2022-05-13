@@ -382,11 +382,11 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EdgeMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -395,7 +395,7 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
 	if Description, ok := EdgeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EdgeMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -414,23 +414,23 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EdgeMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EdgeMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EdgeMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EdgeMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EdgeMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Interfaces, ok := EdgeMap["interfaces"].([]interface{}); ok {
 		InterfacesString, _ := json.Marshal(Interfaces)
 		json.Unmarshal(InterfacesString, &o.Interfaces)
@@ -439,63 +439,63 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
 	if Make, ok := EdgeMap["make"].(string); ok {
 		o.Make = &Make
 	}
-	
+    
 	if Model, ok := EdgeMap["model"].(string); ok {
 		o.Model = &Model
 	}
-	
+    
 	if ApiVersion, ok := EdgeMap["apiVersion"].(string); ok {
 		o.ApiVersion = &ApiVersion
 	}
-	
+    
 	if SoftwareVersion, ok := EdgeMap["softwareVersion"].(string); ok {
 		o.SoftwareVersion = &SoftwareVersion
 	}
-	
+    
 	if SoftwareVersionTimestamp, ok := EdgeMap["softwareVersionTimestamp"].(string); ok {
 		o.SoftwareVersionTimestamp = &SoftwareVersionTimestamp
 	}
-	
+    
 	if SoftwareVersionPlatform, ok := EdgeMap["softwareVersionPlatform"].(string); ok {
 		o.SoftwareVersionPlatform = &SoftwareVersionPlatform
 	}
-	
+    
 	if SoftwareVersionConfiguration, ok := EdgeMap["softwareVersionConfiguration"].(string); ok {
 		o.SoftwareVersionConfiguration = &SoftwareVersionConfiguration
 	}
-	
+    
 	if FullSoftwareVersion, ok := EdgeMap["fullSoftwareVersion"].(string); ok {
 		o.FullSoftwareVersion = &FullSoftwareVersion
 	}
-	
+    
 	if PairingId, ok := EdgeMap["pairingId"].(string); ok {
 		o.PairingId = &PairingId
 	}
-	
+    
 	if Fingerprint, ok := EdgeMap["fingerprint"].(string); ok {
 		o.Fingerprint = &Fingerprint
 	}
-	
+    
 	if FingerprintHint, ok := EdgeMap["fingerprintHint"].(string); ok {
 		o.FingerprintHint = &FingerprintHint
 	}
-	
+    
 	if CurrentVersion, ok := EdgeMap["currentVersion"].(string); ok {
 		o.CurrentVersion = &CurrentVersion
 	}
-	
+    
 	if StagedVersion, ok := EdgeMap["stagedVersion"].(string); ok {
 		o.StagedVersion = &StagedVersion
 	}
-	
+    
 	if Patch, ok := EdgeMap["patch"].(string); ok {
 		o.Patch = &Patch
 	}
-	
+    
 	if StatusCode, ok := EdgeMap["statusCode"].(string); ok {
 		o.StatusCode = &StatusCode
 	}
-	
+    
 	if EdgeGroup, ok := EdgeMap["edgeGroup"].(map[string]interface{}); ok {
 		EdgeGroupString, _ := json.Marshal(EdgeGroup)
 		json.Unmarshal(EdgeGroupString, &o.EdgeGroup)
@@ -514,27 +514,27 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
 	if OnlineStatus, ok := EdgeMap["onlineStatus"].(string); ok {
 		o.OnlineStatus = &OnlineStatus
 	}
-	
+    
 	if SerialNumber, ok := EdgeMap["serialNumber"].(string); ok {
 		o.SerialNumber = &SerialNumber
 	}
-	
+    
 	if PhysicalEdge, ok := EdgeMap["physicalEdge"].(bool); ok {
 		o.PhysicalEdge = &PhysicalEdge
 	}
-	
+    
 	if Managed, ok := EdgeMap["managed"].(bool); ok {
 		o.Managed = &Managed
 	}
-	
+    
 	if EdgeDeploymentType, ok := EdgeMap["edgeDeploymentType"].(string); ok {
 		o.EdgeDeploymentType = &EdgeDeploymentType
 	}
-	
+    
 	if CallDrainingState, ok := EdgeMap["callDrainingState"].(string); ok {
 		o.CallDrainingState = &CallDrainingState
 	}
-	
+    
 	if ConversationCount, ok := EdgeMap["conversationCount"].(float64); ok {
 		ConversationCountInt := int(ConversationCount)
 		o.ConversationCount = &ConversationCountInt
@@ -543,19 +543,19 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
 	if Proxy, ok := EdgeMap["proxy"].(string); ok {
 		o.Proxy = &Proxy
 	}
-	
+    
 	if OfflineConfigCalled, ok := EdgeMap["offlineConfigCalled"].(bool); ok {
 		o.OfflineConfigCalled = &OfflineConfigCalled
 	}
-	
+    
 	if OsName, ok := EdgeMap["osName"].(string); ok {
 		o.OsName = &OsName
 	}
-	
+    
 	if SelfUri, ok := EdgeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

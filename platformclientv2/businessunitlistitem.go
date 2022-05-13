@@ -69,15 +69,15 @@ func (o *Businessunitlistitem) UnmarshalJSON(b []byte) error {
 	if Id, ok := BusinessunitlistitemMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BusinessunitlistitemMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Authorized, ok := BusinessunitlistitemMap["authorized"].(bool); ok {
 		o.Authorized = &Authorized
 	}
-	
+    
 	if Division, ok := BusinessunitlistitemMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -86,7 +86,7 @@ func (o *Businessunitlistitem) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BusinessunitlistitemMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

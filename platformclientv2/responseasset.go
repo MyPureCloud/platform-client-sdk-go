@@ -142,11 +142,11 @@ func (o *Responseasset) UnmarshalJSON(b []byte) error {
 	if Id, ok := ResponseassetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ResponseassetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := ResponseassetMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -160,11 +160,11 @@ func (o *Responseasset) UnmarshalJSON(b []byte) error {
 	if ContentLocation, ok := ResponseassetMap["contentLocation"].(string); ok {
 		o.ContentLocation = &ContentLocation
 	}
-	
+    
 	if ContentType, ok := ResponseassetMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if dateCreatedString, ok := ResponseassetMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -193,7 +193,7 @@ func (o *Responseasset) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ResponseassetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

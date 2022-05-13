@@ -50,7 +50,7 @@ func (o *Wfmintradayplanninggrouplisting) UnmarshalJSON(b []byte) error {
 	if NoDataReason, ok := WfmintradayplanninggrouplistingMap["noDataReason"].(string); ok {
 		o.NoDataReason = &NoDataReason
 	}
-	
+    
 
 	return nil
 }

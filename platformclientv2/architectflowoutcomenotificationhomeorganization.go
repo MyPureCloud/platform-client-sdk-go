@@ -53,15 +53,15 @@ func (o *Architectflowoutcomenotificationhomeorganization) UnmarshalJSON(b []byt
 	if Id, ok := ArchitectflowoutcomenotificationhomeorganizationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectflowoutcomenotificationhomeorganizationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ThirdPartyOrgName, ok := ArchitectflowoutcomenotificationhomeorganizationMap["thirdPartyOrgName"].(string); ok {
 		o.ThirdPartyOrgName = &ThirdPartyOrgName
 	}
-	
+    
 
 	return nil
 }

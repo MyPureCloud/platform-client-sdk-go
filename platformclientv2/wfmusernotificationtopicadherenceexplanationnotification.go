@@ -110,7 +110,7 @@ func (o *Wfmusernotificationtopicadherenceexplanationnotification) UnmarshalJSON
 	if Id, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Agent, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)
@@ -139,15 +139,15 @@ func (o *Wfmusernotificationtopicadherenceexplanationnotification) UnmarshalJSON
 	if Status, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if VarType, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Notes, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 
 	return nil
 }

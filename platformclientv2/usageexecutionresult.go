@@ -45,11 +45,11 @@ func (o *Usageexecutionresult) UnmarshalJSON(b []byte) error {
 	if ExecutionId, ok := UsageexecutionresultMap["executionId"].(string); ok {
 		o.ExecutionId = &ExecutionId
 	}
-	
+    
 	if ResultsUri, ok := UsageexecutionresultMap["resultsUri"].(string); ok {
 		o.ResultsUri = &ResultsUri
 	}
-	
+    
 
 	return nil
 }

@@ -85,11 +85,11 @@ func (o *Callconversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := CallconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CallconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := CallconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
@@ -103,7 +103,7 @@ func (o *Callconversation) UnmarshalJSON(b []byte) error {
 	if RecordingState, ok := CallconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if MaxParticipants, ok := CallconversationMap["maxParticipants"].(float64); ok {
 		MaxParticipantsInt := int(MaxParticipants)
 		o.MaxParticipants = &MaxParticipantsInt
@@ -112,7 +112,7 @@ func (o *Callconversation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CallconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

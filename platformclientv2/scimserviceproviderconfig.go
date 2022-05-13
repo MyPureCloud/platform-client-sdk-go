@@ -114,7 +114,7 @@ func (o *Scimserviceproviderconfig) UnmarshalJSON(b []byte) error {
 	if DocumentationUri, ok := ScimserviceproviderconfigMap["documentationUri"].(string); ok {
 		o.DocumentationUri = &DocumentationUri
 	}
-	
+    
 	if Patch, ok := ScimserviceproviderconfigMap["patch"].(map[string]interface{}); ok {
 		PatchString, _ := json.Marshal(Patch)
 		json.Unmarshal(PatchString, &o.Patch)

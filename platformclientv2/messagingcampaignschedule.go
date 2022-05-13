@@ -118,11 +118,11 @@ func (o *Messagingcampaignschedule) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagingcampaignscheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagingcampaignscheduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := MessagingcampaignscheduleMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -146,7 +146,7 @@ func (o *Messagingcampaignschedule) UnmarshalJSON(b []byte) error {
 	if TimeZone, ok := MessagingcampaignscheduleMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if MessagingCampaign, ok := MessagingcampaignscheduleMap["messagingCampaign"].(map[string]interface{}); ok {
 		MessagingCampaignString, _ := json.Marshal(MessagingCampaign)
 		json.Unmarshal(MessagingCampaignString, &o.MessagingCampaign)
@@ -155,7 +155,7 @@ func (o *Messagingcampaignschedule) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MessagingcampaignscheduleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

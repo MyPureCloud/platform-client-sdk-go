@@ -213,7 +213,7 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 	if Name, ok := WorkplanshiftMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Days, ok := WorkplanshiftMap["days"].(map[string]interface{}); ok {
 		DaysString, _ := json.Marshal(Days)
 		json.Unmarshal(DaysString, &o.Days)
@@ -222,7 +222,7 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 	if FlexibleStartTime, ok := WorkplanshiftMap["flexibleStartTime"].(bool); ok {
 		o.FlexibleStartTime = &FlexibleStartTime
 	}
-	
+    
 	if ExactStartTimeMinutesFromMidnight, ok := WorkplanshiftMap["exactStartTimeMinutesFromMidnight"].(float64); ok {
 		ExactStartTimeMinutesFromMidnightInt := int(ExactStartTimeMinutesFromMidnight)
 		o.ExactStartTimeMinutesFromMidnight = &ExactStartTimeMinutesFromMidnightInt
@@ -241,11 +241,11 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 	if ConstrainStopTime, ok := WorkplanshiftMap["constrainStopTime"].(bool); ok {
 		o.ConstrainStopTime = &ConstrainStopTime
 	}
-	
+    
 	if ConstrainLatestStopTime, ok := WorkplanshiftMap["constrainLatestStopTime"].(bool); ok {
 		o.ConstrainLatestStopTime = &ConstrainLatestStopTime
 	}
-	
+    
 	if LatestStopTimeMinutesFromMidnight, ok := WorkplanshiftMap["latestStopTimeMinutesFromMidnight"].(float64); ok {
 		LatestStopTimeMinutesFromMidnightInt := int(LatestStopTimeMinutesFromMidnight)
 		o.LatestStopTimeMinutesFromMidnight = &LatestStopTimeMinutesFromMidnightInt
@@ -254,7 +254,7 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 	if ConstrainEarliestStopTime, ok := WorkplanshiftMap["constrainEarliestStopTime"].(bool); ok {
 		o.ConstrainEarliestStopTime = &ConstrainEarliestStopTime
 	}
-	
+    
 	if EarliestStopTimeMinutesFromMidnight, ok := WorkplanshiftMap["earliestStopTimeMinutesFromMidnight"].(float64); ok {
 		EarliestStopTimeMinutesFromMidnightInt := int(EarliestStopTimeMinutesFromMidnight)
 		o.EarliestStopTimeMinutesFromMidnight = &EarliestStopTimeMinutesFromMidnightInt
@@ -268,7 +268,7 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 	if FlexiblePaidTime, ok := WorkplanshiftMap["flexiblePaidTime"].(bool); ok {
 		o.FlexiblePaidTime = &FlexiblePaidTime
 	}
-	
+    
 	if ExactPaidTimeMinutes, ok := WorkplanshiftMap["exactPaidTimeMinutes"].(float64); ok {
 		ExactPaidTimeMinutesInt := int(ExactPaidTimeMinutes)
 		o.ExactPaidTimeMinutes = &ExactPaidTimeMinutesInt
@@ -287,7 +287,7 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 	if ConstrainContiguousWorkTime, ok := WorkplanshiftMap["constrainContiguousWorkTime"].(bool); ok {
 		o.ConstrainContiguousWorkTime = &ConstrainContiguousWorkTime
 	}
-	
+    
 	if MinimumContiguousWorkTimeMinutes, ok := WorkplanshiftMap["minimumContiguousWorkTimeMinutes"].(float64); ok {
 		MinimumContiguousWorkTimeMinutesInt := int(MinimumContiguousWorkTimeMinutes)
 		o.MinimumContiguousWorkTimeMinutes = &MinimumContiguousWorkTimeMinutesInt
@@ -306,15 +306,15 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkplanshiftMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Delete, ok := WorkplanshiftMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 	if ValidationId, ok := WorkplanshiftMap["validationId"].(string); ok {
 		o.ValidationId = &ValidationId
 	}
-	
+    
 
 	return nil
 }

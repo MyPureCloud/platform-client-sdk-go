@@ -62,11 +62,11 @@ func (o *Learningassignmentcreate) UnmarshalJSON(b []byte) error {
 	if ModuleId, ok := LearningassignmentcreateMap["moduleId"].(string); ok {
 		o.ModuleId = &ModuleId
 	}
-	
+    
 	if UserId, ok := LearningassignmentcreateMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if recommendedCompletionDateString, ok := LearningassignmentcreateMap["recommendedCompletionDate"].(string); ok {
 		RecommendedCompletionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", recommendedCompletionDateString)
 		o.RecommendedCompletionDate = &RecommendedCompletionDate

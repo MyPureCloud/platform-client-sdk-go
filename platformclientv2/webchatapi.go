@@ -32,8 +32,6 @@ func NewWebChatApiWithConfig(config *Configuration) *WebChatApi {
 // DeleteWebchatDeployment invokes DELETE /api/v2/webchat/deployments/{deploymentId}
 //
 // Delete a WebChat deployment
-//
-// 
 func (a WebChatApi) DeleteWebchatDeployment(deploymentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a WebChatApi) DeleteWebchatDeployment(deploymentId string) (*APIResponse, 
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'deploymentId' when calling WebChatApi->DeleteWebchatDeployment")
 	}
 
@@ -98,8 +96,6 @@ func (a WebChatApi) DeleteWebchatDeployment(deploymentId string) (*APIResponse, 
 // DeleteWebchatGuestConversationMember invokes DELETE /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}
 //
 // Remove a member from a chat conversation
-//
-// 
 func (a WebChatApi) DeleteWebchatGuestConversationMember(conversationId string, memberId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -112,12 +108,12 @@ func (a WebChatApi) DeleteWebchatGuestConversationMember(conversationId string, 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->DeleteWebchatGuestConversationMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'memberId' when calling WebChatApi->DeleteWebchatGuestConversationMember")
 	}
 
@@ -169,8 +165,6 @@ func (a WebChatApi) DeleteWebchatGuestConversationMember(conversationId string, 
 // DeleteWebchatSettings invokes DELETE /api/v2/webchat/settings
 //
 // Remove WebChat deployment settings
-//
-// 
 func (a WebChatApi) DeleteWebchatSettings() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -229,8 +223,6 @@ func (a WebChatApi) DeleteWebchatSettings() (*APIResponse, error) {
 // GetWebchatDeployment invokes GET /api/v2/webchat/deployments/{deploymentId}
 //
 // Get a WebChat deployment
-//
-// 
 func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeployment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -243,7 +235,7 @@ func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeploymen
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WebChatApi->GetWebchatDeployment")
 	}
 
@@ -302,8 +294,6 @@ func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeploymen
 // GetWebchatDeployments invokes GET /api/v2/webchat/deployments
 //
 // List WebChat deployments
-//
-// 
 func (a WebChatApi) GetWebchatDeployments() (*Webchatdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -369,8 +359,6 @@ func (a WebChatApi) GetWebchatDeployments() (*Webchatdeploymententitylisting, *A
 // GetWebchatGuestConversationMediarequest invokes GET /api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}
 //
 // Get a media request in the conversation
-//
-// 
 func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId string, mediaRequestId string) (*Webchatguestmediarequest, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -384,12 +372,12 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->GetWebchatGuestConversationMediarequest")
 	}
 	// verify the required parameter 'mediaRequestId' is set
 	if &mediaRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'mediaRequestId' when calling WebChatApi->GetWebchatGuestConversationMediarequest")
 	}
 
@@ -447,8 +435,6 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId strin
 // GetWebchatGuestConversationMediarequests invokes GET /api/v2/webchat/guest/conversations/{conversationId}/mediarequests
 //
 // Get all media requests to the guest in the conversation
-//
-// 
 func (a WebChatApi) GetWebchatGuestConversationMediarequests(conversationId string) (*Webchatguestmediarequestentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -461,7 +447,7 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequests(conversationId stri
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->GetWebchatGuestConversationMediarequests")
 	}
 
@@ -519,8 +505,6 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequests(conversationId stri
 // GetWebchatGuestConversationMember invokes GET /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}
 //
 // Get a web chat conversation member
-//
-// 
 func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, memberId string) (*Webchatmemberinfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -534,12 +518,12 @@ func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, mem
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->GetWebchatGuestConversationMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling WebChatApi->GetWebchatGuestConversationMember")
 	}
 
@@ -597,8 +581,6 @@ func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, mem
 // GetWebchatGuestConversationMembers invokes GET /api/v2/webchat/guest/conversations/{conversationId}/members
 //
 // Get the members of a chat conversation.
-//
-// 
 func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pageSize int, pageNumber int, excludeDisconnectedMembers bool) (*Webchatmemberinfoentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -611,7 +593,7 @@ func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pa
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->GetWebchatGuestConversationMembers")
 	}
 
@@ -675,8 +657,6 @@ func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pa
 // GetWebchatGuestConversationMessage invokes GET /api/v2/webchat/guest/conversations/{conversationId}/messages/{messageId}
 //
 // Get a web chat conversation message
-//
-// 
 func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, messageId string) (*Webchatmessage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -690,12 +670,12 @@ func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, me
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->GetWebchatGuestConversationMessage")
 	}
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling WebChatApi->GetWebchatGuestConversationMessage")
 	}
 
@@ -753,8 +733,6 @@ func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, me
 // GetWebchatGuestConversationMessages invokes GET /api/v2/webchat/guest/conversations/{conversationId}/messages
 //
 // Get the messages of a chat conversation.
-//
-// 
 func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, after string, before string, sortOrder string, maxResults int) (*Webchatmessageentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -767,7 +745,7 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->GetWebchatGuestConversationMessages")
 	}
 
@@ -833,8 +811,6 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 // GetWebchatSettings invokes GET /api/v2/webchat/settings
 //
 // Get WebChat deployment settings
-//
-// 
 func (a WebChatApi) GetWebchatSettings() (*Webchatsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -900,8 +876,6 @@ func (a WebChatApi) GetWebchatSettings() (*Webchatsettings, *APIResponse, error)
 // PatchWebchatGuestConversationMediarequest invokes PATCH /api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}
 //
 // Update a media request in the conversation, setting the state to ACCEPTED/DECLINED/ERRORED
-//
-// 
 func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId string, mediaRequestId string, body Webchatguestmediarequest) (*Webchatguestmediarequest, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -915,17 +889,17 @@ func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId str
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->PatchWebchatGuestConversationMediarequest")
 	}
 	// verify the required parameter 'mediaRequestId' is set
 	if &mediaRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'mediaRequestId' when calling WebChatApi->PatchWebchatGuestConversationMediarequest")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WebChatApi->PatchWebchatGuestConversationMediarequest")
 	}
 
@@ -986,8 +960,6 @@ func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId str
 // PostWebchatDeployments invokes POST /api/v2/webchat/deployments
 //
 // Create WebChat deployment
-//
-// 
 func (a WebChatApi) PostWebchatDeployments(body Webchatdeployment) (*Webchatdeployment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -999,7 +971,7 @@ func (a WebChatApi) PostWebchatDeployments(body Webchatdeployment) (*Webchatdepl
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WebChatApi->PostWebchatDeployments")
 	}
 
@@ -1061,8 +1033,6 @@ func (a WebChatApi) PostWebchatDeployments(body Webchatdeployment) (*Webchatdepl
 // PostWebchatGuestConversationMemberMessages invokes POST /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}/messages
 //
 // Send a message in a chat conversation.
-//
-// 
 func (a WebChatApi) PostWebchatGuestConversationMemberMessages(conversationId string, memberId string, body Createwebchatmessagerequest) (*Webchatmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1076,17 +1046,17 @@ func (a WebChatApi) PostWebchatGuestConversationMemberMessages(conversationId st
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->PostWebchatGuestConversationMemberMessages")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling WebChatApi->PostWebchatGuestConversationMemberMessages")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WebChatApi->PostWebchatGuestConversationMemberMessages")
 	}
 
@@ -1147,8 +1117,6 @@ func (a WebChatApi) PostWebchatGuestConversationMemberMessages(conversationId st
 // PostWebchatGuestConversationMemberTyping invokes POST /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}/typing
 //
 // Send a typing-indicator in a chat conversation.
-//
-// 
 func (a WebChatApi) PostWebchatGuestConversationMemberTyping(conversationId string, memberId string) (*Webchattyping, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1162,12 +1130,12 @@ func (a WebChatApi) PostWebchatGuestConversationMemberTyping(conversationId stri
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling WebChatApi->PostWebchatGuestConversationMemberTyping")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling WebChatApi->PostWebchatGuestConversationMemberTyping")
 	}
 
@@ -1226,7 +1194,7 @@ func (a WebChatApi) PostWebchatGuestConversationMemberTyping(conversationId stri
 //
 // Create an ACD chat conversation from an external customer.
 //
-// This endpoint will create a new ACD Chat conversation under the specified Chat Deployment.  The conversation will begin with a guest member in it (with a role=CUSTOMER) according to the customer information that is supplied. If the guest member is authenticated, the &#39;memberAuthToken&#39; field should include his JWT as generated by the &#39;POST /api/v2/signeddata&#39; resource; if the guest member is anonymous (and the Deployment permits it) this field can be omitted.  The returned data includes the IDs of the conversation created, along with a newly-create JWT token that you can supply to all future endpoints as authentication to perform operations against that conversation. After successfully creating a conversation, you should connect a websocket to the event stream named in the &#39;eventStreamUri&#39; field of the response; the conversation is not routed until the event stream is attached.
+// This endpoint will create a new ACD Chat conversation under the specified Chat Deployment.  The conversation will begin with a guest member in it (with a role&#x3D;CUSTOMER) according to the customer information that is supplied. If the guest member is authenticated, the &#39;memberAuthToken&#39; field should include his JWT as generated by the &#39;POST /api/v2/signeddata&#39; resource; if the guest member is anonymous (and the Deployment permits it) this field can be omitted.  The returned data includes the IDs of the conversation created, along with a newly-create JWT token that you can supply to all future endpoints as authentication to perform operations against that conversation. After successfully creating a conversation, you should connect a websocket to the event stream named in the &#39;eventStreamUri&#39; field of the response; the conversation is not routed until the event stream is attached.
 func (a WebChatApi) PostWebchatGuestConversations(body Createwebchatconversationrequest) (*Createwebchatconversationresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1238,7 +1206,7 @@ func (a WebChatApi) PostWebchatGuestConversations(body Createwebchatconversation
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WebChatApi->PostWebchatGuestConversations")
 	}
 
@@ -1295,8 +1263,6 @@ func (a WebChatApi) PostWebchatGuestConversations(body Createwebchatconversation
 // PutWebchatDeployment invokes PUT /api/v2/webchat/deployments/{deploymentId}
 //
 // Update a WebChat deployment
-//
-// 
 func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeployment) (*Webchatdeployment, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1309,12 +1275,12 @@ func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeploy
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WebChatApi->PutWebchatDeployment")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WebChatApi->PutWebchatDeployment")
 	}
 
@@ -1376,8 +1342,6 @@ func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeploy
 // PutWebchatSettings invokes PUT /api/v2/webchat/settings
 //
 // Update WebChat deployment settings
-//
-// 
 func (a WebChatApi) PutWebchatSettings(body Webchatsettings) (*Webchatsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1389,7 +1353,7 @@ func (a WebChatApi) PutWebchatSettings(body Webchatsettings) (*Webchatsettings, 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WebChatApi->PutWebchatSettings")
 	}
 

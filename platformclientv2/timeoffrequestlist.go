@@ -61,11 +61,11 @@ func (o *Timeoffrequestlist) UnmarshalJSON(b []byte) error {
 	if Id, ok := TimeoffrequestlistMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TimeoffrequestlistMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if TimeOffRequests, ok := TimeoffrequestlistMap["timeOffRequests"].([]interface{}); ok {
 		TimeOffRequestsString, _ := json.Marshal(TimeOffRequests)
 		json.Unmarshal(TimeOffRequestsString, &o.TimeOffRequests)
@@ -74,7 +74,7 @@ func (o *Timeoffrequestlist) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TimeoffrequestlistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

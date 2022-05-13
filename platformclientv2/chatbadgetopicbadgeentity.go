@@ -37,7 +37,7 @@ func (o *Chatbadgetopicbadgeentity) UnmarshalJSON(b []byte) error {
 	if JabberId, ok := ChatbadgetopicbadgeentityMap["jabberId"].(string); ok {
 		o.JabberId = &JabberId
 	}
-	
+    
 
 	return nil
 }

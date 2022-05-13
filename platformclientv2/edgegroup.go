@@ -182,11 +182,11 @@ func (o *Edgegroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgegroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgegroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EdgegroupMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Edgegroup) UnmarshalJSON(b []byte) error {
 	if Description, ok := EdgegroupMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EdgegroupMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,31 +214,31 @@ func (o *Edgegroup) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EdgegroupMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EdgegroupMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EdgegroupMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EdgegroupMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EdgegroupMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Managed, ok := EdgegroupMap["managed"].(bool); ok {
 		o.Managed = &Managed
 	}
-	
+    
 	if Hybrid, ok := EdgegroupMap["hybrid"].(bool); ok {
 		o.Hybrid = &Hybrid
 	}
-	
+    
 	if EdgeTrunkBaseAssignment, ok := EdgegroupMap["edgeTrunkBaseAssignment"].(map[string]interface{}); ok {
 		EdgeTrunkBaseAssignmentString, _ := json.Marshal(EdgeTrunkBaseAssignment)
 		json.Unmarshal(EdgeTrunkBaseAssignmentString, &o.EdgeTrunkBaseAssignment)
@@ -252,7 +252,7 @@ func (o *Edgegroup) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EdgegroupMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

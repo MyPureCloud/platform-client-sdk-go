@@ -53,15 +53,15 @@ func (o *Deletableuserreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := DeletableuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Delete, ok := DeletableuserreferenceMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 	if SelfUri, ok := DeletableuserreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

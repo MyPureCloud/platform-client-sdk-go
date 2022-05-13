@@ -101,11 +101,11 @@ func (o *Lexbotalias) UnmarshalJSON(b []byte) error {
 	if Id, ok := LexbotaliasMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LexbotaliasMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Bot, ok := LexbotaliasMap["bot"].(map[string]interface{}); ok {
 		BotString, _ := json.Marshal(Bot)
 		json.Unmarshal(BotString, &o.Bot)
@@ -114,19 +114,19 @@ func (o *Lexbotalias) UnmarshalJSON(b []byte) error {
 	if BotVersion, ok := LexbotaliasMap["botVersion"].(string); ok {
 		o.BotVersion = &BotVersion
 	}
-	
+    
 	if Status, ok := LexbotaliasMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if FailureReason, ok := LexbotaliasMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
 	}
-	
+    
 	if Language, ok := LexbotaliasMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Intents, ok := LexbotaliasMap["intents"].([]interface{}); ok {
 		IntentsString, _ := json.Marshal(Intents)
 		json.Unmarshal(IntentsString, &o.Intents)
@@ -135,7 +135,7 @@ func (o *Lexbotalias) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LexbotaliasMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -37,7 +37,7 @@ func (o *Voicemailmessagestopicowner) UnmarshalJSON(b []byte) error {
 	if Id, ok := VoicemailmessagestopicownerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

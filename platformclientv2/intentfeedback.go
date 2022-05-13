@@ -61,11 +61,11 @@ func (o *Intentfeedback) UnmarshalJSON(b []byte) error {
 	if Name, ok := IntentfeedbackMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Probability, ok := IntentfeedbackMap["probability"].(float64); ok {
 		o.Probability = &Probability
 	}
-	
+    
 	if Entities, ok := IntentfeedbackMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
@@ -74,7 +74,7 @@ func (o *Intentfeedback) UnmarshalJSON(b []byte) error {
 	if Assessment, ok := IntentfeedbackMap["assessment"].(string); ok {
 		o.Assessment = &Assessment
 	}
-	
+    
 
 	return nil
 }

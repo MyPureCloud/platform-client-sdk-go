@@ -69,11 +69,11 @@ func (o *Webchatroutingtarget) UnmarshalJSON(b []byte) error {
 	if TargetType, ok := WebchatroutingtargetMap["targetType"].(string); ok {
 		o.TargetType = &TargetType
 	}
-	
+    
 	if TargetAddress, ok := WebchatroutingtargetMap["targetAddress"].(string); ok {
 		o.TargetAddress = &TargetAddress
 	}
-	
+    
 	if Skills, ok := WebchatroutingtargetMap["skills"].([]interface{}); ok {
 		SkillsString, _ := json.Marshal(Skills)
 		json.Unmarshal(SkillsString, &o.Skills)
@@ -82,7 +82,7 @@ func (o *Webchatroutingtarget) UnmarshalJSON(b []byte) error {
 	if Language, ok := WebchatroutingtargetMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Priority, ok := WebchatroutingtargetMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt

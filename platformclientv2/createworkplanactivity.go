@@ -133,11 +133,11 @@ func (o *Createworkplanactivity) UnmarshalJSON(b []byte) error {
 	if ActivityCodeId, ok := CreateworkplanactivityMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Description, ok := CreateworkplanactivityMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if LengthMinutes, ok := CreateworkplanactivityMap["lengthMinutes"].(float64); ok {
 		LengthMinutesInt := int(LengthMinutes)
 		o.LengthMinutes = &LengthMinutesInt
@@ -146,11 +146,11 @@ func (o *Createworkplanactivity) UnmarshalJSON(b []byte) error {
 	if StartTimeIsRelativeToShiftStart, ok := CreateworkplanactivityMap["startTimeIsRelativeToShiftStart"].(bool); ok {
 		o.StartTimeIsRelativeToShiftStart = &StartTimeIsRelativeToShiftStart
 	}
-	
+    
 	if FlexibleStartTime, ok := CreateworkplanactivityMap["flexibleStartTime"].(bool); ok {
 		o.FlexibleStartTime = &FlexibleStartTime
 	}
-	
+    
 	if EarliestStartTimeMinutes, ok := CreateworkplanactivityMap["earliestStartTimeMinutes"].(float64); ok {
 		EarliestStartTimeMinutesInt := int(EarliestStartTimeMinutes)
 		o.EarliestStartTimeMinutes = &EarliestStartTimeMinutesInt
@@ -174,11 +174,11 @@ func (o *Createworkplanactivity) UnmarshalJSON(b []byte) error {
 	if CountsAsPaidTime, ok := CreateworkplanactivityMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if CountsAsContiguousWorkTime, ok := CreateworkplanactivityMap["countsAsContiguousWorkTime"].(bool); ok {
 		o.CountsAsContiguousWorkTime = &CountsAsContiguousWorkTime
 	}
-	
+    
 	if MinimumLengthFromShiftStartMinutes, ok := CreateworkplanactivityMap["minimumLengthFromShiftStartMinutes"].(float64); ok {
 		MinimumLengthFromShiftStartMinutesInt := int(MinimumLengthFromShiftStartMinutes)
 		o.MinimumLengthFromShiftStartMinutes = &MinimumLengthFromShiftStartMinutesInt

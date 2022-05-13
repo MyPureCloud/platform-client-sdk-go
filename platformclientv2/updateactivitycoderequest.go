@@ -85,11 +85,11 @@ func (o *Updateactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := UpdateactivitycoderequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Category, ok := UpdateactivitycoderequestMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if LengthInMinutes, ok := UpdateactivitycoderequestMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt
@@ -98,15 +98,15 @@ func (o *Updateactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if CountsAsPaidTime, ok := UpdateactivitycoderequestMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if CountsAsWorkTime, ok := UpdateactivitycoderequestMap["countsAsWorkTime"].(bool); ok {
 		o.CountsAsWorkTime = &CountsAsWorkTime
 	}
-	
+    
 	if AgentTimeOffSelectable, ok := UpdateactivitycoderequestMap["agentTimeOffSelectable"].(bool); ok {
 		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
 	}
-	
+    
 	if Metadata, ok := UpdateactivitycoderequestMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

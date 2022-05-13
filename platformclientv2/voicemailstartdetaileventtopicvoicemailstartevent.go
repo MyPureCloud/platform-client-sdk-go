@@ -130,47 +130,47 @@ func (o *Voicemailstartdetaileventtopicvoicemailstartevent) UnmarshalJSON(b []by
 	if ConversationId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if UserId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if QueueId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if DivisionId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 
 	return nil
 }

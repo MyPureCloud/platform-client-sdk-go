@@ -69,23 +69,23 @@ func (o *Dialerrulesetconfigchangedataactionconditionpredicate) UnmarshalJSON(b 
 	if OutputField, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["outputField"].(string); ok {
 		o.OutputField = &OutputField
 	}
-	
+    
 	if OutputOperator, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["outputOperator"].(string); ok {
 		o.OutputOperator = &OutputOperator
 	}
-	
+    
 	if ComparisonValue, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["comparisonValue"].(string); ok {
 		o.ComparisonValue = &ComparisonValue
 	}
-	
+    
 	if OutputFieldMissingResolution, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["outputFieldMissingResolution"].(bool); ok {
 		o.OutputFieldMissingResolution = &OutputFieldMissingResolution
 	}
-	
+    
 	if Inverted, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
 	}
-	
+    
 
 	return nil
 }

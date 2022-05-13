@@ -53,7 +53,7 @@ func (o *Bucopyschedulerequest) UnmarshalJSON(b []byte) error {
 	if Description, ok := BucopyschedulerequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if weekDateString, ok := BucopyschedulerequestMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate

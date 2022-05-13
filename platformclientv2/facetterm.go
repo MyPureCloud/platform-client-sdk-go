@@ -86,7 +86,7 @@ func (o *Facetterm) UnmarshalJSON(b []byte) error {
 	if Term, ok := FacettermMap["term"].(string); ok {
 		o.Term = &Term
 	}
-	
+    
 	if Key, ok := FacettermMap["key"].(float64); ok {
 		KeyInt := int(Key)
 		o.Key = &KeyInt
@@ -95,11 +95,11 @@ func (o *Facetterm) UnmarshalJSON(b []byte) error {
 	if Id, ok := FacettermMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FacettermMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Count, ok := FacettermMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

@@ -50,7 +50,7 @@ func (o *Analyticsscoredagent) UnmarshalJSON(b []byte) error {
 	if ScoredAgentId, ok := AnalyticsscoredagentMap["scoredAgentId"].(string); ok {
 		o.ScoredAgentId = &ScoredAgentId
 	}
-	
+    
 
 	return nil
 }

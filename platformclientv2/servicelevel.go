@@ -45,7 +45,7 @@ func (o *Servicelevel) UnmarshalJSON(b []byte) error {
 	if Percentage, ok := ServicelevelMap["percentage"].(float64); ok {
 		o.Percentage = &Percentage
 	}
-	
+    
 	if DurationMs, ok := ServicelevelMap["durationMs"].(float64); ok {
 		DurationMsInt := int(DurationMs)
 		o.DurationMs = &DurationMsInt

@@ -58,7 +58,7 @@ func (o *Edgemetricssubsystem) UnmarshalJSON(b []byte) error {
 	if ProcessName, ok := EdgemetricssubsystemMap["processName"].(string); ok {
 		o.ProcessName = &ProcessName
 	}
-	
+    
 	if MediaSubsystem, ok := EdgemetricssubsystemMap["mediaSubsystem"].(map[string]interface{}); ok {
 		MediaSubsystemString, _ := json.Marshal(MediaSubsystem)
 		json.Unmarshal(MediaSubsystemString, &o.MediaSubsystem)

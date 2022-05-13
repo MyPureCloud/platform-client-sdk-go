@@ -53,11 +53,11 @@ func (o *Userstationchangetopicuserstation) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserstationchangetopicuserstationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserstationchangetopicuserstationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if AssociatedUser, ok := UserstationchangetopicuserstationMap["associatedUser"].(map[string]interface{}); ok {
 		AssociatedUserString, _ := json.Marshal(AssociatedUser)
 		json.Unmarshal(AssociatedUserString, &o.AssociatedUser)

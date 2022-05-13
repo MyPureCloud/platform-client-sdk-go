@@ -117,27 +117,27 @@ func (o *Activitycode) UnmarshalJSON(b []byte) error {
 	if Id, ok := ActivitycodeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ActivitycodeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if Name, ok := ActivitycodeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if IsActive, ok := ActivitycodeMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if IsDefault, ok := ActivitycodeMap["isDefault"].(bool); ok {
 		o.IsDefault = &IsDefault
 	}
-	
+    
 	if Category, ok := ActivitycodeMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if LengthInMinutes, ok := ActivitycodeMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt
@@ -146,15 +146,15 @@ func (o *Activitycode) UnmarshalJSON(b []byte) error {
 	if CountsAsPaidTime, ok := ActivitycodeMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if CountsAsWorkTime, ok := ActivitycodeMap["countsAsWorkTime"].(bool); ok {
 		o.CountsAsWorkTime = &CountsAsWorkTime
 	}
-	
+    
 	if AgentTimeOffSelectable, ok := ActivitycodeMap["agentTimeOffSelectable"].(bool); ok {
 		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
 	}
-	
+    
 	if Metadata, ok := ActivitycodeMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

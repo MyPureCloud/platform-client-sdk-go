@@ -149,7 +149,7 @@ func (o *Evaluationquestiongroupscore) UnmarshalJSON(b []byte) error {
 	if QuestionGroupId, ok := EvaluationquestiongroupscoreMap["questionGroupId"].(string); ok {
 		o.QuestionGroupId = &QuestionGroupId
 	}
-	
+    
 	if TotalScore, ok := EvaluationquestiongroupscoreMap["totalScore"].(float64); ok {
 		TotalScoreFloat32 := float32(TotalScore)
 		o.TotalScore = &TotalScoreFloat32
@@ -163,7 +163,7 @@ func (o *Evaluationquestiongroupscore) UnmarshalJSON(b []byte) error {
 	if MarkedNA, ok := EvaluationquestiongroupscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
 	}
-	
+    
 	if TotalCriticalScore, ok := EvaluationquestiongroupscoreMap["totalCriticalScore"].(float64); ok {
 		TotalCriticalScoreFloat32 := float32(TotalCriticalScore)
 		o.TotalCriticalScore = &TotalCriticalScoreFloat32

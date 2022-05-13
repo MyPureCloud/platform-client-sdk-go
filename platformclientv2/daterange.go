@@ -45,11 +45,11 @@ func (o *Daterange) UnmarshalJSON(b []byte) error {
 	if StartDate, ok := DaterangeMap["startDate"].(string); ok {
 		o.StartDate = &StartDate
 	}
-	
+    
 	if EndDate, ok := DaterangeMap["endDate"].(string); ok {
 		o.EndDate = &EndDate
 	}
-	
+    
 
 	return nil
 }

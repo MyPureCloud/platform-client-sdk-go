@@ -69,15 +69,15 @@ func (o *Domainnetworkroute) UnmarshalJSON(b []byte) error {
 	if Prefix, ok := DomainnetworkrouteMap["prefix"].(string); ok {
 		o.Prefix = &Prefix
 	}
-	
+    
 	if Nexthop, ok := DomainnetworkrouteMap["nexthop"].(string); ok {
 		o.Nexthop = &Nexthop
 	}
-	
+    
 	if Persistent, ok := DomainnetworkrouteMap["persistent"].(bool); ok {
 		o.Persistent = &Persistent
 	}
-	
+    
 	if Metric, ok := DomainnetworkrouteMap["metric"].(float64); ok {
 		MetricInt := int(Metric)
 		o.Metric = &MetricInt

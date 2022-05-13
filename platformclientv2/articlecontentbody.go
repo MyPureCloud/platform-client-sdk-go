@@ -37,7 +37,7 @@ func (o *Articlecontentbody) UnmarshalJSON(b []byte) error {
 	if LocationUrl, ok := ArticlecontentbodyMap["locationUrl"].(string); ok {
 		o.LocationUrl = &LocationUrl
 	}
-	
+    
 
 	return nil
 }

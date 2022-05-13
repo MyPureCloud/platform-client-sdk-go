@@ -107,15 +107,15 @@ func (o *Transcriptiontopictranscriptionmessage) UnmarshalJSON(b []byte) error {
 	if OrganizationId, ok := TranscriptiontopictranscriptionmessageMap["organizationId"].(string); ok {
 		o.OrganizationId = &OrganizationId
 	}
-	
+    
 	if ConversationId, ok := TranscriptiontopictranscriptionmessageMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if CommunicationId, ok := TranscriptiontopictranscriptionmessageMap["communicationId"].(string); ok {
 		o.CommunicationId = &CommunicationId
 	}
-	
+    
 	if SessionStartTimeMs, ok := TranscriptiontopictranscriptionmessageMap["sessionStartTimeMs"].(float64); ok {
 		SessionStartTimeMsInt := int(SessionStartTimeMs)
 		o.SessionStartTimeMs = &SessionStartTimeMsInt

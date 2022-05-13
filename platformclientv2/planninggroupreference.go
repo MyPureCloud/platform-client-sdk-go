@@ -45,11 +45,11 @@ func (o *Planninggroupreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := PlanninggroupreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := PlanninggroupreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

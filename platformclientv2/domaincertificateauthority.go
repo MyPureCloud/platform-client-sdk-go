@@ -182,11 +182,11 @@ func (o *Domaincertificateauthority) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomaincertificateauthorityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomaincertificateauthorityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DomaincertificateauthorityMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Domaincertificateauthority) UnmarshalJSON(b []byte) error {
 	if Description, ok := DomaincertificateauthorityMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := DomaincertificateauthorityMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,31 +214,31 @@ func (o *Domaincertificateauthority) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := DomaincertificateauthorityMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := DomaincertificateauthorityMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := DomaincertificateauthorityMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := DomaincertificateauthorityMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := DomaincertificateauthorityMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Certificate, ok := DomaincertificateauthorityMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 	if VarType, ok := DomaincertificateauthorityMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Services, ok := DomaincertificateauthorityMap["services"].([]interface{}); ok {
 		ServicesString, _ := json.Marshal(Services)
 		json.Unmarshal(ServicesString, &o.Services)
@@ -252,7 +252,7 @@ func (o *Domaincertificateauthority) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DomaincertificateauthorityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

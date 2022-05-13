@@ -125,19 +125,19 @@ func (o *Domainorganizationrole) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainorganizationroleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainorganizationroleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := DomainorganizationroleMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if DefaultRoleId, ok := DomainorganizationroleMap["defaultRoleId"].(string); ok {
 		o.DefaultRoleId = &DefaultRoleId
 	}
-	
+    
 	if Permissions, ok := DomainorganizationroleMap["permissions"].([]interface{}); ok {
 		PermissionsString, _ := json.Marshal(Permissions)
 		json.Unmarshal(PermissionsString, &o.Permissions)
@@ -161,19 +161,19 @@ func (o *Domainorganizationrole) UnmarshalJSON(b []byte) error {
 	if RoleNeedsUpdate, ok := DomainorganizationroleMap["roleNeedsUpdate"].(bool); ok {
 		o.RoleNeedsUpdate = &RoleNeedsUpdate
 	}
-	
+    
 	if Base, ok := DomainorganizationroleMap["base"].(bool); ok {
 		o.Base = &Base
 	}
-	
+    
 	if VarDefault, ok := DomainorganizationroleMap["default"].(bool); ok {
 		o.VarDefault = &VarDefault
 	}
-	
+    
 	if SelfUri, ok := DomainorganizationroleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

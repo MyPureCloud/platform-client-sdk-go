@@ -45,11 +45,11 @@ func (o *Dialerdnclistconfigchangeurireference) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialerdnclistconfigchangeurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialerdnclistconfigchangeurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

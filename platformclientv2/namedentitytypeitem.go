@@ -45,7 +45,7 @@ func (o *Namedentitytypeitem) UnmarshalJSON(b []byte) error {
 	if Value, ok := NamedentitytypeitemMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Synonyms, ok := NamedentitytypeitemMap["synonyms"].([]interface{}); ok {
 		SynonymsString, _ := json.Marshal(Synonyms)
 		json.Unmarshal(SynonymsString, &o.Synonyms)

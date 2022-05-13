@@ -45,11 +45,11 @@ func (o *Timeofflimitreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := TimeofflimitreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := TimeofflimitreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

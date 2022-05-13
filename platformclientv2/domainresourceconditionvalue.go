@@ -71,11 +71,11 @@ func (o *Domainresourceconditionvalue) UnmarshalJSON(b []byte) error {
 	if Value, ok := DomainresourceconditionvalueMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarType, ok := DomainresourceconditionvalueMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

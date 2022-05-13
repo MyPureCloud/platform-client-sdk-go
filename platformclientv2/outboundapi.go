@@ -32,8 +32,6 @@ func NewOutboundApiWithConfig(config *Configuration) *OutboundApi {
 // DeleteOutboundAttemptlimit invokes DELETE /api/v2/outbound/attemptlimits/{attemptLimitsId}
 //
 // Delete attempt limits
-//
-// 
 func (a OutboundApi) DeleteOutboundAttemptlimit(attemptLimitsId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a OutboundApi) DeleteOutboundAttemptlimit(attemptLimitsId string) (*APIRes
 
 	// verify the required parameter 'attemptLimitsId' is set
 	if &attemptLimitsId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'attemptLimitsId' when calling OutboundApi->DeleteOutboundAttemptlimit")
 	}
 
@@ -98,8 +96,6 @@ func (a OutboundApi) DeleteOutboundAttemptlimit(attemptLimitsId string) (*APIRes
 // DeleteOutboundCallabletimeset invokes DELETE /api/v2/outbound/callabletimesets/{callableTimeSetId}
 //
 // Delete callable time set
-//
-// 
 func (a OutboundApi) DeleteOutboundCallabletimeset(callableTimeSetId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +107,7 @@ func (a OutboundApi) DeleteOutboundCallabletimeset(callableTimeSetId string) (*A
 
 	// verify the required parameter 'callableTimeSetId' is set
 	if &callableTimeSetId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'callableTimeSetId' when calling OutboundApi->DeleteOutboundCallabletimeset")
 	}
 
@@ -164,8 +160,6 @@ func (a OutboundApi) DeleteOutboundCallabletimeset(callableTimeSetId string) (*A
 // DeleteOutboundCallanalysisresponseset invokes DELETE /api/v2/outbound/callanalysisresponsesets/{callAnalysisSetId}
 //
 // Delete a dialer call analysis response set.
-//
-// 
 func (a OutboundApi) DeleteOutboundCallanalysisresponseset(callAnalysisSetId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -177,7 +171,7 @@ func (a OutboundApi) DeleteOutboundCallanalysisresponseset(callAnalysisSetId str
 
 	// verify the required parameter 'callAnalysisSetId' is set
 	if &callAnalysisSetId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'callAnalysisSetId' when calling OutboundApi->DeleteOutboundCallanalysisresponseset")
 	}
 
@@ -230,8 +224,6 @@ func (a OutboundApi) DeleteOutboundCallanalysisresponseset(callAnalysisSetId str
 // DeleteOutboundCampaign invokes DELETE /api/v2/outbound/campaigns/{campaignId}
 //
 // Delete a campaign.
-//
-// 
 func (a OutboundApi) DeleteOutboundCampaign(campaignId string) (*Campaign, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -244,7 +236,7 @@ func (a OutboundApi) DeleteOutboundCampaign(campaignId string) (*Campaign, *APIR
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->DeleteOutboundCampaign")
 	}
 
@@ -303,8 +295,6 @@ func (a OutboundApi) DeleteOutboundCampaign(campaignId string) (*Campaign, *APIR
 // DeleteOutboundCampaignProgress invokes DELETE /api/v2/outbound/campaigns/{campaignId}/progress
 //
 // Reset campaign progress and recycle the campaign
-//
-// 
 func (a OutboundApi) DeleteOutboundCampaignProgress(campaignId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -316,7 +306,7 @@ func (a OutboundApi) DeleteOutboundCampaignProgress(campaignId string) (*APIResp
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->DeleteOutboundCampaignProgress")
 	}
 
@@ -369,8 +359,6 @@ func (a OutboundApi) DeleteOutboundCampaignProgress(campaignId string) (*APIResp
 // DeleteOutboundCampaignrule invokes DELETE /api/v2/outbound/campaignrules/{campaignRuleId}
 //
 // Delete Campaign Rule
-//
-// 
 func (a OutboundApi) DeleteOutboundCampaignrule(campaignRuleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -382,7 +370,7 @@ func (a OutboundApi) DeleteOutboundCampaignrule(campaignRuleId string) (*APIResp
 
 	// verify the required parameter 'campaignRuleId' is set
 	if &campaignRuleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'campaignRuleId' when calling OutboundApi->DeleteOutboundCampaignrule")
 	}
 
@@ -435,8 +423,6 @@ func (a OutboundApi) DeleteOutboundCampaignrule(campaignRuleId string) (*APIResp
 // DeleteOutboundContactlist invokes DELETE /api/v2/outbound/contactlists/{contactListId}
 //
 // Delete a contact list.
-//
-// 
 func (a OutboundApi) DeleteOutboundContactlist(contactListId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -448,7 +434,7 @@ func (a OutboundApi) DeleteOutboundContactlist(contactListId string) (*APIRespon
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->DeleteOutboundContactlist")
 	}
 
@@ -501,8 +487,6 @@ func (a OutboundApi) DeleteOutboundContactlist(contactListId string) (*APIRespon
 // DeleteOutboundContactlistContact invokes DELETE /api/v2/outbound/contactlists/{contactListId}/contacts/{contactId}
 //
 // Delete a contact.
-//
-// 
 func (a OutboundApi) DeleteOutboundContactlistContact(contactListId string, contactId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -515,12 +499,12 @@ func (a OutboundApi) DeleteOutboundContactlistContact(contactListId string, cont
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->DeleteOutboundContactlistContact")
 	}
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'contactId' when calling OutboundApi->DeleteOutboundContactlistContact")
 	}
 
@@ -573,8 +557,6 @@ func (a OutboundApi) DeleteOutboundContactlistContact(contactListId string, cont
 // DeleteOutboundContactlistContacts invokes DELETE /api/v2/outbound/contactlists/{contactListId}/contacts
 //
 // Delete contacts from a contact list.
-//
-// 
 func (a OutboundApi) DeleteOutboundContactlistContacts(contactListId string, contactIds []string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -586,7 +568,7 @@ func (a OutboundApi) DeleteOutboundContactlistContacts(contactListId string, con
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->DeleteOutboundContactlistContacts")
 	}
 	// verify the required parameter 'contactIds' is set
@@ -646,8 +628,6 @@ func (a OutboundApi) DeleteOutboundContactlistContacts(contactListId string, con
 // DeleteOutboundContactlistfilter invokes DELETE /api/v2/outbound/contactlistfilters/{contactListFilterId}
 //
 // Delete Contact List Filter
-//
-// 
 func (a OutboundApi) DeleteOutboundContactlistfilter(contactListFilterId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -659,7 +639,7 @@ func (a OutboundApi) DeleteOutboundContactlistfilter(contactListFilterId string)
 
 	// verify the required parameter 'contactListFilterId' is set
 	if &contactListFilterId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'contactListFilterId' when calling OutboundApi->DeleteOutboundContactlistfilter")
 	}
 
@@ -712,8 +692,6 @@ func (a OutboundApi) DeleteOutboundContactlistfilter(contactListFilterId string)
 // DeleteOutboundContactlists invokes DELETE /api/v2/outbound/contactlists
 //
 // Delete multiple contact lists.
-//
-// 
 func (a OutboundApi) DeleteOutboundContactlists(id []string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -779,8 +757,6 @@ func (a OutboundApi) DeleteOutboundContactlists(id []string) (*APIResponse, erro
 // DeleteOutboundDnclist invokes DELETE /api/v2/outbound/dnclists/{dncListId}
 //
 // Delete dialer DNC list
-//
-// 
 func (a OutboundApi) DeleteOutboundDnclist(dncListId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -792,7 +768,7 @@ func (a OutboundApi) DeleteOutboundDnclist(dncListId string) (*APIResponse, erro
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->DeleteOutboundDnclist")
 	}
 
@@ -845,8 +821,6 @@ func (a OutboundApi) DeleteOutboundDnclist(dncListId string) (*APIResponse, erro
 // DeleteOutboundMessagingcampaign invokes DELETE /api/v2/outbound/messagingcampaigns/{messagingCampaignId}
 //
 // Delete an Outbound Messaging Campaign
-//
-// 
 func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string) (*Messagingcampaign, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -859,7 +833,7 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->DeleteOutboundMessagingcampaign")
 	}
 
@@ -918,8 +892,6 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 // DeleteOutboundMessagingcampaignProgress invokes DELETE /api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress
 //
 // Reset messaging campaign progress and recycle the messaging campaign
-//
-// 
 func (a OutboundApi) DeleteOutboundMessagingcampaignProgress(messagingCampaignId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -931,7 +903,7 @@ func (a OutboundApi) DeleteOutboundMessagingcampaignProgress(messagingCampaignId
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->DeleteOutboundMessagingcampaignProgress")
 	}
 
@@ -984,8 +956,6 @@ func (a OutboundApi) DeleteOutboundMessagingcampaignProgress(messagingCampaignId
 // DeleteOutboundRuleset invokes DELETE /api/v2/outbound/rulesets/{ruleSetId}
 //
 // Delete a Rule Set.
-//
-// 
 func (a OutboundApi) DeleteOutboundRuleset(ruleSetId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -997,7 +967,7 @@ func (a OutboundApi) DeleteOutboundRuleset(ruleSetId string) (*APIResponse, erro
 
 	// verify the required parameter 'ruleSetId' is set
 	if &ruleSetId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'ruleSetId' when calling OutboundApi->DeleteOutboundRuleset")
 	}
 
@@ -1050,8 +1020,6 @@ func (a OutboundApi) DeleteOutboundRuleset(ruleSetId string) (*APIResponse, erro
 // DeleteOutboundSchedulesCampaign invokes DELETE /api/v2/outbound/schedules/campaigns/{campaignId}
 //
 // Delete a dialer campaign schedule.
-//
-// 
 func (a OutboundApi) DeleteOutboundSchedulesCampaign(campaignId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1063,7 +1031,7 @@ func (a OutboundApi) DeleteOutboundSchedulesCampaign(campaignId string) (*APIRes
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->DeleteOutboundSchedulesCampaign")
 	}
 
@@ -1116,8 +1084,6 @@ func (a OutboundApi) DeleteOutboundSchedulesCampaign(campaignId string) (*APIRes
 // DeleteOutboundSchedulesEmailcampaign invokes DELETE /api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}
 //
 // Delete an email campaign schedule.
-//
-// 
 func (a OutboundApi) DeleteOutboundSchedulesEmailcampaign(emailCampaignId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1129,7 +1095,7 @@ func (a OutboundApi) DeleteOutboundSchedulesEmailcampaign(emailCampaignId string
 
 	// verify the required parameter 'emailCampaignId' is set
 	if &emailCampaignId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'emailCampaignId' when calling OutboundApi->DeleteOutboundSchedulesEmailcampaign")
 	}
 
@@ -1182,8 +1148,6 @@ func (a OutboundApi) DeleteOutboundSchedulesEmailcampaign(emailCampaignId string
 // DeleteOutboundSchedulesMessagingcampaign invokes DELETE /api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}
 //
 // Delete a messaging campaign schedule.
-//
-// 
 func (a OutboundApi) DeleteOutboundSchedulesMessagingcampaign(messagingCampaignId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1195,7 +1159,7 @@ func (a OutboundApi) DeleteOutboundSchedulesMessagingcampaign(messagingCampaignI
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->DeleteOutboundSchedulesMessagingcampaign")
 	}
 
@@ -1248,8 +1212,6 @@ func (a OutboundApi) DeleteOutboundSchedulesMessagingcampaign(messagingCampaignI
 // DeleteOutboundSchedulesSequence invokes DELETE /api/v2/outbound/schedules/sequences/{sequenceId}
 //
 // Delete a dialer sequence schedule.
-//
-// 
 func (a OutboundApi) DeleteOutboundSchedulesSequence(sequenceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1261,7 +1223,7 @@ func (a OutboundApi) DeleteOutboundSchedulesSequence(sequenceId string) (*APIRes
 
 	// verify the required parameter 'sequenceId' is set
 	if &sequenceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'sequenceId' when calling OutboundApi->DeleteOutboundSchedulesSequence")
 	}
 
@@ -1314,8 +1276,6 @@ func (a OutboundApi) DeleteOutboundSchedulesSequence(sequenceId string) (*APIRes
 // DeleteOutboundSequence invokes DELETE /api/v2/outbound/sequences/{sequenceId}
 //
 // Delete a dialer campaign sequence.
-//
-// 
 func (a OutboundApi) DeleteOutboundSequence(sequenceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1327,7 +1287,7 @@ func (a OutboundApi) DeleteOutboundSequence(sequenceId string) (*APIResponse, er
 
 	// verify the required parameter 'sequenceId' is set
 	if &sequenceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'sequenceId' when calling OutboundApi->DeleteOutboundSequence")
 	}
 
@@ -1380,8 +1340,6 @@ func (a OutboundApi) DeleteOutboundSequence(sequenceId string) (*APIResponse, er
 // GetOutboundAttemptlimit invokes GET /api/v2/outbound/attemptlimits/{attemptLimitsId}
 //
 // Get attempt limits
-//
-// 
 func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptlimits, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1394,7 +1352,7 @@ func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptli
 
 	// verify the required parameter 'attemptLimitsId' is set
 	if &attemptLimitsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'attemptLimitsId' when calling OutboundApi->GetOutboundAttemptlimit")
 	}
 
@@ -1453,8 +1411,6 @@ func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptli
 // GetOutboundAttemptlimits invokes GET /api/v2/outbound/attemptlimits
 //
 // Query attempt limits list
-//
-// 
 func (a OutboundApi) GetOutboundAttemptlimits(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Attemptlimitsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1534,8 +1490,6 @@ func (a OutboundApi) GetOutboundAttemptlimits(pageSize int, pageNumber int, allo
 // GetOutboundCallabletimeset invokes GET /api/v2/outbound/callabletimesets/{callableTimeSetId}
 //
 // Get callable time set
-//
-// 
 func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Callabletimeset, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1548,7 +1502,7 @@ func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Call
 
 	// verify the required parameter 'callableTimeSetId' is set
 	if &callableTimeSetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'callableTimeSetId' when calling OutboundApi->GetOutboundCallabletimeset")
 	}
 
@@ -1607,8 +1561,6 @@ func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Call
 // GetOutboundCallabletimesets invokes GET /api/v2/outbound/callabletimesets
 //
 // Query callable time set list
-//
-// 
 func (a OutboundApi) GetOutboundCallabletimesets(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Callabletimesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1688,8 +1640,6 @@ func (a OutboundApi) GetOutboundCallabletimesets(pageSize int, pageNumber int, a
 // GetOutboundCallanalysisresponseset invokes GET /api/v2/outbound/callanalysisresponsesets/{callAnalysisSetId}
 //
 // Get a dialer call analysis response set.
-//
-// 
 func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string) (*Responseset, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1702,7 +1652,7 @@ func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string
 
 	// verify the required parameter 'callAnalysisSetId' is set
 	if &callAnalysisSetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'callAnalysisSetId' when calling OutboundApi->GetOutboundCallanalysisresponseset")
 	}
 
@@ -1761,8 +1711,6 @@ func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string
 // GetOutboundCallanalysisresponsesets invokes GET /api/v2/outbound/callanalysisresponsesets
 //
 // Query a list of dialer call analysis response sets.
-//
-// 
 func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Responsesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1842,8 +1790,6 @@ func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int, pageNumbe
 // GetOutboundCampaign invokes GET /api/v2/outbound/campaigns/{campaignId}
 //
 // Get dialer campaign.
-//
-// 
 func (a OutboundApi) GetOutboundCampaign(campaignId string) (*Campaign, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1856,7 +1802,7 @@ func (a OutboundApi) GetOutboundCampaign(campaignId string) (*Campaign, *APIResp
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaign")
 	}
 
@@ -1914,9 +1860,7 @@ func (a OutboundApi) GetOutboundCampaign(campaignId string) (*Campaign, *APIResp
 
 // GetOutboundCampaignAgentownedmappingpreviewResults invokes GET /api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview/results
 //
-// Get a preview of how agents will be mapped to this campaign&#39;s contact list.
-//
-// 
+// Get a preview of how agents will be mapped to this campaign's contact list.
 func (a OutboundApi) GetOutboundCampaignAgentownedmappingpreviewResults(campaignId string) (*Agentownedmappingpreviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1929,7 +1873,7 @@ func (a OutboundApi) GetOutboundCampaignAgentownedmappingpreviewResults(campaign
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaignAgentownedmappingpreviewResults")
 	}
 
@@ -1988,8 +1932,6 @@ func (a OutboundApi) GetOutboundCampaignAgentownedmappingpreviewResults(campaign
 // GetOutboundCampaignDiagnostics invokes GET /api/v2/outbound/campaigns/{campaignId}/diagnostics
 //
 // Get campaign diagnostics
-//
-// 
 func (a OutboundApi) GetOutboundCampaignDiagnostics(campaignId string) (*Campaigndiagnostics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2002,7 +1944,7 @@ func (a OutboundApi) GetOutboundCampaignDiagnostics(campaignId string) (*Campaig
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaignDiagnostics")
 	}
 
@@ -2061,8 +2003,6 @@ func (a OutboundApi) GetOutboundCampaignDiagnostics(campaignId string) (*Campaig
 // GetOutboundCampaignInteractions invokes GET /api/v2/outbound/campaigns/{campaignId}/interactions
 //
 // Get dialer campaign interactions.
-//
-// 
 func (a OutboundApi) GetOutboundCampaignInteractions(campaignId string) (*Campaigninteractions, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2075,7 +2015,7 @@ func (a OutboundApi) GetOutboundCampaignInteractions(campaignId string) (*Campai
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaignInteractions")
 	}
 
@@ -2134,8 +2074,6 @@ func (a OutboundApi) GetOutboundCampaignInteractions(campaignId string) (*Campai
 // GetOutboundCampaignProgress invokes GET /api/v2/outbound/campaigns/{campaignId}/progress
 //
 // Get campaign progress
-//
-// 
 func (a OutboundApi) GetOutboundCampaignProgress(campaignId string) (*Campaignprogress, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2148,7 +2086,7 @@ func (a OutboundApi) GetOutboundCampaignProgress(campaignId string) (*Campaignpr
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaignProgress")
 	}
 
@@ -2207,8 +2145,6 @@ func (a OutboundApi) GetOutboundCampaignProgress(campaignId string) (*Campaignpr
 // GetOutboundCampaignStats invokes GET /api/v2/outbound/campaigns/{campaignId}/stats
 //
 // Get statistics about a Dialer Campaign
-//
-// 
 func (a OutboundApi) GetOutboundCampaignStats(campaignId string) (*Campaignstats, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2221,7 +2157,7 @@ func (a OutboundApi) GetOutboundCampaignStats(campaignId string) (*Campaignstats
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaignStats")
 	}
 
@@ -2280,8 +2216,6 @@ func (a OutboundApi) GetOutboundCampaignStats(campaignId string) (*Campaignstats
 // GetOutboundCampaignrule invokes GET /api/v2/outbound/campaignrules/{campaignRuleId}
 //
 // Get Campaign Rule
-//
-// 
 func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignrule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2294,7 +2228,7 @@ func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignru
 
 	// verify the required parameter 'campaignRuleId' is set
 	if &campaignRuleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignRuleId' when calling OutboundApi->GetOutboundCampaignrule")
 	}
 
@@ -2353,8 +2287,6 @@ func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignru
 // GetOutboundCampaignrules invokes GET /api/v2/outbound/campaignrules
 //
 // Query Campaign Rule list
-//
-// 
 func (a OutboundApi) GetOutboundCampaignrules(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignruleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2434,8 +2366,6 @@ func (a OutboundApi) GetOutboundCampaignrules(pageSize int, pageNumber int, allo
 // GetOutboundCampaigns invokes GET /api/v2/outbound/campaigns
 //
 // Query a list of dialer campaigns.
-//
-// 
 func (a OutboundApi) GetOutboundCampaigns(pageSize int, pageNumber int, filterType string, name string, id []string, contactListId string, dncListIds string, distributionQueueId string, edgeGroupId string, callAnalysisResponseSetId string, divisionId []string, sortBy string, sortOrder string) (*Campaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2527,8 +2457,6 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int, pageNumber int, filterTy
 // GetOutboundCampaignsAll invokes GET /api/v2/outbound/campaigns/all
 //
 // Query across all types of campaigns by division
-//
-// 
 func (a OutboundApi) GetOutboundCampaignsAll(pageSize int, pageNumber int, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2608,8 +2536,6 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int, pageNumber int, id []
 // GetOutboundCampaignsAllDivisionviews invokes GET /api/v2/outbound/campaigns/all/divisionviews
 //
 // Query across all types of campaigns
-//
-// 
 func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int, pageNumber int, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaigndivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2703,7 +2629,7 @@ func (a OutboundApi) GetOutboundCampaignsDivisionview(campaignId string) (*Campa
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaignsDivisionview")
 	}
 
@@ -2843,8 +2769,6 @@ func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int, pageNumber 
 // GetOutboundContactlist invokes GET /api/v2/outbound/contactlists/{contactListId}
 //
 // Get a dialer contact list.
-//
-// 
 func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportStatus bool, includeSize bool) (*Contactlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2857,7 +2781,7 @@ func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportS
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->GetOutboundContactlist")
 	}
 
@@ -2920,8 +2844,6 @@ func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportS
 // GetOutboundContactlistContact invokes GET /api/v2/outbound/contactlists/{contactListId}/contacts/{contactId}
 //
 // Get a contact.
-//
-// 
 func (a OutboundApi) GetOutboundContactlistContact(contactListId string, contactId string) (*Dialercontact, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2935,12 +2857,12 @@ func (a OutboundApi) GetOutboundContactlistContact(contactListId string, contact
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->GetOutboundContactlistContact")
 	}
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling OutboundApi->GetOutboundContactlistContact")
 	}
 
@@ -2999,8 +2921,6 @@ func (a OutboundApi) GetOutboundContactlistContact(contactListId string, contact
 // GetOutboundContactlistExport invokes GET /api/v2/outbound/contactlists/{contactListId}/export
 //
 // Get the URI of a contact list export.
-//
-// 
 func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download string) (*Exporturi, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3013,7 +2933,7 @@ func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->GetOutboundContactlistExport")
 	}
 
@@ -3074,8 +2994,6 @@ func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download
 // GetOutboundContactlistImportstatus invokes GET /api/v2/outbound/contactlists/{contactListId}/importstatus
 //
 // Get dialer contactList import status.
-//
-// 
 func (a OutboundApi) GetOutboundContactlistImportstatus(contactListId string) (*Importstatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3088,7 +3006,7 @@ func (a OutboundApi) GetOutboundContactlistImportstatus(contactListId string) (*
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->GetOutboundContactlistImportstatus")
 	}
 
@@ -3147,8 +3065,6 @@ func (a OutboundApi) GetOutboundContactlistImportstatus(contactListId string) (*
 // GetOutboundContactlistTimezonemappingpreview invokes GET /api/v2/outbound/contactlists/{contactListId}/timezonemappingpreview
 //
 // Preview the result of applying Automatic Time Zone Mapping to a contact list
-//
-// 
 func (a OutboundApi) GetOutboundContactlistTimezonemappingpreview(contactListId string) (*Timezonemappingpreview, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3161,7 +3077,7 @@ func (a OutboundApi) GetOutboundContactlistTimezonemappingpreview(contactListId 
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->GetOutboundContactlistTimezonemappingpreview")
 	}
 
@@ -3220,8 +3136,6 @@ func (a OutboundApi) GetOutboundContactlistTimezonemappingpreview(contactListId 
 // GetOutboundContactlistfilter invokes GET /api/v2/outbound/contactlistfilters/{contactListFilterId}
 //
 // Get Contact list filter
-//
-// 
 func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*Contactlistfilter, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3234,7 +3148,7 @@ func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*
 
 	// verify the required parameter 'contactListFilterId' is set
 	if &contactListFilterId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListFilterId' when calling OutboundApi->GetOutboundContactlistfilter")
 	}
 
@@ -3293,8 +3207,6 @@ func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*
 // GetOutboundContactlistfilters invokes GET /api/v2/outbound/contactlistfilters
 //
 // Query Contact list filters
-//
-// 
 func (a OutboundApi) GetOutboundContactlistfilters(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string, contactListId string) (*Contactlistfilterentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3376,8 +3288,6 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int, pageNumber int,
 // GetOutboundContactlists invokes GET /api/v2/outbound/contactlists
 //
 // Query a list of contact lists.
-//
-// 
 func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, id []string, divisionId []string, sortBy string, sortOrder string) (*Contactlistentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3479,7 +3389,7 @@ func (a OutboundApi) GetOutboundContactlistsDivisionview(contactListId string, i
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->GetOutboundContactlistsDivisionview")
 	}
 
@@ -3627,8 +3537,6 @@ func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bo
 // GetOutboundDnclist invokes GET /api/v2/outbound/dnclists/{dncListId}
 //
 // Get dialer DNC list
-//
-// 
 func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bool, includeSize bool) (*Dnclist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3641,7 +3549,7 @@ func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bo
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->GetOutboundDnclist")
 	}
 
@@ -3704,8 +3612,6 @@ func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bo
 // GetOutboundDnclistExport invokes GET /api/v2/outbound/dnclists/{dncListId}/export
 //
 // Get the URI of a DNC list export.
-//
-// 
 func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string) (*Exporturi, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3718,7 +3624,7 @@ func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string)
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->GetOutboundDnclistExport")
 	}
 
@@ -3779,8 +3685,6 @@ func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string)
 // GetOutboundDnclistImportstatus invokes GET /api/v2/outbound/dnclists/{dncListId}/importstatus
 //
 // Get dialer dncList import status.
-//
-// 
 func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importstatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3793,7 +3697,7 @@ func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importst
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->GetOutboundDnclistImportstatus")
 	}
 
@@ -3852,8 +3756,6 @@ func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importst
 // GetOutboundDnclists invokes GET /api/v2/outbound/dnclists
 //
 // Query dialer DNC lists
-//
-// 
 func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, dncSourceType string, divisionId []string, sortBy string, sortOrder string) (*Dnclistentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3955,7 +3857,7 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->GetOutboundDnclistsDivisionview")
 	}
 
@@ -4105,8 +4007,6 @@ func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, 
 // GetOutboundEvent invokes GET /api/v2/outbound/events/{eventId}
 //
 // Get Dialer Event
-//
-// 
 func (a OutboundApi) GetOutboundEvent(eventId string) (*Eventlog, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4119,7 +4019,7 @@ func (a OutboundApi) GetOutboundEvent(eventId string) (*Eventlog, *APIResponse, 
 
 	// verify the required parameter 'eventId' is set
 	if &eventId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'eventId' when calling OutboundApi->GetOutboundEvent")
 	}
 
@@ -4178,8 +4078,6 @@ func (a OutboundApi) GetOutboundEvent(eventId string) (*Eventlog, *APIResponse, 
 // GetOutboundEvents invokes GET /api/v2/outbound/events
 //
 // Query Event Logs
-//
-// 
 func (a OutboundApi) GetOutboundEvents(pageSize int, pageNumber int, filterType string, category string, level string, sortBy string, sortOrder string) (*Dialerevententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4259,8 +4157,6 @@ func (a OutboundApi) GetOutboundEvents(pageSize int, pageNumber int, filterType 
 // GetOutboundMessagingcampaign invokes GET /api/v2/outbound/messagingcampaigns/{messagingCampaignId}
 //
 // Get an Outbound Messaging Campaign
-//
-// 
 func (a OutboundApi) GetOutboundMessagingcampaign(messagingCampaignId string) (*Messagingcampaign, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4273,7 +4169,7 @@ func (a OutboundApi) GetOutboundMessagingcampaign(messagingCampaignId string) (*
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundMessagingcampaign")
 	}
 
@@ -4331,9 +4227,7 @@ func (a OutboundApi) GetOutboundMessagingcampaign(messagingCampaignId string) (*
 
 // GetOutboundMessagingcampaignProgress invokes GET /api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress
 //
-// Get messaging campaign&#39;s progress
-//
-// 
+// Get messaging campaign's progress
 func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId string) (*Campaignprogress, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4346,7 +4240,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundMessagingcampaignProgress")
 	}
 
@@ -4405,8 +4299,6 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 // GetOutboundMessagingcampaigns invokes GET /api/v2/outbound/messagingcampaigns
 //
 // Query a list of Messaging Campaigns
-//
-// 
 func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string) (*Messagingcampaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4506,7 +4398,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaign
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundMessagingcampaignsDivisionview")
 	}
 
@@ -4646,8 +4538,6 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pa
 // GetOutboundRuleset invokes GET /api/v2/outbound/rulesets/{ruleSetId}
 //
 // Get a Rule Set by ID.
-//
-// 
 func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4660,7 +4550,7 @@ func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIRespons
 
 	// verify the required parameter 'ruleSetId' is set
 	if &ruleSetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'ruleSetId' when calling OutboundApi->GetOutboundRuleset")
 	}
 
@@ -4719,8 +4609,6 @@ func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIRespons
 // GetOutboundRulesets invokes GET /api/v2/outbound/rulesets
 //
 // Query a list of Rule Sets.
-//
-// 
 func (a OutboundApi) GetOutboundRulesets(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Rulesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4800,8 +4688,6 @@ func (a OutboundApi) GetOutboundRulesets(pageSize int, pageNumber int, allowEmpt
 // GetOutboundSchedulesCampaign invokes GET /api/v2/outbound/schedules/campaigns/{campaignId}
 //
 // Get a dialer campaign schedule.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesCampaign(campaignId string) (*Campaignschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4814,7 +4700,7 @@ func (a OutboundApi) GetOutboundSchedulesCampaign(campaignId string) (*Campaigns
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundSchedulesCampaign")
 	}
 
@@ -4873,8 +4759,6 @@ func (a OutboundApi) GetOutboundSchedulesCampaign(campaignId string) (*Campaigns
 // GetOutboundSchedulesCampaigns invokes GET /api/v2/outbound/schedules/campaigns
 //
 // Query for a list of dialer campaign schedules.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesCampaigns() ([]Campaignschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4940,8 +4824,6 @@ func (a OutboundApi) GetOutboundSchedulesCampaigns() ([]Campaignschedule, *APIRe
 // GetOutboundSchedulesEmailcampaign invokes GET /api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}
 //
 // Get an email campaign schedule.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (*Emailcampaignschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4954,7 +4836,7 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (
 
 	// verify the required parameter 'emailCampaignId' is set
 	if &emailCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'emailCampaignId' when calling OutboundApi->GetOutboundSchedulesEmailcampaign")
 	}
 
@@ -5013,8 +4895,6 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (
 // GetOutboundSchedulesEmailcampaigns invokes GET /api/v2/outbound/schedules/emailcampaigns
 //
 // Query for a list of email campaign schedules.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Messagingcampaignscheduleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5080,8 +4960,6 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Messagingcampaignsch
 // GetOutboundSchedulesMessagingcampaign invokes GET /api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}
 //
 // Get a messaging campaign schedule.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesMessagingcampaign(messagingCampaignId string) (*Messagingcampaignschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5094,7 +4972,7 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaign(messagingCampaignId s
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundSchedulesMessagingcampaign")
 	}
 
@@ -5153,8 +5031,6 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaign(messagingCampaignId s
 // GetOutboundSchedulesMessagingcampaigns invokes GET /api/v2/outbound/schedules/messagingcampaigns
 //
 // Query for a list of messaging campaign schedules.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesMessagingcampaigns() (*Messagingcampaignscheduleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5220,8 +5096,6 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaigns() (*Messagingcampaig
 // GetOutboundSchedulesSequence invokes GET /api/v2/outbound/schedules/sequences/{sequenceId}
 //
 // Get a dialer sequence schedule.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesSequence(sequenceId string) (*Sequenceschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5234,7 +5108,7 @@ func (a OutboundApi) GetOutboundSchedulesSequence(sequenceId string) (*Sequences
 
 	// verify the required parameter 'sequenceId' is set
 	if &sequenceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sequenceId' when calling OutboundApi->GetOutboundSchedulesSequence")
 	}
 
@@ -5293,8 +5167,6 @@ func (a OutboundApi) GetOutboundSchedulesSequence(sequenceId string) (*Sequences
 // GetOutboundSchedulesSequences invokes GET /api/v2/outbound/schedules/sequences
 //
 // Query for a list of dialer sequence schedules.
-//
-// 
 func (a OutboundApi) GetOutboundSchedulesSequences() ([]Sequenceschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5360,8 +5232,6 @@ func (a OutboundApi) GetOutboundSchedulesSequences() ([]Sequenceschedule, *APIRe
 // GetOutboundSequence invokes GET /api/v2/outbound/sequences/{sequenceId}
 //
 // Get a dialer campaign sequence.
-//
-// 
 func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5374,7 +5244,7 @@ func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, 
 
 	// verify the required parameter 'sequenceId' is set
 	if &sequenceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sequenceId' when calling OutboundApi->GetOutboundSequence")
 	}
 
@@ -5433,8 +5303,6 @@ func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, 
 // GetOutboundSequences invokes GET /api/v2/outbound/sequences
 //
 // Query a list of dialer campaign sequences.
-//
-// 
 func (a OutboundApi) GetOutboundSequences(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignsequenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5514,8 +5382,6 @@ func (a OutboundApi) GetOutboundSequences(pageSize int, pageNumber int, allowEmp
 // GetOutboundSettings invokes GET /api/v2/outbound/settings
 //
 // Get the outbound settings for this organization
-//
-// 
 func (a OutboundApi) GetOutboundSettings() (*Outboundsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5581,8 +5447,6 @@ func (a OutboundApi) GetOutboundSettings() (*Outboundsettings, *APIResponse, err
 // GetOutboundWrapupcodemappings invokes GET /api/v2/outbound/wrapupcodemappings
 //
 // Get the Dialer wrap up code mapping.
-//
-// 
 func (a OutboundApi) GetOutboundWrapupcodemappings() (*Wrapupcodemapping, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5648,8 +5512,6 @@ func (a OutboundApi) GetOutboundWrapupcodemappings() (*Wrapupcodemapping, *APIRe
 // PatchOutboundSettings invokes PATCH /api/v2/outbound/settings
 //
 // Update the outbound settings for this organization
-//
-// 
 func (a OutboundApi) PatchOutboundSettings(body Outboundsettings) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5660,7 +5522,7 @@ func (a OutboundApi) PatchOutboundSettings(body Outboundsettings) (*APIResponse,
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PatchOutboundSettings")
 	}
 
@@ -5716,8 +5578,6 @@ func (a OutboundApi) PatchOutboundSettings(body Outboundsettings) (*APIResponse,
 // PostOutboundAttemptlimits invokes POST /api/v2/outbound/attemptlimits
 //
 // Create attempt limits
-//
-// 
 func (a OutboundApi) PostOutboundAttemptlimits(body Attemptlimits) (*Attemptlimits, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5729,7 +5589,7 @@ func (a OutboundApi) PostOutboundAttemptlimits(body Attemptlimits) (*Attemptlimi
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundAttemptlimits")
 	}
 
@@ -5791,8 +5651,6 @@ func (a OutboundApi) PostOutboundAttemptlimits(body Attemptlimits) (*Attemptlimi
 // PostOutboundAudits invokes POST /api/v2/outbound/audits
 //
 // Retrieves audits for dialer.
-//
-// 
 func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, pageNumber int, sortBy string, sortOrder string, facetsOnly bool) (*Auditsearchresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5804,7 +5662,7 @@ func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, p
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundAudits")
 	}
 
@@ -5876,8 +5734,6 @@ func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, p
 // PostOutboundCallabletimesets invokes POST /api/v2/outbound/callabletimesets
 //
 // Create callable time set
-//
-// 
 func (a OutboundApi) PostOutboundCallabletimesets(body Callabletimeset) (*Callabletimeset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5889,7 +5745,7 @@ func (a OutboundApi) PostOutboundCallabletimesets(body Callabletimeset) (*Callab
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundCallabletimesets")
 	}
 
@@ -5951,8 +5807,6 @@ func (a OutboundApi) PostOutboundCallabletimesets(body Callabletimeset) (*Callab
 // PostOutboundCallanalysisresponsesets invokes POST /api/v2/outbound/callanalysisresponsesets
 //
 // Create a dialer call analysis response set.
-//
-// 
 func (a OutboundApi) PostOutboundCallanalysisresponsesets(body Responseset) (*Responseset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5964,7 +5818,7 @@ func (a OutboundApi) PostOutboundCallanalysisresponsesets(body Responseset) (*Re
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundCallanalysisresponsesets")
 	}
 
@@ -6025,22 +5879,20 @@ func (a OutboundApi) PostOutboundCallanalysisresponsesets(body Responseset) (*Re
 
 // PostOutboundCampaignAgentownedmappingpreview invokes POST /api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview
 //
-// Initiate request for a preview of how agents will be mapped to this campaign&#39;s contact list.
-//
-// 
-func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId string) (*Empty, *APIResponse, error) {
+// Initiate request for a preview of how agents will be mapped to this campaign's contact list.
+func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview"
 	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->PostOutboundCampaignAgentownedmappingpreview")
 	}
 
@@ -6080,14 +5932,14 @@ func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId str
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -6113,12 +5965,12 @@ func (a OutboundApi) PostOutboundCampaignCallbackSchedule(campaignId string, bod
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->PostOutboundCampaignCallbackSchedule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundCampaignCallbackSchedule")
 	}
 
@@ -6180,8 +6032,6 @@ func (a OutboundApi) PostOutboundCampaignCallbackSchedule(campaignId string, bod
 // PostOutboundCampaignrules invokes POST /api/v2/outbound/campaignrules
 //
 // Create Campaign Rule
-//
-// 
 func (a OutboundApi) PostOutboundCampaignrules(body Campaignrule) (*Campaignrule, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6193,7 +6043,7 @@ func (a OutboundApi) PostOutboundCampaignrules(body Campaignrule) (*Campaignrule
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundCampaignrules")
 	}
 
@@ -6255,8 +6105,6 @@ func (a OutboundApi) PostOutboundCampaignrules(body Campaignrule) (*Campaignrule
 // PostOutboundCampaigns invokes POST /api/v2/outbound/campaigns
 //
 // Create a campaign.
-//
-// 
 func (a OutboundApi) PostOutboundCampaigns(body Campaign) (*Campaign, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6268,7 +6116,7 @@ func (a OutboundApi) PostOutboundCampaigns(body Campaign) (*Campaign, *APIRespon
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundCampaigns")
 	}
 
@@ -6330,8 +6178,6 @@ func (a OutboundApi) PostOutboundCampaigns(body Campaign) (*Campaign, *APIRespon
 // PostOutboundCampaignsProgress invokes POST /api/v2/outbound/campaigns/progress
 //
 // Get progress for a list of campaigns
-//
-// 
 func (a OutboundApi) PostOutboundCampaignsProgress(body []string) ([]Campaignprogress, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6405,8 +6251,6 @@ func (a OutboundApi) PostOutboundCampaignsProgress(body []string) ([]Campaignpro
 // PostOutboundContactlistClear invokes POST /api/v2/outbound/contactlists/{contactListId}/clear
 //
 // Deletes all contacts out of a list. All outstanding recalls or rule-scheduled callbacks for non-preview campaigns configured with the contactlist will be cancelled.
-//
-// 
 func (a OutboundApi) PostOutboundContactlistClear(contactListId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6418,7 +6262,7 @@ func (a OutboundApi) PostOutboundContactlistClear(contactListId string) (*APIRes
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->PostOutboundContactlistClear")
 	}
 
@@ -6471,8 +6315,6 @@ func (a OutboundApi) PostOutboundContactlistClear(contactListId string) (*APIRes
 // PostOutboundContactlistContacts invokes POST /api/v2/outbound/contactlists/{contactListId}/contacts
 //
 // Add contacts to a contact list.
-//
-// 
 func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body []Writabledialercontact, priority bool, clearSystemData bool, doNotQueue bool) ([]Dialercontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6485,7 +6327,7 @@ func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body 
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->PostOutboundContactlistContacts")
 	}
 	// verify the required parameter 'body' is set
@@ -6558,8 +6400,6 @@ func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body 
 // PostOutboundContactlistContactsBulk invokes POST /api/v2/outbound/contactlists/{contactListId}/contacts/bulk
 //
 // Get contacts from a contact list.
-//
-// 
 func (a OutboundApi) PostOutboundContactlistContactsBulk(contactListId string, body []string) ([]Dialercontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6572,7 +6412,7 @@ func (a OutboundApi) PostOutboundContactlistContactsBulk(contactListId string, b
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->PostOutboundContactlistContactsBulk")
 	}
 	// verify the required parameter 'body' is set
@@ -6653,7 +6493,7 @@ func (a OutboundApi) PostOutboundContactlistExport(contactListId string) (*Domai
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->PostOutboundContactlistExport")
 	}
 
@@ -6712,8 +6552,6 @@ func (a OutboundApi) PostOutboundContactlistExport(contactListId string) (*Domai
 // PostOutboundContactlistfilters invokes POST /api/v2/outbound/contactlistfilters
 //
 // Create Contact List Filter
-//
-// 
 func (a OutboundApi) PostOutboundContactlistfilters(body Contactlistfilter) (*Contactlistfilter, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6725,7 +6563,7 @@ func (a OutboundApi) PostOutboundContactlistfilters(body Contactlistfilter) (*Co
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundContactlistfilters")
 	}
 
@@ -6787,8 +6625,6 @@ func (a OutboundApi) PostOutboundContactlistfilters(body Contactlistfilter) (*Co
 // PostOutboundContactlistfiltersPreview invokes POST /api/v2/outbound/contactlistfilters/preview
 //
 // Get a preview of the output of a contact list filter
-//
-// 
 func (a OutboundApi) PostOutboundContactlistfiltersPreview(body Contactlistfilter) (*Filterpreviewresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6800,7 +6636,7 @@ func (a OutboundApi) PostOutboundContactlistfiltersPreview(body Contactlistfilte
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundContactlistfiltersPreview")
 	}
 
@@ -6862,8 +6698,6 @@ func (a OutboundApi) PostOutboundContactlistfiltersPreview(body Contactlistfilte
 // PostOutboundContactlists invokes POST /api/v2/outbound/contactlists
 //
 // Create a contact List.
-//
-// 
 func (a OutboundApi) PostOutboundContactlists(body Contactlist) (*Contactlist, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6875,7 +6709,7 @@ func (a OutboundApi) PostOutboundContactlists(body Contactlist) (*Contactlist, *
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundContactlists")
 	}
 
@@ -6937,8 +6771,6 @@ func (a OutboundApi) PostOutboundContactlists(body Contactlist) (*Contactlist, *
 // PostOutboundConversationDnc invokes POST /api/v2/outbound/conversations/{conversationId}/dnc
 //
 // Add phone numbers to a Dialer DNC list.
-//
-// 
 func (a OutboundApi) PostOutboundConversationDnc(conversationId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6950,7 +6782,7 @@ func (a OutboundApi) PostOutboundConversationDnc(conversationId string) (*APIRes
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling OutboundApi->PostOutboundConversationDnc")
 	}
 
@@ -7017,7 +6849,7 @@ func (a OutboundApi) PostOutboundDnclistExport(dncListId string) (*Domainentityr
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->PostOutboundDnclistExport")
 	}
 
@@ -7089,7 +6921,7 @@ func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []st
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->PostOutboundDnclistPhonenumbers")
 	}
 	// verify the required parameter 'body' is set
@@ -7152,8 +6984,6 @@ func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []st
 // PostOutboundDnclists invokes POST /api/v2/outbound/dnclists
 //
 // Create dialer DNC list
-//
-// 
 func (a OutboundApi) PostOutboundDnclists(body Dnclistcreate) (*Dnclist, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7165,7 +6995,7 @@ func (a OutboundApi) PostOutboundDnclists(body Dnclistcreate) (*Dnclist, *APIRes
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundDnclists")
 	}
 
@@ -7227,8 +7057,6 @@ func (a OutboundApi) PostOutboundDnclists(body Dnclistcreate) (*Dnclist, *APIRes
 // PostOutboundMessagingcampaigns invokes POST /api/v2/outbound/messagingcampaigns
 //
 // Create a Messaging Campaign
-//
-// 
 func (a OutboundApi) PostOutboundMessagingcampaigns(body Messagingcampaign) (*Messagingcampaign, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7240,7 +7068,7 @@ func (a OutboundApi) PostOutboundMessagingcampaigns(body Messagingcampaign) (*Me
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundMessagingcampaigns")
 	}
 
@@ -7302,8 +7130,6 @@ func (a OutboundApi) PostOutboundMessagingcampaigns(body Messagingcampaign) (*Me
 // PostOutboundMessagingcampaignsProgress invokes POST /api/v2/outbound/messagingcampaigns/progress
 //
 // Get progress for a list of messaging campaigns
-//
-// 
 func (a OutboundApi) PostOutboundMessagingcampaignsProgress(body []string) ([]Campaignprogress, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7377,8 +7203,6 @@ func (a OutboundApi) PostOutboundMessagingcampaignsProgress(body []string) ([]Ca
 // PostOutboundRulesets invokes POST /api/v2/outbound/rulesets
 //
 // Create a Rule Set.
-//
-// 
 func (a OutboundApi) PostOutboundRulesets(body Ruleset) (*Ruleset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7390,7 +7214,7 @@ func (a OutboundApi) PostOutboundRulesets(body Ruleset) (*Ruleset, *APIResponse,
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundRulesets")
 	}
 
@@ -7452,8 +7276,6 @@ func (a OutboundApi) PostOutboundRulesets(body Ruleset) (*Ruleset, *APIResponse,
 // PostOutboundSequences invokes POST /api/v2/outbound/sequences
 //
 // Create a new campaign sequence.
-//
-// 
 func (a OutboundApi) PostOutboundSequences(body Campaignsequence) (*Campaignsequence, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7465,7 +7287,7 @@ func (a OutboundApi) PostOutboundSequences(body Campaignsequence) (*Campaignsequ
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundSequences")
 	}
 
@@ -7527,8 +7349,6 @@ func (a OutboundApi) PostOutboundSequences(body Campaignsequence) (*Campaignsequ
 // PutOutboundAttemptlimit invokes PUT /api/v2/outbound/attemptlimits/{attemptLimitsId}
 //
 // Update attempt limits
-//
-// 
 func (a OutboundApi) PutOutboundAttemptlimit(attemptLimitsId string, body Attemptlimits) (*Attemptlimits, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7541,12 +7361,12 @@ func (a OutboundApi) PutOutboundAttemptlimit(attemptLimitsId string, body Attemp
 
 	// verify the required parameter 'attemptLimitsId' is set
 	if &attemptLimitsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'attemptLimitsId' when calling OutboundApi->PutOutboundAttemptlimit")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundAttemptlimit")
 	}
 
@@ -7608,8 +7428,6 @@ func (a OutboundApi) PutOutboundAttemptlimit(attemptLimitsId string, body Attemp
 // PutOutboundCallabletimeset invokes PUT /api/v2/outbound/callabletimesets/{callableTimeSetId}
 //
 // Update callable time set
-//
-// 
 func (a OutboundApi) PutOutboundCallabletimeset(callableTimeSetId string, body Callabletimeset) (*Callabletimeset, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7622,12 +7440,12 @@ func (a OutboundApi) PutOutboundCallabletimeset(callableTimeSetId string, body C
 
 	// verify the required parameter 'callableTimeSetId' is set
 	if &callableTimeSetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'callableTimeSetId' when calling OutboundApi->PutOutboundCallabletimeset")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundCallabletimeset")
 	}
 
@@ -7689,8 +7507,6 @@ func (a OutboundApi) PutOutboundCallabletimeset(callableTimeSetId string, body C
 // PutOutboundCallanalysisresponseset invokes PUT /api/v2/outbound/callanalysisresponsesets/{callAnalysisSetId}
 //
 // Update a dialer call analysis response set.
-//
-// 
 func (a OutboundApi) PutOutboundCallanalysisresponseset(callAnalysisSetId string, body Responseset) (*Responseset, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7703,12 +7519,12 @@ func (a OutboundApi) PutOutboundCallanalysisresponseset(callAnalysisSetId string
 
 	// verify the required parameter 'callAnalysisSetId' is set
 	if &callAnalysisSetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'callAnalysisSetId' when calling OutboundApi->PutOutboundCallanalysisresponseset")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundCallanalysisresponseset")
 	}
 
@@ -7770,8 +7586,6 @@ func (a OutboundApi) PutOutboundCallanalysisresponseset(callAnalysisSetId string
 // PutOutboundCampaign invokes PUT /api/v2/outbound/campaigns/{campaignId}
 //
 // Update a campaign.
-//
-// 
 func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Campaign, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7784,12 +7598,12 @@ func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Cam
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->PutOutboundCampaign")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundCampaign")
 	}
 
@@ -7850,7 +7664,7 @@ func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Cam
 
 // PutOutboundCampaignAgent invokes PUT /api/v2/outbound/campaigns/{campaignId}/agents/{userId}
 //
-// Send notification that an agent&#39;s state changed 
+// Send notification that an agent's state changed 
 //
 // New agent state.
 func (a OutboundApi) PutOutboundCampaignAgent(campaignId string, userId string, body Agent) (*string, *APIResponse, error) {
@@ -7866,17 +7680,17 @@ func (a OutboundApi) PutOutboundCampaignAgent(campaignId string, userId string, 
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->PutOutboundCampaignAgent")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling OutboundApi->PutOutboundCampaignAgent")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundCampaignAgent")
 	}
 
@@ -7938,8 +7752,6 @@ func (a OutboundApi) PutOutboundCampaignAgent(campaignId string, userId string, 
 // PutOutboundCampaignrule invokes PUT /api/v2/outbound/campaignrules/{campaignRuleId}
 //
 // Update Campaign Rule
-//
-// 
 func (a OutboundApi) PutOutboundCampaignrule(campaignRuleId string, body Campaignrule) (*Campaignrule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7952,12 +7764,12 @@ func (a OutboundApi) PutOutboundCampaignrule(campaignRuleId string, body Campaig
 
 	// verify the required parameter 'campaignRuleId' is set
 	if &campaignRuleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignRuleId' when calling OutboundApi->PutOutboundCampaignrule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundCampaignrule")
 	}
 
@@ -8019,8 +7831,6 @@ func (a OutboundApi) PutOutboundCampaignrule(campaignRuleId string, body Campaig
 // PutOutboundContactlist invokes PUT /api/v2/outbound/contactlists/{contactListId}
 //
 // Update a contact list.
-//
-// 
 func (a OutboundApi) PutOutboundContactlist(contactListId string, body Contactlist) (*Contactlist, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8033,12 +7843,12 @@ func (a OutboundApi) PutOutboundContactlist(contactListId string, body Contactli
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->PutOutboundContactlist")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundContactlist")
 	}
 
@@ -8100,8 +7910,6 @@ func (a OutboundApi) PutOutboundContactlist(contactListId string, body Contactli
 // PutOutboundContactlistContact invokes PUT /api/v2/outbound/contactlists/{contactListId}/contacts/{contactId}
 //
 // Update a contact.
-//
-// 
 func (a OutboundApi) PutOutboundContactlistContact(contactListId string, contactId string, body Dialercontact) (*Dialercontact, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8115,17 +7923,17 @@ func (a OutboundApi) PutOutboundContactlistContact(contactListId string, contact
 
 	// verify the required parameter 'contactListId' is set
 	if &contactListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListId' when calling OutboundApi->PutOutboundContactlistContact")
 	}
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling OutboundApi->PutOutboundContactlistContact")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundContactlistContact")
 	}
 
@@ -8187,8 +7995,6 @@ func (a OutboundApi) PutOutboundContactlistContact(contactListId string, contact
 // PutOutboundContactlistfilter invokes PUT /api/v2/outbound/contactlistfilters/{contactListFilterId}
 //
 // Update Contact List Filter
-//
-// 
 func (a OutboundApi) PutOutboundContactlistfilter(contactListFilterId string, body Contactlistfilter) (*Contactlistfilter, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8201,12 +8007,12 @@ func (a OutboundApi) PutOutboundContactlistfilter(contactListFilterId string, bo
 
 	// verify the required parameter 'contactListFilterId' is set
 	if &contactListFilterId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactListFilterId' when calling OutboundApi->PutOutboundContactlistfilter")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundContactlistfilter")
 	}
 
@@ -8268,8 +8074,6 @@ func (a OutboundApi) PutOutboundContactlistfilter(contactListFilterId string, bo
 // PutOutboundDnclist invokes PUT /api/v2/outbound/dnclists/{dncListId}
 //
 // Update dialer DNC list
-//
-// 
 func (a OutboundApi) PutOutboundDnclist(dncListId string, body Dnclist) (*Dnclist, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8282,12 +8086,12 @@ func (a OutboundApi) PutOutboundDnclist(dncListId string, body Dnclist) (*Dnclis
 
 	// verify the required parameter 'dncListId' is set
 	if &dncListId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->PutOutboundDnclist")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundDnclist")
 	}
 
@@ -8349,8 +8153,6 @@ func (a OutboundApi) PutOutboundDnclist(dncListId string, body Dnclist) (*Dnclis
 // PutOutboundMessagingcampaign invokes PUT /api/v2/outbound/messagingcampaigns/{messagingCampaignId}
 //
 // Update an Outbound Messaging Campaign
-//
-// 
 func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, body Messagingcampaign) (*Messagingcampaign, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8363,12 +8165,12 @@ func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, bo
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->PutOutboundMessagingcampaign")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundMessagingcampaign")
 	}
 
@@ -8430,8 +8232,6 @@ func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, bo
 // PutOutboundRuleset invokes PUT /api/v2/outbound/rulesets/{ruleSetId}
 //
 // Update a Rule Set.
-//
-// 
 func (a OutboundApi) PutOutboundRuleset(ruleSetId string, body Ruleset) (*Ruleset, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8444,12 +8244,12 @@ func (a OutboundApi) PutOutboundRuleset(ruleSetId string, body Ruleset) (*Rulese
 
 	// verify the required parameter 'ruleSetId' is set
 	if &ruleSetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'ruleSetId' when calling OutboundApi->PutOutboundRuleset")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundRuleset")
 	}
 
@@ -8511,8 +8311,6 @@ func (a OutboundApi) PutOutboundRuleset(ruleSetId string, body Ruleset) (*Rulese
 // PutOutboundSchedulesCampaign invokes PUT /api/v2/outbound/schedules/campaigns/{campaignId}
 //
 // Update a new campaign schedule.
-//
-// 
 func (a OutboundApi) PutOutboundSchedulesCampaign(campaignId string, body Campaignschedule) (*Campaignschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8525,12 +8323,12 @@ func (a OutboundApi) PutOutboundSchedulesCampaign(campaignId string, body Campai
 
 	// verify the required parameter 'campaignId' is set
 	if &campaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->PutOutboundSchedulesCampaign")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundSchedulesCampaign")
 	}
 
@@ -8592,8 +8390,6 @@ func (a OutboundApi) PutOutboundSchedulesCampaign(campaignId string, body Campai
 // PutOutboundSchedulesEmailcampaign invokes PUT /api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}
 //
 // Update an email campaign schedule.
-//
-// 
 func (a OutboundApi) PutOutboundSchedulesEmailcampaign(emailCampaignId string, body Emailcampaignschedule) (*Emailcampaignschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8606,12 +8402,12 @@ func (a OutboundApi) PutOutboundSchedulesEmailcampaign(emailCampaignId string, b
 
 	// verify the required parameter 'emailCampaignId' is set
 	if &emailCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'emailCampaignId' when calling OutboundApi->PutOutboundSchedulesEmailcampaign")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundSchedulesEmailcampaign")
 	}
 
@@ -8673,8 +8469,6 @@ func (a OutboundApi) PutOutboundSchedulesEmailcampaign(emailCampaignId string, b
 // PutOutboundSchedulesMessagingcampaign invokes PUT /api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}
 //
 // Update a new messaging campaign schedule.
-//
-// 
 func (a OutboundApi) PutOutboundSchedulesMessagingcampaign(messagingCampaignId string, body Messagingcampaignschedule) (*Messagingcampaignschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8687,12 +8481,12 @@ func (a OutboundApi) PutOutboundSchedulesMessagingcampaign(messagingCampaignId s
 
 	// verify the required parameter 'messagingCampaignId' is set
 	if &messagingCampaignId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->PutOutboundSchedulesMessagingcampaign")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundSchedulesMessagingcampaign")
 	}
 
@@ -8754,8 +8548,6 @@ func (a OutboundApi) PutOutboundSchedulesMessagingcampaign(messagingCampaignId s
 // PutOutboundSchedulesSequence invokes PUT /api/v2/outbound/schedules/sequences/{sequenceId}
 //
 // Update a new sequence schedule.
-//
-// 
 func (a OutboundApi) PutOutboundSchedulesSequence(sequenceId string, body Sequenceschedule) (*Sequenceschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8768,12 +8560,12 @@ func (a OutboundApi) PutOutboundSchedulesSequence(sequenceId string, body Sequen
 
 	// verify the required parameter 'sequenceId' is set
 	if &sequenceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sequenceId' when calling OutboundApi->PutOutboundSchedulesSequence")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundSchedulesSequence")
 	}
 
@@ -8835,8 +8627,6 @@ func (a OutboundApi) PutOutboundSchedulesSequence(sequenceId string, body Sequen
 // PutOutboundSequence invokes PUT /api/v2/outbound/sequences/{sequenceId}
 //
 // Update a new campaign sequence.
-//
-// 
 func (a OutboundApi) PutOutboundSequence(sequenceId string, body Campaignsequence) (*Campaignsequence, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8849,12 +8639,12 @@ func (a OutboundApi) PutOutboundSequence(sequenceId string, body Campaignsequenc
 
 	// verify the required parameter 'sequenceId' is set
 	if &sequenceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sequenceId' when calling OutboundApi->PutOutboundSequence")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundSequence")
 	}
 
@@ -8916,8 +8706,6 @@ func (a OutboundApi) PutOutboundSequence(sequenceId string, body Campaignsequenc
 // PutOutboundWrapupcodemappings invokes PUT /api/v2/outbound/wrapupcodemappings
 //
 // Update the Dialer wrap up code mapping.
-//
-// 
 func (a OutboundApi) PutOutboundWrapupcodemappings(body Wrapupcodemapping) (*Wrapupcodemapping, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8929,7 +8717,7 @@ func (a OutboundApi) PutOutboundWrapupcodemappings(body Wrapupcodemapping) (*Wra
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundWrapupcodemappings")
 	}
 

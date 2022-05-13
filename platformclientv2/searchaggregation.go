@@ -77,19 +77,19 @@ func (o *Searchaggregation) UnmarshalJSON(b []byte) error {
 	if Field, ok := SearchaggregationMap["field"].(string); ok {
 		o.Field = &Field
 	}
-	
+    
 	if Name, ok := SearchaggregationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := SearchaggregationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := SearchaggregationMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Size, ok := SearchaggregationMap["size"].(float64); ok {
 		SizeInt := int(Size)
 		o.Size = &SizeInt

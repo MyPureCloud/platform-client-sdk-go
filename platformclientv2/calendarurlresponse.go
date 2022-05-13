@@ -45,11 +45,11 @@ func (o *Calendarurlresponse) UnmarshalJSON(b []byte) error {
 	if CalendarUrl, ok := CalendarurlresponseMap["calendarUrl"].(string); ok {
 		o.CalendarUrl = &CalendarUrl
 	}
-	
+    
 	if SelfUri, ok := CalendarurlresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

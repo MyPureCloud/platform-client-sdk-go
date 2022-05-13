@@ -40,8 +40,8 @@ type Architectflowoutcomenotificationarchitectoperation struct {
 	ErrorCode *string `json:"errorCode,omitempty"`
 
 
-	// ErrorMessageParams
-	ErrorMessageParams *Architectflowoutcomenotificationerrormessageparams `json:"errorMessageParams,omitempty"`
+	// ErrorMessageParams - The error message params, if the action failed
+	ErrorMessageParams *interface{} `json:"errorMessageParams,omitempty"`
 
 
 	// ErrorDetails - The error details, if the action failed
@@ -71,7 +71,7 @@ func (o *Architectflowoutcomenotificationarchitectoperation) MarshalJSON() ([]by
 		
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
-		ErrorMessageParams *Architectflowoutcomenotificationerrormessageparams `json:"errorMessageParams,omitempty"`
+		ErrorMessageParams *interface{} `json:"errorMessageParams,omitempty"`
 		
 		ErrorDetails *[]Architectflowoutcomenotificationerrordetail `json:"errorDetails,omitempty"`
 		*Alias
@@ -109,11 +109,11 @@ func (o *Architectflowoutcomenotificationarchitectoperation) UnmarshalJSON(b []b
 	if Id, ok := ArchitectflowoutcomenotificationarchitectoperationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Complete, ok := ArchitectflowoutcomenotificationarchitectoperationMap["complete"].(bool); ok {
 		o.Complete = &Complete
 	}
-	
+    
 	if User, ok := ArchitectflowoutcomenotificationarchitectoperationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -127,19 +127,19 @@ func (o *Architectflowoutcomenotificationarchitectoperation) UnmarshalJSON(b []b
 	if ActionName, ok := ArchitectflowoutcomenotificationarchitectoperationMap["actionName"].(string); ok {
 		o.ActionName = &ActionName
 	}
-	
+    
 	if ActionStatus, ok := ArchitectflowoutcomenotificationarchitectoperationMap["actionStatus"].(string); ok {
 		o.ActionStatus = &ActionStatus
 	}
-	
+    
 	if ErrorMessage, ok := ArchitectflowoutcomenotificationarchitectoperationMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if ErrorCode, ok := ArchitectflowoutcomenotificationarchitectoperationMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if ErrorMessageParams, ok := ArchitectflowoutcomenotificationarchitectoperationMap["errorMessageParams"].(map[string]interface{}); ok {
 		ErrorMessageParamsString, _ := json.Marshal(ErrorMessageParams)
 		json.Unmarshal(ErrorMessageParamsString, &o.ErrorMessageParams)

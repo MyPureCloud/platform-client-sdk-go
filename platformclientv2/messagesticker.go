@@ -45,11 +45,11 @@ func (o *Messagesticker) UnmarshalJSON(b []byte) error {
 	if Url, ok := MessagestickerMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Id, ok := MessagestickerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

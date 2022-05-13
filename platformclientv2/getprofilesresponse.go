@@ -63,7 +63,7 @@ func (o *Getprofilesresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GetprofilesresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

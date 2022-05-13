@@ -45,11 +45,11 @@ func (o *Sortitem) UnmarshalJSON(b []byte) error {
 	if Name, ok := SortitemMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Ascending, ok := SortitemMap["ascending"].(bool); ok {
 		o.Ascending = &Ascending
 	}
-	
+    
 
 	return nil
 }

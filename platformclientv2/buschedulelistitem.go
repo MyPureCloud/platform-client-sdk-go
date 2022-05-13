@@ -109,7 +109,7 @@ func (o *Buschedulelistitem) UnmarshalJSON(b []byte) error {
 	if Id, ok := BuschedulelistitemMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := BuschedulelistitemMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -123,11 +123,11 @@ func (o *Buschedulelistitem) UnmarshalJSON(b []byte) error {
 	if Description, ok := BuschedulelistitemMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := BuschedulelistitemMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if ShortTermForecast, ok := BuschedulelistitemMap["shortTermForecast"].(map[string]interface{}); ok {
 		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
 		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
@@ -146,7 +146,7 @@ func (o *Buschedulelistitem) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BuschedulelistitemMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

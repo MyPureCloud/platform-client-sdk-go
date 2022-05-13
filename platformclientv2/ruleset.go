@@ -118,11 +118,11 @@ func (o *Ruleset) UnmarshalJSON(b []byte) error {
 	if Id, ok := RulesetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := RulesetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := RulesetMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -156,7 +156,7 @@ func (o *Ruleset) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := RulesetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

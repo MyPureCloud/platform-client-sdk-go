@@ -61,15 +61,15 @@ func (o *Journeyaggregationview) UnmarshalJSON(b []byte) error {
 	if Target, ok := JourneyaggregationviewMap["target"].(string); ok {
 		o.Target = &Target
 	}
-	
+    
 	if Name, ok := JourneyaggregationviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Function, ok := JourneyaggregationviewMap["function"].(string); ok {
 		o.Function = &Function
 	}
-	
+    
 	if VarRange, ok := JourneyaggregationviewMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

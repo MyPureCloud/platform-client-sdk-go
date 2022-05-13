@@ -69,15 +69,15 @@ func (o *Scimv2schemadefinition) UnmarshalJSON(b []byte) error {
 	if Id, ok := Scimv2schemadefinitionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := Scimv2schemadefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := Scimv2schemadefinitionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Attributes, ok := Scimv2schemadefinitionMap["attributes"].([]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)

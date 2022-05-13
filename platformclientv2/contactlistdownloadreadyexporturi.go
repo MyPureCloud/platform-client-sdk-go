@@ -45,11 +45,11 @@ func (o *Contactlistdownloadreadyexporturi) UnmarshalJSON(b []byte) error {
 	if Uri, ok := ContactlistdownloadreadyexporturiMap["uri"].(string); ok {
 		o.Uri = &Uri
 	}
-	
+    
 	if ExportTimestamp, ok := ContactlistdownloadreadyexporturiMap["exportTimestamp"].(string); ok {
 		o.ExportTimestamp = &ExportTimestamp
 	}
-	
+    
 
 	return nil
 }

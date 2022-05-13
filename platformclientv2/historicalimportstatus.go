@@ -134,7 +134,7 @@ func (o *Historicalimportstatus) UnmarshalJSON(b []byte) error {
 	if RequestId, ok := HistoricalimportstatusMap["requestId"].(string); ok {
 		o.RequestId = &RequestId
 	}
-	
+    
 	if dateImportEndedString, ok := HistoricalimportstatusMap["dateImportEnded"].(string); ok {
 		DateImportEnded, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateImportEndedString)
 		o.DateImportEnded = &DateImportEnded
@@ -148,11 +148,11 @@ func (o *Historicalimportstatus) UnmarshalJSON(b []byte) error {
 	if Status, ok := HistoricalimportstatusMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if VarError, ok := HistoricalimportstatusMap["error"].(string); ok {
 		o.VarError = &VarError
 	}
-	
+    
 	if dateCreatedString, ok := HistoricalimportstatusMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -166,11 +166,11 @@ func (o *Historicalimportstatus) UnmarshalJSON(b []byte) error {
 	if Active, ok := HistoricalimportstatusMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if VarType, ok := HistoricalimportstatusMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

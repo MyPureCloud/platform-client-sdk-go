@@ -50,7 +50,7 @@ func (o *Dialercallabletimesetconfigchangecallabletime) UnmarshalJSON(b []byte) 
 	if TimeZoneId, ok := DialercallabletimesetconfigchangecallabletimeMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}
-	
+    
 
 	return nil
 }

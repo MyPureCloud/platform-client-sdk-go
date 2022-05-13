@@ -69,19 +69,19 @@ func (o *Patchactiontemplate) UnmarshalJSON(b []byte) error {
 	if Name, ok := PatchactiontemplateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := PatchactiontemplateMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if MediaType, ok := PatchactiontemplateMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if State, ok := PatchactiontemplateMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ContentOffer, ok := PatchactiontemplateMap["contentOffer"].(map[string]interface{}); ok {
 		ContentOfferString, _ := json.Marshal(ContentOffer)
 		json.Unmarshal(ContentOfferString, &o.ContentOffer)

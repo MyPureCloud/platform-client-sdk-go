@@ -66,15 +66,15 @@ func (o *Traininglisting) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := TraininglistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := TraininglistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := TraininglistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

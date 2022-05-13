@@ -63,7 +63,7 @@ func (o *Webdeploymentconfigurationversionentitylisting) UnmarshalJSON(b []byte)
 	if SelfUri, ok := WebdeploymentconfigurationversionentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

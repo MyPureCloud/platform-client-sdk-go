@@ -101,11 +101,11 @@ func (o *Usersearchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := UsersearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := UsersearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := UsersearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
@@ -134,11 +134,11 @@ func (o *Usersearchrequest) UnmarshalJSON(b []byte) error {
 	if IntegrationPresenceSource, ok := UsersearchrequestMap["integrationPresenceSource"].(string); ok {
 		o.IntegrationPresenceSource = &IntegrationPresenceSource
 	}
-	
+    
 	if EnforcePermissions, ok := UsersearchrequestMap["enforcePermissions"].(bool); ok {
 		o.EnforcePermissions = &EnforcePermissions
 	}
-	
+    
 
 	return nil
 }

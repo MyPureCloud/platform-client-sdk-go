@@ -37,7 +37,7 @@ func (o *Servicecontext) UnmarshalJSON(b []byte) error {
 	if Name, ok := ServicecontextMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

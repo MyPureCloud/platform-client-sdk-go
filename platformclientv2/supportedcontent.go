@@ -37,7 +37,7 @@ type Supportedcontent struct {
 	Version *int `json:"version,omitempty"`
 
 
-	// MediaTypes - Defines the allowable media that may be accepted for an inbound message or to be sent in an outbound message. The following is an example of allowing all inbound media, and for outbound all images and only mpeg video: {   \"mediaTypes\": {     \"allow\": {       \"inbound\": [{\"type\": \"*/*\"}],       \"outbound\": [{\"type\": \"image/*\"}, {\"type\": \"video/mpeg\"}]     }   } }
+	// MediaTypes - Defines the allowable media that may be accepted for an inbound message or to be sent in an outbound message. The following is an example of allowing all inbound media, and for outbound all images and only mpeg video: {   \"mediaTypes\": {     \"allow\": {       \"inbound\": [{\"type\": \"*_/_*\"}],       \"outbound\": [{\"type\": \"image/_*\"}, {\"type\": \"video/mpeg\"}]     }   } }
 	MediaTypes *Mediatypes `json:"mediaTypes,omitempty"`
 
 
@@ -118,11 +118,11 @@ func (o *Supportedcontent) UnmarshalJSON(b []byte) error {
 	if Id, ok := SupportedcontentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SupportedcontentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := SupportedcontentMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -156,7 +156,7 @@ func (o *Supportedcontent) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SupportedcontentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

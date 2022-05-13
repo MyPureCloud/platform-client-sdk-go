@@ -45,11 +45,11 @@ func (o *Scimgenesysuserexternalid) UnmarshalJSON(b []byte) error {
 	if Authority, ok := ScimgenesysuserexternalidMap["authority"].(string); ok {
 		o.Authority = &Authority
 	}
-	
+    
 	if Value, ok := ScimgenesysuserexternalidMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

@@ -95,19 +95,19 @@ func (o *Bufulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
 	if Description, ok := BufulldaytimeoffmarkerMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if ActivityCodeId, ok := BufulldaytimeoffmarkerMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Paid, ok := BufulldaytimeoffmarkerMap["paid"].(bool); ok {
 		o.Paid = &Paid
 	}
-	
+    
 	if TimeOffRequestId, ok := BufulldaytimeoffmarkerMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
-	
+    
 
 	return nil
 }

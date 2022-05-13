@@ -79,15 +79,15 @@ func (o *Surveyassignment) UnmarshalJSON(b []byte) error {
 	if InviteTimeInterval, ok := SurveyassignmentMap["inviteTimeInterval"].(string); ok {
 		o.InviteTimeInterval = &InviteTimeInterval
 	}
-	
+    
 	if SendingUser, ok := SurveyassignmentMap["sendingUser"].(string); ok {
 		o.SendingUser = &SendingUser
 	}
-	
+    
 	if SendingDomain, ok := SurveyassignmentMap["sendingDomain"].(string); ok {
 		o.SendingDomain = &SendingDomain
 	}
-	
+    
 
 	return nil
 }

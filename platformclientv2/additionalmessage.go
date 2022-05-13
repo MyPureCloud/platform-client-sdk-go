@@ -61,7 +61,7 @@ func (o *Additionalmessage) UnmarshalJSON(b []byte) error {
 	if TextBody, ok := AdditionalmessageMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if MediaIds, ok := AdditionalmessageMap["mediaIds"].([]interface{}); ok {
 		MediaIdsString, _ := json.Marshal(MediaIds)
 		json.Unmarshal(MediaIdsString, &o.MediaIds)

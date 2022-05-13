@@ -102,15 +102,15 @@ func (o *Messagedetails) UnmarshalJSON(b []byte) error {
 	if MessageId, ok := MessagedetailsMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 	if MessageURI, ok := MessagedetailsMap["messageURI"].(string); ok {
 		o.MessageURI = &MessageURI
 	}
-	
+    
 	if MessageStatus, ok := MessagedetailsMap["messageStatus"].(string); ok {
 		o.MessageStatus = &MessageStatus
 	}
-	
+    
 	if MessageSegmentCount, ok := MessagedetailsMap["messageSegmentCount"].(float64); ok {
 		MessageSegmentCountInt := int(MessageSegmentCount)
 		o.MessageSegmentCount = &MessageSegmentCountInt

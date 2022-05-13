@@ -45,11 +45,11 @@ func (o *Patchbureschedulingoptionsmanagementunitrequest) UnmarshalJSON(b []byte
 	if ManagementUnitId, ok := PatchbureschedulingoptionsmanagementunitrequestMap["managementUnitId"].(string); ok {
 		o.ManagementUnitId = &ManagementUnitId
 	}
-	
+    
 	if Applied, ok := PatchbureschedulingoptionsmanagementunitrequestMap["applied"].(bool); ok {
 		o.Applied = &Applied
 	}
-	
+    
 
 	return nil
 }

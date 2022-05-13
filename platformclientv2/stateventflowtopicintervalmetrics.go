@@ -45,7 +45,7 @@ func (o *Stateventflowtopicintervalmetrics) UnmarshalJSON(b []byte) error {
 	if Interval, ok := StateventflowtopicintervalmetricsMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Metrics, ok := StateventflowtopicintervalmetricsMap["metrics"].([]interface{}); ok {
 		MetricsString, _ := json.Marshal(Metrics)
 		json.Unmarshal(MetricsString, &o.Metrics)

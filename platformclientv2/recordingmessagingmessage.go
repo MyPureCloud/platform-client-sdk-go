@@ -134,7 +134,7 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if From, ok := RecordingmessagingmessageMap["from"].(string); ok {
 		o.From = &From
 	}
-	
+    
 	if FromUser, ok := RecordingmessagingmessageMap["fromUser"].(map[string]interface{}); ok {
 		FromUserString, _ := json.Marshal(FromUser)
 		json.Unmarshal(FromUserString, &o.FromUser)
@@ -148,7 +148,7 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if To, ok := RecordingmessagingmessageMap["to"].(string); ok {
 		o.To = &To
 	}
-	
+    
 	if timestampString, ok := RecordingmessagingmessageMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
@@ -157,11 +157,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecordingmessagingmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MessageText, ok := RecordingmessagingmessageMap["messageText"].(string); ok {
 		o.MessageText = &MessageText
 	}
-	
+    
 	if MessageMediaAttachments, ok := RecordingmessagingmessageMap["messageMediaAttachments"].([]interface{}); ok {
 		MessageMediaAttachmentsString, _ := json.Marshal(MessageMediaAttachments)
 		json.Unmarshal(MessageMediaAttachmentsString, &o.MessageMediaAttachments)

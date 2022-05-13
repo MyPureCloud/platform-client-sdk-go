@@ -53,15 +53,15 @@ func (o *Scimv2memberreference) UnmarshalJSON(b []byte) error {
 	if VarType, ok := Scimv2memberreferenceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := Scimv2memberreferenceMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Ref, ok := Scimv2memberreferenceMap["$ref"].(string); ok {
 		o.Ref = &Ref
 	}
-	
+    
 
 	return nil
 }

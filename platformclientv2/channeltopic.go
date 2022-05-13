@@ -45,11 +45,11 @@ func (o *Channeltopic) UnmarshalJSON(b []byte) error {
 	if Id, ok := ChanneltopicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ChanneltopicMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

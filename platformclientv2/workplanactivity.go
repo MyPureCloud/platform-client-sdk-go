@@ -157,11 +157,11 @@ func (o *Workplanactivity) UnmarshalJSON(b []byte) error {
 	if ActivityCodeId, ok := WorkplanactivityMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Description, ok := WorkplanactivityMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if LengthMinutes, ok := WorkplanactivityMap["lengthMinutes"].(float64); ok {
 		LengthMinutesInt := int(LengthMinutes)
 		o.LengthMinutes = &LengthMinutesInt
@@ -170,11 +170,11 @@ func (o *Workplanactivity) UnmarshalJSON(b []byte) error {
 	if StartTimeIsRelativeToShiftStart, ok := WorkplanactivityMap["startTimeIsRelativeToShiftStart"].(bool); ok {
 		o.StartTimeIsRelativeToShiftStart = &StartTimeIsRelativeToShiftStart
 	}
-	
+    
 	if FlexibleStartTime, ok := WorkplanactivityMap["flexibleStartTime"].(bool); ok {
 		o.FlexibleStartTime = &FlexibleStartTime
 	}
-	
+    
 	if EarliestStartTimeMinutes, ok := WorkplanactivityMap["earliestStartTimeMinutes"].(float64); ok {
 		EarliestStartTimeMinutesInt := int(EarliestStartTimeMinutes)
 		o.EarliestStartTimeMinutes = &EarliestStartTimeMinutesInt
@@ -198,11 +198,11 @@ func (o *Workplanactivity) UnmarshalJSON(b []byte) error {
 	if CountsAsPaidTime, ok := WorkplanactivityMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if CountsAsContiguousWorkTime, ok := WorkplanactivityMap["countsAsContiguousWorkTime"].(bool); ok {
 		o.CountsAsContiguousWorkTime = &CountsAsContiguousWorkTime
 	}
-	
+    
 	if MinimumLengthFromShiftStartMinutes, ok := WorkplanactivityMap["minimumLengthFromShiftStartMinutes"].(float64); ok {
 		MinimumLengthFromShiftStartMinutesInt := int(MinimumLengthFromShiftStartMinutes)
 		o.MinimumLengthFromShiftStartMinutes = &MinimumLengthFromShiftStartMinutesInt
@@ -216,15 +216,15 @@ func (o *Workplanactivity) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkplanactivityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Delete, ok := WorkplanactivityMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 	if ValidationId, ok := WorkplanactivityMap["validationId"].(string); ok {
 		o.ValidationId = &ValidationId
 	}
-	
+    
 
 	return nil
 }

@@ -69,23 +69,23 @@ func (o *Queueconversationeventtopicaddress) UnmarshalJSON(b []byte) error {
 	if Name, ok := QueueconversationeventtopicaddressMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if NameRaw, ok := QueueconversationeventtopicaddressMap["nameRaw"].(string); ok {
 		o.NameRaw = &NameRaw
 	}
-	
+    
 	if AddressNormalized, ok := QueueconversationeventtopicaddressMap["addressNormalized"].(string); ok {
 		o.AddressNormalized = &AddressNormalized
 	}
-	
+    
 	if AddressRaw, ok := QueueconversationeventtopicaddressMap["addressRaw"].(string); ok {
 		o.AddressRaw = &AddressRaw
 	}
-	
+    
 	if AddressDisplayable, ok := QueueconversationeventtopicaddressMap["addressDisplayable"].(string); ok {
 		o.AddressDisplayable = &AddressDisplayable
 	}
-	
+    
 
 	return nil
 }

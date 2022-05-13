@@ -93,11 +93,11 @@ func (o *Journeyoutcomeeventsnotificationdevice) UnmarshalJSON(b []byte) error {
 	if VarType, ok := JourneyoutcomeeventsnotificationdeviceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if IsMobile, ok := JourneyoutcomeeventsnotificationdeviceMap["isMobile"].(bool); ok {
 		o.IsMobile = &IsMobile
 	}
-	
+    
 	if ScreenHeight, ok := JourneyoutcomeeventsnotificationdeviceMap["screenHeight"].(float64); ok {
 		ScreenHeightInt := int(ScreenHeight)
 		o.ScreenHeight = &ScreenHeightInt
@@ -111,19 +111,19 @@ func (o *Journeyoutcomeeventsnotificationdevice) UnmarshalJSON(b []byte) error {
 	if Fingerprint, ok := JourneyoutcomeeventsnotificationdeviceMap["fingerprint"].(string); ok {
 		o.Fingerprint = &Fingerprint
 	}
-	
+    
 	if OsFamily, ok := JourneyoutcomeeventsnotificationdeviceMap["osFamily"].(string); ok {
 		o.OsFamily = &OsFamily
 	}
-	
+    
 	if OsVersion, ok := JourneyoutcomeeventsnotificationdeviceMap["osVersion"].(string); ok {
 		o.OsVersion = &OsVersion
 	}
-	
+    
 	if Category, ok := JourneyoutcomeeventsnotificationdeviceMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 
 	return nil
 }

@@ -61,7 +61,7 @@ func (o *Wfmbushorttermforecastgenerateprogresstopicgeneratebushorttermforecastp
 	if Status, ok := WfmbushorttermforecastgenerateprogresstopicgeneratebushorttermforecastprogressnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Result, ok := WfmbushorttermforecastgenerateprogresstopicgeneratebushorttermforecastprogressnotificationMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)
@@ -70,7 +70,7 @@ func (o *Wfmbushorttermforecastgenerateprogresstopicgeneratebushorttermforecastp
 	if OperationId, ok := WfmbushorttermforecastgenerateprogresstopicgeneratebushorttermforecastprogressnotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Progress, ok := WfmbushorttermforecastgenerateprogresstopicgeneratebushorttermforecastprogressnotificationMap["progress"].(float64); ok {
 		ProgressInt := int(Progress)
 		o.Progress = &ProgressInt

@@ -45,7 +45,7 @@ func (o *Trunkmetricsnetworktypeip) UnmarshalJSON(b []byte) error {
 	if Address, ok := TrunkmetricsnetworktypeipMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if ErrorInfo, ok := TrunkmetricsnetworktypeipMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)

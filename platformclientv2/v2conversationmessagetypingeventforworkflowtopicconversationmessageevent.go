@@ -53,7 +53,7 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationmessageeven
 	if EventType, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessageeventMap["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 	if CoBrowse, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessageeventMap["coBrowse"].(map[string]interface{}); ok {
 		CoBrowseString, _ := json.Marshal(CoBrowse)
 		json.Unmarshal(CoBrowseString, &o.CoBrowse)

@@ -214,11 +214,11 @@ func (o *Edgeline) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgelineMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgelineMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EdgelineMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -227,7 +227,7 @@ func (o *Edgeline) UnmarshalJSON(b []byte) error {
 	if Description, ok := EdgelineMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EdgelineMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -246,23 +246,23 @@ func (o *Edgeline) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EdgelineMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EdgelineMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EdgelineMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EdgelineMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EdgelineMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Schema, ok := EdgelineMap["schema"].(map[string]interface{}); ok {
 		SchemaString, _ := json.Marshal(Schema)
 		json.Unmarshal(SchemaString, &o.Schema)
@@ -286,7 +286,7 @@ func (o *Edgeline) UnmarshalJSON(b []byte) error {
 	if LineType, ok := EdgelineMap["lineType"].(string); ok {
 		o.LineType = &LineType
 	}
-	
+    
 	if Endpoint, ok := EdgelineMap["endpoint"].(map[string]interface{}); ok {
 		EndpointString, _ := json.Marshal(Endpoint)
 		json.Unmarshal(EndpointString, &o.Endpoint)
@@ -295,15 +295,15 @@ func (o *Edgeline) UnmarshalJSON(b []byte) error {
 	if IpAddress, ok := EdgelineMap["ipAddress"].(string); ok {
 		o.IpAddress = &IpAddress
 	}
-	
+    
 	if LogicalInterfaceId, ok := EdgelineMap["logicalInterfaceId"].(string); ok {
 		o.LogicalInterfaceId = &LogicalInterfaceId
 	}
-	
+    
 	if SelfUri, ok := EdgelineMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

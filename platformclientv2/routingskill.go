@@ -86,11 +86,11 @@ func (o *Routingskill) UnmarshalJSON(b []byte) error {
 	if Id, ok := RoutingskillMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := RoutingskillMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateModifiedString, ok := RoutingskillMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
@@ -99,15 +99,15 @@ func (o *Routingskill) UnmarshalJSON(b []byte) error {
 	if State, ok := RoutingskillMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Version, ok := RoutingskillMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if SelfUri, ok := RoutingskillMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

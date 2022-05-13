@@ -45,11 +45,11 @@ func (o *Architectflowoutcomenotificationclient) UnmarshalJSON(b []byte) error {
 	if Id, ok := ArchitectflowoutcomenotificationclientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectflowoutcomenotificationclientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

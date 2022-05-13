@@ -45,11 +45,11 @@ func (o *Addressableentityref) UnmarshalJSON(b []byte) error {
 	if Id, ok := AddressableentityrefMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := AddressableentityrefMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

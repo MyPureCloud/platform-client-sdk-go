@@ -66,15 +66,15 @@ func (o *Cursorcontactlisting) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := CursorcontactlistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := CursorcontactlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := CursorcontactlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

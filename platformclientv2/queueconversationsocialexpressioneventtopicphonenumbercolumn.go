@@ -45,11 +45,11 @@ func (o *Queueconversationsocialexpressioneventtopicphonenumbercolumn) Unmarshal
 	if ColumnName, ok := QueueconversationsocialexpressioneventtopicphonenumbercolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := QueueconversationsocialexpressioneventtopicphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

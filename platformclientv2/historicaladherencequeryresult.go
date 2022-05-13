@@ -118,7 +118,7 @@ func (o *Historicaladherencequeryresult) UnmarshalJSON(b []byte) error {
 	if UserId, ok := HistoricaladherencequeryresultMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if startDateString, ok := HistoricaladherencequeryresultMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -132,15 +132,15 @@ func (o *Historicaladherencequeryresult) UnmarshalJSON(b []byte) error {
 	if AdherencePercentage, ok := HistoricaladherencequeryresultMap["adherencePercentage"].(float64); ok {
 		o.AdherencePercentage = &AdherencePercentage
 	}
-	
+    
 	if ConformancePercentage, ok := HistoricaladherencequeryresultMap["conformancePercentage"].(float64); ok {
 		o.ConformancePercentage = &ConformancePercentage
 	}
-	
+    
 	if Impact, ok := HistoricaladherencequeryresultMap["impact"].(string); ok {
 		o.Impact = &Impact
 	}
-	
+    
 	if ExceptionInfo, ok := HistoricaladherencequeryresultMap["exceptionInfo"].([]interface{}); ok {
 		ExceptionInfoString, _ := json.Marshal(ExceptionInfo)
 		json.Unmarshal(ExceptionInfoString, &o.ExceptionInfo)

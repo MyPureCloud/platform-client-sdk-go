@@ -126,11 +126,11 @@ func (o *Coretype) UnmarshalJSON(b []byte) error {
 	if Id, ok := CoretypeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CoretypeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := CoretypeMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -149,7 +149,7 @@ func (o *Coretype) UnmarshalJSON(b []byte) error {
 	if Current, ok := CoretypeMap["current"].(bool); ok {
 		o.Current = &Current
 	}
-	
+    
 	if ValidationFields, ok := CoretypeMap["validationFields"].([]interface{}); ok {
 		ValidationFieldsString, _ := json.Marshal(ValidationFields)
 		json.Unmarshal(ValidationFieldsString, &o.ValidationFields)
@@ -173,7 +173,7 @@ func (o *Coretype) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CoretypeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

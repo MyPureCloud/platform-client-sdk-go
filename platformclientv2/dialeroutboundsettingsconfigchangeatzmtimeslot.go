@@ -45,11 +45,11 @@ func (o *Dialeroutboundsettingsconfigchangeatzmtimeslot) UnmarshalJSON(b []byte)
 	if EarliestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotMap["earliestCallableTime"].(string); ok {
 		o.EarliestCallableTime = &EarliestCallableTime
 	}
-	
+    
 	if LatestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotMap["latestCallableTime"].(string); ok {
 		o.LatestCallableTime = &LatestCallableTime
 	}
-	
+    
 
 	return nil
 }

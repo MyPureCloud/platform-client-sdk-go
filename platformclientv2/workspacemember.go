@@ -101,11 +101,11 @@ func (o *Workspacemember) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkspacememberMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WorkspacememberMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Workspace, ok := WorkspacememberMap["workspace"].(map[string]interface{}); ok {
 		WorkspaceString, _ := json.Marshal(Workspace)
 		json.Unmarshal(WorkspaceString, &o.Workspace)
@@ -114,7 +114,7 @@ func (o *Workspacemember) UnmarshalJSON(b []byte) error {
 	if MemberType, ok := WorkspacememberMap["memberType"].(string); ok {
 		o.MemberType = &MemberType
 	}
-	
+    
 	if Member, ok := WorkspacememberMap["member"].(map[string]interface{}); ok {
 		MemberString, _ := json.Marshal(Member)
 		json.Unmarshal(MemberString, &o.Member)
@@ -138,7 +138,7 @@ func (o *Workspacemember) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WorkspacememberMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

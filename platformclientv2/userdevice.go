@@ -109,43 +109,43 @@ func (o *Userdevice) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserdeviceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserdeviceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if DeviceToken, ok := UserdeviceMap["deviceToken"].(string); ok {
 		o.DeviceToken = &DeviceToken
 	}
-	
+    
 	if NotificationId, ok := UserdeviceMap["notificationId"].(string); ok {
 		o.NotificationId = &NotificationId
 	}
-	
+    
 	if Make, ok := UserdeviceMap["make"].(string); ok {
 		o.Make = &Make
 	}
-	
+    
 	if Model, ok := UserdeviceMap["model"].(string); ok {
 		o.Model = &Model
 	}
-	
+    
 	if AcceptNotifications, ok := UserdeviceMap["acceptNotifications"].(bool); ok {
 		o.AcceptNotifications = &AcceptNotifications
 	}
-	
+    
 	if VarType, ok := UserdeviceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if SessionHash, ok := UserdeviceMap["sessionHash"].(string); ok {
 		o.SessionHash = &SessionHash
 	}
-	
+    
 	if SelfUri, ok := UserdeviceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

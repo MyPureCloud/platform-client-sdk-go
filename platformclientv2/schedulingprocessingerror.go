@@ -45,11 +45,11 @@ func (o *Schedulingprocessingerror) UnmarshalJSON(b []byte) error {
 	if InternalErrorCode, ok := SchedulingprocessingerrorMap["internalErrorCode"].(string); ok {
 		o.InternalErrorCode = &InternalErrorCode
 	}
-	
+    
 	if Description, ok := SchedulingprocessingerrorMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 
 	return nil
 }

@@ -198,11 +198,11 @@ func (o *Endpoint) UnmarshalJSON(b []byte) error {
 	if Id, ok := EndpointMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EndpointMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EndpointMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -211,7 +211,7 @@ func (o *Endpoint) UnmarshalJSON(b []byte) error {
 	if Description, ok := EndpointMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EndpointMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -230,23 +230,23 @@ func (o *Endpoint) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EndpointMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EndpointMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EndpointMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EndpointMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EndpointMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Count, ok := EndpointMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt
@@ -265,7 +265,7 @@ func (o *Endpoint) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := EndpointMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Site, ok := EndpointMap["site"].(map[string]interface{}); ok {
 		SiteString, _ := json.Marshal(Site)
 		json.Unmarshal(SiteString, &o.Site)
@@ -279,7 +279,7 @@ func (o *Endpoint) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EndpointMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

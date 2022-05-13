@@ -45,7 +45,7 @@ func (o *Queueconversationcobrowseeventtopicjourneyactionmap) UnmarshalJSON(b []
 	if Id, ok := QueueconversationcobrowseeventtopicjourneyactionmapMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := QueueconversationcobrowseeventtopicjourneyactionmapMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt

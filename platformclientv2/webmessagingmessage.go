@@ -93,7 +93,7 @@ func (o *Webmessagingmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebmessagingmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Channel, ok := WebmessagingmessageMap["channel"].(map[string]interface{}); ok {
 		ChannelString, _ := json.Marshal(Channel)
 		json.Unmarshal(ChannelString, &o.Channel)
@@ -102,11 +102,11 @@ func (o *Webmessagingmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := WebmessagingmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := WebmessagingmessageMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Content, ok := WebmessagingmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)
@@ -120,11 +120,11 @@ func (o *Webmessagingmessage) UnmarshalJSON(b []byte) error {
 	if Direction, ok := WebmessagingmessageMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if OriginatingEntity, ok := WebmessagingmessageMap["originatingEntity"].(string); ok {
 		o.OriginatingEntity = &OriginatingEntity
 	}
-	
+    
 
 	return nil
 }

@@ -93,23 +93,23 @@ func (o *Ucintegration) UnmarshalJSON(b []byte) error {
 	if Id, ok := UcintegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UcintegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UcIntegrationKey, ok := UcintegrationMap["ucIntegrationKey"].(string); ok {
 		o.UcIntegrationKey = &UcIntegrationKey
 	}
-	
+    
 	if IntegrationPresenceSource, ok := UcintegrationMap["integrationPresenceSource"].(string); ok {
 		o.IntegrationPresenceSource = &IntegrationPresenceSource
 	}
-	
+    
 	if PbxPermission, ok := UcintegrationMap["pbxPermission"].(string); ok {
 		o.PbxPermission = &PbxPermission
 	}
-	
+    
 	if Icon, ok := UcintegrationMap["icon"].(map[string]interface{}); ok {
 		IconString, _ := json.Marshal(Icon)
 		json.Unmarshal(IconString, &o.Icon)
@@ -123,7 +123,7 @@ func (o *Ucintegration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UcintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

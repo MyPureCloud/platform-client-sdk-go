@@ -45,7 +45,7 @@ func (o *Shifttradematchviolation) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ShifttradematchviolationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Params, ok := ShifttradematchviolationMap["params"].(map[string]interface{}); ok {
 		ParamsString, _ := json.Marshal(Params)
 		json.Unmarshal(ParamsString, &o.Params)

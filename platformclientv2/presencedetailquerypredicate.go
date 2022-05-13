@@ -69,19 +69,19 @@ func (o *Presencedetailquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := PresencedetailquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := PresencedetailquerypredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Operator, ok := PresencedetailquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := PresencedetailquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := PresencedetailquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

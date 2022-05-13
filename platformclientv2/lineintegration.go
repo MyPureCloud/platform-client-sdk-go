@@ -174,11 +174,11 @@ func (o *Lineintegration) UnmarshalJSON(b []byte) error {
 	if Id, ok := LineintegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LineintegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := LineintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -192,15 +192,15 @@ func (o *Lineintegration) UnmarshalJSON(b []byte) error {
 	if ChannelId, ok := LineintegrationMap["channelId"].(string); ok {
 		o.ChannelId = &ChannelId
 	}
-	
+    
 	if WebhookUri, ok := LineintegrationMap["webhookUri"].(string); ok {
 		o.WebhookUri = &WebhookUri
 	}
-	
+    
 	if Status, ok := LineintegrationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Recipient, ok := LineintegrationMap["recipient"].(map[string]interface{}); ok {
 		RecipientString, _ := json.Marshal(Recipient)
 		json.Unmarshal(RecipientString, &o.Recipient)
@@ -234,7 +234,7 @@ func (o *Lineintegration) UnmarshalJSON(b []byte) error {
 	if CreateStatus, ok := LineintegrationMap["createStatus"].(string); ok {
 		o.CreateStatus = &CreateStatus
 	}
-	
+    
 	if CreateError, ok := LineintegrationMap["createError"].(map[string]interface{}); ok {
 		CreateErrorString, _ := json.Marshal(CreateError)
 		json.Unmarshal(CreateErrorString, &o.CreateError)
@@ -243,7 +243,7 @@ func (o *Lineintegration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LineintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

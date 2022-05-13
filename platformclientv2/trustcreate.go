@@ -78,11 +78,11 @@ func (o *Trustcreate) UnmarshalJSON(b []byte) error {
 	if PairingId, ok := TrustcreateMap["pairingId"].(string); ok {
 		o.PairingId = &PairingId
 	}
-	
+    
 	if Enabled, ok := TrustcreateMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Users, ok := TrustcreateMap["users"].([]interface{}); ok {
 		UsersString, _ := json.Marshal(Users)
 		json.Unmarshal(UsersString, &o.Users)

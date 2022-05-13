@@ -206,7 +206,7 @@ func (o *Patchactionmap) UnmarshalJSON(b []byte) error {
 	if Id, ok := PatchactionmapMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := PatchactionmapMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -215,11 +215,11 @@ func (o *Patchactionmap) UnmarshalJSON(b []byte) error {
 	if IsActive, ok := PatchactionmapMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if DisplayName, ok := PatchactionmapMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if TriggerWithSegments, ok := PatchactionmapMap["triggerWithSegments"].([]interface{}); ok {
 		TriggerWithSegmentsString, _ := json.Marshal(TriggerWithSegments)
 		json.Unmarshal(TriggerWithSegmentsString, &o.TriggerWithSegments)
@@ -263,11 +263,11 @@ func (o *Patchactionmap) UnmarshalJSON(b []byte) error {
 	if IgnoreFrequencyCap, ok := PatchactionmapMap["ignoreFrequencyCap"].(bool); ok {
 		o.IgnoreFrequencyCap = &IgnoreFrequencyCap
 	}
-	
+    
 	if SelfUri, ok := PatchactionmapMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if createdDateString, ok := PatchactionmapMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

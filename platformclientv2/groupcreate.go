@@ -150,15 +150,15 @@ func (o *Groupcreate) UnmarshalJSON(b []byte) error {
 	if Id, ok := GroupcreateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GroupcreateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := GroupcreateMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateModifiedString, ok := GroupcreateMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
@@ -172,7 +172,7 @@ func (o *Groupcreate) UnmarshalJSON(b []byte) error {
 	if State, ok := GroupcreateMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Version, ok := GroupcreateMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -181,7 +181,7 @@ func (o *Groupcreate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := GroupcreateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Images, ok := GroupcreateMap["images"].([]interface{}); ok {
 		ImagesString, _ := json.Marshal(Images)
 		json.Unmarshal(ImagesString, &o.Images)
@@ -195,11 +195,11 @@ func (o *Groupcreate) UnmarshalJSON(b []byte) error {
 	if RulesVisible, ok := GroupcreateMap["rulesVisible"].(bool); ok {
 		o.RulesVisible = &RulesVisible
 	}
-	
+    
 	if Visibility, ok := GroupcreateMap["visibility"].(string); ok {
 		o.Visibility = &Visibility
 	}
-	
+    
 	if OwnerIds, ok := GroupcreateMap["ownerIds"].([]interface{}); ok {
 		OwnerIdsString, _ := json.Marshal(OwnerIds)
 		json.Unmarshal(OwnerIdsString, &o.OwnerIds)
@@ -208,7 +208,7 @@ func (o *Groupcreate) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GroupcreateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

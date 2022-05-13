@@ -93,35 +93,35 @@ func (o *Streetaddress) UnmarshalJSON(b []byte) error {
 	if Country, ok := StreetaddressMap["country"].(string); ok {
 		o.Country = &Country
 	}
-	
+    
 	if A1, ok := StreetaddressMap["A1"].(string); ok {
 		o.A1 = &A1
 	}
-	
+    
 	if A3, ok := StreetaddressMap["A3"].(string); ok {
 		o.A3 = &A3
 	}
-	
+    
 	if RD, ok := StreetaddressMap["RD"].(string); ok {
 		o.RD = &RD
 	}
-	
+    
 	if HNO, ok := StreetaddressMap["HNO"].(string); ok {
 		o.HNO = &HNO
 	}
-	
+    
 	if LOC, ok := StreetaddressMap["LOC"].(string); ok {
 		o.LOC = &LOC
 	}
-	
+    
 	if NAM, ok := StreetaddressMap["NAM"].(string); ok {
 		o.NAM = &NAM
 	}
-	
+    
 	if PC, ok := StreetaddressMap["PC"].(string); ok {
 		o.PC = &PC
 	}
-	
+    
 
 	return nil
 }

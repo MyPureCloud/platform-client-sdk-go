@@ -53,15 +53,15 @@ func (o *Weekschedulereference) UnmarshalJSON(b []byte) error {
 	if Id, ok := WeekschedulereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := WeekschedulereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if WeekDate, ok := WeekschedulereferenceMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 
 	return nil
 }

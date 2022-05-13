@@ -133,15 +133,15 @@ func (o *Journeywebeventsnotificationoutcomeachievedmessage) UnmarshalJSON(b []b
 	if IpAddress, ok := JourneywebeventsnotificationoutcomeachievedmessageMap["ipAddress"].(string); ok {
 		o.IpAddress = &IpAddress
 	}
-	
+    
 	if IpOrganization, ok := JourneywebeventsnotificationoutcomeachievedmessageMap["ipOrganization"].(string); ok {
 		o.IpOrganization = &IpOrganization
 	}
-	
+    
 	if UserAgentString, ok := JourneywebeventsnotificationoutcomeachievedmessageMap["userAgentString"].(string); ok {
 		o.UserAgentString = &UserAgentString
 	}
-	
+    
 	if Device, ok := JourneywebeventsnotificationoutcomeachievedmessageMap["device"].(map[string]interface{}); ok {
 		DeviceString, _ := json.Marshal(Device)
 		json.Unmarshal(DeviceString, &o.Device)

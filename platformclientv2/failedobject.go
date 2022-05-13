@@ -61,19 +61,19 @@ func (o *Failedobject) UnmarshalJSON(b []byte) error {
 	if Id, ok := FailedobjectMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := FailedobjectMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if Name, ok := FailedobjectMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ErrorCode, ok := FailedobjectMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 
 	return nil
 }

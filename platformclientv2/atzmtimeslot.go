@@ -45,11 +45,11 @@ func (o *Atzmtimeslot) UnmarshalJSON(b []byte) error {
 	if EarliestCallableTime, ok := AtzmtimeslotMap["earliestCallableTime"].(string); ok {
 		o.EarliestCallableTime = &EarliestCallableTime
 	}
-	
+    
 	if LatestCallableTime, ok := AtzmtimeslotMap["latestCallableTime"].(string); ok {
 		o.LatestCallableTime = &LatestCallableTime
 	}
-	
+    
 
 	return nil
 }

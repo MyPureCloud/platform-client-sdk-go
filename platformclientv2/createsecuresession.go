@@ -61,19 +61,19 @@ func (o *Createsecuresession) UnmarshalJSON(b []byte) error {
 	if SourceParticipantId, ok := CreatesecuresessionMap["sourceParticipantId"].(string); ok {
 		o.SourceParticipantId = &SourceParticipantId
 	}
-	
+    
 	if FlowId, ok := CreatesecuresessionMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if UserData, ok := CreatesecuresessionMap["userData"].(string); ok {
 		o.UserData = &UserData
 	}
-	
+    
 	if Disconnect, ok := CreatesecuresessionMap["disconnect"].(bool); ok {
 		o.Disconnect = &Disconnect
 	}
-	
+    
 
 	return nil
 }

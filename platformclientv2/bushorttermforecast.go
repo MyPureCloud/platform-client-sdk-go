@@ -173,7 +173,7 @@ func (o *Bushorttermforecast) UnmarshalJSON(b []byte) error {
 	if Id, ok := BushorttermforecastMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := BushorttermforecastMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -187,15 +187,15 @@ func (o *Bushorttermforecast) UnmarshalJSON(b []byte) error {
 	if CreationMethod, ok := BushorttermforecastMap["creationMethod"].(string); ok {
 		o.CreationMethod = &CreationMethod
 	}
-	
+    
 	if Description, ok := BushorttermforecastMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Legacy, ok := BushorttermforecastMap["legacy"].(bool); ok {
 		o.Legacy = &Legacy
 	}
-	
+    
 	if Metadata, ok := BushorttermforecastMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
@@ -204,7 +204,7 @@ func (o *Bushorttermforecast) UnmarshalJSON(b []byte) error {
 	if CanUseForScheduling, ok := BushorttermforecastMap["canUseForScheduling"].(bool); ok {
 		o.CanUseForScheduling = &CanUseForScheduling
 	}
-	
+    
 	if referenceStartDateString, ok := BushorttermforecastMap["referenceStartDate"].(string); ok {
 		ReferenceStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", referenceStartDateString)
 		o.ReferenceStartDate = &ReferenceStartDate
@@ -228,7 +228,7 @@ func (o *Bushorttermforecast) UnmarshalJSON(b []byte) error {
 	if TimeZone, ok := BushorttermforecastMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if PlanningGroupsVersion, ok := BushorttermforecastMap["planningGroupsVersion"].(float64); ok {
 		PlanningGroupsVersionInt := int(PlanningGroupsVersion)
 		o.PlanningGroupsVersion = &PlanningGroupsVersionInt
@@ -242,7 +242,7 @@ func (o *Bushorttermforecast) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BushorttermforecastMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

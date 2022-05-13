@@ -149,59 +149,59 @@ func (o *Analyticsflow) UnmarshalJSON(b []byte) error {
 	if EndingLanguage, ok := AnalyticsflowMap["endingLanguage"].(string); ok {
 		o.EndingLanguage = &EndingLanguage
 	}
-	
+    
 	if EntryReason, ok := AnalyticsflowMap["entryReason"].(string); ok {
 		o.EntryReason = &EntryReason
 	}
-	
+    
 	if EntryType, ok := AnalyticsflowMap["entryType"].(string); ok {
 		o.EntryType = &EntryType
 	}
-	
+    
 	if ExitReason, ok := AnalyticsflowMap["exitReason"].(string); ok {
 		o.ExitReason = &ExitReason
 	}
-	
+    
 	if FlowId, ok := AnalyticsflowMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if FlowName, ok := AnalyticsflowMap["flowName"].(string); ok {
 		o.FlowName = &FlowName
 	}
-	
+    
 	if FlowType, ok := AnalyticsflowMap["flowType"].(string); ok {
 		o.FlowType = &FlowType
 	}
-	
+    
 	if FlowVersion, ok := AnalyticsflowMap["flowVersion"].(string); ok {
 		o.FlowVersion = &FlowVersion
 	}
-	
+    
 	if IssuedCallback, ok := AnalyticsflowMap["issuedCallback"].(bool); ok {
 		o.IssuedCallback = &IssuedCallback
 	}
-	
+    
 	if RecognitionFailureReason, ok := AnalyticsflowMap["recognitionFailureReason"].(string); ok {
 		o.RecognitionFailureReason = &RecognitionFailureReason
 	}
-	
+    
 	if StartingLanguage, ok := AnalyticsflowMap["startingLanguage"].(string); ok {
 		o.StartingLanguage = &StartingLanguage
 	}
-	
+    
 	if TransferTargetAddress, ok := AnalyticsflowMap["transferTargetAddress"].(string); ok {
 		o.TransferTargetAddress = &TransferTargetAddress
 	}
-	
+    
 	if TransferTargetName, ok := AnalyticsflowMap["transferTargetName"].(string); ok {
 		o.TransferTargetName = &TransferTargetName
 	}
-	
+    
 	if TransferType, ok := AnalyticsflowMap["transferType"].(string); ok {
 		o.TransferType = &TransferType
 	}
-	
+    
 	if Outcomes, ok := AnalyticsflowMap["outcomes"].([]interface{}); ok {
 		OutcomesString, _ := json.Marshal(Outcomes)
 		json.Unmarshal(OutcomesString, &o.Outcomes)

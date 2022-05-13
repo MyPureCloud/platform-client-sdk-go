@@ -61,11 +61,11 @@ func (o *Modelingstatusresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ModelingstatusresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Status, ok := ModelingstatusresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ErrorDetails, ok := ModelingstatusresponseMap["errorDetails"].([]interface{}); ok {
 		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
 		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
@@ -74,7 +74,7 @@ func (o *Modelingstatusresponse) UnmarshalJSON(b []byte) error {
 	if ModelingResultUri, ok := ModelingstatusresponseMap["modelingResultUri"].(string); ok {
 		o.ModelingResultUri = &ModelingResultUri
 	}
-	
+    
 
 	return nil
 }

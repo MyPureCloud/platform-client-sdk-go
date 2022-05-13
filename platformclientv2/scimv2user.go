@@ -149,7 +149,7 @@ func (o *Scimv2user) UnmarshalJSON(b []byte) error {
 	if Id, ok := Scimv2userMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Schemas, ok := Scimv2userMap["schemas"].([]interface{}); ok {
 		SchemasString, _ := json.Marshal(Schemas)
 		json.Unmarshal(SchemasString, &o.Schemas)
@@ -158,23 +158,23 @@ func (o *Scimv2user) UnmarshalJSON(b []byte) error {
 	if Active, ok := Scimv2userMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if UserName, ok := Scimv2userMap["userName"].(string); ok {
 		o.UserName = &UserName
 	}
-	
+    
 	if DisplayName, ok := Scimv2userMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if Password, ok := Scimv2userMap["password"].(string); ok {
 		o.Password = &Password
 	}
-	
+    
 	if Title, ok := Scimv2userMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if PhoneNumbers, ok := Scimv2userMap["phoneNumbers"].([]interface{}); ok {
 		PhoneNumbersString, _ := json.Marshal(PhoneNumbers)
 		json.Unmarshal(PhoneNumbersString, &o.PhoneNumbers)
@@ -188,7 +188,7 @@ func (o *Scimv2user) UnmarshalJSON(b []byte) error {
 	if ExternalId, ok := Scimv2userMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
 	}
-	
+    
 	if Groups, ok := Scimv2userMap["groups"].([]interface{}); ok {
 		GroupsString, _ := json.Marshal(Groups)
 		json.Unmarshal(GroupsString, &o.Groups)

@@ -86,7 +86,7 @@ func (o *Buagentscheduleshift) UnmarshalJSON(b []byte) error {
 	if Id, ok := BuagentscheduleshiftMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if startDateString, ok := BuagentscheduleshiftMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -105,7 +105,7 @@ func (o *Buagentscheduleshift) UnmarshalJSON(b []byte) error {
 	if ManuallyEdited, ok := BuagentscheduleshiftMap["manuallyEdited"].(bool); ok {
 		o.ManuallyEdited = &ManuallyEdited
 	}
-	
+    
 	if Schedule, ok := BuagentscheduleshiftMap["schedule"].(map[string]interface{}); ok {
 		ScheduleString, _ := json.Marshal(Schedule)
 		json.Unmarshal(ScheduleString, &o.Schedule)

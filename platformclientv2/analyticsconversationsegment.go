@@ -246,31 +246,31 @@ func (o *Analyticsconversationsegment) UnmarshalJSON(b []byte) error {
 	if AudioMuted, ok := AnalyticsconversationsegmentMap["audioMuted"].(bool); ok {
 		o.AudioMuted = &AudioMuted
 	}
-	
+    
 	if Conference, ok := AnalyticsconversationsegmentMap["conference"].(bool); ok {
 		o.Conference = &Conference
 	}
-	
+    
 	if DestinationConversationId, ok := AnalyticsconversationsegmentMap["destinationConversationId"].(string); ok {
 		o.DestinationConversationId = &DestinationConversationId
 	}
-	
+    
 	if DestinationSessionId, ok := AnalyticsconversationsegmentMap["destinationSessionId"].(string); ok {
 		o.DestinationSessionId = &DestinationSessionId
 	}
-	
+    
 	if DisconnectType, ok := AnalyticsconversationsegmentMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if ErrorCode, ok := AnalyticsconversationsegmentMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if GroupId, ok := AnalyticsconversationsegmentMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 	if Q850ResponseCodes, ok := AnalyticsconversationsegmentMap["q850ResponseCodes"].([]interface{}); ok {
 		Q850ResponseCodesString, _ := json.Marshal(Q850ResponseCodes)
 		json.Unmarshal(Q850ResponseCodesString, &o.Q850ResponseCodes)
@@ -279,11 +279,11 @@ func (o *Analyticsconversationsegment) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := AnalyticsconversationsegmentMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if RequestedLanguageId, ok := AnalyticsconversationsegmentMap["requestedLanguageId"].(string); ok {
 		o.RequestedLanguageId = &RequestedLanguageId
 	}
-	
+    
 	if RequestedRoutingSkillIds, ok := AnalyticsconversationsegmentMap["requestedRoutingSkillIds"].([]interface{}); ok {
 		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
 		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
@@ -307,7 +307,7 @@ func (o *Analyticsconversationsegment) UnmarshalJSON(b []byte) error {
 	if SegmentType, ok := AnalyticsconversationsegmentMap["segmentType"].(string); ok {
 		o.SegmentType = &SegmentType
 	}
-	
+    
 	if SipResponseCodes, ok := AnalyticsconversationsegmentMap["sipResponseCodes"].([]interface{}); ok {
 		SipResponseCodesString, _ := json.Marshal(SipResponseCodes)
 		json.Unmarshal(SipResponseCodesString, &o.SipResponseCodes)
@@ -316,27 +316,27 @@ func (o *Analyticsconversationsegment) UnmarshalJSON(b []byte) error {
 	if SourceConversationId, ok := AnalyticsconversationsegmentMap["sourceConversationId"].(string); ok {
 		o.SourceConversationId = &SourceConversationId
 	}
-	
+    
 	if SourceSessionId, ok := AnalyticsconversationsegmentMap["sourceSessionId"].(string); ok {
 		o.SourceSessionId = &SourceSessionId
 	}
-	
+    
 	if Subject, ok := AnalyticsconversationsegmentMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if VideoMuted, ok := AnalyticsconversationsegmentMap["videoMuted"].(bool); ok {
 		o.VideoMuted = &VideoMuted
 	}
-	
+    
 	if WrapUpCode, ok := AnalyticsconversationsegmentMap["wrapUpCode"].(string); ok {
 		o.WrapUpCode = &WrapUpCode
 	}
-	
+    
 	if WrapUpNote, ok := AnalyticsconversationsegmentMap["wrapUpNote"].(string); ok {
 		o.WrapUpNote = &WrapUpNote
 	}
-	
+    
 	if WrapUpTags, ok := AnalyticsconversationsegmentMap["wrapUpTags"].([]interface{}); ok {
 		WrapUpTagsString, _ := json.Marshal(WrapUpTags)
 		json.Unmarshal(WrapUpTagsString, &o.WrapUpTags)

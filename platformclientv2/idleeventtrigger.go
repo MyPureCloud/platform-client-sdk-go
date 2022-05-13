@@ -45,7 +45,7 @@ func (o *Idleeventtrigger) UnmarshalJSON(b []byte) error {
 	if EventName, ok := IdleeventtriggerMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 	if IdleAfterSeconds, ok := IdleeventtriggerMap["idleAfterSeconds"].(float64); ok {
 		IdleAfterSecondsInt := int(IdleAfterSeconds)
 		o.IdleAfterSeconds = &IdleAfterSecondsInt

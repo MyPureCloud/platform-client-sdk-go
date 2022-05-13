@@ -270,11 +270,11 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if Id, ok := EvaluationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EvaluationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Conversation, ok := EvaluationMap["conversation"].(map[string]interface{}); ok {
 		ConversationString, _ := json.Marshal(Conversation)
 		json.Unmarshal(ConversationString, &o.Conversation)
@@ -303,7 +303,7 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if Status, ok := EvaluationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Answers, ok := EvaluationMap["answers"].(map[string]interface{}); ok {
 		AnswersString, _ := json.Marshal(Answers)
 		json.Unmarshal(AnswersString, &o.Answers)
@@ -312,7 +312,7 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if AgentHasRead, ok := EvaluationMap["agentHasRead"].(bool); ok {
 		o.AgentHasRead = &AgentHasRead
 	}
-	
+    
 	if releaseDateString, ok := EvaluationMap["releaseDate"].(string); ok {
 		ReleaseDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", releaseDateString)
 		o.ReleaseDate = &ReleaseDate
@@ -341,7 +341,7 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if Rescore, ok := EvaluationMap["rescore"].(bool); ok {
 		o.Rescore = &Rescore
 	}
-	
+    
 	if conversationDateString, ok := EvaluationMap["conversationDate"].(string); ok {
 		ConversationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationDateString)
 		o.ConversationDate = &ConversationDate
@@ -355,23 +355,23 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if NeverRelease, ok := EvaluationMap["neverRelease"].(bool); ok {
 		o.NeverRelease = &NeverRelease
 	}
-	
+    
 	if ResourceId, ok := EvaluationMap["resourceId"].(string); ok {
 		o.ResourceId = &ResourceId
 	}
-	
+    
 	if ResourceType, ok := EvaluationMap["resourceType"].(string); ok {
 		o.ResourceType = &ResourceType
 	}
-	
+    
 	if Redacted, ok := EvaluationMap["redacted"].(bool); ok {
 		o.Redacted = &Redacted
 	}
-	
+    
 	if IsScoringIndex, ok := EvaluationMap["isScoringIndex"].(bool); ok {
 		o.IsScoringIndex = &IsScoringIndex
 	}
-	
+    
 	if AuthorizedActions, ok := EvaluationMap["authorizedActions"].([]interface{}); ok {
 		AuthorizedActionsString, _ := json.Marshal(AuthorizedActions)
 		json.Unmarshal(AuthorizedActionsString, &o.AuthorizedActions)
@@ -380,7 +380,7 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EvaluationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -94,7 +94,7 @@ func (o *Assessmentform) UnmarshalJSON(b []byte) error {
 	if Id, ok := AssessmentformMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if dateModifiedString, ok := AssessmentformMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
@@ -103,15 +103,15 @@ func (o *Assessmentform) UnmarshalJSON(b []byte) error {
 	if ContextId, ok := AssessmentformMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if SelfUri, ok := AssessmentformMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if Published, ok := AssessmentformMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if PassPercent, ok := AssessmentformMap["passPercent"].(float64); ok {
 		PassPercentInt := int(PassPercent)
 		o.PassPercent = &PassPercentInt

@@ -69,19 +69,19 @@ func (o *Contactlistfilterrange) UnmarshalJSON(b []byte) error {
 	if Min, ok := ContactlistfilterrangeMap["min"].(string); ok {
 		o.Min = &Min
 	}
-	
+    
 	if Max, ok := ContactlistfilterrangeMap["max"].(string); ok {
 		o.Max = &Max
 	}
-	
+    
 	if MinInclusive, ok := ContactlistfilterrangeMap["minInclusive"].(bool); ok {
 		o.MinInclusive = &MinInclusive
 	}
-	
+    
 	if MaxInclusive, ok := ContactlistfilterrangeMap["maxInclusive"].(bool); ok {
 		o.MaxInclusive = &MaxInclusive
 	}
-	
+    
 	if InSet, ok := ContactlistfilterrangeMap["inSet"].([]interface{}); ok {
 		InSetString, _ := json.Marshal(InSet)
 		json.Unmarshal(InSetString, &o.InSet)

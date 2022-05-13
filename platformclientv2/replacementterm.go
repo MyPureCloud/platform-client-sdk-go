@@ -53,15 +53,15 @@ func (o *Replacementterm) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ReplacementtermMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ExistingValue, ok := ReplacementtermMap["existingValue"].(string); ok {
 		o.ExistingValue = &ExistingValue
 	}
-	
+    
 	if UpdatedValue, ok := ReplacementtermMap["updatedValue"].(string); ok {
 		o.UpdatedValue = &UpdatedValue
 	}
-	
+    
 
 	return nil
 }

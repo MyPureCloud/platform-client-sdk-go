@@ -45,7 +45,7 @@ func (o *Contentreaction) UnmarshalJSON(b []byte) error {
 	if ReactionType, ok := ContentreactionMap["reactionType"].(string); ok {
 		o.ReactionType = &ReactionType
 	}
-	
+    
 	if Count, ok := ContentreactionMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

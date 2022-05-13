@@ -45,7 +45,7 @@ func (o *Learningassignmentaggregatequeryrequestclause) UnmarshalJSON(b []byte) 
 	if VarType, ok := LearningassignmentaggregatequeryrequestclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := LearningassignmentaggregatequeryrequestclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

@@ -142,23 +142,23 @@ func (o *Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast) Unmarsh
 	if Id, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if WeekDate, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 	if CreationMethod, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["creationMethod"].(string); ok {
 		o.CreationMethod = &CreationMethod
 	}
-	
+    
 	if Description, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Legacy, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["legacy"].(bool); ok {
 		o.Legacy = &Legacy
 	}
-	
+    
 	if referenceStartDateString, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["referenceStartDate"].(string); ok {
 		ReferenceStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", referenceStartDateString)
 		o.ReferenceStartDate = &ReferenceStartDate
@@ -177,7 +177,7 @@ func (o *Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast) Unmarsh
 	if TimeZone, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if PlanningGroupsVersion, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["planningGroupsVersion"].(float64); ok {
 		PlanningGroupsVersionInt := int(PlanningGroupsVersion)
 		o.PlanningGroupsVersion = &PlanningGroupsVersionInt
@@ -196,7 +196,7 @@ func (o *Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast) Unmarsh
 	if CanUseForScheduling, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["canUseForScheduling"].(bool); ok {
 		o.CanUseForScheduling = &CanUseForScheduling
 	}
-	
+    
 
 	return nil
 }

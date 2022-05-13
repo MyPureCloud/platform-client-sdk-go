@@ -53,7 +53,7 @@ func (o *Userlicenses) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserlicensesMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Licenses, ok := UserlicensesMap["licenses"].([]interface{}); ok {
 		LicensesString, _ := json.Marshal(Licenses)
 		json.Unmarshal(LicensesString, &o.Licenses)
@@ -62,7 +62,7 @@ func (o *Userlicenses) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UserlicensesMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -77,15 +77,15 @@ func (o *Recordingtranscodecompletetopicrecording) UnmarshalJSON(b []byte) error
 	if Id, ok := RecordingtranscodecompletetopicrecordingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ConversationId, ok := RecordingtranscodecompletetopicrecordingMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if FileState, ok := RecordingtranscodecompletetopicrecordingMap["fileState"].(string); ok {
 		o.FileState = &FileState
 	}
-	
+    
 	if MediaUris, ok := RecordingtranscodecompletetopicrecordingMap["mediaUris"].([]interface{}); ok {
 		MediaUrisString, _ := json.Marshal(MediaUris)
 		json.Unmarshal(MediaUrisString, &o.MediaUris)

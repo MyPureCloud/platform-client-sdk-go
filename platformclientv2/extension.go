@@ -182,11 +182,11 @@ func (o *Extension) UnmarshalJSON(b []byte) error {
 	if Id, ok := ExtensionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ExtensionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := ExtensionMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Extension) UnmarshalJSON(b []byte) error {
 	if Description, ok := ExtensionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := ExtensionMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,27 +214,27 @@ func (o *Extension) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := ExtensionMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := ExtensionMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := ExtensionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := ExtensionMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := ExtensionMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Number, ok := ExtensionMap["number"].(string); ok {
 		o.Number = &Number
 	}
-	
+    
 	if Owner, ok := ExtensionMap["owner"].(map[string]interface{}); ok {
 		OwnerString, _ := json.Marshal(Owner)
 		json.Unmarshal(OwnerString, &o.Owner)
@@ -248,11 +248,11 @@ func (o *Extension) UnmarshalJSON(b []byte) error {
 	if OwnerType, ok := ExtensionMap["ownerType"].(string); ok {
 		o.OwnerType = &OwnerType
 	}
-	
+    
 	if SelfUri, ok := ExtensionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

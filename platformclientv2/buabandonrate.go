@@ -45,7 +45,7 @@ func (o *Buabandonrate) UnmarshalJSON(b []byte) error {
 	if Include, ok := BuabandonrateMap["include"].(bool); ok {
 		o.Include = &Include
 	}
-	
+    
 	if Percent, ok := BuabandonrateMap["percent"].(float64); ok {
 		PercentInt := int(Percent)
 		o.Percent = &PercentInt

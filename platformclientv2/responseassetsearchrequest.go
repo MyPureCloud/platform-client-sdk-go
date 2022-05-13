@@ -79,11 +79,11 @@ func (o *Responseassetsearchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := ResponseassetsearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := ResponseassetsearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if Query, ok := ResponseassetsearchrequestMap["query"].([]interface{}); ok {
 		QueryString, _ := json.Marshal(Query)
 		json.Unmarshal(QueryString, &o.Query)

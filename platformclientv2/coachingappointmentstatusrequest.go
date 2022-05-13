@@ -37,7 +37,7 @@ func (o *Coachingappointmentstatusrequest) UnmarshalJSON(b []byte) error {
 	if Status, ok := CoachingappointmentstatusrequestMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

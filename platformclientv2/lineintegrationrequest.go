@@ -101,11 +101,11 @@ func (o *Lineintegrationrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := LineintegrationrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LineintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := LineintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -119,23 +119,23 @@ func (o *Lineintegrationrequest) UnmarshalJSON(b []byte) error {
 	if ChannelId, ok := LineintegrationrequestMap["channelId"].(string); ok {
 		o.ChannelId = &ChannelId
 	}
-	
+    
 	if ChannelSecret, ok := LineintegrationrequestMap["channelSecret"].(string); ok {
 		o.ChannelSecret = &ChannelSecret
 	}
-	
+    
 	if SwitcherSecret, ok := LineintegrationrequestMap["switcherSecret"].(string); ok {
 		o.SwitcherSecret = &SwitcherSecret
 	}
-	
+    
 	if ServiceCode, ok := LineintegrationrequestMap["serviceCode"].(string); ok {
 		o.ServiceCode = &ServiceCode
 	}
-	
+    
 	if SelfUri, ok := LineintegrationrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

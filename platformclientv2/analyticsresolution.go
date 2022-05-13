@@ -75,11 +75,11 @@ func (o *Analyticsresolution) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := AnalyticsresolutionMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if UserId, ok := AnalyticsresolutionMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if NNextContactAvoided, ok := AnalyticsresolutionMap["nNextContactAvoided"].(float64); ok {
 		NNextContactAvoidedInt := int(NNextContactAvoided)
 		o.NNextContactAvoided = &NNextContactAvoidedInt

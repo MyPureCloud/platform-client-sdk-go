@@ -109,35 +109,35 @@ func (o *Analyticsparticipant) UnmarshalJSON(b []byte) error {
 	if ExternalContactId, ok := AnalyticsparticipantMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalOrganizationId, ok := AnalyticsparticipantMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if FlaggedReason, ok := AnalyticsparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if ParticipantId, ok := AnalyticsparticipantMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if ParticipantName, ok := AnalyticsparticipantMap["participantName"].(string); ok {
 		o.ParticipantName = &ParticipantName
 	}
-	
+    
 	if Purpose, ok := AnalyticsparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if TeamId, ok := AnalyticsparticipantMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if UserId, ok := AnalyticsparticipantMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Sessions, ok := AnalyticsparticipantMap["sessions"].([]interface{}); ok {
 		SessionsString, _ := json.Marshal(Sessions)
 		json.Unmarshal(SessionsString, &o.Sessions)

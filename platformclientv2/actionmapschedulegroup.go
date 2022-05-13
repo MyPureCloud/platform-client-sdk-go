@@ -37,7 +37,7 @@ func (o *Actionmapschedulegroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := ActionmapschedulegroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

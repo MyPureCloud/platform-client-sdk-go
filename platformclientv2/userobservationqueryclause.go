@@ -45,7 +45,7 @@ func (o *Userobservationqueryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := UserobservationqueryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := UserobservationqueryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

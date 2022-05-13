@@ -126,31 +126,31 @@ func (o *Sipsearchpublicrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := SipsearchpublicrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SipsearchpublicrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if CallId, ok := SipsearchpublicrequestMap["callId"].(string); ok {
 		o.CallId = &CallId
 	}
-	
+    
 	if ToUser, ok := SipsearchpublicrequestMap["toUser"].(string); ok {
 		o.ToUser = &ToUser
 	}
-	
+    
 	if FromUser, ok := SipsearchpublicrequestMap["fromUser"].(string); ok {
 		o.FromUser = &FromUser
 	}
-	
+    
 	if ConversationId, ok := SipsearchpublicrequestMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := SipsearchpublicrequestMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if dateStartString, ok := SipsearchpublicrequestMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart
@@ -164,7 +164,7 @@ func (o *Sipsearchpublicrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SipsearchpublicrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

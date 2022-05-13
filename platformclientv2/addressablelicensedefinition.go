@@ -45,11 +45,11 @@ func (o *Addressablelicensedefinition) UnmarshalJSON(b []byte) error {
 	if Id, ok := AddressablelicensedefinitionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := AddressablelicensedefinitionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

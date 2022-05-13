@@ -69,11 +69,11 @@ func (o *Wfmhistoricaladherenceresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := WfmhistoricaladherenceresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DownloadUrl, ok := WfmhistoricaladherenceresponseMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 	if DownloadResult, ok := WfmhistoricaladherenceresponseMap["downloadResult"].(map[string]interface{}); ok {
 		DownloadResultString, _ := json.Marshal(DownloadResult)
 		json.Unmarshal(DownloadResultString, &o.DownloadResult)
@@ -87,7 +87,7 @@ func (o *Wfmhistoricaladherenceresponse) UnmarshalJSON(b []byte) error {
 	if QueryState, ok := WfmhistoricaladherenceresponseMap["queryState"].(string); ok {
 		o.QueryState = &QueryState
 	}
-	
+    
 
 	return nil
 }

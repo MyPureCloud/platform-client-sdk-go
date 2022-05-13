@@ -117,11 +117,11 @@ func (o *Flowdivisionview) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowdivisionviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowdivisionviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := FlowdivisionviewMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -130,11 +130,11 @@ func (o *Flowdivisionview) UnmarshalJSON(b []byte) error {
 	if VarType, ok := FlowdivisionviewMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Description, ok := FlowdivisionviewMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if InputSchema, ok := FlowdivisionviewMap["inputSchema"].(map[string]interface{}); ok {
 		InputSchemaString, _ := json.Marshal(InputSchema)
 		json.Unmarshal(InputSchemaString, &o.InputSchema)
@@ -163,7 +163,7 @@ func (o *Flowdivisionview) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowdivisionviewMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

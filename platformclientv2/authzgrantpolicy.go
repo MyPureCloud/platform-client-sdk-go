@@ -66,15 +66,15 @@ func (o *Authzgrantpolicy) UnmarshalJSON(b []byte) error {
 	if Condition, ok := AuthzgrantpolicyMap["condition"].(string); ok {
 		o.Condition = &Condition
 	}
-	
+    
 	if Domain, ok := AuthzgrantpolicyMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if EntityName, ok := AuthzgrantpolicyMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 
 	return nil
 }

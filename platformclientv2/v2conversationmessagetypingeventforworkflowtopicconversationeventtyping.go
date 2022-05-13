@@ -45,7 +45,7 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationeventtyping
 	if VarType, ok := V2conversationmessagetypingeventforworkflowtopicconversationeventtypingMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Duration, ok := V2conversationmessagetypingeventforworkflowtopicconversationeventtypingMap["duration"].(float64); ok {
 		DurationInt := int(Duration)
 		o.Duration = &DurationInt

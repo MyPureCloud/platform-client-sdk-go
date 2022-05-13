@@ -45,11 +45,11 @@ func (o *Authenticationsettings) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := AuthenticationsettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if IntegrationId, ok := AuthenticationsettingsMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-	
+    
 
 	return nil
 }

@@ -118,23 +118,23 @@ func (o *Actiontemplate) UnmarshalJSON(b []byte) error {
 	if Id, ok := ActiontemplateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ActiontemplateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ActiontemplateMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if MediaType, ok := ActiontemplateMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if State, ok := ActiontemplateMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ContentOffer, ok := ActiontemplateMap["contentOffer"].(map[string]interface{}); ok {
 		ContentOfferString, _ := json.Marshal(ContentOffer)
 		json.Unmarshal(ContentOfferString, &o.ContentOffer)
@@ -143,7 +143,7 @@ func (o *Actiontemplate) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ActiontemplateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if createdDateString, ok := ActiontemplateMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

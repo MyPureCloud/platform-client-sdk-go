@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -10,6 +11,10 @@ import (
 type Trunkmetricstopictrunkmetrics struct { 
 	// Calls
 	Calls *Trunkmetricstopictrunkmetricscalls `json:"calls,omitempty"`
+
+
+	// EventTime
+	EventTime *time.Time `json:"eventTime,omitempty"`
 
 
 	// Qos
@@ -26,8 +31,18 @@ func (o *Trunkmetricstopictrunkmetrics) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Trunkmetricstopictrunkmetrics
 	
+	EventTime := new(string)
+	if o.EventTime != nil {
+		
+		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Calls *Trunkmetricstopictrunkmetricscalls `json:"calls,omitempty"`
+		
+		EventTime *string `json:"eventTime,omitempty"`
 		
 		Qos *Trunkmetricstopictrunkmetricsqos `json:"qos,omitempty"`
 		
@@ -35,6 +50,8 @@ func (o *Trunkmetricstopictrunkmetrics) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		Calls: o.Calls,
+		
+		EventTime: EventTime,
 		
 		Qos: o.Qos,
 		
@@ -53,6 +70,11 @@ func (o *Trunkmetricstopictrunkmetrics) UnmarshalJSON(b []byte) error {
 	if Calls, ok := TrunkmetricstopictrunkmetricsMap["calls"].(map[string]interface{}); ok {
 		CallsString, _ := json.Marshal(Calls)
 		json.Unmarshal(CallsString, &o.Calls)
+	}
+	
+	if eventTimeString, ok := TrunkmetricstopictrunkmetricsMap["eventTime"].(string); ok {
+		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
+		o.EventTime = &EventTime
 	}
 	
 	if Qos, ok := TrunkmetricstopictrunkmetricsMap["qos"].(map[string]interface{}); ok {

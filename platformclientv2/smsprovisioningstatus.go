@@ -61,11 +61,11 @@ func (o *Smsprovisioningstatus) UnmarshalJSON(b []byte) error {
 	if Action, ok := SmsprovisioningstatusMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if State, ok := SmsprovisioningstatusMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if VarError, ok := SmsprovisioningstatusMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)

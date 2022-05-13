@@ -77,28 +77,28 @@ func (o *Architectpromptresourcenotificationpromptresourcenotification) Unmarsha
 	if PromptId, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["promptId"].(string); ok {
 		o.PromptId = &PromptId
 	}
-	
+    
 	if Id, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Language, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if MediaUri, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if UploadStatus, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 	if DurationSeconds, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["durationSeconds"].(float64); ok {
 		DurationSecondsFloat32 := float32(DurationSeconds)
 		o.DurationSeconds = &DurationSecondsFloat32
 	}
-	
+    
 
 	return nil
 }

@@ -70,7 +70,7 @@ func (o *Queueconversationvideoeventtopicaftercallwork) UnmarshalJSON(b []byte) 
 	if State, ok := QueueconversationvideoeventtopicaftercallworkMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if startTimeString, ok := QueueconversationvideoeventtopicaftercallworkMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime

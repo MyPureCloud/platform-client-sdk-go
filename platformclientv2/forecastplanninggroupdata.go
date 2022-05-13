@@ -53,7 +53,7 @@ func (o *Forecastplanninggroupdata) UnmarshalJSON(b []byte) error {
 	if PlanningGroupId, ok := ForecastplanninggroupdataMap["planningGroupId"].(string); ok {
 		o.PlanningGroupId = &PlanningGroupId
 	}
-	
+    
 	if OfferedPerInterval, ok := ForecastplanninggroupdataMap["offeredPerInterval"].([]interface{}); ok {
 		OfferedPerIntervalString, _ := json.Marshal(OfferedPerInterval)
 		json.Unmarshal(OfferedPerIntervalString, &o.OfferedPerInterval)

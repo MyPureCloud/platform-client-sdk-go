@@ -126,11 +126,11 @@ func (o *Comparisonperiod) UnmarshalJSON(b []byte) error {
 	if Id, ok := ComparisonperiodMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Kpi, ok := ComparisonperiodMap["kpi"].(string); ok {
 		o.Kpi = &Kpi
 	}
-	
+    
 	if dateStartedString, ok := ComparisonperiodMap["dateStarted"].(string); ok {
 		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
 		o.DateStarted = &DateStarted
@@ -169,7 +169,7 @@ func (o *Comparisonperiod) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ComparisonperiodMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

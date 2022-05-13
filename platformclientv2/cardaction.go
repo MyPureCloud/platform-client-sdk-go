@@ -69,23 +69,23 @@ func (o *Cardaction) UnmarshalJSON(b []byte) error {
 	if VarType, ok := CardactionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := CardactionMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := CardactionMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 	if Url, ok := CardactionMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if IsSelected, ok := CardactionMap["isSelected"].(bool); ok {
 		o.IsSelected = &IsSelected
 	}
-	
+    
 
 	return nil
 }

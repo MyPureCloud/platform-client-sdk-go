@@ -86,11 +86,11 @@ func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdater
 	if Id, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ReviewedBy, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["reviewedBy"].(map[string]interface{}); ok {
 		ReviewedByString, _ := json.Marshal(ReviewedBy)
 		json.Unmarshal(ReviewedByString, &o.ReviewedBy)
@@ -104,7 +104,7 @@ func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdater
 	if FailureReason, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
 	}
-	
+    
 	if Metadata, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

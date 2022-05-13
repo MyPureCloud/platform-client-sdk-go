@@ -124,7 +124,7 @@ func (o *Journeywebactioneventsnotificationblockedwebactionoffermessage) Unmarsh
 	if BlockingReason, ok := JourneywebactioneventsnotificationblockedwebactionoffermessageMap["blockingReason"].(string); ok {
 		o.BlockingReason = &BlockingReason
 	}
-	
+    
 	if BlockingActionMap, ok := JourneywebactioneventsnotificationblockedwebactionoffermessageMap["blockingActionMap"].(map[string]interface{}); ok {
 		BlockingActionMapString, _ := json.Marshal(BlockingActionMap)
 		json.Unmarshal(BlockingActionMapString, &o.BlockingActionMap)
@@ -138,7 +138,7 @@ func (o *Journeywebactioneventsnotificationblockedwebactionoffermessage) Unmarsh
 	if BlockingFrequencyCapBehaviour, ok := JourneywebactioneventsnotificationblockedwebactionoffermessageMap["blockingFrequencyCapBehaviour"].(string); ok {
 		o.BlockingFrequencyCapBehaviour = &BlockingFrequencyCapBehaviour
 	}
-	
+    
 	if BlockingPageUrlConditions, ok := JourneywebactioneventsnotificationblockedwebactionoffermessageMap["blockingPageUrlConditions"].([]interface{}); ok {
 		BlockingPageUrlConditionsString, _ := json.Marshal(BlockingPageUrlConditions)
 		json.Unmarshal(BlockingPageUrlConditionsString, &o.BlockingPageUrlConditions)

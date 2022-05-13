@@ -45,11 +45,11 @@ func (o *Callbackidentifier) UnmarshalJSON(b []byte) error {
 	if VarType, ok := CallbackidentifierMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Id, ok := CallbackidentifierMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

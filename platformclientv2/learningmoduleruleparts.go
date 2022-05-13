@@ -61,11 +61,11 @@ func (o *Learningmoduleruleparts) UnmarshalJSON(b []byte) error {
 	if Operation, ok := LearningmodulerulepartsMap["operation"].(string); ok {
 		o.Operation = &Operation
 	}
-	
+    
 	if Selector, ok := LearningmodulerulepartsMap["selector"].(string); ok {
 		o.Selector = &Selector
 	}
-	
+    
 	if Value, ok := LearningmodulerulepartsMap["value"].([]interface{}); ok {
 		ValueString, _ := json.Marshal(Value)
 		json.Unmarshal(ValueString, &o.Value)

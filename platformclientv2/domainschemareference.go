@@ -150,11 +150,11 @@ func (o *Domainschemareference) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainschemareferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainschemareferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DomainschemareferenceMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -163,7 +163,7 @@ func (o *Domainschemareference) UnmarshalJSON(b []byte) error {
 	if Description, ok := DomainschemareferenceMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := DomainschemareferenceMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -182,27 +182,27 @@ func (o *Domainschemareference) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := DomainschemareferenceMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := DomainschemareferenceMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := DomainschemareferenceMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := DomainschemareferenceMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := DomainschemareferenceMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if SelfUri, ok := DomainschemareferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

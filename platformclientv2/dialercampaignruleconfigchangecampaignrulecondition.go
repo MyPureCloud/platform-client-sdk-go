@@ -53,7 +53,7 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) UnmarshalJSON(b []
 	if Id, ok := DialercampaignruleconfigchangecampaignruleconditionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Parameters, ok := DialercampaignruleconfigchangecampaignruleconditionMap["parameters"].(map[string]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)
@@ -62,7 +62,7 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) UnmarshalJSON(b []
 	if ConditionType, ok := DialercampaignruleconfigchangecampaignruleconditionMap["conditionType"].(string); ok {
 		o.ConditionType = &ConditionType
 	}
-	
+    
 
 	return nil
 }

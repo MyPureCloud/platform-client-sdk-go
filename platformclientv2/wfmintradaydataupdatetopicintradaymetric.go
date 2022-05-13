@@ -45,11 +45,11 @@ func (o *Wfmintradaydataupdatetopicintradaymetric) UnmarshalJSON(b []byte) error
 	if Category, ok := WfmintradaydataupdatetopicintradaymetricMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Version, ok := WfmintradaydataupdatetopicintradaymetricMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 
 	return nil
 }

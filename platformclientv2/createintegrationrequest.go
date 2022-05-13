@@ -61,11 +61,11 @@ func (o *Createintegrationrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := CreateintegrationrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CreateintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if IntegrationType, ok := CreateintegrationrequestMap["integrationType"].(map[string]interface{}); ok {
 		IntegrationTypeString, _ := json.Marshal(IntegrationType)
 		json.Unmarshal(IntegrationTypeString, &o.IntegrationType)
@@ -74,7 +74,7 @@ func (o *Createintegrationrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CreateintegrationrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

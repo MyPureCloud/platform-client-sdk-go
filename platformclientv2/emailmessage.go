@@ -150,11 +150,11 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := EmailmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EmailmessageMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if To, ok := EmailmessageMap["to"].([]interface{}); ok {
 		ToString, _ := json.Marshal(To)
 		json.Unmarshal(ToString, &o.To)
@@ -183,7 +183,7 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
 	if Subject, ok := EmailmessageMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if Attachments, ok := EmailmessageMap["attachments"].([]interface{}); ok {
 		AttachmentsString, _ := json.Marshal(Attachments)
 		json.Unmarshal(AttachmentsString, &o.Attachments)
@@ -192,11 +192,11 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
 	if TextBody, ok := EmailmessageMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if HtmlBody, ok := EmailmessageMap["htmlBody"].(string); ok {
 		o.HtmlBody = &HtmlBody
 	}
-	
+    
 	if timeString, ok := EmailmessageMap["time"].(string); ok {
 		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
 		o.Time = &Time
@@ -205,11 +205,11 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
 	if HistoryIncluded, ok := EmailmessageMap["historyIncluded"].(bool); ok {
 		o.HistoryIncluded = &HistoryIncluded
 	}
-	
+    
 	if SelfUri, ok := EmailmessageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

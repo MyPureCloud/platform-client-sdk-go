@@ -45,7 +45,7 @@ func (o *Schedulegenerationmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SchedulegenerationmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Arguments, ok := SchedulegenerationmessageMap["arguments"].([]interface{}); ok {
 		ArgumentsString, _ := json.Marshal(Arguments)
 		json.Unmarshal(ArgumentsString, &o.Arguments)

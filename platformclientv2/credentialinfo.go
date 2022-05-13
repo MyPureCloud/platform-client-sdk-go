@@ -94,11 +94,11 @@ func (o *Credentialinfo) UnmarshalJSON(b []byte) error {
 	if Id, ok := CredentialinfoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CredentialinfoMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if createdDateString, ok := CredentialinfoMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate
@@ -117,7 +117,7 @@ func (o *Credentialinfo) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CredentialinfoMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

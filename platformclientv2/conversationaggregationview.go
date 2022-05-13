@@ -61,15 +61,15 @@ func (o *Conversationaggregationview) UnmarshalJSON(b []byte) error {
 	if Target, ok := ConversationaggregationviewMap["target"].(string); ok {
 		o.Target = &Target
 	}
-	
+    
 	if Name, ok := ConversationaggregationviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Function, ok := ConversationaggregationviewMap["function"].(string); ok {
 		o.Function = &Function
 	}
-	
+    
 	if VarRange, ok := ConversationaggregationviewMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

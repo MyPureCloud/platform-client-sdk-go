@@ -186,71 +186,71 @@ func (o *Flowenddetaileventtopicflowendevent) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := FlowenddetaileventtopicflowendeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := FlowenddetaileventtopicflowendeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := FlowenddetaileventtopicflowendeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if DisconnectType, ok := FlowenddetaileventtopicflowendeventMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if MediaType, ok := FlowenddetaileventtopicflowendeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := FlowenddetaileventtopicflowendeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := FlowenddetaileventtopicflowendeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := FlowenddetaileventtopicflowendeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := FlowenddetaileventtopicflowendeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := FlowenddetaileventtopicflowendeventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := FlowenddetaileventtopicflowendeventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if Subject, ok := FlowenddetaileventtopicflowendeventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := FlowenddetaileventtopicflowendeventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if FlowType, ok := FlowenddetaileventtopicflowendeventMap["flowType"].(string); ok {
 		o.FlowType = &FlowType
 	}
-	
+    
 	if FlowId, ok := FlowenddetaileventtopicflowendeventMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if DivisionId, ok := FlowenddetaileventtopicflowendeventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if FlowVersion, ok := FlowenddetaileventtopicflowendeventMap["flowVersion"].(string); ok {
 		o.FlowVersion = &FlowVersion
 	}
-	
+    
 	if ConnectedDurationMs, ok := FlowenddetaileventtopicflowendeventMap["connectedDurationMs"].(float64); ok {
 		ConnectedDurationMsInt := int(ConnectedDurationMs)
 		o.ConnectedDurationMs = &ConnectedDurationMsInt

@@ -61,11 +61,11 @@ func (o *Learningmodulerule) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningmoduleruleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IsActive, ok := LearningmoduleruleMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if Parts, ok := LearningmoduleruleMap["parts"].([]interface{}); ok {
 		PartsString, _ := json.Marshal(Parts)
 		json.Unmarshal(PartsString, &o.Parts)
@@ -74,7 +74,7 @@ func (o *Learningmodulerule) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LearningmoduleruleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

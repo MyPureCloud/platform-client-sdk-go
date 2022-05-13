@@ -69,19 +69,19 @@ func (o *Dialerpreview) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialerpreviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ContactId, ok := DialerpreviewMap["contactId"].(string); ok {
 		o.ContactId = &ContactId
 	}
-	
+    
 	if ContactListId, ok := DialerpreviewMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if CampaignId, ok := DialerpreviewMap["campaignId"].(string); ok {
 		o.CampaignId = &CampaignId
 	}
-	
+    
 	if PhoneNumberColumns, ok := DialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)

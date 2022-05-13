@@ -53,7 +53,7 @@ func (o *Analyticsuserdetail) UnmarshalJSON(b []byte) error {
 	if UserId, ok := AnalyticsuserdetailMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if PrimaryPresence, ok := AnalyticsuserdetailMap["primaryPresence"].([]interface{}); ok {
 		PrimaryPresenceString, _ := json.Marshal(PrimaryPresence)
 		json.Unmarshal(PrimaryPresenceString, &o.PrimaryPresence)

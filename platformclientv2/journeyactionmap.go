@@ -45,7 +45,7 @@ func (o *Journeyactionmap) UnmarshalJSON(b []byte) error {
 	if Id, ok := JourneyactionmapMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := JourneyactionmapMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt

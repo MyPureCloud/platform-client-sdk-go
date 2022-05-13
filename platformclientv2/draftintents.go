@@ -61,11 +61,11 @@ func (o *Draftintents) UnmarshalJSON(b []byte) error {
 	if Id, ok := DraftintentsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DraftintentsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Utterances, ok := DraftintentsMap["utterances"].([]interface{}); ok {
 		UtterancesString, _ := json.Marshal(Utterances)
 		json.Unmarshal(UtterancesString, &o.Utterances)
@@ -74,7 +74,7 @@ func (o *Draftintents) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DraftintentsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -69,23 +69,23 @@ func (o *Createoutboundmessagingconversationrequest) UnmarshalJSON(b []byte) err
 	if QueueId, ok := CreateoutboundmessagingconversationrequestMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if ToAddress, ok := CreateoutboundmessagingconversationrequestMap["toAddress"].(string); ok {
 		o.ToAddress = &ToAddress
 	}
-	
+    
 	if ToAddressMessengerType, ok := CreateoutboundmessagingconversationrequestMap["toAddressMessengerType"].(string); ok {
 		o.ToAddressMessengerType = &ToAddressMessengerType
 	}
-	
+    
 	if UseExistingConversation, ok := CreateoutboundmessagingconversationrequestMap["useExistingConversation"].(bool); ok {
 		o.UseExistingConversation = &UseExistingConversation
 	}
-	
+    
 	if ExternalContactId, ok := CreateoutboundmessagingconversationrequestMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 
 	return nil
 }

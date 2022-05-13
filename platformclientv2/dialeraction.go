@@ -101,15 +101,15 @@ func (o *Dialeraction) UnmarshalJSON(b []byte) error {
 	if VarType, ok := DialeractionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ActionTypeName, ok := DialeractionMap["actionTypeName"].(string); ok {
 		o.ActionTypeName = &ActionTypeName
 	}
-	
+    
 	if UpdateOption, ok := DialeractionMap["updateOption"].(string); ok {
 		o.UpdateOption = &UpdateOption
 	}
-	
+    
 	if Properties, ok := DialeractionMap["properties"].(map[string]interface{}); ok {
 		PropertiesString, _ := json.Marshal(Properties)
 		json.Unmarshal(PropertiesString, &o.Properties)
@@ -128,15 +128,15 @@ func (o *Dialeraction) UnmarshalJSON(b []byte) error {
 	if ContactIdField, ok := DialeractionMap["contactIdField"].(string); ok {
 		o.ContactIdField = &ContactIdField
 	}
-	
+    
 	if CallAnalysisResultField, ok := DialeractionMap["callAnalysisResultField"].(string); ok {
 		o.CallAnalysisResultField = &CallAnalysisResultField
 	}
-	
+    
 	if AgentWrapupField, ok := DialeractionMap["agentWrapupField"].(string); ok {
 		o.AgentWrapupField = &AgentWrapupField
 	}
-	
+    
 
 	return nil
 }

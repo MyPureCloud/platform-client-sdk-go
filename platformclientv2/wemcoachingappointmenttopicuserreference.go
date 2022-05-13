@@ -37,7 +37,7 @@ func (o *Wemcoachingappointmenttopicuserreference) UnmarshalJSON(b []byte) error
 	if Id, ok := WemcoachingappointmenttopicuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

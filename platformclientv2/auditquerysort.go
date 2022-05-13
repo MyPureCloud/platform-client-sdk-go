@@ -45,11 +45,11 @@ func (o *Auditquerysort) UnmarshalJSON(b []byte) error {
 	if Name, ok := AuditquerysortMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SortOrder, ok := AuditquerysortMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 
 	return nil
 }

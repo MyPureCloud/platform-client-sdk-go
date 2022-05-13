@@ -141,19 +141,19 @@ func (o *Punctualityevent) UnmarshalJSON(b []byte) error {
 	if Description, ok := PunctualityeventMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if ActivityCodeId, ok := PunctualityeventMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if ActivityCode, ok := PunctualityeventMap["activityCode"].(string); ok {
 		o.ActivityCode = &ActivityCode
 	}
-	
+    
 	if Category, ok := PunctualityeventMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Points, ok := PunctualityeventMap["points"].(float64); ok {
 		PointsInt := int(Points)
 		o.Points = &PointsInt
@@ -162,11 +162,11 @@ func (o *Punctualityevent) UnmarshalJSON(b []byte) error {
 	if Delta, ok := PunctualityeventMap["delta"].(float64); ok {
 		o.Delta = &Delta
 	}
-	
+    
 	if Bullseye, ok := PunctualityeventMap["bullseye"].(bool); ok {
 		o.Bullseye = &Bullseye
 	}
-	
+    
 
 	return nil
 }

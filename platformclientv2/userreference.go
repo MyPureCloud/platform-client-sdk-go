@@ -45,11 +45,11 @@ func (o *Userreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := UserreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

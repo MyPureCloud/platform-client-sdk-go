@@ -45,11 +45,11 @@ func (o *Outboundmessagingmessagingcampaignprogresseventurireference) UnmarshalJ
 	if Id, ok := OutboundmessagingmessagingcampaignprogresseventurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OutboundmessagingmessagingcampaignprogresseventurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

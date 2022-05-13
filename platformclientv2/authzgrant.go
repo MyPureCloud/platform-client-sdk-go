@@ -70,7 +70,7 @@ func (o *Authzgrant) UnmarshalJSON(b []byte) error {
 	if SubjectId, ok := AuthzgrantMap["subjectId"].(string); ok {
 		o.SubjectId = &SubjectId
 	}
-	
+    
 	if Division, ok := AuthzgrantMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)

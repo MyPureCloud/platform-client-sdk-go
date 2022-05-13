@@ -45,7 +45,7 @@ func (o *Queryrequestfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := QueryrequestfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := QueryrequestfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

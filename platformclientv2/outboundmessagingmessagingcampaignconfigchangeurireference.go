@@ -45,11 +45,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangeurireference) UnmarshalJS
 	if Id, ok := OutboundmessagingmessagingcampaignconfigchangeurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OutboundmessagingmessagingcampaignconfigchangeurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

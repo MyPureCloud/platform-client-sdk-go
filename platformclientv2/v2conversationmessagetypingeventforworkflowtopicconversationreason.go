@@ -45,11 +45,11 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationreason) Unm
 	if Code, ok := V2conversationmessagetypingeventforworkflowtopicconversationreasonMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := V2conversationmessagetypingeventforworkflowtopicconversationreasonMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

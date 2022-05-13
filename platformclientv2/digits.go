@@ -37,7 +37,7 @@ func (o *Digits) UnmarshalJSON(b []byte) error {
 	if Digits, ok := DigitsMap["digits"].(string); ok {
 		o.Digits = &Digits
 	}
-	
+    
 
 	return nil
 }

@@ -109,7 +109,7 @@ func (o *Posttextresponse) UnmarshalJSON(b []byte) error {
 	if BotState, ok := PosttextresponseMap["botState"].(string); ok {
 		o.BotState = &BotState
 	}
-	
+    
 	if ReplyMessages, ok := PosttextresponseMap["replyMessages"].([]interface{}); ok {
 		ReplyMessagesString, _ := json.Marshal(ReplyMessages)
 		json.Unmarshal(ReplyMessagesString, &o.ReplyMessages)
@@ -118,7 +118,7 @@ func (o *Posttextresponse) UnmarshalJSON(b []byte) error {
 	if IntentName, ok := PosttextresponseMap["intentName"].(string); ok {
 		o.IntentName = &IntentName
 	}
-	
+    
 	if Slots, ok := PosttextresponseMap["slots"].(map[string]interface{}); ok {
 		SlotsString, _ := json.Marshal(Slots)
 		json.Unmarshal(SlotsString, &o.Slots)
@@ -127,7 +127,7 @@ func (o *Posttextresponse) UnmarshalJSON(b []byte) error {
 	if BotCorrelationId, ok := PosttextresponseMap["botCorrelationId"].(string); ok {
 		o.BotCorrelationId = &BotCorrelationId
 	}
-	
+    
 	if AmazonLex, ok := PosttextresponseMap["amazonLex"].(map[string]interface{}); ok {
 		AmazonLexString, _ := json.Marshal(AmazonLex)
 		json.Unmarshal(AmazonLexString, &o.AmazonLex)

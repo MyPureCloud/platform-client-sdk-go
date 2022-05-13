@@ -262,23 +262,23 @@ func (o *Queueconversationvideoeventtopiccallback) UnmarshalJSON(b []byte) error
 	if State, ok := QueueconversationvideoeventtopiccallbackMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := QueueconversationvideoeventtopiccallbackMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Direction, ok := QueueconversationvideoeventtopiccallbackMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Held, ok := QueueconversationvideoeventtopiccallbackMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationvideoeventtopiccallbackMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationvideoeventtopiccallbackMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -302,27 +302,27 @@ func (o *Queueconversationvideoeventtopiccallback) UnmarshalJSON(b []byte) error
 	if CallbackUserName, ok := QueueconversationvideoeventtopiccallbackMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if ScriptId, ok := QueueconversationvideoeventtopiccallbackMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationvideoeventtopiccallbackMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if ExternalCampaign, ok := QueueconversationvideoeventtopiccallbackMap["externalCampaign"].(bool); ok {
 		o.ExternalCampaign = &ExternalCampaign
 	}
-	
+    
 	if SkipEnabled, ok := QueueconversationvideoeventtopiccallbackMap["skipEnabled"].(bool); ok {
 		o.SkipEnabled = &SkipEnabled
 	}
-	
+    
 	if Provider, ok := QueueconversationvideoeventtopiccallbackMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if TimeoutSeconds, ok := QueueconversationvideoeventtopiccallbackMap["timeoutSeconds"].(float64); ok {
 		TimeoutSecondsInt := int(TimeoutSeconds)
 		o.TimeoutSeconds = &TimeoutSecondsInt
@@ -346,7 +346,7 @@ func (o *Queueconversationvideoeventtopiccallback) UnmarshalJSON(b []byte) error
 	if AutomatedCallbackConfigId, ok := QueueconversationvideoeventtopiccallbackMap["automatedCallbackConfigId"].(string); ok {
 		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
 	}
-	
+    
 	if Wrapup, ok := QueueconversationvideoeventtopiccallbackMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
@@ -360,15 +360,15 @@ func (o *Queueconversationvideoeventtopiccallback) UnmarshalJSON(b []byte) error
 	if AfterCallWorkRequired, ok := QueueconversationvideoeventtopiccallbackMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if CallerId, ok := QueueconversationvideoeventtopiccallbackMap["callerId"].(string); ok {
 		o.CallerId = &CallerId
 	}
-	
+    
 	if CallerIdName, ok := QueueconversationvideoeventtopiccallbackMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
 	}
-	
+    
 
 	return nil
 }

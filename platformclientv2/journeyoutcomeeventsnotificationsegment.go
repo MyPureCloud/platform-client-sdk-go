@@ -62,11 +62,11 @@ func (o *Journeyoutcomeeventsnotificationsegment) UnmarshalJSON(b []byte) error 
 	if Id, ok := JourneyoutcomeeventsnotificationsegmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := JourneyoutcomeeventsnotificationsegmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if assignedDateString, ok := JourneyoutcomeeventsnotificationsegmentMap["assignedDate"].(string); ok {
 		AssignedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", assignedDateString)
 		o.AssignedDate = &AssignedDate

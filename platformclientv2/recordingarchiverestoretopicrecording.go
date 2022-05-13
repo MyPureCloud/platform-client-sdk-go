@@ -77,15 +77,15 @@ func (o *Recordingarchiverestoretopicrecording) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecordingarchiverestoretopicrecordingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ConversationId, ok := RecordingarchiverestoretopicrecordingMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if FileState, ok := RecordingarchiverestoretopicrecordingMap["fileState"].(string); ok {
 		o.FileState = &FileState
 	}
-	
+    
 	if MediaUris, ok := RecordingarchiverestoretopicrecordingMap["mediaUris"].([]interface{}); ok {
 		MediaUrisString, _ := json.Marshal(MediaUris)
 		json.Unmarshal(MediaUrisString, &o.MediaUris)

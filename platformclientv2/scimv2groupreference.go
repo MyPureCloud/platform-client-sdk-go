@@ -53,15 +53,15 @@ func (o *Scimv2groupreference) UnmarshalJSON(b []byte) error {
 	if VarType, ok := Scimv2groupreferenceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := Scimv2groupreferenceMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Ref, ok := Scimv2groupreferenceMap["$ref"].(string); ok {
 		o.Ref = &Ref
 	}
-	
+    
 
 	return nil
 }

@@ -77,7 +77,7 @@ func (o *Phonenumber) UnmarshalJSON(b []byte) error {
 	if Display, ok := PhonenumberMap["display"].(string); ok {
 		o.Display = &Display
 	}
-	
+    
 	if Extension, ok := PhonenumberMap["extension"].(float64); ok {
 		ExtensionInt := int(Extension)
 		o.Extension = &ExtensionInt
@@ -86,19 +86,19 @@ func (o *Phonenumber) UnmarshalJSON(b []byte) error {
 	if AcceptsSMS, ok := PhonenumberMap["acceptsSMS"].(bool); ok {
 		o.AcceptsSMS = &AcceptsSMS
 	}
-	
+    
 	if UserInput, ok := PhonenumberMap["userInput"].(string); ok {
 		o.UserInput = &UserInput
 	}
-	
+    
 	if E164, ok := PhonenumberMap["e164"].(string); ok {
 		o.E164 = &E164
 	}
-	
+    
 	if CountryCode, ok := PhonenumberMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
 	}
-	
+    
 
 	return nil
 }

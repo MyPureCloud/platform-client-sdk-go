@@ -37,7 +37,7 @@ func (o *Movemanagementunitrequest) UnmarshalJSON(b []byte) error {
 	if BusinessUnitId, ok := MovemanagementunitrequestMap["businessUnitId"].(string); ok {
 		o.BusinessUnitId = &BusinessUnitId
 	}
-	
+    
 
 	return nil
 }

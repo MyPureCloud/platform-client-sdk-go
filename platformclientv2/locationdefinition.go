@@ -157,11 +157,11 @@ func (o *Locationdefinition) UnmarshalJSON(b []byte) error {
 	if Id, ok := LocationdefinitionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LocationdefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContactUser, ok := LocationdefinitionMap["contactUser"].(map[string]interface{}); ok {
 		ContactUserString, _ := json.Marshal(ContactUser)
 		json.Unmarshal(ContactUserString, &o.ContactUser)
@@ -180,11 +180,11 @@ func (o *Locationdefinition) UnmarshalJSON(b []byte) error {
 	if State, ok := LocationdefinitionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Notes, ok := LocationdefinitionMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Version, ok := LocationdefinitionMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -213,19 +213,19 @@ func (o *Locationdefinition) UnmarshalJSON(b []byte) error {
 	if AddressVerified, ok := LocationdefinitionMap["addressVerified"].(bool); ok {
 		o.AddressVerified = &AddressVerified
 	}
-	
+    
 	if AddressStored, ok := LocationdefinitionMap["addressStored"].(bool); ok {
 		o.AddressStored = &AddressStored
 	}
-	
+    
 	if Images, ok := LocationdefinitionMap["images"].(string); ok {
 		o.Images = &Images
 	}
-	
+    
 	if SelfUri, ok := LocationdefinitionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

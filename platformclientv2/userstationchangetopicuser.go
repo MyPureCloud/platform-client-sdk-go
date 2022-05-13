@@ -37,7 +37,7 @@ func (o *Userstationchangetopicuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserstationchangetopicuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Templateparameter) UnmarshalJSON(b []byte) error {
 	if Id, ok := TemplateparameterMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Value, ok := TemplateparameterMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

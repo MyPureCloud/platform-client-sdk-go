@@ -141,39 +141,39 @@ func (o *Genericsaml) UnmarshalJSON(b []byte) error {
 	if Id, ok := GenericsamlMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GenericsamlMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := GenericsamlMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if IssuerURI, ok := GenericsamlMap["issuerURI"].(string); ok {
 		o.IssuerURI = &IssuerURI
 	}
-	
+    
 	if SsoTargetURI, ok := GenericsamlMap["ssoTargetURI"].(string); ok {
 		o.SsoTargetURI = &SsoTargetURI
 	}
-	
+    
 	if SloURI, ok := GenericsamlMap["sloURI"].(string); ok {
 		o.SloURI = &SloURI
 	}
-	
+    
 	if SloBinding, ok := GenericsamlMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
 	}
-	
+    
 	if RelyingPartyIdentifier, ok := GenericsamlMap["relyingPartyIdentifier"].(string); ok {
 		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
-	
+    
 	if Certificate, ok := GenericsamlMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 	if Certificates, ok := GenericsamlMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
@@ -182,19 +182,19 @@ func (o *Genericsaml) UnmarshalJSON(b []byte) error {
 	if LogoImageData, ok := GenericsamlMap["logoImageData"].(string); ok {
 		o.LogoImageData = &LogoImageData
 	}
-	
+    
 	if EndpointCompression, ok := GenericsamlMap["endpointCompression"].(bool); ok {
 		o.EndpointCompression = &EndpointCompression
 	}
-	
+    
 	if NameIdentifierFormat, ok := GenericsamlMap["nameIdentifierFormat"].(string); ok {
 		o.NameIdentifierFormat = &NameIdentifierFormat
 	}
-	
+    
 	if SelfUri, ok := GenericsamlMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

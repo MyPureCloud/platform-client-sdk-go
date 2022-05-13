@@ -61,19 +61,19 @@ func (o *Auditentity) UnmarshalJSON(b []byte) error {
 	if VarType, ok := AuditentityMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Id, ok := AuditentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AuditentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := AuditentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

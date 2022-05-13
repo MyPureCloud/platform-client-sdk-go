@@ -94,7 +94,7 @@ func (o *Userscheduleactivity) UnmarshalJSON(b []byte) error {
 	if ActivityCodeId, ok := UserscheduleactivityMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if startDateString, ok := UserscheduleactivityMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -108,19 +108,19 @@ func (o *Userscheduleactivity) UnmarshalJSON(b []byte) error {
 	if Description, ok := UserscheduleactivityMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CountsAsPaidTime, ok := UserscheduleactivityMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if IsDstFallback, ok := UserscheduleactivityMap["isDstFallback"].(bool); ok {
 		o.IsDstFallback = &IsDstFallback
 	}
-	
+    
 	if TimeOffRequestId, ok := UserscheduleactivityMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
-	
+    
 
 	return nil
 }

@@ -85,11 +85,11 @@ func (o *Locationsearchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := LocationsearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := LocationsearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := LocationsearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

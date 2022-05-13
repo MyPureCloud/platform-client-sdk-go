@@ -70,7 +70,7 @@ func (o *Screenrecordingsessionrequest) UnmarshalJSON(b []byte) error {
 	if State, ok := ScreenrecordingsessionrequestMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if archiveDateString, ok := ScreenrecordingsessionrequestMap["archiveDate"].(string); ok {
 		ArchiveDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", archiveDateString)
 		o.ArchiveDate = &ArchiveDate

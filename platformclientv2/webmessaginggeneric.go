@@ -69,15 +69,15 @@ func (o *Webmessaginggeneric) UnmarshalJSON(b []byte) error {
 	if Title, ok := WebmessaginggenericMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := WebmessaginggenericMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Image, ok := WebmessaginggenericMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Actions, ok := WebmessaginggenericMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

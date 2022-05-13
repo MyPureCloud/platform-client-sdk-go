@@ -382,15 +382,15 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if Id, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -414,31 +414,31 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if Purpose, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -477,7 +477,7 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if WrapupSkipped, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -486,7 +486,7 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if Provider, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -510,15 +510,15 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if Peer, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -537,19 +537,19 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if SocialMediaId, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["socialMediaId"].(string); ok {
 		o.SocialMediaId = &SocialMediaId
 	}
-	
+    
 	if SocialMediaHub, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["socialMediaHub"].(string); ok {
 		o.SocialMediaHub = &SocialMediaHub
 	}
-	
+    
 	if SocialUserName, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["socialUserName"].(string); ok {
 		o.SocialUserName = &SocialUserName
 	}
-	
+    
 	if PreviewText, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["previewText"].(string); ok {
 		o.PreviewText = &PreviewText
 	}
-	
+    
 
 	return nil
 }

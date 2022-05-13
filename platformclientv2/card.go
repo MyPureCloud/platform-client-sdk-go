@@ -69,15 +69,15 @@ func (o *Card) UnmarshalJSON(b []byte) error {
 	if Title, ok := CardMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := CardMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Url, ok := CardMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if DefaultAction, ok := CardMap["defaultAction"].(map[string]interface{}); ok {
 		DefaultActionString, _ := json.Marshal(DefaultAction)
 		json.Unmarshal(DefaultActionString, &o.DefaultAction)

@@ -134,15 +134,15 @@ func (o *Asyncconversationquery) UnmarshalJSON(b []byte) error {
 	if Order, ok := AsyncconversationqueryMap["order"].(string); ok {
 		o.Order = &Order
 	}
-	
+    
 	if OrderBy, ok := AsyncconversationqueryMap["orderBy"].(string); ok {
 		o.OrderBy = &OrderBy
 	}
-	
+    
 	if Interval, ok := AsyncconversationqueryMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Limit, ok := AsyncconversationqueryMap["limit"].(float64); ok {
 		LimitInt := int(Limit)
 		o.Limit = &LimitInt
@@ -151,7 +151,7 @@ func (o *Asyncconversationquery) UnmarshalJSON(b []byte) error {
 	if StartOfDayIntervalMatching, ok := AsyncconversationqueryMap["startOfDayIntervalMatching"].(bool); ok {
 		o.StartOfDayIntervalMatching = &StartOfDayIntervalMatching
 	}
-	
+    
 
 	return nil
 }

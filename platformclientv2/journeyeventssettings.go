@@ -109,7 +109,7 @@ func (o *Journeyeventssettings) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := JourneyeventssettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if ExcludedQueryParameters, ok := JourneyeventssettingsMap["excludedQueryParameters"].([]interface{}); ok {
 		ExcludedQueryParametersString, _ := json.Marshal(ExcludedQueryParameters)
 		json.Unmarshal(ExcludedQueryParametersString, &o.ExcludedQueryParameters)
@@ -118,7 +118,7 @@ func (o *Journeyeventssettings) UnmarshalJSON(b []byte) error {
 	if ShouldKeepUrlFragment, ok := JourneyeventssettingsMap["shouldKeepUrlFragment"].(bool); ok {
 		o.ShouldKeepUrlFragment = &ShouldKeepUrlFragment
 	}
-	
+    
 	if SearchQueryParameters, ok := JourneyeventssettingsMap["searchQueryParameters"].([]interface{}); ok {
 		SearchQueryParametersString, _ := json.Marshal(SearchQueryParameters)
 		json.Unmarshal(SearchQueryParametersString, &o.SearchQueryParameters)
@@ -127,7 +127,7 @@ func (o *Journeyeventssettings) UnmarshalJSON(b []byte) error {
 	if PageviewConfig, ok := JourneyeventssettingsMap["pageviewConfig"].(string); ok {
 		o.PageviewConfig = &PageviewConfig
 	}
-	
+    
 	if ClickEvents, ok := JourneyeventssettingsMap["clickEvents"].([]interface{}); ok {
 		ClickEventsString, _ := json.Marshal(ClickEvents)
 		json.Unmarshal(ClickEventsString, &o.ClickEvents)

@@ -70,11 +70,11 @@ func (o *Createagenttimeoffrequest) UnmarshalJSON(b []byte) error {
 	if ActivityCodeId, ok := CreateagenttimeoffrequestMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Notes, ok := CreateagenttimeoffrequestMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if FullDayManagementUnitDates, ok := CreateagenttimeoffrequestMap["fullDayManagementUnitDates"].([]interface{}); ok {
 		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
 		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)

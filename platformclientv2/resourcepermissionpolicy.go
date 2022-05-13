@@ -117,31 +117,31 @@ func (o *Resourcepermissionpolicy) UnmarshalJSON(b []byte) error {
 	if Id, ok := ResourcepermissionpolicyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Domain, ok := ResourcepermissionpolicyMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if EntityName, ok := ResourcepermissionpolicyMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 	if PolicyName, ok := ResourcepermissionpolicyMap["policyName"].(string); ok {
 		o.PolicyName = &PolicyName
 	}
-	
+    
 	if PolicyDescription, ok := ResourcepermissionpolicyMap["policyDescription"].(string); ok {
 		o.PolicyDescription = &PolicyDescription
 	}
-	
+    
 	if ActionSetKey, ok := ResourcepermissionpolicyMap["actionSetKey"].(string); ok {
 		o.ActionSetKey = &ActionSetKey
 	}
-	
+    
 	if AllowConditions, ok := ResourcepermissionpolicyMap["allowConditions"].(bool); ok {
 		o.AllowConditions = &AllowConditions
 	}
-	
+    
 	if ResourceConditionNode, ok := ResourcepermissionpolicyMap["resourceConditionNode"].(map[string]interface{}); ok {
 		ResourceConditionNodeString, _ := json.Marshal(ResourceConditionNode)
 		json.Unmarshal(ResourceConditionNodeString, &o.ResourceConditionNode)
@@ -155,7 +155,7 @@ func (o *Resourcepermissionpolicy) UnmarshalJSON(b []byte) error {
 	if ResourceCondition, ok := ResourcepermissionpolicyMap["resourceCondition"].(string); ok {
 		o.ResourceCondition = &ResourceCondition
 	}
-	
+    
 	if ActionSet, ok := ResourcepermissionpolicyMap["actionSet"].([]interface{}); ok {
 		ActionSetString, _ := json.Marshal(ActionSet)
 		json.Unmarshal(ActionSetString, &o.ActionSet)

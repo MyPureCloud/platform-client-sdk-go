@@ -45,11 +45,11 @@ func (o *Cursors) UnmarshalJSON(b []byte) error {
 	if Before, ok := CursorsMap["before"].(string); ok {
 		o.Before = &Before
 	}
-	
+    
 	if After, ok := CursorsMap["after"].(string); ok {
 		o.After = &After
 	}
-	
+    
 
 	return nil
 }

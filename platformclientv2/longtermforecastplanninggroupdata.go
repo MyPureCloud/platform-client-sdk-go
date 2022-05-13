@@ -53,7 +53,7 @@ func (o *Longtermforecastplanninggroupdata) UnmarshalJSON(b []byte) error {
 	if PlanningGroupId, ok := LongtermforecastplanninggroupdataMap["planningGroupId"].(string); ok {
 		o.PlanningGroupId = &PlanningGroupId
 	}
-	
+    
 	if OfferedPerDay, ok := LongtermforecastplanninggroupdataMap["offeredPerDay"].([]interface{}); ok {
 		OfferedPerDayString, _ := json.Marshal(OfferedPerDay)
 		json.Unmarshal(OfferedPerDayString, &o.OfferedPerDay)

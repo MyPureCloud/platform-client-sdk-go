@@ -77,19 +77,19 @@ func (o *Contactlistfilterpredicate) UnmarshalJSON(b []byte) error {
 	if Column, ok := ContactlistfilterpredicateMap["column"].(string); ok {
 		o.Column = &Column
 	}
-	
+    
 	if ColumnType, ok := ContactlistfilterpredicateMap["columnType"].(string); ok {
 		o.ColumnType = &ColumnType
 	}
-	
+    
 	if Operator, ok := ContactlistfilterpredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := ContactlistfilterpredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := ContactlistfilterpredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)
@@ -98,7 +98,7 @@ func (o *Contactlistfilterpredicate) UnmarshalJSON(b []byte) error {
 	if Inverted, ok := ContactlistfilterpredicateMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
 	}
-	
+    
 
 	return nil
 }

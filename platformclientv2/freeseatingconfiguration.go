@@ -45,7 +45,7 @@ func (o *Freeseatingconfiguration) UnmarshalJSON(b []byte) error {
 	if FreeSeatingState, ok := FreeseatingconfigurationMap["freeSeatingState"].(string); ok {
 		o.FreeSeatingState = &FreeSeatingState
 	}
-	
+    
 	if TtlMinutes, ok := FreeseatingconfigurationMap["ttlMinutes"].(float64); ok {
 		TtlMinutesInt := int(TtlMinutes)
 		o.TtlMinutes = &TtlMinutesInt

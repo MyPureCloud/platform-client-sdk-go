@@ -45,7 +45,7 @@ func (o *Buqueryagentschedulesrequest) UnmarshalJSON(b []byte) error {
 	if ManagementUnitId, ok := BuqueryagentschedulesrequestMap["managementUnitId"].(string); ok {
 		o.ManagementUnitId = &ManagementUnitId
 	}
-	
+    
 	if UserIds, ok := BuqueryagentschedulesrequestMap["userIds"].([]interface{}); ok {
 		UserIdsString, _ := json.Marshal(UserIds)
 		json.Unmarshal(UserIdsString, &o.UserIds)

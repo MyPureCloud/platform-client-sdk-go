@@ -90,15 +90,15 @@ func (o *Queueconversationvideoeventtopicerrordetails) UnmarshalJSON(b []byte) e
 	if Code, ok := QueueconversationvideoeventtopicerrordetailsMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := QueueconversationvideoeventtopicerrordetailsMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if MessageWithParams, ok := QueueconversationvideoeventtopicerrordetailsMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := QueueconversationvideoeventtopicerrordetailsMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -107,11 +107,11 @@ func (o *Queueconversationvideoeventtopicerrordetails) UnmarshalJSON(b []byte) e
 	if ContextId, ok := QueueconversationvideoeventtopicerrordetailsMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Uri, ok := QueueconversationvideoeventtopicerrordetailsMap["uri"].(string); ok {
 		o.Uri = &Uri
 	}
-	
+    
 
 	return nil
 }

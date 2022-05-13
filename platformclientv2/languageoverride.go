@@ -53,15 +53,15 @@ func (o *Languageoverride) UnmarshalJSON(b []byte) error {
 	if Language, ok := LanguageoverrideMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Engine, ok := LanguageoverrideMap["engine"].(string); ok {
 		o.Engine = &Engine
 	}
-	
+    
 	if Voice, ok := LanguageoverrideMap["voice"].(string); ok {
 		o.Voice = &Voice
 	}
-	
+    
 
 	return nil
 }

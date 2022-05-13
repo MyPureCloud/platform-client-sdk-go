@@ -109,27 +109,27 @@ func (o *Webchatdeployment) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebchatdeploymentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WebchatdeploymentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := WebchatdeploymentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if AuthenticationRequired, ok := WebchatdeploymentMap["authenticationRequired"].(bool); ok {
 		o.AuthenticationRequired = &AuthenticationRequired
 	}
-	
+    
 	if AuthenticationUrl, ok := WebchatdeploymentMap["authenticationUrl"].(string); ok {
 		o.AuthenticationUrl = &AuthenticationUrl
 	}
-	
+    
 	if Disabled, ok := WebchatdeploymentMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if WebChatConfig, ok := WebchatdeploymentMap["webChatConfig"].(map[string]interface{}); ok {
 		WebChatConfigString, _ := json.Marshal(WebChatConfig)
 		json.Unmarshal(WebChatConfigString, &o.WebChatConfig)
@@ -148,7 +148,7 @@ func (o *Webchatdeployment) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WebchatdeploymentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

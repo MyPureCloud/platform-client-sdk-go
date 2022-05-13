@@ -45,11 +45,11 @@ func (o *Callcommand) UnmarshalJSON(b []byte) error {
 	if CallNumber, ok := CallcommandMap["callNumber"].(string); ok {
 		o.CallNumber = &CallNumber
 	}
-	
+    
 	if PhoneColumn, ok := CallcommandMap["phoneColumn"].(string); ok {
 		o.PhoneColumn = &PhoneColumn
 	}
-	
+    
 
 	return nil
 }

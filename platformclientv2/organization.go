@@ -149,31 +149,31 @@ func (o *Organization) UnmarshalJSON(b []byte) error {
 	if Id, ok := OrganizationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OrganizationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if DefaultLanguage, ok := OrganizationMap["defaultLanguage"].(string); ok {
 		o.DefaultLanguage = &DefaultLanguage
 	}
-	
+    
 	if DefaultCountryCode, ok := OrganizationMap["defaultCountryCode"].(string); ok {
 		o.DefaultCountryCode = &DefaultCountryCode
 	}
-	
+    
 	if ThirdPartyOrgName, ok := OrganizationMap["thirdPartyOrgName"].(string); ok {
 		o.ThirdPartyOrgName = &ThirdPartyOrgName
 	}
-	
+    
 	if ThirdPartyURI, ok := OrganizationMap["thirdPartyURI"].(string); ok {
 		o.ThirdPartyURI = &ThirdPartyURI
 	}
-	
+    
 	if Domain, ok := OrganizationMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if Version, ok := OrganizationMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -182,27 +182,27 @@ func (o *Organization) UnmarshalJSON(b []byte) error {
 	if State, ok := OrganizationMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if DefaultSiteId, ok := OrganizationMap["defaultSiteId"].(string); ok {
 		o.DefaultSiteId = &DefaultSiteId
 	}
-	
+    
 	if SupportURI, ok := OrganizationMap["supportURI"].(string); ok {
 		o.SupportURI = &SupportURI
 	}
-	
+    
 	if VoicemailEnabled, ok := OrganizationMap["voicemailEnabled"].(bool); ok {
 		o.VoicemailEnabled = &VoicemailEnabled
 	}
-	
+    
 	if ProductPlatform, ok := OrganizationMap["productPlatform"].(string); ok {
 		o.ProductPlatform = &ProductPlatform
 	}
-	
+    
 	if SelfUri, ok := OrganizationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if Features, ok := OrganizationMap["features"].(map[string]interface{}); ok {
 		FeaturesString, _ := json.Marshal(Features)
 		json.Unmarshal(FeaturesString, &o.Features)

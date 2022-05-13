@@ -50,7 +50,7 @@ func (o *Longtermforecastresultresponse) UnmarshalJSON(b []byte) error {
 	if DownloadUrl, ok := LongtermforecastresultresponseMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 
 	return nil
 }

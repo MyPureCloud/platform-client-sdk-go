@@ -84,15 +84,15 @@ func (o *Education) UnmarshalJSON(b []byte) error {
 	if School, ok := EducationMap["school"].(string); ok {
 		o.School = &School
 	}
-	
+    
 	if FieldOfStudy, ok := EducationMap["fieldOfStudy"].(string); ok {
 		o.FieldOfStudy = &FieldOfStudy
 	}
-	
+    
 	if Notes, ok := EducationMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if dateStartString, ok := EducationMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02", dateStartString)
 		o.DateStart = &DateStart

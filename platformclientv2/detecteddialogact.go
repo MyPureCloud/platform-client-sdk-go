@@ -45,11 +45,11 @@ func (o *Detecteddialogact) UnmarshalJSON(b []byte) error {
 	if Name, ok := DetecteddialogactMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Probability, ok := DetecteddialogactMap["probability"].(float64); ok {
 		o.Probability = &Probability
 	}
-	
+    
 
 	return nil
 }

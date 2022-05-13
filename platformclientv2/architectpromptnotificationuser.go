@@ -53,11 +53,11 @@ func (o *Architectpromptnotificationuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := ArchitectpromptnotificationuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectpromptnotificationuserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if HomeOrg, ok := ArchitectpromptnotificationuserMap["homeOrg"].(map[string]interface{}); ok {
 		HomeOrgString, _ := json.Marshal(HomeOrg)
 		json.Unmarshal(HomeOrgString, &o.HomeOrg)

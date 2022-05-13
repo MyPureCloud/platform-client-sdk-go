@@ -63,7 +63,7 @@ func (o *Gettemplatesresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GettemplatesresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

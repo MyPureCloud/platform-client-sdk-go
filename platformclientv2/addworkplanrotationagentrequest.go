@@ -53,7 +53,7 @@ func (o *Addworkplanrotationagentrequest) UnmarshalJSON(b []byte) error {
 	if UserId, ok := AddworkplanrotationagentrequestMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if DateRange, ok := AddworkplanrotationagentrequestMap["dateRange"].(map[string]interface{}); ok {
 		DateRangeString, _ := json.Marshal(DateRange)
 		json.Unmarshal(DateRangeString, &o.DateRange)

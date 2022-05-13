@@ -77,19 +77,19 @@ func (o *Surveyquestiongroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := SurveyquestiongroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SurveyquestiongroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := SurveyquestiongroupMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if NaEnabled, ok := SurveyquestiongroupMap["naEnabled"].(bool); ok {
 		o.NaEnabled = &NaEnabled
 	}
-	
+    
 	if Questions, ok := SurveyquestiongroupMap["questions"].([]interface{}); ok {
 		QuestionsString, _ := json.Marshal(Questions)
 		json.Unmarshal(QuestionsString, &o.Questions)

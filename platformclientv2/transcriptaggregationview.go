@@ -61,15 +61,15 @@ func (o *Transcriptaggregationview) UnmarshalJSON(b []byte) error {
 	if Target, ok := TranscriptaggregationviewMap["target"].(string); ok {
 		o.Target = &Target
 	}
-	
+    
 	if Name, ok := TranscriptaggregationviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Function, ok := TranscriptaggregationviewMap["function"].(string); ok {
 		o.Function = &Function
 	}
-	
+    
 	if VarRange, ok := TranscriptaggregationviewMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

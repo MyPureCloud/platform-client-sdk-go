@@ -32,8 +32,6 @@ func NewLearningApiWithConfig(config *Configuration) *LearningApi {
 // DeleteLearningAssignment invokes DELETE /api/v2/learning/assignments/{assignmentId}
 //
 // Delete a learning assignment
-//
-// 
 func (a LearningApi) DeleteLearningAssignment(assignmentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a LearningApi) DeleteLearningAssignment(assignmentId string) (*APIResponse
 
 	// verify the required parameter 'assignmentId' is set
 	if &assignmentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'assignmentId' when calling LearningApi->DeleteLearningAssignment")
 	}
 
@@ -111,7 +109,7 @@ func (a LearningApi) DeleteLearningModule(moduleId string) (*APIResponse, error)
 
 	// verify the required parameter 'moduleId' is set
 	if &moduleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->DeleteLearningModule")
 	}
 
@@ -178,7 +176,7 @@ func (a LearningApi) GetLearningAssignment(assignmentId string, expand []string)
 
 	// verify the required parameter 'assignmentId' is set
 	if &assignmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'assignmentId' when calling LearningApi->GetLearningAssignment")
 	}
 
@@ -336,8 +334,6 @@ func (a LearningApi) GetLearningAssignments(moduleId string, interval string, co
 // GetLearningAssignmentsMe invokes GET /api/v2/learning/assignments/me
 //
 // List of Learning Assignments assigned to current user
-//
-// 
 func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, pass string, minPercentageScore float32, maxPercentageScore float32, sortOrder string, sortBy string, types []string, states []string, expand []string) (*Learningassignmentsdomainentity, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -431,8 +427,6 @@ func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, 
 // GetLearningModule invokes GET /api/v2/learning/modules/{moduleId}
 //
 // Get a learning module
-//
-// 
 func (a LearningApi) GetLearningModule(moduleId string, expand []string) (*Learningmodule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -445,7 +439,7 @@ func (a LearningApi) GetLearningModule(moduleId string, expand []string) (*Learn
 
 	// verify the required parameter 'moduleId' is set
 	if &moduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->GetLearningModule")
 	}
 
@@ -506,8 +500,6 @@ func (a LearningApi) GetLearningModule(moduleId string, expand []string) (*Learn
 // GetLearningModuleRule invokes GET /api/v2/learning/modules/{moduleId}/rule
 //
 // Get a learning module rule
-//
-// 
 func (a LearningApi) GetLearningModuleRule(moduleId string) (*Learningmodulerule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -520,7 +512,7 @@ func (a LearningApi) GetLearningModuleRule(moduleId string) (*Learningmodulerule
 
 	// verify the required parameter 'moduleId' is set
 	if &moduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->GetLearningModuleRule")
 	}
 
@@ -579,8 +571,6 @@ func (a LearningApi) GetLearningModuleRule(moduleId string) (*Learningmodulerule
 // GetLearningModuleVersion invokes GET /api/v2/learning/modules/{moduleId}/versions/{versionId}
 //
 // Get specific version of a published module
-//
-// 
 func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string, expand []string) (*Learningmodule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -594,12 +584,12 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 
 	// verify the required parameter 'moduleId' is set
 	if &moduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->GetLearningModuleVersion")
 	}
 	// verify the required parameter 'versionId' is set
 	if &versionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling LearningApi->GetLearningModuleVersion")
 	}
 
@@ -660,8 +650,6 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 // GetLearningModules invokes GET /api/v2/learning/modules
 //
 // Get all learning modules of an organization
-//
-// 
 func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, isPublished string) (*Learningmodulesdomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -745,8 +733,6 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 // PatchLearningAssignment invokes PATCH /api/v2/learning/assignments/{assignmentId}
 //
 // Update Learning Assignment
-//
-// 
 func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learningassignmentupdate) (*Learningassignment, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -759,7 +745,7 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 
 	// verify the required parameter 'assignmentId' is set
 	if &assignmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'assignmentId' when calling LearningApi->PatchLearningAssignment")
 	}
 
@@ -821,8 +807,6 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 // PostLearningAssessmentsScoring invokes POST /api/v2/learning/assessments/scoring
 //
 // Score learning assessment for preview
-//
-// 
 func (a LearningApi) PostLearningAssessmentsScoring(body Learningassessmentscoringrequest) (*Assessmentscoringset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -834,7 +818,7 @@ func (a LearningApi) PostLearningAssessmentsScoring(body Learningassessmentscori
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PostLearningAssessmentsScoring")
 	}
 
@@ -896,8 +880,6 @@ func (a LearningApi) PostLearningAssessmentsScoring(body Learningassessmentscori
 // PostLearningAssignments invokes POST /api/v2/learning/assignments
 //
 // Create Learning Assignment
-//
-// 
 func (a LearningApi) PostLearningAssignments(body Learningassignmentcreate) (*Learningassignment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -966,8 +948,6 @@ func (a LearningApi) PostLearningAssignments(body Learningassignmentcreate) (*Le
 // PostLearningAssignmentsAggregatesQuery invokes POST /api/v2/learning/assignments/aggregates/query
 //
 // Retrieve aggregated assignment data
-//
-// 
 func (a LearningApi) PostLearningAssignmentsAggregatesQuery(body Learningassignmentaggregateparam) (*Learningassignmentaggregateresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -979,7 +959,7 @@ func (a LearningApi) PostLearningAssignmentsAggregatesQuery(body Learningassignm
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PostLearningAssignmentsAggregatesQuery")
 	}
 
@@ -1041,8 +1021,6 @@ func (a LearningApi) PostLearningAssignmentsAggregatesQuery(body Learningassignm
 // PostLearningAssignmentsBulkadd invokes POST /api/v2/learning/assignments/bulkadd
 //
 // Add multiple learning assignments
-//
-// 
 func (a LearningApi) PostLearningAssignmentsBulkadd(body []Learningassignmentitem) (*Learningassignmentbulkaddresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1111,8 +1089,6 @@ func (a LearningApi) PostLearningAssignmentsBulkadd(body []Learningassignmentite
 // PostLearningAssignmentsBulkremove invokes POST /api/v2/learning/assignments/bulkremove
 //
 // Remove multiple Learning Assignments
-//
-// 
 func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*Learningassignmentbulkremoveresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1181,8 +1157,6 @@ func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*Learning
 // PostLearningModulePublish invokes POST /api/v2/learning/modules/{moduleId}/publish
 //
 // Publish a Learning module
-//
-// 
 func (a LearningApi) PostLearningModulePublish(moduleId string) (*Learningmodulepublishresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1195,7 +1169,7 @@ func (a LearningApi) PostLearningModulePublish(moduleId string) (*Learningmodule
 
 	// verify the required parameter 'moduleId' is set
 	if &moduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->PostLearningModulePublish")
 	}
 
@@ -1267,7 +1241,7 @@ func (a LearningApi) PostLearningModules(body Learningmodulerequest) (*Learningm
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PostLearningModules")
 	}
 
@@ -1342,17 +1316,17 @@ func (a LearningApi) PostLearningRulesQuery(pageSize int, pageNumber int, body L
 
 	// verify the required parameter 'pageSize' is set
 	if &pageSize == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'pageSize' when calling LearningApi->PostLearningRulesQuery")
 	}
 	// verify the required parameter 'pageNumber' is set
 	if &pageNumber == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'pageNumber' when calling LearningApi->PostLearningRulesQuery")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PostLearningRulesQuery")
 	}
 
@@ -1432,12 +1406,12 @@ func (a LearningApi) PutLearningModule(moduleId string, body Learningmodulereque
 
 	// verify the required parameter 'moduleId' is set
 	if &moduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->PutLearningModule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PutLearningModule")
 	}
 
@@ -1513,12 +1487,12 @@ func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmoduler
 
 	// verify the required parameter 'moduleId' is set
 	if &moduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->PutLearningModuleRule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PutLearningModuleRule")
 	}
 

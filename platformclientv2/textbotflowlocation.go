@@ -53,7 +53,7 @@ func (o *Textbotflowlocation) UnmarshalJSON(b []byte) error {
 	if ActionName, ok := TextbotflowlocationMap["actionName"].(string); ok {
 		o.ActionName = &ActionName
 	}
-	
+    
 	if ActionNumber, ok := TextbotflowlocationMap["actionNumber"].(float64); ok {
 		ActionNumberInt := int(ActionNumber)
 		o.ActionNumber = &ActionNumberInt
@@ -62,7 +62,7 @@ func (o *Textbotflowlocation) UnmarshalJSON(b []byte) error {
 	if SequenceName, ok := TextbotflowlocationMap["sequenceName"].(string); ok {
 		o.SequenceName = &SequenceName
 	}
-	
+    
 
 	return nil
 }

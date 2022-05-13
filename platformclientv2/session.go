@@ -398,31 +398,31 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	if Id, ok := SessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if CustomerId, ok := SessionMap["customerId"].(string); ok {
 		o.CustomerId = &CustomerId
 	}
-	
+    
 	if CustomerIdType, ok := SessionMap["customerIdType"].(string); ok {
 		o.CustomerIdType = &CustomerIdType
 	}
-	
+    
 	if VarType, ok := SessionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ExternalId, ok := SessionMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
 	}
-	
+    
 	if ExternalUrl, ok := SessionMap["externalUrl"].(string); ok {
 		o.ExternalUrl = &ExternalUrl
 	}
-	
+    
 	if ShortId, ok := SessionMap["shortId"].(string); ok {
 		o.ShortId = &ShortId
 	}
-	
+    
 	if OutcomeAchievements, ok := SessionMap["outcomeAchievements"].([]interface{}); ok {
 		OutcomeAchievementsString, _ := json.Marshal(OutcomeAchievements)
 		json.Unmarshal(OutcomeAchievementsString, &o.OutcomeAchievements)
@@ -461,11 +461,11 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	if IpAddress, ok := SessionMap["ipAddress"].(string); ok {
 		o.IpAddress = &IpAddress
 	}
-	
+    
 	if IpOrganization, ok := SessionMap["ipOrganization"].(string); ok {
 		o.IpOrganization = &IpOrganization
 	}
-	
+    
 	if LastPage, ok := SessionMap["lastPage"].(map[string]interface{}); ok {
 		LastPageString, _ := json.Marshal(LastPage)
 		json.Unmarshal(LastPageString, &o.LastPage)
@@ -489,7 +489,7 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	if UserAgentString, ok := SessionMap["userAgentString"].(string); ok {
 		o.UserAgentString = &UserAgentString
 	}
-	
+    
 	if DurationInSeconds, ok := SessionMap["durationInSeconds"].(float64); ok {
 		DurationInSecondsInt := int(DurationInSeconds)
 		o.DurationInSeconds = &DurationInSecondsInt
@@ -538,27 +538,27 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	if OriginatingDirection, ok := SessionMap["originatingDirection"].(string); ok {
 		o.OriginatingDirection = &OriginatingDirection
 	}
-	
+    
 	if ConversationSubject, ok := SessionMap["conversationSubject"].(string); ok {
 		o.ConversationSubject = &ConversationSubject
 	}
-	
+    
 	if LastUserDisconnectType, ok := SessionMap["lastUserDisconnectType"].(string); ok {
 		o.LastUserDisconnectType = &LastUserDisconnectType
 	}
-	
+    
 	if LastAcdOutcome, ok := SessionMap["lastAcdOutcome"].(string); ok {
 		o.LastAcdOutcome = &LastAcdOutcome
 	}
-	
+    
 	if Authenticated, ok := SessionMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
 	}
-	
+    
 	if SelfUri, ok := SessionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if createdDateString, ok := SessionMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

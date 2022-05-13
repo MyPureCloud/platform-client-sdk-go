@@ -77,15 +77,15 @@ func (o *Userschedulefulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
 	if ManagementUnitDate, ok := UserschedulefulldaytimeoffmarkerMap["managementUnitDate"].(string); ok {
 		o.ManagementUnitDate = &ManagementUnitDate
 	}
-	
+    
 	if ActivityCodeId, ok := UserschedulefulldaytimeoffmarkerMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if IsPaid, ok := UserschedulefulldaytimeoffmarkerMap["isPaid"].(bool); ok {
 		o.IsPaid = &IsPaid
 	}
-	
+    
 	if LengthInMinutes, ok := UserschedulefulldaytimeoffmarkerMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt
@@ -94,11 +94,11 @@ func (o *Userschedulefulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
 	if Description, ok := UserschedulefulldaytimeoffmarkerMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Delete, ok := UserschedulefulldaytimeoffmarkerMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Nluconfusionmatrixrow) UnmarshalJSON(b []byte) error {
 	if Name, ok := NluconfusionmatrixrowMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Columns, ok := NluconfusionmatrixrowMap["columns"].([]interface{}); ok {
 		ColumnsString, _ := json.Marshal(Columns)
 		json.Unmarshal(ColumnsString, &o.Columns)

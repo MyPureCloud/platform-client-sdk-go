@@ -69,7 +69,7 @@ func (o *Buschedulereferenceformuroute) UnmarshalJSON(b []byte) error {
 	if Id, ok := BuschedulereferenceformurouteMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := BuschedulereferenceformurouteMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -83,7 +83,7 @@ func (o *Buschedulereferenceformuroute) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BuschedulereferenceformurouteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

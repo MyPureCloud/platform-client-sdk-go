@@ -37,7 +37,7 @@ func (o *Contactcentersettings) UnmarshalJSON(b []byte) error {
 	if RemoveSkillsFromBlindTransfer, ok := ContactcentersettingsMap["removeSkillsFromBlindTransfer"].(bool); ok {
 		o.RemoveSkillsFromBlindTransfer = &RemoveSkillsFromBlindTransfer
 	}
-	
+    
 
 	return nil
 }

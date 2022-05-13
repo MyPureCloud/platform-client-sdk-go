@@ -141,51 +141,51 @@ func (o *Systempromptasset) UnmarshalJSON(b []byte) error {
 	if Id, ok := SystempromptassetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SystempromptassetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if PromptId, ok := SystempromptassetMap["promptId"].(string); ok {
 		o.PromptId = &PromptId
 	}
-	
+    
 	if Language, ok := SystempromptassetMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if DurationSeconds, ok := SystempromptassetMap["durationSeconds"].(float64); ok {
 		o.DurationSeconds = &DurationSeconds
 	}
-	
+    
 	if MediaUri, ok := SystempromptassetMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if TtsString, ok := SystempromptassetMap["ttsString"].(string); ok {
 		o.TtsString = &TtsString
 	}
-	
+    
 	if Text, ok := SystempromptassetMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if UploadUri, ok := SystempromptassetMap["uploadUri"].(string); ok {
 		o.UploadUri = &UploadUri
 	}
-	
+    
 	if UploadStatus, ok := SystempromptassetMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 	if HasDefault, ok := SystempromptassetMap["hasDefault"].(bool); ok {
 		o.HasDefault = &HasDefault
 	}
-	
+    
 	if LanguageDefault, ok := SystempromptassetMap["languageDefault"].(bool); ok {
 		o.LanguageDefault = &LanguageDefault
 	}
-	
+    
 	if Tags, ok := SystempromptassetMap["tags"].(map[string]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)
@@ -194,7 +194,7 @@ func (o *Systempromptasset) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SystempromptassetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

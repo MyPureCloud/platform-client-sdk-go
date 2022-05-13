@@ -74,7 +74,7 @@ func (o *Schedulingsettingsrequest) UnmarshalJSON(b []byte) error {
 	if DefaultShrinkagePercent, ok := SchedulingsettingsrequestMap["defaultShrinkagePercent"].(float64); ok {
 		o.DefaultShrinkagePercent = &DefaultShrinkagePercent
 	}
-	
+    
 	if ShrinkageOverrides, ok := SchedulingsettingsrequestMap["shrinkageOverrides"].(map[string]interface{}); ok {
 		ShrinkageOverridesString, _ := json.Marshal(ShrinkageOverrides)
 		json.Unmarshal(ShrinkageOverridesString, &o.ShrinkageOverrides)
@@ -88,7 +88,7 @@ func (o *Schedulingsettingsrequest) UnmarshalJSON(b []byte) error {
 	if StartDayOfWeekend, ok := SchedulingsettingsrequestMap["startDayOfWeekend"].(string); ok {
 		o.StartDayOfWeekend = &StartDayOfWeekend
 	}
-	
+    
 
 	return nil
 }

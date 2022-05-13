@@ -53,15 +53,15 @@ func (o *Greetingowner) UnmarshalJSON(b []byte) error {
 	if Id, ok := GreetingownerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GreetingownerMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := GreetingownerMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

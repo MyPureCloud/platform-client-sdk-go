@@ -170,67 +170,67 @@ func (o *Flowstartdetaileventtopicflowstartevent) UnmarshalJSON(b []byte) error 
 	if ConversationId, ok := FlowstartdetaileventtopicflowstarteventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := FlowstartdetaileventtopicflowstarteventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := FlowstartdetaileventtopicflowstarteventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := FlowstartdetaileventtopicflowstarteventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := FlowstartdetaileventtopicflowstarteventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := FlowstartdetaileventtopicflowstarteventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := FlowstartdetaileventtopicflowstarteventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := FlowstartdetaileventtopicflowstarteventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := FlowstartdetaileventtopicflowstarteventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := FlowstartdetaileventtopicflowstarteventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if Subject, ok := FlowstartdetaileventtopicflowstarteventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := FlowstartdetaileventtopicflowstarteventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if FlowType, ok := FlowstartdetaileventtopicflowstarteventMap["flowType"].(string); ok {
 		o.FlowType = &FlowType
 	}
-	
+    
 	if FlowId, ok := FlowstartdetaileventtopicflowstarteventMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if DivisionId, ok := FlowstartdetaileventtopicflowstarteventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if FlowVersion, ok := FlowstartdetaileventtopicflowstarteventMap["flowVersion"].(string); ok {
 		o.FlowVersion = &FlowVersion
 	}
-	
+    
 
 	return nil
 }

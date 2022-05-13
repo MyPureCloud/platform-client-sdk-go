@@ -77,7 +77,7 @@ func (o *Eventcondition) UnmarshalJSON(b []byte) error {
 	if Key, ok := EventconditionMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if Values, ok := EventconditionMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -86,19 +86,19 @@ func (o *Eventcondition) UnmarshalJSON(b []byte) error {
 	if Operator, ok := EventconditionMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if StreamType, ok := EventconditionMap["streamType"].(string); ok {
 		o.StreamType = &StreamType
 	}
-	
+    
 	if SessionType, ok := EventconditionMap["sessionType"].(string); ok {
 		o.SessionType = &SessionType
 	}
-	
+    
 	if EventName, ok := EventconditionMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 
 	return nil
 }

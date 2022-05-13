@@ -46,7 +46,7 @@ func (o *Buagentscheduleupdate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := BuagentscheduleupdateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ShiftStartDates, ok := BuagentscheduleupdateMap["shiftStartDates"].([]interface{}); ok {
 		ShiftStartDatesString, _ := json.Marshal(ShiftStartDates)
 		json.Unmarshal(ShiftStartDatesString, &o.ShiftStartDates)

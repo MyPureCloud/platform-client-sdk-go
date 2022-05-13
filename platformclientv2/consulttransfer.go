@@ -45,7 +45,7 @@ func (o *Consulttransfer) UnmarshalJSON(b []byte) error {
 	if SpeakTo, ok := ConsulttransferMap["speakTo"].(string); ok {
 		o.SpeakTo = &SpeakTo
 	}
-	
+    
 	if Destination, ok := ConsulttransferMap["destination"].(map[string]interface{}); ok {
 		DestinationString, _ := json.Marshal(Destination)
 		json.Unmarshal(DestinationString, &o.Destination)

@@ -37,7 +37,7 @@ func (o *Facebookscopedid) UnmarshalJSON(b []byte) error {
 	if ScopedId, ok := FacebookscopedidMap["scopedId"].(string); ok {
 		o.ScopedId = &ScopedId
 	}
-	
+    
 
 	return nil
 }

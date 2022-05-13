@@ -85,27 +85,27 @@ func (o *Guestmemberinfo) UnmarshalJSON(b []byte) error {
 	if DisplayName, ok := GuestmemberinfoMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if FirstName, ok := GuestmemberinfoMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}
-	
+    
 	if LastName, ok := GuestmemberinfoMap["lastName"].(string); ok {
 		o.LastName = &LastName
 	}
-	
+    
 	if Email, ok := GuestmemberinfoMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if PhoneNumber, ok := GuestmemberinfoMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if AvatarImageUrl, ok := GuestmemberinfoMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 	if CustomFields, ok := GuestmemberinfoMap["customFields"].(map[string]interface{}); ok {
 		CustomFieldsString, _ := json.Marshal(CustomFields)
 		json.Unmarshal(CustomFieldsString, &o.CustomFields)

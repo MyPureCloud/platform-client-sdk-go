@@ -63,7 +63,7 @@ func (o *Coretypelisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CoretypelistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -59,7 +59,7 @@ func (o *Validationservicerequest) UnmarshalJSON(b []byte) error {
 	if UploadKey, ok := ValidationservicerequestMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 
 	return nil
 }

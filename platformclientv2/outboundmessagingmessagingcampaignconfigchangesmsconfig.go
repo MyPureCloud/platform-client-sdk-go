@@ -61,11 +61,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangesmsconfig) UnmarshalJSON(
 	if MessageColumn, ok := OutboundmessagingmessagingcampaignconfigchangesmsconfigMap["messageColumn"].(string); ok {
 		o.MessageColumn = &MessageColumn
 	}
-	
+    
 	if PhoneColumn, ok := OutboundmessagingmessagingcampaignconfigchangesmsconfigMap["phoneColumn"].(string); ok {
 		o.PhoneColumn = &PhoneColumn
 	}
-	
+    
 	if SenderSmsPhoneNumber, ok := OutboundmessagingmessagingcampaignconfigchangesmsconfigMap["senderSmsPhoneNumber"].(map[string]interface{}); ok {
 		SenderSmsPhoneNumberString, _ := json.Marshal(SenderSmsPhoneNumber)
 		json.Unmarshal(SenderSmsPhoneNumberString, &o.SenderSmsPhoneNumber)

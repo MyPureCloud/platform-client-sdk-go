@@ -45,11 +45,11 @@ func (o *Learningassignmentitem) UnmarshalJSON(b []byte) error {
 	if ModuleId, ok := LearningassignmentitemMap["moduleId"].(string); ok {
 		o.ModuleId = &ModuleId
 	}
-	
+    
 	if UserId, ok := LearningassignmentitemMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 
 	return nil
 }

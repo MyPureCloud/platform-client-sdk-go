@@ -93,15 +93,15 @@ func (o *Schedulegenerationwarning) UnmarshalJSON(b []byte) error {
 	if UserId, ok := SchedulegenerationwarningMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if UserNotLicensed, ok := SchedulegenerationwarningMap["userNotLicensed"].(bool); ok {
 		o.UserNotLicensed = &UserNotLicensed
 	}
-	
+    
 	if UnableToMeetMaxDays, ok := SchedulegenerationwarningMap["unableToMeetMaxDays"].(bool); ok {
 		o.UnableToMeetMaxDays = &UnableToMeetMaxDays
 	}
-	
+    
 	if UnableToScheduleRequiredDays, ok := SchedulegenerationwarningMap["unableToScheduleRequiredDays"].([]interface{}); ok {
 		UnableToScheduleRequiredDaysString, _ := json.Marshal(UnableToScheduleRequiredDays)
 		json.Unmarshal(UnableToScheduleRequiredDaysString, &o.UnableToScheduleRequiredDays)
@@ -110,11 +110,11 @@ func (o *Schedulegenerationwarning) UnmarshalJSON(b []byte) error {
 	if UnableToMeetMinPaidForTheWeek, ok := SchedulegenerationwarningMap["unableToMeetMinPaidForTheWeek"].(bool); ok {
 		o.UnableToMeetMinPaidForTheWeek = &UnableToMeetMinPaidForTheWeek
 	}
-	
+    
 	if UnableToMeetMaxPaidForTheWeek, ok := SchedulegenerationwarningMap["unableToMeetMaxPaidForTheWeek"].(bool); ok {
 		o.UnableToMeetMaxPaidForTheWeek = &UnableToMeetMaxPaidForTheWeek
 	}
-	
+    
 	if NoNeedDays, ok := SchedulegenerationwarningMap["noNeedDays"].([]interface{}); ok {
 		NoNeedDaysString, _ := json.Marshal(NoNeedDays)
 		json.Unmarshal(NoNeedDaysString, &o.NoNeedDays)
@@ -123,7 +123,7 @@ func (o *Schedulegenerationwarning) UnmarshalJSON(b []byte) error {
 	if ShiftsTooCloseTogether, ok := SchedulegenerationwarningMap["shiftsTooCloseTogether"].(bool); ok {
 		o.ShiftsTooCloseTogether = &ShiftsTooCloseTogether
 	}
-	
+    
 
 	return nil
 }

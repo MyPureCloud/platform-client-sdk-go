@@ -45,11 +45,11 @@ func (o *Queueconversationsocialexpressioneventtopicjourneycustomer) UnmarshalJS
 	if Id, ok := QueueconversationsocialexpressioneventtopicjourneycustomerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IdType, ok := QueueconversationsocialexpressioneventtopicjourneycustomerMap["idType"].(string); ok {
 		o.IdType = &IdType
 	}
-	
+    
 
 	return nil
 }

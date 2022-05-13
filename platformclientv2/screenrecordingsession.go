@@ -94,11 +94,11 @@ func (o *Screenrecordingsession) UnmarshalJSON(b []byte) error {
 	if Id, ok := ScreenrecordingsessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ScreenrecordingsessionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if User, ok := ScreenrecordingsessionMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -107,7 +107,7 @@ func (o *Screenrecordingsession) UnmarshalJSON(b []byte) error {
 	if CommunicationId, ok := ScreenrecordingsessionMap["communicationId"].(string); ok {
 		o.CommunicationId = &CommunicationId
 	}
-	
+    
 	if Conversation, ok := ScreenrecordingsessionMap["conversation"].(map[string]interface{}); ok {
 		ConversationString, _ := json.Marshal(Conversation)
 		json.Unmarshal(ConversationString, &o.Conversation)
@@ -121,7 +121,7 @@ func (o *Screenrecordingsession) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ScreenrecordingsessionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

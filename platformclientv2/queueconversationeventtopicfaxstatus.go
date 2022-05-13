@@ -93,7 +93,7 @@ func (o *Queueconversationeventtopicfaxstatus) UnmarshalJSON(b []byte) error {
 	if Direction, ok := QueueconversationeventtopicfaxstatusMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if ExpectedPages, ok := QueueconversationeventtopicfaxstatusMap["expectedPages"].(float64); ok {
 		ExpectedPagesInt := int(ExpectedPages)
 		o.ExpectedPages = &ExpectedPagesInt

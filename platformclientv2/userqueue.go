@@ -286,11 +286,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserqueueMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserqueueMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := UserqueueMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -299,7 +299,7 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if Description, ok := UserqueueMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateCreatedString, ok := UserqueueMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -313,11 +313,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := UserqueueMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := UserqueueMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if MemberCount, ok := UserqueueMap["memberCount"].(float64); ok {
 		MemberCountInt := int(MemberCount)
 		o.MemberCount = &MemberCountInt
@@ -356,7 +356,7 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if SkillEvaluationMethod, ok := UserqueueMap["skillEvaluationMethod"].(string); ok {
 		o.SkillEvaluationMethod = &SkillEvaluationMethod
 	}
-	
+    
 	if QueueFlow, ok := UserqueueMap["queueFlow"].(map[string]interface{}); ok {
 		QueueFlowString, _ := json.Marshal(QueueFlow)
 		json.Unmarshal(QueueFlowString, &o.QueueFlow)
@@ -385,19 +385,19 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if EnableTranscription, ok := UserqueueMap["enableTranscription"].(bool); ok {
 		o.EnableTranscription = &EnableTranscription
 	}
-	
+    
 	if EnableManualAssignment, ok := UserqueueMap["enableManualAssignment"].(bool); ok {
 		o.EnableManualAssignment = &EnableManualAssignment
 	}
-	
+    
 	if CallingPartyName, ok := UserqueueMap["callingPartyName"].(string); ok {
 		o.CallingPartyName = &CallingPartyName
 	}
-	
+    
 	if CallingPartyNumber, ok := UserqueueMap["callingPartyNumber"].(string); ok {
 		o.CallingPartyNumber = &CallingPartyNumber
 	}
-	
+    
 	if DefaultScripts, ok := UserqueueMap["defaultScripts"].(map[string]interface{}); ok {
 		DefaultScriptsString, _ := json.Marshal(DefaultScripts)
 		json.Unmarshal(DefaultScriptsString, &o.DefaultScripts)
@@ -416,11 +416,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if Joined, ok := UserqueueMap["joined"].(bool); ok {
 		o.Joined = &Joined
 	}
-	
+    
 	if SelfUri, ok := UserqueueMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

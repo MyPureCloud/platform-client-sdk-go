@@ -181,31 +181,31 @@ func (o *Flowversion) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowversionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowversionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if CommitVersion, ok := FlowversionMap["commitVersion"].(string); ok {
 		o.CommitVersion = &CommitVersion
 	}
-	
+    
 	if ConfigurationVersion, ok := FlowversionMap["configurationVersion"].(string); ok {
 		o.ConfigurationVersion = &ConfigurationVersion
 	}
-	
+    
 	if VarType, ok := FlowversionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Secure, ok := FlowversionMap["secure"].(bool); ok {
 		o.Secure = &Secure
 	}
-	
+    
 	if Debug, ok := FlowversionMap["debug"].(bool); ok {
 		o.Debug = &Debug
 	}
-	
+    
 	if CreatedBy, ok := FlowversionMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -219,7 +219,7 @@ func (o *Flowversion) UnmarshalJSON(b []byte) error {
 	if ConfigurationUri, ok := FlowversionMap["configurationUri"].(string); ok {
 		o.ConfigurationUri = &ConfigurationUri
 	}
-	
+    
 	if DateCreated, ok := FlowversionMap["dateCreated"].(float64); ok {
 		DateCreatedInt := int(DateCreated)
 		o.DateCreated = &DateCreatedInt
@@ -228,11 +228,11 @@ func (o *Flowversion) UnmarshalJSON(b []byte) error {
 	if GenerationId, ok := FlowversionMap["generationId"].(string); ok {
 		o.GenerationId = &GenerationId
 	}
-	
+    
 	if PublishResultUri, ok := FlowversionMap["publishResultUri"].(string); ok {
 		o.PublishResultUri = &PublishResultUri
 	}
-	
+    
 	if InputSchema, ok := FlowversionMap["inputSchema"].(map[string]interface{}); ok {
 		InputSchemaString, _ := json.Marshal(InputSchema)
 		json.Unmarshal(InputSchemaString, &o.InputSchema)
@@ -261,7 +261,7 @@ func (o *Flowversion) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowversionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

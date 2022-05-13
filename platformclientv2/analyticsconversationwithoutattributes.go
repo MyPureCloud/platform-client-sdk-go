@@ -179,11 +179,11 @@ func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := AnalyticsconversationwithoutattributesMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ConversationInitiator, ok := AnalyticsconversationwithoutattributesMap["conversationInitiator"].(string); ok {
 		o.ConversationInitiator = &ConversationInitiator
 	}
-	
+    
 	if conversationStartString, ok := AnalyticsconversationwithoutattributesMap["conversationStart"].(string); ok {
 		ConversationStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationStartString)
 		o.ConversationStart = &ConversationStart
@@ -192,7 +192,7 @@ func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
 	if CustomerParticipation, ok := AnalyticsconversationwithoutattributesMap["customerParticipation"].(bool); ok {
 		o.CustomerParticipation = &CustomerParticipation
 	}
-	
+    
 	if DivisionIds, ok := AnalyticsconversationwithoutattributesMap["divisionIds"].([]interface{}); ok {
 		DivisionIdsString, _ := json.Marshal(DivisionIds)
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
@@ -201,7 +201,7 @@ func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
 	if ExternalTag, ok := AnalyticsconversationwithoutattributesMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 	if KnowledgeBaseIds, ok := AnalyticsconversationwithoutattributesMap["knowledgeBaseIds"].([]interface{}); ok {
 		KnowledgeBaseIdsString, _ := json.Marshal(KnowledgeBaseIds)
 		json.Unmarshal(KnowledgeBaseIdsString, &o.KnowledgeBaseIds)
@@ -210,19 +210,19 @@ func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
 	if MediaStatsMinConversationMos, ok := AnalyticsconversationwithoutattributesMap["mediaStatsMinConversationMos"].(float64); ok {
 		o.MediaStatsMinConversationMos = &MediaStatsMinConversationMos
 	}
-	
+    
 	if MediaStatsMinConversationRFactor, ok := AnalyticsconversationwithoutattributesMap["mediaStatsMinConversationRFactor"].(float64); ok {
 		o.MediaStatsMinConversationRFactor = &MediaStatsMinConversationRFactor
 	}
-	
+    
 	if OriginatingDirection, ok := AnalyticsconversationwithoutattributesMap["originatingDirection"].(string); ok {
 		o.OriginatingDirection = &OriginatingDirection
 	}
-	
+    
 	if SelfServed, ok := AnalyticsconversationwithoutattributesMap["selfServed"].(bool); ok {
 		o.SelfServed = &SelfServed
 	}
-	
+    
 	if Evaluations, ok := AnalyticsconversationwithoutattributesMap["evaluations"].([]interface{}); ok {
 		EvaluationsString, _ := json.Marshal(Evaluations)
 		json.Unmarshal(EvaluationsString, &o.Evaluations)

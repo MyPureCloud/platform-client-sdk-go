@@ -61,19 +61,19 @@ func (o *Durationcondition) UnmarshalJSON(b []byte) error {
 	if DurationTarget, ok := DurationconditionMap["durationTarget"].(string); ok {
 		o.DurationTarget = &DurationTarget
 	}
-	
+    
 	if DurationOperator, ok := DurationconditionMap["durationOperator"].(string); ok {
 		o.DurationOperator = &DurationOperator
 	}
-	
+    
 	if DurationRange, ok := DurationconditionMap["durationRange"].(string); ok {
 		o.DurationRange = &DurationRange
 	}
-	
+    
 	if DurationMode, ok := DurationconditionMap["durationMode"].(string); ok {
 		o.DurationMode = &DurationMode
 	}
-	
+    
 
 	return nil
 }

@@ -166,7 +166,7 @@ func (o *Developmentactivity) UnmarshalJSON(b []byte) error {
 	if Id, ok := DevelopmentactivityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if dateCompletedString, ok := DevelopmentactivityMap["dateCompleted"].(string); ok {
 		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
 		o.DateCompleted = &DateCompleted
@@ -190,23 +190,23 @@ func (o *Developmentactivity) UnmarshalJSON(b []byte) error {
 	if IsPassed, ok := DevelopmentactivityMap["isPassed"].(bool); ok {
 		o.IsPassed = &IsPassed
 	}
-	
+    
 	if SelfUri, ok := DevelopmentactivityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if Name, ok := DevelopmentactivityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := DevelopmentactivityMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Status, ok := DevelopmentactivityMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if dateDueString, ok := DevelopmentactivityMap["dateDue"].(string); ok {
 		DateDue, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDueString)
 		o.DateDue = &DateDue
@@ -225,7 +225,7 @@ func (o *Developmentactivity) UnmarshalJSON(b []byte) error {
 	if IsOverdue, ok := DevelopmentactivityMap["isOverdue"].(bool); ok {
 		o.IsOverdue = &IsOverdue
 	}
-	
+    
 
 	return nil
 }

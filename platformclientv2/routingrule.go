@@ -53,7 +53,7 @@ func (o *Routingrule) UnmarshalJSON(b []byte) error {
 	if Operator, ok := RoutingruleMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Threshold, ok := RoutingruleMap["threshold"].(float64); ok {
 		ThresholdInt := int(Threshold)
 		o.Threshold = &ThresholdInt
@@ -62,7 +62,7 @@ func (o *Routingrule) UnmarshalJSON(b []byte) error {
 	if WaitSeconds, ok := RoutingruleMap["waitSeconds"].(float64); ok {
 		o.WaitSeconds = &WaitSeconds
 	}
-	
+    
 
 	return nil
 }

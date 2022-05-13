@@ -61,11 +61,11 @@ func (o *Flowoutcomedivisionview) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowoutcomedivisionviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowoutcomedivisionviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := FlowoutcomedivisionviewMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -74,7 +74,7 @@ func (o *Flowoutcomedivisionview) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowoutcomedivisionviewMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

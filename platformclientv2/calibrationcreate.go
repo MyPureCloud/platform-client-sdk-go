@@ -166,11 +166,11 @@ func (o *Calibrationcreate) UnmarshalJSON(b []byte) error {
 	if Id, ok := CalibrationcreateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CalibrationcreateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Calibrator, ok := CalibrationcreateMap["calibrator"].(map[string]interface{}); ok {
 		CalibratorString, _ := json.Marshal(Calibrator)
 		json.Unmarshal(CalibratorString, &o.Calibrator)
@@ -194,7 +194,7 @@ func (o *Calibrationcreate) UnmarshalJSON(b []byte) error {
 	if ContextId, ok := CalibrationcreateMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if AverageScore, ok := CalibrationcreateMap["averageScore"].(float64); ok {
 		AverageScoreInt := int(AverageScore)
 		o.AverageScore = &AverageScoreInt
@@ -238,7 +238,7 @@ func (o *Calibrationcreate) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CalibrationcreateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

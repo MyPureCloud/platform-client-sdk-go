@@ -69,7 +69,7 @@ func (o *Surveyquestiongroupscore) UnmarshalJSON(b []byte) error {
 	if QuestionGroupId, ok := SurveyquestiongroupscoreMap["questionGroupId"].(string); ok {
 		o.QuestionGroupId = &QuestionGroupId
 	}
-	
+    
 	if TotalScore, ok := SurveyquestiongroupscoreMap["totalScore"].(float64); ok {
 		TotalScoreFloat32 := float32(TotalScore)
 		o.TotalScore = &TotalScoreFloat32
@@ -83,7 +83,7 @@ func (o *Surveyquestiongroupscore) UnmarshalJSON(b []byte) error {
 	if MarkedNA, ok := SurveyquestiongroupscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
 	}
-	
+    
 	if QuestionScores, ok := SurveyquestiongroupscoreMap["questionScores"].([]interface{}); ok {
 		QuestionScoresString, _ := json.Marshal(QuestionScores)
 		json.Unmarshal(QuestionScoresString, &o.QuestionScores)

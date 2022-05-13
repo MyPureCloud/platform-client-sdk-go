@@ -32,8 +32,6 @@ func NewUtilitiesApiWithConfig(config *Configuration) *UtilitiesApi {
 // GetDate invokes GET /api/v2/date
 //
 // Get the current system date/time
-//
-// 
 func (a UtilitiesApi) GetDate() (*Serverdate, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -99,8 +97,6 @@ func (a UtilitiesApi) GetDate() (*Serverdate, *APIResponse, error) {
 // GetIpranges invokes GET /api/v2/ipranges
 //
 // Get public ip address ranges for Genesys Cloud
-//
-// 
 func (a UtilitiesApi) GetIpranges() (*Ipaddressrangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -166,8 +162,6 @@ func (a UtilitiesApi) GetIpranges() (*Ipaddressrangelisting, *APIResponse, error
 // GetTimezones invokes GET /api/v2/timezones
 //
 // Get time zones list
-//
-// 
 func (a UtilitiesApi) GetTimezones(pageSize int, pageNumber int) (*Timezoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -237,8 +231,6 @@ func (a UtilitiesApi) GetTimezones(pageSize int, pageNumber int) (*Timezoneentit
 // PostCertificateDetails invokes POST /api/v2/certificate/details
 //
 // Returns the information about an X509 PEM encoded certificate or certificate chain.
-//
-// 
 func (a UtilitiesApi) PostCertificateDetails(body Certificate) (*Parsedcertificate, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -250,7 +242,7 @@ func (a UtilitiesApi) PostCertificateDetails(body Certificate) (*Parsedcertifica
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UtilitiesApi->PostCertificateDetails")
 	}
 

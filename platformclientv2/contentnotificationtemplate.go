@@ -69,11 +69,11 @@ func (o *Contentnotificationtemplate) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContentnotificationtemplateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Language, ok := ContentnotificationtemplateMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Header, ok := ContentnotificationtemplateMap["header"].(map[string]interface{}); ok {
 		HeaderString, _ := json.Marshal(Header)
 		json.Unmarshal(HeaderString, &o.Header)

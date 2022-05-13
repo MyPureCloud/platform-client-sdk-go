@@ -61,11 +61,11 @@ func (o *Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherenceca
 	if Id, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DownloadUrl, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 	if DownloadUrls, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["downloadUrls"].([]interface{}); ok {
 		DownloadUrlsString, _ := json.Marshal(DownloadUrls)
 		json.Unmarshal(DownloadUrlsString, &o.DownloadUrls)
@@ -74,7 +74,7 @@ func (o *Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherenceca
 	if QueryState, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["queryState"].(string); ok {
 		o.QueryState = &QueryState
 	}
-	
+    
 
 	return nil
 }

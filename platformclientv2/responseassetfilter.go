@@ -77,7 +77,7 @@ func (o *Responseassetfilter) UnmarshalJSON(b []byte) error {
 	if EndValue, ok := ResponseassetfilterMap["endValue"].(string); ok {
 		o.EndValue = &EndValue
 	}
-	
+    
 	if Values, ok := ResponseassetfilterMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -86,7 +86,7 @@ func (o *Responseassetfilter) UnmarshalJSON(b []byte) error {
 	if StartValue, ok := ResponseassetfilterMap["startValue"].(string); ok {
 		o.StartValue = &StartValue
 	}
-	
+    
 	if Fields, ok := ResponseassetfilterMap["fields"].([]interface{}); ok {
 		FieldsString, _ := json.Marshal(Fields)
 		json.Unmarshal(FieldsString, &o.Fields)
@@ -95,11 +95,11 @@ func (o *Responseassetfilter) UnmarshalJSON(b []byte) error {
 	if Value, ok := ResponseassetfilterMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarType, ok := ResponseassetfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

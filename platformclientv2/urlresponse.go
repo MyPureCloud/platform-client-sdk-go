@@ -37,7 +37,7 @@ func (o *Urlresponse) UnmarshalJSON(b []byte) error {
 	if Url, ok := UrlresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 
 	return nil
 }

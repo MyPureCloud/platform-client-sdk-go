@@ -182,11 +182,11 @@ func (o *Script) UnmarshalJSON(b []byte) error {
 	if Id, ok := ScriptMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ScriptMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := ScriptMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Script) UnmarshalJSON(b []byte) error {
 	if VersionId, ok := ScriptMap["versionId"].(string); ok {
 		o.VersionId = &VersionId
 	}
-	
+    
 	if createdDateString, ok := ScriptMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate
@@ -219,11 +219,11 @@ func (o *Script) UnmarshalJSON(b []byte) error {
 	if StartPageId, ok := ScriptMap["startPageId"].(string); ok {
 		o.StartPageId = &StartPageId
 	}
-	
+    
 	if StartPageName, ok := ScriptMap["startPageName"].(string); ok {
 		o.StartPageName = &StartPageName
 	}
-	
+    
 	if Features, ok := ScriptMap["features"].(map[string]interface{}); ok {
 		FeaturesString, _ := json.Marshal(Features)
 		json.Unmarshal(FeaturesString, &o.Features)
@@ -247,7 +247,7 @@ func (o *Script) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ScriptMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

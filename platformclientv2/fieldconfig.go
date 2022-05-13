@@ -93,19 +93,19 @@ func (o *Fieldconfig) UnmarshalJSON(b []byte) error {
 	if Id, ok := FieldconfigMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FieldconfigMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if EntityType, ok := FieldconfigMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if State, ok := FieldconfigMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Sections, ok := FieldconfigMap["sections"].([]interface{}); ok {
 		SectionsString, _ := json.Marshal(Sections)
 		json.Unmarshal(SectionsString, &o.Sections)
@@ -114,15 +114,15 @@ func (o *Fieldconfig) UnmarshalJSON(b []byte) error {
 	if Version, ok := FieldconfigMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if SchemaVersion, ok := FieldconfigMap["schemaVersion"].(string); ok {
 		o.SchemaVersion = &SchemaVersion
 	}
-	
+    
 	if SelfUri, ok := FieldconfigMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -77,19 +77,19 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) UnmarshalJSON(b []b
 	if Column, ok := DialercontactlistfilterconfigchangefilterpredicateMap["column"].(string); ok {
 		o.Column = &Column
 	}
-	
+    
 	if ColumnType, ok := DialercontactlistfilterconfigchangefilterpredicateMap["columnType"].(string); ok {
 		o.ColumnType = &ColumnType
 	}
-	
+    
 	if Operator, ok := DialercontactlistfilterconfigchangefilterpredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := DialercontactlistfilterconfigchangefilterpredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := DialercontactlistfilterconfigchangefilterpredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)
@@ -98,7 +98,7 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) UnmarshalJSON(b []b
 	if Inverted, ok := DialercontactlistfilterconfigchangefilterpredicateMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
 	}
-	
+    
 
 	return nil
 }

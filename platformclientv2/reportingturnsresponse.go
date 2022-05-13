@@ -66,15 +66,15 @@ func (o *Reportingturnsresponse) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := ReportingturnsresponseMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := ReportingturnsresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := ReportingturnsresponseMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

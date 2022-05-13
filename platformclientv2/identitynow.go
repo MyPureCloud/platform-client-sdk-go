@@ -117,39 +117,39 @@ func (o *Identitynow) UnmarshalJSON(b []byte) error {
 	if Id, ok := IdentitynowMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := IdentitynowMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := IdentitynowMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if IssuerURI, ok := IdentitynowMap["issuerURI"].(string); ok {
 		o.IssuerURI = &IssuerURI
 	}
-	
+    
 	if SsoTargetURI, ok := IdentitynowMap["ssoTargetURI"].(string); ok {
 		o.SsoTargetURI = &SsoTargetURI
 	}
-	
+    
 	if SloURI, ok := IdentitynowMap["sloURI"].(string); ok {
 		o.SloURI = &SloURI
 	}
-	
+    
 	if SloBinding, ok := IdentitynowMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
 	}
-	
+    
 	if RelyingPartyIdentifier, ok := IdentitynowMap["relyingPartyIdentifier"].(string); ok {
 		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
-	
+    
 	if Certificate, ok := IdentitynowMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 	if Certificates, ok := IdentitynowMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
@@ -158,7 +158,7 @@ func (o *Identitynow) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := IdentitynowMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

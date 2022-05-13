@@ -118,11 +118,11 @@ func (o *Gdprrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := GdprrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GdprrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if CreatedBy, ok := GdprrequestMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -136,7 +136,7 @@ func (o *Gdprrequest) UnmarshalJSON(b []byte) error {
 	if RequestType, ok := GdprrequestMap["requestType"].(string); ok {
 		o.RequestType = &RequestType
 	}
-	
+    
 	if createdDateString, ok := GdprrequestMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate
@@ -145,7 +145,7 @@ func (o *Gdprrequest) UnmarshalJSON(b []byte) error {
 	if Status, ok := GdprrequestMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Subject, ok := GdprrequestMap["subject"].(map[string]interface{}); ok {
 		SubjectString, _ := json.Marshal(Subject)
 		json.Unmarshal(SubjectString, &o.Subject)
@@ -154,11 +154,11 @@ func (o *Gdprrequest) UnmarshalJSON(b []byte) error {
 	if ResultsUrl, ok := GdprrequestMap["resultsUrl"].(string); ok {
 		o.ResultsUrl = &ResultsUrl
 	}
-	
+    
 	if SelfUri, ok := GdprrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -38,7 +38,7 @@ type Openmessagingchannel struct {
 
 
 	// Metadata - Information about the channel.
-	Metadata *Channelmetadata `json:"metadata,omitempty"`
+	Metadata *interface{} `json:"metadata,omitempty"`
 
 }
 
@@ -70,7 +70,7 @@ func (o *Openmessagingchannel) MarshalJSON() ([]byte, error) {
 		
 		Time *string `json:"time,omitempty"`
 		
-		Metadata *Channelmetadata `json:"metadata,omitempty"`
+		Metadata *interface{} `json:"metadata,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -102,19 +102,19 @@ func (o *Openmessagingchannel) UnmarshalJSON(b []byte) error {
 	if Id, ok := OpenmessagingchannelMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Platform, ok := OpenmessagingchannelMap["platform"].(string); ok {
 		o.Platform = &Platform
 	}
-	
+    
 	if VarType, ok := OpenmessagingchannelMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if MessageId, ok := OpenmessagingchannelMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 	if To, ok := OpenmessagingchannelMap["to"].(map[string]interface{}); ok {
 		ToString, _ := json.Marshal(To)
 		json.Unmarshal(ToString, &o.To)

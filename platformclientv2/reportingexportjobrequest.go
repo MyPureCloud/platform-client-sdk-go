@@ -173,27 +173,27 @@ func (o *Reportingexportjobrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := ReportingexportjobrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if TimeZone, ok := ReportingexportjobrequestMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if ExportFormat, ok := ReportingexportjobrequestMap["exportFormat"].(string); ok {
 		o.ExportFormat = &ExportFormat
 	}
-	
+    
 	if Interval, ok := ReportingexportjobrequestMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Period, ok := ReportingexportjobrequestMap["period"].(string); ok {
 		o.Period = &Period
 	}
-	
+    
 	if ViewType, ok := ReportingexportjobrequestMap["viewType"].(string); ok {
 		o.ViewType = &ViewType
 	}
-	
+    
 	if Filter, ok := ReportingexportjobrequestMap["filter"].(map[string]interface{}); ok {
 		FilterString, _ := json.Marshal(Filter)
 		json.Unmarshal(FilterString, &o.Filter)
@@ -202,35 +202,35 @@ func (o *Reportingexportjobrequest) UnmarshalJSON(b []byte) error {
 	if Read, ok := ReportingexportjobrequestMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if Locale, ok := ReportingexportjobrequestMap["locale"].(string); ok {
 		o.Locale = &Locale
 	}
-	
+    
 	if HasFormatDurations, ok := ReportingexportjobrequestMap["hasFormatDurations"].(bool); ok {
 		o.HasFormatDurations = &HasFormatDurations
 	}
-	
+    
 	if HasSplitFilters, ok := ReportingexportjobrequestMap["hasSplitFilters"].(bool); ok {
 		o.HasSplitFilters = &HasSplitFilters
 	}
-	
+    
 	if ExcludeEmptyRows, ok := ReportingexportjobrequestMap["excludeEmptyRows"].(bool); ok {
 		o.ExcludeEmptyRows = &ExcludeEmptyRows
 	}
-	
+    
 	if HasSplitByMedia, ok := ReportingexportjobrequestMap["hasSplitByMedia"].(bool); ok {
 		o.HasSplitByMedia = &HasSplitByMedia
 	}
-	
+    
 	if HasSummaryRow, ok := ReportingexportjobrequestMap["hasSummaryRow"].(bool); ok {
 		o.HasSummaryRow = &HasSummaryRow
 	}
-	
+    
 	if CsvDelimiter, ok := ReportingexportjobrequestMap["csvDelimiter"].(string); ok {
 		o.CsvDelimiter = &CsvDelimiter
 	}
-	
+    
 	if SelectedColumns, ok := ReportingexportjobrequestMap["selectedColumns"].([]interface{}); ok {
 		SelectedColumnsString, _ := json.Marshal(SelectedColumns)
 		json.Unmarshal(SelectedColumnsString, &o.SelectedColumns)
@@ -239,7 +239,7 @@ func (o *Reportingexportjobrequest) UnmarshalJSON(b []byte) error {
 	if HasCustomParticipantAttributes, ok := ReportingexportjobrequestMap["hasCustomParticipantAttributes"].(bool); ok {
 		o.HasCustomParticipantAttributes = &HasCustomParticipantAttributes
 	}
-	
+    
 	if RecipientEmails, ok := ReportingexportjobrequestMap["recipientEmails"].([]interface{}); ok {
 		RecipientEmailsString, _ := json.Marshal(RecipientEmails)
 		json.Unmarshal(RecipientEmailsString, &o.RecipientEmails)

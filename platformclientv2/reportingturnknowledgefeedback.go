@@ -53,7 +53,7 @@ func (o *Reportingturnknowledgefeedback) UnmarshalJSON(b []byte) error {
 	if SearchId, ok := ReportingturnknowledgefeedbackMap["searchId"].(string); ok {
 		o.SearchId = &SearchId
 	}
-	
+    
 	if Rating, ok := ReportingturnknowledgefeedbackMap["rating"].(float64); ok {
 		RatingInt := int(Rating)
 		o.Rating = &RatingInt

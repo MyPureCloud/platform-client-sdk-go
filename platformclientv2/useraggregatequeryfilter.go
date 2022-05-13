@@ -53,7 +53,7 @@ func (o *Useraggregatequeryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := UseraggregatequeryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := UseraggregatequeryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

@@ -77,11 +77,11 @@ func (o *Replaceresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ReplaceresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ReplaceresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ChangeNumber, ok := ReplaceresponseMap["changeNumber"].(float64); ok {
 		ChangeNumberInt := int(ChangeNumber)
 		o.ChangeNumber = &ChangeNumberInt
@@ -95,11 +95,11 @@ func (o *Replaceresponse) UnmarshalJSON(b []byte) error {
 	if UploadDestinationUri, ok := ReplaceresponseMap["uploadDestinationUri"].(string); ok {
 		o.UploadDestinationUri = &UploadDestinationUri
 	}
-	
+    
 	if UploadMethod, ok := ReplaceresponseMap["uploadMethod"].(string); ok {
 		o.UploadMethod = &UploadMethod
 	}
-	
+    
 
 	return nil
 }

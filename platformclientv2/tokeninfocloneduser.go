@@ -45,7 +45,7 @@ func (o *Tokeninfocloneduser) UnmarshalJSON(b []byte) error {
 	if Id, ok := TokeninfocloneduserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Organization, ok := TokeninfocloneduserMap["organization"].(map[string]interface{}); ok {
 		OrganizationString, _ := json.Marshal(Organization)
 		json.Unmarshal(OrganizationString, &o.Organization)

@@ -53,15 +53,15 @@ func (o *Bulkerrordetail) UnmarshalJSON(b []byte) error {
 	if FieldName, ok := BulkerrordetailMap["fieldName"].(string); ok {
 		o.FieldName = &FieldName
 	}
-	
+    
 	if Value, ok := BulkerrordetailMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Message, ok := BulkerrordetailMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

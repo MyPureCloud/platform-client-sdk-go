@@ -69,19 +69,19 @@ func (o *Conversationeventtopicdialerpreview) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationeventtopicdialerpreviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ContactId, ok := ConversationeventtopicdialerpreviewMap["contactId"].(string); ok {
 		o.ContactId = &ContactId
 	}
-	
+    
 	if ContactListId, ok := ConversationeventtopicdialerpreviewMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if CampaignId, ok := ConversationeventtopicdialerpreviewMap["campaignId"].(string); ok {
 		o.CampaignId = &CampaignId
 	}
-	
+    
 	if PhoneNumberColumns, ok := ConversationeventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)

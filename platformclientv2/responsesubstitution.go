@@ -53,15 +53,15 @@ func (o *Responsesubstitution) UnmarshalJSON(b []byte) error {
 	if Id, ok := ResponsesubstitutionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Description, ok := ResponsesubstitutionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if DefaultValue, ok := ResponsesubstitutionMap["defaultValue"].(string); ok {
 		o.DefaultValue = &DefaultValue
 	}
-	
+    
 
 	return nil
 }

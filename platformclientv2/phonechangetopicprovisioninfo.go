@@ -67,11 +67,11 @@ func (o *Phonechangetopicprovisioninfo) UnmarshalJSON(b []byte) error {
 	if Source, ok := PhonechangetopicprovisioninfoMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if ErrorInfo, ok := PhonechangetopicprovisioninfoMap["errorInfo"].(string); ok {
 		o.ErrorInfo = &ErrorInfo
 	}
-	
+    
 
 	return nil
 }

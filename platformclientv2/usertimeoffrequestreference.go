@@ -53,7 +53,7 @@ func (o *Usertimeoffrequestreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := UsertimeoffrequestreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := UsertimeoffrequestreferenceMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -62,7 +62,7 @@ func (o *Usertimeoffrequestreference) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UsertimeoffrequestreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

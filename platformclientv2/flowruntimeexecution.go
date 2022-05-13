@@ -134,11 +134,11 @@ func (o *Flowruntimeexecution) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowruntimeexecutionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowruntimeexecutionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if FlowVersion, ok := FlowruntimeexecutionMap["flowVersion"].(map[string]interface{}); ok {
 		FlowVersionString, _ := json.Marshal(FlowVersion)
 		json.Unmarshal(FlowVersionString, &o.FlowVersion)
@@ -152,7 +152,7 @@ func (o *Flowruntimeexecution) UnmarshalJSON(b []byte) error {
 	if Status, ok := FlowruntimeexecutionMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if dateCompletedString, ok := FlowruntimeexecutionMap["dateCompleted"].(string); ok {
 		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
 		o.DateCompleted = &DateCompleted
@@ -161,7 +161,7 @@ func (o *Flowruntimeexecution) UnmarshalJSON(b []byte) error {
 	if CompletionReason, ok := FlowruntimeexecutionMap["completionReason"].(string); ok {
 		o.CompletionReason = &CompletionReason
 	}
-	
+    
 	if FlowErrorInfo, ok := FlowruntimeexecutionMap["flowErrorInfo"].(map[string]interface{}); ok {
 		FlowErrorInfoString, _ := json.Marshal(FlowErrorInfo)
 		json.Unmarshal(FlowErrorInfoString, &o.FlowErrorInfo)
@@ -180,7 +180,7 @@ func (o *Flowruntimeexecution) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowruntimeexecutionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

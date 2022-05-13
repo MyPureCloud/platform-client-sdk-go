@@ -182,47 +182,47 @@ func (o *Interactionstatsalert) UnmarshalJSON(b []byte) error {
 	if Id, ok := InteractionstatsalertMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := InteractionstatsalertMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Dimension, ok := InteractionstatsalertMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if DimensionValue, ok := InteractionstatsalertMap["dimensionValue"].(string); ok {
 		o.DimensionValue = &DimensionValue
 	}
-	
+    
 	if Metric, ok := InteractionstatsalertMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if MediaType, ok := InteractionstatsalertMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if NumericRange, ok := InteractionstatsalertMap["numericRange"].(string); ok {
 		o.NumericRange = &NumericRange
 	}
-	
+    
 	if Statistic, ok := InteractionstatsalertMap["statistic"].(string); ok {
 		o.Statistic = &Statistic
 	}
-	
+    
 	if Value, ok := InteractionstatsalertMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 	if RuleId, ok := InteractionstatsalertMap["ruleId"].(string); ok {
 		o.RuleId = &RuleId
 	}
-	
+    
 	if Unread, ok := InteractionstatsalertMap["unread"].(bool); ok {
 		o.Unread = &Unread
 	}
-	
+    
 	if startDateString, ok := InteractionstatsalertMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -246,11 +246,11 @@ func (o *Interactionstatsalert) UnmarshalJSON(b []byte) error {
 	if RuleUri, ok := InteractionstatsalertMap["ruleUri"].(string); ok {
 		o.RuleUri = &RuleUri
 	}
-	
+    
 	if SelfUri, ok := InteractionstatsalertMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -54,7 +54,7 @@ func (o *Agentactivitychangedtopicroutingstatus) UnmarshalJSON(b []byte) error {
 	if Status, ok := AgentactivitychangedtopicroutingstatusMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if startTimeString, ok := AgentactivitychangedtopicroutingstatusMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime

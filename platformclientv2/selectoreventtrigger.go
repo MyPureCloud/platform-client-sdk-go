@@ -45,11 +45,11 @@ func (o *Selectoreventtrigger) UnmarshalJSON(b []byte) error {
 	if Selector, ok := SelectoreventtriggerMap["selector"].(string); ok {
 		o.Selector = &Selector
 	}
-	
+    
 	if EventName, ok := SelectoreventtriggerMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 
 	return nil
 }

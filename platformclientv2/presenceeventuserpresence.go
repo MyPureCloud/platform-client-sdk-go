@@ -78,7 +78,7 @@ func (o *Presenceeventuserpresence) UnmarshalJSON(b []byte) error {
 	if Source, ok := PresenceeventuserpresenceMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if PresenceDefinition, ok := PresenceeventuserpresenceMap["presenceDefinition"].(map[string]interface{}); ok {
 		PresenceDefinitionString, _ := json.Marshal(PresenceDefinition)
 		json.Unmarshal(PresenceDefinitionString, &o.PresenceDefinition)
@@ -87,11 +87,11 @@ func (o *Presenceeventuserpresence) UnmarshalJSON(b []byte) error {
 	if Primary, ok := PresenceeventuserpresenceMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 	if Message, ok := PresenceeventuserpresenceMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if modifiedDateString, ok := PresenceeventuserpresenceMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate

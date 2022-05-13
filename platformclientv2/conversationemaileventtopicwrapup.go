@@ -78,11 +78,11 @@ func (o *Conversationemaileventtopicwrapup) UnmarshalJSON(b []byte) error {
 	if Code, ok := ConversationemaileventtopicwrapupMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Notes, ok := ConversationemaileventtopicwrapupMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Tags, ok := ConversationemaileventtopicwrapupMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)

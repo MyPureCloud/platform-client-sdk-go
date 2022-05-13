@@ -75,17 +75,17 @@ func (o *Dialercampaignprogresseventcampaignprogress) UnmarshalJSON(b []byte) er
 		NumberOfContactsCalledFloat32 := float32(NumberOfContactsCalled)
 		o.NumberOfContactsCalled = &NumberOfContactsCalledFloat32
 	}
-	
+    
 	if NumberOfContactsMessaged, ok := DialercampaignprogresseventcampaignprogressMap["numberOfContactsMessaged"].(float64); ok {
 		NumberOfContactsMessagedFloat32 := float32(NumberOfContactsMessaged)
 		o.NumberOfContactsMessaged = &NumberOfContactsMessagedFloat32
 	}
-	
+    
 	if TotalNumberOfContacts, ok := DialercampaignprogresseventcampaignprogressMap["totalNumberOfContacts"].(float64); ok {
 		TotalNumberOfContactsFloat32 := float32(TotalNumberOfContacts)
 		o.TotalNumberOfContacts = &TotalNumberOfContactsFloat32
 	}
-	
+    
 	if Percentage, ok := DialercampaignprogresseventcampaignprogressMap["percentage"].(float64); ok {
 		PercentageInt := int(Percentage)
 		o.Percentage = &PercentageInt

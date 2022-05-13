@@ -61,7 +61,7 @@ func (o *Campaignruleaction) UnmarshalJSON(b []byte) error {
 	if Id, ok := CampaignruleactionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Parameters, ok := CampaignruleactionMap["parameters"].(map[string]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)
@@ -70,7 +70,7 @@ func (o *Campaignruleaction) UnmarshalJSON(b []byte) error {
 	if ActionType, ok := CampaignruleactionMap["actionType"].(string); ok {
 		o.ActionType = &ActionType
 	}
-	
+    
 	if CampaignRuleActionEntities, ok := CampaignruleactionMap["campaignRuleActionEntities"].(map[string]interface{}); ok {
 		CampaignRuleActionEntitiesString, _ := json.Marshal(CampaignRuleActionEntities)
 		json.Unmarshal(CampaignRuleActionEntitiesString, &o.CampaignRuleActionEntities)

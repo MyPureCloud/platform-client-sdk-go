@@ -61,19 +61,19 @@ func (o *Lexbot) UnmarshalJSON(b []byte) error {
 	if Id, ok := LexbotMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LexbotMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := LexbotMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SelfUri, ok := LexbotMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

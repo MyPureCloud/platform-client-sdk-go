@@ -98,11 +98,11 @@ func (o *Errordetails) UnmarshalJSON(b []byte) error {
 	if Message, ok := ErrordetailsMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if MessageWithParams, ok := ErrordetailsMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := ErrordetailsMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -111,11 +111,11 @@ func (o *Errordetails) UnmarshalJSON(b []byte) error {
 	if Code, ok := ErrordetailsMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if ContextId, ok := ErrordetailsMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Nested, ok := ErrordetailsMap["nested"].(map[string]interface{}); ok {
 		NestedString, _ := json.Marshal(Nested)
 		json.Unmarshal(NestedString, &o.Nested)
@@ -124,7 +124,7 @@ func (o *Errordetails) UnmarshalJSON(b []byte) error {
 	if Details, ok := ErrordetailsMap["details"].(string); ok {
 		o.Details = &Details
 	}
-	
+    
 
 	return nil
 }

@@ -53,7 +53,7 @@ func (o *Edgemetricstopicedgemetricmemory) UnmarshalJSON(b []byte) error {
 	if VarType, ok := EdgemetricstopicedgemetricmemoryMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if AvailableBytes, ok := EdgemetricstopicedgemetricmemoryMap["availableBytes"].(float64); ok {
 		AvailableBytesInt := int(AvailableBytes)
 		o.AvailableBytes = &AvailableBytesInt

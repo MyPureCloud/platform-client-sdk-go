@@ -85,31 +85,31 @@ func (o *Journeywebactioneventsnotificationmktcampaign) UnmarshalJSON(b []byte) 
 	if Content, ok := JourneywebactioneventsnotificationmktcampaignMap["content"].(string); ok {
 		o.Content = &Content
 	}
-	
+    
 	if Medium, ok := JourneywebactioneventsnotificationmktcampaignMap["medium"].(string); ok {
 		o.Medium = &Medium
 	}
-	
+    
 	if Name, ok := JourneywebactioneventsnotificationmktcampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Source, ok := JourneywebactioneventsnotificationmktcampaignMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if Term, ok := JourneywebactioneventsnotificationmktcampaignMap["term"].(string); ok {
 		o.Term = &Term
 	}
-	
+    
 	if ClickId, ok := JourneywebactioneventsnotificationmktcampaignMap["clickId"].(string); ok {
 		o.ClickId = &ClickId
 	}
-	
+    
 	if Network, ok := JourneywebactioneventsnotificationmktcampaignMap["network"].(string); ok {
 		o.Network = &Network
 	}
-	
+    
 
 	return nil
 }

@@ -117,7 +117,7 @@ func (o *Buforecastmodification) UnmarshalJSON(b []byte) error {
 	if VarType, ok := BuforecastmodificationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if StartIntervalIndex, ok := BuforecastmodificationMap["startIntervalIndex"].(float64); ok {
 		StartIntervalIndexInt := int(StartIntervalIndex)
 		o.StartIntervalIndex = &StartIntervalIndexInt
@@ -131,15 +131,15 @@ func (o *Buforecastmodification) UnmarshalJSON(b []byte) error {
 	if Metric, ok := BuforecastmodificationMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if LegacyMetric, ok := BuforecastmodificationMap["legacyMetric"].(string); ok {
 		o.LegacyMetric = &LegacyMetric
 	}
-	
+    
 	if Value, ok := BuforecastmodificationMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Values, ok := BuforecastmodificationMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -148,15 +148,15 @@ func (o *Buforecastmodification) UnmarshalJSON(b []byte) error {
 	if DisplayGranularity, ok := BuforecastmodificationMap["displayGranularity"].(string); ok {
 		o.DisplayGranularity = &DisplayGranularity
 	}
-	
+    
 	if Granularity, ok := BuforecastmodificationMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if Enabled, ok := BuforecastmodificationMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if PlanningGroupIds, ok := BuforecastmodificationMap["planningGroupIds"].([]interface{}); ok {
 		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
 		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)

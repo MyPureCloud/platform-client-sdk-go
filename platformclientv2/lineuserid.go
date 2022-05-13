@@ -37,7 +37,7 @@ func (o *Lineuserid) UnmarshalJSON(b []byte) error {
 	if UserId, ok := LineuseridMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 
 	return nil
 }

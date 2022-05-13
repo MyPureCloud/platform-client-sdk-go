@@ -54,7 +54,7 @@ func (o *Billingusageresource) UnmarshalJSON(b []byte) error {
 	if Name, ok := BillingusageresourceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateString, ok := BillingusageresourceMap["date"].(string); ok {
 		Date, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateString)
 		o.Date = &Date

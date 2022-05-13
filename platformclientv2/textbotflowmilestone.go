@@ -62,7 +62,7 @@ func (o *Textbotflowmilestone) UnmarshalJSON(b []byte) error {
 	if Id, ok := TextbotflowmilestoneMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if dateReachedString, ok := TextbotflowmilestoneMap["dateReached"].(string); ok {
 		DateReached, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateReachedString)
 		o.DateReached = &DateReached

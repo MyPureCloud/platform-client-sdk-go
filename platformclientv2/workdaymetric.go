@@ -84,7 +84,7 @@ func (o *Workdaymetric) UnmarshalJSON(b []byte) error {
 	if Value, ok := WorkdaymetricMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 	if PunctualityEvents, ok := WorkdaymetricMap["punctualityEvents"].([]interface{}); ok {
 		PunctualityEventsString, _ := json.Marshal(PunctualityEvents)
 		json.Unmarshal(PunctualityEventsString, &o.PunctualityEvents)

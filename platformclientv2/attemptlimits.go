@@ -134,11 +134,11 @@ func (o *Attemptlimits) UnmarshalJSON(b []byte) error {
 	if Id, ok := AttemptlimitsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AttemptlimitsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := AttemptlimitsMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -167,11 +167,11 @@ func (o *Attemptlimits) UnmarshalJSON(b []byte) error {
 	if TimeZoneId, ok := AttemptlimitsMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}
-	
+    
 	if ResetPeriod, ok := AttemptlimitsMap["resetPeriod"].(string); ok {
 		o.ResetPeriod = &ResetPeriod
 	}
-	
+    
 	if RecallEntries, ok := AttemptlimitsMap["recallEntries"].(map[string]interface{}); ok {
 		RecallEntriesString, _ := json.Marshal(RecallEntries)
 		json.Unmarshal(RecallEntriesString, &o.RecallEntries)
@@ -180,7 +180,7 @@ func (o *Attemptlimits) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AttemptlimitsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -32,8 +32,6 @@ func NewArchitectApiWithConfig(config *Configuration) *ArchitectApi {
 // DeleteArchitectEmergencygroup invokes DELETE /api/v2/architect/emergencygroups/{emergencyGroupId}
 //
 // Deletes a emergency group by ID
-//
-// 
 func (a ArchitectApi) DeleteArchitectEmergencygroup(emergencyGroupId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a ArchitectApi) DeleteArchitectEmergencygroup(emergencyGroupId string) (*A
 
 	// verify the required parameter 'emergencyGroupId' is set
 	if &emergencyGroupId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'emergencyGroupId' when calling ArchitectApi->DeleteArchitectEmergencygroup")
 	}
 
@@ -98,8 +96,6 @@ func (a ArchitectApi) DeleteArchitectEmergencygroup(emergencyGroupId string) (*A
 // DeleteArchitectIvr invokes DELETE /api/v2/architect/ivrs/{ivrId}
 //
 // Delete an IVR Config.
-//
-// 
 func (a ArchitectApi) DeleteArchitectIvr(ivrId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +107,7 @@ func (a ArchitectApi) DeleteArchitectIvr(ivrId string) (*APIResponse, error) {
 
 	// verify the required parameter 'ivrId' is set
 	if &ivrId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'ivrId' when calling ArchitectApi->DeleteArchitectIvr")
 	}
 
@@ -164,8 +160,6 @@ func (a ArchitectApi) DeleteArchitectIvr(ivrId string) (*APIResponse, error) {
 // DeleteArchitectPrompt invokes DELETE /api/v2/architect/prompts/{promptId}
 //
 // Delete specified user prompt
-//
-// 
 func (a ArchitectApi) DeleteArchitectPrompt(promptId string, allResources bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -177,7 +171,7 @@ func (a ArchitectApi) DeleteArchitectPrompt(promptId string, allResources bool) 
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->DeleteArchitectPrompt")
 	}
 
@@ -232,8 +226,6 @@ func (a ArchitectApi) DeleteArchitectPrompt(promptId string, allResources bool) 
 // DeleteArchitectPromptResource invokes DELETE /api/v2/architect/prompts/{promptId}/resources/{languageCode}
 //
 // Delete specified user prompt resource
-//
-// 
 func (a ArchitectApi) DeleteArchitectPromptResource(promptId string, languageCode string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -246,12 +238,12 @@ func (a ArchitectApi) DeleteArchitectPromptResource(promptId string, languageCod
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->DeleteArchitectPromptResource")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->DeleteArchitectPromptResource")
 	}
 
@@ -304,8 +296,6 @@ func (a ArchitectApi) DeleteArchitectPromptResource(promptId string, languageCod
 // DeleteArchitectPromptResourceAudio invokes DELETE /api/v2/architect/prompts/{promptId}/resources/{languageCode}/audio
 //
 // Delete specified user prompt resource audio
-//
-// 
 func (a ArchitectApi) DeleteArchitectPromptResourceAudio(promptId string, languageCode string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -318,12 +308,12 @@ func (a ArchitectApi) DeleteArchitectPromptResourceAudio(promptId string, langua
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->DeleteArchitectPromptResourceAudio")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->DeleteArchitectPromptResourceAudio")
 	}
 
@@ -450,8 +440,6 @@ func (a ArchitectApi) DeleteArchitectPrompts(id []string) (*Operation, *APIRespo
 // DeleteArchitectSchedule invokes DELETE /api/v2/architect/schedules/{scheduleId}
 //
 // Delete a schedule by id
-//
-// 
 func (a ArchitectApi) DeleteArchitectSchedule(scheduleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -463,7 +451,7 @@ func (a ArchitectApi) DeleteArchitectSchedule(scheduleId string) (*APIResponse, 
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'scheduleId' when calling ArchitectApi->DeleteArchitectSchedule")
 	}
 
@@ -516,8 +504,6 @@ func (a ArchitectApi) DeleteArchitectSchedule(scheduleId string) (*APIResponse, 
 // DeleteArchitectSchedulegroup invokes DELETE /api/v2/architect/schedulegroups/{scheduleGroupId}
 //
 // Deletes a schedule group by ID
-//
-// 
 func (a ArchitectApi) DeleteArchitectSchedulegroup(scheduleGroupId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -529,7 +515,7 @@ func (a ArchitectApi) DeleteArchitectSchedulegroup(scheduleGroupId string) (*API
 
 	// verify the required parameter 'scheduleGroupId' is set
 	if &scheduleGroupId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'scheduleGroupId' when calling ArchitectApi->DeleteArchitectSchedulegroup")
 	}
 
@@ -582,8 +568,6 @@ func (a ArchitectApi) DeleteArchitectSchedulegroup(scheduleGroupId string) (*API
 // DeleteArchitectSystempromptResource invokes DELETE /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}
 //
 // Delete a system prompt resource override.
-//
-// 
 func (a ArchitectApi) DeleteArchitectSystempromptResource(promptId string, languageCode string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -596,12 +580,12 @@ func (a ArchitectApi) DeleteArchitectSystempromptResource(promptId string, langu
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->DeleteArchitectSystempromptResource")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->DeleteArchitectSystempromptResource")
 	}
 
@@ -654,8 +638,6 @@ func (a ArchitectApi) DeleteArchitectSystempromptResource(promptId string, langu
 // DeleteFlow invokes DELETE /api/v2/flows/{flowId}
 //
 // Delete flow
-//
-// 
 func (a ArchitectApi) DeleteFlow(flowId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -667,7 +649,7 @@ func (a ArchitectApi) DeleteFlow(flowId string) (*APIResponse, error) {
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->DeleteFlow")
 	}
 
@@ -807,7 +789,7 @@ func (a ArchitectApi) DeleteFlowsDatatable(datatableId string, force bool) (*API
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->DeleteFlowsDatatable")
 	}
 
@@ -876,12 +858,12 @@ func (a ArchitectApi) DeleteFlowsDatatableRow(datatableId string, rowId string) 
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->DeleteFlowsDatatableRow")
 	}
 	// verify the required parameter 'rowId' is set
 	if &rowId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'rowId' when calling ArchitectApi->DeleteFlowsDatatableRow")
 	}
 
@@ -934,21 +916,19 @@ func (a ArchitectApi) DeleteFlowsDatatableRow(datatableId string, rowId string) 
 // DeleteFlowsMilestone invokes DELETE /api/v2/flows/milestones/{milestoneId}
 //
 // Delete a flow milestone.
-//
-// 
-func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*Empty, *APIResponse, error) {
+func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/milestones/{milestoneId}"
 	path = strings.Replace(path, "{milestoneId}", fmt.Sprintf("%v", milestoneId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'milestoneId' is set
 	if &milestoneId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'milestoneId' when calling ArchitectApi->DeleteFlowsMilestone")
 	}
 
@@ -988,14 +968,14 @@ func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*Empty, *APIResp
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1007,8 +987,6 @@ func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*Empty, *APIResp
 // GetArchitectDependencytracking invokes GET /api/v2/architect/dependencytracking
 //
 // Get Dependency Tracking objects that have a given display name
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int, pageSize int, objectType []string, consumedResources bool, consumingResources bool, consumedResourceType []string, consumingResourceType []string) (*Dependencyobjectentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1020,7 +998,7 @@ func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int
 
 	// verify the required parameter 'name' is set
 	if &name == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'name' when calling ArchitectApi->GetArchitectDependencytracking")
 	}
 
@@ -1095,8 +1073,6 @@ func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int
 // GetArchitectDependencytrackingBuild invokes GET /api/v2/architect/dependencytracking/build
 //
 // Get Dependency Tracking build status for an organization
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingBuild() (*Dependencystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1162,8 +1138,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingBuild() (*Dependencystatus, 
 // GetArchitectDependencytrackingConsumedresources invokes GET /api/v2/architect/dependencytracking/consumedresources
 //
 // Get resources that are consumed by a given Dependency Tracking object
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string, version string, objectType string, resourceType []string, pageNumber int, pageSize int) (*Consumedresourcesentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1175,17 +1149,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 
 	// verify the required parameter 'id' is set
 	if &id == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'id' when calling ArchitectApi->GetArchitectDependencytrackingConsumedresources")
 	}
 	// verify the required parameter 'version' is set
 	if &version == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'version' when calling ArchitectApi->GetArchitectDependencytrackingConsumedresources")
 	}
 	// verify the required parameter 'objectType' is set
 	if &objectType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'objectType' when calling ArchitectApi->GetArchitectDependencytrackingConsumedresources")
 	}
 
@@ -1256,8 +1230,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 // GetArchitectDependencytrackingConsumingresources invokes GET /api/v2/architect/dependencytracking/consumingresources
 //
 // Get resources that consume a given Dependency Tracking object
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string, objectType string, resourceType []string, version string, pageNumber int, pageSize int, flowFilter string) (*Consumingresourcesentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1269,12 +1241,12 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 
 	// verify the required parameter 'id' is set
 	if &id == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'id' when calling ArchitectApi->GetArchitectDependencytrackingConsumingresources")
 	}
 	// verify the required parameter 'objectType' is set
 	if &objectType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'objectType' when calling ArchitectApi->GetArchitectDependencytrackingConsumingresources")
 	}
 
@@ -1347,8 +1319,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 // GetArchitectDependencytrackingDeletedresourceconsumers invokes GET /api/v2/architect/dependencytracking/deletedresourceconsumers
 //
 // Get Dependency Tracking objects that consume deleted resources
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(name string, objectType []string, flowFilter string, consumedResources bool, consumedResourceType []string, pageNumber int, pageSize int) (*Dependencyobjectentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1428,8 +1398,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(nam
 // GetArchitectDependencytrackingObject invokes GET /api/v2/architect/dependencytracking/object
 //
 // Get a Dependency Tracking object
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version string, objectType string, consumedResources bool, consumingResources bool, consumedResourceType []string, consumingResourceType []string, consumedResourceRequest bool) (*Dependencyobject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1441,7 +1409,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version st
 
 	// verify the required parameter 'id' is set
 	if &id == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'id' when calling ArchitectApi->GetArchitectDependencytrackingObject")
 	}
 
@@ -1516,8 +1484,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version st
 // GetArchitectDependencytrackingType invokes GET /api/v2/architect/dependencytracking/types/{typeId}
 //
 // Get a Dependency Tracking type.
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingType(typeId string) (*Dependencytype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1530,7 +1496,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingType(typeId string) (*Depend
 
 	// verify the required parameter 'typeId' is set
 	if &typeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'typeId' when calling ArchitectApi->GetArchitectDependencytrackingType")
 	}
 
@@ -1589,8 +1555,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingType(typeId string) (*Depend
 // GetArchitectDependencytrackingTypes invokes GET /api/v2/architect/dependencytracking/types
 //
 // Get Dependency Tracking types.
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int, pageSize int) (*Dependencytypeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1660,8 +1624,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int, pageSi
 // GetArchitectDependencytrackingUpdatedresourceconsumers invokes GET /api/v2/architect/dependencytracking/updatedresourceconsumers
 //
 // Get Dependency Tracking objects that depend on updated resources
-//
-// 
 func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(name string, objectType []string, consumedResources bool, consumedResourceType []string, pageNumber int, pageSize int) (*Dependencyobjectentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1739,8 +1701,6 @@ func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(nam
 // GetArchitectEmergencygroup invokes GET /api/v2/architect/emergencygroups/{emergencyGroupId}
 //
 // Gets a emergency group by ID
-//
-// 
 func (a ArchitectApi) GetArchitectEmergencygroup(emergencyGroupId string) (*Emergencygroup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1753,7 +1713,7 @@ func (a ArchitectApi) GetArchitectEmergencygroup(emergencyGroupId string) (*Emer
 
 	// verify the required parameter 'emergencyGroupId' is set
 	if &emergencyGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'emergencyGroupId' when calling ArchitectApi->GetArchitectEmergencygroup")
 	}
 
@@ -1812,8 +1772,6 @@ func (a ArchitectApi) GetArchitectEmergencygroup(emergencyGroupId string) (*Emer
 // GetArchitectEmergencygroups invokes GET /api/v2/architect/emergencygroups
 //
 // Get a list of emergency groups.
-//
-// 
 func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int, pageSize int, sortBy string, sortOrder string, name string) (*Emergencygrouplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1889,8 +1847,6 @@ func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int, pageSize int, 
 // GetArchitectIvr invokes GET /api/v2/architect/ivrs/{ivrId}
 //
 // Get an IVR config.
-//
-// 
 func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1903,7 +1859,7 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 
 	// verify the required parameter 'ivrId' is set
 	if &ivrId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'ivrId' when calling ArchitectApi->GetArchitectIvr")
 	}
 
@@ -1962,8 +1918,6 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 // GetArchitectIvrs invokes GET /api/v2/architect/ivrs
 //
 // Get IVR configs.
-//
-// 
 func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy string, sortOrder string, name string) (*Ivrentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2039,8 +1993,6 @@ func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy stri
 // GetArchitectPrompt invokes GET /api/v2/architect/prompts/{promptId}
 //
 // Get specified user prompt
-//
-// 
 func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2053,7 +2005,7 @@ func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectPrompt")
 	}
 
@@ -2112,8 +2064,6 @@ func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse
 // GetArchitectPromptHistoryHistoryId invokes GET /api/v2/architect/prompts/{promptId}/history/{historyId}
 //
 // Get generated prompt history
-//
-// 
 func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, historyId string, pageNumber int, pageSize int, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2127,12 +2077,12 @@ func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, histor
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectPromptHistoryHistoryId")
 	}
 	// verify the required parameter 'historyId' is set
 	if &historyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'historyId' when calling ArchitectApi->GetArchitectPromptHistoryHistoryId")
 	}
 
@@ -2201,8 +2151,6 @@ func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, histor
 // GetArchitectPromptResource invokes GET /api/v2/architect/prompts/{promptId}/resources/{languageCode}
 //
 // Get specified user prompt resource
-//
-// 
 func (a ArchitectApi) GetArchitectPromptResource(promptId string, languageCode string) (*Promptasset, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2216,12 +2164,12 @@ func (a ArchitectApi) GetArchitectPromptResource(promptId string, languageCode s
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectPromptResource")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->GetArchitectPromptResource")
 	}
 
@@ -2294,7 +2242,7 @@ func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber in
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectPromptResources")
 	}
 
@@ -2438,8 +2386,6 @@ func (a ArchitectApi) GetArchitectPrompts(pageNumber int, pageSize int, name []s
 // GetArchitectSchedule invokes GET /api/v2/architect/schedules/{scheduleId}
 //
 // Get a schedule by ID
-//
-// 
 func (a ArchitectApi) GetArchitectSchedule(scheduleId string) (*Schedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2452,7 +2398,7 @@ func (a ArchitectApi) GetArchitectSchedule(scheduleId string) (*Schedule, *APIRe
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling ArchitectApi->GetArchitectSchedule")
 	}
 
@@ -2511,8 +2457,6 @@ func (a ArchitectApi) GetArchitectSchedule(scheduleId string) (*Schedule, *APIRe
 // GetArchitectSchedulegroup invokes GET /api/v2/architect/schedulegroups/{scheduleGroupId}
 //
 // Gets a schedule group by ID
-//
-// 
 func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedulegroup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2525,7 +2469,7 @@ func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedu
 
 	// verify the required parameter 'scheduleGroupId' is set
 	if &scheduleGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleGroupId' when calling ArchitectApi->GetArchitectSchedulegroup")
 	}
 
@@ -2584,8 +2528,6 @@ func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedu
 // GetArchitectSchedulegroups invokes GET /api/v2/architect/schedulegroups
 //
 // Get a list of schedule groups.
-//
-// 
 func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, scheduleIds string, divisionId []string) (*Schedulegroupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2665,8 +2607,6 @@ func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int, pageSize int, s
 // GetArchitectSchedules invokes GET /api/v2/architect/schedules
 //
 // Get a list of schedules.
-//
-// 
 func (a ArchitectApi) GetArchitectSchedules(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, divisionId []string) (*Scheduleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2744,8 +2684,6 @@ func (a ArchitectApi) GetArchitectSchedules(pageNumber int, pageSize int, sortBy
 // GetArchitectSystemprompt invokes GET /api/v2/architect/systemprompts/{promptId}
 //
 // Get a system prompt
-//
-// 
 func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2758,7 +2696,7 @@ func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, 
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectSystemprompt")
 	}
 
@@ -2817,8 +2755,6 @@ func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, 
 // GetArchitectSystempromptHistoryHistoryId invokes GET /api/v2/architect/systemprompts/{promptId}/history/{historyId}
 //
 // Get generated prompt history
-//
-// 
 func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, historyId string, pageNumber int, pageSize int, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2832,12 +2768,12 @@ func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, 
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectSystempromptHistoryHistoryId")
 	}
 	// verify the required parameter 'historyId' is set
 	if &historyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'historyId' when calling ArchitectApi->GetArchitectSystempromptHistoryHistoryId")
 	}
 
@@ -2906,8 +2842,6 @@ func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, 
 // GetArchitectSystempromptResource invokes GET /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}
 //
 // Get a system prompt resource.
-//
-// 
 func (a ArchitectApi) GetArchitectSystempromptResource(promptId string, languageCode string) (*Systempromptasset, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2921,12 +2855,12 @@ func (a ArchitectApi) GetArchitectSystempromptResource(promptId string, language
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectSystempromptResource")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->GetArchitectSystempromptResource")
 	}
 
@@ -2985,8 +2919,6 @@ func (a ArchitectApi) GetArchitectSystempromptResource(promptId string, language
 // GetArchitectSystempromptResources invokes GET /api/v2/architect/systemprompts/{promptId}/resources
 //
 // Get system prompt resources.
-//
-// 
 func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNumber int, pageSize int, sortBy string, sortOrder string) (*Systempromptassetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2999,7 +2931,7 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->GetArchitectSystempromptResources")
 	}
 
@@ -3066,8 +2998,6 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 // GetArchitectSystemprompts invokes GET /api/v2/architect/systemprompts
 //
 // Get System Prompts
-//
-// 
 func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, description string, nameOrDescription string) (*Systempromptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3147,8 +3077,6 @@ func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, so
 // GetFlow invokes GET /api/v2/flows/{flowId}
 //
 // Get flow
-//
-// 
 func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3161,7 +3089,7 @@ func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse,
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlow")
 	}
 
@@ -3222,8 +3150,6 @@ func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse,
 // GetFlowHistoryHistoryId invokes GET /api/v2/flows/{flowId}/history/{historyId}
 //
 // Get generated flow history
-//
-// 
 func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, pageNumber int, pageSize int, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3237,12 +3163,12 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowHistoryHistoryId")
 	}
 	// verify the required parameter 'historyId' is set
 	if &historyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'historyId' when calling ArchitectApi->GetFlowHistoryHistoryId")
 	}
 
@@ -3311,8 +3237,6 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 // GetFlowLatestconfiguration invokes GET /api/v2/flows/{flowId}/latestconfiguration
 //
 // Get the latest configuration for flow
-//
-// 
 func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3325,7 +3249,7 @@ func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowLatestconfiguration")
 	}
 
@@ -3386,8 +3310,6 @@ func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*
 // GetFlowVersion invokes GET /api/v2/flows/{flowId}/versions/{versionId}
 //
 // Get flow version
-//
-// 
 func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted string) (*Flowversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3401,12 +3323,12 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowVersion")
 	}
 	// verify the required parameter 'versionId' is set
 	if &versionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling ArchitectApi->GetFlowVersion")
 	}
 
@@ -3467,8 +3389,6 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 // GetFlowVersionConfiguration invokes GET /api/v2/flows/{flowId}/versions/{versionId}/configuration
 //
 // Create flow version configuration
-//
-// 
 func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId string, deleted string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3482,12 +3402,12 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowVersionConfiguration")
 	}
 	// verify the required parameter 'versionId' is set
 	if &versionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling ArchitectApi->GetFlowVersionConfiguration")
 	}
 
@@ -3548,8 +3468,6 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 // GetFlowVersions invokes GET /api/v2/flows/{flowId}/versions
 //
 // Get flow version list
-//
-// 
 func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int, pageSize int, deleted bool) (*Flowversionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3562,7 +3480,7 @@ func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int, pageSize in
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowVersions")
 	}
 
@@ -3746,7 +3664,7 @@ func (a ArchitectApi) GetFlowsDatatable(datatableId string, expand string) (*Dat
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatable")
 	}
 
@@ -3822,12 +3740,12 @@ func (a ArchitectApi) GetFlowsDatatableExportJob(datatableId string, exportJobId
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableExportJob")
 	}
 	// verify the required parameter 'exportJobId' is set
 	if &exportJobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'exportJobId' when calling ArchitectApi->GetFlowsDatatableExportJob")
 	}
 
@@ -3901,12 +3819,12 @@ func (a ArchitectApi) GetFlowsDatatableImportJob(datatableId string, importJobId
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableImportJob")
 	}
 	// verify the required parameter 'importJobId' is set
 	if &importJobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'importJobId' when calling ArchitectApi->GetFlowsDatatableImportJob")
 	}
 
@@ -3979,7 +3897,7 @@ func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableImportJobs")
 	}
 
@@ -4057,12 +3975,12 @@ func (a ArchitectApi) GetFlowsDatatableRow(datatableId string, rowId string, sho
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableRow")
 	}
 	// verify the required parameter 'rowId' is set
 	if &rowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'rowId' when calling ArchitectApi->GetFlowsDatatableRow")
 	}
 
@@ -4137,7 +4055,7 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, 
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableRows")
 	}
 
@@ -4297,7 +4215,7 @@ func (a ArchitectApi) GetFlowsDatatablesDivisionview(datatableId string, expand 
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatablesDivisionview")
 	}
 
@@ -4529,9 +4447,7 @@ func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int, pa
 
 // GetFlowsExecution invokes GET /api/v2/flows/executions/{flowExecutionId}
 //
-// Get a flow execution&#39;s details. Flow execution details are available for several days after the flow is started.
-//
-// 
+// Get a flow execution's details. Flow execution details are available for several days after the flow is started.
 func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexecution, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4544,7 +4460,7 @@ func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexe
 
 	// verify the required parameter 'flowExecutionId' is set
 	if &flowExecutionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowExecutionId' when calling ArchitectApi->GetFlowsExecution")
 	}
 
@@ -4603,8 +4519,6 @@ func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexe
 // GetFlowsJob invokes GET /api/v2/flows/jobs/{jobId}
 //
 // Fetch Architect Job Status
-//
-// 
 func (a ArchitectApi) GetFlowsJob(jobId string, expand []string) (*Architectjobstateresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4617,7 +4531,7 @@ func (a ArchitectApi) GetFlowsJob(jobId string, expand []string) (*Architectjobs
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling ArchitectApi->GetFlowsJob")
 	}
 
@@ -4692,7 +4606,7 @@ func (a ArchitectApi) GetFlowsMilestone(milestoneId string) (*Flowmilestone, *AP
 
 	// verify the required parameter 'milestoneId' is set
 	if &milestoneId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'milestoneId' when calling ArchitectApi->GetFlowsMilestone")
 	}
 
@@ -4931,7 +4845,7 @@ func (a ArchitectApi) GetFlowsOutcome(flowOutcomeId string) (*Flowoutcome, *APIR
 
 	// verify the required parameter 'flowOutcomeId' is set
 	if &flowOutcomeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowOutcomeId' when calling ArchitectApi->GetFlowsOutcome")
 	}
 
@@ -5216,8 +5130,6 @@ func (a ArchitectApi) PostArchitectDependencytrackingBuild() (*APIResponse, erro
 // PostArchitectEmergencygroups invokes POST /api/v2/architect/emergencygroups
 //
 // Creates a new emergency group
-//
-// 
 func (a ArchitectApi) PostArchitectEmergencygroups(body Emergencygroup) (*Emergencygroup, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5229,7 +5141,7 @@ func (a ArchitectApi) PostArchitectEmergencygroups(body Emergencygroup) (*Emerge
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostArchitectEmergencygroups")
 	}
 
@@ -5291,8 +5203,6 @@ func (a ArchitectApi) PostArchitectEmergencygroups(body Emergencygroup) (*Emerge
 // PostArchitectIvrs invokes POST /api/v2/architect/ivrs
 //
 // Create IVR config.
-//
-// 
 func (a ArchitectApi) PostArchitectIvrs(body Ivr) (*Ivr, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5304,7 +5214,7 @@ func (a ArchitectApi) PostArchitectIvrs(body Ivr) (*Ivr, *APIResponse, error) {
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostArchitectIvrs")
 	}
 
@@ -5380,7 +5290,7 @@ func (a ArchitectApi) PostArchitectPromptHistory(promptId string) (*Operation, *
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PostArchitectPromptHistory")
 	}
 
@@ -5439,8 +5349,6 @@ func (a ArchitectApi) PostArchitectPromptHistory(promptId string) (*Operation, *
 // PostArchitectPromptResources invokes POST /api/v2/architect/prompts/{promptId}/resources
 //
 // Create a new user prompt resource
-//
-// 
 func (a ArchitectApi) PostArchitectPromptResources(promptId string, body Promptassetcreate) (*Promptasset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5453,12 +5361,12 @@ func (a ArchitectApi) PostArchitectPromptResources(promptId string, body Prompta
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PostArchitectPromptResources")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostArchitectPromptResources")
 	}
 
@@ -5520,8 +5428,6 @@ func (a ArchitectApi) PostArchitectPromptResources(promptId string, body Prompta
 // PostArchitectPrompts invokes POST /api/v2/architect/prompts
 //
 // Create a new user prompt
-//
-// 
 func (a ArchitectApi) PostArchitectPrompts(body Prompt) (*Prompt, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5533,7 +5439,7 @@ func (a ArchitectApi) PostArchitectPrompts(body Prompt) (*Prompt, *APIResponse, 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostArchitectPrompts")
 	}
 
@@ -5595,8 +5501,6 @@ func (a ArchitectApi) PostArchitectPrompts(body Prompt) (*Prompt, *APIResponse, 
 // PostArchitectSchedulegroups invokes POST /api/v2/architect/schedulegroups
 //
 // Creates a new schedule group
-//
-// 
 func (a ArchitectApi) PostArchitectSchedulegroups(body Schedulegroup) (*Schedulegroup, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5608,7 +5512,7 @@ func (a ArchitectApi) PostArchitectSchedulegroups(body Schedulegroup) (*Schedule
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostArchitectSchedulegroups")
 	}
 
@@ -5670,8 +5574,6 @@ func (a ArchitectApi) PostArchitectSchedulegroups(body Schedulegroup) (*Schedule
 // PostArchitectSchedules invokes POST /api/v2/architect/schedules
 //
 // Create a new schedule.
-//
-// 
 func (a ArchitectApi) PostArchitectSchedules(body Schedule) (*Schedule, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5683,7 +5585,7 @@ func (a ArchitectApi) PostArchitectSchedules(body Schedule) (*Schedule, *APIResp
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostArchitectSchedules")
 	}
 
@@ -5759,7 +5661,7 @@ func (a ArchitectApi) PostArchitectSystempromptHistory(promptId string) (*Operat
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PostArchitectSystempromptHistory")
 	}
 
@@ -5818,8 +5720,6 @@ func (a ArchitectApi) PostArchitectSystempromptHistory(promptId string) (*Operat
 // PostArchitectSystempromptResources invokes POST /api/v2/architect/systemprompts/{promptId}/resources
 //
 // Create system prompt resource override.
-//
-// 
 func (a ArchitectApi) PostArchitectSystempromptResources(promptId string, body Systempromptasset) (*Systempromptasset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5832,12 +5732,12 @@ func (a ArchitectApi) PostArchitectSystempromptResources(promptId string, body S
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PostArchitectSystempromptResources")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostArchitectSystempromptResources")
 	}
 
@@ -5913,7 +5813,7 @@ func (a ArchitectApi) PostFlowHistory(flowId string) (*Operation, *APIResponse, 
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->PostFlowHistory")
 	}
 
@@ -5972,8 +5872,6 @@ func (a ArchitectApi) PostFlowHistory(flowId string) (*Operation, *APIResponse, 
 // PostFlowVersions invokes POST /api/v2/flows/{flowId}/versions
 //
 // Create flow version
-//
-// 
 func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5986,12 +5884,12 @@ func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowve
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->PostFlowVersions")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostFlowVersions")
 	}
 
@@ -6053,8 +5951,6 @@ func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowve
 // PostFlows invokes POST /api/v2/flows
 //
 // Create flow
-//
-// 
 func (a ArchitectApi) PostFlows(body Flow, language string) (*Flow, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6066,7 +5962,7 @@ func (a ArchitectApi) PostFlows(body Flow, language string) (*Flow, *APIResponse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostFlows")
 	}
 
@@ -6143,7 +6039,7 @@ func (a ArchitectApi) PostFlowsActionsCheckin(flow string) (*Operation, *APIResp
 
 	// verify the required parameter 'flow' is set
 	if &flow == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flow' when calling ArchitectApi->PostFlowsActionsCheckin")
 	}
 
@@ -6204,8 +6100,6 @@ func (a ArchitectApi) PostFlowsActionsCheckin(flow string) (*Operation, *APIResp
 // PostFlowsActionsCheckout invokes POST /api/v2/flows/actions/checkout
 //
 // Check-out flow
-//
-// 
 func (a ArchitectApi) PostFlowsActionsCheckout(flow string) (*Flow, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6217,7 +6111,7 @@ func (a ArchitectApi) PostFlowsActionsCheckout(flow string) (*Flow, *APIResponse
 
 	// verify the required parameter 'flow' is set
 	if &flow == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flow' when calling ArchitectApi->PostFlowsActionsCheckout")
 	}
 
@@ -6278,8 +6172,6 @@ func (a ArchitectApi) PostFlowsActionsCheckout(flow string) (*Flow, *APIResponse
 // PostFlowsActionsDeactivate invokes POST /api/v2/flows/actions/deactivate
 //
 // Deactivate flow
-//
-// 
 func (a ArchitectApi) PostFlowsActionsDeactivate(flow string) (*Flow, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6291,7 +6183,7 @@ func (a ArchitectApi) PostFlowsActionsDeactivate(flow string) (*Flow, *APIRespon
 
 	// verify the required parameter 'flow' is set
 	if &flow == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flow' when calling ArchitectApi->PostFlowsActionsDeactivate")
 	}
 
@@ -6365,7 +6257,7 @@ func (a ArchitectApi) PostFlowsActionsPublish(flow string, version string) (*Ope
 
 	// verify the required parameter 'flow' is set
 	if &flow == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flow' when calling ArchitectApi->PostFlowsActionsPublish")
 	}
 
@@ -6428,8 +6320,6 @@ func (a ArchitectApi) PostFlowsActionsPublish(flow string, version string) (*Ope
 // PostFlowsActionsRevert invokes POST /api/v2/flows/actions/revert
 //
 // Revert flow
-//
-// 
 func (a ArchitectApi) PostFlowsActionsRevert(flow string) (*Flow, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6441,7 +6331,7 @@ func (a ArchitectApi) PostFlowsActionsRevert(flow string) (*Flow, *APIResponse, 
 
 	// verify the required parameter 'flow' is set
 	if &flow == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flow' when calling ArchitectApi->PostFlowsActionsRevert")
 	}
 
@@ -6515,7 +6405,7 @@ func (a ArchitectApi) PostFlowsActionsUnlock(flow string) (*Flow, *APIResponse, 
 
 	// verify the required parameter 'flow' is set
 	if &flow == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flow' when calling ArchitectApi->PostFlowsActionsUnlock")
 	}
 
@@ -6590,7 +6480,7 @@ func (a ArchitectApi) PostFlowsDatatableExportJobs(datatableId string) (*Datatab
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PostFlowsDatatableExportJobs")
 	}
 
@@ -6663,12 +6553,12 @@ func (a ArchitectApi) PostFlowsDatatableImportJobs(datatableId string, body Data
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PostFlowsDatatableImportJobs")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostFlowsDatatableImportJobs")
 	}
 
@@ -6732,7 +6622,7 @@ func (a ArchitectApi) PostFlowsDatatableImportJobs(datatableId string, body Data
 // Create a new row entry for the datatable.
 //
 // Will add the passed in row entry to the datatable with the given datatableId after verifying it against the schema.  The DataTableRow should be a json-ized&#39; stream of key -&gt; value pairs {      \&quot;Field1\&quot;: \&quot;XYZZY\&quot;,      \&quot;Field2\&quot;: false,      \&quot;KEY\&quot;: \&quot;27272\&quot;  }
-func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow interface{}) (*map[string]interface{}, *APIResponse, error) {
+func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow map[string]interface{}) (*map[string]interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows"
@@ -6744,12 +6634,12 @@ func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow in
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PostFlowsDatatableRows")
 	}
 	// verify the required parameter 'dataTableRow' is set
 	if &dataTableRow == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dataTableRow' when calling ArchitectApi->PostFlowsDatatableRows")
 	}
 
@@ -6824,7 +6714,7 @@ func (a ArchitectApi) PostFlowsDatatables(body Datatable) (*Datatable, *APIRespo
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostFlowsDatatables")
 	}
 
@@ -6885,7 +6775,7 @@ func (a ArchitectApi) PostFlowsDatatables(body Datatable) (*Datatable, *APIRespo
 
 // PostFlowsExecutions invokes POST /api/v2/flows/executions
 //
-// Launch an instance of a flow definition, for flow types that support it such as the &#39;workflow&#39; type.
+// Launch an instance of a flow definition, for flow types that support it such as the 'workflow' type.
 //
 // The launch is asynchronous, it returns as soon as the flow starts. You can use the returned ID to query its status if you need.
 func (a ArchitectApi) PostFlowsExecutions(flowLaunchRequest Flowexecutionlaunchrequest) (*Flowexecutionlaunchresponse, *APIResponse, error) {
@@ -6899,7 +6789,7 @@ func (a ArchitectApi) PostFlowsExecutions(flowLaunchRequest Flowexecutionlaunchr
 
 	// verify the required parameter 'flowLaunchRequest' is set
 	if &flowLaunchRequest == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowLaunchRequest' when calling ArchitectApi->PostFlowsExecutions")
 	}
 
@@ -6961,8 +6851,6 @@ func (a ArchitectApi) PostFlowsExecutions(flowLaunchRequest Flowexecutionlaunchr
 // PostFlowsJobs invokes POST /api/v2/flows/jobs
 //
 // Register Architect Job. Returns a URL where a file, such as an Architect flow YAML file, can be PUT which will then initiate the job.
-//
-// 
 func (a ArchitectApi) PostFlowsJobs() (*Registerarchitectjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7028,8 +6916,6 @@ func (a ArchitectApi) PostFlowsJobs() (*Registerarchitectjobresponse, *APIRespon
 // PostFlowsMilestones invokes POST /api/v2/flows/milestones
 //
 // Create a flow milestone
-//
-// 
 func (a ArchitectApi) PostFlowsMilestones(body Flowmilestone) (*Flowmilestone, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7168,8 +7054,6 @@ func (a ArchitectApi) PostFlowsOutcomes(body Flowoutcome) (*Flowoutcome, *APIRes
 // PutArchitectEmergencygroup invokes PUT /api/v2/architect/emergencygroups/{emergencyGroupId}
 //
 // Updates a emergency group by ID
-//
-// 
 func (a ArchitectApi) PutArchitectEmergencygroup(emergencyGroupId string, body Emergencygroup) (*Emergencygroup, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7182,12 +7066,12 @@ func (a ArchitectApi) PutArchitectEmergencygroup(emergencyGroupId string, body E
 
 	// verify the required parameter 'emergencyGroupId' is set
 	if &emergencyGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'emergencyGroupId' when calling ArchitectApi->PutArchitectEmergencygroup")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutArchitectEmergencygroup")
 	}
 
@@ -7249,8 +7133,6 @@ func (a ArchitectApi) PutArchitectEmergencygroup(emergencyGroupId string, body E
 // PutArchitectIvr invokes PUT /api/v2/architect/ivrs/{ivrId}
 //
 // Update an IVR Config.
-//
-// 
 func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7263,12 +7145,12 @@ func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIRespons
 
 	// verify the required parameter 'ivrId' is set
 	if &ivrId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'ivrId' when calling ArchitectApi->PutArchitectIvr")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutArchitectIvr")
 	}
 
@@ -7330,8 +7212,6 @@ func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIRespons
 // PutArchitectPrompt invokes PUT /api/v2/architect/prompts/{promptId}
 //
 // Update specified user prompt
-//
-// 
 func (a ArchitectApi) PutArchitectPrompt(promptId string, body Prompt) (*Prompt, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7344,12 +7224,12 @@ func (a ArchitectApi) PutArchitectPrompt(promptId string, body Prompt) (*Prompt,
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PutArchitectPrompt")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutArchitectPrompt")
 	}
 
@@ -7411,8 +7291,6 @@ func (a ArchitectApi) PutArchitectPrompt(promptId string, body Prompt) (*Prompt,
 // PutArchitectPromptResource invokes PUT /api/v2/architect/prompts/{promptId}/resources/{languageCode}
 //
 // Update specified user prompt resource
-//
-// 
 func (a ArchitectApi) PutArchitectPromptResource(promptId string, languageCode string, body Promptasset) (*Promptasset, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7426,17 +7304,17 @@ func (a ArchitectApi) PutArchitectPromptResource(promptId string, languageCode s
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PutArchitectPromptResource")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->PutArchitectPromptResource")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutArchitectPromptResource")
 	}
 
@@ -7498,8 +7376,6 @@ func (a ArchitectApi) PutArchitectPromptResource(promptId string, languageCode s
 // PutArchitectSchedule invokes PUT /api/v2/architect/schedules/{scheduleId}
 //
 // Update schedule by ID
-//
-// 
 func (a ArchitectApi) PutArchitectSchedule(scheduleId string, body Schedule) (*Schedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7512,12 +7388,12 @@ func (a ArchitectApi) PutArchitectSchedule(scheduleId string, body Schedule) (*S
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling ArchitectApi->PutArchitectSchedule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutArchitectSchedule")
 	}
 
@@ -7579,8 +7455,6 @@ func (a ArchitectApi) PutArchitectSchedule(scheduleId string, body Schedule) (*S
 // PutArchitectSchedulegroup invokes PUT /api/v2/architect/schedulegroups/{scheduleGroupId}
 //
 // Updates a schedule group by ID
-//
-// 
 func (a ArchitectApi) PutArchitectSchedulegroup(scheduleGroupId string, body Schedulegroup) (*Schedulegroup, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7593,12 +7467,12 @@ func (a ArchitectApi) PutArchitectSchedulegroup(scheduleGroupId string, body Sch
 
 	// verify the required parameter 'scheduleGroupId' is set
 	if &scheduleGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleGroupId' when calling ArchitectApi->PutArchitectSchedulegroup")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutArchitectSchedulegroup")
 	}
 
@@ -7660,8 +7534,6 @@ func (a ArchitectApi) PutArchitectSchedulegroup(scheduleGroupId string, body Sch
 // PutArchitectSystempromptResource invokes PUT /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}
 //
 // Updates a system prompt resource override.
-//
-// 
 func (a ArchitectApi) PutArchitectSystempromptResource(promptId string, languageCode string, body Systempromptasset) (*Systempromptasset, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7675,17 +7547,17 @@ func (a ArchitectApi) PutArchitectSystempromptResource(promptId string, language
 
 	// verify the required parameter 'promptId' is set
 	if &promptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PutArchitectSystempromptResource")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->PutArchitectSystempromptResource")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutArchitectSystempromptResource")
 	}
 
@@ -7747,8 +7619,6 @@ func (a ArchitectApi) PutArchitectSystempromptResource(promptId string, language
 // PutFlow invokes PUT /api/v2/flows/{flowId}
 //
 // Update flow
-//
-// 
 func (a ArchitectApi) PutFlow(flowId string, body Flow) (*Flow, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7761,12 +7631,12 @@ func (a ArchitectApi) PutFlow(flowId string, body Flow) (*Flow, *APIResponse, er
 
 	// verify the required parameter 'flowId' is set
 	if &flowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->PutFlow")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutFlow")
 	}
 
@@ -7842,12 +7712,12 @@ func (a ArchitectApi) PutFlowsDatatable(datatableId string, body Datatable, expa
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PutFlowsDatatable")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutFlowsDatatable")
 	}
 
@@ -7926,12 +7796,12 @@ func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, bod
 
 	// verify the required parameter 'datatableId' is set
 	if &datatableId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PutFlowsDatatableRow")
 	}
 	// verify the required parameter 'rowId' is set
 	if &rowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'rowId' when calling ArchitectApi->PutFlowsDatatableRow")
 	}
 
@@ -7993,8 +7863,6 @@ func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, bod
 // PutFlowsMilestone invokes PUT /api/v2/flows/milestones/{milestoneId}
 //
 // Updates a flow milestone
-//
-// 
 func (a ArchitectApi) PutFlowsMilestone(milestoneId string, body Flowmilestone) (*Flowmilestone, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8007,7 +7875,7 @@ func (a ArchitectApi) PutFlowsMilestone(milestoneId string, body Flowmilestone) 
 
 	// verify the required parameter 'milestoneId' is set
 	if &milestoneId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'milestoneId' when calling ArchitectApi->PutFlowsMilestone")
 	}
 
@@ -8083,7 +7951,7 @@ func (a ArchitectApi) PutFlowsOutcome(flowOutcomeId string, body Flowoutcome) (*
 
 	// verify the required parameter 'flowOutcomeId' is set
 	if &flowOutcomeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'flowOutcomeId' when calling ArchitectApi->PutFlowsOutcome")
 	}
 

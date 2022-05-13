@@ -222,31 +222,31 @@ func (o *Socialexpression) UnmarshalJSON(b []byte) error {
 	if State, ok := SocialexpressionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := SocialexpressionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SocialMediaId, ok := SocialexpressionMap["socialMediaId"].(string); ok {
 		o.SocialMediaId = &SocialMediaId
 	}
-	
+    
 	if SocialMediaHub, ok := SocialexpressionMap["socialMediaHub"].(string); ok {
 		o.SocialMediaHub = &SocialMediaHub
 	}
-	
+    
 	if SocialUserName, ok := SocialexpressionMap["socialUserName"].(string); ok {
 		o.SocialUserName = &SocialUserName
 	}
-	
+    
 	if PreviewText, ok := SocialexpressionMap["previewText"].(string); ok {
 		o.PreviewText = &PreviewText
 	}
-	
+    
 	if RecordingId, ok := SocialexpressionMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if Segments, ok := SocialexpressionMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)
@@ -255,11 +255,11 @@ func (o *Socialexpression) UnmarshalJSON(b []byte) error {
 	if Held, ok := SocialexpressionMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := SocialexpressionMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := SocialexpressionMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -283,15 +283,15 @@ func (o *Socialexpression) UnmarshalJSON(b []byte) error {
 	if Provider, ok := SocialexpressionMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := SocialexpressionMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := SocialexpressionMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if Wrapup, ok := SocialexpressionMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
@@ -305,7 +305,7 @@ func (o *Socialexpression) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := SocialexpressionMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

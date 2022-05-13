@@ -125,7 +125,7 @@ func (o *Buintradayresponse) UnmarshalJSON(b []byte) error {
 	if NoDataReason, ok := BuintradayresponseMap["noDataReason"].(string); ok {
 		o.NoDataReason = &NoDataReason
 	}
-	
+    
 	if Categories, ok := BuintradayresponseMap["categories"].([]interface{}); ok {
 		CategoriesString, _ := json.Marshal(Categories)
 		json.Unmarshal(CategoriesString, &o.Categories)

@@ -190,11 +190,11 @@ func (o *Wemcoachingappointmenttopiccoachingappointmentnotification) UnmarshalJS
 	if Id, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateStartString, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart
@@ -208,7 +208,7 @@ func (o *Wemcoachingappointmenttopiccoachingappointmentnotification) UnmarshalJS
 	if Status, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Facilitator, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["facilitator"].(map[string]interface{}); ok {
 		FacilitatorString, _ := json.Marshal(Facilitator)
 		json.Unmarshal(FacilitatorString, &o.Facilitator)
@@ -252,7 +252,7 @@ func (o *Wemcoachingappointmenttopiccoachingappointmentnotification) UnmarshalJS
 	if ChangeType, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["changeType"].(string); ok {
 		o.ChangeType = &ChangeType
 	}
-	
+    
 	if dateCompletedString, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["dateCompleted"].(string); ok {
 		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
 		o.DateCompleted = &DateCompleted

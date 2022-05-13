@@ -166,11 +166,11 @@ func (o *Documentaudit) UnmarshalJSON(b []byte) error {
 	if Id, ok := DocumentauditMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DocumentauditMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if User, ok := DocumentauditMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -184,23 +184,23 @@ func (o *Documentaudit) UnmarshalJSON(b []byte) error {
 	if TransactionId, ok := DocumentauditMap["transactionId"].(string); ok {
 		o.TransactionId = &TransactionId
 	}
-	
+    
 	if TransactionInitiator, ok := DocumentauditMap["transactionInitiator"].(bool); ok {
 		o.TransactionInitiator = &TransactionInitiator
 	}
-	
+    
 	if Application, ok := DocumentauditMap["application"].(string); ok {
 		o.Application = &Application
 	}
-	
+    
 	if ServiceName, ok := DocumentauditMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-	
+    
 	if Level, ok := DocumentauditMap["level"].(string); ok {
 		o.Level = &Level
 	}
-	
+    
 	if timestampString, ok := DocumentauditMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
@@ -209,15 +209,15 @@ func (o *Documentaudit) UnmarshalJSON(b []byte) error {
 	if Status, ok := DocumentauditMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ActionContext, ok := DocumentauditMap["actionContext"].(string); ok {
 		o.ActionContext = &ActionContext
 	}
-	
+    
 	if Action, ok := DocumentauditMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if Entity, ok := DocumentauditMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)
@@ -231,7 +231,7 @@ func (o *Documentaudit) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DocumentauditMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

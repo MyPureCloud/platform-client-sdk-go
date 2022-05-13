@@ -69,23 +69,23 @@ func (o *Transferrequest) UnmarshalJSON(b []byte) error {
 	if UserId, ok := TransferrequestMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Address, ok := TransferrequestMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if UserName, ok := TransferrequestMap["userName"].(string); ok {
 		o.UserName = &UserName
 	}
-	
+    
 	if QueueId, ok := TransferrequestMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if Voicemail, ok := TransferrequestMap["voicemail"].(bool); ok {
 		o.Voicemail = &Voicemail
 	}
-	
+    
 
 	return nil
 }

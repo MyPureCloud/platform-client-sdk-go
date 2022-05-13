@@ -118,11 +118,11 @@ func (o *Sequenceschedule) UnmarshalJSON(b []byte) error {
 	if Id, ok := SequencescheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SequencescheduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := SequencescheduleMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -146,7 +146,7 @@ func (o *Sequenceschedule) UnmarshalJSON(b []byte) error {
 	if TimeZone, ok := SequencescheduleMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if Sequence, ok := SequencescheduleMap["sequence"].(map[string]interface{}); ok {
 		SequenceString, _ := json.Marshal(Sequence)
 		json.Unmarshal(SequenceString, &o.Sequence)
@@ -155,7 +155,7 @@ func (o *Sequenceschedule) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SequencescheduleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

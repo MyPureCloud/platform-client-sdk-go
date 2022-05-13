@@ -37,7 +37,7 @@ func (o *Uci10n) UnmarshalJSON(b []byte) error {
 	if Name, ok := Uci10nMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

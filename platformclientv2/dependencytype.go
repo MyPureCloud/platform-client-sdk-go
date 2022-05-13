@@ -61,19 +61,19 @@ func (o *Dependencytype) UnmarshalJSON(b []byte) error {
 	if Id, ok := DependencytypeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DependencytypeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Versioned, ok := DependencytypeMap["versioned"].(bool); ok {
 		o.Versioned = &Versioned
 	}
-	
+    
 	if SelfUri, ok := DependencytypeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

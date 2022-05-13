@@ -45,11 +45,11 @@ func (o *Ticker) UnmarshalJSON(b []byte) error {
 	if Symbol, ok := TickerMap["symbol"].(string); ok {
 		o.Symbol = &Symbol
 	}
-	
+    
 	if Exchange, ok := TickerMap["exchange"].(string); ok {
 		o.Exchange = &Exchange
 	}
-	
+    
 
 	return nil
 }

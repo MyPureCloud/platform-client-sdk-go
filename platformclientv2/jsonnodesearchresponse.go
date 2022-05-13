@@ -41,11 +41,11 @@ type Jsonnodesearchresponse struct {
 
 
 	// Results - Search results
-	Results *Arraynode `json:"results,omitempty"`
+	Results *interface{} `json:"results,omitempty"`
 
 
 	// Aggregations
-	Aggregations *Arraynode `json:"aggregations,omitempty"`
+	Aggregations *interface{} `json:"aggregations,omitempty"`
 
 }
 
@@ -71,9 +71,9 @@ func (o *Jsonnodesearchresponse) MarshalJSON() ([]byte, error) {
 		
 		Types *[]string `json:"types,omitempty"`
 		
-		Results *Arraynode `json:"results,omitempty"`
+		Results *interface{} `json:"results,omitempty"`
 		
-		Aggregations *Arraynode `json:"aggregations,omitempty"`
+		Aggregations *interface{} `json:"aggregations,omitempty"`
 		*Alias
 	}{ 
 		Total: o.Total,
@@ -129,15 +129,15 @@ func (o *Jsonnodesearchresponse) UnmarshalJSON(b []byte) error {
 	if PreviousPage, ok := JsonnodesearchresponseMap["previousPage"].(string); ok {
 		o.PreviousPage = &PreviousPage
 	}
-	
+    
 	if CurrentPage, ok := JsonnodesearchresponseMap["currentPage"].(string); ok {
 		o.CurrentPage = &CurrentPage
 	}
-	
+    
 	if NextPage, ok := JsonnodesearchresponseMap["nextPage"].(string); ok {
 		o.NextPage = &NextPage
 	}
-	
+    
 	if Types, ok := JsonnodesearchresponseMap["types"].([]interface{}); ok {
 		TypesString, _ := json.Marshal(Types)
 		json.Unmarshal(TypesString, &o.Types)

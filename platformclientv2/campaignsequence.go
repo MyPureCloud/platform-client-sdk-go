@@ -134,11 +134,11 @@ func (o *Campaignsequence) UnmarshalJSON(b []byte) error {
 	if Id, ok := CampaignsequenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CampaignsequenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := CampaignsequenceMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -167,19 +167,19 @@ func (o *Campaignsequence) UnmarshalJSON(b []byte) error {
 	if Status, ok := CampaignsequenceMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if StopMessage, ok := CampaignsequenceMap["stopMessage"].(string); ok {
 		o.StopMessage = &StopMessage
 	}
-	
+    
 	if Repeat, ok := CampaignsequenceMap["repeat"].(bool); ok {
 		o.Repeat = &Repeat
 	}
-	
+    
 	if SelfUri, ok := CampaignsequenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

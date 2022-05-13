@@ -45,7 +45,7 @@ func (o *Searchshifttradesrequest) UnmarshalJSON(b []byte) error {
 	if ReceivingScheduleId, ok := SearchshifttradesrequestMap["receivingScheduleId"].(string); ok {
 		o.ReceivingScheduleId = &ReceivingScheduleId
 	}
-	
+    
 	if ReceivingShiftIds, ok := SearchshifttradesrequestMap["receivingShiftIds"].([]interface{}); ok {
 		ReceivingShiftIdsString, _ := json.Marshal(ReceivingShiftIds)
 		json.Unmarshal(ReceivingShiftIdsString, &o.ReceivingShiftIds)

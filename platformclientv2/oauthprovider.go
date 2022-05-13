@@ -61,19 +61,19 @@ func (o *Oauthprovider) UnmarshalJSON(b []byte) error {
 	if Id, ok := OauthproviderMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OauthproviderMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := OauthproviderMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if SelfUri, ok := OauthproviderMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

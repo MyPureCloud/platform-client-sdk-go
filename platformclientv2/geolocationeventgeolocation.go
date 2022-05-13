@@ -69,23 +69,23 @@ func (o *Geolocationeventgeolocation) UnmarshalJSON(b []byte) error {
 	if UserId, ok := GeolocationeventgeolocationMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if VarType, ok := GeolocationeventgeolocationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Country, ok := GeolocationeventgeolocationMap["country"].(string); ok {
 		o.Country = &Country
 	}
-	
+    
 	if Region, ok := GeolocationeventgeolocationMap["region"].(string); ok {
 		o.Region = &Region
 	}
-	
+    
 	if City, ok := GeolocationeventgeolocationMap["city"].(string); ok {
 		o.City = &City
 	}
-	
+    
 
 	return nil
 }

@@ -286,11 +286,11 @@ func (o *Callbackbasic) UnmarshalJSON(b []byte) error {
 	if State, ok := CallbackbasicMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := CallbackbasicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Segments, ok := CallbackbasicMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)
@@ -299,15 +299,15 @@ func (o *Callbackbasic) UnmarshalJSON(b []byte) error {
 	if Direction, ok := CallbackbasicMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Held, ok := CallbackbasicMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := CallbackbasicMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := CallbackbasicMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -331,19 +331,19 @@ func (o *Callbackbasic) UnmarshalJSON(b []byte) error {
 	if CallbackUserName, ok := CallbackbasicMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if ScriptId, ok := CallbackbasicMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if ExternalCampaign, ok := CallbackbasicMap["externalCampaign"].(bool); ok {
 		o.ExternalCampaign = &ExternalCampaign
 	}
-	
+    
 	if SkipEnabled, ok := CallbackbasicMap["skipEnabled"].(bool); ok {
 		o.SkipEnabled = &SkipEnabled
 	}
-	
+    
 	if TimeoutSeconds, ok := CallbackbasicMap["timeoutSeconds"].(float64); ok {
 		TimeoutSecondsInt := int(TimeoutSeconds)
 		o.TimeoutSeconds = &TimeoutSecondsInt
@@ -372,15 +372,15 @@ func (o *Callbackbasic) UnmarshalJSON(b []byte) error {
 	if AutomatedCallbackConfigId, ok := CallbackbasicMap["automatedCallbackConfigId"].(string); ok {
 		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
 	}
-	
+    
 	if Provider, ok := CallbackbasicMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if PeerId, ok := CallbackbasicMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if Wrapup, ok := CallbackbasicMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
@@ -394,15 +394,15 @@ func (o *Callbackbasic) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := CallbackbasicMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if CallerId, ok := CallbackbasicMap["callerId"].(string); ok {
 		o.CallerId = &CallerId
 	}
-	
+    
 	if CallerIdName, ok := CallbackbasicMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
 	}
-	
+    
 
 	return nil
 }

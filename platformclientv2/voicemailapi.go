@@ -45,7 +45,7 @@ func (a VoicemailApi) DeleteVoicemailMessage(messageId string) (*APIResponse, er
 
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'messageId' when calling VoicemailApi->DeleteVoicemailMessage")
 	}
 
@@ -98,8 +98,6 @@ func (a VoicemailApi) DeleteVoicemailMessage(messageId string) (*APIResponse, er
 // DeleteVoicemailMessages invokes DELETE /api/v2/voicemail/messages
 //
 // Delete all voicemail messages
-//
-// 
 func (a VoicemailApi) DeleteVoicemailMessages() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -157,9 +155,7 @@ func (a VoicemailApi) DeleteVoicemailMessages() (*APIResponse, error) {
 
 // GetVoicemailGroupMailbox invokes GET /api/v2/voicemail/groups/{groupId}/mailbox
 //
-// Get the group&#39;s mailbox information
-//
-// 
+// Get the group's mailbox information
 func (a VoicemailApi) GetVoicemailGroupMailbox(groupId string) (*Voicemailmailboxinfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -172,7 +168,7 @@ func (a VoicemailApi) GetVoicemailGroupMailbox(groupId string) (*Voicemailmailbo
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling VoicemailApi->GetVoicemailGroupMailbox")
 	}
 
@@ -231,8 +227,6 @@ func (a VoicemailApi) GetVoicemailGroupMailbox(groupId string) (*Voicemailmailbo
 // GetVoicemailGroupMessages invokes GET /api/v2/voicemail/groups/{groupId}/messages
 //
 // List voicemail messages
-//
-// 
 func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int, pageNumber int) (*Voicemailmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -245,7 +239,7 @@ func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int, pa
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling VoicemailApi->GetVoicemailGroupMessages")
 	}
 
@@ -307,9 +301,7 @@ func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int, pa
 
 // GetVoicemailGroupPolicy invokes GET /api/v2/voicemail/groups/{groupId}/policy
 //
-// Get a group&#39;s voicemail policy
-//
-// 
+// Get a group's voicemail policy
 func (a VoicemailApi) GetVoicemailGroupPolicy(groupId string) (*Voicemailgrouppolicy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -322,7 +314,7 @@ func (a VoicemailApi) GetVoicemailGroupPolicy(groupId string) (*Voicemailgrouppo
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling VoicemailApi->GetVoicemailGroupPolicy")
 	}
 
@@ -380,9 +372,7 @@ func (a VoicemailApi) GetVoicemailGroupPolicy(groupId string) (*Voicemailgrouppo
 
 // GetVoicemailMailbox invokes GET /api/v2/voicemail/mailbox
 //
-// Get the current user&#39;s mailbox information
-//
-// 
+// Get the current user's mailbox information
 func (a VoicemailApi) GetVoicemailMailbox() (*Voicemailmailboxinfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -447,9 +437,7 @@ func (a VoicemailApi) GetVoicemailMailbox() (*Voicemailmailboxinfo, *APIResponse
 
 // GetVoicemailMeMailbox invokes GET /api/v2/voicemail/me/mailbox
 //
-// Get the current user&#39;s mailbox information
-//
-// 
+// Get the current user's mailbox information
 func (a VoicemailApi) GetVoicemailMeMailbox() (*Voicemailmailboxinfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -515,8 +503,6 @@ func (a VoicemailApi) GetVoicemailMeMailbox() (*Voicemailmailboxinfo, *APIRespon
 // GetVoicemailMeMessages invokes GET /api/v2/voicemail/me/messages
 //
 // List voicemail messages
-//
-// 
 func (a VoicemailApi) GetVoicemailMeMessages(pageSize int, pageNumber int) (*Voicemailmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -585,9 +571,7 @@ func (a VoicemailApi) GetVoicemailMeMessages(pageSize int, pageNumber int) (*Voi
 
 // GetVoicemailMePolicy invokes GET /api/v2/voicemail/me/policy
 //
-// Get the current user&#39;s voicemail policy
-//
-// 
+// Get the current user's voicemail policy
 func (a VoicemailApi) GetVoicemailMePolicy() (*Voicemailuserpolicy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -653,8 +637,6 @@ func (a VoicemailApi) GetVoicemailMePolicy() (*Voicemailuserpolicy, *APIResponse
 // GetVoicemailMessage invokes GET /api/v2/voicemail/messages/{messageId}
 //
 // Get a voicemail message
-//
-// 
 func (a VoicemailApi) GetVoicemailMessage(messageId string, expand []string) (*Voicemailmessage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -667,7 +649,7 @@ func (a VoicemailApi) GetVoicemailMessage(messageId string, expand []string) (*V
 
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling VoicemailApi->GetVoicemailMessage")
 	}
 
@@ -728,8 +710,6 @@ func (a VoicemailApi) GetVoicemailMessage(messageId string, expand []string) (*V
 // GetVoicemailMessageMedia invokes GET /api/v2/voicemail/messages/{messageId}/media
 //
 // Get media playback URI for this voicemail message
-//
-// 
 func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string) (*Voicemailmediainfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -742,7 +722,7 @@ func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string
 
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling VoicemailApi->GetVoicemailMessageMedia")
 	}
 
@@ -803,8 +783,6 @@ func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string
 // GetVoicemailMessages invokes GET /api/v2/voicemail/messages
 //
 // List voicemail messages
-//
-// 
 func (a VoicemailApi) GetVoicemailMessages(ids string, expand []string) (*Voicemailmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -874,8 +852,6 @@ func (a VoicemailApi) GetVoicemailMessages(ids string, expand []string) (*Voicem
 // GetVoicemailPolicy invokes GET /api/v2/voicemail/policy
 //
 // Get a policy
-//
-// 
 func (a VoicemailApi) GetVoicemailPolicy() (*Voicemailorganizationpolicy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -941,8 +917,6 @@ func (a VoicemailApi) GetVoicemailPolicy() (*Voicemailorganizationpolicy, *APIRe
 // GetVoicemailQueueMessages invokes GET /api/v2/voicemail/queues/{queueId}/messages
 //
 // List voicemail messages
-//
-// 
 func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int, pageNumber int) (*Voicemailmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -955,7 +929,7 @@ func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int, pa
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling VoicemailApi->GetVoicemailQueueMessages")
 	}
 
@@ -1018,8 +992,6 @@ func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int, pa
 // GetVoicemailSearch invokes GET /api/v2/voicemail/search
 //
 // Search voicemails using the q64 value returned from a previous search
-//
-// 
 func (a VoicemailApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemailssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1031,7 +1003,7 @@ func (a VoicemailApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemai
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling VoicemailApi->GetVoicemailSearch")
 	}
 
@@ -1093,9 +1065,7 @@ func (a VoicemailApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemai
 
 // GetVoicemailUserpolicy invokes GET /api/v2/voicemail/userpolicies/{userId}
 //
-// Get a user&#39;s voicemail policy
-//
-// 
+// Get a user's voicemail policy
 func (a VoicemailApi) GetVoicemailUserpolicy(userId string) (*Voicemailuserpolicy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1108,7 +1078,7 @@ func (a VoicemailApi) GetVoicemailUserpolicy(userId string) (*Voicemailuserpolic
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling VoicemailApi->GetVoicemailUserpolicy")
 	}
 
@@ -1166,9 +1136,7 @@ func (a VoicemailApi) GetVoicemailUserpolicy(userId string) (*Voicemailuserpolic
 
 // PatchVoicemailGroupPolicy invokes PATCH /api/v2/voicemail/groups/{groupId}/policy
 //
-// Update a group&#39;s voicemail policy
-//
-// 
+// Update a group's voicemail policy
 func (a VoicemailApi) PatchVoicemailGroupPolicy(groupId string, body Voicemailgrouppolicy) (*Voicemailgrouppolicy, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1181,12 +1149,12 @@ func (a VoicemailApi) PatchVoicemailGroupPolicy(groupId string, body Voicemailgr
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling VoicemailApi->PatchVoicemailGroupPolicy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PatchVoicemailGroupPolicy")
 	}
 
@@ -1247,9 +1215,7 @@ func (a VoicemailApi) PatchVoicemailGroupPolicy(groupId string, body Voicemailgr
 
 // PatchVoicemailMePolicy invokes PATCH /api/v2/voicemail/me/policy
 //
-// Update the current user&#39;s voicemail policy
-//
-// 
+// Update the current user's voicemail policy
 func (a VoicemailApi) PatchVoicemailMePolicy(body Voicemailuserpolicy) (*Voicemailuserpolicy, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1261,7 +1227,7 @@ func (a VoicemailApi) PatchVoicemailMePolicy(body Voicemailuserpolicy) (*Voicema
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PatchVoicemailMePolicy")
 	}
 
@@ -1337,12 +1303,12 @@ func (a VoicemailApi) PatchVoicemailMessage(messageId string, body Voicemailmess
 
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling VoicemailApi->PatchVoicemailMessage")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PatchVoicemailMessage")
 	}
 
@@ -1403,9 +1369,7 @@ func (a VoicemailApi) PatchVoicemailMessage(messageId string, body Voicemailmess
 
 // PatchVoicemailUserpolicy invokes PATCH /api/v2/voicemail/userpolicies/{userId}
 //
-// Update a user&#39;s voicemail policy
-//
-// 
+// Update a user's voicemail policy
 func (a VoicemailApi) PatchVoicemailUserpolicy(userId string, body Voicemailuserpolicy) (*Voicemailuserpolicy, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1418,12 +1382,12 @@ func (a VoicemailApi) PatchVoicemailUserpolicy(userId string, body Voicemailuser
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling VoicemailApi->PatchVoicemailUserpolicy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PatchVoicemailUserpolicy")
 	}
 
@@ -1485,8 +1449,6 @@ func (a VoicemailApi) PatchVoicemailUserpolicy(userId string, body Voicemailuser
 // PostVoicemailMessages invokes POST /api/v2/voicemail/messages
 //
 // Copy a voicemail message to a user or group
-//
-// 
 func (a VoicemailApi) PostVoicemailMessages(body Copyvoicemailmessage) (*Voicemailmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1555,8 +1517,6 @@ func (a VoicemailApi) PostVoicemailMessages(body Copyvoicemailmessage) (*Voicema
 // PostVoicemailSearch invokes POST /api/v2/voicemail/search
 //
 // Search voicemails
-//
-// 
 func (a VoicemailApi) PostVoicemailSearch(body Voicemailsearchrequest) (*Voicemailssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1568,7 +1528,7 @@ func (a VoicemailApi) PostVoicemailSearch(body Voicemailsearchrequest) (*Voicema
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PostVoicemailSearch")
 	}
 
@@ -1644,12 +1604,12 @@ func (a VoicemailApi) PutVoicemailMessage(messageId string, body Voicemailmessag
 
 	// verify the required parameter 'messageId' is set
 	if &messageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling VoicemailApi->PutVoicemailMessage")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PutVoicemailMessage")
 	}
 
@@ -1711,8 +1671,6 @@ func (a VoicemailApi) PutVoicemailMessage(messageId string, body Voicemailmessag
 // PutVoicemailPolicy invokes PUT /api/v2/voicemail/policy
 //
 // Update a policy
-//
-// 
 func (a VoicemailApi) PutVoicemailPolicy(body Voicemailorganizationpolicy) (*Voicemailorganizationpolicy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1724,7 +1682,7 @@ func (a VoicemailApi) PutVoicemailPolicy(body Voicemailorganizationpolicy) (*Voi
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PutVoicemailPolicy")
 	}
 
@@ -1785,9 +1743,7 @@ func (a VoicemailApi) PutVoicemailPolicy(body Voicemailorganizationpolicy) (*Voi
 
 // PutVoicemailUserpolicy invokes PUT /api/v2/voicemail/userpolicies/{userId}
 //
-// Update a user&#39;s voicemail policy
-//
-// 
+// Update a user's voicemail policy
 func (a VoicemailApi) PutVoicemailUserpolicy(userId string, body Voicemailuserpolicy) (*Voicemailuserpolicy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1800,12 +1756,12 @@ func (a VoicemailApi) PutVoicemailUserpolicy(userId string, body Voicemailuserpo
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling VoicemailApi->PutVoicemailUserpolicy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling VoicemailApi->PutVoicemailUserpolicy")
 	}
 

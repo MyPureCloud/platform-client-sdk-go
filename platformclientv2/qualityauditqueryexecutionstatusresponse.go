@@ -86,11 +86,11 @@ func (o *Qualityauditqueryexecutionstatusresponse) UnmarshalJSON(b []byte) error
 	if Id, ok := QualityauditqueryexecutionstatusresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := QualityauditqueryexecutionstatusresponseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateStartString, ok := QualityauditqueryexecutionstatusresponseMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart
@@ -99,7 +99,7 @@ func (o *Qualityauditqueryexecutionstatusresponse) UnmarshalJSON(b []byte) error
 	if Interval, ok := QualityauditqueryexecutionstatusresponseMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Filters, ok := QualityauditqueryexecutionstatusresponseMap["filters"].([]interface{}); ok {
 		FiltersString, _ := json.Marshal(Filters)
 		json.Unmarshal(FiltersString, &o.Filters)

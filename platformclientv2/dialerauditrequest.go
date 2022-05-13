@@ -61,7 +61,7 @@ func (o *Dialerauditrequest) UnmarshalJSON(b []byte) error {
 	if QueryPhrase, ok := DialerauditrequestMap["queryPhrase"].(string); ok {
 		o.QueryPhrase = &QueryPhrase
 	}
-	
+    
 	if QueryFields, ok := DialerauditrequestMap["queryFields"].([]interface{}); ok {
 		QueryFieldsString, _ := json.Marshal(QueryFields)
 		json.Unmarshal(QueryFieldsString, &o.QueryFields)

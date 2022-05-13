@@ -69,11 +69,11 @@ func (o *Schedulingstatusresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := SchedulingstatusresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Status, ok := SchedulingstatusresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ErrorDetails, ok := SchedulingstatusresponseMap["errorDetails"].([]interface{}); ok {
 		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
 		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
@@ -82,7 +82,7 @@ func (o *Schedulingstatusresponse) UnmarshalJSON(b []byte) error {
 	if SchedulingResultUri, ok := SchedulingstatusresponseMap["schedulingResultUri"].(string); ok {
 		o.SchedulingResultUri = &SchedulingResultUri
 	}
-	
+    
 	if PercentComplete, ok := SchedulingstatusresponseMap["percentComplete"].(float64); ok {
 		PercentCompleteInt := int(PercentComplete)
 		o.PercentComplete = &PercentCompleteInt

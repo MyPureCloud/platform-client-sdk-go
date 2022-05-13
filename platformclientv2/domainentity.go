@@ -53,15 +53,15 @@ func (o *Domainentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := DomainentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -54,17 +54,17 @@ func (o *Wfmbuintradaydataupdatetopicintradayperformancepredictiondata) Unmarsha
 		ServiceLevelPercentFloat32 := float32(ServiceLevelPercent)
 		o.ServiceLevelPercent = &ServiceLevelPercentFloat32
 	}
-	
+    
 	if AverageSpeedOfAnswerSeconds, ok := WfmbuintradaydataupdatetopicintradayperformancepredictiondataMap["averageSpeedOfAnswerSeconds"].(float64); ok {
 		AverageSpeedOfAnswerSecondsFloat32 := float32(AverageSpeedOfAnswerSeconds)
 		o.AverageSpeedOfAnswerSeconds = &AverageSpeedOfAnswerSecondsFloat32
 	}
-	
+    
 	if OccupancyPercent, ok := WfmbuintradaydataupdatetopicintradayperformancepredictiondataMap["occupancyPercent"].(float64); ok {
 		OccupancyPercentFloat32 := float32(OccupancyPercent)
 		o.OccupancyPercent = &OccupancyPercentFloat32
 	}
-	
+    
 
 	return nil
 }

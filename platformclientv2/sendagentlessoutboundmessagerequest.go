@@ -77,19 +77,19 @@ func (o *Sendagentlessoutboundmessagerequest) UnmarshalJSON(b []byte) error {
 	if FromAddress, ok := SendagentlessoutboundmessagerequestMap["fromAddress"].(string); ok {
 		o.FromAddress = &FromAddress
 	}
-	
+    
 	if ToAddress, ok := SendagentlessoutboundmessagerequestMap["toAddress"].(string); ok {
 		o.ToAddress = &ToAddress
 	}
-	
+    
 	if ToAddressMessengerType, ok := SendagentlessoutboundmessagerequestMap["toAddressMessengerType"].(string); ok {
 		o.ToAddressMessengerType = &ToAddressMessengerType
 	}
-	
+    
 	if TextBody, ok := SendagentlessoutboundmessagerequestMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if MessagingTemplate, ok := SendagentlessoutboundmessagerequestMap["messagingTemplate"].(map[string]interface{}); ok {
 		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
 		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
@@ -98,7 +98,7 @@ func (o *Sendagentlessoutboundmessagerequest) UnmarshalJSON(b []byte) error {
 	if UseExistingActiveConversation, ok := SendagentlessoutboundmessagerequestMap["useExistingActiveConversation"].(bool); ok {
 		o.UseExistingActiveConversation = &UseExistingActiveConversation
 	}
-	
+    
 
 	return nil
 }

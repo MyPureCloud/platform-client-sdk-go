@@ -45,11 +45,11 @@ func (o *Schedulingnoforecastoptionsrequest) UnmarshalJSON(b []byte) error {
 	if ShiftLength, ok := SchedulingnoforecastoptionsrequestMap["shiftLength"].(string); ok {
 		o.ShiftLength = &ShiftLength
 	}
-	
+    
 	if ShiftStart, ok := SchedulingnoforecastoptionsrequestMap["shiftStart"].(string); ok {
 		o.ShiftStart = &ShiftStart
 	}
-	
+    
 
 	return nil
 }

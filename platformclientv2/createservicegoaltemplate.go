@@ -61,7 +61,7 @@ func (o *Createservicegoaltemplate) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreateservicegoaltemplateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ServiceLevel, ok := CreateservicegoaltemplateMap["serviceLevel"].(map[string]interface{}); ok {
 		ServiceLevelString, _ := json.Marshal(ServiceLevel)
 		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)

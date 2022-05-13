@@ -150,35 +150,35 @@ func (o *Webchatmemberinfo) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebchatmemberinfoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DisplayName, ok := WebchatmemberinfoMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if FirstName, ok := WebchatmemberinfoMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}
-	
+    
 	if LastName, ok := WebchatmemberinfoMap["lastName"].(string); ok {
 		o.LastName = &LastName
 	}
-	
+    
 	if Email, ok := WebchatmemberinfoMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if PhoneNumber, ok := WebchatmemberinfoMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if AvatarImageUrl, ok := WebchatmemberinfoMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 	if Role, ok := WebchatmemberinfoMap["role"].(string); ok {
 		o.Role = &Role
 	}
-	
+    
 	if joinDateString, ok := WebchatmemberinfoMap["joinDate"].(string); ok {
 		JoinDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", joinDateString)
 		o.JoinDate = &JoinDate
@@ -192,7 +192,7 @@ func (o *Webchatmemberinfo) UnmarshalJSON(b []byte) error {
 	if AuthenticatedGuest, ok := WebchatmemberinfoMap["authenticatedGuest"].(bool); ok {
 		o.AuthenticatedGuest = &AuthenticatedGuest
 	}
-	
+    
 	if CustomFields, ok := WebchatmemberinfoMap["customFields"].(map[string]interface{}); ok {
 		CustomFieldsString, _ := json.Marshal(CustomFields)
 		json.Unmarshal(CustomFieldsString, &o.CustomFields)
@@ -201,7 +201,7 @@ func (o *Webchatmemberinfo) UnmarshalJSON(b []byte) error {
 	if State, ok := WebchatmemberinfoMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 
 	return nil
 }

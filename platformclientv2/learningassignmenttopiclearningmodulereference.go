@@ -45,11 +45,11 @@ func (o *Learningassignmenttopiclearningmodulereference) UnmarshalJSON(b []byte)
 	if Id, ok := LearningassignmenttopiclearningmodulereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LearningassignmenttopiclearningmodulereferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

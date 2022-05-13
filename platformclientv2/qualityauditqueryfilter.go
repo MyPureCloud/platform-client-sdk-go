@@ -45,11 +45,11 @@ func (o *Qualityauditqueryfilter) UnmarshalJSON(b []byte) error {
 	if Property, ok := QualityauditqueryfilterMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if Value, ok := QualityauditqueryfilterMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

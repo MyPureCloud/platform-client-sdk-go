@@ -214,15 +214,15 @@ func (o *Coachingappointmentresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := CoachingappointmentresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CoachingappointmentresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := CoachingappointmentresponseMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateStartString, ok := CoachingappointmentresponseMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart
@@ -236,7 +236,7 @@ func (o *Coachingappointmentresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := CoachingappointmentresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Facilitator, ok := CoachingappointmentresponseMap["facilitator"].(map[string]interface{}); ok {
 		FacilitatorString, _ := json.Marshal(Facilitator)
 		json.Unmarshal(FacilitatorString, &o.Facilitator)
@@ -280,7 +280,7 @@ func (o *Coachingappointmentresponse) UnmarshalJSON(b []byte) error {
 	if IsOverdue, ok := CoachingappointmentresponseMap["isOverdue"].(bool); ok {
 		o.IsOverdue = &IsOverdue
 	}
-	
+    
 	if WfmSchedule, ok := CoachingappointmentresponseMap["wfmSchedule"].(map[string]interface{}); ok {
 		WfmScheduleString, _ := json.Marshal(WfmSchedule)
 		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)
@@ -299,7 +299,7 @@ func (o *Coachingappointmentresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CoachingappointmentresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

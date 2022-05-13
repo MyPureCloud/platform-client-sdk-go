@@ -66,15 +66,15 @@ func (o *Vmpairinginfo) UnmarshalJSON(b []byte) error {
 	if EdgeId, ok := VmpairinginfoMap["edge-id"].(string); ok {
 		o.EdgeId = &EdgeId
 	}
-	
+    
 	if AuthToken, ok := VmpairinginfoMap["auth-token"].(string); ok {
 		o.AuthToken = &AuthToken
 	}
-	
+    
 	if OrgId, ok := VmpairinginfoMap["org-id"].(string); ok {
 		o.OrgId = &OrgId
 	}
-	
+    
 
 	return nil
 }

@@ -158,11 +158,11 @@ func (o *Dnclist) UnmarshalJSON(b []byte) error {
 	if Id, ok := DnclistMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DnclistMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DnclistMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -191,15 +191,15 @@ func (o *Dnclist) UnmarshalJSON(b []byte) error {
 	if DncSourceType, ok := DnclistMap["dncSourceType"].(string); ok {
 		o.DncSourceType = &DncSourceType
 	}
-	
+    
 	if ContactMethod, ok := DnclistMap["contactMethod"].(string); ok {
 		o.ContactMethod = &ContactMethod
 	}
-	
+    
 	if LoginId, ok := DnclistMap["loginId"].(string); ok {
 		o.LoginId = &LoginId
 	}
-	
+    
 	if DncCodes, ok := DnclistMap["dncCodes"].([]interface{}); ok {
 		DncCodesString, _ := json.Marshal(DncCodes)
 		json.Unmarshal(DncCodesString, &o.DncCodes)
@@ -208,7 +208,7 @@ func (o *Dnclist) UnmarshalJSON(b []byte) error {
 	if LicenseId, ok := DnclistMap["licenseId"].(string); ok {
 		o.LicenseId = &LicenseId
 	}
-	
+    
 	if Division, ok := DnclistMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -217,7 +217,7 @@ func (o *Dnclist) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DnclistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -37,7 +37,7 @@ func (o *Setuuidatarequest) UnmarshalJSON(b []byte) error {
 	if UuiData, ok := SetuuidatarequestMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
 	}
-	
+    
 
 	return nil
 }

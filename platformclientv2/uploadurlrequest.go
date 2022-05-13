@@ -61,11 +61,11 @@ func (o *Uploadurlrequest) UnmarshalJSON(b []byte) error {
 	if FileName, ok := UploadurlrequestMap["fileName"].(string); ok {
 		o.FileName = &FileName
 	}
-	
+    
 	if ContentMd5, ok := UploadurlrequestMap["contentMd5"].(string); ok {
 		o.ContentMd5 = &ContentMd5
 	}
-	
+    
 	if SignedUrlTimeoutSeconds, ok := UploadurlrequestMap["signedUrlTimeoutSeconds"].(float64); ok {
 		SignedUrlTimeoutSecondsInt := int(SignedUrlTimeoutSeconds)
 		o.SignedUrlTimeoutSeconds = &SignedUrlTimeoutSecondsInt
@@ -74,7 +74,7 @@ func (o *Uploadurlrequest) UnmarshalJSON(b []byte) error {
 	if ServerSideEncryption, ok := UploadurlrequestMap["serverSideEncryption"].(string); ok {
 		o.ServerSideEncryption = &ServerSideEncryption
 	}
-	
+    
 
 	return nil
 }

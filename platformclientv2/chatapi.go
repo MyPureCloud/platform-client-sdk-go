@@ -32,8 +32,6 @@ func NewChatApiWithConfig(config *Configuration) *ChatApi {
 // GetChatSettings invokes GET /api/v2/chat/settings
 //
 // Get Chat Settings.
-//
-// 
 func (a ChatApi) GetChatSettings() (*Chatsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -99,8 +97,6 @@ func (a ChatApi) GetChatSettings() (*Chatsettings, *APIResponse, error) {
 // PatchChatSettings invokes PATCH /api/v2/chat/settings
 //
 // Patch Chat Settings.
-//
-// 
 func (a ChatApi) PatchChatSettings(body Chatsettings) (*Chatsettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a ChatApi) PatchChatSettings(body Chatsettings) (*Chatsettings, *APIRespon
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ChatApi->PatchChatSettings")
 	}
 
@@ -174,8 +170,6 @@ func (a ChatApi) PatchChatSettings(body Chatsettings) (*Chatsettings, *APIRespon
 // PutChatSettings invokes PUT /api/v2/chat/settings
 //
 // Update Chat Settings.
-//
-// 
 func (a ChatApi) PutChatSettings(body Chatsettings) (*Chatsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -187,7 +181,7 @@ func (a ChatApi) PutChatSettings(body Chatsettings) (*Chatsettings, *APIResponse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ChatApi->PutChatSettings")
 	}
 

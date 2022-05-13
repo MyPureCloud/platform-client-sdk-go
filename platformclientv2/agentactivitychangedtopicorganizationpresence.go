@@ -45,11 +45,11 @@ func (o *Agentactivitychangedtopicorganizationpresence) UnmarshalJSON(b []byte) 
 	if Id, ok := AgentactivitychangedtopicorganizationpresenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SystemPresence, ok := AgentactivitychangedtopicorganizationpresenceMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 
 	return nil
 }

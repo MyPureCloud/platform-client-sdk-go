@@ -166,11 +166,11 @@ func (o *Contentmanagementsingledocumenttopicdocumentdatav2) UnmarshalJSON(b []b
 	if Id, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -194,7 +194,7 @@ func (o *Contentmanagementsingledocumenttopicdocumentdatav2) UnmarshalJSON(b []b
 	if ContentType, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
@@ -203,7 +203,7 @@ func (o *Contentmanagementsingledocumenttopicdocumentdatav2) UnmarshalJSON(b []b
 	if Filename, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 	if ChangeNumber, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["changeNumber"].(float64); ok {
 		ChangeNumberInt := int(ChangeNumber)
 		o.ChangeNumber = &ChangeNumberInt
@@ -227,7 +227,7 @@ func (o *Contentmanagementsingledocumenttopicdocumentdatav2) UnmarshalJSON(b []b
 	if SelfUri, ok := Contentmanagementsingledocumenttopicdocumentdatav2Map["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

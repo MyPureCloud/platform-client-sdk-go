@@ -69,23 +69,23 @@ func (o *Twitterid) UnmarshalJSON(b []byte) error {
 	if Id, ok := TwitteridMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TwitteridMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ScreenName, ok := TwitteridMap["screenName"].(string); ok {
 		o.ScreenName = &ScreenName
 	}
-	
+    
 	if Verified, ok := TwitteridMap["verified"].(bool); ok {
 		o.Verified = &Verified
 	}
-	
+    
 	if ProfileUrl, ok := TwitteridMap["profileUrl"].(string); ok {
 		o.ProfileUrl = &ProfileUrl
 	}
-	
+    
 
 	return nil
 }

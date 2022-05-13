@@ -37,7 +37,7 @@ func (o *Intent) UnmarshalJSON(b []byte) error {
 	if Name, ok := IntentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

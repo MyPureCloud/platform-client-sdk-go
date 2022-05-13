@@ -101,35 +101,35 @@ func (o *Analyticsparticipantwithoutattributes) UnmarshalJSON(b []byte) error {
 	if ExternalContactId, ok := AnalyticsparticipantwithoutattributesMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalOrganizationId, ok := AnalyticsparticipantwithoutattributesMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if FlaggedReason, ok := AnalyticsparticipantwithoutattributesMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if ParticipantId, ok := AnalyticsparticipantwithoutattributesMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if ParticipantName, ok := AnalyticsparticipantwithoutattributesMap["participantName"].(string); ok {
 		o.ParticipantName = &ParticipantName
 	}
-	
+    
 	if Purpose, ok := AnalyticsparticipantwithoutattributesMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if TeamId, ok := AnalyticsparticipantwithoutattributesMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if UserId, ok := AnalyticsparticipantwithoutattributesMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Sessions, ok := AnalyticsparticipantwithoutattributesMap["sessions"].([]interface{}); ok {
 		SessionsString, _ := json.Marshal(Sessions)
 		json.Unmarshal(SessionsString, &o.Sessions)

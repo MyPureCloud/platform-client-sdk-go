@@ -398,11 +398,11 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainlogicalinterfaceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainlogicalinterfaceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DomainlogicalinterfaceMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -411,7 +411,7 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if Description, ok := DomainlogicalinterfaceMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := DomainlogicalinterfaceMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -430,35 +430,35 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := DomainlogicalinterfaceMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := DomainlogicalinterfaceMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := DomainlogicalinterfaceMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := DomainlogicalinterfaceMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := DomainlogicalinterfaceMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if EdgeUri, ok := DomainlogicalinterfaceMap["edgeUri"].(string); ok {
 		o.EdgeUri = &EdgeUri
 	}
-	
+    
 	if EdgeAssignedId, ok := DomainlogicalinterfaceMap["edgeAssignedId"].(string); ok {
 		o.EdgeAssignedId = &EdgeAssignedId
 	}
-	
+    
 	if FriendlyName, ok := DomainlogicalinterfaceMap["friendlyName"].(string); ok {
 		o.FriendlyName = &FriendlyName
 	}
-	
+    
 	if VlanTagId, ok := DomainlogicalinterfaceMap["vlanTagId"].(float64); ok {
 		VlanTagIdInt := int(VlanTagId)
 		o.VlanTagId = &VlanTagIdInt
@@ -467,27 +467,27 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if HardwareAddress, ok := DomainlogicalinterfaceMap["hardwareAddress"].(string); ok {
 		o.HardwareAddress = &HardwareAddress
 	}
-	
+    
 	if PhysicalAdapterId, ok := DomainlogicalinterfaceMap["physicalAdapterId"].(string); ok {
 		o.PhysicalAdapterId = &PhysicalAdapterId
 	}
-	
+    
 	if IfStatus, ok := DomainlogicalinterfaceMap["ifStatus"].(string); ok {
 		o.IfStatus = &IfStatus
 	}
-	
+    
 	if InterfaceType, ok := DomainlogicalinterfaceMap["interfaceType"].(string); ok {
 		o.InterfaceType = &InterfaceType
 	}
-	
+    
 	if PublicNatAddressIpV4, ok := DomainlogicalinterfaceMap["publicNatAddressIpV4"].(string); ok {
 		o.PublicNatAddressIpV4 = &PublicNatAddressIpV4
 	}
-	
+    
 	if PublicNatAddressIpV6, ok := DomainlogicalinterfaceMap["publicNatAddressIpV6"].(string); ok {
 		o.PublicNatAddressIpV6 = &PublicNatAddressIpV6
 	}
-	
+    
 	if Routes, ok := DomainlogicalinterfaceMap["routes"].([]interface{}); ok {
 		RoutesString, _ := json.Marshal(Routes)
 		json.Unmarshal(RoutesString, &o.Routes)
@@ -511,15 +511,15 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if CurrentState, ok := DomainlogicalinterfaceMap["currentState"].(string); ok {
 		o.CurrentState = &CurrentState
 	}
-	
+    
 	if LastModifiedUserId, ok := DomainlogicalinterfaceMap["lastModifiedUserId"].(string); ok {
 		o.LastModifiedUserId = &LastModifiedUserId
 	}
-	
+    
 	if LastModifiedCorrelationId, ok := DomainlogicalinterfaceMap["lastModifiedCorrelationId"].(string); ok {
 		o.LastModifiedCorrelationId = &LastModifiedCorrelationId
 	}
-	
+    
 	if CommandResponses, ok := DomainlogicalinterfaceMap["commandResponses"].([]interface{}); ok {
 		CommandResponsesString, _ := json.Marshal(CommandResponses)
 		json.Unmarshal(CommandResponsesString, &o.CommandResponses)
@@ -528,27 +528,27 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if InheritPhoneTrunkBasesIPv4, ok := DomainlogicalinterfaceMap["inheritPhoneTrunkBasesIPv4"].(bool); ok {
 		o.InheritPhoneTrunkBasesIPv4 = &InheritPhoneTrunkBasesIPv4
 	}
-	
+    
 	if InheritPhoneTrunkBasesIPv6, ok := DomainlogicalinterfaceMap["inheritPhoneTrunkBasesIPv6"].(bool); ok {
 		o.InheritPhoneTrunkBasesIPv6 = &InheritPhoneTrunkBasesIPv6
 	}
-	
+    
 	if UseForInternalEdgeCommunication, ok := DomainlogicalinterfaceMap["useForInternalEdgeCommunication"].(bool); ok {
 		o.UseForInternalEdgeCommunication = &UseForInternalEdgeCommunication
 	}
-	
+    
 	if UseForIndirectEdgeCommunication, ok := DomainlogicalinterfaceMap["useForIndirectEdgeCommunication"].(bool); ok {
 		o.UseForIndirectEdgeCommunication = &UseForIndirectEdgeCommunication
 	}
-	
+    
 	if UseForCloudProxyEdgeCommunication, ok := DomainlogicalinterfaceMap["useForCloudProxyEdgeCommunication"].(bool); ok {
 		o.UseForCloudProxyEdgeCommunication = &UseForCloudProxyEdgeCommunication
 	}
-	
+    
 	if UseForWanInterface, ok := DomainlogicalinterfaceMap["useForWanInterface"].(bool); ok {
 		o.UseForWanInterface = &UseForWanInterface
 	}
-	
+    
 	if ExternalTrunkBaseAssignments, ok := DomainlogicalinterfaceMap["externalTrunkBaseAssignments"].([]interface{}); ok {
 		ExternalTrunkBaseAssignmentsString, _ := json.Marshal(ExternalTrunkBaseAssignments)
 		json.Unmarshal(ExternalTrunkBaseAssignmentsString, &o.ExternalTrunkBaseAssignments)
@@ -562,7 +562,7 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if TraceEnabled, ok := DomainlogicalinterfaceMap["traceEnabled"].(bool); ok {
 		o.TraceEnabled = &TraceEnabled
 	}
-	
+    
 	if startDateString, ok := DomainlogicalinterfaceMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -576,7 +576,7 @@ func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DomainlogicalinterfaceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

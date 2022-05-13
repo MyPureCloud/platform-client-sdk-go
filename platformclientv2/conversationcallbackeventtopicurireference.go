@@ -45,11 +45,11 @@ func (o *Conversationcallbackeventtopicurireference) UnmarshalJSON(b []byte) err
 	if Id, ok := ConversationcallbackeventtopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationcallbackeventtopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

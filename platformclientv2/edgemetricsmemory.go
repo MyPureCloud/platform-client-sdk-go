@@ -53,15 +53,15 @@ func (o *Edgemetricsmemory) UnmarshalJSON(b []byte) error {
 	if AvailableBytes, ok := EdgemetricsmemoryMap["availableBytes"].(float64); ok {
 		o.AvailableBytes = &AvailableBytes
 	}
-	
+    
 	if VarType, ok := EdgemetricsmemoryMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if TotalBytes, ok := EdgemetricsmemoryMap["totalBytes"].(float64); ok {
 		o.TotalBytes = &TotalBytes
 	}
-	
+    
 
 	return nil
 }

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -11,6 +12,10 @@ type Wfmbuintradaydataupdatetopicbuschedulereference struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+
+	// WeekDate
+	WeekDate *time.Time `json:"weekDate,omitempty"`
+
 }
 
 func (o *Wfmbuintradaydataupdatetopicbuschedulereference) MarshalJSON() ([]byte, error) {
@@ -18,11 +23,23 @@ func (o *Wfmbuintradaydataupdatetopicbuschedulereference) MarshalJSON() ([]byte,
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuintradaydataupdatetopicbuschedulereference
 	
+	WeekDate := new(string)
+	if o.WeekDate != nil {
+		
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		WeekDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
+		
+		WeekDate: WeekDate,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -36,6 +53,11 @@ func (o *Wfmbuintradaydataupdatetopicbuschedulereference) UnmarshalJSON(b []byte
 	
 	if Id, ok := WfmbuintradaydataupdatetopicbuschedulereferenceMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if weekDateString, ok := WfmbuintradaydataupdatetopicbuschedulereferenceMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", weekDateString)
+		o.WeekDate = &WeekDate
 	}
 	
 

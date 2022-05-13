@@ -83,7 +83,7 @@ func (o *Callforwardingeventcallforwarding) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := CallforwardingeventcallforwardingMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Calls, ok := CallforwardingeventcallforwardingMap["calls"].([]interface{}); ok {
 		CallsString, _ := json.Marshal(Calls)
 		json.Unmarshal(CallsString, &o.Calls)
@@ -92,7 +92,7 @@ func (o *Callforwardingeventcallforwarding) UnmarshalJSON(b []byte) error {
 	if Voicemail, ok := CallforwardingeventcallforwardingMap["voicemail"].(string); ok {
 		o.Voicemail = &Voicemail
 	}
-	
+    
 	if modifiedDateString, ok := CallforwardingeventcallforwardingMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate

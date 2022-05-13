@@ -45,11 +45,11 @@ func (o *Queuereference) UnmarshalJSON(b []byte) error {
 	if Id, ok := QueuereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := QueuereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -33,6 +33,14 @@ type V2conversationmessagetypingeventforusertopicconversationmessagingchannel st
 	Time *time.Time `json:"time,omitempty"`
 
 
+	// DateModified
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// DateDeleted
+	DateDeleted *time.Time `json:"dateDeleted,omitempty"`
+
+
 	// Metadata
 	Metadata *V2conversationmessagetypingeventforusertopicconversationmessagingchannelmetadata `json:"metadata,omitempty"`
 
@@ -51,6 +59,22 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessagingchanne
 		Time = nil
 	}
 	
+	DateModified := new(string)
+	if o.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	DateDeleted := new(string)
+	if o.DateDeleted != nil {
+		
+		*DateDeleted = timeutil.Strftime(o.DateDeleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateDeleted = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -63,6 +87,10 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessagingchanne
 		From *V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipient `json:"from,omitempty"`
 		
 		Time *string `json:"time,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		DateDeleted *string `json:"dateDeleted,omitempty"`
 		
 		Metadata *V2conversationmessagetypingeventforusertopicconversationmessagingchannelmetadata `json:"metadata,omitempty"`
 		*Alias
@@ -79,6 +107,10 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessagingchanne
 		
 		Time: Time,
 		
+		DateModified: DateModified,
+		
+		DateDeleted: DateDeleted,
+		
 		Metadata: o.Metadata,
 		Alias:    (*Alias)(o),
 	})
@@ -94,15 +126,15 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessagingchanne
 	if Id, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Platform, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["platform"].(string); ok {
 		o.Platform = &Platform
 	}
-	
+    
 	if MessageId, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 	if To, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["to"].(map[string]interface{}); ok {
 		ToString, _ := json.Marshal(To)
 		json.Unmarshal(ToString, &o.To)
@@ -116,6 +148,16 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessagingchanne
 	if timeString, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["time"].(string); ok {
 		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
 		o.Time = &Time
+	}
+	
+	if dateModifiedString, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if dateDeletedString, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["dateDeleted"].(string); ok {
+		DateDeleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDeletedString)
+		o.DateDeleted = &DateDeleted
 	}
 	
 	if Metadata, ok := V2conversationmessagetypingeventforusertopicconversationmessagingchannelMap["metadata"].(map[string]interface{}); ok {

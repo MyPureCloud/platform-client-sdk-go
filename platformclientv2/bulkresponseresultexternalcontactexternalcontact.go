@@ -61,11 +61,11 @@ func (o *Bulkresponseresultexternalcontactexternalcontact) UnmarshalJSON(b []byt
 	if Id, ok := BulkresponseresultexternalcontactexternalcontactMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Success, ok := BulkresponseresultexternalcontactexternalcontactMap["success"].(bool); ok {
 		o.Success = &Success
 	}
-	
+    
 	if Entity, ok := BulkresponseresultexternalcontactexternalcontactMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

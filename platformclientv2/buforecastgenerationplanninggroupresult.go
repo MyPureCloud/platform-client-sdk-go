@@ -45,7 +45,7 @@ func (o *Buforecastgenerationplanninggroupresult) UnmarshalJSON(b []byte) error 
 	if PlanningGroupId, ok := BuforecastgenerationplanninggroupresultMap["planningGroupId"].(string); ok {
 		o.PlanningGroupId = &PlanningGroupId
 	}
-	
+    
 	if MetricResults, ok := BuforecastgenerationplanninggroupresultMap["metricResults"].([]interface{}); ok {
 		MetricResultsString, _ := json.Marshal(MetricResults)
 		json.Unmarshal(MetricResultsString, &o.MetricResults)

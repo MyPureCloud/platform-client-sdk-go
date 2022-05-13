@@ -77,11 +77,11 @@ func (o *Groupsearchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := GroupsearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := GroupsearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := GroupsearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

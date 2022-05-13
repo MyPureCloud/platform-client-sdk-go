@@ -101,7 +101,7 @@ func (o *Groupsearchcriteria) UnmarshalJSON(b []byte) error {
 	if EndValue, ok := GroupsearchcriteriaMap["endValue"].(string); ok {
 		o.EndValue = &EndValue
 	}
-	
+    
 	if Values, ok := GroupsearchcriteriaMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -110,7 +110,7 @@ func (o *Groupsearchcriteria) UnmarshalJSON(b []byte) error {
 	if StartValue, ok := GroupsearchcriteriaMap["startValue"].(string); ok {
 		o.StartValue = &StartValue
 	}
-	
+    
 	if Fields, ok := GroupsearchcriteriaMap["fields"].([]interface{}); ok {
 		FieldsString, _ := json.Marshal(Fields)
 		json.Unmarshal(FieldsString, &o.Fields)
@@ -119,11 +119,11 @@ func (o *Groupsearchcriteria) UnmarshalJSON(b []byte) error {
 	if Value, ok := GroupsearchcriteriaMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Operator, ok := GroupsearchcriteriaMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Group, ok := GroupsearchcriteriaMap["group"].([]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
@@ -132,11 +132,11 @@ func (o *Groupsearchcriteria) UnmarshalJSON(b []byte) error {
 	if DateFormat, ok := GroupsearchcriteriaMap["dateFormat"].(string); ok {
 		o.DateFormat = &DateFormat
 	}
-	
+    
 	if VarType, ok := GroupsearchcriteriaMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

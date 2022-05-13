@@ -198,7 +198,7 @@ func (o *Timeoffrequestresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := TimeoffrequestresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := TimeoffrequestresponseMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -207,19 +207,19 @@ func (o *Timeoffrequestresponse) UnmarshalJSON(b []byte) error {
 	if IsFullDayRequest, ok := TimeoffrequestresponseMap["isFullDayRequest"].(bool); ok {
 		o.IsFullDayRequest = &IsFullDayRequest
 	}
-	
+    
 	if MarkedAsRead, ok := TimeoffrequestresponseMap["markedAsRead"].(bool); ok {
 		o.MarkedAsRead = &MarkedAsRead
 	}
-	
+    
 	if ActivityCodeId, ok := TimeoffrequestresponseMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Status, ok := TimeoffrequestresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if PartialDayStartDateTimes, ok := TimeoffrequestresponseMap["partialDayStartDateTimes"].([]interface{}); ok {
 		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
 		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
@@ -238,7 +238,7 @@ func (o *Timeoffrequestresponse) UnmarshalJSON(b []byte) error {
 	if Notes, ok := TimeoffrequestresponseMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if SubmittedBy, ok := TimeoffrequestresponseMap["submittedBy"].(map[string]interface{}); ok {
 		SubmittedByString, _ := json.Marshal(SubmittedBy)
 		json.Unmarshal(SubmittedByString, &o.SubmittedBy)
@@ -277,7 +277,7 @@ func (o *Timeoffrequestresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TimeoffrequestresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

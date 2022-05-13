@@ -142,15 +142,15 @@ func (o *Outcome) UnmarshalJSON(b []byte) error {
 	if Id, ok := OutcomeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IsActive, ok := OutcomeMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if DisplayName, ok := OutcomeMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if Version, ok := OutcomeMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -159,11 +159,11 @@ func (o *Outcome) UnmarshalJSON(b []byte) error {
 	if Description, ok := OutcomeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if IsPositive, ok := OutcomeMap["isPositive"].(bool); ok {
 		o.IsPositive = &IsPositive
 	}
-	
+    
 	if Context, ok := OutcomeMap["context"].(map[string]interface{}); ok {
 		ContextString, _ := json.Marshal(Context)
 		json.Unmarshal(ContextString, &o.Context)
@@ -182,7 +182,7 @@ func (o *Outcome) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OutcomeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if createdDateString, ok := OutcomeMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

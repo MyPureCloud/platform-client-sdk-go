@@ -142,19 +142,19 @@ func (o *Knowledgedocument) UnmarshalJSON(b []byte) error {
 	if Id, ok := KnowledgedocumentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KnowledgedocumentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if LanguageCode, ok := KnowledgedocumentMap["languageCode"].(string); ok {
 		o.LanguageCode = &LanguageCode
 	}
-	
+    
 	if VarType, ok := KnowledgedocumentMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Faq, ok := KnowledgedocumentMap["faq"].(map[string]interface{}); ok {
 		FaqString, _ := json.Marshal(Faq)
 		json.Unmarshal(FaqString, &o.Faq)
@@ -183,7 +183,7 @@ func (o *Knowledgedocument) UnmarshalJSON(b []byte) error {
 	if ExternalUrl, ok := KnowledgedocumentMap["externalUrl"].(string); ok {
 		o.ExternalUrl = &ExternalUrl
 	}
-	
+    
 	if Article, ok := KnowledgedocumentMap["article"].(map[string]interface{}); ok {
 		ArticleString, _ := json.Marshal(Article)
 		json.Unmarshal(ArticleString, &o.Article)
@@ -192,7 +192,7 @@ func (o *Knowledgedocument) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := KnowledgedocumentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

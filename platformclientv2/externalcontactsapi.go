@@ -32,21 +32,19 @@ func NewExternalContactsApiWithConfig(config *Configuration) *ExternalContactsAp
 // DeleteExternalcontactsContact invokes DELETE /api/v2/externalcontacts/contacts/{contactId}
 //
 // Delete an external contact
-//
-// 
-func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*Empty, *APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}"
 	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->DeleteExternalcontactsContact")
 	}
 
@@ -86,14 +84,14 @@ func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*E
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -105,27 +103,25 @@ func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*E
 // DeleteExternalcontactsContactNote invokes DELETE /api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}
 //
 // Delete a note for an external contact
-//
-// 
-func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string, noteId string) (*Empty, *APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string, noteId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}"
 	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
 	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->DeleteExternalcontactsContactNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->DeleteExternalcontactsContactNote")
 	}
 
@@ -165,14 +161,14 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string,
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -184,8 +180,6 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string,
 // DeleteExternalcontactsContactsSchema invokes DELETE /api/v2/externalcontacts/contacts/schemas/{schemaId}
 //
 // Delete a schema
-//
-// 
 func (a ExternalContactsApi) DeleteExternalcontactsContactsSchema(schemaId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -197,7 +191,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactsSchema(schemaId strin
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->DeleteExternalcontactsContactsSchema")
 	}
 
@@ -250,21 +244,19 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactsSchema(schemaId strin
 // DeleteExternalcontactsOrganization invokes DELETE /api/v2/externalcontacts/organizations/{externalOrganizationId}
 //
 // Delete an external organization
-//
-// 
-func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganizationId string) (*Empty, *APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganizationId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}"
 	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->DeleteExternalcontactsOrganization")
 	}
 
@@ -304,14 +296,14 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganiza
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -323,27 +315,25 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganiza
 // DeleteExternalcontactsOrganizationNote invokes DELETE /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}
 //
 // Delete a note for an external organization
-//
-// 
-func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrganizationId string, noteId string) (*Empty, *APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrganizationId string, noteId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}"
 	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
 	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->DeleteExternalcontactsOrganizationNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->DeleteExternalcontactsOrganizationNote")
 	}
 
@@ -383,14 +373,14 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrga
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -402,8 +392,6 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrga
 // DeleteExternalcontactsOrganizationTrustor invokes DELETE /api/v2/externalcontacts/organizations/{externalOrganizationId}/trustor
 //
 // Unlink the Trustor for this External Organization
-//
-// 
 func (a ExternalContactsApi) DeleteExternalcontactsOrganizationTrustor(externalOrganizationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -415,7 +403,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationTrustor(externalO
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->DeleteExternalcontactsOrganizationTrustor")
 	}
 
@@ -468,21 +456,19 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationTrustor(externalO
 // DeleteExternalcontactsRelationship invokes DELETE /api/v2/externalcontacts/relationships/{relationshipId}
 //
 // Delete a relationship
-//
-// 
-func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId string) (*Empty, *APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/relationships/{relationshipId}"
 	path = strings.Replace(path, "{relationshipId}", fmt.Sprintf("%v", relationshipId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'relationshipId' is set
 	if &relationshipId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'relationshipId' when calling ExternalContactsApi->DeleteExternalcontactsRelationship")
 	}
 
@@ -522,14 +508,14 @@ func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId s
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -541,8 +527,6 @@ func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId s
 // GetExternalcontactsContact invokes GET /api/v2/externalcontacts/contacts/{contactId}
 //
 // Fetch an external contact
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsContact(contactId string, expand []string) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -555,7 +539,7 @@ func (a ExternalContactsApi) GetExternalcontactsContact(contactId string, expand
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->GetExternalcontactsContact")
 	}
 
@@ -616,8 +600,6 @@ func (a ExternalContactsApi) GetExternalcontactsContact(contactId string, expand
 // GetExternalcontactsContactNote invokes GET /api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}
 //
 // Fetch a note for an external contact
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, noteId string, expand []string) (*Note, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -631,12 +613,12 @@ func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, no
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->GetExternalcontactsContactNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->GetExternalcontactsContactNote")
 	}
 
@@ -697,8 +679,6 @@ func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, no
 // GetExternalcontactsContactNotes invokes GET /api/v2/externalcontacts/contacts/{contactId}/notes
 //
 // List notes for an external contact
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Notelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -711,7 +691,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->GetExternalcontactsContactNotes")
 	}
 
@@ -778,8 +758,6 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 // GetExternalcontactsContacts invokes GET /api/v2/externalcontacts/contacts
 //
 // Search for external contacts
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumber int, q string, sortOrder string, expand []string) (*Contactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -855,8 +833,6 @@ func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumbe
 // GetExternalcontactsContactsSchema invokes GET /api/v2/externalcontacts/contacts/schemas/{schemaId}
 //
 // Get a schema
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsContactsSchema(schemaId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -869,7 +845,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchema(schemaId string) 
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->GetExternalcontactsContactsSchema")
 	}
 
@@ -928,8 +904,6 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchema(schemaId string) 
 // GetExternalcontactsContactsSchemaVersion invokes GET /api/v2/externalcontacts/contacts/schemas/{schemaId}/versions/{versionId}
 //
 // Get a specific version of a schema
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersion(schemaId string, versionId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -943,12 +917,12 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersion(schemaId s
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->GetExternalcontactsContactsSchemaVersion")
 	}
 	// verify the required parameter 'versionId' is set
 	if &versionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling ExternalContactsApi->GetExternalcontactsContactsSchemaVersion")
 	}
 
@@ -1006,9 +980,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersion(schemaId s
 
 // GetExternalcontactsContactsSchemaVersions invokes GET /api/v2/externalcontacts/contacts/schemas/{schemaId}/versions
 //
-// Get all versions of an external contact&#39;s schema
-//
-// 
+// Get all versions of an external contact's schema
 func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersions(schemaId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1021,7 +993,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersions(schemaId 
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->GetExternalcontactsContactsSchemaVersions")
 	}
 
@@ -1080,8 +1052,6 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersions(schemaId 
 // GetExternalcontactsContactsSchemas invokes GET /api/v2/externalcontacts/contacts/schemas
 //
 // Get a list of schemas.
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsContactsSchemas() (*Dataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1147,8 +1117,6 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemas() (*Dataschemali
 // GetExternalcontactsOrganization invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}
 //
 // Fetch an external organization
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizationId string, expand string, includeTrustors bool) (*Externalorganization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1161,7 +1129,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->GetExternalcontactsOrganization")
 	}
 
@@ -1224,8 +1192,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 // GetExternalcontactsOrganizationContacts invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}/contacts
 //
 // Search for external contacts in an external organization
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrganizationId string, pageSize int, pageNumber int, q string, sortOrder string, expand []string) (*Contactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1238,7 +1204,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->GetExternalcontactsOrganizationContacts")
 	}
 
@@ -1307,8 +1273,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 // GetExternalcontactsOrganizationNote invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}
 //
 // Fetch a note for an external organization
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganizationId string, noteId string, expand []string) (*Note, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1322,12 +1286,12 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganiz
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->GetExternalcontactsOrganizationNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->GetExternalcontactsOrganizationNote")
 	}
 
@@ -1388,8 +1352,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganiz
 // GetExternalcontactsOrganizationNotes invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes
 //
 // List notes for an external organization
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrganizationId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Notelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1402,7 +1364,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->GetExternalcontactsOrganizationNotes")
 	}
 
@@ -1469,8 +1431,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 // GetExternalcontactsOrganizationRelationships invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}/relationships
 //
 // Fetch a relationship for an external organization
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(externalOrganizationId string, pageSize int, pageNumber int, expand string, sortOrder string) (*Relationshiplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1483,7 +1443,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->GetExternalcontactsOrganizationRelationships")
 	}
 
@@ -1550,8 +1510,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 // GetExternalcontactsOrganizations invokes GET /api/v2/externalcontacts/organizations
 //
 // Search for external organizations
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, pageNumber int, q string, trustorId []string, sortOrder string, expand []string, includeTrustors bool) (*Externalorganizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1631,8 +1589,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, page
 // GetExternalcontactsOrganizationsSchema invokes GET /api/v2/externalcontacts/organizations/schemas/{schemaId}
 //
 // Get a schema
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchema(schemaId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1645,7 +1601,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchema(schemaId str
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->GetExternalcontactsOrganizationsSchema")
 	}
 
@@ -1704,8 +1660,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchema(schemaId str
 // GetExternalcontactsOrganizationsSchemaVersion invokes GET /api/v2/externalcontacts/organizations/schemas/{schemaId}/versions/{versionId}
 //
 // Get a specific version of a schema
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersion(schemaId string, versionId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1719,12 +1673,12 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersion(schem
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->GetExternalcontactsOrganizationsSchemaVersion")
 	}
 	// verify the required parameter 'versionId' is set
 	if &versionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling ExternalContactsApi->GetExternalcontactsOrganizationsSchemaVersion")
 	}
 
@@ -1782,9 +1736,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersion(schem
 
 // GetExternalcontactsOrganizationsSchemaVersions invokes GET /api/v2/externalcontacts/organizations/schemas/{schemaId}/versions
 //
-// Get all versions of an external organization&#39;s schema
-//
-// 
+// Get all versions of an external organization's schema
 func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersions(schemaId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1797,7 +1749,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersions(sche
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->GetExternalcontactsOrganizationsSchemaVersions")
 	}
 
@@ -1856,8 +1808,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersions(sche
 // GetExternalcontactsOrganizationsSchemas invokes GET /api/v2/externalcontacts/organizations/schemas
 //
 // Get a list of schemas.
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemas() (*Dataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1923,8 +1873,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemas() (*Datasch
 // GetExternalcontactsRelationship invokes GET /api/v2/externalcontacts/relationships/{relationshipId}
 //
 // Fetch a relationship
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId string, expand string) (*Relationship, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1937,7 +1885,7 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 
 	// verify the required parameter 'relationshipId' is set
 	if &relationshipId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'relationshipId' when calling ExternalContactsApi->GetExternalcontactsRelationship")
 	}
 
@@ -1998,8 +1946,6 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 // GetExternalcontactsReversewhitepageslookup invokes GET /api/v2/externalcontacts/reversewhitepageslookup
 //
 // Look up contacts and externalOrganizations based on an attribute. Maximum of 25 values returned.
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVal string, expand []string) (*Reversewhitepageslookupresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2011,7 +1957,7 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 
 	// verify the required parameter 'lookupVal' is set
 	if &lookupVal == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'lookupVal' when calling ExternalContactsApi->GetExternalcontactsReversewhitepageslookup")
 	}
 
@@ -2074,8 +2020,6 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 // GetExternalcontactsScanContacts invokes GET /api/v2/externalcontacts/scan/contacts
 //
 // Scan for external contacts using paging
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor string) (*Cursorcontactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2145,8 +2089,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor s
 // GetExternalcontactsScanNotes invokes GET /api/v2/externalcontacts/scan/notes
 //
 // Scan for notes using paging
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor string) (*Cursornotelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2216,8 +2158,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor stri
 // GetExternalcontactsScanOrganizations invokes GET /api/v2/externalcontacts/scan/organizations
 //
 // Scan for external organizations using paging
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cursor string) (*Cursororganizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2287,8 +2227,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cur
 // GetExternalcontactsScanRelationships invokes GET /api/v2/externalcontacts/scan/relationships
 //
 // Scan for relationships
-//
-// 
 func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cursor string) (*Cursorrelationshiplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2358,8 +2296,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cur
 // PostExternalcontactsBulkContacts invokes POST /api/v2/externalcontacts/bulk/contacts
 //
 // Bulk fetch contacts
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkContacts(body Bulkidsrequest) (*Bulkfetchcontactsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2371,7 +2307,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContacts(body Bulkidsreques
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkContacts")
 	}
 
@@ -2433,8 +2369,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContacts(body Bulkidsreques
 // PostExternalcontactsBulkContactsAdd invokes POST /api/v2/externalcontacts/bulk/contacts/add
 //
 // Bulk add contacts
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkContactsAdd(body Bulkcontactsrequest) (*Bulkcontactsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2446,7 +2380,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsAdd(body Bulkcontac
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkContactsAdd")
 	}
 
@@ -2508,8 +2442,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsAdd(body Bulkcontac
 // PostExternalcontactsBulkContactsRemove invokes POST /api/v2/externalcontacts/bulk/contacts/remove
 //
 // Bulk remove contacts
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkContactsRemove(body Bulkidsrequest) (*Bulkdeleteresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2521,7 +2453,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsRemove(body Bulkids
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkContactsRemove")
 	}
 
@@ -2583,8 +2515,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsRemove(body Bulkids
 // PostExternalcontactsBulkContactsUpdate invokes POST /api/v2/externalcontacts/bulk/contacts/update
 //
 // Bulk update contacts
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkContactsUpdate(body Bulkcontactsrequest) (*Bulkcontactsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2596,7 +2526,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsUpdate(body Bulkcon
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkContactsUpdate")
 	}
 
@@ -2658,8 +2588,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsUpdate(body Bulkcon
 // PostExternalcontactsBulkNotes invokes POST /api/v2/externalcontacts/bulk/notes
 //
 // Bulk fetch notes
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkNotes(body Bulkidsrequest) (*Bulkfetchnotesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2671,7 +2599,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotes(body Bulkidsrequest) 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkNotes")
 	}
 
@@ -2733,8 +2661,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotes(body Bulkidsrequest) 
 // PostExternalcontactsBulkNotesAdd invokes POST /api/v2/externalcontacts/bulk/notes/add
 //
 // Bulk add notes
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkNotesAdd(body Bulknotesrequest) (*Bulknotesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2746,7 +2672,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesAdd(body Bulknotesrequ
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkNotesAdd")
 	}
 
@@ -2808,8 +2734,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesAdd(body Bulknotesrequ
 // PostExternalcontactsBulkNotesRemove invokes POST /api/v2/externalcontacts/bulk/notes/remove
 //
 // Bulk remove notes
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkNotesRemove(body Bulkidsrequest) (*Bulkdeleteresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2821,7 +2745,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesRemove(body Bulkidsreq
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkNotesRemove")
 	}
 
@@ -2883,8 +2807,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesRemove(body Bulkidsreq
 // PostExternalcontactsBulkNotesUpdate invokes POST /api/v2/externalcontacts/bulk/notes/update
 //
 // Bulk update notes
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkNotesUpdate(body Bulknotesrequest) (*Bulknotesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2896,7 +2818,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesUpdate(body Bulknotesr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkNotesUpdate")
 	}
 
@@ -2958,8 +2880,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesUpdate(body Bulknotesr
 // PostExternalcontactsBulkOrganizations invokes POST /api/v2/externalcontacts/bulk/organizations
 //
 // Bulk fetch organizations
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkOrganizations(body Bulkidsrequest) (*Bulkfetchorganizationsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2971,7 +2891,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizations(body Bulkidsr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkOrganizations")
 	}
 
@@ -3033,8 +2953,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizations(body Bulkidsr
 // PostExternalcontactsBulkOrganizationsAdd invokes POST /api/v2/externalcontacts/bulk/organizations/add
 //
 // Bulk add organizations
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsAdd(body Bulkorganizationsrequest) (*Bulkorganizationsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3046,7 +2964,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsAdd(body Bulko
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkOrganizationsAdd")
 	}
 
@@ -3108,8 +3026,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsAdd(body Bulko
 // PostExternalcontactsBulkOrganizationsRemove invokes POST /api/v2/externalcontacts/bulk/organizations/remove
 //
 // Bulk remove organizations
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsRemove(body Bulkidsrequest) (*Bulkdeleteresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3121,7 +3037,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsRemove(body Bu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkOrganizationsRemove")
 	}
 
@@ -3183,8 +3099,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsRemove(body Bu
 // PostExternalcontactsBulkOrganizationsUpdate invokes POST /api/v2/externalcontacts/bulk/organizations/update
 //
 // Bulk update organizations
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsUpdate(body Bulkorganizationsrequest) (*Bulkorganizationsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3196,7 +3110,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsUpdate(body Bu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkOrganizationsUpdate")
 	}
 
@@ -3258,8 +3172,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsUpdate(body Bu
 // PostExternalcontactsBulkRelationships invokes POST /api/v2/externalcontacts/bulk/relationships
 //
 // Bulk fetch relationships
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkRelationships(body Bulkidsrequest) (*Bulkfetchrelationshipsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3271,7 +3183,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationships(body Bulkidsr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkRelationships")
 	}
 
@@ -3333,8 +3245,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationships(body Bulkidsr
 // PostExternalcontactsBulkRelationshipsAdd invokes POST /api/v2/externalcontacts/bulk/relationships/add
 //
 // Bulk add relationships
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsAdd(body Bulkrelationshipsrequest) (*Bulkrelationshipsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3346,7 +3256,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsAdd(body Bulkr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkRelationshipsAdd")
 	}
 
@@ -3408,8 +3318,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsAdd(body Bulkr
 // PostExternalcontactsBulkRelationshipsRemove invokes POST /api/v2/externalcontacts/bulk/relationships/remove
 //
 // Bulk remove relationships
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsRemove(body Bulkidsrequest) (*Bulkdeleteresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3421,7 +3329,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsRemove(body Bu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkRelationshipsRemove")
 	}
 
@@ -3483,8 +3391,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsRemove(body Bu
 // PostExternalcontactsBulkRelationshipsUpdate invokes POST /api/v2/externalcontacts/bulk/relationships/update
 //
 // Bulk update relationships
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsUpdate(body Bulkrelationshipsrequest) (*Bulkrelationshipsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3496,7 +3402,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsUpdate(body Bu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkRelationshipsUpdate")
 	}
 
@@ -3558,8 +3464,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsUpdate(body Bu
 // PostExternalcontactsContactNotes invokes POST /api/v2/externalcontacts/contacts/{contactId}/notes
 //
 // Create a note for an external contact
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsContactNotes(contactId string, body Note) (*Note, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3572,12 +3476,12 @@ func (a ExternalContactsApi) PostExternalcontactsContactNotes(contactId string, 
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->PostExternalcontactsContactNotes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsContactNotes")
 	}
 
@@ -3639,8 +3543,6 @@ func (a ExternalContactsApi) PostExternalcontactsContactNotes(contactId string, 
 // PostExternalcontactsContacts invokes POST /api/v2/externalcontacts/contacts
 //
 // Create an external contact
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsContacts(body Externalcontact) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3652,7 +3554,7 @@ func (a ExternalContactsApi) PostExternalcontactsContacts(body Externalcontact) 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsContacts")
 	}
 
@@ -3714,8 +3616,6 @@ func (a ExternalContactsApi) PostExternalcontactsContacts(body Externalcontact) 
 // PostExternalcontactsContactsSchemas invokes POST /api/v2/externalcontacts/contacts/schemas
 //
 // Create a schema
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsContactsSchemas(body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3727,7 +3627,7 @@ func (a ExternalContactsApi) PostExternalcontactsContactsSchemas(body Dataschema
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsContactsSchemas")
 	}
 
@@ -3789,8 +3689,6 @@ func (a ExternalContactsApi) PostExternalcontactsContactsSchemas(body Dataschema
 // PostExternalcontactsOrganizationNotes invokes POST /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes
 //
 // Create a note for an external organization
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsOrganizationNotes(externalOrganizationId string, body Note) (*Note, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3803,12 +3701,12 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationNotes(externalOrgan
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->PostExternalcontactsOrganizationNotes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsOrganizationNotes")
 	}
 
@@ -3870,8 +3768,6 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationNotes(externalOrgan
 // PostExternalcontactsOrganizations invokes POST /api/v2/externalcontacts/organizations
 //
 // Create an external organization
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsOrganizations(body Externalorganization) (*Externalorganization, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3883,7 +3779,7 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizations(body Externalorga
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsOrganizations")
 	}
 
@@ -3945,8 +3841,6 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizations(body Externalorga
 // PostExternalcontactsOrganizationsSchemas invokes POST /api/v2/externalcontacts/organizations/schemas
 //
 // Create a schema
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsOrganizationsSchemas(body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3958,7 +3852,7 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationsSchemas(body Datas
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsOrganizationsSchemas")
 	}
 
@@ -4020,8 +3914,6 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationsSchemas(body Datas
 // PostExternalcontactsRelationships invokes POST /api/v2/externalcontacts/relationships
 //
 // Create a relationship
-//
-// 
 func (a ExternalContactsApi) PostExternalcontactsRelationships(body Relationship) (*Relationship, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4033,7 +3925,7 @@ func (a ExternalContactsApi) PostExternalcontactsRelationships(body Relationship
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsRelationships")
 	}
 
@@ -4095,8 +3987,6 @@ func (a ExternalContactsApi) PostExternalcontactsRelationships(body Relationship
 // PutExternalcontactsContact invokes PUT /api/v2/externalcontacts/contacts/{contactId}
 //
 // Update an external contact
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsContact(contactId string, body Externalcontact) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4109,12 +3999,12 @@ func (a ExternalContactsApi) PutExternalcontactsContact(contactId string, body E
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->PutExternalcontactsContact")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsContact")
 	}
 
@@ -4176,8 +4066,6 @@ func (a ExternalContactsApi) PutExternalcontactsContact(contactId string, body E
 // PutExternalcontactsContactNote invokes PUT /api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}
 //
 // Update a note for an external contact
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsContactNote(contactId string, noteId string, body Note) (*Note, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4191,17 +4079,17 @@ func (a ExternalContactsApi) PutExternalcontactsContactNote(contactId string, no
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->PutExternalcontactsContactNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->PutExternalcontactsContactNote")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsContactNote")
 	}
 
@@ -4263,8 +4151,6 @@ func (a ExternalContactsApi) PutExternalcontactsContactNote(contactId string, no
 // PutExternalcontactsContactsSchema invokes PUT /api/v2/externalcontacts/contacts/schemas/{schemaId}
 //
 // Update a schema
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4277,12 +4163,12 @@ func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, 
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->PutExternalcontactsContactsSchema")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsContactsSchema")
 	}
 
@@ -4346,7 +4232,7 @@ func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, 
 // Associate/disassociate an external contact with a conversation
 //
 // To associate, supply a value for the externalContactId.  To disassociate, do not include the property at all.
-func (a ExternalContactsApi) PutExternalcontactsConversation(body Conversationassociation, conversationId string) (*APIResponse, error) {
+func (a ExternalContactsApi) PutExternalcontactsConversation(conversationId string, body Conversationassociation) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/conversations/{conversationId}"
@@ -4355,15 +4241,15 @@ func (a ExternalContactsApi) PutExternalcontactsConversation(body Conversationas
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsConversation")
-	}
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling ExternalContactsApi->PutExternalcontactsConversation")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsConversation")
 	}
 
 	headerParams := make(map[string]string)
@@ -4418,8 +4304,6 @@ func (a ExternalContactsApi) PutExternalcontactsConversation(body Conversationas
 // PutExternalcontactsOrganization invokes PUT /api/v2/externalcontacts/organizations/{externalOrganizationId}
 //
 // Update an external organization
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsOrganization(externalOrganizationId string, body Externalorganization) (*Externalorganization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4432,12 +4316,12 @@ func (a ExternalContactsApi) PutExternalcontactsOrganization(externalOrganizatio
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->PutExternalcontactsOrganization")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsOrganization")
 	}
 
@@ -4499,8 +4383,6 @@ func (a ExternalContactsApi) PutExternalcontactsOrganization(externalOrganizatio
 // PutExternalcontactsOrganizationNote invokes PUT /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}
 //
 // Update a note for an external organization
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsOrganizationNote(externalOrganizationId string, noteId string, body Note) (*Note, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4514,17 +4396,17 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationNote(externalOrganiz
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->PutExternalcontactsOrganizationNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->PutExternalcontactsOrganizationNote")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsOrganizationNote")
 	}
 
@@ -4586,8 +4468,6 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationNote(externalOrganiz
 // PutExternalcontactsOrganizationTrustorTrustorId invokes PUT /api/v2/externalcontacts/organizations/{externalOrganizationId}/trustor/{trustorId}
 //
 // Links a Trustor with an External Organization
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(externalOrganizationId string, trustorId string) (*Externalorganizationtrustorlink, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4601,12 +4481,12 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(ext
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->PutExternalcontactsOrganizationTrustorTrustorId")
 	}
 	// verify the required parameter 'trustorId' is set
 	if &trustorId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorId' when calling ExternalContactsApi->PutExternalcontactsOrganizationTrustorTrustorId")
 	}
 
@@ -4665,8 +4545,6 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(ext
 // PutExternalcontactsOrganizationsSchema invokes PUT /api/v2/externalcontacts/organizations/schemas/{schemaId}
 //
 // Update a schema
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsOrganizationsSchema(schemaId string, body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4679,12 +4557,12 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationsSchema(schemaId str
 
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling ExternalContactsApi->PutExternalcontactsOrganizationsSchema")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsOrganizationsSchema")
 	}
 
@@ -4746,8 +4624,6 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationsSchema(schemaId str
 // PutExternalcontactsRelationship invokes PUT /api/v2/externalcontacts/relationships/{relationshipId}
 //
 // Update a relationship
-//
-// 
 func (a ExternalContactsApi) PutExternalcontactsRelationship(relationshipId string, body Relationship) (*Relationship, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4760,12 +4636,12 @@ func (a ExternalContactsApi) PutExternalcontactsRelationship(relationshipId stri
 
 	// verify the required parameter 'relationshipId' is set
 	if &relationshipId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'relationshipId' when calling ExternalContactsApi->PutExternalcontactsRelationship")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsRelationship")
 	}
 

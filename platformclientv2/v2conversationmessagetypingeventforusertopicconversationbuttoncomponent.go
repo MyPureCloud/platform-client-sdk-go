@@ -45,7 +45,7 @@ func (o *V2conversationmessagetypingeventforusertopicconversationbuttoncomponent
 	if Title, ok := V2conversationmessagetypingeventforusertopicconversationbuttoncomponentMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Actions, ok := V2conversationmessagetypingeventforusertopicconversationbuttoncomponentMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

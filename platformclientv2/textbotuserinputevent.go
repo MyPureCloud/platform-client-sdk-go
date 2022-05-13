@@ -45,7 +45,7 @@ func (o *Textbotuserinputevent) UnmarshalJSON(b []byte) error {
 	if Mode, ok := TextbotuserinputeventMap["mode"].(string); ok {
 		o.Mode = &Mode
 	}
-	
+    
 	if Alternatives, ok := TextbotuserinputeventMap["alternatives"].([]interface{}); ok {
 		AlternativesString, _ := json.Marshal(Alternatives)
 		json.Unmarshal(AlternativesString, &o.Alternatives)

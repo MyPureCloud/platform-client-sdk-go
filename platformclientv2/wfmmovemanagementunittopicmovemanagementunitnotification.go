@@ -50,7 +50,7 @@ func (o *Wfmmovemanagementunittopicmovemanagementunitnotification) UnmarshalJSON
 	if Status, ok := WfmmovemanagementunittopicmovemanagementunitnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

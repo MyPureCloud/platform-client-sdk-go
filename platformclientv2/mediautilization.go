@@ -63,7 +63,7 @@ func (o *Mediautilization) UnmarshalJSON(b []byte) error {
 	if IncludeNonAcd, ok := MediautilizationMap["includeNonAcd"].(bool); ok {
 		o.IncludeNonAcd = &IncludeNonAcd
 	}
-	
+    
 
 	return nil
 }

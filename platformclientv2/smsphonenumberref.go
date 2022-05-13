@@ -45,11 +45,11 @@ func (o *Smsphonenumberref) UnmarshalJSON(b []byte) error {
 	if PhoneNumber, ok := SmsphonenumberrefMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if SelfUri, ok := SmsphonenumberrefMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

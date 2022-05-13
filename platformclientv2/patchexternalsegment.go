@@ -37,7 +37,7 @@ func (o *Patchexternalsegment) UnmarshalJSON(b []byte) error {
 	if Name, ok := PatchexternalsegmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

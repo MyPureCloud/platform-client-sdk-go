@@ -106,11 +106,11 @@ func (o *Documentupdate) UnmarshalJSON(b []byte) error {
 	if Name, ok := DocumentupdateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Read, ok := DocumentupdateMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if AddTags, ok := DocumentupdateMap["addTags"].([]interface{}); ok {
 		AddTagsString, _ := json.Marshal(AddTags)
 		json.Unmarshal(AddTagsString, &o.AddTags)

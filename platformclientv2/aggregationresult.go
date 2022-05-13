@@ -69,15 +69,15 @@ func (o *Aggregationresult) UnmarshalJSON(b []byte) error {
 	if VarType, ok := AggregationresultMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := AggregationresultMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Metric, ok := AggregationresultMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Count, ok := AggregationresultMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

@@ -109,23 +109,23 @@ func (o *Widgetdeployment) UnmarshalJSON(b []byte) error {
 	if Id, ok := WidgetdeploymentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WidgetdeploymentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := WidgetdeploymentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if AuthenticationRequired, ok := WidgetdeploymentMap["authenticationRequired"].(bool); ok {
 		o.AuthenticationRequired = &AuthenticationRequired
 	}
-	
+    
 	if Disabled, ok := WidgetdeploymentMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if Flow, ok := WidgetdeploymentMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
@@ -139,7 +139,7 @@ func (o *Widgetdeployment) UnmarshalJSON(b []byte) error {
 	if ClientType, ok := WidgetdeploymentMap["clientType"].(string); ok {
 		o.ClientType = &ClientType
 	}
-	
+    
 	if ClientConfig, ok := WidgetdeploymentMap["clientConfig"].(map[string]interface{}); ok {
 		ClientConfigString, _ := json.Marshal(ClientConfig)
 		json.Unmarshal(ClientConfigString, &o.ClientConfig)
@@ -148,7 +148,7 @@ func (o *Widgetdeployment) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WidgetdeploymentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

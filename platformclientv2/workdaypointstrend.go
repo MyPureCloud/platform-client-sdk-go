@@ -107,11 +107,11 @@ func (o *Workdaypointstrend) UnmarshalJSON(b []byte) error {
 	if DayOfWeek, ok := WorkdaypointstrendMap["dayOfWeek"].(string); ok {
 		o.DayOfWeek = &DayOfWeek
 	}
-	
+    
 	if AveragePoints, ok := WorkdaypointstrendMap["averagePoints"].(float64); ok {
 		o.AveragePoints = &AveragePoints
 	}
-	
+    
 	if Trend, ok := WorkdaypointstrendMap["trend"].([]interface{}); ok {
 		TrendString, _ := json.Marshal(Trend)
 		json.Unmarshal(TrendString, &o.Trend)

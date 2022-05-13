@@ -69,23 +69,23 @@ func (o *Faxsendresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := FaxsendresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FaxsendresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UploadDestinationUri, ok := FaxsendresponseMap["uploadDestinationUri"].(string); ok {
 		o.UploadDestinationUri = &UploadDestinationUri
 	}
-	
+    
 	if UploadMethodType, ok := FaxsendresponseMap["uploadMethodType"].(string); ok {
 		o.UploadMethodType = &UploadMethodType
 	}
-	
+    
 	if SelfUri, ok := FaxsendresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

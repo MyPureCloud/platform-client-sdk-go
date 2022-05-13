@@ -61,19 +61,19 @@ func (o *Formstracktrigger) UnmarshalJSON(b []byte) error {
 	if Selector, ok := FormstracktriggerMap["selector"].(string); ok {
 		o.Selector = &Selector
 	}
-	
+    
 	if FormName, ok := FormstracktriggerMap["formName"].(string); ok {
 		o.FormName = &FormName
 	}
-	
+    
 	if CaptureDataOnFormAbandon, ok := FormstracktriggerMap["captureDataOnFormAbandon"].(bool); ok {
 		o.CaptureDataOnFormAbandon = &CaptureDataOnFormAbandon
 	}
-	
+    
 	if CaptureDataOnFormSubmit, ok := FormstracktriggerMap["captureDataOnFormSubmit"].(bool); ok {
 		o.CaptureDataOnFormSubmit = &CaptureDataOnFormSubmit
 	}
-	
+    
 
 	return nil
 }

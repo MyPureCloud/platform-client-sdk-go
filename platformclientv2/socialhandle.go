@@ -45,11 +45,11 @@ func (o *Socialhandle) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SocialhandleMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := SocialhandleMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

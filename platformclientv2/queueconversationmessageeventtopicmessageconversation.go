@@ -61,11 +61,11 @@ func (o *Queueconversationmessageeventtopicmessageconversation) UnmarshalJSON(b 
 	if Id, ok := QueueconversationmessageeventtopicmessageconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationmessageeventtopicmessageconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := QueueconversationmessageeventtopicmessageconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)

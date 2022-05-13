@@ -32,8 +32,6 @@ func NewGeneralDataProtectionRegulationApiWithConfig(config *Configuration) *Gen
 // GetGdprRequest invokes GET /api/v2/gdpr/requests/{requestId}
 //
 // Get an existing GDPR request
-//
-// 
 func (a GeneralDataProtectionRegulationApi) GetGdprRequest(requestId string) (*Gdprrequest, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -46,7 +44,7 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequest(requestId string) (*G
 
 	// verify the required parameter 'requestId' is set
 	if &requestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'requestId' when calling GeneralDataProtectionRegulationApi->GetGdprRequest")
 	}
 
@@ -105,8 +103,6 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequest(requestId string) (*G
 // GetGdprRequests invokes GET /api/v2/gdpr/requests
 //
 // Get all GDPR requests
-//
-// 
 func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int, pageNumber int) (*Gdprrequestentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -176,8 +172,6 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int, pageNu
 // GetGdprSubjects invokes GET /api/v2/gdpr/subjects
 //
 // Get GDPR subjects
-//
-// 
 func (a GeneralDataProtectionRegulationApi) GetGdprSubjects(searchType string, searchValue string) (*Gdprsubjectentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -189,12 +183,12 @@ func (a GeneralDataProtectionRegulationApi) GetGdprSubjects(searchType string, s
 
 	// verify the required parameter 'searchType' is set
 	if &searchType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'searchType' when calling GeneralDataProtectionRegulationApi->GetGdprSubjects")
 	}
 	// verify the required parameter 'searchValue' is set
 	if &searchValue == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'searchValue' when calling GeneralDataProtectionRegulationApi->GetGdprSubjects")
 	}
 
@@ -257,8 +251,6 @@ func (a GeneralDataProtectionRegulationApi) GetGdprSubjects(searchType string, s
 // PostGdprRequests invokes POST /api/v2/gdpr/requests
 //
 // Submit a new GDPR request
-//
-// 
 func (a GeneralDataProtectionRegulationApi) PostGdprRequests(body Gdprrequest, deleteConfirmed bool) (*Gdprrequest, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -270,7 +262,7 @@ func (a GeneralDataProtectionRegulationApi) PostGdprRequests(body Gdprrequest, d
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GeneralDataProtectionRegulationApi->PostGdprRequests")
 	}
 

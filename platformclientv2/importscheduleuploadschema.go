@@ -77,7 +77,7 @@ func (o *Importscheduleuploadschema) UnmarshalJSON(b []byte) error {
 	if Description, ok := ImportscheduleuploadschemaMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if WeekCount, ok := ImportscheduleuploadschemaMap["weekCount"].(float64); ok {
 		WeekCountInt := int(WeekCount)
 		o.WeekCount = &WeekCountInt
@@ -86,7 +86,7 @@ func (o *Importscheduleuploadschema) UnmarshalJSON(b []byte) error {
 	if Published, ok := ImportscheduleuploadschemaMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if ShortTermForecast, ok := ImportscheduleuploadschemaMap["shortTermForecast"].(map[string]interface{}); ok {
 		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
 		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)

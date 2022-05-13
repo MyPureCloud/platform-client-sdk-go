@@ -77,7 +77,7 @@ func (o *Userroutingstatuserrorinfo) UnmarshalJSON(b []byte) error {
 	if ErrorCode, ok := UserroutingstatuserrorinfoMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if Status, ok := UserroutingstatuserrorinfoMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -86,15 +86,15 @@ func (o *Userroutingstatuserrorinfo) UnmarshalJSON(b []byte) error {
 	if CorrelationId, ok := UserroutingstatuserrorinfoMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if UserMessage, ok := UserroutingstatuserrorinfoMap["userMessage"].(string); ok {
 		o.UserMessage = &UserMessage
 	}
-	
+    
 	if UserParamsMessage, ok := UserroutingstatuserrorinfoMap["userParamsMessage"].(string); ok {
 		o.UserParamsMessage = &UserParamsMessage
 	}
-	
+    
 	if UserParams, ok := UserroutingstatuserrorinfoMap["userParams"].([]interface{}); ok {
 		UserParamsString, _ := json.Marshal(UserParams)
 		json.Unmarshal(UserParamsString, &o.UserParams)

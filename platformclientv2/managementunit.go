@@ -134,11 +134,11 @@ func (o *Managementunit) UnmarshalJSON(b []byte) error {
 	if Id, ok := ManagementunitMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ManagementunitMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if BusinessUnit, ok := ManagementunitMap["businessUnit"].(map[string]interface{}); ok {
 		BusinessUnitString, _ := json.Marshal(BusinessUnit)
 		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
@@ -147,11 +147,11 @@ func (o *Managementunit) UnmarshalJSON(b []byte) error {
 	if StartDayOfWeek, ok := ManagementunitMap["startDayOfWeek"].(string); ok {
 		o.StartDayOfWeek = &StartDayOfWeek
 	}
-	
+    
 	if TimeZone, ok := ManagementunitMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if Settings, ok := ManagementunitMap["settings"].(map[string]interface{}); ok {
 		SettingsString, _ := json.Marshal(Settings)
 		json.Unmarshal(SettingsString, &o.Settings)
@@ -185,7 +185,7 @@ func (o *Managementunit) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ManagementunitMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

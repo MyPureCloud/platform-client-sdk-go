@@ -75,17 +75,17 @@ func (o *Outboundmessagingmessagingcampaignprogresseventcampaignprogress) Unmars
 		NumberOfContactsCalledFloat32 := float32(NumberOfContactsCalled)
 		o.NumberOfContactsCalled = &NumberOfContactsCalledFloat32
 	}
-	
+    
 	if NumberOfContactsMessaged, ok := OutboundmessagingmessagingcampaignprogresseventcampaignprogressMap["numberOfContactsMessaged"].(float64); ok {
 		NumberOfContactsMessagedFloat32 := float32(NumberOfContactsMessaged)
 		o.NumberOfContactsMessaged = &NumberOfContactsMessagedFloat32
 	}
-	
+    
 	if TotalNumberOfContacts, ok := OutboundmessagingmessagingcampaignprogresseventcampaignprogressMap["totalNumberOfContacts"].(float64); ok {
 		TotalNumberOfContactsFloat32 := float32(TotalNumberOfContacts)
 		o.TotalNumberOfContacts = &TotalNumberOfContactsFloat32
 	}
-	
+    
 	if Percentage, ok := OutboundmessagingmessagingcampaignprogresseventcampaignprogressMap["percentage"].(float64); ok {
 		PercentageInt := int(Percentage)
 		o.Percentage = &PercentageInt

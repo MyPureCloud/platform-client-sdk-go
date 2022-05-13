@@ -45,11 +45,11 @@ func (o *Presenceeventorganizationpresence) UnmarshalJSON(b []byte) error {
 	if Id, ok := PresenceeventorganizationpresenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SystemPresence, ok := PresenceeventorganizationpresenceMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 
 	return nil
 }

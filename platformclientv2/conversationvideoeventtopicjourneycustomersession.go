@@ -45,11 +45,11 @@ func (o *Conversationvideoeventtopicjourneycustomersession) UnmarshalJSON(b []by
 	if Id, ok := ConversationvideoeventtopicjourneycustomersessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if VarType, ok := ConversationvideoeventtopicjourneycustomersessionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

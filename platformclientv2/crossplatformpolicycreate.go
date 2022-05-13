@@ -142,11 +142,11 @@ func (o *Crossplatformpolicycreate) UnmarshalJSON(b []byte) error {
 	if Id, ok := CrossplatformpolicycreateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CrossplatformpolicycreateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if modifiedDateString, ok := CrossplatformpolicycreateMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -165,11 +165,11 @@ func (o *Crossplatformpolicycreate) UnmarshalJSON(b []byte) error {
 	if Description, ok := CrossplatformpolicycreateMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Enabled, ok := CrossplatformpolicycreateMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if MediaPolicies, ok := CrossplatformpolicycreateMap["mediaPolicies"].(map[string]interface{}); ok {
 		MediaPoliciesString, _ := json.Marshal(MediaPolicies)
 		json.Unmarshal(MediaPoliciesString, &o.MediaPolicies)
@@ -193,7 +193,7 @@ func (o *Crossplatformpolicycreate) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CrossplatformpolicycreateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

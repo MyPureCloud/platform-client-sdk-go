@@ -126,11 +126,11 @@ func (o *Performanceprofile) UnmarshalJSON(b []byte) error {
 	if Id, ok := PerformanceprofileMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PerformanceprofileMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := PerformanceprofileMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -139,7 +139,7 @@ func (o *Performanceprofile) UnmarshalJSON(b []byte) error {
 	if Description, ok := PerformanceprofileMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if MetricOrders, ok := PerformanceprofileMap["metricOrders"].([]interface{}); ok {
 		MetricOrdersString, _ := json.Marshal(MetricOrders)
 		json.Unmarshal(MetricOrdersString, &o.MetricOrders)
@@ -158,7 +158,7 @@ func (o *Performanceprofile) UnmarshalJSON(b []byte) error {
 	if Active, ok := PerformanceprofileMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if MemberCount, ok := PerformanceprofileMap["memberCount"].(float64); ok {
 		MemberCountInt := int(MemberCount)
 		o.MemberCount = &MemberCountInt
@@ -172,7 +172,7 @@ func (o *Performanceprofile) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PerformanceprofileMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

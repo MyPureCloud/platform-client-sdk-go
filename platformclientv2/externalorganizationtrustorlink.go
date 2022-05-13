@@ -70,11 +70,11 @@ func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
 	if ExternalOrganizationId, ok := ExternalorganizationtrustorlinkMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if TrustorOrgId, ok := ExternalorganizationtrustorlinkMap["trustorOrgId"].(string); ok {
 		o.TrustorOrgId = &TrustorOrgId
 	}
-	
+    
 	if dateCreatedString, ok := ExternalorganizationtrustorlinkMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -83,7 +83,7 @@ func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
 	if ExternalOrganizationUri, ok := ExternalorganizationtrustorlinkMap["externalOrganizationUri"].(string); ok {
 		o.ExternalOrganizationUri = &ExternalOrganizationUri
 	}
-	
+    
 
 	return nil
 }

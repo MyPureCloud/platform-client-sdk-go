@@ -45,11 +45,11 @@ func (o *Dialercontactlistfilterconfigchangeurireference) UnmarshalJSON(b []byte
 	if Id, ok := DialercontactlistfilterconfigchangeurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialercontactlistfilterconfigchangeurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

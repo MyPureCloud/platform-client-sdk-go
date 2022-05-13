@@ -69,7 +69,7 @@ func (o *Wfmschedulereference) UnmarshalJSON(b []byte) error {
 	if Id, ok := WfmschedulereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if BusinessUnit, ok := WfmschedulereferenceMap["businessUnit"].(map[string]interface{}); ok {
 		BusinessUnitString, _ := json.Marshal(BusinessUnit)
 		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
@@ -83,7 +83,7 @@ func (o *Wfmschedulereference) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WfmschedulereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -77,15 +77,15 @@ func (o *Eventmessage) UnmarshalJSON(b []byte) error {
 	if Code, ok := EventmessageMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := EventmessageMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if MessageWithParams, ok := EventmessageMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := EventmessageMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -94,7 +94,7 @@ func (o *Eventmessage) UnmarshalJSON(b []byte) error {
 	if DocumentationUri, ok := EventmessageMap["documentationUri"].(string); ok {
 		o.DocumentationUri = &DocumentationUri
 	}
-	
+    
 	if ResourceURIs, ok := EventmessageMap["resourceURIs"].([]interface{}); ok {
 		ResourceURIsString, _ := json.Marshal(ResourceURIs)
 		json.Unmarshal(ResourceURIsString, &o.ResourceURIs)

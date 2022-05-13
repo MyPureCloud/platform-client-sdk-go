@@ -37,7 +37,7 @@ func (o *Markdown) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := MarkdownMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

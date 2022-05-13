@@ -32,8 +32,6 @@ func NewOAuthApiWithConfig(config *Configuration) *OAuthApi {
 // DeleteOauthClient invokes DELETE /api/v2/oauth/clients/{clientId}
 //
 // Delete OAuth Client
-//
-// 
 func (a OAuthApi) DeleteOauthClient(clientId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a OAuthApi) DeleteOauthClient(clientId string) (*APIResponse, error) {
 
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->DeleteOauthClient")
 	}
 
@@ -98,8 +96,6 @@ func (a OAuthApi) DeleteOauthClient(clientId string) (*APIResponse, error) {
 // GetOauthAuthorization invokes GET /api/v2/oauth/authorizations/{clientId}
 //
 // Get a client that is authorized by the resource owner
-//
-// 
 func (a OAuthApi) GetOauthAuthorization(clientId string, acceptLanguage string) (*Oauthauthorization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a OAuthApi) GetOauthAuthorization(clientId string, acceptLanguage string) 
 
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->GetOauthAuthorization")
 	}
 
@@ -175,8 +171,6 @@ func (a OAuthApi) GetOauthAuthorization(clientId string, acceptLanguage string) 
 // GetOauthAuthorizations invokes GET /api/v2/oauth/authorizations
 //
 // List clients that have been authorized, requested, or revoked by the resource owner
-//
-// 
 func (a OAuthApi) GetOauthAuthorizations(acceptLanguage string) (*Oauthauthorizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -246,8 +240,6 @@ func (a OAuthApi) GetOauthAuthorizations(acceptLanguage string) (*Oauthauthoriza
 // GetOauthClient invokes GET /api/v2/oauth/clients/{clientId}
 //
 // Get OAuth Client
-//
-// 
 func (a OAuthApi) GetOauthClient(clientId string) (*Oauthclient, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -260,7 +252,7 @@ func (a OAuthApi) GetOauthClient(clientId string) (*Oauthclient, *APIResponse, e
 
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->GetOauthClient")
 	}
 
@@ -319,8 +311,6 @@ func (a OAuthApi) GetOauthClient(clientId string) (*Oauthclient, *APIResponse, e
 // GetOauthClientUsageQueryResult invokes GET /api/v2/oauth/clients/{clientId}/usage/query/results/{executionId}
 //
 // Get the results of a usage query
-//
-// 
 func (a OAuthApi) GetOauthClientUsageQueryResult(executionId string, clientId string) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -334,12 +324,12 @@ func (a OAuthApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 
 	// verify the required parameter 'executionId' is set
 	if &executionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'executionId' when calling OAuthApi->GetOauthClientUsageQueryResult")
 	}
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->GetOauthClientUsageQueryResult")
 	}
 
@@ -412,7 +402,7 @@ func (a OAuthApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->GetOauthClientUsageSummary")
 	}
 
@@ -473,8 +463,6 @@ func (a OAuthApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 // GetOauthClients invokes GET /api/v2/oauth/clients
 //
 // The list of OAuth clients
-//
-// 
 func (a OAuthApi) GetOauthClients() (*Oauthcliententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -540,8 +528,6 @@ func (a OAuthApi) GetOauthClients() (*Oauthcliententitylisting, *APIResponse, er
 // GetOauthScope invokes GET /api/v2/oauth/scopes/{scopeId}
 //
 // An OAuth scope
-//
-// 
 func (a OAuthApi) GetOauthScope(scopeId string, acceptLanguage string) (*Oauthscope, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -554,7 +540,7 @@ func (a OAuthApi) GetOauthScope(scopeId string, acceptLanguage string) (*Oauthsc
 
 	// verify the required parameter 'scopeId' is set
 	if &scopeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scopeId' when calling OAuthApi->GetOauthScope")
 	}
 
@@ -617,8 +603,6 @@ func (a OAuthApi) GetOauthScope(scopeId string, acceptLanguage string) (*Oauthsc
 // GetOauthScopes invokes GET /api/v2/oauth/scopes
 //
 // The list of OAuth scopes
-//
-// 
 func (a OAuthApi) GetOauthScopes(acceptLanguage string) (*Oauthscopelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -702,7 +686,7 @@ func (a OAuthApi) PostOauthClientSecret(clientId string) (*Oauthclient, *APIResp
 
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->PostOauthClientSecret")
 	}
 
@@ -775,12 +759,12 @@ func (a OAuthApi) PostOauthClientUsageQuery(clientId string, body Apiusagequery)
 
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->PostOauthClientUsageQuery")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OAuthApi->PostOauthClientUsageQuery")
 	}
 
@@ -855,7 +839,7 @@ func (a OAuthApi) PostOauthClients(body Oauthclientrequest) (*Oauthclient, *APIR
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OAuthApi->PostOauthClients")
 	}
 
@@ -917,8 +901,6 @@ func (a OAuthApi) PostOauthClients(body Oauthclientrequest) (*Oauthclient, *APIR
 // PutOauthClient invokes PUT /api/v2/oauth/clients/{clientId}
 //
 // Update OAuth Client
-//
-// 
 func (a OAuthApi) PutOauthClient(clientId string, body Oauthclientrequest) (*Oauthclient, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -931,12 +913,12 @@ func (a OAuthApi) PutOauthClient(clientId string, body Oauthclientrequest) (*Oau
 
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling OAuthApi->PutOauthClient")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OAuthApi->PutOauthClient")
 	}
 

@@ -45,11 +45,11 @@ func (o *Queueconversationsocialexpressioneventtopicjourneycustomersession) Unma
 	if Id, ok := QueueconversationsocialexpressioneventtopicjourneycustomersessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if VarType, ok := QueueconversationsocialexpressioneventtopicjourneycustomersessionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

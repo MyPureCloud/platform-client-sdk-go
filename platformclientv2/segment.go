@@ -96,15 +96,15 @@ func (o *Segment) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SegmentMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if HowEnded, ok := SegmentMap["howEnded"].(string); ok {
 		o.HowEnded = &HowEnded
 	}
-	
+    
 	if DisconnectType, ok := SegmentMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 
 	return nil
 }

@@ -61,19 +61,19 @@ func (o *Responseassetstatus) UnmarshalJSON(b []byte) error {
 	if Id, ok := ResponseassetstatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Status, ok := ResponseassetstatusMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ErrorCode, ok := ResponseassetstatusMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if ErrorMessage, ok := ResponseassetstatusMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 
 	return nil
 }

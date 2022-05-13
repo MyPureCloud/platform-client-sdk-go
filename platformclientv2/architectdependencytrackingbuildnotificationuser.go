@@ -53,11 +53,11 @@ func (o *Architectdependencytrackingbuildnotificationuser) UnmarshalJSON(b []byt
 	if Id, ok := ArchitectdependencytrackingbuildnotificationuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectdependencytrackingbuildnotificationuserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if HomeOrg, ok := ArchitectdependencytrackingbuildnotificationuserMap["homeOrg"].(map[string]interface{}); ok {
 		HomeOrgString, _ := json.Marshal(HomeOrg)
 		json.Unmarshal(HomeOrgString, &o.HomeOrg)

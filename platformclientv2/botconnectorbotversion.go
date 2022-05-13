@@ -53,7 +53,7 @@ func (o *Botconnectorbotversion) UnmarshalJSON(b []byte) error {
 	if Version, ok := BotconnectorbotversionMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if SupportedLanguages, ok := BotconnectorbotversionMap["supportedLanguages"].([]interface{}); ok {
 		SupportedLanguagesString, _ := json.Marshal(SupportedLanguages)
 		json.Unmarshal(SupportedLanguagesString, &o.SupportedLanguages)

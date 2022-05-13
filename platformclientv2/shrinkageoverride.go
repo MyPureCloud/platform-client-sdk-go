@@ -50,7 +50,7 @@ func (o *Shrinkageoverride) UnmarshalJSON(b []byte) error {
 	if ShrinkagePercent, ok := ShrinkageoverrideMap["shrinkagePercent"].(float64); ok {
 		o.ShrinkagePercent = &ShrinkagePercent
 	}
-	
+    
 
 	return nil
 }

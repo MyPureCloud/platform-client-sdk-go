@@ -37,7 +37,7 @@ func (o *Memberentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := MemberentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

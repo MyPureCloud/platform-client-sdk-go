@@ -53,15 +53,15 @@ func (o *Dialerresponsesetconfigchangereaction) UnmarshalJSON(b []byte) error {
 	if Data, ok := DialerresponsesetconfigchangereactionMap["data"].(string); ok {
 		o.Data = &Data
 	}
-	
+    
 	if Name, ok := DialerresponsesetconfigchangereactionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ReactionType, ok := DialerresponsesetconfigchangereactionMap["reactionType"].(string); ok {
 		o.ReactionType = &ReactionType
 	}
-	
+    
 
 	return nil
 }

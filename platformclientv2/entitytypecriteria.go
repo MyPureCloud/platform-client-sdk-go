@@ -69,7 +69,7 @@ func (o *Entitytypecriteria) UnmarshalJSON(b []byte) error {
 	if Key, ok := EntitytypecriteriaMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if Values, ok := EntitytypecriteriaMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -78,15 +78,15 @@ func (o *Entitytypecriteria) UnmarshalJSON(b []byte) error {
 	if ShouldIgnoreCase, ok := EntitytypecriteriaMap["shouldIgnoreCase"].(bool); ok {
 		o.ShouldIgnoreCase = &ShouldIgnoreCase
 	}
-	
+    
 	if Operator, ok := EntitytypecriteriaMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if EntityType, ok := EntitytypecriteriaMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 
 	return nil
 }

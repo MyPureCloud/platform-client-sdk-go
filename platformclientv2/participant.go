@@ -438,7 +438,7 @@ func (o *Participant) UnmarshalJSON(b []byte) error {
 	if Id, ok := ParticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if startTimeString, ok := ParticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -457,79 +457,79 @@ func (o *Participant) UnmarshalJSON(b []byte) error {
 	if Name, ok := ParticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UserUri, ok := ParticipantMap["userUri"].(string); ok {
 		o.UserUri = &UserUri
 	}
-	
+    
 	if UserId, ok := ParticipantMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if ExternalContactId, ok := ParticipantMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalOrganizationId, ok := ParticipantMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if QueueId, ok := ParticipantMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if GroupId, ok := ParticipantMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 	if TeamId, ok := ParticipantMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if QueueName, ok := ParticipantMap["queueName"].(string); ok {
 		o.QueueName = &QueueName
 	}
-	
+    
 	if Purpose, ok := ParticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if ParticipantType, ok := ParticipantMap["participantType"].(string); ok {
 		o.ParticipantType = &ParticipantType
 	}
-	
+    
 	if ConsultParticipantId, ok := ParticipantMap["consultParticipantId"].(string); ok {
 		o.ConsultParticipantId = &ConsultParticipantId
 	}
-	
+    
 	if Address, ok := ParticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Ani, ok := ParticipantMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if AniName, ok := ParticipantMap["aniName"].(string); ok {
 		o.AniName = &AniName
 	}
-	
+    
 	if Dnis, ok := ParticipantMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if Locale, ok := ParticipantMap["locale"].(string); ok {
 		o.Locale = &Locale
 	}
-	
+    
 	if WrapupRequired, ok := ParticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := ParticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if WrapupTimeoutMs, ok := ParticipantMap["wrapupTimeoutMs"].(float64); ok {
 		WrapupTimeoutMsInt := int(WrapupTimeoutMs)
 		o.WrapupTimeoutMs = &WrapupTimeoutMsInt
@@ -538,7 +538,7 @@ func (o *Participant) UnmarshalJSON(b []byte) error {
 	if WrapupSkipped, ok := ParticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if Wrapup, ok := ParticipantMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
@@ -557,11 +557,11 @@ func (o *Participant) UnmarshalJSON(b []byte) error {
 	if MonitoredParticipantId, ok := ParticipantMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
-	
+    
 	if CoachedParticipantId, ok := ParticipantMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
-	
+    
 	if Attributes, ok := ParticipantMap["attributes"].(map[string]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)
@@ -620,11 +620,11 @@ func (o *Participant) UnmarshalJSON(b []byte) error {
 	if ScreenRecordingState, ok := ParticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := ParticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if startAcwTimeString, ok := ParticipantMap["startAcwTime"].(string); ok {
 		StartAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAcwTimeString)
 		o.StartAcwTime = &StartAcwTime
@@ -638,7 +638,7 @@ func (o *Participant) UnmarshalJSON(b []byte) error {
 	if BargedParticipantId, ok := ParticipantMap["bargedParticipantId"].(string); ok {
 		o.BargedParticipantId = &BargedParticipantId
 	}
-	
+    
 
 	return nil
 }

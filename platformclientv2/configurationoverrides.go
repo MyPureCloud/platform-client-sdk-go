@@ -37,7 +37,7 @@ func (o *Configurationoverrides) UnmarshalJSON(b []byte) error {
 	if Priority, ok := ConfigurationoverridesMap["priority"].(bool); ok {
 		o.Priority = &Priority
 	}
-	
+    
 
 	return nil
 }

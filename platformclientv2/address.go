@@ -69,23 +69,23 @@ func (o *Address) UnmarshalJSON(b []byte) error {
 	if Name, ok := AddressMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if NameRaw, ok := AddressMap["nameRaw"].(string); ok {
 		o.NameRaw = &NameRaw
 	}
-	
+    
 	if AddressNormalized, ok := AddressMap["addressNormalized"].(string); ok {
 		o.AddressNormalized = &AddressNormalized
 	}
-	
+    
 	if AddressRaw, ok := AddressMap["addressRaw"].(string); ok {
 		o.AddressRaw = &AddressRaw
 	}
-	
+    
 	if AddressDisplayable, ok := AddressMap["addressDisplayable"].(string); ok {
 		o.AddressDisplayable = &AddressDisplayable
 	}
-	
+    
 
 	return nil
 }

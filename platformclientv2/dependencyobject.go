@@ -109,31 +109,31 @@ func (o *Dependencyobject) UnmarshalJSON(b []byte) error {
 	if Id, ok := DependencyobjectMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DependencyobjectMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := DependencyobjectMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if VarType, ok := DependencyobjectMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Deleted, ok := DependencyobjectMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-	
+    
 	if Updated, ok := DependencyobjectMap["updated"].(bool); ok {
 		o.Updated = &Updated
 	}
-	
+    
 	if StateUnknown, ok := DependencyobjectMap["stateUnknown"].(bool); ok {
 		o.StateUnknown = &StateUnknown
 	}
-	
+    
 	if ConsumedResources, ok := DependencyobjectMap["consumedResources"].([]interface{}); ok {
 		ConsumedResourcesString, _ := json.Marshal(ConsumedResources)
 		json.Unmarshal(ConsumedResourcesString, &o.ConsumedResources)
@@ -147,7 +147,7 @@ func (o *Dependencyobject) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DependencyobjectMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -112,27 +112,27 @@ func (o *Scheduleactivity) UnmarshalJSON(b []byte) error {
 	if Description, ok := ScheduleactivityMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if ActivityCodeId, ok := ScheduleactivityMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Paid, ok := ScheduleactivityMap["paid"].(bool); ok {
 		o.Paid = &Paid
 	}
-	
+    
 	if TimeOffRequestId, ok := ScheduleactivityMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
-	
+    
 	if ExternalActivityId, ok := ScheduleactivityMap["externalActivityId"].(string); ok {
 		o.ExternalActivityId = &ExternalActivityId
 	}
-	
+    
 	if ExternalActivityType, ok := ScheduleactivityMap["externalActivityType"].(string); ok {
 		o.ExternalActivityType = &ExternalActivityType
 	}
-	
+    
 
 	return nil
 }

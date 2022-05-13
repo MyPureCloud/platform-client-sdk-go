@@ -109,15 +109,15 @@ func (o *Crossplatformpolicyactions) UnmarshalJSON(b []byte) error {
 	if RetainRecording, ok := CrossplatformpolicyactionsMap["retainRecording"].(bool); ok {
 		o.RetainRecording = &RetainRecording
 	}
-	
+    
 	if DeleteRecording, ok := CrossplatformpolicyactionsMap["deleteRecording"].(bool); ok {
 		o.DeleteRecording = &DeleteRecording
 	}
-	
+    
 	if AlwaysDelete, ok := CrossplatformpolicyactionsMap["alwaysDelete"].(bool); ok {
 		o.AlwaysDelete = &AlwaysDelete
 	}
-	
+    
 	if AssignEvaluations, ok := CrossplatformpolicyactionsMap["assignEvaluations"].([]interface{}); ok {
 		AssignEvaluationsString, _ := json.Marshal(AssignEvaluations)
 		json.Unmarshal(AssignEvaluationsString, &o.AssignEvaluations)

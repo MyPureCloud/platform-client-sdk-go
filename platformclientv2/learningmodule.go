@@ -206,11 +206,11 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningmoduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LearningmoduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if CreatedBy, ok := LearningmoduleMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -239,11 +239,11 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if ExternalId, ok := LearningmoduleMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
 	}
-	
+    
 	if Source, ok := LearningmoduleMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if Rule, ok := LearningmoduleMap["rule"].(map[string]interface{}); ok {
 		RuleString, _ := json.Marshal(Rule)
 		json.Unmarshal(RuleString, &o.Rule)
@@ -252,19 +252,19 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LearningmoduleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if IsArchived, ok := LearningmoduleMap["isArchived"].(bool); ok {
 		o.IsArchived = &IsArchived
 	}
-	
+    
 	if IsPublished, ok := LearningmoduleMap["isPublished"].(bool); ok {
 		o.IsPublished = &IsPublished
 	}
-	
+    
 	if Description, ok := LearningmoduleMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CompletionTimeInDays, ok := LearningmoduleMap["completionTimeInDays"].(float64); ok {
 		CompletionTimeInDaysInt := int(CompletionTimeInDays)
 		o.CompletionTimeInDays = &CompletionTimeInDaysInt
@@ -273,7 +273,7 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if VarType, ok := LearningmoduleMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if InformSteps, ok := LearningmoduleMap["informSteps"].([]interface{}); ok {
 		InformStepsString, _ := json.Marshal(InformSteps)
 		json.Unmarshal(InformStepsString, &o.InformSteps)

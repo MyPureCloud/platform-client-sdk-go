@@ -162,11 +162,11 @@ func (o *Historicaladherencedaymetrics) UnmarshalJSON(b []byte) error {
 	if AdherencePercentage, ok := HistoricaladherencedaymetricsMap["adherencePercentage"].(float64); ok {
 		o.AdherencePercentage = &AdherencePercentage
 	}
-	
+    
 	if ConformancePercentage, ok := HistoricaladherencedaymetricsMap["conformancePercentage"].(float64); ok {
 		o.ConformancePercentage = &ConformancePercentage
 	}
-	
+    
 
 	return nil
 }

@@ -61,15 +61,15 @@ func (o *Surveyaggregationview) UnmarshalJSON(b []byte) error {
 	if Target, ok := SurveyaggregationviewMap["target"].(string); ok {
 		o.Target = &Target
 	}
-	
+    
 	if Name, ok := SurveyaggregationviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Function, ok := SurveyaggregationviewMap["function"].(string); ok {
 		o.Function = &Function
 	}
-	
+    
 	if VarRange, ok := SurveyaggregationviewMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

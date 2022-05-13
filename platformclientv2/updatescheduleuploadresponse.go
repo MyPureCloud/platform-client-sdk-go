@@ -61,11 +61,11 @@ func (o *Updatescheduleuploadresponse) UnmarshalJSON(b []byte) error {
 	if UploadKey, ok := UpdatescheduleuploadresponseMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 	if Url, ok := UpdatescheduleuploadresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Headers, ok := UpdatescheduleuploadresponseMap["headers"].(map[string]interface{}); ok {
 		HeadersString, _ := json.Marshal(Headers)
 		json.Unmarshal(HeadersString, &o.Headers)

@@ -253,19 +253,19 @@ func (o *Createworkplan) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreateworkplanMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Enabled, ok := CreateworkplanMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if ConstrainWeeklyPaidTime, ok := CreateworkplanMap["constrainWeeklyPaidTime"].(bool); ok {
 		o.ConstrainWeeklyPaidTime = &ConstrainWeeklyPaidTime
 	}
-	
+    
 	if FlexibleWeeklyPaidTime, ok := CreateworkplanMap["flexibleWeeklyPaidTime"].(bool); ok {
 		o.FlexibleWeeklyPaidTime = &FlexibleWeeklyPaidTime
 	}
-	
+    
 	if WeeklyExactPaidMinutes, ok := CreateworkplanMap["weeklyExactPaidMinutes"].(float64); ok {
 		WeeklyExactPaidMinutesInt := int(WeeklyExactPaidMinutes)
 		o.WeeklyExactPaidMinutes = &WeeklyExactPaidMinutesInt
@@ -284,7 +284,7 @@ func (o *Createworkplan) UnmarshalJSON(b []byte) error {
 	if ConstrainPaidTimeGranularity, ok := CreateworkplanMap["constrainPaidTimeGranularity"].(bool); ok {
 		o.ConstrainPaidTimeGranularity = &ConstrainPaidTimeGranularity
 	}
-	
+    
 	if PaidTimeGranularityMinutes, ok := CreateworkplanMap["paidTimeGranularityMinutes"].(float64); ok {
 		PaidTimeGranularityMinutesInt := int(PaidTimeGranularityMinutes)
 		o.PaidTimeGranularityMinutes = &PaidTimeGranularityMinutesInt
@@ -293,7 +293,7 @@ func (o *Createworkplan) UnmarshalJSON(b []byte) error {
 	if ConstrainMinimumTimeBetweenShifts, ok := CreateworkplanMap["constrainMinimumTimeBetweenShifts"].(bool); ok {
 		o.ConstrainMinimumTimeBetweenShifts = &ConstrainMinimumTimeBetweenShifts
 	}
-	
+    
 	if MinimumTimeBetweenShiftsMinutes, ok := CreateworkplanMap["minimumTimeBetweenShiftsMinutes"].(float64); ok {
 		MinimumTimeBetweenShiftsMinutesInt := int(MinimumTimeBetweenShiftsMinutes)
 		o.MinimumTimeBetweenShiftsMinutes = &MinimumTimeBetweenShiftsMinutesInt
@@ -312,7 +312,7 @@ func (o *Createworkplan) UnmarshalJSON(b []byte) error {
 	if ConstrainMaximumConsecutiveWorkingWeekends, ok := CreateworkplanMap["constrainMaximumConsecutiveWorkingWeekends"].(bool); ok {
 		o.ConstrainMaximumConsecutiveWorkingWeekends = &ConstrainMaximumConsecutiveWorkingWeekends
 	}
-	
+    
 	if MaximumConsecutiveWorkingWeekends, ok := CreateworkplanMap["maximumConsecutiveWorkingWeekends"].(float64); ok {
 		MaximumConsecutiveWorkingWeekendsInt := int(MaximumConsecutiveWorkingWeekends)
 		o.MaximumConsecutiveWorkingWeekends = &MaximumConsecutiveWorkingWeekendsInt
@@ -326,7 +326,7 @@ func (o *Createworkplan) UnmarshalJSON(b []byte) error {
 	if ConstrainMaximumConsecutiveWorkingDays, ok := CreateworkplanMap["constrainMaximumConsecutiveWorkingDays"].(bool); ok {
 		o.ConstrainMaximumConsecutiveWorkingDays = &ConstrainMaximumConsecutiveWorkingDays
 	}
-	
+    
 	if MaximumConsecutiveWorkingDays, ok := CreateworkplanMap["maximumConsecutiveWorkingDays"].(float64); ok {
 		MaximumConsecutiveWorkingDaysInt := int(MaximumConsecutiveWorkingDays)
 		o.MaximumConsecutiveWorkingDays = &MaximumConsecutiveWorkingDaysInt
@@ -365,7 +365,7 @@ func (o *Createworkplan) UnmarshalJSON(b []byte) error {
 	if ShiftStartVarianceType, ok := CreateworkplanMap["shiftStartVarianceType"].(string); ok {
 		o.ShiftStartVarianceType = &ShiftStartVarianceType
 	}
-	
+    
 	if ShiftStartVariances, ok := CreateworkplanMap["shiftStartVariances"].(map[string]interface{}); ok {
 		ShiftStartVariancesString, _ := json.Marshal(ShiftStartVariances)
 		json.Unmarshal(ShiftStartVariancesString, &o.ShiftStartVariances)

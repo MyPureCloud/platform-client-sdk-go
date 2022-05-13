@@ -109,11 +109,11 @@ func (o *Objective) UnmarshalJSON(b []byte) error {
 	if Id, ok := ObjectiveMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if TemplateId, ok := ObjectiveMap["templateId"].(string); ok {
 		o.TemplateId = &TemplateId
 	}
-	
+    
 	if Zones, ok := ObjectiveMap["zones"].([]interface{}); ok {
 		ZonesString, _ := json.Marshal(Zones)
 		json.Unmarshal(ZonesString, &o.Zones)
@@ -122,7 +122,7 @@ func (o *Objective) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := ObjectiveMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if MediaTypes, ok := ObjectiveMap["mediaTypes"].([]interface{}); ok {
 		MediaTypesString, _ := json.Marshal(MediaTypes)
 		json.Unmarshal(MediaTypesString, &o.MediaTypes)
@@ -141,7 +141,7 @@ func (o *Objective) UnmarshalJSON(b []byte) error {
 	if TopicIdsFilterType, ok := ObjectiveMap["topicIdsFilterType"].(string); ok {
 		o.TopicIdsFilterType = &TopicIdsFilterType
 	}
-	
+    
 	if dateStartString, ok := ObjectiveMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02", dateStartString)
 		o.DateStart = &DateStart

@@ -166,15 +166,15 @@ func (o *Journeysegment) UnmarshalJSON(b []byte) error {
 	if Id, ok := JourneysegmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IsActive, ok := JourneysegmentMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if DisplayName, ok := JourneysegmentMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if Version, ok := JourneysegmentMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -183,19 +183,19 @@ func (o *Journeysegment) UnmarshalJSON(b []byte) error {
 	if Description, ok := JourneysegmentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Color, ok := JourneysegmentMap["color"].(string); ok {
 		o.Color = &Color
 	}
-	
+    
 	if Scope, ok := JourneysegmentMap["scope"].(string); ok {
 		o.Scope = &Scope
 	}
-	
+    
 	if ShouldDisplayToAgent, ok := JourneysegmentMap["shouldDisplayToAgent"].(bool); ok {
 		o.ShouldDisplayToAgent = &ShouldDisplayToAgent
 	}
-	
+    
 	if Context, ok := JourneysegmentMap["context"].(map[string]interface{}); ok {
 		ContextString, _ := json.Marshal(Context)
 		json.Unmarshal(ContextString, &o.Context)
@@ -219,7 +219,7 @@ func (o *Journeysegment) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := JourneysegmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if createdDateString, ok := JourneysegmentMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

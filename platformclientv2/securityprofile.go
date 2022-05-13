@@ -61,11 +61,11 @@ func (o *Securityprofile) UnmarshalJSON(b []byte) error {
 	if Id, ok := SecurityprofileMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SecurityprofileMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Permissions, ok := SecurityprofileMap["permissions"].([]interface{}); ok {
 		PermissionsString, _ := json.Marshal(Permissions)
 		json.Unmarshal(PermissionsString, &o.Permissions)
@@ -74,7 +74,7 @@ func (o *Securityprofile) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SecurityprofileMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -31,9 +31,7 @@ func NewGeolocationApiWithConfig(config *Configuration) *GeolocationApi {
 
 // GetGeolocationsSettings invokes GET /api/v2/geolocations/settings
 //
-// Get a organization&#39;s GeolocationSettings
-//
-// 
+// Get a organization's GeolocationSettings
 func (a GeolocationApi) GetGeolocationsSettings() (*Geolocationsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -98,9 +96,7 @@ func (a GeolocationApi) GetGeolocationsSettings() (*Geolocationsettings, *APIRes
 
 // GetUserGeolocation invokes GET /api/v2/users/{userId}/geolocations/{clientId}
 //
-// Get a user&#39;s Geolocation
-//
-// 
+// Get a user's Geolocation
 func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geolocation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -114,12 +110,12 @@ func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geo
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GeolocationApi->GetUserGeolocation")
 	}
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling GeolocationApi->GetUserGeolocation")
 	}
 
@@ -177,9 +173,7 @@ func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geo
 
 // PatchGeolocationsSettings invokes PATCH /api/v2/geolocations/settings
 //
-// Patch a organization&#39;s GeolocationSettings
-//
-// 
+// Patch a organization's GeolocationSettings
 func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Geolocationsettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -191,7 +185,7 @@ func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Ge
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GeolocationApi->PatchGeolocationsSettings")
 	}
 
@@ -252,7 +246,7 @@ func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Ge
 
 // PatchUserGeolocation invokes PATCH /api/v2/users/{userId}/geolocations/{clientId}
 //
-// Patch a user&#39;s Geolocation
+// Patch a user's Geolocation
 //
 // The geolocation object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the client as the user&#39;s primary geolocation source.  Option 2: Provide the &#39;latitude&#39; and &#39;longitude&#39; values.  This will enqueue an asynchronous update of the &#39;city&#39;, &#39;region&#39;, and &#39;country&#39;, generating a notification. A subsequent GET operation will include the new values for &#39;city&#39;, &#39;region&#39; and &#39;country&#39;.  Option 3:  Provide the &#39;city&#39;, &#39;region&#39;, &#39;country&#39; values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
 func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, body Geolocation) (*Geolocation, *APIResponse, error) {
@@ -268,17 +262,17 @@ func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, bod
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GeolocationApi->PatchUserGeolocation")
 	}
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling GeolocationApi->PatchUserGeolocation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GeolocationApi->PatchUserGeolocation")
 	}
 

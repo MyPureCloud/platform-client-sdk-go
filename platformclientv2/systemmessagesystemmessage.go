@@ -41,7 +41,7 @@ type Systemmessagesystemmessage struct {
 
 
 	// Data
-	Data *map[string]Systemmessageobject `json:"data,omitempty"`
+	Data *map[string]interface{} `json:"data,omitempty"`
 
 }
 
@@ -67,7 +67,7 @@ func (o *Systemmessagesystemmessage) MarshalJSON() ([]byte, error) {
 		
 		Message *string `json:"message,omitempty"`
 		
-		Data *map[string]Systemmessageobject `json:"data,omitempty"`
+		Data *map[string]interface{} `json:"data,omitempty"`
 		*Alias
 	}{ 
 		ChannelId: o.ChannelId,
@@ -101,35 +101,35 @@ func (o *Systemmessagesystemmessage) UnmarshalJSON(b []byte) error {
 	if ChannelId, ok := SystemmessagesystemmessageMap["channelId"].(string); ok {
 		o.ChannelId = &ChannelId
 	}
-	
+    
 	if SystemTopicType, ok := SystemmessagesystemmessageMap["systemTopicType"].(string); ok {
 		o.SystemTopicType = &SystemTopicType
 	}
-	
+    
 	if CorrelationId, ok := SystemmessagesystemmessageMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if OrganizationId, ok := SystemmessagesystemmessageMap["organizationId"].(string); ok {
 		o.OrganizationId = &OrganizationId
 	}
-	
+    
 	if UserId, ok := SystemmessagesystemmessageMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if OauthClientId, ok := SystemmessagesystemmessageMap["oauthClientId"].(string); ok {
 		o.OauthClientId = &OauthClientId
 	}
-	
+    
 	if Reason, ok := SystemmessagesystemmessageMap["reason"].(string); ok {
 		o.Reason = &Reason
 	}
-	
+    
 	if Message, ok := SystemmessagesystemmessageMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Data, ok := SystemmessagesystemmessageMap["data"].(map[string]interface{}); ok {
 		DataString, _ := json.Marshal(Data)
 		json.Unmarshal(DataString, &o.Data)

@@ -45,11 +45,11 @@ func (o *Contactcolumntodataactionfieldmapping) UnmarshalJSON(b []byte) error {
 	if ContactColumnName, ok := ContactcolumntodataactionfieldmappingMap["contactColumnName"].(string); ok {
 		o.ContactColumnName = &ContactColumnName
 	}
-	
+    
 	if DataActionField, ok := ContactcolumntodataactionfieldmappingMap["dataActionField"].(string); ok {
 		o.DataActionField = &DataActionField
 	}
-	
+    
 
 	return nil
 }

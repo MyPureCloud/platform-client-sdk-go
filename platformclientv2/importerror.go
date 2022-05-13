@@ -45,7 +45,7 @@ func (o *Importerror) UnmarshalJSON(b []byte) error {
 	if Message, ok := ImporterrorMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Line, ok := ImporterrorMap["line"].(float64); ok {
 		LineInt := int(Line)
 		o.Line = &LineInt

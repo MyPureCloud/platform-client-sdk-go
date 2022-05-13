@@ -45,7 +45,7 @@ func (o *Edgelogicalinterfaceschangetopicdomainlogicalinterfacechange) Unmarshal
 	if Id, ok := EdgelogicalinterfaceschangetopicdomainlogicalinterfacechangeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ErrorInfo, ok := EdgelogicalinterfaceschangetopicdomainlogicalinterfacechangeMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)

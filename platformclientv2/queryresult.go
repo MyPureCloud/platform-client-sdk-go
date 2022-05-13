@@ -61,11 +61,11 @@ func (o *Queryresult) UnmarshalJSON(b []byte) error {
 	if Id, ok := QueryresultMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueryresultMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Body, ok := QueryresultMap["body"].(map[string]interface{}); ok {
 		BodyString, _ := json.Marshal(Body)
 		json.Unmarshal(BodyString, &o.Body)
@@ -74,7 +74,7 @@ func (o *Queryresult) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := QueryresultMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -166,15 +166,15 @@ func (o *Trustgroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrustgroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TrustgroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := TrustgroupMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateModifiedString, ok := TrustgroupMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
@@ -188,7 +188,7 @@ func (o *Trustgroup) UnmarshalJSON(b []byte) error {
 	if State, ok := TrustgroupMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Version, ok := TrustgroupMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -197,7 +197,7 @@ func (o *Trustgroup) UnmarshalJSON(b []byte) error {
 	if VarType, ok := TrustgroupMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Images, ok := TrustgroupMap["images"].([]interface{}); ok {
 		ImagesString, _ := json.Marshal(Images)
 		json.Unmarshal(ImagesString, &o.Images)
@@ -211,11 +211,11 @@ func (o *Trustgroup) UnmarshalJSON(b []byte) error {
 	if RulesVisible, ok := TrustgroupMap["rulesVisible"].(bool); ok {
 		o.RulesVisible = &RulesVisible
 	}
-	
+    
 	if Visibility, ok := TrustgroupMap["visibility"].(string); ok {
 		o.Visibility = &Visibility
 	}
-	
+    
 	if Owners, ok := TrustgroupMap["owners"].([]interface{}); ok {
 		OwnersString, _ := json.Marshal(Owners)
 		json.Unmarshal(OwnersString, &o.Owners)

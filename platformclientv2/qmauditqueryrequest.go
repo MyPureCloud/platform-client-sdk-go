@@ -53,7 +53,7 @@ func (o *Qmauditqueryrequest) UnmarshalJSON(b []byte) error {
 	if Interval, ok := QmauditqueryrequestMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Filters, ok := QmauditqueryrequestMap["filters"].([]interface{}); ok {
 		FiltersString, _ := json.Marshal(Filters)
 		json.Unmarshal(FiltersString, &o.Filters)

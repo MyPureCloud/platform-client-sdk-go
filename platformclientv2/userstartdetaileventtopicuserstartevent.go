@@ -186,47 +186,47 @@ func (o *Userstartdetaileventtopicuserstartevent) UnmarshalJSON(b []byte) error 
 	if ConversationId, ok := UserstartdetaileventtopicuserstarteventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := UserstartdetaileventtopicuserstarteventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := UserstartdetaileventtopicuserstarteventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := UserstartdetaileventtopicuserstarteventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := UserstartdetaileventtopicuserstarteventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := UserstartdetaileventtopicuserstarteventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := UserstartdetaileventtopicuserstarteventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := UserstartdetaileventtopicuserstarteventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := UserstartdetaileventtopicuserstarteventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := UserstartdetaileventtopicuserstarteventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := UserstartdetaileventtopicuserstarteventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := UserstartdetaileventtopicuserstarteventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -240,23 +240,23 @@ func (o *Userstartdetaileventtopicuserstartevent) UnmarshalJSON(b []byte) error 
 	if Subject, ok := UserstartdetaileventtopicuserstarteventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := UserstartdetaileventtopicuserstarteventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if UserId, ok := UserstartdetaileventtopicuserstarteventMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if DivisionId, ok := UserstartdetaileventtopicuserstarteventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if QueueId, ok := UserstartdetaileventtopicuserstarteventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 
 	return nil
 }

@@ -32,8 +32,6 @@ func NewRecordingApiWithConfig(config *Configuration) *RecordingApi {
 // DeleteConversationRecordingAnnotation invokes DELETE /api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}
 //
 // Delete annotation
-//
-// 
 func (a RecordingApi) DeleteConversationRecordingAnnotation(conversationId string, recordingId string, annotationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -47,17 +45,17 @@ func (a RecordingApi) DeleteConversationRecordingAnnotation(conversationId strin
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->DeleteConversationRecordingAnnotation")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->DeleteConversationRecordingAnnotation")
 	}
 	// verify the required parameter 'annotationId' is set
 	if &annotationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'annotationId' when calling RecordingApi->DeleteConversationRecordingAnnotation")
 	}
 
@@ -110,8 +108,6 @@ func (a RecordingApi) DeleteConversationRecordingAnnotation(conversationId strin
 // DeleteOrphanrecording invokes DELETE /api/v2/orphanrecordings/{orphanId}
 //
 // Deletes a single orphan recording
-//
-// 
 func (a RecordingApi) DeleteOrphanrecording(orphanId string) (*Orphanrecording, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -124,7 +120,7 @@ func (a RecordingApi) DeleteOrphanrecording(orphanId string) (*Orphanrecording, 
 
 	// verify the required parameter 'orphanId' is set
 	if &orphanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'orphanId' when calling RecordingApi->DeleteOrphanrecording")
 	}
 
@@ -195,7 +191,7 @@ func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicies(ids str
 
 	// verify the required parameter 'ids' is set
 	if &ids == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'ids' when calling RecordingApi->DeleteRecordingCrossplatformMediaretentionpolicies")
 	}
 
@@ -250,8 +246,6 @@ func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicies(ids str
 // DeleteRecordingCrossplatformMediaretentionpolicy invokes DELETE /api/v2/recording/crossplatform/mediaretentionpolicies/{policyId}
 //
 // Delete a media retention policy
-//
-// 
 func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicy(policyId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -263,7 +257,7 @@ func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicy(policyId 
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->DeleteRecordingCrossplatformMediaretentionpolicy")
 	}
 
@@ -316,8 +310,6 @@ func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicy(policyId 
 // DeleteRecordingJob invokes DELETE /api/v2/recording/jobs/{jobId}
 //
 // Delete the recording bulk job
-//
-// 
 func (a RecordingApi) DeleteRecordingJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -329,7 +321,7 @@ func (a RecordingApi) DeleteRecordingJob(jobId string) (*APIResponse, error) {
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'jobId' when calling RecordingApi->DeleteRecordingJob")
 	}
 
@@ -394,7 +386,7 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicies(ids string) (*APIRes
 
 	// verify the required parameter 'ids' is set
 	if &ids == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'ids' when calling RecordingApi->DeleteRecordingMediaretentionpolicies")
 	}
 
@@ -449,8 +441,6 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicies(ids string) (*APIRes
 // DeleteRecordingMediaretentionpolicy invokes DELETE /api/v2/recording/mediaretentionpolicies/{policyId}
 //
 // Delete a media retention policy
-//
-// 
 func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -462,7 +452,7 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*API
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->DeleteRecordingMediaretentionpolicy")
 	}
 
@@ -515,8 +505,6 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*API
 // GetConversationRecording invokes GET /api/v2/conversations/{conversationId}/recordings/{recordingId}
 //
 // Gets a specific recording.
-//
-// 
 func (a RecordingApi) GetConversationRecording(conversationId string, recordingId string, formatId string, emailFormatId string, chatFormatId string, messageFormatId string, download bool, fileName string, locale string, mediaFormats []string) (*Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -530,12 +518,12 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->GetConversationRecording")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->GetConversationRecording")
 	}
 
@@ -610,8 +598,6 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 // GetConversationRecordingAnnotation invokes GET /api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}
 //
 // Get annotation
-//
-// 
 func (a RecordingApi) GetConversationRecordingAnnotation(conversationId string, recordingId string, annotationId string) (*Annotation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -626,17 +612,17 @@ func (a RecordingApi) GetConversationRecordingAnnotation(conversationId string, 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->GetConversationRecordingAnnotation")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->GetConversationRecordingAnnotation")
 	}
 	// verify the required parameter 'annotationId' is set
 	if &annotationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'annotationId' when calling RecordingApi->GetConversationRecordingAnnotation")
 	}
 
@@ -695,8 +681,6 @@ func (a RecordingApi) GetConversationRecordingAnnotation(conversationId string, 
 // GetConversationRecordingAnnotations invokes GET /api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations
 //
 // Get annotations for recording
-//
-// 
 func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string, recordingId string) ([]Annotation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -710,12 +694,12 @@ func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string,
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->GetConversationRecordingAnnotations")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->GetConversationRecordingAnnotations")
 	}
 
@@ -773,9 +757,7 @@ func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string,
 
 // GetConversationRecordingmetadata invokes GET /api/v2/conversations/{conversationId}/recordingmetadata
 //
-// Get recording metadata for a conversation. Does not return playable media. Annotations won&#39;t be included in the response if recording:recording:view permission is missing.
-//
-// 
+// Get recording metadata for a conversation. Does not return playable media. Annotations won't be included in the response if recording:recording:view permission is missing.
 func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([]Recordingmetadata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -788,7 +770,7 @@ func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->GetConversationRecordingmetadata")
 	}
 
@@ -847,8 +829,6 @@ func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([
 // GetConversationRecordingmetadataRecordingId invokes GET /api/v2/conversations/{conversationId}/recordingmetadata/{recordingId}
 //
 // Get metadata for a specific recording. Does not return playable media.
-//
-// 
 func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId string, recordingId string) (*Recordingmetadata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -862,12 +842,12 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->GetConversationRecordingmetadataRecordingId")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->GetConversationRecordingmetadataRecordingId")
 	}
 
@@ -925,9 +905,7 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 
 // GetConversationRecordings invokes GET /api/v2/conversations/{conversationId}/recordings
 //
-// Get all of a Conversation&#39;s Recordings.
-//
-// 
+// Get all of a Conversation's Recordings.
 func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs int, formatId string, mediaFormats []string) ([]Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -940,7 +918,7 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->GetConversationRecordings")
 	}
 
@@ -1005,8 +983,6 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 // GetOrphanrecording invokes GET /api/v2/orphanrecordings/{orphanId}
 //
 // Gets a single orphan recording
-//
-// 
 func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1019,7 +995,7 @@ func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *AP
 
 	// verify the required parameter 'orphanId' is set
 	if &orphanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'orphanId' when calling RecordingApi->GetOrphanrecording")
 	}
 
@@ -1092,7 +1068,7 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 
 	// verify the required parameter 'orphanId' is set
 	if &orphanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'orphanId' when calling RecordingApi->GetOrphanrecordingMedia")
 	}
 
@@ -1167,8 +1143,6 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 // GetOrphanrecordings invokes GET /api/v2/orphanrecordings
 //
 // Gets all orphan recordings
-//
-// 
 func (a RecordingApi) GetOrphanrecordings(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, hasConversation bool, media string) (*Orphanrecordinglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1250,8 +1224,6 @@ func (a RecordingApi) GetOrphanrecordings(pageSize int, pageNumber int, sortBy s
 // GetRecordingBatchrequest invokes GET /api/v2/recording/batchrequests/{jobId}
 //
 // Get the status and results for a batch request job, only the user that submitted the job may retrieve results
-//
-// 
 func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobstatusresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1264,7 +1236,7 @@ func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobs
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling RecordingApi->GetRecordingBatchrequest")
 	}
 
@@ -1324,7 +1296,7 @@ func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobs
 //
 // Gets media retention policy list with query options to filter on name and enabled.
 //
-// for a less verbose response, add summary=true to this endpoint
+// for a less verbose response, add summary&#x3D;true to this endpoint
 func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool, deleteDaysThreshold int) (*Policyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1412,8 +1384,6 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize i
 // GetRecordingCrossplatformMediaretentionpolicy invokes GET /api/v2/recording/crossplatform/mediaretentionpolicies/{policyId}
 //
 // Get a media retention policy
-//
-// 
 func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicy(policyId string) (*Crossplatformpolicy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1426,7 +1396,7 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicy(policyId str
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->GetRecordingCrossplatformMediaretentionpolicy")
 	}
 
@@ -1485,8 +1455,6 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicy(policyId str
 // GetRecordingJob invokes GET /api/v2/recording/jobs/{jobId}
 //
 // Get the status of the job associated with the job id.
-//
-// 
 func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1499,7 +1467,7 @@ func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling RecordingApi->GetRecordingJob")
 	}
 
@@ -1558,8 +1526,6 @@ func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse
 // GetRecordingJobFailedrecordings invokes GET /api/v2/recording/jobs/{jobId}/failedrecordings
 //
 // Get IDs of recordings that the bulk job failed for
-//
-// 
 func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int, pageNumber int, includeTotal bool, cursor string) (*Failedrecordingentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1572,7 +1538,7 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling RecordingApi->GetRecordingJobFailedrecordings")
 	}
 
@@ -1638,9 +1604,7 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 
 // GetRecordingJobs invokes GET /api/v2/recording/jobs
 //
-// Get the status of all jobs within the user&#39;s organization
-//
-// 
+// Get the status of all jobs within the user's organization
 func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy string, state string, showOnlyMyJobs bool, jobType string, includeTotal bool, cursor string) (*Recordingjobentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1722,8 +1686,6 @@ func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy stri
 // GetRecordingKeyconfiguration invokes GET /api/v2/recording/keyconfigurations/{keyConfigurationId}
 //
 // Get the encryption key configurations
-//
-// 
 func (a RecordingApi) GetRecordingKeyconfiguration(keyConfigurationId string) (*Recordingencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1736,7 +1698,7 @@ func (a RecordingApi) GetRecordingKeyconfiguration(keyConfigurationId string) (*
 
 	// verify the required parameter 'keyConfigurationId' is set
 	if &keyConfigurationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'keyConfigurationId' when calling RecordingApi->GetRecordingKeyconfiguration")
 	}
 
@@ -1795,8 +1757,6 @@ func (a RecordingApi) GetRecordingKeyconfiguration(keyConfigurationId string) (*
 // GetRecordingKeyconfigurations invokes GET /api/v2/recording/keyconfigurations
 //
 // Get a list of key configurations data
-//
-// 
 func (a RecordingApi) GetRecordingKeyconfigurations() (*Recordingencryptionconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1862,8 +1822,6 @@ func (a RecordingApi) GetRecordingKeyconfigurations() (*Recordingencryptionconfi
 // GetRecordingLocalkeysSetting invokes GET /api/v2/recording/localkeys/settings/{settingsId}
 //
 // Get the local encryption settings
-//
-// 
 func (a RecordingApi) GetRecordingLocalkeysSetting(settingsId string) (*Localencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1876,7 +1834,7 @@ func (a RecordingApi) GetRecordingLocalkeysSetting(settingsId string) (*Localenc
 
 	// verify the required parameter 'settingsId' is set
 	if &settingsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'settingsId' when calling RecordingApi->GetRecordingLocalkeysSetting")
 	}
 
@@ -1935,8 +1893,6 @@ func (a RecordingApi) GetRecordingLocalkeysSetting(settingsId string) (*Localenc
 // GetRecordingLocalkeysSettings invokes GET /api/v2/recording/localkeys/settings
 //
 // gets a list local key settings data
-//
-// 
 func (a RecordingApi) GetRecordingLocalkeysSettings() (*Localencryptionconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2003,7 +1959,7 @@ func (a RecordingApi) GetRecordingLocalkeysSettings() (*Localencryptionconfigura
 //
 // Gets media retention policy list with query options to filter on name and enabled.
 //
-// for a less verbose response, add summary=true to this endpoint
+// for a less verbose response, add summary&#x3D;true to this endpoint
 func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool, deleteDaysThreshold int) (*Policyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2091,8 +2047,6 @@ func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumbe
 // GetRecordingMediaretentionpolicy invokes GET /api/v2/recording/mediaretentionpolicies/{policyId}
 //
 // Get a media retention policy
-//
-// 
 func (a RecordingApi) GetRecordingMediaretentionpolicy(policyId string) (*Policy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2105,7 +2059,7 @@ func (a RecordingApi) GetRecordingMediaretentionpolicy(policyId string) (*Policy
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->GetRecordingMediaretentionpolicy")
 	}
 
@@ -2164,8 +2118,6 @@ func (a RecordingApi) GetRecordingMediaretentionpolicy(policyId string) (*Policy
 // GetRecordingRecordingkeys invokes GET /api/v2/recording/recordingkeys
 //
 // Get encryption key list
-//
-// 
 func (a RecordingApi) GetRecordingRecordingkeys(pageSize int, pageNumber int) (*Encryptionkeyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2235,8 +2187,6 @@ func (a RecordingApi) GetRecordingRecordingkeys(pageSize int, pageNumber int) (*
 // GetRecordingRecordingkeysRotationschedule invokes GET /api/v2/recording/recordingkeys/rotationschedule
 //
 // Get key rotation schedule
-//
-// 
 func (a RecordingApi) GetRecordingRecordingkeysRotationschedule() (*Keyrotationschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2302,8 +2252,6 @@ func (a RecordingApi) GetRecordingRecordingkeysRotationschedule() (*Keyrotations
 // GetRecordingSettings invokes GET /api/v2/recording/settings
 //
 // Get the Recording Settings for the Organization
-//
-// 
 func (a RecordingApi) GetRecordingSettings(createDefault bool) (*Recordingsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2371,8 +2319,6 @@ func (a RecordingApi) GetRecordingSettings(createDefault bool) (*Recordingsettin
 // GetRecordingsScreensessions invokes GET /api/v2/recordings/screensessions
 //
 // Retrieves a paged listing of screen recording sessions
-//
-// 
 func (a RecordingApi) GetRecordingsScreensessions(pageSize int, pageNumber int) (*Screenrecordingsessionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2442,8 +2388,6 @@ func (a RecordingApi) GetRecordingsScreensessions(pageSize int, pageNumber int) 
 // PatchRecordingCrossplatformMediaretentionpolicy invokes PATCH /api/v2/recording/crossplatform/mediaretentionpolicies/{policyId}
 //
 // Patch a media retention policy
-//
-// 
 func (a RecordingApi) PatchRecordingCrossplatformMediaretentionpolicy(policyId string, body Crossplatformpolicyupdate) (*Crossplatformpolicy, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2456,12 +2400,12 @@ func (a RecordingApi) PatchRecordingCrossplatformMediaretentionpolicy(policyId s
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->PatchRecordingCrossplatformMediaretentionpolicy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PatchRecordingCrossplatformMediaretentionpolicy")
 	}
 
@@ -2523,8 +2467,6 @@ func (a RecordingApi) PatchRecordingCrossplatformMediaretentionpolicy(policyId s
 // PatchRecordingMediaretentionpolicy invokes PATCH /api/v2/recording/mediaretentionpolicies/{policyId}
 //
 // Patch a media retention policy
-//
-// 
 func (a RecordingApi) PatchRecordingMediaretentionpolicy(policyId string, body Policyupdate) (*Policy, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2537,12 +2479,12 @@ func (a RecordingApi) PatchRecordingMediaretentionpolicy(policyId string, body P
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->PatchRecordingMediaretentionpolicy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PatchRecordingMediaretentionpolicy")
 	}
 
@@ -2604,8 +2546,6 @@ func (a RecordingApi) PatchRecordingMediaretentionpolicy(policyId string, body P
 // PatchRecordingsScreensession invokes PATCH /api/v2/recordings/screensessions/{recordingSessionId}
 //
 // Update a screen recording session
-//
-// 
 func (a RecordingApi) PatchRecordingsScreensession(recordingSessionId string, body Screenrecordingsessionrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2617,7 +2557,7 @@ func (a RecordingApi) PatchRecordingsScreensession(recordingSessionId string, bo
 
 	// verify the required parameter 'recordingSessionId' is set
 	if &recordingSessionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'recordingSessionId' when calling RecordingApi->PatchRecordingsScreensession")
 	}
 
@@ -2673,8 +2613,6 @@ func (a RecordingApi) PatchRecordingsScreensession(recordingSessionId string, bo
 // PostConversationRecordingAnnotations invokes POST /api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations
 //
 // Create annotation
-//
-// 
 func (a RecordingApi) PostConversationRecordingAnnotations(conversationId string, recordingId string, body Annotation) (*Annotation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2688,17 +2626,17 @@ func (a RecordingApi) PostConversationRecordingAnnotations(conversationId string
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->PostConversationRecordingAnnotations")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->PostConversationRecordingAnnotations")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostConversationRecordingAnnotations")
 	}
 
@@ -2760,8 +2698,6 @@ func (a RecordingApi) PostConversationRecordingAnnotations(conversationId string
 // PostRecordingBatchrequests invokes POST /api/v2/recording/batchrequests
 //
 // Submit a batch download request for recordings. Recordings in response will be in their original format/codec - configured in the Trunk configuration.
-//
-// 
 func (a RecordingApi) PostRecordingBatchrequests(body Batchdownloadjobsubmission) (*Batchdownloadjobsubmissionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2773,7 +2709,7 @@ func (a RecordingApi) PostRecordingBatchrequests(body Batchdownloadjobsubmission
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingBatchrequests")
 	}
 
@@ -2848,7 +2784,7 @@ func (a RecordingApi) PostRecordingCrossplatformMediaretentionpolicies(body Cros
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingCrossplatformMediaretentionpolicies")
 	}
 
@@ -2923,7 +2859,7 @@ func (a RecordingApi) PostRecordingJobs(body Recordingjobsquery) (*Recordingjob,
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingJobs")
 	}
 
@@ -2985,8 +2921,6 @@ func (a RecordingApi) PostRecordingJobs(body Recordingjobsquery) (*Recordingjob,
 // PostRecordingKeyconfigurations invokes POST /api/v2/recording/keyconfigurations
 //
 // Setup configurations for encryption key creation
-//
-// 
 func (a RecordingApi) PostRecordingKeyconfigurations(body Recordingencryptionconfiguration) (*Recordingencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2998,7 +2932,7 @@ func (a RecordingApi) PostRecordingKeyconfigurations(body Recordingencryptioncon
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingKeyconfigurations")
 	}
 
@@ -3060,8 +2994,6 @@ func (a RecordingApi) PostRecordingKeyconfigurations(body Recordingencryptioncon
 // PostRecordingKeyconfigurationsValidate invokes POST /api/v2/recording/keyconfigurations/validate
 //
 // Validate encryption key configurations without saving it
-//
-// 
 func (a RecordingApi) PostRecordingKeyconfigurationsValidate(body Recordingencryptionconfiguration) (*Recordingencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3073,7 +3005,7 @@ func (a RecordingApi) PostRecordingKeyconfigurationsValidate(body Recordingencry
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingKeyconfigurationsValidate")
 	}
 
@@ -3135,8 +3067,6 @@ func (a RecordingApi) PostRecordingKeyconfigurationsValidate(body Recordingencry
 // PostRecordingLocalkeys invokes POST /api/v2/recording/localkeys
 //
 // create a local recording key
-//
-// 
 func (a RecordingApi) PostRecordingLocalkeys(body Localencryptionkeyrequest) (*Encryptionkey, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3148,7 +3078,7 @@ func (a RecordingApi) PostRecordingLocalkeys(body Localencryptionkeyrequest) (*E
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingLocalkeys")
 	}
 
@@ -3210,8 +3140,6 @@ func (a RecordingApi) PostRecordingLocalkeys(body Localencryptionkeyrequest) (*E
 // PostRecordingLocalkeysSettings invokes POST /api/v2/recording/localkeys/settings
 //
 // create settings for local key creation
-//
-// 
 func (a RecordingApi) PostRecordingLocalkeysSettings(body Localencryptionconfiguration) (*Localencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3223,7 +3151,7 @@ func (a RecordingApi) PostRecordingLocalkeysSettings(body Localencryptionconfigu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingLocalkeysSettings")
 	}
 
@@ -3298,7 +3226,7 @@ func (a RecordingApi) PostRecordingMediaretentionpolicies(body Policycreate) (*P
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingMediaretentionpolicies")
 	}
 
@@ -3360,8 +3288,6 @@ func (a RecordingApi) PostRecordingMediaretentionpolicies(body Policycreate) (*P
 // PostRecordingRecordingkeys invokes POST /api/v2/recording/recordingkeys
 //
 // Create encryption key
-//
-// 
 func (a RecordingApi) PostRecordingRecordingkeys() (*Encryptionkey, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3427,8 +3353,6 @@ func (a RecordingApi) PostRecordingRecordingkeys() (*Encryptionkey, *APIResponse
 // PostRecordingsDeletionprotection invokes POST /api/v2/recordings/deletionprotection
 //
 // Get a list of conversations with protected recordings
-//
-// 
 func (a RecordingApi) PostRecordingsDeletionprotection(body Conversationdeletionprotectionquery) ([]Addressableentityref, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3440,7 +3364,7 @@ func (a RecordingApi) PostRecordingsDeletionprotection(body Conversationdeletion
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingsDeletionprotection")
 	}
 
@@ -3502,8 +3426,6 @@ func (a RecordingApi) PostRecordingsDeletionprotection(body Conversationdeletion
 // PostRecordingsScreensessionsAcknowledge invokes POST /api/v2/recordings/screensessions/acknowledge
 //
 // Acknowledge a screen recording.
-//
-// 
 func (a RecordingApi) PostRecordingsScreensessionsAcknowledge(body Acknowledgescreenrecordingrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3514,7 +3436,7 @@ func (a RecordingApi) PostRecordingsScreensessionsAcknowledge(body Acknowledgesc
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingsScreensessionsAcknowledge")
 	}
 
@@ -3570,8 +3492,6 @@ func (a RecordingApi) PostRecordingsScreensessionsAcknowledge(body Acknowledgesc
 // PostRecordingsScreensessionsMetadata invokes POST /api/v2/recordings/screensessions/metadata
 //
 // Provide meta-data a screen recording.
-//
-// 
 func (a RecordingApi) PostRecordingsScreensessionsMetadata(body Screenrecordingmetadatarequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3582,7 +3502,7 @@ func (a RecordingApi) PostRecordingsScreensessionsMetadata(body Screenrecordingm
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingsScreensessionsMetadata")
 	}
 
@@ -3653,17 +3573,17 @@ func (a RecordingApi) PutConversationRecording(conversationId string, recordingI
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->PutConversationRecording")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->PutConversationRecording")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutConversationRecording")
 	}
 
@@ -3725,8 +3645,6 @@ func (a RecordingApi) PutConversationRecording(conversationId string, recordingI
 // PutConversationRecordingAnnotation invokes PUT /api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}
 //
 // Update annotation
-//
-// 
 func (a RecordingApi) PutConversationRecordingAnnotation(conversationId string, recordingId string, annotationId string, body Annotation) (*Annotation, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3741,22 +3659,22 @@ func (a RecordingApi) PutConversationRecordingAnnotation(conversationId string, 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RecordingApi->PutConversationRecordingAnnotation")
 	}
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling RecordingApi->PutConversationRecordingAnnotation")
 	}
 	// verify the required parameter 'annotationId' is set
 	if &annotationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'annotationId' when calling RecordingApi->PutConversationRecordingAnnotation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutConversationRecordingAnnotation")
 	}
 
@@ -3832,7 +3750,7 @@ func (a RecordingApi) PutOrphanrecording(orphanId string, body Orphanupdatereque
 
 	// verify the required parameter 'orphanId' is set
 	if &orphanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'orphanId' when calling RecordingApi->PutOrphanrecording")
 	}
 
@@ -3908,12 +3826,12 @@ func (a RecordingApi) PutRecordingCrossplatformMediaretentionpolicy(policyId str
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->PutRecordingCrossplatformMediaretentionpolicy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutRecordingCrossplatformMediaretentionpolicy")
 	}
 
@@ -3989,12 +3907,12 @@ func (a RecordingApi) PutRecordingJob(jobId string, body Executerecordingjobsque
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling RecordingApi->PutRecordingJob")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutRecordingJob")
 	}
 
@@ -4056,8 +3974,6 @@ func (a RecordingApi) PutRecordingJob(jobId string, body Executerecordingjobsque
 // PutRecordingKeyconfiguration invokes PUT /api/v2/recording/keyconfigurations/{keyConfigurationId}
 //
 // Update the encryption key configurations
-//
-// 
 func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, body Recordingencryptionconfiguration) (*Recordingencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4070,12 +3986,12 @@ func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, bo
 
 	// verify the required parameter 'keyConfigurationId' is set
 	if &keyConfigurationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'keyConfigurationId' when calling RecordingApi->PutRecordingKeyconfiguration")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutRecordingKeyconfiguration")
 	}
 
@@ -4137,8 +4053,6 @@ func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, bo
 // PutRecordingLocalkeysSetting invokes PUT /api/v2/recording/localkeys/settings/{settingsId}
 //
 // Update the local encryption settings
-//
-// 
 func (a RecordingApi) PutRecordingLocalkeysSetting(settingsId string, body Localencryptionconfiguration) (*Localencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4151,12 +4065,12 @@ func (a RecordingApi) PutRecordingLocalkeysSetting(settingsId string, body Local
 
 	// verify the required parameter 'settingsId' is set
 	if &settingsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'settingsId' when calling RecordingApi->PutRecordingLocalkeysSetting")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutRecordingLocalkeysSetting")
 	}
 
@@ -4232,12 +4146,12 @@ func (a RecordingApi) PutRecordingMediaretentionpolicy(policyId string, body Pol
 
 	// verify the required parameter 'policyId' is set
 	if &policyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'policyId' when calling RecordingApi->PutRecordingMediaretentionpolicy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutRecordingMediaretentionpolicy")
 	}
 
@@ -4299,8 +4213,6 @@ func (a RecordingApi) PutRecordingMediaretentionpolicy(policyId string, body Pol
 // PutRecordingRecordingkeysRotationschedule invokes PUT /api/v2/recording/recordingkeys/rotationschedule
 //
 // Update key rotation schedule
-//
-// 
 func (a RecordingApi) PutRecordingRecordingkeysRotationschedule(body Keyrotationschedule) (*Keyrotationschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4312,7 +4224,7 @@ func (a RecordingApi) PutRecordingRecordingkeysRotationschedule(body Keyrotation
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutRecordingRecordingkeysRotationschedule")
 	}
 
@@ -4374,8 +4286,6 @@ func (a RecordingApi) PutRecordingRecordingkeysRotationschedule(body Keyrotation
 // PutRecordingSettings invokes PUT /api/v2/recording/settings
 //
 // Update the Recording Settings for the Organization
-//
-// 
 func (a RecordingApi) PutRecordingSettings(body Recordingsettings) (*Recordingsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4387,7 +4297,7 @@ func (a RecordingApi) PutRecordingSettings(body Recordingsettings) (*Recordingse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PutRecordingSettings")
 	}
 
@@ -4449,8 +4359,6 @@ func (a RecordingApi) PutRecordingSettings(body Recordingsettings) (*Recordingse
 // PutRecordingsDeletionprotection invokes PUT /api/v2/recordings/deletionprotection
 //
 // Apply or revoke recording protection for conversations
-//
-// 
 func (a RecordingApi) PutRecordingsDeletionprotection(protect bool, body Conversationdeletionprotectionquery) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

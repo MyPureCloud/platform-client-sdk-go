@@ -45,11 +45,11 @@ func (o *Licenseorgtoggle) UnmarshalJSON(b []byte) error {
 	if FeatureName, ok := LicenseorgtoggleMap["featureName"].(string); ok {
 		o.FeatureName = &FeatureName
 	}
-	
+    
 	if Enabled, ok := LicenseorgtoggleMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

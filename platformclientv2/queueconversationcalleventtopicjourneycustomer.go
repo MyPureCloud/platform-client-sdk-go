@@ -45,11 +45,11 @@ func (o *Queueconversationcalleventtopicjourneycustomer) UnmarshalJSON(b []byte)
 	if Id, ok := QueueconversationcalleventtopicjourneycustomerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IdType, ok := QueueconversationcalleventtopicjourneycustomerMap["idType"].(string); ok {
 		o.IdType = &IdType
 	}
-	
+    
 
 	return nil
 }

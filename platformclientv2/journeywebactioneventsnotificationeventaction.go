@@ -37,7 +37,7 @@ func (o *Journeywebactioneventsnotificationeventaction) UnmarshalJSON(b []byte) 
 	if Id, ok := JourneywebactioneventsnotificationeventactionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

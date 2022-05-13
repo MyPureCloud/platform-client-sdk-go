@@ -61,15 +61,15 @@ func (o *Domainnetworkcommandresponse) UnmarshalJSON(b []byte) error {
 	if CorrelationId, ok := DomainnetworkcommandresponseMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if CommandName, ok := DomainnetworkcommandresponseMap["commandName"].(string); ok {
 		o.CommandName = &CommandName
 	}
-	
+    
 	if Acknowledged, ok := DomainnetworkcommandresponseMap["acknowledged"].(bool); ok {
 		o.Acknowledged = &Acknowledged
 	}
-	
+    
 	if ErrorInfo, ok := DomainnetworkcommandresponseMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)

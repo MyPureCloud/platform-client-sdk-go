@@ -69,11 +69,11 @@ func (o *Emailconversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := EmailconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EmailconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := EmailconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
@@ -87,7 +87,7 @@ func (o *Emailconversation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EmailconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

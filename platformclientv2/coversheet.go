@@ -45,11 +45,11 @@ func (o *Coversheet) UnmarshalJSON(b []byte) error {
 	if Notes, ok := CoversheetMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Locale, ok := CoversheetMap["locale"].(string); ok {
 		o.Locale = &Locale
 	}
-	
+    
 
 	return nil
 }

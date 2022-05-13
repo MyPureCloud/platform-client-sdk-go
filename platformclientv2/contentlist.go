@@ -85,23 +85,23 @@ func (o *Contentlist) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContentlistMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ListType, ok := ContentlistMap["listType"].(string); ok {
 		o.ListType = &ListType
 	}
-	
+    
 	if Title, ok := ContentlistMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := ContentlistMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SubmitLabel, ok := ContentlistMap["submitLabel"].(string); ok {
 		o.SubmitLabel = &SubmitLabel
 	}
-	
+    
 	if Actions, ok := ContentlistMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

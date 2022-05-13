@@ -45,11 +45,11 @@ func (o *Wemcoachingappointmenttopiccoachingappointmentdocument) UnmarshalJSON(b
 	if Id, ok := WemcoachingappointmenttopiccoachingappointmentdocumentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Action, ok := WemcoachingappointmenttopiccoachingappointmentdocumentMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 
 	return nil
 }

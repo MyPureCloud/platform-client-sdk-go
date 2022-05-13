@@ -117,15 +117,15 @@ func (o *Share) UnmarshalJSON(b []byte) error {
 	if Id, ok := ShareMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ShareMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SharedEntityType, ok := ShareMap["sharedEntityType"].(string); ok {
 		o.SharedEntityType = &SharedEntityType
 	}
-	
+    
 	if SharedEntity, ok := ShareMap["sharedEntity"].(map[string]interface{}); ok {
 		SharedEntityString, _ := json.Marshal(SharedEntity)
 		json.Unmarshal(SharedEntityString, &o.SharedEntity)
@@ -134,7 +134,7 @@ func (o *Share) UnmarshalJSON(b []byte) error {
 	if MemberType, ok := ShareMap["memberType"].(string); ok {
 		o.MemberType = &MemberType
 	}
-	
+    
 	if Member, ok := ShareMap["member"].(map[string]interface{}); ok {
 		MemberString, _ := json.Marshal(Member)
 		json.Unmarshal(MemberString, &o.Member)
@@ -163,7 +163,7 @@ func (o *Share) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ShareMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

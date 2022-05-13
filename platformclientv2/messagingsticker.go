@@ -109,11 +109,11 @@ func (o *Messagingsticker) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagingstickerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagingstickerMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ProviderStickerId, ok := MessagingstickerMap["providerStickerId"].(float64); ok {
 		ProviderStickerIdInt := int(ProviderStickerId)
 		o.ProviderStickerId = &ProviderStickerIdInt
@@ -127,15 +127,15 @@ func (o *Messagingsticker) UnmarshalJSON(b []byte) error {
 	if PackageName, ok := MessagingstickerMap["packageName"].(string); ok {
 		o.PackageName = &PackageName
 	}
-	
+    
 	if MessengerType, ok := MessagingstickerMap["messengerType"].(string); ok {
 		o.MessengerType = &MessengerType
 	}
-	
+    
 	if StickerType, ok := MessagingstickerMap["stickerType"].(string); ok {
 		o.StickerType = &StickerType
 	}
-	
+    
 	if ProviderVersion, ok := MessagingstickerMap["providerVersion"].(float64); ok {
 		ProviderVersionInt := int(ProviderVersion)
 		o.ProviderVersion = &ProviderVersionInt
@@ -144,11 +144,11 @@ func (o *Messagingsticker) UnmarshalJSON(b []byte) error {
 	if UriLocation, ok := MessagingstickerMap["uriLocation"].(string); ok {
 		o.UriLocation = &UriLocation
 	}
-	
+    
 	if SelfUri, ok := MessagingstickerMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

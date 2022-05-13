@@ -69,19 +69,19 @@ func (o *Conversationcallbackeventtopicdialerpreview) UnmarshalJSON(b []byte) er
 	if Id, ok := ConversationcallbackeventtopicdialerpreviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ContactId, ok := ConversationcallbackeventtopicdialerpreviewMap["contactId"].(string); ok {
 		o.ContactId = &ContactId
 	}
-	
+    
 	if ContactListId, ok := ConversationcallbackeventtopicdialerpreviewMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if CampaignId, ok := ConversationcallbackeventtopicdialerpreviewMap["campaignId"].(string); ok {
 		o.CampaignId = &CampaignId
 	}
-	
+    
 	if PhoneNumberColumns, ok := ConversationcallbackeventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)

@@ -53,15 +53,15 @@ func (o *Intradayperformancepredictiondata) UnmarshalJSON(b []byte) error {
 	if ServiceLevelPercent, ok := IntradayperformancepredictiondataMap["serviceLevelPercent"].(float64); ok {
 		o.ServiceLevelPercent = &ServiceLevelPercent
 	}
-	
+    
 	if AverageSpeedOfAnswerSeconds, ok := IntradayperformancepredictiondataMap["averageSpeedOfAnswerSeconds"].(float64); ok {
 		o.AverageSpeedOfAnswerSeconds = &AverageSpeedOfAnswerSeconds
 	}
-	
+    
 	if OccupancyPercent, ok := IntradayperformancepredictiondataMap["occupancyPercent"].(float64); ok {
 		o.OccupancyPercent = &OccupancyPercent
 	}
-	
+    
 
 	return nil
 }

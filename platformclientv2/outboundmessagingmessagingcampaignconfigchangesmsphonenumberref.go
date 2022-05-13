@@ -37,7 +37,7 @@ func (o *Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref) Unmars
 	if PhoneNumber, ok := OutboundmessagingmessagingcampaignconfigchangesmsphonenumberrefMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 
 	return nil
 }

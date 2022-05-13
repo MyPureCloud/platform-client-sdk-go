@@ -53,15 +53,15 @@ func (o *Dialercampaignconfigchangecontactsort) UnmarshalJSON(b []byte) error {
 	if FieldName, ok := DialercampaignconfigchangecontactsortMap["fieldName"].(string); ok {
 		o.FieldName = &FieldName
 	}
-	
+    
 	if Direction, ok := DialercampaignconfigchangecontactsortMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Numeric, ok := DialercampaignconfigchangecontactsortMap["numeric"].(bool); ok {
 		o.Numeric = &Numeric
 	}
-	
+    
 
 	return nil
 }

@@ -121,15 +121,15 @@ func (o *Groupssearchresponse) UnmarshalJSON(b []byte) error {
 	if PreviousPage, ok := GroupssearchresponseMap["previousPage"].(string); ok {
 		o.PreviousPage = &PreviousPage
 	}
-	
+    
 	if CurrentPage, ok := GroupssearchresponseMap["currentPage"].(string); ok {
 		o.CurrentPage = &CurrentPage
 	}
-	
+    
 	if NextPage, ok := GroupssearchresponseMap["nextPage"].(string); ok {
 		o.NextPage = &NextPage
 	}
-	
+    
 	if Types, ok := GroupssearchresponseMap["types"].([]interface{}); ok {
 		TypesString, _ := json.Marshal(Types)
 		json.Unmarshal(TypesString, &o.Types)

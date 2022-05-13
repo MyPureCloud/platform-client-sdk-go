@@ -61,11 +61,11 @@ func (o *Importforecastuploadresponse) UnmarshalJSON(b []byte) error {
 	if UploadKey, ok := ImportforecastuploadresponseMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 	if Url, ok := ImportforecastuploadresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Headers, ok := ImportforecastuploadresponseMap["headers"].(map[string]interface{}); ok {
 		HeadersString, _ := json.Marshal(Headers)
 		json.Unmarshal(HeadersString, &o.Headers)

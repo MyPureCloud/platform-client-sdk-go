@@ -53,15 +53,15 @@ func (o *Vendorconnectionrequest) UnmarshalJSON(b []byte) error {
 	if Publisher, ok := VendorconnectionrequestMap["publisher"].(string); ok {
 		o.Publisher = &Publisher
 	}
-	
+    
 	if VarType, ok := VendorconnectionrequestMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Name, ok := VendorconnectionrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

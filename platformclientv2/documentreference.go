@@ -45,11 +45,11 @@ func (o *Documentreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := DocumentreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := DocumentreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

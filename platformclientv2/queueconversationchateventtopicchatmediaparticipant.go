@@ -366,15 +366,15 @@ func (o *Queueconversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []
 	if Id, ok := QueueconversationchateventtopicchatmediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationchateventtopicchatmediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := QueueconversationchateventtopicchatmediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := QueueconversationchateventtopicchatmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -398,31 +398,31 @@ func (o *Queueconversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []
 	if Purpose, ok := QueueconversationchateventtopicchatmediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := QueueconversationchateventtopicchatmediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := QueueconversationchateventtopicchatmediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationchateventtopicchatmediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := QueueconversationchateventtopicchatmediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := QueueconversationchateventtopicchatmediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := QueueconversationchateventtopicchatmediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := QueueconversationchateventtopicchatmediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -461,7 +461,7 @@ func (o *Queueconversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []
 	if WrapupSkipped, ok := QueueconversationchateventtopicchatmediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := QueueconversationchateventtopicchatmediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -470,7 +470,7 @@ func (o *Queueconversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []
 	if Provider, ok := QueueconversationchateventtopicchatmediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := QueueconversationchateventtopicchatmediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -494,15 +494,15 @@ func (o *Queueconversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []
 	if Peer, ok := QueueconversationchateventtopicchatmediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := QueueconversationchateventtopicchatmediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := QueueconversationchateventtopicchatmediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := QueueconversationchateventtopicchatmediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -521,11 +521,11 @@ func (o *Queueconversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []
 	if RoomId, ok := QueueconversationchateventtopicchatmediaparticipantMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if AvatarImageUrl, ok := QueueconversationchateventtopicchatmediaparticipantMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 
 	return nil
 }

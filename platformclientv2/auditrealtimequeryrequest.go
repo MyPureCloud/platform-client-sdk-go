@@ -77,11 +77,11 @@ func (o *Auditrealtimequeryrequest) UnmarshalJSON(b []byte) error {
 	if Interval, ok := AuditrealtimequeryrequestMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if ServiceName, ok := AuditrealtimequeryrequestMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-	
+    
 	if Filters, ok := AuditrealtimequeryrequestMap["filters"].([]interface{}); ok {
 		FiltersString, _ := json.Marshal(Filters)
 		json.Unmarshal(FiltersString, &o.Filters)

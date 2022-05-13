@@ -45,7 +45,7 @@ func (o *Availabletimeoffrequest) UnmarshalJSON(b []byte) error {
 	if ActivityCodeId, ok := AvailabletimeoffrequestMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if DateRanges, ok := AvailabletimeoffrequestMap["dateRanges"].([]interface{}); ok {
 		DateRangesString, _ := json.Marshal(DateRanges)
 		json.Unmarshal(DateRangesString, &o.DateRanges)

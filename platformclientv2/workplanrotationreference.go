@@ -45,11 +45,11 @@ func (o *Workplanrotationreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkplanrotationreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := WorkplanrotationreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

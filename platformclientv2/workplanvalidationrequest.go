@@ -285,27 +285,27 @@ func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkplanvalidationrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WorkplanvalidationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Enabled, ok := WorkplanvalidationrequestMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Valid, ok := WorkplanvalidationrequestMap["valid"].(bool); ok {
 		o.Valid = &Valid
 	}
-	
+    
 	if ConstrainWeeklyPaidTime, ok := WorkplanvalidationrequestMap["constrainWeeklyPaidTime"].(bool); ok {
 		o.ConstrainWeeklyPaidTime = &ConstrainWeeklyPaidTime
 	}
-	
+    
 	if FlexibleWeeklyPaidTime, ok := WorkplanvalidationrequestMap["flexibleWeeklyPaidTime"].(bool); ok {
 		o.FlexibleWeeklyPaidTime = &FlexibleWeeklyPaidTime
 	}
-	
+    
 	if WeeklyExactPaidMinutes, ok := WorkplanvalidationrequestMap["weeklyExactPaidMinutes"].(float64); ok {
 		WeeklyExactPaidMinutesInt := int(WeeklyExactPaidMinutes)
 		o.WeeklyExactPaidMinutes = &WeeklyExactPaidMinutesInt
@@ -324,7 +324,7 @@ func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
 	if ConstrainPaidTimeGranularity, ok := WorkplanvalidationrequestMap["constrainPaidTimeGranularity"].(bool); ok {
 		o.ConstrainPaidTimeGranularity = &ConstrainPaidTimeGranularity
 	}
-	
+    
 	if PaidTimeGranularityMinutes, ok := WorkplanvalidationrequestMap["paidTimeGranularityMinutes"].(float64); ok {
 		PaidTimeGranularityMinutesInt := int(PaidTimeGranularityMinutes)
 		o.PaidTimeGranularityMinutes = &PaidTimeGranularityMinutesInt
@@ -333,7 +333,7 @@ func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
 	if ConstrainMinimumTimeBetweenShifts, ok := WorkplanvalidationrequestMap["constrainMinimumTimeBetweenShifts"].(bool); ok {
 		o.ConstrainMinimumTimeBetweenShifts = &ConstrainMinimumTimeBetweenShifts
 	}
-	
+    
 	if MinimumTimeBetweenShiftsMinutes, ok := WorkplanvalidationrequestMap["minimumTimeBetweenShiftsMinutes"].(float64); ok {
 		MinimumTimeBetweenShiftsMinutesInt := int(MinimumTimeBetweenShiftsMinutes)
 		o.MinimumTimeBetweenShiftsMinutes = &MinimumTimeBetweenShiftsMinutesInt
@@ -352,7 +352,7 @@ func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
 	if ConstrainMaximumConsecutiveWorkingWeekends, ok := WorkplanvalidationrequestMap["constrainMaximumConsecutiveWorkingWeekends"].(bool); ok {
 		o.ConstrainMaximumConsecutiveWorkingWeekends = &ConstrainMaximumConsecutiveWorkingWeekends
 	}
-	
+    
 	if MaximumConsecutiveWorkingWeekends, ok := WorkplanvalidationrequestMap["maximumConsecutiveWorkingWeekends"].(float64); ok {
 		MaximumConsecutiveWorkingWeekendsInt := int(MaximumConsecutiveWorkingWeekends)
 		o.MaximumConsecutiveWorkingWeekends = &MaximumConsecutiveWorkingWeekendsInt
@@ -366,7 +366,7 @@ func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
 	if ConstrainMaximumConsecutiveWorkingDays, ok := WorkplanvalidationrequestMap["constrainMaximumConsecutiveWorkingDays"].(bool); ok {
 		o.ConstrainMaximumConsecutiveWorkingDays = &ConstrainMaximumConsecutiveWorkingDays
 	}
-	
+    
 	if MaximumConsecutiveWorkingDays, ok := WorkplanvalidationrequestMap["maximumConsecutiveWorkingDays"].(float64); ok {
 		MaximumConsecutiveWorkingDaysInt := int(MaximumConsecutiveWorkingDays)
 		o.MaximumConsecutiveWorkingDays = &MaximumConsecutiveWorkingDaysInt
@@ -405,7 +405,7 @@ func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
 	if ShiftStartVarianceType, ok := WorkplanvalidationrequestMap["shiftStartVarianceType"].(string); ok {
 		o.ShiftStartVarianceType = &ShiftStartVarianceType
 	}
-	
+    
 	if ShiftStartVariances, ok := WorkplanvalidationrequestMap["shiftStartVariances"].(map[string]interface{}); ok {
 		ShiftStartVariancesString, _ := json.Marshal(ShiftStartVariances)
 		json.Unmarshal(ShiftStartVariancesString, &o.ShiftStartVariances)
@@ -429,7 +429,7 @@ func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WorkplanvalidationrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

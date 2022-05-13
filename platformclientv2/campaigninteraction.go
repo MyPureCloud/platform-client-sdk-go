@@ -246,7 +246,7 @@ func (o *Campaigninteraction) UnmarshalJSON(b []byte) error {
 	if Id, ok := CampaigninteractionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Campaign, ok := CampaigninteractionMap["campaign"].(map[string]interface{}); ok {
 		CampaignString, _ := json.Marshal(Campaign)
 		json.Unmarshal(CampaignString, &o.Campaign)
@@ -265,11 +265,11 @@ func (o *Campaigninteraction) UnmarshalJSON(b []byte) error {
 	if DestinationAddress, ok := CampaigninteractionMap["destinationAddress"].(string); ok {
 		o.DestinationAddress = &DestinationAddress
 	}
-	
+    
 	if ActivePreviewCall, ok := CampaigninteractionMap["activePreviewCall"].(bool); ok {
 		o.ActivePreviewCall = &ActivePreviewCall
 	}
-	
+    
 	if lastActivePreviewWrapupTimeString, ok := CampaigninteractionMap["lastActivePreviewWrapupTime"].(string); ok {
 		LastActivePreviewWrapupTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", lastActivePreviewWrapupTimeString)
 		o.LastActivePreviewWrapupTime = &LastActivePreviewWrapupTime
@@ -308,15 +308,15 @@ func (o *Campaigninteraction) UnmarshalJSON(b []byte) error {
 	if Disposition, ok := CampaigninteractionMap["disposition"].(string); ok {
 		o.Disposition = &Disposition
 	}
-	
+    
 	if CallerName, ok := CampaigninteractionMap["callerName"].(string); ok {
 		o.CallerName = &CallerName
 	}
-	
+    
 	if CallerAddress, ok := CampaigninteractionMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if previewPopDeliveredTimeString, ok := CampaigninteractionMap["previewPopDeliveredTime"].(string); ok {
 		PreviewPopDeliveredTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", previewPopDeliveredTimeString)
 		o.PreviewPopDeliveredTime = &PreviewPopDeliveredTime
@@ -330,11 +330,11 @@ func (o *Campaigninteraction) UnmarshalJSON(b []byte) error {
 	if DialerSystemParticipantId, ok := CampaigninteractionMap["dialerSystemParticipantId"].(string); ok {
 		o.DialerSystemParticipantId = &DialerSystemParticipantId
 	}
-	
+    
 	if DialingMode, ok := CampaigninteractionMap["dialingMode"].(string); ok {
 		o.DialingMode = &DialingMode
 	}
-	
+    
 	if Skills, ok := CampaigninteractionMap["skills"].([]interface{}); ok {
 		SkillsString, _ := json.Marshal(Skills)
 		json.Unmarshal(SkillsString, &o.Skills)

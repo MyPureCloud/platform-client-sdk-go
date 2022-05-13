@@ -45,11 +45,11 @@ func (o *Scimuserroutingskill) UnmarshalJSON(b []byte) error {
 	if Name, ok := ScimuserroutingskillMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Proficiency, ok := ScimuserroutingskillMap["proficiency"].(float64); ok {
 		o.Proficiency = &Proficiency
 	}
-	
+    
 
 	return nil
 }

@@ -53,15 +53,15 @@ func (o *Buforecasttimeseriesresult) UnmarshalJSON(b []byte) error {
 	if Metric, ok := BuforecasttimeseriesresultMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if ForecastingMethod, ok := BuforecasttimeseriesresultMap["forecastingMethod"].(string); ok {
 		o.ForecastingMethod = &ForecastingMethod
 	}
-	
+    
 	if ForecastType, ok := BuforecasttimeseriesresultMap["forecastType"].(string); ok {
 		o.ForecastType = &ForecastType
 	}
-	
+    
 
 	return nil
 }

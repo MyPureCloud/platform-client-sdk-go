@@ -45,11 +45,11 @@ func (o *Batchdownloadjobsubmissionresult) UnmarshalJSON(b []byte) error {
 	if Id, ok := BatchdownloadjobsubmissionresultMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := BatchdownloadjobsubmissionresultMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -53,15 +53,15 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationeventcobrow
 	if VarType, ok := V2conversationmessagetypingeventforworkflowtopicconversationeventcobrowseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if SessionId, ok := V2conversationmessagetypingeventforworkflowtopicconversationeventcobrowseMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if SessionJoinToken, ok := V2conversationmessagetypingeventforworkflowtopicconversationeventcobrowseMap["sessionJoinToken"].(string); ok {
 		o.SessionJoinToken = &SessionJoinToken
 	}
-	
+    
 
 	return nil
 }

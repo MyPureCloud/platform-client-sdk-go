@@ -89,7 +89,7 @@ func (o *Kpiresult) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := KpiresultMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 
 	return nil
 }

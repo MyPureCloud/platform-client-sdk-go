@@ -61,7 +61,7 @@ func (o *Developmentactivityaggregateparam) UnmarshalJSON(b []byte) error {
 	if Interval, ok := DevelopmentactivityaggregateparamMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Metrics, ok := DevelopmentactivityaggregateparamMap["metrics"].([]interface{}); ok {
 		MetricsString, _ := json.Marshal(Metrics)
 		json.Unmarshal(MetricsString, &o.Metrics)

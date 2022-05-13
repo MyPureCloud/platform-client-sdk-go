@@ -32,8 +32,6 @@ func NewJourneyApiWithConfig(config *Configuration) *JourneyApi {
 // DeleteJourneyActionmap invokes DELETE /api/v2/journey/actionmaps/{actionMapId}
 //
 // Delete single action map.
-//
-// 
 func (a JourneyApi) DeleteJourneyActionmap(actionMapId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a JourneyApi) DeleteJourneyActionmap(actionMapId string) (*APIResponse, er
 
 	// verify the required parameter 'actionMapId' is set
 	if &actionMapId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'actionMapId' when calling JourneyApi->DeleteJourneyActionmap")
 	}
 
@@ -98,8 +96,6 @@ func (a JourneyApi) DeleteJourneyActionmap(actionMapId string) (*APIResponse, er
 // DeleteJourneyActiontemplate invokes DELETE /api/v2/journey/actiontemplates/{actionTemplateId}
 //
 // Delete a single action template.
-//
-// 
 func (a JourneyApi) DeleteJourneyActiontemplate(actionTemplateId string, hardDelete bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +107,7 @@ func (a JourneyApi) DeleteJourneyActiontemplate(actionTemplateId string, hardDel
 
 	// verify the required parameter 'actionTemplateId' is set
 	if &actionTemplateId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'actionTemplateId' when calling JourneyApi->DeleteJourneyActiontemplate")
 	}
 
@@ -166,8 +162,6 @@ func (a JourneyApi) DeleteJourneyActiontemplate(actionTemplateId string, hardDel
 // DeleteJourneyOutcome invokes DELETE /api/v2/journey/outcomes/{outcomeId}
 //
 // Delete an outcome.
-//
-// 
 func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -179,7 +173,7 @@ func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error)
 
 	// verify the required parameter 'outcomeId' is set
 	if &outcomeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'outcomeId' when calling JourneyApi->DeleteJourneyOutcome")
 	}
 
@@ -232,8 +226,6 @@ func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error)
 // DeleteJourneySegment invokes DELETE /api/v2/journey/segments/{segmentId}
 //
 // Delete a segment.
-//
-// 
 func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -245,7 +237,7 @@ func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error)
 
 	// verify the required parameter 'segmentId' is set
 	if &segmentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'segmentId' when calling JourneyApi->DeleteJourneySegment")
 	}
 
@@ -298,8 +290,6 @@ func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error)
 // GetJourneyActionmap invokes GET /api/v2/journey/actionmaps/{actionMapId}
 //
 // Retrieve a single action map.
-//
-// 
 func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -312,7 +302,7 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 
 	// verify the required parameter 'actionMapId' is set
 	if &actionMapId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionMapId' when calling JourneyApi->GetJourneyActionmap")
 	}
 
@@ -371,8 +361,6 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 // GetJourneyActionmaps invokes GET /api/v2/journey/actionmaps
 //
 // Retrieve all action maps.
-//
-// 
 func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy string, filterField string, filterValue string, actionMapIds []string, queryFields []string, queryValue string) (*Actionmaplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -454,8 +442,6 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 // GetJourneyActiontarget invokes GET /api/v2/journey/actiontargets/{actionTargetId}
 //
 // Retrieve a single action target.
-//
-// 
 func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -468,7 +454,7 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 
 	// verify the required parameter 'actionTargetId' is set
 	if &actionTargetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionTargetId' when calling JourneyApi->GetJourneyActiontarget")
 	}
 
@@ -527,8 +513,6 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 // GetJourneyActiontargets invokes GET /api/v2/journey/actiontargets
 //
 // Retrieve all action targets.
-//
-// 
 func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Actiontargetlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -598,8 +582,6 @@ func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Acti
 // GetJourneyActiontemplate invokes GET /api/v2/journey/actiontemplates/{actionTemplateId}
 //
 // Retrieve a single action template.
-//
-// 
 func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actiontemplate, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -612,7 +594,7 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 
 	// verify the required parameter 'actionTemplateId' is set
 	if &actionTemplateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionTemplateId' when calling JourneyApi->GetJourneyActiontemplate")
 	}
 
@@ -671,8 +653,6 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 // GetJourneyActiontemplates invokes GET /api/v2/journey/actiontemplates
 //
 // Retrieve all action templates.
-//
-// 
 func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sortBy string, mediaType string, state string, queryFields []string, queryValue string) (*Actiontemplatelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -752,8 +732,6 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 // GetJourneyOutcome invokes GET /api/v2/journey/outcomes/{outcomeId}
 //
 // Retrieve a single outcome.
-//
-// 
 func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -766,7 +744,7 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 
 	// verify the required parameter 'outcomeId' is set
 	if &outcomeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'outcomeId' when calling JourneyApi->GetJourneyOutcome")
 	}
 
@@ -825,8 +803,6 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 // GetJourneyOutcomes invokes GET /api/v2/journey/outcomes
 //
 // Retrieve all outcomes.
-//
-// 
 func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy string, outcomeIds []string, queryFields []string, queryValue string) (*Outcomelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -904,8 +880,6 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 // GetJourneySegment invokes GET /api/v2/journey/segments/{segmentId}
 //
 // Retrieve a single segment.
-//
-// 
 func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -918,7 +892,7 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 
 	// verify the required parameter 'segmentId' is set
 	if &segmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'segmentId' when calling JourneyApi->GetJourneySegment")
 	}
 
@@ -977,8 +951,6 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 // GetJourneySegments invokes GET /api/v2/journey/segments
 //
 // Retrieve all segments.
-//
-// 
 func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber int, isActive bool, segmentIds []string, queryFields []string, queryValue string) (*Segmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1058,8 +1030,6 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 // GetJourneySession invokes GET /api/v2/journey/sessions/{sessionId}
 //
 // Retrieve a single session.
-//
-// 
 func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1072,7 +1042,7 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 
 	// verify the required parameter 'sessionId' is set
 	if &sessionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sessionId' when calling JourneyApi->GetJourneySession")
 	}
 
@@ -1131,8 +1101,6 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 // GetJourneySessionOutcomescores invokes GET /api/v2/journey/sessions/{sessionId}/outcomescores
 //
 // Retrieve latest outcome score associated with a session for all outcomes.
-//
-// 
 func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomescoresresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1145,7 +1113,7 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 
 	// verify the required parameter 'sessionId' is set
 	if &sessionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sessionId' when calling JourneyApi->GetJourneySessionOutcomescores")
 	}
 
@@ -1204,8 +1172,6 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 // PatchJourneyActionmap invokes PATCH /api/v2/journey/actionmaps/{actionMapId}
 //
 // Update single action map.
-//
-// 
 func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionmap) (*Actionmap, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1218,7 +1184,7 @@ func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionma
 
 	// verify the required parameter 'actionMapId' is set
 	if &actionMapId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionMapId' when calling JourneyApi->PatchJourneyActionmap")
 	}
 
@@ -1280,8 +1246,6 @@ func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionma
 // PatchJourneyActiontarget invokes PATCH /api/v2/journey/actiontargets/{actionTargetId}
 //
 // Update a single action target.
-//
-// 
 func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchactiontarget) (*Actiontarget, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1294,7 +1258,7 @@ func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchac
 
 	// verify the required parameter 'actionTargetId' is set
 	if &actionTargetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionTargetId' when calling JourneyApi->PatchJourneyActiontarget")
 	}
 
@@ -1356,8 +1320,6 @@ func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchac
 // PatchJourneyActiontemplate invokes PATCH /api/v2/journey/actiontemplates/{actionTemplateId}
 //
 // Update a single action template.
-//
-// 
 func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Patchactiontemplate) (*Actiontemplate, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1370,7 +1332,7 @@ func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Pat
 
 	// verify the required parameter 'actionTemplateId' is set
 	if &actionTemplateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'actionTemplateId' when calling JourneyApi->PatchJourneyActiontemplate")
 	}
 
@@ -1432,8 +1394,6 @@ func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Pat
 // PatchJourneyOutcome invokes PATCH /api/v2/journey/outcomes/{outcomeId}
 //
 // Update an outcome.
-//
-// 
 func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*Outcome, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1446,7 +1406,7 @@ func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*O
 
 	// verify the required parameter 'outcomeId' is set
 	if &outcomeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'outcomeId' when calling JourneyApi->PatchJourneyOutcome")
 	}
 
@@ -1508,8 +1468,6 @@ func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*O
 // PatchJourneySegment invokes PATCH /api/v2/journey/segments/{segmentId}
 //
 // Update a segment.
-//
-// 
 func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*Journeysegment, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1522,7 +1480,7 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 
 	// verify the required parameter 'segmentId' is set
 	if &segmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'segmentId' when calling JourneyApi->PatchJourneySegment")
 	}
 
@@ -1584,8 +1542,6 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 // PostAnalyticsJourneysAggregatesQuery invokes POST /api/v2/analytics/journeys/aggregates/query
 //
 // Query for journey aggregates
-//
-// 
 func (a JourneyApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregationquery) (*Journeyaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1597,7 +1553,7 @@ func (a JourneyApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregation
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling JourneyApi->PostAnalyticsJourneysAggregatesQuery")
 	}
 
@@ -1659,8 +1615,6 @@ func (a JourneyApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregation
 // PostJourneyActionmaps invokes POST /api/v2/journey/actionmaps
 //
 // Create an action map.
-//
-// 
 func (a JourneyApi) PostJourneyActionmaps(body Actionmap) (*Actionmap, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1729,8 +1683,6 @@ func (a JourneyApi) PostJourneyActionmaps(body Actionmap) (*Actionmap, *APIRespo
 // PostJourneyActiontemplates invokes POST /api/v2/journey/actiontemplates
 //
 // Create a single action template.
-//
-// 
 func (a JourneyApi) PostJourneyActiontemplates(body Actiontemplate) (*Actiontemplate, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1799,8 +1751,6 @@ func (a JourneyApi) PostJourneyActiontemplates(body Actiontemplate) (*Actiontemp
 // PostJourneyOutcomes invokes POST /api/v2/journey/outcomes
 //
 // Create an outcome.
-//
-// 
 func (a JourneyApi) PostJourneyOutcomes(body Outcome) (*Outcome, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1869,8 +1819,6 @@ func (a JourneyApi) PostJourneyOutcomes(body Outcome) (*Outcome, *APIResponse, e
 // PostJourneySegments invokes POST /api/v2/journey/segments
 //
 // Create a segment.
-//
-// 
 func (a JourneyApi) PostJourneySegments(body Journeysegment) (*Journeysegment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

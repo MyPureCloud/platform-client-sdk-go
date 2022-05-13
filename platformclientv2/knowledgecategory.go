@@ -110,15 +110,15 @@ func (o *Knowledgecategory) UnmarshalJSON(b []byte) error {
 	if Id, ok := KnowledgecategoryMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KnowledgecategoryMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := KnowledgecategoryMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if KnowledgeBase, ok := KnowledgecategoryMap["knowledgeBase"].(map[string]interface{}); ok {
 		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
@@ -127,7 +127,7 @@ func (o *Knowledgecategory) UnmarshalJSON(b []byte) error {
 	if LanguageCode, ok := KnowledgecategoryMap["languageCode"].(string); ok {
 		o.LanguageCode = &LanguageCode
 	}
-	
+    
 	if dateCreatedString, ok := KnowledgecategoryMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -141,7 +141,7 @@ func (o *Knowledgecategory) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := KnowledgecategoryMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

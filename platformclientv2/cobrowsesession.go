@@ -206,15 +206,15 @@ func (o *Cobrowsesession) UnmarshalJSON(b []byte) error {
 	if State, ok := CobrowsesessionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := CobrowsesessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DisconnectType, ok := CobrowsesessionMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Self, ok := CobrowsesessionMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -223,11 +223,11 @@ func (o *Cobrowsesession) UnmarshalJSON(b []byte) error {
 	if CobrowseSessionId, ok := CobrowsesessionMap["cobrowseSessionId"].(string); ok {
 		o.CobrowseSessionId = &CobrowseSessionId
 	}
-	
+    
 	if CobrowseRole, ok := CobrowsesessionMap["cobrowseRole"].(string); ok {
 		o.CobrowseRole = &CobrowseRole
 	}
-	
+    
 	if Controlling, ok := CobrowsesessionMap["controlling"].([]interface{}); ok {
 		ControllingString, _ := json.Marshal(Controlling)
 		json.Unmarshal(ControllingString, &o.Controlling)
@@ -236,7 +236,7 @@ func (o *Cobrowsesession) UnmarshalJSON(b []byte) error {
 	if ViewerUrl, ok := CobrowsesessionMap["viewerUrl"].(string); ok {
 		o.ViewerUrl = &ViewerUrl
 	}
-	
+    
 	if providerEventTimeString, ok := CobrowsesessionMap["providerEventTime"].(string); ok {
 		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
 		o.ProviderEventTime = &ProviderEventTime
@@ -260,11 +260,11 @@ func (o *Cobrowsesession) UnmarshalJSON(b []byte) error {
 	if Provider, ok := CobrowsesessionMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if PeerId, ok := CobrowsesessionMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if Segments, ok := CobrowsesessionMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)
@@ -283,7 +283,7 @@ func (o *Cobrowsesession) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := CobrowsesessionMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

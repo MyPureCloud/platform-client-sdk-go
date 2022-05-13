@@ -53,15 +53,15 @@ func (o *Journeywebactioneventsnotificationsession) UnmarshalJSON(b []byte) erro
 	if Id, ok := JourneywebactioneventsnotificationsessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := JourneywebactioneventsnotificationsessionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if VarType, ok := JourneywebactioneventsnotificationsessionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

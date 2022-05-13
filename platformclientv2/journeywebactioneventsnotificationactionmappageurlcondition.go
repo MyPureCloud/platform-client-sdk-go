@@ -50,7 +50,7 @@ func (o *Journeywebactioneventsnotificationactionmappageurlcondition) UnmarshalJ
 	if Operator, ok := JourneywebactioneventsnotificationactionmappageurlconditionMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 
 	return nil
 }

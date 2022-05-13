@@ -69,7 +69,7 @@ func (o *Buimportshorttermforecastschema) UnmarshalJSON(b []byte) error {
 	if Description, ok := BuimportshorttermforecastschemaMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if WeekCount, ok := BuimportshorttermforecastschemaMap["weekCount"].(float64); ok {
 		WeekCountInt := int(WeekCount)
 		o.WeekCount = &WeekCountInt
@@ -88,7 +88,7 @@ func (o *Buimportshorttermforecastschema) UnmarshalJSON(b []byte) error {
 	if CanUseForScheduling, ok := BuimportshorttermforecastschemaMap["canUseForScheduling"].(bool); ok {
 		o.CanUseForScheduling = &CanUseForScheduling
 	}
-	
+    
 
 	return nil
 }

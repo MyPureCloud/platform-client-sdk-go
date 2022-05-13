@@ -182,11 +182,11 @@ func (o *Schedulegroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := SchedulegroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SchedulegroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := SchedulegroupMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Schedulegroup) UnmarshalJSON(b []byte) error {
 	if Description, ok := SchedulegroupMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := SchedulegroupMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,27 +214,27 @@ func (o *Schedulegroup) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := SchedulegroupMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := SchedulegroupMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := SchedulegroupMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := SchedulegroupMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := SchedulegroupMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if TimeZone, ok := SchedulegroupMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if OpenSchedules, ok := SchedulegroupMap["openSchedules"].([]interface{}); ok {
 		OpenSchedulesString, _ := json.Marshal(OpenSchedules)
 		json.Unmarshal(OpenSchedulesString, &o.OpenSchedules)
@@ -253,7 +253,7 @@ func (o *Schedulegroup) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SchedulegroupMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

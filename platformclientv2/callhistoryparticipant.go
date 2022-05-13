@@ -198,15 +198,15 @@ func (o *Callhistoryparticipant) UnmarshalJSON(b []byte) error {
 	if Id, ok := CallhistoryparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CallhistoryparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := CallhistoryparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := CallhistoryparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -220,19 +220,19 @@ func (o *Callhistoryparticipant) UnmarshalJSON(b []byte) error {
 	if Purpose, ok := CallhistoryparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if Direction, ok := CallhistoryparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := CallhistoryparticipantMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := CallhistoryparticipantMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if User, ok := CallhistoryparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -251,7 +251,7 @@ func (o *Callhistoryparticipant) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := CallhistoryparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if ExternalContact, ok := CallhistoryparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -265,7 +265,7 @@ func (o *Callhistoryparticipant) UnmarshalJSON(b []byte) error {
 	if DidInteract, ok := CallhistoryparticipantMap["didInteract"].(bool); ok {
 		o.DidInteract = &DidInteract
 	}
-	
+    
 	if SipResponseCodes, ok := CallhistoryparticipantMap["sipResponseCodes"].([]interface{}); ok {
 		SipResponseCodesString, _ := json.Marshal(SipResponseCodes)
 		json.Unmarshal(SipResponseCodesString, &o.SipResponseCodes)
@@ -274,7 +274,7 @@ func (o *Callhistoryparticipant) UnmarshalJSON(b []byte) error {
 	if FlaggedReason, ok := CallhistoryparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if OutboundCampaign, ok := CallhistoryparticipantMap["outboundCampaign"].(map[string]interface{}); ok {
 		OutboundCampaignString, _ := json.Marshal(OutboundCampaign)
 		json.Unmarshal(OutboundCampaignString, &o.OutboundCampaign)

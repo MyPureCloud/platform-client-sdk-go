@@ -133,43 +133,43 @@ func (o *Promptassetcreate) UnmarshalJSON(b []byte) error {
 	if Id, ok := PromptassetcreateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PromptassetcreateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if PromptId, ok := PromptassetcreateMap["promptId"].(string); ok {
 		o.PromptId = &PromptId
 	}
-	
+    
 	if Language, ok := PromptassetcreateMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if MediaUri, ok := PromptassetcreateMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if TtsString, ok := PromptassetcreateMap["ttsString"].(string); ok {
 		o.TtsString = &TtsString
 	}
-	
+    
 	if Text, ok := PromptassetcreateMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if UploadStatus, ok := PromptassetcreateMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 	if UploadUri, ok := PromptassetcreateMap["uploadUri"].(string); ok {
 		o.UploadUri = &UploadUri
 	}
-	
+    
 	if LanguageDefault, ok := PromptassetcreateMap["languageDefault"].(bool); ok {
 		o.LanguageDefault = &LanguageDefault
 	}
-	
+    
 	if Tags, ok := PromptassetcreateMap["tags"].(map[string]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)
@@ -178,11 +178,11 @@ func (o *Promptassetcreate) UnmarshalJSON(b []byte) error {
 	if DurationSeconds, ok := PromptassetcreateMap["durationSeconds"].(float64); ok {
 		o.DurationSeconds = &DurationSeconds
 	}
-	
+    
 	if SelfUri, ok := PromptassetcreateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

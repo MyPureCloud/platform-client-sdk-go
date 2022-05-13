@@ -121,15 +121,15 @@ func (o *Userssearchresponse) UnmarshalJSON(b []byte) error {
 	if PreviousPage, ok := UserssearchresponseMap["previousPage"].(string); ok {
 		o.PreviousPage = &PreviousPage
 	}
-	
+    
 	if CurrentPage, ok := UserssearchresponseMap["currentPage"].(string); ok {
 		o.CurrentPage = &CurrentPage
 	}
-	
+    
 	if NextPage, ok := UserssearchresponseMap["nextPage"].(string); ok {
 		o.NextPage = &NextPage
 	}
-	
+    
 	if Types, ok := UserssearchresponseMap["types"].([]interface{}); ok {
 		TypesString, _ := json.Marshal(Types)
 		json.Unmarshal(TypesString, &o.Types)

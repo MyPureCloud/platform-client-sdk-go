@@ -32,8 +32,6 @@ func NewRoutingApiWithConfig(config *Configuration) *RoutingApi {
 // DeleteRoutingAssessment invokes DELETE /api/v2/routing/assessments/{assessmentId}
 //
 // Delete single benefit assessment.
-//
-// 
 func (a RoutingApi) DeleteRoutingAssessment(assessmentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a RoutingApi) DeleteRoutingAssessment(assessmentId string) (*APIResponse, 
 
 	// verify the required parameter 'assessmentId' is set
 	if &assessmentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'assessmentId' when calling RoutingApi->DeleteRoutingAssessment")
 	}
 
@@ -98,8 +96,6 @@ func (a RoutingApi) DeleteRoutingAssessment(assessmentId string) (*APIResponse, 
 // DeleteRoutingEmailDomain invokes DELETE /api/v2/routing/email/domains/{domainId}
 //
 // Delete a domain
-//
-// 
 func (a RoutingApi) DeleteRoutingEmailDomain(domainId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +107,7 @@ func (a RoutingApi) DeleteRoutingEmailDomain(domainId string) (*APIResponse, err
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->DeleteRoutingEmailDomain")
 	}
 
@@ -164,8 +160,6 @@ func (a RoutingApi) DeleteRoutingEmailDomain(domainId string) (*APIResponse, err
 // DeleteRoutingEmailDomainRoute invokes DELETE /api/v2/routing/email/domains/{domainName}/routes/{routeId}
 //
 // Delete a route
-//
-// 
 func (a RoutingApi) DeleteRoutingEmailDomainRoute(domainName string, routeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -178,12 +172,12 @@ func (a RoutingApi) DeleteRoutingEmailDomainRoute(domainName string, routeId str
 
 	// verify the required parameter 'domainName' is set
 	if &domainName == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'domainName' when calling RoutingApi->DeleteRoutingEmailDomainRoute")
 	}
 	// verify the required parameter 'routeId' is set
 	if &routeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'routeId' when calling RoutingApi->DeleteRoutingEmailDomainRoute")
 	}
 
@@ -236,8 +230,6 @@ func (a RoutingApi) DeleteRoutingEmailDomainRoute(domainName string, routeId str
 // DeleteRoutingPredictor invokes DELETE /api/v2/routing/predictors/{predictorId}
 //
 // Delete single predictor.
-//
-// 
 func (a RoutingApi) DeleteRoutingPredictor(predictorId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -249,7 +241,7 @@ func (a RoutingApi) DeleteRoutingPredictor(predictorId string) (*APIResponse, er
 
 	// verify the required parameter 'predictorId' is set
 	if &predictorId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'predictorId' when calling RoutingApi->DeleteRoutingPredictor")
 	}
 
@@ -302,8 +294,6 @@ func (a RoutingApi) DeleteRoutingPredictor(predictorId string) (*APIResponse, er
 // DeleteRoutingQueue invokes DELETE /api/v2/routing/queues/{queueId}
 //
 // Delete a queue
-//
-// 
 func (a RoutingApi) DeleteRoutingQueue(queueId string, forceDelete bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -315,7 +305,7 @@ func (a RoutingApi) DeleteRoutingQueue(queueId string, forceDelete bool) (*APIRe
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->DeleteRoutingQueue")
 	}
 
@@ -370,8 +360,6 @@ func (a RoutingApi) DeleteRoutingQueue(queueId string, forceDelete bool) (*APIRe
 // DeleteRoutingQueueMember invokes DELETE /api/v2/routing/queues/{queueId}/members/{memberId}
 //
 // Delete a queue member.
-//
-// 
 func (a RoutingApi) DeleteRoutingQueueMember(queueId string, memberId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -384,12 +372,12 @@ func (a RoutingApi) DeleteRoutingQueueMember(queueId string, memberId string) (*
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->DeleteRoutingQueueMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->DeleteRoutingQueueMember")
 	}
 
@@ -442,8 +430,6 @@ func (a RoutingApi) DeleteRoutingQueueMember(queueId string, memberId string) (*
 // DeleteRoutingQueueUser invokes DELETE /api/v2/routing/queues/{queueId}/users/{memberId}
 //
 // DEPRECATED: use DELETE /routing/queues/{queueId}/members/{memberId}.  Delete queue member.
-//
-// 
 func (a RoutingApi) DeleteRoutingQueueUser(queueId string, memberId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -456,12 +442,12 @@ func (a RoutingApi) DeleteRoutingQueueUser(queueId string, memberId string) (*AP
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->DeleteRoutingQueueUser")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->DeleteRoutingQueueUser")
 	}
 
@@ -514,8 +500,6 @@ func (a RoutingApi) DeleteRoutingQueueUser(queueId string, memberId string) (*AP
 // DeleteRoutingQueueWrapupcode invokes DELETE /api/v2/routing/queues/{queueId}/wrapupcodes/{codeId}
 //
 // Delete a wrap-up code from a queue
-//
-// 
 func (a RoutingApi) DeleteRoutingQueueWrapupcode(queueId string, codeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -528,12 +512,12 @@ func (a RoutingApi) DeleteRoutingQueueWrapupcode(queueId string, codeId string) 
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->DeleteRoutingQueueWrapupcode")
 	}
 	// verify the required parameter 'codeId' is set
 	if &codeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'codeId' when calling RoutingApi->DeleteRoutingQueueWrapupcode")
 	}
 
@@ -585,9 +569,7 @@ func (a RoutingApi) DeleteRoutingQueueWrapupcode(queueId string, codeId string) 
 
 // DeleteRoutingSettings invokes DELETE /api/v2/routing/settings
 //
-// Delete an organization&#39;s routing settings
-//
-// 
+// Delete an organization's routing settings
 func (a RoutingApi) DeleteRoutingSettings() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -646,8 +628,6 @@ func (a RoutingApi) DeleteRoutingSettings() (*APIResponse, error) {
 // DeleteRoutingSkill invokes DELETE /api/v2/routing/skills/{skillId}
 //
 // Delete Routing Skill
-//
-// 
 func (a RoutingApi) DeleteRoutingSkill(skillId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -659,7 +639,7 @@ func (a RoutingApi) DeleteRoutingSkill(skillId string) (*APIResponse, error) {
 
 	// verify the required parameter 'skillId' is set
 	if &skillId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'skillId' when calling RoutingApi->DeleteRoutingSkill")
 	}
 
@@ -712,8 +692,6 @@ func (a RoutingApi) DeleteRoutingSkill(skillId string) (*APIResponse, error) {
 // DeleteRoutingSmsAddress invokes DELETE /api/v2/routing/sms/addresses/{addressId}
 //
 // Delete an Address by Id for SMS
-//
-// 
 func (a RoutingApi) DeleteRoutingSmsAddress(addressId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -725,7 +703,7 @@ func (a RoutingApi) DeleteRoutingSmsAddress(addressId string) (*APIResponse, err
 
 	// verify the required parameter 'addressId' is set
 	if &addressId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->DeleteRoutingSmsAddress")
 	}
 
@@ -778,8 +756,6 @@ func (a RoutingApi) DeleteRoutingSmsAddress(addressId string) (*APIResponse, err
 // DeleteRoutingSmsPhonenumber invokes DELETE /api/v2/routing/sms/phonenumbers/{addressId}
 //
 // Delete a phone number provisioned for SMS.
-//
-// 
 func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string, async bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -791,7 +767,7 @@ func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string, async bool) (*
 
 	// verify the required parameter 'addressId' is set
 	if &addressId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->DeleteRoutingSmsPhonenumber")
 	}
 
@@ -845,9 +821,7 @@ func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string, async bool) (*
 
 // DeleteRoutingUserUtilization invokes DELETE /api/v2/routing/users/{userId}/utilization
 //
-// Delete the user&#39;s max utilization settings and revert to the organization-wide default.
-//
-// 
+// Delete the user's max utilization settings and revert to the organization-wide default.
 func (a RoutingApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -859,7 +833,7 @@ func (a RoutingApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, e
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->DeleteRoutingUserUtilization")
 	}
 
@@ -912,8 +886,6 @@ func (a RoutingApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, e
 // DeleteRoutingUtilization invokes DELETE /api/v2/routing/utilization
 //
 // Delete the organization-wide max utilization settings and revert to the system default.
-//
-// 
 func (a RoutingApi) DeleteRoutingUtilization() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -972,8 +944,6 @@ func (a RoutingApi) DeleteRoutingUtilization() (*APIResponse, error) {
 // DeleteRoutingWrapupcode invokes DELETE /api/v2/routing/wrapupcodes/{codeId}
 //
 // Delete wrap-up code
-//
-// 
 func (a RoutingApi) DeleteRoutingWrapupcode(codeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -985,7 +955,7 @@ func (a RoutingApi) DeleteRoutingWrapupcode(codeId string) (*APIResponse, error)
 
 	// verify the required parameter 'codeId' is set
 	if &codeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'codeId' when calling RoutingApi->DeleteRoutingWrapupcode")
 	}
 
@@ -1038,8 +1008,6 @@ func (a RoutingApi) DeleteRoutingWrapupcode(codeId string) (*APIResponse, error)
 // DeleteUserRoutinglanguage invokes DELETE /api/v2/users/{userId}/routinglanguages/{languageId}
 //
 // Remove routing language from user
-//
-// 
 func (a RoutingApi) DeleteUserRoutinglanguage(userId string, languageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1052,12 +1020,12 @@ func (a RoutingApi) DeleteUserRoutinglanguage(userId string, languageId string) 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->DeleteUserRoutinglanguage")
 	}
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageId' when calling RoutingApi->DeleteUserRoutinglanguage")
 	}
 
@@ -1110,8 +1078,6 @@ func (a RoutingApi) DeleteUserRoutinglanguage(userId string, languageId string) 
 // DeleteUserRoutingskill invokes DELETE /api/v2/users/{userId}/routingskills/{skillId}
 //
 // Remove routing skill from user
-//
-// 
 func (a RoutingApi) DeleteUserRoutingskill(userId string, skillId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1124,12 +1090,12 @@ func (a RoutingApi) DeleteUserRoutingskill(userId string, skillId string) (*APIR
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->DeleteUserRoutingskill")
 	}
 	// verify the required parameter 'skillId' is set
 	if &skillId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'skillId' when calling RoutingApi->DeleteUserRoutingskill")
 	}
 
@@ -1182,8 +1148,6 @@ func (a RoutingApi) DeleteUserRoutingskill(userId string, skillId string) (*APIR
 // GetRoutingAssessment invokes GET /api/v2/routing/assessments/{assessmentId}
 //
 // Retrieve a single benefit assessment.
-//
-// 
 func (a RoutingApi) GetRoutingAssessment(assessmentId string) (*Benefitassessment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1196,7 +1160,7 @@ func (a RoutingApi) GetRoutingAssessment(assessmentId string) (*Benefitassessmen
 
 	// verify the required parameter 'assessmentId' is set
 	if &assessmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'assessmentId' when calling RoutingApi->GetRoutingAssessment")
 	}
 
@@ -1255,8 +1219,6 @@ func (a RoutingApi) GetRoutingAssessment(assessmentId string) (*Benefitassessmen
 // GetRoutingAssessments invokes GET /api/v2/routing/assessments
 //
 // Retrieve all benefit assessments.
-//
-// 
 func (a RoutingApi) GetRoutingAssessments(before string, after string, limit string, pageSize string, queueId []string) (*Assessmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1332,8 +1294,6 @@ func (a RoutingApi) GetRoutingAssessments(before string, after string, limit str
 // GetRoutingAssessmentsJob invokes GET /api/v2/routing/assessments/jobs/{jobId}
 //
 // Retrieve a single benefit assessments job.
-//
-// 
 func (a RoutingApi) GetRoutingAssessmentsJob(jobId string) (*Benefitassessmentjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1346,7 +1306,7 @@ func (a RoutingApi) GetRoutingAssessmentsJob(jobId string) (*Benefitassessmentjo
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling RoutingApi->GetRoutingAssessmentsJob")
 	}
 
@@ -1405,8 +1365,6 @@ func (a RoutingApi) GetRoutingAssessmentsJob(jobId string) (*Benefitassessmentjo
 // GetRoutingAssessmentsJobs invokes GET /api/v2/routing/assessments/jobs
 //
 // Retrieve all benefit assessment jobs.
-//
-// 
 func (a RoutingApi) GetRoutingAssessmentsJobs(divisionId []string) (*Assessmentjoblisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1474,8 +1432,6 @@ func (a RoutingApi) GetRoutingAssessmentsJobs(divisionId []string) (*Assessmentj
 // GetRoutingEmailDomain invokes GET /api/v2/routing/email/domains/{domainId}
 //
 // Get domain
-//
-// 
 func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1488,7 +1444,7 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *API
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->GetRoutingEmailDomain")
 	}
 
@@ -1547,8 +1503,6 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *API
 // GetRoutingEmailDomainRoute invokes GET /api/v2/routing/email/domains/{domainName}/routes/{routeId}
 //
 // Get a route
-//
-// 
 func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string) (*Inboundroute, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1562,12 +1516,12 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 
 	// verify the required parameter 'domainName' is set
 	if &domainName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainName' when calling RoutingApi->GetRoutingEmailDomainRoute")
 	}
 	// verify the required parameter 'routeId' is set
 	if &routeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'routeId' when calling RoutingApi->GetRoutingEmailDomainRoute")
 	}
 
@@ -1626,8 +1580,6 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 // GetRoutingEmailDomainRoutes invokes GET /api/v2/routing/email/domains/{domainName}/routes
 //
 // Get routes
-//
-// 
 func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int, pageNumber int, pattern string) (*Inboundrouteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1640,7 +1592,7 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 
 	// verify the required parameter 'domainName' is set
 	if &domainName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainName' when calling RoutingApi->GetRoutingEmailDomainRoutes")
 	}
 
@@ -1705,8 +1657,6 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 // GetRoutingEmailDomains invokes GET /api/v2/routing/email/domains
 //
 // Get domains
-//
-// 
 func (a RoutingApi) GetRoutingEmailDomains(excludeStatus bool) (*Inbounddomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1774,8 +1724,6 @@ func (a RoutingApi) GetRoutingEmailDomains(excludeStatus bool) (*Inbounddomainen
 // GetRoutingEmailSetup invokes GET /api/v2/routing/email/setup
 //
 // Get email setup
-//
-// 
 func (a RoutingApi) GetRoutingEmailSetup() (*Emailsetup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1841,8 +1789,6 @@ func (a RoutingApi) GetRoutingEmailSetup() (*Emailsetup, *APIResponse, error) {
 // GetRoutingLanguages invokes GET /api/v2/routing/languages
 //
 // Get the list of supported languages.
-//
-// 
 func (a RoutingApi) GetRoutingLanguages(pageSize int, pageNumber int, sortOrder string, name string, id []string) (*Languageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1918,8 +1864,6 @@ func (a RoutingApi) GetRoutingLanguages(pageSize int, pageNumber int, sortOrder 
 // GetRoutingMessageRecipient invokes GET /api/v2/routing/message/recipients/{recipientId}
 //
 // Get a recipient
-//
-// 
 func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1932,7 +1876,7 @@ func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, 
 
 	// verify the required parameter 'recipientId' is set
 	if &recipientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recipientId' when calling RoutingApi->GetRoutingMessageRecipient")
 	}
 
@@ -1991,8 +1935,6 @@ func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, 
 // GetRoutingMessageRecipients invokes GET /api/v2/routing/message/recipients
 //
 // Get recipients
-//
-// 
 func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize int, pageNumber int) (*Recipientlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2064,8 +2006,6 @@ func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize i
 // GetRoutingPredictor invokes GET /api/v2/routing/predictors/{predictorId}
 //
 // Retrieve a single predictor.
-//
-// 
 func (a RoutingApi) GetRoutingPredictor(predictorId string) (*Predictor, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2078,7 +2018,7 @@ func (a RoutingApi) GetRoutingPredictor(predictorId string) (*Predictor, *APIRes
 
 	// verify the required parameter 'predictorId' is set
 	if &predictorId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'predictorId' when calling RoutingApi->GetRoutingPredictor")
 	}
 
@@ -2137,8 +2077,6 @@ func (a RoutingApi) GetRoutingPredictor(predictorId string) (*Predictor, *APIRes
 // GetRoutingPredictors invokes GET /api/v2/routing/predictors
 //
 // Retrieve all predictors.
-//
-// 
 func (a RoutingApi) GetRoutingPredictors(before string, after string, limit string, pageSize string, queueId []string) (*Predictorlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2214,8 +2152,6 @@ func (a RoutingApi) GetRoutingPredictors(before string, after string, limit stri
 // GetRoutingPredictorsKeyperformanceindicators invokes GET /api/v2/routing/predictors/keyperformanceindicators
 //
 // Get a list of Key Performance Indicators available for the predictors.
-//
-// 
 func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators() ([]Keyperformanceindicator, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2281,8 +2217,6 @@ func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators() ([]Keyperform
 // GetRoutingQueue invokes GET /api/v2/routing/queues/{queueId}
 //
 // Get details about this queue.
-//
-// 
 func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2295,7 +2229,7 @@ func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueue")
 	}
 
@@ -2354,8 +2288,6 @@ func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error
 // GetRoutingQueueComparisonperiod invokes GET /api/v2/routing/queues/{queueId}/comparisonperiods/{comparisonPeriodId}
 //
 // Get a Comparison Period.
-//
-// 
 func (a RoutingApi) GetRoutingQueueComparisonperiod(queueId string, comparisonPeriodId string) (*Comparisonperiod, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2369,12 +2301,12 @@ func (a RoutingApi) GetRoutingQueueComparisonperiod(queueId string, comparisonPe
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueComparisonperiod")
 	}
 	// verify the required parameter 'comparisonPeriodId' is set
 	if &comparisonPeriodId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'comparisonPeriodId' when calling RoutingApi->GetRoutingQueueComparisonperiod")
 	}
 
@@ -2433,8 +2365,6 @@ func (a RoutingApi) GetRoutingQueueComparisonperiod(queueId string, comparisonPe
 // GetRoutingQueueComparisonperiods invokes GET /api/v2/routing/queues/{queueId}/comparisonperiods
 //
 // Get list of comparison periods
-//
-// 
 func (a RoutingApi) GetRoutingQueueComparisonperiods(queueId string) (*Comparisonperiodlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2447,7 +2377,7 @@ func (a RoutingApi) GetRoutingQueueComparisonperiods(queueId string) (*Compariso
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueComparisonperiods")
 	}
 
@@ -2506,8 +2436,6 @@ func (a RoutingApi) GetRoutingQueueComparisonperiods(queueId string) (*Compariso
 // GetRoutingQueueEstimatedwaittime invokes GET /api/v2/routing/queues/{queueId}/estimatedwaittime
 //
 // Get Estimated Wait Time
-//
-// 
 func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversationId string) (*Estimatedwaittimepredictions, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2520,7 +2448,7 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueEstimatedwaittime")
 	}
 
@@ -2581,8 +2509,6 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 // GetRoutingQueueMediatypeEstimatedwaittime invokes GET /api/v2/routing/queues/{queueId}/mediatypes/{mediaType}/estimatedwaittime
 //
 // Get Estimated Wait Time
-//
-// 
 func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, mediaType string) (*Estimatedwaittimepredictions, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2596,12 +2522,12 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueMediatypeEstimatedwaittime")
 	}
 	// verify the required parameter 'mediaType' is set
 	if &mediaType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'mediaType' when calling RoutingApi->GetRoutingQueueMediatypeEstimatedwaittime")
 	}
 
@@ -2660,8 +2586,6 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 // GetRoutingQueueMembers invokes GET /api/v2/routing/queues/{queueId}/members
 //
 // Get the members of this queue.
-//
-// 
 func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageSize int, sortOrder string, expand []string, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string, memberBy string, joined bool) (*Queuememberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2674,7 +2598,7 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageS
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueMembers")
 	}
 
@@ -2757,8 +2681,6 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageS
 // GetRoutingQueueUsers invokes GET /api/v2/routing/queues/{queueId}/users
 //
 // DEPRECATED: use GET /routing/queues/{queueId}/members.  Get the members of this queue.
-//
-// 
 func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSize int, sortOrder string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylistingv1, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2771,7 +2693,7 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSiz
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueUsers")
 	}
 
@@ -2852,8 +2774,6 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSiz
 // GetRoutingQueueWrapupcodes invokes GET /api/v2/routing/queues/{queueId}/wrapupcodes
 //
 // Get the wrap-up codes for a queue
-//
-// 
 func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pageNumber int) (*Wrapupcodeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2866,7 +2786,7 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueWrapupcodes")
 	}
 
@@ -2929,8 +2849,6 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 // GetRoutingQueues invokes GET /api/v2/routing/queues
 //
 // Get list of queues.
-//
-// 
 func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3008,8 +2926,6 @@ func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder str
 // GetRoutingQueuesDivisionviews invokes GET /api/v2/routing/queues/divisionviews
 //
 // Get a paged listing of simplified queue objects, filterable by name, queue ID(s), or division ID(s).
-//
-// 
 func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3089,8 +3005,6 @@ func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int, pageNumber int, 
 // GetRoutingQueuesDivisionviewsAll invokes GET /api/v2/routing/queues/divisionviews/all
 //
 // Get a paged listing of simplified queue objects, sorted by name.  Can be used to get a digest of all queues in an organization.
-//
-// 
 func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber int, sortOrder string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3162,8 +3076,6 @@ func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber in
 // GetRoutingQueuesMe invokes GET /api/v2/routing/queues/me
 //
 // Get a paged listing of queues the user is a member of.
-//
-// 
 func (a RoutingApi) GetRoutingQueuesMe(pageNumber int, pageSize int, joined bool, sortOrder string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3236,9 +3148,7 @@ func (a RoutingApi) GetRoutingQueuesMe(pageNumber int, pageSize int, joined bool
 
 // GetRoutingSettings invokes GET /api/v2/routing/settings
 //
-// Get an organization&#39;s routing settings
-//
-// 
+// Get an organization's routing settings
 func (a RoutingApi) GetRoutingSettings() (*Routingsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3304,8 +3214,6 @@ func (a RoutingApi) GetRoutingSettings() (*Routingsettings, *APIResponse, error)
 // GetRoutingSettingsContactcenter invokes GET /api/v2/routing/settings/contactcenter
 //
 // Get Contact Center Settings
-//
-// 
 func (a RoutingApi) GetRoutingSettingsContactcenter() (*Contactcentersettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3371,8 +3279,6 @@ func (a RoutingApi) GetRoutingSettingsContactcenter() (*Contactcentersettings, *
 // GetRoutingSettingsTranscription invokes GET /api/v2/routing/settings/transcription
 //
 // Get Transcription Settings
-//
-// 
 func (a RoutingApi) GetRoutingSettingsTranscription() (*Transcriptionsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3438,8 +3344,6 @@ func (a RoutingApi) GetRoutingSettingsTranscription() (*Transcriptionsettings, *
 // GetRoutingSkill invokes GET /api/v2/routing/skills/{skillId}
 //
 // Get Routing Skill
-//
-// 
 func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3452,7 +3356,7 @@ func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse
 
 	// verify the required parameter 'skillId' is set
 	if &skillId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'skillId' when calling RoutingApi->GetRoutingSkill")
 	}
 
@@ -3511,8 +3415,6 @@ func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse
 // GetRoutingSkills invokes GET /api/v2/routing/skills
 //
 // Get the list of routing skills.
-//
-// 
 func (a RoutingApi) GetRoutingSkills(pageSize int, pageNumber int, name string, id []string) (*Skillentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3586,8 +3488,6 @@ func (a RoutingApi) GetRoutingSkills(pageSize int, pageNumber int, name string, 
 // GetRoutingSmsAddress invokes GET /api/v2/routing/sms/addresses/{addressId}
 //
 // Get an Address by Id for SMS
-//
-// 
 func (a RoutingApi) GetRoutingSmsAddress(addressId string) (*Smsaddress, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3600,7 +3500,7 @@ func (a RoutingApi) GetRoutingSmsAddress(addressId string) (*Smsaddress, *APIRes
 
 	// verify the required parameter 'addressId' is set
 	if &addressId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->GetRoutingSmsAddress")
 	}
 
@@ -3659,8 +3559,6 @@ func (a RoutingApi) GetRoutingSmsAddress(addressId string) (*Smsaddress, *APIRes
 // GetRoutingSmsAddresses invokes GET /api/v2/routing/sms/addresses
 //
 // Get a list of Addresses for SMS
-//
-// 
 func (a RoutingApi) GetRoutingSmsAddresses(pageSize int, pageNumber int) (*Smsaddressentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3743,12 +3641,12 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 
 	// verify the required parameter 'countryCode' is set
 	if &countryCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'countryCode' when calling RoutingApi->GetRoutingSmsAvailablephonenumbers")
 	}
 	// verify the required parameter 'phoneNumberType' is set
 	if &phoneNumberType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'phoneNumberType' when calling RoutingApi->GetRoutingSmsAvailablephonenumbers")
 	}
 
@@ -3821,8 +3719,6 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 // GetRoutingSmsPhonenumber invokes GET /api/v2/routing/sms/phonenumbers/{addressId}
 //
 // Get a phone number provisioned for SMS.
-//
-// 
 func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3835,7 +3731,7 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber,
 
 	// verify the required parameter 'addressId' is set
 	if &addressId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->GetRoutingSmsPhonenumber")
 	}
 
@@ -3894,8 +3790,6 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber,
 // GetRoutingSmsPhonenumbers invokes GET /api/v2/routing/sms/phonenumbers
 //
 // Get a list of provisioned phone numbers.
-//
-// 
 func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType []string, phoneNumberStatus []string, countryCode []string, pageSize int, pageNumber int, sortBy string, sortOrder string, language string) (*Smsphonenumberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3978,9 +3872,7 @@ func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberTyp
 
 // GetRoutingUserUtilization invokes GET /api/v2/routing/users/{userId}/utilization
 //
-// Get the user&#39;s max utilization settings.  If not configured, the organization-wide default is returned.
-//
-// 
+// Get the user's max utilization settings.  If not configured, the organization-wide default is returned.
 func (a RoutingApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3993,7 +3885,7 @@ func (a RoutingApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilizati
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->GetRoutingUserUtilization")
 	}
 
@@ -4052,8 +3944,6 @@ func (a RoutingApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilizati
 // GetRoutingUtilization invokes GET /api/v2/routing/utilization
 //
 // Get the organization-wide max utilization settings.
-//
-// 
 func (a RoutingApi) GetRoutingUtilization() (*Utilization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4119,8 +4009,6 @@ func (a RoutingApi) GetRoutingUtilization() (*Utilization, *APIResponse, error) 
 // GetRoutingWrapupcode invokes GET /api/v2/routing/wrapupcodes/{codeId}
 //
 // Get details about this wrap-up code.
-//
-// 
 func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4133,7 +4021,7 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 
 	// verify the required parameter 'codeId' is set
 	if &codeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'codeId' when calling RoutingApi->GetRoutingWrapupcode")
 	}
 
@@ -4192,8 +4080,6 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 // GetRoutingWrapupcodes invokes GET /api/v2/routing/wrapupcodes
 //
 // Get list of wrapup codes.
-//
-// 
 func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy string, sortOrder string, name string) (*Wrapupcodeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4269,8 +4155,6 @@ func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy s
 // GetUserQueues invokes GET /api/v2/users/{userId}/queues
 //
 // Get queues for user
-//
-// 
 func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, joined bool, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4283,7 +4167,7 @@ func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, j
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->GetUserQueues")
 	}
 
@@ -4350,8 +4234,6 @@ func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, j
 // GetUserRoutinglanguages invokes GET /api/v2/users/{userId}/routinglanguages
 //
 // List routing language for user
-//
-// 
 func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumber int, sortOrder string) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4364,7 +4246,7 @@ func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNum
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->GetUserRoutinglanguages")
 	}
 
@@ -4429,8 +4311,6 @@ func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNum
 // GetUserRoutingskills invokes GET /api/v2/users/{userId}/routingskills
 //
 // List routing skills for user
-//
-// 
 func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber int, sortOrder string) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4443,7 +4323,7 @@ func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->GetUserRoutingskills")
 	}
 
@@ -4522,12 +4402,12 @@ func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routing
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling RoutingApi->PatchRoutingConversation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingConversation")
 	}
 
@@ -4589,8 +4469,6 @@ func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routing
 // PatchRoutingEmailDomain invokes PATCH /api/v2/routing/email/domains/{domainId}
 //
 // Update domain settings
-//
-// 
 func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainpatchrequest) (*Inbounddomain, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4603,12 +4481,12 @@ func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainp
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PatchRoutingEmailDomain")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingEmailDomain")
 	}
 
@@ -4670,8 +4548,6 @@ func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainp
 // PatchRoutingEmailDomainValidate invokes PATCH /api/v2/routing/email/domains/{domainId}/validate
 //
 // Validate domain settings
-//
-// 
 func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inbounddomainpatchrequest) (*Inbounddomain, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4684,12 +4560,12 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PatchRoutingEmailDomainValidate")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingEmailDomainValidate")
 	}
 
@@ -4751,8 +4627,6 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 // PatchRoutingPredictor invokes PATCH /api/v2/routing/predictors/{predictorId}
 //
 // Update single predictor.
-//
-// 
 func (a RoutingApi) PatchRoutingPredictor(predictorId string, body Patchpredictorrequest) (*Predictor, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4765,7 +4639,7 @@ func (a RoutingApi) PatchRoutingPredictor(predictorId string, body Patchpredicto
 
 	// verify the required parameter 'predictorId' is set
 	if &predictorId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'predictorId' when calling RoutingApi->PatchRoutingPredictor")
 	}
 
@@ -4827,8 +4701,6 @@ func (a RoutingApi) PatchRoutingPredictor(predictorId string, body Patchpredicto
 // PatchRoutingQueueMember invokes PATCH /api/v2/routing/queues/{queueId}/members/{memberId}
 //
 // Update the ring number OR joined status for a queue member.
-//
-// 
 func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, body Queuemember) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4841,17 +4713,17 @@ func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, bod
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->PatchRoutingQueueMember")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueMember")
 	}
 
@@ -4907,8 +4779,6 @@ func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, bod
 // PatchRoutingQueueMembers invokes PATCH /api/v2/routing/queues/{queueId}/members
 //
 // Join or unjoin a set of users for a queue
-//
-// 
 func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember) (*Queuememberentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4921,7 +4791,7 @@ func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember)
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueMembers")
 	}
 	// verify the required parameter 'body' is set
@@ -4988,8 +4858,6 @@ func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember)
 // PatchRoutingQueueUser invokes PATCH /api/v2/routing/queues/{queueId}/users/{memberId}
 //
 // DEPRECATED: use PATCH /routing/queues/{queueId}/members/{memberId}.  Update the ring number OR joined status for a User in a Queue.
-//
-// 
 func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body Queuemember) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5002,17 +4870,17 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueUser")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->PatchRoutingQueueUser")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueUser")
 	}
 
@@ -5068,8 +4936,6 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 // PatchRoutingQueueUsers invokes PATCH /api/v2/routing/queues/{queueId}/users
 //
 // DEPRECATED: use PATCH /routing/queues/{queueId}/members.  Join or unjoin a set of users for a queue.
-//
-// 
 func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (*Queuememberentitylistingv1, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5082,7 +4948,7 @@ func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueUsers")
 	}
 	// verify the required parameter 'body' is set
@@ -5149,8 +5015,6 @@ func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (
 // PatchRoutingSettingsContactcenter invokes PATCH /api/v2/routing/settings/contactcenter
 //
 // Update Contact Center Settings
-//
-// 
 func (a RoutingApi) PatchRoutingSettingsContactcenter(body Contactcentersettings) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5161,7 +5025,7 @@ func (a RoutingApi) PatchRoutingSettingsContactcenter(body Contactcentersettings
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingSettingsContactcenter")
 	}
 
@@ -5217,8 +5081,6 @@ func (a RoutingApi) PatchRoutingSettingsContactcenter(body Contactcentersettings
 // PatchUserQueue invokes PATCH /api/v2/users/{userId}/queues/{queueId}
 //
 // Join or unjoin a queue for a user
-//
-// 
 func (a RoutingApi) PatchUserQueue(queueId string, userId string, body Userqueue) (*Userqueue, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5232,17 +5094,17 @@ func (a RoutingApi) PatchUserQueue(queueId string, userId string, body Userqueue
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchUserQueue")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PatchUserQueue")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchUserQueue")
 	}
 
@@ -5304,8 +5166,6 @@ func (a RoutingApi) PatchUserQueue(queueId string, userId string, body Userqueue
 // PatchUserQueues invokes PATCH /api/v2/users/{userId}/queues
 //
 // Join or unjoin a set of queues for a user
-//
-// 
 func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5318,7 +5178,7 @@ func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PatchUserQueues")
 	}
 	// verify the required parameter 'body' is set
@@ -5387,8 +5247,6 @@ func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId 
 // PatchUserRoutinglanguage invokes PATCH /api/v2/users/{userId}/routinglanguages/{languageId}
 //
 // Update routing language proficiency or state.
-//
-// 
 func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, body Userroutinglanguage) (*Userroutinglanguage, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5402,17 +5260,17 @@ func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, b
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PatchUserRoutinglanguage")
 	}
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageId' when calling RoutingApi->PatchUserRoutinglanguage")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchUserRoutinglanguage")
 	}
 
@@ -5474,8 +5332,6 @@ func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, b
 // PatchUserRoutinglanguagesBulk invokes PATCH /api/v2/users/{userId}/routinglanguages/bulk
 //
 // Add bulk routing language to user. Max limit 50 languages
-//
-// 
 func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutinglanguagepost) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5488,7 +5344,7 @@ func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userrout
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PatchUserRoutinglanguagesBulk")
 	}
 	// verify the required parameter 'body' is set
@@ -5555,8 +5411,6 @@ func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userrout
 // PatchUserRoutingskillsBulk invokes PATCH /api/v2/users/{userId}/routingskills/bulk
 //
 // Bulk add routing skills to user
-//
-// 
 func (a RoutingApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingskillpost) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5569,7 +5423,7 @@ func (a RoutingApi) PatchUserRoutingskillsBulk(userId string, body []Userrouting
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PatchUserRoutingskillsBulk")
 	}
 	// verify the required parameter 'body' is set
@@ -5636,8 +5490,6 @@ func (a RoutingApi) PatchUserRoutingskillsBulk(userId string, body []Userrouting
 // PostAnalyticsQueuesObservationsQuery invokes POST /api/v2/analytics/queues/observations/query
 //
 // Query for queue observations
-//
-// 
 func (a RoutingApi) PostAnalyticsQueuesObservationsQuery(body Queueobservationquery) (*Queueobservationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5649,7 +5501,7 @@ func (a RoutingApi) PostAnalyticsQueuesObservationsQuery(body Queueobservationqu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostAnalyticsQueuesObservationsQuery")
 	}
 
@@ -5711,8 +5563,6 @@ func (a RoutingApi) PostAnalyticsQueuesObservationsQuery(body Queueobservationqu
 // PostRoutingAssessments invokes POST /api/v2/routing/assessments
 //
 // Create a benefit assessment.
-//
-// 
 func (a RoutingApi) PostRoutingAssessments(body Createbenefitassessmentrequest) (*Benefitassessment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5781,8 +5631,6 @@ func (a RoutingApi) PostRoutingAssessments(body Createbenefitassessmentrequest) 
 // PostRoutingAssessmentsJobs invokes POST /api/v2/routing/assessments/jobs
 //
 // Create a benefit assessment job.
-//
-// 
 func (a RoutingApi) PostRoutingAssessmentsJobs(body Createbenefitassessmentjobrequest) (*Benefitassessmentjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5851,8 +5699,6 @@ func (a RoutingApi) PostRoutingAssessmentsJobs(body Createbenefitassessmentjobre
 // PostRoutingEmailDomainRoutes invokes POST /api/v2/routing/email/domains/{domainName}/routes
 //
 // Create a route
-//
-// 
 func (a RoutingApi) PostRoutingEmailDomainRoutes(domainName string, body Inboundroute) (*Inboundroute, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5865,12 +5711,12 @@ func (a RoutingApi) PostRoutingEmailDomainRoutes(domainName string, body Inbound
 
 	// verify the required parameter 'domainName' is set
 	if &domainName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainName' when calling RoutingApi->PostRoutingEmailDomainRoutes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingEmailDomainRoutes")
 	}
 
@@ -5946,7 +5792,7 @@ func (a RoutingApi) PostRoutingEmailDomainTestconnection(domainId string, body T
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PostRoutingEmailDomainTestconnection")
 	}
 
@@ -6008,8 +5854,6 @@ func (a RoutingApi) PostRoutingEmailDomainTestconnection(domainId string, body T
 // PostRoutingEmailDomains invokes POST /api/v2/routing/email/domains
 //
 // Create a domain
-//
-// 
 func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6021,7 +5865,7 @@ func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain,
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingEmailDomains")
 	}
 
@@ -6083,8 +5927,6 @@ func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain,
 // PostRoutingLanguages invokes POST /api/v2/routing/languages
 //
 // Create Language
-//
-// 
 func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6096,7 +5938,7 @@ func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingLanguages")
 	}
 
@@ -6158,8 +6000,6 @@ func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse
 // PostRoutingPredictors invokes POST /api/v2/routing/predictors
 //
 // Create a predictor.
-//
-// 
 func (a RoutingApi) PostRoutingPredictors(body Createpredictorrequest) (*Predictor, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6228,8 +6068,6 @@ func (a RoutingApi) PostRoutingPredictors(body Createpredictorrequest) (*Predict
 // PostRoutingQueueMembers invokes POST /api/v2/routing/queues/{queueId}/members
 //
 // Bulk add or delete up to 100 queue members
-//
-// 
 func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentity, delete bool) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6241,7 +6079,7 @@ func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentit
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueMembers")
 	}
 	// verify the required parameter 'body' is set
@@ -6304,8 +6142,6 @@ func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentit
 // PostRoutingQueueUsers invokes POST /api/v2/routing/queues/{queueId}/users
 //
 // DEPRECATED: use POST /routing/queues/{queueId}/members.  Bulk add or delete up to 100 queue members.
-//
-// 
 func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity, delete bool) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6317,7 +6153,7 @@ func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity,
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueUsers")
 	}
 	// verify the required parameter 'body' is set
@@ -6380,8 +6216,6 @@ func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity,
 // PostRoutingQueueWrapupcodes invokes POST /api/v2/routing/queues/{queueId}/wrapupcodes
 //
 // Add up to 100 wrap-up codes to a queue
-//
-// 
 func (a RoutingApi) PostRoutingQueueWrapupcodes(queueId string, body []Wrapupcodereference) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6394,7 +6228,7 @@ func (a RoutingApi) PostRoutingQueueWrapupcodes(queueId string, body []Wrapupcod
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueWrapupcodes")
 	}
 	// verify the required parameter 'body' is set
@@ -6461,8 +6295,6 @@ func (a RoutingApi) PostRoutingQueueWrapupcodes(queueId string, body []Wrapupcod
 // PostRoutingQueues invokes POST /api/v2/routing/queues
 //
 // Create a queue
-//
-// 
 func (a RoutingApi) PostRoutingQueues(body Createqueuerequest) (*Queue, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6474,7 +6306,7 @@ func (a RoutingApi) PostRoutingQueues(body Createqueuerequest) (*Queue, *APIResp
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingQueues")
 	}
 
@@ -6536,8 +6368,6 @@ func (a RoutingApi) PostRoutingQueues(body Createqueuerequest) (*Queue, *APIResp
 // PostRoutingSkills invokes POST /api/v2/routing/skills
 //
 // Create Skill
-//
-// 
 func (a RoutingApi) PostRoutingSkills(body Routingskill) (*Routingskill, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6549,7 +6379,7 @@ func (a RoutingApi) PostRoutingSkills(body Routingskill) (*Routingskill, *APIRes
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingSkills")
 	}
 
@@ -6611,8 +6441,6 @@ func (a RoutingApi) PostRoutingSkills(body Routingskill) (*Routingskill, *APIRes
 // PostRoutingSmsAddresses invokes POST /api/v2/routing/sms/addresses
 //
 // Provision an Address for SMS
-//
-// 
 func (a RoutingApi) PostRoutingSmsAddresses(body Smsaddressprovision) (*Smsaddress, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6624,7 +6452,7 @@ func (a RoutingApi) PostRoutingSmsAddresses(body Smsaddressprovision) (*Smsaddre
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingSmsAddresses")
 	}
 
@@ -6686,8 +6514,6 @@ func (a RoutingApi) PostRoutingSmsAddresses(body Smsaddressprovision) (*Smsaddre
 // PostRoutingSmsPhonenumbers invokes POST /api/v2/routing/sms/phonenumbers
 //
 // Provision a phone number for SMS
-//
-// 
 func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision, async bool) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6699,7 +6525,7 @@ func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision, asy
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingSmsPhonenumbers")
 	}
 
@@ -6763,8 +6589,6 @@ func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision, asy
 // PostRoutingWrapupcodes invokes POST /api/v2/routing/wrapupcodes
 //
 // Create a wrap-up code
-//
-// 
 func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcode) (*Wrapupcode, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6776,7 +6600,7 @@ func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcode) (*Wrapupcode, *APIRe
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingWrapupcodes")
 	}
 
@@ -6838,8 +6662,6 @@ func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcode) (*Wrapupcode, *APIRe
 // PostUserRoutinglanguages invokes POST /api/v2/users/{userId}/routinglanguages
 //
 // Add routing language to user
-//
-// 
 func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglanguagepost) (*Userroutinglanguage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6852,12 +6674,12 @@ func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglang
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PostUserRoutinglanguages")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostUserRoutinglanguages")
 	}
 
@@ -6919,8 +6741,6 @@ func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglang
 // PostUserRoutingskills invokes POST /api/v2/users/{userId}/routingskills
 //
 // Add routing skill to user
-//
-// 
 func (a RoutingApi) PostUserRoutingskills(userId string, body Userroutingskillpost) (*Userroutingskill, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6933,12 +6753,12 @@ func (a RoutingApi) PostUserRoutingskills(userId string, body Userroutingskillpo
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PostUserRoutingskills")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostUserRoutingskills")
 	}
 
@@ -7000,8 +6820,6 @@ func (a RoutingApi) PostUserRoutingskills(userId string, body Userroutingskillpo
 // PutRoutingEmailDomainRoute invokes PUT /api/v2/routing/email/domains/{domainName}/routes/{routeId}
 //
 // Update a route
-//
-// 
 func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string, body Inboundroute) (*Inboundroute, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7015,17 +6833,17 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 
 	// verify the required parameter 'domainName' is set
 	if &domainName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainName' when calling RoutingApi->PutRoutingEmailDomainRoute")
 	}
 	// verify the required parameter 'routeId' is set
 	if &routeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'routeId' when calling RoutingApi->PutRoutingEmailDomainRoute")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingEmailDomainRoute")
 	}
 
@@ -7087,8 +6905,6 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 // PutRoutingMessageRecipient invokes PUT /api/v2/routing/message/recipients/{recipientId}
 //
 // Update a recipient
-//
-// 
 func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipient) (*Recipient, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7101,12 +6917,12 @@ func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipien
 
 	// verify the required parameter 'recipientId' is set
 	if &recipientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recipientId' when calling RoutingApi->PutRoutingMessageRecipient")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingMessageRecipient")
 	}
 
@@ -7168,8 +6984,6 @@ func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipien
 // PutRoutingQueue invokes PUT /api/v2/routing/queues/{queueId}
 //
 // Update a queue
-//
-// 
 func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7182,12 +6996,12 @@ func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, 
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PutRoutingQueue")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingQueue")
 	}
 
@@ -7248,9 +7062,7 @@ func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, 
 
 // PutRoutingSettings invokes PUT /api/v2/routing/settings
 //
-// Update an organization&#39;s routing settings
-//
-// 
+// Update an organization's routing settings
 func (a RoutingApi) PutRoutingSettings(body Routingsettings) (*Routingsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7262,7 +7074,7 @@ func (a RoutingApi) PutRoutingSettings(body Routingsettings) (*Routingsettings, 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingSettings")
 	}
 
@@ -7324,8 +7136,6 @@ func (a RoutingApi) PutRoutingSettings(body Routingsettings) (*Routingsettings, 
 // PutRoutingSettingsTranscription invokes PUT /api/v2/routing/settings/transcription
 //
 // Update Transcription Settings
-//
-// 
 func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) (*Transcriptionsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7337,7 +7147,7 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingSettingsTranscription")
 	}
 
@@ -7399,8 +7209,6 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 // PutRoutingSmsPhonenumber invokes PUT /api/v2/routing/sms/phonenumbers/{addressId}
 //
 // Update a phone number provisioned for SMS.
-//
-// 
 func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumber, async bool) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7413,12 +7221,12 @@ func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumb
 
 	// verify the required parameter 'addressId' is set
 	if &addressId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->PutRoutingSmsPhonenumber")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingSmsPhonenumber")
 	}
 
@@ -7481,9 +7289,7 @@ func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumb
 
 // PutRoutingUserUtilization invokes PUT /api/v2/routing/users/{userId}/utilization
 //
-// Update the user&#39;s max utilization settings.  Include only those media types requiring custom configuration.
-//
-// 
+// Update the user's max utilization settings.  Include only those media types requiring custom configuration.
 func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilization) (*Agentmaxutilization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7496,12 +7302,12 @@ func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilization) (
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PutRoutingUserUtilization")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingUserUtilization")
 	}
 
@@ -7563,8 +7369,6 @@ func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilization) (
 // PutRoutingUtilization invokes PUT /api/v2/routing/utilization
 //
 // Update the organization-wide max utilization settings.  Include only those media types requiring custom configuration.
-//
-// 
 func (a RoutingApi) PutRoutingUtilization(body Utilization) (*Utilization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7576,7 +7380,7 @@ func (a RoutingApi) PutRoutingUtilization(body Utilization) (*Utilization, *APIR
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingUtilization")
 	}
 
@@ -7638,8 +7442,6 @@ func (a RoutingApi) PutRoutingUtilization(body Utilization) (*Utilization, *APIR
 // PutRoutingWrapupcode invokes PUT /api/v2/routing/wrapupcodes/{codeId}
 //
 // Update wrap-up code
-//
-// 
 func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcode) (*Wrapupcode, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7652,12 +7454,12 @@ func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcode) (*Wrapu
 
 	// verify the required parameter 'codeId' is set
 	if &codeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'codeId' when calling RoutingApi->PutRoutingWrapupcode")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingWrapupcode")
 	}
 
@@ -7719,8 +7521,6 @@ func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcode) (*Wrapu
 // PutUserRoutingskill invokes PUT /api/v2/users/{userId}/routingskills/{skillId}
 //
 // Update routing skill proficiency or state.
-//
-// 
 func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body Userroutingskill) (*Userroutingskill, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7734,17 +7534,17 @@ func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body User
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PutUserRoutingskill")
 	}
 	// verify the required parameter 'skillId' is set
 	if &skillId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'skillId' when calling RoutingApi->PutUserRoutingskill")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutUserRoutingskill")
 	}
 
@@ -7806,8 +7606,6 @@ func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body User
 // PutUserRoutingskillsBulk invokes PUT /api/v2/users/{userId}/routingskills/bulk
 //
 // Replace all routing skills assigned to a user
-//
-// 
 func (a RoutingApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskillpost) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -7820,7 +7618,7 @@ func (a RoutingApi) PutUserRoutingskillsBulk(userId string, body []Userroutingsk
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->PutUserRoutingskillsBulk")
 	}
 	// verify the required parameter 'body' is set

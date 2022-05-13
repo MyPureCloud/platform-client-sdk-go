@@ -61,11 +61,11 @@ func (o *Conversationsocialexpressioneventtopicsocialconversation) UnmarshalJSON
 	if Id, ok := ConversationsocialexpressioneventtopicsocialconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationsocialexpressioneventtopicsocialconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := ConversationsocialexpressioneventtopicsocialconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)

@@ -109,11 +109,11 @@ func (o *Orphanupdaterequest) UnmarshalJSON(b []byte) error {
 	if IntegrationId, ok := OrphanupdaterequestMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-	
+    
 	if ConversationId, ok := OrphanupdaterequestMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 
 	return nil
 }

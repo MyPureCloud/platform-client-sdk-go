@@ -178,55 +178,55 @@ func (o *Contactdetaileventtopiccontactupdateevent) UnmarshalJSON(b []byte) erro
 	if ConversationId, ok := ContactdetaileventtopiccontactupdateeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := ContactdetaileventtopiccontactupdateeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := ContactdetaileventtopiccontactupdateeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := ContactdetaileventtopiccontactupdateeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ExternalOrganizationId, ok := ContactdetaileventtopiccontactupdateeventMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if ExternalContactId, ok := ContactdetaileventtopiccontactupdateeventMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if Provider, ok := ContactdetaileventtopiccontactupdateeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := ContactdetaileventtopiccontactupdateeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := ContactdetaileventtopiccontactupdateeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := ContactdetaileventtopiccontactupdateeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := ContactdetaileventtopiccontactupdateeventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := ContactdetaileventtopiccontactupdateeventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := ContactdetaileventtopiccontactupdateeventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := ContactdetaileventtopiccontactupdateeventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -240,11 +240,11 @@ func (o *Contactdetaileventtopiccontactupdateevent) UnmarshalJSON(b []byte) erro
 	if Subject, ok := ContactdetaileventtopiccontactupdateeventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := ContactdetaileventtopiccontactupdateeventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 
 	return nil
 }

@@ -67,11 +67,11 @@ func (o *Provisioninfo) UnmarshalJSON(b []byte) error {
 	if Source, ok := ProvisioninfoMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if ErrorInfo, ok := ProvisioninfoMap["errorInfo"].(string); ok {
 		o.ErrorInfo = &ErrorInfo
 	}
-	
+    
 
 	return nil
 }

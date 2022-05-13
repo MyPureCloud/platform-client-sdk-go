@@ -101,31 +101,31 @@ func (o *Phonecapabilities) UnmarshalJSON(b []byte) error {
 	if Provisions, ok := PhonecapabilitiesMap["provisions"].(bool); ok {
 		o.Provisions = &Provisions
 	}
-	
+    
 	if Registers, ok := PhonecapabilitiesMap["registers"].(bool); ok {
 		o.Registers = &Registers
 	}
-	
+    
 	if DualRegisters, ok := PhonecapabilitiesMap["dualRegisters"].(bool); ok {
 		o.DualRegisters = &DualRegisters
 	}
-	
+    
 	if HardwareIdType, ok := PhonecapabilitiesMap["hardwareIdType"].(string); ok {
 		o.HardwareIdType = &HardwareIdType
 	}
-	
+    
 	if AllowReboot, ok := PhonecapabilitiesMap["allowReboot"].(bool); ok {
 		o.AllowReboot = &AllowReboot
 	}
-	
+    
 	if NoRebalance, ok := PhonecapabilitiesMap["noRebalance"].(bool); ok {
 		o.NoRebalance = &NoRebalance
 	}
-	
+    
 	if NoCloudProvisioning, ok := PhonecapabilitiesMap["noCloudProvisioning"].(bool); ok {
 		o.NoCloudProvisioning = &NoCloudProvisioning
 	}
-	
+    
 	if MediaCodecs, ok := PhonecapabilitiesMap["mediaCodecs"].([]interface{}); ok {
 		MediaCodecsString, _ := json.Marshal(MediaCodecs)
 		json.Unmarshal(MediaCodecsString, &o.MediaCodecs)
@@ -134,7 +134,7 @@ func (o *Phonecapabilities) UnmarshalJSON(b []byte) error {
 	if Cdm, ok := PhonecapabilitiesMap["cdm"].(bool); ok {
 		o.Cdm = &Cdm
 	}
-	
+    
 
 	return nil
 }

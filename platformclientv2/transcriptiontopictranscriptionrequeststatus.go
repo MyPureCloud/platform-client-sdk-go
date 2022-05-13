@@ -50,7 +50,7 @@ func (o *Transcriptiontopictranscriptionrequeststatus) UnmarshalJSON(b []byte) e
 	if Status, ok := TranscriptiontopictranscriptionrequeststatusMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

@@ -141,15 +141,15 @@ func (o *Inboundroute) UnmarshalJSON(b []byte) error {
 	if Id, ok := InboundrouteMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := InboundrouteMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Pattern, ok := InboundrouteMap["pattern"].(string); ok {
 		o.Pattern = &Pattern
 	}
-	
+    
 	if Queue, ok := InboundrouteMap["queue"].(map[string]interface{}); ok {
 		QueueString, _ := json.Marshal(Queue)
 		json.Unmarshal(QueueString, &o.Queue)
@@ -173,11 +173,11 @@ func (o *Inboundroute) UnmarshalJSON(b []byte) error {
 	if FromName, ok := InboundrouteMap["fromName"].(string); ok {
 		o.FromName = &FromName
 	}
-	
+    
 	if FromEmail, ok := InboundrouteMap["fromEmail"].(string); ok {
 		o.FromEmail = &FromEmail
 	}
-	
+    
 	if Flow, ok := InboundrouteMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
@@ -201,7 +201,7 @@ func (o *Inboundroute) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := InboundrouteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -37,7 +37,7 @@ func (o *Evaluationqualityv2topiccalibration) UnmarshalJSON(b []byte) error {
 	if Id, ok := Evaluationqualityv2topiccalibrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

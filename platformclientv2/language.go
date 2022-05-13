@@ -86,11 +86,11 @@ func (o *Language) UnmarshalJSON(b []byte) error {
 	if Id, ok := LanguageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LanguageMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateModifiedString, ok := LanguageMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
@@ -99,15 +99,15 @@ func (o *Language) UnmarshalJSON(b []byte) error {
 	if State, ok := LanguageMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Version, ok := LanguageMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if SelfUri, ok := LanguageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

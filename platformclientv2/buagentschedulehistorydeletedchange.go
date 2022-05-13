@@ -64,7 +64,7 @@ func (o *Buagentschedulehistorydeletedchange) UnmarshalJSON(b []byte) error {
 	if AgentSchedule, ok := BuagentschedulehistorydeletedchangeMap["agentSchedule"].(bool); ok {
 		o.AgentSchedule = &AgentSchedule
 	}
-	
+    
 
 	return nil
 }

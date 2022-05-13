@@ -195,11 +195,11 @@ func (o *Observationvalue) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := ObservationvalueMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if SessionId, ok := ObservationvalueMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if RequestedRoutingSkillIds, ok := ObservationvalueMap["requestedRoutingSkillIds"].([]interface{}); ok {
 		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
 		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
@@ -208,7 +208,7 @@ func (o *Observationvalue) UnmarshalJSON(b []byte) error {
 	if RequestedLanguageId, ok := ObservationvalueMap["requestedLanguageId"].(string); ok {
 		o.RequestedLanguageId = &RequestedLanguageId
 	}
-	
+    
 	if RoutingPriority, ok := ObservationvalueMap["routingPriority"].(float64); ok {
 		RoutingPriorityInt := int(RoutingPriority)
 		o.RoutingPriority = &RoutingPriorityInt
@@ -217,43 +217,43 @@ func (o *Observationvalue) UnmarshalJSON(b []byte) error {
 	if ParticipantName, ok := ObservationvalueMap["participantName"].(string); ok {
 		o.ParticipantName = &ParticipantName
 	}
-	
+    
 	if UserId, ok := ObservationvalueMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Direction, ok := ObservationvalueMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if ConvertedFrom, ok := ObservationvalueMap["convertedFrom"].(string); ok {
 		o.ConvertedFrom = &ConvertedFrom
 	}
-	
+    
 	if ConvertedTo, ok := ObservationvalueMap["convertedTo"].(string); ok {
 		o.ConvertedTo = &ConvertedTo
 	}
-	
+    
 	if AddressFrom, ok := ObservationvalueMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if AddressTo, ok := ObservationvalueMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if Ani, ok := ObservationvalueMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := ObservationvalueMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if TeamId, ok := ObservationvalueMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if RequestedRoutings, ok := ObservationvalueMap["requestedRoutings"].([]interface{}); ok {
 		RequestedRoutingsString, _ := json.Marshal(RequestedRoutings)
 		json.Unmarshal(RequestedRoutingsString, &o.RequestedRoutings)
@@ -262,7 +262,7 @@ func (o *Observationvalue) UnmarshalJSON(b []byte) error {
 	if UsedRouting, ok := ObservationvalueMap["usedRouting"].(string); ok {
 		o.UsedRouting = &UsedRouting
 	}
-	
+    
 	if ScoredAgents, ok := ObservationvalueMap["scoredAgents"].([]interface{}); ok {
 		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)

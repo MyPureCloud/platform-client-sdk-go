@@ -110,19 +110,19 @@ func (o *Shifttradenotification) UnmarshalJSON(b []byte) error {
 	if WeekDate, ok := ShifttradenotificationMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 	if TradeId, ok := ShifttradenotificationMap["tradeId"].(string); ok {
 		o.TradeId = &TradeId
 	}
-	
+    
 	if OneSided, ok := ShifttradenotificationMap["oneSided"].(bool); ok {
 		o.OneSided = &OneSided
 	}
-	
+    
 	if NewState, ok := ShifttradenotificationMap["newState"].(string); ok {
 		o.NewState = &NewState
 	}
-	
+    
 	if InitiatingUser, ok := ShifttradenotificationMap["initiatingUser"].(map[string]interface{}); ok {
 		InitiatingUserString, _ := json.Marshal(InitiatingUser)
 		json.Unmarshal(InitiatingUserString, &o.InitiatingUser)

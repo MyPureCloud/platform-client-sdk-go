@@ -61,15 +61,15 @@ func (o *Gamificationscorecardchangetopicpunctualityevent) UnmarshalJSON(b []byt
 	if DateStart, ok := GamificationscorecardchangetopicpunctualityeventMap["dateStart"].(string); ok {
 		o.DateStart = &DateStart
 	}
-	
+    
 	if DateScheduleStart, ok := GamificationscorecardchangetopicpunctualityeventMap["dateScheduleStart"].(string); ok {
 		o.DateScheduleStart = &DateScheduleStart
 	}
-	
+    
 	if ActivityCode, ok := GamificationscorecardchangetopicpunctualityeventMap["activityCode"].(string); ok {
 		o.ActivityCode = &ActivityCode
 	}
-	
+    
 	if Points, ok := GamificationscorecardchangetopicpunctualityeventMap["points"].(float64); ok {
 		PointsInt := int(Points)
 		o.Points = &PointsInt

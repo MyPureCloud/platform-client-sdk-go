@@ -110,7 +110,7 @@ func (o *Voicemailorganizationpolicy) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := VoicemailorganizationpolicyMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if AlertTimeoutSeconds, ok := VoicemailorganizationpolicyMap["alertTimeoutSeconds"].(float64); ok {
 		AlertTimeoutSecondsInt := int(AlertTimeoutSeconds)
 		o.AlertTimeoutSeconds = &AlertTimeoutSecondsInt
@@ -124,23 +124,23 @@ func (o *Voicemailorganizationpolicy) UnmarshalJSON(b []byte) error {
 	if VoicemailExtension, ok := VoicemailorganizationpolicyMap["voicemailExtension"].(string); ok {
 		o.VoicemailExtension = &VoicemailExtension
 	}
-	
+    
 	if PinRequired, ok := VoicemailorganizationpolicyMap["pinRequired"].(bool); ok {
 		o.PinRequired = &PinRequired
 	}
-	
+    
 	if InteractiveResponseRequired, ok := VoicemailorganizationpolicyMap["interactiveResponseRequired"].(bool); ok {
 		o.InteractiveResponseRequired = &InteractiveResponseRequired
 	}
-	
+    
 	if SendEmailNotifications, ok := VoicemailorganizationpolicyMap["sendEmailNotifications"].(bool); ok {
 		o.SendEmailNotifications = &SendEmailNotifications
 	}
-	
+    
 	if DisableEmailPii, ok := VoicemailorganizationpolicyMap["disableEmailPii"].(bool); ok {
 		o.DisableEmailPii = &DisableEmailPii
 	}
-	
+    
 	if modifiedDateString, ok := VoicemailorganizationpolicyMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate

@@ -45,11 +45,11 @@ func (o *Recipientadditionalidentifier) UnmarshalJSON(b []byte) error {
 	if VarType, ok := RecipientadditionalidentifierMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := RecipientadditionalidentifierMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

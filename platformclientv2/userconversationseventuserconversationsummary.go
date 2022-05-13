@@ -93,7 +93,7 @@ func (o *Userconversationseventuserconversationsummary) UnmarshalJSON(b []byte) 
 	if UserId, ok := UserconversationseventuserconversationsummaryMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Call, ok := UserconversationseventuserconversationsummaryMap["call"].(map[string]interface{}); ok {
 		CallString, _ := json.Marshal(Call)
 		json.Unmarshal(CallString, &o.Call)

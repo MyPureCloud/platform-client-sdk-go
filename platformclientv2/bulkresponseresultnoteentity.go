@@ -61,11 +61,11 @@ func (o *Bulkresponseresultnoteentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := BulkresponseresultnoteentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Success, ok := BulkresponseresultnoteentityMap["success"].(bool); ok {
 		o.Success = &Success
 	}
-	
+    
 	if Entity, ok := BulkresponseresultnoteentityMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

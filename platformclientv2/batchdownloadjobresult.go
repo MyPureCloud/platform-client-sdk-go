@@ -93,35 +93,35 @@ func (o *Batchdownloadjobresult) UnmarshalJSON(b []byte) error {
 	if Id, ok := BatchdownloadjobresultMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BatchdownloadjobresultMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ConversationId, ok := BatchdownloadjobresultMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if RecordingId, ok := BatchdownloadjobresultMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if ResultUrl, ok := BatchdownloadjobresultMap["resultUrl"].(string); ok {
 		o.ResultUrl = &ResultUrl
 	}
-	
+    
 	if ContentType, ok := BatchdownloadjobresultMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ErrorMsg, ok := BatchdownloadjobresultMap["errorMsg"].(string); ok {
 		o.ErrorMsg = &ErrorMsg
 	}
-	
+    
 	if SelfUri, ok := BatchdownloadjobresultMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

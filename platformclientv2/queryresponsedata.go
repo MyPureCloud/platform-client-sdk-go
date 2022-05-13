@@ -45,7 +45,7 @@ func (o *Queryresponsedata) UnmarshalJSON(b []byte) error {
 	if Interval, ok := QueryresponsedataMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Metrics, ok := QueryresponsedataMap["metrics"].([]interface{}); ok {
 		MetricsString, _ := json.Marshal(Metrics)
 		json.Unmarshal(MetricsString, &o.Metrics)

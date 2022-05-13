@@ -45,11 +45,11 @@ func (o *Conversationreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ConversationreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

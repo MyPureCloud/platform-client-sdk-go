@@ -54,7 +54,7 @@ func (o *Exporturi) UnmarshalJSON(b []byte) error {
 	if Uri, ok := ExporturiMap["uri"].(string); ok {
 		o.Uri = &Uri
 	}
-	
+    
 	if exportTimestampString, ok := ExporturiMap["exportTimestamp"].(string); ok {
 		ExportTimestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", exportTimestampString)
 		o.ExportTimestamp = &ExportTimestamp

@@ -101,15 +101,15 @@ func (o *Surveyaggregationquery) UnmarshalJSON(b []byte) error {
 	if Interval, ok := SurveyaggregationqueryMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Granularity, ok := SurveyaggregationqueryMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if TimeZone, ok := SurveyaggregationqueryMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if GroupBy, ok := SurveyaggregationqueryMap["groupBy"].([]interface{}); ok {
 		GroupByString, _ := json.Marshal(GroupBy)
 		json.Unmarshal(GroupByString, &o.GroupBy)
@@ -128,7 +128,7 @@ func (o *Surveyaggregationquery) UnmarshalJSON(b []byte) error {
 	if FlattenMultivaluedDimensions, ok := SurveyaggregationqueryMap["flattenMultivaluedDimensions"].(bool); ok {
 		o.FlattenMultivaluedDimensions = &FlattenMultivaluedDimensions
 	}
-	
+    
 	if Views, ok := SurveyaggregationqueryMap["views"].([]interface{}); ok {
 		ViewsString, _ := json.Marshal(Views)
 		json.Unmarshal(ViewsString, &o.Views)
@@ -137,7 +137,7 @@ func (o *Surveyaggregationquery) UnmarshalJSON(b []byte) error {
 	if AlternateTimeDimension, ok := SurveyaggregationqueryMap["alternateTimeDimension"].(string); ok {
 		o.AlternateTimeDimension = &AlternateTimeDimension
 	}
-	
+    
 
 	return nil
 }

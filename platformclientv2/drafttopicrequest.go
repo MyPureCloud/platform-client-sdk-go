@@ -61,11 +61,11 @@ func (o *Drafttopicrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := DrafttopicrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DrafttopicrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Phrases, ok := DrafttopicrequestMap["phrases"].([]interface{}); ok {
 		PhrasesString, _ := json.Marshal(Phrases)
 		json.Unmarshal(PhrasesString, &o.Phrases)
@@ -74,7 +74,7 @@ func (o *Drafttopicrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DrafttopicrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

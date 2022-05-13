@@ -37,7 +37,7 @@ func (o *Predictorworkloadbalancing) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := PredictorworkloadbalancingMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

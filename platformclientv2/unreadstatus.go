@@ -37,7 +37,7 @@ func (o *Unreadstatus) UnmarshalJSON(b []byte) error {
 	if Unread, ok := UnreadstatusMap["unread"].(bool); ok {
 		o.Unread = &Unread
 	}
-	
+    
 
 	return nil
 }

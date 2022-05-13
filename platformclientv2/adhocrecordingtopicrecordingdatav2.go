@@ -190,11 +190,11 @@ func (o *Adhocrecordingtopicrecordingdatav2) UnmarshalJSON(b []byte) error {
 	if Id, ok := Adhocrecordingtopicrecordingdatav2Map["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := Adhocrecordingtopicrecordingdatav2Map["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := Adhocrecordingtopicrecordingdatav2Map["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -218,7 +218,7 @@ func (o *Adhocrecordingtopicrecordingdatav2) UnmarshalJSON(b []byte) error {
 	if ContentType, ok := Adhocrecordingtopicrecordingdatav2Map["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := Adhocrecordingtopicrecordingdatav2Map["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
@@ -227,7 +227,7 @@ func (o *Adhocrecordingtopicrecordingdatav2) UnmarshalJSON(b []byte) error {
 	if Filename, ok := Adhocrecordingtopicrecordingdatav2Map["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 	if ChangeNumber, ok := Adhocrecordingtopicrecordingdatav2Map["changeNumber"].(float64); ok {
 		ChangeNumberInt := int(ChangeNumber)
 		o.ChangeNumber = &ChangeNumberInt
@@ -251,7 +251,7 @@ func (o *Adhocrecordingtopicrecordingdatav2) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := Adhocrecordingtopicrecordingdatav2Map["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if DurationMillieconds, ok := Adhocrecordingtopicrecordingdatav2Map["durationMillieconds"].(float64); ok {
 		DurationMilliecondsInt := int(DurationMillieconds)
 		o.DurationMillieconds = &DurationMilliecondsInt
@@ -265,7 +265,7 @@ func (o *Adhocrecordingtopicrecordingdatav2) UnmarshalJSON(b []byte) error {
 	if Read, ok := Adhocrecordingtopicrecordingdatav2Map["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 
 	return nil
 }

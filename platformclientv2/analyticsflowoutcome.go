@@ -86,7 +86,7 @@ func (o *Analyticsflowoutcome) UnmarshalJSON(b []byte) error {
 	if FlowOutcome, ok := AnalyticsflowoutcomeMap["flowOutcome"].(string); ok {
 		o.FlowOutcome = &FlowOutcome
 	}
-	
+    
 	if flowOutcomeEndTimestampString, ok := AnalyticsflowoutcomeMap["flowOutcomeEndTimestamp"].(string); ok {
 		FlowOutcomeEndTimestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", flowOutcomeEndTimestampString)
 		o.FlowOutcomeEndTimestamp = &FlowOutcomeEndTimestamp
@@ -95,7 +95,7 @@ func (o *Analyticsflowoutcome) UnmarshalJSON(b []byte) error {
 	if FlowOutcomeId, ok := AnalyticsflowoutcomeMap["flowOutcomeId"].(string); ok {
 		o.FlowOutcomeId = &FlowOutcomeId
 	}
-	
+    
 	if flowOutcomeStartTimestampString, ok := AnalyticsflowoutcomeMap["flowOutcomeStartTimestamp"].(string); ok {
 		FlowOutcomeStartTimestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", flowOutcomeStartTimestampString)
 		o.FlowOutcomeStartTimestamp = &FlowOutcomeStartTimestamp
@@ -104,7 +104,7 @@ func (o *Analyticsflowoutcome) UnmarshalJSON(b []byte) error {
 	if FlowOutcomeValue, ok := AnalyticsflowoutcomeMap["flowOutcomeValue"].(string); ok {
 		o.FlowOutcomeValue = &FlowOutcomeValue
 	}
-	
+    
 
 	return nil
 }

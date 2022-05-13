@@ -158,15 +158,15 @@ func (o *Audittopicauditlogmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := AudittopicauditlogmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if UserId, ok := AudittopicauditlogmessageMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if UserHomeOrgId, ok := AudittopicauditlogmessageMap["userHomeOrgId"].(string); ok {
 		o.UserHomeOrgId = &UserHomeOrgId
 	}
-	
+    
 	if Username, ok := AudittopicauditlogmessageMap["username"].(map[string]interface{}); ok {
 		UsernameString, _ := json.Marshal(Username)
 		json.Unmarshal(UsernameString, &o.Username)
@@ -175,7 +175,7 @@ func (o *Audittopicauditlogmessage) UnmarshalJSON(b []byte) error {
 	if UserDisplay, ok := AudittopicauditlogmessageMap["userDisplay"].(string); ok {
 		o.UserDisplay = &UserDisplay
 	}
-	
+    
 	if ClientId, ok := AudittopicauditlogmessageMap["clientId"].(map[string]interface{}); ok {
 		ClientIdString, _ := json.Marshal(ClientId)
 		json.Unmarshal(ClientIdString, &o.ClientId)
@@ -189,7 +189,7 @@ func (o *Audittopicauditlogmessage) UnmarshalJSON(b []byte) error {
 	if ServiceName, ok := AudittopicauditlogmessageMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-	
+    
 	if eventTimeString, ok := AudittopicauditlogmessageMap["eventTime"].(string); ok {
 		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
 		o.EventTime = &EventTime
@@ -203,11 +203,11 @@ func (o *Audittopicauditlogmessage) UnmarshalJSON(b []byte) error {
 	if Action, ok := AudittopicauditlogmessageMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if EntityType, ok := AudittopicauditlogmessageMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if Entity, ok := AudittopicauditlogmessageMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

@@ -790,7 +790,7 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if Metric, ok := FlowmetricstopicflowmetricrecordMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if metricDateString, ok := FlowmetricstopicflowmetricrecordMap["metricDate"].(string); ok {
 		MetricDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", metricDateString)
 		o.MetricDate = &MetricDate
@@ -804,7 +804,7 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if RecordId, ok := FlowmetricstopicflowmetricrecordMap["recordId"].(string); ok {
 		o.RecordId = &RecordId
 	}
-	
+    
 	if ActiveSkillIds, ok := FlowmetricstopicflowmetricrecordMap["activeSkillIds"].([]interface{}); ok {
 		ActiveSkillIdsString, _ := json.Marshal(ActiveSkillIds)
 		json.Unmarshal(ActiveSkillIdsString, &o.ActiveSkillIds)
@@ -813,15 +813,15 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if AddressFrom, ok := FlowmetricstopicflowmetricrecordMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if AddressTo, ok := FlowmetricstopicflowmetricrecordMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AgentAssistantId, ok := FlowmetricstopicflowmetricrecordMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 	if AgentBullseyeRing, ok := FlowmetricstopicflowmetricrecordMap["agentBullseyeRing"].(float64); ok {
 		AgentBullseyeRingInt := int(AgentBullseyeRing)
 		o.AgentBullseyeRing = &AgentBullseyeRingInt
@@ -830,43 +830,43 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if AgentOwned, ok := FlowmetricstopicflowmetricrecordMap["agentOwned"].(bool); ok {
 		o.AgentOwned = &AgentOwned
 	}
-	
+    
 	if Ani, ok := FlowmetricstopicflowmetricrecordMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if AssignerId, ok := FlowmetricstopicflowmetricrecordMap["assignerId"].(string); ok {
 		o.AssignerId = &AssignerId
 	}
-	
+    
 	if Authenticated, ok := FlowmetricstopicflowmetricrecordMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
 	}
-	
+    
 	if ConversationId, ok := FlowmetricstopicflowmetricrecordMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ConversationInitiator, ok := FlowmetricstopicflowmetricrecordMap["conversationInitiator"].(string); ok {
 		o.ConversationInitiator = &ConversationInitiator
 	}
-	
+    
 	if ConvertedFrom, ok := FlowmetricstopicflowmetricrecordMap["convertedFrom"].(string); ok {
 		o.ConvertedFrom = &ConvertedFrom
 	}
-	
+    
 	if ConvertedTo, ok := FlowmetricstopicflowmetricrecordMap["convertedTo"].(string); ok {
 		o.ConvertedTo = &ConvertedTo
 	}
-	
+    
 	if CustomerParticipation, ok := FlowmetricstopicflowmetricrecordMap["customerParticipation"].(bool); ok {
 		o.CustomerParticipation = &CustomerParticipation
 	}
-	
+    
 	if DeliveryStatus, ok := FlowmetricstopicflowmetricrecordMap["deliveryStatus"].(string); ok {
 		o.DeliveryStatus = &DeliveryStatus
 	}
-	
+    
 	if DestinationAddresses, ok := FlowmetricstopicflowmetricrecordMap["destinationAddresses"].([]interface{}); ok {
 		DestinationAddressesString, _ := json.Marshal(DestinationAddresses)
 		json.Unmarshal(DestinationAddressesString, &o.DestinationAddresses)
@@ -875,11 +875,11 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if Direction, ok := FlowmetricstopicflowmetricrecordMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := FlowmetricstopicflowmetricrecordMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if DivisionIds, ok := FlowmetricstopicflowmetricrecordMap["divisionIds"].([]interface{}); ok {
 		DivisionIdsString, _ := json.Marshal(DivisionIds)
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
@@ -888,11 +888,11 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if Dnis, ok := FlowmetricstopicflowmetricrecordMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if EdgeId, ok := FlowmetricstopicflowmetricrecordMap["edgeId"].(string); ok {
 		o.EdgeId = &EdgeId
 	}
-	
+    
 	if EligibleAgentCounts, ok := FlowmetricstopicflowmetricrecordMap["eligibleAgentCounts"].([]interface{}); ok {
 		EligibleAgentCountsString, _ := json.Marshal(EligibleAgentCounts)
 		json.Unmarshal(EligibleAgentCountsString, &o.EligibleAgentCounts)
@@ -901,27 +901,27 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if EndingLanguage, ok := FlowmetricstopicflowmetricrecordMap["endingLanguage"].(string); ok {
 		o.EndingLanguage = &EndingLanguage
 	}
-	
+    
 	if EntryReason, ok := FlowmetricstopicflowmetricrecordMap["entryReason"].(string); ok {
 		o.EntryReason = &EntryReason
 	}
-	
+    
 	if EntryType, ok := FlowmetricstopicflowmetricrecordMap["entryType"].(string); ok {
 		o.EntryType = &EntryType
 	}
-	
+    
 	if ExitReason, ok := FlowmetricstopicflowmetricrecordMap["exitReason"].(string); ok {
 		o.ExitReason = &ExitReason
 	}
-	
+    
 	if ExtendedDeliveryStatus, ok := FlowmetricstopicflowmetricrecordMap["extendedDeliveryStatus"].(string); ok {
 		o.ExtendedDeliveryStatus = &ExtendedDeliveryStatus
 	}
-	
+    
 	if ExternalContactId, ok := FlowmetricstopicflowmetricrecordMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalMediaCount, ok := FlowmetricstopicflowmetricrecordMap["externalMediaCount"].(float64); ok {
 		ExternalMediaCountInt := int(ExternalMediaCount)
 		o.ExternalMediaCount = &ExternalMediaCountInt
@@ -930,27 +930,27 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if ExternalOrganizationId, ok := FlowmetricstopicflowmetricrecordMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if ExternalTag, ok := FlowmetricstopicflowmetricrecordMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 	if FirstQueue, ok := FlowmetricstopicflowmetricrecordMap["firstQueue"].(bool); ok {
 		o.FirstQueue = &FirstQueue
 	}
-	
+    
 	if FlaggedReason, ok := FlowmetricstopicflowmetricrecordMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if FlowId, ok := FlowmetricstopicflowmetricrecordMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if FlowInType, ok := FlowmetricstopicflowmetricrecordMap["flowInType"].(string); ok {
 		o.FlowInType = &FlowInType
 	}
-	
+    
 	if FlowMilestoneIds, ok := FlowmetricstopicflowmetricrecordMap["flowMilestoneIds"].([]interface{}); ok {
 		FlowMilestoneIdsString, _ := json.Marshal(FlowMilestoneIds)
 		json.Unmarshal(FlowMilestoneIdsString, &o.FlowMilestoneIds)
@@ -959,35 +959,35 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if FlowName, ok := FlowmetricstopicflowmetricrecordMap["flowName"].(string); ok {
 		o.FlowName = &FlowName
 	}
-	
+    
 	if FlowOutType, ok := FlowmetricstopicflowmetricrecordMap["flowOutType"].(string); ok {
 		o.FlowOutType = &FlowOutType
 	}
-	
+    
 	if FlowType, ok := FlowmetricstopicflowmetricrecordMap["flowType"].(string); ok {
 		o.FlowType = &FlowType
 	}
-	
+    
 	if FlowVersion, ok := FlowmetricstopicflowmetricrecordMap["flowVersion"].(string); ok {
 		o.FlowVersion = &FlowVersion
 	}
-	
+    
 	if GroupId, ok := FlowmetricstopicflowmetricrecordMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 	if InteractionType, ok := FlowmetricstopicflowmetricrecordMap["interactionType"].(string); ok {
 		o.InteractionType = &InteractionType
 	}
-	
+    
 	if JourneyActionId, ok := FlowmetricstopicflowmetricrecordMap["journeyActionId"].(string); ok {
 		o.JourneyActionId = &JourneyActionId
 	}
-	
+    
 	if JourneyActionMapId, ok := FlowmetricstopicflowmetricrecordMap["journeyActionMapId"].(string); ok {
 		o.JourneyActionMapId = &JourneyActionMapId
 	}
-	
+    
 	if JourneyActionMapVersion, ok := FlowmetricstopicflowmetricrecordMap["journeyActionMapVersion"].(float64); ok {
 		JourneyActionMapVersionInt := int(JourneyActionMapVersion)
 		o.JourneyActionMapVersion = &JourneyActionMapVersionInt
@@ -996,23 +996,23 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if JourneyCustomerId, ok := FlowmetricstopicflowmetricrecordMap["journeyCustomerId"].(string); ok {
 		o.JourneyCustomerId = &JourneyCustomerId
 	}
-	
+    
 	if JourneyCustomerIdType, ok := FlowmetricstopicflowmetricrecordMap["journeyCustomerIdType"].(string); ok {
 		o.JourneyCustomerIdType = &JourneyCustomerIdType
 	}
-	
+    
 	if JourneyCustomerSessionId, ok := FlowmetricstopicflowmetricrecordMap["journeyCustomerSessionId"].(string); ok {
 		o.JourneyCustomerSessionId = &JourneyCustomerSessionId
 	}
-	
+    
 	if JourneyCustomerSessionIdType, ok := FlowmetricstopicflowmetricrecordMap["journeyCustomerSessionIdType"].(string); ok {
 		o.JourneyCustomerSessionIdType = &JourneyCustomerSessionIdType
 	}
-	
+    
 	if KnowledgeBaseId, ok := FlowmetricstopicflowmetricrecordMap["knowledgeBaseId"].(string); ok {
 		o.KnowledgeBaseId = &KnowledgeBaseId
 	}
-	
+    
 	if MediaCount, ok := FlowmetricstopicflowmetricrecordMap["mediaCount"].(float64); ok {
 		MediaCountInt := int(MediaCount)
 		o.MediaCount = &MediaCountInt
@@ -1021,55 +1021,55 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := FlowmetricstopicflowmetricrecordMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if MessageType, ok := FlowmetricstopicflowmetricrecordMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if OriginatingDirection, ok := FlowmetricstopicflowmetricrecordMap["originatingDirection"].(string); ok {
 		o.OriginatingDirection = &OriginatingDirection
 	}
-	
+    
 	if OutboundCampaignId, ok := FlowmetricstopicflowmetricrecordMap["outboundCampaignId"].(string); ok {
 		o.OutboundCampaignId = &OutboundCampaignId
 	}
-	
+    
 	if OutboundContactId, ok := FlowmetricstopicflowmetricrecordMap["outboundContactId"].(string); ok {
 		o.OutboundContactId = &OutboundContactId
 	}
-	
+    
 	if OutboundContactListId, ok := FlowmetricstopicflowmetricrecordMap["outboundContactListId"].(string); ok {
 		o.OutboundContactListId = &OutboundContactListId
 	}
-	
+    
 	if ParticipantName, ok := FlowmetricstopicflowmetricrecordMap["participantName"].(string); ok {
 		o.ParticipantName = &ParticipantName
 	}
-	
+    
 	if PeerId, ok := FlowmetricstopicflowmetricrecordMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if Provider, ok := FlowmetricstopicflowmetricrecordMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Purpose, ok := FlowmetricstopicflowmetricrecordMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if QueueId, ok := FlowmetricstopicflowmetricrecordMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if RecognitionFailureReason, ok := FlowmetricstopicflowmetricrecordMap["recognitionFailureReason"].(string); ok {
 		o.RecognitionFailureReason = &RecognitionFailureReason
 	}
-	
+    
 	if Remote, ok := FlowmetricstopicflowmetricrecordMap["remote"].(string); ok {
 		o.Remote = &Remote
 	}
-	
+    
 	if RemovedSkillIds, ok := FlowmetricstopicflowmetricrecordMap["removedSkillIds"].([]interface{}); ok {
 		RemovedSkillIdsString, _ := json.Marshal(RemovedSkillIds)
 		json.Unmarshal(RemovedSkillIdsString, &o.RemovedSkillIds)
@@ -1078,11 +1078,11 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if Reoffered, ok := FlowmetricstopicflowmetricrecordMap["reoffered"].(bool); ok {
 		o.Reoffered = &Reoffered
 	}
-	
+    
 	if RequestedLanguageId, ok := FlowmetricstopicflowmetricrecordMap["requestedLanguageId"].(string); ok {
 		o.RequestedLanguageId = &RequestedLanguageId
 	}
-	
+    
 	if RequestedRoutingSkillIds, ok := FlowmetricstopicflowmetricrecordMap["requestedRoutingSkillIds"].([]interface{}); ok {
 		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
 		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
@@ -1096,7 +1096,7 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if RoomId, ok := FlowmetricstopicflowmetricrecordMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if RoutingPriority, ok := FlowmetricstopicflowmetricrecordMap["routingPriority"].(float64); ok {
 		RoutingPriorityInt := int(RoutingPriority)
 		o.RoutingPriority = &RoutingPriorityInt
@@ -1110,7 +1110,7 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if SelectedAgentId, ok := FlowmetricstopicflowmetricrecordMap["selectedAgentId"].(string); ok {
 		o.SelectedAgentId = &SelectedAgentId
 	}
-	
+    
 	if SelectedAgentRank, ok := FlowmetricstopicflowmetricrecordMap["selectedAgentRank"].(float64); ok {
 		SelectedAgentRankInt := int(SelectedAgentRank)
 		o.SelectedAgentRank = &SelectedAgentRankInt
@@ -1119,47 +1119,47 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if SelfServed, ok := FlowmetricstopicflowmetricrecordMap["selfServed"].(bool); ok {
 		o.SelfServed = &SelfServed
 	}
-	
+    
 	if SessionDnis, ok := FlowmetricstopicflowmetricrecordMap["sessionDnis"].(string); ok {
 		o.SessionDnis = &SessionDnis
 	}
-	
+    
 	if SessionId, ok := FlowmetricstopicflowmetricrecordMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if StartingLanguage, ok := FlowmetricstopicflowmetricrecordMap["startingLanguage"].(string); ok {
 		o.StartingLanguage = &StartingLanguage
 	}
-	
+    
 	if StationId, ok := FlowmetricstopicflowmetricrecordMap["stationId"].(string); ok {
 		o.StationId = &StationId
 	}
-	
+    
 	if TeamId, ok := FlowmetricstopicflowmetricrecordMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if TransferTargetAddress, ok := FlowmetricstopicflowmetricrecordMap["transferTargetAddress"].(string); ok {
 		o.TransferTargetAddress = &TransferTargetAddress
 	}
-	
+    
 	if TransferTargetName, ok := FlowmetricstopicflowmetricrecordMap["transferTargetName"].(string); ok {
 		o.TransferTargetName = &TransferTargetName
 	}
-	
+    
 	if TransferType, ok := FlowmetricstopicflowmetricrecordMap["transferType"].(string); ok {
 		o.TransferType = &TransferType
 	}
-	
+    
 	if UsedRouting, ok := FlowmetricstopicflowmetricrecordMap["usedRouting"].(string); ok {
 		o.UsedRouting = &UsedRouting
 	}
-	
+    
 	if UserId, ok := FlowmetricstopicflowmetricrecordMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if WaitingInteractionCounts, ok := FlowmetricstopicflowmetricrecordMap["waitingInteractionCounts"].([]interface{}); ok {
 		WaitingInteractionCountsString, _ := json.Marshal(WaitingInteractionCounts)
 		json.Unmarshal(WaitingInteractionCountsString, &o.WaitingInteractionCounts)
@@ -1168,7 +1168,7 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	if WrapUpCode, ok := FlowmetricstopicflowmetricrecordMap["wrapUpCode"].(string); ok {
 		o.WrapUpCode = &WrapUpCode
 	}
-	
+    
 	if ProposedAgents, ok := FlowmetricstopicflowmetricrecordMap["proposedAgents"].([]interface{}); ok {
 		ProposedAgentsString, _ := json.Marshal(ProposedAgents)
 		json.Unmarshal(ProposedAgentsString, &o.ProposedAgents)

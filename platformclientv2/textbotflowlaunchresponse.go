@@ -37,7 +37,7 @@ func (o *Textbotflowlaunchresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := TextbotflowlaunchresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

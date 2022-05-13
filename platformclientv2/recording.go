@@ -342,31 +342,31 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecordingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := RecordingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ConversationId, ok := RecordingMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if Path, ok := RecordingMap["path"].(string); ok {
 		o.Path = &Path
 	}
-	
+    
 	if StartTime, ok := RecordingMap["startTime"].(string); ok {
 		o.StartTime = &StartTime
 	}
-	
+    
 	if EndTime, ok := RecordingMap["endTime"].(string); ok {
 		o.EndTime = &EndTime
 	}
-	
+    
 	if Media, ok := RecordingMap["media"].(string); ok {
 		o.Media = &Media
 	}
-	
+    
 	if Annotations, ok := RecordingMap["annotations"].([]interface{}); ok {
 		AnnotationsString, _ := json.Marshal(Annotations)
 		json.Unmarshal(AnnotationsString, &o.Annotations)
@@ -390,7 +390,7 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if FileState, ok := RecordingMap["fileState"].(string); ok {
 		o.FileState = &FileState
 	}
-	
+    
 	if restoreExpirationTimeString, ok := RecordingMap["restoreExpirationTime"].(string); ok {
 		RestoreExpirationTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", restoreExpirationTimeString)
 		o.RestoreExpirationTime = &RestoreExpirationTime
@@ -419,7 +419,7 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if ArchiveMedium, ok := RecordingMap["archiveMedium"].(string); ok {
 		o.ArchiveMedium = &ArchiveMedium
 	}
-	
+    
 	if deleteDateString, ok := RecordingMap["deleteDate"].(string); ok {
 		DeleteDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deleteDateString)
 		o.DeleteDate = &DeleteDate
@@ -458,7 +458,7 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if SessionId, ok := RecordingMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if Users, ok := RecordingMap["users"].([]interface{}); ok {
 		UsersString, _ := json.Marshal(Users)
 		json.Unmarshal(UsersString, &o.Users)
@@ -467,11 +467,11 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if RecordingFileRole, ok := RecordingMap["recordingFileRole"].(string); ok {
 		o.RecordingFileRole = &RecordingFileRole
 	}
-	
+    
 	if RecordingErrorStatus, ok := RecordingMap["recordingErrorStatus"].(string); ok {
 		o.RecordingErrorStatus = &RecordingErrorStatus
 	}
-	
+    
 	if originalRecordingStartTimeString, ok := RecordingMap["originalRecordingStartTime"].(string); ok {
 		OriginalRecordingStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", originalRecordingStartTimeString)
 		o.OriginalRecordingStartTime = &OriginalRecordingStartTime
@@ -485,7 +485,7 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := RecordingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

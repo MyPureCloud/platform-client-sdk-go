@@ -53,15 +53,15 @@ func (o *Copyvoicemailmessage) UnmarshalJSON(b []byte) error {
 	if VoicemailMessageId, ok := CopyvoicemailmessageMap["voicemailMessageId"].(string); ok {
 		o.VoicemailMessageId = &VoicemailMessageId
 	}
-	
+    
 	if UserId, ok := CopyvoicemailmessageMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if GroupId, ok := CopyvoicemailmessageMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 
 	return nil
 }

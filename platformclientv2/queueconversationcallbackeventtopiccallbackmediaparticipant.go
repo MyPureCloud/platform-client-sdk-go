@@ -430,15 +430,15 @@ func (o *Queueconversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJ
 	if Id, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -462,31 +462,31 @@ func (o *Queueconversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJ
 	if Purpose, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -525,7 +525,7 @@ func (o *Queueconversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJ
 	if WrapupSkipped, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -534,7 +534,7 @@ func (o *Queueconversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJ
 	if Provider, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -558,15 +558,15 @@ func (o *Queueconversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJ
 	if Peer, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -600,15 +600,15 @@ func (o *Queueconversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJ
 	if CallbackUserName, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if SkipEnabled, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["skipEnabled"].(bool); ok {
 		o.SkipEnabled = &SkipEnabled
 	}
-	
+    
 	if ExternalCampaign, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["externalCampaign"].(bool); ok {
 		o.ExternalCampaign = &ExternalCampaign
 	}
-	
+    
 	if TimeoutSeconds, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["timeoutSeconds"].(float64); ok {
 		TimeoutSecondsInt := int(TimeoutSeconds)
 		o.TimeoutSeconds = &TimeoutSecondsInt
@@ -622,7 +622,7 @@ func (o *Queueconversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJ
 	if AutomatedCallbackConfigId, ok := QueueconversationcallbackeventtopiccallbackmediaparticipantMap["automatedCallbackConfigId"].(string); ok {
 		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
 	}
-	
+    
 
 	return nil
 }

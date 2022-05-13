@@ -203,7 +203,7 @@ func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Unmars
 	if ManagementUnitId, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["managementUnitId"].(string); ok {
 		o.ManagementUnitId = &ManagementUnitId
 	}
-	
+    
 	if Team, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["team"].(map[string]interface{}); ok {
 		TeamString, _ := json.Marshal(Team)
 		json.Unmarshal(TeamString, &o.Team)
@@ -212,7 +212,7 @@ func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Unmars
 	if ScheduledActivityCategory, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["scheduledActivityCategory"].(string); ok {
 		o.ScheduledActivityCategory = &ScheduledActivityCategory
 	}
-	
+    
 	if ScheduledActivityCode, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["scheduledActivityCode"].(map[string]interface{}); ok {
 		ScheduledActivityCodeString, _ := json.Marshal(ScheduledActivityCode)
 		json.Unmarshal(ScheduledActivityCodeString, &o.ScheduledActivityCode)
@@ -221,31 +221,31 @@ func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Unmars
 	if SystemPresence, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 	if OrganizationSecondaryPresenceId, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["organizationSecondaryPresenceId"].(string); ok {
 		o.OrganizationSecondaryPresenceId = &OrganizationSecondaryPresenceId
 	}
-	
+    
 	if RoutingStatus, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["routingStatus"].(string); ok {
 		o.RoutingStatus = &RoutingStatus
 	}
-	
+    
 	if ActualActivityCategory, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["actualActivityCategory"].(string); ok {
 		o.ActualActivityCategory = &ActualActivityCategory
 	}
-	
+    
 	if IsOutOfOffice, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["isOutOfOffice"].(bool); ok {
 		o.IsOutOfOffice = &IsOutOfOffice
 	}
-	
+    
 	if AdherenceState, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["adherenceState"].(string); ok {
 		o.AdherenceState = &AdherenceState
 	}
-	
+    
 	if Impact, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["impact"].(string); ok {
 		o.Impact = &Impact
 	}
-	
+    
 	if AdherenceExplanation, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["adherenceExplanation"].(map[string]interface{}); ok {
 		AdherenceExplanationString, _ := json.Marshal(AdherenceExplanation)
 		json.Unmarshal(AdherenceExplanationString, &o.AdherenceExplanation)
@@ -274,7 +274,7 @@ func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Unmars
 	if RemovedFromManagementUnit, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["removedFromManagementUnit"].(bool); ok {
 		o.RemovedFromManagementUnit = &RemovedFromManagementUnit
 	}
-	
+    
 
 	return nil
 }

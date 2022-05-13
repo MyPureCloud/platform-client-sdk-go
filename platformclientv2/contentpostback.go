@@ -53,15 +53,15 @@ func (o *Contentpostback) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContentpostbackMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Text, ok := ContentpostbackMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := ContentpostbackMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 
 	return nil
 }

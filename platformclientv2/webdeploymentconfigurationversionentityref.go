@@ -61,19 +61,19 @@ func (o *Webdeploymentconfigurationversionentityref) UnmarshalJSON(b []byte) err
 	if Id, ok := WebdeploymentconfigurationversionentityrefMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WebdeploymentconfigurationversionentityrefMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := WebdeploymentconfigurationversionentityrefMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if Version, ok := WebdeploymentconfigurationversionentityrefMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 
 	return nil
 }

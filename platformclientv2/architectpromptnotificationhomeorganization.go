@@ -53,15 +53,15 @@ func (o *Architectpromptnotificationhomeorganization) UnmarshalJSON(b []byte) er
 	if Id, ok := ArchitectpromptnotificationhomeorganizationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectpromptnotificationhomeorganizationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ThirdPartyOrgName, ok := ArchitectpromptnotificationhomeorganizationMap["thirdPartyOrgName"].(string); ok {
 		o.ThirdPartyOrgName = &ThirdPartyOrgName
 	}
-	
+    
 
 	return nil
 }

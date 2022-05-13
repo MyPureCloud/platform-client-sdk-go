@@ -77,11 +77,11 @@ func (o *Planninggroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := PlanninggroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PlanninggroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ServiceGoalTemplate, ok := PlanninggroupMap["serviceGoalTemplate"].(map[string]interface{}); ok {
 		ServiceGoalTemplateString, _ := json.Marshal(ServiceGoalTemplate)
 		json.Unmarshal(ServiceGoalTemplateString, &o.ServiceGoalTemplate)
@@ -100,7 +100,7 @@ func (o *Planninggroup) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PlanninggroupMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

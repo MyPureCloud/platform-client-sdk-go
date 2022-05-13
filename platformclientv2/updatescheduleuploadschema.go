@@ -77,11 +77,11 @@ func (o *Updatescheduleuploadschema) UnmarshalJSON(b []byte) error {
 	if Description, ok := UpdatescheduleuploadschemaMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := UpdatescheduleuploadschemaMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if ShortTermForecast, ok := UpdatescheduleuploadschemaMap["shortTermForecast"].(map[string]interface{}); ok {
 		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
 		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)

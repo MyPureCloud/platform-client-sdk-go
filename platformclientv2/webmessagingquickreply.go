@@ -61,19 +61,19 @@ func (o *Webmessagingquickreply) UnmarshalJSON(b []byte) error {
 	if Text, ok := WebmessagingquickreplyMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := WebmessagingquickreplyMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 	if Image, ok := WebmessagingquickreplyMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Action, ok := WebmessagingquickreplyMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 
 	return nil
 }

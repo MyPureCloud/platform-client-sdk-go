@@ -61,15 +61,15 @@ func (o *Auditfilter) UnmarshalJSON(b []byte) error {
 	if Name, ok := AuditfilterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := AuditfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Operator, ok := AuditfilterMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Values, ok := AuditfilterMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

@@ -45,11 +45,11 @@ func (o *Domainphysicalcapabilities) UnmarshalJSON(b []byte) error {
 	if Vlan, ok := DomainphysicalcapabilitiesMap["vlan"].(bool); ok {
 		o.Vlan = &Vlan
 	}
-	
+    
 	if Team, ok := DomainphysicalcapabilitiesMap["team"].(bool); ok {
 		o.Team = &Team
 	}
-	
+    
 
 	return nil
 }

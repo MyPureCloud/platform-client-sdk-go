@@ -45,11 +45,11 @@ func (o *Coachingannotationcreaterequest) UnmarshalJSON(b []byte) error {
 	if Text, ok := CoachingannotationcreaterequestMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if AccessType, ok := CoachingannotationcreaterequestMap["accessType"].(string); ok {
 		o.AccessType = &AccessType
 	}
-	
+    
 
 	return nil
 }

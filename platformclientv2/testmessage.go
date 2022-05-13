@@ -94,7 +94,7 @@ func (o *Testmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := TestmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if To, ok := TestmessageMap["to"].([]interface{}); ok {
 		ToString, _ := json.Marshal(To)
 		json.Unmarshal(ToString, &o.To)
@@ -108,15 +108,15 @@ func (o *Testmessage) UnmarshalJSON(b []byte) error {
 	if Subject, ok := TestmessageMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if TextBody, ok := TestmessageMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if HtmlBody, ok := TestmessageMap["htmlBody"].(string); ok {
 		o.HtmlBody = &HtmlBody
 	}
-	
+    
 	if timeString, ok := TestmessageMap["time"].(string); ok {
 		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
 		o.Time = &Time

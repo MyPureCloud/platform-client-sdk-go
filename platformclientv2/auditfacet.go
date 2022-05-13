@@ -45,11 +45,11 @@ func (o *Auditfacet) UnmarshalJSON(b []byte) error {
 	if Name, ok := AuditfacetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := AuditfacetMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

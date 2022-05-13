@@ -53,7 +53,7 @@ func (o *Flowaggregatequeryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := FlowaggregatequeryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := FlowaggregatequeryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

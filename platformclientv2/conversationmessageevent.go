@@ -61,7 +61,7 @@ func (o *Conversationmessageevent) UnmarshalJSON(b []byte) error {
 	if EventType, ok := ConversationmessageeventMap["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 	if CoBrowse, ok := ConversationmessageeventMap["coBrowse"].(map[string]interface{}); ok {
 		CoBrowseString, _ := json.Marshal(CoBrowse)
 		json.Unmarshal(CoBrowseString, &o.CoBrowse)

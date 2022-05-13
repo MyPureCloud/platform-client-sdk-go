@@ -37,7 +37,7 @@ func (o *Scimserviceproviderconfigsimplefeature) UnmarshalJSON(b []byte) error {
 	if Supported, ok := ScimserviceproviderconfigsimplefeatureMap["supported"].(bool); ok {
 		o.Supported = &Supported
 	}
-	
+    
 
 	return nil
 }

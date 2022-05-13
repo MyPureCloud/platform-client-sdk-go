@@ -50,7 +50,7 @@ func (o *Scrollpercentageeventtrigger) UnmarshalJSON(b []byte) error {
 	if EventName, ok := ScrollpercentageeventtriggerMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 
 	return nil
 }

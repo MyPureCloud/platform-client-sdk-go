@@ -62,7 +62,7 @@ func (o *Propertyindexrequest) UnmarshalJSON(b []byte) error {
 	if SessionId, ok := PropertyindexrequestMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if targetDateString, ok := PropertyindexrequestMap["targetDate"].(string); ok {
 		TargetDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", targetDateString)
 		o.TargetDate = &TargetDate

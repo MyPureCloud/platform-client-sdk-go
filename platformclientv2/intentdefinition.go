@@ -61,7 +61,7 @@ func (o *Intentdefinition) UnmarshalJSON(b []byte) error {
 	if Name, ok := IntentdefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if EntityTypeBindings, ok := IntentdefinitionMap["entityTypeBindings"].([]interface{}); ok {
 		EntityTypeBindingsString, _ := json.Marshal(EntityTypeBindings)
 		json.Unmarshal(EntityTypeBindingsString, &o.EntityTypeBindings)

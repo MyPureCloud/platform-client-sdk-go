@@ -93,27 +93,27 @@ func (o *Contentoffer) UnmarshalJSON(b []byte) error {
 	if ImageUrl, ok := ContentofferMap["imageUrl"].(string); ok {
 		o.ImageUrl = &ImageUrl
 	}
-	
+    
 	if DisplayMode, ok := ContentofferMap["displayMode"].(string); ok {
 		o.DisplayMode = &DisplayMode
 	}
-	
+    
 	if LayoutMode, ok := ContentofferMap["layoutMode"].(string); ok {
 		o.LayoutMode = &LayoutMode
 	}
-	
+    
 	if Title, ok := ContentofferMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Headline, ok := ContentofferMap["headline"].(string); ok {
 		o.Headline = &Headline
 	}
-	
+    
 	if Body, ok := ContentofferMap["body"].(string); ok {
 		o.Body = &Body
 	}
-	
+    
 	if CallToAction, ok := ContentofferMap["callToAction"].(map[string]interface{}); ok {
 		CallToActionString, _ := json.Marshal(CallToAction)
 		json.Unmarshal(CallToActionString, &o.CallToAction)

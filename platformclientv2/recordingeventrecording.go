@@ -77,15 +77,15 @@ func (o *Recordingeventrecording) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecordingeventrecordingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ConversationId, ok := RecordingeventrecordingMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if FileState, ok := RecordingeventrecordingMap["fileState"].(string); ok {
 		o.FileState = &FileState
 	}
-	
+    
 	if MediaUris, ok := RecordingeventrecordingMap["mediaUris"].([]interface{}); ok {
 		MediaUrisString, _ := json.Marshal(MediaUris)
 		json.Unmarshal(MediaUrisString, &o.MediaUris)

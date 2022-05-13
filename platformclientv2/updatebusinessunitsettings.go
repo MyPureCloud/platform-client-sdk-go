@@ -69,11 +69,11 @@ func (o *Updatebusinessunitsettings) UnmarshalJSON(b []byte) error {
 	if StartDayOfWeek, ok := UpdatebusinessunitsettingsMap["startDayOfWeek"].(string); ok {
 		o.StartDayOfWeek = &StartDayOfWeek
 	}
-	
+    
 	if TimeZone, ok := UpdatebusinessunitsettingsMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if ShortTermForecasting, ok := UpdatebusinessunitsettingsMap["shortTermForecasting"].(map[string]interface{}); ok {
 		ShortTermForecastingString, _ := json.Marshal(ShortTermForecasting)
 		json.Unmarshal(ShortTermForecastingString, &o.ShortTermForecasting)

@@ -126,15 +126,15 @@ func (o *Integrationevent) UnmarshalJSON(b []byte) error {
 	if Id, ok := IntegrationeventMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := IntegrationeventMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if CorrelationId, ok := IntegrationeventMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if timestampString, ok := IntegrationeventMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
@@ -143,11 +143,11 @@ func (o *Integrationevent) UnmarshalJSON(b []byte) error {
 	if Level, ok := IntegrationeventMap["level"].(string); ok {
 		o.Level = &Level
 	}
-	
+    
 	if EventCode, ok := IntegrationeventMap["eventCode"].(string); ok {
 		o.EventCode = &EventCode
 	}
-	
+    
 	if Message, ok := IntegrationeventMap["message"].(map[string]interface{}); ok {
 		MessageString, _ := json.Marshal(Message)
 		json.Unmarshal(MessageString, &o.Message)

@@ -45,11 +45,11 @@ func (o *Limit) UnmarshalJSON(b []byte) error {
 	if Key, ok := LimitMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if Value, ok := LimitMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

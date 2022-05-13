@@ -129,23 +129,23 @@ func (o *Interactionstatsrulecontainer) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := InteractionstatsrulecontainerMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := InteractionstatsrulecontainerMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := InteractionstatsrulecontainerMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := InteractionstatsrulecontainerMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := InteractionstatsrulecontainerMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := InteractionstatsrulecontainerMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

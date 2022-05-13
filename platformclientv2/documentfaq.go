@@ -53,11 +53,11 @@ func (o *Documentfaq) UnmarshalJSON(b []byte) error {
 	if Question, ok := DocumentfaqMap["question"].(string); ok {
 		o.Question = &Question
 	}
-	
+    
 	if Answer, ok := DocumentfaqMap["answer"].(string); ok {
 		o.Answer = &Answer
 	}
-	
+    
 	if Alternatives, ok := DocumentfaqMap["alternatives"].([]interface{}); ok {
 		AlternativesString, _ := json.Marshal(Alternatives)
 		json.Unmarshal(AlternativesString, &o.Alternatives)

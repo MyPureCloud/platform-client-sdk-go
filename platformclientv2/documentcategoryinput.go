@@ -37,7 +37,7 @@ func (o *Documentcategoryinput) UnmarshalJSON(b []byte) error {
 	if Id, ok := DocumentcategoryinputMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

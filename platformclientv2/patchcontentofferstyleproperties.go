@@ -53,15 +53,15 @@ func (o *Patchcontentofferstyleproperties) UnmarshalJSON(b []byte) error {
 	if Padding, ok := PatchcontentofferstylepropertiesMap["padding"].(string); ok {
 		o.Padding = &Padding
 	}
-	
+    
 	if Color, ok := PatchcontentofferstylepropertiesMap["color"].(string); ok {
 		o.Color = &Color
 	}
-	
+    
 	if BackgroundColor, ok := PatchcontentofferstylepropertiesMap["backgroundColor"].(string); ok {
 		o.BackgroundColor = &BackgroundColor
 	}
-	
+    
 
 	return nil
 }

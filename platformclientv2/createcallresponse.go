@@ -53,15 +53,15 @@ func (o *Createcallresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := CreatecallresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CreatecallresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := CreatecallresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

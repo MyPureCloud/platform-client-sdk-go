@@ -37,7 +37,7 @@ func (o *Namedentityannotation) UnmarshalJSON(b []byte) error {
 	if Name, ok := NamedentityannotationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

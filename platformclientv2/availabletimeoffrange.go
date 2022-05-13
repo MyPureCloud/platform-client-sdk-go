@@ -95,7 +95,7 @@ func (o *Availabletimeoffrange) UnmarshalJSON(b []byte) error {
 	if Granularity, ok := AvailabletimeoffrangeMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if AvailableMinutesPerInterval, ok := AvailabletimeoffrangeMap["availableMinutesPerInterval"].([]interface{}); ok {
 		AvailableMinutesPerIntervalString, _ := json.Marshal(AvailableMinutesPerInterval)
 		json.Unmarshal(AvailableMinutesPerIntervalString, &o.AvailableMinutesPerInterval)
@@ -109,7 +109,7 @@ func (o *Availabletimeoffrange) UnmarshalJSON(b []byte) error {
 	if WaitlistEnabled, ok := AvailabletimeoffrangeMap["waitlistEnabled"].(bool); ok {
 		o.WaitlistEnabled = &WaitlistEnabled
 	}
-	
+    
 
 	return nil
 }

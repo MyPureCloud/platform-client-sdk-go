@@ -93,15 +93,15 @@ func (o *Createuser) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreateuserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Department, ok := CreateuserMap["department"].(string); ok {
 		o.Department = &Department
 	}
-	
+    
 	if Email, ok := CreateuserMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if Addresses, ok := CreateuserMap["addresses"].([]interface{}); ok {
 		AddressesString, _ := json.Marshal(Addresses)
 		json.Unmarshal(AddressesString, &o.Addresses)
@@ -110,19 +110,19 @@ func (o *Createuser) UnmarshalJSON(b []byte) error {
 	if Title, ok := CreateuserMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Password, ok := CreateuserMap["password"].(string); ok {
 		o.Password = &Password
 	}
-	
+    
 	if DivisionId, ok := CreateuserMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if State, ok := CreateuserMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 
 	return nil
 }

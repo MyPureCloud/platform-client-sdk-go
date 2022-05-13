@@ -74,7 +74,7 @@ func (o *Createpredictorrequest) UnmarshalJSON(b []byte) error {
 	if Kpi, ok := CreatepredictorrequestMap["kpi"].(string); ok {
 		o.Kpi = &Kpi
 	}
-	
+    
 	if RoutingTimeoutSeconds, ok := CreatepredictorrequestMap["routingTimeoutSeconds"].(float64); ok {
 		RoutingTimeoutSecondsInt := int(RoutingTimeoutSeconds)
 		o.RoutingTimeoutSeconds = &RoutingTimeoutSecondsInt

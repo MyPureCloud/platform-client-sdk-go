@@ -93,7 +93,7 @@ func (o *Contentqueryrequest) UnmarshalJSON(b []byte) error {
 	if QueryPhrase, ok := ContentqueryrequestMap["queryPhrase"].(string); ok {
 		o.QueryPhrase = &QueryPhrase
 	}
-	
+    
 	if PageNumber, ok := ContentqueryrequestMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
@@ -127,7 +127,7 @@ func (o *Contentqueryrequest) UnmarshalJSON(b []byte) error {
 	if IncludeShares, ok := ContentqueryrequestMap["includeShares"].(bool); ok {
 		o.IncludeShares = &IncludeShares
 	}
-	
+    
 
 	return nil
 }

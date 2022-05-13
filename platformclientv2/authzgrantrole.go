@@ -77,15 +77,15 @@ func (o *Authzgrantrole) UnmarshalJSON(b []byte) error {
 	if Id, ok := AuthzgrantroleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AuthzgrantroleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := AuthzgrantroleMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Policies, ok := AuthzgrantroleMap["policies"].([]interface{}); ok {
 		PoliciesString, _ := json.Marshal(Policies)
 		json.Unmarshal(PoliciesString, &o.Policies)
@@ -94,11 +94,11 @@ func (o *Authzgrantrole) UnmarshalJSON(b []byte) error {
 	if VarDefault, ok := AuthzgrantroleMap["default"].(bool); ok {
 		o.VarDefault = &VarDefault
 	}
-	
+    
 	if SelfUri, ok := AuthzgrantroleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

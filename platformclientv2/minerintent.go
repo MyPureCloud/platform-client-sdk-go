@@ -77,11 +77,11 @@ func (o *Minerintent) UnmarshalJSON(b []byte) error {
 	if Id, ok := MinerintentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MinerintentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Miner, ok := MinerintentMap["miner"].(map[string]interface{}); ok {
 		MinerString, _ := json.Marshal(Miner)
 		json.Unmarshal(MinerString, &o.Miner)
@@ -95,11 +95,11 @@ func (o *Minerintent) UnmarshalJSON(b []byte) error {
 	if AnalyticVolumePercent, ok := MinerintentMap["analyticVolumePercent"].(float64); ok {
 		o.AnalyticVolumePercent = &AnalyticVolumePercent
 	}
-	
+    
 	if SelfUri, ok := MinerintentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

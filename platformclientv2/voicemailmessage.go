@@ -214,7 +214,7 @@ func (o *Voicemailmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := VoicemailmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Conversation, ok := VoicemailmessageMap["conversation"].(map[string]interface{}); ok {
 		ConversationString, _ := json.Marshal(Conversation)
 		json.Unmarshal(ConversationString, &o.Conversation)
@@ -223,7 +223,7 @@ func (o *Voicemailmessage) UnmarshalJSON(b []byte) error {
 	if Read, ok := VoicemailmessageMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if AudioRecordingDurationSeconds, ok := VoicemailmessageMap["audioRecordingDurationSeconds"].(float64); ok {
 		AudioRecordingDurationSecondsInt := int(AudioRecordingDurationSeconds)
 		o.AudioRecordingDurationSeconds = &AudioRecordingDurationSecondsInt
@@ -252,11 +252,11 @@ func (o *Voicemailmessage) UnmarshalJSON(b []byte) error {
 	if CallerAddress, ok := VoicemailmessageMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if CallerName, ok := VoicemailmessageMap["callerName"].(string); ok {
 		o.CallerName = &CallerName
 	}
-	
+    
 	if CallerUser, ok := VoicemailmessageMap["callerUser"].(map[string]interface{}); ok {
 		CallerUserString, _ := json.Marshal(CallerUser)
 		json.Unmarshal(CallerUserString, &o.CallerUser)
@@ -265,11 +265,11 @@ func (o *Voicemailmessage) UnmarshalJSON(b []byte) error {
 	if Deleted, ok := VoicemailmessageMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-	
+    
 	if Note, ok := VoicemailmessageMap["note"].(string); ok {
 		o.Note = &Note
 	}
-	
+    
 	if User, ok := VoicemailmessageMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -303,7 +303,7 @@ func (o *Voicemailmessage) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := VoicemailmessageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

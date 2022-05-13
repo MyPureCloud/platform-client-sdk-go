@@ -45,7 +45,7 @@ func (o *Conversationbuttoncomponent) UnmarshalJSON(b []byte) error {
 	if Title, ok := ConversationbuttoncomponentMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Actions, ok := ConversationbuttoncomponentMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

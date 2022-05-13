@@ -37,7 +37,7 @@ func (o *Wfmmoveagentscompletetopicuserreference) UnmarshalJSON(b []byte) error 
 	if Id, ok := WfmmoveagentscompletetopicuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

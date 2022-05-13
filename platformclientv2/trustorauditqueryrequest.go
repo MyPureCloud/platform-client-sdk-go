@@ -102,7 +102,7 @@ func (o *Trustorauditqueryrequest) UnmarshalJSON(b []byte) error {
 	if TrustorOrganizationId, ok := TrustorauditqueryrequestMap["trustorOrganizationId"].(string); ok {
 		o.TrustorOrganizationId = &TrustorOrganizationId
 	}
-	
+    
 	if TrusteeUserIds, ok := TrustorauditqueryrequestMap["trusteeUserIds"].([]interface{}); ok {
 		TrusteeUserIdsString, _ := json.Marshal(TrusteeUserIds)
 		json.Unmarshal(TrusteeUserIdsString, &o.TrusteeUserIds)
@@ -121,7 +121,7 @@ func (o *Trustorauditqueryrequest) UnmarshalJSON(b []byte) error {
 	if QueryPhrase, ok := TrustorauditqueryrequestMap["queryPhrase"].(string); ok {
 		o.QueryPhrase = &QueryPhrase
 	}
-	
+    
 	if Facets, ok := TrustorauditqueryrequestMap["facets"].([]interface{}); ok {
 		FacetsString, _ := json.Marshal(Facets)
 		json.Unmarshal(FacetsString, &o.Facets)

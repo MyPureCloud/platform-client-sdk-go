@@ -61,11 +61,11 @@ func (o *Cloneduser) UnmarshalJSON(b []byte) error {
 	if Id, ok := CloneduserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CloneduserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Trustor, ok := CloneduserMap["trustor"].(map[string]interface{}); ok {
 		TrustorString, _ := json.Marshal(Trustor)
 		json.Unmarshal(TrustorString, &o.Trustor)
@@ -74,7 +74,7 @@ func (o *Cloneduser) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CloneduserMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

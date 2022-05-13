@@ -126,11 +126,11 @@ func (o *Survey) UnmarshalJSON(b []byte) error {
 	if Id, ok := SurveyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SurveyMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Conversation, ok := SurveyMap["conversation"].(map[string]interface{}); ok {
 		ConversationString, _ := json.Marshal(Conversation)
 		json.Unmarshal(ConversationString, &o.Conversation)
@@ -149,7 +149,7 @@ func (o *Survey) UnmarshalJSON(b []byte) error {
 	if Status, ok := SurveyMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Queue, ok := SurveyMap["queue"].(map[string]interface{}); ok {
 		QueueString, _ := json.Marshal(Queue)
 		json.Unmarshal(QueueString, &o.Queue)
@@ -173,7 +173,7 @@ func (o *Survey) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SurveyMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Embeddedintegration) UnmarshalJSON(b []byte) error {
 	if EnableWhitelist, ok := EmbeddedintegrationMap["enableWhitelist"].(bool); ok {
 		o.EnableWhitelist = &EnableWhitelist
 	}
-	
+    
 	if DomainWhitelist, ok := EmbeddedintegrationMap["domainWhitelist"].([]interface{}); ok {
 		DomainWhitelistString, _ := json.Marshal(DomainWhitelist)
 		json.Unmarshal(DomainWhitelistString, &o.DomainWhitelist)

@@ -53,11 +53,11 @@ func (o *Downloadresponse) UnmarshalJSON(b []byte) error {
 	if ContentLocationUri, ok := DownloadresponseMap["contentLocationUri"].(string); ok {
 		o.ContentLocationUri = &ContentLocationUri
 	}
-	
+    
 	if ImageUri, ok := DownloadresponseMap["imageUri"].(string); ok {
 		o.ImageUri = &ImageUri
 	}
-	
+    
 	if Thumbnails, ok := DownloadresponseMap["thumbnails"].([]interface{}); ok {
 		ThumbnailsString, _ := json.Marshal(Thumbnails)
 		json.Unmarshal(ThumbnailsString, &o.Thumbnails)

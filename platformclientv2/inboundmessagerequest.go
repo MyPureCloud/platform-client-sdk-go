@@ -125,15 +125,15 @@ func (o *Inboundmessagerequest) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := InboundmessagerequestMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if FlowId, ok := InboundmessagerequestMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if Provider, ok := InboundmessagerequestMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if SkillIds, ok := InboundmessagerequestMap["skillIds"].([]interface{}); ok {
 		SkillIdsString, _ := json.Marshal(SkillIds)
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
@@ -142,7 +142,7 @@ func (o *Inboundmessagerequest) UnmarshalJSON(b []byte) error {
 	if LanguageId, ok := InboundmessagerequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}
-	
+    
 	if Priority, ok := InboundmessagerequestMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
@@ -156,23 +156,23 @@ func (o *Inboundmessagerequest) UnmarshalJSON(b []byte) error {
 	if ToAddress, ok := InboundmessagerequestMap["toAddress"].(string); ok {
 		o.ToAddress = &ToAddress
 	}
-	
+    
 	if ToName, ok := InboundmessagerequestMap["toName"].(string); ok {
 		o.ToName = &ToName
 	}
-	
+    
 	if FromAddress, ok := InboundmessagerequestMap["fromAddress"].(string); ok {
 		o.FromAddress = &FromAddress
 	}
-	
+    
 	if FromName, ok := InboundmessagerequestMap["fromName"].(string); ok {
 		o.FromName = &FromName
 	}
-	
+    
 	if Subject, ok := InboundmessagerequestMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 
 	return nil
 }

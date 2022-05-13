@@ -85,11 +85,11 @@ func (o *Whatsappintegrationrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := WhatsappintegrationrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WhatsappintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := WhatsappintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -103,15 +103,15 @@ func (o *Whatsappintegrationrequest) UnmarshalJSON(b []byte) error {
 	if PhoneNumber, ok := WhatsappintegrationrequestMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if WabaCertificate, ok := WhatsappintegrationrequestMap["wabaCertificate"].(string); ok {
 		o.WabaCertificate = &WabaCertificate
 	}
-	
+    
 	if SelfUri, ok := WhatsappintegrationrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

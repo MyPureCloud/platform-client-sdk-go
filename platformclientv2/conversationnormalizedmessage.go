@@ -125,7 +125,7 @@ func (o *Conversationnormalizedmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationnormalizedmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Channel, ok := ConversationnormalizedmessageMap["channel"].(map[string]interface{}); ok {
 		ChannelString, _ := json.Marshal(Channel)
 		json.Unmarshal(ChannelString, &o.Channel)
@@ -134,11 +134,11 @@ func (o *Conversationnormalizedmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationnormalizedmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := ConversationnormalizedmessageMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Content, ok := ConversationnormalizedmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)
@@ -152,7 +152,7 @@ func (o *Conversationnormalizedmessage) UnmarshalJSON(b []byte) error {
 	if Status, ok := ConversationnormalizedmessageMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Reasons, ok := ConversationnormalizedmessageMap["reasons"].([]interface{}); ok {
 		ReasonsString, _ := json.Marshal(Reasons)
 		json.Unmarshal(ReasonsString, &o.Reasons)
@@ -161,15 +161,15 @@ func (o *Conversationnormalizedmessage) UnmarshalJSON(b []byte) error {
 	if OriginatingEntity, ok := ConversationnormalizedmessageMap["originatingEntity"].(string); ok {
 		o.OriginatingEntity = &OriginatingEntity
 	}
-	
+    
 	if IsFinalReceipt, ok := ConversationnormalizedmessageMap["isFinalReceipt"].(bool); ok {
 		o.IsFinalReceipt = &IsFinalReceipt
 	}
-	
+    
 	if Direction, ok := ConversationnormalizedmessageMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Metadata, ok := ConversationnormalizedmessageMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

@@ -109,39 +109,39 @@ func (o *Journeywebeventsnotificationpage) UnmarshalJSON(b []byte) error {
 	if Url, ok := JourneywebeventsnotificationpageMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Title, ok := JourneywebeventsnotificationpageMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Domain, ok := JourneywebeventsnotificationpageMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if Fragment, ok := JourneywebeventsnotificationpageMap["fragment"].(string); ok {
 		o.Fragment = &Fragment
 	}
-	
+    
 	if Hostname, ok := JourneywebeventsnotificationpageMap["hostname"].(string); ok {
 		o.Hostname = &Hostname
 	}
-	
+    
 	if Keywords, ok := JourneywebeventsnotificationpageMap["keywords"].(string); ok {
 		o.Keywords = &Keywords
 	}
-	
+    
 	if Lang, ok := JourneywebeventsnotificationpageMap["lang"].(string); ok {
 		o.Lang = &Lang
 	}
-	
+    
 	if Pathname, ok := JourneywebeventsnotificationpageMap["pathname"].(string); ok {
 		o.Pathname = &Pathname
 	}
-	
+    
 	if QueryString, ok := JourneywebeventsnotificationpageMap["queryString"].(string); ok {
 		o.QueryString = &QueryString
 	}
-	
+    
 	if Breadcrumb, ok := JourneywebeventsnotificationpageMap["breadcrumb"].([]interface{}); ok {
 		BreadcrumbString, _ := json.Marshal(Breadcrumb)
 		json.Unmarshal(BreadcrumbString, &o.Breadcrumb)

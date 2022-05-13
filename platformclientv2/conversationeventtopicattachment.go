@@ -69,19 +69,19 @@ func (o *Conversationeventtopicattachment) UnmarshalJSON(b []byte) error {
 	if AttachmentId, ok := ConversationeventtopicattachmentMap["attachmentId"].(string); ok {
 		o.AttachmentId = &AttachmentId
 	}
-	
+    
 	if Name, ok := ConversationeventtopicattachmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContentUri, ok := ConversationeventtopicattachmentMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if ContentType, ok := ConversationeventtopicattachmentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := ConversationeventtopicattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt

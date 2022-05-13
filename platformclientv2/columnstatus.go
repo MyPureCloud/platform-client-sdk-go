@@ -37,7 +37,7 @@ func (o *Columnstatus) UnmarshalJSON(b []byte) error {
 	if Contactable, ok := ColumnstatusMap["contactable"].(bool); ok {
 		o.Contactable = &Contactable
 	}
-	
+    
 
 	return nil
 }

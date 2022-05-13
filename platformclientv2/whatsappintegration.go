@@ -190,11 +190,11 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	if Id, ok := WhatsappintegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WhatsappintegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := WhatsappintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -208,7 +208,7 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	if PhoneNumber, ok := WhatsappintegrationMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if AvailablePhoneNumbers, ok := WhatsappintegrationMap["availablePhoneNumbers"].(map[string]interface{}); ok {
 		AvailablePhoneNumbersString, _ := json.Marshal(AvailablePhoneNumbers)
 		json.Unmarshal(AvailablePhoneNumbersString, &o.AvailablePhoneNumbers)
@@ -217,7 +217,7 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	if Status, ok := WhatsappintegrationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Recipient, ok := WhatsappintegrationMap["recipient"].(map[string]interface{}); ok {
 		RecipientString, _ := json.Marshal(Recipient)
 		json.Unmarshal(RecipientString, &o.Recipient)
@@ -251,7 +251,7 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	if ActivationStatusCode, ok := WhatsappintegrationMap["activationStatusCode"].(string); ok {
 		o.ActivationStatusCode = &ActivationStatusCode
 	}
-	
+    
 	if ActivationErrorInfo, ok := WhatsappintegrationMap["activationErrorInfo"].(map[string]interface{}); ok {
 		ActivationErrorInfoString, _ := json.Marshal(ActivationErrorInfo)
 		json.Unmarshal(ActivationErrorInfoString, &o.ActivationErrorInfo)
@@ -260,7 +260,7 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	if CreateStatus, ok := WhatsappintegrationMap["createStatus"].(string); ok {
 		o.CreateStatus = &CreateStatus
 	}
-	
+    
 	if CreateError, ok := WhatsappintegrationMap["createError"].(map[string]interface{}); ok {
 		CreateErrorString, _ := json.Marshal(CreateError)
 		json.Unmarshal(CreateErrorString, &o.CreateError)
@@ -269,7 +269,7 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WhatsappintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

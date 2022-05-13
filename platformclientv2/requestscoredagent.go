@@ -45,7 +45,7 @@ func (o *Requestscoredagent) UnmarshalJSON(b []byte) error {
 	if Id, ok := RequestscoredagentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Score, ok := RequestscoredagentMap["score"].(float64); ok {
 		ScoreInt := int(Score)
 		o.Score = &ScoreInt

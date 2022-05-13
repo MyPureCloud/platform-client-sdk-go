@@ -61,19 +61,19 @@ func (o *Employerinfo) UnmarshalJSON(b []byte) error {
 	if OfficialName, ok := EmployerinfoMap["officialName"].(string); ok {
 		o.OfficialName = &OfficialName
 	}
-	
+    
 	if EmployeeId, ok := EmployerinfoMap["employeeId"].(string); ok {
 		o.EmployeeId = &EmployeeId
 	}
-	
+    
 	if EmployeeType, ok := EmployerinfoMap["employeeType"].(string); ok {
 		o.EmployeeType = &EmployeeType
 	}
-	
+    
 	if DateHire, ok := EmployerinfoMap["dateHire"].(string); ok {
 		o.DateHire = &DateHire
 	}
-	
+    
 
 	return nil
 }

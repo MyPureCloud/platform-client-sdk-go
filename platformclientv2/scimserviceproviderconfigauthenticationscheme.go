@@ -77,27 +77,27 @@ func (o *Scimserviceproviderconfigauthenticationscheme) UnmarshalJSON(b []byte) 
 	if Name, ok := ScimserviceproviderconfigauthenticationschemeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ScimserviceproviderconfigauthenticationschemeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SpecUri, ok := ScimserviceproviderconfigauthenticationschemeMap["specUri"].(string); ok {
 		o.SpecUri = &SpecUri
 	}
-	
+    
 	if DocumentationUri, ok := ScimserviceproviderconfigauthenticationschemeMap["documentationUri"].(string); ok {
 		o.DocumentationUri = &DocumentationUri
 	}
-	
+    
 	if VarType, ok := ScimserviceproviderconfigauthenticationschemeMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Primary, ok := ScimserviceproviderconfigauthenticationschemeMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 
 	return nil
 }

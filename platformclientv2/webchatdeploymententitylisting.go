@@ -63,7 +63,7 @@ func (o *Webchatdeploymententitylisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WebchatdeploymententitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

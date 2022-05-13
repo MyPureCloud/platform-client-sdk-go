@@ -150,15 +150,15 @@ func (o *Conversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ExternalTag, ok := ConversationMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 	if startTimeString, ok := ConversationMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -172,7 +172,7 @@ func (o *Conversation) UnmarshalJSON(b []byte) error {
 	if Address, ok := ConversationMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Participants, ok := ConversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
@@ -191,11 +191,11 @@ func (o *Conversation) UnmarshalJSON(b []byte) error {
 	if RecordingState, ok := ConversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if State, ok := ConversationMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Divisions, ok := ConversationMap["divisions"].([]interface{}); ok {
 		DivisionsString, _ := json.Marshal(Divisions)
 		json.Unmarshal(DivisionsString, &o.Divisions)
@@ -204,7 +204,7 @@ func (o *Conversation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ConversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

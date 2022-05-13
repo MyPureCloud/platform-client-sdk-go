@@ -63,7 +63,7 @@ func (o *Assessmentjoblisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AssessmentjoblistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

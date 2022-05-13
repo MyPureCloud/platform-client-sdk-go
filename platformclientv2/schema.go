@@ -69,11 +69,11 @@ func (o *Schema) UnmarshalJSON(b []byte) error {
 	if Title, ok := SchemaMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := SchemaMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if VarType, ok := SchemaMap["type"].([]interface{}); ok {
 		VarTypeString, _ := json.Marshal(VarType)
 		json.Unmarshal(VarTypeString, &o.VarType)
@@ -87,7 +87,7 @@ func (o *Schema) UnmarshalJSON(b []byte) error {
 	if Pattern, ok := SchemaMap["pattern"].(string); ok {
 		o.Pattern = &Pattern
 	}
-	
+    
 
 	return nil
 }

@@ -53,15 +53,15 @@ func (o *Writabledivision) UnmarshalJSON(b []byte) error {
 	if Id, ok := WritabledivisionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WritabledivisionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := WritabledivisionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

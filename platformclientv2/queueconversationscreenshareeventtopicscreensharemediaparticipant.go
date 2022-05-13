@@ -374,15 +374,15 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if Id, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -406,31 +406,31 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if Purpose, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -469,7 +469,7 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if WrapupSkipped, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -478,7 +478,7 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if Provider, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -502,15 +502,15 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if Peer, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -529,7 +529,7 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if Context, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["context"].(string); ok {
 		o.Context = &Context
 	}
-	
+    
 	if PeerCount, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["peerCount"].(float64); ok {
 		PeerCountInt := int(PeerCount)
 		o.PeerCount = &PeerCountInt
@@ -538,7 +538,7 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if Sharing, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["sharing"].(bool); ok {
 		o.Sharing = &Sharing
 	}
-	
+    
 
 	return nil
 }

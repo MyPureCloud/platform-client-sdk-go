@@ -70,7 +70,7 @@ func (o *Journeyoutcomeeventsnotificationoutcometouchpoint) UnmarshalJSON(b []by
 	if Id, ok := JourneyoutcomeeventsnotificationoutcometouchpointMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Channels, ok := JourneyoutcomeeventsnotificationoutcometouchpointMap["channels"].([]interface{}); ok {
 		ChannelsString, _ := json.Marshal(Channels)
 		json.Unmarshal(ChannelsString, &o.Channels)

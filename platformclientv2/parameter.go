@@ -61,19 +61,19 @@ func (o *Parameter) UnmarshalJSON(b []byte) error {
 	if Name, ok := ParameterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ParameterType, ok := ParameterMap["parameterType"].(string); ok {
 		o.ParameterType = &ParameterType
 	}
-	
+    
 	if Domain, ok := ParameterMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if Required, ok := ParameterMap["required"].(bool); ok {
 		o.Required = &Required
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Supportcentermodulesetting) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SupportcentermodulesettingMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Enabled, ok := SupportcentermodulesettingMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

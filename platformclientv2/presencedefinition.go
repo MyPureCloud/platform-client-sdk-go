@@ -53,15 +53,15 @@ func (o *Presencedefinition) UnmarshalJSON(b []byte) error {
 	if Id, ok := PresencedefinitionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SystemPresence, ok := PresencedefinitionMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 	if SelfUri, ok := PresencedefinitionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

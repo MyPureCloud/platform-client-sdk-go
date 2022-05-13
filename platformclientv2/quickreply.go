@@ -69,23 +69,23 @@ func (o *Quickreply) UnmarshalJSON(b []byte) error {
 	if Text, ok := QuickreplyMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := QuickreplyMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 	if Url, ok := QuickreplyMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Action, ok := QuickreplyMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if IsSelected, ok := QuickreplyMap["isSelected"].(bool); ok {
 		o.IsSelected = &IsSelected
 	}
-	
+    
 
 	return nil
 }

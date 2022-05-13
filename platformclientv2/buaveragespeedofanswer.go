@@ -45,7 +45,7 @@ func (o *Buaveragespeedofanswer) UnmarshalJSON(b []byte) error {
 	if Include, ok := BuaveragespeedofanswerMap["include"].(bool); ok {
 		o.Include = &Include
 	}
-	
+    
 	if Seconds, ok := BuaveragespeedofanswerMap["seconds"].(float64); ok {
 		SecondsInt := int(Seconds)
 		o.Seconds = &SecondsInt

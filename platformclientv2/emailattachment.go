@@ -69,19 +69,19 @@ func (o *Emailattachment) UnmarshalJSON(b []byte) error {
 	if Name, ok := EmailattachmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContentPath, ok := EmailattachmentMap["contentPath"].(string); ok {
 		o.ContentPath = &ContentPath
 	}
-	
+    
 	if ContentType, ok := EmailattachmentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if AttachmentId, ok := EmailattachmentMap["attachmentId"].(string); ok {
 		o.AttachmentId = &AttachmentId
 	}
-	
+    
 	if ContentLength, ok := EmailattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt

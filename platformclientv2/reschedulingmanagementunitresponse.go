@@ -50,7 +50,7 @@ func (o *Reschedulingmanagementunitresponse) UnmarshalJSON(b []byte) error {
 	if Applied, ok := ReschedulingmanagementunitresponseMap["applied"].(bool); ok {
 		o.Applied = &Applied
 	}
-	
+    
 
 	return nil
 }

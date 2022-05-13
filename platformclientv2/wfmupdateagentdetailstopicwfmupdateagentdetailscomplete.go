@@ -37,7 +37,7 @@ func (o *Wfmupdateagentdetailstopicwfmupdateagentdetailscomplete) UnmarshalJSON(
 	if Status, ok := WfmupdateagentdetailstopicwfmupdateagentdetailscompleteMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

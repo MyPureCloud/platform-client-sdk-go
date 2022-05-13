@@ -77,15 +77,15 @@ func (o *Createmanagementunitapirequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreatemanagementunitapirequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if TimeZone, ok := CreatemanagementunitapirequestMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if StartDayOfWeek, ok := CreatemanagementunitapirequestMap["startDayOfWeek"].(string); ok {
 		o.StartDayOfWeek = &StartDayOfWeek
 	}
-	
+    
 	if Settings, ok := CreatemanagementunitapirequestMap["settings"].(map[string]interface{}); ok {
 		SettingsString, _ := json.Marshal(Settings)
 		json.Unmarshal(SettingsString, &o.Settings)
@@ -94,11 +94,11 @@ func (o *Createmanagementunitapirequest) UnmarshalJSON(b []byte) error {
 	if DivisionId, ok := CreatemanagementunitapirequestMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if BusinessUnitId, ok := CreatemanagementunitapirequestMap["businessUnitId"].(string); ok {
 		o.BusinessUnitId = &BusinessUnitId
 	}
-	
+    
 
 	return nil
 }

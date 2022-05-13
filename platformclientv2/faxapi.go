@@ -32,8 +32,6 @@ func NewFaxApiWithConfig(config *Configuration) *FaxApi {
 // DeleteFaxDocument invokes DELETE /api/v2/fax/documents/{documentId}
 //
 // Delete a fax document.
-//
-// 
 func (a FaxApi) DeleteFaxDocument(documentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a FaxApi) DeleteFaxDocument(documentId string) (*APIResponse, error) {
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'documentId' when calling FaxApi->DeleteFaxDocument")
 	}
 
@@ -98,8 +96,6 @@ func (a FaxApi) DeleteFaxDocument(documentId string) (*APIResponse, error) {
 // GetFaxDocument invokes GET /api/v2/fax/documents/{documentId}
 //
 // Get a document.
-//
-// 
 func (a FaxApi) GetFaxDocument(documentId string) (*Faxdocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a FaxApi) GetFaxDocument(documentId string) (*Faxdocument, *APIResponse, e
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling FaxApi->GetFaxDocument")
 	}
 
@@ -171,8 +167,6 @@ func (a FaxApi) GetFaxDocument(documentId string) (*Faxdocument, *APIResponse, e
 // GetFaxDocumentContent invokes GET /api/v2/fax/documents/{documentId}/content
 //
 // Download a fax document.
-//
-// 
 func (a FaxApi) GetFaxDocumentContent(documentId string) (*Downloadresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -185,7 +179,7 @@ func (a FaxApi) GetFaxDocumentContent(documentId string) (*Downloadresponse, *AP
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling FaxApi->GetFaxDocumentContent")
 	}
 
@@ -244,8 +238,6 @@ func (a FaxApi) GetFaxDocumentContent(documentId string) (*Downloadresponse, *AP
 // GetFaxDocuments invokes GET /api/v2/fax/documents
 //
 // Get a list of fax documents.
-//
-// 
 func (a FaxApi) GetFaxDocuments(pageSize int, pageNumber int) (*Faxdocumententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -315,8 +307,6 @@ func (a FaxApi) GetFaxDocuments(pageSize int, pageNumber int) (*Faxdocumententit
 // GetFaxSummary invokes GET /api/v2/fax/summary
 //
 // Get fax summary
-//
-// 
 func (a FaxApi) GetFaxSummary() (*Faxsummary, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -382,8 +372,6 @@ func (a FaxApi) GetFaxSummary() (*Faxsummary, *APIResponse, error) {
 // PutFaxDocument invokes PUT /api/v2/fax/documents/{documentId}
 //
 // Update a fax document.
-//
-// 
 func (a FaxApi) PutFaxDocument(documentId string, body Faxdocument) (*Faxdocument, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -396,12 +384,12 @@ func (a FaxApi) PutFaxDocument(documentId string, body Faxdocument) (*Faxdocumen
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling FaxApi->PutFaxDocument")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling FaxApi->PutFaxDocument")
 	}
 

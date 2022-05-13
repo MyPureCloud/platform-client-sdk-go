@@ -50,7 +50,7 @@ func (o *Archiveretention) UnmarshalJSON(b []byte) error {
 	if StorageMedium, ok := ArchiveretentionMap["storageMedium"].(string); ok {
 		o.StorageMedium = &StorageMedium
 	}
-	
+    
 
 	return nil
 }

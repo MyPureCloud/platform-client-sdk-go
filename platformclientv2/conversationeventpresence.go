@@ -37,7 +37,7 @@ func (o *Conversationeventpresence) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationeventpresenceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

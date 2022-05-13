@@ -61,15 +61,15 @@ func (o *Contentfilteritem) UnmarshalJSON(b []byte) error {
 	if Name, ok := ContentfilteritemMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := ContentfilteritemMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Operator, ok := ContentfilteritemMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Values, ok := ContentfilteritemMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

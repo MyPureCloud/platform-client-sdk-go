@@ -32,8 +32,6 @@ func NewAlertingApiWithConfig(config *Configuration) *AlertingApi {
 // DeleteAlertingInteractionstatsAlert invokes DELETE /api/v2/alerting/interactionstats/alerts/{alertId}
 //
 // Delete an interaction stats alert
-//
-// 
 func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIRe
 
 	// verify the required parameter 'alertId' is set
 	if &alertId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'alertId' when calling AlertingApi->DeleteAlertingInteractionstatsAlert")
 	}
 
@@ -98,8 +96,6 @@ func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIRe
 // DeleteAlertingInteractionstatsRule invokes DELETE /api/v2/alerting/interactionstats/rules/{ruleId}
 //
 // Delete an interaction stats rule.
-//
-// 
 func (a AlertingApi) DeleteAlertingInteractionstatsRule(ruleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +107,7 @@ func (a AlertingApi) DeleteAlertingInteractionstatsRule(ruleId string) (*APIResp
 
 	// verify the required parameter 'ruleId' is set
 	if &ruleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'ruleId' when calling AlertingApi->DeleteAlertingInteractionstatsRule")
 	}
 
@@ -164,8 +160,6 @@ func (a AlertingApi) DeleteAlertingInteractionstatsRule(ruleId string) (*APIResp
 // GetAlertingAlertsActive invokes GET /api/v2/alerting/alerts/active
 //
 // Gets active alert count for a user.
-//
-// 
 func (a AlertingApi) GetAlertingAlertsActive() (*Activealertcount, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -231,8 +225,6 @@ func (a AlertingApi) GetAlertingAlertsActive() (*Activealertcount, *APIResponse,
 // GetAlertingInteractionstatsAlert invokes GET /api/v2/alerting/interactionstats/alerts/{alertId}
 //
 // Get an interaction stats alert
-//
-// 
 func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []string) (*Interactionstatsalert, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -245,7 +237,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []s
 
 	// verify the required parameter 'alertId' is set
 	if &alertId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'alertId' when calling AlertingApi->GetAlertingInteractionstatsAlert")
 	}
 
@@ -306,8 +298,6 @@ func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []s
 // GetAlertingInteractionstatsAlerts invokes GET /api/v2/alerting/interactionstats/alerts
 //
 // Get interaction stats alert list.
-//
-// 
 func (a AlertingApi) GetAlertingInteractionstatsAlerts(expand []string) (*Interactionstatsalertcontainer, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -375,8 +365,6 @@ func (a AlertingApi) GetAlertingInteractionstatsAlerts(expand []string) (*Intera
 // GetAlertingInteractionstatsAlertsUnread invokes GET /api/v2/alerting/interactionstats/alerts/unread
 //
 // Gets user unread count of interaction stats alerts.
-//
-// 
 func (a AlertingApi) GetAlertingInteractionstatsAlertsUnread() (*Unreadmetric, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -442,8 +430,6 @@ func (a AlertingApi) GetAlertingInteractionstatsAlertsUnread() (*Unreadmetric, *
 // GetAlertingInteractionstatsRule invokes GET /api/v2/alerting/interactionstats/rules/{ruleId}
 //
 // Get an interaction stats rule.
-//
-// 
 func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []string) (*Interactionstatsrule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -456,7 +442,7 @@ func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []str
 
 	// verify the required parameter 'ruleId' is set
 	if &ruleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'ruleId' when calling AlertingApi->GetAlertingInteractionstatsRule")
 	}
 
@@ -517,8 +503,6 @@ func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []str
 // GetAlertingInteractionstatsRules invokes GET /api/v2/alerting/interactionstats/rules
 //
 // Get an interaction stats rule list.
-//
-// 
 func (a AlertingApi) GetAlertingInteractionstatsRules(expand []string) (*Interactionstatsrulecontainer, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -586,8 +570,6 @@ func (a AlertingApi) GetAlertingInteractionstatsRules(expand []string) (*Interac
 // PostAlertingInteractionstatsRules invokes POST /api/v2/alerting/interactionstats/rules
 //
 // Create an interaction stats rule.
-//
-// 
 func (a AlertingApi) PostAlertingInteractionstatsRules(body Interactionstatsrule, expand []string) (*Interactionstatsrule, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -599,7 +581,7 @@ func (a AlertingApi) PostAlertingInteractionstatsRules(body Interactionstatsrule
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AlertingApi->PostAlertingInteractionstatsRules")
 	}
 
@@ -663,8 +645,6 @@ func (a AlertingApi) PostAlertingInteractionstatsRules(body Interactionstatsrule
 // PutAlertingInteractionstatsAlert invokes PUT /api/v2/alerting/interactionstats/alerts/{alertId}
 //
 // Update an interaction stats alert read status
-//
-// 
 func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unreadstatus, expand []string) (*Unreadstatus, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -677,12 +657,12 @@ func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unrea
 
 	// verify the required parameter 'alertId' is set
 	if &alertId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'alertId' when calling AlertingApi->PutAlertingInteractionstatsAlert")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AlertingApi->PutAlertingInteractionstatsAlert")
 	}
 
@@ -746,8 +726,6 @@ func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unrea
 // PutAlertingInteractionstatsRule invokes PUT /api/v2/alerting/interactionstats/rules/{ruleId}
 //
 // Update an interaction stats rule
-//
-// 
 func (a AlertingApi) PutAlertingInteractionstatsRule(ruleId string, body Interactionstatsrule, expand []string) (*Interactionstatsrule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -760,12 +738,12 @@ func (a AlertingApi) PutAlertingInteractionstatsRule(ruleId string, body Interac
 
 	// verify the required parameter 'ruleId' is set
 	if &ruleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'ruleId' when calling AlertingApi->PutAlertingInteractionstatsRule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AlertingApi->PutAlertingInteractionstatsRule")
 	}
 

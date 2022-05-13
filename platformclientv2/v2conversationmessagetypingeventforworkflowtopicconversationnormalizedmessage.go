@@ -125,7 +125,7 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationnormalizedm
 	if Id, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Channel, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["channel"].(map[string]interface{}); ok {
 		ChannelString, _ := json.Marshal(Channel)
 		json.Unmarshal(ChannelString, &o.Channel)
@@ -134,11 +134,11 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationnormalizedm
 	if VarType, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Content, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)
@@ -152,7 +152,7 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationnormalizedm
 	if Status, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Reasons, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["reasons"].([]interface{}); ok {
 		ReasonsString, _ := json.Marshal(Reasons)
 		json.Unmarshal(ReasonsString, &o.Reasons)
@@ -161,15 +161,15 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationnormalizedm
 	if OriginatingEntity, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["originatingEntity"].(string); ok {
 		o.OriginatingEntity = &OriginatingEntity
 	}
-	
+    
 	if IsFinalReceipt, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["isFinalReceipt"].(bool); ok {
 		o.IsFinalReceipt = &IsFinalReceipt
 	}
-	
+    
 	if Direction, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Metadata, ok := V2conversationmessagetypingeventforworkflowtopicconversationnormalizedmessageMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

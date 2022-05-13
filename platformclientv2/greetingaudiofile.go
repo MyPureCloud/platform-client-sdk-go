@@ -63,7 +63,7 @@ func (o *Greetingaudiofile) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GreetingaudiofileMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

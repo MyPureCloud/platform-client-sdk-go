@@ -53,7 +53,7 @@ func (o *Disconnectreason) UnmarshalJSON(b []byte) error {
 	if VarType, ok := DisconnectreasonMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Code, ok := DisconnectreasonMap["code"].(float64); ok {
 		CodeInt := int(Code)
 		o.Code = &CodeInt
@@ -62,7 +62,7 @@ func (o *Disconnectreason) UnmarshalJSON(b []byte) error {
 	if Phrase, ok := DisconnectreasonMap["phrase"].(string); ok {
 		o.Phrase = &Phrase
 	}
-	
+    
 
 	return nil
 }

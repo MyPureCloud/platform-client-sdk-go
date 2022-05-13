@@ -198,51 +198,51 @@ func (o *Queueconversationeventtopicsocialexpression) UnmarshalJSON(b []byte) er
 	if State, ok := QueueconversationeventtopicsocialexpressionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := QueueconversationeventtopicsocialexpressionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SocialMediaId, ok := QueueconversationeventtopicsocialexpressionMap["socialMediaId"].(string); ok {
 		o.SocialMediaId = &SocialMediaId
 	}
-	
+    
 	if SocialMediaHub, ok := QueueconversationeventtopicsocialexpressionMap["socialMediaHub"].(string); ok {
 		o.SocialMediaHub = &SocialMediaHub
 	}
-	
+    
 	if SocialUserName, ok := QueueconversationeventtopicsocialexpressionMap["socialUserName"].(string); ok {
 		o.SocialUserName = &SocialUserName
 	}
-	
+    
 	if PreviewText, ok := QueueconversationeventtopicsocialexpressionMap["previewText"].(string); ok {
 		o.PreviewText = &PreviewText
 	}
-	
+    
 	if RecordingId, ok := QueueconversationeventtopicsocialexpressionMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if Held, ok := QueueconversationeventtopicsocialexpressionMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if Provider, ok := QueueconversationeventtopicsocialexpressionMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationeventtopicsocialexpressionMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationeventtopicsocialexpressionMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationeventtopicsocialexpressionMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationeventtopicsocialexpressionMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -271,7 +271,7 @@ func (o *Queueconversationeventtopicsocialexpression) UnmarshalJSON(b []byte) er
 	if AfterCallWorkRequired, ok := QueueconversationeventtopicsocialexpressionMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

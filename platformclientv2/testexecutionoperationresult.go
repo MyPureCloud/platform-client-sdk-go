@@ -74,11 +74,11 @@ func (o *Testexecutionoperationresult) UnmarshalJSON(b []byte) error {
 	if Name, ok := TestexecutionoperationresultMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Success, ok := TestexecutionoperationresultMap["success"].(bool); ok {
 		o.Success = &Success
 	}
-	
+    
 	if Result, ok := TestexecutionoperationresultMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

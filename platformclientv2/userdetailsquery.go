@@ -93,7 +93,7 @@ func (o *Userdetailsquery) UnmarshalJSON(b []byte) error {
 	if Interval, ok := UserdetailsqueryMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if UserFilters, ok := UserdetailsqueryMap["userFilters"].([]interface{}); ok {
 		UserFiltersString, _ := json.Marshal(UserFilters)
 		json.Unmarshal(UserFiltersString, &o.UserFilters)
@@ -112,7 +112,7 @@ func (o *Userdetailsquery) UnmarshalJSON(b []byte) error {
 	if Order, ok := UserdetailsqueryMap["order"].(string); ok {
 		o.Order = &Order
 	}
-	
+    
 	if PresenceAggregations, ok := UserdetailsqueryMap["presenceAggregations"].([]interface{}); ok {
 		PresenceAggregationsString, _ := json.Marshal(PresenceAggregations)
 		json.Unmarshal(PresenceAggregationsString, &o.PresenceAggregations)

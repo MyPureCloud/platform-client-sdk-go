@@ -69,11 +69,11 @@ func (o *Createmetric) UnmarshalJSON(b []byte) error {
 	if MetricDefinitionId, ok := CreatemetricMap["metricDefinitionId"].(string); ok {
 		o.MetricDefinitionId = &MetricDefinitionId
 	}
-	
+    
 	if ExternalMetricDefinitionId, ok := CreatemetricMap["externalMetricDefinitionId"].(string); ok {
 		o.ExternalMetricDefinitionId = &ExternalMetricDefinitionId
 	}
-	
+    
 	if Objective, ok := CreatemetricMap["objective"].(map[string]interface{}); ok {
 		ObjectiveString, _ := json.Marshal(Objective)
 		json.Unmarshal(ObjectiveString, &o.Objective)
@@ -82,11 +82,11 @@ func (o *Createmetric) UnmarshalJSON(b []byte) error {
 	if PerformanceProfileId, ok := CreatemetricMap["performanceProfileId"].(string); ok {
 		o.PerformanceProfileId = &PerformanceProfileId
 	}
-	
+    
 	if Name, ok := CreatemetricMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

@@ -53,15 +53,15 @@ func (o *Greetingmediainfo) UnmarshalJSON(b []byte) error {
 	if Id, ok := GreetingmediainfoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MediaFileUri, ok := GreetingmediainfoMap["mediaFileUri"].(string); ok {
 		o.MediaFileUri = &MediaFileUri
 	}
-	
+    
 	if MediaImageUri, ok := GreetingmediainfoMap["mediaImageUri"].(string); ok {
 		o.MediaImageUri = &MediaImageUri
 	}
-	
+    
 
 	return nil
 }

@@ -93,7 +93,7 @@ func (o *Queueconversationsocialexpressioneventtopicfaxstatus) UnmarshalJSON(b [
 	if Direction, ok := QueueconversationsocialexpressioneventtopicfaxstatusMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if ExpectedPages, ok := QueueconversationsocialexpressioneventtopicfaxstatusMap["expectedPages"].(float64); ok {
 		ExpectedPagesInt := int(ExpectedPages)
 		o.ExpectedPages = &ExpectedPagesInt

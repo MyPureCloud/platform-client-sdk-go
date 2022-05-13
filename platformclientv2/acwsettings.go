@@ -45,7 +45,7 @@ func (o *Acwsettings) UnmarshalJSON(b []byte) error {
 	if WrapupPrompt, ok := AcwsettingsMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if TimeoutMs, ok := AcwsettingsMap["timeoutMs"].(float64); ok {
 		TimeoutMsInt := int(TimeoutMs)
 		o.TimeoutMs = &TimeoutMsInt

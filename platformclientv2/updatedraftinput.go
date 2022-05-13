@@ -77,11 +77,11 @@ func (o *Updatedraftinput) UnmarshalJSON(b []byte) error {
 	if Category, ok := UpdatedraftinputMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Name, ok := UpdatedraftinputMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Config, ok := UpdatedraftinputMap["config"].(map[string]interface{}); ok {
 		ConfigString, _ := json.Marshal(Config)
 		json.Unmarshal(ConfigString, &o.Config)
@@ -95,7 +95,7 @@ func (o *Updatedraftinput) UnmarshalJSON(b []byte) error {
 	if Secure, ok := UpdatedraftinputMap["secure"].(bool); ok {
 		o.Secure = &Secure
 	}
-	
+    
 	if Version, ok := UpdatedraftinputMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt

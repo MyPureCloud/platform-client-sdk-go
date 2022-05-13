@@ -101,7 +101,7 @@ func (o *Transcriptconversationdetailsearchcriteria) UnmarshalJSON(b []byte) err
 	if EndValue, ok := TranscriptconversationdetailsearchcriteriaMap["endValue"].(string); ok {
 		o.EndValue = &EndValue
 	}
-	
+    
 	if Values, ok := TranscriptconversationdetailsearchcriteriaMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -110,7 +110,7 @@ func (o *Transcriptconversationdetailsearchcriteria) UnmarshalJSON(b []byte) err
 	if StartValue, ok := TranscriptconversationdetailsearchcriteriaMap["startValue"].(string); ok {
 		o.StartValue = &StartValue
 	}
-	
+    
 	if Fields, ok := TranscriptconversationdetailsearchcriteriaMap["fields"].([]interface{}); ok {
 		FieldsString, _ := json.Marshal(Fields)
 		json.Unmarshal(FieldsString, &o.Fields)
@@ -119,11 +119,11 @@ func (o *Transcriptconversationdetailsearchcriteria) UnmarshalJSON(b []byte) err
 	if Value, ok := TranscriptconversationdetailsearchcriteriaMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Operator, ok := TranscriptconversationdetailsearchcriteriaMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Group, ok := TranscriptconversationdetailsearchcriteriaMap["group"].([]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
@@ -132,11 +132,11 @@ func (o *Transcriptconversationdetailsearchcriteria) UnmarshalJSON(b []byte) err
 	if DateFormat, ok := TranscriptconversationdetailsearchcriteriaMap["dateFormat"].(string); ok {
 		o.DateFormat = &DateFormat
 	}
-	
+    
 	if VarType, ok := TranscriptconversationdetailsearchcriteriaMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

@@ -85,19 +85,19 @@ func (o *Edgeconnectioninfo) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgeconnectioninfoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgeconnectioninfoMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if InterfaceName, ok := EdgeconnectioninfoMap["interfaceName"].(string); ok {
 		o.InterfaceName = &InterfaceName
 	}
-	
+    
 	if InterfaceIpAddress, ok := EdgeconnectioninfoMap["interfaceIpAddress"].(string); ok {
 		o.InterfaceIpAddress = &InterfaceIpAddress
 	}
-	
+    
 	if ConnectionErrors, ok := EdgeconnectioninfoMap["connectionErrors"].([]interface{}); ok {
 		ConnectionErrorsString, _ := json.Marshal(ConnectionErrors)
 		json.Unmarshal(ConnectionErrorsString, &o.ConnectionErrors)
@@ -111,7 +111,7 @@ func (o *Edgeconnectioninfo) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EdgeconnectioninfoMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

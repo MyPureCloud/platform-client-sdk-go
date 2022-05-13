@@ -45,11 +45,11 @@ func (o *Dnclistdownloadreadyexporturi) UnmarshalJSON(b []byte) error {
 	if Uri, ok := DnclistdownloadreadyexporturiMap["uri"].(string); ok {
 		o.Uri = &Uri
 	}
-	
+    
 	if ExportTimestamp, ok := DnclistdownloadreadyexporturiMap["exportTimestamp"].(string); ok {
 		o.ExportTimestamp = &ExportTimestamp
 	}
-	
+    
 
 	return nil
 }

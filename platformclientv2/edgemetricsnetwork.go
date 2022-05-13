@@ -69,7 +69,7 @@ func (o *Edgemetricsnetwork) UnmarshalJSON(b []byte) error {
 	if Ifname, ok := EdgemetricsnetworkMap["ifname"].(string); ok {
 		o.Ifname = &Ifname
 	}
-	
+    
 	if SentBytesPerSec, ok := EdgemetricsnetworkMap["sentBytesPerSec"].(float64); ok {
 		SentBytesPerSecInt := int(SentBytesPerSec)
 		o.SentBytesPerSec = &SentBytesPerSecInt
@@ -83,11 +83,11 @@ func (o *Edgemetricsnetwork) UnmarshalJSON(b []byte) error {
 	if BandwidthBitsPerSec, ok := EdgemetricsnetworkMap["bandwidthBitsPerSec"].(float64); ok {
 		o.BandwidthBitsPerSec = &BandwidthBitsPerSec
 	}
-	
+    
 	if UtilizationPct, ok := EdgemetricsnetworkMap["utilizationPct"].(float64); ok {
 		o.UtilizationPct = &UtilizationPct
 	}
-	
+    
 
 	return nil
 }

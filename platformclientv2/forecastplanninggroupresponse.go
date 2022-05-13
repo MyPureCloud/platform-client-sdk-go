@@ -61,11 +61,11 @@ func (o *Forecastplanninggroupresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ForecastplanninggroupresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ForecastplanninggroupresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if RoutePaths, ok := ForecastplanninggroupresponseMap["routePaths"].([]interface{}); ok {
 		RoutePathsString, _ := json.Marshal(RoutePaths)
 		json.Unmarshal(RoutePathsString, &o.RoutePaths)

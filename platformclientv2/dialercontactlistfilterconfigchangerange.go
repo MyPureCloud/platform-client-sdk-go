@@ -69,19 +69,19 @@ func (o *Dialercontactlistfilterconfigchangerange) UnmarshalJSON(b []byte) error
 	if Min, ok := DialercontactlistfilterconfigchangerangeMap["min"].(string); ok {
 		o.Min = &Min
 	}
-	
+    
 	if Max, ok := DialercontactlistfilterconfigchangerangeMap["max"].(string); ok {
 		o.Max = &Max
 	}
-	
+    
 	if MinInclusive, ok := DialercontactlistfilterconfigchangerangeMap["minInclusive"].(bool); ok {
 		o.MinInclusive = &MinInclusive
 	}
-	
+    
 	if MaxInclusive, ok := DialercontactlistfilterconfigchangerangeMap["maxInclusive"].(bool); ok {
 		o.MaxInclusive = &MaxInclusive
 	}
-	
+    
 	if InSet, ok := DialercontactlistfilterconfigchangerangeMap["inSet"].([]interface{}); ok {
 		InSetString, _ := json.Marshal(InSet)
 		json.Unmarshal(InSetString, &o.InSet)

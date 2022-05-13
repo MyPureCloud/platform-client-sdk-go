@@ -61,11 +61,11 @@ func (o *Textbotdisconnectaction) UnmarshalJSON(b []byte) error {
 	if Reason, ok := TextbotdisconnectactionMap["reason"].(string); ok {
 		o.Reason = &Reason
 	}
-	
+    
 	if ReasonExtendedInfo, ok := TextbotdisconnectactionMap["reasonExtendedInfo"].(string); ok {
 		o.ReasonExtendedInfo = &ReasonExtendedInfo
 	}
-	
+    
 	if FlowLocation, ok := TextbotdisconnectactionMap["flowLocation"].(map[string]interface{}); ok {
 		FlowLocationString, _ := json.Marshal(FlowLocation)
 		json.Unmarshal(FlowLocationString, &o.FlowLocation)

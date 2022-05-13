@@ -37,7 +37,7 @@ func (o *Dynamiccontactqueueingsettings) UnmarshalJSON(b []byte) error {
 	if Sort, ok := DynamiccontactqueueingsettingsMap["sort"].(bool); ok {
 		o.Sort = &Sort
 	}
-	
+    
 
 	return nil
 }

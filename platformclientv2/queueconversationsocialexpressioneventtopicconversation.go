@@ -77,7 +77,7 @@ func (o *Queueconversationsocialexpressioneventtopicconversation) UnmarshalJSON(
 	if Id, ok := QueueconversationsocialexpressioneventtopicconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MaxParticipants, ok := QueueconversationsocialexpressioneventtopicconversationMap["maxParticipants"].(float64); ok {
 		MaxParticipantsInt := int(MaxParticipants)
 		o.MaxParticipants = &MaxParticipantsInt
@@ -91,15 +91,15 @@ func (o *Queueconversationsocialexpressioneventtopicconversation) UnmarshalJSON(
 	if RecordingState, ok := QueueconversationsocialexpressioneventtopicconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Address, ok := QueueconversationsocialexpressioneventtopicconversationMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if ExternalTag, ok := QueueconversationsocialexpressioneventtopicconversationMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 
 	return nil
 }

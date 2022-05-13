@@ -246,11 +246,11 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 	if Id, ok := Evaluationqualityv2topicevaluationv2Map["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ConversationId, ok := Evaluationqualityv2topicevaluationv2Map["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if Agent, ok := Evaluationqualityv2topicevaluationv2Map["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)
@@ -269,11 +269,11 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 	if EvaluationFormId, ok := Evaluationqualityv2topicevaluationv2Map["evaluationFormId"].(string); ok {
 		o.EvaluationFormId = &EvaluationFormId
 	}
-	
+    
 	if FormName, ok := Evaluationqualityv2topicevaluationv2Map["formName"].(string); ok {
 		o.FormName = &FormName
 	}
-	
+    
 	if ScoringSet, ok := Evaluationqualityv2topicevaluationv2Map["scoringSet"].(map[string]interface{}); ok {
 		ScoringSetString, _ := json.Marshal(ScoringSet)
 		json.Unmarshal(ScoringSetString, &o.ScoringSet)
@@ -282,15 +282,15 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 	if ContextId, ok := Evaluationqualityv2topicevaluationv2Map["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Status, ok := Evaluationqualityv2topicevaluationv2Map["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if AgentHasRead, ok := Evaluationqualityv2topicevaluationv2Map["agentHasRead"].(bool); ok {
 		o.AgentHasRead = &AgentHasRead
 	}
-	
+    
 	if releaseDateString, ok := Evaluationqualityv2topicevaluationv2Map["releaseDate"].(string); ok {
 		ReleaseDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", releaseDateString)
 		o.ReleaseDate = &ReleaseDate
@@ -309,15 +309,15 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 	if EventType, ok := Evaluationqualityv2topicevaluationv2Map["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 	if ResourceId, ok := Evaluationqualityv2topicevaluationv2Map["resourceId"].(string); ok {
 		o.ResourceId = &ResourceId
 	}
-	
+    
 	if ResourceType, ok := Evaluationqualityv2topicevaluationv2Map["resourceType"].(string); ok {
 		o.ResourceType = &ResourceType
 	}
-	
+    
 	if DivisionIds, ok := Evaluationqualityv2topicevaluationv2Map["divisionIds"].([]interface{}); ok {
 		DivisionIdsString, _ := json.Marshal(DivisionIds)
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
@@ -326,7 +326,7 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 	if Rescore, ok := Evaluationqualityv2topicevaluationv2Map["rescore"].(bool); ok {
 		o.Rescore = &Rescore
 	}
-	
+    
 	if conversationDateString, ok := Evaluationqualityv2topicevaluationv2Map["conversationDate"].(string); ok {
 		ConversationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationDateString)
 		o.ConversationDate = &ConversationDate

@@ -69,19 +69,19 @@ func (o *Queueconversationsocialexpressioneventtopicdialerpreview) UnmarshalJSON
 	if Id, ok := QueueconversationsocialexpressioneventtopicdialerpreviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ContactId, ok := QueueconversationsocialexpressioneventtopicdialerpreviewMap["contactId"].(string); ok {
 		o.ContactId = &ContactId
 	}
-	
+    
 	if ContactListId, ok := QueueconversationsocialexpressioneventtopicdialerpreviewMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if CampaignId, ok := QueueconversationsocialexpressioneventtopicdialerpreviewMap["campaignId"].(string); ok {
 		o.CampaignId = &CampaignId
 	}
-	
+    
 	if PhoneNumberColumns, ok := QueueconversationsocialexpressioneventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)

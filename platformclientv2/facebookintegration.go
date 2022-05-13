@@ -190,11 +190,11 @@ func (o *Facebookintegration) UnmarshalJSON(b []byte) error {
 	if Id, ok := FacebookintegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FacebookintegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := FacebookintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -208,23 +208,23 @@ func (o *Facebookintegration) UnmarshalJSON(b []byte) error {
 	if AppId, ok := FacebookintegrationMap["appId"].(string); ok {
 		o.AppId = &AppId
 	}
-	
+    
 	if PageId, ok := FacebookintegrationMap["pageId"].(string); ok {
 		o.PageId = &PageId
 	}
-	
+    
 	if PageName, ok := FacebookintegrationMap["pageName"].(string); ok {
 		o.PageName = &PageName
 	}
-	
+    
 	if PageProfileImageUrl, ok := FacebookintegrationMap["pageProfileImageUrl"].(string); ok {
 		o.PageProfileImageUrl = &PageProfileImageUrl
 	}
-	
+    
 	if Status, ok := FacebookintegrationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Recipient, ok := FacebookintegrationMap["recipient"].(map[string]interface{}); ok {
 		RecipientString, _ := json.Marshal(Recipient)
 		json.Unmarshal(RecipientString, &o.Recipient)
@@ -258,7 +258,7 @@ func (o *Facebookintegration) UnmarshalJSON(b []byte) error {
 	if CreateStatus, ok := FacebookintegrationMap["createStatus"].(string); ok {
 		o.CreateStatus = &CreateStatus
 	}
-	
+    
 	if CreateError, ok := FacebookintegrationMap["createError"].(map[string]interface{}); ok {
 		CreateErrorString, _ := json.Marshal(CreateError)
 		json.Unmarshal(CreateErrorString, &o.CreateError)
@@ -267,7 +267,7 @@ func (o *Facebookintegration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FacebookintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

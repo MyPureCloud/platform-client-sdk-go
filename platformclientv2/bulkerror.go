@@ -45,11 +45,11 @@ func (o *Bulkerror) UnmarshalJSON(b []byte) error {
 	if Message, ok := BulkerrorMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Code, ok := BulkerrorMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 
 	return nil
 }

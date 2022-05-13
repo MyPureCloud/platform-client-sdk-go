@@ -45,7 +45,7 @@ func (o *Presencedetailqueryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := PresencedetailqueryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := PresencedetailqueryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

@@ -69,7 +69,7 @@ func (o *Trunkinstancetopictrunk) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrunkinstancetopictrunkMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ConnectedStatus, ok := TrunkinstancetopictrunkMap["connectedStatus"].(map[string]interface{}); ok {
 		ConnectedStatusString, _ := json.Marshal(ConnectedStatus)
 		json.Unmarshal(ConnectedStatusString, &o.ConnectedStatus)

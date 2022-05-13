@@ -143,19 +143,19 @@ func (o *Bureschedulerequest) UnmarshalJSON(b []byte) error {
 	if DoNotChangeWeeklyPaidTime, ok := BureschedulerequestMap["doNotChangeWeeklyPaidTime"].(bool); ok {
 		o.DoNotChangeWeeklyPaidTime = &DoNotChangeWeeklyPaidTime
 	}
-	
+    
 	if DoNotChangeDailyPaidTime, ok := BureschedulerequestMap["doNotChangeDailyPaidTime"].(bool); ok {
 		o.DoNotChangeDailyPaidTime = &DoNotChangeDailyPaidTime
 	}
-	
+    
 	if DoNotChangeShiftStartTimes, ok := BureschedulerequestMap["doNotChangeShiftStartTimes"].(bool); ok {
 		o.DoNotChangeShiftStartTimes = &DoNotChangeShiftStartTimes
 	}
-	
+    
 	if DoNotChangeManuallyEditedShifts, ok := BureschedulerequestMap["doNotChangeManuallyEditedShifts"].(bool); ok {
 		o.DoNotChangeManuallyEditedShifts = &DoNotChangeManuallyEditedShifts
 	}
-	
+    
 
 	return nil
 }

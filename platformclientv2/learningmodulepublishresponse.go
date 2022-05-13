@@ -53,7 +53,7 @@ func (o *Learningmodulepublishresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningmodulepublishresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := LearningmodulepublishresponseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -62,7 +62,7 @@ func (o *Learningmodulepublishresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LearningmodulepublishresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -109,39 +109,39 @@ func (o *Journeypage) UnmarshalJSON(b []byte) error {
 	if Url, ok := JourneypageMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Title, ok := JourneypageMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Domain, ok := JourneypageMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if Fragment, ok := JourneypageMap["fragment"].(string); ok {
 		o.Fragment = &Fragment
 	}
-	
+    
 	if Hostname, ok := JourneypageMap["hostname"].(string); ok {
 		o.Hostname = &Hostname
 	}
-	
+    
 	if Keywords, ok := JourneypageMap["keywords"].(string); ok {
 		o.Keywords = &Keywords
 	}
-	
+    
 	if Lang, ok := JourneypageMap["lang"].(string); ok {
 		o.Lang = &Lang
 	}
-	
+    
 	if Pathname, ok := JourneypageMap["pathname"].(string); ok {
 		o.Pathname = &Pathname
 	}
-	
+    
 	if QueryString, ok := JourneypageMap["queryString"].(string); ok {
 		o.QueryString = &QueryString
 	}
-	
+    
 	if Breadcrumb, ok := JourneypageMap["breadcrumb"].([]interface{}); ok {
 		BreadcrumbString, _ := json.Marshal(Breadcrumb)
 		json.Unmarshal(BreadcrumbString, &o.Breadcrumb)

@@ -102,19 +102,19 @@ func (o *Userpresence) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserpresenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserpresenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Source, ok := UserpresenceMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if Primary, ok := UserpresenceMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 	if PresenceDefinition, ok := UserpresenceMap["presenceDefinition"].(map[string]interface{}); ok {
 		PresenceDefinitionString, _ := json.Marshal(PresenceDefinition)
 		json.Unmarshal(PresenceDefinitionString, &o.PresenceDefinition)
@@ -123,7 +123,7 @@ func (o *Userpresence) UnmarshalJSON(b []byte) error {
 	if Message, ok := UserpresenceMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if modifiedDateString, ok := UserpresenceMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -132,7 +132,7 @@ func (o *Userpresence) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UserpresenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

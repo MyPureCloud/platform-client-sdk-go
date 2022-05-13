@@ -45,7 +45,7 @@ func (o *Scimserviceproviderconfigfilterfeature) UnmarshalJSON(b []byte) error {
 	if Supported, ok := ScimserviceproviderconfigfilterfeatureMap["supported"].(bool); ok {
 		o.Supported = &Supported
 	}
-	
+    
 	if MaxResults, ok := ScimserviceproviderconfigfilterfeatureMap["maxResults"].(float64); ok {
 		MaxResultsInt := int(MaxResults)
 		o.MaxResults = &MaxResultsInt

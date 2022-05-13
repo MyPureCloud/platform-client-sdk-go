@@ -142,19 +142,19 @@ func (o *Greeting) UnmarshalJSON(b []byte) error {
 	if Id, ok := GreetingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GreetingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := GreetingMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if OwnerType, ok := GreetingMap["ownerType"].(string); ok {
 		o.OwnerType = &OwnerType
 	}
-	
+    
 	if Owner, ok := GreetingMap["owner"].(map[string]interface{}); ok {
 		OwnerString, _ := json.Marshal(Owner)
 		json.Unmarshal(OwnerString, &o.Owner)
@@ -168,7 +168,7 @@ func (o *Greeting) UnmarshalJSON(b []byte) error {
 	if AudioTTS, ok := GreetingMap["audioTTS"].(string); ok {
 		o.AudioTTS = &AudioTTS
 	}
-	
+    
 	if createdDateString, ok := GreetingMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate
@@ -177,7 +177,7 @@ func (o *Greeting) UnmarshalJSON(b []byte) error {
 	if CreatedBy, ok := GreetingMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if modifiedDateString, ok := GreetingMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -186,11 +186,11 @@ func (o *Greeting) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := GreetingMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if SelfUri, ok := GreetingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

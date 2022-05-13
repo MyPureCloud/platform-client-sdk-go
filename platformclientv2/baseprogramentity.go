@@ -53,15 +53,15 @@ func (o *Baseprogramentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := BaseprogramentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BaseprogramentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := BaseprogramentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -53,7 +53,7 @@ func (o *Wfmhistoricaladherenceresultwrapper) UnmarshalJSON(b []byte) error {
 	if EntityId, ok := WfmhistoricaladherenceresultwrapperMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if Data, ok := WfmhistoricaladherenceresultwrapperMap["data"].([]interface{}); ok {
 		DataString, _ := json.Marshal(Data)
 		json.Unmarshal(DataString, &o.Data)

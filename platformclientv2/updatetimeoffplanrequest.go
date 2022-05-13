@@ -85,7 +85,7 @@ func (o *Updatetimeoffplanrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := UpdatetimeoffplanrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ActivityCodeIds, ok := UpdatetimeoffplanrequestMap["activityCodeIds"].(map[string]interface{}); ok {
 		ActivityCodeIdsString, _ := json.Marshal(ActivityCodeIds)
 		json.Unmarshal(ActivityCodeIdsString, &o.ActivityCodeIds)
@@ -99,7 +99,7 @@ func (o *Updatetimeoffplanrequest) UnmarshalJSON(b []byte) error {
 	if AutoApprovalRule, ok := UpdatetimeoffplanrequestMap["autoApprovalRule"].(string); ok {
 		o.AutoApprovalRule = &AutoApprovalRule
 	}
-	
+    
 	if DaysBeforeStartToExpireFromWaitlist, ok := UpdatetimeoffplanrequestMap["daysBeforeStartToExpireFromWaitlist"].(float64); ok {
 		DaysBeforeStartToExpireFromWaitlistInt := int(DaysBeforeStartToExpireFromWaitlist)
 		o.DaysBeforeStartToExpireFromWaitlist = &DaysBeforeStartToExpireFromWaitlistInt
@@ -108,7 +108,7 @@ func (o *Updatetimeoffplanrequest) UnmarshalJSON(b []byte) error {
 	if Active, ok := UpdatetimeoffplanrequestMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if Metadata, ok := UpdatetimeoffplanrequestMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

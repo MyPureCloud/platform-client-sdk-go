@@ -69,15 +69,15 @@ func (o *Routepathrequest) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := RoutepathrequestMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if MediaType, ok := RoutepathrequestMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if LanguageId, ok := RoutepathrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}
-	
+    
 	if SkillIds, ok := RoutepathrequestMap["skillIds"].([]interface{}); ok {
 		SkillIdsString, _ := json.Marshal(SkillIds)
 		json.Unmarshal(SkillIdsString, &o.SkillIds)

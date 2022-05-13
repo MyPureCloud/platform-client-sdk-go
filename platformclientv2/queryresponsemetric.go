@@ -45,7 +45,7 @@ func (o *Queryresponsemetric) UnmarshalJSON(b []byte) error {
 	if Metric, ok := QueryresponsemetricMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Stats, ok := QueryresponsemetricMap["stats"].(map[string]interface{}); ok {
 		StatsString, _ := json.Marshal(Stats)
 		json.Unmarshal(StatsString, &o.Stats)

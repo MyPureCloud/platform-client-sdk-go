@@ -45,11 +45,11 @@ func (o *Connectedqueue) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConnectedqueueMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ConnectedqueueMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

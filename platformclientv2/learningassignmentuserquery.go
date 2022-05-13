@@ -50,7 +50,7 @@ func (o *Learningassignmentuserquery) UnmarshalJSON(b []byte) error {
 	if SearchTerm, ok := LearningassignmentuserqueryMap["searchTerm"].(string); ok {
 		o.SearchTerm = &SearchTerm
 	}
-	
+    
 
 	return nil
 }

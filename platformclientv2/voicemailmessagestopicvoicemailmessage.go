@@ -158,11 +158,11 @@ func (o *Voicemailmessagestopicvoicemailmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := VoicemailmessagestopicvoicemailmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Read, ok := VoicemailmessagestopicvoicemailmessageMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if AudioRecordingDurationSeconds, ok := VoicemailmessagestopicvoicemailmessageMap["audioRecordingDurationSeconds"].(float64); ok {
 		AudioRecordingDurationSecondsInt := int(AudioRecordingDurationSeconds)
 		o.AudioRecordingDurationSeconds = &AudioRecordingDurationSecondsInt
@@ -186,27 +186,27 @@ func (o *Voicemailmessagestopicvoicemailmessage) UnmarshalJSON(b []byte) error {
 	if CallerAddress, ok := VoicemailmessagestopicvoicemailmessageMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if CallerName, ok := VoicemailmessagestopicvoicemailmessageMap["callerName"].(string); ok {
 		o.CallerName = &CallerName
 	}
-	
+    
 	if Action, ok := VoicemailmessagestopicvoicemailmessageMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if Note, ok := VoicemailmessagestopicvoicemailmessageMap["note"].(string); ok {
 		o.Note = &Note
 	}
-	
+    
 	if Deleted, ok := VoicemailmessagestopicvoicemailmessageMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-	
+    
 	if ModifiedByUserId, ok := VoicemailmessagestopicvoicemailmessageMap["modifiedByUserId"].(string); ok {
 		o.ModifiedByUserId = &ModifiedByUserId
 	}
-	
+    
 	if CopiedTo, ok := VoicemailmessagestopicvoicemailmessageMap["copiedTo"].([]interface{}); ok {
 		CopiedToString, _ := json.Marshal(CopiedTo)
 		json.Unmarshal(CopiedToString, &o.CopiedTo)

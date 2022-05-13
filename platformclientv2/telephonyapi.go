@@ -46,12 +46,12 @@ func (a TelephonyApi) GetTelephonySiptraces(dateStart time.Time, dateEnd time.Ti
 
 	// verify the required parameter 'dateStart' is set
 	if &dateStart == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dateStart' when calling TelephonyApi->GetTelephonySiptraces")
 	}
 	// verify the required parameter 'dateEnd' is set
 	if &dateEnd == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'dateEnd' when calling TelephonyApi->GetTelephonySiptraces")
 	}
 
@@ -122,8 +122,6 @@ func (a TelephonyApi) GetTelephonySiptraces(dateStart time.Time, dateEnd time.Ti
 // GetTelephonySiptracesDownloadDownloadId invokes GET /api/v2/telephony/siptraces/download/{downloadId}
 //
 // Get signed S3 URL for a pcap download
-//
-// 
 func (a TelephonyApi) GetTelephonySiptracesDownloadDownloadId(downloadId string) (*Signedurlresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -136,7 +134,7 @@ func (a TelephonyApi) GetTelephonySiptracesDownloadDownloadId(downloadId string)
 
 	// verify the required parameter 'downloadId' is set
 	if &downloadId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'downloadId' when calling TelephonyApi->GetTelephonySiptracesDownloadDownloadId")
 	}
 
@@ -195,8 +193,6 @@ func (a TelephonyApi) GetTelephonySiptracesDownloadDownloadId(downloadId string)
 // PostTelephonySiptracesDownload invokes POST /api/v2/telephony/siptraces/download
 //
 // Request a download of a pcap file to S3
-//
-// 
 func (a TelephonyApi) PostTelephonySiptracesDownload(sIPSearchPublicRequest Sipsearchpublicrequest) (*Sipdownloadresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -208,7 +204,7 @@ func (a TelephonyApi) PostTelephonySiptracesDownload(sIPSearchPublicRequest Sips
 
 	// verify the required parameter 'sIPSearchPublicRequest' is set
 	if &sIPSearchPublicRequest == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sIPSearchPublicRequest' when calling TelephonyApi->PostTelephonySiptracesDownload")
 	}
 

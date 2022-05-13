@@ -85,31 +85,31 @@ func (o *Locationaddress) UnmarshalJSON(b []byte) error {
 	if City, ok := LocationaddressMap["city"].(string); ok {
 		o.City = &City
 	}
-	
+    
 	if Country, ok := LocationaddressMap["country"].(string); ok {
 		o.Country = &Country
 	}
-	
+    
 	if CountryName, ok := LocationaddressMap["countryName"].(string); ok {
 		o.CountryName = &CountryName
 	}
-	
+    
 	if State, ok := LocationaddressMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Street1, ok := LocationaddressMap["street1"].(string); ok {
 		o.Street1 = &Street1
 	}
-	
+    
 	if Street2, ok := LocationaddressMap["street2"].(string); ok {
 		o.Street2 = &Street2
 	}
-	
+    
 	if Zipcode, ok := LocationaddressMap["zipcode"].(string); ok {
 		o.Zipcode = &Zipcode
 	}
-	
+    
 
 	return nil
 }

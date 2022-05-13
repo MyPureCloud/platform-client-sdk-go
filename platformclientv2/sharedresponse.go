@@ -69,15 +69,15 @@ func (o *Sharedresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := SharedresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DownloadUri, ok := SharedresponseMap["downloadUri"].(string); ok {
 		o.DownloadUri = &DownloadUri
 	}
-	
+    
 	if ViewUri, ok := SharedresponseMap["viewUri"].(string); ok {
 		o.ViewUri = &ViewUri
 	}
-	
+    
 	if Document, ok := SharedresponseMap["document"].(map[string]interface{}); ok {
 		DocumentString, _ := json.Marshal(Document)
 		json.Unmarshal(DocumentString, &o.Document)

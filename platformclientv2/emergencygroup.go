@@ -166,11 +166,11 @@ func (o *Emergencygroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := EmergencygroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EmergencygroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EmergencygroupMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -179,7 +179,7 @@ func (o *Emergencygroup) UnmarshalJSON(b []byte) error {
 	if Description, ok := EmergencygroupMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EmergencygroupMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -198,27 +198,27 @@ func (o *Emergencygroup) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EmergencygroupMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EmergencygroupMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EmergencygroupMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EmergencygroupMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EmergencygroupMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Enabled, ok := EmergencygroupMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if EmergencyCallFlows, ok := EmergencygroupMap["emergencyCallFlows"].([]interface{}); ok {
 		EmergencyCallFlowsString, _ := json.Marshal(EmergencyCallFlows)
 		json.Unmarshal(EmergencyCallFlowsString, &o.EmergencyCallFlows)
@@ -227,7 +227,7 @@ func (o *Emergencygroup) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EmergencygroupMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

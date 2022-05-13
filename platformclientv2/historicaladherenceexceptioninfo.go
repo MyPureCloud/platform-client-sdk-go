@@ -111,31 +111,31 @@ func (o *Historicaladherenceexceptioninfo) UnmarshalJSON(b []byte) error {
 	if ScheduledActivityCodeId, ok := HistoricaladherenceexceptioninfoMap["scheduledActivityCodeId"].(string); ok {
 		o.ScheduledActivityCodeId = &ScheduledActivityCodeId
 	}
-	
+    
 	if ScheduledActivityCategory, ok := HistoricaladherenceexceptioninfoMap["scheduledActivityCategory"].(string); ok {
 		o.ScheduledActivityCategory = &ScheduledActivityCategory
 	}
-	
+    
 	if ActualActivityCategory, ok := HistoricaladherenceexceptioninfoMap["actualActivityCategory"].(string); ok {
 		o.ActualActivityCategory = &ActualActivityCategory
 	}
-	
+    
 	if SystemPresence, ok := HistoricaladherenceexceptioninfoMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 	if RoutingStatus, ok := HistoricaladherenceexceptioninfoMap["routingStatus"].(string); ok {
 		o.RoutingStatus = &RoutingStatus
 	}
-	
+    
 	if Impact, ok := HistoricaladherenceexceptioninfoMap["impact"].(string); ok {
 		o.Impact = &Impact
 	}
-	
+    
 	if SecondaryPresenceLookupId, ok := HistoricaladherenceexceptioninfoMap["secondaryPresenceLookupId"].(string); ok {
 		o.SecondaryPresenceLookupId = &SecondaryPresenceLookupId
 	}
-	
+    
 
 	return nil
 }

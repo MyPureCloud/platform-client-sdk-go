@@ -77,23 +77,23 @@ func (o *Learningmoduleinformsteprequest) UnmarshalJSON(b []byte) error {
 	if VarType, ok := LearningmoduleinformsteprequestMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Name, ok := LearningmoduleinformsteprequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Value, ok := LearningmoduleinformsteprequestMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if SharingUri, ok := LearningmoduleinformsteprequestMap["sharingUri"].(string); ok {
 		o.SharingUri = &SharingUri
 	}
-	
+    
 	if ContentType, ok := LearningmoduleinformsteprequestMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Order, ok := LearningmoduleinformsteprequestMap["order"].(float64); ok {
 		OrderInt := int(Order)
 		o.Order = &OrderInt

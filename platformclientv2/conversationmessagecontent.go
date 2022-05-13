@@ -109,7 +109,7 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 	if ContentType, ok := ConversationmessagecontentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Location, ok := ConversationmessagecontentMap["location"].(map[string]interface{}); ok {
 		LocationString, _ := json.Marshal(Location)
 		json.Unmarshal(LocationString, &o.Location)

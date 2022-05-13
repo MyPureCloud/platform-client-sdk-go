@@ -93,7 +93,7 @@ func (o *Suggestsearchcriteria) UnmarshalJSON(b []byte) error {
 	if EndValue, ok := SuggestsearchcriteriaMap["endValue"].(string); ok {
 		o.EndValue = &EndValue
 	}
-	
+    
 	if Values, ok := SuggestsearchcriteriaMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -102,7 +102,7 @@ func (o *Suggestsearchcriteria) UnmarshalJSON(b []byte) error {
 	if StartValue, ok := SuggestsearchcriteriaMap["startValue"].(string); ok {
 		o.StartValue = &StartValue
 	}
-	
+    
 	if Fields, ok := SuggestsearchcriteriaMap["fields"].([]interface{}); ok {
 		FieldsString, _ := json.Marshal(Fields)
 		json.Unmarshal(FieldsString, &o.Fields)
@@ -111,11 +111,11 @@ func (o *Suggestsearchcriteria) UnmarshalJSON(b []byte) error {
 	if Value, ok := SuggestsearchcriteriaMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Operator, ok := SuggestsearchcriteriaMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Group, ok := SuggestsearchcriteriaMap["group"].([]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
@@ -124,7 +124,7 @@ func (o *Suggestsearchcriteria) UnmarshalJSON(b []byte) error {
 	if DateFormat, ok := SuggestsearchcriteriaMap["dateFormat"].(string); ok {
 		o.DateFormat = &DateFormat
 	}
-	
+    
 
 	return nil
 }

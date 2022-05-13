@@ -62,11 +62,11 @@ func (o *Channel) UnmarshalJSON(b []byte) error {
 	if ConnectUri, ok := ChannelMap["connectUri"].(string); ok {
 		o.ConnectUri = &ConnectUri
 	}
-	
+    
 	if Id, ok := ChannelMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if expiresString, ok := ChannelMap["expires"].(string); ok {
 		Expires, _ := time.Parse("2006-01-02T15:04:05.999999Z", expiresString)
 		o.Expires = &Expires

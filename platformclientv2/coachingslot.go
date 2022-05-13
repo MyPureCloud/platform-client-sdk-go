@@ -88,11 +88,11 @@ func (o *Coachingslot) UnmarshalJSON(b []byte) error {
 	if StaffingDifference, ok := CoachingslotMap["staffingDifference"].(float64); ok {
 		o.StaffingDifference = &StaffingDifference
 	}
-	
+    
 	if DifferenceRating, ok := CoachingslotMap["differenceRating"].(string); ok {
 		o.DifferenceRating = &DifferenceRating
 	}
-	
+    
 	if WfmSchedule, ok := CoachingslotMap["wfmSchedule"].(map[string]interface{}); ok {
 		WfmScheduleString, _ := json.Marshal(WfmSchedule)
 		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)

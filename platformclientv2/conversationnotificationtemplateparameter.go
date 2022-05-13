@@ -45,11 +45,11 @@ func (o *Conversationnotificationtemplateparameter) UnmarshalJSON(b []byte) erro
 	if Name, ok := ConversationnotificationtemplateparameterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Text, ok := ConversationnotificationtemplateparameterMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 
 	return nil
 }

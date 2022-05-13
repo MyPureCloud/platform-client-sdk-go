@@ -61,19 +61,19 @@ func (o *Signedurlresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := SignedurlresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SignedurlresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Url, ok := SignedurlresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if SelfUri, ok := SignedurlresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

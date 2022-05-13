@@ -45,11 +45,11 @@ func (o *Queueconversationsocialexpressioneventtopicmessagesticker) UnmarshalJSO
 	if Url, ok := QueueconversationsocialexpressioneventtopicmessagestickerMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Id, ok := QueueconversationsocialexpressioneventtopicmessagestickerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

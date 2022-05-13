@@ -53,7 +53,7 @@ func (o *Workplanconfigurationviolationmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := WorkplanconfigurationviolationmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Arguments, ok := WorkplanconfigurationviolationmessageMap["arguments"].([]interface{}); ok {
 		ArgumentsString, _ := json.Marshal(Arguments)
 		json.Unmarshal(ArgumentsString, &o.Arguments)
@@ -62,7 +62,7 @@ func (o *Workplanconfigurationviolationmessage) UnmarshalJSON(b []byte) error {
 	if Severity, ok := WorkplanconfigurationviolationmessageMap["severity"].(string); ok {
 		o.Severity = &Severity
 	}
-	
+    
 
 	return nil
 }

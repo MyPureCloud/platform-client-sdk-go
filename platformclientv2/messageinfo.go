@@ -61,15 +61,15 @@ func (o *Messageinfo) UnmarshalJSON(b []byte) error {
 	if LocalizableMessageCode, ok := MessageinfoMap["localizableMessageCode"].(string); ok {
 		o.LocalizableMessageCode = &LocalizableMessageCode
 	}
-	
+    
 	if Message, ok := MessageinfoMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if MessageWithParams, ok := MessageinfoMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := MessageinfoMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)

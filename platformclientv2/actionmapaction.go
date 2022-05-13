@@ -74,7 +74,7 @@ func (o *Actionmapaction) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := ActionmapactionMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ArchitectFlowFields, ok := ActionmapactionMap["architectFlowFields"].(map[string]interface{}); ok {
 		ArchitectFlowFieldsString, _ := json.Marshal(ArchitectFlowFields)
 		json.Unmarshal(ArchitectFlowFieldsString, &o.ArchitectFlowFields)

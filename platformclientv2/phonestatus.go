@@ -109,23 +109,23 @@ func (o *Phonestatus) UnmarshalJSON(b []byte) error {
 	if Id, ok := PhonestatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PhonestatusMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if OperationalStatus, ok := PhonestatusMap["operationalStatus"].(string); ok {
 		o.OperationalStatus = &OperationalStatus
 	}
-	
+    
 	if EdgesStatus, ok := PhonestatusMap["edgesStatus"].(string); ok {
 		o.EdgesStatus = &EdgesStatus
 	}
-	
+    
 	if EventCreationTime, ok := PhonestatusMap["eventCreationTime"].(string); ok {
 		o.EventCreationTime = &EventCreationTime
 	}
-	
+    
 	if Provision, ok := PhonestatusMap["provision"].(map[string]interface{}); ok {
 		ProvisionString, _ := json.Marshal(Provision)
 		json.Unmarshal(ProvisionString, &o.Provision)
@@ -139,7 +139,7 @@ func (o *Phonestatus) UnmarshalJSON(b []byte) error {
 	if PhoneAssignmentToEdgeType, ok := PhonestatusMap["phoneAssignmentToEdgeType"].(string); ok {
 		o.PhoneAssignmentToEdgeType = &PhoneAssignmentToEdgeType
 	}
-	
+    
 	if Edge, ok := PhonestatusMap["edge"].(map[string]interface{}); ok {
 		EdgeString, _ := json.Marshal(Edge)
 		json.Unmarshal(EdgeString, &o.Edge)
@@ -148,7 +148,7 @@ func (o *Phonestatus) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PhonestatusMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

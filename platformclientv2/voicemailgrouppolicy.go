@@ -109,7 +109,7 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
 	if Name, ok := VoicemailgrouppolicyMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Group, ok := VoicemailgrouppolicyMap["group"].(map[string]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
@@ -118,15 +118,15 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := VoicemailgrouppolicyMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if SendEmailNotifications, ok := VoicemailgrouppolicyMap["sendEmailNotifications"].(bool); ok {
 		o.SendEmailNotifications = &SendEmailNotifications
 	}
-	
+    
 	if DisableEmailPii, ok := VoicemailgrouppolicyMap["disableEmailPii"].(bool); ok {
 		o.DisableEmailPii = &DisableEmailPii
 	}
-	
+    
 	if RotateCallsSecs, ok := VoicemailgrouppolicyMap["rotateCallsSecs"].(float64); ok {
 		RotateCallsSecsInt := int(RotateCallsSecs)
 		o.RotateCallsSecs = &RotateCallsSecsInt
@@ -140,15 +140,15 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
 	if OverflowGroupId, ok := VoicemailgrouppolicyMap["overflowGroupId"].(string); ok {
 		o.OverflowGroupId = &OverflowGroupId
 	}
-	
+    
 	if GroupAlertType, ok := VoicemailgrouppolicyMap["groupAlertType"].(string); ok {
 		o.GroupAlertType = &GroupAlertType
 	}
-	
+    
 	if InteractiveResponsePromptId, ok := VoicemailgrouppolicyMap["interactiveResponsePromptId"].(string); ok {
 		o.InteractiveResponsePromptId = &InteractiveResponsePromptId
 	}
-	
+    
 
 	return nil
 }

@@ -69,11 +69,11 @@ func (o *V2conversationmessagetypingeventforusertopicconversationcontentnotifica
 	if Id, ok := V2conversationmessagetypingeventforusertopicconversationcontentnotificationtemplateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Language, ok := V2conversationmessagetypingeventforusertopicconversationcontentnotificationtemplateMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Header, ok := V2conversationmessagetypingeventforusertopicconversationcontentnotificationtemplateMap["header"].(map[string]interface{}); ok {
 		HeaderString, _ := json.Marshal(Header)
 		json.Unmarshal(HeaderString, &o.Header)

@@ -45,11 +45,11 @@ func (o *Queueconversationcallbackeventtopicvoicemail) UnmarshalJSON(b []byte) e
 	if Id, ok := QueueconversationcallbackeventtopicvoicemailMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if UploadStatus, ok := QueueconversationcallbackeventtopicvoicemailMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 
 	return nil
 }

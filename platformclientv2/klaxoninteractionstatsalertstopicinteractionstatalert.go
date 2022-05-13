@@ -174,52 +174,52 @@ func (o *Klaxoninteractionstatsalertstopicinteractionstatalert) UnmarshalJSON(b 
 	if Id, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if RuleId, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["ruleId"].(string); ok {
 		o.RuleId = &RuleId
 	}
-	
+    
 	if Dimension, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if DimensionValue, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["dimensionValue"].(string); ok {
 		o.DimensionValue = &DimensionValue
 	}
-	
+    
 	if DimensionValueName, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["dimensionValueName"].(string); ok {
 		o.DimensionValueName = &DimensionValueName
 	}
-	
+    
 	if Metric, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if MediaType, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if NumericRange, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["numericRange"].(string); ok {
 		o.NumericRange = &NumericRange
 	}
-	
+    
 	if Statistic, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["statistic"].(string); ok {
 		o.Statistic = &Statistic
 	}
-	
+    
 	if Value, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["value"].(float64); ok {
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32
 	}
-	
+    
 	if Unread, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["unread"].(bool); ok {
 		o.Unread = &Unread
 	}
-	
+    
 	if startDateString, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate

@@ -61,19 +61,19 @@ func (o *Architectflownotificationerrordetail) UnmarshalJSON(b []byte) error {
 	if ErrorCode, ok := ArchitectflownotificationerrordetailMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if EntityId, ok := ArchitectflownotificationerrordetailMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}
-	
+    
 	if EntityName, ok := ArchitectflownotificationerrordetailMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 	if FieldName, ok := ArchitectflownotificationerrordetailMap["fieldName"].(string); ok {
 		o.FieldName = &FieldName
 	}
-	
+    
 
 	return nil
 }

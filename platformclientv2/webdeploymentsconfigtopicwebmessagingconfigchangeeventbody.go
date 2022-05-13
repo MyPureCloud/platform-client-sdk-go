@@ -53,15 +53,15 @@ func (o *Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody) UnmarshalJS
 	if Id, ok := WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if Status, ok := WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

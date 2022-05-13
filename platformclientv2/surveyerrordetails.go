@@ -50,7 +50,7 @@ func (o *Surveyerrordetails) UnmarshalJSON(b []byte) error {
 	if SurveyErrorReason, ok := SurveyerrordetailsMap["surveyErrorReason"].(string); ok {
 		o.SurveyErrorReason = &SurveyErrorReason
 	}
-	
+    
 
 	return nil
 }

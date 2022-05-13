@@ -61,15 +61,15 @@ func (o *Createwebchatconversationresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := CreatewebchatconversationresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Jwt, ok := CreatewebchatconversationresponseMap["jwt"].(string); ok {
 		o.Jwt = &Jwt
 	}
-	
+    
 	if EventStreamUri, ok := CreatewebchatconversationresponseMap["eventStreamUri"].(string); ok {
 		o.EventStreamUri = &EventStreamUri
 	}
-	
+    
 	if Member, ok := CreatewebchatconversationresponseMap["member"].(map[string]interface{}); ok {
 		MemberString, _ := json.Marshal(Member)
 		json.Unmarshal(MemberString, &o.Member)

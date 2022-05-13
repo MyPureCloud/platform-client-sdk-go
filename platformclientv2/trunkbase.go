@@ -182,11 +182,11 @@ func (o *Trunkbase) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrunkbaseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TrunkbaseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := TrunkbaseMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Trunkbase) UnmarshalJSON(b []byte) error {
 	if Description, ok := TrunkbaseMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := TrunkbaseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,23 +214,23 @@ func (o *Trunkbase) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := TrunkbaseMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := TrunkbaseMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := TrunkbaseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := TrunkbaseMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := TrunkbaseMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if TrunkMetabase, ok := TrunkbaseMap["trunkMetabase"].(map[string]interface{}); ok {
 		TrunkMetabaseString, _ := json.Marshal(TrunkMetabase)
 		json.Unmarshal(TrunkMetabaseString, &o.TrunkMetabase)
@@ -244,15 +244,15 @@ func (o *Trunkbase) UnmarshalJSON(b []byte) error {
 	if TrunkType, ok := TrunkbaseMap["trunkType"].(string); ok {
 		o.TrunkType = &TrunkType
 	}
-	
+    
 	if Managed, ok := TrunkbaseMap["managed"].(bool); ok {
 		o.Managed = &Managed
 	}
-	
+    
 	if SelfUri, ok := TrunkbaseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -109,11 +109,11 @@ func (o *Searchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := SearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := SearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := SearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

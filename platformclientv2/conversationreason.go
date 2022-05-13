@@ -45,11 +45,11 @@ func (o *Conversationreason) UnmarshalJSON(b []byte) error {
 	if Code, ok := ConversationreasonMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := ConversationreasonMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

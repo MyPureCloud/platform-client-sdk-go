@@ -92,11 +92,11 @@ func (o *Adherencesettings) UnmarshalJSON(b []byte) error {
 	if NonOnQueueActivitiesEquivalent, ok := AdherencesettingsMap["nonOnQueueActivitiesEquivalent"].(bool); ok {
 		o.NonOnQueueActivitiesEquivalent = &NonOnQueueActivitiesEquivalent
 	}
-	
+    
 	if TrackOnQueueActivity, ok := AdherencesettingsMap["trackOnQueueActivity"].(bool); ok {
 		o.TrackOnQueueActivity = &TrackOnQueueActivity
 	}
-	
+    
 	if IgnoredActivityCategories, ok := AdherencesettingsMap["ignoredActivityCategories"].(map[string]interface{}); ok {
 		IgnoredActivityCategoriesString, _ := json.Marshal(IgnoredActivityCategories)
 		json.Unmarshal(IgnoredActivityCategoriesString, &o.IgnoredActivityCategories)

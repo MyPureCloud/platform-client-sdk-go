@@ -37,7 +37,7 @@ func (o *Facebookappcredentials) UnmarshalJSON(b []byte) error {
 	if Id, ok := FacebookappcredentialsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -117,27 +117,27 @@ func (o *Assessmentformquestion) UnmarshalJSON(b []byte) error {
 	if Id, ok := AssessmentformquestionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if VarType, ok := AssessmentformquestionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := AssessmentformquestionMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if HelpText, ok := AssessmentformquestionMap["helpText"].(string); ok {
 		o.HelpText = &HelpText
 	}
-	
+    
 	if NaEnabled, ok := AssessmentformquestionMap["naEnabled"].(bool); ok {
 		o.NaEnabled = &NaEnabled
 	}
-	
+    
 	if CommentsRequired, ok := AssessmentformquestionMap["commentsRequired"].(bool); ok {
 		o.CommentsRequired = &CommentsRequired
 	}
-	
+    
 	if VisibilityCondition, ok := AssessmentformquestionMap["visibilityCondition"].(map[string]interface{}); ok {
 		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
 		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
@@ -156,11 +156,11 @@ func (o *Assessmentformquestion) UnmarshalJSON(b []byte) error {
 	if IsKill, ok := AssessmentformquestionMap["isKill"].(bool); ok {
 		o.IsKill = &IsKill
 	}
-	
+    
 	if IsCritical, ok := AssessmentformquestionMap["isCritical"].(bool); ok {
 		o.IsCritical = &IsCritical
 	}
-	
+    
 
 	return nil
 }

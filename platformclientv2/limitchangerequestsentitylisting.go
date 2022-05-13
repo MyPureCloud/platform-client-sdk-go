@@ -66,15 +66,15 @@ func (o *Limitchangerequestsentitylisting) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := LimitchangerequestsentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := LimitchangerequestsentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := LimitchangerequestsentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

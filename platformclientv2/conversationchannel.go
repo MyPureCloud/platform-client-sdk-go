@@ -53,15 +53,15 @@ func (o *Conversationchannel) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationchannelMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if MessageType, ok := ConversationchannelMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if Platform, ok := ConversationchannelMap["platform"].(string); ok {
 		o.Platform = &Platform
 	}
-	
+    
 
 	return nil
 }

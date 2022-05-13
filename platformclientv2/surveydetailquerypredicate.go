@@ -77,23 +77,23 @@ func (o *Surveydetailquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SurveydetailquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := SurveydetailquerypredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Metric, ok := SurveydetailquerypredicateMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Operator, ok := SurveydetailquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := SurveydetailquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := SurveydetailquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

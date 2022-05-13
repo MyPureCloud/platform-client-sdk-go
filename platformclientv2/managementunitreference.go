@@ -45,11 +45,11 @@ func (o *Managementunitreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := ManagementunitreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ManagementunitreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

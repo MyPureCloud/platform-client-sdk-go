@@ -45,11 +45,11 @@ func (o *Widgetclientconfigv1) UnmarshalJSON(b []byte) error {
 	if WebChatSkin, ok := Widgetclientconfigv1Map["webChatSkin"].(string); ok {
 		o.WebChatSkin = &WebChatSkin
 	}
-	
+    
 	if AuthenticationUrl, ok := Widgetclientconfigv1Map["authenticationUrl"].(string); ok {
 		o.AuthenticationUrl = &AuthenticationUrl
 	}
-	
+    
 
 	return nil
 }

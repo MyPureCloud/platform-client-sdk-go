@@ -61,11 +61,11 @@ func (o *Weekschedulegenerationresult) UnmarshalJSON(b []byte) error {
 	if Failed, ok := WeekschedulegenerationresultMap["failed"].(bool); ok {
 		o.Failed = &Failed
 	}
-	
+    
 	if RunId, ok := WeekschedulegenerationresultMap["runId"].(string); ok {
 		o.RunId = &RunId
 	}
-	
+    
 	if AgentWarnings, ok := WeekschedulegenerationresultMap["agentWarnings"].([]interface{}); ok {
 		AgentWarningsString, _ := json.Marshal(AgentWarnings)
 		json.Unmarshal(AgentWarningsString, &o.AgentWarnings)

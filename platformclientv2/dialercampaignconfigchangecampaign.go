@@ -320,7 +320,7 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	if DialingMode, ok := DialercampaignconfigchangecampaignMap["dialingMode"].(string); ok {
 		o.DialingMode = &DialingMode
 	}
-	
+    
 	if Script, ok := DialercampaignconfigchangecampaignMap["script"].(map[string]interface{}); ok {
 		ScriptString, _ := json.Marshal(Script)
 		json.Unmarshal(ScriptString, &o.Script)
@@ -339,7 +339,7 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	if CampaignStatus, ok := DialercampaignconfigchangecampaignMap["campaignStatus"].(string); ok {
 		o.CampaignStatus = &CampaignStatus
 	}
-	
+    
 	if PhoneColumns, ok := DialercampaignconfigchangecampaignMap["phoneColumns"].([]interface{}); ok {
 		PhoneColumnsString, _ := json.Marshal(PhoneColumns)
 		json.Unmarshal(PhoneColumnsString, &o.PhoneColumns)
@@ -349,7 +349,7 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 		AbandonRateFloat32 := float32(AbandonRate)
 		o.AbandonRate = &AbandonRateFloat32
 	}
-	
+    
 	if DncLists, ok := DialercampaignconfigchangecampaignMap["dncLists"].([]interface{}); ok {
 		DncListsString, _ := json.Marshal(DncLists)
 		json.Unmarshal(DncListsString, &o.DncLists)
@@ -368,11 +368,11 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	if CallerName, ok := DialercampaignconfigchangecampaignMap["callerName"].(string); ok {
 		o.CallerName = &CallerName
 	}
-	
+    
 	if CallerAddress, ok := DialercampaignconfigchangecampaignMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if OutboundLineCount, ok := DialercampaignconfigchangecampaignMap["outboundLineCount"].(float64); ok {
 		OutboundLineCountInt := int(OutboundLineCount)
 		o.OutboundLineCount = &OutboundLineCountInt
@@ -391,7 +391,7 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	if SkipPreviewDisabled, ok := DialercampaignconfigchangecampaignMap["skipPreviewDisabled"].(bool); ok {
 		o.SkipPreviewDisabled = &SkipPreviewDisabled
 	}
-	
+    
 	if PreviewTimeOutSeconds, ok := DialercampaignconfigchangecampaignMap["previewTimeOutSeconds"].(float64); ok {
 		PreviewTimeOutSecondsInt := int(PreviewTimeOutSeconds)
 		o.PreviewTimeOutSeconds = &PreviewTimeOutSecondsInt
@@ -400,7 +400,7 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	if SingleNumberPreview, ok := DialercampaignconfigchangecampaignMap["singleNumberPreview"].(bool); ok {
 		o.SingleNumberPreview = &SingleNumberPreview
 	}
-	
+    
 	if ContactSort, ok := DialercampaignconfigchangecampaignMap["contactSort"].(map[string]interface{}); ok {
 		ContactSortString, _ := json.Marshal(ContactSort)
 		json.Unmarshal(ContactSortString, &o.ContactSort)
@@ -419,7 +419,7 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	if CallAnalysisLanguage, ok := DialercampaignconfigchangecampaignMap["callAnalysisLanguage"].(string); ok {
 		o.CallAnalysisLanguage = &CallAnalysisLanguage
 	}
-	
+    
 	if Priority, ok := DialercampaignconfigchangecampaignMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
@@ -438,15 +438,15 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	if AgentOwnedColumn, ok := DialercampaignconfigchangecampaignMap["agentOwnedColumn"].(string); ok {
 		o.AgentOwnedColumn = &AgentOwnedColumn
 	}
-	
+    
 	if Id, ok := DialercampaignconfigchangecampaignMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialercampaignconfigchangecampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialercampaignconfigchangecampaignMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

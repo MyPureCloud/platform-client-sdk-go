@@ -45,11 +45,11 @@ func (o *Updatenotificationresponse) UnmarshalJSON(b []byte) error {
 	if MutableGroupId, ok := UpdatenotificationresponseMap["mutableGroupId"].(string); ok {
 		o.MutableGroupId = &MutableGroupId
 	}
-	
+    
 	if Id, ok := UpdatenotificationresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

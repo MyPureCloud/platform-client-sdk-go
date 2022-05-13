@@ -142,19 +142,19 @@ func (o *Workspace) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkspaceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WorkspaceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := WorkspaceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if IsCurrentUserWorkspace, ok := WorkspaceMap["isCurrentUserWorkspace"].(bool); ok {
 		o.IsCurrentUserWorkspace = &IsCurrentUserWorkspace
 	}
-	
+    
 	if User, ok := WorkspaceMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -163,7 +163,7 @@ func (o *Workspace) UnmarshalJSON(b []byte) error {
 	if Bucket, ok := WorkspaceMap["bucket"].(string); ok {
 		o.Bucket = &Bucket
 	}
-	
+    
 	if dateCreatedString, ok := WorkspaceMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -187,11 +187,11 @@ func (o *Workspace) UnmarshalJSON(b []byte) error {
 	if Description, ok := WorkspaceMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SelfUri, ok := WorkspaceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

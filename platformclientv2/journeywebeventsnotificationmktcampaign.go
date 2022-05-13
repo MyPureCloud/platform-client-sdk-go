@@ -85,31 +85,31 @@ func (o *Journeywebeventsnotificationmktcampaign) UnmarshalJSON(b []byte) error 
 	if Content, ok := JourneywebeventsnotificationmktcampaignMap["content"].(string); ok {
 		o.Content = &Content
 	}
-	
+    
 	if Medium, ok := JourneywebeventsnotificationmktcampaignMap["medium"].(string); ok {
 		o.Medium = &Medium
 	}
-	
+    
 	if Name, ok := JourneywebeventsnotificationmktcampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Source, ok := JourneywebeventsnotificationmktcampaignMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if Term, ok := JourneywebeventsnotificationmktcampaignMap["term"].(string); ok {
 		o.Term = &Term
 	}
-	
+    
 	if ClickId, ok := JourneywebeventsnotificationmktcampaignMap["clickId"].(string); ok {
 		o.ClickId = &ClickId
 	}
-	
+    
 	if Network, ok := JourneywebeventsnotificationmktcampaignMap["network"].(string); ok {
 		o.Network = &Network
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Emailcolumn) UnmarshalJSON(b []byte) error {
 	if ColumnName, ok := EmailcolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := EmailcolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

@@ -166,11 +166,11 @@ func (o *Linebase) UnmarshalJSON(b []byte) error {
 	if Id, ok := LinebaseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LinebaseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := LinebaseMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -179,7 +179,7 @@ func (o *Linebase) UnmarshalJSON(b []byte) error {
 	if Description, ok := LinebaseMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := LinebaseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -198,23 +198,23 @@ func (o *Linebase) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := LinebaseMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := LinebaseMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := LinebaseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := LinebaseMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := LinebaseMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if LineMetaBase, ok := LinebaseMap["lineMetaBase"].(map[string]interface{}); ok {
 		LineMetaBaseString, _ := json.Marshal(LineMetaBase)
 		json.Unmarshal(LineMetaBaseString, &o.LineMetaBase)
@@ -228,7 +228,7 @@ func (o *Linebase) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LinebaseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

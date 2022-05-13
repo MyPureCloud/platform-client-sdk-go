@@ -61,11 +61,11 @@ func (o *Activitycodereference) UnmarshalJSON(b []byte) error {
 	if Id, ok := ActivitycodereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ActivitycodereferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SecondaryPresences, ok := ActivitycodereferenceMap["secondaryPresences"].([]interface{}); ok {
 		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
 		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
@@ -74,7 +74,7 @@ func (o *Activitycodereference) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ActivitycodereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

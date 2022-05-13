@@ -129,23 +129,23 @@ func (o *Queuememberentitylistingv1) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := Queuememberentitylistingv1Map["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := Queuememberentitylistingv1Map["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := Queuememberentitylistingv1Map["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := Queuememberentitylistingv1Map["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := Queuememberentitylistingv1Map["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := Queuememberentitylistingv1Map["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

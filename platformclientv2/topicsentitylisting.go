@@ -92,11 +92,11 @@ func (o *Topicsentitylisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TopicsentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if NextUri, ok := TopicsentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := TopicsentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

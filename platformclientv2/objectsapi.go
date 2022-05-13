@@ -32,8 +32,6 @@ func NewObjectsApiWithConfig(config *Configuration) *ObjectsApi {
 // DeleteAuthorizationDivision invokes DELETE /api/v2/authorization/divisions/{divisionId}
 //
 // Delete a division.
-//
-// 
 func (a ObjectsApi) DeleteAuthorizationDivision(divisionId string, force bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a ObjectsApi) DeleteAuthorizationDivision(divisionId string, force bool) (
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling ObjectsApi->DeleteAuthorizationDivision")
 	}
 
@@ -100,8 +98,6 @@ func (a ObjectsApi) DeleteAuthorizationDivision(divisionId string, force bool) (
 // GetAuthorizationDivision invokes GET /api/v2/authorization/divisions/{divisionId}
 //
 // Returns an authorization division.
-//
-// 
 func (a ObjectsApi) GetAuthorizationDivision(divisionId string, objectCount bool) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -114,7 +110,7 @@ func (a ObjectsApi) GetAuthorizationDivision(divisionId string, objectCount bool
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling ObjectsApi->GetAuthorizationDivision")
 	}
 
@@ -176,7 +172,7 @@ func (a ObjectsApi) GetAuthorizationDivision(divisionId string, objectCount bool
 //
 // Retrieve a list of all divisions defined for the organization
 //
-// Request specific divisions by id using a query param \&quot;id\&quot;, e.g.  ?id=5f777167-63be-4c24-ad41-374155d9e28b&amp;id=72e9fb25-c484-488d-9312-7acba82435b3
+// Request specific divisions by id using a query param \&quot;id\&quot;, e.g.  ?id&#x3D;5f777167-63be-4c24-ad41-374155d9e28b&amp;id&#x3D;72e9fb25-c484-488d-9312-7acba82435b3
 func (a ObjectsApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, id []string, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -327,8 +323,6 @@ func (a ObjectsApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIRespons
 // GetAuthorizationDivisionsLimit invokes GET /api/v2/authorization/divisions/limit
 //
 // Returns the maximum allowed number of divisions.
-//
-// 
 func (a ObjectsApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -408,12 +402,12 @@ func (a ObjectsApi) PostAuthorizationDivisionObject(divisionId string, objectTyp
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling ObjectsApi->PostAuthorizationDivisionObject")
 	}
 	// verify the required parameter 'objectType' is set
 	if &objectType == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'objectType' when calling ObjectsApi->PostAuthorizationDivisionObject")
 	}
 	// verify the required parameter 'body' is set
@@ -474,8 +468,6 @@ func (a ObjectsApi) PostAuthorizationDivisionObject(divisionId string, objectTyp
 // PostAuthorizationDivisionRestore invokes POST /api/v2/authorization/divisions/{divisionId}/restore
 //
 // Recreate a previously deleted division.
-//
-// 
 func (a ObjectsApi) PostAuthorizationDivisionRestore(divisionId string, body Authzdivision) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -488,12 +480,12 @@ func (a ObjectsApi) PostAuthorizationDivisionRestore(divisionId string, body Aut
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling ObjectsApi->PostAuthorizationDivisionRestore")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ObjectsApi->PostAuthorizationDivisionRestore")
 	}
 
@@ -555,8 +547,6 @@ func (a ObjectsApi) PostAuthorizationDivisionRestore(divisionId string, body Aut
 // PostAuthorizationDivisions invokes POST /api/v2/authorization/divisions
 //
 // Create a division.
-//
-// 
 func (a ObjectsApi) PostAuthorizationDivisions(body Authzdivision) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -568,7 +558,7 @@ func (a ObjectsApi) PostAuthorizationDivisions(body Authzdivision) (*Authzdivisi
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ObjectsApi->PostAuthorizationDivisions")
 	}
 
@@ -630,8 +620,6 @@ func (a ObjectsApi) PostAuthorizationDivisions(body Authzdivision) (*Authzdivisi
 // PutAuthorizationDivision invokes PUT /api/v2/authorization/divisions/{divisionId}
 //
 // Update a division.
-//
-// 
 func (a ObjectsApi) PutAuthorizationDivision(divisionId string, body Authzdivision) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -644,12 +632,12 @@ func (a ObjectsApi) PutAuthorizationDivision(divisionId string, body Authzdivisi
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling ObjectsApi->PutAuthorizationDivision")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ObjectsApi->PutAuthorizationDivision")
 	}
 

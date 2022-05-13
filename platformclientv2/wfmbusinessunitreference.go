@@ -45,11 +45,11 @@ func (o *Wfmbusinessunitreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := WfmbusinessunitreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := WfmbusinessunitreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

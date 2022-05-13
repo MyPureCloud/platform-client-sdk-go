@@ -53,11 +53,11 @@ func (o *Posttextmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := PosttextmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := PosttextmessageMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Content, ok := PosttextmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)

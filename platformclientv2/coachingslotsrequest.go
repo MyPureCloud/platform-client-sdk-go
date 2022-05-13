@@ -69,7 +69,7 @@ func (o *Coachingslotsrequest) UnmarshalJSON(b []byte) error {
 	if Interval, ok := CoachingslotsrequestMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if LengthInMinutes, ok := CoachingslotsrequestMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt

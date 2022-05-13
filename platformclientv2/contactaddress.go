@@ -77,27 +77,27 @@ func (o *Contactaddress) UnmarshalJSON(b []byte) error {
 	if Address1, ok := ContactaddressMap["address1"].(string); ok {
 		o.Address1 = &Address1
 	}
-	
+    
 	if Address2, ok := ContactaddressMap["address2"].(string); ok {
 		o.Address2 = &Address2
 	}
-	
+    
 	if City, ok := ContactaddressMap["city"].(string); ok {
 		o.City = &City
 	}
-	
+    
 	if State, ok := ContactaddressMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if PostalCode, ok := ContactaddressMap["postalCode"].(string); ok {
 		o.PostalCode = &PostalCode
 	}
-	
+    
 	if CountryCode, ok := ContactaddressMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
 	}
-	
+    
 
 	return nil
 }

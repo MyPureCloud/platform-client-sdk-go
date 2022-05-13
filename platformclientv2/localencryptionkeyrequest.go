@@ -53,15 +53,15 @@ func (o *Localencryptionkeyrequest) UnmarshalJSON(b []byte) error {
 	if ConfigId, ok := LocalencryptionkeyrequestMap["configId"].(string); ok {
 		o.ConfigId = &ConfigId
 	}
-	
+    
 	if PublicKey, ok := LocalencryptionkeyrequestMap["publicKey"].(string); ok {
 		o.PublicKey = &PublicKey
 	}
-	
+    
 	if KeypairId, ok := LocalencryptionkeyrequestMap["keypairId"].(string); ok {
 		o.KeypairId = &KeypairId
 	}
-	
+    
 
 	return nil
 }

@@ -93,19 +93,19 @@ func (o *Didnumber) UnmarshalJSON(b []byte) error {
 	if Id, ok := DidnumberMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DidnumberMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Number, ok := DidnumberMap["number"].(string); ok {
 		o.Number = &Number
 	}
-	
+    
 	if Assigned, ok := DidnumberMap["assigned"].(bool); ok {
 		o.Assigned = &Assigned
 	}
-	
+    
 	if DidPool, ok := DidnumberMap["didPool"].(map[string]interface{}); ok {
 		DidPoolString, _ := json.Marshal(DidPool)
 		json.Unmarshal(DidPoolString, &o.DidPool)
@@ -119,11 +119,11 @@ func (o *Didnumber) UnmarshalJSON(b []byte) error {
 	if OwnerType, ok := DidnumberMap["ownerType"].(string); ok {
 		o.OwnerType = &OwnerType
 	}
-	
+    
 	if SelfUri, ok := DidnumberMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

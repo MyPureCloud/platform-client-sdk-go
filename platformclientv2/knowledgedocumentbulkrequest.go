@@ -77,11 +77,11 @@ func (o *Knowledgedocumentbulkrequest) UnmarshalJSON(b []byte) error {
 	if VarType, ok := KnowledgedocumentbulkrequestMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ExternalUrl, ok := KnowledgedocumentbulkrequestMap["externalUrl"].(string); ok {
 		o.ExternalUrl = &ExternalUrl
 	}
-	
+    
 	if Faq, ok := KnowledgedocumentbulkrequestMap["faq"].(map[string]interface{}); ok {
 		FaqString, _ := json.Marshal(Faq)
 		json.Unmarshal(FaqString, &o.Faq)
@@ -100,7 +100,7 @@ func (o *Knowledgedocumentbulkrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := KnowledgedocumentbulkrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

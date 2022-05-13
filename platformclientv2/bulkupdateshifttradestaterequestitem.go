@@ -53,11 +53,11 @@ func (o *Bulkupdateshifttradestaterequestitem) UnmarshalJSON(b []byte) error {
 	if Id, ok := BulkupdateshifttradestaterequestitemMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := BulkupdateshifttradestaterequestitemMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Metadata, ok := BulkupdateshifttradestaterequestitemMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

@@ -129,23 +129,23 @@ func (o *Learningassignmentsdomainentity) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := LearningassignmentsdomainentityMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := LearningassignmentsdomainentityMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := LearningassignmentsdomainentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := LearningassignmentsdomainentityMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := LearningassignmentsdomainentityMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := LearningassignmentsdomainentityMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

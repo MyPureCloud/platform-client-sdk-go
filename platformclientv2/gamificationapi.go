@@ -32,9 +32,7 @@ func NewGamificationApiWithConfig(config *Configuration) *GamificationApi {
 
 // GetGamificationLeaderboard invokes GET /api/v2/gamification/leaderboard
 //
-// Leaderboard of the requesting user&#39;s division or performance profile
-//
-// 
+// Leaderboard of the requesting user's division or performance profile
 func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endWorkday time.Time, metricId string) (*Leaderboard, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -46,12 +44,12 @@ func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endW
 
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationLeaderboard")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationLeaderboard")
 	}
 
@@ -116,8 +114,6 @@ func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endW
 // GetGamificationLeaderboardAll invokes GET /api/v2/gamification/leaderboard/all
 //
 // Leaderboard by filter type
-//
-// 
 func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filterId string, startWorkday time.Time, endWorkday time.Time, metricId string) (*Leaderboard, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -129,22 +125,22 @@ func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filter
 
 	// verify the required parameter 'filterType' is set
 	if &filterType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationLeaderboardAll")
 	}
 	// verify the required parameter 'filterId' is set
 	if &filterId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationLeaderboardAll")
 	}
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationLeaderboardAll")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationLeaderboardAll")
 	}
 
@@ -213,8 +209,6 @@ func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filter
 // GetGamificationLeaderboardAllBestpoints invokes GET /api/v2/gamification/leaderboard/all/bestpoints
 //
 // Best Points by division or performance profile
-//
-// 
 func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType string, filterId string) (*Overallbestpoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -226,12 +220,12 @@ func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType stri
 
 	// verify the required parameter 'filterType' is set
 	if &filterType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationLeaderboardAllBestpoints")
 	}
 	// verify the required parameter 'filterId' is set
 	if &filterId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationLeaderboardAllBestpoints")
 	}
 
@@ -293,9 +287,7 @@ func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType stri
 
 // GetGamificationLeaderboardBestpoints invokes GET /api/v2/gamification/leaderboard/bestpoints
 //
-// Best Points of the requesting user&#39;s current performance profile or division
-//
-// 
+// Best Points of the requesting user's current performance profile or division
 func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -361,8 +353,6 @@ func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoi
 // GetGamificationMetric invokes GET /api/v2/gamification/metrics/{metricId}
 //
 // Gamified metric by id
-//
-// 
 func (a GamificationApi) GetGamificationMetric(metricId string, workday time.Time, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -375,7 +365,7 @@ func (a GamificationApi) GetGamificationMetric(metricId string, workday time.Tim
 
 	// verify the required parameter 'metricId' is set
 	if &metricId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->GetGamificationMetric")
 	}
 
@@ -438,8 +428,6 @@ func (a GamificationApi) GetGamificationMetric(metricId string, workday time.Tim
 // GetGamificationMetricdefinition invokes GET /api/v2/gamification/metricdefinitions/{metricDefinitionId}
 //
 // Metric definition by id
-//
-// 
 func (a GamificationApi) GetGamificationMetricdefinition(metricDefinitionId string) (*Metricdefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -452,7 +440,7 @@ func (a GamificationApi) GetGamificationMetricdefinition(metricDefinitionId stri
 
 	// verify the required parameter 'metricDefinitionId' is set
 	if &metricDefinitionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'metricDefinitionId' when calling GamificationApi->GetGamificationMetricdefinition")
 	}
 
@@ -578,8 +566,6 @@ func (a GamificationApi) GetGamificationMetricdefinitions() (*Getmetricdefinitio
 // GetGamificationMetrics invokes GET /api/v2/gamification/metrics
 //
 // All gamified metrics for a given profile
-//
-// 
 func (a GamificationApi) GetGamificationMetrics(performanceProfileId string, workday time.Time) (*Getmetricsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -649,8 +635,6 @@ func (a GamificationApi) GetGamificationMetrics(performanceProfileId string, wor
 // GetGamificationProfile invokes GET /api/v2/gamification/profiles/{profileId}
 //
 // Performance profile by id
-//
-// 
 func (a GamificationApi) GetGamificationProfile(profileId string) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -663,7 +647,7 @@ func (a GamificationApi) GetGamificationProfile(profileId string) (*Performancep
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfile")
 	}
 
@@ -722,8 +706,6 @@ func (a GamificationApi) GetGamificationProfile(profileId string) (*Performancep
 // GetGamificationProfileMembers invokes GET /api/v2/gamification/profiles/{performanceProfileId}/members
 //
 // Members of a given performance profile
-//
-// 
 func (a GamificationApi) GetGamificationProfileMembers(performanceProfileId string) (*Memberlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -736,7 +718,7 @@ func (a GamificationApi) GetGamificationProfileMembers(performanceProfileId stri
 
 	// verify the required parameter 'performanceProfileId' is set
 	if &performanceProfileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'performanceProfileId' when calling GamificationApi->GetGamificationProfileMembers")
 	}
 
@@ -795,8 +777,6 @@ func (a GamificationApi) GetGamificationProfileMembers(performanceProfileId stri
 // GetGamificationProfileMetric invokes GET /api/v2/gamification/profiles/{profileId}/metrics/{metricId}
 //
 // Performance profile gamified metric by id
-//
-// 
 func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId string, workday time.Time) (*Metric, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -810,12 +790,12 @@ func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfileMetric")
 	}
 	// verify the required parameter 'metricId' is set
 	if &metricId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->GetGamificationProfileMetric")
 	}
 
@@ -876,8 +856,6 @@ func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId
 // GetGamificationProfileMetrics invokes GET /api/v2/gamification/profiles/{profileId}/metrics
 //
 // All gamified metrics for a given performance profile
-//
-// 
 func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand []string, workday time.Time) (*Getmetricresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -890,7 +868,7 @@ func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand 
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfileMetrics")
 	}
 
@@ -953,8 +931,6 @@ func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand 
 // GetGamificationProfileMetricsObjectivedetails invokes GET /api/v2/gamification/profiles/{profileId}/metrics/objectivedetails
 //
 // All metrics for a given performance profile with objective details such as order and maxPoints
-//
-// 
 func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId string, workday time.Time) (*Getmetricsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -967,7 +943,7 @@ func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfileMetricsObjectivedetails")
 	}
 
@@ -1028,8 +1004,6 @@ func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId
 // GetGamificationProfiles invokes GET /api/v2/gamification/profiles
 //
 // All performance profiles
-//
-// 
 func (a GamificationApi) GetGamificationProfiles() (*Getprofilesresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1095,8 +1069,6 @@ func (a GamificationApi) GetGamificationProfiles() (*Getprofilesresponse, *APIRe
 // GetGamificationProfilesUser invokes GET /api/v2/gamification/profiles/users/{userId}
 //
 // Performance profile of a user
-//
-// 
 func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time.Time) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1109,7 +1081,7 @@ func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationProfilesUser")
 	}
 
@@ -1170,8 +1142,6 @@ func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time
 // GetGamificationProfilesUsersMe invokes GET /api/v2/gamification/profiles/users/me
 //
 // Performance profile of the requesting user
-//
-// 
 func (a GamificationApi) GetGamificationProfilesUsersMe(workday time.Time) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1239,8 +1209,6 @@ func (a GamificationApi) GetGamificationProfilesUsersMe(workday time.Time) (*Per
 // GetGamificationScorecards invokes GET /api/v2/gamification/scorecards
 //
 // Workday performance metrics of the requesting user
-//
-// 
 func (a GamificationApi) GetGamificationScorecards(workday time.Time, expand []string) (*Workdaymetriclisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1252,7 +1220,7 @@ func (a GamificationApi) GetGamificationScorecards(workday time.Time, expand []s
 
 	// verify the required parameter 'workday' is set
 	if &workday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workday' when calling GamificationApi->GetGamificationScorecards")
 	}
 
@@ -1315,8 +1283,6 @@ func (a GamificationApi) GetGamificationScorecards(workday time.Time, expand []s
 // GetGamificationScorecardsAttendance invokes GET /api/v2/gamification/scorecards/attendance
 //
 // Attendance status metrics of the requesting user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsAttendance(startWorkday time.Time, endWorkday time.Time) (*Attendancestatuslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1328,12 +1294,12 @@ func (a GamificationApi) GetGamificationScorecardsAttendance(startWorkday time.T
 
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsAttendance")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsAttendance")
 	}
 
@@ -1396,8 +1362,6 @@ func (a GamificationApi) GetGamificationScorecardsAttendance(startWorkday time.T
 // GetGamificationScorecardsBestpoints invokes GET /api/v2/gamification/scorecards/bestpoints
 //
 // Best points of the requesting user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsBestpoints() (*Userbestpoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1463,8 +1427,6 @@ func (a GamificationApi) GetGamificationScorecardsBestpoints() (*Userbestpoints,
 // GetGamificationScorecardsPointsAlltime invokes GET /api/v2/gamification/scorecards/points/alltime
 //
 // All-time points of the requesting user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.Time) (*Alltimepoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1476,7 +1438,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.
 
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsPointsAlltime")
 	}
 
@@ -1536,9 +1498,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.
 
 // GetGamificationScorecardsPointsAverage invokes GET /api/v2/gamification/scorecards/points/average
 //
-// Average points of the requesting user&#39;s division or performance profile
-//
-// 
+// Average points of the requesting user's division or performance profile
 func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Time) (*Singleworkdayaveragepoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1550,7 +1510,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Tim
 
 	// verify the required parameter 'workday' is set
 	if &workday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workday' when calling GamificationApi->GetGamificationScorecardsPointsAverage")
 	}
 
@@ -1611,8 +1571,6 @@ func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Tim
 // GetGamificationScorecardsPointsTrends invokes GET /api/v2/gamification/scorecards/points/trends
 //
 // Points trends of the requesting user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time.Time, endWorkday time.Time, dayOfWeek string) (*Workdaypointstrend, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1624,12 +1582,12 @@ func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time
 
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsPointsTrends")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsPointsTrends")
 	}
 
@@ -1694,8 +1652,6 @@ func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time
 // GetGamificationScorecardsUser invokes GET /api/v2/gamification/scorecards/users/{userId}
 //
 // Workday performance metrics for a user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday time.Time, expand []string) (*Workdaymetriclisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1708,12 +1664,12 @@ func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday ti
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationScorecardsUser")
 	}
 	// verify the required parameter 'workday' is set
 	if &workday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workday' when calling GamificationApi->GetGamificationScorecardsUser")
 	}
 
@@ -1776,8 +1732,6 @@ func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday ti
 // GetGamificationScorecardsUserAttendance invokes GET /api/v2/gamification/scorecards/users/{userId}/attendance
 //
 // Attendance status metrics for a user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, startWorkday time.Time, endWorkday time.Time) (*Attendancestatuslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1790,17 +1744,17 @@ func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationScorecardsUserAttendance")
 	}
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsUserAttendance")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsUserAttendance")
 	}
 
@@ -1863,8 +1817,6 @@ func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, 
 // GetGamificationScorecardsUserBestpoints invokes GET /api/v2/gamification/scorecards/users/{userId}/bestpoints
 //
 // Best points of a user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUserBestpoints(userId string) (*Userbestpoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1877,7 +1829,7 @@ func (a GamificationApi) GetGamificationScorecardsUserBestpoints(userId string) 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationScorecardsUserBestpoints")
 	}
 
@@ -1936,8 +1888,6 @@ func (a GamificationApi) GetGamificationScorecardsUserBestpoints(userId string) 
 // GetGamificationScorecardsUserPointsAlltime invokes GET /api/v2/gamification/scorecards/users/{userId}/points/alltime
 //
 // All-time points for a user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId string, endWorkday time.Time) (*Alltimepoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1950,12 +1900,12 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId strin
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationScorecardsUserPointsAlltime")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsUserPointsAlltime")
 	}
 
@@ -2016,8 +1966,6 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId strin
 // GetGamificationScorecardsUserPointsTrends invokes GET /api/v2/gamification/scorecards/users/{userId}/points/trends
 //
 // Points trend for a user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string, startWorkday time.Time, endWorkday time.Time, dayOfWeek string) (*Workdaypointstrend, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2030,17 +1978,17 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationScorecardsUserPointsTrends")
 	}
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsUserPointsTrends")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsUserPointsTrends")
 	}
 
@@ -2105,8 +2053,6 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 // GetGamificationScorecardsUserValuesTrends invokes GET /api/v2/gamification/scorecards/users/{userId}/values/trends
 //
 // Values trends of a user
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string, startWorkday time.Time, endWorkday time.Time, timeZone string) (*Workdayvaluestrend, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2119,17 +2065,17 @@ func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationScorecardsUserValuesTrends")
 	}
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsUserValuesTrends")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsUserValuesTrends")
 	}
 
@@ -2194,8 +2140,6 @@ func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string
 // GetGamificationScorecardsUsersPointsAverage invokes GET /api/v2/gamification/scorecards/users/points/average
 //
 // Workday average points by target group
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUsersPointsAverage(filterType string, filterId string, workday time.Time) (*Singleworkdayaveragepoints, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2207,17 +2151,17 @@ func (a GamificationApi) GetGamificationScorecardsUsersPointsAverage(filterType 
 
 	// verify the required parameter 'filterType' is set
 	if &filterType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationScorecardsUsersPointsAverage")
 	}
 	// verify the required parameter 'filterId' is set
 	if &filterId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationScorecardsUsersPointsAverage")
 	}
 	// verify the required parameter 'workday' is set
 	if &workday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workday' when calling GamificationApi->GetGamificationScorecardsUsersPointsAverage")
 	}
 
@@ -2282,8 +2226,6 @@ func (a GamificationApi) GetGamificationScorecardsUsersPointsAverage(filterType 
 // GetGamificationScorecardsUsersValuesAverage invokes GET /api/v2/gamification/scorecards/users/values/average
 //
 // Workday average values by target group
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUsersValuesAverage(filterType string, filterId string, workday time.Time, timeZone string) (*Singleworkdayaveragevalues, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2295,17 +2237,17 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesAverage(filterType 
 
 	// verify the required parameter 'filterType' is set
 	if &filterType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationScorecardsUsersValuesAverage")
 	}
 	// verify the required parameter 'filterId' is set
 	if &filterId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationScorecardsUsersValuesAverage")
 	}
 	// verify the required parameter 'workday' is set
 	if &workday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workday' when calling GamificationApi->GetGamificationScorecardsUsersValuesAverage")
 	}
 
@@ -2372,8 +2314,6 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesAverage(filterType 
 // GetGamificationScorecardsUsersValuesTrends invokes GET /api/v2/gamification/scorecards/users/values/trends
 //
 // Values trend by target group
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType string, filterId string, startWorkday time.Time, endWorkday time.Time, timeZone string) (*Workdayvaluestrend, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2385,22 +2325,22 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType s
 
 	// verify the required parameter 'filterType' is set
 	if &filterType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationScorecardsUsersValuesTrends")
 	}
 	// verify the required parameter 'filterId' is set
 	if &filterId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationScorecardsUsersValuesTrends")
 	}
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsUsersValuesTrends")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsUsersValuesTrends")
 	}
 
@@ -2468,9 +2408,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType s
 
 // GetGamificationScorecardsValuesAverage invokes GET /api/v2/gamification/scorecards/values/average
 //
-// Average values of the requesting user&#39;s division or performance profile
-//
-// 
+// Average values of the requesting user's division or performance profile
 func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Time, timeZone string) (*Singleworkdayaveragevalues, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2482,7 +2420,7 @@ func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Tim
 
 	// verify the required parameter 'workday' is set
 	if &workday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workday' when calling GamificationApi->GetGamificationScorecardsValuesAverage")
 	}
 
@@ -2545,8 +2483,6 @@ func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Tim
 // GetGamificationScorecardsValuesTrends invokes GET /api/v2/gamification/scorecards/values/trends
 //
 // Values trends of the requesting user or group
-//
-// 
 func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time.Time, endWorkday time.Time, filterType string, referenceWorkday time.Time, timeZone string) (*Workdayvaluestrend, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2558,12 +2494,12 @@ func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time
 
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsValuesTrends")
 	}
 	// verify the required parameter 'endWorkday' is set
 	if &endWorkday == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsValuesTrends")
 	}
 
@@ -2632,8 +2568,6 @@ func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time
 // GetGamificationStatus invokes GET /api/v2/gamification/status
 //
 // Gamification activation status
-//
-// 
 func (a GamificationApi) GetGamificationStatus() (*Gamificationstatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2699,8 +2633,6 @@ func (a GamificationApi) GetGamificationStatus() (*Gamificationstatus, *APIRespo
 // GetGamificationTemplate invokes GET /api/v2/gamification/templates/{templateId}
 //
 // Objective template by id
-//
-// 
 func (a GamificationApi) GetGamificationTemplate(templateId string) (*Objectivetemplate, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2713,7 +2645,7 @@ func (a GamificationApi) GetGamificationTemplate(templateId string) (*Objectivet
 
 	// verify the required parameter 'templateId' is set
 	if &templateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'templateId' when calling GamificationApi->GetGamificationTemplate")
 	}
 
@@ -2772,8 +2704,6 @@ func (a GamificationApi) GetGamificationTemplate(templateId string) (*Objectivet
 // GetGamificationTemplates invokes GET /api/v2/gamification/templates
 //
 // All objective templates
-//
-// 
 func (a GamificationApi) GetGamificationTemplates() (*Gettemplatesresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2839,8 +2769,6 @@ func (a GamificationApi) GetGamificationTemplates() (*Gettemplatesresponse, *API
 // PostGamificationMetrics invokes POST /api/v2/gamification/metrics
 //
 // Creates a gamified metric with a given metric definition and metric objective
-//
-// 
 func (a GamificationApi) PostGamificationMetrics(body Createmetric) (*Metric, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2852,7 +2780,7 @@ func (a GamificationApi) PostGamificationMetrics(body Createmetric) (*Metric, *A
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationMetrics")
 	}
 
@@ -2914,8 +2842,6 @@ func (a GamificationApi) PostGamificationMetrics(body Createmetric) (*Metric, *A
 // PostGamificationProfileActivate invokes POST /api/v2/gamification/profiles/{profileId}/activate
 //
 // Activate a performance profile
-//
-// 
 func (a GamificationApi) PostGamificationProfileActivate(profileId string) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2928,7 +2854,7 @@ func (a GamificationApi) PostGamificationProfileActivate(profileId string) (*Per
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PostGamificationProfileActivate")
 	}
 
@@ -2987,8 +2913,6 @@ func (a GamificationApi) PostGamificationProfileActivate(profileId string) (*Per
 // PostGamificationProfileDeactivate invokes POST /api/v2/gamification/profiles/{profileId}/deactivate
 //
 // Deactivate a performance profile
-//
-// 
 func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3001,7 +2925,7 @@ func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*P
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PostGamificationProfileDeactivate")
 	}
 
@@ -3060,8 +2984,6 @@ func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*P
 // PostGamificationProfileMembers invokes POST /api/v2/gamification/profiles/{performanceProfileId}/members
 //
 // Assign members to a given performance profile
-//
-// 
 func (a GamificationApi) PostGamificationProfileMembers(performanceProfileId string, body Assignusers) (*Assignment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3074,12 +2996,12 @@ func (a GamificationApi) PostGamificationProfileMembers(performanceProfileId str
 
 	// verify the required parameter 'performanceProfileId' is set
 	if &performanceProfileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'performanceProfileId' when calling GamificationApi->PostGamificationProfileMembers")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationProfileMembers")
 	}
 
@@ -3141,8 +3063,6 @@ func (a GamificationApi) PostGamificationProfileMembers(performanceProfileId str
 // PostGamificationProfileMembersValidate invokes POST /api/v2/gamification/profiles/{performanceProfileId}/members/validate
 //
 // Validate member assignment
-//
-// 
 func (a GamificationApi) PostGamificationProfileMembersValidate(performanceProfileId string, body Validateassignusers) (*Assignmentvalidation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3155,12 +3075,12 @@ func (a GamificationApi) PostGamificationProfileMembersValidate(performanceProfi
 
 	// verify the required parameter 'performanceProfileId' is set
 	if &performanceProfileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'performanceProfileId' when calling GamificationApi->PostGamificationProfileMembersValidate")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationProfileMembersValidate")
 	}
 
@@ -3222,8 +3142,6 @@ func (a GamificationApi) PostGamificationProfileMembersValidate(performanceProfi
 // PostGamificationProfileMetricLink invokes POST /api/v2/gamification/profiles/{sourceProfileId}/metrics/{sourceMetricId}/link
 //
 // Creates a linked metric
-//
-// 
 func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId string, sourceMetricId string, body Targetperformanceprofile) (*Metric, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3237,17 +3155,17 @@ func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId strin
 
 	// verify the required parameter 'sourceProfileId' is set
 	if &sourceProfileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sourceProfileId' when calling GamificationApi->PostGamificationProfileMetricLink")
 	}
 	// verify the required parameter 'sourceMetricId' is set
 	if &sourceMetricId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sourceMetricId' when calling GamificationApi->PostGamificationProfileMetricLink")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationProfileMetricLink")
 	}
 
@@ -3309,8 +3227,6 @@ func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId strin
 // PostGamificationProfileMetrics invokes POST /api/v2/gamification/profiles/{profileId}/metrics
 //
 // Creates a gamified metric with a given metric definition and metric objective under in a performance profile
-//
-// 
 func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body Createmetric) (*Metric, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3323,12 +3239,12 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PostGamificationProfileMetrics")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationProfileMetrics")
 	}
 
@@ -3390,8 +3306,6 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 // PostGamificationProfiles invokes POST /api/v2/gamification/profiles
 //
 // Create a new custom performance profile
-//
-// 
 func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile, copyMetrics bool) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3403,7 +3317,7 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile,
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationProfiles")
 	}
 
@@ -3467,8 +3381,6 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile,
 // PutGamificationMetric invokes PUT /api/v2/gamification/metrics/{metricId}
 //
 // Updates a metric
-//
-// 
 func (a GamificationApi) PutGamificationMetric(metricId string, body Createmetric, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3481,12 +3393,12 @@ func (a GamificationApi) PutGamificationMetric(metricId string, body Createmetri
 
 	// verify the required parameter 'metricId' is set
 	if &metricId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->PutGamificationMetric")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PutGamificationMetric")
 	}
 
@@ -3550,8 +3462,6 @@ func (a GamificationApi) PutGamificationMetric(metricId string, body Createmetri
 // PutGamificationProfile invokes PUT /api/v2/gamification/profiles/{profileId}
 //
 // Updates a performance profile
-//
-// 
 func (a GamificationApi) PutGamificationProfile(profileId string, body Performanceprofile) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3564,7 +3474,7 @@ func (a GamificationApi) PutGamificationProfile(profileId string, body Performan
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PutGamificationProfile")
 	}
 
@@ -3626,8 +3536,6 @@ func (a GamificationApi) PutGamificationProfile(profileId string, body Performan
 // PutGamificationProfileMetric invokes PUT /api/v2/gamification/profiles/{profileId}/metrics/{metricId}
 //
 // Updates a metric in performance profile
-//
-// 
 func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId string, body Createmetric) (*Metric, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3641,17 +3549,17 @@ func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId
 
 	// verify the required parameter 'profileId' is set
 	if &profileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PutGamificationProfileMetric")
 	}
 	// verify the required parameter 'metricId' is set
 	if &metricId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->PutGamificationProfileMetric")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PutGamificationProfileMetric")
 	}
 
@@ -3713,8 +3621,6 @@ func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId
 // PutGamificationStatus invokes PUT /api/v2/gamification/status
 //
 // Update gamification activation status
-//
-// 
 func (a GamificationApi) PutGamificationStatus(status Gamificationstatus) (*Gamificationstatus, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3726,7 +3632,7 @@ func (a GamificationApi) PutGamificationStatus(status Gamificationstatus) (*Gami
 
 	// verify the required parameter 'status' is set
 	if &status == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'status' when calling GamificationApi->PutGamificationStatus")
 	}
 

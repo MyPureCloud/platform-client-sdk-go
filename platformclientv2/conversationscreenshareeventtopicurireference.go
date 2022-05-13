@@ -45,11 +45,11 @@ func (o *Conversationscreenshareeventtopicurireference) UnmarshalJSON(b []byte) 
 	if Id, ok := ConversationscreenshareeventtopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationscreenshareeventtopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

@@ -79,15 +79,15 @@ func (o *Journeypattern) UnmarshalJSON(b []byte) error {
 	if StreamType, ok := JourneypatternMap["streamType"].(string); ok {
 		o.StreamType = &StreamType
 	}
-	
+    
 	if SessionType, ok := JourneypatternMap["sessionType"].(string); ok {
 		o.SessionType = &SessionType
 	}
-	
+    
 	if EventName, ok := JourneypatternMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 
 	return nil
 }

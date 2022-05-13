@@ -45,7 +45,7 @@ func (o *Conversationdetailqueryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationdetailqueryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := ConversationdetailqueryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

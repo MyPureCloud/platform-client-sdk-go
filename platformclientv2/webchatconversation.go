@@ -61,11 +61,11 @@ func (o *Webchatconversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebchatconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WebchatconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Member, ok := WebchatconversationMap["member"].(map[string]interface{}); ok {
 		MemberString, _ := json.Marshal(Member)
 		json.Unmarshal(MemberString, &o.Member)
@@ -74,7 +74,7 @@ func (o *Webchatconversation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WebchatconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

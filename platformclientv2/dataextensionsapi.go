@@ -32,8 +32,6 @@ func NewDataExtensionsApiWithConfig(config *Configuration) *DataExtensionsApi {
 // GetDataextensionsCoretype invokes GET /api/v2/dataextensions/coretypes/{coretypeName}
 //
 // Get a specific named core type.
-//
-// 
 func (a DataExtensionsApi) GetDataextensionsCoretype(coretypeName string) (*Coretype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -46,7 +44,7 @@ func (a DataExtensionsApi) GetDataextensionsCoretype(coretypeName string) (*Core
 
 	// verify the required parameter 'coretypeName' is set
 	if &coretypeName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'coretypeName' when calling DataExtensionsApi->GetDataextensionsCoretype")
 	}
 
@@ -105,8 +103,6 @@ func (a DataExtensionsApi) GetDataextensionsCoretype(coretypeName string) (*Core
 // GetDataextensionsCoretypes invokes GET /api/v2/dataextensions/coretypes
 //
 // Get the core types from which all schemas are built.
-//
-// 
 func (a DataExtensionsApi) GetDataextensionsCoretypes() (*Coretypelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -172,8 +168,6 @@ func (a DataExtensionsApi) GetDataextensionsCoretypes() (*Coretypelisting, *APIR
 // GetDataextensionsLimits invokes GET /api/v2/dataextensions/limits
 //
 // Get quantitative limits on schemas
-//
-// 
 func (a DataExtensionsApi) GetDataextensionsLimits() (*Schemaquantitylimits, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

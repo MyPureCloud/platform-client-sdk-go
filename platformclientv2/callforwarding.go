@@ -110,11 +110,11 @@ func (o *Callforwarding) UnmarshalJSON(b []byte) error {
 	if Id, ok := CallforwardingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CallforwardingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if User, ok := CallforwardingMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -123,11 +123,11 @@ func (o *Callforwarding) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := CallforwardingMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if PhoneNumber, ok := CallforwardingMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if Calls, ok := CallforwardingMap["calls"].([]interface{}); ok {
 		CallsString, _ := json.Marshal(Calls)
 		json.Unmarshal(CallsString, &o.Calls)
@@ -136,7 +136,7 @@ func (o *Callforwarding) UnmarshalJSON(b []byte) error {
 	if Voicemail, ok := CallforwardingMap["voicemail"].(string); ok {
 		o.Voicemail = &Voicemail
 	}
-	
+    
 	if modifiedDateString, ok := CallforwardingMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -145,7 +145,7 @@ func (o *Callforwarding) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CallforwardingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

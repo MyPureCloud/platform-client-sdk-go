@@ -94,11 +94,11 @@ func (o *Asyncquerystatus) UnmarshalJSON(b []byte) error {
 	if State, ok := AsyncquerystatusMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ErrorMessage, ok := AsyncquerystatusMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if expirationDateString, ok := AsyncquerystatusMap["expirationDate"].(string); ok {
 		ExpirationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationDateString)
 		o.ExpirationDate = &ExpirationDate

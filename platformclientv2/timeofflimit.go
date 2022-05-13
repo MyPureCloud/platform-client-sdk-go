@@ -69,11 +69,11 @@ func (o *Timeofflimit) UnmarshalJSON(b []byte) error {
 	if Id, ok := TimeofflimitMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Granularity, ok := TimeofflimitMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if DefaultLimitMinutes, ok := TimeofflimitMap["defaultLimitMinutes"].(float64); ok {
 		DefaultLimitMinutesInt := int(DefaultLimitMinutes)
 		o.DefaultLimitMinutes = &DefaultLimitMinutesInt
@@ -87,7 +87,7 @@ func (o *Timeofflimit) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TimeofflimitMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

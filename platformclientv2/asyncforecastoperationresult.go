@@ -61,11 +61,11 @@ func (o *Asyncforecastoperationresult) UnmarshalJSON(b []byte) error {
 	if Status, ok := AsyncforecastoperationresultMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := AsyncforecastoperationresultMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := AsyncforecastoperationresultMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

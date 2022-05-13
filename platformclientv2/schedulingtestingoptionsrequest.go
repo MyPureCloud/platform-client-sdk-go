@@ -69,23 +69,23 @@ func (o *Schedulingtestingoptionsrequest) UnmarshalJSON(b []byte) error {
 	if FastScheduling, ok := SchedulingtestingoptionsrequestMap["fastScheduling"].(bool); ok {
 		o.FastScheduling = &FastScheduling
 	}
-	
+    
 	if DelayScheduling, ok := SchedulingtestingoptionsrequestMap["delayScheduling"].(bool); ok {
 		o.DelayScheduling = &DelayScheduling
 	}
-	
+    
 	if FailScheduling, ok := SchedulingtestingoptionsrequestMap["failScheduling"].(bool); ok {
 		o.FailScheduling = &FailScheduling
 	}
-	
+    
 	if PopulateWarnings, ok := SchedulingtestingoptionsrequestMap["populateWarnings"].(bool); ok {
 		o.PopulateWarnings = &PopulateWarnings
 	}
-	
+    
 	if PopulateDeprecatedWarnings, ok := SchedulingtestingoptionsrequestMap["populateDeprecatedWarnings"].(bool); ok {
 		o.PopulateDeprecatedWarnings = &PopulateDeprecatedWarnings
 	}
-	
+    
 
 	return nil
 }

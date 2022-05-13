@@ -63,7 +63,7 @@ func (o *Comparisonperiodlisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ComparisonperiodlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

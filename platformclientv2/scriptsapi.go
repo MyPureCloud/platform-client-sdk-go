@@ -32,8 +32,6 @@ func NewScriptsApiWithConfig(config *Configuration) *ScriptsApi {
 // GetScript invokes GET /api/v2/scripts/{scriptId}
 //
 // Get a script
-//
-// 
 func (a ScriptsApi) GetScript(scriptId string) (*Script, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -46,7 +44,7 @@ func (a ScriptsApi) GetScript(scriptId string) (*Script, *APIResponse, error) {
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->GetScript")
 	}
 
@@ -105,8 +103,6 @@ func (a ScriptsApi) GetScript(scriptId string) (*Script, *APIResponse, error) {
 // GetScriptPage invokes GET /api/v2/scripts/{scriptId}/pages/{pageId}
 //
 // Get a page
-//
-// 
 func (a ScriptsApi) GetScriptPage(scriptId string, pageId string, scriptDataVersion string) (*Page, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -120,12 +116,12 @@ func (a ScriptsApi) GetScriptPage(scriptId string, pageId string, scriptDataVers
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->GetScriptPage")
 	}
 	// verify the required parameter 'pageId' is set
 	if &pageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'pageId' when calling ScriptsApi->GetScriptPage")
 	}
 
@@ -186,8 +182,6 @@ func (a ScriptsApi) GetScriptPage(scriptId string, pageId string, scriptDataVers
 // GetScriptPages invokes GET /api/v2/scripts/{scriptId}/pages
 //
 // Get the list of pages
-//
-// 
 func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([]Page, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -200,7 +194,7 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->GetScriptPages")
 	}
 
@@ -261,8 +255,6 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 // GetScripts invokes GET /api/v2/scripts
 //
 // Get the list of scripts
-//
-// 
 func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, sortBy string, sortOrder string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -348,8 +340,6 @@ func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name
 // GetScriptsDivisionviews invokes GET /api/v2/scripts/divisionviews
 //
 // Get the metadata for a list of scripts
-//
-// 
 func (a ScriptsApi) GetScriptsDivisionviews(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, sortBy string, sortOrder string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -435,8 +425,6 @@ func (a ScriptsApi) GetScriptsDivisionviews(pageSize int, pageNumber int, expand
 // GetScriptsPublished invokes GET /api/v2/scripts/published
 //
 // Get the published scripts.
-//
-// 
 func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -518,8 +506,6 @@ func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand str
 // GetScriptsPublishedDivisionviews invokes GET /api/v2/scripts/published/divisionviews
 //
 // Get the published scripts metadata.
-//
-// 
 func (a ScriptsApi) GetScriptsPublishedDivisionviews(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -601,8 +587,6 @@ func (a ScriptsApi) GetScriptsPublishedDivisionviews(pageSize int, pageNumber in
 // GetScriptsPublishedScriptId invokes GET /api/v2/scripts/published/{scriptId}
 //
 // Get the published script.
-//
-// 
 func (a ScriptsApi) GetScriptsPublishedScriptId(scriptId string, scriptDataVersion string) (*Script, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -615,7 +599,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptId(scriptId string, scriptDataVersi
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->GetScriptsPublishedScriptId")
 	}
 
@@ -676,8 +660,6 @@ func (a ScriptsApi) GetScriptsPublishedScriptId(scriptId string, scriptDataVersi
 // GetScriptsPublishedScriptIdPage invokes GET /api/v2/scripts/published/{scriptId}/pages/{pageId}
 //
 // Get the published page.
-//
-// 
 func (a ScriptsApi) GetScriptsPublishedScriptIdPage(scriptId string, pageId string, scriptDataVersion string) (*Page, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -691,12 +673,12 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPage(scriptId string, pageId stri
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->GetScriptsPublishedScriptIdPage")
 	}
 	// verify the required parameter 'pageId' is set
 	if &pageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'pageId' when calling ScriptsApi->GetScriptsPublishedScriptIdPage")
 	}
 
@@ -757,8 +739,6 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPage(scriptId string, pageId stri
 // GetScriptsPublishedScriptIdPages invokes GET /api/v2/scripts/published/{scriptId}/pages
 //
 // Get the list of published pages
-//
-// 
 func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptDataVersion string) ([]Page, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -771,7 +751,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptData
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->GetScriptsPublishedScriptIdPages")
 	}
 
@@ -832,8 +812,6 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptData
 // GetScriptsPublishedScriptIdVariables invokes GET /api/v2/scripts/published/{scriptId}/variables
 //
 // Get the published variables
-//
-// 
 func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input string, output string, varType string, scriptDataVersion string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -846,7 +824,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input 
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->GetScriptsPublishedScriptIdVariables")
 	}
 
@@ -913,8 +891,6 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input 
 // GetScriptsUploadStatus invokes GET /api/v2/scripts/uploads/{uploadId}/status
 //
 // Get the upload status of an imported script
-//
-// 
 func (a ScriptsApi) GetScriptsUploadStatus(uploadId string, longPoll bool) (*Importscriptstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -927,7 +903,7 @@ func (a ScriptsApi) GetScriptsUploadStatus(uploadId string, longPoll bool) (*Imp
 
 	// verify the required parameter 'uploadId' is set
 	if &uploadId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'uploadId' when calling ScriptsApi->GetScriptsUploadStatus")
 	}
 
@@ -988,8 +964,6 @@ func (a ScriptsApi) GetScriptsUploadStatus(uploadId string, longPoll bool) (*Imp
 // PostScriptExport invokes POST /api/v2/scripts/{scriptId}/export
 //
 // Export a script via download service.
-//
-// 
 func (a ScriptsApi) PostScriptExport(scriptId string, body Exportscriptrequest) (*Exportscriptresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1002,7 +976,7 @@ func (a ScriptsApi) PostScriptExport(scriptId string, body Exportscriptrequest) 
 
 	// verify the required parameter 'scriptId' is set
 	if &scriptId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scriptId' when calling ScriptsApi->PostScriptExport")
 	}
 

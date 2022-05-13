@@ -77,7 +77,7 @@ func (o *Conversationeventtopicconversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationeventtopicconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MaxParticipants, ok := ConversationeventtopicconversationMap["maxParticipants"].(float64); ok {
 		MaxParticipantsInt := int(MaxParticipants)
 		o.MaxParticipants = &MaxParticipantsInt
@@ -91,15 +91,15 @@ func (o *Conversationeventtopicconversation) UnmarshalJSON(b []byte) error {
 	if RecordingState, ok := ConversationeventtopicconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Address, ok := ConversationeventtopicconversationMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if ExternalTag, ok := ConversationeventtopicconversationMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 
 	return nil
 }

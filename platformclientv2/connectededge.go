@@ -77,19 +77,19 @@ func (o *Connectededge) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConnectededgeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConnectededgeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if InterfaceName, ok := ConnectededgeMap["interfaceName"].(string); ok {
 		o.InterfaceName = &InterfaceName
 	}
-	
+    
 	if InterfaceIpAddress, ok := ConnectededgeMap["interfaceIpAddress"].(string); ok {
 		o.InterfaceIpAddress = &InterfaceIpAddress
 	}
-	
+    
 	if EdgeConnectionList, ok := ConnectededgeMap["edgeConnectionList"].([]interface{}); ok {
 		EdgeConnectionListString, _ := json.Marshal(EdgeConnectionList)
 		json.Unmarshal(EdgeConnectionListString, &o.EdgeConnectionList)
@@ -98,7 +98,7 @@ func (o *Connectededge) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ConnectededgeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

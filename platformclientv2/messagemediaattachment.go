@@ -69,11 +69,11 @@ func (o *Messagemediaattachment) UnmarshalJSON(b []byte) error {
 	if Url, ok := MessagemediaattachmentMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if MediaType, ok := MessagemediaattachmentMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ContentLength, ok := MessagemediaattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
@@ -82,11 +82,11 @@ func (o *Messagemediaattachment) UnmarshalJSON(b []byte) error {
 	if Name, ok := MessagemediaattachmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Id, ok := MessagemediaattachmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

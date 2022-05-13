@@ -32,8 +32,6 @@ func NewTokensApiWithConfig(config *Configuration) *TokensApi {
 // DeleteToken invokes DELETE /api/v2/tokens/{userId}
 //
 // Delete all auth tokens for the specified user.
-//
-// 
 func (a TokensApi) DeleteToken(userId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a TokensApi) DeleteToken(userId string) (*APIResponse, error) {
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling TokensApi->DeleteToken")
 	}
 
@@ -98,8 +96,6 @@ func (a TokensApi) DeleteToken(userId string) (*APIResponse, error) {
 // DeleteTokensMe invokes DELETE /api/v2/tokens/me
 //
 // Delete auth token used to make the request.
-//
-// 
 func (a TokensApi) DeleteTokensMe() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -158,8 +154,6 @@ func (a TokensApi) DeleteTokensMe() (*APIResponse, error) {
 // GetTokensMe invokes GET /api/v2/tokens/me
 //
 // Fetch information about the current token
-//
-// 
 func (a TokensApi) GetTokensMe() (*Tokeninfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -225,8 +219,6 @@ func (a TokensApi) GetTokensMe() (*Tokeninfo, *APIResponse, error) {
 // HeadTokensMe invokes HEAD /api/v2/tokens/me
 //
 // Verify user token
-//
-// 
 func (a TokensApi) HeadTokensMe() (*APIResponse, error) {
 	var httpMethod = "HEAD"
 	// create path and map variables

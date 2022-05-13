@@ -115,7 +115,7 @@ func (o *Emailmediapolicyconditions) UnmarshalJSON(b []byte) error {
 	if CustomerParticipation, ok := EmailmediapolicyconditionsMap["customerParticipation"].(string); ok {
 		o.CustomerParticipation = &CustomerParticipation
 	}
-	
+    
 
 	return nil
 }

@@ -63,7 +63,7 @@ func (o *Cloneduserentitylisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CloneduserentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

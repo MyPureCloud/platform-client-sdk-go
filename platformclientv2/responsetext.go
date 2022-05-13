@@ -45,11 +45,11 @@ func (o *Responsetext) UnmarshalJSON(b []byte) error {
 	if Content, ok := ResponsetextMap["content"].(string); ok {
 		o.Content = &Content
 	}
-	
+    
 	if ContentType, ok := ResponsetextMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 
 	return nil
 }

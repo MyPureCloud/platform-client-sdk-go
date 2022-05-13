@@ -77,19 +77,19 @@ func (o *Contentcard) UnmarshalJSON(b []byte) error {
 	if Title, ok := ContentcardMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := ContentcardMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Image, ok := ContentcardMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Video, ok := ContentcardMap["video"].(string); ok {
 		o.Video = &Video
 	}
-	
+    
 	if DefaultAction, ok := ContentcardMap["defaultAction"].(map[string]interface{}); ok {
 		DefaultActionString, _ := json.Marshal(DefaultAction)
 		json.Unmarshal(DefaultActionString, &o.DefaultAction)

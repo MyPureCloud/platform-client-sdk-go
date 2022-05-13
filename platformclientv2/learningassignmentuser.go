@@ -53,15 +53,15 @@ func (o *Learningassignmentuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningassignmentuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LearningassignmentuserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := LearningassignmentuserMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

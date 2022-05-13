@@ -53,7 +53,7 @@ func (o *Agentownedrouting) UnmarshalJSON(b []byte) error {
 	if EnableAgentOwnedCallbacks, ok := AgentownedroutingMap["enableAgentOwnedCallbacks"].(bool); ok {
 		o.EnableAgentOwnedCallbacks = &EnableAgentOwnedCallbacks
 	}
-	
+    
 	if MaxOwnedCallbackHours, ok := AgentownedroutingMap["maxOwnedCallbackHours"].(float64); ok {
 		MaxOwnedCallbackHoursInt := int(MaxOwnedCallbackHours)
 		o.MaxOwnedCallbackHours = &MaxOwnedCallbackHoursInt

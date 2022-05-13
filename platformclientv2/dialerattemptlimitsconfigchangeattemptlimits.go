@@ -144,11 +144,11 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) UnmarshalJSON(b []byte) e
 	if TimeZoneId, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}
-	
+    
 	if ResetPeriod, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["resetPeriod"].(string); ok {
 		o.ResetPeriod = &ResetPeriod
 	}
-	
+    
 	if RecallEntries, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["recallEntries"].(map[string]interface{}); ok {
 		RecallEntriesString, _ := json.Marshal(RecallEntries)
 		json.Unmarshal(RecallEntriesString, &o.RecallEntries)
@@ -157,15 +157,15 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) UnmarshalJSON(b []byte) e
 	if BreadthFirstRecalls, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["breadthFirstRecalls"].(bool); ok {
 		o.BreadthFirstRecalls = &BreadthFirstRecalls
 	}
-	
+    
 	if Id, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

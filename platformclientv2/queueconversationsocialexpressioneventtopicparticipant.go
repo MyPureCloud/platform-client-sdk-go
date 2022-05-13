@@ -358,7 +358,7 @@ func (o *Queueconversationsocialexpressioneventtopicparticipant) UnmarshalJSON(b
 	if Id, ok := QueueconversationsocialexpressioneventtopicparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if connectedTimeString, ok := QueueconversationsocialexpressioneventtopicparticipantMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime
@@ -372,55 +372,55 @@ func (o *Queueconversationsocialexpressioneventtopicparticipant) UnmarshalJSON(b
 	if UserId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if ExternalContactId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalOrganizationId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if Name, ok := QueueconversationsocialexpressioneventtopicparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if QueueId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if GroupId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 	if TeamId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if Purpose, ok := QueueconversationsocialexpressioneventtopicparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if ConsultParticipantId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["consultParticipantId"].(string); ok {
 		o.ConsultParticipantId = &ConsultParticipantId
 	}
-	
+    
 	if Address, ok := QueueconversationsocialexpressioneventtopicparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if WrapupRequired, ok := QueueconversationsocialexpressioneventtopicparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupExpected, ok := QueueconversationsocialexpressioneventtopicparticipantMap["wrapupExpected"].(bool); ok {
 		o.WrapupExpected = &WrapupExpected
 	}
-	
+    
 	if WrapupPrompt, ok := QueueconversationsocialexpressioneventtopicparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if WrapupTimeoutMs, ok := QueueconversationsocialexpressioneventtopicparticipantMap["wrapupTimeoutMs"].(float64); ok {
 		WrapupTimeoutMsInt := int(WrapupTimeoutMs)
 		o.WrapupTimeoutMs = &WrapupTimeoutMsInt
@@ -454,23 +454,23 @@ func (o *Queueconversationsocialexpressioneventtopicparticipant) UnmarshalJSON(b
 	if MonitoredParticipantId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
-	
+    
 	if CoachedParticipantId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
-	
+    
 	if BargedParticipantId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["bargedParticipantId"].(string); ok {
 		o.BargedParticipantId = &BargedParticipantId
 	}
-	
+    
 	if ScreenRecordingState, ok := QueueconversationsocialexpressioneventtopicparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := QueueconversationsocialexpressioneventtopicparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if Attributes, ok := QueueconversationsocialexpressioneventtopicparticipantMap["attributes"].(map[string]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)

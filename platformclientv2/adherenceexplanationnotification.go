@@ -118,7 +118,7 @@ func (o *Adherenceexplanationnotification) UnmarshalJSON(b []byte) error {
 	if Id, ok := AdherenceexplanationnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Agent, ok := AdherenceexplanationnotificationMap["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)
@@ -147,19 +147,19 @@ func (o *Adherenceexplanationnotification) UnmarshalJSON(b []byte) error {
 	if Status, ok := AdherenceexplanationnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if VarType, ok := AdherenceexplanationnotificationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Notes, ok := AdherenceexplanationnotificationMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if SelfUri, ok := AdherenceexplanationnotificationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

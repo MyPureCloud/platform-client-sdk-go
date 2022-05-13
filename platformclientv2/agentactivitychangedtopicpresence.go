@@ -67,7 +67,7 @@ func (o *Agentactivitychangedtopicpresence) UnmarshalJSON(b []byte) error {
 	if PresenceMessage, ok := AgentactivitychangedtopicpresenceMap["presenceMessage"].(string); ok {
 		o.PresenceMessage = &PresenceMessage
 	}
-	
+    
 	if modifiedDateString, ok := AgentactivitychangedtopicpresenceMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate

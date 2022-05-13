@@ -135,7 +135,7 @@ func (o *Wfmbuintradaydataupdatetopicbuintradayresult) UnmarshalJSON(b []byte) e
 	if NoDataReason, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["noDataReason"].(string); ok {
 		o.NoDataReason = &NoDataReason
 	}
-	
+    
 	if Schedule, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["schedule"].(map[string]interface{}); ok {
 		ScheduleString, _ := json.Marshal(Schedule)
 		json.Unmarshal(ScheduleString, &o.Schedule)

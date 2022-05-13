@@ -107,15 +107,15 @@ func (o *Dialerresponsesetconfigchangeresponseset) UnmarshalJSON(b []byte) error
 	if BeepDetectionEnabled, ok := DialerresponsesetconfigchangeresponsesetMap["beepDetectionEnabled"].(bool); ok {
 		o.BeepDetectionEnabled = &BeepDetectionEnabled
 	}
-	
+    
 	if Id, ok := DialerresponsesetconfigchangeresponsesetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialerresponsesetconfigchangeresponsesetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialerresponsesetconfigchangeresponsesetMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

@@ -157,7 +157,7 @@ func (o *Journeywebeventsnotificationwebmessage) UnmarshalJSON(b []byte) error {
 	if EventName, ok := JourneywebeventsnotificationwebmessageMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 	if TotalEventCount, ok := JourneywebeventsnotificationwebmessageMap["totalEventCount"].(float64); ok {
 		TotalEventCountInt := int(TotalEventCount)
 		o.TotalEventCount = &TotalEventCountInt
@@ -171,23 +171,23 @@ func (o *Journeywebeventsnotificationwebmessage) UnmarshalJSON(b []byte) error {
 	if UserAgentString, ok := JourneywebeventsnotificationwebmessageMap["userAgentString"].(string); ok {
 		o.UserAgentString = &UserAgentString
 	}
-	
+    
 	if IpAddress, ok := JourneywebeventsnotificationwebmessageMap["ipAddress"].(string); ok {
 		o.IpAddress = &IpAddress
 	}
-	
+    
 	if IpOrganization, ok := JourneywebeventsnotificationwebmessageMap["ipOrganization"].(string); ok {
 		o.IpOrganization = &IpOrganization
 	}
-	
+    
 	if SearchQuery, ok := JourneywebeventsnotificationwebmessageMap["searchQuery"].(string); ok {
 		o.SearchQuery = &SearchQuery
 	}
-	
+    
 	if Authenticated, ok := JourneywebeventsnotificationwebmessageMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
 	}
-	
+    
 	if Browser, ok := JourneywebeventsnotificationwebmessageMap["browser"].(map[string]interface{}); ok {
 		BrowserString, _ := json.Marshal(Browser)
 		json.Unmarshal(BrowserString, &o.Browser)

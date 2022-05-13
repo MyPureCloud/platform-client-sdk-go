@@ -121,12 +121,12 @@ func (a TextbotsApi) PostTextbotsBotflowsSessionTurns(sessionId string, turnRequ
 
 	// verify the required parameter 'sessionId' is set
 	if &sessionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sessionId' when calling TextbotsApi->PostTextbotsBotflowsSessionTurns")
 	}
 	// verify the required parameter 'turnRequest' is set
 	if &turnRequest == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'turnRequest' when calling TextbotsApi->PostTextbotsBotflowsSessionTurns")
 	}
 
@@ -201,7 +201,7 @@ func (a TextbotsApi) PostTextbotsBotflowsSessions(launchRequest Textbotflowlaunc
 
 	// verify the required parameter 'launchRequest' is set
 	if &launchRequest == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'launchRequest' when calling TextbotsApi->PostTextbotsBotflowsSessions")
 	}
 
@@ -276,7 +276,7 @@ func (a TextbotsApi) PostTextbotsBotsExecute(postTextRequest Posttextrequest) (*
 
 	// verify the required parameter 'postTextRequest' is set
 	if &postTextRequest == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'postTextRequest' when calling TextbotsApi->PostTextbotsBotsExecute")
 	}
 

@@ -69,15 +69,15 @@ func (o *Generictemplate) UnmarshalJSON(b []byte) error {
 	if Title, ok := GenerictemplateMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := GenerictemplateMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Url, ok := GenerictemplateMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Components, ok := GenerictemplateMap["components"].([]interface{}); ok {
 		ComponentsString, _ := json.Marshal(Components)
 		json.Unmarshal(ComponentsString, &o.Components)

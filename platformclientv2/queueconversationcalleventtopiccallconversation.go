@@ -77,11 +77,11 @@ func (o *Queueconversationcalleventtopiccallconversation) UnmarshalJSON(b []byte
 	if Id, ok := QueueconversationcalleventtopiccallconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationcalleventtopiccallconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := QueueconversationcalleventtopiccallconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
@@ -95,7 +95,7 @@ func (o *Queueconversationcalleventtopiccallconversation) UnmarshalJSON(b []byte
 	if RecordingState, ok := QueueconversationcalleventtopiccallconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if MaxParticipants, ok := QueueconversationcalleventtopiccallconversationMap["maxParticipants"].(float64); ok {
 		MaxParticipantsInt := int(MaxParticipants)
 		o.MaxParticipants = &MaxParticipantsInt

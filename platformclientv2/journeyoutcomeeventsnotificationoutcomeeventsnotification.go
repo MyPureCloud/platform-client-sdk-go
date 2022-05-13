@@ -118,11 +118,11 @@ func (o *Journeyoutcomeeventsnotificationoutcomeeventsnotification) UnmarshalJSO
 	if Id, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if CorrelationId, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if ExternalContact, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -136,11 +136,11 @@ func (o *Journeyoutcomeeventsnotificationoutcomeeventsnotification) UnmarshalJSO
 	if CustomerId, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["customerId"].(string); ok {
 		o.CustomerId = &CustomerId
 	}
-	
+    
 	if CustomerIdType, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["customerIdType"].(string); ok {
 		o.CustomerIdType = &CustomerIdType
 	}
-	
+    
 	if Session, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["session"].(map[string]interface{}); ok {
 		SessionString, _ := json.Marshal(Session)
 		json.Unmarshal(SessionString, &o.Session)
@@ -149,7 +149,7 @@ func (o *Journeyoutcomeeventsnotificationoutcomeeventsnotification) UnmarshalJSO
 	if EventType, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 	if OutcomeAchievedEvent, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["outcomeAchievedEvent"].(map[string]interface{}); ok {
 		OutcomeAchievedEventString, _ := json.Marshal(OutcomeAchievedEvent)
 		json.Unmarshal(OutcomeAchievedEventString, &o.OutcomeAchievedEvent)

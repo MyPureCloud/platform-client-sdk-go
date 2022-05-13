@@ -69,11 +69,11 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationcontentnoti
 	if Id, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentnotificationtemplateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Language, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentnotificationtemplateMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Header, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentnotificationtemplateMap["header"].(map[string]interface{}); ok {
 		HeaderString, _ := json.Marshal(Header)
 		json.Unmarshal(HeaderString, &o.Header)

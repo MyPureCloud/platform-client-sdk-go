@@ -117,7 +117,7 @@ func (o *Buschedulemetadata) UnmarshalJSON(b []byte) error {
 	if Id, ok := BuschedulemetadataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := BuschedulemetadataMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -131,11 +131,11 @@ func (o *Buschedulemetadata) UnmarshalJSON(b []byte) error {
 	if Description, ok := BuschedulemetadataMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := BuschedulemetadataMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if ShortTermForecast, ok := BuschedulemetadataMap["shortTermForecast"].(map[string]interface{}); ok {
 		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
 		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
@@ -159,7 +159,7 @@ func (o *Buschedulemetadata) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BuschedulemetadataMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

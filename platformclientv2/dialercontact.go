@@ -117,15 +117,15 @@ func (o *Dialercontact) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialercontactMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialercontactMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContactListId, ok := DialercontactMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if Data, ok := DialercontactMap["data"].(map[string]interface{}); ok {
 		DataString, _ := json.Marshal(Data)
 		json.Unmarshal(DataString, &o.Data)
@@ -144,7 +144,7 @@ func (o *Dialercontact) UnmarshalJSON(b []byte) error {
 	if Callable, ok := DialercontactMap["callable"].(bool); ok {
 		o.Callable = &Callable
 	}
-	
+    
 	if PhoneNumberStatus, ok := DialercontactMap["phoneNumberStatus"].(map[string]interface{}); ok {
 		PhoneNumberStatusString, _ := json.Marshal(PhoneNumberStatus)
 		json.Unmarshal(PhoneNumberStatusString, &o.PhoneNumberStatus)
@@ -163,7 +163,7 @@ func (o *Dialercontact) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DialercontactMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

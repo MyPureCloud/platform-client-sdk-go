@@ -77,19 +77,19 @@ func (o *Attachment) UnmarshalJSON(b []byte) error {
 	if AttachmentId, ok := AttachmentMap["attachmentId"].(string); ok {
 		o.AttachmentId = &AttachmentId
 	}
-	
+    
 	if Name, ok := AttachmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContentUri, ok := AttachmentMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if ContentType, ok := AttachmentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := AttachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
@@ -98,7 +98,7 @@ func (o *Attachment) UnmarshalJSON(b []byte) error {
 	if InlineImage, ok := AttachmentMap["inlineImage"].(bool); ok {
 		o.InlineImage = &InlineImage
 	}
-	
+    
 
 	return nil
 }

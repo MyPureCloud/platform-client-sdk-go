@@ -61,11 +61,11 @@ func (o *Documentthumbnail) UnmarshalJSON(b []byte) error {
 	if Resolution, ok := DocumentthumbnailMap["resolution"].(string); ok {
 		o.Resolution = &Resolution
 	}
-	
+    
 	if ImageUri, ok := DocumentthumbnailMap["imageUri"].(string); ok {
 		o.ImageUri = &ImageUri
 	}
-	
+    
 	if Height, ok := DocumentthumbnailMap["height"].(float64); ok {
 		HeightInt := int(Height)
 		o.Height = &HeightInt

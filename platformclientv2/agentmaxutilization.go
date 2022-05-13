@@ -50,7 +50,7 @@ func (o *Agentmaxutilization) UnmarshalJSON(b []byte) error {
 	if Level, ok := AgentmaxutilizationMap["level"].(string); ok {
 		o.Level = &Level
 	}
-	
+    
 
 	return nil
 }

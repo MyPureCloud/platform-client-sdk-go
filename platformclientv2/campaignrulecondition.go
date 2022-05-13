@@ -53,7 +53,7 @@ func (o *Campaignrulecondition) UnmarshalJSON(b []byte) error {
 	if Id, ok := CampaignruleconditionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Parameters, ok := CampaignruleconditionMap["parameters"].(map[string]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)
@@ -62,7 +62,7 @@ func (o *Campaignrulecondition) UnmarshalJSON(b []byte) error {
 	if ConditionType, ok := CampaignruleconditionMap["conditionType"].(string); ok {
 		o.ConditionType = &ConditionType
 	}
-	
+    
 
 	return nil
 }

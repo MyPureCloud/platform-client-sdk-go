@@ -61,15 +61,15 @@ func (o *Webmessagingrecipient) UnmarshalJSON(b []byte) error {
 	if FirstName, ok := WebmessagingrecipientMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}
-	
+    
 	if LastName, ok := WebmessagingrecipientMap["lastName"].(string); ok {
 		o.LastName = &LastName
 	}
-	
+    
 	if Nickname, ok := WebmessagingrecipientMap["nickname"].(string); ok {
 		o.Nickname = &Nickname
 	}
-	
+    
 	if AdditionalIds, ok := WebmessagingrecipientMap["additionalIds"].([]interface{}); ok {
 		AdditionalIdsString, _ := json.Marshal(AdditionalIds)
 		json.Unmarshal(AdditionalIdsString, &o.AdditionalIds)

@@ -45,7 +45,7 @@ func (o *Wfmbuintradaydataupdatetopicbuintradaynotification) UnmarshalJSON(b []b
 	if OperationId, ok := WfmbuintradaydataupdatetopicbuintradaynotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := WfmbuintradaydataupdatetopicbuintradaynotificationMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

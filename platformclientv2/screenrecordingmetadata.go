@@ -85,15 +85,15 @@ func (o *Screenrecordingmetadata) UnmarshalJSON(b []byte) error {
 	if TrackId, ok := ScreenrecordingmetadataMap["trackId"].(string); ok {
 		o.TrackId = &TrackId
 	}
-	
+    
 	if MediaId, ok := ScreenrecordingmetadataMap["mediaId"].(string); ok {
 		o.MediaId = &MediaId
 	}
-	
+    
 	if ScreenId, ok := ScreenrecordingmetadataMap["screenId"].(string); ok {
 		o.ScreenId = &ScreenId
 	}
-	
+    
 	if OriginX, ok := ScreenrecordingmetadataMap["originX"].(float64); ok {
 		OriginXInt := int(OriginX)
 		o.OriginX = &OriginXInt
@@ -107,11 +107,11 @@ func (o *Screenrecordingmetadata) UnmarshalJSON(b []byte) error {
 	if Primary, ok := ScreenrecordingmetadataMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 	if Main, ok := ScreenrecordingmetadataMap["main"].(bool); ok {
 		o.Main = &Main
 	}
-	
+    
 
 	return nil
 }

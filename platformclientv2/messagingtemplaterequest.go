@@ -45,7 +45,7 @@ func (o *Messagingtemplaterequest) UnmarshalJSON(b []byte) error {
 	if ResponseId, ok := MessagingtemplaterequestMap["responseId"].(string); ok {
 		o.ResponseId = &ResponseId
 	}
-	
+    
 	if Parameters, ok := MessagingtemplaterequestMap["parameters"].([]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)

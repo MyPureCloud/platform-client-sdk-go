@@ -70,11 +70,11 @@ func (o *Integrationstatusinfo) UnmarshalJSON(b []byte) error {
 	if Code, ok := IntegrationstatusinfoMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Effective, ok := IntegrationstatusinfoMap["effective"].(string); ok {
 		o.Effective = &Effective
 	}
-	
+    
 	if Detail, ok := IntegrationstatusinfoMap["detail"].(map[string]interface{}); ok {
 		DetailString, _ := json.Marshal(Detail)
 		json.Unmarshal(DetailString, &o.Detail)

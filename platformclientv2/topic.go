@@ -166,23 +166,23 @@ func (o *Topic) UnmarshalJSON(b []byte) error {
 	if Id, ok := TopicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TopicMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := TopicMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := TopicMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if Strictness, ok := TopicMap["strictness"].(string); ok {
 		o.Strictness = &Strictness
 	}
-	
+    
 	if Programs, ok := TopicMap["programs"].([]interface{}); ok {
 		ProgramsString, _ := json.Marshal(Programs)
 		json.Unmarshal(ProgramsString, &o.Programs)
@@ -196,11 +196,11 @@ func (o *Topic) UnmarshalJSON(b []byte) error {
 	if Dialect, ok := TopicMap["dialect"].(string); ok {
 		o.Dialect = &Dialect
 	}
-	
+    
 	if Participants, ok := TopicMap["participants"].(string); ok {
 		o.Participants = &Participants
 	}
-	
+    
 	if Phrases, ok := TopicMap["phrases"].([]interface{}); ok {
 		PhrasesString, _ := json.Marshal(Phrases)
 		json.Unmarshal(PhrasesString, &o.Phrases)
@@ -229,7 +229,7 @@ func (o *Topic) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TopicMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

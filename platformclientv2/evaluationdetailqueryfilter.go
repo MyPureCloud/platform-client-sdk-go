@@ -53,7 +53,7 @@ func (o *Evaluationdetailqueryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := EvaluationdetailqueryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := EvaluationdetailqueryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

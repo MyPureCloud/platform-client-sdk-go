@@ -94,11 +94,11 @@ func (o *Auditqueryexecutionstatusresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := AuditqueryexecutionstatusresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := AuditqueryexecutionstatusresponseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if startDateString, ok := AuditqueryexecutionstatusresponseMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -107,11 +107,11 @@ func (o *Auditqueryexecutionstatusresponse) UnmarshalJSON(b []byte) error {
 	if Interval, ok := AuditqueryexecutionstatusresponseMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if ServiceName, ok := AuditqueryexecutionstatusresponseMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-	
+    
 	if Filters, ok := AuditqueryexecutionstatusresponseMap["filters"].([]interface{}); ok {
 		FiltersString, _ := json.Marshal(Filters)
 		json.Unmarshal(FiltersString, &o.Filters)

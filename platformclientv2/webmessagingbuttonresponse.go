@@ -61,19 +61,19 @@ func (o *Webmessagingbuttonresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebmessagingbuttonresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if VarType, ok := WebmessagingbuttonresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := WebmessagingbuttonresponseMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := WebmessagingbuttonresponseMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 
 	return nil
 }

@@ -93,11 +93,11 @@ func (o *Openintegrationrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := OpenintegrationrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OpenintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := OpenintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -111,11 +111,11 @@ func (o *Openintegrationrequest) UnmarshalJSON(b []byte) error {
 	if OutboundNotificationWebhookUrl, ok := OpenintegrationrequestMap["outboundNotificationWebhookUrl"].(string); ok {
 		o.OutboundNotificationWebhookUrl = &OutboundNotificationWebhookUrl
 	}
-	
+    
 	if OutboundNotificationWebhookSignatureSecretToken, ok := OpenintegrationrequestMap["outboundNotificationWebhookSignatureSecretToken"].(string); ok {
 		o.OutboundNotificationWebhookSignatureSecretToken = &OutboundNotificationWebhookSignatureSecretToken
 	}
-	
+    
 	if WebhookHeaders, ok := OpenintegrationrequestMap["webhookHeaders"].(map[string]interface{}); ok {
 		WebhookHeadersString, _ := json.Marshal(WebhookHeaders)
 		json.Unmarshal(WebhookHeadersString, &o.WebhookHeaders)
@@ -124,7 +124,7 @@ func (o *Openintegrationrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OpenintegrationrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

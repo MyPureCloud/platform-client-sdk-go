@@ -94,11 +94,11 @@ func (o *Generalprogramjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := GeneralprogramjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := GeneralprogramjobMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if CreatedBy, ok := GeneralprogramjobMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -117,7 +117,7 @@ func (o *Generalprogramjob) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GeneralprogramjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

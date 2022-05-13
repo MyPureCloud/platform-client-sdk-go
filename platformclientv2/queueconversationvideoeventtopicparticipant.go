@@ -358,7 +358,7 @@ func (o *Queueconversationvideoeventtopicparticipant) UnmarshalJSON(b []byte) er
 	if Id, ok := QueueconversationvideoeventtopicparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if connectedTimeString, ok := QueueconversationvideoeventtopicparticipantMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime
@@ -372,55 +372,55 @@ func (o *Queueconversationvideoeventtopicparticipant) UnmarshalJSON(b []byte) er
 	if UserId, ok := QueueconversationvideoeventtopicparticipantMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if ExternalContactId, ok := QueueconversationvideoeventtopicparticipantMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalOrganizationId, ok := QueueconversationvideoeventtopicparticipantMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if Name, ok := QueueconversationvideoeventtopicparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if QueueId, ok := QueueconversationvideoeventtopicparticipantMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if GroupId, ok := QueueconversationvideoeventtopicparticipantMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 	if TeamId, ok := QueueconversationvideoeventtopicparticipantMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if Purpose, ok := QueueconversationvideoeventtopicparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if ConsultParticipantId, ok := QueueconversationvideoeventtopicparticipantMap["consultParticipantId"].(string); ok {
 		o.ConsultParticipantId = &ConsultParticipantId
 	}
-	
+    
 	if Address, ok := QueueconversationvideoeventtopicparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if WrapupRequired, ok := QueueconversationvideoeventtopicparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupExpected, ok := QueueconversationvideoeventtopicparticipantMap["wrapupExpected"].(bool); ok {
 		o.WrapupExpected = &WrapupExpected
 	}
-	
+    
 	if WrapupPrompt, ok := QueueconversationvideoeventtopicparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if WrapupTimeoutMs, ok := QueueconversationvideoeventtopicparticipantMap["wrapupTimeoutMs"].(float64); ok {
 		WrapupTimeoutMsInt := int(WrapupTimeoutMs)
 		o.WrapupTimeoutMs = &WrapupTimeoutMsInt
@@ -454,23 +454,23 @@ func (o *Queueconversationvideoeventtopicparticipant) UnmarshalJSON(b []byte) er
 	if MonitoredParticipantId, ok := QueueconversationvideoeventtopicparticipantMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
-	
+    
 	if CoachedParticipantId, ok := QueueconversationvideoeventtopicparticipantMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
-	
+    
 	if BargedParticipantId, ok := QueueconversationvideoeventtopicparticipantMap["bargedParticipantId"].(string); ok {
 		o.BargedParticipantId = &BargedParticipantId
 	}
-	
+    
 	if ScreenRecordingState, ok := QueueconversationvideoeventtopicparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := QueueconversationvideoeventtopicparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if Attributes, ok := QueueconversationvideoeventtopicparticipantMap["attributes"].(map[string]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)

@@ -77,7 +77,7 @@ func (o *Meteredevaluationassignment) UnmarshalJSON(b []byte) error {
 	if EvaluationContextId, ok := MeteredevaluationassignmentMap["evaluationContextId"].(string); ok {
 		o.EvaluationContextId = &EvaluationContextId
 	}
-	
+    
 	if Evaluators, ok := MeteredevaluationassignmentMap["evaluators"].([]interface{}); ok {
 		EvaluatorsString, _ := json.Marshal(Evaluators)
 		json.Unmarshal(EvaluatorsString, &o.Evaluators)
@@ -96,7 +96,7 @@ func (o *Meteredevaluationassignment) UnmarshalJSON(b []byte) error {
 	if AssignToActiveUser, ok := MeteredevaluationassignmentMap["assignToActiveUser"].(bool); ok {
 		o.AssignToActiveUser = &AssignToActiveUser
 	}
-	
+    
 	if TimeInterval, ok := MeteredevaluationassignmentMap["timeInterval"].(map[string]interface{}); ok {
 		TimeIntervalString, _ := json.Marshal(TimeInterval)
 		json.Unmarshal(TimeIntervalString, &o.TimeInterval)

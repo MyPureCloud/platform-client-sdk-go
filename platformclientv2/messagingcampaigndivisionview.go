@@ -61,11 +61,11 @@ func (o *Messagingcampaigndivisionview) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagingcampaigndivisionviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagingcampaigndivisionviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := MessagingcampaigndivisionviewMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -74,7 +74,7 @@ func (o *Messagingcampaigndivisionview) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MessagingcampaigndivisionviewMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

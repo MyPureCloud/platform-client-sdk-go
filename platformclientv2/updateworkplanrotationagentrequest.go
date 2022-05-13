@@ -61,7 +61,7 @@ func (o *Updateworkplanrotationagentrequest) UnmarshalJSON(b []byte) error {
 	if UserId, ok := UpdateworkplanrotationagentrequestMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if DateRange, ok := UpdateworkplanrotationagentrequestMap["dateRange"].(map[string]interface{}); ok {
 		DateRangeString, _ := json.Marshal(DateRange)
 		json.Unmarshal(DateRangeString, &o.DateRange)
@@ -75,7 +75,7 @@ func (o *Updateworkplanrotationagentrequest) UnmarshalJSON(b []byte) error {
 	if Delete, ok := UpdateworkplanrotationagentrequestMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 
 	return nil
 }

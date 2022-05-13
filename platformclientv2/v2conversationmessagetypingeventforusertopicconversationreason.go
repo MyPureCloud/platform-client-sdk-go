@@ -45,11 +45,11 @@ func (o *V2conversationmessagetypingeventforusertopicconversationreason) Unmarsh
 	if Code, ok := V2conversationmessagetypingeventforusertopicconversationreasonMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := V2conversationmessagetypingeventforusertopicconversationreasonMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

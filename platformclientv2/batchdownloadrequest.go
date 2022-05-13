@@ -45,11 +45,11 @@ func (o *Batchdownloadrequest) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := BatchdownloadrequestMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if RecordingId, ok := BatchdownloadrequestMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 
 	return nil
 }

@@ -142,19 +142,19 @@ func (o *Knowledgebase) UnmarshalJSON(b []byte) error {
 	if Id, ok := KnowledgebaseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KnowledgebaseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := KnowledgebaseMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CoreLanguage, ok := KnowledgebaseMap["coreLanguage"].(string); ok {
 		o.CoreLanguage = &CoreLanguage
 	}
-	
+    
 	if dateCreatedString, ok := KnowledgebaseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -183,11 +183,11 @@ func (o *Knowledgebase) UnmarshalJSON(b []byte) error {
 	if Published, ok := KnowledgebaseMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if SelfUri, ok := KnowledgebaseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -102,11 +102,11 @@ func (o *Commandstatus) UnmarshalJSON(b []byte) error {
 	if Id, ok := CommandstatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CommandstatusMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if expirationString, ok := CommandstatusMap["expiration"].(string); ok {
 		Expiration, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationString)
 		o.Expiration = &Expiration
@@ -115,15 +115,15 @@ func (o *Commandstatus) UnmarshalJSON(b []byte) error {
 	if UserId, ok := CommandstatusMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if StatusCode, ok := CommandstatusMap["statusCode"].(string); ok {
 		o.StatusCode = &StatusCode
 	}
-	
+    
 	if CommandType, ok := CommandstatusMap["commandType"].(string); ok {
 		o.CommandType = &CommandType
 	}
-	
+    
 	if Document, ok := CommandstatusMap["document"].(map[string]interface{}); ok {
 		DocumentString, _ := json.Marshal(Document)
 		json.Unmarshal(DocumentString, &o.Document)
@@ -132,7 +132,7 @@ func (o *Commandstatus) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CommandstatusMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

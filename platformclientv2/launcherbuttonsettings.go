@@ -37,7 +37,7 @@ func (o *Launcherbuttonsettings) UnmarshalJSON(b []byte) error {
 	if Visibility, ok := LauncherbuttonsettingsMap["visibility"].(string); ok {
 		o.Visibility = &Visibility
 	}
-	
+    
 
 	return nil
 }

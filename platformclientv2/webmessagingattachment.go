@@ -93,31 +93,31 @@ func (o *Webmessagingattachment) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebmessagingattachmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MediaType, ok := WebmessagingattachmentMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Url, ok := WebmessagingattachmentMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Mime, ok := WebmessagingattachmentMap["mime"].(string); ok {
 		o.Mime = &Mime
 	}
-	
+    
 	if Text, ok := WebmessagingattachmentMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Sha256, ok := WebmessagingattachmentMap["sha256"].(string); ok {
 		o.Sha256 = &Sha256
 	}
-	
+    
 	if Filename, ok := WebmessagingattachmentMap["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 	if FileSize, ok := WebmessagingattachmentMap["fileSize"].(float64); ok {
 		FileSizeInt := int(FileSize)
 		o.FileSize = &FileSizeInt

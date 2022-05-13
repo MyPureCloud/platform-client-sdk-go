@@ -45,11 +45,11 @@ func (o *Expansioncriterium) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ExpansioncriteriumMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Threshold, ok := ExpansioncriteriumMap["threshold"].(float64); ok {
 		o.Threshold = &Threshold
 	}
-	
+    
 
 	return nil
 }

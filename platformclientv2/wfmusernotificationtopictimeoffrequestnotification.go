@@ -78,7 +78,7 @@ func (o *Wfmusernotificationtopictimeoffrequestnotification) UnmarshalJSON(b []b
 	if TimeOffRequestId, ok := WfmusernotificationtopictimeoffrequestnotificationMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
-	
+    
 	if User, ok := WfmusernotificationtopictimeoffrequestnotificationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -87,11 +87,11 @@ func (o *Wfmusernotificationtopictimeoffrequestnotification) UnmarshalJSON(b []b
 	if IsFullDayRequest, ok := WfmusernotificationtopictimeoffrequestnotificationMap["isFullDayRequest"].(bool); ok {
 		o.IsFullDayRequest = &IsFullDayRequest
 	}
-	
+    
 	if Status, ok := WfmusernotificationtopictimeoffrequestnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if PartialDayStartDateTimes, ok := WfmusernotificationtopictimeoffrequestnotificationMap["partialDayStartDateTimes"].([]interface{}); ok {
 		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
 		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)

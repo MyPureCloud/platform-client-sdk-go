@@ -53,11 +53,11 @@ func (o *Responsefilter) UnmarshalJSON(b []byte) error {
 	if Name, ok := ResponsefilterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Operator, ok := ResponsefilterMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Values, ok := ResponsefilterMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

@@ -85,7 +85,7 @@ func (o *Buupdateagentscheduleuploadschema) UnmarshalJSON(b []byte) error {
 	if UserId, ok := BuupdateagentscheduleuploadschemaMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if WorkPlanId, ok := BuupdateagentscheduleuploadschemaMap["workPlanId"].(map[string]interface{}); ok {
 		WorkPlanIdString, _ := json.Marshal(WorkPlanId)
 		json.Unmarshal(WorkPlanIdString, &o.WorkPlanId)
@@ -114,7 +114,7 @@ func (o *Buupdateagentscheduleuploadschema) UnmarshalJSON(b []byte) error {
 	if Delete, ok := BuupdateagentscheduleuploadschemaMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 
 	return nil
 }

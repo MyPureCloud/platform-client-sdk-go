@@ -45,11 +45,11 @@ func (o *Dialercampaignconfigchangeresterrordetail) UnmarshalJSON(b []byte) erro
 	if VarError, ok := DialercampaignconfigchangeresterrordetailMap["error"].(string); ok {
 		o.VarError = &VarError
 	}
-	
+    
 	if Details, ok := DialercampaignconfigchangeresterrordetailMap["details"].(string); ok {
 		o.Details = &Details
 	}
-	
+    
 
 	return nil
 }

@@ -158,15 +158,15 @@ func (o *Patchsegment) UnmarshalJSON(b []byte) error {
 	if Id, ok := PatchsegmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IsActive, ok := PatchsegmentMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if DisplayName, ok := PatchsegmentMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if Version, ok := PatchsegmentMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -175,15 +175,15 @@ func (o *Patchsegment) UnmarshalJSON(b []byte) error {
 	if Description, ok := PatchsegmentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Color, ok := PatchsegmentMap["color"].(string); ok {
 		o.Color = &Color
 	}
-	
+    
 	if ShouldDisplayToAgent, ok := PatchsegmentMap["shouldDisplayToAgent"].(bool); ok {
 		o.ShouldDisplayToAgent = &ShouldDisplayToAgent
 	}
-	
+    
 	if Context, ok := PatchsegmentMap["context"].(map[string]interface{}); ok {
 		ContextString, _ := json.Marshal(Context)
 		json.Unmarshal(ContextString, &o.Context)
@@ -207,7 +207,7 @@ func (o *Patchsegment) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PatchsegmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if createdDateString, ok := PatchsegmentMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

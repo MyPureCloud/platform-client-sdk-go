@@ -110,15 +110,15 @@ func (o *Trustee) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrusteeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Enabled, ok := TrusteeMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if UsesDefaultRole, ok := TrusteeMap["usesDefaultRole"].(bool); ok {
 		o.UsesDefaultRole = &UsesDefaultRole
 	}
-	
+    
 	if dateCreatedString, ok := TrusteeMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -142,7 +142,7 @@ func (o *Trustee) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TrusteeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

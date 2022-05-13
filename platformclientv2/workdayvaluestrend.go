@@ -148,7 +148,7 @@ func (o *Workdayvaluestrend) UnmarshalJSON(b []byte) error {
 	if Timezone, ok := WorkdayvaluestrendMap["timezone"].(string); ok {
 		o.Timezone = &Timezone
 	}
-	
+    
 	if Results, ok := WorkdayvaluestrendMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)

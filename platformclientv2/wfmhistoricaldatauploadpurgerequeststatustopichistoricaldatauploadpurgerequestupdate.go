@@ -37,7 +37,7 @@ func (o *Wfmhistoricaldatauploadpurgerequeststatustopichistoricaldatauploadpurge
 	if Status, ok := WfmhistoricaldatauploadpurgerequeststatustopichistoricaldatauploadpurgerequestupdateMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

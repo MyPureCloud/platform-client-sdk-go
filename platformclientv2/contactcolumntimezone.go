@@ -45,11 +45,11 @@ func (o *Contactcolumntimezone) UnmarshalJSON(b []byte) error {
 	if TimeZone, ok := ContactcolumntimezoneMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if ColumnType, ok := ContactcolumntimezoneMap["columnType"].(string); ok {
 		o.ColumnType = &ColumnType
 	}
-	
+    
 
 	return nil
 }

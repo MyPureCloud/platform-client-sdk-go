@@ -37,7 +37,7 @@ func (o *Wfmuserscheduleadherenceupdatedteamtopicqueuereference) UnmarshalJSON(b
 	if Id, ok := WfmuserscheduleadherenceupdatedteamtopicqueuereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -69,23 +69,23 @@ func (o *Conversationcontentlocation) UnmarshalJSON(b []byte) error {
 	if Url, ok := ConversationcontentlocationMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Address, ok := ConversationcontentlocationMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Text, ok := ConversationcontentlocationMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Latitude, ok := ConversationcontentlocationMap["latitude"].(float64); ok {
 		o.Latitude = &Latitude
 	}
-	
+    
 	if Longitude, ok := ConversationcontentlocationMap["longitude"].(float64); ok {
 		o.Longitude = &Longitude
 	}
-	
+    
 
 	return nil
 }

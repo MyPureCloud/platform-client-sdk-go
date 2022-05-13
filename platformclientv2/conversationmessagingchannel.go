@@ -118,15 +118,15 @@ func (o *Conversationmessagingchannel) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationmessagingchannelMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Platform, ok := ConversationmessagingchannelMap["platform"].(string); ok {
 		o.Platform = &Platform
 	}
-	
+    
 	if MessageId, ok := ConversationmessagingchannelMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 	if To, ok := ConversationmessagingchannelMap["to"].(map[string]interface{}); ok {
 		ToString, _ := json.Marshal(To)
 		json.Unmarshal(ToString, &o.To)

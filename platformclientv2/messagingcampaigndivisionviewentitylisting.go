@@ -129,23 +129,23 @@ func (o *Messagingcampaigndivisionviewentitylisting) UnmarshalJSON(b []byte) err
 	if LastUri, ok := MessagingcampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := MessagingcampaigndivisionviewentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if SelfUri, ok := MessagingcampaigndivisionviewentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := MessagingcampaigndivisionviewentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := MessagingcampaigndivisionviewentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := MessagingcampaigndivisionviewentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt

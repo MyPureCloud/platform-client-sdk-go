@@ -45,11 +45,11 @@ func (o *Journeyoutcomeeventsnotificationactionmap) UnmarshalJSON(b []byte) erro
 	if Id, ok := JourneyoutcomeeventsnotificationactionmapMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := JourneyoutcomeeventsnotificationactionmapMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

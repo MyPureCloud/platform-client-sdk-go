@@ -53,15 +53,15 @@ func (o *Edgelogsjobrequest) UnmarshalJSON(b []byte) error {
 	if Path, ok := EdgelogsjobrequestMap["path"].(string); ok {
 		o.Path = &Path
 	}
-	
+    
 	if Query, ok := EdgelogsjobrequestMap["query"].(string); ok {
 		o.Query = &Query
 	}
-	
+    
 	if Recurse, ok := EdgelogsjobrequestMap["recurse"].(bool); ok {
 		o.Recurse = &Recurse
 	}
-	
+    
 
 	return nil
 }

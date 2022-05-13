@@ -37,7 +37,7 @@ func (o *Architectflownotificationflowversion) UnmarshalJSON(b []byte) error {
 	if Id, ok := ArchitectflownotificationflowversionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

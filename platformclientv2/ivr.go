@@ -190,11 +190,11 @@ func (o *Ivr) UnmarshalJSON(b []byte) error {
 	if Id, ok := IvrMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := IvrMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := IvrMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -203,7 +203,7 @@ func (o *Ivr) UnmarshalJSON(b []byte) error {
 	if Description, ok := IvrMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := IvrMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -222,23 +222,23 @@ func (o *Ivr) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := IvrMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := IvrMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := IvrMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := IvrMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := IvrMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Dnis, ok := IvrMap["dnis"].([]interface{}); ok {
 		DnisString, _ := json.Marshal(Dnis)
 		json.Unmarshal(DnisString, &o.Dnis)
@@ -267,7 +267,7 @@ func (o *Ivr) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := IvrMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

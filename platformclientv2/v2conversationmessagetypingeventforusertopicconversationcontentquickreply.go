@@ -61,19 +61,19 @@ func (o *V2conversationmessagetypingeventforusertopicconversationcontentquickrep
 	if Text, ok := V2conversationmessagetypingeventforusertopicconversationcontentquickreplyMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := V2conversationmessagetypingeventforusertopicconversationcontentquickreplyMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 	if Image, ok := V2conversationmessagetypingeventforusertopicconversationcontentquickreplyMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Action, ok := V2conversationmessagetypingeventforusertopicconversationcontentquickreplyMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 
 	return nil
 }

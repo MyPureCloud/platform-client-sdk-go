@@ -45,11 +45,11 @@ func (o *Assignedsegment) UnmarshalJSON(b []byte) error {
 	if Id, ok := AssignedsegmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := AssignedsegmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

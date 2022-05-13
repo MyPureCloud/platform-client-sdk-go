@@ -214,11 +214,11 @@ func (o *Edgelogsjobfile) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgelogsjobfileMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgelogsjobfileMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EdgelogsjobfileMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -227,7 +227,7 @@ func (o *Edgelogsjobfile) UnmarshalJSON(b []byte) error {
 	if Description, ok := EdgelogsjobfileMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EdgelogsjobfileMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -246,23 +246,23 @@ func (o *Edgelogsjobfile) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EdgelogsjobfileMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EdgelogsjobfileMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EdgelogsjobfileMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EdgelogsjobfileMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EdgelogsjobfileMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if timeCreatedString, ok := EdgelogsjobfileMap["timeCreated"].(string); ok {
 		TimeCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeCreatedString)
 		o.TimeCreated = &TimeCreated
@@ -276,23 +276,23 @@ func (o *Edgelogsjobfile) UnmarshalJSON(b []byte) error {
 	if SizeBytes, ok := EdgelogsjobfileMap["sizeBytes"].(float64); ok {
 		o.SizeBytes = &SizeBytes
 	}
-	
+    
 	if UploadStatus, ok := EdgelogsjobfileMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 	if EdgePath, ok := EdgelogsjobfileMap["edgePath"].(string); ok {
 		o.EdgePath = &EdgePath
 	}
-	
+    
 	if DownloadId, ok := EdgelogsjobfileMap["downloadId"].(string); ok {
 		o.DownloadId = &DownloadId
 	}
-	
+    
 	if SelfUri, ok := EdgelogsjobfileMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -150,11 +150,11 @@ func (o *Response) UnmarshalJSON(b []byte) error {
 	if Id, ok := ResponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ResponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := ResponseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -183,7 +183,7 @@ func (o *Response) UnmarshalJSON(b []byte) error {
 	if InteractionType, ok := ResponseMap["interactionType"].(string); ok {
 		o.InteractionType = &InteractionType
 	}
-	
+    
 	if Substitutions, ok := ResponseMap["substitutions"].([]interface{}); ok {
 		SubstitutionsString, _ := json.Marshal(Substitutions)
 		json.Unmarshal(SubstitutionsString, &o.Substitutions)
@@ -197,7 +197,7 @@ func (o *Response) UnmarshalJSON(b []byte) error {
 	if ResponseType, ok := ResponseMap["responseType"].(string); ok {
 		o.ResponseType = &ResponseType
 	}
-	
+    
 	if MessagingTemplate, ok := ResponseMap["messagingTemplate"].(map[string]interface{}); ok {
 		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
 		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
@@ -211,7 +211,7 @@ func (o *Response) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ResponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

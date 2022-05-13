@@ -118,7 +118,7 @@ func (o *Oauthclientrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := OauthclientrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if AccessTokenValiditySeconds, ok := OauthclientrequestMap["accessTokenValiditySeconds"].(float64); ok {
 		AccessTokenValiditySecondsInt := int(AccessTokenValiditySeconds)
 		o.AccessTokenValiditySeconds = &AccessTokenValiditySecondsInt
@@ -127,7 +127,7 @@ func (o *Oauthclientrequest) UnmarshalJSON(b []byte) error {
 	if Description, ok := OauthclientrequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if RegisteredRedirectUri, ok := OauthclientrequestMap["registeredRedirectUri"].([]interface{}); ok {
 		RegisteredRedirectUriString, _ := json.Marshal(RegisteredRedirectUri)
 		json.Unmarshal(RegisteredRedirectUriString, &o.RegisteredRedirectUri)
@@ -141,7 +141,7 @@ func (o *Oauthclientrequest) UnmarshalJSON(b []byte) error {
 	if AuthorizedGrantType, ok := OauthclientrequestMap["authorizedGrantType"].(string); ok {
 		o.AuthorizedGrantType = &AuthorizedGrantType
 	}
-	
+    
 	if Scope, ok := OauthclientrequestMap["scope"].([]interface{}); ok {
 		ScopeString, _ := json.Marshal(Scope)
 		json.Unmarshal(ScopeString, &o.Scope)
@@ -155,7 +155,7 @@ func (o *Oauthclientrequest) UnmarshalJSON(b []byte) error {
 	if State, ok := OauthclientrequestMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateToDeleteString, ok := OauthclientrequestMap["dateToDelete"].(string); ok {
 		DateToDelete, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateToDeleteString)
 		o.DateToDelete = &DateToDelete

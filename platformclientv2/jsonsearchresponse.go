@@ -29,11 +29,11 @@ type Jsonsearchresponse struct {
 
 
 	// Results - Search results
-	Results *Arraynode `json:"results,omitempty"`
+	Results *interface{} `json:"results,omitempty"`
 
 
 	// Aggregations
-	Aggregations *Arraynode `json:"aggregations,omitempty"`
+	Aggregations *interface{} `json:"aggregations,omitempty"`
 
 }
 
@@ -53,9 +53,9 @@ func (o *Jsonsearchresponse) MarshalJSON() ([]byte, error) {
 		
 		Types *[]string `json:"types,omitempty"`
 		
-		Results *Arraynode `json:"results,omitempty"`
+		Results *interface{} `json:"results,omitempty"`
 		
-		Aggregations *Arraynode `json:"aggregations,omitempty"`
+		Aggregations *interface{} `json:"aggregations,omitempty"`
 		*Alias
 	}{ 
 		Total: o.Total,

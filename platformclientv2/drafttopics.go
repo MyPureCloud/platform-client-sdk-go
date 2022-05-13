@@ -101,11 +101,11 @@ func (o *Drafttopics) UnmarshalJSON(b []byte) error {
 	if Id, ok := DrafttopicsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DrafttopicsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Miner, ok := DrafttopicsMap["miner"].(map[string]interface{}); ok {
 		MinerString, _ := json.Marshal(Miner)
 		json.Unmarshal(MinerString, &o.Miner)
@@ -139,7 +139,7 @@ func (o *Drafttopics) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DrafttopicsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

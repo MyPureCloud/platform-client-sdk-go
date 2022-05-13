@@ -142,11 +142,11 @@ func (o *Outboundsettings) UnmarshalJSON(b []byte) error {
 	if Id, ok := OutboundsettingsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OutboundsettingsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := OutboundsettingsMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -175,15 +175,15 @@ func (o *Outboundsettings) UnmarshalJSON(b []byte) error {
 	if MaxLineUtilization, ok := OutboundsettingsMap["maxLineUtilization"].(float64); ok {
 		o.MaxLineUtilization = &MaxLineUtilization
 	}
-	
+    
 	if AbandonSeconds, ok := OutboundsettingsMap["abandonSeconds"].(float64); ok {
 		o.AbandonSeconds = &AbandonSeconds
 	}
-	
+    
 	if ComplianceAbandonRateDenominator, ok := OutboundsettingsMap["complianceAbandonRateDenominator"].(string); ok {
 		o.ComplianceAbandonRateDenominator = &ComplianceAbandonRateDenominator
 	}
-	
+    
 	if AutomaticTimeZoneMapping, ok := OutboundsettingsMap["automaticTimeZoneMapping"].(map[string]interface{}); ok {
 		AutomaticTimeZoneMappingString, _ := json.Marshal(AutomaticTimeZoneMapping)
 		json.Unmarshal(AutomaticTimeZoneMappingString, &o.AutomaticTimeZoneMapping)
@@ -192,7 +192,7 @@ func (o *Outboundsettings) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OutboundsettingsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

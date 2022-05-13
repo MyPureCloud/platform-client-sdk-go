@@ -53,7 +53,7 @@ func (o *Workplanreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkplanreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ManagementUnit, ok := WorkplanreferenceMap["managementUnit"].(map[string]interface{}); ok {
 		ManagementUnitString, _ := json.Marshal(ManagementUnit)
 		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
@@ -62,7 +62,7 @@ func (o *Workplanreference) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WorkplanreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

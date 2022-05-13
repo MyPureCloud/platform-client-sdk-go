@@ -69,11 +69,11 @@ func (o *Buasyncagentschedulesqueryresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := BuasyncagentschedulesqueryresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := BuasyncagentschedulesqueryresponseMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := BuasyncagentschedulesqueryresponseMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)
@@ -87,7 +87,7 @@ func (o *Buasyncagentschedulesqueryresponse) UnmarshalJSON(b []byte) error {
 	if DownloadUrl, ok := BuasyncagentschedulesqueryresponseMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 
 	return nil
 }

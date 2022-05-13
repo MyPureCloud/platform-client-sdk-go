@@ -77,15 +77,15 @@ func (o *Textbotexitaction) UnmarshalJSON(b []byte) error {
 	if Reason, ok := TextbotexitactionMap["reason"].(string); ok {
 		o.Reason = &Reason
 	}
-	
+    
 	if ReasonExtendedInfo, ok := TextbotexitactionMap["reasonExtendedInfo"].(string); ok {
 		o.ReasonExtendedInfo = &ReasonExtendedInfo
 	}
-	
+    
 	if ActiveIntent, ok := TextbotexitactionMap["activeIntent"].(string); ok {
 		o.ActiveIntent = &ActiveIntent
 	}
-	
+    
 	if FlowLocation, ok := TextbotexitactionMap["flowLocation"].(map[string]interface{}); ok {
 		FlowLocationString, _ := json.Marshal(FlowLocation)
 		json.Unmarshal(FlowLocationString, &o.FlowLocation)

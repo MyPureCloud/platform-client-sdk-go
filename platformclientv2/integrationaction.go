@@ -45,11 +45,11 @@ func (o *Integrationaction) UnmarshalJSON(b []byte) error {
 	if Id, ok := IntegrationactionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := IntegrationactionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

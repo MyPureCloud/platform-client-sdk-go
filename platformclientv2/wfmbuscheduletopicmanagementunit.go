@@ -37,7 +37,7 @@ func (o *Wfmbuscheduletopicmanagementunit) UnmarshalJSON(b []byte) error {
 	if Id, ok := WfmbuscheduletopicmanagementunitMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Textboterrorinputevent) UnmarshalJSON(b []byte) error {
 	if Code, ok := TextboterrorinputeventMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := TextboterrorinputeventMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 
 	return nil
 }

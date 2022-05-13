@@ -45,11 +45,11 @@ func (o *Wfmuserscheduleadherenceupdatedtopicurireference) UnmarshalJSON(b []byt
 	if Id, ok := WfmuserscheduleadherenceupdatedtopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WfmuserscheduleadherenceupdatedtopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

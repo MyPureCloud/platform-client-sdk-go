@@ -45,11 +45,11 @@ func (o *Analyticsreportingsettings) UnmarshalJSON(b []byte) error {
 	if PiiMaskingEnabled, ok := AnalyticsreportingsettingsMap["piiMaskingEnabled"].(bool); ok {
 		o.PiiMaskingEnabled = &PiiMaskingEnabled
 	}
-	
+    
 	if QueueAgentAccessObfuscation, ok := AnalyticsreportingsettingsMap["queueAgentAccessObfuscation"].(bool); ok {
 		o.QueueAgentAccessObfuscation = &QueueAgentAccessObfuscation
 	}
-	
+    
 
 	return nil
 }

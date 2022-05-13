@@ -125,51 +125,51 @@ func (o *Subscriptionoverviewusage) UnmarshalJSON(b []byte) error {
 	if Name, ok := SubscriptionoverviewusageMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if PartNumber, ok := SubscriptionoverviewusageMap["partNumber"].(string); ok {
 		o.PartNumber = &PartNumber
 	}
-	
+    
 	if Grouping, ok := SubscriptionoverviewusageMap["grouping"].(string); ok {
 		o.Grouping = &Grouping
 	}
-	
+    
 	if UnitOfMeasureType, ok := SubscriptionoverviewusageMap["unitOfMeasureType"].(string); ok {
 		o.UnitOfMeasureType = &UnitOfMeasureType
 	}
-	
+    
 	if UsageQuantity, ok := SubscriptionoverviewusageMap["usageQuantity"].(string); ok {
 		o.UsageQuantity = &UsageQuantity
 	}
-	
+    
 	if OveragePrice, ok := SubscriptionoverviewusageMap["overagePrice"].(string); ok {
 		o.OveragePrice = &OveragePrice
 	}
-	
+    
 	if PrepayQuantity, ok := SubscriptionoverviewusageMap["prepayQuantity"].(string); ok {
 		o.PrepayQuantity = &PrepayQuantity
 	}
-	
+    
 	if PrepayPrice, ok := SubscriptionoverviewusageMap["prepayPrice"].(string); ok {
 		o.PrepayPrice = &PrepayPrice
 	}
-	
+    
 	if UsageNotes, ok := SubscriptionoverviewusageMap["usageNotes"].(string); ok {
 		o.UsageNotes = &UsageNotes
 	}
-	
+    
 	if IsCancellable, ok := SubscriptionoverviewusageMap["isCancellable"].(bool); ok {
 		o.IsCancellable = &IsCancellable
 	}
-	
+    
 	if BundleQuantity, ok := SubscriptionoverviewusageMap["bundleQuantity"].(string); ok {
 		o.BundleQuantity = &BundleQuantity
 	}
-	
+    
 	if IsThirdParty, ok := SubscriptionoverviewusageMap["isThirdParty"].(bool); ok {
 		o.IsThirdParty = &IsThirdParty
 	}
-	
+    
 
 	return nil
 }

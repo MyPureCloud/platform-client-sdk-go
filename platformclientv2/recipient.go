@@ -118,11 +118,11 @@ func (o *Recipient) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecipientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := RecipientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Flow, ok := RecipientMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
@@ -151,11 +151,11 @@ func (o *Recipient) UnmarshalJSON(b []byte) error {
 	if MessengerType, ok := RecipientMap["messengerType"].(string); ok {
 		o.MessengerType = &MessengerType
 	}
-	
+    
 	if SelfUri, ok := RecipientMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

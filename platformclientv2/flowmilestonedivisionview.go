@@ -61,11 +61,11 @@ func (o *Flowmilestonedivisionview) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowmilestonedivisionviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowmilestonedivisionviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := FlowmilestonedivisionviewMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -74,7 +74,7 @@ func (o *Flowmilestonedivisionview) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowmilestonedivisionviewMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

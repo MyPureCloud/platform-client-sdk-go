@@ -45,11 +45,11 @@ func (o *Connecteduser) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConnecteduserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ConnecteduserMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

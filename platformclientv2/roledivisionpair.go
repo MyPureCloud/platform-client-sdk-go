@@ -45,11 +45,11 @@ func (o *Roledivisionpair) UnmarshalJSON(b []byte) error {
 	if RoleId, ok := RoledivisionpairMap["roleId"].(string); ok {
 		o.RoleId = &RoleId
 	}
-	
+    
 	if DivisionId, ok := RoledivisionpairMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 
 	return nil
 }

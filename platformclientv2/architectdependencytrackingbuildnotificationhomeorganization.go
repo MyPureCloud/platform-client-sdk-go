@@ -53,15 +53,15 @@ func (o *Architectdependencytrackingbuildnotificationhomeorganization) Unmarshal
 	if Id, ok := ArchitectdependencytrackingbuildnotificationhomeorganizationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectdependencytrackingbuildnotificationhomeorganizationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ThirdPartyOrgName, ok := ArchitectdependencytrackingbuildnotificationhomeorganizationMap["thirdPartyOrgName"].(string); ok {
 		o.ThirdPartyOrgName = &ThirdPartyOrgName
 	}
-	
+    
 
 	return nil
 }

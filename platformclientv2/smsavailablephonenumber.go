@@ -109,27 +109,27 @@ func (o *Smsavailablephonenumber) UnmarshalJSON(b []byte) error {
 	if Id, ok := SmsavailablephonenumberMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SmsavailablephonenumberMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if PhoneNumber, ok := SmsavailablephonenumberMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if CountryCode, ok := SmsavailablephonenumberMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
 	}
-	
+    
 	if Region, ok := SmsavailablephonenumberMap["region"].(string); ok {
 		o.Region = &Region
 	}
-	
+    
 	if City, ok := SmsavailablephonenumberMap["city"].(string); ok {
 		o.City = &City
 	}
-	
+    
 	if Capabilities, ok := SmsavailablephonenumberMap["capabilities"].([]interface{}); ok {
 		CapabilitiesString, _ := json.Marshal(Capabilities)
 		json.Unmarshal(CapabilitiesString, &o.Capabilities)
@@ -138,15 +138,15 @@ func (o *Smsavailablephonenumber) UnmarshalJSON(b []byte) error {
 	if PhoneNumberType, ok := SmsavailablephonenumberMap["phoneNumberType"].(string); ok {
 		o.PhoneNumberType = &PhoneNumberType
 	}
-	
+    
 	if AddressRequirement, ok := SmsavailablephonenumberMap["addressRequirement"].(string); ok {
 		o.AddressRequirement = &AddressRequirement
 	}
-	
+    
 	if SelfUri, ok := SmsavailablephonenumberMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

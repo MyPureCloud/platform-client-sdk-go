@@ -32,8 +32,6 @@ func NewAuthorizationApiWithConfig(config *Configuration) *AuthorizationApi {
 // DeleteAuthorizationDivision invokes DELETE /api/v2/authorization/divisions/{divisionId}
 //
 // Delete a division.
-//
-// 
 func (a AuthorizationApi) DeleteAuthorizationDivision(divisionId string, force bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a AuthorizationApi) DeleteAuthorizationDivision(divisionId string, force b
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->DeleteAuthorizationDivision")
 	}
 
@@ -100,8 +98,6 @@ func (a AuthorizationApi) DeleteAuthorizationDivision(divisionId string, force b
 // DeleteAuthorizationRole invokes DELETE /api/v2/authorization/roles/{roleId}
 //
 // Delete an organization role.
-//
-// 
 func (a AuthorizationApi) DeleteAuthorizationRole(roleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -113,7 +109,7 @@ func (a AuthorizationApi) DeleteAuthorizationRole(roleId string) (*APIResponse, 
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->DeleteAuthorizationRole")
 	}
 
@@ -166,8 +162,6 @@ func (a AuthorizationApi) DeleteAuthorizationRole(roleId string) (*APIResponse, 
 // DeleteAuthorizationSubjectDivisionRole invokes DELETE /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}
 //
 // Delete a grant of a role in a division
-//
-// 
 func (a AuthorizationApi) DeleteAuthorizationSubjectDivisionRole(subjectId string, divisionId string, roleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -181,17 +175,17 @@ func (a AuthorizationApi) DeleteAuthorizationSubjectDivisionRole(subjectId strin
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->DeleteAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->DeleteAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->DeleteAuthorizationSubjectDivisionRole")
 	}
 
@@ -244,8 +238,6 @@ func (a AuthorizationApi) DeleteAuthorizationSubjectDivisionRole(subjectId strin
 // GetAuthorizationDivision invokes GET /api/v2/authorization/divisions/{divisionId}
 //
 // Returns an authorization division.
-//
-// 
 func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCount bool) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -258,7 +250,7 @@ func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCoun
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->GetAuthorizationDivision")
 	}
 
@@ -333,7 +325,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->GetAuthorizationDivisionGrants")
 	}
 
@@ -397,7 +389,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 //
 // Retrieve a list of all divisions defined for the organization
 //
-// Request specific divisions by id using a query param \&quot;id\&quot;, e.g.  ?id=5f777167-63be-4c24-ad41-374155d9e28b&amp;id=72e9fb25-c484-488d-9312-7acba82435b3
+// Request specific divisions by id using a query param \&quot;id\&quot;, e.g.  ?id&#x3D;5f777167-63be-4c24-ad41-374155d9e28b&amp;id&#x3D;72e9fb25-c484-488d-9312-7acba82435b3
 func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, id []string, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -548,8 +540,6 @@ func (a AuthorizationApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIR
 // GetAuthorizationDivisionsLimit invokes GET /api/v2/authorization/divisions/limit
 //
 // Returns the maximum allowed number of divisions.
-//
-// 
 func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -628,7 +618,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string
 
 	// verify the required parameter 'permission' is set
 	if &permission == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling AuthorizationApi->GetAuthorizationDivisionspermittedMe")
 	}
 
@@ -691,8 +681,6 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string
 // GetAuthorizationDivisionspermittedPagedMe invokes GET /api/v2/authorization/divisionspermitted/paged/me
 //
 // Returns which divisions the current user has the given permission in.
-//
-// 
 func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -704,7 +692,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission s
 
 	// verify the required parameter 'permission' is set
 	if &permission == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling AuthorizationApi->GetAuthorizationDivisionspermittedPagedMe")
 	}
 
@@ -783,12 +771,12 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->GetAuthorizationDivisionspermittedPagedSubjectId")
 	}
 	// verify the required parameter 'permission' is set
 	if &permission == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling AuthorizationApi->GetAuthorizationDivisionspermittedPagedSubjectId")
 	}
 
@@ -1009,7 +997,7 @@ func (a AuthorizationApi) GetAuthorizationRole(roleId string, expand []string) (
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->GetAuthorizationRole")
 	}
 
@@ -1085,12 +1073,12 @@ func (a AuthorizationApi) GetAuthorizationRoleComparedefaultRightRoleId(leftRole
 
 	// verify the required parameter 'leftRoleId' is set
 	if &leftRoleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'leftRoleId' when calling AuthorizationApi->GetAuthorizationRoleComparedefaultRightRoleId")
 	}
 	// verify the required parameter 'rightRoleId' is set
 	if &rightRoleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'rightRoleId' when calling AuthorizationApi->GetAuthorizationRoleComparedefaultRightRoleId")
 	}
 
@@ -1148,7 +1136,7 @@ func (a AuthorizationApi) GetAuthorizationRoleComparedefaultRightRoleId(leftRole
 
 // GetAuthorizationRoleSubjectgrants invokes GET /api/v2/authorization/roles/{roleId}/subjectgrants
 //
-// Get the subjects&#39; granted divisions in the specified role.
+// Get the subjects' granted divisions in the specified role.
 //
 // Includes the divisions for which the subject has a grant.
 func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Subjectdivisiongrantsentitylisting, *APIResponse, error) {
@@ -1163,7 +1151,7 @@ func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageS
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->GetAuthorizationRoleSubjectgrants")
 	}
 
@@ -1248,7 +1236,7 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int,
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->GetAuthorizationRoleUsers")
 	}
 
@@ -1311,8 +1299,6 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int,
 // GetAuthorizationRoles invokes GET /api/v2/authorization/roles
 //
 // Retrieve a list of all roles defined for the organization
-//
-// 
 func (a AuthorizationApi) GetAuthorizationRoles(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, permission []string, defaultRoleId []string, userCount bool, id []string) (*Organizationroleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1400,8 +1386,6 @@ func (a AuthorizationApi) GetAuthorizationRoles(pageSize int, pageNumber int, so
 // GetAuthorizationSubject invokes GET /api/v2/authorization/subjects/{subjectId}
 //
 // Returns a listing of roles and permissions for a user.
-//
-// 
 func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1414,7 +1398,7 @@ func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubje
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->GetAuthorizationSubject")
 	}
 
@@ -1473,8 +1457,6 @@ func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubje
 // GetAuthorizationSubjectsMe invokes GET /api/v2/authorization/subjects/me
 //
 // Returns a listing of roles and permissions for the currently authenticated user.
-//
-// 
 func (a AuthorizationApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1540,8 +1522,6 @@ func (a AuthorizationApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIRespo
 // GetAuthorizationSubjectsRolecounts invokes GET /api/v2/authorization/subjects/rolecounts
 //
 // Get the count of roles granted to a list of subjects
-//
-// 
 func (a AuthorizationApi) GetAuthorizationSubjectsRolecounts(id []string) (*map[string]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1609,8 +1589,6 @@ func (a AuthorizationApi) GetAuthorizationSubjectsRolecounts(id []string) (*map[
 // GetUserRoles invokes GET /api/v2/users/{userId}/roles
 //
 // Returns a listing of roles and permissions for a user.
-//
-// 
 func (a AuthorizationApi) GetUserRoles(userId string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1623,7 +1601,7 @@ func (a AuthorizationApi) GetUserRoles(userId string) (*Userauthorization, *APIR
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling AuthorizationApi->GetUserRoles")
 	}
 
@@ -1696,12 +1674,12 @@ func (a AuthorizationApi) PatchAuthorizationRole(roleId string, body Domainorgan
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->PatchAuthorizationRole")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PatchAuthorizationRole")
 	}
 
@@ -1777,12 +1755,12 @@ func (a AuthorizationApi) PostAuthorizationDivisionObject(divisionId string, obj
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->PostAuthorizationDivisionObject")
 	}
 	// verify the required parameter 'objectType' is set
 	if &objectType == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'objectType' when calling AuthorizationApi->PostAuthorizationDivisionObject")
 	}
 	// verify the required parameter 'body' is set
@@ -1843,8 +1821,6 @@ func (a AuthorizationApi) PostAuthorizationDivisionObject(divisionId string, obj
 // PostAuthorizationDivisionRestore invokes POST /api/v2/authorization/divisions/{divisionId}/restore
 //
 // Recreate a previously deleted division.
-//
-// 
 func (a AuthorizationApi) PostAuthorizationDivisionRestore(divisionId string, body Authzdivision) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1857,12 +1833,12 @@ func (a AuthorizationApi) PostAuthorizationDivisionRestore(divisionId string, bo
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->PostAuthorizationDivisionRestore")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationDivisionRestore")
 	}
 
@@ -1924,8 +1900,6 @@ func (a AuthorizationApi) PostAuthorizationDivisionRestore(divisionId string, bo
 // PostAuthorizationDivisions invokes POST /api/v2/authorization/divisions
 //
 // Create a division.
-//
-// 
 func (a AuthorizationApi) PostAuthorizationDivisions(body Authzdivision) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1937,7 +1911,7 @@ func (a AuthorizationApi) PostAuthorizationDivisions(body Authzdivision) (*Authz
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationDivisions")
 	}
 
@@ -1999,8 +1973,6 @@ func (a AuthorizationApi) PostAuthorizationDivisions(body Authzdivision) (*Authz
 // PostAuthorizationRole invokes POST /api/v2/authorization/roles/{roleId}
 //
 // Bulk-grant subjects and divisions with an organization role.
-//
-// 
 func (a AuthorizationApi) PostAuthorizationRole(roleId string, body Subjectdivisions, subjectType string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2012,12 +1984,12 @@ func (a AuthorizationApi) PostAuthorizationRole(roleId string, body Subjectdivis
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->PostAuthorizationRole")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationRole")
 	}
 
@@ -2090,17 +2062,17 @@ func (a AuthorizationApi) PostAuthorizationRoleComparedefaultRightRoleId(leftRol
 
 	// verify the required parameter 'leftRoleId' is set
 	if &leftRoleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'leftRoleId' when calling AuthorizationApi->PostAuthorizationRoleComparedefaultRightRoleId")
 	}
 	// verify the required parameter 'rightRoleId' is set
 	if &rightRoleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'rightRoleId' when calling AuthorizationApi->PostAuthorizationRoleComparedefaultRightRoleId")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationRoleComparedefaultRightRoleId")
 	}
 
@@ -2162,8 +2134,6 @@ func (a AuthorizationApi) PostAuthorizationRoleComparedefaultRightRoleId(leftRol
 // PostAuthorizationRoles invokes POST /api/v2/authorization/roles
 //
 // Create an organization role.
-//
-// 
 func (a AuthorizationApi) PostAuthorizationRoles(body Domainorganizationrolecreate) (*Domainorganizationrole, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2175,7 +2145,7 @@ func (a AuthorizationApi) PostAuthorizationRoles(body Domainorganizationrolecrea
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationRoles")
 	}
 
@@ -2238,7 +2208,7 @@ func (a AuthorizationApi) PostAuthorizationRoles(body Domainorganizationrolecrea
 //
 // Restores all default roles
 //
-// This endpoint serves several purposes. 1. It provides the org with default roles. This is important for default roles that will be added after go-live (they can retroactively add the new default-role). Note: When not using a query param of force=true, it only adds the default roles not configured for the org; it does not overwrite roles. 2. Using the query param force=true, you can restore all default roles. Note: This does not have an effect on custom roles.
+// This endpoint serves several purposes. 1. It provides the org with default roles. This is important for default roles that will be added after go-live (they can retroactively add the new default-role). Note: When not using a query param of force&#x3D;true, it only adds the default roles not configured for the org; it does not overwrite roles. 2. Using the query param force&#x3D;true, you can restore all default roles. Note: This does not have an effect on custom roles.
 func (a AuthorizationApi) PostAuthorizationRolesDefault(force bool) (*Organizationroleentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2306,8 +2276,6 @@ func (a AuthorizationApi) PostAuthorizationRolesDefault(force bool) (*Organizati
 // PostAuthorizationSubjectBulkadd invokes POST /api/v2/authorization/subjects/{subjectId}/bulkadd
 //
 // Bulk-grant roles and divisions to a subject.
-//
-// 
 func (a AuthorizationApi) PostAuthorizationSubjectBulkadd(subjectId string, body Roledivisiongrants, subjectType string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2319,12 +2287,12 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkadd(subjectId string, body
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->PostAuthorizationSubjectBulkadd")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationSubjectBulkadd")
 	}
 
@@ -2382,8 +2350,6 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkadd(subjectId string, body
 // PostAuthorizationSubjectBulkremove invokes POST /api/v2/authorization/subjects/{subjectId}/bulkremove
 //
 // Bulk-remove grants from a subject.
-//
-// 
 func (a AuthorizationApi) PostAuthorizationSubjectBulkremove(subjectId string, body Roledivisiongrants) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2395,12 +2361,12 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkremove(subjectId string, b
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->PostAuthorizationSubjectBulkremove")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationSubjectBulkremove")
 	}
 
@@ -2455,7 +2421,7 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkremove(subjectId string, b
 
 // PostAuthorizationSubjectBulkreplace invokes POST /api/v2/authorization/subjects/{subjectId}/bulkreplace
 //
-// Replace subject&#39;s roles and divisions with the exact list supplied in the request.
+// Replace subject's roles and divisions with the exact list supplied in the request.
 //
 // This operation will not remove grants that are inherited from group membership. It will only set the grants directly applied to the subject.
 func (a AuthorizationApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Roledivisiongrants, subjectType string) (*APIResponse, error) {
@@ -2469,12 +2435,12 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkreplace(subjectId string, 
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->PostAuthorizationSubjectBulkreplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationSubjectBulkreplace")
 	}
 
@@ -2532,8 +2498,6 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkreplace(subjectId string, 
 // PostAuthorizationSubjectDivisionRole invokes POST /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}
 //
 // Make a grant of a role in a division
-//
-// 
 func (a AuthorizationApi) PostAuthorizationSubjectDivisionRole(subjectId string, divisionId string, roleId string, subjectType string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2547,17 +2511,17 @@ func (a AuthorizationApi) PostAuthorizationSubjectDivisionRole(subjectId string,
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->PostAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->PostAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->PostAuthorizationSubjectDivisionRole")
 	}
 
@@ -2612,8 +2576,6 @@ func (a AuthorizationApi) PostAuthorizationSubjectDivisionRole(subjectId string,
 // PutAuthorizationDivision invokes PUT /api/v2/authorization/divisions/{divisionId}
 //
 // Update a division.
-//
-// 
 func (a AuthorizationApi) PutAuthorizationDivision(divisionId string, body Authzdivision) (*Authzdivision, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2626,12 +2588,12 @@ func (a AuthorizationApi) PutAuthorizationDivision(divisionId string, body Authz
 
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling AuthorizationApi->PutAuthorizationDivision")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PutAuthorizationDivision")
 	}
 
@@ -2707,12 +2669,12 @@ func (a AuthorizationApi) PutAuthorizationRole(roleId string, body Domainorganiz
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->PutAuthorizationRole")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PutAuthorizationRole")
 	}
 
@@ -2774,8 +2736,6 @@ func (a AuthorizationApi) PutAuthorizationRole(roleId string, body Domainorganiz
 // PutAuthorizationRoleUsersAdd invokes PUT /api/v2/authorization/roles/{roleId}/users/add
 //
 // Sets the users for the role
-//
-// 
 func (a AuthorizationApi) PutAuthorizationRoleUsersAdd(roleId string, body []string) ([]string, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2788,7 +2748,7 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersAdd(roleId string, body []str
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->PutAuthorizationRoleUsersAdd")
 	}
 	// verify the required parameter 'body' is set
@@ -2855,8 +2815,6 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersAdd(roleId string, body []str
 // PutAuthorizationRoleUsersRemove invokes PUT /api/v2/authorization/roles/{roleId}/users/remove
 //
 // Removes the users from the role
-//
-// 
 func (a AuthorizationApi) PutAuthorizationRoleUsersRemove(roleId string, body []string) ([]string, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2869,7 +2827,7 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersRemove(roleId string, body []
 
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'roleId' when calling AuthorizationApi->PutAuthorizationRoleUsersRemove")
 	}
 	// verify the required parameter 'body' is set
@@ -2936,8 +2894,6 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersRemove(roleId string, body []
 // PutAuthorizationRolesDefault invokes PUT /api/v2/authorization/roles/default
 //
 // Restore specified default roles
-//
-// 
 func (a AuthorizationApi) PutAuthorizationRolesDefault(body []Domainorganizationrole) (*Organizationroleentitylisting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3010,9 +2966,7 @@ func (a AuthorizationApi) PutAuthorizationRolesDefault(body []Domainorganization
 
 // PutUserRoles invokes PUT /api/v2/users/{userId}/roles
 //
-// Sets the user&#39;s roles
-//
-// 
+// Sets the user's roles
 func (a AuthorizationApi) PutUserRoles(userId string, body []string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3025,7 +2979,7 @@ func (a AuthorizationApi) PutUserRoles(userId string, body []string) (*Userautho
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling AuthorizationApi->PutUserRoles")
 	}
 	// verify the required parameter 'body' is set

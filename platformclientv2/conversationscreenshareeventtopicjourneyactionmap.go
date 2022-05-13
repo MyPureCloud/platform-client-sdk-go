@@ -45,7 +45,7 @@ func (o *Conversationscreenshareeventtopicjourneyactionmap) UnmarshalJSON(b []by
 	if Id, ok := ConversationscreenshareeventtopicjourneyactionmapMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Version, ok := ConversationscreenshareeventtopicjourneyactionmapMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt

@@ -61,11 +61,11 @@ func (o *Googledialogflowcustomsettings) UnmarshalJSON(b []byte) error {
 	if Environment, ok := GoogledialogflowcustomsettingsMap["environment"].(string); ok {
 		o.Environment = &Environment
 	}
-	
+    
 	if EventName, ok := GoogledialogflowcustomsettingsMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 	if WebhookQueryParameters, ok := GoogledialogflowcustomsettingsMap["webhookQueryParameters"].(map[string]interface{}); ok {
 		WebhookQueryParametersString, _ := json.Marshal(WebhookQueryParameters)
 		json.Unmarshal(WebhookQueryParametersString, &o.WebhookQueryParameters)

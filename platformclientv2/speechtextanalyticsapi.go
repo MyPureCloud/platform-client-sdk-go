@@ -31,9 +31,7 @@ func NewSpeechTextAnalyticsApiWithConfig(config *Configuration) *SpeechTextAnaly
 
 // DeleteSpeechandtextanalyticsProgram invokes DELETE /api/v2/speechandtextanalytics/programs/{programId}
 //
-// Delete a Speech &amp; Text Analytics program by id
-//
-// 
+// Delete a Speech & Text Analytics program by id
 func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsProgram(programId string, forceDelete bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsProgram(programId st
 
 	// verify the required parameter 'programId' is set
 	if &programId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'programId' when calling SpeechTextAnalyticsApi->DeleteSpeechandtextanalyticsProgram")
 	}
 
@@ -99,9 +97,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsProgram(programId st
 
 // DeleteSpeechandtextanalyticsSentimentfeedback invokes DELETE /api/v2/speechandtextanalytics/sentimentfeedback
 //
-// Delete All Speech &amp; Text Analytics SentimentFeedback
-//
-// 
+// Delete All Speech & Text Analytics SentimentFeedback
 func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedback() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -159,9 +155,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedback() 
 
 // DeleteSpeechandtextanalyticsSentimentfeedbackSentimentFeedbackId invokes DELETE /api/v2/speechandtextanalytics/sentimentfeedback/{sentimentFeedbackId}
 //
-// Delete a Speech &amp; Text Analytics SentimentFeedback by Id
-//
-// 
+// Delete a Speech & Text Analytics SentimentFeedback by Id
 func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedbackSentimentFeedbackId(sentimentFeedbackId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -173,7 +167,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedbackSen
 
 	// verify the required parameter 'sentimentFeedbackId' is set
 	if &sentimentFeedbackId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'sentimentFeedbackId' when calling SpeechTextAnalyticsApi->DeleteSpeechandtextanalyticsSentimentfeedbackSentimentFeedbackId")
 	}
 
@@ -225,9 +219,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedbackSen
 
 // DeleteSpeechandtextanalyticsTopic invokes DELETE /api/v2/speechandtextanalytics/topics/{topicId}
 //
-// Delete a Speech &amp; Text Analytics topic by id
-//
-// 
+// Delete a Speech & Text Analytics topic by id
 func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsTopic(topicId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -239,7 +231,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsTopic(topicId string
 
 	// verify the required parameter 'topicId' is set
 	if &topicId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'topicId' when calling SpeechTextAnalyticsApi->DeleteSpeechandtextanalyticsTopic")
 	}
 
@@ -292,8 +284,6 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsTopic(topicId string
 // GetSpeechandtextanalyticsConversation invokes GET /api/v2/speechandtextanalytics/conversations/{conversationId}
 //
 // Get Speech and Text Analytics for a specific conversation
-//
-// 
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversation(conversationId string) (*Conversationmetrics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -306,7 +296,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversation(conversati
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsConversation")
 	}
 
@@ -365,8 +355,6 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversation(conversati
 // GetSpeechandtextanalyticsConversationCommunicationTranscripturl invokes GET /api/v2/speechandtextanalytics/conversations/{conversationId}/communications/{communicationId}/transcripturl
 //
 // Get the pre-signed S3 URL for the transcript of a specific communication of a conversation
-//
-// 
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicationTranscripturl(conversationId string, communicationId string) (*Transcripturl, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -380,12 +368,12 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsConversationCommunicationTranscripturl")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsConversationCommunicationTranscripturl")
 	}
 
@@ -443,9 +431,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 
 // GetSpeechandtextanalyticsProgram invokes GET /api/v2/speechandtextanalytics/programs/{programId}
 //
-// Get a Speech &amp; Text Analytics program by id
-//
-// 
+// Get a Speech & Text Analytics program by id
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgram(programId string) (*Program, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -458,7 +444,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgram(programId strin
 
 	// verify the required parameter 'programId' is set
 	if &programId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'programId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsProgram")
 	}
 
@@ -516,9 +502,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgram(programId strin
 
 // GetSpeechandtextanalyticsProgramMappings invokes GET /api/v2/speechandtextanalytics/programs/{programId}/mappings
 //
-// Get Speech &amp; Text Analytics program mappings to queues and flows by id
-//
-// 
+// Get Speech & Text Analytics program mappings to queues and flows by id
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramMappings(programId string) (*Programmappings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -531,7 +515,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramMappings(program
 
 	// verify the required parameter 'programId' is set
 	if &programId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'programId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsProgramMappings")
 	}
 
@@ -589,9 +573,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramMappings(program
 
 // GetSpeechandtextanalyticsPrograms invokes GET /api/v2/speechandtextanalytics/programs
 //
-// Get the list of Speech &amp; Text Analytics programs
-//
-// 
+// Get the list of Speech & Text Analytics programs
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage string, pageSize int) (*Programsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -660,9 +642,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage strin
 
 // GetSpeechandtextanalyticsProgramsGeneralJob invokes GET /api/v2/speechandtextanalytics/programs/general/jobs/{jobId}
 //
-// Get a Speech &amp; Text Analytics general program job by id
-//
-// 
+// Get a Speech & Text Analytics general program job by id
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsGeneralJob(jobId string) (*Generalprogramjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -675,7 +655,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsGeneralJob(jobI
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsProgramsGeneralJob")
 	}
 
@@ -733,9 +713,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsGeneralJob(jobI
 
 // GetSpeechandtextanalyticsProgramsMappings invokes GET /api/v2/speechandtextanalytics/programs/mappings
 //
-// Get the list of Speech &amp; Text Analytics programs mappings to queues and flows
-//
-// 
+// Get the list of Speech & Text Analytics programs mappings to queues and flows
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsMappings(nextPage string, pageSize int) (*Programsmappingsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -804,9 +782,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsMappings(nextPa
 
 // GetSpeechandtextanalyticsProgramsPublishjob invokes GET /api/v2/speechandtextanalytics/programs/publishjobs/{jobId}
 //
-// Get a Speech &amp; Text Analytics publish programs job by id
-//
-// 
+// Get a Speech & Text Analytics publish programs job by id
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsPublishjob(jobId string) (*Programjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -819,7 +795,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsPublishjob(jobI
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsProgramsPublishjob")
 	}
 
@@ -877,9 +853,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsPublishjob(jobI
 
 // GetSpeechandtextanalyticsProgramsUnpublished invokes GET /api/v2/speechandtextanalytics/programs/unpublished
 //
-// Get the list of Speech &amp; Text Analytics unpublished programs
-//
-// 
+// Get the list of Speech & Text Analytics unpublished programs
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsUnpublished(nextPage string, pageSize int) (*Unpublishedprogramsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -948,9 +922,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsUnpublished(nex
 
 // GetSpeechandtextanalyticsSentimentDialects invokes GET /api/v2/speechandtextanalytics/sentiment/dialects
 //
-// Get the list of Speech &amp; Text Analytics sentiment supported dialects
-//
-// 
+// Get the list of Speech & Text Analytics sentiment supported dialects
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentDialects() (*Entitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1015,9 +987,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentDialects() (*E
 
 // GetSpeechandtextanalyticsSentimentfeedback invokes GET /api/v2/speechandtextanalytics/sentimentfeedback
 //
-// Get the list of Speech &amp; Text Analytics SentimentFeedback
-//
-// 
+// Get the list of Speech & Text Analytics SentimentFeedback
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentfeedback(dialect string) (*Sentimentfeedbackentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1085,8 +1055,6 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentfeedback(diale
 // GetSpeechandtextanalyticsSettings invokes GET /api/v2/speechandtextanalytics/settings
 //
 // Get Speech And Text Analytics Settings
-//
-// 
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSettings() (*Speechtextanalyticssettingsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1151,9 +1119,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSettings() (*Speechtext
 
 // GetSpeechandtextanalyticsTopic invokes GET /api/v2/speechandtextanalytics/topics/{topicId}
 //
-// Get a Speech &amp; Text Analytics topic by id
-//
-// 
+// Get a Speech & Text Analytics topic by id
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (*Topic, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1166,7 +1132,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (
 
 	// verify the required parameter 'topicId' is set
 	if &topicId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'topicId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsTopic")
 	}
 
@@ -1224,9 +1190,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (
 
 // GetSpeechandtextanalyticsTopics invokes GET /api/v2/speechandtextanalytics/topics
 //
-// Get the list of Speech &amp; Text Analytics topics
-//
-// 
+// Get the list of Speech & Text Analytics topics
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string, pageSize int, state string, name string, ids []string, sortBy string, sortOrder string) (*Topicsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1305,9 +1269,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string,
 
 // GetSpeechandtextanalyticsTopicsDialects invokes GET /api/v2/speechandtextanalytics/topics/dialects
 //
-// Get list of supported Speech &amp; Text Analytics topics dialects
-//
-// 
+// Get list of supported Speech & Text Analytics topics dialects
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsDialects() (*Entitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1372,9 +1334,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsDialects() (*Enti
 
 // GetSpeechandtextanalyticsTopicsGeneral invokes GET /api/v2/speechandtextanalytics/topics/general
 //
-// Get the Speech &amp; Text Analytics general topics for a given dialect
-//
-// 
+// Get the Speech & Text Analytics general topics for a given dialect
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsGeneral(dialect string) (*Generaltopicsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1441,9 +1401,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsGeneral(dialect s
 
 // GetSpeechandtextanalyticsTopicsPublishjob invokes GET /api/v2/speechandtextanalytics/topics/publishjobs/{jobId}
 //
-// Get a Speech &amp; Text Analytics publish topics job by id
-//
-// 
+// Get a Speech & Text Analytics publish topics job by id
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId string) (*Topicjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1456,7 +1414,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId 
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsTopicsPublishjob")
 	}
 
@@ -1515,8 +1473,6 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId 
 // PatchSpeechandtextanalyticsSettings invokes PATCH /api/v2/speechandtextanalytics/settings
 //
 // Patch Speech And Text Analytics Settings
-//
-// 
 func (a SpeechTextAnalyticsApi) PatchSpeechandtextanalyticsSettings(body Speechtextanalyticssettingsrequest) (*Speechtextanalyticssettingsresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1528,7 +1484,7 @@ func (a SpeechTextAnalyticsApi) PatchSpeechandtextanalyticsSettings(body Speecht
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PatchSpeechandtextanalyticsSettings")
 	}
 
@@ -1589,9 +1545,7 @@ func (a SpeechTextAnalyticsApi) PatchSpeechandtextanalyticsSettings(body Speecht
 
 // PostSpeechandtextanalyticsPrograms invokes POST /api/v2/speechandtextanalytics/programs
 //
-// Create new Speech &amp; Text Analytics program
-//
-// 
+// Create new Speech & Text Analytics program
 func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsPrograms(body Programrequest) (*Program, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1603,7 +1557,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsPrograms(body Programr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsPrograms")
 	}
 
@@ -1664,9 +1618,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsPrograms(body Programr
 
 // PostSpeechandtextanalyticsProgramsGeneralJobs invokes POST /api/v2/speechandtextanalytics/programs/general/jobs
 //
-// Create new Speech &amp; Text Analytics general program job
-//
-// 
+// Create new Speech & Text Analytics general program job
 func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsGeneralJobs(body Generalprogramjobrequest) (*Generalprogramjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1678,7 +1630,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsGeneralJobs(bo
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsProgramsGeneralJobs")
 	}
 
@@ -1739,9 +1691,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsGeneralJobs(bo
 
 // PostSpeechandtextanalyticsProgramsPublishjobs invokes POST /api/v2/speechandtextanalytics/programs/publishjobs
 //
-// Create new Speech &amp; Text Analytics publish programs job
-//
-// 
+// Create new Speech & Text Analytics publish programs job
 func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsPublishjobs(body Programjobrequest) (*Programjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1753,7 +1703,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsPublishjobs(bo
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsProgramsPublishjobs")
 	}
 
@@ -1814,9 +1764,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsPublishjobs(bo
 
 // PostSpeechandtextanalyticsSentimentfeedback invokes POST /api/v2/speechandtextanalytics/sentimentfeedback
 //
-// Create a Speech &amp; Text Analytics SentimentFeedback
-//
-// 
+// Create a Speech & Text Analytics SentimentFeedback
 func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsSentimentfeedback(body Sentimentfeedback) (*Sentimentfeedback, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1828,7 +1776,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsSentimentfeedback(body
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsSentimentfeedback")
 	}
 
@@ -1889,9 +1837,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsSentimentfeedback(body
 
 // PostSpeechandtextanalyticsTopics invokes POST /api/v2/speechandtextanalytics/topics
 //
-// Create new Speech &amp; Text Analytics topic
-//
-// 
+// Create new Speech & Text Analytics topic
 func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopics(body Topicrequest) (*Topic, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1903,7 +1849,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopics(body Topicreque
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsTopics")
 	}
 
@@ -1964,9 +1910,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopics(body Topicreque
 
 // PostSpeechandtextanalyticsTopicsPublishjobs invokes POST /api/v2/speechandtextanalytics/topics/publishjobs
 //
-// Create new Speech &amp; Text Analytics publish topics job
-//
-// 
+// Create new Speech & Text Analytics publish topics job
 func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopicsPublishjobs(body Topicjobrequest) (*Topicjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1978,7 +1922,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopicsPublishjobs(body
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsTopicsPublishjobs")
 	}
 
@@ -2040,8 +1984,6 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopicsPublishjobs(body
 // PostSpeechandtextanalyticsTranscriptsSearch invokes POST /api/v2/speechandtextanalytics/transcripts/search
 //
 // Search resources.
-//
-// 
 func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTranscriptsSearch(body Transcriptsearchrequest) (*Jsonsearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2053,7 +1995,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTranscriptsSearch(body
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsTranscriptsSearch")
 	}
 
@@ -2114,9 +2056,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTranscriptsSearch(body
 
 // PutSpeechandtextanalyticsProgram invokes PUT /api/v2/speechandtextanalytics/programs/{programId}
 //
-// Update existing Speech &amp; Text Analytics program
-//
-// 
+// Update existing Speech & Text Analytics program
 func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgram(programId string, body Programrequest) (*Program, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2129,12 +2069,12 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgram(programId strin
 
 	// verify the required parameter 'programId' is set
 	if &programId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'programId' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsProgram")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsProgram")
 	}
 
@@ -2195,9 +2135,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgram(programId strin
 
 // PutSpeechandtextanalyticsProgramMappings invokes PUT /api/v2/speechandtextanalytics/programs/{programId}/mappings
 //
-// Set Speech &amp; Text Analytics program mappings to queues and flows
-//
-// 
+// Set Speech & Text Analytics program mappings to queues and flows
 func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramMappings(programId string, body Programmappingsrequest) (*Programmappings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2210,12 +2148,12 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramMappings(program
 
 	// verify the required parameter 'programId' is set
 	if &programId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'programId' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsProgramMappings")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsProgramMappings")
 	}
 
@@ -2277,8 +2215,6 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramMappings(program
 // PutSpeechandtextanalyticsSettings invokes PUT /api/v2/speechandtextanalytics/settings
 //
 // Update Speech And Text Analytics Settings
-//
-// 
 func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsSettings(body Speechtextanalyticssettingsrequest) (*Speechtextanalyticssettingsresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2290,7 +2226,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsSettings(body Speechtex
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsSettings")
 	}
 
@@ -2351,9 +2287,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsSettings(body Speechtex
 
 // PutSpeechandtextanalyticsTopic invokes PUT /api/v2/speechandtextanalytics/topics/{topicId}
 //
-// Update existing Speech &amp; Text Analytics topic
-//
-// 
+// Update existing Speech & Text Analytics topic
 func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsTopic(topicId string, body Topicrequest) (*Topic, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2366,12 +2300,12 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsTopic(topicId string, b
 
 	// verify the required parameter 'topicId' is set
 	if &topicId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'topicId' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsTopic")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsTopic")
 	}
 

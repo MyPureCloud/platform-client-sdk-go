@@ -37,7 +37,7 @@ func (o *Targetperformanceprofile) UnmarshalJSON(b []byte) error {
 	if TargetPerformanceProfileId, ok := TargetperformanceprofileMap["targetPerformanceProfileId"].(string); ok {
 		o.TargetPerformanceProfileId = &TargetPerformanceProfileId
 	}
-	
+    
 
 	return nil
 }

@@ -278,15 +278,15 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 	if State, ok := MessageMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := MessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Held, ok := MessageMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if Segments, ok := MessageMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)
@@ -295,11 +295,11 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 	if Direction, ok := MessageMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if RecordingId, ok := MessageMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if ErrorInfo, ok := MessageMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
@@ -308,7 +308,7 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := MessageMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := MessageMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -332,31 +332,31 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 	if Provider, ok := MessageMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Authenticated, ok := MessageMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
 	}
-	
+    
 	if VarType, ok := MessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if RecipientCountry, ok := MessageMap["recipientCountry"].(string); ok {
 		o.RecipientCountry = &RecipientCountry
 	}
-	
+    
 	if RecipientType, ok := MessageMap["recipientType"].(string); ok {
 		o.RecipientType = &RecipientType
 	}
-	
+    
 	if ScriptId, ok := MessageMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := MessageMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if ToAddress, ok := MessageMap["toAddress"].(map[string]interface{}); ok {
 		ToAddressString, _ := json.Marshal(ToAddress)
 		json.Unmarshal(ToAddressString, &o.ToAddress)
@@ -390,11 +390,11 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := MessageMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if AgentAssistantId, ok := MessageMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 
 	return nil
 }

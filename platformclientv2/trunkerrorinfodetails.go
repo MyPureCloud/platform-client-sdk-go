@@ -53,15 +53,15 @@ func (o *Trunkerrorinfodetails) UnmarshalJSON(b []byte) error {
 	if Code, ok := TrunkerrorinfodetailsMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := TrunkerrorinfodetailsMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Hostname, ok := TrunkerrorinfodetailsMap["hostname"].(string); ok {
 		o.Hostname = &Hostname
 	}
-	
+    
 
 	return nil
 }

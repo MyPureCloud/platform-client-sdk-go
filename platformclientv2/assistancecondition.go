@@ -45,7 +45,7 @@ func (o *Assistancecondition) UnmarshalJSON(b []byte) error {
 	if Operator, ok := AssistanceconditionMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if TopicIds, ok := AssistanceconditionMap["topicIds"].([]interface{}); ok {
 		TopicIdsString, _ := json.Marshal(TopicIds)
 		json.Unmarshal(TopicIdsString, &o.TopicIds)

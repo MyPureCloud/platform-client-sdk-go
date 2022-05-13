@@ -61,19 +61,19 @@ func (o *Historicalimportdeletejobresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := HistoricalimportdeletejobresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := HistoricalimportdeletejobresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Status, ok := HistoricalimportdeletejobresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if SelfUri, ok := HistoricalimportdeletejobresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

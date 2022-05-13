@@ -125,39 +125,39 @@ func (o *Pureengage) UnmarshalJSON(b []byte) error {
 	if Id, ok := PureengageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PureengageMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := PureengageMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if IssuerURI, ok := PureengageMap["issuerURI"].(string); ok {
 		o.IssuerURI = &IssuerURI
 	}
-	
+    
 	if SsoTargetURI, ok := PureengageMap["ssoTargetURI"].(string); ok {
 		o.SsoTargetURI = &SsoTargetURI
 	}
-	
+    
 	if SloURI, ok := PureengageMap["sloURI"].(string); ok {
 		o.SloURI = &SloURI
 	}
-	
+    
 	if SloBinding, ok := PureengageMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
 	}
-	
+    
 	if RelyingPartyIdentifier, ok := PureengageMap["relyingPartyIdentifier"].(string); ok {
 		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
-	
+    
 	if Certificate, ok := PureengageMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 	if Certificates, ok := PureengageMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
@@ -166,11 +166,11 @@ func (o *Pureengage) UnmarshalJSON(b []byte) error {
 	if AutoProvisionUsers, ok := PureengageMap["autoProvisionUsers"].(bool); ok {
 		o.AutoProvisionUsers = &AutoProvisionUsers
 	}
-	
+    
 	if SelfUri, ok := PureengageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

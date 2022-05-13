@@ -53,7 +53,7 @@ func (o *Transcriptaggregatequeryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := TranscriptaggregatequeryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := TranscriptaggregatequeryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

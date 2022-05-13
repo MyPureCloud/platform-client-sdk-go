@@ -109,27 +109,27 @@ func (o *Evaluationquestiongroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := EvaluationquestiongroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EvaluationquestiongroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := EvaluationquestiongroupMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if DefaultAnswersToHighest, ok := EvaluationquestiongroupMap["defaultAnswersToHighest"].(bool); ok {
 		o.DefaultAnswersToHighest = &DefaultAnswersToHighest
 	}
-	
+    
 	if DefaultAnswersToNA, ok := EvaluationquestiongroupMap["defaultAnswersToNA"].(bool); ok {
 		o.DefaultAnswersToNA = &DefaultAnswersToNA
 	}
-	
+    
 	if NaEnabled, ok := EvaluationquestiongroupMap["naEnabled"].(bool); ok {
 		o.NaEnabled = &NaEnabled
 	}
-	
+    
 	if Weight, ok := EvaluationquestiongroupMap["weight"].(float64); ok {
 		WeightFloat32 := float32(Weight)
 		o.Weight = &WeightFloat32
@@ -138,7 +138,7 @@ func (o *Evaluationquestiongroup) UnmarshalJSON(b []byte) error {
 	if ManualWeight, ok := EvaluationquestiongroupMap["manualWeight"].(bool); ok {
 		o.ManualWeight = &ManualWeight
 	}
-	
+    
 	if Questions, ok := EvaluationquestiongroupMap["questions"].([]interface{}); ok {
 		QuestionsString, _ := json.Marshal(Questions)
 		json.Unmarshal(QuestionsString, &o.Questions)

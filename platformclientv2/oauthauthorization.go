@@ -174,15 +174,15 @@ func (o *Oauthauthorization) UnmarshalJSON(b []byte) error {
 	if Pending, ok := OauthauthorizationMap["pending"].(bool); ok {
 		o.Pending = &Pending
 	}
-	
+    
 	if State, ok := OauthauthorizationMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if SelfUri, ok := OauthauthorizationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

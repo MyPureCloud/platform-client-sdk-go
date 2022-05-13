@@ -70,7 +70,7 @@ func (o *Wfmuserscheduleadherenceupdatedteamtopicrealtimeadherenceexplanation) U
 	if Id, ok := WfmuserscheduleadherenceupdatedteamtopicrealtimeadherenceexplanationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if startDateString, ok := WfmuserscheduleadherenceupdatedteamtopicrealtimeadherenceexplanationMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -84,7 +84,7 @@ func (o *Wfmuserscheduleadherenceupdatedteamtopicrealtimeadherenceexplanation) U
 	if Status, ok := WfmuserscheduleadherenceupdatedteamtopicrealtimeadherenceexplanationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

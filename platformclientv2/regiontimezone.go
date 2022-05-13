@@ -61,11 +61,11 @@ func (o *Regiontimezone) UnmarshalJSON(b []byte) error {
 	if Id, ok := RegiontimezoneMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := RegiontimezoneMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Offset, ok := RegiontimezoneMap["offset"].(float64); ok {
 		OffsetInt := int(Offset)
 		o.Offset = &OffsetInt
@@ -74,7 +74,7 @@ func (o *Regiontimezone) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := RegiontimezoneMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

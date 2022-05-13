@@ -302,11 +302,11 @@ func (o *Document) UnmarshalJSON(b []byte) error {
 	if Id, ok := DocumentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DocumentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ChangeNumber, ok := DocumentMap["changeNumber"].(float64); ok {
 		ChangeNumberInt := int(ChangeNumber)
 		o.ChangeNumber = &ChangeNumberInt
@@ -330,7 +330,7 @@ func (o *Document) UnmarshalJSON(b []byte) error {
 	if ContentUri, ok := DocumentMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if Workspace, ok := DocumentMap["workspace"].(map[string]interface{}); ok {
 		WorkspaceString, _ := json.Marshal(Workspace)
 		json.Unmarshal(WorkspaceString, &o.Workspace)
@@ -349,11 +349,11 @@ func (o *Document) UnmarshalJSON(b []byte) error {
 	if SharingUri, ok := DocumentMap["sharingUri"].(string); ok {
 		o.SharingUri = &SharingUri
 	}
-	
+    
 	if ContentType, ok := DocumentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := DocumentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
@@ -362,11 +362,11 @@ func (o *Document) UnmarshalJSON(b []byte) error {
 	if SystemType, ok := DocumentMap["systemType"].(string); ok {
 		o.SystemType = &SystemType
 	}
-	
+    
 	if Filename, ok := DocumentMap["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 	if PageCount, ok := DocumentMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
@@ -375,15 +375,15 @@ func (o *Document) UnmarshalJSON(b []byte) error {
 	if Read, ok := DocumentMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if CallerAddress, ok := DocumentMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if ReceiverAddress, ok := DocumentMap["receiverAddress"].(string); ok {
 		o.ReceiverAddress = &ReceiverAddress
 	}
-	
+    
 	if Tags, ok := DocumentMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)
@@ -412,11 +412,11 @@ func (o *Document) UnmarshalJSON(b []byte) error {
 	if UploadDestinationUri, ok := DocumentMap["uploadDestinationUri"].(string); ok {
 		o.UploadDestinationUri = &UploadDestinationUri
 	}
-	
+    
 	if UploadMethod, ok := DocumentMap["uploadMethod"].(string); ok {
 		o.UploadMethod = &UploadMethod
 	}
-	
+    
 	if LockInfo, ok := DocumentMap["lockInfo"].(map[string]interface{}); ok {
 		LockInfoString, _ := json.Marshal(LockInfo)
 		json.Unmarshal(LockInfoString, &o.LockInfo)
@@ -430,15 +430,15 @@ func (o *Document) UnmarshalJSON(b []byte) error {
 	if SharingStatus, ok := DocumentMap["sharingStatus"].(string); ok {
 		o.SharingStatus = &SharingStatus
 	}
-	
+    
 	if DownloadSharingUri, ok := DocumentMap["downloadSharingUri"].(string); ok {
 		o.DownloadSharingUri = &DownloadSharingUri
 	}
-	
+    
 	if SelfUri, ok := DocumentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

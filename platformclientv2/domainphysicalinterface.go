@@ -190,11 +190,11 @@ func (o *Domainphysicalinterface) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainphysicalinterfaceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DomainphysicalinterfaceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DomainphysicalinterfaceMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -203,7 +203,7 @@ func (o *Domainphysicalinterface) UnmarshalJSON(b []byte) error {
 	if Description, ok := DomainphysicalinterfaceMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := DomainphysicalinterfaceMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -222,39 +222,39 @@ func (o *Domainphysicalinterface) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := DomainphysicalinterfaceMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := DomainphysicalinterfaceMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := DomainphysicalinterfaceMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := DomainphysicalinterfaceMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := DomainphysicalinterfaceMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if EdgeUri, ok := DomainphysicalinterfaceMap["edgeUri"].(string); ok {
 		o.EdgeUri = &EdgeUri
 	}
-	
+    
 	if FriendlyName, ok := DomainphysicalinterfaceMap["friendlyName"].(string); ok {
 		o.FriendlyName = &FriendlyName
 	}
-	
+    
 	if HardwareAddress, ok := DomainphysicalinterfaceMap["hardwareAddress"].(string); ok {
 		o.HardwareAddress = &HardwareAddress
 	}
-	
+    
 	if PortLabel, ok := DomainphysicalinterfaceMap["portLabel"].(string); ok {
 		o.PortLabel = &PortLabel
 	}
-	
+    
 	if PhysicalCapabilities, ok := DomainphysicalinterfaceMap["physicalCapabilities"].(map[string]interface{}); ok {
 		PhysicalCapabilitiesString, _ := json.Marshal(PhysicalCapabilities)
 		json.Unmarshal(PhysicalCapabilitiesString, &o.PhysicalCapabilities)
@@ -263,7 +263,7 @@ func (o *Domainphysicalinterface) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DomainphysicalinterfaceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

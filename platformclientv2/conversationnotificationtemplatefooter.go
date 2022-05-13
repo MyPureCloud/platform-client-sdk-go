@@ -37,7 +37,7 @@ func (o *Conversationnotificationtemplatefooter) UnmarshalJSON(b []byte) error {
 	if Text, ok := ConversationnotificationtemplatefooterMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 
 	return nil
 }

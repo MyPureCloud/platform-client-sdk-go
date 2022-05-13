@@ -107,19 +107,19 @@ func (o *Facetstatistics) UnmarshalJSON(b []byte) error {
 	if Min, ok := FacetstatisticsMap["min"].(float64); ok {
 		o.Min = &Min
 	}
-	
+    
 	if Max, ok := FacetstatisticsMap["max"].(float64); ok {
 		o.Max = &Max
 	}
-	
+    
 	if Mean, ok := FacetstatisticsMap["mean"].(float64); ok {
 		o.Mean = &Mean
 	}
-	
+    
 	if StdDeviation, ok := FacetstatisticsMap["stdDeviation"].(float64); ok {
 		o.StdDeviation = &StdDeviation
 	}
-	
+    
 	if dateMinString, ok := FacetstatisticsMap["dateMin"].(string); ok {
 		DateMin, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateMinString)
 		o.DateMin = &DateMin

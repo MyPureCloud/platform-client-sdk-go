@@ -45,7 +45,7 @@ func (o *Routingstatusdetailqueryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := RoutingstatusdetailqueryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := RoutingstatusdetailqueryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

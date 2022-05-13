@@ -61,19 +61,19 @@ func (o *Patchcontentpositionproperties) UnmarshalJSON(b []byte) error {
 	if Top, ok := PatchcontentpositionpropertiesMap["top"].(string); ok {
 		o.Top = &Top
 	}
-	
+    
 	if Bottom, ok := PatchcontentpositionpropertiesMap["bottom"].(string); ok {
 		o.Bottom = &Bottom
 	}
-	
+    
 	if Left, ok := PatchcontentpositionpropertiesMap["left"].(string); ok {
 		o.Left = &Left
 	}
-	
+    
 	if Right, ok := PatchcontentpositionpropertiesMap["right"].(string); ok {
 		o.Right = &Right
 	}
-	
+    
 
 	return nil
 }

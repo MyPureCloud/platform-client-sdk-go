@@ -93,7 +93,7 @@ func (o *Faxstatus) UnmarshalJSON(b []byte) error {
 	if Direction, ok := FaxstatusMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if ExpectedPages, ok := FaxstatusMap["expectedPages"].(float64); ok {
 		ExpectedPagesInt := int(ExpectedPages)
 		o.ExpectedPages = &ExpectedPagesInt

@@ -32,8 +32,6 @@ func NewUploadsApiWithConfig(config *Configuration) *UploadsApi {
 // PostKnowledgeDocumentuploads invokes POST /api/v2/knowledge/documentuploads
 //
 // Creates a presigned URL for uploading a knowledge import file with a set of documents
-//
-// 
 func (a UploadsApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a UploadsApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Upload
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UploadsApi->PostKnowledgeDocumentuploads")
 	}
 
@@ -107,9 +105,7 @@ func (a UploadsApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Upload
 // PostLanguageunderstandingMinerUploads invokes POST /api/v2/languageunderstanding/miners/{minerId}/uploads
 //
 // Creates a presigned URL for uploading a chat corpus which will be used for mining by intent miner
-//
-// 
-func (a UploadsApi) PostLanguageunderstandingMinerUploads(minerId string, body Empty) (*Uploadurlresponse, *APIResponse, error) {
+func (a UploadsApi) PostLanguageunderstandingMinerUploads(minerId string, body interface{}) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/uploads"
@@ -121,12 +117,12 @@ func (a UploadsApi) PostLanguageunderstandingMinerUploads(minerId string, body E
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling UploadsApi->PostLanguageunderstandingMinerUploads")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UploadsApi->PostLanguageunderstandingMinerUploads")
 	}
 
@@ -188,8 +184,6 @@ func (a UploadsApi) PostLanguageunderstandingMinerUploads(minerId string, body E
 // PostUploadsPublicassetsImages invokes POST /api/v2/uploads/publicassets/images
 //
 // Creates presigned url for uploading a public asset image
-//
-// 
 func (a UploadsApi) PostUploadsPublicassetsImages(body Uploadurlrequest) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -201,7 +195,7 @@ func (a UploadsApi) PostUploadsPublicassetsImages(body Uploadurlrequest) (*Uploa
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UploadsApi->PostUploadsPublicassetsImages")
 	}
 
@@ -263,8 +257,6 @@ func (a UploadsApi) PostUploadsPublicassetsImages(body Uploadurlrequest) (*Uploa
 // PostUploadsRecordings invokes POST /api/v2/uploads/recordings
 //
 // Creates presigned url for uploading a recording file
-//
-// 
 func (a UploadsApi) PostUploadsRecordings(body Uploadurlrequest) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -276,7 +268,7 @@ func (a UploadsApi) PostUploadsRecordings(body Uploadurlrequest) (*Uploadurlresp
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UploadsApi->PostUploadsRecordings")
 	}
 
@@ -338,8 +330,6 @@ func (a UploadsApi) PostUploadsRecordings(body Uploadurlrequest) (*Uploadurlresp
 // PostUploadsWorkforcemanagementHistoricaldataCsv invokes POST /api/v2/uploads/workforcemanagement/historicaldata/csv
 //
 // Creates presigned url for uploading WFM historical data file. Requires data in csv format.
-//
-// 
 func (a UploadsApi) PostUploadsWorkforcemanagementHistoricaldataCsv(body Uploadurlrequest) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -351,7 +341,7 @@ func (a UploadsApi) PostUploadsWorkforcemanagementHistoricaldataCsv(body Uploadu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UploadsApi->PostUploadsWorkforcemanagementHistoricaldataCsv")
 	}
 

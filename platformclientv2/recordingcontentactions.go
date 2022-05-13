@@ -53,15 +53,15 @@ func (o *Recordingcontentactions) UnmarshalJSON(b []byte) error {
 	if Url, ok := RecordingcontentactionsMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if UrlTarget, ok := RecordingcontentactionsMap["urlTarget"].(string); ok {
 		o.UrlTarget = &UrlTarget
 	}
-	
+    
 	if Textback, ok := RecordingcontentactionsMap["textback"].(string); ok {
 		o.Textback = &Textback
 	}
-	
+    
 
 	return nil
 }

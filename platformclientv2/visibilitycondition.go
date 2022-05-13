@@ -45,7 +45,7 @@ func (o *Visibilitycondition) UnmarshalJSON(b []byte) error {
 	if CombiningOperation, ok := VisibilityconditionMap["combiningOperation"].(string); ok {
 		o.CombiningOperation = &CombiningOperation
 	}
-	
+    
 	if Predicates, ok := VisibilityconditionMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

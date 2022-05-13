@@ -45,11 +45,11 @@ func (o *Dialercontactid) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialercontactidMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ContactListId, ok := DialercontactidMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 
 	return nil
 }

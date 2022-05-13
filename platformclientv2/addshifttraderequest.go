@@ -78,15 +78,15 @@ func (o *Addshifttraderequest) UnmarshalJSON(b []byte) error {
 	if ScheduleId, ok := AddshifttraderequestMap["scheduleId"].(string); ok {
 		o.ScheduleId = &ScheduleId
 	}
-	
+    
 	if InitiatingShiftId, ok := AddshifttraderequestMap["initiatingShiftId"].(string); ok {
 		o.InitiatingShiftId = &InitiatingShiftId
 	}
-	
+    
 	if ReceivingUserId, ok := AddshifttraderequestMap["receivingUserId"].(string); ok {
 		o.ReceivingUserId = &ReceivingUserId
 	}
-	
+    
 	if expirationString, ok := AddshifttraderequestMap["expiration"].(string); ok {
 		Expiration, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationString)
 		o.Expiration = &Expiration

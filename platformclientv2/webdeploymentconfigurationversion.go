@@ -214,19 +214,19 @@ func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebdeploymentconfigurationversionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WebdeploymentconfigurationversionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := WebdeploymentconfigurationversionMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if Description, ok := WebdeploymentconfigurationversionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Languages, ok := WebdeploymentconfigurationversionMap["languages"].([]interface{}); ok {
 		LanguagesString, _ := json.Marshal(Languages)
 		json.Unmarshal(LanguagesString, &o.Languages)
@@ -235,7 +235,7 @@ func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
 	if DefaultLanguage, ok := WebdeploymentconfigurationversionMap["defaultLanguage"].(string); ok {
 		o.DefaultLanguage = &DefaultLanguage
 	}
-	
+    
 	if Messenger, ok := WebdeploymentconfigurationversionMap["messenger"].(map[string]interface{}); ok {
 		MessengerString, _ := json.Marshal(Messenger)
 		json.Unmarshal(MessengerString, &o.Messenger)
@@ -299,11 +299,11 @@ func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
 	if Status, ok := WebdeploymentconfigurationversionMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if SelfUri, ok := WebdeploymentconfigurationversionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

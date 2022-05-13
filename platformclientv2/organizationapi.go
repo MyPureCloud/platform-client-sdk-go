@@ -32,8 +32,6 @@ func NewOrganizationApiWithConfig(config *Configuration) *OrganizationApi {
 // GetFieldconfig invokes GET /api/v2/fieldconfig
 //
 // Fetch field config for an entity type
-//
-// 
 func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIRespo
 
 	// verify the required parameter 'varType' is set
 	if &varType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'varType' when calling OrganizationApi->GetFieldconfig")
 	}
 
@@ -106,8 +104,6 @@ func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIRespo
 // GetOrganizationsEmbeddedintegration invokes GET /api/v2/organizations/embeddedintegration
 //
 // Get the list of domains that will be allowed to embed PureCloud applications
-//
-// 
 func (a OrganizationApi) GetOrganizationsEmbeddedintegration() (*Embeddedintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -173,8 +169,6 @@ func (a OrganizationApi) GetOrganizationsEmbeddedintegration() (*Embeddedintegra
 // GetOrganizationsIpaddressauthentication invokes GET /api/v2/organizations/ipaddressauthentication
 //
 // Get organization IP address whitelist settings
-//
-// 
 func (a OrganizationApi) GetOrganizationsIpaddressauthentication() (*Ipaddressauthentication, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -240,8 +234,6 @@ func (a OrganizationApi) GetOrganizationsIpaddressauthentication() (*Ipaddressau
 // GetOrganizationsLimitsChangerequest invokes GET /api/v2/organizations/limits/changerequests/{requestId}
 //
 // Get a limit change request
-//
-// 
 func (a OrganizationApi) GetOrganizationsLimitsChangerequest(requestId string) (*Limitchangerequestdetails, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -254,7 +246,7 @@ func (a OrganizationApi) GetOrganizationsLimitsChangerequest(requestId string) (
 
 	// verify the required parameter 'requestId' is set
 	if &requestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'requestId' when calling OrganizationApi->GetOrganizationsLimitsChangerequest")
 	}
 
@@ -390,8 +382,6 @@ func (a OrganizationApi) GetOrganizationsLimitsChangerequests(after int, before 
 // GetOrganizationsLimitsDocs invokes GET /api/v2/organizations/limits/docs
 //
 // Get a link to the limit documentation
-//
-// 
 func (a OrganizationApi) GetOrganizationsLimitsDocs() (*Urlresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -457,8 +447,6 @@ func (a OrganizationApi) GetOrganizationsLimitsDocs() (*Urlresponse, *APIRespons
 // GetOrganizationsLimitsNamespace invokes GET /api/v2/organizations/limits/namespaces/{namespaceName}
 //
 // Get the effective limits in a namespace for an organization
-//
-// 
 func (a OrganizationApi) GetOrganizationsLimitsNamespace(namespaceName string) (*Limitsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -471,7 +459,7 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespace(namespaceName string) (
 
 	// verify the required parameter 'namespaceName' is set
 	if &namespaceName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'namespaceName' when calling OrganizationApi->GetOrganizationsLimitsNamespace")
 	}
 
@@ -530,8 +518,6 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespace(namespaceName string) (
 // GetOrganizationsLimitsNamespaceDefaults invokes GET /api/v2/organizations/limits/namespaces/{namespaceName}/defaults
 //
 // Get the default limits in a namespace for an organization
-//
-// 
 func (a OrganizationApi) GetOrganizationsLimitsNamespaceDefaults(namespaceName string) (*Limitsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -544,7 +530,7 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaceDefaults(namespaceName s
 
 	// verify the required parameter 'namespaceName' is set
 	if &namespaceName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'namespaceName' when calling OrganizationApi->GetOrganizationsLimitsNamespaceDefaults")
 	}
 
@@ -603,13 +589,11 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaceDefaults(namespaceName s
 // GetOrganizationsLimitsNamespaces invokes GET /api/v2/organizations/limits/namespaces
 //
 // Get the available limit namespaces
-//
-// 
-func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumber int) (*Pagednamespacelisting, *APIResponse, error) {
+func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumber int) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/organizations/limits/namespaces"
-	defaultReturn := new(Pagednamespacelisting)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -655,14 +639,14 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumb
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Pagednamespacelisting
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Pagednamespacelisting" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -674,8 +658,6 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumb
 // GetOrganizationsMe invokes GET /api/v2/organizations/me
 //
 // Get organization.
-//
-// 
 func (a OrganizationApi) GetOrganizationsMe() (*Organization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -741,8 +723,6 @@ func (a OrganizationApi) GetOrganizationsMe() (*Organization, *APIResponse, erro
 // GetOrganizationsWhitelist invokes GET /api/v2/organizations/whitelist
 //
 // Use PUT /api/v2/organizations/embeddedintegration instead
-//
-// 
 func (a OrganizationApi) GetOrganizationsWhitelist() (*Orgwhitelistsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -808,8 +788,6 @@ func (a OrganizationApi) GetOrganizationsWhitelist() (*Orgwhitelistsettings, *AP
 // PatchOrganizationsFeature invokes PATCH /api/v2/organizations/features/{featureName}
 //
 // Update organization
-//
-// 
 func (a OrganizationApi) PatchOrganizationsFeature(featureName string, enabled Featurestate) (*Organizationfeatures, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -822,12 +800,12 @@ func (a OrganizationApi) PatchOrganizationsFeature(featureName string, enabled F
 
 	// verify the required parameter 'featureName' is set
 	if &featureName == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'featureName' when calling OrganizationApi->PatchOrganizationsFeature")
 	}
 	// verify the required parameter 'enabled' is set
 	if &enabled == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'enabled' when calling OrganizationApi->PatchOrganizationsFeature")
 	}
 
@@ -889,8 +867,6 @@ func (a OrganizationApi) PatchOrganizationsFeature(featureName string, enabled F
 // PutOrganizationsEmbeddedintegration invokes PUT /api/v2/organizations/embeddedintegration
 //
 // Update the list of domains that will be allowed to embed PureCloud applications
-//
-// 
 func (a OrganizationApi) PutOrganizationsEmbeddedintegration(body Embeddedintegration) (*Embeddedintegration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -902,7 +878,7 @@ func (a OrganizationApi) PutOrganizationsEmbeddedintegration(body Embeddedintegr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationApi->PutOrganizationsEmbeddedintegration")
 	}
 
@@ -964,8 +940,6 @@ func (a OrganizationApi) PutOrganizationsEmbeddedintegration(body Embeddedintegr
 // PutOrganizationsIpaddressauthentication invokes PUT /api/v2/organizations/ipaddressauthentication
 //
 // Update organization IP address whitelist settings
-//
-// 
 func (a OrganizationApi) PutOrganizationsIpaddressauthentication(body Ipaddressauthentication) (*Ipaddressauthentication, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -977,7 +951,7 @@ func (a OrganizationApi) PutOrganizationsIpaddressauthentication(body Ipaddressa
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationApi->PutOrganizationsIpaddressauthentication")
 	}
 
@@ -1039,8 +1013,6 @@ func (a OrganizationApi) PutOrganizationsIpaddressauthentication(body Ipaddressa
 // PutOrganizationsMe invokes PUT /api/v2/organizations/me
 //
 // Update organization.
-//
-// 
 func (a OrganizationApi) PutOrganizationsMe(body Organization) (*Organization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1109,8 +1081,6 @@ func (a OrganizationApi) PutOrganizationsMe(body Organization) (*Organization, *
 // PutOrganizationsWhitelist invokes PUT /api/v2/organizations/whitelist
 //
 // Use PUT /api/v2/organizations/embeddedintegration instead
-//
-// 
 func (a OrganizationApi) PutOrganizationsWhitelist(body Orgwhitelistsettings) (*Orgwhitelistsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1122,7 +1092,7 @@ func (a OrganizationApi) PutOrganizationsWhitelist(body Orgwhitelistsettings) (*
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationApi->PutOrganizationsWhitelist")
 	}
 

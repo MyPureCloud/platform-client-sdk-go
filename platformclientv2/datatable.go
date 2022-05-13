@@ -77,11 +77,11 @@ func (o *Datatable) UnmarshalJSON(b []byte) error {
 	if Id, ok := DatatableMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DatatableMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DatatableMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -90,7 +90,7 @@ func (o *Datatable) UnmarshalJSON(b []byte) error {
 	if Description, ok := DatatableMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Schema, ok := DatatableMap["schema"].(map[string]interface{}); ok {
 		SchemaString, _ := json.Marshal(Schema)
 		json.Unmarshal(SchemaString, &o.Schema)
@@ -99,7 +99,7 @@ func (o *Datatable) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DatatableMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

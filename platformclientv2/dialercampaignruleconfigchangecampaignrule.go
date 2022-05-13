@@ -141,19 +141,19 @@ func (o *Dialercampaignruleconfigchangecampaignrule) UnmarshalJSON(b []byte) err
 	if MatchAnyConditions, ok := DialercampaignruleconfigchangecampaignruleMap["matchAnyConditions"].(bool); ok {
 		o.MatchAnyConditions = &MatchAnyConditions
 	}
-	
+    
 	if Enabled, ok := DialercampaignruleconfigchangecampaignruleMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Id, ok := DialercampaignruleconfigchangecampaignruleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialercampaignruleconfigchangecampaignruleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialercampaignruleconfigchangecampaignruleMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

@@ -50,7 +50,7 @@ func (o *Selectedcolumns) UnmarshalJSON(b []byte) error {
 	if ColumnName, ok := SelectedcolumnsMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 
 	return nil
 }

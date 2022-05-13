@@ -109,19 +109,19 @@ func (o *Reportingexportmetadatajobresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ReportingexportmetadatajobresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ReportingexportmetadatajobresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ViewType, ok := ReportingexportmetadatajobresponseMap["viewType"].(string); ok {
 		o.ViewType = &ViewType
 	}
-	
+    
 	if DateLimitations, ok := ReportingexportmetadatajobresponseMap["dateLimitations"].(string); ok {
 		o.DateLimitations = &DateLimitations
 	}
-	
+    
 	if RequiredFilters, ok := ReportingexportmetadatajobresponseMap["requiredFilters"].([]interface{}); ok {
 		RequiredFiltersString, _ := json.Marshal(RequiredFilters)
 		json.Unmarshal(RequiredFiltersString, &o.RequiredFilters)
@@ -150,7 +150,7 @@ func (o *Reportingexportmetadatajobresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ReportingexportmetadatajobresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

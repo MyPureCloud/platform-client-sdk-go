@@ -117,7 +117,7 @@ func (o *Wfmbushorttermforecastcopycompletetopicbuforecastmodification) Unmarsha
 	if VarType, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if StartIntervalIndex, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["startIntervalIndex"].(float64); ok {
 		StartIntervalIndexInt := int(StartIntervalIndex)
 		o.StartIntervalIndex = &StartIntervalIndexInt
@@ -131,16 +131,16 @@ func (o *Wfmbushorttermforecastcopycompletetopicbuforecastmodification) Unmarsha
 	if Metric, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if LegacyMetric, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["legacyMetric"].(string); ok {
 		o.LegacyMetric = &LegacyMetric
 	}
-	
+    
 	if Value, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["value"].(float64); ok {
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32
 	}
-	
+    
 	if Values, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -149,15 +149,15 @@ func (o *Wfmbushorttermforecastcopycompletetopicbuforecastmodification) Unmarsha
 	if Enabled, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Granularity, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if DisplayGranularity, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["displayGranularity"].(string); ok {
 		o.DisplayGranularity = &DisplayGranularity
 	}
-	
+    
 	if PlanningGroupIds, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["planningGroupIds"].([]interface{}); ok {
 		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
 		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)

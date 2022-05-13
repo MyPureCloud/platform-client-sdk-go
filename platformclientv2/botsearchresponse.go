@@ -69,23 +69,23 @@ func (o *Botsearchresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := BotsearchresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BotsearchresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if BotType, ok := BotsearchresponseMap["botType"].(string); ok {
 		o.BotType = &BotType
 	}
-	
+    
 	if Description, ok := BotsearchresponseMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SelfUri, ok := BotsearchresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

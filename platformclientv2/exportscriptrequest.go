@@ -45,11 +45,11 @@ func (o *Exportscriptrequest) UnmarshalJSON(b []byte) error {
 	if FileName, ok := ExportscriptrequestMap["fileName"].(string); ok {
 		o.FileName = &FileName
 	}
-	
+    
 	if VersionId, ok := ExportscriptrequestMap["versionId"].(string); ok {
 		o.VersionId = &VersionId
 	}
-	
+    
 
 	return nil
 }

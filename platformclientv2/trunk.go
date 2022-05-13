@@ -278,11 +278,11 @@ func (o *Trunk) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrunkMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TrunkMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := TrunkMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -291,7 +291,7 @@ func (o *Trunk) UnmarshalJSON(b []byte) error {
 	if Description, ok := TrunkMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := TrunkMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -310,27 +310,27 @@ func (o *Trunk) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := TrunkMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := TrunkMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := TrunkMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := TrunkMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := TrunkMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if TrunkType, ok := TrunkMap["trunkType"].(string); ok {
 		o.TrunkType = &TrunkType
 	}
-	
+    
 	if Edge, ok := TrunkMap["edge"].(map[string]interface{}); ok {
 		EdgeString, _ := json.Marshal(Edge)
 		json.Unmarshal(EdgeString, &o.Edge)
@@ -354,11 +354,11 @@ func (o *Trunk) UnmarshalJSON(b []byte) error {
 	if InService, ok := TrunkMap["inService"].(bool); ok {
 		o.InService = &InService
 	}
-	
+    
 	if Enabled, ok := TrunkMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if LogicalInterface, ok := TrunkMap["logicalInterface"].(map[string]interface{}); ok {
 		LogicalInterfaceString, _ := json.Marshal(LogicalInterface)
 		json.Unmarshal(LogicalInterfaceString, &o.LogicalInterface)
@@ -387,11 +387,11 @@ func (o *Trunk) UnmarshalJSON(b []byte) error {
 	if OptionsEnabledStatus, ok := TrunkMap["optionsEnabledStatus"].(string); ok {
 		o.OptionsEnabledStatus = &OptionsEnabledStatus
 	}
-	
+    
 	if RegistersEnabledStatus, ok := TrunkMap["registersEnabledStatus"].(string); ok {
 		o.RegistersEnabledStatus = &RegistersEnabledStatus
 	}
-	
+    
 	if Family, ok := TrunkMap["family"].(float64); ok {
 		FamilyInt := int(Family)
 		o.Family = &FamilyInt
@@ -405,7 +405,7 @@ func (o *Trunk) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TrunkMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

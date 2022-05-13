@@ -66,15 +66,15 @@ func (o *Cursorrelationshiplisting) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := CursorrelationshiplistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := CursorrelationshiplistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := CursorrelationshiplistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

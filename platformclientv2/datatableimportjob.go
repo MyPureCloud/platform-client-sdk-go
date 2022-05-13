@@ -150,11 +150,11 @@ func (o *Datatableimportjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := DatatableimportjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DatatableimportjobMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Owner, ok := DatatableimportjobMap["owner"].(map[string]interface{}); ok {
 		OwnerString, _ := json.Marshal(Owner)
 		json.Unmarshal(OwnerString, &o.Owner)
@@ -163,7 +163,7 @@ func (o *Datatableimportjob) UnmarshalJSON(b []byte) error {
 	if Status, ok := DatatableimportjobMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if dateCreatedString, ok := DatatableimportjobMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -177,11 +177,11 @@ func (o *Datatableimportjob) UnmarshalJSON(b []byte) error {
 	if UploadURI, ok := DatatableimportjobMap["uploadURI"].(string); ok {
 		o.UploadURI = &UploadURI
 	}
-	
+    
 	if ImportMode, ok := DatatableimportjobMap["importMode"].(string); ok {
 		o.ImportMode = &ImportMode
 	}
-	
+    
 	if ErrorInformation, ok := DatatableimportjobMap["errorInformation"].(map[string]interface{}); ok {
 		ErrorInformationString, _ := json.Marshal(ErrorInformation)
 		json.Unmarshal(ErrorInformationString, &o.ErrorInformation)
@@ -205,7 +205,7 @@ func (o *Datatableimportjob) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DatatableimportjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

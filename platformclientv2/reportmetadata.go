@@ -101,19 +101,19 @@ func (o *Reportmetadata) UnmarshalJSON(b []byte) error {
 	if Id, ok := ReportmetadataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ReportmetadataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Title, ok := ReportmetadataMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := ReportmetadataMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Keywords, ok := ReportmetadataMap["keywords"].([]interface{}); ok {
 		KeywordsString, _ := json.Marshal(Keywords)
 		json.Unmarshal(KeywordsString, &o.Keywords)
@@ -132,11 +132,11 @@ func (o *Reportmetadata) UnmarshalJSON(b []byte) error {
 	if ExampleUrl, ok := ReportmetadataMap["exampleUrl"].(string); ok {
 		o.ExampleUrl = &ExampleUrl
 	}
-	
+    
 	if SelfUri, ok := ReportmetadataMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

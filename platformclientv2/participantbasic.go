@@ -438,7 +438,7 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if Id, ok := ParticipantbasicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if startTimeString, ok := ParticipantbasicMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -457,79 +457,79 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if Name, ok := ParticipantbasicMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UserUri, ok := ParticipantbasicMap["userUri"].(string); ok {
 		o.UserUri = &UserUri
 	}
-	
+    
 	if UserId, ok := ParticipantbasicMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if ExternalContactId, ok := ParticipantbasicMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if ExternalOrganizationId, ok := ParticipantbasicMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
-	
+    
 	if QueueId, ok := ParticipantbasicMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if GroupId, ok := ParticipantbasicMap["groupId"].(string); ok {
 		o.GroupId = &GroupId
 	}
-	
+    
 	if TeamId, ok := ParticipantbasicMap["teamId"].(string); ok {
 		o.TeamId = &TeamId
 	}
-	
+    
 	if QueueName, ok := ParticipantbasicMap["queueName"].(string); ok {
 		o.QueueName = &QueueName
 	}
-	
+    
 	if Purpose, ok := ParticipantbasicMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if ParticipantType, ok := ParticipantbasicMap["participantType"].(string); ok {
 		o.ParticipantType = &ParticipantType
 	}
-	
+    
 	if ConsultParticipantId, ok := ParticipantbasicMap["consultParticipantId"].(string); ok {
 		o.ConsultParticipantId = &ConsultParticipantId
 	}
-	
+    
 	if Address, ok := ParticipantbasicMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Ani, ok := ParticipantbasicMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if AniName, ok := ParticipantbasicMap["aniName"].(string); ok {
 		o.AniName = &AniName
 	}
-	
+    
 	if Dnis, ok := ParticipantbasicMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if Locale, ok := ParticipantbasicMap["locale"].(string); ok {
 		o.Locale = &Locale
 	}
-	
+    
 	if WrapupRequired, ok := ParticipantbasicMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := ParticipantbasicMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if WrapupTimeoutMs, ok := ParticipantbasicMap["wrapupTimeoutMs"].(float64); ok {
 		WrapupTimeoutMsInt := int(WrapupTimeoutMs)
 		o.WrapupTimeoutMs = &WrapupTimeoutMsInt
@@ -538,7 +538,7 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if WrapupSkipped, ok := ParticipantbasicMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if Wrapup, ok := ParticipantbasicMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
@@ -557,11 +557,11 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if MonitoredParticipantId, ok := ParticipantbasicMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
-	
+    
 	if CoachedParticipantId, ok := ParticipantbasicMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
-	
+    
 	if Attributes, ok := ParticipantbasicMap["attributes"].(map[string]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)
@@ -620,11 +620,11 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if ScreenRecordingState, ok := ParticipantbasicMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := ParticipantbasicMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if startAcwTimeString, ok := ParticipantbasicMap["startAcwTime"].(string); ok {
 		StartAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAcwTimeString)
 		o.StartAcwTime = &StartAcwTime
@@ -638,7 +638,7 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if BargedParticipantId, ok := ParticipantbasicMap["bargedParticipantId"].(string); ok {
 		o.BargedParticipantId = &BargedParticipantId
 	}
-	
+    
 
 	return nil
 }

@@ -109,19 +109,19 @@ func (o *Journeywebactioneventsnotificationbrowser) UnmarshalJSON(b []byte) erro
 	if Family, ok := JourneywebactioneventsnotificationbrowserMap["family"].(string); ok {
 		o.Family = &Family
 	}
-	
+    
 	if Version, ok := JourneywebactioneventsnotificationbrowserMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if Lang, ok := JourneywebactioneventsnotificationbrowserMap["lang"].(string); ok {
 		o.Lang = &Lang
 	}
-	
+    
 	if Fingerprint, ok := JourneywebactioneventsnotificationbrowserMap["fingerprint"].(string); ok {
 		o.Fingerprint = &Fingerprint
 	}
-	
+    
 	if ViewHeight, ok := JourneywebactioneventsnotificationbrowserMap["viewHeight"].(float64); ok {
 		ViewHeightInt := int(ViewHeight)
 		o.ViewHeight = &ViewHeightInt
@@ -135,19 +135,19 @@ func (o *Journeywebactioneventsnotificationbrowser) UnmarshalJSON(b []byte) erro
 	if FeaturesFlash, ok := JourneywebactioneventsnotificationbrowserMap["featuresFlash"].(bool); ok {
 		o.FeaturesFlash = &FeaturesFlash
 	}
-	
+    
 	if FeaturesJava, ok := JourneywebactioneventsnotificationbrowserMap["featuresJava"].(bool); ok {
 		o.FeaturesJava = &FeaturesJava
 	}
-	
+    
 	if FeaturesPdf, ok := JourneywebactioneventsnotificationbrowserMap["featuresPdf"].(bool); ok {
 		o.FeaturesPdf = &FeaturesPdf
 	}
-	
+    
 	if FeaturesWebrtc, ok := JourneywebactioneventsnotificationbrowserMap["featuresWebrtc"].(bool); ok {
 		o.FeaturesWebrtc = &FeaturesWebrtc
 	}
-	
+    
 
 	return nil
 }

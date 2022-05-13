@@ -101,39 +101,39 @@ func (o *Smsaddress) UnmarshalJSON(b []byte) error {
 	if Id, ok := SmsaddressMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SmsaddressMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Street, ok := SmsaddressMap["street"].(string); ok {
 		o.Street = &Street
 	}
-	
+    
 	if City, ok := SmsaddressMap["city"].(string); ok {
 		o.City = &City
 	}
-	
+    
 	if Region, ok := SmsaddressMap["region"].(string); ok {
 		o.Region = &Region
 	}
-	
+    
 	if PostalCode, ok := SmsaddressMap["postalCode"].(string); ok {
 		o.PostalCode = &PostalCode
 	}
-	
+    
 	if CountryCode, ok := SmsaddressMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
 	}
-	
+    
 	if Validated, ok := SmsaddressMap["validated"].(bool); ok {
 		o.Validated = &Validated
 	}
-	
+    
 	if SelfUri, ok := SmsaddressMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

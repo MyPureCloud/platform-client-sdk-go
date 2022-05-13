@@ -126,11 +126,11 @@ func (o *Defaultgreetinglist) UnmarshalJSON(b []byte) error {
 	if Id, ok := DefaultgreetinglistMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DefaultgreetinglistMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Owner, ok := DefaultgreetinglistMap["owner"].(map[string]interface{}); ok {
 		OwnerString, _ := json.Marshal(Owner)
 		json.Unmarshal(OwnerString, &o.Owner)
@@ -139,7 +139,7 @@ func (o *Defaultgreetinglist) UnmarshalJSON(b []byte) error {
 	if OwnerType, ok := DefaultgreetinglistMap["ownerType"].(string); ok {
 		o.OwnerType = &OwnerType
 	}
-	
+    
 	if Greetings, ok := DefaultgreetinglistMap["greetings"].(map[string]interface{}); ok {
 		GreetingsString, _ := json.Marshal(Greetings)
 		json.Unmarshal(GreetingsString, &o.Greetings)
@@ -153,7 +153,7 @@ func (o *Defaultgreetinglist) UnmarshalJSON(b []byte) error {
 	if CreatedBy, ok := DefaultgreetinglistMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if modifiedDateString, ok := DefaultgreetinglistMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -162,11 +162,11 @@ func (o *Defaultgreetinglist) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := DefaultgreetinglistMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if SelfUri, ok := DefaultgreetinglistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

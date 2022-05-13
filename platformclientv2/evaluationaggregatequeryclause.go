@@ -45,7 +45,7 @@ func (o *Evaluationaggregatequeryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := EvaluationaggregatequeryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := EvaluationaggregatequeryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

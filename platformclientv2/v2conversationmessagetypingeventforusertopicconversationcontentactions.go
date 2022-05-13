@@ -53,15 +53,15 @@ func (o *V2conversationmessagetypingeventforusertopicconversationcontentactions)
 	if Url, ok := V2conversationmessagetypingeventforusertopicconversationcontentactionsMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if UrlTarget, ok := V2conversationmessagetypingeventforusertopicconversationcontentactionsMap["urlTarget"].(string); ok {
 		o.UrlTarget = &UrlTarget
 	}
-	
+    
 	if Textback, ok := V2conversationmessagetypingeventforusertopicconversationcontentactionsMap["textback"].(string); ok {
 		o.Textback = &Textback
 	}
-	
+    
 
 	return nil
 }

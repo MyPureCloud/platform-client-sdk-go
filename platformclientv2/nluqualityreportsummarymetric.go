@@ -45,7 +45,7 @@ func (o *Nluqualityreportsummarymetric) UnmarshalJSON(b []byte) error {
 	if Name, ok := NluqualityreportsummarymetricMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Value, ok := NluqualityreportsummarymetricMap["value"].(float64); ok {
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32

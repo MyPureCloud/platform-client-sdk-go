@@ -53,7 +53,7 @@ func (o *Conversationthreadingwindow) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationthreadingwindowMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Settings, ok := ConversationthreadingwindowMap["settings"].([]interface{}); ok {
 		SettingsString, _ := json.Marshal(Settings)
 		json.Unmarshal(SettingsString, &o.Settings)

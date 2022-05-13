@@ -63,7 +63,7 @@ func (o *Actioninput) UnmarshalJSON(b []byte) error {
 	if InputSchemaUri, ok := ActioninputMap["inputSchemaUri"].(string); ok {
 		o.InputSchemaUri = &InputSchemaUri
 	}
-	
+    
 
 	return nil
 }

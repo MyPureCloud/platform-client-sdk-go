@@ -61,11 +61,11 @@ func (o *Lexintent) UnmarshalJSON(b []byte) error {
 	if Name, ok := LexintentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := LexintentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Slots, ok := LexintentMap["slots"].(map[string]interface{}); ok {
 		SlotsString, _ := json.Marshal(Slots)
 		json.Unmarshal(SlotsString, &o.Slots)
@@ -74,7 +74,7 @@ func (o *Lexintent) UnmarshalJSON(b []byte) error {
 	if Version, ok := LexintentMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 
 	return nil
 }

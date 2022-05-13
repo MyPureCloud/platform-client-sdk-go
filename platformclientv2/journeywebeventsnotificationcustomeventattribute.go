@@ -45,11 +45,11 @@ func (o *Journeywebeventsnotificationcustomeventattribute) UnmarshalJSON(b []byt
 	if Value, ok := JourneywebeventsnotificationcustomeventattributeMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if DataType, ok := JourneywebeventsnotificationcustomeventattributeMap["dataType"].(string); ok {
 		o.DataType = &DataType
 	}
-	
+    
 
 	return nil
 }

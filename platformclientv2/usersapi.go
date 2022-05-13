@@ -32,8 +32,6 @@ func NewUsersApiWithConfig(config *Configuration) *UsersApi {
 // DeleteAnalyticsUsersDetailsJob invokes DELETE /api/v2/analytics/users/details/jobs/{jobId}
 //
 // Delete/cancel an async request
-//
-// 
 func (a UsersApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a UsersApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse, er
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'jobId' when calling UsersApi->DeleteAnalyticsUsersDetailsJob")
 	}
 
@@ -98,8 +96,6 @@ func (a UsersApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse, er
 // DeleteAuthorizationSubjectDivisionRole invokes DELETE /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}
 //
 // Delete a grant of a role in a division
-//
-// 
 func (a UsersApi) DeleteAuthorizationSubjectDivisionRole(subjectId string, divisionId string, roleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -113,17 +109,17 @@ func (a UsersApi) DeleteAuthorizationSubjectDivisionRole(subjectId string, divis
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->DeleteAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling UsersApi->DeleteAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'roleId' when calling UsersApi->DeleteAuthorizationSubjectDivisionRole")
 	}
 
@@ -175,9 +171,7 @@ func (a UsersApi) DeleteAuthorizationSubjectDivisionRole(subjectId string, divis
 
 // DeleteRoutingUserUtilization invokes DELETE /api/v2/routing/users/{userId}/utilization
 //
-// Delete the user&#39;s max utilization settings and revert to the organization-wide default.
-//
-// 
+// Delete the user's max utilization settings and revert to the organization-wide default.
 func (a UsersApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -189,7 +183,7 @@ func (a UsersApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, err
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->DeleteRoutingUserUtilization")
 	}
 
@@ -242,21 +236,19 @@ func (a UsersApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, err
 // DeleteUser invokes DELETE /api/v2/users/{userId}
 //
 // Delete user
-//
-// 
-func (a UsersApi) DeleteUser(userId string) (*Empty, *APIResponse, error) {
+func (a UsersApi) DeleteUser(userId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}"
 	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->DeleteUser")
 	}
 
@@ -296,14 +288,14 @@ func (a UsersApi) DeleteUser(userId string) (*Empty, *APIResponse, error) {
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -315,8 +307,6 @@ func (a UsersApi) DeleteUser(userId string) (*Empty, *APIResponse, error) {
 // DeleteUserRoutinglanguage invokes DELETE /api/v2/users/{userId}/routinglanguages/{languageId}
 //
 // Remove routing language from user
-//
-// 
 func (a UsersApi) DeleteUserRoutinglanguage(userId string, languageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -329,12 +319,12 @@ func (a UsersApi) DeleteUserRoutinglanguage(userId string, languageId string) (*
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->DeleteUserRoutinglanguage")
 	}
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageId' when calling UsersApi->DeleteUserRoutinglanguage")
 	}
 
@@ -387,8 +377,6 @@ func (a UsersApi) DeleteUserRoutinglanguage(userId string, languageId string) (*
 // DeleteUserRoutingskill invokes DELETE /api/v2/users/{userId}/routingskills/{skillId}
 //
 // Remove routing skill from user
-//
-// 
 func (a UsersApi) DeleteUserRoutingskill(userId string, skillId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -401,12 +389,12 @@ func (a UsersApi) DeleteUserRoutingskill(userId string, skillId string) (*APIRes
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->DeleteUserRoutingskill")
 	}
 	// verify the required parameter 'skillId' is set
 	if &skillId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'skillId' when calling UsersApi->DeleteUserRoutingskill")
 	}
 
@@ -459,8 +447,6 @@ func (a UsersApi) DeleteUserRoutingskill(userId string, skillId string) (*APIRes
 // DeleteUserStationAssociatedstation invokes DELETE /api/v2/users/{userId}/station/associatedstation
 //
 // Clear associated station
-//
-// 
 func (a UsersApi) DeleteUserStationAssociatedstation(userId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -472,7 +458,7 @@ func (a UsersApi) DeleteUserStationAssociatedstation(userId string) (*APIRespons
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->DeleteUserStationAssociatedstation")
 	}
 
@@ -525,8 +511,6 @@ func (a UsersApi) DeleteUserStationAssociatedstation(userId string) (*APIRespons
 // DeleteUserStationDefaultstation invokes DELETE /api/v2/users/{userId}/station/defaultstation
 //
 // Clear default station
-//
-// 
 func (a UsersApi) DeleteUserStationDefaultstation(userId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -538,7 +522,7 @@ func (a UsersApi) DeleteUserStationDefaultstation(userId string) (*APIResponse, 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->DeleteUserStationDefaultstation")
 	}
 
@@ -591,8 +575,6 @@ func (a UsersApi) DeleteUserStationDefaultstation(userId string) (*APIResponse, 
 // GetAnalyticsUsersDetailsJob invokes GET /api/v2/analytics/users/details/jobs/{jobId}
 //
 // Get status for async query for user details
-//
-// 
 func (a UsersApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -605,7 +587,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, 
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling UsersApi->GetAnalyticsUsersDetailsJob")
 	}
 
@@ -664,8 +646,6 @@ func (a UsersApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, 
 // GetAnalyticsUsersDetailsJobResults invokes GET /api/v2/analytics/users/details/jobs/{jobId}/results
 //
 // Fetch a page of results for an async query
-//
-// 
 func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -678,7 +658,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling UsersApi->GetAnalyticsUsersDetailsJobResults")
 	}
 
@@ -741,8 +721,6 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string
 // GetAnalyticsUsersDetailsJobsAvailability invokes GET /api/v2/analytics/users/details/jobs/availability
 //
 // Lookup the datalake availability date and time
-//
-// 
 func (a UsersApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabilityresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -821,7 +799,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name s
 
 	// verify the required parameter 'permission' is set
 	if &permission == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling UsersApi->GetAuthorizationDivisionspermittedMe")
 	}
 
@@ -884,8 +862,6 @@ func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name s
 // GetAuthorizationDivisionspermittedPagedMe invokes GET /api/v2/authorization/divisionspermitted/paged/me
 //
 // Returns which divisions the current user has the given permission in.
-//
-// 
 func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -897,7 +873,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 
 	// verify the required parameter 'permission' is set
 	if &permission == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling UsersApi->GetAuthorizationDivisionspermittedPagedMe")
 	}
 
@@ -976,12 +952,12 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId str
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->GetAuthorizationDivisionspermittedPagedSubjectId")
 	}
 	// verify the required parameter 'permission' is set
 	if &permission == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling UsersApi->GetAuthorizationDivisionspermittedPagedSubjectId")
 	}
 
@@ -1046,8 +1022,6 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId str
 // GetAuthorizationSubject invokes GET /api/v2/authorization/subjects/{subjectId}
 //
 // Returns a listing of roles and permissions for a user.
-//
-// 
 func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1060,7 +1034,7 @@ func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *API
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->GetAuthorizationSubject")
 	}
 
@@ -1119,8 +1093,6 @@ func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *API
 // GetAuthorizationSubjectsMe invokes GET /api/v2/authorization/subjects/me
 //
 // Returns a listing of roles and permissions for the currently authenticated user.
-//
-// 
 func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1186,8 +1158,6 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 // GetFieldconfig invokes GET /api/v2/fieldconfig
 //
 // Fetch field config for an entity type
-//
-// 
 func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1199,7 +1169,7 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 
 	// verify the required parameter 'varType' is set
 	if &varType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'varType' when calling UsersApi->GetFieldconfig")
 	}
 
@@ -1340,9 +1310,7 @@ func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, ji
 
 // GetRoutingUserUtilization invokes GET /api/v2/routing/users/{userId}/utilization
 //
-// Get the user&#39;s max utilization settings.  If not configured, the organization-wide default is returned.
-//
-// 
+// Get the user's max utilization settings.  If not configured, the organization-wide default is returned.
 func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1355,7 +1323,7 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetRoutingUserUtilization")
 	}
 
@@ -1414,8 +1382,6 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization
 // GetUser invokes GET /api/v2/users/{userId}
 //
 // Get user.
-//
-// 
 func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSource string, state string) (*User, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1428,7 +1394,7 @@ func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSou
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUser")
 	}
 
@@ -1493,8 +1459,6 @@ func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSou
 // GetUserAdjacents invokes GET /api/v2/users/{userId}/adjacents
 //
 // Get adjacents
-//
-// 
 func (a UsersApi) GetUserAdjacents(userId string, expand []string) (*Adjacents, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1507,7 +1471,7 @@ func (a UsersApi) GetUserAdjacents(userId string, expand []string) (*Adjacents, 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserAdjacents")
 	}
 
@@ -1567,9 +1531,7 @@ func (a UsersApi) GetUserAdjacents(userId string, expand []string) (*Adjacents, 
 
 // GetUserCallforwarding invokes GET /api/v2/users/{userId}/callforwarding
 //
-// Get a user&#39;s CallForwarding
-//
-// 
+// Get a user's CallForwarding
 func (a UsersApi) GetUserCallforwarding(userId string) (*Callforwarding, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1582,7 +1544,7 @@ func (a UsersApi) GetUserCallforwarding(userId string) (*Callforwarding, *APIRes
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserCallforwarding")
 	}
 
@@ -1641,8 +1603,6 @@ func (a UsersApi) GetUserCallforwarding(userId string) (*Callforwarding, *APIRes
 // GetUserDirectreports invokes GET /api/v2/users/{userId}/directreports
 //
 // Get direct reports
-//
-// 
 func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1655,7 +1615,7 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserDirectreports")
 	}
 
@@ -1716,8 +1676,6 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 // GetUserFavorites invokes GET /api/v2/users/{userId}/favorites
 //
 // Deprecated; will be revived with new contract
-//
-// 
 func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1730,7 +1688,7 @@ func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserFavorites")
 	}
 
@@ -1796,9 +1754,7 @@ func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, 
 
 // GetUserGeolocation invokes GET /api/v2/users/{userId}/geolocations/{clientId}
 //
-// Get a user&#39;s Geolocation
-//
-// 
+// Get a user's Geolocation
 func (a UsersApi) GetUserGeolocation(userId string, clientId string) (*Geolocation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1812,12 +1768,12 @@ func (a UsersApi) GetUserGeolocation(userId string, clientId string) (*Geolocati
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserGeolocation")
 	}
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling UsersApi->GetUserGeolocation")
 	}
 
@@ -1876,8 +1832,6 @@ func (a UsersApi) GetUserGeolocation(userId string, clientId string) (*Geolocati
 // GetUserOutofoffice invokes GET /api/v2/users/{userId}/outofoffice
 //
 // Get a OutOfOffice
-//
-// 
 func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1890,7 +1844,7 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserOutofoffice")
 	}
 
@@ -1963,7 +1917,7 @@ func (a UsersApi) GetUserProfile(userId string, expand []string, integrationPres
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserProfile")
 	}
 
@@ -2026,8 +1980,6 @@ func (a UsersApi) GetUserProfile(userId string, expand []string, integrationPres
 // GetUserProfileskills invokes GET /api/v2/users/{userId}/profileskills
 //
 // List profile skills for a user
-//
-// 
 func (a UsersApi) GetUserProfileskills(userId string) ([]string, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2040,7 +1992,7 @@ func (a UsersApi) GetUserProfileskills(userId string) ([]string, *APIResponse, e
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserProfileskills")
 	}
 
@@ -2099,8 +2051,6 @@ func (a UsersApi) GetUserProfileskills(userId string) ([]string, *APIResponse, e
 // GetUserQueues invokes GET /api/v2/users/{userId}/queues
 //
 // Get queues for user
-//
-// 
 func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joined bool, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2113,7 +2063,7 @@ func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joi
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserQueues")
 	}
 
@@ -2180,8 +2130,6 @@ func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joi
 // GetUserRoles invokes GET /api/v2/users/{userId}/roles
 //
 // Returns a listing of roles and permissions for a user.
-//
-// 
 func (a UsersApi) GetUserRoles(userId string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2194,7 +2142,7 @@ func (a UsersApi) GetUserRoles(userId string) (*Userauthorization, *APIResponse,
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserRoles")
 	}
 
@@ -2253,8 +2201,6 @@ func (a UsersApi) GetUserRoles(userId string) (*Userauthorization, *APIResponse,
 // GetUserRoutinglanguages invokes GET /api/v2/users/{userId}/routinglanguages
 //
 // List routing language for user
-//
-// 
 func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumber int, sortOrder string) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2267,7 +2213,7 @@ func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumbe
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserRoutinglanguages")
 	}
 
@@ -2332,8 +2278,6 @@ func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumbe
 // GetUserRoutingskills invokes GET /api/v2/users/{userId}/routingskills
 //
 // List routing skills for user
-//
-// 
 func (a UsersApi) GetUserRoutingskills(userId string, pageSize int, pageNumber int, sortOrder string) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2346,7 +2290,7 @@ func (a UsersApi) GetUserRoutingskills(userId string, pageSize int, pageNumber i
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserRoutingskills")
 	}
 
@@ -2411,8 +2355,6 @@ func (a UsersApi) GetUserRoutingskills(userId string, pageSize int, pageNumber i
 // GetUserRoutingstatus invokes GET /api/v2/users/{userId}/routingstatus
 //
 // Fetch the routing status of a user
-//
-// 
 func (a UsersApi) GetUserRoutingstatus(userId string) (*Routingstatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2425,7 +2367,7 @@ func (a UsersApi) GetUserRoutingstatus(userId string) (*Routingstatus, *APIRespo
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserRoutingstatus")
 	}
 
@@ -2484,8 +2426,6 @@ func (a UsersApi) GetUserRoutingstatus(userId string) (*Routingstatus, *APIRespo
 // GetUserState invokes GET /api/v2/users/{userId}/state
 //
 // Get user state information.
-//
-// 
 func (a UsersApi) GetUserState(userId string) (*Userstate, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2498,7 +2438,7 @@ func (a UsersApi) GetUserState(userId string) (*Userstate, *APIResponse, error) 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserState")
 	}
 
@@ -2557,8 +2497,6 @@ func (a UsersApi) GetUserState(userId string) (*Userstate, *APIResponse, error) 
 // GetUserStation invokes GET /api/v2/users/{userId}/station
 //
 // Get station information for user
-//
-// 
 func (a UsersApi) GetUserStation(userId string) (*Userstations, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2571,7 +2509,7 @@ func (a UsersApi) GetUserStation(userId string) (*Userstations, *APIResponse, er
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserStation")
 	}
 
@@ -2630,8 +2568,6 @@ func (a UsersApi) GetUserStation(userId string) (*Userstations, *APIResponse, er
 // GetUserSuperiors invokes GET /api/v2/users/{userId}/superiors
 //
 // Get superiors
-//
-// 
 func (a UsersApi) GetUserSuperiors(userId string, expand []string) ([]User, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2644,7 +2580,7 @@ func (a UsersApi) GetUserSuperiors(userId string, expand []string) ([]User, *API
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserSuperiors")
 	}
 
@@ -2705,8 +2641,6 @@ func (a UsersApi) GetUserSuperiors(userId string, expand []string) ([]User, *API
 // GetUserTrustors invokes GET /api/v2/users/{userId}/trustors
 //
 // List the organizations that have authorized/trusted the user.
-//
-// 
 func (a UsersApi) GetUserTrustors(userId string, pageSize int, pageNumber int) (*Trustorentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2719,7 +2653,7 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int, pageNumber int) (
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserTrustors")
 	}
 
@@ -2782,8 +2716,6 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int, pageNumber int) (
 // GetUsers invokes GET /api/v2/users
 //
 // Get the list of available users.
-//
-// 
 func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string, expand []string, integrationPresenceSource string, state string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3055,12 +2987,12 @@ func (a UsersApi) GetUsersDevelopmentActivity(activityId string, varType string)
 
 	// verify the required parameter 'activityId' is set
 	if &activityId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'activityId' when calling UsersApi->GetUsersDevelopmentActivity")
 	}
 	// verify the required parameter 'varType' is set
 	if &varType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'varType' when calling UsersApi->GetUsersDevelopmentActivity")
 	}
 
@@ -3192,8 +3124,6 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) 
 // GetUsersSearch invokes GET /api/v2/users/search
 //
 // Search users using the q64 value returned from a previous search
-//
-// 
 func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenceSource string) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3205,7 +3135,7 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenc
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling UsersApi->GetUsersSearch")
 	}
 
@@ -3270,8 +3200,6 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenc
 // PatchUser invokes PATCH /api/v2/users/{userId}
 //
 // Update user
-//
-// 
 func (a UsersApi) PatchUser(userId string, body Updateuser) (*User, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3284,12 +3212,12 @@ func (a UsersApi) PatchUser(userId string, body Updateuser) (*User, *APIResponse
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUser")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PatchUser")
 	}
 
@@ -3350,9 +3278,7 @@ func (a UsersApi) PatchUser(userId string, body Updateuser) (*User, *APIResponse
 
 // PatchUserCallforwarding invokes PATCH /api/v2/users/{userId}/callforwarding
 //
-// Patch a user&#39;s CallForwarding
-//
-// 
+// Patch a user's CallForwarding
 func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*Callforwarding, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3365,12 +3291,12 @@ func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUserCallforwarding")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PatchUserCallforwarding")
 	}
 
@@ -3431,7 +3357,7 @@ func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*
 
 // PatchUserGeolocation invokes PATCH /api/v2/users/{userId}/geolocations/{clientId}
 //
-// Patch a user&#39;s Geolocation
+// Patch a user's Geolocation
 //
 // The geolocation object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the client as the user&#39;s primary geolocation source.  Option 2: Provide the &#39;latitude&#39; and &#39;longitude&#39; values.  This will enqueue an asynchronous update of the &#39;city&#39;, &#39;region&#39;, and &#39;country&#39;, generating a notification. A subsequent GET operation will include the new values for &#39;city&#39;, &#39;region&#39; and &#39;country&#39;.  Option 3:  Provide the &#39;city&#39;, &#39;region&#39;, &#39;country&#39; values.  Option 1 can be combined with Option 2 or Option 3.  For example, update the client as primary and provide latitude and longitude values.
 func (a UsersApi) PatchUserGeolocation(userId string, clientId string, body Geolocation) (*Geolocation, *APIResponse, error) {
@@ -3447,17 +3373,17 @@ func (a UsersApi) PatchUserGeolocation(userId string, clientId string, body Geol
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUserGeolocation")
 	}
 	// verify the required parameter 'clientId' is set
 	if &clientId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'clientId' when calling UsersApi->PatchUserGeolocation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PatchUserGeolocation")
 	}
 
@@ -3519,8 +3445,6 @@ func (a UsersApi) PatchUserGeolocation(userId string, clientId string, body Geol
 // PatchUserQueue invokes PATCH /api/v2/users/{userId}/queues/{queueId}
 //
 // Join or unjoin a queue for a user
-//
-// 
 func (a UsersApi) PatchUserQueue(queueId string, userId string, body Userqueue) (*Userqueue, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3534,17 +3458,17 @@ func (a UsersApi) PatchUserQueue(queueId string, userId string, body Userqueue) 
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling UsersApi->PatchUserQueue")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUserQueue")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PatchUserQueue")
 	}
 
@@ -3606,8 +3530,6 @@ func (a UsersApi) PatchUserQueue(queueId string, userId string, body Userqueue) 
 // PatchUserQueues invokes PATCH /api/v2/users/{userId}/queues
 //
 // Join or unjoin a set of queues for a user
-//
-// 
 func (a UsersApi) PatchUserQueues(userId string, body []Userqueue, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3620,7 +3542,7 @@ func (a UsersApi) PatchUserQueues(userId string, body []Userqueue, divisionId []
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUserQueues")
 	}
 	// verify the required parameter 'body' is set
@@ -3689,8 +3611,6 @@ func (a UsersApi) PatchUserQueues(userId string, body []Userqueue, divisionId []
 // PatchUserRoutinglanguage invokes PATCH /api/v2/users/{userId}/routinglanguages/{languageId}
 //
 // Update routing language proficiency or state.
-//
-// 
 func (a UsersApi) PatchUserRoutinglanguage(userId string, languageId string, body Userroutinglanguage) (*Userroutinglanguage, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3704,17 +3624,17 @@ func (a UsersApi) PatchUserRoutinglanguage(userId string, languageId string, bod
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUserRoutinglanguage")
 	}
 	// verify the required parameter 'languageId' is set
 	if &languageId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageId' when calling UsersApi->PatchUserRoutinglanguage")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PatchUserRoutinglanguage")
 	}
 
@@ -3776,8 +3696,6 @@ func (a UsersApi) PatchUserRoutinglanguage(userId string, languageId string, bod
 // PatchUserRoutinglanguagesBulk invokes PATCH /api/v2/users/{userId}/routinglanguages/bulk
 //
 // Add bulk routing language to user. Max limit 50 languages
-//
-// 
 func (a UsersApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutinglanguagepost) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3790,7 +3708,7 @@ func (a UsersApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutin
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUserRoutinglanguagesBulk")
 	}
 	// verify the required parameter 'body' is set
@@ -3857,8 +3775,6 @@ func (a UsersApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutin
 // PatchUserRoutingskillsBulk invokes PATCH /api/v2/users/{userId}/routingskills/bulk
 //
 // Bulk add routing skills to user
-//
-// 
 func (a UsersApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingskillpost) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -3871,7 +3787,7 @@ func (a UsersApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingsk
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PatchUserRoutingskillsBulk")
 	}
 	// verify the required parameter 'body' is set
@@ -3938,8 +3854,6 @@ func (a UsersApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingsk
 // PatchUsersBulk invokes PATCH /api/v2/users/bulk
 //
 // Update bulk acd autoanswer on users
-//
-// 
 func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4013,8 +3927,6 @@ func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResp
 // PostAnalyticsUsersAggregatesQuery invokes POST /api/v2/analytics/users/aggregates/query
 //
 // Query for user aggregates
-//
-// 
 func (a UsersApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquery) (*Useraggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4026,7 +3938,7 @@ func (a UsersApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquery) (
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostAnalyticsUsersAggregatesQuery")
 	}
 
@@ -4088,8 +4000,6 @@ func (a UsersApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquery) (
 // PostAnalyticsUsersDetailsJobs invokes POST /api/v2/analytics/users/details/jobs
 //
 // Query for user details asynchronously
-//
-// 
 func (a UsersApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4101,7 +4011,7 @@ func (a UsersApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) (*As
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostAnalyticsUsersDetailsJobs")
 	}
 
@@ -4163,8 +4073,6 @@ func (a UsersApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) (*As
 // PostAnalyticsUsersDetailsQuery invokes POST /api/v2/analytics/users/details/query
 //
 // Query for user details
-//
-// 
 func (a UsersApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*Analyticsuserdetailsqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4176,7 +4084,7 @@ func (a UsersApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*Analyt
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostAnalyticsUsersDetailsQuery")
 	}
 
@@ -4238,8 +4146,6 @@ func (a UsersApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*Analyt
 // PostAnalyticsUsersObservationsQuery invokes POST /api/v2/analytics/users/observations/query
 //
 // Query for user observations
-//
-// 
 func (a UsersApi) PostAnalyticsUsersObservationsQuery(body Userobservationquery) (*Userobservationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4251,7 +4157,7 @@ func (a UsersApi) PostAnalyticsUsersObservationsQuery(body Userobservationquery)
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostAnalyticsUsersObservationsQuery")
 	}
 
@@ -4313,8 +4219,6 @@ func (a UsersApi) PostAnalyticsUsersObservationsQuery(body Userobservationquery)
 // PostAuthorizationSubjectBulkadd invokes POST /api/v2/authorization/subjects/{subjectId}/bulkadd
 //
 // Bulk-grant roles and divisions to a subject.
-//
-// 
 func (a UsersApi) PostAuthorizationSubjectBulkadd(subjectId string, body Roledivisiongrants, subjectType string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4326,12 +4230,12 @@ func (a UsersApi) PostAuthorizationSubjectBulkadd(subjectId string, body Rolediv
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->PostAuthorizationSubjectBulkadd")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostAuthorizationSubjectBulkadd")
 	}
 
@@ -4389,8 +4293,6 @@ func (a UsersApi) PostAuthorizationSubjectBulkadd(subjectId string, body Rolediv
 // PostAuthorizationSubjectBulkremove invokes POST /api/v2/authorization/subjects/{subjectId}/bulkremove
 //
 // Bulk-remove grants from a subject.
-//
-// 
 func (a UsersApi) PostAuthorizationSubjectBulkremove(subjectId string, body Roledivisiongrants) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4402,12 +4304,12 @@ func (a UsersApi) PostAuthorizationSubjectBulkremove(subjectId string, body Role
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->PostAuthorizationSubjectBulkremove")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostAuthorizationSubjectBulkremove")
 	}
 
@@ -4462,7 +4364,7 @@ func (a UsersApi) PostAuthorizationSubjectBulkremove(subjectId string, body Role
 
 // PostAuthorizationSubjectBulkreplace invokes POST /api/v2/authorization/subjects/{subjectId}/bulkreplace
 //
-// Replace subject&#39;s roles and divisions with the exact list supplied in the request.
+// Replace subject's roles and divisions with the exact list supplied in the request.
 //
 // This operation will not remove grants that are inherited from group membership. It will only set the grants directly applied to the subject.
 func (a UsersApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Roledivisiongrants, subjectType string) (*APIResponse, error) {
@@ -4476,12 +4378,12 @@ func (a UsersApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Rol
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->PostAuthorizationSubjectBulkreplace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostAuthorizationSubjectBulkreplace")
 	}
 
@@ -4539,8 +4441,6 @@ func (a UsersApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Rol
 // PostAuthorizationSubjectDivisionRole invokes POST /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}
 //
 // Make a grant of a role in a division
-//
-// 
 func (a UsersApi) PostAuthorizationSubjectDivisionRole(subjectId string, divisionId string, roleId string, subjectType string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4554,17 +4454,17 @@ func (a UsersApi) PostAuthorizationSubjectDivisionRole(subjectId string, divisio
 
 	// verify the required parameter 'subjectId' is set
 	if &subjectId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->PostAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'divisionId' is set
 	if &divisionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'divisionId' when calling UsersApi->PostAuthorizationSubjectDivisionRole")
 	}
 	// verify the required parameter 'roleId' is set
 	if &roleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'roleId' when calling UsersApi->PostAuthorizationSubjectDivisionRole")
 	}
 
@@ -4619,8 +4519,6 @@ func (a UsersApi) PostAuthorizationSubjectDivisionRole(subjectId string, divisio
 // PostUserInvite invokes POST /api/v2/users/{userId}/invite
 //
 // Send an activation email to the user
-//
-// 
 func (a UsersApi) PostUserInvite(userId string, force bool) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4632,7 +4530,7 @@ func (a UsersApi) PostUserInvite(userId string, force bool) (*APIResponse, error
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PostUserInvite")
 	}
 
@@ -4687,8 +4585,6 @@ func (a UsersApi) PostUserInvite(userId string, force bool) (*APIResponse, error
 // PostUserPassword invokes POST /api/v2/users/{userId}/password
 //
 // Change a users password
-//
-// 
 func (a UsersApi) PostUserPassword(userId string, body Changepasswordrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4700,12 +4596,12 @@ func (a UsersApi) PostUserPassword(userId string, body Changepasswordrequest) (*
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PostUserPassword")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostUserPassword")
 	}
 
@@ -4761,8 +4657,6 @@ func (a UsersApi) PostUserPassword(userId string, body Changepasswordrequest) (*
 // PostUserRoutinglanguages invokes POST /api/v2/users/{userId}/routinglanguages
 //
 // Add routing language to user
-//
-// 
 func (a UsersApi) PostUserRoutinglanguages(userId string, body Userroutinglanguagepost) (*Userroutinglanguage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4775,12 +4669,12 @@ func (a UsersApi) PostUserRoutinglanguages(userId string, body Userroutinglangua
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PostUserRoutinglanguages")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostUserRoutinglanguages")
 	}
 
@@ -4842,8 +4736,6 @@ func (a UsersApi) PostUserRoutinglanguages(userId string, body Userroutinglangua
 // PostUserRoutingskills invokes POST /api/v2/users/{userId}/routingskills
 //
 // Add routing skill to user
-//
-// 
 func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost) (*Userroutingskill, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4856,12 +4748,12 @@ func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PostUserRoutingskills")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostUserRoutingskills")
 	}
 
@@ -4923,8 +4815,6 @@ func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost
 // PostUsers invokes POST /api/v2/users
 //
 // Create user
-//
-// 
 func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4936,7 +4826,7 @@ func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostUsers")
 	}
 
@@ -5011,7 +4901,7 @@ func (a UsersApi) PostUsersDevelopmentActivitiesAggregatesQuery(body Development
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostUsersDevelopmentActivitiesAggregatesQuery")
 	}
 
@@ -5073,8 +4963,6 @@ func (a UsersApi) PostUsersDevelopmentActivitiesAggregatesQuery(body Development
 // PostUsersMePassword invokes POST /api/v2/users/me/password
 //
 // Change your password
-//
-// 
 func (a UsersApi) PostUsersMePassword(body Changemypasswordrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5085,7 +4973,7 @@ func (a UsersApi) PostUsersMePassword(body Changemypasswordrequest) (*APIRespons
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostUsersMePassword")
 	}
 
@@ -5141,8 +5029,6 @@ func (a UsersApi) PostUsersMePassword(body Changemypasswordrequest) (*APIRespons
 // PostUsersSearch invokes POST /api/v2/users/search
 //
 // Search users
-//
-// 
 func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5154,7 +5040,7 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PostUsersSearch")
 	}
 
@@ -5215,9 +5101,7 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 
 // PutRoutingUserUtilization invokes PUT /api/v2/routing/users/{userId}/utilization
 //
-// Update the user&#39;s max utilization settings.  Include only those media types requiring custom configuration.
-//
-// 
+// Update the user's max utilization settings.  Include only those media types requiring custom configuration.
 func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*Agentmaxutilization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5230,12 +5114,12 @@ func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*A
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutRoutingUserUtilization")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PutRoutingUserUtilization")
 	}
 
@@ -5296,9 +5180,7 @@ func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*A
 
 // PutUserCallforwarding invokes PUT /api/v2/users/{userId}/callforwarding
 //
-// Update a user&#39;s CallForwarding
-//
-// 
+// Update a user's CallForwarding
 func (a UsersApi) PutUserCallforwarding(userId string, body Callforwarding) (*Callforwarding, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5311,12 +5193,12 @@ func (a UsersApi) PutUserCallforwarding(userId string, body Callforwarding) (*Ca
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserCallforwarding")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PutUserCallforwarding")
 	}
 
@@ -5378,8 +5260,6 @@ func (a UsersApi) PutUserCallforwarding(userId string, body Callforwarding) (*Ca
 // PutUserOutofoffice invokes PUT /api/v2/users/{userId}/outofoffice
 //
 // Update an OutOfOffice
-//
-// 
 func (a UsersApi) PutUserOutofoffice(userId string, body Outofoffice) (*Outofoffice, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5392,12 +5272,12 @@ func (a UsersApi) PutUserOutofoffice(userId string, body Outofoffice) (*Outofoff
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserOutofoffice")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PutUserOutofoffice")
 	}
 
@@ -5459,8 +5339,6 @@ func (a UsersApi) PutUserOutofoffice(userId string, body Outofoffice) (*Outofoff
 // PutUserProfileskills invokes PUT /api/v2/users/{userId}/profileskills
 //
 // Update profile skills for a user
-//
-// 
 func (a UsersApi) PutUserProfileskills(userId string, body []string) ([]string, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5473,7 +5351,7 @@ func (a UsersApi) PutUserProfileskills(userId string, body []string) ([]string, 
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserProfileskills")
 	}
 	// verify the required parameter 'body' is set
@@ -5539,9 +5417,7 @@ func (a UsersApi) PutUserProfileskills(userId string, body []string) ([]string, 
 
 // PutUserRoles invokes PUT /api/v2/users/{userId}/roles
 //
-// Sets the user&#39;s roles
-//
-// 
+// Sets the user's roles
 func (a UsersApi) PutUserRoles(userId string, body []string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5554,7 +5430,7 @@ func (a UsersApi) PutUserRoles(userId string, body []string) (*Userauthorization
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserRoles")
 	}
 	// verify the required parameter 'body' is set
@@ -5621,8 +5497,6 @@ func (a UsersApi) PutUserRoles(userId string, body []string) (*Userauthorization
 // PutUserRoutingskill invokes PUT /api/v2/users/{userId}/routingskills/{skillId}
 //
 // Update routing skill proficiency or state.
-//
-// 
 func (a UsersApi) PutUserRoutingskill(userId string, skillId string, body Userroutingskill) (*Userroutingskill, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5636,17 +5510,17 @@ func (a UsersApi) PutUserRoutingskill(userId string, skillId string, body Userro
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserRoutingskill")
 	}
 	// verify the required parameter 'skillId' is set
 	if &skillId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'skillId' when calling UsersApi->PutUserRoutingskill")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PutUserRoutingskill")
 	}
 
@@ -5708,8 +5582,6 @@ func (a UsersApi) PutUserRoutingskill(userId string, skillId string, body Userro
 // PutUserRoutingskillsBulk invokes PUT /api/v2/users/{userId}/routingskills/bulk
 //
 // Replace all routing skills assigned to a user
-//
-// 
 func (a UsersApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskillpost) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5722,7 +5594,7 @@ func (a UsersApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskil
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserRoutingskillsBulk")
 	}
 	// verify the required parameter 'body' is set
@@ -5789,8 +5661,6 @@ func (a UsersApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskil
 // PutUserRoutingstatus invokes PUT /api/v2/users/{userId}/routingstatus
 //
 // Update the routing status of a user
-//
-// 
 func (a UsersApi) PutUserRoutingstatus(userId string, body Routingstatus) (*Routingstatus, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5803,12 +5673,12 @@ func (a UsersApi) PutUserRoutingstatus(userId string, body Routingstatus) (*Rout
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserRoutingstatus")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PutUserRoutingstatus")
 	}
 
@@ -5870,8 +5740,6 @@ func (a UsersApi) PutUserRoutingstatus(userId string, body Routingstatus) (*Rout
 // PutUserState invokes PUT /api/v2/users/{userId}/state
 //
 // Update user state information.
-//
-// 
 func (a UsersApi) PutUserState(userId string, body Userstate) (*Userstate, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5884,12 +5752,12 @@ func (a UsersApi) PutUserState(userId string, body Userstate) (*Userstate, *APIR
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserState")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsersApi->PutUserState")
 	}
 
@@ -5951,8 +5819,6 @@ func (a UsersApi) PutUserState(userId string, body Userstate) (*Userstate, *APIR
 // PutUserStationAssociatedstationStationId invokes PUT /api/v2/users/{userId}/station/associatedstation/{stationId}
 //
 // Set associated station
-//
-// 
 func (a UsersApi) PutUserStationAssociatedstationStationId(userId string, stationId string) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -5965,12 +5831,12 @@ func (a UsersApi) PutUserStationAssociatedstationStationId(userId string, statio
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserStationAssociatedstationStationId")
 	}
 	// verify the required parameter 'stationId' is set
 	if &stationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'stationId' when calling UsersApi->PutUserStationAssociatedstationStationId")
 	}
 
@@ -6023,8 +5889,6 @@ func (a UsersApi) PutUserStationAssociatedstationStationId(userId string, statio
 // PutUserStationDefaultstationStationId invokes PUT /api/v2/users/{userId}/station/defaultstation/{stationId}
 //
 // Set default station
-//
-// 
 func (a UsersApi) PutUserStationDefaultstationStationId(userId string, stationId string) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -6037,12 +5901,12 @@ func (a UsersApi) PutUserStationDefaultstationStationId(userId string, stationId
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserStationDefaultstationStationId")
 	}
 	// verify the required parameter 'stationId' is set
 	if &stationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'stationId' when calling UsersApi->PutUserStationDefaultstationStationId")
 	}
 

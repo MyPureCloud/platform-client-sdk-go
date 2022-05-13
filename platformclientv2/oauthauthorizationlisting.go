@@ -63,7 +63,7 @@ func (o *Oauthauthorizationlisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OauthauthorizationlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

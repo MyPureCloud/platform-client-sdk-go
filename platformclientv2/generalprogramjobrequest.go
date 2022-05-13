@@ -45,11 +45,11 @@ func (o *Generalprogramjobrequest) UnmarshalJSON(b []byte) error {
 	if Dialect, ok := GeneralprogramjobrequestMap["dialect"].(string); ok {
 		o.Dialect = &Dialect
 	}
-	
+    
 	if Mode, ok := GeneralprogramjobrequestMap["mode"].(string); ok {
 		o.Mode = &Mode
 	}
-	
+    
 
 	return nil
 }

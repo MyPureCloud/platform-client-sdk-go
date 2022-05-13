@@ -382,15 +382,15 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
 	if Id, ok := ConversationmessageeventtopicmessagemediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationmessageeventtopicmessagemediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := ConversationmessageeventtopicmessagemediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := ConversationmessageeventtopicmessagemediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -414,31 +414,31 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
 	if Purpose, ok := ConversationmessageeventtopicmessagemediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := ConversationmessageeventtopicmessagemediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := ConversationmessageeventtopicmessagemediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := ConversationmessageeventtopicmessagemediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := ConversationmessageeventtopicmessagemediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := ConversationmessageeventtopicmessagemediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := ConversationmessageeventtopicmessagemediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := ConversationmessageeventtopicmessagemediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -477,7 +477,7 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
 	if WrapupSkipped, ok := ConversationmessageeventtopicmessagemediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := ConversationmessageeventtopicmessagemediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -486,7 +486,7 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
 	if Provider, ok := ConversationmessageeventtopicmessagemediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := ConversationmessageeventtopicmessagemediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -510,15 +510,15 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
 	if Peer, ok := ConversationmessageeventtopicmessagemediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := ConversationmessageeventtopicmessagemediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := ConversationmessageeventtopicmessagemediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := ConversationmessageeventtopicmessagemediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -542,15 +542,15 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
 	if VarType, ok := ConversationmessageeventtopicmessagemediaparticipantMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if RecipientCountry, ok := ConversationmessageeventtopicmessagemediaparticipantMap["recipientCountry"].(string); ok {
 		o.RecipientCountry = &RecipientCountry
 	}
-	
+    
 	if RecipientType, ok := ConversationmessageeventtopicmessagemediaparticipantMap["recipientType"].(string); ok {
 		o.RecipientType = &RecipientType
 	}
-	
+    
 
 	return nil
 }

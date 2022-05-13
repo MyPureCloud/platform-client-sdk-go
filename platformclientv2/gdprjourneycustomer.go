@@ -45,11 +45,11 @@ func (o *Gdprjourneycustomer) UnmarshalJSON(b []byte) error {
 	if VarType, ok := GdprjourneycustomerMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Id, ok := GdprjourneycustomerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -53,7 +53,7 @@ func (o *Positionsettings) UnmarshalJSON(b []byte) error {
 	if Alignment, ok := PositionsettingsMap["alignment"].(string); ok {
 		o.Alignment = &Alignment
 	}
-	
+    
 	if SideSpace, ok := PositionsettingsMap["sideSpace"].(float64); ok {
 		SideSpaceInt := int(SideSpace)
 		o.SideSpace = &SideSpaceInt

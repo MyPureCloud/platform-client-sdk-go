@@ -141,19 +141,19 @@ func (o *Posttextrequest) UnmarshalJSON(b []byte) error {
 	if BotId, ok := PosttextrequestMap["botId"].(string); ok {
 		o.BotId = &BotId
 	}
-	
+    
 	if BotAlias, ok := PosttextrequestMap["botAlias"].(string); ok {
 		o.BotAlias = &BotAlias
 	}
-	
+    
 	if IntegrationId, ok := PosttextrequestMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-	
+    
 	if BotSessionId, ok := PosttextrequestMap["botSessionId"].(string); ok {
 		o.BotSessionId = &BotSessionId
 	}
-	
+    
 	if PostTextMessage, ok := PosttextrequestMap["postTextMessage"].(map[string]interface{}); ok {
 		PostTextMessageString, _ := json.Marshal(PostTextMessage)
 		json.Unmarshal(PostTextMessageString, &o.PostTextMessage)
@@ -162,7 +162,7 @@ func (o *Posttextrequest) UnmarshalJSON(b []byte) error {
 	if LanguageCode, ok := PosttextrequestMap["languageCode"].(string); ok {
 		o.LanguageCode = &LanguageCode
 	}
-	
+    
 	if BotSessionTimeoutMinutes, ok := PosttextrequestMap["botSessionTimeoutMinutes"].(float64); ok {
 		BotSessionTimeoutMinutesInt := int(BotSessionTimeoutMinutes)
 		o.BotSessionTimeoutMinutes = &BotSessionTimeoutMinutesInt
@@ -176,11 +176,11 @@ func (o *Posttextrequest) UnmarshalJSON(b []byte) error {
 	if BotCorrelationId, ok := PosttextrequestMap["botCorrelationId"].(string); ok {
 		o.BotCorrelationId = &BotCorrelationId
 	}
-	
+    
 	if MessagingPlatformType, ok := PosttextrequestMap["messagingPlatformType"].(string); ok {
 		o.MessagingPlatformType = &MessagingPlatformType
 	}
-	
+    
 	if AmazonLexRequest, ok := PosttextrequestMap["amazonLexRequest"].(map[string]interface{}); ok {
 		AmazonLexRequestString, _ := json.Marshal(AmazonLexRequest)
 		json.Unmarshal(AmazonLexRequestString, &o.AmazonLexRequest)

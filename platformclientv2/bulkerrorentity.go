@@ -77,11 +77,11 @@ func (o *Bulkerrorentity) UnmarshalJSON(b []byte) error {
 	if Code, ok := BulkerrorentityMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Message, ok := BulkerrorentityMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Status, ok := BulkerrorentityMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -90,7 +90,7 @@ func (o *Bulkerrorentity) UnmarshalJSON(b []byte) error {
 	if Retryable, ok := BulkerrorentityMap["retryable"].(bool); ok {
 		o.Retryable = &Retryable
 	}
-	
+    
 	if Entity, ok := BulkerrorentityMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

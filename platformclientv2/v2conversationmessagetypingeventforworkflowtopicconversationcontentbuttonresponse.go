@@ -53,15 +53,15 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationcontentbutt
 	if VarType, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentbuttonresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentbuttonresponseMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentbuttonresponseMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 
 	return nil
 }

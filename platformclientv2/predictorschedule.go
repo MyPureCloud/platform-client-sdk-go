@@ -54,7 +54,7 @@ func (o *Predictorschedule) UnmarshalJSON(b []byte) error {
 	if ScheduleType, ok := PredictorscheduleMap["scheduleType"].(string); ok {
 		o.ScheduleType = &ScheduleType
 	}
-	
+    
 	if dateStartedString, ok := PredictorscheduleMap["dateStarted"].(string); ok {
 		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
 		o.DateStarted = &DateStarted

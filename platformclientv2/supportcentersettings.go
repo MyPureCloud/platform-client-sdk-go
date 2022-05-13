@@ -85,7 +85,7 @@ func (o *Supportcentersettings) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := SupportcentersettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if KnowledgeBase, ok := SupportcentersettingsMap["knowledgeBase"].(map[string]interface{}); ok {
 		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
@@ -99,7 +99,7 @@ func (o *Supportcentersettings) UnmarshalJSON(b []byte) error {
 	if RouterType, ok := SupportcentersettingsMap["routerType"].(string); ok {
 		o.RouterType = &RouterType
 	}
-	
+    
 	if Screens, ok := SupportcentersettingsMap["screens"].([]interface{}); ok {
 		ScreensString, _ := json.Marshal(Screens)
 		json.Unmarshal(ScreensString, &o.Screens)

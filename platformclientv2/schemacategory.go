@@ -150,11 +150,11 @@ func (o *Schemacategory) UnmarshalJSON(b []byte) error {
 	if Id, ok := SchemacategoryMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SchemacategoryMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := SchemacategoryMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -163,7 +163,7 @@ func (o *Schemacategory) UnmarshalJSON(b []byte) error {
 	if Description, ok := SchemacategoryMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := SchemacategoryMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -182,27 +182,27 @@ func (o *Schemacategory) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := SchemacategoryMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := SchemacategoryMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := SchemacategoryMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := SchemacategoryMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := SchemacategoryMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if SelfUri, ok := SchemacategoryMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

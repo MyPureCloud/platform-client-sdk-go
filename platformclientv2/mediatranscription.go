@@ -53,15 +53,15 @@ func (o *Mediatranscription) UnmarshalJSON(b []byte) error {
 	if DisplayName, ok := MediatranscriptionMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if TranscriptionProvider, ok := MediatranscriptionMap["transcriptionProvider"].(string); ok {
 		o.TranscriptionProvider = &TranscriptionProvider
 	}
-	
+    
 	if IntegrationId, ok := MediatranscriptionMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-	
+    
 
 	return nil
 }

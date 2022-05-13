@@ -37,7 +37,7 @@ func (o *Consulttransferupdate) UnmarshalJSON(b []byte) error {
 	if SpeakTo, ok := ConsulttransferupdateMap["speakTo"].(string); ok {
 		o.SpeakTo = &SpeakTo
 	}
-	
+    
 
 	return nil
 }

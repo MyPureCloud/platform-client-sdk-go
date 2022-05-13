@@ -37,7 +37,7 @@ func (o *Agent) UnmarshalJSON(b []byte) error {
 	if Stage, ok := AgentMap["stage"].(string); ok {
 		o.Stage = &Stage
 	}
-	
+    
 
 	return nil
 }

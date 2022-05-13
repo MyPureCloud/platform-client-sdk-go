@@ -85,11 +85,11 @@ func (o *Servicegoaltemplate) UnmarshalJSON(b []byte) error {
 	if Id, ok := ServicegoaltemplateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ServicegoaltemplateMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ServiceLevel, ok := ServicegoaltemplateMap["serviceLevel"].(map[string]interface{}); ok {
 		ServiceLevelString, _ := json.Marshal(ServiceLevel)
 		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
@@ -113,7 +113,7 @@ func (o *Servicegoaltemplate) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ServicegoaltemplateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

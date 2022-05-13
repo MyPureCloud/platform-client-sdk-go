@@ -45,7 +45,7 @@ func (o *V2conversationmessagetypingeventforusertopicmessagedata) UnmarshalJSON(
 	if ConversationId, ok := V2conversationmessagetypingeventforusertopicmessagedataMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if NormalizedMessage, ok := V2conversationmessagetypingeventforusertopicmessagedataMap["normalizedMessage"].(map[string]interface{}); ok {
 		NormalizedMessageString, _ := json.Marshal(NormalizedMessage)
 		json.Unmarshal(NormalizedMessageString, &o.NormalizedMessage)

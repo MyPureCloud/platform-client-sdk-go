@@ -141,52 +141,52 @@ func (o *Klaxoninteractionstatsrulestopicinteractionstatrule) UnmarshalJSON(b []
 	if Id, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Dimension, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if DimensionValue, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["dimensionValue"].(string); ok {
 		o.DimensionValue = &DimensionValue
 	}
-	
+    
 	if DimensionValueName, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["dimensionValueName"].(string); ok {
 		o.DimensionValueName = &DimensionValueName
 	}
-	
+    
 	if Metric, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if MediaType, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if NumericRange, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["numericRange"].(string); ok {
 		o.NumericRange = &NumericRange
 	}
-	
+    
 	if Statistic, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["statistic"].(string); ok {
 		o.Statistic = &Statistic
 	}
-	
+    
 	if Value, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["value"].(float64); ok {
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32
 	}
-	
+    
 	if InAlarm, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["inAlarm"].(bool); ok {
 		o.InAlarm = &InAlarm
 	}
-	
+    
 	if Enabled, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if NotificationUsers, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["notificationUsers"].([]interface{}); ok {
 		NotificationUsersString, _ := json.Marshal(NotificationUsers)
 		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)

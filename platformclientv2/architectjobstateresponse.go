@@ -77,7 +77,7 @@ func (o *Architectjobstateresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ArchitectjobstateresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Flow, ok := ArchitectjobstateresponseMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
@@ -86,11 +86,11 @@ func (o *Architectjobstateresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := ArchitectjobstateresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Command, ok := ArchitectjobstateresponseMap["command"].(string); ok {
 		o.Command = &Command
 	}
-	
+    
 	if Messages, ok := ArchitectjobstateresponseMap["messages"].([]interface{}); ok {
 		MessagesString, _ := json.Marshal(Messages)
 		json.Unmarshal(MessagesString, &o.Messages)
@@ -99,7 +99,7 @@ func (o *Architectjobstateresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ArchitectjobstateresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

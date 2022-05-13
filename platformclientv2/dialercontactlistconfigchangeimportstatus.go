@@ -69,7 +69,7 @@ func (o *Dialercontactlistconfigchangeimportstatus) UnmarshalJSON(b []byte) erro
 	if ImportState, ok := DialercontactlistconfigchangeimportstatusMap["importState"].(string); ok {
 		o.ImportState = &ImportState
 	}
-	
+    
 	if TotalRecords, ok := DialercontactlistconfigchangeimportstatusMap["totalRecords"].(float64); ok {
 		TotalRecordsInt := int(TotalRecords)
 		o.TotalRecords = &TotalRecordsInt
@@ -88,7 +88,7 @@ func (o *Dialercontactlistconfigchangeimportstatus) UnmarshalJSON(b []byte) erro
 	if FailureReason, ok := DialercontactlistconfigchangeimportstatusMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
 	}
-	
+    
 
 	return nil
 }

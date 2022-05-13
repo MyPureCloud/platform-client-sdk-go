@@ -69,11 +69,11 @@ func (o *Observationmetricdata) UnmarshalJSON(b []byte) error {
 	if Metric, ok := ObservationmetricdataMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Qualifier, ok := ObservationmetricdataMap["qualifier"].(string); ok {
 		o.Qualifier = &Qualifier
 	}
-	
+    
 	if Stats, ok := ObservationmetricdataMap["stats"].(map[string]interface{}); ok {
 		StatsString, _ := json.Marshal(Stats)
 		json.Unmarshal(StatsString, &o.Stats)
@@ -82,7 +82,7 @@ func (o *Observationmetricdata) UnmarshalJSON(b []byte) error {
 	if Truncated, ok := ObservationmetricdataMap["truncated"].(bool); ok {
 		o.Truncated = &Truncated
 	}
-	
+    
 	if Observations, ok := ObservationmetricdataMap["observations"].([]interface{}); ok {
 		ObservationsString, _ := json.Marshal(Observations)
 		json.Unmarshal(ObservationsString, &o.Observations)

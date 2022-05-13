@@ -93,7 +93,7 @@ func (o *Locationcreatedefinition) UnmarshalJSON(b []byte) error {
 	if Name, ok := LocationcreatedefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := LocationcreatedefinitionMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -102,7 +102,7 @@ func (o *Locationcreatedefinition) UnmarshalJSON(b []byte) error {
 	if State, ok := LocationcreatedefinitionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Path, ok := LocationcreatedefinitionMap["path"].([]interface{}); ok {
 		PathString, _ := json.Marshal(Path)
 		json.Unmarshal(PathString, &o.Path)
@@ -111,11 +111,11 @@ func (o *Locationcreatedefinition) UnmarshalJSON(b []byte) error {
 	if Notes, ok := LocationcreatedefinitionMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if ContactUser, ok := LocationcreatedefinitionMap["contactUser"].(string); ok {
 		o.ContactUser = &ContactUser
 	}
-	
+    
 	if EmergencyNumber, ok := LocationcreatedefinitionMap["emergencyNumber"].(map[string]interface{}); ok {
 		EmergencyNumberString, _ := json.Marshal(EmergencyNumber)
 		json.Unmarshal(EmergencyNumberString, &o.EmergencyNumber)

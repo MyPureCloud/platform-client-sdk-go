@@ -53,11 +53,11 @@ func (o *Wfmbuscheduleruntopicbuschedulingrunprogressnotification) UnmarshalJSON
 	if Status, ok := WfmbuscheduleruntopicbuschedulingrunprogressnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := WfmbuscheduleruntopicbuschedulingrunprogressnotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := WfmbuscheduleruntopicbuschedulingrunprogressnotificationMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

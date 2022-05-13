@@ -85,11 +85,11 @@ func (o *Voicemailsearchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := VoicemailsearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := VoicemailsearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := VoicemailsearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

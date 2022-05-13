@@ -93,23 +93,23 @@ func (o *Edgeinterface) UnmarshalJSON(b []byte) error {
 	if VarType, ok := EdgeinterfaceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if IpAddress, ok := EdgeinterfaceMap["ipAddress"].(string); ok {
 		o.IpAddress = &IpAddress
 	}
-	
+    
 	if Name, ok := EdgeinterfaceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if MacAddress, ok := EdgeinterfaceMap["macAddress"].(string); ok {
 		o.MacAddress = &MacAddress
 	}
-	
+    
 	if IfName, ok := EdgeinterfaceMap["ifName"].(string); ok {
 		o.IfName = &IfName
 	}
-	
+    
 	if Endpoints, ok := EdgeinterfaceMap["endpoints"].([]interface{}); ok {
 		EndpointsString, _ := json.Marshal(Endpoints)
 		json.Unmarshal(EndpointsString, &o.Endpoints)
@@ -123,7 +123,7 @@ func (o *Edgeinterface) UnmarshalJSON(b []byte) error {
 	if AddressFamilyId, ok := EdgeinterfaceMap["addressFamilyId"].(string); ok {
 		o.AddressFamilyId = &AddressFamilyId
 	}
-	
+    
 
 	return nil
 }

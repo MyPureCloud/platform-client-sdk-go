@@ -45,11 +45,11 @@ func (o *Member) UnmarshalJSON(b []byte) error {
 	if Id, ok := MemberMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := MemberMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

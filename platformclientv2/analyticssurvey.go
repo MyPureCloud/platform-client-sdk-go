@@ -139,7 +139,7 @@ func (o *Analyticssurvey) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := AnalyticssurveyMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if surveyCompletedDateString, ok := AnalyticssurveyMap["surveyCompletedDate"].(string); ok {
 		SurveyCompletedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", surveyCompletedDateString)
 		o.SurveyCompletedDate = &SurveyCompletedDate
@@ -148,19 +148,19 @@ func (o *Analyticssurvey) UnmarshalJSON(b []byte) error {
 	if SurveyFormContextId, ok := AnalyticssurveyMap["surveyFormContextId"].(string); ok {
 		o.SurveyFormContextId = &SurveyFormContextId
 	}
-	
+    
 	if SurveyFormId, ok := AnalyticssurveyMap["surveyFormId"].(string); ok {
 		o.SurveyFormId = &SurveyFormId
 	}
-	
+    
 	if SurveyFormName, ok := AnalyticssurveyMap["surveyFormName"].(string); ok {
 		o.SurveyFormName = &SurveyFormName
 	}
-	
+    
 	if SurveyId, ok := AnalyticssurveyMap["surveyId"].(string); ok {
 		o.SurveyId = &SurveyId
 	}
-	
+    
 	if SurveyPromoterScore, ok := AnalyticssurveyMap["surveyPromoterScore"].(float64); ok {
 		SurveyPromoterScoreInt := int(SurveyPromoterScore)
 		o.SurveyPromoterScore = &SurveyPromoterScoreInt
@@ -169,11 +169,11 @@ func (o *Analyticssurvey) UnmarshalJSON(b []byte) error {
 	if SurveyStatus, ok := AnalyticssurveyMap["surveyStatus"].(string); ok {
 		o.SurveyStatus = &SurveyStatus
 	}
-	
+    
 	if UserId, ok := AnalyticssurveyMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if OSurveyTotalScore, ok := AnalyticssurveyMap["oSurveyTotalScore"].(float64); ok {
 		OSurveyTotalScoreInt := int(OSurveyTotalScore)
 		o.OSurveyTotalScore = &OSurveyTotalScoreInt

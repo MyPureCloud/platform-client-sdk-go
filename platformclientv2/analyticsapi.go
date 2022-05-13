@@ -32,8 +32,6 @@ func NewAnalyticsApiWithConfig(config *Configuration) *AnalyticsApi {
 // DeleteAnalyticsConversationsDetailsJob invokes DELETE /api/v2/analytics/conversations/details/jobs/{jobId}
 //
 // Delete/cancel an async request
-//
-// 
 func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*API
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'jobId' when calling AnalyticsApi->DeleteAnalyticsConversationsDetailsJob")
 	}
 
@@ -98,8 +96,6 @@ func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*API
 // DeleteAnalyticsReportingSchedule invokes DELETE /api/v2/analytics/reporting/schedules/{scheduleId}
 //
 // Delete a scheduled report job.
-//
-// 
 func (a AnalyticsApi) DeleteAnalyticsReportingSchedule(scheduleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,7 +107,7 @@ func (a AnalyticsApi) DeleteAnalyticsReportingSchedule(scheduleId string) (*APIR
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->DeleteAnalyticsReportingSchedule")
 	}
 
@@ -164,8 +160,6 @@ func (a AnalyticsApi) DeleteAnalyticsReportingSchedule(scheduleId string) (*APIR
 // DeleteAnalyticsUsersDetailsJob invokes DELETE /api/v2/analytics/users/details/jobs/{jobId}
 //
 // Delete/cancel an async request
-//
-// 
 func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -177,7 +171,7 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'jobId' when calling AnalyticsApi->DeleteAnalyticsUsersDetailsJob")
 	}
 
@@ -230,8 +224,6 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 // GetAnalyticsBotflowReportingturns invokes GET /api/v2/analytics/botflows/{botFlowId}/reportingturns
 //
 // Get Reporting Turns.
-//
-// 
 func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after string, pageSize string, actionId string, sessionId string) (*Reportingturnsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -244,7 +236,7 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 
 	// verify the required parameter 'botFlowId' is set
 	if &botFlowId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'botFlowId' when calling AnalyticsApi->GetAnalyticsBotflowReportingturns")
 	}
 
@@ -311,8 +303,6 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 // GetAnalyticsConversationDetails invokes GET /api/v2/analytics/conversations/{conversationId}/details
 //
 // Get a conversation by id
-//
-// 
 func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*Analyticsconversationwithoutattributes, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -325,7 +315,7 @@ func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*A
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling AnalyticsApi->GetAnalyticsConversationDetails")
 	}
 
@@ -384,8 +374,6 @@ func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*A
 // GetAnalyticsConversationsDetails invokes GET /api/v2/analytics/conversations/details
 //
 // Gets multiple conversations by id
-//
-// 
 func (a AnalyticsApi) GetAnalyticsConversationsDetails(id []string) (*Analyticsconversationwithoutattributesmultigetresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -453,8 +441,6 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetails(id []string) (*Analyticsc
 // GetAnalyticsConversationsDetailsJob invokes GET /api/v2/analytics/conversations/details/jobs/{jobId}
 //
 // Get status for async query for conversation details
-//
-// 
 func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -467,7 +453,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling AnalyticsApi->GetAnalyticsConversationsDetailsJob")
 	}
 
@@ -526,8 +512,6 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 // GetAnalyticsConversationsDetailsJobResults invokes GET /api/v2/analytics/conversations/details/jobs/{jobId}/results
 //
 // Fetch a page of results for an async query
-//
-// 
 func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -540,7 +524,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling AnalyticsApi->GetAnalyticsConversationsDetailsJobResults")
 	}
 
@@ -603,8 +587,6 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 // GetAnalyticsConversationsDetailsJobsAvailability invokes GET /api/v2/analytics/conversations/details/jobs/availability
 //
 // Lookup the datalake availability date and time
-//
-// 
 func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*Dataavailabilityresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -670,8 +652,6 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*Dataa
 // GetAnalyticsReportingExports invokes GET /api/v2/analytics/reporting/exports
 //
 // Get all view export requests for a user
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int, pageSize int) (*Reportingexportjoblisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -741,8 +721,6 @@ func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int, pageSize int)
 // GetAnalyticsReportingExportsMetadata invokes GET /api/v2/analytics/reporting/exports/metadata
 //
 // Get all export metadata
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingExportsMetadata() (*Reportingexportmetadatajoblisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -808,8 +786,6 @@ func (a AnalyticsApi) GetAnalyticsReportingExportsMetadata() (*Reportingexportme
 // GetAnalyticsReportingMetadata invokes GET /api/v2/analytics/reporting/metadata
 //
 // Get list of reporting metadata.
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingMetadata(pageNumber int, pageSize int, locale string) (*Reportmetadataentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -881,8 +857,6 @@ func (a AnalyticsApi) GetAnalyticsReportingMetadata(pageNumber int, pageSize int
 // GetAnalyticsReportingReportIdMetadata invokes GET /api/v2/analytics/reporting/{reportId}/metadata
 //
 // Get a reporting metadata.
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingReportIdMetadata(reportId string, locale string) (*Reportmetadata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -895,7 +869,7 @@ func (a AnalyticsApi) GetAnalyticsReportingReportIdMetadata(reportId string, loc
 
 	// verify the required parameter 'reportId' is set
 	if &reportId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'reportId' when calling AnalyticsApi->GetAnalyticsReportingReportIdMetadata")
 	}
 
@@ -1023,8 +997,6 @@ func (a AnalyticsApi) GetAnalyticsReportingReportformats() ([]string, *APIRespon
 // GetAnalyticsReportingSchedule invokes GET /api/v2/analytics/reporting/schedules/{scheduleId}
 //
 // Get a scheduled report job.
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reportschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1037,7 +1009,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reports
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingSchedule")
 	}
 
@@ -1096,8 +1068,6 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reports
 // GetAnalyticsReportingScheduleHistory invokes GET /api/v2/analytics/reporting/schedules/{scheduleId}/history
 //
 // Get list of completed scheduled report jobs.
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pageNumber int, pageSize int) (*Reportrunentryentitydomainlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1110,7 +1080,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pa
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistory")
 	}
 
@@ -1173,8 +1143,6 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pa
 // GetAnalyticsReportingScheduleHistoryLatest invokes GET /api/v2/analytics/reporting/schedules/{scheduleId}/history/latest
 //
 // Get most recently completed scheduled report job.
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryLatest(scheduleId string) (*Reportrunentry, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1187,7 +1155,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryLatest(scheduleId stri
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistoryLatest")
 	}
 
@@ -1261,12 +1229,12 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryRunId(runId string, sc
 
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'runId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistoryRunId")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistoryRunId")
 	}
 
@@ -1396,8 +1364,6 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedules(pageNumber int, pageSize in
 // GetAnalyticsReportingSettings invokes GET /api/v2/analytics/reporting/settings
 //
 // Get AnalyticsReportingSettings for an organization
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1463,8 +1429,6 @@ func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettin
 // GetAnalyticsReportingTimeperiods invokes GET /api/v2/analytics/reporting/timeperiods
 //
 // Get a list of report time periods.
-//
-// 
 func (a AnalyticsApi) GetAnalyticsReportingTimeperiods() ([]string, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1530,8 +1494,6 @@ func (a AnalyticsApi) GetAnalyticsReportingTimeperiods() ([]string, *APIResponse
 // GetAnalyticsUsersDetailsJob invokes GET /api/v2/analytics/users/details/jobs/{jobId}
 //
 // Get status for async query for user details
-//
-// 
 func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1544,7 +1506,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling AnalyticsApi->GetAnalyticsUsersDetailsJob")
 	}
 
@@ -1603,8 +1565,6 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 // GetAnalyticsUsersDetailsJobResults invokes GET /api/v2/analytics/users/details/jobs/{jobId}/results
 //
 // Fetch a page of results for an async query
-//
-// 
 func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1617,7 +1577,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor st
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling AnalyticsApi->GetAnalyticsUsersDetailsJobResults")
 	}
 
@@ -1680,8 +1640,6 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor st
 // GetAnalyticsUsersDetailsJobsAvailability invokes GET /api/v2/analytics/users/details/jobs/availability
 //
 // Lookup the datalake availability date and time
-//
-// 
 func (a AnalyticsApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabilityresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1747,8 +1705,6 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabil
 // PatchAnalyticsReportingSettings invokes PATCH /api/v2/analytics/reporting/settings
 //
 // Patch AnalyticsReportingSettings values for an organization
-//
-// 
 func (a AnalyticsApi) PatchAnalyticsReportingSettings(body Analyticsreportingsettings) (*Analyticsreportingsettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1760,7 +1716,7 @@ func (a AnalyticsApi) PatchAnalyticsReportingSettings(body Analyticsreportingset
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PatchAnalyticsReportingSettings")
 	}
 
@@ -1822,8 +1778,6 @@ func (a AnalyticsApi) PatchAnalyticsReportingSettings(body Analyticsreportingset
 // PostAnalyticsBotsAggregatesQuery invokes POST /api/v2/analytics/bots/aggregates/query
 //
 // Query for bot aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsBotsAggregatesQuery(body Botaggregationquery) (*Botaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1835,7 +1789,7 @@ func (a AnalyticsApi) PostAnalyticsBotsAggregatesQuery(body Botaggregationquery)
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsBotsAggregatesQuery")
 	}
 
@@ -1897,8 +1851,6 @@ func (a AnalyticsApi) PostAnalyticsBotsAggregatesQuery(body Botaggregationquery)
 // PostAnalyticsConversationDetailsProperties invokes POST /api/v2/analytics/conversations/{conversationId}/details/properties
 //
 // Index conversation properties
-//
-// 
 func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId string, body Propertyindexrequest) (*Propertyindexrequest, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1911,12 +1863,12 @@ func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId 
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling AnalyticsApi->PostAnalyticsConversationDetailsProperties")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsConversationDetailsProperties")
 	}
 
@@ -1978,8 +1930,6 @@ func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId 
 // PostAnalyticsConversationsAggregatesQuery invokes POST /api/v2/analytics/conversations/aggregates/query
 //
 // Query for conversation aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsConversationsAggregatesQuery(body Conversationaggregationquery) (*Conversationaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1991,7 +1941,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsAggregatesQuery(body Conversatio
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsConversationsAggregatesQuery")
 	}
 
@@ -2053,8 +2003,6 @@ func (a AnalyticsApi) PostAnalyticsConversationsAggregatesQuery(body Conversatio
 // PostAnalyticsConversationsDetailsJobs invokes POST /api/v2/analytics/conversations/details/jobs
 //
 // Query for conversation details asynchronously
-//
-// 
 func (a AnalyticsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconversationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2066,7 +2014,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconversati
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsConversationsDetailsJobs")
 	}
 
@@ -2128,8 +2076,6 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconversati
 // PostAnalyticsConversationsDetailsQuery invokes POST /api/v2/analytics/conversations/details/query
 //
 // Query for conversation details
-//
-// 
 func (a AnalyticsApi) PostAnalyticsConversationsDetailsQuery(body Conversationquery) (*Analyticsconversationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2141,7 +2087,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsQuery(body Conversationqu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsConversationsDetailsQuery")
 	}
 
@@ -2203,8 +2149,6 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsQuery(body Conversationqu
 // PostAnalyticsConversationsTranscriptsQuery invokes POST /api/v2/analytics/conversations/transcripts/query
 //
 // Search resources.
-//
-// 
 func (a AnalyticsApi) PostAnalyticsConversationsTranscriptsQuery(body Transcriptconversationdetailsearchrequest) (*Analyticsconversationwithoutattributesmultigetresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2216,7 +2160,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsTranscriptsQuery(body Transcript
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsConversationsTranscriptsQuery")
 	}
 
@@ -2278,8 +2222,6 @@ func (a AnalyticsApi) PostAnalyticsConversationsTranscriptsQuery(body Transcript
 // PostAnalyticsEvaluationsAggregatesQuery invokes POST /api/v2/analytics/evaluations/aggregates/query
 //
 // Query for evaluation aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationaggregationquery) (*Evaluationaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2291,7 +2233,7 @@ func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationagg
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsEvaluationsAggregatesQuery")
 	}
 
@@ -2353,8 +2295,6 @@ func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationagg
 // PostAnalyticsFlowsAggregatesQuery invokes POST /api/v2/analytics/flows/aggregates/query
 //
 // Query for flow aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquery) (*Flowaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2366,7 +2306,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquer
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsFlowsAggregatesQuery")
 	}
 
@@ -2428,8 +2368,6 @@ func (a AnalyticsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquer
 // PostAnalyticsFlowsObservationsQuery invokes POST /api/v2/analytics/flows/observations/query
 //
 // Query for flow observations
-//
-// 
 func (a AnalyticsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationquery) (*Flowobservationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2441,7 +2379,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationqu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsFlowsObservationsQuery")
 	}
 
@@ -2503,8 +2441,6 @@ func (a AnalyticsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationqu
 // PostAnalyticsJourneysAggregatesQuery invokes POST /api/v2/analytics/journeys/aggregates/query
 //
 // Query for journey aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregationquery) (*Journeyaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2516,7 +2452,7 @@ func (a AnalyticsApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregati
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsJourneysAggregatesQuery")
 	}
 
@@ -2578,8 +2514,6 @@ func (a AnalyticsApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregati
 // PostAnalyticsQueuesObservationsQuery invokes POST /api/v2/analytics/queues/observations/query
 //
 // Query for queue observations
-//
-// 
 func (a AnalyticsApi) PostAnalyticsQueuesObservationsQuery(body Queueobservationquery) (*Queueobservationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2591,7 +2525,7 @@ func (a AnalyticsApi) PostAnalyticsQueuesObservationsQuery(body Queueobservation
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsQueuesObservationsQuery")
 	}
 
@@ -2666,7 +2600,7 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsReportingExports")
 	}
 
@@ -2728,8 +2662,6 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 // PostAnalyticsReportingScheduleRunreport invokes POST /api/v2/analytics/reporting/schedules/{scheduleId}/runreport
 //
 // Place a scheduled report immediately into the reporting queue
-//
-// 
 func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string) (*Runnowresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2742,7 +2674,7 @@ func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string)
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->PostAnalyticsReportingScheduleRunreport")
 	}
 
@@ -2814,7 +2746,7 @@ func (a AnalyticsApi) PostAnalyticsReportingSchedules(body Reportschedule) (*Rep
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsReportingSchedules")
 	}
 
@@ -2876,8 +2808,6 @@ func (a AnalyticsApi) PostAnalyticsReportingSchedules(body Reportschedule) (*Rep
 // PostAnalyticsSurveysAggregatesQuery invokes POST /api/v2/analytics/surveys/aggregates/query
 //
 // Query for survey aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregationquery) (*Surveyaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2889,7 +2819,7 @@ func (a AnalyticsApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregation
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsSurveysAggregatesQuery")
 	}
 
@@ -2951,8 +2881,6 @@ func (a AnalyticsApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregation
 // PostAnalyticsTranscriptsAggregatesQuery invokes POST /api/v2/analytics/transcripts/aggregates/query
 //
 // Query for transcript aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesQuery(body Transcriptaggregationquery) (*Transcriptaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2964,7 +2892,7 @@ func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesQuery(body Transcriptagg
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsTranscriptsAggregatesQuery")
 	}
 
@@ -3026,8 +2954,6 @@ func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesQuery(body Transcriptagg
 // PostAnalyticsUsersAggregatesQuery invokes POST /api/v2/analytics/users/aggregates/query
 //
 // Query for user aggregates
-//
-// 
 func (a AnalyticsApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquery) (*Useraggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3039,7 +2965,7 @@ func (a AnalyticsApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquer
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsUsersAggregatesQuery")
 	}
 
@@ -3101,8 +3027,6 @@ func (a AnalyticsApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquer
 // PostAnalyticsUsersDetailsJobs invokes POST /api/v2/analytics/users/details/jobs
 //
 // Query for user details asynchronously
-//
-// 
 func (a AnalyticsApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3114,7 +3038,7 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsUsersDetailsJobs")
 	}
 
@@ -3176,8 +3100,6 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) 
 // PostAnalyticsUsersDetailsQuery invokes POST /api/v2/analytics/users/details/query
 //
 // Query for user details
-//
-// 
 func (a AnalyticsApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*Analyticsuserdetailsqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3189,7 +3111,7 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*An
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsUsersDetailsQuery")
 	}
 
@@ -3251,8 +3173,6 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*An
 // PostAnalyticsUsersObservationsQuery invokes POST /api/v2/analytics/users/observations/query
 //
 // Query for user observations
-//
-// 
 func (a AnalyticsApi) PostAnalyticsUsersObservationsQuery(body Userobservationquery) (*Userobservationqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3264,7 +3184,7 @@ func (a AnalyticsApi) PostAnalyticsUsersObservationsQuery(body Userobservationqu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsUsersObservationsQuery")
 	}
 
@@ -3326,8 +3246,6 @@ func (a AnalyticsApi) PostAnalyticsUsersObservationsQuery(body Userobservationqu
 // PutAnalyticsReportingSchedule invokes PUT /api/v2/analytics/reporting/schedules/{scheduleId}
 //
 // Update a scheduled report job.
-//
-// 
 func (a AnalyticsApi) PutAnalyticsReportingSchedule(scheduleId string, body Reportschedule) (*Reportschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3340,12 +3258,12 @@ func (a AnalyticsApi) PutAnalyticsReportingSchedule(scheduleId string, body Repo
 
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->PutAnalyticsReportingSchedule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PutAnalyticsReportingSchedule")
 	}
 

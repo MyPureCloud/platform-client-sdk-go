@@ -45,11 +45,11 @@ func (o *Manager) UnmarshalJSON(b []byte) error {
 	if Value, ok := ManagerMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Ref, ok := ManagerMap["$ref"].(string); ok {
 		o.Ref = &Ref
 	}
-	
+    
 
 	return nil
 }

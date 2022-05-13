@@ -61,11 +61,11 @@ func (o *Apiusagequery) UnmarshalJSON(b []byte) error {
 	if Interval, ok := ApiusagequeryMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Granularity, ok := ApiusagequeryMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
 	}
-	
+    
 	if GroupBy, ok := ApiusagequeryMap["groupBy"].([]interface{}); ok {
 		GroupByString, _ := json.Marshal(GroupBy)
 		json.Unmarshal(GroupByString, &o.GroupBy)

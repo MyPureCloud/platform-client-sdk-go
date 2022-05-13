@@ -79,15 +79,15 @@ func (o *Webchatmessageentitylist) UnmarshalJSON(b []byte) error {
 	if PreviousPage, ok := WebchatmessageentitylistMap["previousPage"].(string); ok {
 		o.PreviousPage = &PreviousPage
 	}
-	
+    
 	if Next, ok := WebchatmessageentitylistMap["next"].(string); ok {
 		o.Next = &Next
 	}
-	
+    
 	if SelfUri, ok := WebchatmessageentitylistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

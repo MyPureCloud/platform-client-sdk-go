@@ -45,11 +45,11 @@ func (o *Namedentitytypebinding) UnmarshalJSON(b []byte) error {
 	if EntityType, ok := NamedentitytypebindingMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if EntityName, ok := NamedentitytypebindingMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 
 	return nil
 }

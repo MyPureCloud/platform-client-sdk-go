@@ -45,7 +45,7 @@ func (o *Conversationeventtyping) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationeventtypingMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Duration, ok := ConversationeventtypingMap["duration"].(float64); ok {
 		DurationInt := int(Duration)
 		o.Duration = &DurationInt

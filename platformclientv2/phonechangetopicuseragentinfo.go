@@ -53,15 +53,15 @@ func (o *Phonechangetopicuseragentinfo) UnmarshalJSON(b []byte) error {
 	if FirmwareVersion, ok := PhonechangetopicuseragentinfoMap["firmwareVersion"].(string); ok {
 		o.FirmwareVersion = &FirmwareVersion
 	}
-	
+    
 	if Manufacturer, ok := PhonechangetopicuseragentinfoMap["manufacturer"].(string); ok {
 		o.Manufacturer = &Manufacturer
 	}
-	
+    
 	if Model, ok := PhonechangetopicuseragentinfoMap["model"].(string); ok {
 		o.Model = &Model
 	}
-	
+    
 
 	return nil
 }

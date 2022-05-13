@@ -150,11 +150,11 @@ func (o *Recordingjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := RecordingjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := RecordingjobMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if RecordingJobsQuery, ok := RecordingjobMap["recordingJobsQuery"].(map[string]interface{}); ok {
 		RecordingJobsQueryString, _ := json.Marshal(RecordingJobsQuery)
 		json.Unmarshal(RecordingJobsQueryString, &o.RecordingJobsQuery)
@@ -198,15 +198,15 @@ func (o *Recordingjob) UnmarshalJSON(b []byte) error {
 	if ErrorMessage, ok := RecordingjobMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if FailedRecordings, ok := RecordingjobMap["failedRecordings"].(string); ok {
 		o.FailedRecordings = &FailedRecordings
 	}
-	
+    
 	if SelfUri, ok := RecordingjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if User, ok := RecordingjobMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)

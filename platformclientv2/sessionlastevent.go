@@ -62,11 +62,11 @@ func (o *Sessionlastevent) UnmarshalJSON(b []byte) error {
 	if Id, ok := SessionlasteventMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if EventName, ok := SessionlasteventMap["eventName"].(string); ok {
 		o.EventName = &EventName
 	}
-	
+    
 	if createdDateString, ok := SessionlasteventMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

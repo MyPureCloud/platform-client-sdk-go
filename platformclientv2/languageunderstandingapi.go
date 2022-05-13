@@ -33,8 +33,6 @@ func NewLanguageUnderstandingApiWithConfig(config *Configuration) *LanguageUnder
 // DeleteLanguageunderstandingDomain invokes DELETE /api/v2/languageunderstanding/domains/{domainId}
 //
 // Delete an NLU Domain.
-//
-// 
 func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomain(domainId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -46,7 +44,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomain(domainId str
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingDomain")
 	}
 
@@ -99,8 +97,6 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomain(domainId str
 // DeleteLanguageunderstandingDomainFeedbackFeedbackId invokes DELETE /api/v2/languageunderstanding/domains/{domainId}/feedback/{feedbackId}
 //
 // Delete the feedback on the NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainFeedbackFeedbackId(domainId string, feedbackId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -113,12 +109,12 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainFeedbackFeedb
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingDomainFeedbackFeedbackId")
 	}
 	// verify the required parameter 'feedbackId' is set
 	if &feedbackId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'feedbackId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingDomainFeedbackFeedbackId")
 	}
 
@@ -171,8 +167,6 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainFeedbackFeedb
 // DeleteLanguageunderstandingDomainVersion invokes DELETE /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}
 //
 // Delete an NLU Domain Version
-//
-// 
 func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainVersion(domainId string, domainVersionId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -185,12 +179,12 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainVersion(domai
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingDomainVersion")
 	}
 	// verify the required parameter 'domainVersionId' is set
 	if &domainVersionId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingDomainVersion")
 	}
 
@@ -243,8 +237,6 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainVersion(domai
 // DeleteLanguageunderstandingMiner invokes DELETE /api/v2/languageunderstanding/miners/{minerId}
 //
 // Delete a miner.
-//
-// 
 func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMiner(minerId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -256,7 +248,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMiner(minerId strin
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingMiner")
 	}
 
@@ -309,8 +301,6 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMiner(minerId strin
 // DeleteLanguageunderstandingMinerDraft invokes DELETE /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}
 //
 // Delete a draft
-//
-// 
 func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMinerDraft(minerId string, draftId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -323,12 +313,12 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMinerDraft(minerId 
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingMinerDraft")
 	}
 	// verify the required parameter 'draftId' is set
 	if &draftId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'draftId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingMinerDraft")
 	}
 
@@ -381,8 +371,6 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMinerDraft(minerId 
 // GetLanguageunderstandingDomain invokes GET /api/v2/languageunderstanding/domains/{domainId}
 //
 // Find an NLU Domain.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string) (*Nludomain, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -395,7 +383,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomain")
 	}
 
@@ -454,8 +442,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 // GetLanguageunderstandingDomainFeedback invokes GET /api/v2/languageunderstanding/domains/{domainId}/feedback
 //
 // Get all feedback in the given NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, pageNumber int, pageSize int, enableCursorPagination bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -468,7 +454,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainFeedback")
 	}
 
@@ -547,8 +533,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 // GetLanguageunderstandingDomainFeedbackFeedbackId invokes GET /api/v2/languageunderstanding/domains/{domainId}/feedback/{feedbackId}
 //
 // Find a Feedback
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedbackId(domainId string, feedbackId string, fields []string) (*Nlufeedbackresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -562,12 +546,12 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedback
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainFeedbackFeedbackId")
 	}
 	// verify the required parameter 'feedbackId' is set
 	if &feedbackId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'feedbackId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainFeedbackFeedbackId")
 	}
 
@@ -628,8 +612,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedback
 // GetLanguageunderstandingDomainVersion invokes GET /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}
 //
 // Find an NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId string, domainVersionId string, includeUtterances bool) (*Nludomainversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -643,12 +625,12 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainVersion")
 	}
 	// verify the required parameter 'domainVersionId' is set
 	if &domainVersionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainVersion")
 	}
 
@@ -709,8 +691,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 // GetLanguageunderstandingDomainVersionReport invokes GET /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/report
 //
 // Retrieved quality report for the specified NLU Domain Version
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(domainId string, domainVersionId string) (*Nludomainversionqualityreport, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -724,12 +704,12 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(do
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainVersionReport")
 	}
 	// verify the required parameter 'domainVersionId' is set
 	if &domainVersionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainVersionReport")
 	}
 
@@ -788,8 +768,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(do
 // GetLanguageunderstandingDomainVersions invokes GET /api/v2/languageunderstanding/domains/{domainId}/versions
 //
 // Get all NLU Domain Versions for a given Domain.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainId string, includeUtterances bool, pageNumber int, pageSize int) (*Nludomainversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -802,7 +780,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->GetLanguageunderstandingDomainVersions")
 	}
 
@@ -867,8 +845,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 // GetLanguageunderstandingDomains invokes GET /api/v2/languageunderstanding/domains
 //
 // Get all NLU Domains.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int, pageSize int) (*Nludomainlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -938,8 +914,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int
 // GetLanguageunderstandingMiner invokes GET /api/v2/languageunderstanding/miners/{minerId}
 //
 // Get information about a miner.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) (*Miner, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -952,7 +926,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) 
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMiner")
 	}
 
@@ -1011,8 +985,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) 
 // GetLanguageunderstandingMinerDraft invokes GET /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}
 //
 // Get information about a draft.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId string, draftId string) (*Draft, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1026,12 +998,12 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId str
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerDraft")
 	}
 	// verify the required parameter 'draftId' is set
 	if &draftId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'draftId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerDraft")
 	}
 
@@ -1090,8 +1062,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId str
 // GetLanguageunderstandingMinerDrafts invokes GET /api/v2/languageunderstanding/miners/{minerId}/drafts
 //
 // Retrieve the list of drafts created.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDrafts(minerId string) (*Draftlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1104,7 +1074,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDrafts(minerId st
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerDrafts")
 	}
 
@@ -1163,8 +1133,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDrafts(minerId st
 // GetLanguageunderstandingMinerIntent invokes GET /api/v2/languageunderstanding/miners/{minerId}/intents/{intentId}
 //
 // Get information about a mined intent
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntent(minerId string, intentId string, expand string) (*Minerintent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1178,12 +1146,12 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntent(minerId st
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerIntent")
 	}
 	// verify the required parameter 'intentId' is set
 	if &intentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'intentId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerIntent")
 	}
 
@@ -1244,8 +1212,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntent(minerId st
 // GetLanguageunderstandingMinerIntents invokes GET /api/v2/languageunderstanding/miners/{minerId}/intents
 //
 // Retrieve a list of mined intents.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId string, expand string) (*Minedintentslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1258,7 +1224,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId s
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerIntents")
 	}
 
@@ -1319,8 +1285,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId s
 // GetLanguageunderstandingMiners invokes GET /api/v2/languageunderstanding/miners
 //
 // Retrieve the list of miners created.
-//
-// 
 func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners() (*Minerlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1386,8 +1350,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners() (*Minerlistin
 // PatchLanguageunderstandingDomain invokes PATCH /api/v2/languageunderstanding/domains/{domainId}
 //
 // Update an NLU Domain.
-//
-// 
 func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId string, body Nludomain) (*Nludomain, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1400,12 +1362,12 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PatchLanguageunderstandingDomain")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PatchLanguageunderstandingDomain")
 	}
 
@@ -1467,8 +1429,6 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 // PatchLanguageunderstandingMinerDraft invokes PATCH /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}
 //
 // Save information for the draft. Either topic draft or intent draft should be sent.
-//
-// 
 func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId string, draftId string, body Draftrequest) (*Draft, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1482,12 +1442,12 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId s
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->PatchLanguageunderstandingMinerDraft")
 	}
 	// verify the required parameter 'draftId' is set
 	if &draftId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'draftId' when calling LanguageUnderstandingApi->PatchLanguageunderstandingMinerDraft")
 	}
 
@@ -1549,8 +1509,6 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId s
 // PostLanguageunderstandingDomainFeedback invokes POST /api/v2/languageunderstanding/domains/{domainId}/feedback
 //
 // Create feedback for the NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domainId string, body Nlufeedbackrequest) (*Nlufeedbackresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1563,12 +1521,12 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domain
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainFeedback")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainFeedback")
 	}
 
@@ -1630,8 +1588,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domain
 // PostLanguageunderstandingDomainVersionDetect invokes POST /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/detect
 //
 // Detect intent, entities, etc. in the submitted text using the specified NLU domain version.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(domainId string, domainVersionId string, body Nludetectionrequest) (*Nludetectionresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1645,17 +1601,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(d
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionDetect")
 	}
 	// verify the required parameter 'domainVersionId' is set
 	if &domainVersionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionDetect")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionDetect")
 	}
 
@@ -1717,8 +1673,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(d
 // PostLanguageunderstandingDomainVersionPublish invokes POST /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/publish
 //
 // Publish the draft NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionPublish(domainId string, domainVersionId string) (*Nludomainversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1732,12 +1686,12 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionPublish(
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionPublish")
 	}
 	// verify the required parameter 'domainVersionId' is set
 	if &domainVersionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionPublish")
 	}
 
@@ -1796,8 +1750,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionPublish(
 // PostLanguageunderstandingDomainVersionTrain invokes POST /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/train
 //
 // Train the draft NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(domainId string, domainVersionId string) (*Nludomainversiontrainingresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1811,12 +1763,12 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionTrain")
 	}
 	// verify the required parameter 'domainVersionId' is set
 	if &domainVersionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionTrain")
 	}
 
@@ -1875,8 +1827,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 // PostLanguageunderstandingDomainVersions invokes POST /api/v2/languageunderstanding/domains/{domainId}/versions
 //
 // Create an NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domainId string, body Nludomainversion) (*Nludomainversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1889,12 +1839,12 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domain
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersions")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersions")
 	}
 
@@ -1956,8 +1906,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domain
 // PostLanguageunderstandingDomains invokes POST /api/v2/languageunderstanding/domains
 //
 // Create an NLU Domain.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingDomains(body Nludomain) (*Nludomain, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1969,7 +1917,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomains(body Nludomai
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomains")
 	}
 
@@ -2031,8 +1979,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomains(body Nludomai
 // PostLanguageunderstandingMinerDrafts invokes POST /api/v2/languageunderstanding/miners/{minerId}/drafts
 //
 // Create a new draft resource.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId string, body Draft) (*Draft, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2045,12 +1991,12 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId s
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->PostLanguageunderstandingMinerDrafts")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingMinerDrafts")
 	}
 
@@ -2112,8 +2058,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId s
 // PostLanguageunderstandingMinerExecute invokes POST /api/v2/languageunderstanding/miners/{minerId}/execute
 //
 // Start the mining process. Specify date range pair with mediaType, queueIds, participantType for mining data from Genesys Cloud. Specify only uploadKey for mining through an external file.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId string, body Minerexecuterequest) (*Miner, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2126,7 +2070,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId 
 
 	// verify the required parameter 'minerId' is set
 	if &minerId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->PostLanguageunderstandingMinerExecute")
 	}
 
@@ -2188,8 +2132,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId 
 // PostLanguageunderstandingMiners invokes POST /api/v2/languageunderstanding/miners
 //
 // Create a unique miner.
-//
-// 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingMiners(body Miner) (*Miner, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2201,7 +2143,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMiners(body Miner) (*
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingMiners")
 	}
 
@@ -2263,8 +2205,6 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMiners(body Miner) (*
 // PutLanguageunderstandingDomainVersion invokes PUT /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}
 //
 // Update an NLU Domain Version.
-//
-// 
 func (a LanguageUnderstandingApi) PutLanguageunderstandingDomainVersion(domainId string, domainVersionId string, body Nludomainversion) (*Nludomainversion, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2278,17 +2218,17 @@ func (a LanguageUnderstandingApi) PutLanguageunderstandingDomainVersion(domainId
 
 	// verify the required parameter 'domainId' is set
 	if &domainId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PutLanguageunderstandingDomainVersion")
 	}
 	// verify the required parameter 'domainVersionId' is set
 	if &domainVersionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->PutLanguageunderstandingDomainVersion")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PutLanguageunderstandingDomainVersion")
 	}
 

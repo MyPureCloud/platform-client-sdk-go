@@ -53,11 +53,11 @@ func (o *Screenrecordingmetadatarequest) UnmarshalJSON(b []byte) error {
 	if ParticipantJid, ok := ScreenrecordingmetadatarequestMap["participantJid"].(string); ok {
 		o.ParticipantJid = &ParticipantJid
 	}
-	
+    
 	if RoomId, ok := ScreenrecordingmetadatarequestMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if MetaData, ok := ScreenrecordingmetadatarequestMap["metaData"].([]interface{}); ok {
 		MetaDataString, _ := json.Marshal(MetaData)
 		json.Unmarshal(MetaDataString, &o.MetaData)

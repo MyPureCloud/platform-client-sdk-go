@@ -102,11 +102,11 @@ func (o *Programjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := ProgramjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := ProgramjobMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Programs, ok := ProgramjobMap["programs"].([]interface{}); ok {
 		ProgramsString, _ := json.Marshal(Programs)
 		json.Unmarshal(ProgramsString, &o.Programs)
@@ -130,7 +130,7 @@ func (o *Programjob) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ProgramjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

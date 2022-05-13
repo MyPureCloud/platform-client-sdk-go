@@ -78,7 +78,7 @@ func (o *Timeoffrequestnotification) UnmarshalJSON(b []byte) error {
 	if TimeOffRequestId, ok := TimeoffrequestnotificationMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
-	
+    
 	if User, ok := TimeoffrequestnotificationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -87,11 +87,11 @@ func (o *Timeoffrequestnotification) UnmarshalJSON(b []byte) error {
 	if IsFullDayRequest, ok := TimeoffrequestnotificationMap["isFullDayRequest"].(bool); ok {
 		o.IsFullDayRequest = &IsFullDayRequest
 	}
-	
+    
 	if Status, ok := TimeoffrequestnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if PartialDayStartDateTimes, ok := TimeoffrequestnotificationMap["partialDayStartDateTimes"].([]interface{}); ok {
 		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
 		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)

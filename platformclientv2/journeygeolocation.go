@@ -109,43 +109,43 @@ func (o *Journeygeolocation) UnmarshalJSON(b []byte) error {
 	if Country, ok := JourneygeolocationMap["country"].(string); ok {
 		o.Country = &Country
 	}
-	
+    
 	if CountryName, ok := JourneygeolocationMap["countryName"].(string); ok {
 		o.CountryName = &CountryName
 	}
-	
+    
 	if Latitude, ok := JourneygeolocationMap["latitude"].(float64); ok {
 		o.Latitude = &Latitude
 	}
-	
+    
 	if Longitude, ok := JourneygeolocationMap["longitude"].(float64); ok {
 		o.Longitude = &Longitude
 	}
-	
+    
 	if Locality, ok := JourneygeolocationMap["locality"].(string); ok {
 		o.Locality = &Locality
 	}
-	
+    
 	if PostalCode, ok := JourneygeolocationMap["postalCode"].(string); ok {
 		o.PostalCode = &PostalCode
 	}
-	
+    
 	if Region, ok := JourneygeolocationMap["region"].(string); ok {
 		o.Region = &Region
 	}
-	
+    
 	if RegionName, ok := JourneygeolocationMap["regionName"].(string); ok {
 		o.RegionName = &RegionName
 	}
-	
+    
 	if Source, ok := JourneygeolocationMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 	if Timezone, ok := JourneygeolocationMap["timezone"].(string); ok {
 		o.Timezone = &Timezone
 	}
-	
+    
 
 	return nil
 }

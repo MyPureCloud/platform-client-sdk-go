@@ -94,11 +94,11 @@ func (o *Library) UnmarshalJSON(b []byte) error {
 	if Id, ok := LibraryMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LibraryMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := LibraryMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -117,11 +117,11 @@ func (o *Library) UnmarshalJSON(b []byte) error {
 	if ResponseType, ok := LibraryMap["responseType"].(string); ok {
 		o.ResponseType = &ResponseType
 	}
-	
+    
 	if SelfUri, ok := LibraryMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

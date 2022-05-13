@@ -37,7 +37,7 @@ func (o *Writableentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := WritableentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

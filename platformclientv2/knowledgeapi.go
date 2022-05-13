@@ -32,8 +32,6 @@ func NewKnowledgeApiWithConfig(config *Configuration) *KnowledgeApi {
 // DeleteKnowledgeKnowledgebase invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}
 //
 // Delete knowledge base
-//
-// 
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebase(knowledgeBaseId string) (*Knowledgebase, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -46,7 +44,7 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebase(knowledgeBaseId string) (*Kno
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebase")
 	}
 
@@ -105,8 +103,6 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebase(knowledgeBaseId string) (*Kno
 // DeleteKnowledgeKnowledgebaseLanguageCategory invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}
 //
 // Delete category
-//
-// 
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId string, knowledgeBaseId string, languageCode string) (*Knowledgecategory, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -121,17 +117,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId st
 
 	// verify the required parameter 'categoryId' is set
 	if &categoryId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'categoryId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageCategory")
 	}
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageCategory")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageCategory")
 	}
 
@@ -190,8 +186,6 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId st
 // DeleteKnowledgeKnowledgebaseLanguageDocument invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}
 //
 // Delete document
-//
-// 
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId string, knowledgeBaseId string, languageCode string) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -206,17 +200,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId st
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocument")
 	}
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocument")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocument")
 	}
 
@@ -275,8 +269,6 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId st
 // DeleteKnowledgeKnowledgebaseLanguageDocumentsImport invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
 //
 // Delete import operation
-//
-// 
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -290,17 +282,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowle
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 	// verify the required parameter 'importId' is set
 	if &importId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'importId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 
@@ -353,8 +345,6 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowle
 // GetKnowledgeKnowledgebase invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}
 //
 // Get knowledge base
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebase(knowledgeBaseId string) (*Knowledgebase, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -367,7 +357,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebase(knowledgeBaseId string) (*Knowle
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebase")
 	}
 
@@ -426,8 +416,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebase(knowledgeBaseId string) (*Knowle
 // GetKnowledgeKnowledgebaseLanguageCategories invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories
 //
 // Get categories
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, name string) (*Categorylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -441,12 +429,12 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageCategories")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageCategories")
 	}
 
@@ -515,8 +503,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 // GetKnowledgeKnowledgebaseLanguageCategory invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}
 //
 // Get category
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId string, knowledgeBaseId string, languageCode string) (*Knowledgeextendedcategory, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -531,17 +517,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId strin
 
 	// verify the required parameter 'categoryId' is set
 	if &categoryId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'categoryId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageCategory")
 	}
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageCategory")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageCategory")
 	}
 
@@ -600,8 +586,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId strin
 // GetKnowledgeKnowledgebaseLanguageDocument invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}
 //
 // Get document
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId string, knowledgeBaseId string, languageCode string) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -616,17 +600,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocument")
 	}
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocument")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocument")
 	}
 
@@ -685,8 +669,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 // GetKnowledgeKnowledgebaseLanguageDocuments invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents
 //
 // Get documents
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, categories string, title string, sortBy string, sortOrder string, documentIds []string) (*Documentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -700,12 +682,12 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocuments")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocuments")
 	}
 
@@ -782,8 +764,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 // GetKnowledgeKnowledgebaseLanguageDocumentsImport invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
 //
 // Get import operation report
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string) (*Knowledgeimport, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -798,17 +778,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledge
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 	// verify the required parameter 'importId' is set
 	if &importId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'importId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 
@@ -867,8 +847,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledge
 // GetKnowledgeKnowledgebaseLanguageTraining invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings/{trainingId}
 //
 // Get training detail
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId string, languageCode string, trainingId string) (*Knowledgetraining, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -883,17 +861,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId 
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageTraining")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageTraining")
 	}
 	// verify the required parameter 'trainingId' is set
 	if &trainingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trainingId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageTraining")
 	}
 
@@ -952,8 +930,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId 
 // GetKnowledgeKnowledgebaseLanguageTrainings invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings
 //
 // Get all trainings information for a knowledgebase
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, knowledgeDocumentsState string) (*Traininglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -967,12 +943,12 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageTrainings")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageTrainings")
 	}
 
@@ -1041,8 +1017,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 // GetKnowledgeKnowledgebases invokes GET /api/v2/knowledge/knowledgebases
 //
 // Get knowledge bases
-//
-// 
 func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, limit string, pageSize string, name string, coreLanguage string, published bool, sortBy string, sortOrder string) (*Knowledgebaselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1126,8 +1100,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 // PatchKnowledgeKnowledgebase invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}
 //
 // Update knowledge base
-//
-// 
 func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body Knowledgebase) (*Knowledgebase, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1140,12 +1112,12 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body K
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PatchKnowledgeKnowledgebase")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PatchKnowledgeKnowledgebase")
 	}
 
@@ -1207,8 +1179,6 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body K
 // PatchKnowledgeKnowledgebaseLanguageCategory invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}
 //
 // Update category
-//
-// 
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId string, knowledgeBaseId string, languageCode string, body Knowledgecategoryrequest) (*Knowledgeextendedcategory, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1223,22 +1193,22 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId str
 
 	// verify the required parameter 'categoryId' is set
 	if &categoryId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'categoryId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageCategory")
 	}
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageCategory")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageCategory")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageCategory")
 	}
 
@@ -1300,8 +1270,6 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId str
 // PatchKnowledgeKnowledgebaseLanguageDocument invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}
 //
 // Update document
-//
-// 
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId string, knowledgeBaseId string, languageCode string, body Knowledgedocumentrequest) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1316,22 +1284,22 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId str
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocument")
 	}
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocument")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocument")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocument")
 	}
 
@@ -1393,8 +1361,6 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId str
 // PatchKnowledgeKnowledgebaseLanguageDocuments invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents
 //
 // Update documents collection
-//
-// 
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, body []Knowledgedocumentbulkrequest) (*Documentlisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1408,12 +1374,12 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBase
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocuments")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocuments")
 	}
 	// verify the required parameter 'body' is set
@@ -1480,8 +1446,6 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBase
 // PatchKnowledgeKnowledgebaseLanguageDocumentsImport invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
 //
 // Start import operation
-//
-// 
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string, body Importstatusrequest) (*Knowledgeimport, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1496,22 +1460,22 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowled
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 	// verify the required parameter 'importId' is set
 	if &importId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'importId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
 	}
 
@@ -1573,8 +1537,6 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowled
 // PostKnowledgeDocumentuploads invokes POST /api/v2/knowledge/documentuploads
 //
 // Creates a presigned URL for uploading a knowledge import file with a set of documents
-//
-// 
 func (a KnowledgeApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1586,7 +1548,7 @@ func (a KnowledgeApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uplo
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeDocumentuploads")
 	}
 
@@ -1648,8 +1610,6 @@ func (a KnowledgeApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uplo
 // PostKnowledgeKnowledgebaseLanguageCategories invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories
 //
 // Create new category
-//
-// 
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseId string, languageCode string, body Knowledgecategoryrequest) (*Knowledgeextendedcategory, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1663,17 +1623,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBase
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageCategories")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageCategories")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageCategories")
 	}
 
@@ -1735,8 +1695,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBase
 // PostKnowledgeKnowledgebaseLanguageDocuments invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents
 //
 // Create document
-//
-// 
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, body Knowledgedocumentrequest) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1750,17 +1708,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseI
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocuments")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocuments")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocuments")
 	}
 
@@ -1822,8 +1780,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseI
 // PostKnowledgeKnowledgebaseLanguageDocumentsImports invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports
 //
 // Create import operation
-//
-// 
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowledgeBaseId string, languageCode string, body Knowledgeimport) (*Knowledgeimport, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1837,17 +1793,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowled
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocumentsImports")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocumentsImports")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocumentsImports")
 	}
 
@@ -1909,8 +1865,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowled
 // PostKnowledgeKnowledgebaseLanguageTrainingPromote invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings/{trainingId}/promote
 //
 // Promote trained documents from draft state to active.
-//
-// 
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledgeBaseId string, languageCode string, trainingId string) (*Knowledgetraining, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1925,17 +1879,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledg
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageTrainingPromote")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageTrainingPromote")
 	}
 	// verify the required parameter 'trainingId' is set
 	if &trainingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trainingId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageTrainingPromote")
 	}
 
@@ -1994,8 +1948,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledg
 // PostKnowledgeKnowledgebaseLanguageTrainings invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings
 //
 // Trigger training
-//
-// 
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId string, languageCode string) (*Knowledgetraining, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2009,12 +1961,12 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseI
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageTrainings")
 	}
 	// verify the required parameter 'languageCode' is set
 	if &languageCode == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageTrainings")
 	}
 
@@ -2073,8 +2025,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseI
 // PostKnowledgeKnowledgebaseSearch invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/search
 //
 // Search Documents
-//
-// 
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, body Knowledgesearchrequest) (*Knowledgesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2087,7 +2037,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, b
 
 	// verify the required parameter 'knowledgeBaseId' is set
 	if &knowledgeBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseSearch")
 	}
 
@@ -2149,8 +2099,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, b
 // PostKnowledgeKnowledgebases invokes POST /api/v2/knowledge/knowledgebases
 //
 // Create new knowledge base
-//
-// 
 func (a KnowledgeApi) PostKnowledgeKnowledgebases(body Knowledgebase) (*Knowledgebase, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2162,7 +2110,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebases(body Knowledgebase) (*Knowledg
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeKnowledgebases")
 	}
 

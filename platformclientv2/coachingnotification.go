@@ -126,23 +126,23 @@ func (o *Coachingnotification) UnmarshalJSON(b []byte) error {
 	if Id, ok := CoachingnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CoachingnotificationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if MarkedAsRead, ok := CoachingnotificationMap["markedAsRead"].(bool); ok {
 		o.MarkedAsRead = &MarkedAsRead
 	}
-	
+    
 	if ActionType, ok := CoachingnotificationMap["actionType"].(string); ok {
 		o.ActionType = &ActionType
 	}
-	
+    
 	if Relationship, ok := CoachingnotificationMap["relationship"].(string); ok {
 		o.Relationship = &Relationship
 	}
-	
+    
 	if dateStartString, ok := CoachingnotificationMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart
@@ -156,7 +156,7 @@ func (o *Coachingnotification) UnmarshalJSON(b []byte) error {
 	if Status, ok := CoachingnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if User, ok := CoachingnotificationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -170,7 +170,7 @@ func (o *Coachingnotification) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CoachingnotificationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

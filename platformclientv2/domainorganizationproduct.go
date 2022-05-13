@@ -37,7 +37,7 @@ func (o *Domainorganizationproduct) UnmarshalJSON(b []byte) error {
 	if Id, ok := DomainorganizationproductMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

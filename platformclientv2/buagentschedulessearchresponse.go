@@ -58,7 +58,7 @@ func (o *Buagentschedulessearchresponse) UnmarshalJSON(b []byte) error {
 	if BusinessUnitTimeZone, ok := BuagentschedulessearchresponseMap["businessUnitTimeZone"].(string); ok {
 		o.BusinessUnitTimeZone = &BusinessUnitTimeZone
 	}
-	
+    
 	if PublishedSchedules, ok := BuagentschedulessearchresponseMap["publishedSchedules"].([]interface{}); ok {
 		PublishedSchedulesString, _ := json.Marshal(PublishedSchedules)
 		json.Unmarshal(PublishedSchedulesString, &o.PublishedSchedules)

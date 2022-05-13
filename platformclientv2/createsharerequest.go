@@ -69,7 +69,7 @@ func (o *Createsharerequest) UnmarshalJSON(b []byte) error {
 	if SharedEntityType, ok := CreatesharerequestMap["sharedEntityType"].(string); ok {
 		o.SharedEntityType = &SharedEntityType
 	}
-	
+    
 	if SharedEntity, ok := CreatesharerequestMap["sharedEntity"].(map[string]interface{}); ok {
 		SharedEntityString, _ := json.Marshal(SharedEntity)
 		json.Unmarshal(SharedEntityString, &o.SharedEntity)
@@ -78,7 +78,7 @@ func (o *Createsharerequest) UnmarshalJSON(b []byte) error {
 	if MemberType, ok := CreatesharerequestMap["memberType"].(string); ok {
 		o.MemberType = &MemberType
 	}
-	
+    
 	if Member, ok := CreatesharerequestMap["member"].(map[string]interface{}); ok {
 		MemberString, _ := json.Marshal(Member)
 		json.Unmarshal(MemberString, &o.Member)

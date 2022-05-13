@@ -45,11 +45,11 @@ func (o *Contentmanagementsingledocumenttopicuserdata) UnmarshalJSON(b []byte) e
 	if Id, ok := ContentmanagementsingledocumenttopicuserdataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ContentmanagementsingledocumenttopicuserdataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

@@ -50,7 +50,7 @@ func (o *Buagentschedulesqueryresponse) UnmarshalJSON(b []byte) error {
 	if BusinessUnitTimeZone, ok := BuagentschedulesqueryresponseMap["businessUnitTimeZone"].(string); ok {
 		o.BusinessUnitTimeZone = &BusinessUnitTimeZone
 	}
-	
+    
 
 	return nil
 }

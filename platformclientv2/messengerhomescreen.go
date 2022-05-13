@@ -37,7 +37,7 @@ func (o *Messengerhomescreen) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := MessengerhomescreenMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

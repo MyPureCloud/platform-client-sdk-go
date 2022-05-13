@@ -85,7 +85,7 @@ func (o *Webmessagingcontent) UnmarshalJSON(b []byte) error {
 	if ContentType, ok := WebmessagingcontentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Attachment, ok := WebmessagingcontentMap["attachment"].(map[string]interface{}); ok {
 		AttachmentString, _ := json.Marshal(Attachment)
 		json.Unmarshal(AttachmentString, &o.Attachment)

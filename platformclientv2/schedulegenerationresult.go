@@ -69,11 +69,11 @@ func (o *Schedulegenerationresult) UnmarshalJSON(b []byte) error {
 	if Failed, ok := SchedulegenerationresultMap["failed"].(bool); ok {
 		o.Failed = &Failed
 	}
-	
+    
 	if RunId, ok := SchedulegenerationresultMap["runId"].(string); ok {
 		o.RunId = &RunId
 	}
-	
+    
 	if MessageCount, ok := SchedulegenerationresultMap["messageCount"].(float64); ok {
 		MessageCountInt := int(MessageCount)
 		o.MessageCount = &MessageCountInt

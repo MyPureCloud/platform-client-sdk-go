@@ -53,15 +53,15 @@ func (o *Wfmbuschedulequeryresulttopicbuschedulesearchresultnotification) Unmars
 	if OperationId, ok := WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if BusinessUnitId, ok := WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap["businessUnitId"].(string); ok {
 		o.BusinessUnitId = &BusinessUnitId
 	}
-	
+    
 	if DownloadUrl, ok := WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 
 	return nil
 }

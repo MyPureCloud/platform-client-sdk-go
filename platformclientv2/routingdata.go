@@ -85,11 +85,11 @@ func (o *Routingdata) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := RoutingdataMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if LanguageId, ok := RoutingdataMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}
-	
+    
 	if Priority, ok := RoutingdataMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt

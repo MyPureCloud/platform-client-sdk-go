@@ -63,7 +63,7 @@ func (o *Campaignruleactionentities) UnmarshalJSON(b []byte) error {
 	if UseTriggeringEntity, ok := CampaignruleactionentitiesMap["useTriggeringEntity"].(bool); ok {
 		o.UseTriggeringEntity = &UseTriggeringEntity
 	}
-	
+    
 
 	return nil
 }

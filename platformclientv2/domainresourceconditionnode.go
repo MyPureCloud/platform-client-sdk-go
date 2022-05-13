@@ -69,11 +69,11 @@ func (o *Domainresourceconditionnode) UnmarshalJSON(b []byte) error {
 	if VariableName, ok := DomainresourceconditionnodeMap["variableName"].(string); ok {
 		o.VariableName = &VariableName
 	}
-	
+    
 	if Operator, ok := DomainresourceconditionnodeMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Operands, ok := DomainresourceconditionnodeMap["operands"].([]interface{}); ok {
 		OperandsString, _ := json.Marshal(Operands)
 		json.Unmarshal(OperandsString, &o.Operands)
@@ -82,7 +82,7 @@ func (o *Domainresourceconditionnode) UnmarshalJSON(b []byte) error {
 	if Conjunction, ok := DomainresourceconditionnodeMap["conjunction"].(string); ok {
 		o.Conjunction = &Conjunction
 	}
-	
+    
 	if Terms, ok := DomainresourceconditionnodeMap["terms"].([]interface{}); ok {
 		TermsString, _ := json.Marshal(Terms)
 		json.Unmarshal(TermsString, &o.Terms)

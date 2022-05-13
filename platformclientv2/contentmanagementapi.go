@@ -32,8 +32,6 @@ func NewContentManagementApiWithConfig(config *Configuration) *ContentManagement
 // DeleteContentmanagementDocument invokes DELETE /api/v2/contentmanagement/documents/{documentId}
 //
 // Delete a document.
-//
-// 
 func (a ContentManagementApi) DeleteContentmanagementDocument(documentId string, override bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a ContentManagementApi) DeleteContentmanagementDocument(documentId string,
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'documentId' when calling ContentManagementApi->DeleteContentmanagementDocument")
 	}
 
@@ -113,7 +111,7 @@ func (a ContentManagementApi) DeleteContentmanagementShare(shareId string) (*API
 
 	// verify the required parameter 'shareId' is set
 	if &shareId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'shareId' when calling ContentManagementApi->DeleteContentmanagementShare")
 	}
 
@@ -166,8 +164,6 @@ func (a ContentManagementApi) DeleteContentmanagementShare(shareId string) (*API
 // DeleteContentmanagementStatusStatusId invokes DELETE /api/v2/contentmanagement/status/{statusId}
 //
 // Cancel the command for this status
-//
-// 
 func (a ContentManagementApi) DeleteContentmanagementStatusStatusId(statusId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -179,7 +175,7 @@ func (a ContentManagementApi) DeleteContentmanagementStatusStatusId(statusId str
 
 	// verify the required parameter 'statusId' is set
 	if &statusId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'statusId' when calling ContentManagementApi->DeleteContentmanagementStatusStatusId")
 	}
 
@@ -232,8 +228,6 @@ func (a ContentManagementApi) DeleteContentmanagementStatusStatusId(statusId str
 // DeleteContentmanagementWorkspace invokes DELETE /api/v2/contentmanagement/workspaces/{workspaceId}
 //
 // Delete a workspace
-//
-// 
 func (a ContentManagementApi) DeleteContentmanagementWorkspace(workspaceId string, moveChildrenToWorkspaceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -245,7 +239,7 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspace(workspaceId strin
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->DeleteContentmanagementWorkspace")
 	}
 
@@ -300,8 +294,6 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspace(workspaceId strin
 // DeleteContentmanagementWorkspaceMember invokes DELETE /api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}
 //
 // Delete a member from a workspace
-//
-// 
 func (a ContentManagementApi) DeleteContentmanagementWorkspaceMember(workspaceId string, memberId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -314,12 +306,12 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspaceMember(workspaceId
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->DeleteContentmanagementWorkspaceMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'memberId' when calling ContentManagementApi->DeleteContentmanagementWorkspaceMember")
 	}
 
@@ -386,12 +378,12 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspaceTagvalue(workspace
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->DeleteContentmanagementWorkspaceTagvalue")
 	}
 	// verify the required parameter 'tagId' is set
 	if &tagId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'tagId' when calling ContentManagementApi->DeleteContentmanagementWorkspaceTagvalue")
 	}
 
@@ -444,8 +436,6 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspaceTagvalue(workspace
 // GetContentmanagementDocument invokes GET /api/v2/contentmanagement/documents/{documentId}
 //
 // Get a document.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementDocument(documentId string, expand []string) (*Document, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -458,7 +448,7 @@ func (a ContentManagementApi) GetContentmanagementDocument(documentId string, ex
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling ContentManagementApi->GetContentmanagementDocument")
 	}
 
@@ -519,8 +509,6 @@ func (a ContentManagementApi) GetContentmanagementDocument(documentId string, ex
 // GetContentmanagementDocumentAudits invokes GET /api/v2/contentmanagement/documents/{documentId}/audits
 //
 // Get a list of audits for a document.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId string, pageSize int, pageNumber int, transactionFilter string, level string, sortBy string, sortOrder string) (*Documentauditentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -533,7 +521,7 @@ func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId stri
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling ContentManagementApi->GetContentmanagementDocumentAudits")
 	}
 
@@ -604,8 +592,6 @@ func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId stri
 // GetContentmanagementDocumentContent invokes GET /api/v2/contentmanagement/documents/{documentId}/content
 //
 // Download a document.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId string, disposition string, contentType string) (*Downloadresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -618,7 +604,7 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling ContentManagementApi->GetContentmanagementDocumentContent")
 	}
 
@@ -681,8 +667,6 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 // GetContentmanagementDocuments invokes GET /api/v2/contentmanagement/documents
 //
 // Get a list of documents.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, name string, expand []string, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Documententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -694,7 +678,7 @@ func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, 
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->GetContentmanagementDocuments")
 	}
 
@@ -767,8 +751,6 @@ func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, 
 // GetContentmanagementQuery invokes GET /api/v2/contentmanagement/query
 //
 // Query content
-//
-// 
 func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, pageSize int, pageNumber int, sortBy string, sortOrder string, expand []string) (*Queryresults, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -780,7 +762,7 @@ func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, page
 
 	// verify the required parameter 'queryPhrase' is set
 	if &queryPhrase == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'queryPhrase' when calling ContentManagementApi->GetContentmanagementQuery")
 	}
 
@@ -851,8 +833,6 @@ func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, page
 // GetContentmanagementSecurityprofile invokes GET /api/v2/contentmanagement/securityprofiles/{securityProfileId}
 //
 // Get a Security Profile
-//
-// 
 func (a ContentManagementApi) GetContentmanagementSecurityprofile(securityProfileId string) (*Securityprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -865,7 +845,7 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofile(securityProfil
 
 	// verify the required parameter 'securityProfileId' is set
 	if &securityProfileId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'securityProfileId' when calling ContentManagementApi->GetContentmanagementSecurityprofile")
 	}
 
@@ -924,8 +904,6 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofile(securityProfil
 // GetContentmanagementSecurityprofiles invokes GET /api/v2/contentmanagement/securityprofiles
 //
 // Get a List of Security Profiles
-//
-// 
 func (a ContentManagementApi) GetContentmanagementSecurityprofiles() (*Securityprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -991,8 +969,6 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofiles() (*Securityp
 // GetContentmanagementShare invokes GET /api/v2/contentmanagement/shares/{shareId}
 //
 // Retrieve details about an existing share.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementShare(shareId string, expand []string) (*Share, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1005,7 +981,7 @@ func (a ContentManagementApi) GetContentmanagementShare(shareId string, expand [
 
 	// verify the required parameter 'shareId' is set
 	if &shareId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'shareId' when calling ContentManagementApi->GetContentmanagementShare")
 	}
 
@@ -1080,7 +1056,7 @@ func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string
 
 	// verify the required parameter 'sharedId' is set
 	if &sharedId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sharedId' when calling ContentManagementApi->GetContentmanagementSharedSharedId")
 	}
 
@@ -1222,8 +1198,6 @@ func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand
 // GetContentmanagementStatus invokes GET /api/v2/contentmanagement/status
 //
 // Get a list of statuses for pending operations
-//
-// 
 func (a ContentManagementApi) GetContentmanagementStatus(pageSize int, pageNumber int) (*Commandstatusentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1293,8 +1267,6 @@ func (a ContentManagementApi) GetContentmanagementStatus(pageSize int, pageNumbe
 // GetContentmanagementStatusStatusId invokes GET /api/v2/contentmanagement/status/{statusId}
 //
 // Get a status.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementStatusStatusId(statusId string) (*Commandstatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1307,7 +1279,7 @@ func (a ContentManagementApi) GetContentmanagementStatusStatusId(statusId string
 
 	// verify the required parameter 'statusId' is set
 	if &statusId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'statusId' when calling ContentManagementApi->GetContentmanagementStatusStatusId")
 	}
 
@@ -1366,8 +1338,6 @@ func (a ContentManagementApi) GetContentmanagementStatusStatusId(statusId string
 // GetContentmanagementUsage invokes GET /api/v2/contentmanagement/usage
 //
 // Get usage details.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementUsage() (*Usage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1433,8 +1403,6 @@ func (a ContentManagementApi) GetContentmanagementUsage() (*Usage, *APIResponse,
 // GetContentmanagementWorkspace invokes GET /api/v2/contentmanagement/workspaces/{workspaceId}
 //
 // Get a workspace.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementWorkspace(workspaceId string, expand []string) (*Workspace, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1447,7 +1415,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspace(workspaceId string, 
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->GetContentmanagementWorkspace")
 	}
 
@@ -1508,8 +1476,6 @@ func (a ContentManagementApi) GetContentmanagementWorkspace(workspaceId string, 
 // GetContentmanagementWorkspaceDocuments invokes GET /api/v2/contentmanagement/workspaces/{workspaceId}/documents
 //
 // Get a list of documents.
-//
-// 
 func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId string, expand []string, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Documententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1522,7 +1488,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->GetContentmanagementWorkspaceDocuments")
 	}
 
@@ -1591,8 +1557,6 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId
 // GetContentmanagementWorkspaceMember invokes GET /api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}
 //
 // Get a workspace member
-//
-// 
 func (a ContentManagementApi) GetContentmanagementWorkspaceMember(workspaceId string, memberId string, expand []string) (*Workspacemember, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1606,12 +1570,12 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMember(workspaceId st
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->GetContentmanagementWorkspaceMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling ContentManagementApi->GetContentmanagementWorkspaceMember")
 	}
 
@@ -1672,8 +1636,6 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMember(workspaceId st
 // GetContentmanagementWorkspaceMembers invokes GET /api/v2/contentmanagement/workspaces/{workspaceId}/members
 //
 // Get a list workspace members
-//
-// 
 func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId string, pageSize int, pageNumber int, expand []string) (*Workspacememberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1686,7 +1648,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId s
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->GetContentmanagementWorkspaceMembers")
 	}
 
@@ -1751,8 +1713,6 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId s
 // GetContentmanagementWorkspaceTagvalue invokes GET /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}
 //
 // Get a workspace tag
-//
-// 
 func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalue(workspaceId string, tagId string, expand []string) (*Tagvalue, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1766,12 +1726,12 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalue(workspaceId 
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->GetContentmanagementWorkspaceTagvalue")
 	}
 	// verify the required parameter 'tagId' is set
 	if &tagId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'tagId' when calling ContentManagementApi->GetContentmanagementWorkspaceTagvalue")
 	}
 
@@ -1832,8 +1792,6 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalue(workspaceId 
 // GetContentmanagementWorkspaceTagvalues invokes GET /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues
 //
 // Get a list of workspace tags
-//
-// 
 func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId string, value string, pageSize int, pageNumber int, expand []string) (*Tagvalueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1846,7 +1804,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->GetContentmanagementWorkspaceTagvalues")
 	}
 
@@ -1988,8 +1946,6 @@ func (a ContentManagementApi) GetContentmanagementWorkspaces(pageSize int, pageN
 // PostContentmanagementAuditquery invokes POST /api/v2/contentmanagement/auditquery
 //
 // Query audits
-//
-// 
 func (a ContentManagementApi) PostContentmanagementAuditquery(body Contentqueryrequest) (*Queryresults, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2001,7 +1957,7 @@ func (a ContentManagementApi) PostContentmanagementAuditquery(body Contentqueryr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementAuditquery")
 	}
 
@@ -2063,8 +2019,6 @@ func (a ContentManagementApi) PostContentmanagementAuditquery(body Contentqueryr
 // PostContentmanagementDocument invokes POST /api/v2/contentmanagement/documents/{documentId}
 //
 // Update a document.
-//
-// 
 func (a ContentManagementApi) PostContentmanagementDocument(documentId string, body Documentupdate, expand string, override bool) (*Document, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2077,12 +2031,12 @@ func (a ContentManagementApi) PostContentmanagementDocument(documentId string, b
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling ContentManagementApi->PostContentmanagementDocument")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementDocument")
 	}
 
@@ -2148,8 +2102,6 @@ func (a ContentManagementApi) PostContentmanagementDocument(documentId string, b
 // PostContentmanagementDocumentContent invokes POST /api/v2/contentmanagement/documents/{documentId}/content
 //
 // Replace the contents of a document.
-//
-// 
 func (a ContentManagementApi) PostContentmanagementDocumentContent(documentId string, body Replacerequest, override bool) (*Replaceresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2162,12 +2114,12 @@ func (a ContentManagementApi) PostContentmanagementDocumentContent(documentId st
 
 	// verify the required parameter 'documentId' is set
 	if &documentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'documentId' when calling ContentManagementApi->PostContentmanagementDocumentContent")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementDocumentContent")
 	}
 
@@ -2231,8 +2183,6 @@ func (a ContentManagementApi) PostContentmanagementDocumentContent(documentId st
 // PostContentmanagementDocuments invokes POST /api/v2/contentmanagement/documents
 //
 // Add a document.
-//
-// 
 func (a ContentManagementApi) PostContentmanagementDocuments(body Documentupload, copySource string, moveSource string, override bool) (*Document, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2244,7 +2194,7 @@ func (a ContentManagementApi) PostContentmanagementDocuments(body Documentupload
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementDocuments")
 	}
 
@@ -2312,8 +2262,6 @@ func (a ContentManagementApi) PostContentmanagementDocuments(body Documentupload
 // PostContentmanagementQuery invokes POST /api/v2/contentmanagement/query
 //
 // Query content
-//
-// 
 func (a ContentManagementApi) PostContentmanagementQuery(body Queryrequest, expand string) (*Queryresults, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2325,7 +2273,7 @@ func (a ContentManagementApi) PostContentmanagementQuery(body Queryrequest, expa
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementQuery")
 	}
 
@@ -2389,8 +2337,6 @@ func (a ContentManagementApi) PostContentmanagementQuery(body Queryrequest, expa
 // PostContentmanagementShares invokes POST /api/v2/contentmanagement/shares
 //
 // Creates a new share or updates an existing share if the entity has already been shared
-//
-// 
 func (a ContentManagementApi) PostContentmanagementShares(body Createsharerequest) (*Createshareresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2402,7 +2348,7 @@ func (a ContentManagementApi) PostContentmanagementShares(body Createsharereques
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementShares")
 	}
 
@@ -2464,8 +2410,6 @@ func (a ContentManagementApi) PostContentmanagementShares(body Createsharereques
 // PostContentmanagementWorkspaceTagvalues invokes POST /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues
 //
 // Create a workspace tag
-//
-// 
 func (a ContentManagementApi) PostContentmanagementWorkspaceTagvalues(workspaceId string, body Tagvalue) (*Tagvalue, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2478,12 +2422,12 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvalues(workspaceI
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->PostContentmanagementWorkspaceTagvalues")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementWorkspaceTagvalues")
 	}
 
@@ -2545,8 +2489,6 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvalues(workspaceI
 // PostContentmanagementWorkspaceTagvaluesQuery invokes POST /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/query
 //
 // Perform a prefix query on tags in the workspace
-//
-// 
 func (a ContentManagementApi) PostContentmanagementWorkspaceTagvaluesQuery(workspaceId string, body Tagqueryrequest, expand []string) (*Tagvalueentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2559,12 +2501,12 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvaluesQuery(works
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->PostContentmanagementWorkspaceTagvaluesQuery")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementWorkspaceTagvaluesQuery")
 	}
 
@@ -2628,8 +2570,6 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvaluesQuery(works
 // PostContentmanagementWorkspaces invokes POST /api/v2/contentmanagement/workspaces
 //
 // Create a group workspace
-//
-// 
 func (a ContentManagementApi) PostContentmanagementWorkspaces(body Workspacecreate) (*Workspace, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2641,7 +2581,7 @@ func (a ContentManagementApi) PostContentmanagementWorkspaces(body Workspacecrea
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PostContentmanagementWorkspaces")
 	}
 
@@ -2703,8 +2643,6 @@ func (a ContentManagementApi) PostContentmanagementWorkspaces(body Workspacecrea
 // PutContentmanagementWorkspace invokes PUT /api/v2/contentmanagement/workspaces/{workspaceId}
 //
 // Update a workspace
-//
-// 
 func (a ContentManagementApi) PutContentmanagementWorkspace(workspaceId string, body Workspace) (*Workspace, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2717,12 +2655,12 @@ func (a ContentManagementApi) PutContentmanagementWorkspace(workspaceId string, 
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->PutContentmanagementWorkspace")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PutContentmanagementWorkspace")
 	}
 
@@ -2784,8 +2722,6 @@ func (a ContentManagementApi) PutContentmanagementWorkspace(workspaceId string, 
 // PutContentmanagementWorkspaceMember invokes PUT /api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}
 //
 // Add a member to a workspace
-//
-// 
 func (a ContentManagementApi) PutContentmanagementWorkspaceMember(workspaceId string, memberId string, body Workspacemember) (*Workspacemember, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2799,17 +2735,17 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceMember(workspaceId st
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->PutContentmanagementWorkspaceMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling ContentManagementApi->PutContentmanagementWorkspaceMember")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PutContentmanagementWorkspaceMember")
 	}
 
@@ -2871,8 +2807,6 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceMember(workspaceId st
 // PutContentmanagementWorkspaceTagvalue invokes PUT /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}
 //
 // Update a workspace tag. Will update all documents with the new tag value.
-//
-// 
 func (a ContentManagementApi) PutContentmanagementWorkspaceTagvalue(workspaceId string, tagId string, body Tagvalue) (*Tagvalue, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2886,17 +2820,17 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceTagvalue(workspaceId 
 
 	// verify the required parameter 'workspaceId' is set
 	if &workspaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workspaceId' when calling ContentManagementApi->PutContentmanagementWorkspaceTagvalue")
 	}
 	// verify the required parameter 'tagId' is set
 	if &tagId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'tagId' when calling ContentManagementApi->PutContentmanagementWorkspaceTagvalue")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ContentManagementApi->PutContentmanagementWorkspaceTagvalue")
 	}
 

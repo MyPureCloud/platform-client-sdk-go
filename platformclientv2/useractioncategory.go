@@ -53,15 +53,15 @@ func (o *Useractioncategory) UnmarshalJSON(b []byte) error {
 	if Id, ok := UseractioncategoryMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UseractioncategoryMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := UseractioncategoryMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -141,47 +141,47 @@ func (o *Interactionstatsrule) UnmarshalJSON(b []byte) error {
 	if Id, ok := InteractionstatsruleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := InteractionstatsruleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Dimension, ok := InteractionstatsruleMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if DimensionValue, ok := InteractionstatsruleMap["dimensionValue"].(string); ok {
 		o.DimensionValue = &DimensionValue
 	}
-	
+    
 	if Metric, ok := InteractionstatsruleMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if MediaType, ok := InteractionstatsruleMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if NumericRange, ok := InteractionstatsruleMap["numericRange"].(string); ok {
 		o.NumericRange = &NumericRange
 	}
-	
+    
 	if Statistic, ok := InteractionstatsruleMap["statistic"].(string); ok {
 		o.Statistic = &Statistic
 	}
-	
+    
 	if Value, ok := InteractionstatsruleMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Enabled, ok := InteractionstatsruleMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if InAlarm, ok := InteractionstatsruleMap["inAlarm"].(bool); ok {
 		o.InAlarm = &InAlarm
 	}
-	
+    
 	if NotificationUsers, ok := InteractionstatsruleMap["notificationUsers"].([]interface{}); ok {
 		NotificationUsersString, _ := json.Marshal(NotificationUsers)
 		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
@@ -195,7 +195,7 @@ func (o *Interactionstatsrule) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := InteractionstatsruleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

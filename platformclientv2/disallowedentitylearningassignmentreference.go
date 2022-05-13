@@ -45,7 +45,7 @@ func (o *Disallowedentitylearningassignmentreference) UnmarshalJSON(b []byte) er
 	if ErrorCode, ok := DisallowedentitylearningassignmentreferenceMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if Entity, ok := DisallowedentitylearningassignmentreferenceMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

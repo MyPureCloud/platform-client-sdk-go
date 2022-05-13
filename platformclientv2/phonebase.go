@@ -182,11 +182,11 @@ func (o *Phonebase) UnmarshalJSON(b []byte) error {
 	if Id, ok := PhonebaseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PhonebaseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := PhonebaseMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Phonebase) UnmarshalJSON(b []byte) error {
 	if Description, ok := PhonebaseMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := PhonebaseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,23 +214,23 @@ func (o *Phonebase) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := PhonebaseMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := PhonebaseMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := PhonebaseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := PhonebaseMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := PhonebaseMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if PhoneMetaBase, ok := PhonebaseMap["phoneMetaBase"].(map[string]interface{}); ok {
 		PhoneMetaBaseString, _ := json.Marshal(PhoneMetaBase)
 		json.Unmarshal(PhoneMetaBaseString, &o.PhoneMetaBase)
@@ -254,7 +254,7 @@ func (o *Phonebase) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PhonebaseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

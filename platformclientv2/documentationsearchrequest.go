@@ -77,11 +77,11 @@ func (o *Documentationsearchrequest) UnmarshalJSON(b []byte) error {
 	if SortOrder, ok := DocumentationsearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := DocumentationsearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := DocumentationsearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

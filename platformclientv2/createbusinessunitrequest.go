@@ -53,11 +53,11 @@ func (o *Createbusinessunitrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreatebusinessunitrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if DivisionId, ok := CreatebusinessunitrequestMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if Settings, ok := CreatebusinessunitrequestMap["settings"].(map[string]interface{}); ok {
 		SettingsString, _ := json.Marshal(Settings)
 		json.Unmarshal(SettingsString, &o.Settings)

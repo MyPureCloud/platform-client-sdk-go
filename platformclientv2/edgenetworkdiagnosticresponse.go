@@ -45,11 +45,11 @@ func (o *Edgenetworkdiagnosticresponse) UnmarshalJSON(b []byte) error {
 	if CommandCorrelationId, ok := EdgenetworkdiagnosticresponseMap["commandCorrelationId"].(string); ok {
 		o.CommandCorrelationId = &CommandCorrelationId
 	}
-	
+    
 	if Diagnostics, ok := EdgenetworkdiagnosticresponseMap["diagnostics"].(string); ok {
 		o.Diagnostics = &Diagnostics
 	}
-	
+    
 
 	return nil
 }

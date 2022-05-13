@@ -69,25 +69,25 @@ func (o *V2conversationmessagetypingeventforusertopicconversationcontentlocation
 	if Url, ok := V2conversationmessagetypingeventforusertopicconversationcontentlocationMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Address, ok := V2conversationmessagetypingeventforusertopicconversationcontentlocationMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Text, ok := V2conversationmessagetypingeventforusertopicconversationcontentlocationMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Latitude, ok := V2conversationmessagetypingeventforusertopicconversationcontentlocationMap["latitude"].(float64); ok {
 		LatitudeFloat32 := float32(Latitude)
 		o.Latitude = &LatitudeFloat32
 	}
-	
+    
 	if Longitude, ok := V2conversationmessagetypingeventforusertopicconversationcontentlocationMap["longitude"].(float64); ok {
 		LongitudeFloat32 := float32(Longitude)
 		o.Longitude = &LongitudeFloat32
 	}
-	
+    
 
 	return nil
 }

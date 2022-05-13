@@ -77,23 +77,23 @@ func (o *Agentownedmappingpreview) UnmarshalJSON(b []byte) error {
 	if AgentOwnedColumn, ok := AgentownedmappingpreviewMap["agentOwnedColumn"].(string); ok {
 		o.AgentOwnedColumn = &AgentOwnedColumn
 	}
-	
+    
 	if Email, ok := AgentownedmappingpreviewMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if UserId, ok := AgentownedmappingpreviewMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Exists, ok := AgentownedmappingpreviewMap["exists"].(bool); ok {
 		o.Exists = &Exists
 	}
-	
+    
 	if IsQueueMember, ok := AgentownedmappingpreviewMap["isQueueMember"].(bool); ok {
 		o.IsQueueMember = &IsQueueMember
 	}
-	
+    
 	if RecordCount, ok := AgentownedmappingpreviewMap["recordCount"].(float64); ok {
 		RecordCountInt := int(RecordCount)
 		o.RecordCount = &RecordCountInt

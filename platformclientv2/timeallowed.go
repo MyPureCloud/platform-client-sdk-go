@@ -58,11 +58,11 @@ func (o *Timeallowed) UnmarshalJSON(b []byte) error {
 	if TimeZoneId, ok := TimeallowedMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}
-	
+    
 	if Empty, ok := TimeallowedMap["empty"].(bool); ok {
 		o.Empty = &Empty
 	}
-	
+    
 
 	return nil
 }

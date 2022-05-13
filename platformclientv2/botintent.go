@@ -45,7 +45,7 @@ func (o *Botintent) UnmarshalJSON(b []byte) error {
 	if Name, ok := BotintentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Slots, ok := BotintentMap["slots"].(map[string]interface{}); ok {
 		SlotsString, _ := json.Marshal(Slots)
 		json.Unmarshal(SlotsString, &o.Slots)

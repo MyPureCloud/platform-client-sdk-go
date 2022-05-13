@@ -45,11 +45,11 @@ func (o *Edgenetworkdiagnostic) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgenetworkdiagnosticMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := EdgenetworkdiagnosticMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

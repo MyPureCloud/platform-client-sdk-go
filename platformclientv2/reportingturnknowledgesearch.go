@@ -53,7 +53,7 @@ func (o *Reportingturnknowledgesearch) UnmarshalJSON(b []byte) error {
 	if SearchId, ok := ReportingturnknowledgesearchMap["searchId"].(string); ok {
 		o.SearchId = &SearchId
 	}
-	
+    
 	if Documents, ok := ReportingturnknowledgesearchMap["documents"].([]interface{}); ok {
 		DocumentsString, _ := json.Marshal(Documents)
 		json.Unmarshal(DocumentsString, &o.Documents)
@@ -62,7 +62,7 @@ func (o *Reportingturnknowledgesearch) UnmarshalJSON(b []byte) error {
 	if Query, ok := ReportingturnknowledgesearchMap["query"].(string); ok {
 		o.Query = &Query
 	}
-	
+    
 
 	return nil
 }

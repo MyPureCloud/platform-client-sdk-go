@@ -45,7 +45,7 @@ func (o *Openmessagecontent) UnmarshalJSON(b []byte) error {
 	if ContentType, ok := OpenmessagecontentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Attachment, ok := OpenmessagecontentMap["attachment"].(map[string]interface{}); ok {
 		AttachmentString, _ := json.Marshal(Attachment)
 		json.Unmarshal(AttachmentString, &o.Attachment)

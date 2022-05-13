@@ -32,8 +32,6 @@ func NewUserRecordingsApiWithConfig(config *Configuration) *UserRecordingsApi {
 // DeleteUserrecording invokes DELETE /api/v2/userrecordings/{recordingId}
 //
 // Delete a user recording.
-//
-// 
 func (a UserRecordingsApi) DeleteUserrecording(recordingId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a UserRecordingsApi) DeleteUserrecording(recordingId string) (*APIResponse
 
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'recordingId' when calling UserRecordingsApi->DeleteUserrecording")
 	}
 
@@ -98,8 +96,6 @@ func (a UserRecordingsApi) DeleteUserrecording(recordingId string) (*APIResponse
 // GetUserrecording invokes GET /api/v2/userrecordings/{recordingId}
 //
 // Get a user recording.
-//
-// 
 func (a UserRecordingsApi) GetUserrecording(recordingId string, expand []string) (*Userrecording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a UserRecordingsApi) GetUserrecording(recordingId string, expand []string)
 
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling UserRecordingsApi->GetUserrecording")
 	}
 
@@ -173,8 +169,6 @@ func (a UserRecordingsApi) GetUserrecording(recordingId string, expand []string)
 // GetUserrecordingMedia invokes GET /api/v2/userrecordings/{recordingId}/media
 //
 // Download a user recording.
-//
-// 
 func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId string) (*Downloadresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -187,7 +181,7 @@ func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId st
 
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling UserRecordingsApi->GetUserrecordingMedia")
 	}
 
@@ -248,8 +242,6 @@ func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId st
 // GetUserrecordings invokes GET /api/v2/userrecordings
 //
 // Get a list of user recordings.
-//
-// 
 func (a UserRecordingsApi) GetUserrecordings(pageSize int, pageNumber int, expand []string) (*Userrecordingentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -321,8 +313,6 @@ func (a UserRecordingsApi) GetUserrecordings(pageSize int, pageNumber int, expan
 // GetUserrecordingsSummary invokes GET /api/v2/userrecordings/summary
 //
 // Get user recording summary
-//
-// 
 func (a UserRecordingsApi) GetUserrecordingsSummary() (*Faxsummary, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -388,8 +378,6 @@ func (a UserRecordingsApi) GetUserrecordingsSummary() (*Faxsummary, *APIResponse
 // PutUserrecording invokes PUT /api/v2/userrecordings/{recordingId}
 //
 // Update a user recording.
-//
-// 
 func (a UserRecordingsApi) PutUserrecording(recordingId string, body Userrecording, expand []string) (*Userrecording, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -402,12 +390,12 @@ func (a UserRecordingsApi) PutUserrecording(recordingId string, body Userrecordi
 
 	// verify the required parameter 'recordingId' is set
 	if &recordingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'recordingId' when calling UserRecordingsApi->PutUserrecording")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UserRecordingsApi->PutUserrecording")
 	}
 

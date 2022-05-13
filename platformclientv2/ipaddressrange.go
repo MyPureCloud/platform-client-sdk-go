@@ -53,15 +53,15 @@ func (o *Ipaddressrange) UnmarshalJSON(b []byte) error {
 	if Cidr, ok := IpaddressrangeMap["cidr"].(string); ok {
 		o.Cidr = &Cidr
 	}
-	
+    
 	if Service, ok := IpaddressrangeMap["service"].(string); ok {
 		o.Service = &Service
 	}
-	
+    
 	if Region, ok := IpaddressrangeMap["region"].(string); ok {
 		o.Region = &Region
 	}
-	
+    
 
 	return nil
 }

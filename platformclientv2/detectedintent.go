@@ -53,11 +53,11 @@ func (o *Detectedintent) UnmarshalJSON(b []byte) error {
 	if Name, ok := DetectedintentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Probability, ok := DetectedintentMap["probability"].(float64); ok {
 		o.Probability = &Probability
 	}
-	
+    
 	if Entities, ok := DetectedintentMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)

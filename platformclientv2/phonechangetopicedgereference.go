@@ -53,15 +53,15 @@ func (o *Phonechangetopicedgereference) UnmarshalJSON(b []byte) error {
 	if Id, ok := PhonechangetopicedgereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PhonechangetopicedgereferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := PhonechangetopicedgereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

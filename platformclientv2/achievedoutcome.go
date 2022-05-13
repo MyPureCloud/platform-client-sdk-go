@@ -45,11 +45,11 @@ func (o *Achievedoutcome) UnmarshalJSON(b []byte) error {
 	if Id, ok := AchievedoutcomeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := AchievedoutcomeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

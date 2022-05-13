@@ -45,11 +45,11 @@ func (o *Queueconversationcallbackeventtopicphonenumbercolumn) UnmarshalJSON(b [
 	if ColumnName, ok := QueueconversationcallbackeventtopicphonenumbercolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := QueueconversationcallbackeventtopicphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

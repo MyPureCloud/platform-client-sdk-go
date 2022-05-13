@@ -61,15 +61,15 @@ func (o *Domainnetworkaddress) UnmarshalJSON(b []byte) error {
 	if VarType, ok := DomainnetworkaddressMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Address, ok := DomainnetworkaddressMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Persistent, ok := DomainnetworkaddressMap["persistent"].(bool); ok {
 		o.Persistent = &Persistent
 	}
-	
+    
 	if Family, ok := DomainnetworkaddressMap["family"].(float64); ok {
 		FamilyInt := int(Family)
 		o.Family = &FamilyInt

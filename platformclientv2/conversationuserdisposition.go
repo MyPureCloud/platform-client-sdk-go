@@ -53,11 +53,11 @@ func (o *Conversationuserdisposition) UnmarshalJSON(b []byte) error {
 	if Code, ok := ConversationuserdispositionMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Notes, ok := ConversationuserdispositionMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if User, ok := ConversationuserdispositionMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)

@@ -32,8 +32,6 @@ func NewNotificationsApiWithConfig(config *Configuration) *NotificationsApi {
 // DeleteNotificationsChannelSubscriptions invokes DELETE /api/v2/notifications/channels/{channelId}/subscriptions
 //
 // Remove all subscriptions
-//
-// 
 func (a NotificationsApi) DeleteNotificationsChannelSubscriptions(channelId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a NotificationsApi) DeleteNotificationsChannelSubscriptions(channelId stri
 
 	// verify the required parameter 'channelId' is set
 	if &channelId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'channelId' when calling NotificationsApi->DeleteNotificationsChannelSubscriptions")
 	}
 
@@ -98,8 +96,6 @@ func (a NotificationsApi) DeleteNotificationsChannelSubscriptions(channelId stri
 // GetNotificationsAvailabletopics invokes GET /api/v2/notifications/availabletopics
 //
 // Get available notification topics.
-//
-// 
 func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string, includePreview bool) (*Availabletopicentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -169,8 +165,6 @@ func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string, inclu
 // GetNotificationsChannelSubscriptions invokes GET /api/v2/notifications/channels/{channelId}/subscriptions
 //
 // The list of all subscriptions for this channel
-//
-// 
 func (a NotificationsApi) GetNotificationsChannelSubscriptions(channelId string) (*Channeltopicentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -183,7 +177,7 @@ func (a NotificationsApi) GetNotificationsChannelSubscriptions(channelId string)
 
 	// verify the required parameter 'channelId' is set
 	if &channelId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'channelId' when calling NotificationsApi->GetNotificationsChannelSubscriptions")
 	}
 
@@ -242,8 +236,6 @@ func (a NotificationsApi) GetNotificationsChannelSubscriptions(channelId string)
 // GetNotificationsChannels invokes GET /api/v2/notifications/channels
 //
 // The list of existing channels
-//
-// 
 func (a NotificationsApi) GetNotificationsChannels(includechannels string) (*Channelentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -324,7 +316,7 @@ func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*APIRespon
 
 	// verify the required parameter 'channelId' is set
 	if &channelId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'channelId' when calling NotificationsApi->HeadNotificationsChannel")
 	}
 
@@ -377,8 +369,6 @@ func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*APIRespon
 // PostNotificationsChannelSubscriptions invokes POST /api/v2/notifications/channels/{channelId}/subscriptions
 //
 // Add a list of subscriptions to the existing list of subscriptions
-//
-// 
 func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string, body []Channeltopic) (*Channeltopicentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -391,7 +381,7 @@ func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string
 
 	// verify the required parameter 'channelId' is set
 	if &channelId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'channelId' when calling NotificationsApi->PostNotificationsChannelSubscriptions")
 	}
 	// verify the required parameter 'body' is set
@@ -525,8 +515,6 @@ func (a NotificationsApi) PostNotificationsChannels() (*Channel, *APIResponse, e
 // PutNotificationsChannelSubscriptions invokes PUT /api/v2/notifications/channels/{channelId}/subscriptions
 //
 // Replace the current list of subscriptions with a new list.
-//
-// 
 func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string, body []Channeltopic) (*Channeltopicentitylisting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -539,7 +527,7 @@ func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string,
 
 	// verify the required parameter 'channelId' is set
 	if &channelId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'channelId' when calling NotificationsApi->PutNotificationsChannelSubscriptions")
 	}
 	// verify the required parameter 'body' is set

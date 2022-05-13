@@ -45,11 +45,11 @@ func (o *Check) UnmarshalJSON(b []byte) error {
 	if Result, ok := CheckMap["result"].(string); ok {
 		o.Result = &Result
 	}
-	
+    
 	if VarType, ok := CheckMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

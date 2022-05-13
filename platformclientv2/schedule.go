@@ -190,11 +190,11 @@ func (o *Schedule) UnmarshalJSON(b []byte) error {
 	if Id, ok := ScheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ScheduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := ScheduleMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -203,7 +203,7 @@ func (o *Schedule) UnmarshalJSON(b []byte) error {
 	if Description, ok := ScheduleMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := ScheduleMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -222,23 +222,23 @@ func (o *Schedule) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := ScheduleMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := ScheduleMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := ScheduleMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := ScheduleMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := ScheduleMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if startString, ok := ScheduleMap["start"].(string); ok {
 		Start, _ := time.Parse("2006-01-02T15:04:05.999999", startString)
 		o.Start = &Start
@@ -252,11 +252,11 @@ func (o *Schedule) UnmarshalJSON(b []byte) error {
 	if Rrule, ok := ScheduleMap["rrule"].(string); ok {
 		o.Rrule = &Rrule
 	}
-	
+    
 	if SelfUri, ok := ScheduleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

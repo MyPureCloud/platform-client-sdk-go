@@ -262,23 +262,23 @@ func (o *Conversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if State, ok := ConversationeventtopiccallbackMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := ConversationeventtopiccallbackMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Direction, ok := ConversationeventtopiccallbackMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Held, ok := ConversationeventtopiccallbackMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := ConversationeventtopiccallbackMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := ConversationeventtopiccallbackMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -302,27 +302,27 @@ func (o *Conversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if CallbackUserName, ok := ConversationeventtopiccallbackMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if ScriptId, ok := ConversationeventtopiccallbackMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := ConversationeventtopiccallbackMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if ExternalCampaign, ok := ConversationeventtopiccallbackMap["externalCampaign"].(bool); ok {
 		o.ExternalCampaign = &ExternalCampaign
 	}
-	
+    
 	if SkipEnabled, ok := ConversationeventtopiccallbackMap["skipEnabled"].(bool); ok {
 		o.SkipEnabled = &SkipEnabled
 	}
-	
+    
 	if Provider, ok := ConversationeventtopiccallbackMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if TimeoutSeconds, ok := ConversationeventtopiccallbackMap["timeoutSeconds"].(float64); ok {
 		TimeoutSecondsInt := int(TimeoutSeconds)
 		o.TimeoutSeconds = &TimeoutSecondsInt
@@ -346,7 +346,7 @@ func (o *Conversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if AutomatedCallbackConfigId, ok := ConversationeventtopiccallbackMap["automatedCallbackConfigId"].(string); ok {
 		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
 	}
-	
+    
 	if Wrapup, ok := ConversationeventtopiccallbackMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
@@ -360,15 +360,15 @@ func (o *Conversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := ConversationeventtopiccallbackMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if CallerId, ok := ConversationeventtopiccallbackMap["callerId"].(string); ok {
 		o.CallerId = &CallerId
 	}
-	
+    
 	if CallerIdName, ok := ConversationeventtopiccallbackMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
 	}
-	
+    
 
 	return nil
 }

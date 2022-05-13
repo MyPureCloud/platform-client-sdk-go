@@ -37,7 +37,7 @@ func (o *Conversationtagsupdate) UnmarshalJSON(b []byte) error {
 	if ExternalTag, ok := ConversationtagsupdateMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 
 	return nil
 }

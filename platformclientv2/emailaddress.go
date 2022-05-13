@@ -45,11 +45,11 @@ func (o *Emailaddress) UnmarshalJSON(b []byte) error {
 	if Email, ok := EmailaddressMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if Name, ok := EmailaddressMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

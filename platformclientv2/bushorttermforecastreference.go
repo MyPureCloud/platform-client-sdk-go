@@ -69,7 +69,7 @@ func (o *Bushorttermforecastreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := BushorttermforecastreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := BushorttermforecastreferenceMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -78,11 +78,11 @@ func (o *Bushorttermforecastreference) UnmarshalJSON(b []byte) error {
 	if Description, ok := BushorttermforecastreferenceMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SelfUri, ok := BushorttermforecastreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

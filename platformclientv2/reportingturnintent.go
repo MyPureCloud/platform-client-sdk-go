@@ -53,11 +53,11 @@ func (o *Reportingturnintent) UnmarshalJSON(b []byte) error {
 	if Name, ok := ReportingturnintentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Confidence, ok := ReportingturnintentMap["confidence"].(float64); ok {
 		o.Confidence = &Confidence
 	}
-	
+    
 	if Slots, ok := ReportingturnintentMap["slots"].([]interface{}); ok {
 		SlotsString, _ := json.Marshal(Slots)
 		json.Unmarshal(SlotsString, &o.Slots)

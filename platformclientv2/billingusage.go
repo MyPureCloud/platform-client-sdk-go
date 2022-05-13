@@ -53,11 +53,11 @@ func (o *Billingusage) UnmarshalJSON(b []byte) error {
 	if Name, ok := BillingusageMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if TotalUsage, ok := BillingusageMap["totalUsage"].(string); ok {
 		o.TotalUsage = &TotalUsage
 	}
-	
+    
 	if Resources, ok := BillingusageMap["resources"].([]interface{}); ok {
 		ResourcesString, _ := json.Marshal(Resources)
 		json.Unmarshal(ResourcesString, &o.Resources)

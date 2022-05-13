@@ -37,7 +37,7 @@ func (o *Learningassignmententity) UnmarshalJSON(b []byte) error {
 	if AssignmentId, ok := LearningassignmententityMap["assignmentId"].(string); ok {
 		o.AssignmentId = &AssignmentId
 	}
-	
+    
 
 	return nil
 }

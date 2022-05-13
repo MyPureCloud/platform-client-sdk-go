@@ -162,27 +162,27 @@ func (o *Dialerrulesetconfigchangecondition) UnmarshalJSON(b []byte) error {
 	if VarType, ok := DialerrulesetconfigchangeconditionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Inverted, ok := DialerrulesetconfigchangeconditionMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
 	}
-	
+    
 	if AttributeName, ok := DialerrulesetconfigchangeconditionMap["attributeName"].(string); ok {
 		o.AttributeName = &AttributeName
 	}
-	
+    
 	if Value, ok := DialerrulesetconfigchangeconditionMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if ValueType, ok := DialerrulesetconfigchangeconditionMap["valueType"].(string); ok {
 		o.ValueType = &ValueType
 	}
-	
+    
 	if Operator, ok := DialerrulesetconfigchangeconditionMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Codes, ok := DialerrulesetconfigchangeconditionMap["codes"].([]interface{}); ok {
 		CodesString, _ := json.Marshal(Codes)
 		json.Unmarshal(CodesString, &o.Codes)
@@ -191,27 +191,27 @@ func (o *Dialerrulesetconfigchangecondition) UnmarshalJSON(b []byte) error {
 	if PropertyType, ok := DialerrulesetconfigchangeconditionMap["propertyType"].(string); ok {
 		o.PropertyType = &PropertyType
 	}
-	
+    
 	if Property, ok := DialerrulesetconfigchangeconditionMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if DataNotFoundResolution, ok := DialerrulesetconfigchangeconditionMap["dataNotFoundResolution"].(bool); ok {
 		o.DataNotFoundResolution = &DataNotFoundResolution
 	}
-	
+    
 	if ContactIdField, ok := DialerrulesetconfigchangeconditionMap["contactIdField"].(string); ok {
 		o.ContactIdField = &ContactIdField
 	}
-	
+    
 	if CallAnalysisResultField, ok := DialerrulesetconfigchangeconditionMap["callAnalysisResultField"].(string); ok {
 		o.CallAnalysisResultField = &CallAnalysisResultField
 	}
-	
+    
 	if AgentWrapupField, ok := DialerrulesetconfigchangeconditionMap["agentWrapupField"].(string); ok {
 		o.AgentWrapupField = &AgentWrapupField
 	}
-	
+    
 	if ContactColumnToDataActionFieldMappings, ok := DialerrulesetconfigchangeconditionMap["contactColumnToDataActionFieldMappings"].([]interface{}); ok {
 		ContactColumnToDataActionFieldMappingsString, _ := json.Marshal(ContactColumnToDataActionFieldMappings)
 		json.Unmarshal(ContactColumnToDataActionFieldMappingsString, &o.ContactColumnToDataActionFieldMappings)

@@ -93,31 +93,31 @@ func (o *Messagingrecipient) UnmarshalJSON(b []byte) error {
 	if Nickname, ok := MessagingrecipientMap["nickname"].(string); ok {
 		o.Nickname = &Nickname
 	}
-	
+    
 	if Id, ok := MessagingrecipientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IdType, ok := MessagingrecipientMap["idType"].(string); ok {
 		o.IdType = &IdType
 	}
-	
+    
 	if Image, ok := MessagingrecipientMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if FirstName, ok := MessagingrecipientMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}
-	
+    
 	if LastName, ok := MessagingrecipientMap["lastName"].(string); ok {
 		o.LastName = &LastName
 	}
-	
+    
 	if Email, ok := MessagingrecipientMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if AdditionalIds, ok := MessagingrecipientMap["additionalIds"].([]interface{}); ok {
 		AdditionalIdsString, _ := json.Marshal(AdditionalIds)
 		json.Unmarshal(AdditionalIdsString, &o.AdditionalIds)

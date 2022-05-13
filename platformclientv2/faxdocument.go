@@ -190,11 +190,11 @@ func (o *Faxdocument) UnmarshalJSON(b []byte) error {
 	if Id, ok := FaxdocumentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FaxdocumentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := FaxdocumentMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -208,7 +208,7 @@ func (o *Faxdocument) UnmarshalJSON(b []byte) error {
 	if ContentUri, ok := FaxdocumentMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if Workspace, ok := FaxdocumentMap["workspace"].(map[string]interface{}); ok {
 		WorkspaceString, _ := json.Marshal(Workspace)
 		json.Unmarshal(WorkspaceString, &o.Workspace)
@@ -222,11 +222,11 @@ func (o *Faxdocument) UnmarshalJSON(b []byte) error {
 	if SharingUri, ok := FaxdocumentMap["sharingUri"].(string); ok {
 		o.SharingUri = &SharingUri
 	}
-	
+    
 	if ContentType, ok := FaxdocumentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := FaxdocumentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
@@ -235,11 +235,11 @@ func (o *Faxdocument) UnmarshalJSON(b []byte) error {
 	if Filename, ok := FaxdocumentMap["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 	if Read, ok := FaxdocumentMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if PageCount, ok := FaxdocumentMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
@@ -248,11 +248,11 @@ func (o *Faxdocument) UnmarshalJSON(b []byte) error {
 	if CallerAddress, ok := FaxdocumentMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if ReceiverAddress, ok := FaxdocumentMap["receiverAddress"].(string); ok {
 		o.ReceiverAddress = &ReceiverAddress
 	}
-	
+    
 	if Thumbnails, ok := FaxdocumentMap["thumbnails"].([]interface{}); ok {
 		ThumbnailsString, _ := json.Marshal(Thumbnails)
 		json.Unmarshal(ThumbnailsString, &o.Thumbnails)
@@ -261,11 +261,11 @@ func (o *Faxdocument) UnmarshalJSON(b []byte) error {
 	if DownloadSharingUri, ok := FaxdocumentMap["downloadSharingUri"].(string); ok {
 		o.DownloadSharingUri = &DownloadSharingUri
 	}
-	
+    
 	if SelfUri, ok := FaxdocumentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

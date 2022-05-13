@@ -79,11 +79,11 @@ func (o *Effectiveconfiguration) UnmarshalJSON(b []byte) error {
 	if Name, ok := EffectiveconfigurationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Notes, ok := EffectiveconfigurationMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Credentials, ok := EffectiveconfigurationMap["credentials"].(map[string]interface{}); ok {
 		CredentialsString, _ := json.Marshal(Credentials)
 		json.Unmarshal(CredentialsString, &o.Credentials)

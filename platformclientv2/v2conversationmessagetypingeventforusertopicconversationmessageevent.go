@@ -53,7 +53,7 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessageevent) U
 	if EventType, ok := V2conversationmessagetypingeventforusertopicconversationmessageeventMap["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 	if CoBrowse, ok := V2conversationmessagetypingeventforusertopicconversationmessageeventMap["coBrowse"].(map[string]interface{}); ok {
 		CoBrowseString, _ := json.Marshal(CoBrowse)
 		json.Unmarshal(CoBrowseString, &o.CoBrowse)

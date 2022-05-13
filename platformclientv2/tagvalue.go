@@ -69,15 +69,15 @@ func (o *Tagvalue) UnmarshalJSON(b []byte) error {
 	if Id, ok := TagvalueMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TagvalueMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if InUse, ok := TagvalueMap["inUse"].(bool); ok {
 		o.InUse = &InUse
 	}
-	
+    
 	if Acl, ok := TagvalueMap["acl"].([]interface{}); ok {
 		AclString, _ := json.Marshal(Acl)
 		json.Unmarshal(AclString, &o.Acl)
@@ -86,7 +86,7 @@ func (o *Tagvalue) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TagvalueMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

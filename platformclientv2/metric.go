@@ -133,19 +133,19 @@ func (o *Metric) UnmarshalJSON(b []byte) error {
 	if Id, ok := MetricMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MetricMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if MetricDefinitionId, ok := MetricMap["metricDefinitionId"].(string); ok {
 		o.MetricDefinitionId = &MetricDefinitionId
 	}
-	
+    
 	if ExternalMetricDefinitionId, ok := MetricMap["externalMetricDefinitionId"].(string); ok {
 		o.ExternalMetricDefinitionId = &ExternalMetricDefinitionId
 	}
-	
+    
 	if Objective, ok := MetricMap["objective"].(map[string]interface{}); ok {
 		ObjectiveString, _ := json.Marshal(Objective)
 		json.Unmarshal(ObjectiveString, &o.Objective)
@@ -154,7 +154,7 @@ func (o *Metric) UnmarshalJSON(b []byte) error {
 	if PerformanceProfileId, ok := MetricMap["performanceProfileId"].(string); ok {
 		o.PerformanceProfileId = &PerformanceProfileId
 	}
-	
+    
 	if LinkedMetric, ok := MetricMap["linkedMetric"].(map[string]interface{}); ok {
 		LinkedMetricString, _ := json.Marshal(LinkedMetric)
 		json.Unmarshal(LinkedMetricString, &o.LinkedMetric)
@@ -178,7 +178,7 @@ func (o *Metric) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MetricMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

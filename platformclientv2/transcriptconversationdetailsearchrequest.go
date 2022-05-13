@@ -85,11 +85,11 @@ func (o *Transcriptconversationdetailsearchrequest) UnmarshalJSON(b []byte) erro
 	if SortOrder, ok := TranscriptconversationdetailsearchrequestMap["sortOrder"].(string); ok {
 		o.SortOrder = &SortOrder
 	}
-	
+    
 	if SortBy, ok := TranscriptconversationdetailsearchrequestMap["sortBy"].(string); ok {
 		o.SortBy = &SortBy
 	}
-	
+    
 	if PageSize, ok := TranscriptconversationdetailsearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

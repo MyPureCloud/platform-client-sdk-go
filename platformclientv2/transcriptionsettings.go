@@ -53,7 +53,7 @@ func (o *Transcriptionsettings) UnmarshalJSON(b []byte) error {
 	if Transcription, ok := TranscriptionsettingsMap["transcription"].(string); ok {
 		o.Transcription = &Transcription
 	}
-	
+    
 	if TranscriptionConfidenceThreshold, ok := TranscriptionsettingsMap["transcriptionConfidenceThreshold"].(float64); ok {
 		TranscriptionConfidenceThresholdInt := int(TranscriptionConfidenceThreshold)
 		o.TranscriptionConfidenceThreshold = &TranscriptionConfidenceThresholdInt
@@ -62,7 +62,7 @@ func (o *Transcriptionsettings) UnmarshalJSON(b []byte) error {
 	if ContentSearchEnabled, ok := TranscriptionsettingsMap["contentSearchEnabled"].(bool); ok {
 		o.ContentSearchEnabled = &ContentSearchEnabled
 	}
-	
+    
 
 	return nil
 }

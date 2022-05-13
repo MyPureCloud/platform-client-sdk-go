@@ -194,47 +194,47 @@ func (o *Wrapupdetaileventtopicwrapupevent) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := WrapupdetaileventtopicwrapupeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := WrapupdetaileventtopicwrapupeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := WrapupdetaileventtopicwrapupeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := WrapupdetaileventtopicwrapupeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := WrapupdetaileventtopicwrapupeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := WrapupdetaileventtopicwrapupeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := WrapupdetaileventtopicwrapupeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := WrapupdetaileventtopicwrapupeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := WrapupdetaileventtopicwrapupeventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := WrapupdetaileventtopicwrapupeventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := WrapupdetaileventtopicwrapupeventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := WrapupdetaileventtopicwrapupeventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -248,23 +248,23 @@ func (o *Wrapupdetaileventtopicwrapupevent) UnmarshalJSON(b []byte) error {
 	if Subject, ok := WrapupdetaileventtopicwrapupeventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := WrapupdetaileventtopicwrapupeventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if QueueId, ok := WrapupdetaileventtopicwrapupeventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if WrapupCode, ok := WrapupdetaileventtopicwrapupeventMap["wrapupCode"].(string); ok {
 		o.WrapupCode = &WrapupCode
 	}
-	
+    
 	if WrapupNotes, ok := WrapupdetaileventtopicwrapupeventMap["wrapupNotes"].(string); ok {
 		o.WrapupNotes = &WrapupNotes
 	}
-	
+    
 	if WrapupDurationMs, ok := WrapupdetaileventtopicwrapupeventMap["wrapupDurationMs"].(float64); ok {
 		WrapupDurationMsInt := int(WrapupDurationMs)
 		o.WrapupDurationMs = &WrapupDurationMsInt

@@ -61,15 +61,15 @@ func (o *Architectpromptnotificationpromptnotification) UnmarshalJSON(b []byte) 
 	if Id, ok := ArchitectpromptnotificationpromptnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectpromptnotificationpromptnotificationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ArchitectpromptnotificationpromptnotificationMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CurrentOperation, ok := ArchitectpromptnotificationpromptnotificationMap["currentOperation"].(map[string]interface{}); ok {
 		CurrentOperationString, _ := json.Marshal(CurrentOperation)
 		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)

@@ -53,7 +53,7 @@ func (o *Outcomeprobabilitycondition) UnmarshalJSON(b []byte) error {
 	if OutcomeId, ok := OutcomeprobabilityconditionMap["outcomeId"].(string); ok {
 		o.OutcomeId = &OutcomeId
 	}
-	
+    
 	if MaximumProbability, ok := OutcomeprobabilityconditionMap["maximumProbability"].(float64); ok {
 		MaximumProbabilityFloat32 := float32(MaximumProbability)
 		o.MaximumProbability = &MaximumProbabilityFloat32

@@ -45,11 +45,11 @@ func (o *Actionmapactiontemplate) UnmarshalJSON(b []byte) error {
 	if Id, ok := ActionmapactiontemplateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ActionmapactiontemplateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Validateaddressresponse) UnmarshalJSON(b []byte) error {
 	if Valid, ok := ValidateaddressresponseMap["valid"].(bool); ok {
 		o.Valid = &Valid
 	}
-	
+    
 	if Response, ok := ValidateaddressresponseMap["response"].(map[string]interface{}); ok {
 		ResponseString, _ := json.Marshal(Response)
 		json.Unmarshal(ResponseString, &o.Response)

@@ -643,27 +643,27 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if AcwSkipped, ok := AnalyticssessionMap["acwSkipped"].(bool); ok {
 		o.AcwSkipped = &AcwSkipped
 	}
-	
+    
 	if AddressFrom, ok := AnalyticssessionMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if AddressOther, ok := AnalyticssessionMap["addressOther"].(string); ok {
 		o.AddressOther = &AddressOther
 	}
-	
+    
 	if AddressSelf, ok := AnalyticssessionMap["addressSelf"].(string); ok {
 		o.AddressSelf = &AddressSelf
 	}
-	
+    
 	if AddressTo, ok := AnalyticssessionMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AgentAssistantId, ok := AnalyticssessionMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 	if AgentBullseyeRing, ok := AnalyticssessionMap["agentBullseyeRing"].(float64); ok {
 		AgentBullseyeRingInt := int(AgentBullseyeRing)
 		o.AgentBullseyeRing = &AgentBullseyeRingInt
@@ -672,19 +672,19 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if AgentOwned, ok := AnalyticssessionMap["agentOwned"].(bool); ok {
 		o.AgentOwned = &AgentOwned
 	}
-	
+    
 	if Ani, ok := AnalyticssessionMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if AssignerId, ok := AnalyticssessionMap["assignerId"].(string); ok {
 		o.AssignerId = &AssignerId
 	}
-	
+    
 	if Authenticated, ok := AnalyticssessionMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
 	}
-	
+    
 	if CallbackNumbers, ok := AnalyticssessionMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -698,23 +698,23 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if CallbackUserName, ok := AnalyticssessionMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CoachedParticipantId, ok := AnalyticssessionMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
-	
+    
 	if CobrowseRole, ok := AnalyticssessionMap["cobrowseRole"].(string); ok {
 		o.CobrowseRole = &CobrowseRole
 	}
-	
+    
 	if CobrowseRoomId, ok := AnalyticssessionMap["cobrowseRoomId"].(string); ok {
 		o.CobrowseRoomId = &CobrowseRoomId
 	}
-	
+    
 	if DeliveryStatus, ok := AnalyticssessionMap["deliveryStatus"].(string); ok {
 		o.DeliveryStatus = &DeliveryStatus
 	}
-	
+    
 	if deliveryStatusChangeDateString, ok := AnalyticssessionMap["deliveryStatusChangeDate"].(string); ok {
 		DeliveryStatusChangeDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deliveryStatusChangeDateString)
 		o.DeliveryStatusChangeDate = &DeliveryStatusChangeDate
@@ -728,23 +728,23 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if Direction, ok := AnalyticssessionMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DispositionAnalyzer, ok := AnalyticssessionMap["dispositionAnalyzer"].(string); ok {
 		o.DispositionAnalyzer = &DispositionAnalyzer
 	}
-	
+    
 	if DispositionName, ok := AnalyticssessionMap["dispositionName"].(string); ok {
 		o.DispositionName = &DispositionName
 	}
-	
+    
 	if Dnis, ok := AnalyticssessionMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if EdgeId, ok := AnalyticssessionMap["edgeId"].(string); ok {
 		o.EdgeId = &EdgeId
 	}
-	
+    
 	if EligibleAgentCounts, ok := AnalyticssessionMap["eligibleAgentCounts"].([]interface{}); ok {
 		EligibleAgentCountsString, _ := json.Marshal(EligibleAgentCounts)
 		json.Unmarshal(EligibleAgentCountsString, &o.EligibleAgentCounts)
@@ -753,23 +753,23 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if ExtendedDeliveryStatus, ok := AnalyticssessionMap["extendedDeliveryStatus"].(string); ok {
 		o.ExtendedDeliveryStatus = &ExtendedDeliveryStatus
 	}
-	
+    
 	if FlowInType, ok := AnalyticssessionMap["flowInType"].(string); ok {
 		o.FlowInType = &FlowInType
 	}
-	
+    
 	if FlowOutType, ok := AnalyticssessionMap["flowOutType"].(string); ok {
 		o.FlowOutType = &FlowOutType
 	}
-	
+    
 	if JourneyActionId, ok := AnalyticssessionMap["journeyActionId"].(string); ok {
 		o.JourneyActionId = &JourneyActionId
 	}
-	
+    
 	if JourneyActionMapId, ok := AnalyticssessionMap["journeyActionMapId"].(string); ok {
 		o.JourneyActionMapId = &JourneyActionMapId
 	}
-	
+    
 	if JourneyActionMapVersion, ok := AnalyticssessionMap["journeyActionMapVersion"].(float64); ok {
 		JourneyActionMapVersionInt := int(JourneyActionMapVersion)
 		o.JourneyActionMapVersion = &JourneyActionMapVersionInt
@@ -778,23 +778,23 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if JourneyCustomerId, ok := AnalyticssessionMap["journeyCustomerId"].(string); ok {
 		o.JourneyCustomerId = &JourneyCustomerId
 	}
-	
+    
 	if JourneyCustomerIdType, ok := AnalyticssessionMap["journeyCustomerIdType"].(string); ok {
 		o.JourneyCustomerIdType = &JourneyCustomerIdType
 	}
-	
+    
 	if JourneyCustomerSessionId, ok := AnalyticssessionMap["journeyCustomerSessionId"].(string); ok {
 		o.JourneyCustomerSessionId = &JourneyCustomerSessionId
 	}
-	
+    
 	if JourneyCustomerSessionIdType, ok := AnalyticssessionMap["journeyCustomerSessionIdType"].(string); ok {
 		o.JourneyCustomerSessionIdType = &JourneyCustomerSessionIdType
 	}
-	
+    
 	if MediaBridgeId, ok := AnalyticssessionMap["mediaBridgeId"].(string); ok {
 		o.MediaBridgeId = &MediaBridgeId
 	}
-	
+    
 	if MediaCount, ok := AnalyticssessionMap["mediaCount"].(float64); ok {
 		MediaCountInt := int(MediaCount)
 		o.MediaCount = &MediaCountInt
@@ -803,51 +803,51 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := AnalyticssessionMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if MessageType, ok := AnalyticssessionMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if MonitoredParticipantId, ok := AnalyticssessionMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
-	
+    
 	if OutboundCampaignId, ok := AnalyticssessionMap["outboundCampaignId"].(string); ok {
 		o.OutboundCampaignId = &OutboundCampaignId
 	}
-	
+    
 	if OutboundContactId, ok := AnalyticssessionMap["outboundContactId"].(string); ok {
 		o.OutboundContactId = &OutboundContactId
 	}
-	
+    
 	if OutboundContactListId, ok := AnalyticssessionMap["outboundContactListId"].(string); ok {
 		o.OutboundContactListId = &OutboundContactListId
 	}
-	
+    
 	if PeerId, ok := AnalyticssessionMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if ProtocolCallId, ok := AnalyticssessionMap["protocolCallId"].(string); ok {
 		o.ProtocolCallId = &ProtocolCallId
 	}
-	
+    
 	if Provider, ok := AnalyticssessionMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Recording, ok := AnalyticssessionMap["recording"].(bool); ok {
 		o.Recording = &Recording
 	}
-	
+    
 	if Remote, ok := AnalyticssessionMap["remote"].(string); ok {
 		o.Remote = &Remote
 	}
-	
+    
 	if RemoteNameDisplayable, ok := AnalyticssessionMap["remoteNameDisplayable"].(string); ok {
 		o.RemoteNameDisplayable = &RemoteNameDisplayable
 	}
-	
+    
 	if RemovedSkillIds, ok := AnalyticssessionMap["removedSkillIds"].([]interface{}); ok {
 		RemovedSkillIdsString, _ := json.Marshal(RemovedSkillIds)
 		json.Unmarshal(RemovedSkillIdsString, &o.RemovedSkillIds)
@@ -861,7 +861,7 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if RoomId, ok := AnalyticssessionMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if RoutingRing, ok := AnalyticssessionMap["routingRing"].(float64); ok {
 		RoutingRingInt := int(RoutingRing)
 		o.RoutingRing = &RoutingRingInt
@@ -870,19 +870,19 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if ScreenShareAddressSelf, ok := AnalyticssessionMap["screenShareAddressSelf"].(string); ok {
 		o.ScreenShareAddressSelf = &ScreenShareAddressSelf
 	}
-	
+    
 	if ScreenShareRoomId, ok := AnalyticssessionMap["screenShareRoomId"].(string); ok {
 		o.ScreenShareRoomId = &ScreenShareRoomId
 	}
-	
+    
 	if ScriptId, ok := AnalyticssessionMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if SelectedAgentId, ok := AnalyticssessionMap["selectedAgentId"].(string); ok {
 		o.SelectedAgentId = &SelectedAgentId
 	}
-	
+    
 	if SelectedAgentRank, ok := AnalyticssessionMap["selectedAgentRank"].(float64); ok {
 		SelectedAgentRankInt := int(SelectedAgentRank)
 		o.SelectedAgentRank = &SelectedAgentRankInt
@@ -891,19 +891,19 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if SessionDnis, ok := AnalyticssessionMap["sessionDnis"].(string); ok {
 		o.SessionDnis = &SessionDnis
 	}
-	
+    
 	if SessionId, ok := AnalyticssessionMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if SharingScreen, ok := AnalyticssessionMap["sharingScreen"].(bool); ok {
 		o.SharingScreen = &SharingScreen
 	}
-	
+    
 	if SkipEnabled, ok := AnalyticssessionMap["skipEnabled"].(bool); ok {
 		o.SkipEnabled = &SkipEnabled
 	}
-	
+    
 	if TimeoutSeconds, ok := AnalyticssessionMap["timeoutSeconds"].(float64); ok {
 		TimeoutSecondsInt := int(TimeoutSeconds)
 		o.TimeoutSeconds = &TimeoutSecondsInt
@@ -912,15 +912,15 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if UsedRouting, ok := AnalyticssessionMap["usedRouting"].(string); ok {
 		o.UsedRouting = &UsedRouting
 	}
-	
+    
 	if VideoAddressSelf, ok := AnalyticssessionMap["videoAddressSelf"].(string); ok {
 		o.VideoAddressSelf = &VideoAddressSelf
 	}
-	
+    
 	if VideoRoomId, ok := AnalyticssessionMap["videoRoomId"].(string); ok {
 		o.VideoRoomId = &VideoRoomId
 	}
-	
+    
 	if WaitingInteractionCounts, ok := AnalyticssessionMap["waitingInteractionCounts"].([]interface{}); ok {
 		WaitingInteractionCountsString, _ := json.Marshal(WaitingInteractionCounts)
 		json.Unmarshal(WaitingInteractionCountsString, &o.WaitingInteractionCounts)

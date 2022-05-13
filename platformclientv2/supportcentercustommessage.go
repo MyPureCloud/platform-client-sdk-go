@@ -45,11 +45,11 @@ func (o *Supportcentercustommessage) UnmarshalJSON(b []byte) error {
 	if DefaultValue, ok := SupportcentercustommessageMap["defaultValue"].(string); ok {
 		o.DefaultValue = &DefaultValue
 	}
-	
+    
 	if VarType, ok := SupportcentercustommessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

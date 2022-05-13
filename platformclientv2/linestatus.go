@@ -78,15 +78,15 @@ func (o *Linestatus) UnmarshalJSON(b []byte) error {
 	if Id, ok := LinestatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Reachable, ok := LinestatusMap["reachable"].(bool); ok {
 		o.Reachable = &Reachable
 	}
-	
+    
 	if AddressOfRecord, ok := LinestatusMap["addressOfRecord"].(string); ok {
 		o.AddressOfRecord = &AddressOfRecord
 	}
-	
+    
 	if ContactAddresses, ok := LinestatusMap["contactAddresses"].([]interface{}); ok {
 		ContactAddressesString, _ := json.Marshal(ContactAddresses)
 		json.Unmarshal(ContactAddressesString, &o.ContactAddresses)

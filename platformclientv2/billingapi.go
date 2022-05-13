@@ -46,12 +46,12 @@ func (a BillingApi) GetBillingReportsBillableusage(startDate time.Time, endDate 
 
 	// verify the required parameter 'startDate' is set
 	if &startDate == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'startDate' when calling BillingApi->GetBillingReportsBillableusage")
 	}
 	// verify the required parameter 'endDate' is set
 	if &endDate == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'endDate' when calling BillingApi->GetBillingReportsBillableusage")
 	}
 
@@ -128,7 +128,7 @@ func (a BillingApi) GetBillingTrusteebillingoverviewTrustorOrgId(trustorOrgId st
 
 	// verify the required parameter 'trustorOrgId' is set
 	if &trustorOrgId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trustorOrgId' when calling BillingApi->GetBillingTrusteebillingoverviewTrustorOrgId")
 	}
 

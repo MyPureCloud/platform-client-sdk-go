@@ -37,7 +37,7 @@ func (o *Consulttransferresponse) UnmarshalJSON(b []byte) error {
 	if DestinationParticipantId, ok := ConsulttransferresponseMap["destinationParticipantId"].(string); ok {
 		o.DestinationParticipantId = &DestinationParticipantId
 	}
-	
+    
 
 	return nil
 }

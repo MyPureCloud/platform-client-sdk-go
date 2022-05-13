@@ -117,39 +117,39 @@ func (o *Geolocation) UnmarshalJSON(b []byte) error {
 	if Id, ok := GeolocationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GeolocationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := GeolocationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Primary, ok := GeolocationMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 	if Latitude, ok := GeolocationMap["latitude"].(float64); ok {
 		o.Latitude = &Latitude
 	}
-	
+    
 	if Longitude, ok := GeolocationMap["longitude"].(float64); ok {
 		o.Longitude = &Longitude
 	}
-	
+    
 	if Country, ok := GeolocationMap["country"].(string); ok {
 		o.Country = &Country
 	}
-	
+    
 	if Region, ok := GeolocationMap["region"].(string); ok {
 		o.Region = &Region
 	}
-	
+    
 	if City, ok := GeolocationMap["city"].(string); ok {
 		o.City = &City
 	}
-	
+    
 	if Locations, ok := GeolocationMap["locations"].([]interface{}); ok {
 		LocationsString, _ := json.Marshal(Locations)
 		json.Unmarshal(LocationsString, &o.Locations)
@@ -158,7 +158,7 @@ func (o *Geolocation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := GeolocationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

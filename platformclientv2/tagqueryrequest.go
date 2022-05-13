@@ -53,7 +53,7 @@ func (o *Tagqueryrequest) UnmarshalJSON(b []byte) error {
 	if Query, ok := TagqueryrequestMap["query"].(string); ok {
 		o.Query = &Query
 	}
-	
+    
 	if PageNumber, ok := TagqueryrequestMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt

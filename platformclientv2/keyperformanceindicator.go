@@ -45,11 +45,11 @@ func (o *Keyperformanceindicator) UnmarshalJSON(b []byte) error {
 	if Id, ok := KeyperformanceindicatorMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KeyperformanceindicatorMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

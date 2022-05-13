@@ -61,19 +61,19 @@ func (o *Conversationcontentcardaction) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationcontentcardactionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := ConversationcontentcardactionMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := ConversationcontentcardactionMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 	if Url, ok := ConversationcontentcardactionMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 
 	return nil
 }

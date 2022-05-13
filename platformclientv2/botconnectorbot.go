@@ -77,15 +77,15 @@ func (o *Botconnectorbot) UnmarshalJSON(b []byte) error {
 	if Id, ok := BotconnectorbotMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BotconnectorbotMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := BotconnectorbotMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Versions, ok := BotconnectorbotMap["versions"].([]interface{}); ok {
 		VersionsString, _ := json.Marshal(Versions)
 		json.Unmarshal(VersionsString, &o.Versions)
@@ -94,11 +94,11 @@ func (o *Botconnectorbot) UnmarshalJSON(b []byte) error {
 	if BotCompositeTag, ok := BotconnectorbotMap["botCompositeTag"].(string); ok {
 		o.BotCompositeTag = &BotCompositeTag
 	}
-	
+    
 	if SelfUri, ok := BotconnectorbotMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

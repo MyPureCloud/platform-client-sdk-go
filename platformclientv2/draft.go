@@ -102,11 +102,11 @@ func (o *Draft) UnmarshalJSON(b []byte) error {
 	if Id, ok := DraftMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DraftMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Miner, ok := DraftMap["miner"].(map[string]interface{}); ok {
 		MinerString, _ := json.Marshal(Miner)
 		json.Unmarshal(MinerString, &o.Miner)
@@ -130,7 +130,7 @@ func (o *Draft) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DraftMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

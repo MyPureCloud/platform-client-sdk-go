@@ -61,15 +61,15 @@ func (o *Wfmbuscheduletopicbuschedulenotification) UnmarshalJSON(b []byte) error
 	if Status, ok := WfmbuscheduletopicbuschedulenotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := WfmbuscheduletopicbuschedulenotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if EventType, ok := WfmbuscheduletopicbuschedulenotificationMap["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 	if Result, ok := WfmbuscheduletopicbuschedulenotificationMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

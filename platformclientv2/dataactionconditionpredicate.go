@@ -69,23 +69,23 @@ func (o *Dataactionconditionpredicate) UnmarshalJSON(b []byte) error {
 	if OutputField, ok := DataactionconditionpredicateMap["outputField"].(string); ok {
 		o.OutputField = &OutputField
 	}
-	
+    
 	if OutputOperator, ok := DataactionconditionpredicateMap["outputOperator"].(string); ok {
 		o.OutputOperator = &OutputOperator
 	}
-	
+    
 	if ComparisonValue, ok := DataactionconditionpredicateMap["comparisonValue"].(string); ok {
 		o.ComparisonValue = &ComparisonValue
 	}
-	
+    
 	if Inverted, ok := DataactionconditionpredicateMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
 	}
-	
+    
 	if OutputFieldMissingResolution, ok := DataactionconditionpredicateMap["outputFieldMissingResolution"].(bool); ok {
 		o.OutputFieldMissingResolution = &OutputFieldMissingResolution
 	}
-	
+    
 
 	return nil
 }

@@ -110,19 +110,19 @@ func (o *Listedprogram) UnmarshalJSON(b []byte) error {
 	if Id, ok := ListedprogramMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ListedprogramMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ListedprogramMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Published, ok := ListedprogramMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if TopicsCount, ok := ListedprogramMap["topicsCount"].(float64); ok {
 		TopicsCountInt := int(TopicsCount)
 		o.TopicsCount = &TopicsCountInt
@@ -146,7 +146,7 @@ func (o *Listedprogram) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ListedprogramMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -101,19 +101,19 @@ func (o *Metricdefinition) UnmarshalJSON(b []byte) error {
 	if Id, ok := MetricdefinitionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MetricdefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UnitType, ok := MetricdefinitionMap["unitType"].(string); ok {
 		o.UnitType = &UnitType
 	}
-	
+    
 	if ShortName, ok := MetricdefinitionMap["shortName"].(string); ok {
 		o.ShortName = &ShortName
 	}
-	
+    
 	if DividendMetrics, ok := MetricdefinitionMap["dividendMetrics"].([]interface{}); ok {
 		DividendMetricsString, _ := json.Marshal(DividendMetrics)
 		json.Unmarshal(DividendMetricsString, &o.DividendMetrics)
@@ -132,11 +132,11 @@ func (o *Metricdefinition) UnmarshalJSON(b []byte) error {
 	if LockTemplateId, ok := MetricdefinitionMap["lockTemplateId"].(string); ok {
 		o.LockTemplateId = &LockTemplateId
 	}
-	
+    
 	if SelfUri, ok := MetricdefinitionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

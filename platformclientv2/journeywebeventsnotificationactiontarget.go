@@ -45,11 +45,11 @@ func (o *Journeywebeventsnotificationactiontarget) UnmarshalJSON(b []byte) error
 	if Id, ok := JourneywebeventsnotificationactiontargetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := JourneywebeventsnotificationactiontargetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

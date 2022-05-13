@@ -110,15 +110,15 @@ func (o *Conversationbasic) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationbasicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationbasicMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ExternalTag, ok := ConversationbasicMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
 	}
-	
+    
 	if startTimeString, ok := ConversationbasicMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -137,7 +137,7 @@ func (o *Conversationbasic) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ConversationbasicMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if Participants, ok := ConversationbasicMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)

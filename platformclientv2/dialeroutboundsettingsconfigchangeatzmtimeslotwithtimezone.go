@@ -53,15 +53,15 @@ func (o *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone) UnmarshalJS
 	if TimeZoneId, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}
-	
+    
 	if EarliestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["earliestCallableTime"].(string); ok {
 		o.EarliestCallableTime = &EarliestCallableTime
 	}
-	
+    
 	if LatestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["latestCallableTime"].(string); ok {
 		o.LatestCallableTime = &LatestCallableTime
 	}
-	
+    
 
 	return nil
 }

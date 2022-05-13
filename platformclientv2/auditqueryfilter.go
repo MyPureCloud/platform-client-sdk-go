@@ -45,11 +45,11 @@ func (o *Auditqueryfilter) UnmarshalJSON(b []byte) error {
 	if Property, ok := AuditqueryfilterMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if Value, ok := AuditqueryfilterMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

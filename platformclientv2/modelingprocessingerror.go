@@ -45,11 +45,11 @@ func (o *Modelingprocessingerror) UnmarshalJSON(b []byte) error {
 	if InternalErrorCode, ok := ModelingprocessingerrorMap["internalErrorCode"].(string); ok {
 		o.InternalErrorCode = &InternalErrorCode
 	}
-	
+    
 	if Description, ok := ModelingprocessingerrorMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 
 	return nil
 }

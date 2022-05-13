@@ -45,11 +45,11 @@ func (o *Scimconfigresourcetypeschemaextension) UnmarshalJSON(b []byte) error {
 	if Schema, ok := ScimconfigresourcetypeschemaextensionMap["schema"].(string); ok {
 		o.Schema = &Schema
 	}
-	
+    
 	if Required, ok := ScimconfigresourcetypeschemaextensionMap["required"].(bool); ok {
 		o.Required = &Required
 	}
-	
+    
 
 	return nil
 }

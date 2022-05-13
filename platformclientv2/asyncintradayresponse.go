@@ -53,11 +53,11 @@ func (o *Asyncintradayresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := AsyncintradayresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := AsyncintradayresponseMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := AsyncintradayresponseMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

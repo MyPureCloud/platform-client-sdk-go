@@ -222,11 +222,11 @@ func (o *Trusteebillingoverview) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrusteebillingoverviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TrusteebillingoverviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Organization, ok := TrusteebillingoverviewMap["organization"].(map[string]interface{}); ok {
 		OrganizationString, _ := json.Marshal(Organization)
 		json.Unmarshal(OrganizationString, &o.Organization)
@@ -235,7 +235,7 @@ func (o *Trusteebillingoverview) UnmarshalJSON(b []byte) error {
 	if Currency, ok := TrusteebillingoverviewMap["currency"].(string); ok {
 		o.Currency = &Currency
 	}
-	
+    
 	if EnabledProducts, ok := TrusteebillingoverviewMap["enabledProducts"].([]interface{}); ok {
 		EnabledProductsString, _ := json.Marshal(EnabledProducts)
 		json.Unmarshal(EnabledProductsString, &o.EnabledProducts)
@@ -244,7 +244,7 @@ func (o *Trusteebillingoverview) UnmarshalJSON(b []byte) error {
 	if SubscriptionType, ok := TrusteebillingoverviewMap["subscriptionType"].(string); ok {
 		o.SubscriptionType = &SubscriptionType
 	}
-	
+    
 	if rampPeriodStartDateString, ok := TrusteebillingoverviewMap["rampPeriodStartDate"].(string); ok {
 		RampPeriodStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", rampPeriodStartDateString)
 		o.RampPeriodStartDate = &RampPeriodStartDate
@@ -288,15 +288,15 @@ func (o *Trusteebillingoverview) UnmarshalJSON(b []byte) error {
 	if MinimumMonthlyAmount, ok := TrusteebillingoverviewMap["minimumMonthlyAmount"].(string); ok {
 		o.MinimumMonthlyAmount = &MinimumMonthlyAmount
 	}
-	
+    
 	if InRampPeriod, ok := TrusteebillingoverviewMap["inRampPeriod"].(bool); ok {
 		o.InRampPeriod = &InRampPeriod
 	}
-	
+    
 	if SelfUri, ok := TrusteebillingoverviewMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -78,11 +78,11 @@ func (o *Edgeautoupdateconfig) UnmarshalJSON(b []byte) error {
 	if TimeZone, ok := EdgeautoupdateconfigMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if Rrule, ok := EdgeautoupdateconfigMap["rrule"].(string); ok {
 		o.Rrule = &Rrule
 	}
-	
+    
 	if startString, ok := EdgeautoupdateconfigMap["start"].(string); ok {
 		Start, _ := time.Parse("2006-01-02T15:04:05.999999", startString)
 		o.Start = &Start

@@ -61,19 +61,19 @@ func (o *Shorttermforecastreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := ShorttermforecastreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ShorttermforecastreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if WeekDate, ok := ShorttermforecastreferenceMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 	if Description, ok := ShorttermforecastreferenceMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 
 	return nil
 }

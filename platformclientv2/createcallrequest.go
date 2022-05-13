@@ -133,27 +133,27 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
 	if PhoneNumber, ok := CreatecallrequestMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
-	
+    
 	if CallerId, ok := CreatecallrequestMap["callerId"].(string); ok {
 		o.CallerId = &CallerId
 	}
-	
+    
 	if CallerIdName, ok := CreatecallrequestMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
 	}
-	
+    
 	if CallFromQueueId, ok := CreatecallrequestMap["callFromQueueId"].(string); ok {
 		o.CallFromQueueId = &CallFromQueueId
 	}
-	
+    
 	if CallQueueId, ok := CreatecallrequestMap["callQueueId"].(string); ok {
 		o.CallQueueId = &CallQueueId
 	}
-	
+    
 	if CallUserId, ok := CreatecallrequestMap["callUserId"].(string); ok {
 		o.CallUserId = &CallUserId
 	}
-	
+    
 	if Priority, ok := CreatecallrequestMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
@@ -162,7 +162,7 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
 	if LanguageId, ok := CreatecallrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}
-	
+    
 	if RoutingSkillsIds, ok := CreatecallrequestMap["routingSkillsIds"].([]interface{}); ok {
 		RoutingSkillsIdsString, _ := json.Marshal(RoutingSkillsIds)
 		json.Unmarshal(RoutingSkillsIdsString, &o.RoutingSkillsIds)
@@ -181,11 +181,11 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
 	if UuiData, ok := CreatecallrequestMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
 	}
-	
+    
 	if ExternalContactId, ok := CreatecallrequestMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 
 	return nil
 }

@@ -37,7 +37,7 @@ func (o *Edgenetworkdiagnosticrequest) UnmarshalJSON(b []byte) error {
 	if Host, ok := EdgenetworkdiagnosticrequestMap["host"].(string); ok {
 		o.Host = &Host
 	}
-	
+    
 
 	return nil
 }

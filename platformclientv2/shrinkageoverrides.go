@@ -45,7 +45,7 @@ func (o *Shrinkageoverrides) UnmarshalJSON(b []byte) error {
 	if Clear, ok := ShrinkageoverridesMap["clear"].(bool); ok {
 		o.Clear = &Clear
 	}
-	
+    
 	if Values, ok := ShrinkageoverridesMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

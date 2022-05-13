@@ -93,19 +93,19 @@ func (o *Domainpermissionpolicy) UnmarshalJSON(b []byte) error {
 	if Domain, ok := DomainpermissionpolicyMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if EntityName, ok := DomainpermissionpolicyMap["entityName"].(string); ok {
 		o.EntityName = &EntityName
 	}
-	
+    
 	if PolicyName, ok := DomainpermissionpolicyMap["policyName"].(string); ok {
 		o.PolicyName = &PolicyName
 	}
-	
+    
 	if PolicyDescription, ok := DomainpermissionpolicyMap["policyDescription"].(string); ok {
 		o.PolicyDescription = &PolicyDescription
 	}
-	
+    
 	if ActionSet, ok := DomainpermissionpolicyMap["actionSet"].([]interface{}); ok {
 		ActionSetString, _ := json.Marshal(ActionSet)
 		json.Unmarshal(ActionSetString, &o.ActionSet)
@@ -119,7 +119,7 @@ func (o *Domainpermissionpolicy) UnmarshalJSON(b []byte) error {
 	if AllowConditions, ok := DomainpermissionpolicyMap["allowConditions"].(bool); ok {
 		o.AllowConditions = &AllowConditions
 	}
-	
+    
 	if ResourceConditionNode, ok := DomainpermissionpolicyMap["resourceConditionNode"].(map[string]interface{}); ok {
 		ResourceConditionNodeString, _ := json.Marshal(ResourceConditionNode)
 		json.Unmarshal(ResourceConditionNodeString, &o.ResourceConditionNode)

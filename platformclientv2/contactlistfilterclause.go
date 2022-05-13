@@ -45,7 +45,7 @@ func (o *Contactlistfilterclause) UnmarshalJSON(b []byte) error {
 	if FilterType, ok := ContactlistfilterclauseMap["filterType"].(string); ok {
 		o.FilterType = &FilterType
 	}
-	
+    
 	if Predicates, ok := ContactlistfilterclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

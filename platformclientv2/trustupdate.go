@@ -54,7 +54,7 @@ func (o *Trustupdate) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := TrustupdateMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if dateExpiredString, ok := TrustupdateMap["dateExpired"].(string); ok {
 		DateExpired, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiredString)
 		o.DateExpired = &DateExpired

@@ -45,7 +45,7 @@ func (o *Mediaresult) UnmarshalJSON(b []byte) error {
 	if MediaUri, ok := MediaresultMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if WaveformData, ok := MediaresultMap["waveformData"].([]interface{}); ok {
 		WaveformDataString, _ := json.Marshal(WaveformData)
 		json.Unmarshal(WaveformDataString, &o.WaveformData)

@@ -53,11 +53,11 @@ func (o *Trunkinstancetopictrunkerrorinfo) UnmarshalJSON(b []byte) error {
 	if Text, ok := TrunkinstancetopictrunkerrorinfoMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Code, ok := TrunkinstancetopictrunkerrorinfoMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Details, ok := TrunkinstancetopictrunkerrorinfoMap["details"].(map[string]interface{}); ok {
 		DetailsString, _ := json.Marshal(Details)
 		json.Unmarshal(DetailsString, &o.Details)

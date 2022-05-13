@@ -37,7 +37,7 @@ func (o *Wfmuserscheduleadherenceupdatedtopicsecondarypresencereference) Unmarsh
 	if Id, ok := WfmuserscheduleadherenceupdatedtopicsecondarypresencereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

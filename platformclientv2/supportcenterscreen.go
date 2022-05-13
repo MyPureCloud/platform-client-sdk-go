@@ -45,7 +45,7 @@ func (o *Supportcenterscreen) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SupportcenterscreenMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ModuleSettings, ok := SupportcenterscreenMap["moduleSettings"].([]interface{}); ok {
 		ModuleSettingsString, _ := json.Marshal(ModuleSettings)
 		json.Unmarshal(ModuleSettingsString, &o.ModuleSettings)

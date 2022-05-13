@@ -69,11 +69,11 @@ func (o *Credentialtype) UnmarshalJSON(b []byte) error {
 	if Id, ok := CredentialtypeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CredentialtypeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Properties, ok := CredentialtypeMap["properties"].(map[string]interface{}); ok {
 		PropertiesString, _ := json.Marshal(Properties)
 		json.Unmarshal(PropertiesString, &o.Properties)

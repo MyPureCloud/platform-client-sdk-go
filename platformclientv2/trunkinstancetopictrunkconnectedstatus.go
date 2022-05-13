@@ -54,7 +54,7 @@ func (o *Trunkinstancetopictrunkconnectedstatus) UnmarshalJSON(b []byte) error {
 	if Connected, ok := TrunkinstancetopictrunkconnectedstatusMap["connected"].(bool); ok {
 		o.Connected = &Connected
 	}
-	
+    
 	if connectedStateTimeString, ok := TrunkinstancetopictrunkconnectedstatusMap["connectedStateTime"].(string); ok {
 		ConnectedStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedStateTimeString)
 		o.ConnectedStateTime = &ConnectedStateTime

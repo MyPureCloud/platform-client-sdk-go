@@ -182,7 +182,7 @@ func (o *Nludomainversion) UnmarshalJSON(b []byte) error {
 	if Id, ok := NludomainversionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Domain, ok := NludomainversionMap["domain"].(map[string]interface{}); ok {
 		DomainString, _ := json.Marshal(Domain)
 		json.Unmarshal(DomainString, &o.Domain)
@@ -191,15 +191,15 @@ func (o *Nludomainversion) UnmarshalJSON(b []byte) error {
 	if Description, ok := NludomainversionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Language, ok := NludomainversionMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Published, ok := NludomainversionMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if dateCreatedString, ok := NludomainversionMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -223,11 +223,11 @@ func (o *Nludomainversion) UnmarshalJSON(b []byte) error {
 	if TrainingStatus, ok := NludomainversionMap["trainingStatus"].(string); ok {
 		o.TrainingStatus = &TrainingStatus
 	}
-	
+    
 	if EvaluationStatus, ok := NludomainversionMap["evaluationStatus"].(string); ok {
 		o.EvaluationStatus = &EvaluationStatus
 	}
-	
+    
 	if Intents, ok := NludomainversionMap["intents"].([]interface{}); ok {
 		IntentsString, _ := json.Marshal(Intents)
 		json.Unmarshal(IntentsString, &o.Intents)
@@ -246,7 +246,7 @@ func (o *Nludomainversion) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := NludomainversionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

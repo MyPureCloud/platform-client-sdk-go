@@ -102,11 +102,11 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 	if Id, ok := EvaluationformMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EvaluationformMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if modifiedDateString, ok := EvaluationformMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -115,11 +115,11 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 	if Published, ok := EvaluationformMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if ContextId, ok := EvaluationformMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if QuestionGroups, ok := EvaluationformMap["questionGroups"].([]interface{}); ok {
 		QuestionGroupsString, _ := json.Marshal(QuestionGroups)
 		json.Unmarshal(QuestionGroupsString, &o.QuestionGroups)
@@ -133,7 +133,7 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EvaluationformMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

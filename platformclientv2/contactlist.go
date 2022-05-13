@@ -174,11 +174,11 @@ func (o *Contactlist) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContactlistMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ContactlistMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := ContactlistMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -217,7 +217,7 @@ func (o *Contactlist) UnmarshalJSON(b []byte) error {
 	if PreviewModeColumnName, ok := ContactlistMap["previewModeColumnName"].(string); ok {
 		o.PreviewModeColumnName = &PreviewModeColumnName
 	}
-	
+    
 	if PreviewModeAcceptedValues, ok := ContactlistMap["previewModeAcceptedValues"].([]interface{}); ok {
 		PreviewModeAcceptedValuesString, _ := json.Marshal(PreviewModeAcceptedValues)
 		json.Unmarshal(PreviewModeAcceptedValuesString, &o.PreviewModeAcceptedValues)
@@ -236,15 +236,15 @@ func (o *Contactlist) UnmarshalJSON(b []byte) error {
 	if AutomaticTimeZoneMapping, ok := ContactlistMap["automaticTimeZoneMapping"].(bool); ok {
 		o.AutomaticTimeZoneMapping = &AutomaticTimeZoneMapping
 	}
-	
+    
 	if ZipCodeColumnName, ok := ContactlistMap["zipCodeColumnName"].(string); ok {
 		o.ZipCodeColumnName = &ZipCodeColumnName
 	}
-	
+    
 	if SelfUri, ok := ContactlistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

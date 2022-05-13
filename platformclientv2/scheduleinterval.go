@@ -45,11 +45,11 @@ func (o *Scheduleinterval) UnmarshalJSON(b []byte) error {
 	if Start, ok := ScheduleintervalMap["start"].(string); ok {
 		o.Start = &Start
 	}
-	
+    
 	if End, ok := ScheduleintervalMap["end"].(string); ok {
 		o.End = &End
 	}
-	
+    
 
 	return nil
 }

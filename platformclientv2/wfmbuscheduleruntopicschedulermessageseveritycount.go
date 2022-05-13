@@ -45,7 +45,7 @@ func (o *Wfmbuscheduleruntopicschedulermessageseveritycount) UnmarshalJSON(b []b
 	if Severity, ok := WfmbuscheduleruntopicschedulermessageseveritycountMap["severity"].(string); ok {
 		o.Severity = &Severity
 	}
-	
+    
 	if Count, ok := WfmbuscheduleruntopicschedulermessageseveritycountMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

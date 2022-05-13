@@ -45,7 +45,7 @@ func (o *Nuancemixdlgsettings) UnmarshalJSON(b []byte) error {
 	if ChannelId, ok := NuancemixdlgsettingsMap["channelId"].(string); ok {
 		o.ChannelId = &ChannelId
 	}
-	
+    
 	if InputParameters, ok := NuancemixdlgsettingsMap["inputParameters"].(map[string]interface{}); ok {
 		InputParametersString, _ := json.Marshal(InputParameters)
 		json.Unmarshal(InputParametersString, &o.InputParameters)

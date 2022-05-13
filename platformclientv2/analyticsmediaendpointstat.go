@@ -156,11 +156,11 @@ func (o *Analyticsmediaendpointstat) UnmarshalJSON(b []byte) error {
 	if MinMos, ok := AnalyticsmediaendpointstatMap["minMos"].(float64); ok {
 		o.MinMos = &MinMos
 	}
-	
+    
 	if MinRFactor, ok := AnalyticsmediaendpointstatMap["minRFactor"].(float64); ok {
 		o.MinRFactor = &MinRFactor
 	}
-	
+    
 	if OverrunPackets, ok := AnalyticsmediaendpointstatMap["overrunPackets"].(float64); ok {
 		OverrunPacketsInt := int(OverrunPackets)
 		o.OverrunPackets = &OverrunPacketsInt

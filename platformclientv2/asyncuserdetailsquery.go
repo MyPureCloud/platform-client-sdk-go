@@ -77,7 +77,7 @@ func (o *Asyncuserdetailsquery) UnmarshalJSON(b []byte) error {
 	if Interval, ok := AsyncuserdetailsqueryMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if UserFilters, ok := AsyncuserdetailsqueryMap["userFilters"].([]interface{}); ok {
 		UserFiltersString, _ := json.Marshal(UserFilters)
 		json.Unmarshal(UserFiltersString, &o.UserFilters)
@@ -96,7 +96,7 @@ func (o *Asyncuserdetailsquery) UnmarshalJSON(b []byte) error {
 	if Order, ok := AsyncuserdetailsqueryMap["order"].(string); ok {
 		o.Order = &Order
 	}
-	
+    
 	if Limit, ok := AsyncuserdetailsqueryMap["limit"].(float64); ok {
 		LimitInt := int(Limit)
 		o.Limit = &LimitInt

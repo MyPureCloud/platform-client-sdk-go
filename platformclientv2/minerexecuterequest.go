@@ -94,11 +94,11 @@ func (o *Minerexecuterequest) UnmarshalJSON(b []byte) error {
 	if UploadKey, ok := MinerexecuterequestMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 	if MediaType, ok := MinerexecuterequestMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if QueueIds, ok := MinerexecuterequestMap["queueIds"].([]interface{}); ok {
 		QueueIdsString, _ := json.Marshal(QueueIds)
 		json.Unmarshal(QueueIdsString, &o.QueueIds)

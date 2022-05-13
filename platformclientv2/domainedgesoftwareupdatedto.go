@@ -159,15 +159,15 @@ func (o *Domainedgesoftwareupdatedto) UnmarshalJSON(b []byte) error {
 	if ExecuteOnIdle, ok := DomainedgesoftwareupdatedtoMap["executeOnIdle"].(bool); ok {
 		o.ExecuteOnIdle = &ExecuteOnIdle
 	}
-	
+    
 	if Status, ok := DomainedgesoftwareupdatedtoMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if EdgeUri, ok := DomainedgesoftwareupdatedtoMap["edgeUri"].(string); ok {
 		o.EdgeUri = &EdgeUri
 	}
-	
+    
 	if CallDrainingWaitTimeSeconds, ok := DomainedgesoftwareupdatedtoMap["callDrainingWaitTimeSeconds"].(float64); ok {
 		CallDrainingWaitTimeSecondsInt := int(CallDrainingWaitTimeSeconds)
 		o.CallDrainingWaitTimeSeconds = &CallDrainingWaitTimeSecondsInt
@@ -176,7 +176,7 @@ func (o *Domainedgesoftwareupdatedto) UnmarshalJSON(b []byte) error {
 	if Current, ok := DomainedgesoftwareupdatedtoMap["current"].(bool); ok {
 		o.Current = &Current
 	}
-	
+    
 
 	return nil
 }

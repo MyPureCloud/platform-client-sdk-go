@@ -93,11 +93,11 @@ func (o *Dnclistdivisionview) UnmarshalJSON(b []byte) error {
 	if Id, ok := DnclistdivisionviewMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DnclistdivisionviewMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DnclistdivisionviewMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -116,15 +116,15 @@ func (o *Dnclistdivisionview) UnmarshalJSON(b []byte) error {
 	if DncSourceType, ok := DnclistdivisionviewMap["dncSourceType"].(string); ok {
 		o.DncSourceType = &DncSourceType
 	}
-	
+    
 	if ContactMethod, ok := DnclistdivisionviewMap["contactMethod"].(string); ok {
 		o.ContactMethod = &ContactMethod
 	}
-	
+    
 	if SelfUri, ok := DnclistdivisionviewMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

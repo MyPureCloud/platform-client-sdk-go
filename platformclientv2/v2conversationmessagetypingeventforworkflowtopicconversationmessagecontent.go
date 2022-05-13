@@ -93,7 +93,7 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationmessagecont
 	if ContentType, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagecontentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Location, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagecontentMap["location"].(map[string]interface{}); ok {
 		LocationString, _ := json.Marshal(Location)
 		json.Unmarshal(LocationString, &o.Location)

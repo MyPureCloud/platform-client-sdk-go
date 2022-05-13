@@ -63,7 +63,7 @@ func (o *Recordingencryptionconfigurationlisting) UnmarshalJSON(b []byte) error 
 	if SelfUri, ok := RecordingencryptionconfigurationlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

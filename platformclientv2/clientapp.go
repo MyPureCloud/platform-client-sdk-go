@@ -101,11 +101,11 @@ func (o *Clientapp) UnmarshalJSON(b []byte) error {
 	if Id, ok := ClientappMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ClientappMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if IntegrationType, ok := ClientappMap["integrationType"].(map[string]interface{}); ok {
 		IntegrationTypeString, _ := json.Marshal(IntegrationType)
 		json.Unmarshal(IntegrationTypeString, &o.IntegrationType)
@@ -114,11 +114,11 @@ func (o *Clientapp) UnmarshalJSON(b []byte) error {
 	if Notes, ok := ClientappMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if IntendedState, ok := ClientappMap["intendedState"].(string); ok {
 		o.IntendedState = &IntendedState
 	}
-	
+    
 	if Config, ok := ClientappMap["config"].(map[string]interface{}); ok {
 		ConfigString, _ := json.Marshal(Config)
 		json.Unmarshal(ConfigString, &o.Config)
@@ -137,7 +137,7 @@ func (o *Clientapp) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ClientappMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

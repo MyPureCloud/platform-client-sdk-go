@@ -50,7 +50,7 @@ func (o *Weekscheduleresponse) UnmarshalJSON(b []byte) error {
 	if DownloadUrl, ok := WeekscheduleresponseMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 
 	return nil
 }

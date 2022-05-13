@@ -238,15 +238,15 @@ func (o *Queueconversationvideoeventtopicmessage) UnmarshalJSON(b []byte) error 
 	if Id, ok := QueueconversationvideoeventtopicmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := QueueconversationvideoeventtopicmessageMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Held, ok := QueueconversationvideoeventtopicmessageMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if ErrorInfo, ok := QueueconversationvideoeventtopicmessageMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
@@ -255,19 +255,19 @@ func (o *Queueconversationvideoeventtopicmessage) UnmarshalJSON(b []byte) error 
 	if Provider, ok := QueueconversationvideoeventtopicmessageMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationvideoeventtopicmessageMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationvideoeventtopicmessageMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationvideoeventtopicmessageMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationvideoeventtopicmessageMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -301,19 +301,19 @@ func (o *Queueconversationvideoeventtopicmessage) UnmarshalJSON(b []byte) error 
 	if MessagesTranscriptUri, ok := QueueconversationvideoeventtopicmessageMap["messagesTranscriptUri"].(string); ok {
 		o.MessagesTranscriptUri = &MessagesTranscriptUri
 	}
-	
+    
 	if VarType, ok := QueueconversationvideoeventtopicmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if RecipientCountry, ok := QueueconversationvideoeventtopicmessageMap["recipientCountry"].(string); ok {
 		o.RecipientCountry = &RecipientCountry
 	}
-	
+    
 	if RecipientType, ok := QueueconversationvideoeventtopicmessageMap["recipientType"].(string); ok {
 		o.RecipientType = &RecipientType
 	}
-	
+    
 	if JourneyContext, ok := QueueconversationvideoeventtopicmessageMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -332,11 +332,11 @@ func (o *Queueconversationvideoeventtopicmessage) UnmarshalJSON(b []byte) error 
 	if AfterCallWorkRequired, ok := QueueconversationvideoeventtopicmessageMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if AgentAssistantId, ok := QueueconversationvideoeventtopicmessageMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 
 	return nil
 }

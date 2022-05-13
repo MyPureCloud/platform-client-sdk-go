@@ -61,11 +61,11 @@ func (o *Edgelogicalinterfaceschangetopicerrorinfo) UnmarshalJSON(b []byte) erro
 	if Message, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if MessageWithParams, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["messageWithParams"].(string); ok {
 		o.MessageWithParams = &MessageWithParams
 	}
-	
+    
 	if MessageParams, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["messageParams"].(map[string]interface{}); ok {
 		MessageParamsString, _ := json.Marshal(MessageParams)
 		json.Unmarshal(MessageParamsString, &o.MessageParams)
@@ -74,7 +74,7 @@ func (o *Edgelogicalinterfaceschangetopicerrorinfo) UnmarshalJSON(b []byte) erro
 	if Code, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 
 	return nil
 }

@@ -77,23 +77,23 @@ func (o *Evaluationdetailquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := EvaluationdetailquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := EvaluationdetailquerypredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Metric, ok := EvaluationdetailquerypredicateMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Operator, ok := EvaluationdetailquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := EvaluationdetailquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := EvaluationdetailquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

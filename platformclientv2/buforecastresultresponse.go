@@ -50,7 +50,7 @@ func (o *Buforecastresultresponse) UnmarshalJSON(b []byte) error {
 	if DownloadUrl, ok := BuforecastresultresponseMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 
 	return nil
 }

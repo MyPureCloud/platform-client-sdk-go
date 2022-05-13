@@ -45,11 +45,11 @@ func (o *Voicemail) UnmarshalJSON(b []byte) error {
 	if Id, ok := VoicemailMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if UploadStatus, ok := VoicemailMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 
 	return nil
 }

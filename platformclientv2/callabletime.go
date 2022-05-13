@@ -50,7 +50,7 @@ func (o *Callabletime) UnmarshalJSON(b []byte) error {
 	if TimeZoneId, ok := CallabletimeMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}
-	
+    
 
 	return nil
 }

@@ -53,7 +53,7 @@ func (o *Statisticalresponse) UnmarshalJSON(b []byte) error {
 	if Interval, ok := StatisticalresponseMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Metrics, ok := StatisticalresponseMap["metrics"].([]interface{}); ok {
 		MetricsString, _ := json.Marshal(Metrics)
 		json.Unmarshal(MetricsString, &o.Metrics)

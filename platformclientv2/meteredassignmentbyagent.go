@@ -77,7 +77,7 @@ func (o *Meteredassignmentbyagent) UnmarshalJSON(b []byte) error {
 	if EvaluationContextId, ok := MeteredassignmentbyagentMap["evaluationContextId"].(string); ok {
 		o.EvaluationContextId = &EvaluationContextId
 	}
-	
+    
 	if Evaluators, ok := MeteredassignmentbyagentMap["evaluators"].([]interface{}); ok {
 		EvaluatorsString, _ := json.Marshal(Evaluators)
 		json.Unmarshal(EvaluatorsString, &o.Evaluators)
@@ -101,7 +101,7 @@ func (o *Meteredassignmentbyagent) UnmarshalJSON(b []byte) error {
 	if TimeZone, ok := MeteredassignmentbyagentMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 
 	return nil
 }

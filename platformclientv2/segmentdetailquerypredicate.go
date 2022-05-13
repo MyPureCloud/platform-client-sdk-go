@@ -93,31 +93,31 @@ func (o *Segmentdetailquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SegmentdetailquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := SegmentdetailquerypredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if PropertyType, ok := SegmentdetailquerypredicateMap["propertyType"].(string); ok {
 		o.PropertyType = &PropertyType
 	}
-	
+    
 	if Property, ok := SegmentdetailquerypredicateMap["property"].(string); ok {
 		o.Property = &Property
 	}
-	
+    
 	if Metric, ok := SegmentdetailquerypredicateMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Operator, ok := SegmentdetailquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := SegmentdetailquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := SegmentdetailquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

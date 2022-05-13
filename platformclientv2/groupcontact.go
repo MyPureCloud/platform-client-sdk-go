@@ -69,23 +69,23 @@ func (o *Groupcontact) UnmarshalJSON(b []byte) error {
 	if Address, ok := GroupcontactMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Extension, ok := GroupcontactMap["extension"].(string); ok {
 		o.Extension = &Extension
 	}
-	
+    
 	if Display, ok := GroupcontactMap["display"].(string); ok {
 		o.Display = &Display
 	}
-	
+    
 	if VarType, ok := GroupcontactMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if MediaType, ok := GroupcontactMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 
 	return nil
 }

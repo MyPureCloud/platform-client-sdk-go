@@ -77,19 +77,19 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationcontentgene
 	if Title, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentgenericMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentgenericMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Image, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentgenericMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Video, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentgenericMap["video"].(string); ok {
 		o.Video = &Video
 	}
-	
+    
 	if Actions, ok := V2conversationmessagetypingeventforworkflowtopicconversationcontentgenericMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

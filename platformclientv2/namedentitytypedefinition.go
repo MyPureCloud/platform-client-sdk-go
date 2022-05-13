@@ -53,11 +53,11 @@ func (o *Namedentitytypedefinition) UnmarshalJSON(b []byte) error {
 	if Name, ok := NamedentitytypedefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := NamedentitytypedefinitionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Mechanism, ok := NamedentitytypedefinitionMap["mechanism"].(map[string]interface{}); ok {
 		MechanismString, _ := json.Marshal(Mechanism)
 		json.Unmarshal(MechanismString, &o.Mechanism)

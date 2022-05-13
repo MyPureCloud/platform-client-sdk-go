@@ -53,7 +53,7 @@ func (o *Scimserviceproviderconfigbulkfeature) UnmarshalJSON(b []byte) error {
 	if Supported, ok := ScimserviceproviderconfigbulkfeatureMap["supported"].(bool); ok {
 		o.Supported = &Supported
 	}
-	
+    
 	if MaxOperations, ok := ScimserviceproviderconfigbulkfeatureMap["maxOperations"].(float64); ok {
 		MaxOperationsInt := int(MaxOperations)
 		o.MaxOperations = &MaxOperationsInt

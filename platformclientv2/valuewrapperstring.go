@@ -37,7 +37,7 @@ func (o *Valuewrapperstring) UnmarshalJSON(b []byte) error {
 	if Value, ok := ValuewrapperstringMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

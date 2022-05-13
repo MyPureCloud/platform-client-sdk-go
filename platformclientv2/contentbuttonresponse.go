@@ -61,19 +61,19 @@ func (o *Contentbuttonresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContentbuttonresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if VarType, ok := ContentbuttonresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := ContentbuttonresponseMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := ContentbuttonresponseMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Schedulermessageseveritycount) UnmarshalJSON(b []byte) error {
 	if Severity, ok := SchedulermessageseveritycountMap["severity"].(string); ok {
 		o.Severity = &Severity
 	}
-	
+    
 	if Count, ok := SchedulermessageseveritycountMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

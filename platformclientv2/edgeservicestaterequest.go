@@ -45,7 +45,7 @@ func (o *Edgeservicestaterequest) UnmarshalJSON(b []byte) error {
 	if InService, ok := EdgeservicestaterequestMap["inService"].(bool); ok {
 		o.InService = &InService
 	}
-	
+    
 	if CallDrainingWaitTimeSeconds, ok := EdgeservicestaterequestMap["callDrainingWaitTimeSeconds"].(float64); ok {
 		CallDrainingWaitTimeSecondsInt := int(CallDrainingWaitTimeSeconds)
 		o.CallDrainingWaitTimeSeconds = &CallDrainingWaitTimeSecondsInt

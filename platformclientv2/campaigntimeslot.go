@@ -53,11 +53,11 @@ func (o *Campaigntimeslot) UnmarshalJSON(b []byte) error {
 	if StartTime, ok := CampaigntimeslotMap["startTime"].(string); ok {
 		o.StartTime = &StartTime
 	}
-	
+    
 	if StopTime, ok := CampaigntimeslotMap["stopTime"].(string); ok {
 		o.StopTime = &StopTime
 	}
-	
+    
 	if Day, ok := CampaigntimeslotMap["day"].(float64); ok {
 		DayInt := int(Day)
 		o.Day = &DayInt

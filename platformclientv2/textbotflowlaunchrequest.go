@@ -74,11 +74,11 @@ func (o *Textbotflowlaunchrequest) UnmarshalJSON(b []byte) error {
 	if ExternalSessionId, ok := TextbotflowlaunchrequestMap["externalSessionId"].(string); ok {
 		o.ExternalSessionId = &ExternalSessionId
 	}
-	
+    
 	if ConversationId, ok := TextbotflowlaunchrequestMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if InputData, ok := TextbotflowlaunchrequestMap["inputData"].(map[string]interface{}); ok {
 		InputDataString, _ := json.Marshal(InputData)
 		json.Unmarshal(InputDataString, &o.InputData)

@@ -53,7 +53,7 @@ func (o *Metadata) UnmarshalJSON(b []byte) error {
 	if PairingToken, ok := MetadataMap["pairing-token"].(string); ok {
 		o.PairingToken = &PairingToken
 	}
-	
+    
 	if PairingTrust, ok := MetadataMap["pairing-trust"].([]interface{}); ok {
 		PairingTrustString, _ := json.Marshal(PairingTrust)
 		json.Unmarshal(PairingTrustString, &o.PairingTrust)
@@ -62,7 +62,7 @@ func (o *Metadata) UnmarshalJSON(b []byte) error {
 	if PairingUrl, ok := MetadataMap["pairing-url"].(string); ok {
 		o.PairingUrl = &PairingUrl
 	}
-	
+    
 
 	return nil
 }

@@ -53,7 +53,7 @@ func (o *Usageitem) UnmarshalJSON(b []byte) error {
 	if VarType, ok := UsageitemMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if TotalDocumentByteCount, ok := UsageitemMap["totalDocumentByteCount"].(float64); ok {
 		TotalDocumentByteCountInt := int(TotalDocumentByteCount)
 		o.TotalDocumentByteCount = &TotalDocumentByteCountInt

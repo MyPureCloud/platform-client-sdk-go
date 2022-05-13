@@ -62,7 +62,7 @@ func (o *Logcaptureuserconfiguration) UnmarshalJSON(b []byte) error {
 	if Id, ok := LogcaptureuserconfigurationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if dateExpiredString, ok := LogcaptureuserconfigurationMap["dateExpired"].(string); ok {
 		DateExpired, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiredString)
 		o.DateExpired = &DateExpired
@@ -71,7 +71,7 @@ func (o *Logcaptureuserconfiguration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LogcaptureuserconfigurationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -117,39 +117,39 @@ func (o *Customerinteractioncenter) UnmarshalJSON(b []byte) error {
 	if Id, ok := CustomerinteractioncenterMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CustomerinteractioncenterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Disabled, ok := CustomerinteractioncenterMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if IssuerURI, ok := CustomerinteractioncenterMap["issuerURI"].(string); ok {
 		o.IssuerURI = &IssuerURI
 	}
-	
+    
 	if SsoTargetURI, ok := CustomerinteractioncenterMap["ssoTargetURI"].(string); ok {
 		o.SsoTargetURI = &SsoTargetURI
 	}
-	
+    
 	if SloURI, ok := CustomerinteractioncenterMap["sloURI"].(string); ok {
 		o.SloURI = &SloURI
 	}
-	
+    
 	if SloBinding, ok := CustomerinteractioncenterMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
 	}
-	
+    
 	if RelyingPartyIdentifier, ok := CustomerinteractioncenterMap["relyingPartyIdentifier"].(string); ok {
 		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
-	
+    
 	if Certificate, ok := CustomerinteractioncenterMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 	if Certificates, ok := CustomerinteractioncenterMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
@@ -158,7 +158,7 @@ func (o *Customerinteractioncenter) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CustomerinteractioncenterMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

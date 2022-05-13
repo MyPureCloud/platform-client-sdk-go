@@ -45,7 +45,7 @@ func (o *Journeyaggregatequeryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := JourneyaggregatequeryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := JourneyaggregatequeryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

@@ -77,27 +77,27 @@ func (o *Localencryptionconfiguration) UnmarshalJSON(b []byte) error {
 	if Id, ok := LocalencryptionconfigurationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := LocalencryptionconfigurationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Url, ok := LocalencryptionconfigurationMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if ApiId, ok := LocalencryptionconfigurationMap["apiId"].(string); ok {
 		o.ApiId = &ApiId
 	}
-	
+    
 	if ApiKey, ok := LocalencryptionconfigurationMap["apiKey"].(string); ok {
 		o.ApiKey = &ApiKey
 	}
-	
+    
 	if SelfUri, ok := LocalencryptionconfigurationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -69,23 +69,23 @@ func (o *Contentquickreply) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContentquickreplyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Text, ok := ContentquickreplyMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := ContentquickreplyMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 	if Image, ok := ContentquickreplyMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Action, ok := ContentquickreplyMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 
 	return nil
 }

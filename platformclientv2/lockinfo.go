@@ -93,7 +93,7 @@ func (o *Lockinfo) UnmarshalJSON(b []byte) error {
 	if Action, ok := LockinfoMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 
 	return nil
 }

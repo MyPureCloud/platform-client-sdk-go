@@ -221,23 +221,23 @@ func (o *Integrationtype) UnmarshalJSON(b []byte) error {
 	if Id, ok := IntegrationtypeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := IntegrationtypeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := IntegrationtypeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Provider, ok := IntegrationtypeMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Category, ok := IntegrationtypeMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Images, ok := IntegrationtypeMap["images"].([]interface{}); ok {
 		ImagesString, _ := json.Marshal(Images)
 		json.Unmarshal(ImagesString, &o.Images)
@@ -246,47 +246,47 @@ func (o *Integrationtype) UnmarshalJSON(b []byte) error {
 	if ConfigPropertiesSchemaUri, ok := IntegrationtypeMap["configPropertiesSchemaUri"].(string); ok {
 		o.ConfigPropertiesSchemaUri = &ConfigPropertiesSchemaUri
 	}
-	
+    
 	if ConfigAdvancedSchemaUri, ok := IntegrationtypeMap["configAdvancedSchemaUri"].(string); ok {
 		o.ConfigAdvancedSchemaUri = &ConfigAdvancedSchemaUri
 	}
-	
+    
 	if HelpUri, ok := IntegrationtypeMap["helpUri"].(string); ok {
 		o.HelpUri = &HelpUri
 	}
-	
+    
 	if TermsOfServiceUri, ok := IntegrationtypeMap["termsOfServiceUri"].(string); ok {
 		o.TermsOfServiceUri = &TermsOfServiceUri
 	}
-	
+    
 	if VendorName, ok := IntegrationtypeMap["vendorName"].(string); ok {
 		o.VendorName = &VendorName
 	}
-	
+    
 	if VendorWebsiteUri, ok := IntegrationtypeMap["vendorWebsiteUri"].(string); ok {
 		o.VendorWebsiteUri = &VendorWebsiteUri
 	}
-	
+    
 	if MarketplaceUri, ok := IntegrationtypeMap["marketplaceUri"].(string); ok {
 		o.MarketplaceUri = &MarketplaceUri
 	}
-	
+    
 	if FaqUri, ok := IntegrationtypeMap["faqUri"].(string); ok {
 		o.FaqUri = &FaqUri
 	}
-	
+    
 	if PrivacyPolicyUri, ok := IntegrationtypeMap["privacyPolicyUri"].(string); ok {
 		o.PrivacyPolicyUri = &PrivacyPolicyUri
 	}
-	
+    
 	if SupportContactUri, ok := IntegrationtypeMap["supportContactUri"].(string); ok {
 		o.SupportContactUri = &SupportContactUri
 	}
-	
+    
 	if SalesContactUri, ok := IntegrationtypeMap["salesContactUri"].(string); ok {
 		o.SalesContactUri = &SalesContactUri
 	}
-	
+    
 	if HelpLinks, ok := IntegrationtypeMap["helpLinks"].([]interface{}); ok {
 		HelpLinksString, _ := json.Marshal(HelpLinks)
 		json.Unmarshal(HelpLinksString, &o.HelpLinks)
@@ -300,7 +300,7 @@ func (o *Integrationtype) UnmarshalJSON(b []byte) error {
 	if NonInstallable, ok := IntegrationtypeMap["nonInstallable"].(bool); ok {
 		o.NonInstallable = &NonInstallable
 	}
-	
+    
 	if MaxInstances, ok := IntegrationtypeMap["maxInstances"].(float64); ok {
 		MaxInstancesInt := int(MaxInstances)
 		o.MaxInstances = &MaxInstancesInt
@@ -319,7 +319,7 @@ func (o *Integrationtype) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := IntegrationtypeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

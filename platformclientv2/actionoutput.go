@@ -82,7 +82,7 @@ func (o *Actionoutput) UnmarshalJSON(b []byte) error {
 	if SuccessSchemaUri, ok := ActionoutputMap["successSchemaUri"].(string); ok {
 		o.SuccessSchemaUri = &SuccessSchemaUri
 	}
-	
+    
 	if ErrorSchema, ok := ActionoutputMap["errorSchema"].(map[string]interface{}); ok {
 		ErrorSchemaString, _ := json.Marshal(ErrorSchema)
 		json.Unmarshal(ErrorSchemaString, &o.ErrorSchema)
@@ -91,7 +91,7 @@ func (o *Actionoutput) UnmarshalJSON(b []byte) error {
 	if ErrorSchemaUri, ok := ActionoutputMap["errorSchemaUri"].(string); ok {
 		o.ErrorSchemaUri = &ErrorSchemaUri
 	}
-	
+    
 	if SuccessSchemaFlattened, ok := ActionoutputMap["successSchemaFlattened"].(map[string]interface{}); ok {
 		SuccessSchemaFlattenedString, _ := json.Marshal(SuccessSchemaFlattened)
 		json.Unmarshal(SuccessSchemaFlattenedString, &o.SuccessSchemaFlattened)

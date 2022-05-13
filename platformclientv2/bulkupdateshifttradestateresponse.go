@@ -53,11 +53,11 @@ func (o *Bulkupdateshifttradestateresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := BulkupdateshifttradestateresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := BulkupdateshifttradestateresponseMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := BulkupdateshifttradestateresponseMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

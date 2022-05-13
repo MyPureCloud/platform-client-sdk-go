@@ -102,11 +102,11 @@ func (o *Billingusagereport) UnmarshalJSON(b []byte) error {
 	if Id, ok := BillingusagereportMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BillingusagereportMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if startDateString, ok := BillingusagereportMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -120,7 +120,7 @@ func (o *Billingusagereport) UnmarshalJSON(b []byte) error {
 	if Status, ok := BillingusagereportMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Usages, ok := BillingusagereportMap["usages"].([]interface{}); ok {
 		UsagesString, _ := json.Marshal(Usages)
 		json.Unmarshal(UsagesString, &o.Usages)
@@ -129,7 +129,7 @@ func (o *Billingusagereport) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BillingusagereportMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

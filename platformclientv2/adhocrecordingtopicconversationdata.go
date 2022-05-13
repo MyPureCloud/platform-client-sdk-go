@@ -37,7 +37,7 @@ func (o *Adhocrecordingtopicconversationdata) UnmarshalJSON(b []byte) error {
 	if Id, ok := AdhocrecordingtopicconversationdataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

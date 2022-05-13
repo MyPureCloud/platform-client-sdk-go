@@ -61,15 +61,15 @@ func (o *Detectednamedentity) UnmarshalJSON(b []byte) error {
 	if Name, ok := DetectednamedentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if EntityType, ok := DetectednamedentityMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if Probability, ok := DetectednamedentityMap["probability"].(float64); ok {
 		o.Probability = &Probability
 	}
-	
+    
 	if Value, ok := DetectednamedentityMap["value"].(map[string]interface{}); ok {
 		ValueString, _ := json.Marshal(Value)
 		json.Unmarshal(ValueString, &o.Value)

@@ -69,11 +69,11 @@ func (o *Knowledgedocumentrequest) UnmarshalJSON(b []byte) error {
 	if VarType, ok := KnowledgedocumentrequestMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ExternalUrl, ok := KnowledgedocumentrequestMap["externalUrl"].(string); ok {
 		o.ExternalUrl = &ExternalUrl
 	}
-	
+    
 	if Faq, ok := KnowledgedocumentrequestMap["faq"].(map[string]interface{}); ok {
 		FaqString, _ := json.Marshal(Faq)
 		json.Unmarshal(FaqString, &o.Faq)

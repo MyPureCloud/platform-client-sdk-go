@@ -71,7 +71,7 @@ func (o *Routingconversationattributesrequest) UnmarshalJSON(b []byte) error {
 	if LanguageId, ok := RoutingconversationattributesrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}
-	
+    
 	if RequestScoredAgents, ok := RoutingconversationattributesrequestMap["requestScoredAgents"].([]interface{}); ok {
 		RequestScoredAgentsString, _ := json.Marshal(RequestScoredAgents)
 		json.Unmarshal(RequestScoredAgentsString, &o.RequestScoredAgents)

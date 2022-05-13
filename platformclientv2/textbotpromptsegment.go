@@ -61,11 +61,11 @@ func (o *Textbotpromptsegment) UnmarshalJSON(b []byte) error {
 	if Text, ok := TextbotpromptsegmentMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if VarType, ok := TextbotpromptsegmentMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Format, ok := TextbotpromptsegmentMap["format"].(map[string]interface{}); ok {
 		FormatString, _ := json.Marshal(Format)
 		json.Unmarshal(FormatString, &o.Format)

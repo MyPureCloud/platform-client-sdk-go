@@ -77,11 +77,11 @@ func (o *Scorablesurvey) UnmarshalJSON(b []byte) error {
 	if Id, ok := ScorablesurveyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ScorablesurveyMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SurveyForm, ok := ScorablesurveyMap["surveyForm"].(map[string]interface{}); ok {
 		SurveyFormString, _ := json.Marshal(SurveyForm)
 		json.Unmarshal(SurveyFormString, &o.SurveyForm)
@@ -90,7 +90,7 @@ func (o *Scorablesurvey) UnmarshalJSON(b []byte) error {
 	if Status, ok := ScorablesurveyMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Answers, ok := ScorablesurveyMap["answers"].(map[string]interface{}); ok {
 		AnswersString, _ := json.Marshal(Answers)
 		json.Unmarshal(AnswersString, &o.Answers)
@@ -99,7 +99,7 @@ func (o *Scorablesurvey) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ScorablesurveyMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

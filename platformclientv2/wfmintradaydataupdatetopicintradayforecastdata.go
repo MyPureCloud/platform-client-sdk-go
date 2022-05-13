@@ -54,17 +54,17 @@ func (o *Wfmintradaydataupdatetopicintradayforecastdata) UnmarshalJSON(b []byte)
 		OfferedFloat32 := float32(Offered)
 		o.Offered = &OfferedFloat32
 	}
-	
+    
 	if AverageTalkTimeSeconds, ok := WfmintradaydataupdatetopicintradayforecastdataMap["averageTalkTimeSeconds"].(float64); ok {
 		AverageTalkTimeSecondsFloat32 := float32(AverageTalkTimeSeconds)
 		o.AverageTalkTimeSeconds = &AverageTalkTimeSecondsFloat32
 	}
-	
+    
 	if AverageAfterCallWorkSeconds, ok := WfmintradaydataupdatetopicintradayforecastdataMap["averageAfterCallWorkSeconds"].(float64); ok {
 		AverageAfterCallWorkSecondsFloat32 := float32(AverageAfterCallWorkSeconds)
 		o.AverageAfterCallWorkSeconds = &AverageAfterCallWorkSecondsFloat32
 	}
-	
+    
 
 	return nil
 }

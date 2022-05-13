@@ -69,11 +69,11 @@ func (o *Cobrowseconversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := CobrowseconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CobrowseconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := CobrowseconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
@@ -87,7 +87,7 @@ func (o *Cobrowseconversation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CobrowseconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

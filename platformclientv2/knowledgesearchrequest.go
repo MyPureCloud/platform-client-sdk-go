@@ -77,7 +77,7 @@ func (o *Knowledgesearchrequest) UnmarshalJSON(b []byte) error {
 	if Query, ok := KnowledgesearchrequestMap["query"].(string); ok {
 		o.Query = &Query
 	}
-	
+    
 	if PageSize, ok := KnowledgesearchrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
@@ -91,15 +91,15 @@ func (o *Knowledgesearchrequest) UnmarshalJSON(b []byte) error {
 	if DocumentType, ok := KnowledgesearchrequestMap["documentType"].(string); ok {
 		o.DocumentType = &DocumentType
 	}
-	
+    
 	if LanguageCode, ok := KnowledgesearchrequestMap["languageCode"].(string); ok {
 		o.LanguageCode = &LanguageCode
 	}
-	
+    
 	if SearchOnDraftDocuments, ok := KnowledgesearchrequestMap["searchOnDraftDocuments"].(bool); ok {
 		o.SearchOnDraftDocuments = &SearchOnDraftDocuments
 	}
-	
+    
 
 	return nil
 }

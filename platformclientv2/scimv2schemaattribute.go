@@ -125,11 +125,11 @@ func (o *Scimv2schemaattribute) UnmarshalJSON(b []byte) error {
 	if Name, ok := Scimv2schemaattributeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := Scimv2schemaattributeMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if SubAttributes, ok := Scimv2schemaattributeMap["subAttributes"].([]interface{}); ok {
 		SubAttributesString, _ := json.Marshal(SubAttributes)
 		json.Unmarshal(SubAttributesString, &o.SubAttributes)
@@ -138,15 +138,15 @@ func (o *Scimv2schemaattribute) UnmarshalJSON(b []byte) error {
 	if MultiValued, ok := Scimv2schemaattributeMap["multiValued"].(bool); ok {
 		o.MultiValued = &MultiValued
 	}
-	
+    
 	if Description, ok := Scimv2schemaattributeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Required, ok := Scimv2schemaattributeMap["required"].(bool); ok {
 		o.Required = &Required
 	}
-	
+    
 	if CanonicalValues, ok := Scimv2schemaattributeMap["canonicalValues"].([]interface{}); ok {
 		CanonicalValuesString, _ := json.Marshal(CanonicalValues)
 		json.Unmarshal(CanonicalValuesString, &o.CanonicalValues)
@@ -155,19 +155,19 @@ func (o *Scimv2schemaattribute) UnmarshalJSON(b []byte) error {
 	if CaseExact, ok := Scimv2schemaattributeMap["caseExact"].(bool); ok {
 		o.CaseExact = &CaseExact
 	}
-	
+    
 	if Mutability, ok := Scimv2schemaattributeMap["mutability"].(string); ok {
 		o.Mutability = &Mutability
 	}
-	
+    
 	if Returned, ok := Scimv2schemaattributeMap["returned"].(string); ok {
 		o.Returned = &Returned
 	}
-	
+    
 	if Uniqueness, ok := Scimv2schemaattributeMap["uniqueness"].(string); ok {
 		o.Uniqueness = &Uniqueness
 	}
-	
+    
 	if ReferenceTypes, ok := Scimv2schemaattributeMap["referenceTypes"].([]interface{}); ok {
 		ReferenceTypesString, _ := json.Marshal(ReferenceTypes)
 		json.Unmarshal(ReferenceTypesString, &o.ReferenceTypes)

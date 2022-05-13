@@ -32,8 +32,6 @@ func NewWidgetsApiWithConfig(config *Configuration) *WidgetsApi {
 // DeleteWidgetsDeployment invokes DELETE /api/v2/widgets/deployments/{deploymentId}
 //
 // Delete a Widget deployment
-//
-// 
 func (a WidgetsApi) DeleteWidgetsDeployment(deploymentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a WidgetsApi) DeleteWidgetsDeployment(deploymentId string) (*APIResponse, 
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'deploymentId' when calling WidgetsApi->DeleteWidgetsDeployment")
 	}
 
@@ -98,8 +96,6 @@ func (a WidgetsApi) DeleteWidgetsDeployment(deploymentId string) (*APIResponse, 
 // GetWidgetsDeployment invokes GET /api/v2/widgets/deployments/{deploymentId}
 //
 // Get a Widget deployment
-//
-// 
 func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WidgetsApi->GetWidgetsDeployment")
 	}
 
@@ -171,8 +167,6 @@ func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment
 // GetWidgetsDeployments invokes GET /api/v2/widgets/deployments
 //
 // List Widget deployments
-//
-// 
 func (a WidgetsApi) GetWidgetsDeployments() (*Widgetdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -238,8 +232,6 @@ func (a WidgetsApi) GetWidgetsDeployments() (*Widgetdeploymententitylisting, *AP
 // PostWidgetsDeployments invokes POST /api/v2/widgets/deployments
 //
 // Create Widget deployment
-//
-// 
 func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeployment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -251,7 +243,7 @@ func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeploy
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WidgetsApi->PostWidgetsDeployments")
 	}
 
@@ -313,8 +305,6 @@ func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeploy
 // PutWidgetsDeployment invokes PUT /api/v2/widgets/deployments/{deploymentId}
 //
 // Update a Widget deployment
-//
-// 
 func (a WidgetsApi) PutWidgetsDeployment(deploymentId string, body Widgetdeployment) (*Widgetdeployment, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -327,12 +317,12 @@ func (a WidgetsApi) PutWidgetsDeployment(deploymentId string, body Widgetdeploym
 
 	// verify the required parameter 'deploymentId' is set
 	if &deploymentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WidgetsApi->PutWidgetsDeployment")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WidgetsApi->PutWidgetsDeployment")
 	}
 

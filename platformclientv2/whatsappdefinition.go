@@ -53,15 +53,15 @@ func (o *Whatsappdefinition) UnmarshalJSON(b []byte) error {
 	if Name, ok := WhatsappdefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Namespace, ok := WhatsappdefinitionMap["namespace"].(string); ok {
 		o.Namespace = &Namespace
 	}
-	
+    
 	if Language, ok := WhatsappdefinitionMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 
 	return nil
 }

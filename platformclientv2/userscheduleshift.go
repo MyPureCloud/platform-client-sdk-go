@@ -99,7 +99,7 @@ func (o *Userscheduleshift) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserscheduleshiftMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if startDateString, ok := UserscheduleshiftMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
@@ -118,11 +118,11 @@ func (o *Userscheduleshift) UnmarshalJSON(b []byte) error {
 	if Delete, ok := UserscheduleshiftMap["delete"].(bool); ok {
 		o.Delete = &Delete
 	}
-	
+    
 	if ManuallyEdited, ok := UserscheduleshiftMap["manuallyEdited"].(bool); ok {
 		o.ManuallyEdited = &ManuallyEdited
 	}
-	
+    
 
 	return nil
 }

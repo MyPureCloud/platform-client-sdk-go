@@ -53,11 +53,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangefromemailaddress) Unmarsh
 	if FriendlyName, ok := OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap["friendlyName"].(string); ok {
 		o.FriendlyName = &FriendlyName
 	}
-	
+    
 	if LocalPart, ok := OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap["localPart"].(string); ok {
 		o.LocalPart = &LocalPart
 	}
-	
+    
 	if Domain, ok := OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap["domain"].(map[string]interface{}); ok {
 		DomainString, _ := json.Marshal(Domain)
 		json.Unmarshal(DomainString, &o.Domain)

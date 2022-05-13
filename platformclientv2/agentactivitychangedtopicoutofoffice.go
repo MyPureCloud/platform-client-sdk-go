@@ -54,7 +54,7 @@ func (o *Agentactivitychangedtopicoutofoffice) UnmarshalJSON(b []byte) error {
 	if Active, ok := AgentactivitychangedtopicoutofofficeMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if modifiedDateString, ok := AgentactivitychangedtopicoutofofficeMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate

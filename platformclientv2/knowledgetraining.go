@@ -134,7 +134,7 @@ func (o *Knowledgetraining) UnmarshalJSON(b []byte) error {
 	if Id, ok := KnowledgetrainingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if dateTriggeredString, ok := KnowledgetrainingMap["dateTriggered"].(string); ok {
 		DateTriggered, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateTriggeredString)
 		o.DateTriggered = &DateTriggered
@@ -148,11 +148,11 @@ func (o *Knowledgetraining) UnmarshalJSON(b []byte) error {
 	if Status, ok := KnowledgetrainingMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if LanguageCode, ok := KnowledgetrainingMap["languageCode"].(string); ok {
 		o.LanguageCode = &LanguageCode
 	}
-	
+    
 	if KnowledgeBase, ok := KnowledgetrainingMap["knowledgeBase"].(map[string]interface{}); ok {
 		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
@@ -161,11 +161,11 @@ func (o *Knowledgetraining) UnmarshalJSON(b []byte) error {
 	if ErrorMessage, ok := KnowledgetrainingMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if KnowledgeDocumentsState, ok := KnowledgetrainingMap["knowledgeDocumentsState"].(string); ok {
 		o.KnowledgeDocumentsState = &KnowledgeDocumentsState
 	}
-	
+    
 	if datePromotedString, ok := KnowledgetrainingMap["datePromoted"].(string); ok {
 		DatePromoted, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePromotedString)
 		o.DatePromoted = &DatePromoted
@@ -174,7 +174,7 @@ func (o *Knowledgetraining) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := KnowledgetrainingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

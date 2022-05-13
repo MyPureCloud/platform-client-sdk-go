@@ -77,7 +77,7 @@ func (o *Knowledgesearchresponse) UnmarshalJSON(b []byte) error {
 	if SearchId, ok := KnowledgesearchresponseMap["searchId"].(string); ok {
 		o.SearchId = &SearchId
 	}
-	
+    
 	if Total, ok := KnowledgesearchresponseMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt

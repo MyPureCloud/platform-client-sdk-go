@@ -182,39 +182,39 @@ func (o *Queueconversationvideoeventtopicchat) UnmarshalJSON(b []byte) error {
 	if State, ok := QueueconversationvideoeventtopicchatMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := QueueconversationvideoeventtopicchatMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Provider, ok := QueueconversationvideoeventtopicchatMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationvideoeventtopicchatMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationvideoeventtopicchatMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if RoomId, ok := QueueconversationvideoeventtopicchatMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if AvatarImageUrl, ok := QueueconversationvideoeventtopicchatMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 	if Held, ok := QueueconversationvideoeventtopicchatMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationvideoeventtopicchatMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationvideoeventtopicchatMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -248,7 +248,7 @@ func (o *Queueconversationvideoeventtopicchat) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := QueueconversationvideoeventtopicchatMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

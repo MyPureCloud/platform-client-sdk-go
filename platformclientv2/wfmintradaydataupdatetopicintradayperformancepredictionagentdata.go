@@ -38,7 +38,7 @@ func (o *Wfmintradaydataupdatetopicintradayperformancepredictionagentdata) Unmar
 		InteractingTimeSecondsFloat32 := float32(InteractingTimeSeconds)
 		o.InteractingTimeSeconds = &InteractingTimeSecondsFloat32
 	}
-	
+    
 
 	return nil
 }

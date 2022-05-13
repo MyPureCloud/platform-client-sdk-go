@@ -53,15 +53,15 @@ func (o *Learningmodulecoverartresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningmodulecoverartresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := LearningmodulecoverartresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if Url, ok := LearningmodulecoverartresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 
 	return nil
 }

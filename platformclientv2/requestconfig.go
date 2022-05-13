@@ -69,19 +69,19 @@ func (o *Requestconfig) UnmarshalJSON(b []byte) error {
 	if RequestUrlTemplate, ok := RequestconfigMap["requestUrlTemplate"].(string); ok {
 		o.RequestUrlTemplate = &RequestUrlTemplate
 	}
-	
+    
 	if RequestTemplate, ok := RequestconfigMap["requestTemplate"].(string); ok {
 		o.RequestTemplate = &RequestTemplate
 	}
-	
+    
 	if RequestTemplateUri, ok := RequestconfigMap["requestTemplateUri"].(string); ok {
 		o.RequestTemplateUri = &RequestTemplateUri
 	}
-	
+    
 	if RequestType, ok := RequestconfigMap["requestType"].(string); ok {
 		o.RequestType = &RequestType
 	}
-	
+    
 	if Headers, ok := RequestconfigMap["headers"].(map[string]interface{}); ok {
 		HeadersString, _ := json.Marshal(Headers)
 		json.Unmarshal(HeadersString, &o.Headers)

@@ -86,15 +86,15 @@ func (o *Admintimeoffrequestpatch) UnmarshalJSON(b []byte) error {
 	if Status, ok := AdmintimeoffrequestpatchMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ActivityCodeId, ok := AdmintimeoffrequestpatchMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Notes, ok := AdmintimeoffrequestpatchMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if FullDayManagementUnitDates, ok := AdmintimeoffrequestpatchMap["fullDayManagementUnitDates"].([]interface{}); ok {
 		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
 		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)

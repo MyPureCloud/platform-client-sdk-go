@@ -157,7 +157,7 @@ func (o *Auditmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := AuditmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := AuditmessageMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -166,47 +166,47 @@ func (o *Auditmessage) UnmarshalJSON(b []byte) error {
 	if CorrelationId, ok := AuditmessageMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if TransactionId, ok := AuditmessageMap["transactionId"].(string); ok {
 		o.TransactionId = &TransactionId
 	}
-	
+    
 	if TransactionInitiator, ok := AuditmessageMap["transactionInitiator"].(bool); ok {
 		o.TransactionInitiator = &TransactionInitiator
 	}
-	
+    
 	if Application, ok := AuditmessageMap["application"].(string); ok {
 		o.Application = &Application
 	}
-	
+    
 	if ServiceName, ok := AuditmessageMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-	
+    
 	if Level, ok := AuditmessageMap["level"].(string); ok {
 		o.Level = &Level
 	}
-	
+    
 	if Timestamp, ok := AuditmessageMap["timestamp"].(string); ok {
 		o.Timestamp = &Timestamp
 	}
-	
+    
 	if ReceivedTimestamp, ok := AuditmessageMap["receivedTimestamp"].(string); ok {
 		o.ReceivedTimestamp = &ReceivedTimestamp
 	}
-	
+    
 	if Status, ok := AuditmessageMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ActionContext, ok := AuditmessageMap["actionContext"].(string); ok {
 		o.ActionContext = &ActionContext
 	}
-	
+    
 	if Action, ok := AuditmessageMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if Changes, ok := AuditmessageMap["changes"].([]interface{}); ok {
 		ChangesString, _ := json.Marshal(Changes)
 		json.Unmarshal(ChangesString, &o.Changes)

@@ -194,7 +194,7 @@ func (o *Dialercontactlistconfigchangecontactlist) UnmarshalJSON(b []byte) error
 	if PreviewModeColumnName, ok := DialercontactlistconfigchangecontactlistMap["previewModeColumnName"].(string); ok {
 		o.PreviewModeColumnName = &PreviewModeColumnName
 	}
-	
+    
 	if PreviewModeAcceptedValues, ok := DialercontactlistconfigchangecontactlistMap["previewModeAcceptedValues"].([]interface{}); ok {
 		PreviewModeAcceptedValuesString, _ := json.Marshal(PreviewModeAcceptedValues)
 		json.Unmarshal(PreviewModeAcceptedValuesString, &o.PreviewModeAcceptedValues)
@@ -213,11 +213,11 @@ func (o *Dialercontactlistconfigchangecontactlist) UnmarshalJSON(b []byte) error
 	if AutomaticTimeZoneMapping, ok := DialercontactlistconfigchangecontactlistMap["automaticTimeZoneMapping"].(bool); ok {
 		o.AutomaticTimeZoneMapping = &AutomaticTimeZoneMapping
 	}
-	
+    
 	if ZipCodeColumnName, ok := DialercontactlistconfigchangecontactlistMap["zipCodeColumnName"].(string); ok {
 		o.ZipCodeColumnName = &ZipCodeColumnName
 	}
-	
+    
 	if Division, ok := DialercontactlistconfigchangecontactlistMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -226,11 +226,11 @@ func (o *Dialercontactlistconfigchangecontactlist) UnmarshalJSON(b []byte) error
 	if Id, ok := DialercontactlistconfigchangecontactlistMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialercontactlistconfigchangecontactlistMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialercontactlistconfigchangecontactlistMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

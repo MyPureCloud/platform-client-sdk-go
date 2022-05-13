@@ -33,8 +33,6 @@ func NewQualityApiWithConfig(config *Configuration) *QualityApi {
 // DeleteQualityCalibration invokes DELETE /api/v2/quality/calibrations/{calibrationId}
 //
 // Delete a calibration by id.
-//
-// 
 func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId string) (*Calibration, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -47,12 +45,12 @@ func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId 
 
 	// verify the required parameter 'calibrationId' is set
 	if &calibrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'calibrationId' when calling QualityApi->DeleteQualityCalibration")
 	}
 	// verify the required parameter 'calibratorId' is set
 	if &calibratorId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'calibratorId' when calling QualityApi->DeleteQualityCalibration")
 	}
 
@@ -113,8 +111,6 @@ func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId 
 // DeleteQualityConversationEvaluation invokes DELETE /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}
 //
 // Delete an evaluation
-//
-// 
 func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, evaluationId string, expand string) (*Evaluation, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -128,12 +124,12 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling QualityApi->DeleteQualityConversationEvaluation")
 	}
 	// verify the required parameter 'evaluationId' is set
 	if &evaluationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'evaluationId' when calling QualityApi->DeleteQualityConversationEvaluation")
 	}
 
@@ -194,8 +190,6 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 // DeleteQualityForm invokes DELETE /api/v2/quality/forms/{formId}
 //
 // Delete an evaluation form.
-//
-// 
 func (a QualityApi) DeleteQualityForm(formId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -207,7 +201,7 @@ func (a QualityApi) DeleteQualityForm(formId string) (*APIResponse, error) {
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'formId' when calling QualityApi->DeleteQualityForm")
 	}
 
@@ -260,8 +254,6 @@ func (a QualityApi) DeleteQualityForm(formId string) (*APIResponse, error) {
 // DeleteQualityFormsEvaluation invokes DELETE /api/v2/quality/forms/evaluations/{formId}
 //
 // Delete an evaluation form.
-//
-// 
 func (a QualityApi) DeleteQualityFormsEvaluation(formId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -273,7 +265,7 @@ func (a QualityApi) DeleteQualityFormsEvaluation(formId string) (*APIResponse, e
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'formId' when calling QualityApi->DeleteQualityFormsEvaluation")
 	}
 
@@ -326,8 +318,6 @@ func (a QualityApi) DeleteQualityFormsEvaluation(formId string) (*APIResponse, e
 // DeleteQualityFormsSurvey invokes DELETE /api/v2/quality/forms/surveys/{formId}
 //
 // Delete a survey form.
-//
-// 
 func (a QualityApi) DeleteQualityFormsSurvey(formId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -339,7 +329,7 @@ func (a QualityApi) DeleteQualityFormsSurvey(formId string) (*APIResponse, error
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'formId' when calling QualityApi->DeleteQualityFormsSurvey")
 	}
 
@@ -483,8 +473,6 @@ func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortB
 // GetQualityCalibration invokes GET /api/v2/quality/calibrations/{calibrationId}
 //
 // Get a calibration by id.  Requires either calibrator id or conversation id
-//
-// 
 func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId string, conversationId string) (*Calibration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -497,7 +485,7 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 
 	// verify the required parameter 'calibrationId' is set
 	if &calibrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'calibrationId' when calling QualityApi->GetQualityCalibration")
 	}
 
@@ -560,8 +548,6 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 // GetQualityCalibrations invokes GET /api/v2/quality/calibrations
 //
 // Get the list of calibrations
-//
-// 
 func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, startTime time.Time, endTime time.Time) (*Calibrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -573,7 +559,7 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pa
 
 	// verify the required parameter 'calibratorId' is set
 	if &calibratorId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'calibratorId' when calling QualityApi->GetQualityCalibrations")
 	}
 
@@ -652,8 +638,6 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pa
 // GetQualityConversationEvaluation invokes GET /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}
 //
 // Get an evaluation
-//
-// 
 func (a QualityApi) GetQualityConversationEvaluation(conversationId string, evaluationId string, expand string) (*Evaluation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -667,12 +651,12 @@ func (a QualityApi) GetQualityConversationEvaluation(conversationId string, eval
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling QualityApi->GetQualityConversationEvaluation")
 	}
 	// verify the required parameter 'evaluationId' is set
 	if &evaluationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'evaluationId' when calling QualityApi->GetQualityConversationEvaluation")
 	}
 
@@ -733,8 +717,6 @@ func (a QualityApi) GetQualityConversationEvaluation(conversationId string, eval
 // GetQualityConversationSurveys invokes GET /api/v2/quality/conversations/{conversationId}/surveys
 //
 // Get the surveys for a conversation
-//
-// 
 func (a QualityApi) GetQualityConversationSurveys(conversationId string) ([]Survey, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -747,7 +729,7 @@ func (a QualityApi) GetQualityConversationSurveys(conversationId string) ([]Surv
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling QualityApi->GetQualityConversationSurveys")
 	}
 
@@ -806,8 +788,6 @@ func (a QualityApi) GetQualityConversationSurveys(conversationId string) ([]Surv
 // GetQualityConversationsAuditsQueryTransactionId invokes GET /api/v2/quality/conversations/audits/query/{transactionId}
 //
 // Get status of audit query execution
-//
-// 
 func (a QualityApi) GetQualityConversationsAuditsQueryTransactionId(transactionId string) (*Qualityauditqueryexecutionstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -820,7 +800,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionId(transactionI
 
 	// verify the required parameter 'transactionId' is set
 	if &transactionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'transactionId' when calling QualityApi->GetQualityConversationsAuditsQueryTransactionId")
 	}
 
@@ -879,8 +859,6 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionId(transactionI
 // GetQualityConversationsAuditsQueryTransactionIdResults invokes GET /api/v2/quality/conversations/audits/query/{transactionId}/results
 //
 // Get results of audit query
-//
-// 
 func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int, expand []string) (*Qualityauditqueryexecutionresultsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -893,7 +871,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 
 	// verify the required parameter 'transactionId' is set
 	if &transactionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'transactionId' when calling QualityApi->GetQualityConversationsAuditsQueryTransactionIdResults")
 	}
 
@@ -1061,8 +1039,6 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sor
 // GetQualityEvaluatorsActivity invokes GET /api/v2/quality/evaluators/activity
 //
 // Get an evaluator activity
-//
-// 
 func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, name string, permission []string, group string) (*Evaluatoractivityentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1150,8 +1126,6 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, s
 // GetQualityForm invokes GET /api/v2/quality/forms/{formId}
 //
 // Get an evaluation form
-//
-// 
 func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1164,7 +1138,7 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityForm")
 	}
 
@@ -1223,8 +1197,6 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 // GetQualityFormVersions invokes GET /api/v2/quality/forms/{formId}/versions
 //
 // Gets all the revisions for a specific evaluation.
-//
-// 
 func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumber int) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1237,7 +1209,7 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityFormVersions")
 	}
 
@@ -1300,8 +1272,6 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 // GetQualityForms invokes GET /api/v2/quality/forms
 //
 // Get the list of evaluation forms
-//
-// 
 func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1383,8 +1353,6 @@ func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string,
 // GetQualityFormsEvaluation invokes GET /api/v2/quality/forms/evaluations/{formId}
 //
 // Get an evaluation form
-//
-// 
 func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1397,7 +1365,7 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityFormsEvaluation")
 	}
 
@@ -1456,8 +1424,6 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 // GetQualityFormsEvaluationVersions invokes GET /api/v2/quality/forms/evaluations/{formId}/versions
 //
 // Gets all the revisions for a specific evaluation.
-//
-// 
 func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize int, pageNumber int, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1470,7 +1436,7 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityFormsEvaluationVersions")
 	}
 
@@ -1535,8 +1501,6 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 // GetQualityFormsEvaluations invokes GET /api/v2/quality/forms/evaluations
 //
 // Get the list of evaluation forms
-//
-// 
 func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1618,8 +1582,6 @@ func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sor
 // GetQualityFormsEvaluationsBulkContexts invokes GET /api/v2/quality/forms/evaluations/bulk/contexts
 //
 // Retrieve a list of the latest published evaluation form versions by context ids
-//
-// 
 func (a QualityApi) GetQualityFormsEvaluationsBulkContexts(contextId []string) ([]Evaluationform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1692,8 +1654,6 @@ func (a QualityApi) GetQualityFormsEvaluationsBulkContexts(contextId []string) (
 // GetQualityFormsSurvey invokes GET /api/v2/quality/forms/surveys/{formId}
 //
 // Get a survey form
-//
-// 
 func (a QualityApi) GetQualityFormsSurvey(formId string) (*Surveyform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1706,7 +1666,7 @@ func (a QualityApi) GetQualityFormsSurvey(formId string) (*Surveyform, *APIRespo
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityFormsSurvey")
 	}
 
@@ -1765,8 +1725,6 @@ func (a QualityApi) GetQualityFormsSurvey(formId string) (*Surveyform, *APIRespo
 // GetQualityFormsSurveyVersions invokes GET /api/v2/quality/forms/surveys/{formId}/versions
 //
 // Gets all the revisions for a specific survey.
-//
-// 
 func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, pageNumber int) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1779,7 +1737,7 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, p
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityFormsSurveyVersions")
 	}
 
@@ -1842,8 +1800,6 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, p
 // GetQualityFormsSurveys invokes GET /api/v2/quality/forms/surveys
 //
 // Get the list of survey forms
-//
-// 
 func (a QualityApi) GetQualityFormsSurveys(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1925,8 +1881,6 @@ func (a QualityApi) GetQualityFormsSurveys(pageSize int, pageNumber int, sortBy 
 // GetQualityFormsSurveysBulk invokes GET /api/v2/quality/forms/surveys/bulk
 //
 // Retrieve a list of survey forms by their ids
-//
-// 
 func (a QualityApi) GetQualityFormsSurveysBulk(id []string) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1999,8 +1953,6 @@ func (a QualityApi) GetQualityFormsSurveysBulk(id []string) (*Surveyformentityli
 // GetQualityFormsSurveysBulkContexts invokes GET /api/v2/quality/forms/surveys/bulk/contexts
 //
 // Retrieve a list of the latest form versions by context ids
-//
-// 
 func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, published bool) ([]Surveyform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2075,8 +2027,6 @@ func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, publi
 // GetQualityPublishedform invokes GET /api/v2/quality/publishedforms/{formId}
 //
 // Get the published evaluation forms.
-//
-// 
 func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2089,7 +2039,7 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityPublishedform")
 	}
 
@@ -2148,8 +2098,6 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 // GetQualityPublishedforms invokes GET /api/v2/quality/publishedforms
 //
 // Get the published evaluation forms.
-//
-// 
 func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2223,8 +2171,6 @@ func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name 
 // GetQualityPublishedformsEvaluation invokes GET /api/v2/quality/publishedforms/evaluations/{formId}
 //
 // Get the most recent published version of an evaluation form.
-//
-// 
 func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2237,7 +2183,7 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityPublishedformsEvaluation")
 	}
 
@@ -2296,8 +2242,6 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 // GetQualityPublishedformsEvaluations invokes GET /api/v2/quality/publishedforms/evaluations
 //
 // Get the published evaluation forms.
-//
-// 
 func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2371,8 +2315,6 @@ func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber
 // GetQualityPublishedformsSurvey invokes GET /api/v2/quality/publishedforms/surveys/{formId}
 //
 // Get the most recent published version of a survey form.
-//
-// 
 func (a QualityApi) GetQualityPublishedformsSurvey(formId string) (*Surveyform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2385,7 +2327,7 @@ func (a QualityApi) GetQualityPublishedformsSurvey(formId string) (*Surveyform, 
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->GetQualityPublishedformsSurvey")
 	}
 
@@ -2444,8 +2386,6 @@ func (a QualityApi) GetQualityPublishedformsSurvey(formId string) (*Surveyform, 
 // GetQualityPublishedformsSurveys invokes GET /api/v2/quality/publishedforms/surveys
 //
 // Get the published survey forms.
-//
-// 
 func (a QualityApi) GetQualityPublishedformsSurveys(pageSize int, pageNumber int, name string, onlyLatestEnabledPerContext bool) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2519,8 +2459,6 @@ func (a QualityApi) GetQualityPublishedformsSurveys(pageSize int, pageNumber int
 // GetQualitySurvey invokes GET /api/v2/quality/surveys/{surveyId}
 //
 // Get a survey for a conversation
-//
-// 
 func (a QualityApi) GetQualitySurvey(surveyId string) (*Survey, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2533,7 +2471,7 @@ func (a QualityApi) GetQualitySurvey(surveyId string) (*Survey, *APIResponse, er
 
 	// verify the required parameter 'surveyId' is set
 	if &surveyId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'surveyId' when calling QualityApi->GetQualitySurvey")
 	}
 
@@ -2592,8 +2530,6 @@ func (a QualityApi) GetQualitySurvey(surveyId string) (*Survey, *APIResponse, er
 // GetQualitySurveysScorable invokes GET /api/v2/quality/surveys/scorable
 //
 // Get a survey as an end-customer, for the purposes of scoring it.
-//
-// 
 func (a QualityApi) GetQualitySurveysScorable(customerSurveyUrl string) (*Scorablesurvey, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2605,7 +2541,7 @@ func (a QualityApi) GetQualitySurveysScorable(customerSurveyUrl string) (*Scorab
 
 	// verify the required parameter 'customerSurveyUrl' is set
 	if &customerSurveyUrl == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'customerSurveyUrl' when calling QualityApi->GetQualitySurveysScorable")
 	}
 
@@ -2661,8 +2597,6 @@ func (a QualityApi) GetQualitySurveysScorable(customerSurveyUrl string) (*Scorab
 // PatchQualityFormsSurvey invokes PATCH /api/v2/quality/forms/surveys/{formId}
 //
 // Disable a particular version of a survey form and invalidates any invitations that have already been sent to customers using this version of the form.
-//
-// 
 func (a QualityApi) PatchQualityFormsSurvey(formId string, body Surveyform) (*Surveyform, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2675,12 +2609,12 @@ func (a QualityApi) PatchQualityFormsSurvey(formId string, body Surveyform) (*Su
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->PatchQualityFormsSurvey")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PatchQualityFormsSurvey")
 	}
 
@@ -2742,8 +2676,6 @@ func (a QualityApi) PatchQualityFormsSurvey(formId string, body Surveyform) (*Su
 // PostAnalyticsEvaluationsAggregatesQuery invokes POST /api/v2/analytics/evaluations/aggregates/query
 //
 // Query for evaluation aggregates
-//
-// 
 func (a QualityApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationaggregationquery) (*Evaluationaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2755,7 +2687,7 @@ func (a QualityApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationaggre
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostAnalyticsEvaluationsAggregatesQuery")
 	}
 
@@ -2817,8 +2749,6 @@ func (a QualityApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationaggre
 // PostAnalyticsSurveysAggregatesQuery invokes POST /api/v2/analytics/surveys/aggregates/query
 //
 // Query for survey aggregates
-//
-// 
 func (a QualityApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregationquery) (*Surveyaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2830,7 +2760,7 @@ func (a QualityApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregationqu
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostAnalyticsSurveysAggregatesQuery")
 	}
 
@@ -2892,8 +2822,6 @@ func (a QualityApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregationqu
 // PostQualityCalibrations invokes POST /api/v2/quality/calibrations
 //
 // Create a calibration
-//
-// 
 func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand string) (*Calibration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2905,7 +2833,7 @@ func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand strin
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityCalibrations")
 	}
 
@@ -2969,8 +2897,6 @@ func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand strin
 // PostQualityConversationEvaluations invokes POST /api/v2/quality/conversations/{conversationId}/evaluations
 //
 // Create an evaluation
-//
-// 
 func (a QualityApi) PostQualityConversationEvaluations(conversationId string, body Evaluation, expand string) (*Evaluation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2983,12 +2909,12 @@ func (a QualityApi) PostQualityConversationEvaluations(conversationId string, bo
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling QualityApi->PostQualityConversationEvaluations")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityConversationEvaluations")
 	}
 
@@ -3052,8 +2978,6 @@ func (a QualityApi) PostQualityConversationEvaluations(conversationId string, bo
 // PostQualityConversationsAuditsQuery invokes POST /api/v2/quality/conversations/audits/query
 //
 // Create audit query execution
-//
-// 
 func (a QualityApi) PostQualityConversationsAuditsQuery(body Qmauditqueryrequest) (*Qualityauditqueryexecutionstatusresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3065,7 +2989,7 @@ func (a QualityApi) PostQualityConversationsAuditsQuery(body Qmauditqueryrequest
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityConversationsAuditsQuery")
 	}
 
@@ -3127,8 +3051,6 @@ func (a QualityApi) PostQualityConversationsAuditsQuery(body Qmauditqueryrequest
 // PostQualityEvaluationsAggregatesQueryMe invokes POST /api/v2/quality/evaluations/aggregates/query/me
 //
 // Query for evaluation aggregates for the current user
-//
-// 
 func (a QualityApi) PostQualityEvaluationsAggregatesQueryMe(body Evaluationaggregationqueryme) (*Evaluationaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3140,7 +3062,7 @@ func (a QualityApi) PostQualityEvaluationsAggregatesQueryMe(body Evaluationaggre
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityEvaluationsAggregatesQueryMe")
 	}
 
@@ -3202,8 +3124,6 @@ func (a QualityApi) PostQualityEvaluationsAggregatesQueryMe(body Evaluationaggre
 // PostQualityEvaluationsScoring invokes POST /api/v2/quality/evaluations/scoring
 //
 // Score evaluation
-//
-// 
 func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscoringset) (*Evaluationscoringset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3215,7 +3135,7 @@ func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscorings
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityEvaluationsScoring")
 	}
 
@@ -3277,8 +3197,6 @@ func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscorings
 // PostQualityForms invokes POST /api/v2/quality/forms
 //
 // Create an evaluation form.
-//
-// 
 func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3290,7 +3208,7 @@ func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *API
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityForms")
 	}
 
@@ -3352,8 +3270,6 @@ func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *API
 // PostQualityFormsEvaluations invokes POST /api/v2/quality/forms/evaluations
 //
 // Create an evaluation form.
-//
-// 
 func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3365,7 +3281,7 @@ func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluatio
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityFormsEvaluations")
 	}
 
@@ -3427,8 +3343,6 @@ func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluatio
 // PostQualityFormsSurveys invokes POST /api/v2/quality/forms/surveys
 //
 // Create a survey form.
-//
-// 
 func (a QualityApi) PostQualityFormsSurveys(body Surveyform) (*Surveyform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3440,7 +3354,7 @@ func (a QualityApi) PostQualityFormsSurveys(body Surveyform) (*Surveyform, *APIR
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityFormsSurveys")
 	}
 
@@ -3502,8 +3416,6 @@ func (a QualityApi) PostQualityFormsSurveys(body Surveyform) (*Surveyform, *APIR
 // PostQualityPublishedforms invokes POST /api/v2/quality/publishedforms
 //
 // Publish an evaluation form.
-//
-// 
 func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3515,7 +3427,7 @@ func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityPublishedforms")
 	}
 
@@ -3577,8 +3489,6 @@ func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform
 // PostQualityPublishedformsEvaluations invokes POST /api/v2/quality/publishedforms/evaluations
 //
 // Publish an evaluation form.
-//
-// 
 func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3590,7 +3500,7 @@ func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Eva
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityPublishedformsEvaluations")
 	}
 
@@ -3652,8 +3562,6 @@ func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Eva
 // PostQualityPublishedformsSurveys invokes POST /api/v2/quality/publishedforms/surveys
 //
 // Publish a survey form.
-//
-// 
 func (a QualityApi) PostQualityPublishedformsSurveys(body Publishform) (*Surveyform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3665,7 +3573,7 @@ func (a QualityApi) PostQualityPublishedformsSurveys(body Publishform) (*Surveyf
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityPublishedformsSurveys")
 	}
 
@@ -3727,8 +3635,6 @@ func (a QualityApi) PostQualityPublishedformsSurveys(body Publishform) (*Surveyf
 // PostQualitySurveysScoring invokes POST /api/v2/quality/surveys/scoring
 //
 // Score survey
-//
-// 
 func (a QualityApi) PostQualitySurveysScoring(body Surveyformandscoringset) (*Surveyscoringset, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3740,7 +3646,7 @@ func (a QualityApi) PostQualitySurveysScoring(body Surveyformandscoringset) (*Su
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualitySurveysScoring")
 	}
 
@@ -3802,8 +3708,6 @@ func (a QualityApi) PostQualitySurveysScoring(body Surveyformandscoringset) (*Su
 // PutQualityCalibration invokes PUT /api/v2/quality/calibrations/{calibrationId}
 //
 // Update a calibration to the specified calibration via PUT.  Editable fields include: evaluators, expertEvaluator, and scoringIndex
-//
-// 
 func (a QualityApi) PutQualityCalibration(calibrationId string, body Calibration) (*Calibration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3816,12 +3720,12 @@ func (a QualityApi) PutQualityCalibration(calibrationId string, body Calibration
 
 	// verify the required parameter 'calibrationId' is set
 	if &calibrationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'calibrationId' when calling QualityApi->PutQualityCalibration")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualityCalibration")
 	}
 
@@ -3898,17 +3802,17 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling QualityApi->PutQualityConversationEvaluation")
 	}
 	// verify the required parameter 'evaluationId' is set
 	if &evaluationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'evaluationId' when calling QualityApi->PutQualityConversationEvaluation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualityConversationEvaluation")
 	}
 
@@ -3972,8 +3876,6 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 // PutQualityForm invokes PUT /api/v2/quality/forms/{formId}
 //
 // Update an evaluation form.
-//
-// 
 func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3986,12 +3888,12 @@ func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluat
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->PutQualityForm")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualityForm")
 	}
 
@@ -4053,8 +3955,6 @@ func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluat
 // PutQualityFormsEvaluation invokes PUT /api/v2/quality/forms/evaluations/{formId}
 //
 // Update an evaluation form.
-//
-// 
 func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4067,12 +3967,12 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->PutQualityFormsEvaluation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualityFormsEvaluation")
 	}
 
@@ -4134,8 +4034,6 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 // PutQualityFormsSurvey invokes PUT /api/v2/quality/forms/surveys/{formId}
 //
 // Update a survey form.
-//
-// 
 func (a QualityApi) PutQualityFormsSurvey(formId string, body Surveyform) (*Surveyform, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4148,12 +4046,12 @@ func (a QualityApi) PutQualityFormsSurvey(formId string, body Surveyform) (*Surv
 
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->PutQualityFormsSurvey")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualityFormsSurvey")
 	}
 
@@ -4215,9 +4113,7 @@ func (a QualityApi) PutQualityFormsSurvey(formId string, body Surveyform) (*Surv
 // PutQualitySurveysScorable invokes PUT /api/v2/quality/surveys/scorable
 //
 // Update a survey as an end-customer, for the purposes of scoring it.
-//
-// 
-func (a QualityApi) PutQualitySurveysScorable(body Scorablesurvey, customerSurveyUrl string) (*Scorablesurvey, *APIResponse, error) {
+func (a QualityApi) PutQualitySurveysScorable(customerSurveyUrl string, body Scorablesurvey) (*Scorablesurvey, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/surveys/scorable"
@@ -4226,15 +4122,15 @@ func (a QualityApi) PutQualitySurveysScorable(body Scorablesurvey, customerSurve
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualitySurveysScorable")
-	}
 	// verify the required parameter 'customerSurveyUrl' is set
 	if &customerSurveyUrl == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'customerSurveyUrl' when calling QualityApi->PutQualitySurveysScorable")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualitySurveysScorable")
 	}
 
 	headerParams := make(map[string]string)

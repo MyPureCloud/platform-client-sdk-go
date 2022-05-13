@@ -150,11 +150,11 @@ func (o *Userrecording) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserrecordingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserrecordingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := UserrecordingMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -168,7 +168,7 @@ func (o *Userrecording) UnmarshalJSON(b []byte) error {
 	if ContentUri, ok := UserrecordingMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if Workspace, ok := UserrecordingMap["workspace"].(map[string]interface{}); ok {
 		WorkspaceString, _ := json.Marshal(Workspace)
 		json.Unmarshal(WorkspaceString, &o.Workspace)
@@ -202,11 +202,11 @@ func (o *Userrecording) UnmarshalJSON(b []byte) error {
 	if Read, ok := UserrecordingMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if SelfUri, ok := UserrecordingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

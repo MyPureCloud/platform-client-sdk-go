@@ -222,23 +222,23 @@ func (o *Externalorganization) UnmarshalJSON(b []byte) error {
 	if Id, ok := ExternalorganizationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ExternalorganizationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if CompanyType, ok := ExternalorganizationMap["companyType"].(string); ok {
 		o.CompanyType = &CompanyType
 	}
-	
+    
 	if Industry, ok := ExternalorganizationMap["industry"].(string); ok {
 		o.Industry = &Industry
 	}
-	
+    
 	if PrimaryContactId, ok := ExternalorganizationMap["primaryContactId"].(string); ok {
 		o.PrimaryContactId = &PrimaryContactId
 	}
-	
+    
 	if Address, ok := ExternalorganizationMap["address"].(map[string]interface{}); ok {
 		AddressString, _ := json.Marshal(Address)
 		json.Unmarshal(AddressString, &o.Address)
@@ -287,7 +287,7 @@ func (o *Externalorganization) UnmarshalJSON(b []byte) error {
 	if ExternalSystemUrl, ok := ExternalorganizationMap["externalSystemUrl"].(string); ok {
 		o.ExternalSystemUrl = &ExternalSystemUrl
 	}
-	
+    
 	if modifyDateString, ok := ExternalorganizationMap["modifyDate"].(string); ok {
 		ModifyDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifyDateString)
 		o.ModifyDate = &ModifyDate
@@ -321,7 +321,7 @@ func (o *Externalorganization) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ExternalorganizationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

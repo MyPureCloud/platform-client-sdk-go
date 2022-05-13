@@ -110,11 +110,11 @@ func (o *Dataschema) UnmarshalJSON(b []byte) error {
 	if Id, ok := DataschemaMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DataschemaMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := DataschemaMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -128,7 +128,7 @@ func (o *Dataschema) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := DataschemaMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if CreatedBy, ok := DataschemaMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -147,7 +147,7 @@ func (o *Dataschema) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DataschemaMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

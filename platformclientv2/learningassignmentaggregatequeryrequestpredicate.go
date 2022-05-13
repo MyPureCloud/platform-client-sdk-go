@@ -45,11 +45,11 @@ func (o *Learningassignmentaggregatequeryrequestpredicate) UnmarshalJSON(b []byt
 	if Dimension, ok := LearningassignmentaggregatequeryrequestpredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Value, ok := LearningassignmentaggregatequeryrequestpredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

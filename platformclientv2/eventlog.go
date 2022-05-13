@@ -118,11 +118,11 @@ func (o *Eventlog) UnmarshalJSON(b []byte) error {
 	if Id, ok := EventlogMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EventlogMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ErrorEntity, ok := EventlogMap["errorEntity"].(map[string]interface{}); ok {
 		ErrorEntityString, _ := json.Marshal(ErrorEntity)
 		json.Unmarshal(ErrorEntityString, &o.ErrorEntity)
@@ -141,15 +141,15 @@ func (o *Eventlog) UnmarshalJSON(b []byte) error {
 	if Level, ok := EventlogMap["level"].(string); ok {
 		o.Level = &Level
 	}
-	
+    
 	if Category, ok := EventlogMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if CorrelationId, ok := EventlogMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if EventMessage, ok := EventlogMap["eventMessage"].(map[string]interface{}); ok {
 		EventMessageString, _ := json.Marshal(EventMessage)
 		json.Unmarshal(EventMessageString, &o.EventMessage)
@@ -158,7 +158,7 @@ func (o *Eventlog) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EventlogMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

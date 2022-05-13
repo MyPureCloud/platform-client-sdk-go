@@ -69,19 +69,19 @@ func (o *Resolutiondetailquerypredicate) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ResolutiondetailquerypredicateMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Metric, ok := ResolutiondetailquerypredicateMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Operator, ok := ResolutiondetailquerypredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Value, ok := ResolutiondetailquerypredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarRange, ok := ResolutiondetailquerypredicateMap["range"].(map[string]interface{}); ok {
 		VarRangeString, _ := json.Marshal(VarRange)
 		json.Unmarshal(VarRangeString, &o.VarRange)

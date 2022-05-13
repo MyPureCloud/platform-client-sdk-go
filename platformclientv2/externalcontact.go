@@ -294,27 +294,27 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if Id, ok := ExternalcontactMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if FirstName, ok := ExternalcontactMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}
-	
+    
 	if MiddleName, ok := ExternalcontactMap["middleName"].(string); ok {
 		o.MiddleName = &MiddleName
 	}
-	
+    
 	if LastName, ok := ExternalcontactMap["lastName"].(string); ok {
 		o.LastName = &LastName
 	}
-	
+    
 	if Salutation, ok := ExternalcontactMap["salutation"].(string); ok {
 		o.Salutation = &Salutation
 	}
-	
+    
 	if Title, ok := ExternalcontactMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if WorkPhone, ok := ExternalcontactMap["workPhone"].(map[string]interface{}); ok {
 		WorkPhoneString, _ := json.Marshal(WorkPhone)
 		json.Unmarshal(WorkPhoneString, &o.WorkPhone)
@@ -338,15 +338,15 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if WorkEmail, ok := ExternalcontactMap["workEmail"].(string); ok {
 		o.WorkEmail = &WorkEmail
 	}
-	
+    
 	if PersonalEmail, ok := ExternalcontactMap["personalEmail"].(string); ok {
 		o.PersonalEmail = &PersonalEmail
 	}
-	
+    
 	if OtherEmail, ok := ExternalcontactMap["otherEmail"].(string); ok {
 		o.OtherEmail = &OtherEmail
 	}
-	
+    
 	if Address, ok := ExternalcontactMap["address"].(map[string]interface{}); ok {
 		AddressString, _ := json.Marshal(Address)
 		json.Unmarshal(AddressString, &o.Address)
@@ -390,11 +390,11 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if SurveyOptOut, ok := ExternalcontactMap["surveyOptOut"].(bool); ok {
 		o.SurveyOptOut = &SurveyOptOut
 	}
-	
+    
 	if ExternalSystemUrl, ok := ExternalcontactMap["externalSystemUrl"].(string); ok {
 		o.ExternalSystemUrl = &ExternalSystemUrl
 	}
-	
+    
 	if Schema, ok := ExternalcontactMap["schema"].(map[string]interface{}); ok {
 		SchemaString, _ := json.Marshal(Schema)
 		json.Unmarshal(SchemaString, &o.Schema)
@@ -413,7 +413,7 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ExternalcontactMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if CanonicalContact, ok := ExternalcontactMap["canonicalContact"].(map[string]interface{}); ok {
 		CanonicalContactString, _ := json.Marshal(CanonicalContact)
 		json.Unmarshal(CanonicalContactString, &o.CanonicalContact)
@@ -432,7 +432,7 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ExternalcontactMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

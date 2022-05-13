@@ -61,15 +61,15 @@ func (o *Architectflowoutcomenotificationflowoutcomenotification) UnmarshalJSON(
 	if Id, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CurrentOperation, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["currentOperation"].(map[string]interface{}); ok {
 		CurrentOperationString, _ := json.Marshal(CurrentOperation)
 		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)

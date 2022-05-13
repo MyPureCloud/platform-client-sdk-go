@@ -37,7 +37,7 @@ func (o *Contextentity) UnmarshalJSON(b []byte) error {
 	if Name, ok := ContextentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

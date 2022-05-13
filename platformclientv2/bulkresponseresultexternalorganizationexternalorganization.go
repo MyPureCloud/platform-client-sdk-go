@@ -61,11 +61,11 @@ func (o *Bulkresponseresultexternalorganizationexternalorganization) UnmarshalJS
 	if Id, ok := BulkresponseresultexternalorganizationexternalorganizationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Success, ok := BulkresponseresultexternalorganizationexternalorganizationMap["success"].(bool); ok {
 		o.Success = &Success
 	}
-	
+    
 	if Entity, ok := BulkresponseresultexternalorganizationexternalorganizationMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

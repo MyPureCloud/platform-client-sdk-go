@@ -77,7 +77,7 @@ func (o *Scimv2group) UnmarshalJSON(b []byte) error {
 	if Id, ok := Scimv2groupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Schemas, ok := Scimv2groupMap["schemas"].([]interface{}); ok {
 		SchemasString, _ := json.Marshal(Schemas)
 		json.Unmarshal(SchemasString, &o.Schemas)
@@ -86,11 +86,11 @@ func (o *Scimv2group) UnmarshalJSON(b []byte) error {
 	if DisplayName, ok := Scimv2groupMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if ExternalId, ok := Scimv2groupMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
 	}
-	
+    
 	if Members, ok := Scimv2groupMap["members"].([]interface{}); ok {
 		MembersString, _ := json.Marshal(Members)
 		json.Unmarshal(MembersString, &o.Members)

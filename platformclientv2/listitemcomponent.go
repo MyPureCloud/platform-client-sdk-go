@@ -85,27 +85,27 @@ func (o *Listitemcomponent) UnmarshalJSON(b []byte) error {
 	if Id, ok := ListitemcomponentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Rmid, ok := ListitemcomponentMap["rmid"].(string); ok {
 		o.Rmid = &Rmid
 	}
-	
+    
 	if VarType, ok := ListitemcomponentMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Image, ok := ListitemcomponentMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Title, ok := ListitemcomponentMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := ListitemcomponentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Actions, ok := ListitemcomponentMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

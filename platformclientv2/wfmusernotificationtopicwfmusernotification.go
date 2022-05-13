@@ -118,11 +118,11 @@ func (o *Wfmusernotificationtopicwfmusernotification) UnmarshalJSON(b []byte) er
 	if Id, ok := WfmusernotificationtopicwfmusernotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if MutableGroupId, ok := WfmusernotificationtopicwfmusernotificationMap["mutableGroupId"].(string); ok {
 		o.MutableGroupId = &MutableGroupId
 	}
-	
+    
 	if timestampString, ok := WfmusernotificationtopicwfmusernotificationMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
@@ -131,7 +131,7 @@ func (o *Wfmusernotificationtopicwfmusernotification) UnmarshalJSON(b []byte) er
 	if VarType, ok := WfmusernotificationtopicwfmusernotificationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ShiftTrade, ok := WfmusernotificationtopicwfmusernotificationMap["shiftTrade"].(map[string]interface{}); ok {
 		ShiftTradeString, _ := json.Marshal(ShiftTrade)
 		json.Unmarshal(ShiftTradeString, &o.ShiftTrade)
@@ -150,7 +150,7 @@ func (o *Wfmusernotificationtopicwfmusernotification) UnmarshalJSON(b []byte) er
 	if AgentNotification, ok := WfmusernotificationtopicwfmusernotificationMap["agentNotification"].(bool); ok {
 		o.AgentNotification = &AgentNotification
 	}
-	
+    
 	if OtherNotificationIdsInGroup, ok := WfmusernotificationtopicwfmusernotificationMap["otherNotificationIdsInGroup"].([]interface{}); ok {
 		OtherNotificationIdsInGroupString, _ := json.Marshal(OtherNotificationIdsInGroup)
 		json.Unmarshal(OtherNotificationIdsInGroupString, &o.OtherNotificationIdsInGroup)
@@ -159,7 +159,7 @@ func (o *Wfmusernotificationtopicwfmusernotification) UnmarshalJSON(b []byte) er
 	if MarkedAsRead, ok := WfmusernotificationtopicwfmusernotificationMap["markedAsRead"].(bool); ok {
 		o.MarkedAsRead = &MarkedAsRead
 	}
-	
+    
 
 	return nil
 }

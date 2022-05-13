@@ -37,7 +37,7 @@ func (o *Externalcontactsunresolvedcontactchangedtopicentity) UnmarshalJSON(b []
 	if Id, ok := ExternalcontactsunresolvedcontactchangedtopicentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

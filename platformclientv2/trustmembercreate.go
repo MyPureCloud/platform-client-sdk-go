@@ -53,7 +53,7 @@ func (o *Trustmembercreate) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrustmembercreateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if RoleIds, ok := TrustmembercreateMap["roleIds"].([]interface{}); ok {
 		RoleIdsString, _ := json.Marshal(RoleIds)
 		json.Unmarshal(RoleIdsString, &o.RoleIds)

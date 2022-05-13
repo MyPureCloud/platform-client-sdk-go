@@ -150,11 +150,11 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := AuditlogmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if UserHomeOrgId, ok := AuditlogmessageMap["userHomeOrgId"].(string); ok {
 		o.UserHomeOrgId = &UserHomeOrgId
 	}
-	
+    
 	if User, ok := AuditlogmessageMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -173,7 +173,7 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	if ServiceName, ok := AuditlogmessageMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
 	}
-	
+    
 	if eventDateString, ok := AuditlogmessageMap["eventDate"].(string); ok {
 		EventDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventDateString)
 		o.EventDate = &EventDate
@@ -187,7 +187,7 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	if Action, ok := AuditlogmessageMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if Entity, ok := AuditlogmessageMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)
@@ -196,11 +196,11 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	if EntityType, ok := AuditlogmessageMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if Status, ok := AuditlogmessageMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if PropertyChanges, ok := AuditlogmessageMap["propertyChanges"].([]interface{}); ok {
 		PropertyChangesString, _ := json.Marshal(PropertyChanges)
 		json.Unmarshal(PropertyChangesString, &o.PropertyChanges)

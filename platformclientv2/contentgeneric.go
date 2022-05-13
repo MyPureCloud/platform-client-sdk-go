@@ -77,19 +77,19 @@ func (o *Contentgeneric) UnmarshalJSON(b []byte) error {
 	if Title, ok := ContentgenericMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Description, ok := ContentgenericMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Image, ok := ContentgenericMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if Video, ok := ContentgenericMap["video"].(string); ok {
 		o.Video = &Video
 	}
-	
+    
 	if Actions, ok := ContentgenericMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

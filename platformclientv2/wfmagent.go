@@ -117,7 +117,7 @@ func (o *Wfmagent) UnmarshalJSON(b []byte) error {
 	if Id, ok := WfmagentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := WfmagentMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -136,7 +136,7 @@ func (o *Wfmagent) UnmarshalJSON(b []byte) error {
 	if AcceptDirectShiftTrades, ok := WfmagentMap["acceptDirectShiftTrades"].(bool); ok {
 		o.AcceptDirectShiftTrades = &AcceptDirectShiftTrades
 	}
-	
+    
 	if Queues, ok := WfmagentMap["queues"].([]interface{}); ok {
 		QueuesString, _ := json.Marshal(Queues)
 		json.Unmarshal(QueuesString, &o.Queues)
@@ -155,7 +155,7 @@ func (o *Wfmagent) UnmarshalJSON(b []byte) error {
 	if Schedulable, ok := WfmagentMap["schedulable"].(bool); ok {
 		o.Schedulable = &Schedulable
 	}
-	
+    
 	if Metadata, ok := WfmagentMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
@@ -164,7 +164,7 @@ func (o *Wfmagent) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WfmagentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

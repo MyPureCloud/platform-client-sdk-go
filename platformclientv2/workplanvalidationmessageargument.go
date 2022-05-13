@@ -45,11 +45,11 @@ func (o *Workplanvalidationmessageargument) UnmarshalJSON(b []byte) error {
 	if VarType, ok := WorkplanvalidationmessageargumentMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := WorkplanvalidationmessageargumentMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

@@ -109,20 +109,20 @@ func (o *Wfmbuscheduleruntopicbuschedulerun) UnmarshalJSON(b []byte) error {
 	if Id, ok := WfmbuscheduleruntopicbuschedulerunMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if PercentComplete, ok := WfmbuscheduleruntopicbuschedulerunMap["percentComplete"].(float64); ok {
 		PercentCompleteFloat32 := float32(PercentComplete)
 		o.PercentComplete = &PercentCompleteFloat32
 	}
-	
+    
 	if IntradayRescheduling, ok := WfmbuscheduleruntopicbuschedulerunMap["intradayRescheduling"].(bool); ok {
 		o.IntradayRescheduling = &IntradayRescheduling
 	}
-	
+    
 	if State, ok := WfmbuscheduleruntopicbuschedulerunMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if WeekCount, ok := WfmbuscheduleruntopicbuschedulerunMap["weekCount"].(float64); ok {
 		WeekCountInt := int(WeekCount)
 		o.WeekCount = &WeekCountInt
@@ -141,7 +141,7 @@ func (o *Wfmbuscheduleruntopicbuschedulerun) UnmarshalJSON(b []byte) error {
 	if SchedulingCompletedTime, ok := WfmbuscheduleruntopicbuschedulerunMap["schedulingCompletedTime"].(string); ok {
 		o.SchedulingCompletedTime = &SchedulingCompletedTime
 	}
-	
+    
 	if MessageCount, ok := WfmbuscheduleruntopicbuschedulerunMap["messageCount"].(float64); ok {
 		MessageCountInt := int(MessageCount)
 		o.MessageCount = &MessageCountInt

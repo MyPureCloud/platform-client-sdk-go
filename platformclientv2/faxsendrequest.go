@@ -101,11 +101,11 @@ func (o *Faxsendrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := FaxsendrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FaxsendrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Addresses, ok := FaxsendrequestMap["addresses"].([]interface{}); ok {
 		AddressesString, _ := json.Marshal(Addresses)
 		json.Unmarshal(AddressesString, &o.Addresses)
@@ -114,11 +114,11 @@ func (o *Faxsendrequest) UnmarshalJSON(b []byte) error {
 	if DocumentId, ok := FaxsendrequestMap["documentId"].(string); ok {
 		o.DocumentId = &DocumentId
 	}
-	
+    
 	if ContentType, ok := FaxsendrequestMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Workspace, ok := FaxsendrequestMap["workspace"].(map[string]interface{}); ok {
 		WorkspaceString, _ := json.Marshal(Workspace)
 		json.Unmarshal(WorkspaceString, &o.Workspace)
@@ -137,7 +137,7 @@ func (o *Faxsendrequest) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FaxsendrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Conversationvideoeventtopicurireference) UnmarshalJSON(b []byte) error 
 	if Id, ok := ConversationvideoeventtopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationvideoeventtopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

@@ -198,15 +198,15 @@ func (o *Queueconversationvideoeventtopiccobrowse) UnmarshalJSON(b []byte) error
 	if State, ok := QueueconversationvideoeventtopiccobrowseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationvideoeventtopiccobrowseMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Id, ok := QueueconversationvideoeventtopiccobrowseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Self, ok := QueueconversationvideoeventtopiccobrowseMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -215,15 +215,15 @@ func (o *Queueconversationvideoeventtopiccobrowse) UnmarshalJSON(b []byte) error
 	if RoomId, ok := QueueconversationvideoeventtopiccobrowseMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if CobrowseSessionId, ok := QueueconversationvideoeventtopiccobrowseMap["cobrowseSessionId"].(string); ok {
 		o.CobrowseSessionId = &CobrowseSessionId
 	}
-	
+    
 	if CobrowseRole, ok := QueueconversationvideoeventtopiccobrowseMap["cobrowseRole"].(string); ok {
 		o.CobrowseRole = &CobrowseRole
 	}
-	
+    
 	if Controlling, ok := QueueconversationvideoeventtopiccobrowseMap["controlling"].([]interface{}); ok {
 		ControllingString, _ := json.Marshal(Controlling)
 		json.Unmarshal(ControllingString, &o.Controlling)
@@ -232,19 +232,19 @@ func (o *Queueconversationvideoeventtopiccobrowse) UnmarshalJSON(b []byte) error
 	if ViewerUrl, ok := QueueconversationvideoeventtopiccobrowseMap["viewerUrl"].(string); ok {
 		o.ViewerUrl = &ViewerUrl
 	}
-	
+    
 	if Provider, ok := QueueconversationvideoeventtopiccobrowseMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationvideoeventtopiccobrowseMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationvideoeventtopiccobrowseMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if providerEventTimeString, ok := QueueconversationvideoeventtopiccobrowseMap["providerEventTime"].(string); ok {
 		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
 		o.ProviderEventTime = &ProviderEventTime
@@ -273,7 +273,7 @@ func (o *Queueconversationvideoeventtopiccobrowse) UnmarshalJSON(b []byte) error
 	if AfterCallWorkRequired, ok := QueueconversationvideoeventtopiccobrowseMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

@@ -118,15 +118,15 @@ func (o *Assessmentscoringset) UnmarshalJSON(b []byte) error {
 	if Comments, ok := AssessmentscoringsetMap["comments"].(string); ok {
 		o.Comments = &Comments
 	}
-	
+    
 	if AgentComments, ok := AssessmentscoringsetMap["agentComments"].(string); ok {
 		o.AgentComments = &AgentComments
 	}
-	
+    
 	if IsPassed, ok := AssessmentscoringsetMap["isPassed"].(bool); ok {
 		o.IsPassed = &IsPassed
 	}
-	
+    
 
 	return nil
 }

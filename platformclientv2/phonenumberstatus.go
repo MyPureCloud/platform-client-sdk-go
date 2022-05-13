@@ -37,7 +37,7 @@ func (o *Phonenumberstatus) UnmarshalJSON(b []byte) error {
 	if Callable, ok := PhonenumberstatusMap["callable"].(bool); ok {
 		o.Callable = &Callable
 	}
-	
+    
 
 	return nil
 }

@@ -61,19 +61,19 @@ func (o *Textstyleproperties) UnmarshalJSON(b []byte) error {
 	if Color, ok := TextstylepropertiesMap["color"].(string); ok {
 		o.Color = &Color
 	}
-	
+    
 	if Font, ok := TextstylepropertiesMap["font"].(string); ok {
 		o.Font = &Font
 	}
-	
+    
 	if FontSize, ok := TextstylepropertiesMap["fontSize"].(string); ok {
 		o.FontSize = &FontSize
 	}
-	
+    
 	if TextAlign, ok := TextstylepropertiesMap["textAlign"].(string); ok {
 		o.TextAlign = &TextAlign
 	}
-	
+    
 
 	return nil
 }

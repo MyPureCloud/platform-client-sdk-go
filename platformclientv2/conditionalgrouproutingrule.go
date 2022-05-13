@@ -82,15 +82,15 @@ func (o *Conditionalgrouproutingrule) UnmarshalJSON(b []byte) error {
 	if Metric, ok := ConditionalgrouproutingruleMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Operator, ok := ConditionalgrouproutingruleMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if ConditionValue, ok := ConditionalgrouproutingruleMap["conditionValue"].(float64); ok {
 		o.ConditionValue = &ConditionValue
 	}
-	
+    
 	if Groups, ok := ConditionalgrouproutingruleMap["groups"].([]interface{}); ok {
 		GroupsString, _ := json.Marshal(Groups)
 		json.Unmarshal(GroupsString, &o.Groups)

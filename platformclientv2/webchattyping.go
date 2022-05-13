@@ -70,7 +70,7 @@ func (o *Webchattyping) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebchattypingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Conversation, ok := WebchattypingMap["conversation"].(map[string]interface{}); ok {
 		ConversationString, _ := json.Marshal(Conversation)
 		json.Unmarshal(ConversationString, &o.Conversation)

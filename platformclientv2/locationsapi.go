@@ -32,8 +32,6 @@ func NewLocationsApiWithConfig(config *Configuration) *LocationsApi {
 // DeleteLocation invokes DELETE /api/v2/locations/{locationId}
 //
 // Delete a location
-//
-// 
 func (a LocationsApi) DeleteLocation(locationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a LocationsApi) DeleteLocation(locationId string) (*APIResponse, error) {
 
 	// verify the required parameter 'locationId' is set
 	if &locationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'locationId' when calling LocationsApi->DeleteLocation")
 	}
 
@@ -98,8 +96,6 @@ func (a LocationsApi) DeleteLocation(locationId string) (*APIResponse, error) {
 // GetLocation invokes GET /api/v2/locations/{locationId}
 //
 // Get Location by ID.
-//
-// 
 func (a LocationsApi) GetLocation(locationId string, expand []string) (*Locationdefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a LocationsApi) GetLocation(locationId string, expand []string) (*Location
 
 	// verify the required parameter 'locationId' is set
 	if &locationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'locationId' when calling LocationsApi->GetLocation")
 	}
 
@@ -173,8 +169,6 @@ func (a LocationsApi) GetLocation(locationId string, expand []string) (*Location
 // GetLocationSublocations invokes GET /api/v2/locations/{locationId}/sublocations
 //
 // Get sublocations for location ID.
-//
-// 
 func (a LocationsApi) GetLocationSublocations(locationId string) (*Locationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -187,7 +181,7 @@ func (a LocationsApi) GetLocationSublocations(locationId string) (*Locationentit
 
 	// verify the required parameter 'locationId' is set
 	if &locationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'locationId' when calling LocationsApi->GetLocationSublocations")
 	}
 
@@ -246,8 +240,6 @@ func (a LocationsApi) GetLocationSublocations(locationId string) (*Locationentit
 // GetLocations invokes GET /api/v2/locations
 //
 // Get a list of all locations.
-//
-// 
 func (a LocationsApi) GetLocations(pageSize int, pageNumber int, id []string, sortOrder string) (*Locationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -321,8 +313,6 @@ func (a LocationsApi) GetLocations(pageSize int, pageNumber int, id []string, so
 // GetLocationsSearch invokes GET /api/v2/locations/search
 //
 // Search locations using the q64 value returned from a previous search
-//
-// 
 func (a LocationsApi) GetLocationsSearch(q64 string, expand []string) (*Locationssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -334,7 +324,7 @@ func (a LocationsApi) GetLocationsSearch(q64 string, expand []string) (*Location
 
 	// verify the required parameter 'q64' is set
 	if &q64 == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'q64' when calling LocationsApi->GetLocationsSearch")
 	}
 
@@ -397,8 +387,6 @@ func (a LocationsApi) GetLocationsSearch(q64 string, expand []string) (*Location
 // PatchLocation invokes PATCH /api/v2/locations/{locationId}
 //
 // Update a location
-//
-// 
 func (a LocationsApi) PatchLocation(locationId string, body Locationupdatedefinition) (*Locationdefinition, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -411,12 +399,12 @@ func (a LocationsApi) PatchLocation(locationId string, body Locationupdatedefini
 
 	// verify the required parameter 'locationId' is set
 	if &locationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'locationId' when calling LocationsApi->PatchLocation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LocationsApi->PatchLocation")
 	}
 
@@ -478,8 +466,6 @@ func (a LocationsApi) PatchLocation(locationId string, body Locationupdatedefini
 // PostLocations invokes POST /api/v2/locations
 //
 // Create a location
-//
-// 
 func (a LocationsApi) PostLocations(body Locationcreatedefinition) (*Locationdefinition, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -491,7 +477,7 @@ func (a LocationsApi) PostLocations(body Locationcreatedefinition) (*Locationdef
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LocationsApi->PostLocations")
 	}
 
@@ -553,8 +539,6 @@ func (a LocationsApi) PostLocations(body Locationcreatedefinition) (*Locationdef
 // PostLocationsSearch invokes POST /api/v2/locations/search
 //
 // Search locations
-//
-// 
 func (a LocationsApi) PostLocationsSearch(body Locationsearchrequest) (*Locationssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -566,7 +550,7 @@ func (a LocationsApi) PostLocationsSearch(body Locationsearchrequest) (*Location
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LocationsApi->PostLocationsSearch")
 	}
 

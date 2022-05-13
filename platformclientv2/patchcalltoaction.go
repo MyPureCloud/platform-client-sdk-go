@@ -53,15 +53,15 @@ func (o *Patchcalltoaction) UnmarshalJSON(b []byte) error {
 	if Text, ok := PatchcalltoactionMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Url, ok := PatchcalltoactionMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Target, ok := PatchcalltoactionMap["target"].(string); ok {
 		o.Target = &Target
 	}
-	
+    
 
 	return nil
 }

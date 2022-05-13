@@ -45,11 +45,11 @@ func (o *Externaldatasource) UnmarshalJSON(b []byte) error {
 	if Platform, ok := ExternaldatasourceMap["platform"].(string); ok {
 		o.Platform = &Platform
 	}
-	
+    
 	if Url, ok := ExternaldatasourceMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 
 	return nil
 }

@@ -101,11 +101,11 @@ func (o *Integration) UnmarshalJSON(b []byte) error {
 	if Id, ok := IntegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := IntegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if IntegrationType, ok := IntegrationMap["integrationType"].(map[string]interface{}); ok {
 		IntegrationTypeString, _ := json.Marshal(IntegrationType)
 		json.Unmarshal(IntegrationTypeString, &o.IntegrationType)
@@ -114,11 +114,11 @@ func (o *Integration) UnmarshalJSON(b []byte) error {
 	if Notes, ok := IntegrationMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if IntendedState, ok := IntegrationMap["intendedState"].(string); ok {
 		o.IntendedState = &IntendedState
 	}
-	
+    
 	if Config, ok := IntegrationMap["config"].(map[string]interface{}); ok {
 		ConfigString, _ := json.Marshal(Config)
 		json.Unmarshal(ConfigString, &o.Config)
@@ -137,7 +137,7 @@ func (o *Integration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := IntegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

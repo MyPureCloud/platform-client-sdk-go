@@ -110,11 +110,11 @@ func (o *Updatecoachingappointmentrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := UpdatecoachingappointmentrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := UpdatecoachingappointmentrequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if dateStartString, ok := UpdatecoachingappointmentrequestMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
 		o.DateStart = &DateStart
@@ -138,7 +138,7 @@ func (o *Updatecoachingappointmentrequest) UnmarshalJSON(b []byte) error {
 	if Status, ok := UpdatecoachingappointmentrequestMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if WfmSchedule, ok := UpdatecoachingappointmentrequestMap["wfmSchedule"].(map[string]interface{}); ok {
 		WfmScheduleString, _ := json.Marshal(WfmSchedule)
 		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)

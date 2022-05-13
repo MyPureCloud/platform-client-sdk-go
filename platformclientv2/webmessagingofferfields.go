@@ -45,7 +45,7 @@ func (o *Webmessagingofferfields) UnmarshalJSON(b []byte) error {
 	if OfferText, ok := WebmessagingofferfieldsMap["offerText"].(string); ok {
 		o.OfferText = &OfferText
 	}
-	
+    
 	if ArchitectFlow, ok := WebmessagingofferfieldsMap["architectFlow"].(map[string]interface{}); ok {
 		ArchitectFlowString, _ := json.Marshal(ArchitectFlow)
 		json.Unmarshal(ArchitectFlowString, &o.ArchitectFlow)

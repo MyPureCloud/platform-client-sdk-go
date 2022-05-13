@@ -258,51 +258,51 @@ func (o *Acdenddetaileventtopicacdendevent) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := AcdenddetaileventtopicacdendeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := AcdenddetaileventtopicacdendeventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := AcdenddetaileventtopicacdendeventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if DisconnectType, ok := AcdenddetaileventtopicacdendeventMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if MediaType, ok := AcdenddetaileventtopicacdendeventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := AcdenddetaileventtopicacdendeventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := AcdenddetaileventtopicacdendeventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := AcdenddetaileventtopicacdendeventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := AcdenddetaileventtopicacdendeventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := AcdenddetaileventtopicacdendeventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := AcdenddetaileventtopicacdendeventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := AcdenddetaileventtopicacdendeventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := AcdenddetaileventtopicacdendeventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -316,27 +316,27 @@ func (o *Acdenddetaileventtopicacdendevent) UnmarshalJSON(b []byte) error {
 	if Subject, ok := AcdenddetaileventtopicacdendeventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := AcdenddetaileventtopicacdendeventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if QueueId, ok := AcdenddetaileventtopicacdendeventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if DivisionId, ok := AcdenddetaileventtopicacdendeventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 	if AcdOutcome, ok := AcdenddetaileventtopicacdendeventMap["acdOutcome"].(string); ok {
 		o.AcdOutcome = &AcdOutcome
 	}
-	
+    
 	if AnsweredUserId, ok := AcdenddetaileventtopicacdendeventMap["answeredUserId"].(string); ok {
 		o.AnsweredUserId = &AnsweredUserId
 	}
-	
+    
 	if RequestedRoutings, ok := AcdenddetaileventtopicacdendeventMap["requestedRoutings"].([]interface{}); ok {
 		RequestedRoutingsString, _ := json.Marshal(RequestedRoutings)
 		json.Unmarshal(RequestedRoutingsString, &o.RequestedRoutings)
@@ -345,7 +345,7 @@ func (o *Acdenddetaileventtopicacdendevent) UnmarshalJSON(b []byte) error {
 	if UsedRouting, ok := AcdenddetaileventtopicacdendeventMap["usedRouting"].(string); ok {
 		o.UsedRouting = &UsedRouting
 	}
-	
+    
 	if RequestedRoutingSkillIds, ok := AcdenddetaileventtopicacdendeventMap["requestedRoutingSkillIds"].([]interface{}); ok {
 		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
 		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
@@ -354,7 +354,7 @@ func (o *Acdenddetaileventtopicacdendevent) UnmarshalJSON(b []byte) error {
 	if RequestedLanguageId, ok := AcdenddetaileventtopicacdendeventMap["requestedLanguageId"].(string); ok {
 		o.RequestedLanguageId = &RequestedLanguageId
 	}
-	
+    
 	if RequestedRoutingUserIds, ok := AcdenddetaileventtopicacdendeventMap["requestedRoutingUserIds"].([]interface{}); ok {
 		RequestedRoutingUserIdsString, _ := json.Marshal(RequestedRoutingUserIds)
 		json.Unmarshal(RequestedRoutingUserIdsString, &o.RequestedRoutingUserIds)

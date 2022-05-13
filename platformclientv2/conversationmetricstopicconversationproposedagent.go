@@ -50,7 +50,7 @@ func (o *Conversationmetricstopicconversationproposedagent) UnmarshalJSON(b []by
 	if ProposedAgentId, ok := ConversationmetricstopicconversationproposedagentMap["proposedAgentId"].(string); ok {
 		o.ProposedAgentId = &ProposedAgentId
 	}
-	
+    
 
 	return nil
 }

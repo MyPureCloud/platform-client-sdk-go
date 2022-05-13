@@ -90,27 +90,27 @@ func (o *Mediaparticipantrequest) UnmarshalJSON(b []byte) error {
 	if State, ok := MediaparticipantrequestMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Recording, ok := MediaparticipantrequestMap["recording"].(bool); ok {
 		o.Recording = &Recording
 	}
-	
+    
 	if Muted, ok := MediaparticipantrequestMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}
-	
+    
 	if Confined, ok := MediaparticipantrequestMap["confined"].(bool); ok {
 		o.Confined = &Confined
 	}
-	
+    
 	if Held, ok := MediaparticipantrequestMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupSkipped, ok := MediaparticipantrequestMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 
 	return nil
 }

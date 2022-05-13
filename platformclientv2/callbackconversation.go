@@ -69,11 +69,11 @@ func (o *Callbackconversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := CallbackconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CallbackconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := CallbackconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
@@ -87,7 +87,7 @@ func (o *Callbackconversation) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CallbackconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

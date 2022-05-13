@@ -53,11 +53,11 @@ func (o *Matchshifttraderequest) UnmarshalJSON(b []byte) error {
 	if ReceivingScheduleId, ok := MatchshifttraderequestMap["receivingScheduleId"].(string); ok {
 		o.ReceivingScheduleId = &ReceivingScheduleId
 	}
-	
+    
 	if ReceivingShiftId, ok := MatchshifttraderequestMap["receivingShiftId"].(string); ok {
 		o.ReceivingShiftId = &ReceivingShiftId
 	}
-	
+    
 	if Metadata, ok := MatchshifttraderequestMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

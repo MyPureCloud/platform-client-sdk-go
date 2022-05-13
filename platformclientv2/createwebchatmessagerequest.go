@@ -45,11 +45,11 @@ func (o *Createwebchatmessagerequest) UnmarshalJSON(b []byte) error {
 	if Body, ok := CreatewebchatmessagerequestMap["body"].(string); ok {
 		o.Body = &Body
 	}
-	
+    
 	if BodyType, ok := CreatewebchatmessagerequestMap["bodyType"].(string); ok {
 		o.BodyType = &BodyType
 	}
-	
+    
 
 	return nil
 }

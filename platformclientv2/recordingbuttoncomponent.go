@@ -53,7 +53,7 @@ func (o *Recordingbuttoncomponent) UnmarshalJSON(b []byte) error {
 	if Title, ok := RecordingbuttoncomponentMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Actions, ok := RecordingbuttoncomponentMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)
@@ -62,7 +62,7 @@ func (o *Recordingbuttoncomponent) UnmarshalJSON(b []byte) error {
 	if IsSelected, ok := RecordingbuttoncomponentMap["isSelected"].(bool); ok {
 		o.IsSelected = &IsSelected
 	}
-	
+    
 
 	return nil
 }

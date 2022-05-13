@@ -85,7 +85,7 @@ func (o *Securesession) UnmarshalJSON(b []byte) error {
 	if Id, ok := SecuresessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Flow, ok := SecuresessionMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
@@ -94,23 +94,23 @@ func (o *Securesession) UnmarshalJSON(b []byte) error {
 	if UserData, ok := SecuresessionMap["userData"].(string); ok {
 		o.UserData = &UserData
 	}
-	
+    
 	if State, ok := SecuresessionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if SourceParticipantId, ok := SecuresessionMap["sourceParticipantId"].(string); ok {
 		o.SourceParticipantId = &SourceParticipantId
 	}
-	
+    
 	if Disconnect, ok := SecuresessionMap["disconnect"].(bool); ok {
 		o.Disconnect = &Disconnect
 	}
-	
+    
 	if SelfUri, ok := SecuresessionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

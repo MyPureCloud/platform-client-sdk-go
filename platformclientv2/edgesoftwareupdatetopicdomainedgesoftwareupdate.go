@@ -94,11 +94,11 @@ func (o *Edgesoftwareupdatetopicdomainedgesoftwareupdate) UnmarshalJSON(b []byte
 	if Id, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Status, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if downloadStartTimeString, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["downloadStartTime"].(string); ok {
 		DownloadStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", downloadStartTimeString)
 		o.DownloadStartTime = &DownloadStartTime

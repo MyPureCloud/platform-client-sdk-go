@@ -93,7 +93,7 @@ func (o *Scimconfigresourcetype) UnmarshalJSON(b []byte) error {
 	if Id, ok := ScimconfigresourcetypeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Schemas, ok := ScimconfigresourcetypeMap["schemas"].([]interface{}); ok {
 		SchemasString, _ := json.Marshal(Schemas)
 		json.Unmarshal(SchemasString, &o.Schemas)
@@ -102,15 +102,15 @@ func (o *Scimconfigresourcetype) UnmarshalJSON(b []byte) error {
 	if Name, ok := ScimconfigresourcetypeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := ScimconfigresourcetypeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Schema, ok := ScimconfigresourcetypeMap["schema"].(string); ok {
 		o.Schema = &Schema
 	}
-	
+    
 	if SchemaExtensions, ok := ScimconfigresourcetypeMap["schemaExtensions"].([]interface{}); ok {
 		SchemaExtensionsString, _ := json.Marshal(SchemaExtensions)
 		json.Unmarshal(SchemaExtensionsString, &o.SchemaExtensions)
@@ -119,7 +119,7 @@ func (o *Scimconfigresourcetype) UnmarshalJSON(b []byte) error {
 	if Endpoint, ok := ScimconfigresourcetypeMap["endpoint"].(string); ok {
 		o.Endpoint = &Endpoint
 	}
-	
+    
 	if Meta, ok := ScimconfigresourcetypeMap["meta"].(map[string]interface{}); ok {
 		MetaString, _ := json.Marshal(Meta)
 		json.Unmarshal(MetaString, &o.Meta)

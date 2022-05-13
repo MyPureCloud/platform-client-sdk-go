@@ -166,39 +166,39 @@ func (o *Reportingdataexporttopicdataexportnotification) UnmarshalJSON(b []byte)
 	if Id, ok := ReportingdataexporttopicdataexportnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if RunId, ok := ReportingdataexporttopicdataexportnotificationMap["runId"].(string); ok {
 		o.RunId = &RunId
 	}
-	
+    
 	if Name, ok := ReportingdataexporttopicdataexportnotificationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Status, ok := ReportingdataexporttopicdataexportnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ExportFormat, ok := ReportingdataexporttopicdataexportnotificationMap["exportFormat"].(string); ok {
 		o.ExportFormat = &ExportFormat
 	}
-	
+    
 	if DownloadUrl, ok := ReportingdataexporttopicdataexportnotificationMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 	if ViewType, ok := ReportingdataexporttopicdataexportnotificationMap["viewType"].(string); ok {
 		o.ViewType = &ViewType
 	}
-	
+    
 	if ExportErrorMessagesType, ok := ReportingdataexporttopicdataexportnotificationMap["exportErrorMessagesType"].(string); ok {
 		o.ExportErrorMessagesType = &ExportErrorMessagesType
 	}
-	
+    
 	if Read, ok := ReportingdataexporttopicdataexportnotificationMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if createdDateTimeString, ok := ReportingdataexporttopicdataexportnotificationMap["createdDateTime"].(string); ok {
 		CreatedDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateTimeString)
 		o.CreatedDateTime = &CreatedDateTime
@@ -213,7 +213,7 @@ func (o *Reportingdataexporttopicdataexportnotification) UnmarshalJSON(b []byte)
 		PercentageCompleteFloat32 := float32(PercentageComplete)
 		o.PercentageComplete = &PercentageCompleteFloat32
 	}
-	
+    
 	if EmailStatuses, ok := ReportingdataexporttopicdataexportnotificationMap["emailStatuses"].(map[string]interface{}); ok {
 		EmailStatusesString, _ := json.Marshal(EmailStatuses)
 		json.Unmarshal(EmailStatusesString, &o.EmailStatuses)
@@ -222,11 +222,11 @@ func (o *Reportingdataexporttopicdataexportnotification) UnmarshalJSON(b []byte)
 	if EmailErrorDescription, ok := ReportingdataexporttopicdataexportnotificationMap["emailErrorDescription"].(string); ok {
 		o.EmailErrorDescription = &EmailErrorDescription
 	}
-	
+    
 	if ScheduleExpression, ok := ReportingdataexporttopicdataexportnotificationMap["scheduleExpression"].(string); ok {
 		o.ScheduleExpression = &ScheduleExpression
 	}
-	
+    
 
 	return nil
 }

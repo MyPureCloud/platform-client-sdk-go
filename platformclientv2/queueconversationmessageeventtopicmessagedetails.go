@@ -109,7 +109,7 @@ func (o *Queueconversationmessageeventtopicmessagedetails) UnmarshalJSON(b []byt
 	if MessageStatus, ok := QueueconversationmessageeventtopicmessagedetailsMap["messageStatus"].(string); ok {
 		o.MessageStatus = &MessageStatus
 	}
-	
+    
 	if Media, ok := QueueconversationmessageeventtopicmessagedetailsMap["media"].([]interface{}); ok {
 		MediaString, _ := json.Marshal(Media)
 		json.Unmarshal(MediaString, &o.Media)

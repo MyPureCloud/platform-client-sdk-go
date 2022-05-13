@@ -53,15 +53,15 @@ func (o *Conversationcontentstory) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ConversationcontentstoryMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Url, ok := ConversationcontentstoryMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if ReplyToId, ok := ConversationcontentstoryMap["replyToId"].(string); ok {
 		o.ReplyToId = &ReplyToId
 	}
-	
+    
 
 	return nil
 }

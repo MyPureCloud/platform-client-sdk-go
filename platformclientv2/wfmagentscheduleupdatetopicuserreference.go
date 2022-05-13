@@ -37,7 +37,7 @@ func (o *Wfmagentscheduleupdatetopicuserreference) UnmarshalJSON(b []byte) error
 	if Id, ok := WfmagentscheduleupdatetopicuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -125,11 +125,11 @@ func (o *Dialerrulesetconfigchangeruleset) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialerrulesetconfigchangerulesetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialerrulesetconfigchangerulesetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialerrulesetconfigchangerulesetMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

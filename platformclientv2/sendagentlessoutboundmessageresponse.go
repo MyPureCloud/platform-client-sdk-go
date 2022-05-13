@@ -126,27 +126,27 @@ func (o *Sendagentlessoutboundmessageresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := SendagentlessoutboundmessageresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ConversationId, ok := SendagentlessoutboundmessageresponseMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if FromAddress, ok := SendagentlessoutboundmessageresponseMap["fromAddress"].(string); ok {
 		o.FromAddress = &FromAddress
 	}
-	
+    
 	if ToAddress, ok := SendagentlessoutboundmessageresponseMap["toAddress"].(string); ok {
 		o.ToAddress = &ToAddress
 	}
-	
+    
 	if MessengerType, ok := SendagentlessoutboundmessageresponseMap["messengerType"].(string); ok {
 		o.MessengerType = &MessengerType
 	}
-	
+    
 	if TextBody, ok := SendagentlessoutboundmessageresponseMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if MessagingTemplate, ok := SendagentlessoutboundmessageresponseMap["messagingTemplate"].(map[string]interface{}); ok {
 		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
 		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
@@ -155,7 +155,7 @@ func (o *Sendagentlessoutboundmessageresponse) UnmarshalJSON(b []byte) error {
 	if UseExistingActiveConversation, ok := SendagentlessoutboundmessageresponseMap["useExistingActiveConversation"].(bool); ok {
 		o.UseExistingActiveConversation = &UseExistingActiveConversation
 	}
-	
+    
 	if timestampString, ok := SendagentlessoutboundmessageresponseMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp
@@ -164,7 +164,7 @@ func (o *Sendagentlessoutboundmessageresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SendagentlessoutboundmessageresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if User, ok := SendagentlessoutboundmessageresponseMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)

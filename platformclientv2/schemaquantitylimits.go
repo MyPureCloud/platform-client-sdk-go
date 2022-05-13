@@ -141,11 +141,11 @@ func (o *Schemaquantitylimits) UnmarshalJSON(b []byte) error {
 	if Id, ok := SchemaquantitylimitsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SchemaquantitylimitsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if MinFieldNameCharacters, ok := SchemaquantitylimitsMap["minFieldNameCharacters"].(float64); ok {
 		MinFieldNameCharactersInt := int(MinFieldNameCharacters)
 		o.MinFieldNameCharacters = &MinFieldNameCharactersInt
@@ -204,7 +204,7 @@ func (o *Schemaquantitylimits) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SchemaquantitylimitsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -109,7 +109,7 @@ func (o *Opennormalizedmessage) UnmarshalJSON(b []byte) error {
 	if Id, ok := OpennormalizedmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Channel, ok := OpennormalizedmessageMap["channel"].(map[string]interface{}); ok {
 		ChannelString, _ := json.Marshal(Channel)
 		json.Unmarshal(ChannelString, &o.Channel)
@@ -118,11 +118,11 @@ func (o *Opennormalizedmessage) UnmarshalJSON(b []byte) error {
 	if VarType, ok := OpennormalizedmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := OpennormalizedmessageMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Content, ok := OpennormalizedmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)
@@ -131,7 +131,7 @@ func (o *Opennormalizedmessage) UnmarshalJSON(b []byte) error {
 	if Status, ok := OpennormalizedmessageMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Reasons, ok := OpennormalizedmessageMap["reasons"].([]interface{}); ok {
 		ReasonsString, _ := json.Marshal(Reasons)
 		json.Unmarshal(ReasonsString, &o.Reasons)
@@ -140,11 +140,11 @@ func (o *Opennormalizedmessage) UnmarshalJSON(b []byte) error {
 	if IsFinalReceipt, ok := OpennormalizedmessageMap["isFinalReceipt"].(bool); ok {
 		o.IsFinalReceipt = &IsFinalReceipt
 	}
-	
+    
 	if Direction, ok := OpennormalizedmessageMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Metadata, ok := OpennormalizedmessageMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

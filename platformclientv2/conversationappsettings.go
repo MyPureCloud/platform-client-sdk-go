@@ -69,15 +69,15 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	if ShowAgentTypingIndicator, ok := ConversationappsettingsMap["showAgentTypingIndicator"].(bool); ok {
 		o.ShowAgentTypingIndicator = &ShowAgentTypingIndicator
 	}
-	
+    
 	if ShowUserTypingIndicator, ok := ConversationappsettingsMap["showUserTypingIndicator"].(bool); ok {
 		o.ShowUserTypingIndicator = &ShowUserTypingIndicator
 	}
-	
+    
 	if AutoStartType, ok := ConversationappsettingsMap["autoStartType"].(string); ok {
 		o.AutoStartType = &AutoStartType
 	}
-	
+    
 	if AutoStart, ok := ConversationappsettingsMap["autoStart"].(map[string]interface{}); ok {
 		AutoStartString, _ := json.Marshal(AutoStart)
 		json.Unmarshal(AutoStartString, &o.AutoStart)

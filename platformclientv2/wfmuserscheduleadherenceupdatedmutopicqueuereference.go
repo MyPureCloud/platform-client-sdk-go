@@ -37,7 +37,7 @@ func (o *Wfmuserscheduleadherenceupdatedmutopicqueuereference) UnmarshalJSON(b [
 	if Id, ok := WfmuserscheduleadherenceupdatedmutopicqueuereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

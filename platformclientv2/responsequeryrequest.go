@@ -53,7 +53,7 @@ func (o *Responsequeryrequest) UnmarshalJSON(b []byte) error {
 	if QueryPhrase, ok := ResponsequeryrequestMap["queryPhrase"].(string); ok {
 		o.QueryPhrase = &QueryPhrase
 	}
-	
+    
 	if PageSize, ok := ResponsequeryrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt

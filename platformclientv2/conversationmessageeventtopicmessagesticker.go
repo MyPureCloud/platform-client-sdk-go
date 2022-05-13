@@ -45,11 +45,11 @@ func (o *Conversationmessageeventtopicmessagesticker) UnmarshalJSON(b []byte) er
 	if Url, ok := ConversationmessageeventtopicmessagestickerMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Id, ok := ConversationmessageeventtopicmessagestickerMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

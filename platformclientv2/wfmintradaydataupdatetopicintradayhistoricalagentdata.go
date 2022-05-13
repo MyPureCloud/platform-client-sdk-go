@@ -46,12 +46,12 @@ func (o *Wfmintradaydataupdatetopicintradayhistoricalagentdata) UnmarshalJSON(b 
 		OnQueueTimeSecondsFloat32 := float32(OnQueueTimeSeconds)
 		o.OnQueueTimeSeconds = &OnQueueTimeSecondsFloat32
 	}
-	
+    
 	if InteractingTimeSeconds, ok := WfmintradaydataupdatetopicintradayhistoricalagentdataMap["interactingTimeSeconds"].(float64); ok {
 		InteractingTimeSecondsFloat32 := float32(InteractingTimeSeconds)
 		o.InteractingTimeSeconds = &InteractingTimeSecondsFloat32
 	}
-	
+    
 
 	return nil
 }

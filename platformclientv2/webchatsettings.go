@@ -37,7 +37,7 @@ func (o *Webchatsettings) UnmarshalJSON(b []byte) error {
 	if RequireDeployment, ok := WebchatsettingsMap["requireDeployment"].(bool); ok {
 		o.RequireDeployment = &RequireDeployment
 	}
-	
+    
 
 	return nil
 }

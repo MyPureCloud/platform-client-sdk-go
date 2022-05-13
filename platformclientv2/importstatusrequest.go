@@ -37,7 +37,7 @@ func (o *Importstatusrequest) UnmarshalJSON(b []byte) error {
 	if Status, ok := ImportstatusrequestMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 
 	return nil
 }

@@ -101,39 +101,39 @@ func (o *Journeywebeventsnotificationreferrer) UnmarshalJSON(b []byte) error {
 	if Url, ok := JourneywebeventsnotificationreferrerMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Domain, ok := JourneywebeventsnotificationreferrerMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if Hostname, ok := JourneywebeventsnotificationreferrerMap["hostname"].(string); ok {
 		o.Hostname = &Hostname
 	}
-	
+    
 	if Keywords, ok := JourneywebeventsnotificationreferrerMap["keywords"].(string); ok {
 		o.Keywords = &Keywords
 	}
-	
+    
 	if Pathname, ok := JourneywebeventsnotificationreferrerMap["pathname"].(string); ok {
 		o.Pathname = &Pathname
 	}
-	
+    
 	if QueryString, ok := JourneywebeventsnotificationreferrerMap["queryString"].(string); ok {
 		o.QueryString = &QueryString
 	}
-	
+    
 	if Fragment, ok := JourneywebeventsnotificationreferrerMap["fragment"].(string); ok {
 		o.Fragment = &Fragment
 	}
-	
+    
 	if Name, ok := JourneywebeventsnotificationreferrerMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Medium, ok := JourneywebeventsnotificationreferrerMap["medium"].(string); ok {
 		o.Medium = &Medium
 	}
-	
+    
 
 	return nil
 }

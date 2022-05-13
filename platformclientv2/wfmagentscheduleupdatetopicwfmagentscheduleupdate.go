@@ -46,7 +46,7 @@ func (o *Wfmagentscheduleupdatetopicwfmagentscheduleupdate) UnmarshalJSON(b []by
 	if UpdateType, ok := WfmagentscheduleupdatetopicwfmagentscheduleupdateMap["updateType"].(string); ok {
 		o.UpdateType = &UpdateType
 	}
-	
+    
 	if ShiftStartDates, ok := WfmagentscheduleupdatetopicwfmagentscheduleupdateMap["shiftStartDates"].([]interface{}); ok {
 		ShiftStartDatesString, _ := json.Marshal(ShiftStartDates)
 		json.Unmarshal(ShiftStartDatesString, &o.ShiftStartDates)

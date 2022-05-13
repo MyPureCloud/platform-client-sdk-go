@@ -37,7 +37,7 @@ func (o *Utterance) UnmarshalJSON(b []byte) error {
 	if UtteranceText, ok := UtteranceMap["utteranceText"].(string); ok {
 		o.UtteranceText = &UtteranceText
 	}
-	
+    
 
 	return nil
 }

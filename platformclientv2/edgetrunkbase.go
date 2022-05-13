@@ -174,11 +174,11 @@ func (o *Edgetrunkbase) UnmarshalJSON(b []byte) error {
 	if Id, ok := EdgetrunkbaseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EdgetrunkbaseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := EdgetrunkbaseMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -187,7 +187,7 @@ func (o *Edgetrunkbase) UnmarshalJSON(b []byte) error {
 	if Description, ok := EdgetrunkbaseMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := EdgetrunkbaseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -206,23 +206,23 @@ func (o *Edgetrunkbase) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := EdgetrunkbaseMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := EdgetrunkbaseMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := EdgetrunkbaseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := EdgetrunkbaseMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := EdgetrunkbaseMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if TrunkMetabase, ok := EdgetrunkbaseMap["trunkMetabase"].(map[string]interface{}); ok {
 		TrunkMetabaseString, _ := json.Marshal(TrunkMetabase)
 		json.Unmarshal(TrunkMetabaseString, &o.TrunkMetabase)
@@ -236,11 +236,11 @@ func (o *Edgetrunkbase) UnmarshalJSON(b []byte) error {
 	if TrunkType, ok := EdgetrunkbaseMap["trunkType"].(string); ok {
 		o.TrunkType = &TrunkType
 	}
-	
+    
 	if SelfUri, ok := EdgetrunkbaseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

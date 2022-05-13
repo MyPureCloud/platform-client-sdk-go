@@ -85,19 +85,19 @@ func (o *Groupgreetingeventgreeting) UnmarshalJSON(b []byte) error {
 	if Id, ok := GroupgreetingeventgreetingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GroupgreetingeventgreetingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := GroupgreetingeventgreetingMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if OwnerType, ok := GroupgreetingeventgreetingMap["ownerType"].(string); ok {
 		o.OwnerType = &OwnerType
 	}
-	
+    
 	if Owner, ok := GroupgreetingeventgreetingMap["owner"].(map[string]interface{}); ok {
 		OwnerString, _ := json.Marshal(Owner)
 		json.Unmarshal(OwnerString, &o.Owner)
@@ -111,7 +111,7 @@ func (o *Groupgreetingeventgreeting) UnmarshalJSON(b []byte) error {
 	if AudioTTS, ok := GroupgreetingeventgreetingMap["audioTTS"].(string); ok {
 		o.AudioTTS = &AudioTTS
 	}
-	
+    
 
 	return nil
 }

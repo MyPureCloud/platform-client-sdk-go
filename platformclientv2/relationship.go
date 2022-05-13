@@ -77,7 +77,7 @@ func (o *Relationship) UnmarshalJSON(b []byte) error {
 	if Id, ok := RelationshipMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := RelationshipMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -91,7 +91,7 @@ func (o *Relationship) UnmarshalJSON(b []byte) error {
 	if Relationship, ok := RelationshipMap["relationship"].(string); ok {
 		o.Relationship = &Relationship
 	}
-	
+    
 	if ExternalDataSources, ok := RelationshipMap["externalDataSources"].([]interface{}); ok {
 		ExternalDataSourcesString, _ := json.Marshal(ExternalDataSources)
 		json.Unmarshal(ExternalDataSourcesString, &o.ExternalDataSources)
@@ -100,7 +100,7 @@ func (o *Relationship) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := RelationshipMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

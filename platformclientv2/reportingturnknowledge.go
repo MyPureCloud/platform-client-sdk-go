@@ -53,7 +53,7 @@ func (o *Reportingturnknowledge) UnmarshalJSON(b []byte) error {
 	if KnowledgeBaseId, ok := ReportingturnknowledgeMap["knowledgeBaseId"].(string); ok {
 		o.KnowledgeBaseId = &KnowledgeBaseId
 	}
-	
+    
 	if Feedback, ok := ReportingturnknowledgeMap["feedback"].(map[string]interface{}); ok {
 		FeedbackString, _ := json.Marshal(Feedback)
 		json.Unmarshal(FeedbackString, &o.Feedback)

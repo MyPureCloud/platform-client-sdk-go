@@ -126,11 +126,11 @@ func (o *Dependencystatus) UnmarshalJSON(b []byte) error {
 	if Id, ok := DependencystatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DependencystatusMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if User, ok := DependencystatusMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -144,7 +144,7 @@ func (o *Dependencystatus) UnmarshalJSON(b []byte) error {
 	if BuildId, ok := DependencystatusMap["buildId"].(string); ok {
 		o.BuildId = &BuildId
 	}
-	
+    
 	if dateStartedString, ok := DependencystatusMap["dateStarted"].(string); ok {
 		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
 		o.DateStarted = &DateStarted
@@ -158,7 +158,7 @@ func (o *Dependencystatus) UnmarshalJSON(b []byte) error {
 	if Status, ok := DependencystatusMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if FailedObjects, ok := DependencystatusMap["failedObjects"].([]interface{}); ok {
 		FailedObjectsString, _ := json.Marshal(FailedObjects)
 		json.Unmarshal(FailedObjectsString, &o.FailedObjects)
@@ -167,7 +167,7 @@ func (o *Dependencystatus) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := DependencystatusMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

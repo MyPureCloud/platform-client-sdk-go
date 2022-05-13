@@ -88,11 +88,11 @@ func (o *Availabletime) UnmarshalJSON(b []byte) error {
 	if IsPaid, ok := AvailabletimeMap["isPaid"].(bool); ok {
 		o.IsPaid = &IsPaid
 	}
-	
+    
 	if ActivityCategory, ok := AvailabletimeMap["activityCategory"].(string); ok {
 		o.ActivityCategory = &ActivityCategory
 	}
-	
+    
 	if WfmSchedule, ok := AvailabletimeMap["wfmSchedule"].(map[string]interface{}); ok {
 		WfmScheduleString, _ := json.Marshal(WfmSchedule)
 		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)

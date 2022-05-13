@@ -77,27 +77,27 @@ func (o *Supportcenterglobalstyle) UnmarshalJSON(b []byte) error {
 	if BackgroundColor, ok := SupportcenterglobalstyleMap["backgroundColor"].(string); ok {
 		o.BackgroundColor = &BackgroundColor
 	}
-	
+    
 	if PrimaryColor, ok := SupportcenterglobalstyleMap["primaryColor"].(string); ok {
 		o.PrimaryColor = &PrimaryColor
 	}
-	
+    
 	if PrimaryColorDark, ok := SupportcenterglobalstyleMap["primaryColorDark"].(string); ok {
 		o.PrimaryColorDark = &PrimaryColorDark
 	}
-	
+    
 	if PrimaryColorLight, ok := SupportcenterglobalstyleMap["primaryColorLight"].(string); ok {
 		o.PrimaryColorLight = &PrimaryColorLight
 	}
-	
+    
 	if TextColor, ok := SupportcenterglobalstyleMap["textColor"].(string); ok {
 		o.TextColor = &TextColor
 	}
-	
+    
 	if FontFamily, ok := SupportcenterglobalstyleMap["fontFamily"].(string); ok {
 		o.FontFamily = &FontFamily
 	}
-	
+    
 
 	return nil
 }

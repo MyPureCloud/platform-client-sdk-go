@@ -178,47 +178,47 @@ func (o *Acdstartdetaileventtopicacdstartevent) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := AcdstartdetaileventtopicacdstarteventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if ParticipantId, ok := AcdstartdetaileventtopicacdstarteventMap["participantId"].(string); ok {
 		o.ParticipantId = &ParticipantId
 	}
-	
+    
 	if SessionId, ok := AcdstartdetaileventtopicacdstarteventMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if MediaType, ok := AcdstartdetaileventtopicacdstarteventMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Provider, ok := AcdstartdetaileventtopicacdstarteventMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if Direction, ok := AcdstartdetaileventtopicacdstarteventMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Ani, ok := AcdstartdetaileventtopicacdstarteventMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := AcdstartdetaileventtopicacdstarteventMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if AddressTo, ok := AcdstartdetaileventtopicacdstarteventMap["addressTo"].(string); ok {
 		o.AddressTo = &AddressTo
 	}
-	
+    
 	if AddressFrom, ok := AcdstartdetaileventtopicacdstarteventMap["addressFrom"].(string); ok {
 		o.AddressFrom = &AddressFrom
 	}
-	
+    
 	if CallbackUserName, ok := AcdstartdetaileventtopicacdstarteventMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}
-	
+    
 	if CallbackNumbers, ok := AcdstartdetaileventtopicacdstarteventMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -232,19 +232,19 @@ func (o *Acdstartdetaileventtopicacdstartevent) UnmarshalJSON(b []byte) error {
 	if Subject, ok := AcdstartdetaileventtopicacdstarteventMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if MessageType, ok := AcdstartdetaileventtopicacdstarteventMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 	if QueueId, ok := AcdstartdetaileventtopicacdstarteventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if DivisionId, ok := AcdstartdetaileventtopicacdstarteventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
 	}
-	
+    
 
 	return nil
 }

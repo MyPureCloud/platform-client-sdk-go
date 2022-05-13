@@ -69,15 +69,15 @@ func (o *Journeysurveyquestion) UnmarshalJSON(b []byte) error {
 	if VarType, ok := JourneysurveyquestionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Label, ok := JourneysurveyquestionMap["label"].(string); ok {
 		o.Label = &Label
 	}
-	
+    
 	if CustomerProperty, ok := JourneysurveyquestionMap["customerProperty"].(string); ok {
 		o.CustomerProperty = &CustomerProperty
 	}
-	
+    
 	if Choices, ok := JourneysurveyquestionMap["choices"].([]interface{}); ok {
 		ChoicesString, _ := json.Marshal(Choices)
 		json.Unmarshal(ChoicesString, &o.Choices)
@@ -86,7 +86,7 @@ func (o *Journeysurveyquestion) UnmarshalJSON(b []byte) error {
 	if IsMandatory, ok := JourneysurveyquestionMap["isMandatory"].(bool); ok {
 		o.IsMandatory = &IsMandatory
 	}
-	
+    
 
 	return nil
 }

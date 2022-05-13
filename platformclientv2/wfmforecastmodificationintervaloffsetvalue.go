@@ -50,7 +50,7 @@ func (o *Wfmforecastmodificationintervaloffsetvalue) UnmarshalJSON(b []byte) err
 	if Value, ok := WfmforecastmodificationintervaloffsetvalueMap["value"].(float64); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

@@ -37,7 +37,7 @@ func (o *Journeyoutcomeeventsnotificationoutcometouchpointchannel) UnmarshalJSON
 	if VarType, ok := JourneyoutcomeeventsnotificationoutcometouchpointchannelMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

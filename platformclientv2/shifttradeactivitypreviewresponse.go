@@ -80,11 +80,11 @@ func (o *Shifttradeactivitypreviewresponse) UnmarshalJSON(b []byte) error {
 	if ActivityCodeId, ok := ShifttradeactivitypreviewresponseMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if CountsAsPaidTime, ok := ShifttradeactivitypreviewresponseMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 
 	return nil
 }

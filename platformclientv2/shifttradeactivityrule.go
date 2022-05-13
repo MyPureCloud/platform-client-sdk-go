@@ -53,15 +53,15 @@ func (o *Shifttradeactivityrule) UnmarshalJSON(b []byte) error {
 	if ActivityCategory, ok := ShifttradeactivityruleMap["activityCategory"].(string); ok {
 		o.ActivityCategory = &ActivityCategory
 	}
-	
+    
 	if Action, ok := ShifttradeactivityruleMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if ActivityCodeIdReplacement, ok := ShifttradeactivityruleMap["activityCodeIdReplacement"].(string); ok {
 		o.ActivityCodeIdReplacement = &ActivityCodeIdReplacement
 	}
-	
+    
 
 	return nil
 }

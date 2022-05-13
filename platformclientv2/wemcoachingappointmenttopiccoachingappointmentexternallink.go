@@ -45,11 +45,11 @@ func (o *Wemcoachingappointmenttopiccoachingappointmentexternallink) UnmarshalJS
 	if ExternalLink, ok := WemcoachingappointmenttopiccoachingappointmentexternallinkMap["externalLink"].(string); ok {
 		o.ExternalLink = &ExternalLink
 	}
-	
+    
 	if Action, ok := WemcoachingappointmenttopiccoachingappointmentexternallinkMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 
 	return nil
 }

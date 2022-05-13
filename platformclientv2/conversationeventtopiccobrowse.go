@@ -198,15 +198,15 @@ func (o *Conversationeventtopiccobrowse) UnmarshalJSON(b []byte) error {
 	if State, ok := ConversationeventtopiccobrowseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if DisconnectType, ok := ConversationeventtopiccobrowseMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Id, ok := ConversationeventtopiccobrowseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Self, ok := ConversationeventtopiccobrowseMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -215,15 +215,15 @@ func (o *Conversationeventtopiccobrowse) UnmarshalJSON(b []byte) error {
 	if RoomId, ok := ConversationeventtopiccobrowseMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if CobrowseSessionId, ok := ConversationeventtopiccobrowseMap["cobrowseSessionId"].(string); ok {
 		o.CobrowseSessionId = &CobrowseSessionId
 	}
-	
+    
 	if CobrowseRole, ok := ConversationeventtopiccobrowseMap["cobrowseRole"].(string); ok {
 		o.CobrowseRole = &CobrowseRole
 	}
-	
+    
 	if Controlling, ok := ConversationeventtopiccobrowseMap["controlling"].([]interface{}); ok {
 		ControllingString, _ := json.Marshal(Controlling)
 		json.Unmarshal(ControllingString, &o.Controlling)
@@ -232,19 +232,19 @@ func (o *Conversationeventtopiccobrowse) UnmarshalJSON(b []byte) error {
 	if ViewerUrl, ok := ConversationeventtopiccobrowseMap["viewerUrl"].(string); ok {
 		o.ViewerUrl = &ViewerUrl
 	}
-	
+    
 	if Provider, ok := ConversationeventtopiccobrowseMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := ConversationeventtopiccobrowseMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := ConversationeventtopiccobrowseMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if providerEventTimeString, ok := ConversationeventtopiccobrowseMap["providerEventTime"].(string); ok {
 		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
 		o.ProviderEventTime = &ProviderEventTime
@@ -273,7 +273,7 @@ func (o *Conversationeventtopiccobrowse) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := ConversationeventtopiccobrowseMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

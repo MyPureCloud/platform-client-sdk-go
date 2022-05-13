@@ -37,7 +37,7 @@ func (o *Scimuserrole) UnmarshalJSON(b []byte) error {
 	if Value, ok := ScimuserroleMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

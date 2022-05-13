@@ -17,7 +17,7 @@ type Scimv2patchoperation struct {
 
 
 	// Value - The value to set in the path.
-	Value *Jsonnode `json:"value,omitempty"`
+	Value *interface{} `json:"value,omitempty"`
 
 }
 
@@ -31,7 +31,7 @@ func (o *Scimv2patchoperation) MarshalJSON() ([]byte, error) {
 		
 		Path *string `json:"path,omitempty"`
 		
-		Value *Jsonnode `json:"value,omitempty"`
+		Value *interface{} `json:"value,omitempty"`
 		*Alias
 	}{ 
 		Op: o.Op,
@@ -53,11 +53,11 @@ func (o *Scimv2patchoperation) UnmarshalJSON(b []byte) error {
 	if Op, ok := Scimv2patchoperationMap["op"].(string); ok {
 		o.Op = &Op
 	}
-	
+    
 	if Path, ok := Scimv2patchoperationMap["path"].(string); ok {
 		o.Path = &Path
 	}
-	
+    
 	if Value, ok := Scimv2patchoperationMap["value"].(map[string]interface{}); ok {
 		ValueString, _ := json.Marshal(Value)
 		json.Unmarshal(ValueString, &o.Value)

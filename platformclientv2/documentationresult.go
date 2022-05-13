@@ -208,19 +208,19 @@ func (o *Documentationresult) UnmarshalJSON(b []byte) error {
 	if Description, ok := DocumentationresultMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Content, ok := DocumentationresultMap["content"].(string); ok {
 		o.Content = &Content
 	}
-	
+    
 	if Excerpt, ok := DocumentationresultMap["excerpt"].(string); ok {
 		o.Excerpt = &Excerpt
 	}
-	
+    
 	if Link, ok := DocumentationresultMap["link"].(string); ok {
 		o.Link = &Link
 	}
-	
+    
 	if modifiedString, ok := DocumentationresultMap["modified"].(string); ok {
 		Modified, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedString)
 		o.Modified = &Modified
@@ -229,7 +229,7 @@ func (o *Documentationresult) UnmarshalJSON(b []byte) error {
 	if Name, ok := DocumentationresultMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Service, ok := DocumentationresultMap["service"].([]interface{}); ok {
 		ServiceString, _ := json.Marshal(Service)
 		json.Unmarshal(ServiceString, &o.Service)
@@ -238,15 +238,15 @@ func (o *Documentationresult) UnmarshalJSON(b []byte) error {
 	if Slug, ok := DocumentationresultMap["slug"].(string); ok {
 		o.Slug = &Slug
 	}
-	
+    
 	if Title, ok := DocumentationresultMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if GetType, ok := DocumentationresultMap["get_type"].(string); ok {
 		o.GetType = &GetType
 	}
-	
+    
 	if FacetFeature, ok := DocumentationresultMap["facet_feature"].([]interface{}); ok {
 		FacetFeatureString, _ := json.Marshal(FacetFeature)
 		json.Unmarshal(FacetFeatureString, &o.FacetFeature)

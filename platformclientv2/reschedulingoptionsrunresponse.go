@@ -156,19 +156,19 @@ func (o *Reschedulingoptionsrunresponse) UnmarshalJSON(b []byte) error {
 	if DoNotChangeWeeklyPaidTime, ok := ReschedulingoptionsrunresponseMap["doNotChangeWeeklyPaidTime"].(bool); ok {
 		o.DoNotChangeWeeklyPaidTime = &DoNotChangeWeeklyPaidTime
 	}
-	
+    
 	if DoNotChangeDailyPaidTime, ok := ReschedulingoptionsrunresponseMap["doNotChangeDailyPaidTime"].(bool); ok {
 		o.DoNotChangeDailyPaidTime = &DoNotChangeDailyPaidTime
 	}
-	
+    
 	if DoNotChangeShiftStartTimes, ok := ReschedulingoptionsrunresponseMap["doNotChangeShiftStartTimes"].(bool); ok {
 		o.DoNotChangeShiftStartTimes = &DoNotChangeShiftStartTimes
 	}
-	
+    
 	if DoNotChangeManuallyEditedShifts, ok := ReschedulingoptionsrunresponseMap["doNotChangeManuallyEditedShifts"].(bool); ok {
 		o.DoNotChangeManuallyEditedShifts = &DoNotChangeManuallyEditedShifts
 	}
-	
+    
 
 	return nil
 }

@@ -123,7 +123,7 @@ func (o *Facetentry) UnmarshalJSON(b []byte) error {
 	if TermType, ok := FacetentryMap["termType"].(string); ok {
 		o.TermType = &TermType
 	}
-	
+    
 	if Terms, ok := FacetentryMap["terms"].([]interface{}); ok {
 		TermsString, _ := json.Marshal(Terms)
 		json.Unmarshal(TermsString, &o.Terms)

@@ -53,11 +53,11 @@ func (o *Dialercallabletimesetconfigchangetimeslot) UnmarshalJSON(b []byte) erro
 	if StartTime, ok := DialercallabletimesetconfigchangetimeslotMap["startTime"].(string); ok {
 		o.StartTime = &StartTime
 	}
-	
+    
 	if StopTime, ok := DialercallabletimesetconfigchangetimeslotMap["stopTime"].(string); ok {
 		o.StopTime = &StopTime
 	}
-	
+    
 	if Day, ok := DialercallabletimesetconfigchangetimeslotMap["day"].(float64); ok {
 		DayInt := int(Day)
 		o.Day = &DayInt

@@ -53,15 +53,15 @@ func (o *Oauthscope) UnmarshalJSON(b []byte) error {
 	if Id, ok := OauthscopeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Description, ok := OauthscopeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if SelfUri, ok := OauthscopeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

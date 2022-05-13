@@ -69,23 +69,23 @@ func (o *Contactcallbackrequest) UnmarshalJSON(b []byte) error {
 	if CampaignId, ok := ContactcallbackrequestMap["campaignId"].(string); ok {
 		o.CampaignId = &CampaignId
 	}
-	
+    
 	if ContactListId, ok := ContactcallbackrequestMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if ContactId, ok := ContactcallbackrequestMap["contactId"].(string); ok {
 		o.ContactId = &ContactId
 	}
-	
+    
 	if PhoneColumn, ok := ContactcallbackrequestMap["phoneColumn"].(string); ok {
 		o.PhoneColumn = &PhoneColumn
 	}
-	
+    
 	if Schedule, ok := ContactcallbackrequestMap["schedule"].(string); ok {
 		o.Schedule = &Schedule
 	}
-	
+    
 
 	return nil
 }

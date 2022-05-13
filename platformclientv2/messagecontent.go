@@ -141,7 +141,7 @@ func (o *Messagecontent) UnmarshalJSON(b []byte) error {
 	if ContentType, ok := MessagecontentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if Location, ok := MessagecontentMap["location"].(map[string]interface{}); ok {
 		LocationString, _ := json.Marshal(Location)
 		json.Unmarshal(LocationString, &o.Location)

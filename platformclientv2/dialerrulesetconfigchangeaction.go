@@ -61,15 +61,15 @@ func (o *Dialerrulesetconfigchangeaction) UnmarshalJSON(b []byte) error {
 	if VarType, ok := DialerrulesetconfigchangeactionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if ActionTypeName, ok := DialerrulesetconfigchangeactionMap["actionTypeName"].(string); ok {
 		o.ActionTypeName = &ActionTypeName
 	}
-	
+    
 	if UpdateOption, ok := DialerrulesetconfigchangeactionMap["updateOption"].(string); ok {
 		o.UpdateOption = &UpdateOption
 	}
-	
+    
 	if Properties, ok := DialerrulesetconfigchangeactionMap["properties"].(map[string]interface{}); ok {
 		PropertiesString, _ := json.Marshal(Properties)
 		json.Unmarshal(PropertiesString, &o.Properties)

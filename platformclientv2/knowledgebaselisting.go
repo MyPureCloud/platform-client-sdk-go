@@ -66,15 +66,15 @@ func (o *Knowledgebaselisting) UnmarshalJSON(b []byte) error {
 	if NextUri, ok := KnowledgebaselistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if SelfUri, ok := KnowledgebaselistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if PreviousUri, ok := KnowledgebaselistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 
 	return nil
 }

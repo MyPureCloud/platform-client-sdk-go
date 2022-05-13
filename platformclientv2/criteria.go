@@ -61,7 +61,7 @@ func (o *Criteria) UnmarshalJSON(b []byte) error {
 	if Key, ok := CriteriaMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if Values, ok := CriteriaMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -70,11 +70,11 @@ func (o *Criteria) UnmarshalJSON(b []byte) error {
 	if ShouldIgnoreCase, ok := CriteriaMap["shouldIgnoreCase"].(bool); ok {
 		o.ShouldIgnoreCase = &ShouldIgnoreCase
 	}
-	
+    
 	if Operator, ok := CriteriaMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 
 	return nil
 }

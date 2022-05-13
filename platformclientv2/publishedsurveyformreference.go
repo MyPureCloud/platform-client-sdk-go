@@ -61,19 +61,19 @@ func (o *Publishedsurveyformreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := PublishedsurveyformreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PublishedsurveyformreferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContextId, ok := PublishedsurveyformreferenceMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if SelfUri, ok := PublishedsurveyformreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

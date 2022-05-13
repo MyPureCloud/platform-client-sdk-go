@@ -117,47 +117,47 @@ func (o *Conversationproperties) UnmarshalJSON(b []byte) error {
 	if IsWaiting, ok := ConversationpropertiesMap["isWaiting"].(bool); ok {
 		o.IsWaiting = &IsWaiting
 	}
-	
+    
 	if IsActive, ok := ConversationpropertiesMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if IsAcd, ok := ConversationpropertiesMap["isAcd"].(bool); ok {
 		o.IsAcd = &IsAcd
 	}
-	
+    
 	if IsPreferred, ok := ConversationpropertiesMap["isPreferred"].(bool); ok {
 		o.IsPreferred = &IsPreferred
 	}
-	
+    
 	if IsScreenshare, ok := ConversationpropertiesMap["isScreenshare"].(bool); ok {
 		o.IsScreenshare = &IsScreenshare
 	}
-	
+    
 	if IsCobrowse, ok := ConversationpropertiesMap["isCobrowse"].(bool); ok {
 		o.IsCobrowse = &IsCobrowse
 	}
-	
+    
 	if IsVoicemail, ok := ConversationpropertiesMap["isVoicemail"].(bool); ok {
 		o.IsVoicemail = &IsVoicemail
 	}
-	
+    
 	if IsFlagged, ok := ConversationpropertiesMap["isFlagged"].(bool); ok {
 		o.IsFlagged = &IsFlagged
 	}
-	
+    
 	if IsMonitored, ok := ConversationpropertiesMap["isMonitored"].(bool); ok {
 		o.IsMonitored = &IsMonitored
 	}
-	
+    
 	if FilterWrapUpNotes, ok := ConversationpropertiesMap["filterWrapUpNotes"].(bool); ok {
 		o.FilterWrapUpNotes = &FilterWrapUpNotes
 	}
-	
+    
 	if MatchAll, ok := ConversationpropertiesMap["matchAll"].(bool); ok {
 		o.MatchAll = &MatchAll
 	}
-	
+    
 
 	return nil
 }

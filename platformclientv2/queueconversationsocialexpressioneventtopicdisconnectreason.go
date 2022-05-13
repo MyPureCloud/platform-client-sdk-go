@@ -53,7 +53,7 @@ func (o *Queueconversationsocialexpressioneventtopicdisconnectreason) UnmarshalJ
 	if VarType, ok := QueueconversationsocialexpressioneventtopicdisconnectreasonMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Code, ok := QueueconversationsocialexpressioneventtopicdisconnectreasonMap["code"].(float64); ok {
 		CodeInt := int(Code)
 		o.Code = &CodeInt
@@ -62,7 +62,7 @@ func (o *Queueconversationsocialexpressioneventtopicdisconnectreason) UnmarshalJ
 	if Phrase, ok := QueueconversationsocialexpressioneventtopicdisconnectreasonMap["phrase"].(string); ok {
 		o.Phrase = &Phrase
 	}
-	
+    
 
 	return nil
 }

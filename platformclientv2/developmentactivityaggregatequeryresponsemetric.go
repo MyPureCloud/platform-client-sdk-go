@@ -45,7 +45,7 @@ func (o *Developmentactivityaggregatequeryresponsemetric) UnmarshalJSON(b []byte
 	if Metric, ok := DevelopmentactivityaggregatequeryresponsemetricMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Stats, ok := DevelopmentactivityaggregatequeryresponsemetricMap["stats"].(map[string]interface{}); ok {
 		StatsString, _ := json.Marshal(Stats)
 		json.Unmarshal(StatsString, &o.Stats)

@@ -104,15 +104,15 @@ func (o *Policyerrormessage) UnmarshalJSON(b []byte) error {
 	if UserParamsMessage, ok := PolicyerrormessageMap["userParamsMessage"].(string); ok {
 		o.UserParamsMessage = &UserParamsMessage
 	}
-	
+    
 	if ErrorCode, ok := PolicyerrormessageMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if CorrelationId, ok := PolicyerrormessageMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if UserParams, ok := PolicyerrormessageMap["userParams"].([]interface{}); ok {
 		UserParamsString, _ := json.Marshal(UserParams)
 		json.Unmarshal(UserParamsString, &o.UserParams)

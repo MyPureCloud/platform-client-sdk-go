@@ -69,19 +69,19 @@ func (o *Queueconversationvideoeventtopicattachment) UnmarshalJSON(b []byte) err
 	if AttachmentId, ok := QueueconversationvideoeventtopicattachmentMap["attachmentId"].(string); ok {
 		o.AttachmentId = &AttachmentId
 	}
-	
+    
 	if Name, ok := QueueconversationvideoeventtopicattachmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if ContentUri, ok := QueueconversationvideoeventtopicattachmentMap["contentUri"].(string); ok {
 		o.ContentUri = &ContentUri
 	}
-	
+    
 	if ContentType, ok := QueueconversationvideoeventtopicattachmentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := QueueconversationvideoeventtopicattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt

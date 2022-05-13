@@ -77,11 +77,11 @@ func (o *Writabledialercontact) UnmarshalJSON(b []byte) error {
 	if Id, ok := WritabledialercontactMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if ContactListId, ok := WritabledialercontactMap["contactListId"].(string); ok {
 		o.ContactListId = &ContactListId
 	}
-	
+    
 	if Data, ok := WritabledialercontactMap["data"].(map[string]interface{}); ok {
 		DataString, _ := json.Marshal(Data)
 		json.Unmarshal(DataString, &o.Data)
@@ -95,7 +95,7 @@ func (o *Writabledialercontact) UnmarshalJSON(b []byte) error {
 	if Callable, ok := WritabledialercontactMap["callable"].(bool); ok {
 		o.Callable = &Callable
 	}
-	
+    
 	if PhoneNumberStatus, ok := WritabledialercontactMap["phoneNumberStatus"].(map[string]interface{}); ok {
 		PhoneNumberStatusString, _ := json.Marshal(PhoneNumberStatus)
 		json.Unmarshal(PhoneNumberStatusString, &o.PhoneNumberStatus)

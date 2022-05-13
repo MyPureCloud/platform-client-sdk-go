@@ -61,19 +61,19 @@ func (o *Gkndocumentationresult) UnmarshalJSON(b []byte) error {
 	if Content, ok := GkndocumentationresultMap["content"].(string); ok {
 		o.Content = &Content
 	}
-	
+    
 	if Link, ok := GkndocumentationresultMap["link"].(string); ok {
 		o.Link = &Link
 	}
-	
+    
 	if Title, ok := GkndocumentationresultMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if VarType, ok := GkndocumentationresultMap["_type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

@@ -117,11 +117,11 @@ func (o *Evaluatoractivity) UnmarshalJSON(b []byte) error {
 	if Id, ok := EvaluatoractivityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := EvaluatoractivityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Evaluator, ok := EvaluatoractivityMap["evaluator"].(map[string]interface{}); ok {
 		EvaluatorString, _ := json.Marshal(Evaluator)
 		json.Unmarshal(EvaluatorString, &o.Evaluator)
@@ -165,7 +165,7 @@ func (o *Evaluatoractivity) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := EvaluatoractivityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

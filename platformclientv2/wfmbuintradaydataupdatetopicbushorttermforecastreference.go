@@ -53,15 +53,15 @@ func (o *Wfmbuintradaydataupdatetopicbushorttermforecastreference) UnmarshalJSON
 	if Id, ok := WfmbuintradaydataupdatetopicbushorttermforecastreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if WeekDate, ok := WfmbuintradaydataupdatetopicbushorttermforecastreferenceMap["weekDate"].(string); ok {
 		o.WeekDate = &WeekDate
 	}
-	
+    
 	if Description, ok := WfmbuintradaydataupdatetopicbushorttermforecastreferenceMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 
 	return nil
 }

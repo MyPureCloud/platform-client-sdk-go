@@ -53,15 +53,15 @@ func (o *Audituser) UnmarshalJSON(b []byte) error {
 	if Id, ok := AudituserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AudituserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Display, ok := AudituserMap["display"].(string); ok {
 		o.Display = &Display
 	}
-	
+    
 
 	return nil
 }

@@ -58,7 +58,7 @@ func (o *Attendancestatus) UnmarshalJSON(b []byte) error {
 	if AttendanceStatusType, ok := AttendancestatusMap["attendanceStatusType"].(string); ok {
 		o.AttendanceStatusType = &AttendanceStatusType
 	}
-	
+    
 
 	return nil
 }

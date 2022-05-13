@@ -69,7 +69,7 @@ func (o *Buimportagentscheduleuploadschema) UnmarshalJSON(b []byte) error {
 	if UserId, ok := BuimportagentscheduleuploadschemaMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if WorkPlanId, ok := BuimportagentscheduleuploadschemaMap["workPlanId"].(map[string]interface{}); ok {
 		WorkPlanIdString, _ := json.Marshal(WorkPlanId)
 		json.Unmarshal(WorkPlanIdString, &o.WorkPlanId)

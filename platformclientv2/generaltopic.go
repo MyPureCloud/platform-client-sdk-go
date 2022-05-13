@@ -37,7 +37,7 @@ func (o *Generaltopic) UnmarshalJSON(b []byte) error {
 	if Name, ok := GeneraltopicMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

@@ -70,15 +70,15 @@ func (o *Patchcallbackrequest) UnmarshalJSON(b []byte) error {
 	if ConversationId, ok := PatchcallbackrequestMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
-	
+    
 	if QueueId, ok := PatchcallbackrequestMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if AgentId, ok := PatchcallbackrequestMap["agentId"].(string); ok {
 		o.AgentId = &AgentId
 	}
-	
+    
 	if callbackScheduledTimeString, ok := PatchcallbackrequestMap["callbackScheduledTime"].(string); ok {
 		CallbackScheduledTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", callbackScheduledTimeString)
 		o.CallbackScheduledTime = &CallbackScheduledTime

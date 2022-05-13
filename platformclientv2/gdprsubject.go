@@ -109,15 +109,15 @@ func (o *Gdprsubject) UnmarshalJSON(b []byte) error {
 	if Name, ok := GdprsubjectMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UserId, ok := GdprsubjectMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if ExternalContactId, ok := GdprsubjectMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
 	}
-	
+    
 	if DialerContactId, ok := GdprsubjectMap["dialerContactId"].(map[string]interface{}); ok {
 		DialerContactIdString, _ := json.Marshal(DialerContactId)
 		json.Unmarshal(DialerContactIdString, &o.DialerContactId)
@@ -136,7 +136,7 @@ func (o *Gdprsubject) UnmarshalJSON(b []byte) error {
 	if ExternalId, ok := GdprsubjectMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
 	}
-	
+    
 	if Addresses, ok := GdprsubjectMap["addresses"].([]interface{}); ok {
 		AddressesString, _ := json.Marshal(Addresses)
 		json.Unmarshal(AddressesString, &o.Addresses)

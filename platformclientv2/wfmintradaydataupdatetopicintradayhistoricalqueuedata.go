@@ -114,22 +114,22 @@ func (o *Wfmintradaydataupdatetopicintradayhistoricalqueuedata) UnmarshalJSON(b 
 		AverageTalkTimeSecondsFloat32 := float32(AverageTalkTimeSeconds)
 		o.AverageTalkTimeSeconds = &AverageTalkTimeSecondsFloat32
 	}
-	
+    
 	if AverageAfterCallWorkSeconds, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["averageAfterCallWorkSeconds"].(float64); ok {
 		AverageAfterCallWorkSecondsFloat32 := float32(AverageAfterCallWorkSeconds)
 		o.AverageAfterCallWorkSeconds = &AverageAfterCallWorkSecondsFloat32
 	}
-	
+    
 	if ServiceLevelPercent, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["serviceLevelPercent"].(float64); ok {
 		ServiceLevelPercentFloat32 := float32(ServiceLevelPercent)
 		o.ServiceLevelPercent = &ServiceLevelPercentFloat32
 	}
-	
+    
 	if AverageSpeedOfAnswerSeconds, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["averageSpeedOfAnswerSeconds"].(float64); ok {
 		AverageSpeedOfAnswerSecondsFloat32 := float32(AverageSpeedOfAnswerSeconds)
 		o.AverageSpeedOfAnswerSeconds = &AverageSpeedOfAnswerSecondsFloat32
 	}
-	
+    
 
 	return nil
 }

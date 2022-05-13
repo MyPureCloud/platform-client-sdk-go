@@ -1348,15 +1348,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if Transferred, ok := ViewfilterMap["transferred"].(bool); ok {
 		o.Transferred = &Transferred
 	}
-	
+    
 	if Abandoned, ok := ViewfilterMap["abandoned"].(bool); ok {
 		o.Abandoned = &Abandoned
 	}
-	
+    
 	if Answered, ok := ViewfilterMap["answered"].(bool); ok {
 		o.Answered = &Answered
 	}
-	
+    
 	if MessageTypes, ok := ViewfilterMap["messageTypes"].([]interface{}); ok {
 		MessageTypesString, _ := json.Marshal(MessageTypes)
 		json.Unmarshal(MessageTypesString, &o.MessageTypes)
@@ -1415,11 +1415,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if IsEnded, ok := ViewfilterMap["isEnded"].(bool); ok {
 		o.IsEnded = &IsEnded
 	}
-	
+    
 	if IsSurveyed, ok := ViewfilterMap["isSurveyed"].(bool); ok {
 		o.IsSurveyed = &IsSurveyed
 	}
-	
+    
 	if SurveyScores, ok := ViewfilterMap["surveyScores"].([]interface{}); ok {
 		SurveyScoresString, _ := json.Marshal(SurveyScores)
 		json.Unmarshal(SurveyScoresString, &o.SurveyScores)
@@ -1433,7 +1433,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if IsCampaign, ok := ViewfilterMap["isCampaign"].(bool); ok {
 		o.IsCampaign = &IsCampaign
 	}
-	
+    
 	if SurveyStatuses, ok := ViewfilterMap["surveyStatuses"].([]interface{}); ok {
 		SurveyStatusesString, _ := json.Marshal(SurveyStatuses)
 		json.Unmarshal(SurveyStatusesString, &o.SurveyStatuses)
@@ -1447,15 +1447,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if IsBlindTransferred, ok := ViewfilterMap["isBlindTransferred"].(bool); ok {
 		o.IsBlindTransferred = &IsBlindTransferred
 	}
-	
+    
 	if IsConsulted, ok := ViewfilterMap["isConsulted"].(bool); ok {
 		o.IsConsulted = &IsConsulted
 	}
-	
+    
 	if IsConsultTransferred, ok := ViewfilterMap["isConsultTransferred"].(bool); ok {
 		o.IsConsultTransferred = &IsConsultTransferred
 	}
-	
+    
 	if RemoteParticipants, ok := ViewfilterMap["remoteParticipants"].([]interface{}); ok {
 		RemoteParticipantsString, _ := json.Marshal(RemoteParticipants)
 		json.Unmarshal(RemoteParticipantsString, &o.RemoteParticipants)
@@ -1514,19 +1514,19 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if HasJourneyCustomerId, ok := ViewfilterMap["hasJourneyCustomerId"].(bool); ok {
 		o.HasJourneyCustomerId = &HasJourneyCustomerId
 	}
-	
+    
 	if HasJourneyActionMapId, ok := ViewfilterMap["hasJourneyActionMapId"].(bool); ok {
 		o.HasJourneyActionMapId = &HasJourneyActionMapId
 	}
-	
+    
 	if HasJourneyVisitId, ok := ViewfilterMap["hasJourneyVisitId"].(bool); ok {
 		o.HasJourneyVisitId = &HasJourneyVisitId
 	}
-	
+    
 	if HasMedia, ok := ViewfilterMap["hasMedia"].(bool); ok {
 		o.HasMedia = &HasMedia
 	}
-	
+    
 	if RoleIds, ok := ViewfilterMap["roleIds"].([]interface{}); ok {
 		RoleIdsString, _ := json.Marshal(RoleIds)
 		json.Unmarshal(RoleIdsString, &o.RoleIds)
@@ -1560,7 +1560,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if CallbackInterval, ok := ViewfilterMap["callbackInterval"].(string); ok {
 		o.CallbackInterval = &CallbackInterval
 	}
-	
+    
 	if UsedRoutingTypes, ok := ViewfilterMap["usedRoutingTypes"].([]interface{}); ok {
 		UsedRoutingTypesString, _ := json.Marshal(UsedRoutingTypes)
 		json.Unmarshal(UsedRoutingTypesString, &o.UsedRoutingTypes)
@@ -1574,7 +1574,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if HasAgentAssistId, ok := ViewfilterMap["hasAgentAssistId"].(bool); ok {
 		o.HasAgentAssistId = &HasAgentAssistId
 	}
-	
+    
 	if Transcripts, ok := ViewfilterMap["transcripts"].([]interface{}); ok {
 		TranscriptsString, _ := json.Marshal(Transcripts)
 		json.Unmarshal(TranscriptsString, &o.Transcripts)
@@ -1593,7 +1593,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if ShowFirstQueue, ok := ViewfilterMap["showFirstQueue"].(bool); ok {
 		o.ShowFirstQueue = &ShowFirstQueue
 	}
-	
+    
 	if TeamIds, ok := ViewfilterMap["teamIds"].([]interface{}); ok {
 		TeamIdsString, _ := json.Marshal(TeamIds)
 		json.Unmarshal(TeamIdsString, &o.TeamIds)
@@ -1647,7 +1647,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if DevelopmentActivityOverdue, ok := ViewfilterMap["developmentActivityOverdue"].(bool); ok {
 		o.DevelopmentActivityOverdue = &DevelopmentActivityOverdue
 	}
-	
+    
 	if CustomerSentimentScore, ok := ViewfilterMap["customerSentimentScore"].(map[string]interface{}); ok {
 		CustomerSentimentScoreString, _ := json.Marshal(CustomerSentimentScore)
 		json.Unmarshal(CustomerSentimentScoreString, &o.CustomerSentimentScore)
@@ -1666,7 +1666,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if DevelopmentName, ok := ViewfilterMap["developmentName"].(string); ok {
 		o.DevelopmentName = &DevelopmentName
 	}
-	
+    
 	if TopicIds, ok := ViewfilterMap["topicIds"].([]interface{}); ok {
 		TopicIdsString, _ := json.Marshal(TopicIds)
 		json.Unmarshal(TopicIdsString, &o.TopicIds)
@@ -1680,11 +1680,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if IsNotResponding, ok := ViewfilterMap["isNotResponding"].(bool); ok {
 		o.IsNotResponding = &IsNotResponding
 	}
-	
+    
 	if IsAuthenticated, ok := ViewfilterMap["isAuthenticated"].(bool); ok {
 		o.IsAuthenticated = &IsAuthenticated
 	}
-	
+    
 	if BotIds, ok := ViewfilterMap["botIds"].([]interface{}); ok {
 		BotIdsString, _ := json.Marshal(BotIds)
 		json.Unmarshal(BotIdsString, &o.BotIds)
@@ -1743,15 +1743,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if IsRecorded, ok := ViewfilterMap["isRecorded"].(bool); ok {
 		o.IsRecorded = &IsRecorded
 	}
-	
+    
 	if HasEvaluation, ok := ViewfilterMap["hasEvaluation"].(bool); ok {
 		o.HasEvaluation = &HasEvaluation
 	}
-	
+    
 	if HasScoredEvaluation, ok := ViewfilterMap["hasScoredEvaluation"].(bool); ok {
 		o.HasScoredEvaluation = &HasScoredEvaluation
 	}
-	
+    
 	if EmailDeliveryStatusList, ok := ViewfilterMap["emailDeliveryStatusList"].([]interface{}); ok {
 		EmailDeliveryStatusListString, _ := json.Marshal(EmailDeliveryStatusList)
 		json.Unmarshal(EmailDeliveryStatusListString, &o.EmailDeliveryStatusList)
@@ -1760,7 +1760,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if IsAgentOwnedCallback, ok := ViewfilterMap["isAgentOwnedCallback"].(bool); ok {
 		o.IsAgentOwnedCallback = &IsAgentOwnedCallback
 	}
-	
+    
 	if AgentCallbackOwnerIds, ok := ViewfilterMap["agentCallbackOwnerIds"].([]interface{}); ok {
 		AgentCallbackOwnerIdsString, _ := json.Marshal(AgentCallbackOwnerIds)
 		json.Unmarshal(AgentCallbackOwnerIdsString, &o.AgentCallbackOwnerIds)
@@ -1844,7 +1844,7 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if IsAssessmentPassed, ok := ViewfilterMap["isAssessmentPassed"].(bool); ok {
 		o.IsAssessmentPassed = &IsAssessmentPassed
 	}
-	
+    
 	if ConversationInitiators, ok := ViewfilterMap["conversationInitiators"].([]interface{}); ok {
 		ConversationInitiatorsString, _ := json.Marshal(ConversationInitiators)
 		json.Unmarshal(ConversationInitiatorsString, &o.ConversationInitiators)
@@ -1853,11 +1853,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if HasCustomerParticipated, ok := ViewfilterMap["hasCustomerParticipated"].(bool); ok {
 		o.HasCustomerParticipated = &HasCustomerParticipated
 	}
-	
+    
 	if IsAcdInteraction, ok := ViewfilterMap["isAcdInteraction"].(bool); ok {
 		o.IsAcdInteraction = &IsAcdInteraction
 	}
-	
+    
 
 	return nil
 }

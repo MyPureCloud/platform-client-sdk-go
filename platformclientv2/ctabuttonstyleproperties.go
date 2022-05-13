@@ -69,23 +69,23 @@ func (o *Ctabuttonstyleproperties) UnmarshalJSON(b []byte) error {
 	if Color, ok := CtabuttonstylepropertiesMap["color"].(string); ok {
 		o.Color = &Color
 	}
-	
+    
 	if Font, ok := CtabuttonstylepropertiesMap["font"].(string); ok {
 		o.Font = &Font
 	}
-	
+    
 	if FontSize, ok := CtabuttonstylepropertiesMap["fontSize"].(string); ok {
 		o.FontSize = &FontSize
 	}
-	
+    
 	if TextAlign, ok := CtabuttonstylepropertiesMap["textAlign"].(string); ok {
 		o.TextAlign = &TextAlign
 	}
-	
+    
 	if BackgroundColor, ok := CtabuttonstylepropertiesMap["backgroundColor"].(string); ok {
 		o.BackgroundColor = &BackgroundColor
 	}
-	
+    
 
 	return nil
 }

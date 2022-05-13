@@ -32,8 +32,6 @@ func NewPresenceApiWithConfig(config *Configuration) *PresenceApi {
 // DeletePresencedefinition invokes DELETE /api/v2/presencedefinitions/{presenceId}
 //
 // Delete a Presence Definition
-//
-// 
 func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 
 	// verify the required parameter 'presenceId' is set
 	if &presenceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'presenceId' when calling PresenceApi->DeletePresencedefinition")
 	}
 
@@ -98,8 +96,6 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 // GetPresencedefinition invokes GET /api/v2/presencedefinitions/{presenceId}
 //
 // Get a Presence Definition
-//
-// 
 func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string) (*Organizationpresence, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 
 	// verify the required parameter 'presenceId' is set
 	if &presenceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'presenceId' when calling PresenceApi->GetPresencedefinition")
 	}
 
@@ -172,9 +168,7 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 
 // GetPresencedefinitions invokes GET /api/v2/presencedefinitions
 //
-// Get an Organization&#39;s list of Presence Definitions
-//
-// 
+// Get an Organization's list of Presence Definitions
 func (a PresenceApi) GetPresencedefinitions(pageNumber int, pageSize int, deleted string, localeCode string) (*Organizationpresenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -248,8 +242,6 @@ func (a PresenceApi) GetPresencedefinitions(pageNumber int, pageSize int, delete
 // GetSystempresences invokes GET /api/v2/systempresences
 //
 // Get the list of SystemPresences
-//
-// 
 func (a PresenceApi) GetSystempresences() ([]Systempresence, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -314,7 +306,7 @@ func (a PresenceApi) GetSystempresences() ([]Systempresence, *APIResponse, error
 
 // GetUserPresence invokes GET /api/v2/users/{userId}/presences/{sourceId}
 //
-// Get a user&#39;s Presence
+// Get a user's Presence
 //
 // Get a user&#39;s presence for the specified source that is not specifically listed.  Used to support custom presence sources.
 func (a PresenceApi) GetUserPresence(userId string, sourceId string) (*Userpresence, *APIResponse, error) {
@@ -330,12 +322,12 @@ func (a PresenceApi) GetUserPresence(userId string, sourceId string) (*Userprese
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling PresenceApi->GetUserPresence")
 	}
 	// verify the required parameter 'sourceId' is set
 	if &sourceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling PresenceApi->GetUserPresence")
 	}
 
@@ -393,7 +385,7 @@ func (a PresenceApi) GetUserPresence(userId string, sourceId string) (*Userprese
 
 // GetUserPresencesPurecloud invokes GET /api/v2/users/{userId}/presences/purecloud
 //
-// Get a user&#39;s Genesys Cloud presence.
+// Get a user's Genesys Cloud presence.
 //
 // Get the default Genesys Cloud user presence source PURECLOUD
 func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *APIResponse, error) {
@@ -408,7 +400,7 @@ func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *A
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling PresenceApi->GetUserPresencesPurecloud")
 	}
 
@@ -466,7 +458,7 @@ func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *A
 
 // PatchUserPresence invokes PATCH /api/v2/users/{userId}/presences/{sourceId}
 //
-// Patch a user&#39;s Presence
+// Patch a user's Presence
 //
 // Patch a user&#39;s presence for the specified source that is not specifically listed. The presence object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the &#39;source&#39; defined in the path as the user&#39;s primary presence source. Option 2: Provide the presenceDefinition value. The &#39;id&#39; is the only value required within the presenceDefinition. Option 3: Provide the message value. Option 1 can be combined with Option 2 and/or Option 3.
 func (a PresenceApi) PatchUserPresence(userId string, sourceId string, body Userpresence) (*Userpresence, *APIResponse, error) {
@@ -482,17 +474,17 @@ func (a PresenceApi) PatchUserPresence(userId string, sourceId string, body User
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling PresenceApi->PatchUserPresence")
 	}
 	// verify the required parameter 'sourceId' is set
 	if &sourceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling PresenceApi->PatchUserPresence")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PatchUserPresence")
 	}
 
@@ -553,7 +545,7 @@ func (a PresenceApi) PatchUserPresence(userId string, sourceId string, body User
 
 // PatchUserPresencesPurecloud invokes PATCH /api/v2/users/{userId}/presences/purecloud
 //
-// Patch a Genesys Cloud user&#39;s presence
+// Patch a Genesys Cloud user's presence
 //
 // The presence object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the PURECLOUD source as the user&#39;s primary presence source. Option 2: Provide the presenceDefinition value. The &#39;id&#39; is the only value required within the presenceDefinition. Option 3: Provide the message value. Option 1 can be combined with Option 2 and/or Option 3.
 func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresence) (*Userpresence, *APIResponse, error) {
@@ -568,12 +560,12 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling PresenceApi->PatchUserPresencesPurecloud")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PatchUserPresencesPurecloud")
 	}
 
@@ -635,8 +627,6 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 // PostPresencedefinitions invokes POST /api/v2/presencedefinitions
 //
 // Create a Presence Definition
-//
-// 
 func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organizationpresence, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -648,7 +638,7 @@ func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organi
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PostPresencedefinitions")
 	}
 
@@ -710,8 +700,6 @@ func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organi
 // PutPresencedefinition invokes PUT /api/v2/presencedefinitions/{presenceId}
 //
 // Update a Presence Definition
-//
-// 
 func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationpresence) (*Organizationpresence, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -724,12 +712,12 @@ func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationp
 
 	// verify the required parameter 'presenceId' is set
 	if &presenceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'presenceId' when calling PresenceApi->PutPresencedefinition")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PutPresencedefinition")
 	}
 
@@ -791,8 +779,6 @@ func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationp
 // PutUsersPresencesBulk invokes PUT /api/v2/users/presences/bulk
 //
 // Update bulk user Presences
-//
-// 
 func (a PresenceApi) PutUsersPresencesBulk(body []Userpresence) ([]Userpresence, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

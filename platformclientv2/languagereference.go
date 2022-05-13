@@ -45,11 +45,11 @@ func (o *Languagereference) UnmarshalJSON(b []byte) error {
 	if Id, ok := LanguagereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := LanguagereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

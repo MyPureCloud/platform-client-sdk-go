@@ -109,15 +109,15 @@ func (o *Transcriptiontopictranscriptresult) UnmarshalJSON(b []byte) error {
 	if UtteranceId, ok := TranscriptiontopictranscriptresultMap["utteranceId"].(string); ok {
 		o.UtteranceId = &UtteranceId
 	}
-	
+    
 	if IsFinal, ok := TranscriptiontopictranscriptresultMap["isFinal"].(bool); ok {
 		o.IsFinal = &IsFinal
 	}
-	
+    
 	if Channel, ok := TranscriptiontopictranscriptresultMap["channel"].(string); ok {
 		o.Channel = &Channel
 	}
-	
+    
 	if Alternatives, ok := TranscriptiontopictranscriptresultMap["alternatives"].([]interface{}); ok {
 		AlternativesString, _ := json.Marshal(Alternatives)
 		json.Unmarshal(AlternativesString, &o.Alternatives)
@@ -126,27 +126,27 @@ func (o *Transcriptiontopictranscriptresult) UnmarshalJSON(b []byte) error {
 	if AgentAssistantId, ok := TranscriptiontopictranscriptresultMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 	if EngineId, ok := TranscriptiontopictranscriptresultMap["engineId"].(string); ok {
 		o.EngineId = &EngineId
 	}
-	
+    
 	if Dialect, ok := TranscriptiontopictranscriptresultMap["dialect"].(string); ok {
 		o.Dialect = &Dialect
 	}
-	
+    
 	if SpeechTextAnalyticsProgramId, ok := TranscriptiontopictranscriptresultMap["speechTextAnalyticsProgramId"].(string); ok {
 		o.SpeechTextAnalyticsProgramId = &SpeechTextAnalyticsProgramId
 	}
-	
+    
 	if AgentAssistEnabled, ok := TranscriptiontopictranscriptresultMap["agentAssistEnabled"].(bool); ok {
 		o.AgentAssistEnabled = &AgentAssistEnabled
 	}
-	
+    
 	if VoiceTranscriptionEnabled, ok := TranscriptiontopictranscriptresultMap["voiceTranscriptionEnabled"].(bool); ok {
 		o.VoiceTranscriptionEnabled = &VoiceTranscriptionEnabled
 	}
-	
+    
 
 	return nil
 }

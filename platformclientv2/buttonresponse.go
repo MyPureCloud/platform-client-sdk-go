@@ -61,19 +61,19 @@ func (o *Buttonresponse) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ButtonresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := ButtonresponseMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Payload, ok := ButtonresponseMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
-	
+    
 	if MessageType, ok := ButtonresponseMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
 	}
-	
+    
 
 	return nil
 }

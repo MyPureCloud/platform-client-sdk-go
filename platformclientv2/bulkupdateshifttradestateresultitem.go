@@ -86,11 +86,11 @@ func (o *Bulkupdateshifttradestateresultitem) UnmarshalJSON(b []byte) error {
 	if Id, ok := BulkupdateshifttradestateresultitemMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := BulkupdateshifttradestateresultitemMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ReviewedBy, ok := BulkupdateshifttradestateresultitemMap["reviewedBy"].(map[string]interface{}); ok {
 		ReviewedByString, _ := json.Marshal(ReviewedBy)
 		json.Unmarshal(ReviewedByString, &o.ReviewedBy)
@@ -104,7 +104,7 @@ func (o *Bulkupdateshifttradestateresultitem) UnmarshalJSON(b []byte) error {
 	if FailureReason, ok := BulkupdateshifttradestateresultitemMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
 	}
-	
+    
 	if Metadata, ok := BulkupdateshifttradestateresultitemMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

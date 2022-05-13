@@ -37,7 +37,7 @@ func (o *Wfmbushorttermforecastgenerateprogresstopicuserreference) UnmarshalJSON
 	if Id, ok := WfmbushorttermforecastgenerateprogresstopicuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Patchclosebuttonstyleproperties) UnmarshalJSON(b []byte) error {
 	if Color, ok := PatchclosebuttonstylepropertiesMap["color"].(string); ok {
 		o.Color = &Color
 	}
-	
+    
 	if Opacity, ok := PatchclosebuttonstylepropertiesMap["opacity"].(float64); ok {
 		OpacityFloat32 := float32(Opacity)
 		o.Opacity = &OpacityFloat32

@@ -67,7 +67,7 @@ func (o *Analyticssessionmetric) UnmarshalJSON(b []byte) error {
 	if Name, ok := AnalyticssessionmetricMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Value, ok := AnalyticssessionmetricMap["value"].(float64); ok {
 		ValueInt := int(Value)
 		o.Value = &ValueInt

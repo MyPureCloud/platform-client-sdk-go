@@ -206,11 +206,11 @@ func (o *Numberplan) UnmarshalJSON(b []byte) error {
 	if Id, ok := NumberplanMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := NumberplanMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := NumberplanMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -219,7 +219,7 @@ func (o *Numberplan) UnmarshalJSON(b []byte) error {
 	if Description, ok := NumberplanMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := NumberplanMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -238,31 +238,31 @@ func (o *Numberplan) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := NumberplanMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := NumberplanMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := NumberplanMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := NumberplanMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := NumberplanMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if Match, ok := NumberplanMap["match"].(string); ok {
 		o.Match = &Match
 	}
-	
+    
 	if NormalizedFormat, ok := NumberplanMap["normalizedFormat"].(string); ok {
 		o.NormalizedFormat = &NormalizedFormat
 	}
-	
+    
 	if Priority, ok := NumberplanMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
@@ -281,15 +281,15 @@ func (o *Numberplan) UnmarshalJSON(b []byte) error {
 	if Classification, ok := NumberplanMap["classification"].(string); ok {
 		o.Classification = &Classification
 	}
-	
+    
 	if MatchType, ok := NumberplanMap["matchType"].(string); ok {
 		o.MatchType = &MatchType
 	}
-	
+    
 	if SelfUri, ok := NumberplanMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Reportinginterval) UnmarshalJSON(b []byte) error {
 	if IntervalType, ok := ReportingintervalMap["intervalType"].(string); ok {
 		o.IntervalType = &IntervalType
 	}
-	
+    
 	if IntervalValue, ok := ReportingintervalMap["intervalValue"].(float64); ok {
 		IntervalValueInt := int(IntervalValue)
 		o.IntervalValue = &IntervalValueInt

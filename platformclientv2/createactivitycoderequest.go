@@ -77,11 +77,11 @@ func (o *Createactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreateactivitycoderequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Category, ok := CreateactivitycoderequestMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if LengthInMinutes, ok := CreateactivitycoderequestMap["lengthInMinutes"].(float64); ok {
 		LengthInMinutesInt := int(LengthInMinutes)
 		o.LengthInMinutes = &LengthInMinutesInt
@@ -90,15 +90,15 @@ func (o *Createactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if CountsAsPaidTime, ok := CreateactivitycoderequestMap["countsAsPaidTime"].(bool); ok {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
-	
+    
 	if CountsAsWorkTime, ok := CreateactivitycoderequestMap["countsAsWorkTime"].(bool); ok {
 		o.CountsAsWorkTime = &CountsAsWorkTime
 	}
-	
+    
 	if AgentTimeOffSelectable, ok := CreateactivitycoderequestMap["agentTimeOffSelectable"].(bool); ok {
 		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
 	}
-	
+    
 
 	return nil
 }

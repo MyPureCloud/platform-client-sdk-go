@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -19,6 +20,10 @@ type Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotif
 	// Result
 	Result *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultlisting `json:"result,omitempty"`
 
+
+	// WeekDate
+	WeekDate *time.Time `json:"weekDate,omitempty"`
+
 }
 
 func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotification) MarshalJSON() ([]byte, error) {
@@ -26,12 +31,22 @@ func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdaten
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotification
 	
+	WeekDate := new(string)
+	if o.WeekDate != nil {
+		
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		WeekDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
 		OperationId *string `json:"operationId,omitempty"`
 		
 		Result *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultlisting `json:"result,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
 		*Alias
 	}{ 
 		Status: o.Status,
@@ -39,6 +54,8 @@ func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdaten
 		OperationId: o.OperationId,
 		
 		Result: o.Result,
+		
+		WeekDate: WeekDate,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -53,14 +70,19 @@ func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdaten
 	if Status, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+	if weekDateString, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", weekDateString)
+		o.WeekDate = &WeekDate
 	}
 	
 

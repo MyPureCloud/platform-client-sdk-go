@@ -38,7 +38,7 @@ type Queueconversationsocialexpressioneventtopicvideo struct {
 
 
 	// PeerCount - The number of peer participants from the perspective of the participant in the conference.
-	PeerCount *Queueconversationsocialexpressioneventtopicobject `json:"peerCount,omitempty"`
+	PeerCount *interface{} `json:"peerCount,omitempty"`
 
 
 	// Provider - The media provider controlling the video.
@@ -118,7 +118,7 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte
 		
 		SharingScreen *bool `json:"sharingScreen,omitempty"`
 		
-		PeerCount *Queueconversationsocialexpressioneventtopicobject `json:"peerCount,omitempty"`
+		PeerCount *interface{} `json:"peerCount,omitempty"`
 		
 		Provider *string `json:"provider,omitempty"`
 		
@@ -190,7 +190,7 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) UnmarshalJSON(b []byt
 	if State, ok := QueueconversationsocialexpressioneventtopicvideoMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Self, ok := QueueconversationsocialexpressioneventtopicvideoMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -199,23 +199,23 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) UnmarshalJSON(b []byt
 	if Id, ok := QueueconversationsocialexpressioneventtopicvideoMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Context, ok := QueueconversationsocialexpressioneventtopicvideoMap["context"].(string); ok {
 		o.Context = &Context
 	}
-	
+    
 	if AudioMuted, ok := QueueconversationsocialexpressioneventtopicvideoMap["audioMuted"].(bool); ok {
 		o.AudioMuted = &AudioMuted
 	}
-	
+    
 	if VideoMuted, ok := QueueconversationsocialexpressioneventtopicvideoMap["videoMuted"].(bool); ok {
 		o.VideoMuted = &VideoMuted
 	}
-	
+    
 	if SharingScreen, ok := QueueconversationsocialexpressioneventtopicvideoMap["sharingScreen"].(bool); ok {
 		o.SharingScreen = &SharingScreen
 	}
-	
+    
 	if PeerCount, ok := QueueconversationsocialexpressioneventtopicvideoMap["peerCount"].(map[string]interface{}); ok {
 		PeerCountString, _ := json.Marshal(PeerCount)
 		json.Unmarshal(PeerCountString, &o.PeerCount)
@@ -224,19 +224,19 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) UnmarshalJSON(b []byt
 	if Provider, ok := QueueconversationsocialexpressioneventtopicvideoMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationsocialexpressioneventtopicvideoMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationsocialexpressioneventtopicvideoMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationsocialexpressioneventtopicvideoMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if connectedTimeString, ok := QueueconversationsocialexpressioneventtopicvideoMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime
@@ -265,7 +265,7 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) UnmarshalJSON(b []byt
 	if AfterCallWorkRequired, ok := QueueconversationsocialexpressioneventtopicvideoMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

@@ -32,8 +32,6 @@ func NewGreetingsApiWithConfig(config *Configuration) *GreetingsApi {
 // DeleteGreeting invokes DELETE /api/v2/greetings/{greetingId}
 //
 // Deletes a Greeting with the given GreetingId
-//
-// 
 func (a GreetingsApi) DeleteGreeting(greetingId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a GreetingsApi) DeleteGreeting(greetingId string) (*APIResponse, error) {
 
 	// verify the required parameter 'greetingId' is set
 	if &greetingId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'greetingId' when calling GreetingsApi->DeleteGreeting")
 	}
 
@@ -98,8 +96,6 @@ func (a GreetingsApi) DeleteGreeting(greetingId string) (*APIResponse, error) {
 // GetGreeting invokes GET /api/v2/greetings/{greetingId}
 //
 // Get a Greeting with the given GreetingId
-//
-// 
 func (a GreetingsApi) GetGreeting(greetingId string) (*Greeting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a GreetingsApi) GetGreeting(greetingId string) (*Greeting, *APIResponse, e
 
 	// verify the required parameter 'greetingId' is set
 	if &greetingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'greetingId' when calling GreetingsApi->GetGreeting")
 	}
 
@@ -171,8 +167,6 @@ func (a GreetingsApi) GetGreeting(greetingId string) (*Greeting, *APIResponse, e
 // GetGreetingMedia invokes GET /api/v2/greetings/{greetingId}/media
 //
 // Get media playback URI for this greeting
-//
-// 
 func (a GreetingsApi) GetGreetingMedia(greetingId string, formatId string) (*Greetingmediainfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -185,7 +179,7 @@ func (a GreetingsApi) GetGreetingMedia(greetingId string, formatId string) (*Gre
 
 	// verify the required parameter 'greetingId' is set
 	if &greetingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'greetingId' when calling GreetingsApi->GetGreetingMedia")
 	}
 
@@ -245,9 +239,7 @@ func (a GreetingsApi) GetGreetingMedia(greetingId string, formatId string) (*Gre
 
 // GetGreetings invokes GET /api/v2/greetings
 //
-// Gets an Organization&#39;s Greetings
-//
-// 
+// Gets an Organization's Greetings
 func (a GreetingsApi) GetGreetings(pageSize int, pageNumber int) (*Domainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -316,9 +308,7 @@ func (a GreetingsApi) GetGreetings(pageSize int, pageNumber int) (*Domainentityl
 
 // GetGreetingsDefaults invokes GET /api/v2/greetings/defaults
 //
-// Get an Organization&#39;s DefaultGreetingList
-//
-// 
+// Get an Organization's DefaultGreetingList
 func (a GreetingsApi) GetGreetingsDefaults() (*Defaultgreetinglist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -383,9 +373,7 @@ func (a GreetingsApi) GetGreetingsDefaults() (*Defaultgreetinglist, *APIResponse
 
 // GetGroupGreetings invokes GET /api/v2/groups/{groupId}/greetings
 //
-// Get a list of the Group&#39;s Greetings
-//
-// 
+// Get a list of the Group's Greetings
 func (a GreetingsApi) GetGroupGreetings(groupId string, pageSize int, pageNumber int) (*Greetinglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -398,7 +386,7 @@ func (a GreetingsApi) GetGroupGreetings(groupId string, pageSize int, pageNumber
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GreetingsApi->GetGroupGreetings")
 	}
 
@@ -460,9 +448,7 @@ func (a GreetingsApi) GetGroupGreetings(groupId string, pageSize int, pageNumber
 
 // GetGroupGreetingsDefaults invokes GET /api/v2/groups/{groupId}/greetings/defaults
 //
-// Grabs the list of Default Greetings given a Group&#39;s ID
-//
-// 
+// Grabs the list of Default Greetings given a Group's ID
 func (a GreetingsApi) GetGroupGreetingsDefaults(groupId string) (*Defaultgreetinglist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -475,7 +461,7 @@ func (a GreetingsApi) GetGroupGreetingsDefaults(groupId string) (*Defaultgreetin
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GreetingsApi->GetGroupGreetingsDefaults")
 	}
 
@@ -533,9 +519,7 @@ func (a GreetingsApi) GetGroupGreetingsDefaults(groupId string) (*Defaultgreetin
 
 // GetUserGreetings invokes GET /api/v2/users/{userId}/greetings
 //
-// Get a list of the User&#39;s Greetings
-//
-// 
+// Get a list of the User's Greetings
 func (a GreetingsApi) GetUserGreetings(userId string, pageSize int, pageNumber int) (*Domainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -548,7 +532,7 @@ func (a GreetingsApi) GetUserGreetings(userId string, pageSize int, pageNumber i
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GreetingsApi->GetUserGreetings")
 	}
 
@@ -610,9 +594,7 @@ func (a GreetingsApi) GetUserGreetings(userId string, pageSize int, pageNumber i
 
 // GetUserGreetingsDefaults invokes GET /api/v2/users/{userId}/greetings/defaults
 //
-// Grabs the list of Default Greetings given a User&#39;s ID
-//
-// 
+// Grabs the list of Default Greetings given a User's ID
 func (a GreetingsApi) GetUserGreetingsDefaults(userId string) (*Defaultgreetinglist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -625,7 +607,7 @@ func (a GreetingsApi) GetUserGreetingsDefaults(userId string) (*Defaultgreetingl
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GreetingsApi->GetUserGreetingsDefaults")
 	}
 
@@ -684,8 +666,6 @@ func (a GreetingsApi) GetUserGreetingsDefaults(userId string) (*Defaultgreetingl
 // PostGreetings invokes POST /api/v2/greetings
 //
 // Create a Greeting for an Organization
-//
-// 
 func (a GreetingsApi) PostGreetings(body Greeting) (*Greeting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -697,7 +677,7 @@ func (a GreetingsApi) PostGreetings(body Greeting) (*Greeting, *APIResponse, err
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GreetingsApi->PostGreetings")
 	}
 
@@ -759,8 +739,6 @@ func (a GreetingsApi) PostGreetings(body Greeting) (*Greeting, *APIResponse, err
 // PostGroupGreetings invokes POST /api/v2/groups/{groupId}/greetings
 //
 // Creates a Greeting for a Group
-//
-// 
 func (a GreetingsApi) PostGroupGreetings(groupId string, body Greeting) (*Greeting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -773,12 +751,12 @@ func (a GreetingsApi) PostGroupGreetings(groupId string, body Greeting) (*Greeti
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GreetingsApi->PostGroupGreetings")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GreetingsApi->PostGroupGreetings")
 	}
 
@@ -840,8 +818,6 @@ func (a GreetingsApi) PostGroupGreetings(groupId string, body Greeting) (*Greeti
 // PostUserGreetings invokes POST /api/v2/users/{userId}/greetings
 //
 // Creates a Greeting for a User
-//
-// 
 func (a GreetingsApi) PostUserGreetings(userId string, body Greeting) (*Greeting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -854,12 +830,12 @@ func (a GreetingsApi) PostUserGreetings(userId string, body Greeting) (*Greeting
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GreetingsApi->PostUserGreetings")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GreetingsApi->PostUserGreetings")
 	}
 
@@ -921,8 +897,6 @@ func (a GreetingsApi) PostUserGreetings(userId string, body Greeting) (*Greeting
 // PutGreeting invokes PUT /api/v2/greetings/{greetingId}
 //
 // Updates the Greeting with the given GreetingId
-//
-// 
 func (a GreetingsApi) PutGreeting(greetingId string, body Greeting) (*Greeting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -935,12 +909,12 @@ func (a GreetingsApi) PutGreeting(greetingId string, body Greeting) (*Greeting, 
 
 	// verify the required parameter 'greetingId' is set
 	if &greetingId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'greetingId' when calling GreetingsApi->PutGreeting")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GreetingsApi->PutGreeting")
 	}
 
@@ -1001,9 +975,7 @@ func (a GreetingsApi) PutGreeting(greetingId string, body Greeting) (*Greeting, 
 
 // PutGreetingsDefaults invokes PUT /api/v2/greetings/defaults
 //
-// Update an Organization&#39;s DefaultGreetingList
-//
-// 
+// Update an Organization's DefaultGreetingList
 func (a GreetingsApi) PutGreetingsDefaults(body Defaultgreetinglist) (*Defaultgreetinglist, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1015,7 +987,7 @@ func (a GreetingsApi) PutGreetingsDefaults(body Defaultgreetinglist) (*Defaultgr
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GreetingsApi->PutGreetingsDefaults")
 	}
 
@@ -1077,8 +1049,6 @@ func (a GreetingsApi) PutGreetingsDefaults(body Defaultgreetinglist) (*Defaultgr
 // PutGroupGreetingsDefaults invokes PUT /api/v2/groups/{groupId}/greetings/defaults
 //
 // Updates the DefaultGreetingList of the specified Group
-//
-// 
 func (a GreetingsApi) PutGroupGreetingsDefaults(groupId string, body Defaultgreetinglist) (*Defaultgreetinglist, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1091,12 +1061,12 @@ func (a GreetingsApi) PutGroupGreetingsDefaults(groupId string, body Defaultgree
 
 	// verify the required parameter 'groupId' is set
 	if &groupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'groupId' when calling GreetingsApi->PutGroupGreetingsDefaults")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GreetingsApi->PutGroupGreetingsDefaults")
 	}
 
@@ -1158,8 +1128,6 @@ func (a GreetingsApi) PutGroupGreetingsDefaults(groupId string, body Defaultgree
 // PutUserGreetingsDefaults invokes PUT /api/v2/users/{userId}/greetings/defaults
 //
 // Updates the DefaultGreetingList of the specified User
-//
-// 
 func (a GreetingsApi) PutUserGreetingsDefaults(userId string, body Defaultgreetinglist) (*Defaultgreetinglist, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1172,12 +1140,12 @@ func (a GreetingsApi) PutUserGreetingsDefaults(userId string, body Defaultgreeti
 
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GreetingsApi->PutUserGreetingsDefaults")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GreetingsApi->PutUserGreetingsDefaults")
 	}
 

@@ -37,7 +37,7 @@ func (o *Messengerstyles) UnmarshalJSON(b []byte) error {
 	if PrimaryColor, ok := MessengerstylesMap["primaryColor"].(string); ok {
 		o.PrimaryColor = &PrimaryColor
 	}
-	
+    
 
 	return nil
 }

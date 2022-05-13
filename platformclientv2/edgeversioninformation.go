@@ -37,7 +37,7 @@ func (o *Edgeversioninformation) UnmarshalJSON(b []byte) error {
 	if SoftwareVersion, ok := EdgeversioninformationMap["softwareVersion"].(string); ok {
 		o.SoftwareVersion = &SoftwareVersion
 	}
-	
+    
 
 	return nil
 }

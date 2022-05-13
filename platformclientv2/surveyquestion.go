@@ -101,23 +101,23 @@ func (o *Surveyquestion) UnmarshalJSON(b []byte) error {
 	if Id, ok := SurveyquestionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Text, ok := SurveyquestionMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if HelpText, ok := SurveyquestionMap["helpText"].(string); ok {
 		o.HelpText = &HelpText
 	}
-	
+    
 	if VarType, ok := SurveyquestionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if NaEnabled, ok := SurveyquestionMap["naEnabled"].(bool); ok {
 		o.NaEnabled = &NaEnabled
 	}
-	
+    
 	if VisibilityCondition, ok := SurveyquestionMap["visibilityCondition"].(map[string]interface{}); ok {
 		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
 		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
@@ -136,7 +136,7 @@ func (o *Surveyquestion) UnmarshalJSON(b []byte) error {
 	if ExplanationPrompt, ok := SurveyquestionMap["explanationPrompt"].(string); ok {
 		o.ExplanationPrompt = &ExplanationPrompt
 	}
-	
+    
 
 	return nil
 }

@@ -40,8 +40,8 @@ type Architectpromptnotificationarchitectoperation struct {
 	ErrorCode *string `json:"errorCode,omitempty"`
 
 
-	// ErrorMessageParams
-	ErrorMessageParams *Architectpromptnotificationerrormessageparams `json:"errorMessageParams,omitempty"`
+	// ErrorMessageParams - The error message params, if the action failed
+	ErrorMessageParams *interface{} `json:"errorMessageParams,omitempty"`
 
 
 	// ErrorDetails - The error details, if the action failed
@@ -71,7 +71,7 @@ func (o *Architectpromptnotificationarchitectoperation) MarshalJSON() ([]byte, e
 		
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
-		ErrorMessageParams *Architectpromptnotificationerrormessageparams `json:"errorMessageParams,omitempty"`
+		ErrorMessageParams *interface{} `json:"errorMessageParams,omitempty"`
 		
 		ErrorDetails *[]Architectpromptnotificationerrordetail `json:"errorDetails,omitempty"`
 		*Alias
@@ -109,11 +109,11 @@ func (o *Architectpromptnotificationarchitectoperation) UnmarshalJSON(b []byte) 
 	if Id, ok := ArchitectpromptnotificationarchitectoperationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Complete, ok := ArchitectpromptnotificationarchitectoperationMap["complete"].(bool); ok {
 		o.Complete = &Complete
 	}
-	
+    
 	if User, ok := ArchitectpromptnotificationarchitectoperationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -127,19 +127,19 @@ func (o *Architectpromptnotificationarchitectoperation) UnmarshalJSON(b []byte) 
 	if ActionName, ok := ArchitectpromptnotificationarchitectoperationMap["actionName"].(string); ok {
 		o.ActionName = &ActionName
 	}
-	
+    
 	if ActionStatus, ok := ArchitectpromptnotificationarchitectoperationMap["actionStatus"].(string); ok {
 		o.ActionStatus = &ActionStatus
 	}
-	
+    
 	if ErrorMessage, ok := ArchitectpromptnotificationarchitectoperationMap["errorMessage"].(string); ok {
 		o.ErrorMessage = &ErrorMessage
 	}
-	
+    
 	if ErrorCode, ok := ArchitectpromptnotificationarchitectoperationMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if ErrorMessageParams, ok := ArchitectpromptnotificationarchitectoperationMap["errorMessageParams"].(map[string]interface{}); ok {
 		ErrorMessageParamsString, _ := json.Marshal(ErrorMessageParams)
 		json.Unmarshal(ErrorMessageParamsString, &o.ErrorMessageParams)

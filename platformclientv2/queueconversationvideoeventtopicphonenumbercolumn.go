@@ -45,11 +45,11 @@ func (o *Queueconversationvideoeventtopicphonenumbercolumn) UnmarshalJSON(b []by
 	if ColumnName, ok := QueueconversationvideoeventtopicphonenumbercolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := QueueconversationvideoeventtopicphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

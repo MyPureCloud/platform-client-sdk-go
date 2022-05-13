@@ -91,23 +91,23 @@ func (o *Statuschange) UnmarshalJSON(b []byte) error {
 	if Status, ok := StatuschangeMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if PreviousStatus, ok := StatuschangeMap["previousStatus"].(string); ok {
 		o.PreviousStatus = &PreviousStatus
 	}
-	
+    
 	if Message, ok := StatuschangeMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if ChangedBy, ok := StatuschangeMap["changedBy"].(string); ok {
 		o.ChangedBy = &ChangedBy
 	}
-	
+    
 	if RejectReason, ok := StatuschangeMap["rejectReason"].(string); ok {
 		o.RejectReason = &RejectReason
 	}
-	
+    
 
 	return nil
 }

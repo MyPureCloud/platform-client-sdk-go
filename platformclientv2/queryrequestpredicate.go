@@ -45,11 +45,11 @@ func (o *Queryrequestpredicate) UnmarshalJSON(b []byte) error {
 	if Dimension, ok := QueryrequestpredicateMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Value, ok := QueryrequestpredicateMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

@@ -53,11 +53,11 @@ func (o *Facetkeyattribute) UnmarshalJSON(b []byte) error {
 	if Id, ok := FacetkeyattributeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FacetkeyattributeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Count, ok := FacetkeyattributeMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

@@ -294,39 +294,39 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 	if State, ok := CallMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := CallMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Direction, ok := CallMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Recording, ok := CallMap["recording"].(bool); ok {
 		o.Recording = &Recording
 	}
-	
+    
 	if RecordingState, ok := CallMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Muted, ok := CallMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}
-	
+    
 	if Confined, ok := CallMap["confined"].(bool); ok {
 		o.Confined = &Confined
 	}
-	
+    
 	if Held, ok := CallMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if RecordingId, ok := CallMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if Segments, ok := CallMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)
@@ -340,7 +340,7 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := CallMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := CallMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -349,7 +349,7 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 	if DocumentId, ok := CallMap["documentId"].(string); ok {
 		o.DocumentId = &DocumentId
 	}
-	
+    
 	if startAlertingTimeString, ok := CallMap["startAlertingTime"].(string); ok {
 		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
 		o.StartAlertingTime = &StartAlertingTime
@@ -378,19 +378,19 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 	if Provider, ok := CallMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := CallMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := CallMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if UuiData, ok := CallMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
 	}
-	
+    
 	if Self, ok := CallMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -414,11 +414,11 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := CallMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if AgentAssistantId, ok := CallMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 
 	return nil
 }

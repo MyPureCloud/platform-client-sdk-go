@@ -69,7 +69,7 @@ func (o *Biography) UnmarshalJSON(b []byte) error {
 	if Biography, ok := BiographyMap["biography"].(string); ok {
 		o.Biography = &Biography
 	}
-	
+    
 	if Interests, ok := BiographyMap["interests"].([]interface{}); ok {
 		InterestsString, _ := json.Marshal(Interests)
 		json.Unmarshal(InterestsString, &o.Interests)
@@ -83,7 +83,7 @@ func (o *Biography) UnmarshalJSON(b []byte) error {
 	if Spouse, ok := BiographyMap["spouse"].(string); ok {
 		o.Spouse = &Spouse
 	}
-	
+    
 	if Education, ok := BiographyMap["education"].([]interface{}); ok {
 		EducationString, _ := json.Marshal(Education)
 		json.Unmarshal(EducationString, &o.Education)

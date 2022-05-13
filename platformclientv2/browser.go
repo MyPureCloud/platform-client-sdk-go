@@ -117,23 +117,23 @@ func (o *Browser) UnmarshalJSON(b []byte) error {
 	if Family, ok := BrowserMap["family"].(string); ok {
 		o.Family = &Family
 	}
-	
+    
 	if Version, ok := BrowserMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if Lang, ok := BrowserMap["lang"].(string); ok {
 		o.Lang = &Lang
 	}
-	
+    
 	if Fingerprint, ok := BrowserMap["fingerprint"].(string); ok {
 		o.Fingerprint = &Fingerprint
 	}
-	
+    
 	if IsMobile, ok := BrowserMap["isMobile"].(bool); ok {
 		o.IsMobile = &IsMobile
 	}
-	
+    
 	if ViewHeight, ok := BrowserMap["viewHeight"].(float64); ok {
 		ViewHeightInt := int(ViewHeight)
 		o.ViewHeight = &ViewHeightInt
@@ -147,19 +147,19 @@ func (o *Browser) UnmarshalJSON(b []byte) error {
 	if FeaturesFlash, ok := BrowserMap["featuresFlash"].(bool); ok {
 		o.FeaturesFlash = &FeaturesFlash
 	}
-	
+    
 	if FeaturesJava, ok := BrowserMap["featuresJava"].(bool); ok {
 		o.FeaturesJava = &FeaturesJava
 	}
-	
+    
 	if FeaturesPdf, ok := BrowserMap["featuresPdf"].(bool); ok {
 		o.FeaturesPdf = &FeaturesPdf
 	}
-	
+    
 	if FeaturesWebrtc, ok := BrowserMap["featuresWebrtc"].(bool); ok {
 		o.FeaturesWebrtc = &FeaturesWebrtc
 	}
-	
+    
 
 	return nil
 }

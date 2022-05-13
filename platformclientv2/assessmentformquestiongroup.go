@@ -117,27 +117,27 @@ func (o *Assessmentformquestiongroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := AssessmentformquestiongroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AssessmentformquestiongroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := AssessmentformquestiongroupMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if DefaultAnswersToHighest, ok := AssessmentformquestiongroupMap["defaultAnswersToHighest"].(bool); ok {
 		o.DefaultAnswersToHighest = &DefaultAnswersToHighest
 	}
-	
+    
 	if DefaultAnswersToNA, ok := AssessmentformquestiongroupMap["defaultAnswersToNA"].(bool); ok {
 		o.DefaultAnswersToNA = &DefaultAnswersToNA
 	}
-	
+    
 	if NaEnabled, ok := AssessmentformquestiongroupMap["naEnabled"].(bool); ok {
 		o.NaEnabled = &NaEnabled
 	}
-	
+    
 	if Weight, ok := AssessmentformquestiongroupMap["weight"].(float64); ok {
 		WeightFloat32 := float32(Weight)
 		o.Weight = &WeightFloat32
@@ -146,7 +146,7 @@ func (o *Assessmentformquestiongroup) UnmarshalJSON(b []byte) error {
 	if ManualWeight, ok := AssessmentformquestiongroupMap["manualWeight"].(bool); ok {
 		o.ManualWeight = &ManualWeight
 	}
-	
+    
 	if Questions, ok := AssessmentformquestiongroupMap["questions"].([]interface{}); ok {
 		QuestionsString, _ := json.Marshal(Questions)
 		json.Unmarshal(QuestionsString, &o.Questions)
@@ -160,7 +160,7 @@ func (o *Assessmentformquestiongroup) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AssessmentformquestiongroupMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

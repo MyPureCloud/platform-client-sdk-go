@@ -53,15 +53,15 @@ func (o *Outboundmessagingmessagingcampaignconfigchangecontactsort) UnmarshalJSO
 	if FieldName, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["fieldName"].(string); ok {
 		o.FieldName = &FieldName
 	}
-	
+    
 	if Direction, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if Numeric, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["numeric"].(bool); ok {
 		o.Numeric = &Numeric
 	}
-	
+    
 
 	return nil
 }

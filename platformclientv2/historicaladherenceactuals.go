@@ -53,7 +53,7 @@ func (o *Historicaladherenceactuals) UnmarshalJSON(b []byte) error {
 	if ActualActivityCategory, ok := HistoricaladherenceactualsMap["actualActivityCategory"].(string); ok {
 		o.ActualActivityCategory = &ActualActivityCategory
 	}
-	
+    
 	if StartOffsetSeconds, ok := HistoricaladherenceactualsMap["startOffsetSeconds"].(float64); ok {
 		StartOffsetSecondsInt := int(StartOffsetSeconds)
 		o.StartOffsetSeconds = &StartOffsetSecondsInt

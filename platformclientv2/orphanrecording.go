@@ -150,11 +150,11 @@ func (o *Orphanrecording) UnmarshalJSON(b []byte) error {
 	if Id, ok := OrphanrecordingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OrphanrecordingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if createdTimeString, ok := OrphanrecordingMap["createdTime"].(string); ok {
 		CreatedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdTimeString)
 		o.CreatedTime = &CreatedTime
@@ -168,7 +168,7 @@ func (o *Orphanrecording) UnmarshalJSON(b []byte) error {
 	if ProviderType, ok := OrphanrecordingMap["providerType"].(string); ok {
 		o.ProviderType = &ProviderType
 	}
-	
+    
 	if MediaSizeBytes, ok := OrphanrecordingMap["mediaSizeBytes"].(float64); ok {
 		MediaSizeBytesInt := int(MediaSizeBytes)
 		o.MediaSizeBytes = &MediaSizeBytesInt
@@ -177,11 +177,11 @@ func (o *Orphanrecording) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := OrphanrecordingMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if FileState, ok := OrphanrecordingMap["fileState"].(string); ok {
 		o.FileState = &FileState
 	}
-	
+    
 	if ProviderEndpoint, ok := OrphanrecordingMap["providerEndpoint"].(map[string]interface{}); ok {
 		ProviderEndpointString, _ := json.Marshal(ProviderEndpoint)
 		json.Unmarshal(ProviderEndpointString, &o.ProviderEndpoint)
@@ -195,15 +195,15 @@ func (o *Orphanrecording) UnmarshalJSON(b []byte) error {
 	if OrphanStatus, ok := OrphanrecordingMap["orphanStatus"].(string); ok {
 		o.OrphanStatus = &OrphanStatus
 	}
-	
+    
 	if SourceOrphaningId, ok := OrphanrecordingMap["sourceOrphaningId"].(string); ok {
 		o.SourceOrphaningId = &SourceOrphaningId
 	}
-	
+    
 	if SelfUri, ok := OrphanrecordingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

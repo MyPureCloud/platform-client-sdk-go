@@ -77,7 +77,7 @@ func (o *Messengersettings) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := MessengersettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Styles, ok := MessengersettingsMap["styles"].(map[string]interface{}); ok {
 		StylesString, _ := json.Marshal(Styles)
 		json.Unmarshal(StylesString, &o.Styles)

@@ -166,11 +166,11 @@ func (o *Extensionpool) UnmarshalJSON(b []byte) error {
 	if Id, ok := ExtensionpoolMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ExtensionpoolMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := ExtensionpoolMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -179,7 +179,7 @@ func (o *Extensionpool) UnmarshalJSON(b []byte) error {
 	if Description, ok := ExtensionpoolMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := ExtensionpoolMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -198,35 +198,35 @@ func (o *Extensionpool) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := ExtensionpoolMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := ExtensionpoolMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := ExtensionpoolMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := ExtensionpoolMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := ExtensionpoolMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if StartNumber, ok := ExtensionpoolMap["startNumber"].(string); ok {
 		o.StartNumber = &StartNumber
 	}
-	
+    
 	if EndNumber, ok := ExtensionpoolMap["endNumber"].(string); ok {
 		o.EndNumber = &EndNumber
 	}
-	
+    
 	if SelfUri, ok := ExtensionpoolMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

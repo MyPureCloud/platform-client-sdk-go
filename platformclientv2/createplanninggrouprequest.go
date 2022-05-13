@@ -53,7 +53,7 @@ func (o *Createplanninggrouprequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := CreateplanninggrouprequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if RoutePaths, ok := CreateplanninggrouprequestMap["routePaths"].([]interface{}); ok {
 		RoutePathsString, _ := json.Marshal(RoutePaths)
 		json.Unmarshal(RoutePathsString, &o.RoutePaths)
@@ -62,7 +62,7 @@ func (o *Createplanninggrouprequest) UnmarshalJSON(b []byte) error {
 	if ServiceGoalTemplateId, ok := CreateplanninggrouprequestMap["serviceGoalTemplateId"].(string); ok {
 		o.ServiceGoalTemplateId = &ServiceGoalTemplateId
 	}
-	
+    
 
 	return nil
 }

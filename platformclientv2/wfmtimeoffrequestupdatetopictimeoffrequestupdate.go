@@ -173,7 +173,7 @@ func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) UnmarshalJSON(b []byt
 	if Id, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if User, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -182,27 +182,27 @@ func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) UnmarshalJSON(b []byt
 	if IsFullDayRequest, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["isFullDayRequest"].(bool); ok {
 		o.IsFullDayRequest = &IsFullDayRequest
 	}
-	
+    
 	if MarkedAsRead, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["markedAsRead"].(bool); ok {
 		o.MarkedAsRead = &MarkedAsRead
 	}
-	
+    
 	if ActivityCodeId, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
-	
+    
 	if Paid, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["paid"].(bool); ok {
 		o.Paid = &Paid
 	}
-	
+    
 	if Status, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Substatus, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["substatus"].(string); ok {
 		o.Substatus = &Substatus
 	}
-	
+    
 	if PartialDayStartDateTimes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["partialDayStartDateTimes"].([]interface{}); ok {
 		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
 		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
@@ -221,31 +221,31 @@ func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) UnmarshalJSON(b []byt
 	if Notes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if ReviewedDate, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["reviewedDate"].(string); ok {
 		o.ReviewedDate = &ReviewedDate
 	}
-	
+    
 	if ReviewedBy, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["reviewedBy"].(string); ok {
 		o.ReviewedBy = &ReviewedBy
 	}
-	
+    
 	if SubmittedDate, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["submittedDate"].(string); ok {
 		o.SubmittedDate = &SubmittedDate
 	}
-	
+    
 	if SubmittedBy, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["submittedBy"].(string); ok {
 		o.SubmittedBy = &SubmittedBy
 	}
-	
+    
 	if ModifiedDate, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["modifiedDate"].(string); ok {
 		o.ModifiedDate = &ModifiedDate
 	}
-	
+    
 	if ModifiedBy, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 
 	return nil
 }

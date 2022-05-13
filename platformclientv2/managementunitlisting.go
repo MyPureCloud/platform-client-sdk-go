@@ -129,19 +129,19 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
-	
+    
 	if FirstUri, ok := ManagementunitlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
-	
+    
 	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
-	
+    
 	if NextUri, ok := ManagementunitlistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
-	
+    
 	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
@@ -150,7 +150,7 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

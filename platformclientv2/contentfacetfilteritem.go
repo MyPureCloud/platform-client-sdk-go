@@ -61,15 +61,15 @@ func (o *Contentfacetfilteritem) UnmarshalJSON(b []byte) error {
 	if Name, ok := ContentfacetfilteritemMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := ContentfacetfilteritemMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Operator, ok := ContentfacetfilteritemMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Values, ok := ContentfacetfilteritemMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

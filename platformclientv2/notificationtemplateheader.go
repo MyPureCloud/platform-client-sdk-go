@@ -61,11 +61,11 @@ func (o *Notificationtemplateheader) UnmarshalJSON(b []byte) error {
 	if VarType, ok := NotificationtemplateheaderMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Text, ok := NotificationtemplateheaderMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Media, ok := NotificationtemplateheaderMap["media"].(map[string]interface{}); ok {
 		MediaString, _ := json.Marshal(Media)
 		json.Unmarshal(MediaString, &o.Media)

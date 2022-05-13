@@ -45,11 +45,11 @@ func (o *Architectpromptnotificationclient) UnmarshalJSON(b []byte) error {
 	if Id, ok := ArchitectpromptnotificationclientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ArchitectpromptnotificationclientMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

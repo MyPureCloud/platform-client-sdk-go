@@ -58,11 +58,11 @@ func (o *Fromemailaddress) UnmarshalJSON(b []byte) error {
 	if FriendlyName, ok := FromemailaddressMap["friendlyName"].(string); ok {
 		o.FriendlyName = &FriendlyName
 	}
-	
+    
 	if LocalPart, ok := FromemailaddressMap["localPart"].(string); ok {
 		o.LocalPart = &LocalPart
 	}
-	
+    
 
 	return nil
 }

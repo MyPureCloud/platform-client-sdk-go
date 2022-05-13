@@ -53,11 +53,11 @@ func (o *Aggregatemetricdata) UnmarshalJSON(b []byte) error {
 	if Metric, ok := AggregatemetricdataMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Qualifier, ok := AggregatemetricdataMap["qualifier"].(string); ok {
 		o.Qualifier = &Qualifier
 	}
-	
+    
 	if Stats, ok := AggregatemetricdataMap["stats"].(map[string]interface{}); ok {
 		StatsString, _ := json.Marshal(Stats)
 		json.Unmarshal(StatsString, &o.Stats)

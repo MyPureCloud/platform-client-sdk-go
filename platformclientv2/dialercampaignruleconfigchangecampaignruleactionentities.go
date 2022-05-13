@@ -53,7 +53,7 @@ func (o *Dialercampaignruleconfigchangecampaignruleactionentities) UnmarshalJSON
 	if UseTriggeringEntity, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["useTriggeringEntity"].(bool); ok {
 		o.UseTriggeringEntity = &UseTriggeringEntity
 	}
-	
+    
 	if Campaigns, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["campaigns"].([]interface{}); ok {
 		CampaignsString, _ := json.Marshal(Campaigns)
 		json.Unmarshal(CampaignsString, &o.Campaigns)

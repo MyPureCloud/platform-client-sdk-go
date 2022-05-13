@@ -32,8 +32,6 @@ func NewTelephonyProvidersEdgeApiWithConfig(config *Configuration) *TelephonyPro
 // DeleteTelephonyProvidersEdge invokes DELETE /api/v2/telephony/providers/edges/{edgeId}
 //
 // Delete a edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdge(edgeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdge(edgeId string) (
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdge")
 	}
 
@@ -98,8 +96,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdge(edgeId string) (
 // DeleteTelephonyProvidersEdgeLogicalinterface invokes DELETE /api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}
 //
 // Delete an edge logical interface
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeLogicalinterface(edgeId string, interfaceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -112,12 +108,12 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeLogicalinterface(
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgeLogicalinterface")
 	}
 	// verify the required parameter 'interfaceId' is set
 	if &interfaceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'interfaceId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgeLogicalinterface")
 	}
 
@@ -170,8 +166,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeLogicalinterface(
 // DeleteTelephonyProvidersEdgeSoftwareupdate invokes DELETE /api/v2/telephony/providers/edges/{edgeId}/softwareupdate
 //
 // Cancels any in-progress update for this edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeSoftwareupdate(edgeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -183,7 +177,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeSoftwareupdate(ed
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgeSoftwareupdate")
 	}
 
@@ -236,8 +230,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeSoftwareupdate(ed
 // DeleteTelephonyProvidersEdgesCertificateauthority invokes DELETE /api/v2/telephony/providers/edges/certificateauthorities/{certificateId}
 //
 // Delete a certificate authority.
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesCertificateauthority(certificateId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -249,7 +241,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesCertificateautho
 
 	// verify the required parameter 'certificateId' is set
 	if &certificateId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'certificateId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesCertificateauthority")
 	}
 
@@ -302,8 +294,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesCertificateautho
 // DeleteTelephonyProvidersEdgesDidpool invokes DELETE /api/v2/telephony/providers/edges/didpools/{didPoolId}
 //
 // Delete a DID Pool by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesDidpool(didPoolId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -315,7 +305,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesDidpool(didPoolI
 
 	// verify the required parameter 'didPoolId' is set
 	if &didPoolId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'didPoolId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesDidpool")
 	}
 
@@ -368,8 +358,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesDidpool(didPoolI
 // DeleteTelephonyProvidersEdgesEdgegroup invokes DELETE /api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}
 //
 // Delete an edge group.
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesEdgegroup(edgeGroupId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -381,7 +369,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesEdgegroup(edgeGr
 
 	// verify the required parameter 'edgeGroupId' is set
 	if &edgeGroupId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'edgeGroupId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesEdgegroup")
 	}
 
@@ -434,8 +422,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesEdgegroup(edgeGr
 // DeleteTelephonyProvidersEdgesExtensionpool invokes DELETE /api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}
 //
 // Delete an extension pool by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesExtensionpool(extensionPoolId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -447,7 +433,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesExtensionpool(ex
 
 	// verify the required parameter 'extensionPoolId' is set
 	if &extensionPoolId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'extensionPoolId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesExtensionpool")
 	}
 
@@ -513,7 +499,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesOutboundroute(ou
 
 	// verify the required parameter 'outboundRouteId' is set
 	if &outboundRouteId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'outboundRouteId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesOutboundroute")
 	}
 
@@ -566,8 +552,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesOutboundroute(ou
 // DeleteTelephonyProvidersEdgesPhone invokes DELETE /api/v2/telephony/providers/edges/phones/{phoneId}
 //
 // Delete a Phone by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhone(phoneId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -579,7 +563,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhone(phoneId st
 
 	// verify the required parameter 'phoneId' is set
 	if &phoneId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'phoneId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesPhone")
 	}
 
@@ -632,8 +616,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhone(phoneId st
 // DeleteTelephonyProvidersEdgesPhonebasesetting invokes DELETE /api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}
 //
 // Delete a Phone Base Settings by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhonebasesetting(phoneBaseId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -645,7 +627,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhonebasesetting
 
 	// verify the required parameter 'phoneBaseId' is set
 	if &phoneBaseId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'phoneBaseId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesPhonebasesetting")
 	}
 
@@ -698,8 +680,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhonebasesetting
 // DeleteTelephonyProvidersEdgesSite invokes DELETE /api/v2/telephony/providers/edges/sites/{siteId}
 //
 // Delete a Site by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSite(siteId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -711,7 +691,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSite(siteId stri
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesSite")
 	}
 
@@ -764,8 +744,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSite(siteId stri
 // DeleteTelephonyProvidersEdgesSiteOutboundroute invokes DELETE /api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId}
 //
 // Delete Outbound Route
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSiteOutboundroute(siteId string, outboundRouteId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -778,12 +756,12 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSiteOutboundrout
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesSiteOutboundroute")
 	}
 	// verify the required parameter 'outboundRouteId' is set
 	if &outboundRouteId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'outboundRouteId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesSiteOutboundroute")
 	}
 
@@ -836,8 +814,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSiteOutboundrout
 // DeleteTelephonyProvidersEdgesTrunkbasesetting invokes DELETE /api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}
 //
 // Delete a Trunk Base Settings object by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesTrunkbasesetting(trunkBaseSettingsId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -849,7 +825,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesTrunkbasesetting
 
 	// verify the required parameter 'trunkBaseSettingsId' is set
 	if &trunkBaseSettingsId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'trunkBaseSettingsId' when calling TelephonyProvidersEdgeApi->DeleteTelephonyProvidersEdgesTrunkbasesetting")
 	}
 
@@ -902,8 +878,6 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesTrunkbasesetting
 // GetConfigurationSchemasEdgesVnext invokes GET /api/v2/configuration/schemas/edges/vnext
 //
 // Lists available schema categories (Deprecated)
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize int, pageNumber int) (*Schemacategoryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -973,8 +947,6 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize in
 // GetConfigurationSchemasEdgesVnextSchemaCategory invokes GET /api/v2/configuration/schemas/edges/vnext/{schemaCategory}
 //
 // List schemas of a specific category (Deprecated)
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategory(schemaCategory string, pageSize int, pageNumber int) (*Schemareferenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -987,7 +959,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 
 	// verify the required parameter 'schemaCategory' is set
 	if &schemaCategory == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaCategory' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategory")
 	}
 
@@ -1050,8 +1022,6 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 // GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType invokes GET /api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}
 //
 // List schemas of a specific category (Deprecated)
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType(schemaCategory string, schemaType string, pageSize int, pageNumber int) (*Schemareferenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1065,12 +1035,12 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 
 	// verify the required parameter 'schemaCategory' is set
 	if &schemaCategory == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaCategory' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType")
 	}
 	// verify the required parameter 'schemaType' is set
 	if &schemaType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaType' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType")
 	}
 
@@ -1133,8 +1103,6 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 // GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId invokes GET /api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}
 //
 // Get a json schema (Deprecated)
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId(schemaCategory string, schemaType string, schemaId string) (*Organization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1149,17 +1117,17 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 
 	// verify the required parameter 'schemaCategory' is set
 	if &schemaCategory == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaCategory' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId")
 	}
 	// verify the required parameter 'schemaType' is set
 	if &schemaType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaType' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId")
 	}
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId")
 	}
 
@@ -1218,8 +1186,6 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 // GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId invokes GET /api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extensionType}/{metadataId}
 //
 // Get metadata for a schema (Deprecated)
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId(schemaCategory string, schemaType string, schemaId string, extensionType string, metadataId string, varType string) (*Organization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1236,27 +1202,27 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 
 	// verify the required parameter 'schemaCategory' is set
 	if &schemaCategory == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaCategory' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId")
 	}
 	// verify the required parameter 'schemaType' is set
 	if &schemaType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaType' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId")
 	}
 	// verify the required parameter 'schemaId' is set
 	if &schemaId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'schemaId' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId")
 	}
 	// verify the required parameter 'extensionType' is set
 	if &extensionType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'extensionType' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId")
 	}
 	// verify the required parameter 'metadataId' is set
 	if &metadataId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'metadataId' when calling TelephonyProvidersEdgeApi->GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId")
 	}
 
@@ -1317,8 +1283,6 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 // GetTelephonyProvidersEdge invokes GET /api/v2/telephony/providers/edges/{edgeId}
 //
 // Get edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdge(edgeId string, expand []string) (*Edge, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1331,7 +1295,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdge(edgeId string, expa
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdge")
 	}
 
@@ -1392,8 +1356,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdge(edgeId string, expa
 // GetTelephonyProvidersEdgeDiagnosticNslookup invokes GET /api/v2/telephony/providers/edges/{edgeId}/diagnostic/nslookup
 //
 // Get networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticNslookup(edgeId string) (*Edgenetworkdiagnosticresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1406,7 +1368,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticNslookup(e
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeDiagnosticNslookup")
 	}
 
@@ -1465,8 +1427,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticNslookup(e
 // GetTelephonyProvidersEdgeDiagnosticPing invokes GET /api/v2/telephony/providers/edges/{edgeId}/diagnostic/ping
 //
 // Get networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticPing(edgeId string) (*Edgenetworkdiagnosticresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1479,7 +1439,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticPing(edgeI
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeDiagnosticPing")
 	}
 
@@ -1538,8 +1498,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticPing(edgeI
 // GetTelephonyProvidersEdgeDiagnosticRoute invokes GET /api/v2/telephony/providers/edges/{edgeId}/diagnostic/route
 //
 // Get networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticRoute(edgeId string) (*Edgenetworkdiagnosticresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1552,7 +1510,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticRoute(edge
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeDiagnosticRoute")
 	}
 
@@ -1611,8 +1569,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticRoute(edge
 // GetTelephonyProvidersEdgeDiagnosticTracepath invokes GET /api/v2/telephony/providers/edges/{edgeId}/diagnostic/tracepath
 //
 // Get networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticTracepath(edgeId string) (*Edgenetworkdiagnosticresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1625,7 +1581,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticTracepath(
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeDiagnosticTracepath")
 	}
 
@@ -1684,8 +1640,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticTracepath(
 // GetTelephonyProvidersEdgeLine invokes GET /api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}
 //
 // Get line
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLine(edgeId string, lineId string) (*Edgeline, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1699,12 +1653,12 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLine(edgeId string, 
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLine")
 	}
 	// verify the required parameter 'lineId' is set
 	if &lineId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'lineId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLine")
 	}
 
@@ -1763,8 +1717,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLine(edgeId string, 
 // GetTelephonyProvidersEdgeLines invokes GET /api/v2/telephony/providers/edges/{edgeId}/lines
 //
 // Get the list of lines.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string, pageSize int, pageNumber int) (*Edgelineentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1777,7 +1729,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string,
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLines")
 	}
 
@@ -1840,8 +1792,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string,
 // GetTelephonyProvidersEdgeLogicalinterface invokes GET /api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}
 //
 // Get an edge logical interface
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterface(edgeId string, interfaceId string, expand []string) (*Domainlogicalinterface, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1855,12 +1805,12 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterface(edg
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLogicalinterface")
 	}
 	// verify the required parameter 'interfaceId' is set
 	if &interfaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'interfaceId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLogicalinterface")
 	}
 
@@ -1935,7 +1885,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterfaces(ed
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLogicalinterfaces")
 	}
 
@@ -1996,8 +1946,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterfaces(ed
 // GetTelephonyProvidersEdgeLogsJob invokes GET /api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}
 //
 // Get an Edge logs job.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogsJob(edgeId string, jobId string) (*Edgelogsjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2011,12 +1959,12 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogsJob(edgeId strin
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLogsJob")
 	}
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeLogsJob")
 	}
 
@@ -2075,8 +2023,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogsJob(edgeId strin
 // GetTelephonyProvidersEdgeMetrics invokes GET /api/v2/telephony/providers/edges/{edgeId}/metrics
 //
 // Get the edge metrics.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeMetrics(edgeId string) (*Edgemetrics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2089,7 +2035,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeMetrics(edgeId strin
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeMetrics")
 	}
 
@@ -2163,12 +2109,12 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterface(ed
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgePhysicalinterface")
 	}
 	// verify the required parameter 'interfaceId' is set
 	if &interfaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'interfaceId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgePhysicalinterface")
 	}
 
@@ -2227,8 +2173,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterface(ed
 // GetTelephonyProvidersEdgePhysicalinterfaces invokes GET /api/v2/telephony/providers/edges/{edgeId}/physicalinterfaces
 //
 // Retrieve a list of all configured physical interfaces from a specific edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterfaces(edgeId string) (*Physicalinterfaceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2241,7 +2185,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterfaces(e
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgePhysicalinterfaces")
 	}
 
@@ -2300,8 +2244,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterfaces(e
 // GetTelephonyProvidersEdgeSetuppackage invokes GET /api/v2/telephony/providers/edges/{edgeId}/setuppackage
 //
 // Get the setup package for a locally deployed edge device. This is needed to complete the setup process for the virtual edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSetuppackage(edgeId string) (*Vmpairinginfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2314,7 +2256,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSetuppackage(edgeId 
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeSetuppackage")
 	}
 
@@ -2373,8 +2315,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSetuppackage(edgeId 
 // GetTelephonyProvidersEdgeSoftwareupdate invokes GET /api/v2/telephony/providers/edges/{edgeId}/softwareupdate
 //
 // Gets software update status information about any edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareupdate(edgeId string) (*Domainedgesoftwareupdatedto, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2387,7 +2327,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareupdate(edgeI
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeSoftwareupdate")
 	}
 
@@ -2446,8 +2386,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareupdate(edgeI
 // GetTelephonyProvidersEdgeSoftwareversions invokes GET /api/v2/telephony/providers/edges/{edgeId}/softwareversions
 //
 // Gets all the available software versions for this edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareversions(edgeId string) (*Domainedgesoftwareversiondtoentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2460,7 +2398,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareversions(edg
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeSoftwareversions")
 	}
 
@@ -2533,7 +2471,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgeTrunks")
 	}
 
@@ -2604,8 +2542,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 // GetTelephonyProvidersEdges invokes GET /api/v2/telephony/providers/edges
 //
 // Get the list of edges.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, pageNumber int, name string, siteId string, edgeGroupId string, sortBy string, managed bool) (*Edgeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2685,8 +2621,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, page
 // GetTelephonyProvidersEdgesAvailablelanguages invokes GET /api/v2/telephony/providers/edges/availablelanguages
 //
 // Get the list of available languages.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesAvailablelanguages() (*Availablelanguagelist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2752,8 +2686,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesAvailablelanguages(
 // GetTelephonyProvidersEdgesCertificateauthorities invokes GET /api/v2/telephony/providers/edges/certificateauthorities
 //
 // Get the list of certificate authorities.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorities() (*Certificateauthorityentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2819,8 +2751,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 // GetTelephonyProvidersEdgesCertificateauthority invokes GET /api/v2/telephony/providers/edges/certificateauthorities/{certificateId}
 //
 // Get a certificate authority.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthority(certificateId string) (*Domaincertificateauthority, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2833,7 +2763,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 
 	// verify the required parameter 'certificateId' is set
 	if &certificateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'certificateId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesCertificateauthority")
 	}
 
@@ -2892,8 +2822,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 // GetTelephonyProvidersEdgesDid invokes GET /api/v2/telephony/providers/edges/dids/{didId}
 //
 // Get a DID by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDid(didId string) (*Did, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2906,7 +2834,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDid(didId string) (
 
 	// verify the required parameter 'didId' is set
 	if &didId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'didId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesDid")
 	}
 
@@ -2965,8 +2893,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDid(didId string) (
 // GetTelephonyProvidersEdgesDidpool invokes GET /api/v2/telephony/providers/edges/didpools/{didPoolId}
 //
 // Get a DID Pool by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpool(didPoolId string) (*Didpool, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2979,7 +2905,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpool(didPoolId s
 
 	// verify the required parameter 'didPoolId' is set
 	if &didPoolId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'didPoolId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesDidpool")
 	}
 
@@ -3038,8 +2964,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpool(didPoolId s
 // GetTelephonyProvidersEdgesDidpools invokes GET /api/v2/telephony/providers/edges/didpools
 //
 // Get a listing of DID Pools
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize int, pageNumber int, sortBy string, id []string) (*Didpoolentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3113,8 +3037,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize i
 // GetTelephonyProvidersEdgesDidpoolsDids invokes GET /api/v2/telephony/providers/edges/didpools/dids
 //
 // Get a listing of unassigned and/or assigned numbers in a set of DID Pools.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpoolsDids(varType string, id []string, numberMatch string, pageSize int, pageNumber int, sortOrder string) (*Didnumberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3126,7 +3048,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpoolsDids(varTyp
 
 	// verify the required parameter 'varType' is set
 	if &varType == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'varType' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesDidpoolsDids")
 	}
 
@@ -3197,8 +3119,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpoolsDids(varTyp
 // GetTelephonyProvidersEdgesDids invokes GET /api/v2/telephony/providers/edges/dids
 //
 // Get a listing of DIDs
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDids(pageSize int, pageNumber int, sortBy string, sortOrder string, phoneNumber string, ownerId string, didPoolId string, id []string) (*Didentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3280,8 +3200,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDids(pageSize int, 
 // GetTelephonyProvidersEdgesEdgegroup invokes GET /api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}
 //
 // Get edge group.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroup(edgeGroupId string, expand []string) (*Edgegroup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3294,7 +3212,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroup(edgeGroup
 
 	// verify the required parameter 'edgeGroupId' is set
 	if &edgeGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeGroupId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesEdgegroup")
 	}
 
@@ -3355,8 +3273,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroup(edgeGroup
 // GetTelephonyProvidersEdgesEdgegroupEdgetrunkbase invokes GET /api/v2/telephony/providers/edges/edgegroups/{edgegroupId}/edgetrunkbases/{edgetrunkbaseId}
 //
 // Gets the edge trunk base associated with the edge group
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroupEdgetrunkbase(edgegroupId string, edgetrunkbaseId string) (*Edgetrunkbase, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3370,12 +3286,12 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroupEdgetrunkb
 
 	// verify the required parameter 'edgegroupId' is set
 	if &edgegroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgegroupId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesEdgegroupEdgetrunkbase")
 	}
 	// verify the required parameter 'edgetrunkbaseId' is set
 	if &edgetrunkbaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgetrunkbaseId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesEdgegroupEdgetrunkbase")
 	}
 
@@ -3434,8 +3350,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroupEdgetrunkb
 // GetTelephonyProvidersEdgesEdgegroups invokes GET /api/v2/telephony/providers/edges/edgegroups
 //
 // Get the list of edge groups.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroups(pageSize int, pageNumber int, name string, sortBy string, managed bool) (*Edgegroupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3578,8 +3492,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgeversionreport()
 // GetTelephonyProvidersEdgesExpired invokes GET /api/v2/telephony/providers/edges/expired
 //
 // List of edges more than 4 edge versions behind the latest software.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExpired() (*Expirededgelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3645,8 +3557,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExpired() (*Expired
 // GetTelephonyProvidersEdgesExtension invokes GET /api/v2/telephony/providers/edges/extensions/{extensionId}
 //
 // Get an extension by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtension(extensionId string) (*Extension, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3659,7 +3569,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtension(extension
 
 	// verify the required parameter 'extensionId' is set
 	if &extensionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'extensionId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesExtension")
 	}
 
@@ -3718,8 +3628,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtension(extension
 // GetTelephonyProvidersEdgesExtensionpool invokes GET /api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}
 //
 // Get an extension pool by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(extensionPoolId string) (*Extensionpool, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3732,7 +3640,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(exten
 
 	// verify the required parameter 'extensionPoolId' is set
 	if &extensionPoolId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'extensionPoolId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesExtensionpool")
 	}
 
@@ -3791,8 +3699,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(exten
 // GetTelephonyProvidersEdgesExtensionpools invokes GET /api/v2/telephony/providers/edges/extensionpools
 //
 // Get a listing of extension pools
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(pageSize int, pageNumber int, sortBy string, number string) (*Extensionpoolentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3866,8 +3772,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 // GetTelephonyProvidersEdgesExtensions invokes GET /api/v2/telephony/providers/edges/extensions
 //
 // Get a listing of extensions
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensions(pageSize int, pageNumber int, sortBy string, sortOrder string, number string) (*Extensionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3943,8 +3847,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensions(pageSize
 // GetTelephonyProvidersEdgesLine invokes GET /api/v2/telephony/providers/edges/lines/{lineId}
 //
 // Get a Line by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLine(lineId string) (*Line, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3957,7 +3859,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLine(lineId string)
 
 	// verify the required parameter 'lineId' is set
 	if &lineId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'lineId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesLine")
 	}
 
@@ -4016,8 +3918,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLine(lineId string)
 // GetTelephonyProvidersEdgesLinebasesetting invokes GET /api/v2/telephony/providers/edges/linebasesettings/{lineBaseId}
 //
 // Get a line base settings object by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lineBaseId string) (*Linebase, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4030,7 +3930,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lin
 
 	// verify the required parameter 'lineBaseId' is set
 	if &lineBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'lineBaseId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesLinebasesetting")
 	}
 
@@ -4089,8 +3989,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lin
 // GetTelephonyProvidersEdgesLinebasesettings invokes GET /api/v2/telephony/providers/edges/linebasesettings
 //
 // Get a listing of line base settings objects
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pageNumber int, pageSize int, sortBy string, sortOrder string, expand []string) (*Linebaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4166,8 +4064,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pa
 // GetTelephonyProvidersEdgesLines invokes GET /api/v2/telephony/providers/edges/lines
 //
 // Get a list of Lines
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLines(pageSize int, pageNumber int, name string, sortBy string, expand []string) (*Lineentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4243,8 +4139,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLines(pageSize int,
 // GetTelephonyProvidersEdgesLinesTemplate invokes GET /api/v2/telephony/providers/edges/lines/template
 //
 // Get a Line instance template based on a Line Base Settings object. This object can then be modified and saved as a new Line instance
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinesTemplate(lineBaseSettingsId string) (*Line, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4256,7 +4150,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinesTemplate(lineB
 
 	// verify the required parameter 'lineBaseSettingsId' is set
 	if &lineBaseSettingsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'lineBaseSettingsId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesLinesTemplate")
 	}
 
@@ -4330,7 +4224,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLogicalinterfaces(e
 
 	// verify the required parameter 'edgeIds' is set
 	if &edgeIds == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeIds' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesLogicalinterfaces")
 	}
 
@@ -4393,8 +4287,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLogicalinterfaces(e
 // GetTelephonyProvidersEdgesMetrics invokes GET /api/v2/telephony/providers/edges/metrics
 //
 // Get the metrics for a list of edges.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesMetrics(edgeIds string) ([]Edgemetrics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4406,7 +4298,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesMetrics(edgeIds str
 
 	// verify the required parameter 'edgeIds' is set
 	if &edgeIds == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeIds' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesMetrics")
 	}
 
@@ -4481,7 +4373,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outbo
 
 	// verify the required parameter 'outboundRouteId' is set
 	if &outboundRouteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'outboundRouteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesOutboundroute")
 	}
 
@@ -4540,8 +4432,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outbo
 // GetTelephonyProvidersEdgesOutboundroutes invokes GET /api/v2/telephony/providers/edges/outboundroutes
 //
 // Get outbound routes
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroutes(pageSize int, pageNumber int, name string, siteId string, externalTrunkBasesIds string, sortBy string) (*Outboundrouteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4619,8 +4509,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroutes(page
 // GetTelephonyProvidersEdgesPhone invokes GET /api/v2/telephony/providers/edges/phones/{phoneId}
 //
 // Get a Phone by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhone(phoneId string) (*Phone, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4633,7 +4521,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhone(phoneId strin
 
 	// verify the required parameter 'phoneId' is set
 	if &phoneId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'phoneId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesPhone")
 	}
 
@@ -4692,8 +4580,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhone(phoneId strin
 // GetTelephonyProvidersEdgesPhonebasesetting invokes GET /api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}
 //
 // Get a Phone Base Settings object by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesetting(phoneBaseId string) (*Phonebase, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4706,7 +4592,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesetting(ph
 
 	// verify the required parameter 'phoneBaseId' is set
 	if &phoneBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'phoneBaseId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesPhonebasesetting")
 	}
 
@@ -4765,8 +4651,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesetting(ph
 // GetTelephonyProvidersEdgesPhonebasesettings invokes GET /api/v2/telephony/providers/edges/phonebasesettings
 //
 // Get a list of Phone Base Settings objects
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(pageSize int, pageNumber int, sortBy string, sortOrder string, expand []string, name string) (*Phonebaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4844,8 +4728,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(p
 // GetTelephonyProvidersEdgesPhonebasesettingsAvailablemetabases invokes GET /api/v2/telephony/providers/edges/phonebasesettings/availablemetabases
 //
 // Get a list of available makes and models to create a new Phone Base Settings
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsAvailablemetabases(pageSize int, pageNumber int) (*Phonemetabaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4915,8 +4797,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsAv
 // GetTelephonyProvidersEdgesPhonebasesettingsTemplate invokes GET /api/v2/telephony/providers/edges/phonebasesettings/template
 //
 // Get a Phone Base Settings instance template from a given make and model. This object can then be modified and saved as a new Phone Base Settings instance
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTemplate(phoneMetabaseId string) (*Phonebase, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4928,7 +4808,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 
 	// verify the required parameter 'phoneMetabaseId' is set
 	if &phoneMetabaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'phoneMetabaseId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesPhonebasesettingsTemplate")
 	}
 
@@ -4989,8 +4869,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 // GetTelephonyProvidersEdgesPhones invokes GET /api/v2/telephony/providers/edges/phones
 //
 // Get a list of Phone Instances
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber int, pageSize int, sortBy string, sortOrder string, siteId string, webRtcUserId string, phoneBaseSettingsId string, linesLoggedInUserId string, linesDefaultForUserId string, phoneHardwareId string, linesId string, linesName string, name string, statusOperationalStatus string, secondaryStatusOperationalStatus string, expand []string, fields []string) (*Phoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5090,8 +4968,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber i
 // GetTelephonyProvidersEdgesPhonesTemplate invokes GET /api/v2/telephony/providers/edges/phones/template
 //
 // Get a Phone instance template based on a Phone Base Settings object. This object can then be modified and saved as a new Phone instance
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonesTemplate(phoneBaseSettingsId string) (*Phone, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5103,7 +4979,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonesTemplate(phon
 
 	// verify the required parameter 'phoneBaseSettingsId' is set
 	if &phoneBaseSettingsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'phoneBaseSettingsId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesPhonesTemplate")
 	}
 
@@ -5177,7 +5053,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhysicalinterfaces(
 
 	// verify the required parameter 'edgeIds' is set
 	if &edgeIds == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeIds' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesPhysicalinterfaces")
 	}
 
@@ -5238,8 +5114,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhysicalinterfaces(
 // GetTelephonyProvidersEdgesSite invokes GET /api/v2/telephony/providers/edges/sites/{siteId}
 //
 // Get a Site by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSite(siteId string) (*Site, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5252,7 +5126,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSite(siteId string)
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSite")
 	}
 
@@ -5311,8 +5185,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSite(siteId string)
 // GetTelephonyProvidersEdgesSiteNumberplan invokes GET /api/v2/telephony/providers/edges/sites/{siteId}/numberplans/{numberPlanId}
 //
 // Get a Number Plan by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplan(siteId string, numberPlanId string) (*Numberplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5326,12 +5198,12 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplan(site
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSiteNumberplan")
 	}
 	// verify the required parameter 'numberPlanId' is set
 	if &numberPlanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'numberPlanId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSiteNumberplan")
 	}
 
@@ -5390,8 +5262,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplan(site
 // GetTelephonyProvidersEdgesSiteNumberplans invokes GET /api/v2/telephony/providers/edges/sites/{siteId}/numberplans
 //
 // Get the list of Number Plans for this Site. Only fetches the first 200 records.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplans(siteId string) ([]Numberplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5404,7 +5274,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplans(sit
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSiteNumberplans")
 	}
 
@@ -5463,8 +5333,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplans(sit
 // GetTelephonyProvidersEdgesSiteNumberplansClassifications invokes GET /api/v2/telephony/providers/edges/sites/{siteId}/numberplans/classifications
 //
 // Get a list of Classifications for this Site
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplansClassifications(siteId string, classification string) ([]string, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5477,7 +5345,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplansClas
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSiteNumberplansClassifications")
 	}
 
@@ -5538,8 +5406,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplansClas
 // GetTelephonyProvidersEdgesSiteOutboundroute invokes GET /api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId}
 //
 // Get an outbound route
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroute(siteId string, outboundRouteId string) (*Outboundroutebase, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5553,12 +5419,12 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroute(s
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSiteOutboundroute")
 	}
 	// verify the required parameter 'outboundRouteId' is set
 	if &outboundRouteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'outboundRouteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSiteOutboundroute")
 	}
 
@@ -5617,8 +5483,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroute(s
 // GetTelephonyProvidersEdgesSiteOutboundroutes invokes GET /api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes
 //
 // Get outbound routes
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(siteId string, pageSize int, pageNumber int, name string, externalTrunkBasesIds string, sortBy string) (*Outboundroutebaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5631,7 +5495,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesSiteOutboundroutes")
 	}
 
@@ -5700,8 +5564,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(
 // GetTelephonyProvidersEdgesSites invokes GET /api/v2/telephony/providers/edges/sites
 //
 // Get the list of Sites.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, locationId string, managed bool) (*Siteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5781,8 +5643,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int,
 // GetTelephonyProvidersEdgesTimezones invokes GET /api/v2/telephony/providers/edges/timezones
 //
 // Get a list of Edge-compatible time zones
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTimezones(pageSize int, pageNumber int) (*Timezoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5852,8 +5712,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTimezones(pageSize 
 // GetTelephonyProvidersEdgesTrunk invokes GET /api/v2/telephony/providers/edges/trunks/{trunkId}
 //
 // Get a Trunk by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunk(trunkId string) (*Trunk, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5866,7 +5724,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunk(trunkId strin
 
 	// verify the required parameter 'trunkId' is set
 	if &trunkId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trunkId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesTrunk")
 	}
 
@@ -5925,8 +5783,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunk(trunkId strin
 // GetTelephonyProvidersEdgesTrunkMetrics invokes GET /api/v2/telephony/providers/edges/trunks/{trunkId}/metrics
 //
 // Get the trunk metrics.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkMetrics(trunkId string) (*Trunkmetrics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5939,7 +5795,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkMetrics(trunkI
 
 	// verify the required parameter 'trunkId' is set
 	if &trunkId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trunkId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesTrunkMetrics")
 	}
 
@@ -6012,7 +5868,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesetting(tr
 
 	// verify the required parameter 'trunkBaseSettingsId' is set
 	if &trunkBaseSettingsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trunkBaseSettingsId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesTrunkbasesetting")
 	}
 
@@ -6158,8 +6014,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettings(p
 // GetTelephonyProvidersEdgesTrunkbasesettingsAvailablemetabases invokes GET /api/v2/telephony/providers/edges/trunkbasesettings/availablemetabases
 //
 // Get a list of available makes and models to create a new Trunk Base Settings
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsAvailablemetabases(varType string, pageSize int, pageNumber int) (*Trunkmetabaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6231,8 +6085,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsAv
 // GetTelephonyProvidersEdgesTrunkbasesettingsTemplate invokes GET /api/v2/telephony/providers/edges/trunkbasesettings/template
 //
 // Get a Trunk Base Settings instance template from a given make and model. This object can then be modified and saved as a new Trunk Base Settings instance
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsTemplate(trunkMetabaseId string) (*Trunkbase, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6244,7 +6096,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsTe
 
 	// verify the required parameter 'trunkMetabaseId' is set
 	if &trunkMetabaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trunkMetabaseId' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesTrunkbasesettingsTemplate")
 	}
 
@@ -6386,8 +6238,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunks(pageNumber i
 // GetTelephonyProvidersEdgesTrunksMetrics invokes GET /api/v2/telephony/providers/edges/trunks/metrics
 //
 // Get the metrics for a list of trunks.
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunksMetrics(trunkIds string) ([]Trunkmetrics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6399,7 +6249,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunksMetrics(trunk
 
 	// verify the required parameter 'trunkIds' is set
 	if &trunkIds == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trunkIds' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesTrunksMetrics")
 	}
 
@@ -6460,8 +6310,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunksMetrics(trunk
 // GetTelephonyProvidersEdgesTrunkswithrecording invokes GET /api/v2/telephony/providers/edges/trunkswithrecording
 //
 // Get Counts of trunks that have recording disabled or enabled
-//
-// 
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkswithrecording(trunkType string) (*Trunkrecordingenabledcount, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6529,8 +6377,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkswithrecording
 // PostTelephonyProvidersEdgeDiagnosticNslookup invokes POST /api/v2/telephony/providers/edges/{edgeId}/diagnostic/nslookup
 //
 // Nslookup request command to collect networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticNslookup(edgeId string, body Edgenetworkdiagnosticrequest) (*Edgenetworkdiagnostic, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6543,12 +6389,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticNslookup(
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticNslookup")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticNslookup")
 	}
 
@@ -6610,8 +6456,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticNslookup(
 // PostTelephonyProvidersEdgeDiagnosticPing invokes POST /api/v2/telephony/providers/edges/{edgeId}/diagnostic/ping
 //
 // Ping Request command to collect networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticPing(edgeId string, body Edgenetworkdiagnosticrequest) (*Edgenetworkdiagnostic, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6624,12 +6468,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticPing(edge
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticPing")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticPing")
 	}
 
@@ -6691,8 +6535,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticPing(edge
 // PostTelephonyProvidersEdgeDiagnosticRoute invokes POST /api/v2/telephony/providers/edges/{edgeId}/diagnostic/route
 //
 // Route request command to collect networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticRoute(edgeId string, body Edgenetworkdiagnosticrequest) (*Edgenetworkdiagnostic, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6705,12 +6547,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticRoute(edg
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticRoute")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticRoute")
 	}
 
@@ -6772,8 +6614,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticRoute(edg
 // PostTelephonyProvidersEdgeDiagnosticTracepath invokes POST /api/v2/telephony/providers/edges/{edgeId}/diagnostic/tracepath
 //
 // Tracepath request command to collect networking-related information from an Edge for a target IP or host.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticTracepath(edgeId string, body Edgenetworkdiagnosticrequest) (*Edgenetworkdiagnostic, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6786,12 +6626,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticTracepath
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticTracepath")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeDiagnosticTracepath")
 	}
 
@@ -6867,12 +6707,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogicalinterfaces(e
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeLogicalinterfaces")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeLogicalinterfaces")
 	}
 
@@ -6934,8 +6774,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogicalinterfaces(e
 // PostTelephonyProvidersEdgeLogsJobUpload invokes POST /api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}/upload
 //
 // Request that the specified fileIds be uploaded from the Edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobUpload(edgeId string, jobId string, body Edgelogsjobuploadrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6948,17 +6786,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobUpload(edgeI
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeLogsJobUpload")
 	}
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'jobId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeLogsJobUpload")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeLogsJobUpload")
 	}
 
@@ -7014,8 +6852,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobUpload(edgeI
 // PostTelephonyProvidersEdgeLogsJobs invokes POST /api/v2/telephony/providers/edges/{edgeId}/logs/jobs
 //
 // Create a job to upload a list of Edge logs.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobs(edgeId string, body Edgelogsjobrequest) (*Edgelogsjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7028,12 +6864,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobs(edgeId str
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeLogsJobs")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeLogsJobs")
 	}
 
@@ -7095,8 +6931,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobs(edgeId str
 // PostTelephonyProvidersEdgeReboot invokes POST /api/v2/telephony/providers/edges/{edgeId}/reboot
 //
 // Reboot an Edge
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeReboot(edgeId string, body Edgerebootparameters) (*string, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7109,7 +6943,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeReboot(edgeId strin
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeReboot")
 	}
 
@@ -7171,8 +7005,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeReboot(edgeId strin
 // PostTelephonyProvidersEdgeSoftwareupdate invokes POST /api/v2/telephony/providers/edges/{edgeId}/softwareupdate
 //
 // Starts a software update for this edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeSoftwareupdate(edgeId string, body Domainedgesoftwareupdatedto) (*Domainedgesoftwareupdatedto, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7185,12 +7017,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeSoftwareupdate(edge
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeSoftwareupdate")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeSoftwareupdate")
 	}
 
@@ -7252,8 +7084,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeSoftwareupdate(edge
 // PostTelephonyProvidersEdgeStatuscode invokes POST /api/v2/telephony/providers/edges/{edgeId}/statuscode
 //
 // Take an Edge in or out of service
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeStatuscode(edgeId string, body Edgeservicestaterequest) (*string, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7266,7 +7096,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeStatuscode(edgeId s
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeStatuscode")
 	}
 
@@ -7328,8 +7158,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeStatuscode(edgeId s
 // PostTelephonyProvidersEdgeUnpair invokes POST /api/v2/telephony/providers/edges/{edgeId}/unpair
 //
 // Unpair an Edge
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeUnpair(edgeId string) (*string, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7342,7 +7170,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeUnpair(edgeId strin
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgeUnpair")
 	}
 
@@ -7401,8 +7229,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeUnpair(edgeId strin
 // PostTelephonyProvidersEdges invokes POST /api/v2/telephony/providers/edges
 //
 // Create an edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdges(body Edge) (*Edge, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7414,7 +7240,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdges(body Edge) (*Edge
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdges")
 	}
 
@@ -7476,8 +7302,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdges(body Edge) (*Edge
 // PostTelephonyProvidersEdgesAddressvalidation invokes POST /api/v2/telephony/providers/edges/addressvalidation
 //
 // Validates a street address
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesAddressvalidation(body Validateaddressrequest) (*Validateaddressresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7489,7 +7313,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesAddressvalidation(
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesAddressvalidation")
 	}
 
@@ -7551,8 +7375,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesAddressvalidation(
 // PostTelephonyProvidersEdgesCertificateauthorities invokes POST /api/v2/telephony/providers/edges/certificateauthorities
 //
 // Create a certificate authority.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesCertificateauthorities(body Domaincertificateauthority) (*Domaincertificateauthority, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7564,7 +7386,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesCertificateauthori
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesCertificateauthorities")
 	}
 
@@ -7626,8 +7448,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesCertificateauthori
 // PostTelephonyProvidersEdgesDidpools invokes POST /api/v2/telephony/providers/edges/didpools
 //
 // Create a new DID pool
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesDidpools(body Didpool) (*Didpool, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7639,7 +7459,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesDidpools(body Didp
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesDidpools")
 	}
 
@@ -7701,8 +7521,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesDidpools(body Didp
 // PostTelephonyProvidersEdgesEdgegroups invokes POST /api/v2/telephony/providers/edges/edgegroups
 //
 // Create an edge group.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesEdgegroups(body Edgegroup) (*Edgegroup, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7714,7 +7532,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesEdgegroups(body Ed
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesEdgegroups")
 	}
 
@@ -7776,8 +7594,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesEdgegroups(body Ed
 // PostTelephonyProvidersEdgesExtensionpools invokes POST /api/v2/telephony/providers/edges/extensionpools
 //
 // Create a new extension pool
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesExtensionpools(body Extensionpool) (*Extensionpool, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7789,7 +7605,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesExtensionpools(bod
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesExtensionpools")
 	}
 
@@ -7864,7 +7680,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesOutboundroutes(bod
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesOutboundroutes")
 	}
 
@@ -7926,8 +7742,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesOutboundroutes(bod
 // PostTelephonyProvidersEdgesPhoneReboot invokes POST /api/v2/telephony/providers/edges/phones/{phoneId}/reboot
 //
 // Reboot a Phone
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhoneReboot(phoneId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7939,7 +7753,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhoneReboot(phoneI
 
 	// verify the required parameter 'phoneId' is set
 	if &phoneId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'phoneId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesPhoneReboot")
 	}
 
@@ -7992,8 +7806,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhoneReboot(phoneI
 // PostTelephonyProvidersEdgesPhonebasesettings invokes POST /api/v2/telephony/providers/edges/phonebasesettings
 //
 // Create a new Phone Base Settings object
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonebasesettings(body Phonebase) (*Phonebase, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8005,7 +7817,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonebasesettings(
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesPhonebasesettings")
 	}
 
@@ -8067,8 +7879,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonebasesettings(
 // PostTelephonyProvidersEdgesPhones invokes POST /api/v2/telephony/providers/edges/phones
 //
 // Create a new Phone
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhones(body Phone) (*Phone, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8080,7 +7890,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhones(body Phone)
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesPhones")
 	}
 
@@ -8142,8 +7952,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhones(body Phone)
 // PostTelephonyProvidersEdgesPhonesReboot invokes POST /api/v2/telephony/providers/edges/phones/reboot
 //
 // Reboot Multiple Phones
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonesReboot(body Phonesreboot) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8154,7 +7962,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonesReboot(body 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesPhonesReboot")
 	}
 
@@ -8210,8 +8018,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonesReboot(body 
 // PostTelephonyProvidersEdgesSiteOutboundroutes invokes POST /api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes
 //
 // Create outbound route
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteOutboundroutes(siteId string, body Outboundroutebase) (*Outboundroutebase, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8224,12 +8030,12 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteOutboundroutes
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesSiteOutboundroutes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesSiteOutboundroutes")
 	}
 
@@ -8291,8 +8097,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteOutboundroutes
 // PostTelephonyProvidersEdgesSiteRebalance invokes POST /api/v2/telephony/providers/edges/sites/{siteId}/rebalance
 //
 // Triggers the rebalance operation.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteRebalance(siteId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8304,7 +8108,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteRebalance(site
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesSiteRebalance")
 	}
 
@@ -8357,8 +8161,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteRebalance(site
 // PostTelephonyProvidersEdgesSites invokes POST /api/v2/telephony/providers/edges/sites
 //
 // Create a Site.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSites(body Site) (*Site, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8370,7 +8172,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSites(body Site) (
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesSites")
 	}
 
@@ -8432,8 +8234,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSites(body Site) (
 // PostTelephonyProvidersEdgesTrunkbasesettings invokes POST /api/v2/telephony/providers/edges/trunkbasesettings
 //
 // Create a Trunk Base Settings object
-//
-// 
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesTrunkbasesettings(body Trunkbase) (*Trunkbase, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8445,7 +8245,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesTrunkbasesettings(
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesTrunkbasesettings")
 	}
 
@@ -8507,8 +8307,6 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesTrunkbasesettings(
 // PutTelephonyProvidersEdge invokes PUT /api/v2/telephony/providers/edges/{edgeId}
 //
 // Update a edge.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdge(edgeId string, body Edge) (*Edge, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8521,12 +8319,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdge(edgeId string, body
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdge")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdge")
 	}
 
@@ -8588,8 +8386,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdge(edgeId string, body
 // PutTelephonyProvidersEdgeLine invokes PUT /api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}
 //
 // Update a line.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLine(edgeId string, lineId string, body Edgeline) (*Edgeline, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8603,17 +8399,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLine(edgeId string, 
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgeLine")
 	}
 	// verify the required parameter 'lineId' is set
 	if &lineId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'lineId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgeLine")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgeLine")
 	}
 
@@ -8675,8 +8471,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLine(edgeId string, 
 // PutTelephonyProvidersEdgeLogicalinterface invokes PUT /api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}
 //
 // Update an edge logical interface.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLogicalinterface(edgeId string, interfaceId string, body Domainlogicalinterface) (*Domainlogicalinterface, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8690,17 +8484,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLogicalinterface(edg
 
 	// verify the required parameter 'edgeId' is set
 	if &edgeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgeLogicalinterface")
 	}
 	// verify the required parameter 'interfaceId' is set
 	if &interfaceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'interfaceId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgeLogicalinterface")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgeLogicalinterface")
 	}
 
@@ -8762,8 +8556,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLogicalinterface(edg
 // PutTelephonyProvidersEdgesCertificateauthority invokes PUT /api/v2/telephony/providers/edges/certificateauthorities/{certificateId}
 //
 // Update a certificate authority.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesCertificateauthority(certificateId string, body Domaincertificateauthority) (*Domaincertificateauthority, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8776,12 +8568,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesCertificateauthorit
 
 	// verify the required parameter 'certificateId' is set
 	if &certificateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'certificateId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesCertificateauthority")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesCertificateauthority")
 	}
 
@@ -8843,8 +8635,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesCertificateauthorit
 // PutTelephonyProvidersEdgesDid invokes PUT /api/v2/telephony/providers/edges/dids/{didId}
 //
 // Update a DID by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDid(didId string, body Did) (*Did, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8857,12 +8647,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDid(didId string, b
 
 	// verify the required parameter 'didId' is set
 	if &didId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'didId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesDid")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesDid")
 	}
 
@@ -8924,8 +8714,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDid(didId string, b
 // PutTelephonyProvidersEdgesDidpool invokes PUT /api/v2/telephony/providers/edges/didpools/{didPoolId}
 //
 // Update a DID Pool by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDidpool(didPoolId string, body Didpool) (*Didpool, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -8938,12 +8726,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDidpool(didPoolId s
 
 	// verify the required parameter 'didPoolId' is set
 	if &didPoolId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'didPoolId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesDidpool")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesDidpool")
 	}
 
@@ -9005,8 +8793,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDidpool(didPoolId s
 // PutTelephonyProvidersEdgesEdgegroup invokes PUT /api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}
 //
 // Update an edge group.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroup(edgeGroupId string, body Edgegroup) (*Edgegroup, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9019,12 +8805,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroup(edgeGroup
 
 	// verify the required parameter 'edgeGroupId' is set
 	if &edgeGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgeGroupId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesEdgegroup")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesEdgegroup")
 	}
 
@@ -9086,8 +8872,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroup(edgeGroup
 // PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase invokes PUT /api/v2/telephony/providers/edges/edgegroups/{edgegroupId}/edgetrunkbases/{edgetrunkbaseId}
 //
 // Update the edge trunk base associated with the edge group
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase(edgegroupId string, edgetrunkbaseId string, body Edgetrunkbase) (*Edgetrunkbase, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9101,17 +8885,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroupEdgetrunkb
 
 	// verify the required parameter 'edgegroupId' is set
 	if &edgegroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgegroupId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase")
 	}
 	// verify the required parameter 'edgetrunkbaseId' is set
 	if &edgetrunkbaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'edgetrunkbaseId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase")
 	}
 
@@ -9173,8 +8957,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroupEdgetrunkb
 // PutTelephonyProvidersEdgesExtension invokes PUT /api/v2/telephony/providers/edges/extensions/{extensionId}
 //
 // Update an extension by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtension(extensionId string, body Extension) (*Extension, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9187,12 +8969,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtension(extension
 
 	// verify the required parameter 'extensionId' is set
 	if &extensionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'extensionId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesExtension")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesExtension")
 	}
 
@@ -9254,8 +9036,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtension(extension
 // PutTelephonyProvidersEdgesExtensionpool invokes PUT /api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}
 //
 // Update an extension pool by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtensionpool(extensionPoolId string, body Extensionpool) (*Extensionpool, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9268,12 +9048,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtensionpool(exten
 
 	// verify the required parameter 'extensionPoolId' is set
 	if &extensionPoolId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'extensionPoolId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesExtensionpool")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesExtensionpool")
 	}
 
@@ -9349,12 +9129,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesOutboundroute(outbo
 
 	// verify the required parameter 'outboundRouteId' is set
 	if &outboundRouteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'outboundRouteId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesOutboundroute")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesOutboundroute")
 	}
 
@@ -9416,8 +9196,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesOutboundroute(outbo
 // PutTelephonyProvidersEdgesPhone invokes PUT /api/v2/telephony/providers/edges/phones/{phoneId}
 //
 // Update a Phone by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhone(phoneId string, body Phone) (*Phone, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9430,12 +9208,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhone(phoneId strin
 
 	// verify the required parameter 'phoneId' is set
 	if &phoneId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'phoneId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesPhone")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesPhone")
 	}
 
@@ -9497,8 +9275,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhone(phoneId strin
 // PutTelephonyProvidersEdgesPhonebasesetting invokes PUT /api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}
 //
 // Update a Phone Base Settings by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhonebasesetting(phoneBaseId string, body Phonebase) (*Phonebase, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9511,12 +9287,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhonebasesetting(ph
 
 	// verify the required parameter 'phoneBaseId' is set
 	if &phoneBaseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'phoneBaseId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesPhonebasesetting")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesPhonebasesetting")
 	}
 
@@ -9578,8 +9354,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhonebasesetting(ph
 // PutTelephonyProvidersEdgesSite invokes PUT /api/v2/telephony/providers/edges/sites/{siteId}
 //
 // Update a Site by ID.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSite(siteId string, body Site) (*Site, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9592,12 +9366,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSite(siteId string,
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesSite")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesSite")
 	}
 
@@ -9659,8 +9433,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSite(siteId string,
 // PutTelephonyProvidersEdgesSiteNumberplans invokes PUT /api/v2/telephony/providers/edges/sites/{siteId}/numberplans
 //
 // Update the list of Number Plans. A user can update maximum 200 number plans at a time.
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteNumberplans(siteId string, body []Numberplan) ([]Numberplan, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9673,7 +9445,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteNumberplans(sit
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesSiteNumberplans")
 	}
 	// verify the required parameter 'body' is set
@@ -9740,8 +9512,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteNumberplans(sit
 // PutTelephonyProvidersEdgesSiteOutboundroute invokes PUT /api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId}
 //
 // Update outbound route
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteOutboundroute(siteId string, outboundRouteId string, body Outboundroutebase) (*Outboundroutebase, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9755,17 +9525,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteOutboundroute(s
 
 	// verify the required parameter 'siteId' is set
 	if &siteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'siteId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesSiteOutboundroute")
 	}
 	// verify the required parameter 'outboundRouteId' is set
 	if &outboundRouteId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'outboundRouteId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesSiteOutboundroute")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesSiteOutboundroute")
 	}
 
@@ -9827,8 +9597,6 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteOutboundroute(s
 // PutTelephonyProvidersEdgesTrunkbasesetting invokes PUT /api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}
 //
 // Update a Trunk Base Settings object by ID
-//
-// 
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesTrunkbasesetting(trunkBaseSettingsId string, body Trunkbase) (*Trunkbase, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -9841,12 +9609,12 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesTrunkbasesetting(tr
 
 	// verify the required parameter 'trunkBaseSettingsId' is set
 	if &trunkBaseSettingsId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'trunkBaseSettingsId' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesTrunkbasesetting")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PutTelephonyProvidersEdgesTrunkbasesetting")
 	}
 

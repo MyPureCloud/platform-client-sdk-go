@@ -78,11 +78,11 @@ func (o *Assignedwrapupcode) UnmarshalJSON(b []byte) error {
 	if Code, ok := AssignedwrapupcodeMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Notes, ok := AssignedwrapupcodeMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Tags, ok := AssignedwrapupcodeMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)

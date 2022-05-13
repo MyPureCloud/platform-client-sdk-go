@@ -53,7 +53,7 @@ func (o *Otherprofileassignment) UnmarshalJSON(b []byte) error {
 	if Id, ok := OtherprofileassignmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if CurrentProfile, ok := OtherprofileassignmentMap["currentProfile"].(map[string]interface{}); ok {
 		CurrentProfileString, _ := json.Marshal(CurrentProfile)
 		json.Unmarshal(CurrentProfileString, &o.CurrentProfile)
@@ -62,7 +62,7 @@ func (o *Otherprofileassignment) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OtherprofileassignmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

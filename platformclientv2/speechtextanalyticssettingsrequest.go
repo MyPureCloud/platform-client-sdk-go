@@ -45,7 +45,7 @@ func (o *Speechtextanalyticssettingsrequest) UnmarshalJSON(b []byte) error {
 	if DefaultProgramId, ok := SpeechtextanalyticssettingsrequestMap["defaultProgramId"].(string); ok {
 		o.DefaultProgramId = &DefaultProgramId
 	}
-	
+    
 	if ExpectedDialects, ok := SpeechtextanalyticssettingsrequestMap["expectedDialects"].([]interface{}); ok {
 		ExpectedDialectsString, _ := json.Marshal(ExpectedDialects)
 		json.Unmarshal(ExpectedDialectsString, &o.ExpectedDialects)

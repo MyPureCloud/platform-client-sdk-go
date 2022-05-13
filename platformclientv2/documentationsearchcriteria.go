@@ -101,7 +101,7 @@ func (o *Documentationsearchcriteria) UnmarshalJSON(b []byte) error {
 	if EndValue, ok := DocumentationsearchcriteriaMap["endValue"].(string); ok {
 		o.EndValue = &EndValue
 	}
-	
+    
 	if Values, ok := DocumentationsearchcriteriaMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)
@@ -110,7 +110,7 @@ func (o *Documentationsearchcriteria) UnmarshalJSON(b []byte) error {
 	if StartValue, ok := DocumentationsearchcriteriaMap["startValue"].(string); ok {
 		o.StartValue = &StartValue
 	}
-	
+    
 	if Fields, ok := DocumentationsearchcriteriaMap["fields"].([]interface{}); ok {
 		FieldsString, _ := json.Marshal(Fields)
 		json.Unmarshal(FieldsString, &o.Fields)
@@ -119,11 +119,11 @@ func (o *Documentationsearchcriteria) UnmarshalJSON(b []byte) error {
 	if Value, ok := DocumentationsearchcriteriaMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Operator, ok := DocumentationsearchcriteriaMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Group, ok := DocumentationsearchcriteriaMap["group"].([]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
@@ -132,11 +132,11 @@ func (o *Documentationsearchcriteria) UnmarshalJSON(b []byte) error {
 	if DateFormat, ok := DocumentationsearchcriteriaMap["dateFormat"].(string); ok {
 		o.DateFormat = &DateFormat
 	}
-	
+    
 	if VarType, ok := DocumentationsearchcriteriaMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

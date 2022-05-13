@@ -94,15 +94,15 @@ func (o *Wrapup) UnmarshalJSON(b []byte) error {
 	if Code, ok := WrapupMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 	if Name, ok := WrapupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Notes, ok := WrapupMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
-	
+    
 	if Tags, ok := WrapupMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)
@@ -121,7 +121,7 @@ func (o *Wrapup) UnmarshalJSON(b []byte) error {
 	if Provisional, ok := WrapupMap["provisional"].(bool); ok {
 		o.Provisional = &Provisional
 	}
-	
+    
 
 	return nil
 }

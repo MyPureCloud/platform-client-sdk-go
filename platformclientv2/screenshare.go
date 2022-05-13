@@ -174,19 +174,19 @@ func (o *Screenshare) UnmarshalJSON(b []byte) error {
 	if State, ok := ScreenshareMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := ScreenshareMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Context, ok := ScreenshareMap["context"].(string); ok {
 		o.Context = &Context
 	}
-	
+    
 	if Sharing, ok := ScreenshareMap["sharing"].(bool); ok {
 		o.Sharing = &Sharing
 	}
-	
+    
 	if PeerCount, ok := ScreenshareMap["peerCount"].(float64); ok {
 		PeerCountInt := int(PeerCount)
 		o.PeerCount = &PeerCountInt
@@ -195,7 +195,7 @@ func (o *Screenshare) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := ScreenshareMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startAlertingTimeString, ok := ScreenshareMap["startAlertingTime"].(string); ok {
 		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
 		o.StartAlertingTime = &StartAlertingTime
@@ -214,11 +214,11 @@ func (o *Screenshare) UnmarshalJSON(b []byte) error {
 	if Provider, ok := ScreenshareMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if PeerId, ok := ScreenshareMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if Segments, ok := ScreenshareMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)
@@ -237,7 +237,7 @@ func (o *Screenshare) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := ScreenshareMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

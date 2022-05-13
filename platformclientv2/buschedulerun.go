@@ -205,19 +205,19 @@ func (o *Buschedulerun) UnmarshalJSON(b []byte) error {
 	if Id, ok := BuschedulerunMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SchedulerRunId, ok := BuschedulerunMap["schedulerRunId"].(string); ok {
 		o.SchedulerRunId = &SchedulerRunId
 	}
-	
+    
 	if IntradayRescheduling, ok := BuschedulerunMap["intradayRescheduling"].(bool); ok {
 		o.IntradayRescheduling = &IntradayRescheduling
 	}
-	
+    
 	if State, ok := BuschedulerunMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if WeekCount, ok := BuschedulerunMap["weekCount"].(float64); ok {
 		WeekCountInt := int(WeekCount)
 		o.WeekCount = &WeekCountInt
@@ -226,7 +226,7 @@ func (o *Buschedulerun) UnmarshalJSON(b []byte) error {
 	if PercentComplete, ok := BuschedulerunMap["percentComplete"].(float64); ok {
 		o.PercentComplete = &PercentComplete
 	}
-	
+    
 	if targetWeekString, ok := BuschedulerunMap["targetWeek"].(string); ok {
 		TargetWeek, _ := time.Parse("2006-01-02", targetWeekString)
 		o.TargetWeek = &TargetWeek
@@ -240,7 +240,7 @@ func (o *Buschedulerun) UnmarshalJSON(b []byte) error {
 	if ScheduleDescription, ok := BuschedulerunMap["scheduleDescription"].(string); ok {
 		o.ScheduleDescription = &ScheduleDescription
 	}
-	
+    
 	if schedulingStartTimeString, ok := BuschedulerunMap["schedulingStartTime"].(string); ok {
 		SchedulingStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", schedulingStartTimeString)
 		o.SchedulingStartTime = &SchedulingStartTime
@@ -284,7 +284,7 @@ func (o *Buschedulerun) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BuschedulerunMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

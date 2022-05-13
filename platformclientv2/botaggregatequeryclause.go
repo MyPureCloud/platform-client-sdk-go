@@ -45,7 +45,7 @@ func (o *Botaggregatequeryclause) UnmarshalJSON(b []byte) error {
 	if VarType, ok := BotaggregatequeryclauseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Predicates, ok := BotaggregatequeryclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)

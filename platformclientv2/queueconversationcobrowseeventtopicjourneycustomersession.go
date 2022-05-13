@@ -45,11 +45,11 @@ func (o *Queueconversationcobrowseeventtopicjourneycustomersession) UnmarshalJSO
 	if Id, ok := QueueconversationcobrowseeventtopicjourneycustomersessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if VarType, ok := QueueconversationcobrowseeventtopicjourneycustomersessionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

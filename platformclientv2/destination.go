@@ -61,19 +61,19 @@ func (o *Destination) UnmarshalJSON(b []byte) error {
 	if Address, ok := DestinationMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if Name, ok := DestinationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if UserId, ok := DestinationMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if QueueId, ok := DestinationMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 
 	return nil
 }

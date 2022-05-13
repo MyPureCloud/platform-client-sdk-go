@@ -69,7 +69,7 @@ func (o *Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer) Unma
 	if DayOfWeek, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["dayOfWeek"].(string); ok {
 		o.DayOfWeek = &DayOfWeek
 	}
-	
+    
 	if Weight, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["weight"].(float64); ok {
 		WeightInt := int(Weight)
 		o.Weight = &WeightInt
@@ -78,15 +78,15 @@ func (o *Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer) Unma
 	if Date, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["date"].(string); ok {
 		o.Date = &Date
 	}
-	
+    
 	if FileName, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["fileName"].(string); ok {
 		o.FileName = &FileName
 	}
-	
+    
 	if DataKey, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["dataKey"].(string); ok {
 		o.DataKey = &DataKey
 	}
-	
+    
 
 	return nil
 }

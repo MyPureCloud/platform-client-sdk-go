@@ -53,15 +53,15 @@ func (o *Scimemail) UnmarshalJSON(b []byte) error {
 	if Value, ok := ScimemailMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarType, ok := ScimemailMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Primary, ok := ScimemailMap["primary"].(bool); ok {
 		o.Primary = &Primary
 	}
-	
+    
 
 	return nil
 }

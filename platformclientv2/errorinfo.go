@@ -45,11 +45,11 @@ func (o *Errorinfo) UnmarshalJSON(b []byte) error {
 	if Message, ok := ErrorinfoMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Code, ok := ErrorinfoMap["code"].(string); ok {
 		o.Code = &Code
 	}
-	
+    
 
 	return nil
 }

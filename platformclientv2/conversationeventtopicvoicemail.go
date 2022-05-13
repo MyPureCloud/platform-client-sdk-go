@@ -45,11 +45,11 @@ func (o *Conversationeventtopicvoicemail) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationeventtopicvoicemailMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if UploadStatus, ok := ConversationeventtopicvoicemailMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 
 	return nil
 }

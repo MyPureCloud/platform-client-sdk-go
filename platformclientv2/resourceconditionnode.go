@@ -69,15 +69,15 @@ func (o *Resourceconditionnode) UnmarshalJSON(b []byte) error {
 	if VariableName, ok := ResourceconditionnodeMap["variableName"].(string); ok {
 		o.VariableName = &VariableName
 	}
-	
+    
 	if Conjunction, ok := ResourceconditionnodeMap["conjunction"].(string); ok {
 		o.Conjunction = &Conjunction
 	}
-	
+    
 	if Operator, ok := ResourceconditionnodeMap["operator"].(string); ok {
 		o.Operator = &Operator
 	}
-	
+    
 	if Operands, ok := ResourceconditionnodeMap["operands"].([]interface{}); ok {
 		OperandsString, _ := json.Marshal(Operands)
 		json.Unmarshal(OperandsString, &o.Operands)

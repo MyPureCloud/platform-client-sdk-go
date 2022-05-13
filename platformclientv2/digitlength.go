@@ -45,11 +45,11 @@ func (o *Digitlength) UnmarshalJSON(b []byte) error {
 	if Start, ok := DigitlengthMap["start"].(string); ok {
 		o.Start = &Start
 	}
-	
+    
 	if End, ok := DigitlengthMap["end"].(string); ok {
 		o.End = &End
 	}
-	
+    
 
 	return nil
 }

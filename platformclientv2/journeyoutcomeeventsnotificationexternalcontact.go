@@ -45,11 +45,11 @@ func (o *Journeyoutcomeeventsnotificationexternalcontact) UnmarshalJSON(b []byte
 	if Id, ok := JourneyoutcomeeventsnotificationexternalcontactMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := JourneyoutcomeeventsnotificationexternalcontactMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

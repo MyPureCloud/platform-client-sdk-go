@@ -53,15 +53,15 @@ func (o *Phrase) UnmarshalJSON(b []byte) error {
 	if Text, ok := PhraseMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Strictness, ok := PhraseMap["strictness"].(string); ok {
 		o.Strictness = &Strictness
 	}
-	
+    
 	if Sentiment, ok := PhraseMap["sentiment"].(string); ok {
 		o.Sentiment = &Sentiment
 	}
-	
+    
 
 	return nil
 }

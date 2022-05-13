@@ -69,19 +69,19 @@ func (o *Chatmessageuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := ChatmessageuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ChatmessageuserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if DisplayName, ok := ChatmessageuserMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 	if Username, ok := ChatmessageuserMap["username"].(string); ok {
 		o.Username = &Username
 	}
-	
+    
 	if Images, ok := ChatmessageuserMap["images"].([]interface{}); ok {
 		ImagesString, _ := json.Marshal(Images)
 		json.Unmarshal(ImagesString, &o.Images)

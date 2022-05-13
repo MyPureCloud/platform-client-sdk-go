@@ -69,7 +69,7 @@ func (o *Importstatus) UnmarshalJSON(b []byte) error {
 	if State, ok := ImportstatusMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if TotalRecords, ok := ImportstatusMap["totalRecords"].(float64); ok {
 		TotalRecordsInt := int(TotalRecords)
 		o.TotalRecords = &TotalRecordsInt
@@ -88,7 +88,7 @@ func (o *Importstatus) UnmarshalJSON(b []byte) error {
 	if FailureReason, ok := ImportstatusMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
 	}
-	
+    
 
 	return nil
 }

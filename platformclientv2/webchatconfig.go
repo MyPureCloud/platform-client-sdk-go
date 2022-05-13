@@ -37,7 +37,7 @@ func (o *Webchatconfig) UnmarshalJSON(b []byte) error {
 	if WebChatSkin, ok := WebchatconfigMap["webChatSkin"].(string); ok {
 		o.WebChatSkin = &WebChatSkin
 	}
-	
+    
 
 	return nil
 }

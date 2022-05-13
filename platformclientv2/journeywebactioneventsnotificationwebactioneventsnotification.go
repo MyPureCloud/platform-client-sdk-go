@@ -118,11 +118,11 @@ func (o *Journeywebactioneventsnotificationwebactioneventsnotification) Unmarsha
 	if Id, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if CorrelationId, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["correlationId"].(string); ok {
 		o.CorrelationId = &CorrelationId
 	}
-	
+    
 	if ExternalContact, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -136,11 +136,11 @@ func (o *Journeywebactioneventsnotificationwebactioneventsnotification) Unmarsha
 	if CustomerId, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["customerId"].(string); ok {
 		o.CustomerId = &CustomerId
 	}
-	
+    
 	if CustomerIdType, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["customerIdType"].(string); ok {
 		o.CustomerIdType = &CustomerIdType
 	}
-	
+    
 	if Session, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["session"].(map[string]interface{}); ok {
 		SessionString, _ := json.Marshal(Session)
 		json.Unmarshal(SessionString, &o.Session)
@@ -149,7 +149,7 @@ func (o *Journeywebactioneventsnotificationwebactioneventsnotification) Unmarsha
 	if EventType, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 	if WebActionEvent, ok := JourneywebactioneventsnotificationwebactioneventsnotificationMap["webActionEvent"].(map[string]interface{}); ok {
 		WebActionEventString, _ := json.Marshal(WebActionEvent)
 		json.Unmarshal(WebActionEventString, &o.WebActionEvent)

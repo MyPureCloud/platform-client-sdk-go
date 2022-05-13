@@ -45,11 +45,11 @@ func (o *Resourceconditionvalue) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ResourceconditionvalueMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := ResourceconditionvalueMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

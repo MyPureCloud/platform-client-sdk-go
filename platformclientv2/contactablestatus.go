@@ -45,7 +45,7 @@ func (o *Contactablestatus) UnmarshalJSON(b []byte) error {
 	if Contactable, ok := ContactablestatusMap["contactable"].(bool); ok {
 		o.Contactable = &Contactable
 	}
-	
+    
 	if ColumnStatus, ok := ContactablestatusMap["columnStatus"].(map[string]interface{}); ok {
 		ColumnStatusString, _ := json.Marshal(ColumnStatus)
 		json.Unmarshal(ColumnStatusString, &o.ColumnStatus)

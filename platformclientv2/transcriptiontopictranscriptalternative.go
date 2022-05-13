@@ -70,7 +70,7 @@ func (o *Transcriptiontopictranscriptalternative) UnmarshalJSON(b []byte) error 
 		ConfidenceFloat32 := float32(Confidence)
 		o.Confidence = &ConfidenceFloat32
 	}
-	
+    
 	if OffsetMs, ok := TranscriptiontopictranscriptalternativeMap["offsetMs"].(float64); ok {
 		OffsetMsInt := int(OffsetMs)
 		o.OffsetMs = &OffsetMsInt
@@ -84,7 +84,7 @@ func (o *Transcriptiontopictranscriptalternative) UnmarshalJSON(b []byte) error 
 	if Transcript, ok := TranscriptiontopictranscriptalternativeMap["transcript"].(string); ok {
 		o.Transcript = &Transcript
 	}
-	
+    
 	if Words, ok := TranscriptiontopictranscriptalternativeMap["words"].([]interface{}); ok {
 		WordsString, _ := json.Marshal(Words)
 		json.Unmarshal(WordsString, &o.Words)

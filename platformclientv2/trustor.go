@@ -94,11 +94,11 @@ func (o *Trustor) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrustorMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Enabled, ok := TrustorMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if dateCreatedString, ok := TrustorMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -122,7 +122,7 @@ func (o *Trustor) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TrustorMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

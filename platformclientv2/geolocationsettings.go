@@ -69,23 +69,23 @@ func (o *Geolocationsettings) UnmarshalJSON(b []byte) error {
 	if Id, ok := GeolocationsettingsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := GeolocationsettingsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Enabled, ok := GeolocationsettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if MapboxKey, ok := GeolocationsettingsMap["mapboxKey"].(string); ok {
 		o.MapboxKey = &MapboxKey
 	}
-	
+    
 	if SelfUri, ok := GeolocationsettingsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

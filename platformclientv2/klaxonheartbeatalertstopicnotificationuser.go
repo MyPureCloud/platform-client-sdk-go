@@ -45,11 +45,11 @@ func (o *Klaxonheartbeatalertstopicnotificationuser) UnmarshalJSON(b []byte) err
 	if Id, ok := KlaxonheartbeatalertstopicnotificationuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DisplayName, ok := KlaxonheartbeatalertstopicnotificationuserMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 
 	return nil
 }

@@ -66,15 +66,15 @@ func (o *Scimerror) UnmarshalJSON(b []byte) error {
 	if Status, ok := ScimerrorMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if ScimType, ok := ScimerrorMap["scimType"].(string); ok {
 		o.ScimType = &ScimType
 	}
-	
+    
 	if Detail, ok := ScimerrorMap["detail"].(string); ok {
 		o.Detail = &Detail
 	}
-	
+    
 
 	return nil
 }

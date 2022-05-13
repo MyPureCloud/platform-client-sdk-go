@@ -74,7 +74,7 @@ func (o *Burescheduleresult) UnmarshalJSON(b []byte) error {
 	if GenerationResultsDownloadUrl, ok := BurescheduleresultMap["generationResultsDownloadUrl"].(string); ok {
 		o.GenerationResultsDownloadUrl = &GenerationResultsDownloadUrl
 	}
-	
+    
 	if HeadcountForecast, ok := BurescheduleresultMap["headcountForecast"].(map[string]interface{}); ok {
 		HeadcountForecastString, _ := json.Marshal(HeadcountForecast)
 		json.Unmarshal(HeadcountForecastString, &o.HeadcountForecast)
@@ -83,7 +83,7 @@ func (o *Burescheduleresult) UnmarshalJSON(b []byte) error {
 	if HeadcountForecastDownloadUrl, ok := BurescheduleresultMap["headcountForecastDownloadUrl"].(string); ok {
 		o.HeadcountForecastDownloadUrl = &HeadcountForecastDownloadUrl
 	}
-	
+    
 	if AgentSchedules, ok := BurescheduleresultMap["agentSchedules"].([]interface{}); ok {
 		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
 		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)

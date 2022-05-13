@@ -37,7 +37,7 @@ func (o *Textbotuseragent) UnmarshalJSON(b []byte) error {
 	if Name, ok := TextbotuseragentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

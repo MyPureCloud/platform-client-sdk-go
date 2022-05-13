@@ -85,11 +85,11 @@ func (o *Createwebchatrequest) UnmarshalJSON(b []byte) error {
 	if QueueId, ok := CreatewebchatrequestMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
 	}
-	
+    
 	if Provider, ok := CreatewebchatrequestMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if SkillIds, ok := CreatewebchatrequestMap["skillIds"].([]interface{}); ok {
 		SkillIdsString, _ := json.Marshal(SkillIds)
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
@@ -98,7 +98,7 @@ func (o *Createwebchatrequest) UnmarshalJSON(b []byte) error {
 	if LanguageId, ok := CreatewebchatrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}
-	
+    
 	if Priority, ok := CreatewebchatrequestMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
@@ -112,7 +112,7 @@ func (o *Createwebchatrequest) UnmarshalJSON(b []byte) error {
 	if CustomerName, ok := CreatewebchatrequestMap["customerName"].(string); ok {
 		o.CustomerName = &CustomerName
 	}
-	
+    
 
 	return nil
 }

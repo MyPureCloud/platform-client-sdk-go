@@ -118,11 +118,11 @@ func (o *Contactlistfilter) UnmarshalJSON(b []byte) error {
 	if Id, ok := ContactlistfilterMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ContactlistfilterMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := ContactlistfilterMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -151,11 +151,11 @@ func (o *Contactlistfilter) UnmarshalJSON(b []byte) error {
 	if FilterType, ok := ContactlistfilterMap["filterType"].(string); ok {
 		o.FilterType = &FilterType
 	}
-	
+    
 	if SelfUri, ok := ContactlistfilterMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

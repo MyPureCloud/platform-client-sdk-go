@@ -85,7 +85,7 @@ func (o *Buintradaydatagroup) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := BuintradaydatagroupMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if ForecastDataSummary, ok := BuintradaydatagroupMap["forecastDataSummary"].(map[string]interface{}); ok {
 		ForecastDataSummaryString, _ := json.Marshal(ForecastDataSummary)
 		json.Unmarshal(ForecastDataSummaryString, &o.ForecastDataSummary)

@@ -118,7 +118,7 @@ func (o *Coachingannotation) UnmarshalJSON(b []byte) error {
 	if Id, ok := CoachingannotationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if CreatedBy, ok := CoachingannotationMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -142,19 +142,19 @@ func (o *Coachingannotation) UnmarshalJSON(b []byte) error {
 	if Text, ok := CoachingannotationMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if IsDeleted, ok := CoachingannotationMap["isDeleted"].(bool); ok {
 		o.IsDeleted = &IsDeleted
 	}
-	
+    
 	if AccessType, ok := CoachingannotationMap["accessType"].(string); ok {
 		o.AccessType = &AccessType
 	}
-	
+    
 	if SelfUri, ok := CoachingannotationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

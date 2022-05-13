@@ -94,7 +94,7 @@ func (o *Queueconversationsocialexpressioneventtopicmessagedetails) UnmarshalJSO
 	if MessageId, ok := QueueconversationsocialexpressioneventtopicmessagedetailsMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 	if messageTimeString, ok := QueueconversationsocialexpressioneventtopicmessagedetailsMap["messageTime"].(string); ok {
 		MessageTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", messageTimeString)
 		o.MessageTime = &MessageTime
@@ -103,7 +103,7 @@ func (o *Queueconversationsocialexpressioneventtopicmessagedetails) UnmarshalJSO
 	if MessageStatus, ok := QueueconversationsocialexpressioneventtopicmessagedetailsMap["messageStatus"].(string); ok {
 		o.MessageStatus = &MessageStatus
 	}
-	
+    
 	if MessageSegmentCount, ok := QueueconversationsocialexpressioneventtopicmessagedetailsMap["messageSegmentCount"].(float64); ok {
 		MessageSegmentCountInt := int(MessageSegmentCount)
 		o.MessageSegmentCount = &MessageSegmentCountInt

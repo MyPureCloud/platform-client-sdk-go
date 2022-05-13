@@ -78,15 +78,15 @@ func (o *Phonechangetopiclinestatus) UnmarshalJSON(b []byte) error {
 	if Id, ok := PhonechangetopiclinestatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Reachable, ok := PhonechangetopiclinestatusMap["reachable"].(bool); ok {
 		o.Reachable = &Reachable
 	}
-	
+    
 	if AddressOfRecord, ok := PhonechangetopiclinestatusMap["addressOfRecord"].(string); ok {
 		o.AddressOfRecord = &AddressOfRecord
 	}
-	
+    
 	if ContactAddresses, ok := PhonechangetopiclinestatusMap["contactAddresses"].([]interface{}); ok {
 		ContactAddressesString, _ := json.Marshal(ContactAddresses)
 		json.Unmarshal(ContactAddressesString, &o.ContactAddresses)

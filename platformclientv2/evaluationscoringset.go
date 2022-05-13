@@ -113,15 +113,15 @@ func (o *Evaluationscoringset) UnmarshalJSON(b []byte) error {
 	if AnyFailedKillQuestions, ok := EvaluationscoringsetMap["anyFailedKillQuestions"].(bool); ok {
 		o.AnyFailedKillQuestions = &AnyFailedKillQuestions
 	}
-	
+    
 	if Comments, ok := EvaluationscoringsetMap["comments"].(string); ok {
 		o.Comments = &Comments
 	}
-	
+    
 	if AgentComments, ok := EvaluationscoringsetMap["agentComments"].(string); ok {
 		o.AgentComments = &AgentComments
 	}
-	
+    
 	if TranscriptTopics, ok := EvaluationscoringsetMap["transcriptTopics"].([]interface{}); ok {
 		TranscriptTopicsString, _ := json.Marshal(TranscriptTopics)
 		json.Unmarshal(TranscriptTopicsString, &o.TranscriptTopics)

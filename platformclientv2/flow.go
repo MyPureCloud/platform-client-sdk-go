@@ -205,11 +205,11 @@ func (o *Flow) UnmarshalJSON(b []byte) error {
 	if Id, ok := FlowMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := FlowMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := FlowMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -218,11 +218,11 @@ func (o *Flow) UnmarshalJSON(b []byte) error {
 	if Description, ok := FlowMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if VarType, ok := FlowMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if LockedUser, ok := FlowMap["lockedUser"].(map[string]interface{}); ok {
 		LockedUserString, _ := json.Marshal(LockedUser)
 		json.Unmarshal(LockedUserString, &o.LockedUser)
@@ -236,15 +236,15 @@ func (o *Flow) UnmarshalJSON(b []byte) error {
 	if Active, ok := FlowMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if System, ok := FlowMap["system"].(bool); ok {
 		o.System = &System
 	}
-	
+    
 	if Deleted, ok := FlowMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-	
+    
 	if PublishedVersion, ok := FlowMap["publishedVersion"].(map[string]interface{}); ok {
 		PublishedVersionString, _ := json.Marshal(PublishedVersion)
 		json.Unmarshal(PublishedVersionString, &o.PublishedVersion)
@@ -303,7 +303,7 @@ func (o *Flow) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := FlowMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

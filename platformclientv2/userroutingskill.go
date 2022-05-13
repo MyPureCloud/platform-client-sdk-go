@@ -77,27 +77,27 @@ func (o *Userroutingskill) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserroutingskillMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserroutingskillMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Proficiency, ok := UserroutingskillMap["proficiency"].(float64); ok {
 		o.Proficiency = &Proficiency
 	}
-	
+    
 	if State, ok := UserroutingskillMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if SkillUri, ok := UserroutingskillMap["skillUri"].(string); ok {
 		o.SkillUri = &SkillUri
 	}
-	
+    
 	if SelfUri, ok := UserroutingskillMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

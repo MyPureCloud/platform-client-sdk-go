@@ -61,15 +61,15 @@ func (o *Recordingeventmediaresult) UnmarshalJSON(b []byte) error {
 	if ChannelId, ok := RecordingeventmediaresultMap["channelId"].(string); ok {
 		o.ChannelId = &ChannelId
 	}
-	
+    
 	if WaveUri, ok := RecordingeventmediaresultMap["waveUri"].(string); ok {
 		o.WaveUri = &WaveUri
 	}
-	
+    
 	if MediaUri, ok := RecordingeventmediaresultMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if WaveformData, ok := RecordingeventmediaresultMap["waveformData"].([]interface{}); ok {
 		WaveformDataString, _ := json.Marshal(WaveformData)
 		json.Unmarshal(WaveformDataString, &o.WaveformData)

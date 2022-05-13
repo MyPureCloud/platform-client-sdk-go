@@ -76,7 +76,7 @@ func (o *Nluinfo) UnmarshalJSON(b []byte) error {
 	if EngineVersion, ok := NluinfoMap["engineVersion"].(string); ok {
 		o.EngineVersion = &EngineVersion
 	}
-	
+    
 
 	return nil
 }

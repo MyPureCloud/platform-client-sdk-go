@@ -109,7 +109,7 @@ func (o *Bushorttermforecastlistitem) UnmarshalJSON(b []byte) error {
 	if Id, ok := BushorttermforecastlistitemMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := BushorttermforecastlistitemMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -123,15 +123,15 @@ func (o *Bushorttermforecastlistitem) UnmarshalJSON(b []byte) error {
 	if CreationMethod, ok := BushorttermforecastlistitemMap["creationMethod"].(string); ok {
 		o.CreationMethod = &CreationMethod
 	}
-	
+    
 	if Description, ok := BushorttermforecastlistitemMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Legacy, ok := BushorttermforecastlistitemMap["legacy"].(bool); ok {
 		o.Legacy = &Legacy
 	}
-	
+    
 	if Metadata, ok := BushorttermforecastlistitemMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
@@ -140,11 +140,11 @@ func (o *Bushorttermforecastlistitem) UnmarshalJSON(b []byte) error {
 	if CanUseForScheduling, ok := BushorttermforecastlistitemMap["canUseForScheduling"].(bool); ok {
 		o.CanUseForScheduling = &CanUseForScheduling
 	}
-	
+    
 	if SelfUri, ok := BushorttermforecastlistitemMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -61,11 +61,11 @@ func (o *Scimv2enterpriseuser) UnmarshalJSON(b []byte) error {
 	if Division, ok := Scimv2enterpriseuserMap["division"].(string); ok {
 		o.Division = &Division
 	}
-	
+    
 	if Department, ok := Scimv2enterpriseuserMap["department"].(string); ok {
 		o.Department = &Department
 	}
-	
+    
 	if Manager, ok := Scimv2enterpriseuserMap["manager"].(map[string]interface{}); ok {
 		ManagerString, _ := json.Marshal(Manager)
 		json.Unmarshal(ManagerString, &o.Manager)
@@ -74,7 +74,7 @@ func (o *Scimv2enterpriseuser) UnmarshalJSON(b []byte) error {
 	if EmployeeNumber, ok := Scimv2enterpriseuserMap["employeeNumber"].(string); ok {
 		o.EmployeeNumber = &EmployeeNumber
 	}
-	
+    
 
 	return nil
 }

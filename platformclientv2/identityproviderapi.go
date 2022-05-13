@@ -32,13 +32,11 @@ func NewIdentityProviderApiWithConfig(config *Configuration) *IdentityProviderAp
 // DeleteIdentityprovidersAdfs invokes DELETE /api/v2/identityproviders/adfs
 //
 // Delete ADFS Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersAdfs() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersAdfs() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/adfs"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -80,14 +78,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersAdfs() (*Empty, *APIResponse
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -99,13 +97,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersAdfs() (*Empty, *APIResponse
 // DeleteIdentityprovidersCic invokes DELETE /api/v2/identityproviders/cic
 //
 // Delete Customer Interaction Center (CIC) Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersCic() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersCic() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/cic"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -147,14 +143,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersCic() (*Empty, *APIResponse,
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -166,13 +162,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersCic() (*Empty, *APIResponse,
 // DeleteIdentityprovidersGeneric invokes DELETE /api/v2/identityproviders/generic
 //
 // Delete Generic SAML Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersGeneric() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersGeneric() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/generic"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -214,14 +208,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGeneric() (*Empty, *APIRespo
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -233,13 +227,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGeneric() (*Empty, *APIRespo
 // DeleteIdentityprovidersGsuite invokes DELETE /api/v2/identityproviders/gsuite
 //
 // Delete G Suite Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersGsuite() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersGsuite() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/gsuite"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -281,14 +273,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGsuite() (*Empty, *APIRespon
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -300,13 +292,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGsuite() (*Empty, *APIRespon
 // DeleteIdentityprovidersIdentitynow invokes DELETE /api/v2/identityproviders/identitynow
 //
 // Delete IdentityNow Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersIdentitynow() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersIdentitynow() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/identitynow"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -348,14 +338,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersIdentitynow() (*Empty, *APIR
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -367,13 +357,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersIdentitynow() (*Empty, *APIR
 // DeleteIdentityprovidersOkta invokes DELETE /api/v2/identityproviders/okta
 //
 // Delete Okta Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersOkta() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersOkta() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/okta"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -415,14 +403,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOkta() (*Empty, *APIResponse
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -434,13 +422,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOkta() (*Empty, *APIResponse
 // DeleteIdentityprovidersOnelogin invokes DELETE /api/v2/identityproviders/onelogin
 //
 // Delete OneLogin Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersOnelogin() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersOnelogin() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/onelogin"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -482,14 +468,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOnelogin() (*Empty, *APIResp
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -501,13 +487,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOnelogin() (*Empty, *APIResp
 // DeleteIdentityprovidersPing invokes DELETE /api/v2/identityproviders/ping
 //
 // Delete Ping Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersPing() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersPing() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/ping"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -549,14 +533,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPing() (*Empty, *APIResponse
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -568,13 +552,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPing() (*Empty, *APIResponse
 // DeleteIdentityprovidersPurecloud invokes DELETE /api/v2/identityproviders/purecloud
 //
 // Delete PureCloud Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersPurecloud() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersPurecloud() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/purecloud"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -616,14 +598,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPurecloud() (*Empty, *APIRes
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -635,13 +617,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPurecloud() (*Empty, *APIRes
 // DeleteIdentityprovidersPureengage invokes DELETE /api/v2/identityproviders/pureengage
 //
 // Delete PureEngage Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersPureengage() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersPureengage() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/pureengage"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -683,14 +663,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPureengage() (*Empty, *APIRe
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -702,13 +682,11 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPureengage() (*Empty, *APIRe
 // DeleteIdentityprovidersSalesforce invokes DELETE /api/v2/identityproviders/salesforce
 //
 // Delete Salesforce Identity Provider
-//
-// 
-func (a IdentityProviderApi) DeleteIdentityprovidersSalesforce() (*Empty, *APIResponse, error) {
+func (a IdentityProviderApi) DeleteIdentityprovidersSalesforce() (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/salesforce"
-	defaultReturn := new(Empty)
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -750,14 +728,14 @@ func (a IdentityProviderApi) DeleteIdentityprovidersSalesforce() (*Empty, *APIRe
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Empty
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Empty" == "string" {
+		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -769,8 +747,6 @@ func (a IdentityProviderApi) DeleteIdentityprovidersSalesforce() (*Empty, *APIRe
 // GetIdentityproviders invokes GET /api/v2/identityproviders
 //
 // The list of identity providers
-//
-// 
 func (a IdentityProviderApi) GetIdentityproviders() (*Oauthproviderentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -836,8 +812,6 @@ func (a IdentityProviderApi) GetIdentityproviders() (*Oauthproviderentitylisting
 // GetIdentityprovidersAdfs invokes GET /api/v2/identityproviders/adfs
 //
 // Get ADFS Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersAdfs() (*Adfs, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -903,8 +877,6 @@ func (a IdentityProviderApi) GetIdentityprovidersAdfs() (*Adfs, *APIResponse, er
 // GetIdentityprovidersCic invokes GET /api/v2/identityproviders/cic
 //
 // Get Customer Interaction Center (CIC) Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersCic() (*Customerinteractioncenter, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -970,8 +942,6 @@ func (a IdentityProviderApi) GetIdentityprovidersCic() (*Customerinteractioncent
 // GetIdentityprovidersGeneric invokes GET /api/v2/identityproviders/generic
 //
 // Get Generic SAML Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersGeneric() (*Genericsaml, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1037,8 +1007,6 @@ func (a IdentityProviderApi) GetIdentityprovidersGeneric() (*Genericsaml, *APIRe
 // GetIdentityprovidersGsuite invokes GET /api/v2/identityproviders/gsuite
 //
 // Get G Suite Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersGsuite() (*Gsuite, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1104,8 +1072,6 @@ func (a IdentityProviderApi) GetIdentityprovidersGsuite() (*Gsuite, *APIResponse
 // GetIdentityprovidersIdentitynow invokes GET /api/v2/identityproviders/identitynow
 //
 // Get IdentityNow Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersIdentitynow() (*Identitynow, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1171,8 +1137,6 @@ func (a IdentityProviderApi) GetIdentityprovidersIdentitynow() (*Identitynow, *A
 // GetIdentityprovidersOkta invokes GET /api/v2/identityproviders/okta
 //
 // Get Okta Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersOkta() (*Okta, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1238,8 +1202,6 @@ func (a IdentityProviderApi) GetIdentityprovidersOkta() (*Okta, *APIResponse, er
 // GetIdentityprovidersOnelogin invokes GET /api/v2/identityproviders/onelogin
 //
 // Get OneLogin Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersOnelogin() (*Onelogin, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1305,8 +1267,6 @@ func (a IdentityProviderApi) GetIdentityprovidersOnelogin() (*Onelogin, *APIResp
 // GetIdentityprovidersPing invokes GET /api/v2/identityproviders/ping
 //
 // Get Ping Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersPing() (*Pingidentity, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1372,8 +1332,6 @@ func (a IdentityProviderApi) GetIdentityprovidersPing() (*Pingidentity, *APIResp
 // GetIdentityprovidersPurecloud invokes GET /api/v2/identityproviders/purecloud
 //
 // Get PureCloud Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersPurecloud() (*Purecloud, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1439,8 +1397,6 @@ func (a IdentityProviderApi) GetIdentityprovidersPurecloud() (*Purecloud, *APIRe
 // GetIdentityprovidersPureengage invokes GET /api/v2/identityproviders/pureengage
 //
 // Get PureEngage Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersPureengage() (*Pureengage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1506,8 +1462,6 @@ func (a IdentityProviderApi) GetIdentityprovidersPureengage() (*Pureengage, *API
 // GetIdentityprovidersSalesforce invokes GET /api/v2/identityproviders/salesforce
 //
 // Get Salesforce Identity Provider
-//
-// 
 func (a IdentityProviderApi) GetIdentityprovidersSalesforce() (*Salesforce, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1573,8 +1527,6 @@ func (a IdentityProviderApi) GetIdentityprovidersSalesforce() (*Salesforce, *API
 // PutIdentityprovidersAdfs invokes PUT /api/v2/identityproviders/adfs
 //
 // Update/Create ADFS Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1586,7 +1538,7 @@ func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Oauthprovider
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersAdfs")
 	}
 
@@ -1648,8 +1600,6 @@ func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Oauthprovider
 // PutIdentityprovidersCic invokes PUT /api/v2/identityproviders/cic
 //
 // Update/Create Customer Interaction Center (CIC) Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncenter) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1661,7 +1611,7 @@ func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncen
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersCic")
 	}
 
@@ -1723,8 +1673,6 @@ func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncen
 // PutIdentityprovidersGeneric invokes PUT /api/v2/identityproviders/generic
 //
 // Update/Create Generic SAML Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1736,7 +1684,7 @@ func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Oau
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersGeneric")
 	}
 
@@ -1798,8 +1746,6 @@ func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Oau
 // PutIdentityprovidersGsuite invokes PUT /api/v2/identityproviders/gsuite
 //
 // Update/Create G Suite Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1811,7 +1757,7 @@ func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Oauthprov
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersGsuite")
 	}
 
@@ -1873,8 +1819,6 @@ func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Oauthprov
 // PutIdentityprovidersIdentitynow invokes PUT /api/v2/identityproviders/identitynow
 //
 // Update/Create IdentityNow Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersIdentitynow(body Identitynow) (*Identitynow, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1886,7 +1830,7 @@ func (a IdentityProviderApi) PutIdentityprovidersIdentitynow(body Identitynow) (
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersIdentitynow")
 	}
 
@@ -1948,8 +1892,6 @@ func (a IdentityProviderApi) PutIdentityprovidersIdentitynow(body Identitynow) (
 // PutIdentityprovidersOkta invokes PUT /api/v2/identityproviders/okta
 //
 // Update/Create Okta Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1961,7 +1903,7 @@ func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Oauthprovider
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersOkta")
 	}
 
@@ -2023,8 +1965,6 @@ func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Oauthprovider
 // PutIdentityprovidersOnelogin invokes PUT /api/v2/identityproviders/onelogin
 //
 // Update/Create OneLogin Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2036,7 +1976,7 @@ func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Oauth
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersOnelogin")
 	}
 
@@ -2098,8 +2038,6 @@ func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Oauth
 // PutIdentityprovidersPing invokes PUT /api/v2/identityproviders/ping
 //
 // Update/Create Ping Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2111,7 +2049,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Oauth
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersPing")
 	}
 
@@ -2173,8 +2111,6 @@ func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Oauth
 // PutIdentityprovidersPurecloud invokes PUT /api/v2/identityproviders/purecloud
 //
 // Update/Create PureCloud Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2186,7 +2122,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Oau
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersPurecloud")
 	}
 
@@ -2248,8 +2184,6 @@ func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Oau
 // PutIdentityprovidersPureengage invokes PUT /api/v2/identityproviders/pureengage
 //
 // Update/Create PureEngage Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2261,7 +2195,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*O
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersPureengage")
 	}
 
@@ -2323,8 +2257,6 @@ func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*O
 // PutIdentityprovidersSalesforce invokes PUT /api/v2/identityproviders/salesforce
 //
 // Update/Create Salesforce Identity Provider
-//
-// 
 func (a IdentityProviderApi) PutIdentityprovidersSalesforce(body Salesforce) (*Oauthprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2336,7 +2268,7 @@ func (a IdentityProviderApi) PutIdentityprovidersSalesforce(body Salesforce) (*O
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovidersSalesforce")
 	}
 

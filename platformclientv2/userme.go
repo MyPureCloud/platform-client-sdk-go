@@ -446,11 +446,11 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if Id, ok := UsermeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UsermeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := UsermeMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -464,11 +464,11 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if Department, ok := UsermeMap["department"].(string); ok {
 		o.Department = &Department
 	}
-	
+    
 	if Email, ok := UsermeMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if PrimaryContactInfo, ok := UsermeMap["primaryContactInfo"].([]interface{}); ok {
 		PrimaryContactInfoString, _ := json.Marshal(PrimaryContactInfo)
 		json.Unmarshal(PrimaryContactInfoString, &o.PrimaryContactInfo)
@@ -482,15 +482,15 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if State, ok := UsermeMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Title, ok := UsermeMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Username, ok := UsermeMap["username"].(string); ok {
 		o.Username = &Username
 	}
-	
+    
 	if Manager, ok := UsermeMap["manager"].(map[string]interface{}); ok {
 		ManagerString, _ := json.Marshal(Manager)
 		json.Unmarshal(ManagerString, &o.Manager)
@@ -594,11 +594,11 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if AcdAutoAnswer, ok := UsermeMap["acdAutoAnswer"].(bool); ok {
 		o.AcdAutoAnswer = &AcdAutoAnswer
 	}
-	
+    
 	if LanguagePreference, ok := UsermeMap["languagePreference"].(string); ok {
 		o.LanguagePreference = &LanguagePreference
 	}
-	
+    
 	if LastTokenIssued, ok := UsermeMap["lastTokenIssued"].(map[string]interface{}); ok {
 		LastTokenIssuedString, _ := json.Marshal(LastTokenIssued)
 		json.Unmarshal(LastTokenIssuedString, &o.LastTokenIssued)
@@ -687,7 +687,7 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := UsermeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

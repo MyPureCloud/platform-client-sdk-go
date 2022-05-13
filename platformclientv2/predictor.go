@@ -134,7 +134,7 @@ func (o *Predictor) UnmarshalJSON(b []byte) error {
 	if Id, ok := PredictorMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Queues, ok := PredictorMap["queues"].([]interface{}); ok {
 		QueuesString, _ := json.Marshal(Queues)
 		json.Unmarshal(QueuesString, &o.Queues)
@@ -143,7 +143,7 @@ func (o *Predictor) UnmarshalJSON(b []byte) error {
 	if Kpi, ok := PredictorMap["kpi"].(string); ok {
 		o.Kpi = &Kpi
 	}
-	
+    
 	if RoutingTimeoutSeconds, ok := PredictorMap["routingTimeoutSeconds"].(float64); ok {
 		RoutingTimeoutSecondsInt := int(RoutingTimeoutSeconds)
 		o.RoutingTimeoutSeconds = &RoutingTimeoutSecondsInt
@@ -157,7 +157,7 @@ func (o *Predictor) UnmarshalJSON(b []byte) error {
 	if State, ok := PredictorMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateCreatedString, ok := PredictorMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -176,11 +176,11 @@ func (o *Predictor) UnmarshalJSON(b []byte) error {
 	if ErrorCode, ok := PredictorMap["errorCode"].(string); ok {
 		o.ErrorCode = &ErrorCode
 	}
-	
+    
 	if SelfUri, ok := PredictorMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

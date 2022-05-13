@@ -122,7 +122,7 @@ func (o *Trusteeauditqueryrequest) UnmarshalJSON(b []byte) error {
 	if QueryPhrase, ok := TrusteeauditqueryrequestMap["queryPhrase"].(string); ok {
 		o.QueryPhrase = &QueryPhrase
 	}
-	
+    
 	if Facets, ok := TrusteeauditqueryrequestMap["facets"].([]interface{}); ok {
 		FacetsString, _ := json.Marshal(Facets)
 		json.Unmarshal(FacetsString, &o.Facets)

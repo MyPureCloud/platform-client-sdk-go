@@ -198,51 +198,51 @@ func (o *Queueconversationvideoeventtopicsocialexpression) UnmarshalJSON(b []byt
 	if State, ok := QueueconversationvideoeventtopicsocialexpressionMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := QueueconversationvideoeventtopicsocialexpressionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SocialMediaId, ok := QueueconversationvideoeventtopicsocialexpressionMap["socialMediaId"].(string); ok {
 		o.SocialMediaId = &SocialMediaId
 	}
-	
+    
 	if SocialMediaHub, ok := QueueconversationvideoeventtopicsocialexpressionMap["socialMediaHub"].(string); ok {
 		o.SocialMediaHub = &SocialMediaHub
 	}
-	
+    
 	if SocialUserName, ok := QueueconversationvideoeventtopicsocialexpressionMap["socialUserName"].(string); ok {
 		o.SocialUserName = &SocialUserName
 	}
-	
+    
 	if PreviewText, ok := QueueconversationvideoeventtopicsocialexpressionMap["previewText"].(string); ok {
 		o.PreviewText = &PreviewText
 	}
-	
+    
 	if RecordingId, ok := QueueconversationvideoeventtopicsocialexpressionMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if Held, ok := QueueconversationvideoeventtopicsocialexpressionMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if Provider, ok := QueueconversationvideoeventtopicsocialexpressionMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := QueueconversationvideoeventtopicsocialexpressionMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := QueueconversationvideoeventtopicsocialexpressionMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationvideoeventtopicsocialexpressionMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := QueueconversationvideoeventtopicsocialexpressionMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -271,7 +271,7 @@ func (o *Queueconversationvideoeventtopicsocialexpression) UnmarshalJSON(b []byt
 	if AfterCallWorkRequired, ok := QueueconversationvideoeventtopicsocialexpressionMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

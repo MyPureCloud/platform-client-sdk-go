@@ -61,11 +61,11 @@ func (o *Reportingturnaction) UnmarshalJSON(b []byte) error {
 	if ActionId, ok := ReportingturnactionMap["actionId"].(string); ok {
 		o.ActionId = &ActionId
 	}
-	
+    
 	if ActionName, ok := ReportingturnactionMap["actionName"].(string); ok {
 		o.ActionName = &ActionName
 	}
-	
+    
 	if ActionNumber, ok := ReportingturnactionMap["actionNumber"].(float64); ok {
 		ActionNumberInt := int(ActionNumber)
 		o.ActionNumber = &ActionNumberInt
@@ -74,7 +74,7 @@ func (o *Reportingturnaction) UnmarshalJSON(b []byte) error {
 	if ActionType, ok := ReportingturnactionMap["actionType"].(string); ok {
 		o.ActionType = &ActionType
 	}
-	
+    
 
 	return nil
 }

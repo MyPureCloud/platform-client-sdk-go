@@ -88,11 +88,11 @@ func (o *Analyticsuserpresencerecord) UnmarshalJSON(b []byte) error {
 	if SystemPresence, ok := AnalyticsuserpresencerecordMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 	if OrganizationPresenceId, ok := AnalyticsuserpresencerecordMap["organizationPresenceId"].(string); ok {
 		o.OrganizationPresenceId = &OrganizationPresenceId
 	}
-	
+    
 
 	return nil
 }

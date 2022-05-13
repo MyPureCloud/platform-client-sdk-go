@@ -110,11 +110,11 @@ func (o *Outofoffice) UnmarshalJSON(b []byte) error {
 	if Id, ok := OutofofficeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OutofofficeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if User, ok := OutofofficeMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -133,15 +133,15 @@ func (o *Outofoffice) UnmarshalJSON(b []byte) error {
 	if Active, ok := OutofofficeMap["active"].(bool); ok {
 		o.Active = &Active
 	}
-	
+    
 	if Indefinite, ok := OutofofficeMap["indefinite"].(bool); ok {
 		o.Indefinite = &Indefinite
 	}
-	
+    
 	if SelfUri, ok := OutofofficeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

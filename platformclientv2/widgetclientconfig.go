@@ -13,7 +13,7 @@ type Widgetclientconfig struct {
 
 
 	// V2
-	V2 *Widgetclientconfigv2 `json:"v2,omitempty"`
+	V2 *interface{} `json:"v2,omitempty"`
 
 
 	// V1Http
@@ -21,7 +21,7 @@ type Widgetclientconfig struct {
 
 
 	// ThirdParty
-	ThirdParty *Widgetclientconfigthirdparty `json:"third-party,omitempty"`
+	ThirdParty *interface{} `json:"third-party,omitempty"`
 
 }
 
@@ -33,11 +33,11 @@ func (o *Widgetclientconfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		V1 *Widgetclientconfigv1 `json:"v1,omitempty"`
 		
-		V2 *Widgetclientconfigv2 `json:"v2,omitempty"`
+		V2 *interface{} `json:"v2,omitempty"`
 		
 		V1Http *Widgetclientconfigv1http `json:"v1-http,omitempty"`
 		
-		ThirdParty *Widgetclientconfigthirdparty `json:"third-party,omitempty"`
+		ThirdParty *interface{} `json:"third-party,omitempty"`
 		*Alias
 	}{ 
 		V1: o.V1,

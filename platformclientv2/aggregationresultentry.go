@@ -66,17 +66,17 @@ func (o *Aggregationresultentry) UnmarshalJSON(b []byte) error {
 	if Value, ok := AggregationresultentryMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if Gte, ok := AggregationresultentryMap["gte"].(float64); ok {
 		GteFloat32 := float32(Gte)
 		o.Gte = &GteFloat32
 	}
-	
+    
 	if Lt, ok := AggregationresultentryMap["lt"].(float64); ok {
 		LtFloat32 := float32(Lt)
 		o.Lt = &LtFloat32
 	}
-	
+    
 
 	return nil
 }

@@ -50,7 +50,7 @@ func (o *Phonesreboot) UnmarshalJSON(b []byte) error {
 	if SiteId, ok := PhonesrebootMap["siteId"].(string); ok {
 		o.SiteId = &SiteId
 	}
-	
+    
 
 	return nil
 }

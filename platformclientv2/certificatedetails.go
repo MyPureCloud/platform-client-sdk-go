@@ -102,11 +102,11 @@ func (o *Certificatedetails) UnmarshalJSON(b []byte) error {
 	if Issuer, ok := CertificatedetailsMap["issuer"].(string); ok {
 		o.Issuer = &Issuer
 	}
-	
+    
 	if Subject, ok := CertificatedetailsMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if expirationDateString, ok := CertificatedetailsMap["expirationDate"].(string); ok {
 		ExpirationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationDateString)
 		o.ExpirationDate = &ExpirationDate
@@ -120,15 +120,15 @@ func (o *Certificatedetails) UnmarshalJSON(b []byte) error {
 	if Expired, ok := CertificatedetailsMap["expired"].(bool); ok {
 		o.Expired = &Expired
 	}
-	
+    
 	if Valid, ok := CertificatedetailsMap["valid"].(bool); ok {
 		o.Valid = &Valid
 	}
-	
+    
 	if SignatureValid, ok := CertificatedetailsMap["signatureValid"].(bool); ok {
 		o.SignatureValid = &SignatureValid
 	}
-	
+    
 
 	return nil
 }

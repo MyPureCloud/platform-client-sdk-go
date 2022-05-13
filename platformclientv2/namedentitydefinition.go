@@ -45,11 +45,11 @@ func (o *Namedentitydefinition) UnmarshalJSON(b []byte) error {
 	if Name, ok := NamedentitydefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := NamedentitydefinitionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

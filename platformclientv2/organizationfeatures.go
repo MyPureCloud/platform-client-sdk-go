@@ -133,55 +133,55 @@ func (o *Organizationfeatures) UnmarshalJSON(b []byte) error {
 	if RealtimeCIC, ok := OrganizationfeaturesMap["realtimeCIC"].(bool); ok {
 		o.RealtimeCIC = &RealtimeCIC
 	}
-	
+    
 	if Purecloud, ok := OrganizationfeaturesMap["purecloud"].(bool); ok {
 		o.Purecloud = &Purecloud
 	}
-	
+    
 	if Hipaa, ok := OrganizationfeaturesMap["hipaa"].(bool); ok {
 		o.Hipaa = &Hipaa
 	}
-	
+    
 	if UcEnabled, ok := OrganizationfeaturesMap["ucEnabled"].(bool); ok {
 		o.UcEnabled = &UcEnabled
 	}
-	
+    
 	if Pci, ok := OrganizationfeaturesMap["pci"].(bool); ok {
 		o.Pci = &Pci
 	}
-	
+    
 	if PurecloudVoice, ok := OrganizationfeaturesMap["purecloudVoice"].(bool); ok {
 		o.PurecloudVoice = &PurecloudVoice
 	}
-	
+    
 	if XmppFederation, ok := OrganizationfeaturesMap["xmppFederation"].(bool); ok {
 		o.XmppFederation = &XmppFederation
 	}
-	
+    
 	if Chat, ok := OrganizationfeaturesMap["chat"].(bool); ok {
 		o.Chat = &Chat
 	}
-	
+    
 	if InformalPhotos, ok := OrganizationfeaturesMap["informalPhotos"].(bool); ok {
 		o.InformalPhotos = &InformalPhotos
 	}
-	
+    
 	if Directory, ok := OrganizationfeaturesMap["directory"].(bool); ok {
 		o.Directory = &Directory
 	}
-	
+    
 	if ContactCenter, ok := OrganizationfeaturesMap["contactCenter"].(bool); ok {
 		o.ContactCenter = &ContactCenter
 	}
-	
+    
 	if UnifiedCommunications, ok := OrganizationfeaturesMap["unifiedCommunications"].(bool); ok {
 		o.UnifiedCommunications = &UnifiedCommunications
 	}
-	
+    
 	if Custserv, ok := OrganizationfeaturesMap["custserv"].(bool); ok {
 		o.Custserv = &Custserv
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Calltarget) UnmarshalJSON(b []byte) error {
 	if VarType, ok := CalltargetMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Value, ok := CalltargetMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

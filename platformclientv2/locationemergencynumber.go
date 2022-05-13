@@ -53,15 +53,15 @@ func (o *Locationemergencynumber) UnmarshalJSON(b []byte) error {
 	if E164, ok := LocationemergencynumberMap["e164"].(string); ok {
 		o.E164 = &E164
 	}
-	
+    
 	if Number, ok := LocationemergencynumberMap["number"].(string); ok {
 		o.Number = &Number
 	}
-	
+    
 	if VarType, ok := LocationemergencynumberMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

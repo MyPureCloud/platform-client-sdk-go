@@ -63,7 +63,7 @@ func (o *Localencryptionconfigurationlisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := LocalencryptionconfigurationlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

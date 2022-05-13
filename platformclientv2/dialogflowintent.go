@@ -45,7 +45,7 @@ func (o *Dialogflowintent) UnmarshalJSON(b []byte) error {
 	if Name, ok := DialogflowintentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Parameters, ok := DialogflowintentMap["parameters"].(map[string]interface{}); ok {
 		ParametersString, _ := json.Marshal(Parameters)
 		json.Unmarshal(ParametersString, &o.Parameters)

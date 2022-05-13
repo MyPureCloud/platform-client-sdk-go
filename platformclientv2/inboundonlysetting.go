@@ -37,7 +37,7 @@ func (o *Inboundonlysetting) UnmarshalJSON(b []byte) error {
 	if Inbound, ok := InboundonlysettingMap["inbound"].(string); ok {
 		o.Inbound = &Inbound
 	}
-	
+    
 
 	return nil
 }

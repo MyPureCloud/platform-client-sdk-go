@@ -45,7 +45,7 @@ func (o *Edgemetricstopicedgemetricsubsystemmedia) UnmarshalJSON(b []byte) error
 	if ProcessName, ok := EdgemetricstopicedgemetricsubsystemmediaMap["processName"].(string); ok {
 		o.ProcessName = &ProcessName
 	}
-	
+    
 	if DelayMs, ok := EdgemetricstopicedgemetricsubsystemmediaMap["delayMs"].(float64); ok {
 		DelayMsInt := int(DelayMs)
 		o.DelayMs = &DelayMsInt

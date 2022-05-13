@@ -229,7 +229,7 @@ func (o *Shifttraderesponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ShifttraderesponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := ShifttraderesponseMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -243,7 +243,7 @@ func (o *Shifttraderesponse) UnmarshalJSON(b []byte) error {
 	if State, ok := ShifttraderesponseMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if InitiatingUser, ok := ShifttraderesponseMap["initiatingUser"].(map[string]interface{}); ok {
 		InitiatingUserString, _ := json.Marshal(InitiatingUser)
 		json.Unmarshal(InitiatingUserString, &o.InitiatingUser)
@@ -252,7 +252,7 @@ func (o *Shifttraderesponse) UnmarshalJSON(b []byte) error {
 	if InitiatingShiftId, ok := ShifttraderesponseMap["initiatingShiftId"].(string); ok {
 		o.InitiatingShiftId = &InitiatingShiftId
 	}
-	
+    
 	if initiatingShiftStartString, ok := ShifttraderesponseMap["initiatingShiftStart"].(string); ok {
 		InitiatingShiftStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", initiatingShiftStartString)
 		o.InitiatingShiftStart = &InitiatingShiftStart
@@ -271,7 +271,7 @@ func (o *Shifttraderesponse) UnmarshalJSON(b []byte) error {
 	if ReceivingShiftId, ok := ShifttraderesponseMap["receivingShiftId"].(string); ok {
 		o.ReceivingShiftId = &ReceivingShiftId
 	}
-	
+    
 	if receivingShiftStartString, ok := ShifttraderesponseMap["receivingShiftStart"].(string); ok {
 		ReceivingShiftStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", receivingShiftStartString)
 		o.ReceivingShiftStart = &ReceivingShiftStart
@@ -290,7 +290,7 @@ func (o *Shifttraderesponse) UnmarshalJSON(b []byte) error {
 	if OneSided, ok := ShifttraderesponseMap["oneSided"].(bool); ok {
 		o.OneSided = &OneSided
 	}
-	
+    
 	if AcceptableIntervals, ok := ShifttraderesponseMap["acceptableIntervals"].([]interface{}); ok {
 		AcceptableIntervalsString, _ := json.Marshal(AcceptableIntervals)
 		json.Unmarshal(AcceptableIntervalsString, &o.AcceptableIntervals)

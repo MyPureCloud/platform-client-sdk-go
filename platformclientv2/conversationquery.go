@@ -134,15 +134,15 @@ func (o *Conversationquery) UnmarshalJSON(b []byte) error {
 	if Order, ok := ConversationqueryMap["order"].(string); ok {
 		o.Order = &Order
 	}
-	
+    
 	if OrderBy, ok := ConversationqueryMap["orderBy"].(string); ok {
 		o.OrderBy = &OrderBy
 	}
-	
+    
 	if Interval, ok := ConversationqueryMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if Aggregations, ok := ConversationqueryMap["aggregations"].([]interface{}); ok {
 		AggregationsString, _ := json.Marshal(Aggregations)
 		json.Unmarshal(AggregationsString, &o.Aggregations)

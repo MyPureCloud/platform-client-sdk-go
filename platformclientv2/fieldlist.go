@@ -109,15 +109,15 @@ func (o *Fieldlist) UnmarshalJSON(b []byte) error {
 	if CustomLabels, ok := FieldlistMap["customLabels"].(bool); ok {
 		o.CustomLabels = &CustomLabels
 	}
-	
+    
 	if InstructionText, ok := FieldlistMap["instructionText"].(string); ok {
 		o.InstructionText = &InstructionText
 	}
-	
+    
 	if Key, ok := FieldlistMap["key"].(string); ok {
 		o.Key = &Key
 	}
-	
+    
 	if LabelKeys, ok := FieldlistMap["labelKeys"].([]interface{}); ok {
 		LabelKeysString, _ := json.Marshal(LabelKeys)
 		json.Unmarshal(LabelKeysString, &o.LabelKeys)
@@ -131,23 +131,23 @@ func (o *Fieldlist) UnmarshalJSON(b []byte) error {
 	if Repeatable, ok := FieldlistMap["repeatable"].(bool); ok {
 		o.Repeatable = &Repeatable
 	}
-	
+    
 	if State, ok := FieldlistMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if VarType, ok := FieldlistMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Required, ok := FieldlistMap["required"].(bool); ok {
 		o.Required = &Required
 	}
-	
+    
 	if Gdpr, ok := FieldlistMap["gdpr"].(bool); ok {
 		o.Gdpr = &Gdpr
 	}
-	
+    
 
 	return nil
 }

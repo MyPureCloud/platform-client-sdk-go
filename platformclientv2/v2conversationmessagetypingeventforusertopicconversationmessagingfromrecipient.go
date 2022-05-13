@@ -93,31 +93,31 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessagingfromre
 	if Nickname, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["nickname"].(string); ok {
 		o.Nickname = &Nickname
 	}
-	
+    
 	if Id, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if IdType, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["idType"].(string); ok {
 		o.IdType = &IdType
 	}
-	
+    
 	if Image, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["image"].(string); ok {
 		o.Image = &Image
 	}
-	
+    
 	if FirstName, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}
-	
+    
 	if LastName, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["lastName"].(string); ok {
 		o.LastName = &LastName
 	}
-	
+    
 	if Email, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if AdditionalIds, ok := V2conversationmessagetypingeventforusertopicconversationmessagingfromrecipientMap["additionalIds"].([]interface{}); ok {
 		AdditionalIdsString, _ := json.Marshal(AdditionalIds)
 		json.Unmarshal(AdditionalIdsString, &o.AdditionalIds)

@@ -326,11 +326,11 @@ func (o *Orguser) UnmarshalJSON(b []byte) error {
 	if Id, ok := OrguserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OrguserMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := OrguserMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -344,11 +344,11 @@ func (o *Orguser) UnmarshalJSON(b []byte) error {
 	if Department, ok := OrguserMap["department"].(string); ok {
 		o.Department = &Department
 	}
-	
+    
 	if Email, ok := OrguserMap["email"].(string); ok {
 		o.Email = &Email
 	}
-	
+    
 	if PrimaryContactInfo, ok := OrguserMap["primaryContactInfo"].([]interface{}); ok {
 		PrimaryContactInfoString, _ := json.Marshal(PrimaryContactInfo)
 		json.Unmarshal(PrimaryContactInfoString, &o.PrimaryContactInfo)
@@ -362,15 +362,15 @@ func (o *Orguser) UnmarshalJSON(b []byte) error {
 	if State, ok := OrguserMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Title, ok := OrguserMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Username, ok := OrguserMap["username"].(string); ok {
 		o.Username = &Username
 	}
-	
+    
 	if Manager, ok := OrguserMap["manager"].(map[string]interface{}); ok {
 		ManagerString, _ := json.Marshal(Manager)
 		json.Unmarshal(ManagerString, &o.Manager)
@@ -474,11 +474,11 @@ func (o *Orguser) UnmarshalJSON(b []byte) error {
 	if AcdAutoAnswer, ok := OrguserMap["acdAutoAnswer"].(bool); ok {
 		o.AcdAutoAnswer = &AcdAutoAnswer
 	}
-	
+    
 	if LanguagePreference, ok := OrguserMap["languagePreference"].(string); ok {
 		o.LanguagePreference = &LanguagePreference
 	}
-	
+    
 	if LastTokenIssued, ok := OrguserMap["lastTokenIssued"].(map[string]interface{}); ok {
 		LastTokenIssuedString, _ := json.Marshal(LastTokenIssued)
 		json.Unmarshal(LastTokenIssuedString, &o.LastTokenIssued)

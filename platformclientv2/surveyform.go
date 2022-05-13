@@ -134,11 +134,11 @@ func (o *Surveyform) UnmarshalJSON(b []byte) error {
 	if Id, ok := SurveyformMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := SurveyformMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if modifiedDateString, ok := SurveyformMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -147,27 +147,27 @@ func (o *Surveyform) UnmarshalJSON(b []byte) error {
 	if Published, ok := SurveyformMap["published"].(bool); ok {
 		o.Published = &Published
 	}
-	
+    
 	if Disabled, ok := SurveyformMap["disabled"].(bool); ok {
 		o.Disabled = &Disabled
 	}
-	
+    
 	if ContextId, ok := SurveyformMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 	if Language, ok := SurveyformMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if Header, ok := SurveyformMap["header"].(string); ok {
 		o.Header = &Header
 	}
-	
+    
 	if Footer, ok := SurveyformMap["footer"].(string); ok {
 		o.Footer = &Footer
 	}
-	
+    
 	if QuestionGroups, ok := SurveyformMap["questionGroups"].([]interface{}); ok {
 		QuestionGroupsString, _ := json.Marshal(QuestionGroups)
 		json.Unmarshal(QuestionGroupsString, &o.QuestionGroups)
@@ -181,7 +181,7 @@ func (o *Surveyform) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SurveyformMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

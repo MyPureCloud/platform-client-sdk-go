@@ -182,11 +182,11 @@ func (o *Didpool) UnmarshalJSON(b []byte) error {
 	if Id, ok := DidpoolMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DidpoolMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := DidpoolMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -195,7 +195,7 @@ func (o *Didpool) UnmarshalJSON(b []byte) error {
 	if Description, ok := DidpoolMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Version, ok := DidpoolMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -214,43 +214,43 @@ func (o *Didpool) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := DidpoolMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-	
+    
 	if CreatedBy, ok := DidpoolMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-	
+    
 	if State, ok := DidpoolMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if ModifiedByApp, ok := DidpoolMap["modifiedByApp"].(string); ok {
 		o.ModifiedByApp = &ModifiedByApp
 	}
-	
+    
 	if CreatedByApp, ok := DidpoolMap["createdByApp"].(string); ok {
 		o.CreatedByApp = &CreatedByApp
 	}
-	
+    
 	if StartPhoneNumber, ok := DidpoolMap["startPhoneNumber"].(string); ok {
 		o.StartPhoneNumber = &StartPhoneNumber
 	}
-	
+    
 	if EndPhoneNumber, ok := DidpoolMap["endPhoneNumber"].(string); ok {
 		o.EndPhoneNumber = &EndPhoneNumber
 	}
-	
+    
 	if Comments, ok := DidpoolMap["comments"].(string); ok {
 		o.Comments = &Comments
 	}
-	
+    
 	if Provider, ok := DidpoolMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if SelfUri, ok := DidpoolMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

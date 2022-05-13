@@ -53,15 +53,15 @@ func (o *Atzmtimeslotwithtimezone) UnmarshalJSON(b []byte) error {
 	if EarliestCallableTime, ok := AtzmtimeslotwithtimezoneMap["earliestCallableTime"].(string); ok {
 		o.EarliestCallableTime = &EarliestCallableTime
 	}
-	
+    
 	if LatestCallableTime, ok := AtzmtimeslotwithtimezoneMap["latestCallableTime"].(string); ok {
 		o.LatestCallableTime = &LatestCallableTime
 	}
-	
+    
 	if TimeZoneId, ok := AtzmtimeslotwithtimezoneMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}
-	
+    
 
 	return nil
 }

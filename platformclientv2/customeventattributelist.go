@@ -45,7 +45,7 @@ func (o *Customeventattributelist) UnmarshalJSON(b []byte) error {
 	if DataType, ok := CustomeventattributelistMap["dataType"].(string); ok {
 		o.DataType = &DataType
 	}
-	
+    
 	if Values, ok := CustomeventattributelistMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

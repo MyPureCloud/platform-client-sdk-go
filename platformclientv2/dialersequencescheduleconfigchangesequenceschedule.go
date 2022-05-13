@@ -115,7 +115,7 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) UnmarshalJSON(b []b
 	if TimeZone, ok := DialersequencescheduleconfigchangesequencescheduleMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if Sequence, ok := DialersequencescheduleconfigchangesequencescheduleMap["sequence"].(map[string]interface{}); ok {
 		SequenceString, _ := json.Marshal(Sequence)
 		json.Unmarshal(SequenceString, &o.Sequence)
@@ -124,11 +124,11 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) UnmarshalJSON(b []b
 	if Id, ok := DialersequencescheduleconfigchangesequencescheduleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialersequencescheduleconfigchangesequencescheduleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := DialersequencescheduleconfigchangesequencescheduleMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

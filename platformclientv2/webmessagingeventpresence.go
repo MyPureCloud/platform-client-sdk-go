@@ -37,7 +37,7 @@ func (o *Webmessagingeventpresence) UnmarshalJSON(b []byte) error {
 	if VarType, ok := WebmessagingeventpresenceMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

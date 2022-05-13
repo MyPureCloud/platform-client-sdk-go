@@ -53,11 +53,11 @@ func (o *Predictionresults) UnmarshalJSON(b []byte) error {
 	if Intent, ok := PredictionresultsMap["intent"].(string); ok {
 		o.Intent = &Intent
 	}
-	
+    
 	if Formula, ok := PredictionresultsMap["formula"].(string); ok {
 		o.Formula = &Formula
 	}
-	
+    
 	if EstimatedWaitTimeSeconds, ok := PredictionresultsMap["estimatedWaitTimeSeconds"].(float64); ok {
 		EstimatedWaitTimeSecondsInt := int(EstimatedWaitTimeSeconds)
 		o.EstimatedWaitTimeSeconds = &EstimatedWaitTimeSecondsInt

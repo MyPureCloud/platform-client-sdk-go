@@ -190,7 +190,7 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 	if CampaignStatus, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["campaignStatus"].(string); ok {
 		o.CampaignStatus = &CampaignStatus
 	}
-	
+    
 	if CallableTimeSet, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["callableTimeSet"].(map[string]interface{}); ok {
 		CallableTimeSetString, _ := json.Marshal(CallableTimeSet)
 		json.Unmarshal(CallableTimeSetString, &o.CallableTimeSet)
@@ -214,7 +214,7 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 	if AlwaysRunning, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["alwaysRunning"].(bool); ok {
 		o.AlwaysRunning = &AlwaysRunning
 	}
-	
+    
 	if ContactSorts, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["contactSorts"].([]interface{}); ok {
 		ContactSortsString, _ := json.Marshal(ContactSorts)
 		json.Unmarshal(ContactSortsString, &o.ContactSorts)
@@ -248,11 +248,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 	if Id, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

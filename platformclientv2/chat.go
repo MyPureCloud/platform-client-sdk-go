@@ -37,7 +37,7 @@ func (o *Chat) UnmarshalJSON(b []byte) error {
 	if JabberId, ok := ChatMap["jabberId"].(string); ok {
 		o.JabberId = &JabberId
 	}
-	
+    
 
 	return nil
 }

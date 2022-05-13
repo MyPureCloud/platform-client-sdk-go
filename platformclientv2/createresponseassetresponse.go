@@ -53,11 +53,11 @@ func (o *Createresponseassetresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := CreateresponseassetresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Url, ok := CreateresponseassetresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if Headers, ok := CreateresponseassetresponseMap["headers"].(map[string]interface{}); ok {
 		HeadersString, _ := json.Marshal(Headers)
 		json.Unmarshal(HeadersString, &o.Headers)

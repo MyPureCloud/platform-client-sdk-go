@@ -45,11 +45,11 @@ func (o *Journeycustomersession) UnmarshalJSON(b []byte) error {
 	if Id, ok := JourneycustomersessionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if VarType, ok := JourneycustomersessionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

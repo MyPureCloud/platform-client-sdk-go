@@ -61,19 +61,19 @@ func (o *Reportingturnintentslot) UnmarshalJSON(b []byte) error {
 	if Name, ok := ReportingturnintentslotMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Value, ok := ReportingturnintentslotMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 	if VarType, ok := ReportingturnintentslotMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Confidence, ok := ReportingturnintentslotMap["confidence"].(float64); ok {
 		o.Confidence = &Confidence
 	}
-	
+    
 
 	return nil
 }

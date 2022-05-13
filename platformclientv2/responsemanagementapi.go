@@ -45,7 +45,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementLibrary(libraryId string)
 
 	// verify the required parameter 'libraryId' is set
 	if &libraryId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'libraryId' when calling ResponseManagementApi->DeleteResponsemanagementLibrary")
 	}
 
@@ -111,7 +111,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponse(responseId strin
 
 	// verify the required parameter 'responseId' is set
 	if &responseId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'responseId' when calling ResponseManagementApi->DeleteResponsemanagementResponse")
 	}
 
@@ -164,8 +164,6 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponse(responseId strin
 // DeleteResponsemanagementResponseasset invokes DELETE /api/v2/responsemanagement/responseassets/{responseAssetId}
 //
 // Delete response asset
-//
-// 
 func (a ResponseManagementApi) DeleteResponsemanagementResponseasset(responseAssetId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -177,7 +175,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponseasset(responseAss
 
 	// verify the required parameter 'responseAssetId' is set
 	if &responseAssetId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'responseAssetId' when calling ResponseManagementApi->DeleteResponsemanagementResponseasset")
 	}
 
@@ -230,8 +228,6 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponseasset(responseAss
 // GetResponsemanagementLibraries invokes GET /api/v2/responsemanagement/libraries
 //
 // Gets a list of existing response libraries.
-//
-// 
 func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int, pageSize int, messagingTemplateFilter string) (*Libraryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -303,8 +299,6 @@ func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int, pa
 // GetResponsemanagementLibrary invokes GET /api/v2/responsemanagement/libraries/{libraryId}
 //
 // Get details about an existing response library.
-//
-// 
 func (a ResponseManagementApi) GetResponsemanagementLibrary(libraryId string) (*Library, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -317,7 +311,7 @@ func (a ResponseManagementApi) GetResponsemanagementLibrary(libraryId string) (*
 
 	// verify the required parameter 'libraryId' is set
 	if &libraryId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'libraryId' when calling ResponseManagementApi->GetResponsemanagementLibrary")
 	}
 
@@ -376,8 +370,6 @@ func (a ResponseManagementApi) GetResponsemanagementLibrary(libraryId string) (*
 // GetResponsemanagementResponse invokes GET /api/v2/responsemanagement/responses/{responseId}
 //
 // Get details about an existing response.
-//
-// 
 func (a ResponseManagementApi) GetResponsemanagementResponse(responseId string, expand string) (*Response, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -390,7 +382,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponse(responseId string, 
 
 	// verify the required parameter 'responseId' is set
 	if &responseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'responseId' when calling ResponseManagementApi->GetResponsemanagementResponse")
 	}
 
@@ -451,8 +443,6 @@ func (a ResponseManagementApi) GetResponsemanagementResponse(responseId string, 
 // GetResponsemanagementResponseasset invokes GET /api/v2/responsemanagement/responseassets/{responseAssetId}
 //
 // Get response asset information
-//
-// 
 func (a ResponseManagementApi) GetResponsemanagementResponseasset(responseAssetId string) (*Responseasset, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -465,7 +455,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponseasset(responseAssetI
 
 	// verify the required parameter 'responseAssetId' is set
 	if &responseAssetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'responseAssetId' when calling ResponseManagementApi->GetResponsemanagementResponseasset")
 	}
 
@@ -524,8 +514,6 @@ func (a ResponseManagementApi) GetResponsemanagementResponseasset(responseAssetI
 // GetResponsemanagementResponseassetsStatusStatusId invokes GET /api/v2/responsemanagement/responseassets/status/{statusId}
 //
 // Get response asset upload status
-//
-// 
 func (a ResponseManagementApi) GetResponsemanagementResponseassetsStatusStatusId(statusId string) (*Responseassetstatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -538,7 +526,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponseassetsStatusStatusId
 
 	// verify the required parameter 'statusId' is set
 	if &statusId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'statusId' when calling ResponseManagementApi->GetResponsemanagementResponseassetsStatusStatusId")
 	}
 
@@ -597,8 +585,6 @@ func (a ResponseManagementApi) GetResponsemanagementResponseassetsStatusStatusId
 // GetResponsemanagementResponses invokes GET /api/v2/responsemanagement/responses
 //
 // Gets a list of existing responses.
-//
-// 
 func (a ResponseManagementApi) GetResponsemanagementResponses(libraryId string, pageNumber int, pageSize int, expand string) (*Responseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -610,7 +596,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponses(libraryId string, 
 
 	// verify the required parameter 'libraryId' is set
 	if &libraryId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'libraryId' when calling ResponseManagementApi->GetResponsemanagementResponses")
 	}
 
@@ -677,8 +663,6 @@ func (a ResponseManagementApi) GetResponsemanagementResponses(libraryId string, 
 // PostResponsemanagementLibraries invokes POST /api/v2/responsemanagement/libraries
 //
 // Create a response library.
-//
-// 
 func (a ResponseManagementApi) PostResponsemanagementLibraries(body Library) (*Library, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -690,7 +674,7 @@ func (a ResponseManagementApi) PostResponsemanagementLibraries(body Library) (*L
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PostResponsemanagementLibraries")
 	}
 
@@ -752,8 +736,6 @@ func (a ResponseManagementApi) PostResponsemanagementLibraries(body Library) (*L
 // PostResponsemanagementResponseassetsSearch invokes POST /api/v2/responsemanagement/responseassets/search
 //
 // Search response assets
-//
-// 
 func (a ResponseManagementApi) PostResponsemanagementResponseassetsSearch(body Responseassetsearchrequest, expand []string) (*Responseassetsearchresults, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -765,7 +747,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsSearch(body R
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PostResponsemanagementResponseassetsSearch")
 	}
 
@@ -829,8 +811,6 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsSearch(body R
 // PostResponsemanagementResponseassetsUploads invokes POST /api/v2/responsemanagement/responseassets/uploads
 //
 // Creates pre-signed url for uploading response asset
-//
-// 
 func (a ResponseManagementApi) PostResponsemanagementResponseassetsUploads(body Createresponseassetrequest) (*Createresponseassetresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -842,7 +822,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsUploads(body 
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PostResponsemanagementResponseassetsUploads")
 	}
 
@@ -904,8 +884,6 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsUploads(body 
 // PostResponsemanagementResponses invokes POST /api/v2/responsemanagement/responses
 //
 // Create a response.
-//
-// 
 func (a ResponseManagementApi) PostResponsemanagementResponses(body Response, expand string) (*Response, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -917,7 +895,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponses(body Response, ex
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PostResponsemanagementResponses")
 	}
 
@@ -981,8 +959,6 @@ func (a ResponseManagementApi) PostResponsemanagementResponses(body Response, ex
 // PostResponsemanagementResponsesQuery invokes POST /api/v2/responsemanagement/responses/query
 //
 // Query responses
-//
-// 
 func (a ResponseManagementApi) PostResponsemanagementResponsesQuery(body Responsequeryrequest) (*Responsequeryresults, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -994,7 +970,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponsesQuery(body Respons
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PostResponsemanagementResponsesQuery")
 	}
 
@@ -1070,12 +1046,12 @@ func (a ResponseManagementApi) PutResponsemanagementLibrary(libraryId string, bo
 
 	// verify the required parameter 'libraryId' is set
 	if &libraryId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'libraryId' when calling ResponseManagementApi->PutResponsemanagementLibrary")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PutResponsemanagementLibrary")
 	}
 
@@ -1151,12 +1127,12 @@ func (a ResponseManagementApi) PutResponsemanagementResponse(responseId string, 
 
 	// verify the required parameter 'responseId' is set
 	if &responseId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'responseId' when calling ResponseManagementApi->PutResponsemanagementResponse")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PutResponsemanagementResponse")
 	}
 
@@ -1220,8 +1196,6 @@ func (a ResponseManagementApi) PutResponsemanagementResponse(responseId string, 
 // PutResponsemanagementResponseasset invokes PUT /api/v2/responsemanagement/responseassets/{responseAssetId}
 //
 // Update response asset
-//
-// 
 func (a ResponseManagementApi) PutResponsemanagementResponseasset(responseAssetId string, body Responseassetrequest) (*Responseasset, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1234,12 +1208,12 @@ func (a ResponseManagementApi) PutResponsemanagementResponseasset(responseAssetI
 
 	// verify the required parameter 'responseAssetId' is set
 	if &responseAssetId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'responseAssetId' when calling ResponseManagementApi->PutResponsemanagementResponseasset")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ResponseManagementApi->PutResponsemanagementResponseasset")
 	}
 

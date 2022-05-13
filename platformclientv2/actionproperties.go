@@ -69,19 +69,19 @@ func (o *Actionproperties) UnmarshalJSON(b []byte) error {
 	if WebchatPrompt, ok := ActionpropertiesMap["webchatPrompt"].(string); ok {
 		o.WebchatPrompt = &WebchatPrompt
 	}
-	
+    
 	if WebchatTitleText, ok := ActionpropertiesMap["webchatTitleText"].(string); ok {
 		o.WebchatTitleText = &WebchatTitleText
 	}
-	
+    
 	if WebchatAcceptText, ok := ActionpropertiesMap["webchatAcceptText"].(string); ok {
 		o.WebchatAcceptText = &WebchatAcceptText
 	}
-	
+    
 	if WebchatDeclineText, ok := ActionpropertiesMap["webchatDeclineText"].(string); ok {
 		o.WebchatDeclineText = &WebchatDeclineText
 	}
-	
+    
 	if WebchatSurvey, ok := ActionpropertiesMap["webchatSurvey"].(map[string]interface{}); ok {
 		WebchatSurveyString, _ := json.Marshal(WebchatSurvey)
 		json.Unmarshal(WebchatSurveyString, &o.WebchatSurvey)

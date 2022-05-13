@@ -45,11 +45,11 @@ func (o *Schedulermessagetypeseverity) UnmarshalJSON(b []byte) error {
 	if VarType, ok := SchedulermessagetypeseverityMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Severity, ok := SchedulermessagetypeseverityMap["severity"].(string); ok {
 		o.Severity = &Severity
 	}
-	
+    
 
 	return nil
 }

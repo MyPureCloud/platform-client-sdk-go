@@ -53,11 +53,11 @@ func (o *Credentialspecification) UnmarshalJSON(b []byte) error {
 	if Required, ok := CredentialspecificationMap["required"].(bool); ok {
 		o.Required = &Required
 	}
-	
+    
 	if Title, ok := CredentialspecificationMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if CredentialTypes, ok := CredentialspecificationMap["credentialTypes"].([]interface{}); ok {
 		CredentialTypesString, _ := json.Marshal(CredentialTypes)
 		json.Unmarshal(CredentialTypesString, &o.CredentialTypes)

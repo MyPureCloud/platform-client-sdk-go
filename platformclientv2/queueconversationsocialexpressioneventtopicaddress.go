@@ -69,23 +69,23 @@ func (o *Queueconversationsocialexpressioneventtopicaddress) UnmarshalJSON(b []b
 	if Name, ok := QueueconversationsocialexpressioneventtopicaddressMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if NameRaw, ok := QueueconversationsocialexpressioneventtopicaddressMap["nameRaw"].(string); ok {
 		o.NameRaw = &NameRaw
 	}
-	
+    
 	if AddressNormalized, ok := QueueconversationsocialexpressioneventtopicaddressMap["addressNormalized"].(string); ok {
 		o.AddressNormalized = &AddressNormalized
 	}
-	
+    
 	if AddressRaw, ok := QueueconversationsocialexpressioneventtopicaddressMap["addressRaw"].(string); ok {
 		o.AddressRaw = &AddressRaw
 	}
-	
+    
 	if AddressDisplayable, ok := QueueconversationsocialexpressioneventtopicaddressMap["addressDisplayable"].(string); ok {
 		o.AddressDisplayable = &AddressDisplayable
 	}
-	
+    
 
 	return nil
 }

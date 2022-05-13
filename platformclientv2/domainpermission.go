@@ -77,27 +77,27 @@ func (o *Domainpermission) UnmarshalJSON(b []byte) error {
 	if Domain, ok := DomainpermissionMap["domain"].(string); ok {
 		o.Domain = &Domain
 	}
-	
+    
 	if EntityType, ok := DomainpermissionMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
 	}
-	
+    
 	if Action, ok := DomainpermissionMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if Label, ok := DomainpermissionMap["label"].(string); ok {
 		o.Label = &Label
 	}
-	
+    
 	if AllowsConditions, ok := DomainpermissionMap["allowsConditions"].(bool); ok {
 		o.AllowsConditions = &AllowsConditions
 	}
-	
+    
 	if DivisionAware, ok := DomainpermissionMap["divisionAware"].(bool); ok {
 		o.DivisionAware = &DivisionAware
 	}
-	
+    
 
 	return nil
 }

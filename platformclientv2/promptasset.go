@@ -133,43 +133,43 @@ func (o *Promptasset) UnmarshalJSON(b []byte) error {
 	if Id, ok := PromptassetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PromptassetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if PromptId, ok := PromptassetMap["promptId"].(string); ok {
 		o.PromptId = &PromptId
 	}
-	
+    
 	if Language, ok := PromptassetMap["language"].(string); ok {
 		o.Language = &Language
 	}
-	
+    
 	if MediaUri, ok := PromptassetMap["mediaUri"].(string); ok {
 		o.MediaUri = &MediaUri
 	}
-	
+    
 	if TtsString, ok := PromptassetMap["ttsString"].(string); ok {
 		o.TtsString = &TtsString
 	}
-	
+    
 	if Text, ok := PromptassetMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if UploadStatus, ok := PromptassetMap["uploadStatus"].(string); ok {
 		o.UploadStatus = &UploadStatus
 	}
-	
+    
 	if UploadUri, ok := PromptassetMap["uploadUri"].(string); ok {
 		o.UploadUri = &UploadUri
 	}
-	
+    
 	if LanguageDefault, ok := PromptassetMap["languageDefault"].(bool); ok {
 		o.LanguageDefault = &LanguageDefault
 	}
-	
+    
 	if Tags, ok := PromptassetMap["tags"].(map[string]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)
@@ -178,11 +178,11 @@ func (o *Promptasset) UnmarshalJSON(b []byte) error {
 	if DurationSeconds, ok := PromptassetMap["durationSeconds"].(float64); ok {
 		o.DurationSeconds = &DurationSeconds
 	}
-	
+    
 	if SelfUri, ok := PromptassetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

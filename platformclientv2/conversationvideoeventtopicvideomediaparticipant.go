@@ -398,15 +398,15 @@ func (o *Conversationvideoeventtopicvideomediaparticipant) UnmarshalJSON(b []byt
 	if Id, ok := ConversationvideoeventtopicvideomediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ConversationvideoeventtopicvideomediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := ConversationvideoeventtopicvideomediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := ConversationvideoeventtopicvideomediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -430,31 +430,31 @@ func (o *Conversationvideoeventtopicvideomediaparticipant) UnmarshalJSON(b []byt
 	if Purpose, ok := ConversationvideoeventtopicvideomediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := ConversationvideoeventtopicvideomediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := ConversationvideoeventtopicvideomediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := ConversationvideoeventtopicvideomediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := ConversationvideoeventtopicvideomediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := ConversationvideoeventtopicvideomediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := ConversationvideoeventtopicvideomediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := ConversationvideoeventtopicvideomediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -493,7 +493,7 @@ func (o *Conversationvideoeventtopicvideomediaparticipant) UnmarshalJSON(b []byt
 	if WrapupSkipped, ok := ConversationvideoeventtopicvideomediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := ConversationvideoeventtopicvideomediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -502,7 +502,7 @@ func (o *Conversationvideoeventtopicvideomediaparticipant) UnmarshalJSON(b []byt
 	if Provider, ok := ConversationvideoeventtopicvideomediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := ConversationvideoeventtopicvideomediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -526,15 +526,15 @@ func (o *Conversationvideoeventtopicvideomediaparticipant) UnmarshalJSON(b []byt
 	if Peer, ok := ConversationvideoeventtopicvideomediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := ConversationvideoeventtopicvideomediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := ConversationvideoeventtopicvideomediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := ConversationvideoeventtopicvideomediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -553,15 +553,15 @@ func (o *Conversationvideoeventtopicvideomediaparticipant) UnmarshalJSON(b []byt
 	if AudioMuted, ok := ConversationvideoeventtopicvideomediaparticipantMap["audioMuted"].(bool); ok {
 		o.AudioMuted = &AudioMuted
 	}
-	
+    
 	if VideoMuted, ok := ConversationvideoeventtopicvideomediaparticipantMap["videoMuted"].(bool); ok {
 		o.VideoMuted = &VideoMuted
 	}
-	
+    
 	if SharingScreen, ok := ConversationvideoeventtopicvideomediaparticipantMap["sharingScreen"].(bool); ok {
 		o.SharingScreen = &SharingScreen
 	}
-	
+    
 	if PeerCount, ok := ConversationvideoeventtopicvideomediaparticipantMap["peerCount"].(float64); ok {
 		PeerCountInt := int(PeerCount)
 		o.PeerCount = &PeerCountInt
@@ -570,7 +570,7 @@ func (o *Conversationvideoeventtopicvideomediaparticipant) UnmarshalJSON(b []byt
 	if Context, ok := ConversationvideoeventtopicvideomediaparticipantMap["context"].(string); ok {
 		o.Context = &Context
 	}
-	
+    
 	if Msids, ok := ConversationvideoeventtopicvideomediaparticipantMap["msids"].([]interface{}); ok {
 		MsidsString, _ := json.Marshal(Msids)
 		json.Unmarshal(MsidsString, &o.Msids)

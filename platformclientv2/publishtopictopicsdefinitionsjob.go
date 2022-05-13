@@ -45,11 +45,11 @@ func (o *Publishtopictopicsdefinitionsjob) UnmarshalJSON(b []byte) error {
 	if Id, ok := PublishtopictopicsdefinitionsjobMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := PublishtopictopicsdefinitionsjobMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 
 	return nil
 }

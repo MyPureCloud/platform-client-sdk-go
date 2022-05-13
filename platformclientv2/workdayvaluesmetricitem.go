@@ -79,11 +79,11 @@ func (o *Workdayvaluesmetricitem) UnmarshalJSON(b []byte) error {
 	if Average, ok := WorkdayvaluesmetricitemMap["average"].(float64); ok {
 		o.Average = &Average
 	}
-	
+    
 	if UnitType, ok := WorkdayvaluesmetricitemMap["unitType"].(string); ok {
 		o.UnitType = &UnitType
 	}
-	
+    
 	if Trend, ok := WorkdayvaluesmetricitemMap["trend"].([]interface{}); ok {
 		TrendString, _ := json.Marshal(Trend)
 		json.Unmarshal(TrendString, &o.Trend)

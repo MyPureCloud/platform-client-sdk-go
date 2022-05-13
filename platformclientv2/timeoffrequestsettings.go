@@ -53,7 +53,7 @@ func (o *Timeoffrequestsettings) UnmarshalJSON(b []byte) error {
 	if SubmissionRangeEnforced, ok := TimeoffrequestsettingsMap["submissionRangeEnforced"].(bool); ok {
 		o.SubmissionRangeEnforced = &SubmissionRangeEnforced
 	}
-	
+    
 	if SubmissionEarliestDaysFromNow, ok := TimeoffrequestsettingsMap["submissionEarliestDaysFromNow"].(float64); ok {
 		SubmissionEarliestDaysFromNowInt := int(SubmissionEarliestDaysFromNow)
 		o.SubmissionEarliestDaysFromNow = &SubmissionEarliestDaysFromNowInt

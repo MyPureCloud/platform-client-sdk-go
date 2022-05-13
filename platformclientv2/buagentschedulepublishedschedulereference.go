@@ -69,7 +69,7 @@ func (o *Buagentschedulepublishedschedulereference) UnmarshalJSON(b []byte) erro
 	if Id, ok := BuagentschedulepublishedschedulereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if weekDateString, ok := BuagentschedulepublishedschedulereferenceMap["weekDate"].(string); ok {
 		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
 		o.WeekDate = &WeekDate
@@ -83,7 +83,7 @@ func (o *Buagentschedulepublishedschedulereference) UnmarshalJSON(b []byte) erro
 	if SelfUri, ok := BuagentschedulepublishedschedulereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

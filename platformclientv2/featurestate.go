@@ -37,7 +37,7 @@ func (o *Featurestate) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := FeaturestateMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

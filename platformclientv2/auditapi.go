@@ -32,8 +32,6 @@ func NewAuditApiWithConfig(config *Configuration) *AuditApi {
 // GetAuditsQueryRealtimeServicemapping invokes GET /api/v2/audits/query/realtime/servicemapping
 //
 // Get service mapping information used in realtime audits.
-//
-// 
 func (a AuditApi) GetAuditsQueryRealtimeServicemapping() (*Auditqueryservicemapping, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -99,8 +97,6 @@ func (a AuditApi) GetAuditsQueryRealtimeServicemapping() (*Auditqueryservicemapp
 // GetAuditsQueryServicemapping invokes GET /api/v2/audits/query/servicemapping
 //
 // Get service mapping information used in audits.
-//
-// 
 func (a AuditApi) GetAuditsQueryServicemapping() (*Auditqueryservicemapping, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -166,8 +162,6 @@ func (a AuditApi) GetAuditsQueryServicemapping() (*Auditqueryservicemapping, *AP
 // GetAuditsQueryTransactionId invokes GET /api/v2/audits/query/{transactionId}
 //
 // Get status of audit query execution
-//
-// 
 func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditqueryexecutionstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -180,7 +174,7 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 
 	// verify the required parameter 'transactionId' is set
 	if &transactionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'transactionId' when calling AuditApi->GetAuditsQueryTransactionId")
 	}
 
@@ -239,8 +233,6 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 // GetAuditsQueryTransactionIdResults invokes GET /api/v2/audits/query/{transactionId}/results
 //
 // Get results of audit query
-//
-// 
 func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int, expand []string) (*Auditqueryexecutionresultsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -253,7 +245,7 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 
 	// verify the required parameter 'transactionId' is set
 	if &transactionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'transactionId' when calling AuditApi->GetAuditsQueryTransactionIdResults")
 	}
 
@@ -318,8 +310,6 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 // PostAuditsQuery invokes POST /api/v2/audits/query
 //
 // Create audit query execution
-//
-// 
 func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutionstatusresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -331,7 +321,7 @@ func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutions
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuditApi->PostAuditsQuery")
 	}
 
@@ -393,8 +383,6 @@ func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutions
 // PostAuditsQueryRealtime invokes POST /api/v2/audits/query/realtime
 //
 // This endpoint will only retrieve 14 days worth of audits for certain services. Please use /query to get a full list and older audits.
-//
-// 
 func (a AuditApi) PostAuditsQueryRealtime(body Auditrealtimequeryrequest, expand []string) (*Auditrealtimequeryresultsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -406,7 +394,7 @@ func (a AuditApi) PostAuditsQueryRealtime(body Auditrealtimequeryrequest, expand
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AuditApi->PostAuditsQueryRealtime")
 	}
 

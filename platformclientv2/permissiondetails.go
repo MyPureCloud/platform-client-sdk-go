@@ -61,7 +61,7 @@ func (o *Permissiondetails) UnmarshalJSON(b []byte) error {
 	if VarType, ok := PermissiondetailsMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Permissions, ok := PermissiondetailsMap["permissions"].([]interface{}); ok {
 		PermissionsString, _ := json.Marshal(Permissions)
 		json.Unmarshal(PermissionsString, &o.Permissions)
@@ -70,11 +70,11 @@ func (o *Permissiondetails) UnmarshalJSON(b []byte) error {
 	if AllowsCurrentUser, ok := PermissiondetailsMap["allowsCurrentUser"].(bool); ok {
 		o.AllowsCurrentUser = &AllowsCurrentUser
 	}
-	
+    
 	if Enforced, ok := PermissiondetailsMap["enforced"].(bool); ok {
 		o.Enforced = &Enforced
 	}
-	
+    
 
 	return nil
 }

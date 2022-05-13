@@ -61,7 +61,7 @@ func (o *Addworkplanrotationrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := AddworkplanrotationrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if DateRange, ok := AddworkplanrotationrequestMap["dateRange"].(map[string]interface{}); ok {
 		DateRangeString, _ := json.Marshal(DateRange)
 		json.Unmarshal(DateRangeString, &o.DateRange)

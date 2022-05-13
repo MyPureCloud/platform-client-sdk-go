@@ -37,7 +37,7 @@ func (o *Certificate) UnmarshalJSON(b []byte) error {
 	if Certificate, ok := CertificateMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
-	
+    
 
 	return nil
 }

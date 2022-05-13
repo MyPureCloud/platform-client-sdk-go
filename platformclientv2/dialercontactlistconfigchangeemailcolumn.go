@@ -45,11 +45,11 @@ func (o *Dialercontactlistconfigchangeemailcolumn) UnmarshalJSON(b []byte) error
 	if ColumnName, ok := DialercontactlistconfigchangeemailcolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := DialercontactlistconfigchangeemailcolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

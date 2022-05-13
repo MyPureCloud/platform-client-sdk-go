@@ -78,7 +78,7 @@ func (o *Recordingjobsquery) UnmarshalJSON(b []byte) error {
 	if Action, ok := RecordingjobsqueryMap["action"].(string); ok {
 		o.Action = &Action
 	}
-	
+    
 	if actionDateString, ok := RecordingjobsqueryMap["actionDate"].(string); ok {
 		ActionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", actionDateString)
 		o.ActionDate = &ActionDate
@@ -87,11 +87,11 @@ func (o *Recordingjobsquery) UnmarshalJSON(b []byte) error {
 	if IntegrationId, ok := RecordingjobsqueryMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}
-	
+    
 	if IncludeScreenRecordings, ok := RecordingjobsqueryMap["includeScreenRecordings"].(bool); ok {
 		o.IncludeScreenRecordings = &IncludeScreenRecordings
 	}
-	
+    
 	if ConversationQuery, ok := RecordingjobsqueryMap["conversationQuery"].(map[string]interface{}); ok {
 		ConversationQueryString, _ := json.Marshal(ConversationQuery)
 		json.Unmarshal(ConversationQueryString, &o.ConversationQuery)

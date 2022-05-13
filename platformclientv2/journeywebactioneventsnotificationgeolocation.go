@@ -109,45 +109,45 @@ func (o *Journeywebactioneventsnotificationgeolocation) UnmarshalJSON(b []byte) 
 	if Country, ok := JourneywebactioneventsnotificationgeolocationMap["country"].(string); ok {
 		o.Country = &Country
 	}
-	
+    
 	if CountryName, ok := JourneywebactioneventsnotificationgeolocationMap["countryName"].(string); ok {
 		o.CountryName = &CountryName
 	}
-	
+    
 	if Latitude, ok := JourneywebactioneventsnotificationgeolocationMap["latitude"].(float64); ok {
 		LatitudeFloat32 := float32(Latitude)
 		o.Latitude = &LatitudeFloat32
 	}
-	
+    
 	if Longitude, ok := JourneywebactioneventsnotificationgeolocationMap["longitude"].(float64); ok {
 		LongitudeFloat32 := float32(Longitude)
 		o.Longitude = &LongitudeFloat32
 	}
-	
+    
 	if Locality, ok := JourneywebactioneventsnotificationgeolocationMap["locality"].(string); ok {
 		o.Locality = &Locality
 	}
-	
+    
 	if PostalCode, ok := JourneywebactioneventsnotificationgeolocationMap["postalCode"].(string); ok {
 		o.PostalCode = &PostalCode
 	}
-	
+    
 	if Region, ok := JourneywebactioneventsnotificationgeolocationMap["region"].(string); ok {
 		o.Region = &Region
 	}
-	
+    
 	if RegionName, ok := JourneywebactioneventsnotificationgeolocationMap["regionName"].(string); ok {
 		o.RegionName = &RegionName
 	}
-	
+    
 	if Timezone, ok := JourneywebactioneventsnotificationgeolocationMap["timezone"].(string); ok {
 		o.Timezone = &Timezone
 	}
-	
+    
 	if Source, ok := JourneywebactioneventsnotificationgeolocationMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 
 	return nil
 }

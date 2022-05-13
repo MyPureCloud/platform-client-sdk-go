@@ -59,7 +59,7 @@ func (o *Callrecord) UnmarshalJSON(b []byte) error {
 	if LastResult, ok := CallrecordMap["lastResult"].(string); ok {
 		o.LastResult = &LastResult
 	}
-	
+    
 
 	return nil
 }

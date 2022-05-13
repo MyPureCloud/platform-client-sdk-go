@@ -37,7 +37,7 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationnotificatio
 	if Text, ok := V2conversationmessagetypingeventforworkflowtopicconversationnotificationtemplatefooterMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 
 	return nil
 }

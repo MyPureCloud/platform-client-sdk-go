@@ -141,11 +141,11 @@ func (o *Agentactivity) UnmarshalJSON(b []byte) error {
 	if Id, ok := AgentactivityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AgentactivityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Agent, ok := AgentactivityMap["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)
@@ -204,7 +204,7 @@ func (o *Agentactivity) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AgentactivityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

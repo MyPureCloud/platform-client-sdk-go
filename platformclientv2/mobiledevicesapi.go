@@ -32,8 +32,6 @@ func NewMobileDevicesApiWithConfig(config *Configuration) *MobileDevicesApi {
 // DeleteMobiledevice invokes DELETE /api/v2/mobiledevices/{deviceId}
 //
 // Delete device
-//
-// 
 func (a MobileDevicesApi) DeleteMobiledevice(deviceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -45,7 +43,7 @@ func (a MobileDevicesApi) DeleteMobiledevice(deviceId string) (*APIResponse, err
 
 	// verify the required parameter 'deviceId' is set
 	if &deviceId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'deviceId' when calling MobileDevicesApi->DeleteMobiledevice")
 	}
 
@@ -98,8 +96,6 @@ func (a MobileDevicesApi) DeleteMobiledevice(deviceId string) (*APIResponse, err
 // GetMobiledevice invokes GET /api/v2/mobiledevices/{deviceId}
 //
 // Get device
-//
-// 
 func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -112,7 +108,7 @@ func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIRes
 
 	// verify the required parameter 'deviceId' is set
 	if &deviceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deviceId' when calling MobileDevicesApi->GetMobiledevice")
 	}
 
@@ -171,8 +167,6 @@ func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIRes
 // GetMobiledevices invokes GET /api/v2/mobiledevices
 //
 // Get a list of all devices.
-//
-// 
 func (a MobileDevicesApi) GetMobiledevices(pageSize int, pageNumber int, sortOrder string) (*Directoryuserdeviceslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -244,8 +238,6 @@ func (a MobileDevicesApi) GetMobiledevices(pageSize int, pageNumber int, sortOrd
 // PostMobiledevices invokes POST /api/v2/mobiledevices
 //
 // Create User device
-//
-// 
 func (a MobileDevicesApi) PostMobiledevices(body Userdevice) (*Userdevice, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -257,7 +249,7 @@ func (a MobileDevicesApi) PostMobiledevices(body Userdevice) (*Userdevice, *APIR
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling MobileDevicesApi->PostMobiledevices")
 	}
 
@@ -319,8 +311,6 @@ func (a MobileDevicesApi) PostMobiledevices(body Userdevice) (*Userdevice, *APIR
 // PutMobiledevice invokes PUT /api/v2/mobiledevices/{deviceId}
 //
 // Update device
-//
-// 
 func (a MobileDevicesApi) PutMobiledevice(deviceId string, body Userdevice) (*Userdevice, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -333,7 +323,7 @@ func (a MobileDevicesApi) PutMobiledevice(deviceId string, body Userdevice) (*Us
 
 	// verify the required parameter 'deviceId' is set
 	if &deviceId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'deviceId' when calling MobileDevicesApi->PutMobiledevice")
 	}
 

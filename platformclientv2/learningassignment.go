@@ -198,7 +198,7 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningassignmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Assessment, ok := LearningassignmentMap["assessment"].(map[string]interface{}); ok {
 		AssessmentString, _ := json.Marshal(Assessment)
 		json.Unmarshal(AssessmentString, &o.Assessment)
@@ -227,7 +227,7 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
 	if IsOverdue, ok := LearningassignmentMap["isOverdue"].(bool); ok {
 		o.IsOverdue = &IsOverdue
 	}
-	
+    
 	if PercentageScore, ok := LearningassignmentMap["percentageScore"].(float64); ok {
 		PercentageScoreFloat32 := float32(PercentageScore)
 		o.PercentageScore = &PercentageScoreFloat32
@@ -236,23 +236,23 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
 	if IsRule, ok := LearningassignmentMap["isRule"].(bool); ok {
 		o.IsRule = &IsRule
 	}
-	
+    
 	if IsManual, ok := LearningassignmentMap["isManual"].(bool); ok {
 		o.IsManual = &IsManual
 	}
-	
+    
 	if IsPassed, ok := LearningassignmentMap["isPassed"].(bool); ok {
 		o.IsPassed = &IsPassed
 	}
-	
+    
 	if SelfUri, ok := LearningassignmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if State, ok := LearningassignmentMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateRecommendedForCompletionString, ok := LearningassignmentMap["dateRecommendedForCompletion"].(string); ok {
 		DateRecommendedForCompletion, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateRecommendedForCompletionString)
 		o.DateRecommendedForCompletion = &DateRecommendedForCompletion

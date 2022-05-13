@@ -45,11 +45,11 @@ func (o *Conversationeventtopicphonenumbercolumn) UnmarshalJSON(b []byte) error 
 	if ColumnName, ok := ConversationeventtopicphonenumbercolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := ConversationeventtopicphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

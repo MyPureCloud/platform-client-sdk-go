@@ -53,15 +53,15 @@ func (o *Webmessagingeventcobrowse) UnmarshalJSON(b []byte) error {
 	if VarType, ok := WebmessagingeventcobrowseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if SessionId, ok := WebmessagingeventcobrowseMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
-	
+    
 	if SessionJoinToken, ok := WebmessagingeventcobrowseMap["sessionJoinToken"].(string); ok {
 		o.SessionJoinToken = &SessionJoinToken
 	}
-	
+    
 
 	return nil
 }

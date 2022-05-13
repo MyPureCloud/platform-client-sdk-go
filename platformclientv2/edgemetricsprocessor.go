@@ -69,23 +69,23 @@ func (o *Edgemetricsprocessor) UnmarshalJSON(b []byte) error {
 	if ActiveTimePct, ok := EdgemetricsprocessorMap["activeTimePct"].(float64); ok {
 		o.ActiveTimePct = &ActiveTimePct
 	}
-	
+    
 	if CpuId, ok := EdgemetricsprocessorMap["cpuId"].(string); ok {
 		o.CpuId = &CpuId
 	}
-	
+    
 	if IdleTimePct, ok := EdgemetricsprocessorMap["idleTimePct"].(float64); ok {
 		o.IdleTimePct = &IdleTimePct
 	}
-	
+    
 	if PrivilegedTimePct, ok := EdgemetricsprocessorMap["privilegedTimePct"].(float64); ok {
 		o.PrivilegedTimePct = &PrivilegedTimePct
 	}
-	
+    
 	if UserTimePct, ok := EdgemetricsprocessorMap["userTimePct"].(float64); ok {
 		o.UserTimePct = &UserTimePct
 	}
-	
+    
 
 	return nil
 }

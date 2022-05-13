@@ -58,7 +58,7 @@ func (o *Validateworkplanresponse) UnmarshalJSON(b []byte) error {
 	if Valid, ok := ValidateworkplanresponseMap["valid"].(bool); ok {
 		o.Valid = &Valid
 	}
-	
+    
 	if Messages, ok := ValidateworkplanresponseMap["messages"].(map[string]interface{}); ok {
 		MessagesString, _ := json.Marshal(Messages)
 		json.Unmarshal(MessagesString, &o.Messages)

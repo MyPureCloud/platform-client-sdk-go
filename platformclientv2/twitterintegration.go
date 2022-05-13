@@ -206,11 +206,11 @@ func (o *Twitterintegration) UnmarshalJSON(b []byte) error {
 	if Id, ok := TwitterintegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TwitterintegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := TwitterintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -224,31 +224,31 @@ func (o *Twitterintegration) UnmarshalJSON(b []byte) error {
 	if AccessTokenKey, ok := TwitterintegrationMap["accessTokenKey"].(string); ok {
 		o.AccessTokenKey = &AccessTokenKey
 	}
-	
+    
 	if ConsumerKey, ok := TwitterintegrationMap["consumerKey"].(string); ok {
 		o.ConsumerKey = &ConsumerKey
 	}
-	
+    
 	if Username, ok := TwitterintegrationMap["username"].(string); ok {
 		o.Username = &Username
 	}
-	
+    
 	if UserId, ok := TwitterintegrationMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Status, ok := TwitterintegrationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Tier, ok := TwitterintegrationMap["tier"].(string); ok {
 		o.Tier = &Tier
 	}
-	
+    
 	if EnvName, ok := TwitterintegrationMap["envName"].(string); ok {
 		o.EnvName = &EnvName
 	}
-	
+    
 	if Recipient, ok := TwitterintegrationMap["recipient"].(map[string]interface{}); ok {
 		RecipientString, _ := json.Marshal(Recipient)
 		json.Unmarshal(RecipientString, &o.Recipient)
@@ -282,7 +282,7 @@ func (o *Twitterintegration) UnmarshalJSON(b []byte) error {
 	if CreateStatus, ok := TwitterintegrationMap["createStatus"].(string); ok {
 		o.CreateStatus = &CreateStatus
 	}
-	
+    
 	if CreateError, ok := TwitterintegrationMap["createError"].(map[string]interface{}); ok {
 		CreateErrorString, _ := json.Marshal(CreateError)
 		json.Unmarshal(CreateErrorString, &o.CreateError)
@@ -291,7 +291,7 @@ func (o *Twitterintegration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := TwitterintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

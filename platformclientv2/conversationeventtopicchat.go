@@ -182,39 +182,39 @@ func (o *Conversationeventtopicchat) UnmarshalJSON(b []byte) error {
 	if State, ok := ConversationeventtopicchatMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := ConversationeventtopicchatMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Provider, ok := ConversationeventtopicchatMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := ConversationeventtopicchatMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := ConversationeventtopicchatMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if RoomId, ok := ConversationeventtopicchatMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if AvatarImageUrl, ok := ConversationeventtopicchatMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 	if Held, ok := ConversationeventtopicchatMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if DisconnectType, ok := ConversationeventtopicchatMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := ConversationeventtopicchatMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -248,7 +248,7 @@ func (o *Conversationeventtopicchat) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := ConversationeventtopicchatMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

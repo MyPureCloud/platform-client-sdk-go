@@ -62,22 +62,22 @@ func (o *Numericrange) UnmarshalJSON(b []byte) error {
 		GtFloat32 := float32(Gt)
 		o.Gt = &GtFloat32
 	}
-	
+    
 	if Gte, ok := NumericrangeMap["gte"].(float64); ok {
 		GteFloat32 := float32(Gte)
 		o.Gte = &GteFloat32
 	}
-	
+    
 	if Lt, ok := NumericrangeMap["lt"].(float64); ok {
 		LtFloat32 := float32(Lt)
 		o.Lt = &LtFloat32
 	}
-	
+    
 	if Lte, ok := NumericrangeMap["lte"].(float64); ok {
 		LteFloat32 := float32(Lte)
 		o.Lte = &LteFloat32
 	}
-	
+    
 
 	return nil
 }

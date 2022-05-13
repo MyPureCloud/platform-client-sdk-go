@@ -53,7 +53,7 @@ func (o *Routingstatusdetailqueryfilter) UnmarshalJSON(b []byte) error {
 	if VarType, ok := RoutingstatusdetailqueryfilterMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Clauses, ok := RoutingstatusdetailqueryfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)

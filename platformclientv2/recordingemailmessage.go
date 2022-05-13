@@ -118,15 +118,15 @@ func (o *Recordingemailmessage) UnmarshalJSON(b []byte) error {
 	if HtmlBody, ok := RecordingemailmessageMap["htmlBody"].(string); ok {
 		o.HtmlBody = &HtmlBody
 	}
-	
+    
 	if TextBody, ok := RecordingemailmessageMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
 	}
-	
+    
 	if Id, ok := RecordingemailmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if To, ok := RecordingemailmessageMap["to"].([]interface{}); ok {
 		ToString, _ := json.Marshal(To)
 		json.Unmarshal(ToString, &o.To)
@@ -150,7 +150,7 @@ func (o *Recordingemailmessage) UnmarshalJSON(b []byte) error {
 	if Subject, ok := RecordingemailmessageMap["subject"].(string); ok {
 		o.Subject = &Subject
 	}
-	
+    
 	if Attachments, ok := RecordingemailmessageMap["attachments"].([]interface{}); ok {
 		AttachmentsString, _ := json.Marshal(Attachments)
 		json.Unmarshal(AttachmentsString, &o.Attachments)

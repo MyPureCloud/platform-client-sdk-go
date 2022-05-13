@@ -109,27 +109,27 @@ func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
 	if Id, ok := EvaluationquestionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Text, ok := EvaluationquestionMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if HelpText, ok := EvaluationquestionMap["helpText"].(string); ok {
 		o.HelpText = &HelpText
 	}
-	
+    
 	if VarType, ok := EvaluationquestionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if NaEnabled, ok := EvaluationquestionMap["naEnabled"].(bool); ok {
 		o.NaEnabled = &NaEnabled
 	}
-	
+    
 	if CommentsRequired, ok := EvaluationquestionMap["commentsRequired"].(bool); ok {
 		o.CommentsRequired = &CommentsRequired
 	}
-	
+    
 	if VisibilityCondition, ok := EvaluationquestionMap["visibilityCondition"].(map[string]interface{}); ok {
 		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
 		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
@@ -143,11 +143,11 @@ func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
 	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {
 		o.IsKill = &IsKill
 	}
-	
+    
 	if IsCritical, ok := EvaluationquestionMap["isCritical"].(bool); ok {
 		o.IsCritical = &IsCritical
 	}
-	
+    
 
 	return nil
 }

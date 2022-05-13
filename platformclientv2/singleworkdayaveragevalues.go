@@ -100,7 +100,7 @@ func (o *Singleworkdayaveragevalues) UnmarshalJSON(b []byte) error {
 	if Timezone, ok := SingleworkdayaveragevaluesMap["timezone"].(string); ok {
 		o.Timezone = &Timezone
 	}
-	
+    
 	if Results, ok := SingleworkdayaveragevaluesMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)

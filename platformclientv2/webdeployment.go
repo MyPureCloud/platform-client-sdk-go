@@ -150,15 +150,15 @@ func (o *Webdeployment) UnmarshalJSON(b []byte) error {
 	if Id, ok := WebdeploymentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WebdeploymentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := WebdeploymentMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Configuration, ok := WebdeploymentMap["configuration"].(map[string]interface{}); ok {
 		ConfigurationString, _ := json.Marshal(Configuration)
 		json.Unmarshal(ConfigurationString, &o.Configuration)
@@ -167,7 +167,7 @@ func (o *Webdeployment) UnmarshalJSON(b []byte) error {
 	if AllowAllDomains, ok := WebdeploymentMap["allowAllDomains"].(bool); ok {
 		o.AllowAllDomains = &AllowAllDomains
 	}
-	
+    
 	if AllowedDomains, ok := WebdeploymentMap["allowedDomains"].([]interface{}); ok {
 		AllowedDomainsString, _ := json.Marshal(AllowedDomains)
 		json.Unmarshal(AllowedDomainsString, &o.AllowedDomains)
@@ -176,7 +176,7 @@ func (o *Webdeployment) UnmarshalJSON(b []byte) error {
 	if Snippet, ok := WebdeploymentMap["snippet"].(string); ok {
 		o.Snippet = &Snippet
 	}
-	
+    
 	if dateCreatedString, ok := WebdeploymentMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -200,11 +200,11 @@ func (o *Webdeployment) UnmarshalJSON(b []byte) error {
 	if Status, ok := WebdeploymentMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if SelfUri, ok := WebdeploymentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

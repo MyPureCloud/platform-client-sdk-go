@@ -53,11 +53,11 @@ func (o *Scheduleuploadprocessingresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := ScheduleuploadprocessingresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := ScheduleuploadprocessingresponseMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := ScheduleuploadprocessingresponseMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

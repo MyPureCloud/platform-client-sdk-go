@@ -53,11 +53,11 @@ func (o *Buasyncscheduleresponse) UnmarshalJSON(b []byte) error {
 	if Status, ok := BuasyncscheduleresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := BuasyncscheduleresponseMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if Result, ok := BuasyncscheduleresponseMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)

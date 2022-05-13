@@ -96,7 +96,7 @@ func (o *Wfmhistoricaladherencequery) UnmarshalJSON(b []byte) error {
 	if TimeZone, ok := WfmhistoricaladherencequeryMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if UserIds, ok := WfmhistoricaladherencequeryMap["userIds"].([]interface{}); ok {
 		UserIdsString, _ := json.Marshal(UserIds)
 		json.Unmarshal(UserIdsString, &o.UserIds)
@@ -105,7 +105,7 @@ func (o *Wfmhistoricaladherencequery) UnmarshalJSON(b []byte) error {
 	if IncludeExceptions, ok := WfmhistoricaladherencequeryMap["includeExceptions"].(bool); ok {
 		o.IncludeExceptions = &IncludeExceptions
 	}
-	
+    
 
 	return nil
 }

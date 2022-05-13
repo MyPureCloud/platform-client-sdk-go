@@ -189,11 +189,11 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 	if Id, ok := MetricsMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MetricsMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Order, ok := MetricsMap["order"].(float64); ok {
 		OrderInt := int(Order)
 		o.Order = &OrderInt
@@ -202,27 +202,27 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 	if MetricDefinitionName, ok := MetricsMap["metricDefinitionName"].(string); ok {
 		o.MetricDefinitionName = &MetricDefinitionName
 	}
-	
+    
 	if MetricDefinitionId, ok := MetricsMap["metricDefinitionId"].(string); ok {
 		o.MetricDefinitionId = &MetricDefinitionId
 	}
-	
+    
 	if ExternalMetricDefinitionId, ok := MetricsMap["externalMetricDefinitionId"].(string); ok {
 		o.ExternalMetricDefinitionId = &ExternalMetricDefinitionId
 	}
-	
+    
 	if UnitType, ok := MetricsMap["unitType"].(string); ok {
 		o.UnitType = &UnitType
 	}
-	
+    
 	if Enabled, ok := MetricsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if TemplateName, ok := MetricsMap["templateName"].(string); ok {
 		o.TemplateName = &TemplateName
 	}
-	
+    
 	if MaxPoints, ok := MetricsMap["maxPoints"].(float64); ok {
 		MaxPointsInt := int(MaxPoints)
 		o.MaxPoints = &MaxPointsInt
@@ -231,7 +231,7 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 	if PerformanceProfileId, ok := MetricsMap["performanceProfileId"].(string); ok {
 		o.PerformanceProfileId = &PerformanceProfileId
 	}
-	
+    
 	if LinkedMetric, ok := MetricsMap["linkedMetric"].(map[string]interface{}); ok {
 		LinkedMetricString, _ := json.Marshal(LinkedMetric)
 		json.Unmarshal(LinkedMetricString, &o.LinkedMetric)
@@ -255,7 +255,7 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 	if UnitDefinition, ok := MetricsMap["unitDefinition"].(string); ok {
 		o.UnitDefinition = &UnitDefinition
 	}
-	
+    
 	if Precision, ok := MetricsMap["precision"].(float64); ok {
 		PrecisionInt := int(Precision)
 		o.Precision = &PrecisionInt
@@ -264,7 +264,7 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MetricsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

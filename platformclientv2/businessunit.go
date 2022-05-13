@@ -69,11 +69,11 @@ func (o *Businessunit) UnmarshalJSON(b []byte) error {
 	if Id, ok := BusinessunitMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BusinessunitMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Settings, ok := BusinessunitMap["settings"].(map[string]interface{}); ok {
 		SettingsString, _ := json.Marshal(Settings)
 		json.Unmarshal(SettingsString, &o.Settings)
@@ -87,7 +87,7 @@ func (o *Businessunit) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BusinessunitMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

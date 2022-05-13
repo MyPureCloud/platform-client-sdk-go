@@ -53,11 +53,11 @@ func (o *Keyperformanceindicatorassessment) UnmarshalJSON(b []byte) error {
 	if Kpi, ok := KeyperformanceindicatorassessmentMap["kpi"].(string); ok {
 		o.Kpi = &Kpi
 	}
-	
+    
 	if AssessmentResult, ok := KeyperformanceindicatorassessmentMap["assessmentResult"].(string); ok {
 		o.AssessmentResult = &AssessmentResult
 	}
-	
+    
 	if Checks, ok := KeyperformanceindicatorassessmentMap["checks"].([]interface{}); ok {
 		ChecksString, _ := json.Marshal(Checks)
 		json.Unmarshal(ChecksString, &o.Checks)

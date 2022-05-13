@@ -45,11 +45,11 @@ func (o *Servicegoaltemplatereference) UnmarshalJSON(b []byte) error {
 	if Id, ok := ServicegoaltemplatereferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := ServicegoaltemplatereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

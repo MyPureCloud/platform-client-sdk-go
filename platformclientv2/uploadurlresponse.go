@@ -53,11 +53,11 @@ func (o *Uploadurlresponse) UnmarshalJSON(b []byte) error {
 	if Url, ok := UploadurlresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
-	
+    
 	if UploadKey, ok := UploadurlresponseMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
 	}
-	
+    
 	if Headers, ok := UploadurlresponseMap["headers"].(map[string]interface{}); ok {
 		HeadersString, _ := json.Marshal(Headers)
 		json.Unmarshal(HeadersString, &o.Headers)

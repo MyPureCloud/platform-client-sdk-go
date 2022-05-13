@@ -101,15 +101,15 @@ func (o *Workplanrotationresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := WorkplanrotationresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WorkplanrotationresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Enabled, ok := WorkplanrotationresponseMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if DateRange, ok := WorkplanrotationresponseMap["dateRange"].(map[string]interface{}); ok {
 		DateRangeString, _ := json.Marshal(DateRange)
 		json.Unmarshal(DateRangeString, &o.DateRange)
@@ -138,7 +138,7 @@ func (o *Workplanrotationresponse) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WorkplanrotationresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

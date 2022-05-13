@@ -53,15 +53,15 @@ func (o *Termattribute) UnmarshalJSON(b []byte) error {
 	if Id, ok := TermattributeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TermattributeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := TermattributeMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

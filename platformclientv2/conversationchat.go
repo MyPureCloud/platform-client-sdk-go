@@ -222,19 +222,19 @@ func (o *Conversationchat) UnmarshalJSON(b []byte) error {
 	if State, ok := ConversationchatMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Id, ok := ConversationchatMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if RoomId, ok := ConversationchatMap["roomId"].(string); ok {
 		o.RoomId = &RoomId
 	}
-	
+    
 	if RecordingId, ok := ConversationchatMap["recordingId"].(string); ok {
 		o.RecordingId = &RecordingId
 	}
-	
+    
 	if Segments, ok := ConversationchatMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)
@@ -243,15 +243,15 @@ func (o *Conversationchat) UnmarshalJSON(b []byte) error {
 	if Held, ok := ConversationchatMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if Direction, ok := ConversationchatMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := ConversationchatMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := ConversationchatMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -275,19 +275,19 @@ func (o *Conversationchat) UnmarshalJSON(b []byte) error {
 	if Provider, ok := ConversationchatMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := ConversationchatMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := ConversationchatMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if AvatarImageUrl, ok := ConversationchatMap["avatarImageUrl"].(string); ok {
 		o.AvatarImageUrl = &AvatarImageUrl
 	}
-	
+    
 	if JourneyContext, ok := ConversationchatMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -306,7 +306,7 @@ func (o *Conversationchat) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := ConversationchatMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

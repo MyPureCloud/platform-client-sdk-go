@@ -53,7 +53,7 @@ func (o *Bucreateblankschedulerequest) UnmarshalJSON(b []byte) error {
 	if Description, ok := BucreateblankschedulerequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if ShortTermForecast, ok := BucreateblankschedulerequestMap["shortTermForecast"].(map[string]interface{}); ok {
 		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
 		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)

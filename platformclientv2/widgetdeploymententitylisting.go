@@ -63,7 +63,7 @@ func (o *Widgetdeploymententitylisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WidgetdeploymententitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

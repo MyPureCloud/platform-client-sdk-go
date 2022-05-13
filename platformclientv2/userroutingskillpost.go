@@ -61,19 +61,19 @@ func (o *Userroutingskillpost) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserroutingskillpostMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Proficiency, ok := UserroutingskillpostMap["proficiency"].(float64); ok {
 		o.Proficiency = &Proficiency
 	}
-	
+    
 	if SkillUri, ok := UserroutingskillpostMap["skillUri"].(string); ok {
 		o.SkillUri = &SkillUri
 	}
-	
+    
 	if SelfUri, ok := UserroutingskillpostMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -85,19 +85,19 @@ func (o *Inbounddomain) UnmarshalJSON(b []byte) error {
 	if Id, ok := InbounddomainMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := InbounddomainMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if MxRecordStatus, ok := InbounddomainMap["mxRecordStatus"].(string); ok {
 		o.MxRecordStatus = &MxRecordStatus
 	}
-	
+    
 	if SubDomain, ok := InbounddomainMap["subDomain"].(bool); ok {
 		o.SubDomain = &SubDomain
 	}
-	
+    
 	if MailFromSettings, ok := InbounddomainMap["mailFromSettings"].(map[string]interface{}); ok {
 		MailFromSettingsString, _ := json.Marshal(MailFromSettings)
 		json.Unmarshal(MailFromSettingsString, &o.MailFromSettings)
@@ -111,7 +111,7 @@ func (o *Inbounddomain) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := InbounddomainMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

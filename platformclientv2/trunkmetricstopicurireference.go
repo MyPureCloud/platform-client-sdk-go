@@ -45,11 +45,11 @@ func (o *Trunkmetricstopicurireference) UnmarshalJSON(b []byte) error {
 	if Id, ok := TrunkmetricstopicurireferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TrunkmetricstopicurireferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

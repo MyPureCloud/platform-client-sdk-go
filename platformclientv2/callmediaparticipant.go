@@ -470,15 +470,15 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if Id, ok := CallmediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CallmediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := CallmediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := CallmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -502,31 +502,31 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if Purpose, ok := CallmediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := CallmediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := CallmediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := CallmediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := CallmediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := CallmediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := CallmediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := CallmediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -565,7 +565,7 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if WrapupSkipped, ok := CallmediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := CallmediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -574,7 +574,7 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if Provider, ok := CallmediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := CallmediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -593,11 +593,11 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if Peer, ok := CallmediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if FlaggedReason, ok := CallmediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := CallmediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -621,19 +621,19 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if Muted, ok := CallmediaparticipantMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}
-	
+    
 	if Confined, ok := CallmediaparticipantMap["confined"].(bool); ok {
 		o.Confined = &Confined
 	}
-	
+    
 	if Recording, ok := CallmediaparticipantMap["recording"].(bool); ok {
 		o.Recording = &Recording
 	}
-	
+    
 	if RecordingState, ok := CallmediaparticipantMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Group, ok := CallmediaparticipantMap["group"].(map[string]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
@@ -642,15 +642,15 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if Ani, ok := CallmediaparticipantMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := CallmediaparticipantMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if DocumentId, ok := CallmediaparticipantMap["documentId"].(string); ok {
 		o.DocumentId = &DocumentId
 	}
-	
+    
 	if FaxStatus, ok := CallmediaparticipantMap["faxStatus"].(map[string]interface{}); ok {
 		FaxStatusString, _ := json.Marshal(FaxStatus)
 		json.Unmarshal(FaxStatusString, &o.FaxStatus)
@@ -659,23 +659,23 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if MonitoredParticipantId, ok := CallmediaparticipantMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
-	
+    
 	if CoachedParticipantId, ok := CallmediaparticipantMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
-	
+    
 	if BargedParticipantId, ok := CallmediaparticipantMap["bargedParticipantId"].(string); ok {
 		o.BargedParticipantId = &BargedParticipantId
 	}
-	
+    
 	if ConsultParticipantId, ok := CallmediaparticipantMap["consultParticipantId"].(string); ok {
 		o.ConsultParticipantId = &ConsultParticipantId
 	}
-	
+    
 	if UuiData, ok := CallmediaparticipantMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
 	}
-	
+    
 	if bargedTimeString, ok := CallmediaparticipantMap["bargedTime"].(string); ok {
 		BargedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", bargedTimeString)
 		o.BargedTime = &BargedTime

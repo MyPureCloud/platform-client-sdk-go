@@ -77,11 +77,11 @@ func (o *Evaluationaggregationqueryme) UnmarshalJSON(b []byte) error {
 	if Interval, ok := EvaluationaggregationquerymeMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if TimeZone, ok := EvaluationaggregationquerymeMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if GroupBy, ok := EvaluationaggregationquerymeMap["groupBy"].([]interface{}); ok {
 		GroupByString, _ := json.Marshal(GroupBy)
 		json.Unmarshal(GroupByString, &o.GroupBy)
@@ -95,11 +95,11 @@ func (o *Evaluationaggregationqueryme) UnmarshalJSON(b []byte) error {
 	if AlternateTimeDimension, ok := EvaluationaggregationquerymeMap["alternateTimeDimension"].(string); ok {
 		o.AlternateTimeDimension = &AlternateTimeDimension
 	}
-	
+    
 	if ContextId, ok := EvaluationaggregationquerymeMap["contextId"].(string); ok {
 		o.ContextId = &ContextId
 	}
-	
+    
 
 	return nil
 }

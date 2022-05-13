@@ -80,7 +80,7 @@ func (o *Analyticsroutingstatusrecord) UnmarshalJSON(b []byte) error {
 	if RoutingStatus, ok := AnalyticsroutingstatusrecordMap["routingStatus"].(string); ok {
 		o.RoutingStatus = &RoutingStatus
 	}
-	
+    
 
 	return nil
 }

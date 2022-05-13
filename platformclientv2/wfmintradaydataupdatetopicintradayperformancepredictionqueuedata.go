@@ -54,17 +54,17 @@ func (o *Wfmintradaydataupdatetopicintradayperformancepredictionqueuedata) Unmar
 		ServiceLevelPercentFloat32 := float32(ServiceLevelPercent)
 		o.ServiceLevelPercent = &ServiceLevelPercentFloat32
 	}
-	
+    
 	if AverageSpeedOfAnswerSeconds, ok := WfmintradaydataupdatetopicintradayperformancepredictionqueuedataMap["averageSpeedOfAnswerSeconds"].(float64); ok {
 		AverageSpeedOfAnswerSecondsFloat32 := float32(AverageSpeedOfAnswerSeconds)
 		o.AverageSpeedOfAnswerSeconds = &AverageSpeedOfAnswerSecondsFloat32
 	}
-	
+    
 	if NumberOfInteractions, ok := WfmintradaydataupdatetopicintradayperformancepredictionqueuedataMap["numberOfInteractions"].(float64); ok {
 		NumberOfInteractionsFloat32 := float32(NumberOfInteractions)
 		o.NumberOfInteractions = &NumberOfInteractionsFloat32
 	}
-	
+    
 
 	return nil
 }

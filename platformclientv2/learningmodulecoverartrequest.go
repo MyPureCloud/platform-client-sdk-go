@@ -37,7 +37,7 @@ func (o *Learningmodulecoverartrequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := LearningmodulecoverartrequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

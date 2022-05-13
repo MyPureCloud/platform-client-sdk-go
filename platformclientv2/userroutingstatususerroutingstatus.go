@@ -53,7 +53,7 @@ func (o *Userroutingstatususerroutingstatus) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserroutingstatususerroutingstatusMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if RoutingStatus, ok := UserroutingstatususerroutingstatusMap["routingStatus"].(map[string]interface{}); ok {
 		RoutingStatusString, _ := json.Marshal(RoutingStatus)
 		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)

@@ -77,15 +77,15 @@ func (o *Prompt) UnmarshalJSON(b []byte) error {
 	if Id, ok := PromptMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := PromptMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := PromptMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if Resources, ok := PromptMap["resources"].([]interface{}); ok {
 		ResourcesString, _ := json.Marshal(Resources)
 		json.Unmarshal(ResourcesString, &o.Resources)
@@ -99,7 +99,7 @@ func (o *Prompt) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := PromptMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

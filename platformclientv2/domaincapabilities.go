@@ -77,11 +77,11 @@ func (o *Domaincapabilities) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := DomaincapabilitiesMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if Dhcp, ok := DomaincapabilitiesMap["dhcp"].(bool); ok {
 		o.Dhcp = &Dhcp
 	}
-	
+    
 	if Metric, ok := DomaincapabilitiesMap["metric"].(float64); ok {
 		MetricInt := int(Metric)
 		o.Metric = &MetricInt
@@ -90,15 +90,15 @@ func (o *Domaincapabilities) UnmarshalJSON(b []byte) error {
 	if AutoMetric, ok := DomaincapabilitiesMap["autoMetric"].(bool); ok {
 		o.AutoMetric = &AutoMetric
 	}
-	
+    
 	if SupportsMetric, ok := DomaincapabilitiesMap["supportsMetric"].(bool); ok {
 		o.SupportsMetric = &SupportsMetric
 	}
-	
+    
 	if PingEnabled, ok := DomaincapabilitiesMap["pingEnabled"].(bool); ok {
 		o.PingEnabled = &PingEnabled
 	}
-	
+    
 
 	return nil
 }

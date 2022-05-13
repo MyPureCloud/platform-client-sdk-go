@@ -53,15 +53,15 @@ func (o *Basetopicentitiy) UnmarshalJSON(b []byte) error {
 	if Id, ok := BasetopicentitiyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := BasetopicentitiyMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SelfUri, ok := BasetopicentitiyMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

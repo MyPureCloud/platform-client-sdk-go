@@ -278,31 +278,31 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationeventtopiccallMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if State, ok := ConversationeventtopiccallMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Recording, ok := ConversationeventtopiccallMap["recording"].(bool); ok {
 		o.Recording = &Recording
 	}
-	
+    
 	if RecordingState, ok := ConversationeventtopiccallMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Muted, ok := ConversationeventtopiccallMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}
-	
+    
 	if Confined, ok := ConversationeventtopiccallMap["confined"].(bool); ok {
 		o.Confined = &Confined
 	}
-	
+    
 	if Held, ok := ConversationeventtopiccallMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if ErrorInfo, ok := ConversationeventtopiccallMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
@@ -311,7 +311,7 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := ConversationeventtopiccallMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if startHoldTimeString, ok := ConversationeventtopiccallMap["startHoldTime"].(string); ok {
 		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
 		o.StartHoldTime = &StartHoldTime
@@ -320,11 +320,11 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if Direction, ok := ConversationeventtopiccallMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DocumentId, ok := ConversationeventtopiccallMap["documentId"].(string); ok {
 		o.DocumentId = &DocumentId
 	}
-	
+    
 	if Self, ok := ConversationeventtopiccallMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -338,15 +338,15 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if Provider, ok := ConversationeventtopiccallMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := ConversationeventtopiccallMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := ConversationeventtopiccallMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if connectedTimeString, ok := ConversationeventtopiccallMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime
@@ -370,7 +370,7 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if UuiData, ok := ConversationeventtopiccallMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
 	}
-	
+    
 	if bargedTimeString, ok := ConversationeventtopiccallMap["bargedTime"].(string); ok {
 		BargedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", bargedTimeString)
 		o.BargedTime = &BargedTime
@@ -389,11 +389,11 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := ConversationeventtopiccallMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 	if AgentAssistantId, ok := ConversationeventtopiccallMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
 	}
-	
+    
 
 	return nil
 }

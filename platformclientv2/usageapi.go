@@ -32,8 +32,6 @@ func NewUsageApiWithConfig(config *Configuration) *UsageApi {
 // GetUsageQueryExecutionIdResults invokes GET /api/v2/usage/query/{executionId}/results
 //
 // Get the results of a usage query
-//
-// 
 func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -46,7 +44,7 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 
 	// verify the required parameter 'executionId' is set
 	if &executionId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'executionId' when calling UsageApi->GetUsageQueryExecutionIdResults")
 	}
 
@@ -118,7 +116,7 @@ func (a UsageApi) PostUsageQuery(body Apiusagequery) (*Usageexecutionresult, *AP
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling UsageApi->PostUsageQuery")
 	}
 

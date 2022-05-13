@@ -45,7 +45,7 @@ func (o *Nludomainversiontrainingresponse) UnmarshalJSON(b []byte) error {
 	if Message, ok := NludomainversiontrainingresponseMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Version, ok := NludomainversiontrainingresponseMap["version"].(map[string]interface{}); ok {
 		VersionString, _ := json.Marshal(Version)
 		json.Unmarshal(VersionString, &o.Version)

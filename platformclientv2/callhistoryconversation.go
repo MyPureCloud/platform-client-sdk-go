@@ -142,11 +142,11 @@ func (o *Callhistoryconversation) UnmarshalJSON(b []byte) error {
 	if Id, ok := CallhistoryconversationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CallhistoryconversationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Participants, ok := CallhistoryconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
@@ -155,15 +155,15 @@ func (o *Callhistoryconversation) UnmarshalJSON(b []byte) error {
 	if Direction, ok := CallhistoryconversationMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if WentToVoicemail, ok := CallhistoryconversationMap["wentToVoicemail"].(bool); ok {
 		o.WentToVoicemail = &WentToVoicemail
 	}
-	
+    
 	if MissedCall, ok := CallhistoryconversationMap["missedCall"].(bool); ok {
 		o.MissedCall = &MissedCall
 	}
-	
+    
 	if startTimeString, ok := CallhistoryconversationMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -172,27 +172,27 @@ func (o *Callhistoryconversation) UnmarshalJSON(b []byte) error {
 	if WasConference, ok := CallhistoryconversationMap["wasConference"].(bool); ok {
 		o.WasConference = &WasConference
 	}
-	
+    
 	if WasCallback, ok := CallhistoryconversationMap["wasCallback"].(bool); ok {
 		o.WasCallback = &WasCallback
 	}
-	
+    
 	if HadScreenShare, ok := CallhistoryconversationMap["hadScreenShare"].(bool); ok {
 		o.HadScreenShare = &HadScreenShare
 	}
-	
+    
 	if HadCobrowse, ok := CallhistoryconversationMap["hadCobrowse"].(bool); ok {
 		o.HadCobrowse = &HadCobrowse
 	}
-	
+    
 	if WasOutboundCampaign, ok := CallhistoryconversationMap["wasOutboundCampaign"].(bool); ok {
 		o.WasOutboundCampaign = &WasOutboundCampaign
 	}
-	
+    
 	if SelfUri, ok := CallhistoryconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

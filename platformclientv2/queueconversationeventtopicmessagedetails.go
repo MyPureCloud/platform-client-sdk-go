@@ -94,7 +94,7 @@ func (o *Queueconversationeventtopicmessagedetails) UnmarshalJSON(b []byte) erro
 	if MessageId, ok := QueueconversationeventtopicmessagedetailsMap["messageId"].(string); ok {
 		o.MessageId = &MessageId
 	}
-	
+    
 	if messageTimeString, ok := QueueconversationeventtopicmessagedetailsMap["messageTime"].(string); ok {
 		MessageTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", messageTimeString)
 		o.MessageTime = &MessageTime
@@ -103,7 +103,7 @@ func (o *Queueconversationeventtopicmessagedetails) UnmarshalJSON(b []byte) erro
 	if MessageStatus, ok := QueueconversationeventtopicmessagedetailsMap["messageStatus"].(string); ok {
 		o.MessageStatus = &MessageStatus
 	}
-	
+    
 	if MessageSegmentCount, ok := QueueconversationeventtopicmessagedetailsMap["messageSegmentCount"].(float64); ok {
 		MessageSegmentCountInt := int(MessageSegmentCount)
 		o.MessageSegmentCount = &MessageSegmentCountInt

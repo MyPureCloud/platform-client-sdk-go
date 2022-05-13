@@ -41,8 +41,8 @@ type Conversationeventtopicscreenshare struct {
 	PeerId *string `json:"peerId,omitempty"`
 
 
-	// PeerCount
-	PeerCount *Conversationeventtopicobject `json:"peerCount,omitempty"`
+	// PeerCount - The number of peer participants from the perspective of the participant in the conference.
+	PeerCount *interface{} `json:"peerCount,omitempty"`
 
 
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
@@ -108,7 +108,7 @@ func (o *Conversationeventtopicscreenshare) MarshalJSON() ([]byte, error) {
 		
 		PeerId *string `json:"peerId,omitempty"`
 		
-		PeerCount *Conversationeventtopicobject `json:"peerCount,omitempty"`
+		PeerCount *interface{} `json:"peerCount,omitempty"`
 		
 		DisconnectType *string `json:"disconnectType,omitempty"`
 		
@@ -166,7 +166,7 @@ func (o *Conversationeventtopicscreenshare) UnmarshalJSON(b []byte) error {
 	if State, ok := ConversationeventtopicscreenshareMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Self, ok := ConversationeventtopicscreenshareMap["self"].(map[string]interface{}); ok {
 		SelfString, _ := json.Marshal(Self)
 		json.Unmarshal(SelfString, &o.Self)
@@ -175,27 +175,27 @@ func (o *Conversationeventtopicscreenshare) UnmarshalJSON(b []byte) error {
 	if Id, ok := ConversationeventtopicscreenshareMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Context, ok := ConversationeventtopicscreenshareMap["context"].(string); ok {
 		o.Context = &Context
 	}
-	
+    
 	if Sharing, ok := ConversationeventtopicscreenshareMap["sharing"].(bool); ok {
 		o.Sharing = &Sharing
 	}
-	
+    
 	if Provider, ok := ConversationeventtopicscreenshareMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ScriptId, ok := ConversationeventtopicscreenshareMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
 	}
-	
+    
 	if PeerId, ok := ConversationeventtopicscreenshareMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-	
+    
 	if PeerCount, ok := ConversationeventtopicscreenshareMap["peerCount"].(map[string]interface{}); ok {
 		PeerCountString, _ := json.Marshal(PeerCount)
 		json.Unmarshal(PeerCountString, &o.PeerCount)
@@ -204,7 +204,7 @@ func (o *Conversationeventtopicscreenshare) UnmarshalJSON(b []byte) error {
 	if DisconnectType, ok := ConversationeventtopicscreenshareMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if connectedTimeString, ok := ConversationeventtopicscreenshareMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime
@@ -228,7 +228,7 @@ func (o *Conversationeventtopicscreenshare) UnmarshalJSON(b []byte) error {
 	if AfterCallWorkRequired, ok := ConversationeventtopicscreenshareMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
-	
+    
 
 	return nil
 }

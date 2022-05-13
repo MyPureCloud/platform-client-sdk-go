@@ -67,7 +67,7 @@ func (o *Analyticsuserdetailsasyncqueryresponse) UnmarshalJSON(b []byte) error {
 	if Cursor, ok := AnalyticsuserdetailsasyncqueryresponseMap["cursor"].(string); ok {
 		o.Cursor = &Cursor
 	}
-	
+    
 	if dataAvailabilityDateString, ok := AnalyticsuserdetailsasyncqueryresponseMap["dataAvailabilityDate"].(string); ok {
 		DataAvailabilityDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", dataAvailabilityDateString)
 		o.DataAvailabilityDate = &DataAvailabilityDate

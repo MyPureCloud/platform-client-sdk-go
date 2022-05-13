@@ -53,7 +53,7 @@ func (o *Documentarticle) UnmarshalJSON(b []byte) error {
 	if Title, ok := DocumentarticleMap["title"].(string); ok {
 		o.Title = &Title
 	}
-	
+    
 	if Content, ok := DocumentarticleMap["content"].(map[string]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)

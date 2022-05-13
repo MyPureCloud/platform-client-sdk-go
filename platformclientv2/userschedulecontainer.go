@@ -53,7 +53,7 @@ func (o *Userschedulecontainer) UnmarshalJSON(b []byte) error {
 	if ManagementUnitTimeZone, ok := UserschedulecontainerMap["managementUnitTimeZone"].(string); ok {
 		o.ManagementUnitTimeZone = &ManagementUnitTimeZone
 	}
-	
+    
 	if PublishedSchedules, ok := UserschedulecontainerMap["publishedSchedules"].([]interface{}); ok {
 		PublishedSchedulesString, _ := json.Marshal(PublishedSchedules)
 		json.Unmarshal(PublishedSchedulesString, &o.PublishedSchedules)

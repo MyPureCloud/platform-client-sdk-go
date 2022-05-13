@@ -53,7 +53,7 @@ func (o *Nlufeedbackrequest) UnmarshalJSON(b []byte) error {
 	if Text, ok := NlufeedbackrequestMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Intents, ok := NlufeedbackrequestMap["intents"].([]interface{}); ok {
 		IntentsString, _ := json.Marshal(Intents)
 		json.Unmarshal(IntentsString, &o.Intents)
@@ -62,7 +62,7 @@ func (o *Nlufeedbackrequest) UnmarshalJSON(b []byte) error {
 	if VersionId, ok := NlufeedbackrequestMap["versionId"].(string); ok {
 		o.VersionId = &VersionId
 	}
-	
+    
 
 	return nil
 }

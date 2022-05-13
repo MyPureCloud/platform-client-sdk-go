@@ -69,15 +69,15 @@ func (o *Wfmscheduletopicwfmschedulenotification) UnmarshalJSON(b []byte) error 
 	if Status, ok := WfmscheduletopicwfmschedulenotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if OperationId, ok := WfmscheduletopicwfmschedulenotificationMap["operationId"].(string); ok {
 		o.OperationId = &OperationId
 	}
-	
+    
 	if DownloadUrl, ok := WfmscheduletopicwfmschedulenotificationMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 	if PercentComplete, ok := WfmscheduletopicwfmschedulenotificationMap["percentComplete"].(float64); ok {
 		PercentCompleteInt := int(PercentComplete)
 		o.PercentComplete = &PercentCompleteInt
@@ -86,7 +86,7 @@ func (o *Wfmscheduletopicwfmschedulenotification) UnmarshalJSON(b []byte) error 
 	if EventType, ok := WfmscheduletopicwfmschedulenotificationMap["eventType"].(string); ok {
 		o.EventType = &EventType
 	}
-	
+    
 
 	return nil
 }

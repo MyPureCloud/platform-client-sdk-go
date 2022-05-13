@@ -76,7 +76,7 @@ func (o *Gamificationstatus) UnmarshalJSON(b []byte) error {
 	if IsActive, ok := GamificationstatusMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
-	
+    
 	if dateStartString, ok := GamificationstatusMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02", dateStartString)
 		o.DateStart = &DateStart
@@ -85,7 +85,7 @@ func (o *Gamificationstatus) UnmarshalJSON(b []byte) error {
 	if AutomaticUserAssignment, ok := GamificationstatusMap["automaticUserAssignment"].(bool); ok {
 		o.AutomaticUserAssignment = &AutomaticUserAssignment
 	}
-	
+    
 	if dateStartPersonalBestString, ok := GamificationstatusMap["dateStartPersonalBest"].(string); ok {
 		DateStartPersonalBest, _ := time.Parse("2006-01-02", dateStartPersonalBestString)
 		o.DateStartPersonalBest = &DateStartPersonalBest

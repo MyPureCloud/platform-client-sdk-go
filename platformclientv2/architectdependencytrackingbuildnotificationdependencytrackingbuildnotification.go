@@ -70,7 +70,7 @@ func (o *Architectdependencytrackingbuildnotificationdependencytrackingbuildnoti
 	if Status, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if User, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)

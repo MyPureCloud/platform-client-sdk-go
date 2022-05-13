@@ -62,11 +62,11 @@ func (o *Routingstatus) UnmarshalJSON(b []byte) error {
 	if UserId, ok := RoutingstatusMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
-	
+    
 	if Status, ok := RoutingstatusMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if startTimeString, ok := RoutingstatusMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime

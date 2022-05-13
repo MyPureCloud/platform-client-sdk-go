@@ -45,7 +45,7 @@ func (o *Nluconfusionmatrixcolumn) UnmarshalJSON(b []byte) error {
 	if Name, ok := NluconfusionmatrixcolumnMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Value, ok := NluconfusionmatrixcolumnMap["value"].(float64); ok {
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32

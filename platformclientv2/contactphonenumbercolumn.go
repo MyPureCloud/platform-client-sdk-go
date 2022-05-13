@@ -53,15 +53,15 @@ func (o *Contactphonenumbercolumn) UnmarshalJSON(b []byte) error {
 	if ColumnName, ok := ContactphonenumbercolumnMap["columnName"].(string); ok {
 		o.ColumnName = &ColumnName
 	}
-	
+    
 	if VarType, ok := ContactphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if CallableTimeColumn, ok := ContactphonenumbercolumnMap["callableTimeColumn"].(string); ok {
 		o.CallableTimeColumn = &CallableTimeColumn
 	}
-	
+    
 
 	return nil
 }

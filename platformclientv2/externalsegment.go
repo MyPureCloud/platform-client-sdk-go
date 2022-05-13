@@ -53,15 +53,15 @@ func (o *Externalsegment) UnmarshalJSON(b []byte) error {
 	if Id, ok := ExternalsegmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ExternalsegmentMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Source, ok := ExternalsegmentMap["source"].(string); ok {
 		o.Source = &Source
 	}
-	
+    
 
 	return nil
 }

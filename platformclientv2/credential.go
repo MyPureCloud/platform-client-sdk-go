@@ -69,11 +69,11 @@ func (o *Credential) UnmarshalJSON(b []byte) error {
 	if Id, ok := CredentialMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := CredentialMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if VarType, ok := CredentialMap["type"].(map[string]interface{}); ok {
 		VarTypeString, _ := json.Marshal(VarType)
 		json.Unmarshal(VarTypeString, &o.VarType)
@@ -87,7 +87,7 @@ func (o *Credential) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := CredentialMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -66,7 +66,7 @@ func (o *Textbotflowturnrequest) UnmarshalJSON(b []byte) error {
 	if InputEventType, ok := TextbotflowturnrequestMap["inputEventType"].(string); ok {
 		o.InputEventType = &InputEventType
 	}
-	
+    
 	if InputEventUserInput, ok := TextbotflowturnrequestMap["inputEventUserInput"].(map[string]interface{}); ok {
 		InputEventUserInputString, _ := json.Marshal(InputEventUserInput)
 		json.Unmarshal(InputEventUserInputString, &o.InputEventUserInput)

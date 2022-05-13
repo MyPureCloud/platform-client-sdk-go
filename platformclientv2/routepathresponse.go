@@ -66,7 +66,7 @@ func (o *Routepathresponse) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := RoutepathresponseMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}
-	
+    
 	if Language, ok := RoutepathresponseMap["language"].(map[string]interface{}); ok {
 		LanguageString, _ := json.Marshal(Language)
 		json.Unmarshal(LanguageString, &o.Language)

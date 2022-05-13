@@ -125,47 +125,47 @@ func (o *Chatmessage) UnmarshalJSON(b []byte) error {
 	if Body, ok := ChatmessageMap["body"].(string); ok {
 		o.Body = &Body
 	}
-	
+    
 	if Id, ok := ChatmessageMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if To, ok := ChatmessageMap["to"].(string); ok {
 		o.To = &To
 	}
-	
+    
 	if From, ok := ChatmessageMap["from"].(string); ok {
 		o.From = &From
 	}
-	
+    
 	if Utc, ok := ChatmessageMap["utc"].(string); ok {
 		o.Utc = &Utc
 	}
-	
+    
 	if Chat, ok := ChatmessageMap["chat"].(string); ok {
 		o.Chat = &Chat
 	}
-	
+    
 	if Message, ok := ChatmessageMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if VarType, ok := ChatmessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if BodyType, ok := ChatmessageMap["bodyType"].(string); ok {
 		o.BodyType = &BodyType
 	}
-	
+    
 	if SenderCommunicationId, ok := ChatmessageMap["senderCommunicationId"].(string); ok {
 		o.SenderCommunicationId = &SenderCommunicationId
 	}
-	
+    
 	if ParticipantPurpose, ok := ChatmessageMap["participantPurpose"].(string); ok {
 		o.ParticipantPurpose = &ParticipantPurpose
 	}
-	
+    
 	if User, ok := ChatmessageMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)

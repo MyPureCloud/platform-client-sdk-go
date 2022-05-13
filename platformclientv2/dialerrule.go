@@ -77,11 +77,11 @@ func (o *Dialerrule) UnmarshalJSON(b []byte) error {
 	if Id, ok := DialerruleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DialerruleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Order, ok := DialerruleMap["order"].(float64); ok {
 		OrderInt := int(Order)
 		o.Order = &OrderInt
@@ -90,7 +90,7 @@ func (o *Dialerrule) UnmarshalJSON(b []byte) error {
 	if Category, ok := DialerruleMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Conditions, ok := DialerruleMap["conditions"].([]interface{}); ok {
 		ConditionsString, _ := json.Marshal(Conditions)
 		json.Unmarshal(ConditionsString, &o.Conditions)

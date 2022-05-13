@@ -63,7 +63,7 @@ func (o *Burescheduleagentscheduleresult) UnmarshalJSON(b []byte) error {
 	if DownloadUrl, ok := BurescheduleagentscheduleresultMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 
 	return nil
 }

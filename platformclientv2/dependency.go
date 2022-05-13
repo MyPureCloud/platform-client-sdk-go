@@ -93,35 +93,35 @@ func (o *Dependency) UnmarshalJSON(b []byte) error {
 	if Id, ok := DependencyMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := DependencyMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := DependencyMap["version"].(string); ok {
 		o.Version = &Version
 	}
-	
+    
 	if VarType, ok := DependencyMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Deleted, ok := DependencyMap["deleted"].(bool); ok {
 		o.Deleted = &Deleted
 	}
-	
+    
 	if Updated, ok := DependencyMap["updated"].(bool); ok {
 		o.Updated = &Updated
 	}
-	
+    
 	if StateUnknown, ok := DependencyMap["stateUnknown"].(bool); ok {
 		o.StateUnknown = &StateUnknown
 	}
-	
+    
 	if SelfUri, ok := DependencyMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

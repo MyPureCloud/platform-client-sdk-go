@@ -286,47 +286,47 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := ReportingexportjobresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ReportingexportjobresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if RunId, ok := ReportingexportjobresponseMap["runId"].(string); ok {
 		o.RunId = &RunId
 	}
-	
+    
 	if Status, ok := ReportingexportjobresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if TimeZone, ok := ReportingexportjobresponseMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
-	
+    
 	if ExportFormat, ok := ReportingexportjobresponseMap["exportFormat"].(string); ok {
 		o.ExportFormat = &ExportFormat
 	}
-	
+    
 	if Interval, ok := ReportingexportjobresponseMap["interval"].(string); ok {
 		o.Interval = &Interval
 	}
-	
+    
 	if DownloadUrl, ok := ReportingexportjobresponseMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
 	}
-	
+    
 	if ViewType, ok := ReportingexportjobresponseMap["viewType"].(string); ok {
 		o.ViewType = &ViewType
 	}
-	
+    
 	if ExportErrorMessagesType, ok := ReportingexportjobresponseMap["exportErrorMessagesType"].(string); ok {
 		o.ExportErrorMessagesType = &ExportErrorMessagesType
 	}
-	
+    
 	if Period, ok := ReportingexportjobresponseMap["period"].(string); ok {
 		o.Period = &Period
 	}
-	
+    
 	if Filter, ok := ReportingexportjobresponseMap["filter"].(map[string]interface{}); ok {
 		FilterString, _ := json.Marshal(Filter)
 		json.Unmarshal(FilterString, &o.Filter)
@@ -335,7 +335,7 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
 	if Read, ok := ReportingexportjobresponseMap["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 	if createdDateTimeString, ok := ReportingexportjobresponseMap["createdDateTime"].(string); ok {
 		CreatedDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateTimeString)
 		o.CreatedDateTime = &CreatedDateTime
@@ -349,35 +349,35 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
 	if Locale, ok := ReportingexportjobresponseMap["locale"].(string); ok {
 		o.Locale = &Locale
 	}
-	
+    
 	if PercentageComplete, ok := ReportingexportjobresponseMap["percentageComplete"].(float64); ok {
 		o.PercentageComplete = &PercentageComplete
 	}
-	
+    
 	if HasFormatDurations, ok := ReportingexportjobresponseMap["hasFormatDurations"].(bool); ok {
 		o.HasFormatDurations = &HasFormatDurations
 	}
-	
+    
 	if HasSplitFilters, ok := ReportingexportjobresponseMap["hasSplitFilters"].(bool); ok {
 		o.HasSplitFilters = &HasSplitFilters
 	}
-	
+    
 	if ExcludeEmptyRows, ok := ReportingexportjobresponseMap["excludeEmptyRows"].(bool); ok {
 		o.ExcludeEmptyRows = &ExcludeEmptyRows
 	}
-	
+    
 	if HasSplitByMedia, ok := ReportingexportjobresponseMap["hasSplitByMedia"].(bool); ok {
 		o.HasSplitByMedia = &HasSplitByMedia
 	}
-	
+    
 	if HasSummaryRow, ok := ReportingexportjobresponseMap["hasSummaryRow"].(bool); ok {
 		o.HasSummaryRow = &HasSummaryRow
 	}
-	
+    
 	if CsvDelimiter, ok := ReportingexportjobresponseMap["csvDelimiter"].(string); ok {
 		o.CsvDelimiter = &CsvDelimiter
 	}
-	
+    
 	if SelectedColumns, ok := ReportingexportjobresponseMap["selectedColumns"].([]interface{}); ok {
 		SelectedColumnsString, _ := json.Marshal(SelectedColumns)
 		json.Unmarshal(SelectedColumnsString, &o.SelectedColumns)
@@ -386,7 +386,7 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
 	if HasCustomParticipantAttributes, ok := ReportingexportjobresponseMap["hasCustomParticipantAttributes"].(bool); ok {
 		o.HasCustomParticipantAttributes = &HasCustomParticipantAttributes
 	}
-	
+    
 	if RecipientEmails, ok := ReportingexportjobresponseMap["recipientEmails"].([]interface{}); ok {
 		RecipientEmailsString, _ := json.Marshal(RecipientEmails)
 		json.Unmarshal(RecipientEmailsString, &o.RecipientEmails)
@@ -400,15 +400,15 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
 	if EmailErrorDescription, ok := ReportingexportjobresponseMap["emailErrorDescription"].(string); ok {
 		o.EmailErrorDescription = &EmailErrorDescription
 	}
-	
+    
 	if Enabled, ok := ReportingexportjobresponseMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if SelfUri, ok := ReportingexportjobresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

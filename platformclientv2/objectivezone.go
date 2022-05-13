@@ -85,15 +85,15 @@ func (o *Objectivezone) UnmarshalJSON(b []byte) error {
 	if Label, ok := ObjectivezoneMap["label"].(string); ok {
 		o.Label = &Label
 	}
-	
+    
 	if DirectionType, ok := ObjectivezoneMap["directionType"].(string); ok {
 		o.DirectionType = &DirectionType
 	}
-	
+    
 	if ZoneType, ok := ObjectivezoneMap["zoneType"].(string); ok {
 		o.ZoneType = &ZoneType
 	}
-	
+    
 	if UpperLimitPoints, ok := ObjectivezoneMap["upperLimitPoints"].(float64); ok {
 		UpperLimitPointsInt := int(UpperLimitPoints)
 		o.UpperLimitPoints = &UpperLimitPointsInt

@@ -61,7 +61,7 @@ func (o *Qualityauditqueryexecutionresultsresponse) UnmarshalJSON(b []byte) erro
 	if Id, ok := QualityauditqueryexecutionresultsresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if PageSize, ok := QualityauditqueryexecutionresultsresponseMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
@@ -70,7 +70,7 @@ func (o *Qualityauditqueryexecutionresultsresponse) UnmarshalJSON(b []byte) erro
 	if Cursor, ok := QualityauditqueryexecutionresultsresponseMap["cursor"].(string); ok {
 		o.Cursor = &Cursor
 	}
-	
+    
 	if Entities, ok := QualityauditqueryexecutionresultsresponseMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)

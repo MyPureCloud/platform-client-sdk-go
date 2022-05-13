@@ -102,7 +102,7 @@ func (o *Benefitassessment) UnmarshalJSON(b []byte) error {
 	if Id, ok := BenefitassessmentMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Queues, ok := BenefitassessmentMap["queues"].([]interface{}); ok {
 		QueuesString, _ := json.Marshal(Queues)
 		json.Unmarshal(QueuesString, &o.Queues)
@@ -116,7 +116,7 @@ func (o *Benefitassessment) UnmarshalJSON(b []byte) error {
 	if State, ok := BenefitassessmentMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateCreatedString, ok := BenefitassessmentMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -130,7 +130,7 @@ func (o *Benefitassessment) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := BenefitassessmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

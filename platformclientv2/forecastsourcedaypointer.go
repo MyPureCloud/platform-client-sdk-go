@@ -69,7 +69,7 @@ func (o *Forecastsourcedaypointer) UnmarshalJSON(b []byte) error {
 	if DayOfWeek, ok := ForecastsourcedaypointerMap["dayOfWeek"].(string); ok {
 		o.DayOfWeek = &DayOfWeek
 	}
-	
+    
 	if Weight, ok := ForecastsourcedaypointerMap["weight"].(float64); ok {
 		WeightInt := int(Weight)
 		o.Weight = &WeightInt
@@ -78,15 +78,15 @@ func (o *Forecastsourcedaypointer) UnmarshalJSON(b []byte) error {
 	if Date, ok := ForecastsourcedaypointerMap["date"].(string); ok {
 		o.Date = &Date
 	}
-	
+    
 	if FileName, ok := ForecastsourcedaypointerMap["fileName"].(string); ok {
 		o.FileName = &FileName
 	}
-	
+    
 	if DataKey, ok := ForecastsourcedaypointerMap["dataKey"].(string); ok {
 		o.DataKey = &DataKey
 	}
-	
+    
 
 	return nil
 }

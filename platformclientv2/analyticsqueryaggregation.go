@@ -69,15 +69,15 @@ func (o *Analyticsqueryaggregation) UnmarshalJSON(b []byte) error {
 	if VarType, ok := AnalyticsqueryaggregationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Dimension, ok := AnalyticsqueryaggregationMap["dimension"].(string); ok {
 		o.Dimension = &Dimension
 	}
-	
+    
 	if Metric, ok := AnalyticsqueryaggregationMap["metric"].(string); ok {
 		o.Metric = &Metric
 	}
-	
+    
 	if Size, ok := AnalyticsqueryaggregationMap["size"].(float64); ok {
 		SizeInt := int(Size)
 		o.Size = &SizeInt

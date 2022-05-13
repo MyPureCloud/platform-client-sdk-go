@@ -45,11 +45,11 @@ func (o *Adhocrecordingtopicuserdata) UnmarshalJSON(b []byte) error {
 	if Id, ok := AdhocrecordingtopicuserdataMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AdhocrecordingtopicuserdataMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

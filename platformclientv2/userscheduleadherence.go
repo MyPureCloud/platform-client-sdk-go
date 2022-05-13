@@ -214,11 +214,11 @@ func (o *Userscheduleadherence) UnmarshalJSON(b []byte) error {
 	if Id, ok := UserscheduleadherenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := UserscheduleadherenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if User, ok := UserscheduleadherenceMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -242,35 +242,35 @@ func (o *Userscheduleadherence) UnmarshalJSON(b []byte) error {
 	if ScheduledActivityCategory, ok := UserscheduleadherenceMap["scheduledActivityCategory"].(string); ok {
 		o.ScheduledActivityCategory = &ScheduledActivityCategory
 	}
-	
+    
 	if SystemPresence, ok := UserscheduleadherenceMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}
-	
+    
 	if OrganizationSecondaryPresenceId, ok := UserscheduleadherenceMap["organizationSecondaryPresenceId"].(string); ok {
 		o.OrganizationSecondaryPresenceId = &OrganizationSecondaryPresenceId
 	}
-	
+    
 	if RoutingStatus, ok := UserscheduleadherenceMap["routingStatus"].(string); ok {
 		o.RoutingStatus = &RoutingStatus
 	}
-	
+    
 	if ActualActivityCategory, ok := UserscheduleadherenceMap["actualActivityCategory"].(string); ok {
 		o.ActualActivityCategory = &ActualActivityCategory
 	}
-	
+    
 	if IsOutOfOffice, ok := UserscheduleadherenceMap["isOutOfOffice"].(bool); ok {
 		o.IsOutOfOffice = &IsOutOfOffice
 	}
-	
+    
 	if AdherenceState, ok := UserscheduleadherenceMap["adherenceState"].(string); ok {
 		o.AdherenceState = &AdherenceState
 	}
-	
+    
 	if Impact, ok := UserscheduleadherenceMap["impact"].(string); ok {
 		o.Impact = &Impact
 	}
-	
+    
 	if timeOfAdherenceChangeString, ok := UserscheduleadherenceMap["timeOfAdherenceChange"].(string); ok {
 		TimeOfAdherenceChange, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeOfAdherenceChangeString)
 		o.TimeOfAdherenceChange = &TimeOfAdherenceChange
@@ -294,11 +294,11 @@ func (o *Userscheduleadherence) UnmarshalJSON(b []byte) error {
 	if RemovedFromManagementUnit, ok := UserscheduleadherenceMap["removedFromManagementUnit"].(bool); ok {
 		o.RemovedFromManagementUnit = &RemovedFromManagementUnit
 	}
-	
+    
 	if SelfUri, ok := UserscheduleadherenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

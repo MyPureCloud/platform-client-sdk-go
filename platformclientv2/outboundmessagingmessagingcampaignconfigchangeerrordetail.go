@@ -45,11 +45,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangeerrordetail) UnmarshalJSO
 	if VarError, ok := OutboundmessagingmessagingcampaignconfigchangeerrordetailMap["error"].(string); ok {
 		o.VarError = &VarError
 	}
-	
+    
 	if Details, ok := OutboundmessagingmessagingcampaignconfigchangeerrordetailMap["details"].(string); ok {
 		o.Details = &Details
 	}
-	
+    
 
 	return nil
 }

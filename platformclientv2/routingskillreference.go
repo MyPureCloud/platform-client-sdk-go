@@ -45,11 +45,11 @@ func (o *Routingskillreference) UnmarshalJSON(b []byte) error {
 	if Id, ok := RoutingskillreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := RoutingskillreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

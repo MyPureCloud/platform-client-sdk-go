@@ -101,28 +101,28 @@ func (o *Klaxonheartbeatrulestopicheartbeatrule) UnmarshalJSON(b []byte) error {
 	if Id, ok := KlaxonheartbeatrulestopicheartbeatruleMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := KlaxonheartbeatrulestopicheartbeatruleMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SenderId, ok := KlaxonheartbeatrulestopicheartbeatruleMap["senderId"].(string); ok {
 		o.SenderId = &SenderId
 	}
-	
+    
 	if HeartBeatTimeoutInMinutes, ok := KlaxonheartbeatrulestopicheartbeatruleMap["heartBeatTimeoutInMinutes"].(float64); ok {
 		HeartBeatTimeoutInMinutesFloat32 := float32(HeartBeatTimeoutInMinutes)
 		o.HeartBeatTimeoutInMinutes = &HeartBeatTimeoutInMinutesFloat32
 	}
-	
+    
 	if Enabled, ok := KlaxonheartbeatrulestopicheartbeatruleMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 	if InAlarm, ok := KlaxonheartbeatrulestopicheartbeatruleMap["inAlarm"].(bool); ok {
 		o.InAlarm = &InAlarm
 	}
-	
+    
 	if NotificationUsers, ok := KlaxonheartbeatrulestopicheartbeatruleMap["notificationUsers"].([]interface{}); ok {
 		NotificationUsersString, _ := json.Marshal(NotificationUsers)
 		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
@@ -136,7 +136,7 @@ func (o *Klaxonheartbeatrulestopicheartbeatrule) UnmarshalJSON(b []byte) error {
 	if RuleType, ok := KlaxonheartbeatrulestopicheartbeatruleMap["ruleType"].(string); ok {
 		o.RuleType = &RuleType
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Secondarypresence) UnmarshalJSON(b []byte) error {
 	if Id, ok := SecondarypresenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := SecondarypresenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,7 +45,7 @@ func (o *Sourceplanninggrouprequest) UnmarshalJSON(b []byte) error {
 	if Id, ok := SourceplanninggrouprequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Metadata, ok := SourceplanninggrouprequestMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

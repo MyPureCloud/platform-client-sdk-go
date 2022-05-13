@@ -45,11 +45,11 @@ func (o *Associatedvaluefield) UnmarshalJSON(b []byte) error {
 	if DataType, ok := AssociatedvaluefieldMap["dataType"].(string); ok {
 		o.DataType = &DataType
 	}
-	
+    
 	if Name, ok := AssociatedvaluefieldMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

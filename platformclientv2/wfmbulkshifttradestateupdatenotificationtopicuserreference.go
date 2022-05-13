@@ -37,7 +37,7 @@ func (o *Wfmbulkshifttradestateupdatenotificationtopicuserreference) UnmarshalJS
 	if Id, ok := WfmbulkshifttradestateupdatenotificationtopicuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 
 	return nil
 }

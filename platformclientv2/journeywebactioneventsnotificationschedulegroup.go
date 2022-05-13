@@ -45,11 +45,11 @@ func (o *Journeywebactioneventsnotificationschedulegroup) UnmarshalJSON(b []byte
 	if Id, ok := JourneywebactioneventsnotificationschedulegroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if SelfUri, ok := JourneywebactioneventsnotificationschedulegroupMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

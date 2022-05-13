@@ -45,7 +45,7 @@ func (o *Auditqueryentity) UnmarshalJSON(b []byte) error {
 	if Name, ok := AuditqueryentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Actions, ok := AuditqueryentityMap["actions"].([]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)

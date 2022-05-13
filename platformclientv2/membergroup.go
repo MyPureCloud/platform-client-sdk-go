@@ -77,11 +77,11 @@ func (o *Membergroup) UnmarshalJSON(b []byte) error {
 	if Id, ok := MembergroupMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MembergroupMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Division, ok := MembergroupMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -90,7 +90,7 @@ func (o *Membergroup) UnmarshalJSON(b []byte) error {
 	if VarType, ok := MembergroupMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if MemberCount, ok := MembergroupMap["memberCount"].(float64); ok {
 		MemberCountInt := int(MemberCount)
 		o.MemberCount = &MemberCountInt
@@ -99,7 +99,7 @@ func (o *Membergroup) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MembergroupMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

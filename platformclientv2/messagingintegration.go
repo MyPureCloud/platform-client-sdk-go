@@ -150,11 +150,11 @@ func (o *Messagingintegration) UnmarshalJSON(b []byte) error {
 	if Id, ok := MessagingintegrationMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := MessagingintegrationMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if SupportedContent, ok := MessagingintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
@@ -168,11 +168,11 @@ func (o *Messagingintegration) UnmarshalJSON(b []byte) error {
 	if Status, ok := MessagingintegrationMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if MessengerType, ok := MessagingintegrationMap["messengerType"].(string); ok {
 		o.MessengerType = &MessengerType
 	}
-	
+    
 	if Recipient, ok := MessagingintegrationMap["recipient"].(map[string]interface{}); ok {
 		RecipientString, _ := json.Marshal(Recipient)
 		json.Unmarshal(RecipientString, &o.Recipient)
@@ -206,7 +206,7 @@ func (o *Messagingintegration) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := MessagingintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

@@ -45,11 +45,11 @@ func (o *Evaluationqualityv2topicuser) UnmarshalJSON(b []byte) error {
 	if Id, ok := Evaluationqualityv2topicuserMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if DisplayName, ok := Evaluationqualityv2topicuserMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
 	}
-	
+    
 
 	return nil
 }

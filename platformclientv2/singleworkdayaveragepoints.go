@@ -79,7 +79,7 @@ func (o *Singleworkdayaveragepoints) UnmarshalJSON(b []byte) error {
 	if AveragePoints, ok := SingleworkdayaveragepointsMap["averagePoints"].(float64); ok {
 		o.AveragePoints = &AveragePoints
 	}
-	
+    
 	if PerformanceProfile, ok := SingleworkdayaveragepointsMap["performanceProfile"].(map[string]interface{}); ok {
 		PerformanceProfileString, _ := json.Marshal(PerformanceProfile)
 		json.Unmarshal(PerformanceProfileString, &o.PerformanceProfile)

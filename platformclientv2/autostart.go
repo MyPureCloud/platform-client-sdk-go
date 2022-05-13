@@ -37,7 +37,7 @@ func (o *Autostart) UnmarshalJSON(b []byte) error {
 	if Enabled, ok := AutostartMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
-	
+    
 
 	return nil
 }

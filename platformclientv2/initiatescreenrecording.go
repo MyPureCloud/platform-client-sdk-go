@@ -53,7 +53,7 @@ func (o *Initiatescreenrecording) UnmarshalJSON(b []byte) error {
 	if RecordACW, ok := InitiatescreenrecordingMap["recordACW"].(bool); ok {
 		o.RecordACW = &RecordACW
 	}
-	
+    
 	if ArchiveRetention, ok := InitiatescreenrecordingMap["archiveRetention"].(map[string]interface{}); ok {
 		ArchiveRetentionString, _ := json.Marshal(ArchiveRetention)
 		json.Unmarshal(ArchiveRetentionString, &o.ArchiveRetention)

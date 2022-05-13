@@ -45,7 +45,7 @@ func (o *Activation) UnmarshalJSON(b []byte) error {
 	if VarType, ok := ActivationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if DelayInSeconds, ok := ActivationMap["delayInSeconds"].(float64); ok {
 		DelayInSecondsInt := int(DelayInSeconds)
 		o.DelayInSeconds = &DelayInSecondsInt

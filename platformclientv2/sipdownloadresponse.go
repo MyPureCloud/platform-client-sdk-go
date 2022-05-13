@@ -45,11 +45,11 @@ func (o *Sipdownloadresponse) UnmarshalJSON(b []byte) error {
 	if DownloadId, ok := SipdownloadresponseMap["downloadId"].(string); ok {
 		o.DownloadId = &DownloadId
 	}
-	
+    
 	if DocumentId, ok := SipdownloadresponseMap["documentId"].(string); ok {
 		o.DocumentId = &DocumentId
 	}
-	
+    
 
 	return nil
 }

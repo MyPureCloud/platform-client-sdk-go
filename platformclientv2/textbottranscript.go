@@ -45,7 +45,7 @@ func (o *Textbottranscript) UnmarshalJSON(b []byte) error {
 	if Text, ok := TextbottranscriptMap["text"].(string); ok {
 		o.Text = &Text
 	}
-	
+    
 	if Confidence, ok := TextbottranscriptMap["confidence"].(float64); ok {
 		ConfidenceFloat32 := float32(Confidence)
 		o.Confidence = &ConfidenceFloat32

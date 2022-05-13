@@ -46,7 +46,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunit(businessUn
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunit")
 	}
 
@@ -99,8 +99,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunit(businessUn
 // DeleteWorkforcemanagementBusinessunitActivitycode invokes DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes/{activityCodeId}
 //
 // Deletes an activity code
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitActivitycode(businessUnitId string, activityCodeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -113,12 +111,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitActivitycod
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitActivitycode")
 	}
 	// verify the required parameter 'activityCodeId' is set
 	if &activityCodeId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'activityCodeId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitActivitycode")
 	}
 
@@ -171,8 +169,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitActivitycod
 // DeleteWorkforcemanagementBusinessunitPlanninggroup invokes DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}
 //
 // Deletes the planning group
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitPlanninggroup(businessUnitId string, planningGroupId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -185,12 +181,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitPlanninggro
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitPlanninggroup")
 	}
 	// verify the required parameter 'planningGroupId' is set
 	if &planningGroupId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'planningGroupId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitPlanninggroup")
 	}
 
@@ -243,8 +239,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitPlanninggro
 // DeleteWorkforcemanagementBusinessunitSchedulingRun invokes DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}
 //
 // Cancel a scheduling run
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitSchedulingRun(businessUnitId string, runId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -257,12 +251,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitSchedulingR
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitSchedulingRun")
 	}
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitSchedulingRun")
 	}
 
@@ -315,8 +309,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitSchedulingR
 // DeleteWorkforcemanagementBusinessunitServicegoaltemplate invokes DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates/{serviceGoalTemplateId}
 //
 // Delete a service goal template
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitServicegoaltemplate(businessUnitId string, serviceGoalTemplateId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -329,12 +321,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitServicegoal
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitServicegoaltemplate")
 	}
 	// verify the required parameter 'serviceGoalTemplateId' is set
 	if &serviceGoalTemplateId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'serviceGoalTemplateId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitServicegoaltemplate")
 	}
 
@@ -387,8 +379,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitServicegoal
 // DeleteWorkforcemanagementBusinessunitWeekSchedule invokes DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}
 //
 // Delete a schedule
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekSchedule(businessUnitId string, weekId time.Time, scheduleId string) (*Buasyncscheduleresponse, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -403,17 +393,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekSchedul
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitWeekSchedule")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitWeekSchedule")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitWeekSchedule")
 	}
 
@@ -487,17 +477,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekShortte
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitWeekShorttermforecast")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitWeekShorttermforecast")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->DeleteWorkforcemanagementBusinessunitWeekShorttermforecast")
 	}
 
@@ -550,8 +540,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekShortte
 // DeleteWorkforcemanagementCalendarUrlIcs invokes DELETE /api/v2/workforcemanagement/calendar/url/ics
 //
 // Disable generated calendar link for the current user
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementCalendarUrlIcs() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -610,8 +598,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementCalendarUrlIcs() (*APIR
 // DeleteWorkforcemanagementManagementunit invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}
 //
 // Delete management unit
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(managementUnitId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -623,7 +609,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(manageme
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunit")
 	}
 
@@ -676,8 +662,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(manageme
 // DeleteWorkforcemanagementManagementunitTimeofflimit invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/{timeOffLimitId}
 //
 // Deletes a time off limit object
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeofflimit(managementUnitId string, timeOffLimitId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -690,12 +674,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffli
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitTimeofflimit")
 	}
 	// verify the required parameter 'timeOffLimitId' is set
 	if &timeOffLimitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'timeOffLimitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitTimeofflimit")
 	}
 
@@ -748,8 +732,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffli
 // DeleteWorkforcemanagementManagementunitTimeoffplan invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}
 //
 // Deletes a time off plan
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffplan(managementUnitId string, timeOffPlanId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -762,12 +744,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffpl
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitTimeoffplan")
 	}
 	// verify the required parameter 'timeOffPlanId' is set
 	if &timeOffPlanId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'timeOffPlanId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitTimeoffplan")
 	}
 
@@ -820,8 +802,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffpl
 // DeleteWorkforcemanagementManagementunitWorkplan invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}
 //
 // Delete a work plan
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -834,12 +814,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplan(
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitWorkplan")
 	}
 	// verify the required parameter 'workPlanId' is set
 	if &workPlanId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitWorkplan")
 	}
 
@@ -892,8 +872,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplan(
 // DeleteWorkforcemanagementManagementunitWorkplanrotation invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}
 //
 // Delete a work plan rotation
-//
-// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplanrotation(managementUnitId string, workPlanRotationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -906,12 +884,12 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplanr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitWorkplanrotation")
 	}
 	// verify the required parameter 'workPlanRotationId' is set
 	if &workPlanRotationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'workPlanRotationId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunitWorkplanrotation")
 	}
 
@@ -964,8 +942,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplanr
 // GetWorkforcemanagementAdherence invokes GET /api/v2/workforcemanagement/adherence
 //
 // Get a list of UserScheduleAdherence records for the requested users
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementAdherence(userId []string) ([]Userscheduleadherence, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1038,8 +1014,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherence(userId []string)
 // GetWorkforcemanagementAdhocmodelingjob invokes GET /api/v2/workforcemanagement/adhocmodelingjobs/{jobId}
 //
 // Get status of the modeling job
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementAdhocmodelingjob(jobId string) (*Modelingstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1052,7 +1026,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdhocmodelingjob(jobId str
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling WorkforceManagementApi->GetWorkforcemanagementAdhocmodelingjob")
 	}
 
@@ -1111,8 +1085,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdhocmodelingjob(jobId str
 // GetWorkforcemanagementAgentManagementunit invokes GET /api/v2/workforcemanagement/agents/{agentId}/managementunit
 //
 // Get the management unit to which the agent belongs
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementAgentManagementunit(agentId string) (*Agentmanagementunitreference, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1125,7 +1097,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentManagementunit(agentI
 
 	// verify the required parameter 'agentId' is set
 	if &agentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'agentId' when calling WorkforceManagementApi->GetWorkforcemanagementAgentManagementunit")
 	}
 
@@ -1184,8 +1156,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentManagementunit(agentI
 // GetWorkforcemanagementAgentsMeManagementunit invokes GET /api/v2/workforcemanagement/agents/me/managementunit
 //
 // Get the management unit to which the currently logged in agent belongs
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementAgentsMeManagementunit() (*Agentmanagementunitreference, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1265,7 +1235,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitI
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunit")
 	}
 
@@ -1326,8 +1296,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitI
 // GetWorkforcemanagementBusinessunitActivitycode invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes/{activityCodeId}
 //
 // Get an activity code
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycode(businessUnitId string, activityCodeId string) (*Businessunitactivitycode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1341,12 +1309,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycode(b
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivitycode")
 	}
 	// verify the required parameter 'activityCodeId' is set
 	if &activityCodeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'activityCodeId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivitycode")
 	}
 
@@ -1405,8 +1373,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycode(b
 // GetWorkforcemanagementBusinessunitActivitycodes invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes
 //
 // Get activity codes
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(businessUnitId string) (*Businessunitactivitycodelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1419,7 +1385,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivitycodes")
 	}
 
@@ -1478,8 +1444,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(
 // GetWorkforcemanagementBusinessunitIntradayPlanninggroups invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/intraday/planninggroups
 //
 // Get intraday planning groups for the given date
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanninggroups(businessUnitId string, date time.Time) (*Wfmintradayplanninggrouplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1492,12 +1456,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanni
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitIntradayPlanninggroups")
 	}
 	// verify the required parameter 'date' is set
 	if &date == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'date' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitIntradayPlanninggroups")
 	}
 
@@ -1558,8 +1522,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanni
 // GetWorkforcemanagementBusinessunitManagementunits invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/managementunits
 //
 // Get all authorized management units in the business unit
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunits(businessUnitId string, feature string, divisionId string) (*Managementunitlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1572,7 +1534,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitManagementunits")
 	}
 
@@ -1635,8 +1597,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 // GetWorkforcemanagementBusinessunitPlanninggroup invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}
 //
 // Get a planning group
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroup(businessUnitId string, planningGroupId string) (*Planninggroup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1650,12 +1610,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroup(
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitPlanninggroup")
 	}
 	// verify the required parameter 'planningGroupId' is set
 	if &planningGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'planningGroupId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitPlanninggroup")
 	}
 
@@ -1714,8 +1674,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroup(
 // GetWorkforcemanagementBusinessunitPlanninggroups invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups
 //
 // Gets list of planning groups
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroups(businessUnitId string) (*Planninggrouplist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1728,7 +1686,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroups
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitPlanninggroups")
 	}
 
@@ -1787,8 +1745,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroups
 // GetWorkforcemanagementBusinessunitSchedulingRun invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}
 //
 // Get a scheduling run
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRun(businessUnitId string, runId string) (*Buschedulerun, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1802,12 +1758,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRun(
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitSchedulingRun")
 	}
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitSchedulingRun")
 	}
 
@@ -1866,8 +1822,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRun(
 // GetWorkforcemanagementBusinessunitSchedulingRunResult invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}/result
 //
 // Get the result of a rescheduling operation
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRunResult(businessUnitId string, runId string, managementUnitIds []string, expand []string) (*Burescheduleresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1881,12 +1835,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRunR
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitSchedulingRunResult")
 	}
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitSchedulingRunResult")
 	}
 	// verify the required parameter 'managementUnitIds' is set
@@ -1959,8 +1913,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRunR
 // GetWorkforcemanagementBusinessunitSchedulingRuns invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs
 //
 // Get the list of scheduling runs
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRuns(businessUnitId string) (*Buschedulerunlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1973,7 +1925,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRuns
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitSchedulingRuns")
 	}
 
@@ -2032,8 +1984,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRuns
 // GetWorkforcemanagementBusinessunitServicegoaltemplate invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates/{serviceGoalTemplateId}
 //
 // Get a service goal template
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltemplate(businessUnitId string, serviceGoalTemplateId string) (*Servicegoaltemplate, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2047,12 +1997,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitServicegoaltemplate")
 	}
 	// verify the required parameter 'serviceGoalTemplateId' is set
 	if &serviceGoalTemplateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'serviceGoalTemplateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitServicegoaltemplate")
 	}
 
@@ -2111,8 +2061,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 // GetWorkforcemanagementBusinessunitServicegoaltemplates invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates
 //
 // Gets list of service goal templates
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltemplates(businessUnitId string) (*Servicegoaltemplatelist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2125,7 +2073,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitServicegoaltemplates")
 	}
 
@@ -2184,8 +2132,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 // GetWorkforcemanagementBusinessunitWeekSchedule invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}
 //
 // Get the metadata for the schedule, describing which management units and agents are in the scheduleSchedule data can then be loaded with the query route
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedule(businessUnitId string, weekId time.Time, scheduleId string, expand string) (*Buschedulemetadata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2200,17 +2146,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedule(b
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekSchedule")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekSchedule")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekSchedule")
 	}
 
@@ -2271,8 +2217,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedule(b
 // GetWorkforcemanagementBusinessunitWeekScheduleGenerationresults invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/generationresults
 //
 // Get the generation results for a generated schedule
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleGenerationresults(businessUnitId string, weekId time.Time, scheduleId string) (*Schedulegenerationresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2287,17 +2231,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleGe
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleGenerationresults")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleGenerationresults")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleGenerationresults")
 	}
 
@@ -2356,8 +2300,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleGe
 // GetWorkforcemanagementBusinessunitWeekScheduleHeadcountforecast invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/headcountforecast
 //
 // Get the headcount forecast by planning group for the schedule
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHeadcountforecast(businessUnitId string, weekId time.Time, scheduleId string, forceDownload bool) (*Buheadcountforecastresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2372,17 +2314,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHe
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleHeadcountforecast")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleHeadcountforecast")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleHeadcountforecast")
 	}
 
@@ -2442,9 +2384,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHe
 
 // GetWorkforcemanagementBusinessunitWeekScheduleHistoryAgent invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/history/agents/{agentId}
 //
-// Loads agent&#39;s schedule history.
-//
-// 
+// Loads agent's schedule history.
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHistoryAgent(businessUnitId string, weekId time.Time, scheduleId string, agentId string) (*Buagentschedulehistoryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2460,22 +2400,22 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHi
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleHistoryAgent")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleHistoryAgent")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleHistoryAgent")
 	}
 	// verify the required parameter 'agentId' is set
 	if &agentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'agentId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekScheduleHistoryAgent")
 	}
 
@@ -2535,7 +2475,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHi
 //
 // Get the list of week schedules for the specified week
 //
-// Use \&quot;recent\&quot; (without quotes) for the `weekId` path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any schedule which spans the specified week
+// Use \&quot;recent\&quot; (without quotes) for the &#x60;weekId&#x60; path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any schedule which spans the specified week
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId string, weekId string, includeOnlyPublished bool, expand string) (*Buschedulelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2549,12 +2489,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekSchedules")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekSchedules")
 	}
 
@@ -2617,8 +2557,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 // GetWorkforcemanagementBusinessunitWeekShorttermforecast invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}
 //
 // Get a short term forecast
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecast(businessUnitId string, weekDateId time.Time, forecastId string, expand []string) (*Bushorttermforecast, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2633,17 +2571,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecast")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecast")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecast")
 	}
 
@@ -2720,17 +2658,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastData")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastData")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastData")
 	}
 
@@ -2793,8 +2731,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 // GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/generationresults
 //
 // Gets the forecast generation results
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults(businessUnitId string, weekDateId time.Time, forecastId string) (*Buforecastgenerationresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2809,17 +2745,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults")
 	}
 
@@ -2894,17 +2830,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata")
 	}
 
@@ -2965,8 +2901,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 // GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/planninggroups
 //
 // Gets the forecast planning group snapshot
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups(businessUnitId string, weekDateId time.Time, forecastId string) (*Forecastplanninggroupsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2981,17 +2915,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups")
 	}
 
@@ -3051,7 +2985,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 //
 // Get short term forecasts
 //
-// Use \&quot;recent\&quot; (without quotes) for the `weekDateId` path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any forecast which spans the specified week
+// Use \&quot;recent\&quot; (without quotes) for the &#x60;weekDateId&#x60; path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any forecast which spans the specified week
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecasts(businessUnitId string, weekDateId string) (*Bushorttermforecastlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3065,12 +2999,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecasts")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecasts")
 	}
 
@@ -3129,8 +3063,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 // GetWorkforcemanagementBusinessunits invokes GET /api/v2/workforcemanagement/businessunits
 //
 // Get business units
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunits(feature string, divisionId string) (*Businessunitlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3200,8 +3132,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunits(feature stri
 // GetWorkforcemanagementBusinessunitsDivisionviews invokes GET /api/v2/workforcemanagement/businessunits/divisionviews
 //
 // Get business units across divisions
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitsDivisionviews(divisionId []string) (*Businessunitlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3269,8 +3199,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitsDivisionviews
 // GetWorkforcemanagementCalendarDataIcs invokes GET /api/v2/workforcemanagement/calendar/data/ics
 //
 // Get ics formatted calendar based on shareable link
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementCalendarDataIcs(calendarId string) (*string, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3282,7 +3210,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementCalendarDataIcs(calendarId
 
 	// verify the required parameter 'calendarId' is set
 	if &calendarId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'calendarId' when calling WorkforceManagementApi->GetWorkforcemanagementCalendarDataIcs")
 	}
 
@@ -3338,8 +3266,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementCalendarDataIcs(calendarId
 // GetWorkforcemanagementCalendarUrlIcs invokes GET /api/v2/workforcemanagement/calendar/url/ics
 //
 // Get existing calendar link for the current user
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementCalendarUrlIcs() (*Calendarurlresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3405,8 +3331,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementCalendarUrlIcs() (*Calenda
 // GetWorkforcemanagementHistoricaldataDeletejob invokes GET /api/v2/workforcemanagement/historicaldata/deletejob
 //
 // Retrieves delete job status for historical data imports of the organization
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataDeletejob() (*Historicalimportdeletejobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3472,8 +3396,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataDeletejob() 
 // GetWorkforcemanagementHistoricaldataImportstatus invokes GET /api/v2/workforcemanagement/historicaldata/importstatus
 //
 // Retrieves status of the historical data imports of the organization
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataImportstatus() (*Historicalimportstatuslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3553,7 +3475,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunit")
 	}
 
@@ -3614,8 +3536,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 // GetWorkforcemanagementManagementunitActivitycodes invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/activitycodes
 //
 // Get activity codes
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycodes(managementUnitId string) (*Activitycodecontainer, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3628,7 +3548,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycode
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitActivitycodes")
 	}
 
@@ -3687,8 +3607,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycode
 // GetWorkforcemanagementManagementunitAdherence invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/adherence
 //
 // Get a list of user schedule adherence records for the requested management unit
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(managementUnitId string, forceDownloadService bool) (*Userscheduleadherencelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3701,7 +3619,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitAdherence")
 	}
 
@@ -3762,8 +3680,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 // GetWorkforcemanagementManagementunitAgent invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}
 //
 // Get data for agent in the management unit
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(managementUnitId string, agentId string, excludeCapabilities bool) (*Wfmagent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3777,12 +3693,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitAgent")
 	}
 	// verify the required parameter 'agentId' is set
 	if &agentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'agentId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitAgent")
 	}
 
@@ -3843,8 +3759,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 // GetWorkforcemanagementManagementunitAgentShifttrades invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}/shifttrades
 //
 // Gets all the shift trades for a given agent
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgentShifttrades(managementUnitId string, agentId string) (*Shifttradelistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3858,12 +3772,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgentShifttr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitAgentShifttrades")
 	}
 	// verify the required parameter 'agentId' is set
 	if &agentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'agentId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitAgentShifttrades")
 	}
 
@@ -3922,8 +3836,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgentShifttr
 // GetWorkforcemanagementManagementunitShifttradesMatched invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/shifttrades/matched
 //
 // Gets a summary of all shift trades in the matched state
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesMatched(managementUnitId string) (*Shifttradematchessummaryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3936,7 +3848,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesM
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitShifttradesMatched")
 	}
 
@@ -3995,8 +3907,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesM
 // GetWorkforcemanagementManagementunitShifttradesUsers invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/shifttrades/users
 //
 // Gets list of users available for whom you can send direct shift trade requests
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesUsers(managementUnitId string) (*Wfmuserentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4009,7 +3919,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesU
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitShifttradesUsers")
 	}
 
@@ -4083,12 +3993,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitTimeofflimit")
 	}
 	// verify the required parameter 'timeOffLimitId' is set
 	if &timeOffLimitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffLimitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitTimeofflimit")
 	}
 
@@ -4161,7 +4071,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitTimeofflimits")
 	}
 
@@ -4220,8 +4130,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 // GetWorkforcemanagementManagementunitTimeoffplan invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}
 //
 // Gets a time off plan
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(managementUnitId string, timeOffPlanId string) (*Timeoffplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4235,12 +4143,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitTimeoffplan")
 	}
 	// verify the required parameter 'timeOffPlanId' is set
 	if &timeOffPlanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffPlanId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitTimeoffplan")
 	}
 
@@ -4299,8 +4207,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(
 // GetWorkforcemanagementManagementunitTimeoffplans invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans
 //
 // Gets a list of time off plans
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplans(managementUnitId string) (*Timeoffplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4313,7 +4219,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplans
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitTimeoffplans")
 	}
 
@@ -4372,8 +4278,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplans
 // GetWorkforcemanagementManagementunitUserTimeoffrequest invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}
 //
 // Get a time off request
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffrequest(managementUnitId string, userId string, timeOffRequestId string) (*Timeoffrequestresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4388,17 +4292,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequest")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequest")
 	}
 	// verify the required parameter 'timeOffRequestId' is set
 	if &timeOffRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequest")
 	}
 
@@ -4457,8 +4361,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 // GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}/timeofflimits
 //
 // Retrieves time off limit, allocated and waitlisted values according to specific time off request
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits(managementUnitId string, userId string, timeOffRequestId string) (*Querytimeofflimitvaluesresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4473,17 +4375,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits")
 	}
 	// verify the required parameter 'timeOffRequestId' is set
 	if &timeOffRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits")
 	}
 
@@ -4542,8 +4444,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 // GetWorkforcemanagementManagementunitUserTimeoffrequests invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests
 //
 // Get a list of time off requests for a given user
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffrequests(managementUnitId string, userId string, recentlyReviewed bool) (*Timeoffrequestlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4557,12 +4457,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequests")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUserTimeoffrequests")
 	}
 
@@ -4623,8 +4523,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 // GetWorkforcemanagementManagementunitUsers invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/users
 //
 // Get users in the management unit
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(managementUnitId string) (*Wfmuserentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4637,7 +4535,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(manage
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitUsers")
 	}
 
@@ -4696,8 +4594,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(manage
 // GetWorkforcemanagementManagementunitWeekSchedule invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}
 //
 // Deprecated.  Use the equivalent business unit resource instead. Get a week schedule
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule(managementUnitId string, weekId string, scheduleId string, expand string, forceDownloadService bool) (*Weekscheduleresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4712,17 +4608,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekSchedule")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekSchedule")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekSchedule")
 	}
 
@@ -4785,8 +4681,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 // GetWorkforcemanagementManagementunitWeekSchedules invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules
 //
 // Deprecated.  Use the equivalent business unit resource instead. Get the list of schedules in a week in management unit
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedules(managementUnitId string, weekId string, includeOnlyPublished bool, earliestWeekDate string, latestWeekDate string) (*Weekschedulelistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4800,12 +4694,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekSchedules")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekSchedules")
 	}
 
@@ -4870,8 +4764,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 // GetWorkforcemanagementManagementunitWeekShifttrades invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades
 //
 // Gets all the shift trades for a given week
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId string, weekDateId time.Time, evaluateMatches bool) (*Weekshifttradelistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4885,12 +4777,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShifttrades")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShifttrades")
 	}
 
@@ -4951,8 +4843,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 // GetWorkforcemanagementManagementunitWorkplan invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}
 //
 // Get a work plan
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string, includeOnly []string) (*Workplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4966,12 +4856,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplan(man
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWorkplan")
 	}
 	// verify the required parameter 'workPlanId' is set
 	if &workPlanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWorkplan")
 	}
 
@@ -5032,8 +4922,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplan(man
 // GetWorkforcemanagementManagementunitWorkplanrotation invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}
 //
 // Get a work plan rotation
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrotation(managementUnitId string, workPlanRotationId string) (*Workplanrotationresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5047,12 +4935,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWorkplanrotation")
 	}
 	// verify the required parameter 'workPlanRotationId' is set
 	if &workPlanRotationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanRotationId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWorkplanrotation")
 	}
 
@@ -5111,8 +4999,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 // GetWorkforcemanagementManagementunitWorkplanrotations invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations
 //
 // Get work plan rotations
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrotations(managementUnitId string, expand []string) (*Workplanrotationlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5125,7 +5011,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWorkplanrotations")
 	}
 
@@ -5187,7 +5073,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 //
 // Get work plans
 //
-// \&quot;expand=details\&quot; is deprecated
+// \&quot;expand&#x3D;details\&quot; is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(managementUnitId string, expand []string) (*Workplanlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5200,7 +5086,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(ma
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWorkplans")
 	}
 
@@ -5261,8 +5147,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(ma
 // GetWorkforcemanagementManagementunits invokes GET /api/v2/workforcemanagement/managementunits
 //
 // Get management units
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunits(pageSize int, pageNumber int, expand string, feature string, divisionId string) (*Managementunitlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5338,8 +5222,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunits(pageSize i
 // GetWorkforcemanagementManagementunitsDivisionviews invokes GET /api/v2/workforcemanagement/managementunits/divisionviews
 //
 // Get management units across divisions
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitsDivisionviews(divisionId []string) (*Managementunitlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5474,8 +5356,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementNotifications() (*Notifica
 // GetWorkforcemanagementSchedulingjob invokes GET /api/v2/workforcemanagement/schedulingjobs/{jobId}
 //
 // Get status of the scheduling job
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementSchedulingjob(jobId string) (*Schedulingstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5488,7 +5368,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementSchedulingjob(jobId string
 
 	// verify the required parameter 'jobId' is set
 	if &jobId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling WorkforceManagementApi->GetWorkforcemanagementSchedulingjob")
 	}
 
@@ -5547,8 +5427,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementSchedulingjob(jobId string
 // GetWorkforcemanagementShifttrades invokes GET /api/v2/workforcemanagement/shifttrades
 //
 // Gets all of my shift trades
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementShifttrades() (*Shifttradelistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5614,8 +5492,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementShifttrades() (*Shifttrade
 // GetWorkforcemanagementTimeoffrequest invokes GET /api/v2/workforcemanagement/timeoffrequests/{timeOffRequestId}
 //
 // Get a time off request for the current user
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequest(timeOffRequestId string) (*Timeoffrequestresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5628,7 +5504,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequest(timeOffRequ
 
 	// verify the required parameter 'timeOffRequestId' is set
 	if &timeOffRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->GetWorkforcemanagementTimeoffrequest")
 	}
 
@@ -5687,8 +5563,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequest(timeOffRequ
 // GetWorkforcemanagementTimeoffrequestWaitlistpositions invokes GET /api/v2/workforcemanagement/timeoffrequests/{timeOffRequestId}/waitlistpositions
 //
 // Get the daily waitlist positions of a time off request for the current user
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequestWaitlistpositions(timeOffRequestId string) (*Waitlistpositionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5701,7 +5575,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequestWaitlistposi
 
 	// verify the required parameter 'timeOffRequestId' is set
 	if &timeOffRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->GetWorkforcemanagementTimeoffrequestWaitlistpositions")
 	}
 
@@ -5760,8 +5634,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequestWaitlistposi
 // GetWorkforcemanagementTimeoffrequests invokes GET /api/v2/workforcemanagement/timeoffrequests
 //
 // Get a list of time off requests for the current user
-//
-// 
 func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyReviewed bool) (*Timeoffrequestlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5829,8 +5701,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyRe
 // PatchWorkforcemanagementBusinessunit invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}
 //
 // Update business unit
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUnitId string, body Updatebusinessunitrequest) (*Businessunit, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5843,7 +5713,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUni
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunit")
 	}
 
@@ -5905,8 +5775,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUni
 // PatchWorkforcemanagementBusinessunitActivitycode invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes/{activityCodeId}
 //
 // Update an activity code
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode(businessUnitId string, activityCodeId string, body Updateactivitycoderequest) (*Businessunitactivitycode, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5920,12 +5788,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitActivitycode")
 	}
 	// verify the required parameter 'activityCodeId' is set
 	if &activityCodeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'activityCodeId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitActivitycode")
 	}
 
@@ -5987,8 +5855,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode
 // PatchWorkforcemanagementBusinessunitPlanninggroup invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}
 //
 // Updates the planning group
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggroup(businessUnitId string, planningGroupId string, body Updateplanninggrouprequest) (*Planninggroup, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6002,12 +5868,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggrou
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitPlanninggroup")
 	}
 	// verify the required parameter 'planningGroupId' is set
 	if &planningGroupId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'planningGroupId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitPlanninggroup")
 	}
 
@@ -6069,8 +5935,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggrou
 // PatchWorkforcemanagementBusinessunitSchedulingRun invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}
 //
 // Mark a schedule run as applied
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitSchedulingRun(businessUnitId string, runId string, body Patchbuschedulerunrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6083,12 +5947,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitSchedulingRu
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitSchedulingRun")
 	}
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitSchedulingRun")
 	}
 
@@ -6144,8 +6008,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitSchedulingRu
 // PatchWorkforcemanagementBusinessunitServicegoaltemplate invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates/{serviceGoalTemplateId}
 //
 // Updates a service goal template
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoaltemplate(businessUnitId string, serviceGoalTemplateId string, body Updateservicegoaltemplate) (*Servicegoaltemplate, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6159,12 +6021,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoalt
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitServicegoaltemplate")
 	}
 	// verify the required parameter 'serviceGoalTemplateId' is set
 	if &serviceGoalTemplateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'serviceGoalTemplateId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitServicegoaltemplate")
 	}
 
@@ -6226,8 +6088,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoalt
 // PatchWorkforcemanagementManagementunit invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}
 //
 // Update the requested management unit
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(managementUnitId string, body Updatemanagementunitrequest) (*Managementunit, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6240,7 +6100,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(managemen
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunit")
 	}
 
@@ -6317,12 +6177,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflim
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeofflimit")
 	}
 	// verify the required parameter 'timeOffLimitId' is set
 	if &timeOffLimitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffLimitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeofflimit")
 	}
 
@@ -6384,8 +6244,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflim
 // PatchWorkforcemanagementManagementunitTimeoffplan invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}
 //
 // Updates a time off plan
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffplan(managementUnitId string, timeOffPlanId string, body Updatetimeoffplanrequest) (*Timeoffplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6399,12 +6257,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffpla
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeoffplan")
 	}
 	// verify the required parameter 'timeOffPlanId' is set
 	if &timeOffPlanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffPlanId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeoffplan")
 	}
 
@@ -6466,8 +6324,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffpla
 // PatchWorkforcemanagementManagementunitUserTimeoffrequest invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}
 //
 // Update a time off request
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeoffrequest(managementUnitId string, userId string, timeOffRequestId string, body Admintimeoffrequestpatch) (*Timeoffrequestresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6482,17 +6338,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeof
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitUserTimeoffrequest")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitUserTimeoffrequest")
 	}
 	// verify the required parameter 'timeOffRequestId' is set
 	if &timeOffRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitUserTimeoffrequest")
 	}
 
@@ -6554,9 +6410,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeof
 // PatchWorkforcemanagementManagementunitWeekShifttrade invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}
 //
 // Updates a shift trade. This route can only be called by the initiating agent
-//
-// 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShifttrade(managementUnitId string, weekDateId time.Time, body Patchshifttraderequest, tradeId string) (*Shifttraderesponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShifttrade(managementUnitId string, weekDateId time.Time, tradeId string, body Patchshifttraderequest) (*Shifttraderesponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}"
@@ -6570,23 +6424,23 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShiftt
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekShifttrade")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekShifttrade")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekShifttrade")
 	}
 	// verify the required parameter 'tradeId' is set
 	if &tradeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'tradeId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekShifttrade")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekShifttrade")
 	}
 
 	headerParams := make(map[string]string)
@@ -6647,9 +6501,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShiftt
 // PatchWorkforcemanagementManagementunitWorkplan invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}
 //
 // Update a work plan
-//
-// 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string, body Workplan, validationMode string) (*Workplan, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string, validationMode string, body Workplan) (*Workplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}"
@@ -6662,12 +6514,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplan")
 	}
 	// verify the required parameter 'workPlanId' is set
 	if &workPlanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplan")
 	}
 
@@ -6731,8 +6583,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 // PatchWorkforcemanagementManagementunitWorkplanrotation invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}
 //
 // Update a work plan rotation
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplanrotation(managementUnitId string, workPlanRotationId string, body Updateworkplanrotationrequest) (*Workplanrotationresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6746,12 +6596,12 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplanro
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplanrotation")
 	}
 	// verify the required parameter 'workPlanRotationId' is set
 	if &workPlanRotationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanRotationId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplanrotation")
 	}
 
@@ -6813,8 +6663,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplanro
 // PatchWorkforcemanagementTimeoffrequest invokes PATCH /api/v2/workforcemanagement/timeoffrequests/{timeOffRequestId}
 //
 // Update a time off request for the current user
-//
-// 
 func (a WorkforceManagementApi) PatchWorkforcemanagementTimeoffrequest(timeOffRequestId string, body Agenttimeoffrequestpatch) (*Timeoffrequestresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6827,7 +6675,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementTimeoffrequest(timeOffRe
 
 	// verify the required parameter 'timeOffRequestId' is set
 	if &timeOffRequestId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->PatchWorkforcemanagementTimeoffrequest")
 	}
 
@@ -6889,8 +6737,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementTimeoffrequest(timeOffRe
 // PostWorkforcemanagementAdherenceHistorical invokes POST /api/v2/workforcemanagement/adherence/historical
 //
 // Request a historical adherence report for users across management units
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceHistorical(body Wfmhistoricaladherencequeryforusers) (*Wfmhistoricaladherenceresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6959,8 +6805,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceHistorical(body 
 // PostWorkforcemanagementAgentschedulesMine invokes POST /api/v2/workforcemanagement/agentschedules/mine
 //
 // Get published schedule for the current user
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body Bugetcurrentagentschedulerequest) (*Bucurrentagentschedulesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7029,8 +6873,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body B
 // PostWorkforcemanagementBusinessunitActivitycodes invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes
 //
 // Create a new activity code
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes(businessUnitId string, body Createactivitycoderequest) (*Businessunitactivitycode, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7043,7 +6885,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitActivitycodes")
 	}
 
@@ -7105,9 +6947,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 // PostWorkforcemanagementBusinessunitAgentschedulesSearch invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/agentschedules/search
 //
 // Search published schedules
-//
-// 
-func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedulesSearch(businessUnitId string, body Busearchagentschedulesrequest, forceAsync bool, forceDownloadService bool) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedulesSearch(businessUnitId string, forceAsync bool, forceDownloadService bool, body Busearchagentschedulesrequest) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/agentschedules/search"
@@ -7119,7 +6959,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitAgentschedulesSearch")
 	}
 
@@ -7185,8 +7025,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 // PostWorkforcemanagementBusinessunitIntraday invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/intraday
 //
 // Get intraday data for the given date for the requested planningGroupIds
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(businessUnitId string, forceAsync bool, body Intradayplanninggrouprequest) (*Asyncintradayresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7199,7 +7037,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitIntraday")
 	}
 
@@ -7263,8 +7101,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 // PostWorkforcemanagementBusinessunitPlanninggroups invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups
 //
 // Adds a new planning group
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitPlanninggroups(businessUnitId string, body Createplanninggrouprequest) (*Planninggroup, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7277,7 +7113,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitPlanninggroup
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitPlanninggroups")
 	}
 
@@ -7339,8 +7175,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitPlanninggroup
 // PostWorkforcemanagementBusinessunitServicegoaltemplates invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates
 //
 // Adds a new service goal template
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitServicegoaltemplates(businessUnitId string, body Createservicegoaltemplate) (*Servicegoaltemplate, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7353,7 +7187,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitServicegoalte
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitServicegoaltemplates")
 	}
 
@@ -7415,8 +7249,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitServicegoalte
 // PostWorkforcemanagementBusinessunitWeekScheduleAgentschedulesQuery invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/agentschedules/query
 //
 // Loads agent schedule data from the schedule. Used in combination with the metadata route
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleAgentschedulesQuery(businessUnitId string, weekId time.Time, scheduleId string, body Buqueryagentschedulesrequest, forceAsync bool, forceDownloadService bool) (*Buasyncagentschedulesqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7431,22 +7263,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleA
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleAgentschedulesQuery")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleAgentschedulesQuery")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleAgentschedulesQuery")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleAgentschedulesQuery")
 	}
 
@@ -7512,8 +7344,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleA
 // PostWorkforcemanagementBusinessunitWeekScheduleCopy invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/copy
 //
 // Copy a schedule
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleCopy(businessUnitId string, weekId time.Time, scheduleId string, body Bucopyschedulerequest) (*Buasyncscheduleresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7528,22 +7358,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleC
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleCopy")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleCopy")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleCopy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleCopy")
 	}
 
@@ -7605,8 +7435,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleC
 // PostWorkforcemanagementBusinessunitWeekScheduleReschedule invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/reschedule
 //
 // Start a rescheduling run
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleReschedule(businessUnitId string, weekId time.Time, scheduleId string, body Bureschedulerequest) (*Buasyncschedulerunresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7621,22 +7449,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleR
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleReschedule")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleReschedule")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleReschedule")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleReschedule")
 	}
 
@@ -7714,22 +7542,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdate")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdate")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdate")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdate")
 	}
 
@@ -7807,22 +7635,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl")
 	}
 
@@ -7884,8 +7712,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 // PostWorkforcemanagementBusinessunitWeekSchedules invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules
 //
 // Create a blank schedule
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules(businessUnitId string, weekId time.Time, body Bucreateblankschedulerequest) (*Buschedulemetadata, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7899,17 +7725,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedules")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedules")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedules")
 	}
 
@@ -7971,8 +7797,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 // PostWorkforcemanagementBusinessunitWeekSchedulesGenerate invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/generate
 //
 // Generate a schedule
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedulesGenerate(businessUnitId string, weekId time.Time, body Bugenerateschedulerequest) (*Buasyncschedulerunresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7986,17 +7810,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesGenerate")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesGenerate")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesGenerate")
 	}
 
@@ -8073,17 +7897,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesImport")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesImport")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesImport")
 	}
 
@@ -8160,17 +7984,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesImportUploadurl")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesImportUploadurl")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulesImportUploadurl")
 	}
 
@@ -8232,8 +8056,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 // PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/copy
 //
 // Copy a short term forecast
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy(businessUnitId string, weekDateId time.Time, forecastId string, body Copybuforecastrequest, forceAsync bool) (*Asyncforecastoperationresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8248,22 +8070,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy")
 	}
 
@@ -8327,8 +8149,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 // PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/generate
 //
 // Generate a short term forecast
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate(businessUnitId string, weekDateId time.Time, body Generatebuforecastrequest, forceAsync bool) (*Asyncforecastoperationresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8342,17 +8162,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate")
 	}
 
@@ -8431,17 +8251,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport")
 	}
 
@@ -8518,17 +8338,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 
 	// verify the required parameter 'businessUnitId' is set
 	if &businessUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl")
 	}
 
@@ -8660,8 +8480,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Create
 // PostWorkforcemanagementCalendarUrlIcs invokes POST /api/v2/workforcemanagement/calendar/url/ics
 //
 // Create a newly generated calendar link for the current user; if the current user has previously generated one, the generated link will be returned
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementCalendarUrlIcs(language string) (*Calendarurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8729,8 +8547,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementCalendarUrlIcs(language s
 // PostWorkforcemanagementHistoricaldataDeletejob invokes POST /api/v2/workforcemanagement/historicaldata/deletejob
 //
 // Delete the entries of the historical data imports in the organization
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataDeletejob() (*Historicalimportdeletejobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8796,8 +8612,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataDeletejob()
 // PostWorkforcemanagementHistoricaldataValidate invokes POST /api/v2/workforcemanagement/historicaldata/validate
 //
 // Trigger validation process for historical import
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataValidate(body Validationservicerequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8859,9 +8673,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataValidate(bo
 // PostWorkforcemanagementManagementunitAgentschedulesSearch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/agentschedules/search
 //
 // Query published schedules for given given time range for set of users
-//
-// 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedulesSearch(managementUnitId string, body Busearchagentschedulesrequest, forceAsync bool, forceDownloadService bool) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedulesSearch(managementUnitId string, forceAsync bool, forceDownloadService bool, body Busearchagentschedulesrequest) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agentschedules/search"
@@ -8873,7 +8685,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitAgentschedulesSearch")
 	}
 
@@ -8940,7 +8752,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 //
 // Request a historical adherence report
 //
-// The maximum supported range for historical adherence queries is 31 days, or 7 days with includeExceptions = true
+// The maximum supported range for historical adherence queries is 31 days, or 7 days with includeExceptions &#x3D; true
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitHistoricaladherencequery(managementUnitId string, body Wfmhistoricaladherencequery) (*Wfmhistoricaladherenceresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8953,7 +8765,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitHistoricala
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitHistoricaladherencequery")
 	}
 
@@ -9029,7 +8841,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitMove(manage
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitMove")
 	}
 
@@ -9091,8 +8903,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitMove(manage
 // PostWorkforcemanagementManagementunitSchedulesSearch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/schedules/search
 //
 // Query published schedules for given given time range for set of users
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSearch(managementUnitId string, body Userlistschedulerequestbody) (*Userschedulecontainer, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9105,7 +8915,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSe
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitSchedulesSearch")
 	}
 
@@ -9181,7 +8991,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeofflimits")
 	}
 
@@ -9243,8 +9053,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 // PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/values/query
 //
 // Retrieves time off limit related values based on a given set of filters.
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery(managementUnitId string, body Querytimeofflimitvaluesrequest) (*Querytimeofflimitvaluesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9257,7 +9065,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery")
 	}
 
@@ -9319,8 +9127,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 // PostWorkforcemanagementManagementunitTimeoffplans invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans
 //
 // Creates a new time off plan
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplans(managementUnitId string, body Createtimeoffplanrequest) (*Timeoffplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9333,7 +9139,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplan
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffplans")
 	}
 
@@ -9395,8 +9201,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplan
 // PostWorkforcemanagementManagementunitTimeoffrequests invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests
 //
 // Create a new time off request
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequests(managementUnitId string, body Createadmintimeoffrequest) (*Timeoffrequestlist, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9409,7 +9213,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequests")
 	}
 
@@ -9472,7 +9276,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 //
 // Fetches time off requests matching the conditions specified in the request body
 //
-// Request body requires one of the following: User ID is specified, statuses == [Pending] or date range to be specified and less than or equal to 33 days.  All other fields are filters
+// Request body requires one of the following: User ID is specified, statuses &#x3D;&#x3D; [Pending] or date range to be specified and less than or equal to 33 days.  All other fields are filters
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId string, body Timeoffrequestquerybody) (*Timeoffrequestlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9485,7 +9289,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsQuery")
 	}
 
@@ -9547,8 +9351,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 // PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests/waitlistpositions/query
 //
 // Retrieves daily waitlist position for a list of time off requests
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery(managementUnitId string, body Querywaitlistpositionsrequest) (*Waitlistpositionlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9561,7 +9363,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery")
 	}
 
@@ -9623,9 +9425,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 // PostWorkforcemanagementManagementunitWeekShifttradeMatch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}/match
 //
 // Matches a shift trade. This route can only be called by the receiving agent
-//
-// 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttradeMatch(managementUnitId string, weekDateId time.Time, body Matchshifttraderequest, tradeId string) (*Matchshifttraderesponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttradeMatch(managementUnitId string, weekDateId time.Time, tradeId string, body Matchshifttraderequest) (*Matchshifttraderesponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}/match"
@@ -9639,23 +9439,23 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradeMatch")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradeMatch")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradeMatch")
 	}
 	// verify the required parameter 'tradeId' is set
 	if &tradeId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'tradeId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradeMatch")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradeMatch")
 	}
 
 	headerParams := make(map[string]string)
@@ -9716,8 +9516,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 // PostWorkforcemanagementManagementunitWeekShifttrades invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades
 //
 // Adds a shift trade
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttrades(managementUnitId string, weekDateId time.Time, body Addshifttraderequest) (*Shifttraderesponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9731,17 +9529,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttrades")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttrades")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttrades")
 	}
 
@@ -9803,8 +9601,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 // PostWorkforcemanagementManagementunitWeekShifttradesSearch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/search
 //
 // Searches for potential shift trade matches for the current agent
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttradesSearch(managementUnitId string, weekDateId time.Time, body Searchshifttradesrequest) (*Searchshifttradesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9818,17 +9614,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradesSearch")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradesSearch")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradesSearch")
 	}
 
@@ -9905,17 +9701,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradesStateBulk")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradesStateBulk")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShifttradesStateBulk")
 	}
 
@@ -9979,8 +9775,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 // PostWorkforcemanagementManagementunitWorkplanCopy invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/copy
 //
 // Create a copy of work plan
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCopy(managementUnitId string, workPlanId string, body Copyworkplan) (*Workplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9994,12 +9788,12 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCop
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanCopy")
 	}
 	// verify the required parameter 'workPlanId' is set
 	if &workPlanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanCopy")
 	}
 
@@ -10061,9 +9855,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCop
 // PostWorkforcemanagementManagementunitWorkplanValidate invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/validate
 //
 // Validate Work Plan
-//
-// 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanValidate(managementUnitId string, workPlanId string, body Workplanvalidationrequest, expand []string) (*Validateworkplanresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanValidate(managementUnitId string, workPlanId string, expand []string, body Workplanvalidationrequest) (*Validateworkplanresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/validate"
@@ -10076,12 +9868,12 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanVal
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanValidate")
 	}
 	// verify the required parameter 'workPlanId' is set
 	if &workPlanId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanValidate")
 	}
 
@@ -10145,8 +9937,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanVal
 // PostWorkforcemanagementManagementunitWorkplanrotationCopy invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}/copy
 //
 // Create a copy of work plan rotation
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrotationCopy(managementUnitId string, workPlanRotationId string, body Copyworkplanrotationrequest) (*Workplanrotationresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10160,12 +9950,12 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanrotationCopy")
 	}
 	// verify the required parameter 'workPlanRotationId' is set
 	if &workPlanRotationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanRotationId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanrotationCopy")
 	}
 
@@ -10227,8 +10017,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 // PostWorkforcemanagementManagementunitWorkplanrotations invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations
 //
 // Create a new work plan rotation
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrotations(managementUnitId string, body Addworkplanrotationrequest) (*Workplanrotationresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10241,7 +10029,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanrotations")
 	}
 
@@ -10303,9 +10091,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 // PostWorkforcemanagementManagementunitWorkplans invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans
 //
 // Create a new work plan
-//
-// 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(managementUnitId string, body Createworkplan, validationMode string) (*Workplan, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(managementUnitId string, validationMode string, body Createworkplan) (*Workplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans"
@@ -10317,7 +10103,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplans")
 	}
 
@@ -10451,8 +10237,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunits(body Crea
 // PostWorkforcemanagementNotificationsUpdate invokes POST /api/v2/workforcemanagement/notifications/update
 //
 // Mark a list of notifications as read or unread
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementNotificationsUpdate(body Updatenotificationsrequest) (*Updatenotificationsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10521,8 +10305,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementNotificationsUpdate(body 
 // PostWorkforcemanagementSchedules invokes POST /api/v2/workforcemanagement/schedules
 //
 // Get published schedule for the current user
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementSchedules(body Currentuserschedulerequestbody) (*Userschedulecontainer, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10591,8 +10373,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementSchedules(body Currentuse
 // PostWorkforcemanagementTimeofflimitsAvailableQuery invokes POST /api/v2/workforcemanagement/timeofflimits/available/query
 //
 // Queries available time off for the current user
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementTimeofflimitsAvailableQuery(body Availabletimeoffrequest) (*Availabletimeoffresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10661,8 +10441,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeofflimitsAvailableQue
 // PostWorkforcemanagementTimeoffrequests invokes POST /api/v2/workforcemanagement/timeoffrequests
 //
 // Create a time off request for the current user
-//
-// 
 func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequests(body Createagenttimeoffrequest) (*Timeoffrequestresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10746,12 +10524,12 @@ func (a WorkforceManagementApi) PutWorkforcemanagementManagementunitTimeofflimit
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PutWorkforcemanagementManagementunitTimeofflimitValues")
 	}
 	// verify the required parameter 'timeOffLimitId' is set
 	if &timeOffLimitId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffLimitId' when calling WorkforceManagementApi->PutWorkforcemanagementManagementunitTimeofflimitValues")
 	}
 

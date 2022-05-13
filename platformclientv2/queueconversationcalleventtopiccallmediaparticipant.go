@@ -470,15 +470,15 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if Id, ok := QueueconversationcalleventtopiccallmediaparticipantMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := QueueconversationcalleventtopiccallmediaparticipantMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Address, ok := QueueconversationcalleventtopiccallmediaparticipantMap["address"].(string); ok {
 		o.Address = &Address
 	}
-	
+    
 	if startTimeString, ok := QueueconversationcalleventtopiccallmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
@@ -502,31 +502,31 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if Purpose, ok := QueueconversationcalleventtopiccallmediaparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
 	}
-	
+    
 	if State, ok := QueueconversationcalleventtopiccallmediaparticipantMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if Direction, ok := QueueconversationcalleventtopiccallmediaparticipantMap["direction"].(string); ok {
 		o.Direction = &Direction
 	}
-	
+    
 	if DisconnectType, ok := QueueconversationcalleventtopiccallmediaparticipantMap["disconnectType"].(string); ok {
 		o.DisconnectType = &DisconnectType
 	}
-	
+    
 	if Held, ok := QueueconversationcalleventtopiccallmediaparticipantMap["held"].(bool); ok {
 		o.Held = &Held
 	}
-	
+    
 	if WrapupRequired, ok := QueueconversationcalleventtopiccallmediaparticipantMap["wrapupRequired"].(bool); ok {
 		o.WrapupRequired = &WrapupRequired
 	}
-	
+    
 	if WrapupPrompt, ok := QueueconversationcalleventtopiccallmediaparticipantMap["wrapupPrompt"].(string); ok {
 		o.WrapupPrompt = &WrapupPrompt
 	}
-	
+    
 	if User, ok := QueueconversationcalleventtopiccallmediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
@@ -565,7 +565,7 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if WrapupSkipped, ok := QueueconversationcalleventtopiccallmediaparticipantMap["wrapupSkipped"].(bool); ok {
 		o.WrapupSkipped = &WrapupSkipped
 	}
-	
+    
 	if AlertingTimeoutMs, ok := QueueconversationcalleventtopiccallmediaparticipantMap["alertingTimeoutMs"].(float64); ok {
 		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
 		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
@@ -574,7 +574,7 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if Provider, ok := QueueconversationcalleventtopiccallmediaparticipantMap["provider"].(string); ok {
 		o.Provider = &Provider
 	}
-	
+    
 	if ExternalContact, ok := QueueconversationcalleventtopiccallmediaparticipantMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
@@ -598,15 +598,15 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if Peer, ok := QueueconversationcalleventtopiccallmediaparticipantMap["peer"].(string); ok {
 		o.Peer = &Peer
 	}
-	
+    
 	if ScreenRecordingState, ok := QueueconversationcalleventtopiccallmediaparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}
-	
+    
 	if FlaggedReason, ok := QueueconversationcalleventtopiccallmediaparticipantMap["flaggedReason"].(string); ok {
 		o.FlaggedReason = &FlaggedReason
 	}
-	
+    
 	if JourneyContext, ok := QueueconversationcalleventtopiccallmediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
 		JourneyContextString, _ := json.Marshal(JourneyContext)
 		json.Unmarshal(JourneyContextString, &o.JourneyContext)
@@ -625,19 +625,19 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if Muted, ok := QueueconversationcalleventtopiccallmediaparticipantMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}
-	
+    
 	if Confined, ok := QueueconversationcalleventtopiccallmediaparticipantMap["confined"].(bool); ok {
 		o.Confined = &Confined
 	}
-	
+    
 	if Recording, ok := QueueconversationcalleventtopiccallmediaparticipantMap["recording"].(bool); ok {
 		o.Recording = &Recording
 	}
-	
+    
 	if RecordingState, ok := QueueconversationcalleventtopiccallmediaparticipantMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}
-	
+    
 	if Group, ok := QueueconversationcalleventtopiccallmediaparticipantMap["group"].(map[string]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
@@ -646,27 +646,27 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if Ani, ok := QueueconversationcalleventtopiccallmediaparticipantMap["ani"].(string); ok {
 		o.Ani = &Ani
 	}
-	
+    
 	if Dnis, ok := QueueconversationcalleventtopiccallmediaparticipantMap["dnis"].(string); ok {
 		o.Dnis = &Dnis
 	}
-	
+    
 	if DocumentId, ok := QueueconversationcalleventtopiccallmediaparticipantMap["documentId"].(string); ok {
 		o.DocumentId = &DocumentId
 	}
-	
+    
 	if MonitoredParticipantId, ok := QueueconversationcalleventtopiccallmediaparticipantMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
-	
+    
 	if CoachedParticipantId, ok := QueueconversationcalleventtopiccallmediaparticipantMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
-	
+    
 	if BargedParticipantId, ok := QueueconversationcalleventtopiccallmediaparticipantMap["bargedParticipantId"].(string); ok {
 		o.BargedParticipantId = &BargedParticipantId
 	}
-	
+    
 	if bargedTimeString, ok := QueueconversationcalleventtopiccallmediaparticipantMap["bargedTime"].(string); ok {
 		BargedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", bargedTimeString)
 		o.BargedTime = &BargedTime
@@ -675,7 +675,7 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if ConsultParticipantId, ok := QueueconversationcalleventtopiccallmediaparticipantMap["consultParticipantId"].(string); ok {
 		o.ConsultParticipantId = &ConsultParticipantId
 	}
-	
+    
 	if FaxStatus, ok := QueueconversationcalleventtopiccallmediaparticipantMap["faxStatus"].(map[string]interface{}); ok {
 		FaxStatusString, _ := json.Marshal(FaxStatus)
 		json.Unmarshal(FaxStatusString, &o.FaxStatus)

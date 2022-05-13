@@ -61,11 +61,11 @@ func (o *Updateactioninput) UnmarshalJSON(b []byte) error {
 	if Category, ok := UpdateactioninputMap["category"].(string); ok {
 		o.Category = &Category
 	}
-	
+    
 	if Name, ok := UpdateactioninputMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Config, ok := UpdateactioninputMap["config"].(map[string]interface{}); ok {
 		ConfigString, _ := json.Marshal(Config)
 		json.Unmarshal(ConfigString, &o.Config)

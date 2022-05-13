@@ -46,7 +46,7 @@ func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*Coachinga
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->DeleteCoachingAppointment")
 	}
 
@@ -119,12 +119,12 @@ func (a CoachingApi) DeleteCoachingAppointmentAnnotation(appointmentId string, a
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->DeleteCoachingAppointmentAnnotation")
 	}
 	// verify the required parameter 'annotationId' is set
 	if &annotationId == nil {
-		// 
+		// false
 		return nil, errors.New("Missing required parameter 'annotationId' when calling CoachingApi->DeleteCoachingAppointmentAnnotation")
 	}
 
@@ -191,7 +191,7 @@ func (a CoachingApi) GetCoachingAppointment(appointmentId string) (*Coachingappo
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->GetCoachingAppointment")
 	}
 
@@ -265,12 +265,12 @@ func (a CoachingApi) GetCoachingAppointmentAnnotation(appointmentId string, anno
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->GetCoachingAppointmentAnnotation")
 	}
 	// verify the required parameter 'annotationId' is set
 	if &annotationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'annotationId' when calling CoachingApi->GetCoachingAppointmentAnnotation")
 	}
 
@@ -343,7 +343,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->GetCoachingAppointmentAnnotations")
 	}
 
@@ -420,7 +420,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->GetCoachingAppointmentStatuses")
 	}
 
@@ -483,8 +483,6 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 // GetCoachingAppointments invokes GET /api/v2/coaching/appointments
 //
 // Get appointments for users and optional date range
-//
-// 
 func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string, intervalCondition string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -577,8 +575,6 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 // GetCoachingAppointmentsMe invokes GET /api/v2/coaching/appointments/me
 //
 // Get my appointments for a given date range
-//
-// 
 func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string, intervalCondition string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -678,7 +674,7 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 
 	// verify the required parameter 'notificationId' is set
 	if &notificationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'notificationId' when calling CoachingApi->GetCoachingNotification")
 	}
 
@@ -739,8 +735,6 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 // GetCoachingNotifications invokes GET /api/v2/coaching/notifications
 //
 // Retrieve the list of your notifications.
-//
-// 
 func (a CoachingApi) GetCoachingNotifications(pageNumber int, pageSize int, expand []string) (*Coachingnotificationlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -826,12 +820,12 @@ func (a CoachingApi) PatchCoachingAppointment(appointmentId string, body Updatec
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->PatchCoachingAppointment")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PatchCoachingAppointment")
 	}
 
@@ -908,17 +902,17 @@ func (a CoachingApi) PatchCoachingAppointmentAnnotation(appointmentId string, an
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->PatchCoachingAppointmentAnnotation")
 	}
 	// verify the required parameter 'annotationId' is set
 	if &annotationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'annotationId' when calling CoachingApi->PatchCoachingAppointmentAnnotation")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PatchCoachingAppointmentAnnotation")
 	}
 
@@ -994,12 +988,12 @@ func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body C
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->PatchCoachingAppointmentStatus")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PatchCoachingAppointmentStatus")
 	}
 
@@ -1075,12 +1069,12 @@ func (a CoachingApi) PatchCoachingNotification(notificationId string, body Coach
 
 	// verify the required parameter 'notificationId' is set
 	if &notificationId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'notificationId' when calling CoachingApi->PatchCoachingNotification")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PatchCoachingNotification")
 	}
 
@@ -1156,12 +1150,12 @@ func (a CoachingApi) PostCoachingAppointmentAnnotations(appointmentId string, bo
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->PostCoachingAppointmentAnnotations")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PostCoachingAppointmentAnnotations")
 	}
 
@@ -1237,12 +1231,12 @@ func (a CoachingApi) PostCoachingAppointmentConversations(appointmentId string, 
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->PostCoachingAppointmentConversations")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PostCoachingAppointmentConversations")
 	}
 
@@ -1304,8 +1298,6 @@ func (a CoachingApi) PostCoachingAppointmentConversations(appointmentId string, 
 // PostCoachingAppointments invokes POST /api/v2/coaching/appointments
 //
 // Create a new appointment
-//
-// 
 func (a CoachingApi) PostCoachingAppointments(body Createcoachingappointmentrequest) (*Coachingappointmentresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1317,7 +1309,7 @@ func (a CoachingApi) PostCoachingAppointments(body Createcoachingappointmentrequ
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PostCoachingAppointments")
 	}
 
@@ -1379,8 +1371,6 @@ func (a CoachingApi) PostCoachingAppointments(body Createcoachingappointmentrequ
 // PostCoachingAppointmentsAggregatesQuery invokes POST /api/v2/coaching/appointments/aggregates/query
 //
 // Retrieve aggregated appointment data
-//
-// 
 func (a CoachingApi) PostCoachingAppointmentsAggregatesQuery(body Coachingappointmentaggregaterequest) (*Coachingappointmentaggregateresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1392,7 +1382,7 @@ func (a CoachingApi) PostCoachingAppointmentsAggregatesQuery(body Coachingappoin
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PostCoachingAppointmentsAggregatesQuery")
 	}
 
@@ -1454,8 +1444,6 @@ func (a CoachingApi) PostCoachingAppointmentsAggregatesQuery(body Coachingappoin
 // PostCoachingScheduleslotsQuery invokes POST /api/v2/coaching/scheduleslots/query
 //
 // Get list of possible slots where a coaching appointment can be scheduled.
-//
-// 
 func (a CoachingApi) PostCoachingScheduleslotsQuery(body Coachingslotsrequest) (*Coachingslotsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1467,7 +1455,7 @@ func (a CoachingApi) PostCoachingScheduleslotsQuery(body Coachingslotsrequest) (
 
 	// verify the required parameter 'body' is set
 	if &body == nil {
-		// 
+		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PostCoachingScheduleslotsQuery")
 	}
 

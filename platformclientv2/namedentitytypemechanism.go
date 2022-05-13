@@ -58,11 +58,11 @@ func (o *Namedentitytypemechanism) UnmarshalJSON(b []byte) error {
 	if Restricted, ok := NamedentitytypemechanismMap["restricted"].(bool); ok {
 		o.Restricted = &Restricted
 	}
-	
+    
 	if VarType, ok := NamedentitytypemechanismMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 
 	return nil
 }

@@ -93,11 +93,11 @@ func (o *Ttsengineentity) UnmarshalJSON(b []byte) error {
 	if Id, ok := TtsengineentityMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TtsengineentityMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Languages, ok := TtsengineentityMap["languages"].([]interface{}); ok {
 		LanguagesString, _ := json.Marshal(Languages)
 		json.Unmarshal(LanguagesString, &o.Languages)
@@ -116,15 +116,15 @@ func (o *Ttsengineentity) UnmarshalJSON(b []byte) error {
 	if IsDefault, ok := TtsengineentityMap["isDefault"].(bool); ok {
 		o.IsDefault = &IsDefault
 	}
-	
+    
 	if IsSecure, ok := TtsengineentityMap["isSecure"].(bool); ok {
 		o.IsSecure = &IsSecure
 	}
-	
+    
 	if SelfUri, ok := TtsengineentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

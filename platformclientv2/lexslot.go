@@ -61,15 +61,15 @@ func (o *Lexslot) UnmarshalJSON(b []byte) error {
 	if Name, ok := LexslotMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := LexslotMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if VarType, ok := LexslotMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
-	
+    
 	if Priority, ok := LexslotMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt

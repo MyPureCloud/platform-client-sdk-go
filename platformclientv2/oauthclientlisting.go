@@ -182,11 +182,11 @@ func (o *Oauthclientlisting) UnmarshalJSON(b []byte) error {
 	if Id, ok := OauthclientlistingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := OauthclientlistingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if AccessTokenValiditySeconds, ok := OauthclientlistingMap["accessTokenValiditySeconds"].(float64); ok {
 		AccessTokenValiditySecondsInt := int(AccessTokenValiditySeconds)
 		o.AccessTokenValiditySeconds = &AccessTokenValiditySecondsInt
@@ -195,7 +195,7 @@ func (o *Oauthclientlisting) UnmarshalJSON(b []byte) error {
 	if Description, ok := OauthclientlistingMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if RegisteredRedirectUri, ok := OauthclientlistingMap["registeredRedirectUri"].([]interface{}); ok {
 		RegisteredRedirectUriString, _ := json.Marshal(RegisteredRedirectUri)
 		json.Unmarshal(RegisteredRedirectUriString, &o.RegisteredRedirectUri)
@@ -204,7 +204,7 @@ func (o *Oauthclientlisting) UnmarshalJSON(b []byte) error {
 	if Secret, ok := OauthclientlistingMap["secret"].(string); ok {
 		o.Secret = &Secret
 	}
-	
+    
 	if RoleIds, ok := OauthclientlistingMap["roleIds"].([]interface{}); ok {
 		RoleIdsString, _ := json.Marshal(RoleIds)
 		json.Unmarshal(RoleIdsString, &o.RoleIds)
@@ -243,7 +243,7 @@ func (o *Oauthclientlisting) UnmarshalJSON(b []byte) error {
 	if State, ok := OauthclientlistingMap["state"].(string); ok {
 		o.State = &State
 	}
-	
+    
 	if dateToDeleteString, ok := OauthclientlistingMap["dateToDelete"].(string); ok {
 		DateToDelete, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateToDeleteString)
 		o.DateToDelete = &DateToDelete
@@ -252,7 +252,7 @@ func (o *Oauthclientlisting) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := OauthclientlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

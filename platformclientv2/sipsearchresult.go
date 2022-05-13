@@ -93,7 +93,7 @@ func (o *Sipsearchresult) UnmarshalJSON(b []byte) error {
 	if Id, ok := SipsearchresultMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Status, ok := SipsearchresultMap["status"].(float64); ok {
 		StatusInt := int(Status)
 		o.Status = &StatusInt
@@ -102,15 +102,15 @@ func (o *Sipsearchresult) UnmarshalJSON(b []byte) error {
 	if Sid, ok := SipsearchresultMap["sid"].(string); ok {
 		o.Sid = &Sid
 	}
-	
+    
 	if Auth, ok := SipsearchresultMap["auth"].(string); ok {
 		o.Auth = &Auth
 	}
-	
+    
 	if Message, ok := SipsearchresultMap["message"].(string); ok {
 		o.Message = &Message
 	}
-	
+    
 	if Data, ok := SipsearchresultMap["data"].([]interface{}); ok {
 		DataString, _ := json.Marshal(Data)
 		json.Unmarshal(DataString, &o.Data)
@@ -124,7 +124,7 @@ func (o *Sipsearchresult) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := SipsearchresultMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

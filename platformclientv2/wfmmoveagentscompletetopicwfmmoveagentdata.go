@@ -50,7 +50,7 @@ func (o *Wfmmoveagentscompletetopicwfmmoveagentdata) UnmarshalJSON(b []byte) err
 	if Result, ok := WfmmoveagentscompletetopicwfmmoveagentdataMap["result"].(string); ok {
 		o.Result = &Result
 	}
-	
+    
 
 	return nil
 }

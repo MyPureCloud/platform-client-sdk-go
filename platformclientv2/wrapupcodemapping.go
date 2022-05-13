@@ -110,11 +110,11 @@ func (o *Wrapupcodemapping) UnmarshalJSON(b []byte) error {
 	if Id, ok := WrapupcodemappingMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := WrapupcodemappingMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := WrapupcodemappingMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -143,7 +143,7 @@ func (o *Wrapupcodemapping) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := WrapupcodemappingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

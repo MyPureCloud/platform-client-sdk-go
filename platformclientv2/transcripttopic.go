@@ -85,19 +85,19 @@ func (o *Transcripttopic) UnmarshalJSON(b []byte) error {
 	if Id, ok := TranscripttopicMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := TranscripttopicMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if TopicPhrase, ok := TranscripttopicMap["topicPhrase"].(string); ok {
 		o.TopicPhrase = &TopicPhrase
 	}
-	
+    
 	if TranscriptPhrase, ok := TranscripttopicMap["transcriptPhrase"].(string); ok {
 		o.TranscriptPhrase = &TranscriptPhrase
 	}
-	
+    
 	if Confidence, ok := TranscripttopicMap["confidence"].(float64); ok {
 		ConfidenceInt := int(Confidence)
 		o.Confidence = &ConfidenceInt

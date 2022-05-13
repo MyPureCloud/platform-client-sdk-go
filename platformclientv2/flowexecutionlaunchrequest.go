@@ -61,11 +61,11 @@ func (o *Flowexecutionlaunchrequest) UnmarshalJSON(b []byte) error {
 	if FlowId, ok := FlowexecutionlaunchrequestMap["flowId"].(string); ok {
 		o.FlowId = &FlowId
 	}
-	
+    
 	if FlowVersion, ok := FlowexecutionlaunchrequestMap["flowVersion"].(string); ok {
 		o.FlowVersion = &FlowVersion
 	}
-	
+    
 	if InputData, ok := FlowexecutionlaunchrequestMap["inputData"].(map[string]interface{}); ok {
 		InputDataString, _ := json.Marshal(InputData)
 		json.Unmarshal(InputDataString, &o.InputData)
@@ -74,7 +74,7 @@ func (o *Flowexecutionlaunchrequest) UnmarshalJSON(b []byte) error {
 	if Name, ok := FlowexecutionlaunchrequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 
 	return nil
 }

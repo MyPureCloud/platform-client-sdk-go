@@ -77,19 +77,19 @@ func (o *Authzdivision) UnmarshalJSON(b []byte) error {
 	if Id, ok := AuthzdivisionMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AuthzdivisionMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Description, ok := AuthzdivisionMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if HomeDivision, ok := AuthzdivisionMap["homeDivision"].(bool); ok {
 		o.HomeDivision = &HomeDivision
 	}
-	
+    
 	if ObjectCounts, ok := AuthzdivisionMap["objectCounts"].(map[string]interface{}); ok {
 		ObjectCountsString, _ := json.Marshal(ObjectCounts)
 		json.Unmarshal(ObjectCountsString, &o.ObjectCounts)
@@ -98,7 +98,7 @@ func (o *Authzdivision) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AuthzdivisionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

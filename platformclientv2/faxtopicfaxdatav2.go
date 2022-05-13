@@ -190,11 +190,11 @@ func (o *Faxtopicfaxdatav2) UnmarshalJSON(b []byte) error {
 	if Id, ok := Faxtopicfaxdatav2Map["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := Faxtopicfaxdatav2Map["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := Faxtopicfaxdatav2Map["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -218,7 +218,7 @@ func (o *Faxtopicfaxdatav2) UnmarshalJSON(b []byte) error {
 	if ContentType, ok := Faxtopicfaxdatav2Map["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
-	
+    
 	if ContentLength, ok := Faxtopicfaxdatav2Map["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
@@ -227,7 +227,7 @@ func (o *Faxtopicfaxdatav2) UnmarshalJSON(b []byte) error {
 	if Filename, ok := Faxtopicfaxdatav2Map["filename"].(string); ok {
 		o.Filename = &Filename
 	}
-	
+    
 	if ChangeNumber, ok := Faxtopicfaxdatav2Map["changeNumber"].(float64); ok {
 		ChangeNumberInt := int(ChangeNumber)
 		o.ChangeNumber = &ChangeNumberInt
@@ -251,19 +251,19 @@ func (o *Faxtopicfaxdatav2) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := Faxtopicfaxdatav2Map["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 	if CallerAddress, ok := Faxtopicfaxdatav2Map["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
-	
+    
 	if ReceiverAddress, ok := Faxtopicfaxdatav2Map["receiverAddress"].(string); ok {
 		o.ReceiverAddress = &ReceiverAddress
 	}
-	
+    
 	if Read, ok := Faxtopicfaxdatav2Map["read"].(bool); ok {
 		o.Read = &Read
 	}
-	
+    
 
 	return nil
 }

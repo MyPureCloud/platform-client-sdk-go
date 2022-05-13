@@ -53,7 +53,7 @@ func (o *Mailfromresult) UnmarshalJSON(b []byte) error {
 	if Status, ok := MailfromresultMap["status"].(string); ok {
 		o.Status = &Status
 	}
-	
+    
 	if Records, ok := MailfromresultMap["records"].([]interface{}); ok {
 		RecordsString, _ := json.Marshal(Records)
 		json.Unmarshal(RecordsString, &o.Records)
@@ -62,7 +62,7 @@ func (o *Mailfromresult) UnmarshalJSON(b []byte) error {
 	if MailFromDomain, ok := MailfromresultMap["mailFromDomain"].(string); ok {
 		o.MailFromDomain = &MailFromDomain
 	}
-	
+    
 
 	return nil
 }

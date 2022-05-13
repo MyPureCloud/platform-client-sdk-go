@@ -45,11 +45,11 @@ func (o *Customeventattribute) UnmarshalJSON(b []byte) error {
 	if DataType, ok := CustomeventattributeMap["dataType"].(string); ok {
 		o.DataType = &DataType
 	}
-	
+    
 	if Value, ok := CustomeventattributeMap["value"].(string); ok {
 		o.Value = &Value
 	}
-	
+    
 
 	return nil
 }

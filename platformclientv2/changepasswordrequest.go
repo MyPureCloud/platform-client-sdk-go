@@ -37,7 +37,7 @@ func (o *Changepasswordrequest) UnmarshalJSON(b []byte) error {
 	if NewPassword, ok := ChangepasswordrequestMap["newPassword"].(string); ok {
 		o.NewPassword = &NewPassword
 	}
-	
+    
 
 	return nil
 }

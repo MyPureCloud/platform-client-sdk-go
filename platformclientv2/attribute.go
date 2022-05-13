@@ -118,11 +118,11 @@ func (o *Attribute) UnmarshalJSON(b []byte) error {
 	if Id, ok := AttributeMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := AttributeMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if Version, ok := AttributeMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -131,7 +131,7 @@ func (o *Attribute) UnmarshalJSON(b []byte) error {
 	if Description, ok := AttributeMap["description"].(string); ok {
 		o.Description = &Description
 	}
-	
+    
 	if CreatedBy, ok := AttributeMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -155,7 +155,7 @@ func (o *Attribute) UnmarshalJSON(b []byte) error {
 	if SelfUri, ok := AttributeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

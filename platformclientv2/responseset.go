@@ -110,11 +110,11 @@ func (o *Responseset) UnmarshalJSON(b []byte) error {
 	if Id, ok := ResponsesetMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if Name, ok := ResponsesetMap["name"].(string); ok {
 		o.Name = &Name
 	}
-	
+    
 	if dateCreatedString, ok := ResponsesetMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -138,11 +138,11 @@ func (o *Responseset) UnmarshalJSON(b []byte) error {
 	if BeepDetectionEnabled, ok := ResponsesetMap["beepDetectionEnabled"].(bool); ok {
 		o.BeepDetectionEnabled = &BeepDetectionEnabled
 	}
-	
+    
 	if SelfUri, ok := ResponsesetMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-	
+    
 
 	return nil
 }

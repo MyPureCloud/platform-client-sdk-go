@@ -85,7 +85,7 @@ func (o *Textbotflowturnresponse) UnmarshalJSON(b []byte) error {
 	if Id, ok := TextbotflowturnresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
-	
+    
 	if PreviousTurn, ok := TextbotflowturnresponseMap["previousTurn"].(map[string]interface{}); ok {
 		PreviousTurnString, _ := json.Marshal(PreviousTurn)
 		json.Unmarshal(PreviousTurnString, &o.PreviousTurn)
@@ -99,7 +99,7 @@ func (o *Textbotflowturnresponse) UnmarshalJSON(b []byte) error {
 	if NextActionType, ok := TextbotflowturnresponseMap["nextActionType"].(string); ok {
 		o.NextActionType = &NextActionType
 	}
-	
+    
 	if NextActionDisconnect, ok := TextbotflowturnresponseMap["nextActionDisconnect"].(map[string]interface{}); ok {
 		NextActionDisconnectString, _ := json.Marshal(NextActionDisconnect)
 		json.Unmarshal(NextActionDisconnectString, &o.NextActionDisconnect)
