@@ -24,10 +24,6 @@ type Messagingcampaigndivisionviewentitylisting struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -36,12 +32,16 @@ type Messagingcampaigndivisionviewentitylisting struct {
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PageCount
@@ -63,15 +63,15 @@ func (o *Messagingcampaigndivisionviewentitylisting) MarshalJSON() ([]byte, erro
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -84,15 +84,15 @@ func (o *Messagingcampaigndivisionviewentitylisting) MarshalJSON() ([]byte, erro
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
+		NextUri: o.NextUri,
+		
 		PreviousUri: o.PreviousUri,
 		
-		NextUri: o.NextUri,
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -126,10 +126,6 @@ func (o *Messagingcampaigndivisionviewentitylisting) UnmarshalJSON(b []byte) err
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := MessagingcampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := MessagingcampaigndivisionviewentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -138,12 +134,16 @@ func (o *Messagingcampaigndivisionviewentitylisting) UnmarshalJSON(b []byte) err
 		o.SelfUri = &SelfUri
 	}
     
+	if NextUri, ok := MessagingcampaigndivisionviewentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if PreviousUri, ok := MessagingcampaigndivisionviewentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if NextUri, ok := MessagingcampaigndivisionviewentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if LastUri, ok := MessagingcampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := MessagingcampaigndivisionviewentitylistingMap["pageCount"].(float64); ok {

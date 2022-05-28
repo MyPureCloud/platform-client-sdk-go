@@ -3033,6 +3033,7 @@ platformclientv2/expirededgelisting.go
 platformclientv2/exportscriptrequest.go
 platformclientv2/exportscriptresponse.go
 platformclientv2/exporturi.go
+platformclientv2/extendedwrapup.go
 platformclientv2/extension.go
 platformclientv2/extensionentitylisting.go
 platformclientv2/extensionpool.go
@@ -3392,6 +3393,7 @@ platformclientv2/learningassignmentupdate.go
 platformclientv2/learningassignmentuser.go
 platformclientv2/learningassignmentuserlisting.go
 platformclientv2/learningassignmentuserquery.go
+platformclientv2/learningcoverartthumbnail.go
 platformclientv2/learningmodule.go
 platformclientv2/learningmodulecoverartrequest.go
 platformclientv2/learningmodulecoverartresponse.go
@@ -4336,6 +4338,7 @@ platformclientv2/suggestapi.go
 platformclientv2/suggestsearchcriteria.go
 platformclientv2/suggestsearchrequest.go
 platformclientv2/supportcentercustommessage.go
+platformclientv2/supportcenterfeedbacksettings.go
 platformclientv2/supportcenterglobalstyle.go
 platformclientv2/supportcenterherostyle.go
 platformclientv2/supportcentermodulesetting.go

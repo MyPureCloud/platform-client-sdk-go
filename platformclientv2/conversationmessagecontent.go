@@ -36,7 +36,7 @@ type Conversationmessagecontent struct {
 	ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
 
 
-	// Generic - Generic Template Object
+	// Generic - Generic Template Object (Deprecated).
 	Generic *Conversationcontentgeneric `json:"generic,omitempty"`
 
 

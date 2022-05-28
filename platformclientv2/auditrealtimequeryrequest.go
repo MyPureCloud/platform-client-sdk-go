@@ -8,7 +8,7 @@ import (
 
 // Auditrealtimequeryrequest
 type Auditrealtimequeryrequest struct { 
-	// Interval - Date and time range of data to query. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
+	// Interval - Date and time range of data to query. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ssZ/YYYY-MM-DDThh:mm:ssZ
 	Interval *string `json:"interval,omitempty"`
 
 

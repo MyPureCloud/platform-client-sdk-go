@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Webmessaginggeneric - Generic content object.
+// Webmessaginggeneric - Generic content object. (Deprecated
 type Webmessaginggeneric struct { 
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`

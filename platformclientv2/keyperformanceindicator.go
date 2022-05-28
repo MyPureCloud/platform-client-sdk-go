@@ -15,6 +15,10 @@ type Keyperformanceindicator struct {
 	// Name - The name of the Key Performance Indicator.
 	Name *string `json:"name,omitempty"`
 
+
+	// OptimizationType - The optimization type of the Key Performance Indicator.
+	OptimizationType *string `json:"optimizationType,omitempty"`
+
 }
 
 func (o *Keyperformanceindicator) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
+		
+		OptimizationType *string `json:"optimizationType,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		OptimizationType: o.OptimizationType,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -48,6 +56,10 @@ func (o *Keyperformanceindicator) UnmarshalJSON(b []byte) error {
     
 	if Name, ok := KeyperformanceindicatorMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if OptimizationType, ok := KeyperformanceindicatorMap["optimizationType"].(string); ok {
+		o.OptimizationType = &OptimizationType
 	}
     
 

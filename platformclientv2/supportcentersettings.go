@@ -35,6 +35,10 @@ type Supportcentersettings struct {
 	// StyleSetting - Style attributes for support center
 	StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
 
+
+	// Feedback - Customer feedback settings
+	Feedback *Supportcenterfeedbacksettings `json:"feedback,omitempty"`
+
 }
 
 func (o *Supportcentersettings) MarshalJSON() ([]byte, error) {
@@ -56,6 +60,8 @@ func (o *Supportcentersettings) MarshalJSON() ([]byte, error) {
 		EnabledCategories *[]Addressableentityref `json:"enabledCategories,omitempty"`
 		
 		StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
+		
+		Feedback *Supportcenterfeedbacksettings `json:"feedback,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -71,6 +77,8 @@ func (o *Supportcentersettings) MarshalJSON() ([]byte, error) {
 		EnabledCategories: o.EnabledCategories,
 		
 		StyleSetting: o.StyleSetting,
+		
+		Feedback: o.Feedback,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -113,6 +121,11 @@ func (o *Supportcentersettings) UnmarshalJSON(b []byte) error {
 	if StyleSetting, ok := SupportcentersettingsMap["styleSetting"].(map[string]interface{}); ok {
 		StyleSettingString, _ := json.Marshal(StyleSetting)
 		json.Unmarshal(StyleSettingString, &o.StyleSetting)
+	}
+	
+	if Feedback, ok := SupportcentersettingsMap["feedback"].(map[string]interface{}); ok {
+		FeedbackString, _ := json.Marshal(Feedback)
+		json.Unmarshal(FeedbackString, &o.Feedback)
 	}
 	
 

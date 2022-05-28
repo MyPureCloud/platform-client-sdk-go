@@ -8,11 +8,11 @@ import (
 
 // Conversationreference
 type Conversationreference struct { 
-	// Id - The globally unique identifier for the object.
+	// Id
 	Id *string `json:"id,omitempty"`
 
 
-	// SelfUri - The URI for this object
+	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
 }

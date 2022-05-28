@@ -9,7 +9,7 @@ import (
 // Mediaparticipantrequest
 type Mediaparticipantrequest struct { 
 	// Wrapup - Wrap-up to assign to this participant.
-	Wrapup *Wrapup `json:"wrapup,omitempty"`
+	Wrapup *Extendedwrapup `json:"wrapup,omitempty"`
 
 
 	// State - The state to update to set for this participant's communications.  Possible values are: 'connected' and 'disconnected'.
@@ -43,7 +43,7 @@ func (o *Mediaparticipantrequest) MarshalJSON() ([]byte, error) {
 	type Alias Mediaparticipantrequest
 	
 	return json.Marshal(&struct { 
-		Wrapup *Wrapup `json:"wrapup,omitempty"`
+		Wrapup *Extendedwrapup `json:"wrapup,omitempty"`
 		
 		State *string `json:"state,omitempty"`
 		

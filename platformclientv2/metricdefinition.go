@@ -40,6 +40,14 @@ type Metricdefinition struct {
 	LockTemplateId *string `json:"lockTemplateId,omitempty"`
 
 
+	// MediaTypeFilteringAllowed - Flag to indicate if this metricDefinition allows filter based on media types
+	MediaTypeFilteringAllowed *bool `json:"mediaTypeFilteringAllowed,omitempty"`
+
+
+	// QueueFilteringAllowed - Flag to indicate if this metricDefinition allows filter based on queues
+	QueueFilteringAllowed *bool `json:"queueFilteringAllowed,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -67,6 +75,10 @@ func (o *Metricdefinition) MarshalJSON() ([]byte, error) {
 		
 		LockTemplateId *string `json:"lockTemplateId,omitempty"`
 		
+		MediaTypeFilteringAllowed *bool `json:"mediaTypeFilteringAllowed,omitempty"`
+		
+		QueueFilteringAllowed *bool `json:"queueFilteringAllowed,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -85,6 +97,10 @@ func (o *Metricdefinition) MarshalJSON() ([]byte, error) {
 		DefaultObjective: o.DefaultObjective,
 		
 		LockTemplateId: o.LockTemplateId,
+		
+		MediaTypeFilteringAllowed: o.MediaTypeFilteringAllowed,
+		
+		QueueFilteringAllowed: o.QueueFilteringAllowed,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -131,6 +147,14 @@ func (o *Metricdefinition) UnmarshalJSON(b []byte) error {
 	
 	if LockTemplateId, ok := MetricdefinitionMap["lockTemplateId"].(string); ok {
 		o.LockTemplateId = &LockTemplateId
+	}
+    
+	if MediaTypeFilteringAllowed, ok := MetricdefinitionMap["mediaTypeFilteringAllowed"].(bool); ok {
+		o.MediaTypeFilteringAllowed = &MediaTypeFilteringAllowed
+	}
+    
+	if QueueFilteringAllowed, ok := MetricdefinitionMap["queueFilteringAllowed"].(bool); ok {
+		o.QueueFilteringAllowed = &QueueFilteringAllowed
 	}
     
 	if SelfUri, ok := MetricdefinitionMap["selfUri"].(string); ok {

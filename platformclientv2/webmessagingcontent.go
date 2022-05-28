@@ -24,7 +24,7 @@ type Webmessagingcontent struct {
 	ButtonResponse *Webmessagingbuttonresponse `json:"buttonResponse,omitempty"`
 
 
-	// Generic - Generic content.
+	// Generic - Generic content (Deprecated).
 	Generic *Webmessaginggeneric `json:"generic,omitempty"`
 
 

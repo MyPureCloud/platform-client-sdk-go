@@ -11,6 +11,10 @@ type Messengerhomescreen struct {
 	// Enabled - whether or not homescreen is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
+
+	// LogoUrl - to capture uploaded company logoUrl
+	LogoUrl *string `json:"logoUrl,omitempty"`
+
 }
 
 func (o *Messengerhomescreen) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Messengerhomescreen) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		LogoUrl *string `json:"logoUrl,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
+		
+		LogoUrl: o.LogoUrl,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -36,6 +44,10 @@ func (o *Messengerhomescreen) UnmarshalJSON(b []byte) error {
 	
 	if Enabled, ok := MessengerhomescreenMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
+	}
+    
+	if LogoUrl, ok := MessengerhomescreenMap["logoUrl"].(string); ok {
+		o.LogoUrl = &LogoUrl
 	}
     
 

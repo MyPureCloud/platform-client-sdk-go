@@ -19,6 +19,10 @@ type Learningmodulecoverartresponse struct {
 	// Url - The URL for the cover art
 	Url *string `json:"url,omitempty"`
 
+
+	// Thumbnails - Thumbnails for the cover art
+	Thumbnails *[]Learningcoverartthumbnail `json:"thumbnails,omitempty"`
+
 }
 
 func (o *Learningmodulecoverartresponse) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Learningmodulecoverartresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		Url *string `json:"url,omitempty"`
+		
+		Thumbnails *[]Learningcoverartthumbnail `json:"thumbnails,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -39,6 +45,8 @@ func (o *Learningmodulecoverartresponse) MarshalJSON() ([]byte, error) {
 		SelfUri: o.SelfUri,
 		
 		Url: o.Url,
+		
+		Thumbnails: o.Thumbnails,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -62,6 +70,11 @@ func (o *Learningmodulecoverartresponse) UnmarshalJSON(b []byte) error {
 		o.Url = &Url
 	}
     
+	if Thumbnails, ok := LearningmodulecoverartresponseMap["thumbnails"].([]interface{}); ok {
+		ThumbnailsString, _ := json.Marshal(Thumbnails)
+		json.Unmarshal(ThumbnailsString, &o.Thumbnails)
+	}
+	
 
 	return nil
 }

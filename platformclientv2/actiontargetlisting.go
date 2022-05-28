@@ -24,10 +24,6 @@ type Actiontargetlisting struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -36,12 +32,16 @@ type Actiontargetlisting struct {
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PageCount
@@ -63,15 +63,15 @@ func (o *Actiontargetlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -84,15 +84,15 @@ func (o *Actiontargetlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
+		NextUri: o.NextUri,
+		
 		PreviousUri: o.PreviousUri,
 		
-		NextUri: o.NextUri,
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -126,10 +126,6 @@ func (o *Actiontargetlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := ActiontargetlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := ActiontargetlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -138,12 +134,16 @@ func (o *Actiontargetlisting) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
+	if NextUri, ok := ActiontargetlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if PreviousUri, ok := ActiontargetlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if NextUri, ok := ActiontargetlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if LastUri, ok := ActiontargetlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := ActiontargetlistingMap["pageCount"].(float64); ok {
