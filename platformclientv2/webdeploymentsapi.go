@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // WebDeploymentsApi provides functions for API endpoints
 type WebDeploymentsApi struct {

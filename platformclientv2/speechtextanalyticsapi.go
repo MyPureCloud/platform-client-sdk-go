@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // SpeechTextAnalyticsApi provides functions for API endpoints
 type SpeechTextAnalyticsApi struct {

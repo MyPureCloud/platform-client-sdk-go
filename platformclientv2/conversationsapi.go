@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // ConversationsApi provides functions for API endpoints
 type ConversationsApi struct {

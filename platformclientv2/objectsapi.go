@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // ObjectsApi provides functions for API endpoints
 type ObjectsApi struct {

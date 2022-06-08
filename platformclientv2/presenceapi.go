@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // PresenceApi provides functions for API endpoints
 type PresenceApi struct {

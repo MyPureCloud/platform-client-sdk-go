@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // TextbotsApi provides functions for API endpoints
 type TextbotsApi struct {

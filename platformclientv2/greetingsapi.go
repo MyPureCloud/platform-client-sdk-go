@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // GreetingsApi provides functions for API endpoints
 type GreetingsApi struct {

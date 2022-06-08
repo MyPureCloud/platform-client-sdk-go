@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // IdentityProviderApi provides functions for API endpoints
 type IdentityProviderApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // OutboundApi provides functions for API endpoints
 type OutboundApi struct {

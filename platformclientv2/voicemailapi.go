@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // VoicemailApi provides functions for API endpoints
 type VoicemailApi struct {

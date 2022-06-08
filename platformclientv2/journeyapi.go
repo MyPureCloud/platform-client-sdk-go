@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // JourneyApi provides functions for API endpoints
 type JourneyApi struct {

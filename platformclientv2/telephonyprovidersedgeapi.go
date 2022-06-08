@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // TelephonyProvidersEdgeApi provides functions for API endpoints
 type TelephonyProvidersEdgeApi struct {

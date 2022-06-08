@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // FaxApi provides functions for API endpoints
 type FaxApi struct {

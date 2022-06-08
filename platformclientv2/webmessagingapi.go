@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // WebMessagingApi provides functions for API endpoints
 type WebMessagingApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // ResponseManagementApi provides functions for API endpoints
 type ResponseManagementApi struct {

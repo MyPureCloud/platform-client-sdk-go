@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // WidgetsApi provides functions for API endpoints
 type WidgetsApi struct {

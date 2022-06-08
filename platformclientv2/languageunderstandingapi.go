@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"errors"
 	"net/url"
+	"encoding/json"
 	"time"
-"encoding/json"
 )
 
 // LanguageUnderstandingApi provides functions for API endpoints

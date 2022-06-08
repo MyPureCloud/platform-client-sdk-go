@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // LicenseApi provides functions for API endpoints
 type LicenseApi struct {

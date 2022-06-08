@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // RoutingApi provides functions for API endpoints
 type RoutingApi struct {

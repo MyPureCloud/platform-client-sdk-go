@@ -48,6 +48,10 @@ type Journeywebeventsnotificationoutcomeachievedmessage struct {
 	// VisitReferrer
 	VisitReferrer *Journeywebeventsnotificationreferrer `json:"visitReferrer,omitempty"`
 
+
+	// AssociatedValue
+	AssociatedValue *Journeywebeventsnotificationassociatedvalue `json:"associatedValue,omitempty"`
+
 }
 
 func (o *Journeywebeventsnotificationoutcomeachievedmessage) MarshalJSON() ([]byte, error) {
@@ -83,6 +87,8 @@ func (o *Journeywebeventsnotificationoutcomeachievedmessage) MarshalJSON() ([]by
 		MktCampaign *Journeywebeventsnotificationmktcampaign `json:"mktCampaign,omitempty"`
 		
 		VisitReferrer *Journeywebeventsnotificationreferrer `json:"visitReferrer,omitempty"`
+		
+		AssociatedValue *Journeywebeventsnotificationassociatedvalue `json:"associatedValue,omitempty"`
 		*Alias
 	}{ 
 		Outcome: o.Outcome,
@@ -104,6 +110,8 @@ func (o *Journeywebeventsnotificationoutcomeachievedmessage) MarshalJSON() ([]by
 		MktCampaign: o.MktCampaign,
 		
 		VisitReferrer: o.VisitReferrer,
+		
+		AssociatedValue: o.AssociatedValue,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -160,6 +168,11 @@ func (o *Journeywebeventsnotificationoutcomeachievedmessage) UnmarshalJSON(b []b
 	if VisitReferrer, ok := JourneywebeventsnotificationoutcomeachievedmessageMap["visitReferrer"].(map[string]interface{}); ok {
 		VisitReferrerString, _ := json.Marshal(VisitReferrer)
 		json.Unmarshal(VisitReferrerString, &o.VisitReferrer)
+	}
+	
+	if AssociatedValue, ok := JourneywebeventsnotificationoutcomeachievedmessageMap["associatedValue"].(map[string]interface{}); ok {
+		AssociatedValueString, _ := json.Marshal(AssociatedValue)
+		json.Unmarshal(AssociatedValueString, &o.AssociatedValue)
 	}
 	
 

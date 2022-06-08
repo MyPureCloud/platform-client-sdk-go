@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"errors"
 	"net/url"
+	"encoding/json"
 	"time"
-"encoding/json"
 )
 
 // TelephonyApi provides functions for API endpoints

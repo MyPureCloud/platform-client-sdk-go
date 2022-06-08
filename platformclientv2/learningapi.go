@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // LearningApi provides functions for API endpoints
 type LearningApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // LanguagesApi provides functions for API endpoints
 type LanguagesApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // NotificationsApi provides functions for API endpoints
 type NotificationsApi struct {

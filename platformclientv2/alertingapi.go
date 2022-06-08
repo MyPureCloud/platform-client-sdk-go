@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // AlertingApi provides functions for API endpoints
 type AlertingApi struct {

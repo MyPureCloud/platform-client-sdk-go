@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // UtilitiesApi provides functions for API endpoints
 type UtilitiesApi struct {

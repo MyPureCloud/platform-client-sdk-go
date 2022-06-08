@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // FlowsApi provides functions for API endpoints
 type FlowsApi struct {

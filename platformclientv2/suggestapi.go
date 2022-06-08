@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // SuggestApi provides functions for API endpoints
 type SuggestApi struct {

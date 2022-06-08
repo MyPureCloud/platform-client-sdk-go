@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // UsersApi provides functions for API endpoints
 type UsersApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // OrganizationAuthorizationApi provides functions for API endpoints
 type OrganizationAuthorizationApi struct {

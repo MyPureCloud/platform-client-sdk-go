@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // WebChatApi provides functions for API endpoints
 type WebChatApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // GeneralDataProtectionRegulationApi provides functions for API endpoints
 type GeneralDataProtectionRegulationApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // StationsApi provides functions for API endpoints
 type StationsApi struct {

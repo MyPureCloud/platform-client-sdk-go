@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // DataExtensionsApi provides functions for API endpoints
 type DataExtensionsApi struct {

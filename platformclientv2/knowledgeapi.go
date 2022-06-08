@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // KnowledgeApi provides functions for API endpoints
 type KnowledgeApi struct {

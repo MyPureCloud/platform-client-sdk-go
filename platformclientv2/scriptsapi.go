@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // ScriptsApi provides functions for API endpoints
 type ScriptsApi struct {

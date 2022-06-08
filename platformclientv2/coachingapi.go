@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // CoachingApi provides functions for API endpoints
 type CoachingApi struct {

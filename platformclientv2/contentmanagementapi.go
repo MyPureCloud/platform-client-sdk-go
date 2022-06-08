@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // ContentManagementApi provides functions for API endpoints
 type ContentManagementApi struct {

@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // LocationsApi provides functions for API endpoints
 type LocationsApi struct {

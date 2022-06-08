@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"errors"
 	"net/url"
+	"encoding/json"
 	"time"
-"encoding/json"
 )
 
 // WorkforceManagementApi provides functions for API endpoints

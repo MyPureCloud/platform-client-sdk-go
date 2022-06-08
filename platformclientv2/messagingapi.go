@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // MessagingApi provides functions for API endpoints
 type MessagingApi struct {

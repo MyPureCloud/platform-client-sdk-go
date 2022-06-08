@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // GeolocationApi provides functions for API endpoints
 type GeolocationApi struct {

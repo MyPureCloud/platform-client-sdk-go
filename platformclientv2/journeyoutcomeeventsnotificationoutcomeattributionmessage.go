@@ -19,6 +19,10 @@ type Journeyoutcomeeventsnotificationoutcomeattributionmessage struct {
 	// SegmentAssignments
 	SegmentAssignments *[]Journeyoutcomeeventsnotificationsegment `json:"segmentAssignments,omitempty"`
 
+
+	// AssociatedValue
+	AssociatedValue *Journeyoutcomeeventsnotificationassociatedvalue `json:"associatedValue,omitempty"`
+
 }
 
 func (o *Journeyoutcomeeventsnotificationoutcomeattributionmessage) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Journeyoutcomeeventsnotificationoutcomeattributionmessage) MarshalJSON(
 		OutcomeTouchpoints *[]Journeyoutcomeeventsnotificationoutcometouchpoint `json:"outcomeTouchpoints,omitempty"`
 		
 		SegmentAssignments *[]Journeyoutcomeeventsnotificationsegment `json:"segmentAssignments,omitempty"`
+		
+		AssociatedValue *Journeyoutcomeeventsnotificationassociatedvalue `json:"associatedValue,omitempty"`
 		*Alias
 	}{ 
 		Outcome: o.Outcome,
@@ -39,6 +45,8 @@ func (o *Journeyoutcomeeventsnotificationoutcomeattributionmessage) MarshalJSON(
 		OutcomeTouchpoints: o.OutcomeTouchpoints,
 		
 		SegmentAssignments: o.SegmentAssignments,
+		
+		AssociatedValue: o.AssociatedValue,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -63,6 +71,11 @@ func (o *Journeyoutcomeeventsnotificationoutcomeattributionmessage) UnmarshalJSO
 	if SegmentAssignments, ok := JourneyoutcomeeventsnotificationoutcomeattributionmessageMap["segmentAssignments"].([]interface{}); ok {
 		SegmentAssignmentsString, _ := json.Marshal(SegmentAssignments)
 		json.Unmarshal(SegmentAssignmentsString, &o.SegmentAssignments)
+	}
+	
+	if AssociatedValue, ok := JourneyoutcomeeventsnotificationoutcomeattributionmessageMap["associatedValue"].(map[string]interface{}); ok {
+		AssociatedValueString, _ := json.Marshal(AssociatedValue)
+		json.Unmarshal(AssociatedValueString, &o.AssociatedValue)
 	}
 	
 

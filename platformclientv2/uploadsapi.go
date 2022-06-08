@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // UploadsApi provides functions for API endpoints
 type UploadsApi struct {

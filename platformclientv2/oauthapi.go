@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // OAuthApi provides functions for API endpoints
 type OAuthApi struct {

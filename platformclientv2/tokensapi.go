@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // TokensApi provides functions for API endpoints
 type TokensApi struct {

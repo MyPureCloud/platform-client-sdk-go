@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // MobileDevicesApi provides functions for API endpoints
 type MobileDevicesApi struct {

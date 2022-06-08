@@ -6,7 +6,7 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-)
+	)
 
 // AuthorizationApi provides functions for API endpoints
 type AuthorizationApi struct {
