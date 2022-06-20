@@ -21,7 +21,7 @@ type Domainnetworkcommandresponse struct {
 
 
 	// ErrorInfo
-	ErrorInfo **Errordetails `json:"errorInfo,omitempty"`
+	ErrorInfo *Errordetails `json:"errorInfo,omitempty"`
 
 }
 
@@ -37,7 +37,7 @@ func (o *Domainnetworkcommandresponse) MarshalJSON() ([]byte, error) {
 		
 		Acknowledged *bool `json:"acknowledged,omitempty"`
 		
-		ErrorInfo **Errordetails `json:"errorInfo,omitempty"`
+		ErrorInfo *Errordetails `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
 		CorrelationId: o.CorrelationId,

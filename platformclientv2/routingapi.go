@@ -756,7 +756,7 @@ func (a RoutingApi) DeleteRoutingSmsAddress(addressId string) (*APIResponse, err
 // DeleteRoutingSmsPhonenumber invokes DELETE /api/v2/routing/sms/phonenumbers/{addressId}
 //
 // Delete a phone number provisioned for SMS.
-func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string, async bool) (*APIResponse, error) {
+func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
@@ -787,8 +787,6 @@ func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string, async bool) (*
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, "")
 	
 
 	// to determine the Content-Type header
@@ -6514,7 +6512,7 @@ func (a RoutingApi) PostRoutingSmsAddresses(body Smsaddressprovision) (*Smsaddre
 // PostRoutingSmsPhonenumbers invokes POST /api/v2/routing/sms/phonenumbers
 //
 // Provision a phone number for SMS
-func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision, async bool) (*Smsphonenumber, *APIResponse, error) {
+func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers"
@@ -6545,8 +6543,6 @@ func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision, asy
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, "")
 	
 
 	// to determine the Content-Type header
@@ -7209,7 +7205,7 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 // PutRoutingSmsPhonenumber invokes PUT /api/v2/routing/sms/phonenumbers/{addressId}
 //
 // Update a phone number provisioned for SMS.
-func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumber, async bool) (*Smsphonenumber, *APIResponse, error) {
+func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumber) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
@@ -7246,8 +7242,6 @@ func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumb
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, "")
 	
 
 	// to determine the Content-Type header

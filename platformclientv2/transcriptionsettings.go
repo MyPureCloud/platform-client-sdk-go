@@ -16,6 +16,10 @@ type Transcriptionsettings struct {
 	TranscriptionConfidenceThreshold *int `json:"transcriptionConfidenceThreshold,omitempty"`
 
 
+	// LowLatencyTranscriptionEnabled - Boolean flag indicating whether low latency transcription via Notification API is enabled
+	LowLatencyTranscriptionEnabled *bool `json:"lowLatencyTranscriptionEnabled,omitempty"`
+
+
 	// ContentSearchEnabled - Setting to enable/disable content search
 	ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
 
@@ -31,12 +35,16 @@ func (o *Transcriptionsettings) MarshalJSON() ([]byte, error) {
 		
 		TranscriptionConfidenceThreshold *int `json:"transcriptionConfidenceThreshold,omitempty"`
 		
+		LowLatencyTranscriptionEnabled *bool `json:"lowLatencyTranscriptionEnabled,omitempty"`
+		
 		ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
 		*Alias
 	}{ 
 		Transcription: o.Transcription,
 		
 		TranscriptionConfidenceThreshold: o.TranscriptionConfidenceThreshold,
+		
+		LowLatencyTranscriptionEnabled: o.LowLatencyTranscriptionEnabled,
 		
 		ContentSearchEnabled: o.ContentSearchEnabled,
 		Alias:    (*Alias)(o),
@@ -59,6 +67,10 @@ func (o *Transcriptionsettings) UnmarshalJSON(b []byte) error {
 		o.TranscriptionConfidenceThreshold = &TranscriptionConfidenceThresholdInt
 	}
 	
+	if LowLatencyTranscriptionEnabled, ok := TranscriptionsettingsMap["lowLatencyTranscriptionEnabled"].(bool); ok {
+		o.LowLatencyTranscriptionEnabled = &LowLatencyTranscriptionEnabled
+	}
+    
 	if ContentSearchEnabled, ok := TranscriptionsettingsMap["contentSearchEnabled"].(bool); ok {
 		o.ContentSearchEnabled = &ContentSearchEnabled
 	}

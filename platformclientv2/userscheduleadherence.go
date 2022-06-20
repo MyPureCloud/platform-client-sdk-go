@@ -22,15 +22,15 @@ type Userscheduleadherence struct {
 
 
 	// BusinessUnit - The business unit to which this user belongs
-	BusinessUnit *Businessunit `json:"businessUnit,omitempty"`
+	BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
 
 
 	// ManagementUnit - The management unit to which this user belongs
-	ManagementUnit *Managementunit `json:"managementUnit,omitempty"`
+	ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 
 
 	// Team - The team to which this user belongs
-	Team *Team `json:"team,omitempty"`
+	Team *Teamreference `json:"team,omitempty"`
 
 
 	// ScheduledActivityCategory - Activity for which the user is scheduled
@@ -126,11 +126,11 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		
 		User *Userreference `json:"user,omitempty"`
 		
-		BusinessUnit *Businessunit `json:"businessUnit,omitempty"`
+		BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
 		
-		ManagementUnit *Managementunit `json:"managementUnit,omitempty"`
+		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 		
-		Team *Team `json:"team,omitempty"`
+		Team *Teamreference `json:"team,omitempty"`
 		
 		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 		

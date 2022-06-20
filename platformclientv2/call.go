@@ -124,6 +124,10 @@ type Call struct {
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
+
+	// InitialState - The initial connection state of this communication.
+	InitialState *string `json:"initialState,omitempty"`
+
 }
 
 func (o *Call) MarshalJSON() ([]byte, error) {
@@ -221,6 +225,8 @@ func (o *Call) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+		
+		InitialState *string `json:"initialState,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -280,6 +286,8 @@ func (o *Call) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
+		
+		InitialState: o.InitialState,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -417,6 +425,10 @@ func (o *Call) UnmarshalJSON(b []byte) error {
     
 	if AgentAssistantId, ok := CallMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
+	}
+    
+	if InitialState, ok := CallMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 

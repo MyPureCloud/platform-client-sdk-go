@@ -116,6 +116,10 @@ type Callback struct {
 	// CallerIdName - The name displayed to recipients of the phone call.
 	CallerIdName *string `json:"callerIdName,omitempty"`
 
+
+	// InitialState - The initial connection state of this communication.
+	InitialState *string `json:"initialState,omitempty"`
+
 }
 
 func (o *Callback) MarshalJSON() ([]byte, error) {
@@ -217,6 +221,8 @@ func (o *Callback) MarshalJSON() ([]byte, error) {
 		CallerId *string `json:"callerId,omitempty"`
 		
 		CallerIdName *string `json:"callerIdName,omitempty"`
+		
+		InitialState *string `json:"initialState,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -272,6 +278,8 @@ func (o *Callback) MarshalJSON() ([]byte, error) {
 		CallerId: o.CallerId,
 		
 		CallerIdName: o.CallerIdName,
+		
+		InitialState: o.InitialState,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -401,6 +409,10 @@ func (o *Callback) UnmarshalJSON(b []byte) error {
     
 	if CallerIdName, ok := CallbackMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
+	}
+    
+	if InitialState, ok := CallbackMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 

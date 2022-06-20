@@ -1692,10 +1692,19 @@ docs/PutConversationRecording-example.txt
 docs/PutConversationRecordingAnnotation-example.txt
 docs/PutConversationTags-example.txt
 docs/PutConversationsCallParticipantCommunicationUuidata-example.txt
+docs/PutConversationsCallRecordingstate-example.txt
+docs/PutConversationsCallbackRecordingstate-example.txt
+docs/PutConversationsChatRecordingstate-example.txt
+docs/PutConversationsCobrowsesessionRecordingstate-example.txt
 docs/PutConversationsEmailMessagesDraft-example.txt
+docs/PutConversationsEmailRecordingstate-example.txt
+docs/PutConversationsMessageRecordingstate-example.txt
 docs/PutConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/PutConversationsMessagingSupportedcontentDefault-example.txt
 docs/PutConversationsMessagingThreadingtimeline-example.txt
+docs/PutConversationsScreenshareRecordingstate-example.txt
+docs/PutConversationsSocialRecordingstate-example.txt
+docs/PutConversationsVideoRecordingstate-example.txt
 docs/PutExternalcontactsContact-example.txt
 docs/PutExternalcontactsContactNote-example.txt
 docs/PutExternalcontactsContactsSchema-example.txt
@@ -2352,6 +2361,7 @@ platformclientv2/cobrowseconversationentitylisting.go
 platformclientv2/cobrowsemediaparticipant.go
 platformclientv2/cobrowsesession.go
 platformclientv2/cobrowsesettings.go
+platformclientv2/columndatatypespecification.go
 platformclientv2/columnstatus.go
 platformclientv2/commandstatus.go
 platformclientv2/commandstatusentitylisting.go
@@ -2593,6 +2603,9 @@ platformclientv2/conversationmessageeventtopicmessagesticker.go
 platformclientv2/conversationmessageeventtopicscoredagent.go
 platformclientv2/conversationmessageeventtopicurireference.go
 platformclientv2/conversationmessageeventtopicwrapup.go
+platformclientv2/conversationmessagemetadata.go
+platformclientv2/conversationmessagemetadatacontent.go
+platformclientv2/conversationmessagemetadataevent.go
 platformclientv2/conversationmessagingchannel.go
 platformclientv2/conversationmessagingchannelmetadata.go
 platformclientv2/conversationmessagingfromrecipient.go
@@ -4286,6 +4299,7 @@ platformclientv2/servicelevel.go
 platformclientv2/session.go
 platformclientv2/sessionlastevent.go
 platformclientv2/sessionsegmentassignment.go
+platformclientv2/setrecordingstate.go
 platformclientv2/settimeofflimitvaluesrequest.go
 platformclientv2/settingdirection.go
 platformclientv2/setuuidatarequest.go
@@ -4421,6 +4435,7 @@ platformclientv2/tagvalue.go
 platformclientv2/tagvalueentitylisting.go
 platformclientv2/targetperformanceprofile.go
 platformclientv2/team.go
+platformclientv2/teamreference.go
 platformclientv2/telephonyapi.go
 platformclientv2/telephonyprovidersedgeapi.go
 platformclientv2/templateparameter.go

@@ -703,23 +703,23 @@ func (a GamificationApi) GetGamificationProfile(profileId string) (*Performancep
 	return successPayload, response, err
 }
 
-// GetGamificationProfileMembers invokes GET /api/v2/gamification/profiles/{performanceProfileId}/members
+// GetGamificationProfileMembers invokes GET /api/v2/gamification/profiles/{profileId}/members
 //
 // Members of a given performance profile
-func (a GamificationApi) GetGamificationProfileMembers(performanceProfileId string) (*Memberlisting, *APIResponse, error) {
+func (a GamificationApi) GetGamificationProfileMembers(profileId string) (*Memberlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{performanceProfileId}/members"
-	path = strings.Replace(path, "{performanceProfileId}", fmt.Sprintf("%v", performanceProfileId), -1)
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/members"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
 	defaultReturn := new(Memberlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'performanceProfileId' is set
-	if &performanceProfileId == nil {
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'performanceProfileId' when calling GamificationApi->GetGamificationProfileMembers")
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfileMembers")
 	}
 
 	headerParams := make(map[string]string)
@@ -856,7 +856,7 @@ func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId
 // GetGamificationProfileMetrics invokes GET /api/v2/gamification/profiles/{profileId}/metrics
 //
 // All gamified metrics for a given performance profile
-func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand []string, workday time.Time) (*Getmetricresponse, *APIResponse, error) {
+func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand []string, workday time.Time, metricIds string) (*Getmetricresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics"
@@ -892,6 +892,8 @@ func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand 
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
+	
+	queryParams["metricIds"] = a.Configuration.APIClient.ParameterToString(metricIds, "")
 	
 
 	// to determine the Content-Type header
@@ -2981,23 +2983,23 @@ func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*P
 	return successPayload, response, err
 }
 
-// PostGamificationProfileMembers invokes POST /api/v2/gamification/profiles/{performanceProfileId}/members
+// PostGamificationProfileMembers invokes POST /api/v2/gamification/profiles/{profileId}/members
 //
 // Assign members to a given performance profile
-func (a GamificationApi) PostGamificationProfileMembers(performanceProfileId string, body Assignusers) (*Assignment, *APIResponse, error) {
+func (a GamificationApi) PostGamificationProfileMembers(profileId string, body Assignusers) (*Assignment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{performanceProfileId}/members"
-	path = strings.Replace(path, "{performanceProfileId}", fmt.Sprintf("%v", performanceProfileId), -1)
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/members"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
 	defaultReturn := new(Assignment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'performanceProfileId' is set
-	if &performanceProfileId == nil {
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'performanceProfileId' when calling GamificationApi->PostGamificationProfileMembers")
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PostGamificationProfileMembers")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
@@ -3060,23 +3062,23 @@ func (a GamificationApi) PostGamificationProfileMembers(performanceProfileId str
 	return successPayload, response, err
 }
 
-// PostGamificationProfileMembersValidate invokes POST /api/v2/gamification/profiles/{performanceProfileId}/members/validate
+// PostGamificationProfileMembersValidate invokes POST /api/v2/gamification/profiles/{profileId}/members/validate
 //
 // Validate member assignment
-func (a GamificationApi) PostGamificationProfileMembersValidate(performanceProfileId string, body Validateassignusers) (*Assignmentvalidation, *APIResponse, error) {
+func (a GamificationApi) PostGamificationProfileMembersValidate(profileId string, body Validateassignusers) (*Assignmentvalidation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{performanceProfileId}/members/validate"
-	path = strings.Replace(path, "{performanceProfileId}", fmt.Sprintf("%v", performanceProfileId), -1)
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/members/validate"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
 	defaultReturn := new(Assignmentvalidation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'performanceProfileId' is set
-	if &performanceProfileId == nil {
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'performanceProfileId' when calling GamificationApi->PostGamificationProfileMembersValidate")
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PostGamificationProfileMembersValidate")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {

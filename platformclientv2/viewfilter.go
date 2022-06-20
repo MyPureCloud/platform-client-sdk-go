@@ -579,6 +579,34 @@ type Viewfilter struct {
 	// IsAcdInteraction - Filter to indicate if interaction was ACD or non-ACD
 	IsAcdInteraction *bool `json:"isAcdInteraction,omitempty"`
 
+
+	// HasFax - Filters to indicate if interaction has FAX
+	HasFax *bool `json:"hasFax,omitempty"`
+
+
+	// DataActionIds - The list of Data Action IDs 
+	DataActionIds *[]string `json:"dataActionIds,omitempty"`
+
+
+	// ActionCategoryName - Action Category Name
+	ActionCategoryName *string `json:"actionCategoryName,omitempty"`
+
+
+	// ResponseStatuses - The list of Response codes for Data Action
+	ResponseStatuses *[]string `json:"responseStatuses,omitempty"`
+
+
+	// AvailableDashboard - Filter to indicate the availability of the dashboard is public or private.
+	AvailableDashboard *string `json:"availableDashboard,omitempty"`
+
+
+	// FavouriteDashboard - Filter to indicate whether the dashboard is favorite or unfavorite.
+	FavouriteDashboard *bool `json:"favouriteDashboard,omitempty"`
+
+
+	// MyDashboard - Filter to indicate the dashboard owned by the user.
+	MyDashboard *bool `json:"myDashboard,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -872,6 +900,20 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		HasCustomerParticipated *bool `json:"hasCustomerParticipated,omitempty"`
 		
 		IsAcdInteraction *bool `json:"isAcdInteraction,omitempty"`
+		
+		HasFax *bool `json:"hasFax,omitempty"`
+		
+		DataActionIds *[]string `json:"dataActionIds,omitempty"`
+		
+		ActionCategoryName *string `json:"actionCategoryName,omitempty"`
+		
+		ResponseStatuses *[]string `json:"responseStatuses,omitempty"`
+		
+		AvailableDashboard *string `json:"availableDashboard,omitempty"`
+		
+		FavouriteDashboard *bool `json:"favouriteDashboard,omitempty"`
+		
+		MyDashboard *bool `json:"myDashboard,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1159,6 +1201,20 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		HasCustomerParticipated: o.HasCustomerParticipated,
 		
 		IsAcdInteraction: o.IsAcdInteraction,
+		
+		HasFax: o.HasFax,
+		
+		DataActionIds: o.DataActionIds,
+		
+		ActionCategoryName: o.ActionCategoryName,
+		
+		ResponseStatuses: o.ResponseStatuses,
+		
+		AvailableDashboard: o.AvailableDashboard,
+		
+		FavouriteDashboard: o.FavouriteDashboard,
+		
+		MyDashboard: o.MyDashboard,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1856,6 +1912,36 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
     
 	if IsAcdInteraction, ok := ViewfilterMap["isAcdInteraction"].(bool); ok {
 		o.IsAcdInteraction = &IsAcdInteraction
+	}
+    
+	if HasFax, ok := ViewfilterMap["hasFax"].(bool); ok {
+		o.HasFax = &HasFax
+	}
+    
+	if DataActionIds, ok := ViewfilterMap["dataActionIds"].([]interface{}); ok {
+		DataActionIdsString, _ := json.Marshal(DataActionIds)
+		json.Unmarshal(DataActionIdsString, &o.DataActionIds)
+	}
+	
+	if ActionCategoryName, ok := ViewfilterMap["actionCategoryName"].(string); ok {
+		o.ActionCategoryName = &ActionCategoryName
+	}
+    
+	if ResponseStatuses, ok := ViewfilterMap["responseStatuses"].([]interface{}); ok {
+		ResponseStatusesString, _ := json.Marshal(ResponseStatuses)
+		json.Unmarshal(ResponseStatusesString, &o.ResponseStatuses)
+	}
+	
+	if AvailableDashboard, ok := ViewfilterMap["availableDashboard"].(string); ok {
+		o.AvailableDashboard = &AvailableDashboard
+	}
+    
+	if FavouriteDashboard, ok := ViewfilterMap["favouriteDashboard"].(bool); ok {
+		o.FavouriteDashboard = &FavouriteDashboard
+	}
+    
+	if MyDashboard, ok := ViewfilterMap["myDashboard"].(bool); ok {
+		o.MyDashboard = &MyDashboard
 	}
     
 

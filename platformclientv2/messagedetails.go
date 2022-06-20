@@ -37,6 +37,10 @@ type Messagedetails struct {
 	Stickers *[]Messagesticker `json:"stickers,omitempty"`
 
 
+	// MessageMetadata - Information that describes the content of the message, if any
+	MessageMetadata *Conversationmessagemetadata `json:"messageMetadata,omitempty"`
+
+
 	// ErrorInfo - Provider specific error information for a communication.
 	ErrorInfo *Errorbody `json:"errorInfo,omitempty"`
 
@@ -70,6 +74,8 @@ func (o *Messagedetails) MarshalJSON() ([]byte, error) {
 		
 		Stickers *[]Messagesticker `json:"stickers,omitempty"`
 		
+		MessageMetadata *Conversationmessagemetadata `json:"messageMetadata,omitempty"`
+		
 		ErrorInfo *Errorbody `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
@@ -86,6 +92,8 @@ func (o *Messagedetails) MarshalJSON() ([]byte, error) {
 		Media: o.Media,
 		
 		Stickers: o.Stickers,
+		
+		MessageMetadata: o.MessageMetadata,
 		
 		ErrorInfo: o.ErrorInfo,
 		Alias:    (*Alias)(o),
@@ -129,6 +137,11 @@ func (o *Messagedetails) UnmarshalJSON(b []byte) error {
 	if Stickers, ok := MessagedetailsMap["stickers"].([]interface{}); ok {
 		StickersString, _ := json.Marshal(Stickers)
 		json.Unmarshal(StickersString, &o.Stickers)
+	}
+	
+	if MessageMetadata, ok := MessagedetailsMap["messageMetadata"].(map[string]interface{}); ok {
+		MessageMetadataString, _ := json.Marshal(MessageMetadata)
+		json.Unmarshal(MessageMetadataString, &o.MessageMetadata)
 	}
 	
 	if ErrorInfo, ok := MessagedetailsMap["errorInfo"].(map[string]interface{}); ok {

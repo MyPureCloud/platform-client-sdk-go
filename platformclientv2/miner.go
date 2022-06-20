@@ -66,7 +66,7 @@ type Miner struct {
 
 
 	// LatestDraftVersion - Latest draft details of the miner.
-	LatestDraftVersion **Draft `json:"latestDraftVersion,omitempty"`
+	LatestDraftVersion *Draft `json:"latestDraftVersion,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -154,7 +154,7 @@ func (o *Miner) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		LatestDraftVersion **Draft `json:"latestDraftVersion,omitempty"`
+		LatestDraftVersion *Draft `json:"latestDraftVersion,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias

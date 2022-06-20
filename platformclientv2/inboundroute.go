@@ -49,7 +49,7 @@ type Inboundroute struct {
 
 
 	// ReplyEmailAddress - The route to use for email replies.
-	ReplyEmailAddress **Queueemailaddress `json:"replyEmailAddress,omitempty"`
+	ReplyEmailAddress *Queueemailaddress `json:"replyEmailAddress,omitempty"`
 
 
 	// AutoBcc - The recipients that should be  automatically blind copied on outbound emails associated with this InboundRoute.
@@ -91,7 +91,7 @@ func (o *Inboundroute) MarshalJSON() ([]byte, error) {
 		
 		Flow *Domainentityref `json:"flow,omitempty"`
 		
-		ReplyEmailAddress **Queueemailaddress `json:"replyEmailAddress,omitempty"`
+		ReplyEmailAddress *Queueemailaddress `json:"replyEmailAddress,omitempty"`
 		
 		AutoBcc *[]Emailaddress `json:"autoBcc,omitempty"`
 		

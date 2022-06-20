@@ -32,6 +32,10 @@ type Ucintegration struct {
 	Icon *Ucicon `json:"icon,omitempty"`
 
 
+	// BadgeIcons - badgeIcon
+	BadgeIcons *map[string]Ucicon `json:"badgeIcons,omitempty"`
+
+
 	// I10n - i10n
 	I10n *map[string]Uci10n `json:"i10n,omitempty"`
 
@@ -59,6 +63,8 @@ func (o *Ucintegration) MarshalJSON() ([]byte, error) {
 		
 		Icon *Ucicon `json:"icon,omitempty"`
 		
+		BadgeIcons *map[string]Ucicon `json:"badgeIcons,omitempty"`
+		
 		I10n *map[string]Uci10n `json:"i10n,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -75,6 +81,8 @@ func (o *Ucintegration) MarshalJSON() ([]byte, error) {
 		PbxPermission: o.PbxPermission,
 		
 		Icon: o.Icon,
+		
+		BadgeIcons: o.BadgeIcons,
 		
 		I10n: o.I10n,
 		
@@ -113,6 +121,11 @@ func (o *Ucintegration) UnmarshalJSON(b []byte) error {
 	if Icon, ok := UcintegrationMap["icon"].(map[string]interface{}); ok {
 		IconString, _ := json.Marshal(Icon)
 		json.Unmarshal(IconString, &o.Icon)
+	}
+	
+	if BadgeIcons, ok := UcintegrationMap["badgeIcons"].(map[string]interface{}); ok {
+		BadgeIconsString, _ := json.Marshal(BadgeIcons)
+		json.Unmarshal(BadgeIconsString, &o.BadgeIcons)
 	}
 	
 	if I10n, ok := UcintegrationMap["i10n"].(map[string]interface{}); ok {

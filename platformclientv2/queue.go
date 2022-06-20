@@ -122,7 +122,7 @@ type Queue struct {
 
 
 	// OutboundEmailAddress
-	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
+	OutboundEmailAddress **Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -208,7 +208,7 @@ func (o *Queue) MarshalJSON() ([]byte, error) {
 		
 		OutboundMessagingAddresses *Queuemessagingaddresses `json:"outboundMessagingAddresses,omitempty"`
 		
-		OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
+		OutboundEmailAddress **Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias

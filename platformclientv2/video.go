@@ -80,6 +80,10 @@ type Video struct {
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
+
+	// InitialState - The initial connection state of this communication.
+	InitialState *string `json:"initialState,omitempty"`
+
 }
 
 func (o *Video) MarshalJSON() ([]byte, error) {
@@ -147,6 +151,8 @@ func (o *Video) MarshalJSON() ([]byte, error) {
 		AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		InitialState *string `json:"initialState,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -184,6 +190,8 @@ func (o *Video) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		InitialState: o.InitialState,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -273,6 +281,10 @@ func (o *Video) UnmarshalJSON(b []byte) error {
 	
 	if AfterCallWorkRequired, ok := VideoMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+    
+	if InitialState, ok := VideoMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 
