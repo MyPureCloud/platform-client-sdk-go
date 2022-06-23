@@ -90,7 +90,7 @@ func (a IntegrationsApi) DeleteIntegration(integrationId string) (*Integration, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -365,7 +365,7 @@ func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, page
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -436,7 +436,7 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integrationconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -513,7 +513,7 @@ func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -588,7 +588,7 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -663,7 +663,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -740,7 +740,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileN
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonschemadocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -817,7 +817,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraftTemplate(actionId string, fil
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -888,7 +888,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Draftvalidationresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -965,7 +965,7 @@ func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonschemadocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1042,7 +1042,7 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1129,7 +1129,7 @@ func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, ne
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1208,7 +1208,7 @@ func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int, pageNumb
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Categoryentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1295,7 +1295,7 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1374,7 +1374,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBot(integration
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Botconnectorbot" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1455,7 +1455,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotVersions(int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Botconnectorbotversionsummaryentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1526,7 +1526,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBots(integratio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Botlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1601,7 +1601,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotsSummaries(i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Botconnectorbotsummaryentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1678,7 +1678,7 @@ func (a IntegrationsApi) GetIntegrationsClientapps(pageSize int, pageNumber int,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Clientappentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1757,7 +1757,7 @@ func (a IntegrationsApi) GetIntegrationsClientappsUnifiedcommunications(pageSize
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ucintegrationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1828,7 +1828,7 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Credential" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1897,7 +1897,7 @@ func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int, pageSize int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Credentialinfolisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1962,7 +1962,7 @@ func (a IntegrationsApi) GetIntegrationsCredentialsTypes() (*Credentialtypelisti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Credentialtypelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2037,7 +2037,7 @@ func (a IntegrationsApi) GetIntegrationsEventlog(pageSize int, pageNumber int, s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integrationevententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2108,7 +2108,7 @@ func (a IntegrationsApi) GetIntegrationsEventlogEventId(eventId string) (*Integr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integrationevent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2179,7 +2179,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dialogflowagent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2250,7 +2250,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dialogflowagentsummaryentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2321,7 +2321,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexb
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lexbotalias" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2400,7 +2400,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lexbotaliasentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2471,7 +2471,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int, pageSize i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lexbotentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2544,7 +2544,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngine(engineId string, include
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ttsengineentity" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2621,7 +2621,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, vo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ttsvoiceentity" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2696,7 +2696,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ttsvoiceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2771,7 +2771,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngines(pageNumber int, pageSiz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ttsengineentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2836,7 +2836,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsSettings() (*Ttssettings, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ttssettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2907,7 +2907,7 @@ func (a IntegrationsApi) GetIntegrationsType(typeId string) (*Integrationtype, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integrationtype" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2984,7 +2984,7 @@ func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configTy
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonschemadocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3061,7 +3061,7 @@ func (a IntegrationsApi) GetIntegrationsTypes(pageSize int, pageNumber int, sort
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integrationtypeentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3140,7 +3140,7 @@ func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int, pageNumber int, s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userappentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3226,7 +3226,7 @@ func (a IntegrationsApi) PatchIntegration(integrationId string, pageSize int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3305,7 +3305,7 @@ func (a IntegrationsApi) PatchIntegrationsAction(actionId string, body Updateact
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3384,7 +3384,7 @@ func (a IntegrationsApi) PatchIntegrationsActionDraft(actionId string, body Upda
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3452,7 +3452,7 @@ func (a IntegrationsApi) PostIntegrations(body Createintegrationrequest) (*Integ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3523,7 +3523,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3602,7 +3602,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3681,7 +3681,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Testexecutionresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3760,7 +3760,7 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3839,7 +3839,7 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Testexecutionresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3912,7 +3912,7 @@ func (a IntegrationsApi) PostIntegrationsActions(body Postactioninput) (*Action,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3985,7 +3985,7 @@ func (a IntegrationsApi) PostIntegrationsActionsDrafts(body Postactioninput) (*A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Action" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4053,7 +4053,7 @@ func (a IntegrationsApi) PostIntegrationsCredentials(body Credential) (*Credenti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Credentialinfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4121,7 +4121,7 @@ func (a IntegrationsApi) PostIntegrationsWorkforcemanagementVendorconnection(bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Useractioncategoryentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4195,7 +4195,7 @@ func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Integrationconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4341,7 +4341,7 @@ func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Cre
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Credentialinfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4414,7 +4414,7 @@ func (a IntegrationsApi) PutIntegrationsSpeechTtsSettings(body Ttssettings) (*Tt
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ttssettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

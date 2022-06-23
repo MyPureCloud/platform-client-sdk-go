@@ -698,7 +698,7 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsWhatsappIntegr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Whatsappintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -833,7 +833,7 @@ func (a ConversationsApi) GetAnalyticsConversationDetails(conversationId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationwithoutattributes" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -900,7 +900,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetails(id []string) (*Analyt
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationwithoutattributesmultigetresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -971,7 +971,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*As
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncquerystatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1046,7 +1046,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationasyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1111,7 +1111,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*D
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataavailabilityresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1182,7 +1182,7 @@ func (a ConversationsApi) GetConversation(conversationId string) (*Conversation,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1265,7 +1265,7 @@ func (a ConversationsApi) GetConversationParticipantSecureivrsession(conversatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Securesession" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1342,7 +1342,7 @@ func (a ConversationsApi) GetConversationParticipantSecureivrsessions(conversati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Securesessionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1421,7 +1421,7 @@ func (a ConversationsApi) GetConversationParticipantWrapup(conversationId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignedwrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1498,7 +1498,7 @@ func (a ConversationsApi) GetConversationParticipantWrapupcodes(conversationId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Wrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1565,7 +1565,7 @@ func (a ConversationsApi) GetConversations(communicationType string) (*Conversat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1636,7 +1636,7 @@ func (a ConversationsApi) GetConversationsCall(conversationId string) (*Callconv
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1715,7 +1715,7 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapup(conversationId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignedwrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1792,7 +1792,7 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapupcodes(conversatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Wrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1863,7 +1863,7 @@ func (a ConversationsApi) GetConversationsCallback(conversationId string) (*Call
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callbackconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1942,7 +1942,7 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapup(conversation
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignedwrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2019,7 +2019,7 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapupcodes(convers
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Wrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2084,7 +2084,7 @@ func (a ConversationsApi) GetConversationsCallbacks() (*Callbackconversationenti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callbackconversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2149,7 +2149,7 @@ func (a ConversationsApi) GetConversationsCalls() (*Callconversationentitylistin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callconversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2222,7 +2222,7 @@ func (a ConversationsApi) GetConversationsCallsHistory(pageSize int, pageNumber 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callhistoryconversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2287,7 +2287,7 @@ func (a ConversationsApi) GetConversationsCallsMaximumconferenceparties() (*Maxp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Maxparticipants" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2358,7 +2358,7 @@ func (a ConversationsApi) GetConversationsChat(conversationId string) (*Chatconv
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Chatconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2437,7 +2437,7 @@ func (a ConversationsApi) GetConversationsChatMessage(conversationId string, mes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2518,7 +2518,7 @@ func (a ConversationsApi) GetConversationsChatMessages(conversationId string, af
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmessageentitylist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2597,7 +2597,7 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignedwrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2674,7 +2674,7 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapupcodes(conversatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Wrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2739,7 +2739,7 @@ func (a ConversationsApi) GetConversationsChats() (*Chatconversationentitylistin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Chatconversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2810,7 +2810,7 @@ func (a ConversationsApi) GetConversationsCobrowsesession(conversationId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cobrowseconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2889,7 +2889,7 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conve
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignedwrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2966,7 +2966,7 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapupcodes(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Wrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3031,7 +3031,7 @@ func (a ConversationsApi) GetConversationsCobrowsesessions() (*Cobrowseconversat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cobrowseconversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3102,7 +3102,7 @@ func (a ConversationsApi) GetConversationsEmail(conversationId string) (*Emailco
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3179,7 +3179,7 @@ func (a ConversationsApi) GetConversationsEmailMessage(conversationId string, me
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3250,7 +3250,7 @@ func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailmessagelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3321,7 +3321,7 @@ func (a ConversationsApi) GetConversationsEmailMessagesDraft(conversationId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3400,7 +3400,7 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapup(conversationId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignedwrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3477,7 +3477,7 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapupcodes(conversati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Wrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3548,7 +3548,7 @@ func (a ConversationsApi) GetConversationsEmailSettings(conversationId string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailssettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3613,7 +3613,7 @@ func (a ConversationsApi) GetConversationsEmails() (*Emailconversationentitylist
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailconversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3684,7 +3684,7 @@ func (a ConversationsApi) GetConversationsMessage(conversationId string) (*Messa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messageconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3769,7 +3769,7 @@ func (a ConversationsApi) GetConversationsMessageCommunicationMessagesMediaMedia
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagemediadata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3840,7 +3840,7 @@ func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Mes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagedata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3917,7 +3917,7 @@ func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagedata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3996,7 +3996,7 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapup(conversationI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignedwrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4073,7 +4073,7 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapupcodes(conversa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Wrapupcode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4138,7 +4138,7 @@ func (a ConversationsApi) GetConversationsMessages() (*Messageconversationentity
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messageconversationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4203,7 +4203,7 @@ func (a ConversationsApi) GetConversationsMessagingFacebookApp() (*Facebookappcr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Facebookappcredentials" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4276,7 +4276,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingintegrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4349,7 +4349,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Facebookintegrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4422,7 +4422,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Facebookintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4495,7 +4495,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lineintegrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4568,7 +4568,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lineintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4643,7 +4643,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsOpen(pageSize int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Openintegrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4718,7 +4718,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsOpenIntegrationId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Openintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4791,7 +4791,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Twitterintegrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4864,7 +4864,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegratio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Twitterintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4937,7 +4937,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Whatsappintegrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5010,7 +5010,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Whatsappintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5085,7 +5085,7 @@ func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingstickerentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5154,7 +5154,7 @@ func (a ConversationsApi) GetConversationsMessagingSupportedcontent(pageSize int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Supportedcontentlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5221,7 +5221,7 @@ func (a ConversationsApi) GetConversationsMessagingSupportedcontentDefault() (*S
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Supportedcontent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5292,7 +5292,7 @@ func (a ConversationsApi) GetConversationsMessagingSupportedcontentSupportedCont
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Supportedcontent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5359,7 +5359,7 @@ func (a ConversationsApi) GetConversationsMessagingThreadingtimeline() (*Convers
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversationthreadingwindow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5596,7 +5596,7 @@ func (a ConversationsApi) PatchConversationsCall(conversationId string, body Con
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5843,7 +5843,7 @@ func (a ConversationsApi) PatchConversationsCallParticipantCommunication(convers
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5928,7 +5928,7 @@ func (a ConversationsApi) PatchConversationsCallParticipantConsult(conversationI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Consulttransferresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6007,7 +6007,7 @@ func (a ConversationsApi) PatchConversationsCallback(conversationId string, body
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6254,7 +6254,7 @@ func (a ConversationsApi) PatchConversationsCallbackParticipantCommunication(con
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6327,7 +6327,7 @@ func (a ConversationsApi) PatchConversationsCallbacks(body Patchcallbackrequest)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Patchcallbackresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6406,7 +6406,7 @@ func (a ConversationsApi) PatchConversationsChat(conversationId string, body Con
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6653,7 +6653,7 @@ func (a ConversationsApi) PatchConversationsChatParticipantCommunication(convers
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6732,7 +6732,7 @@ func (a ConversationsApi) PatchConversationsCobrowsesession(conversationId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6969,7 +6969,7 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantCommunicat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7048,7 +7048,7 @@ func (a ConversationsApi) PatchConversationsEmail(conversationId string, body Co
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7295,7 +7295,7 @@ func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conver
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7374,7 +7374,7 @@ func (a ConversationsApi) PatchConversationsMessage(conversationId string, body 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7611,7 +7611,7 @@ func (a ConversationsApi) PatchConversationsMessageParticipantCommunication(conv
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7690,7 +7690,7 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsFacebookIntegra
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Facebookintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7771,7 +7771,7 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsOpenIntegration
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Openintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7850,7 +7850,7 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsTwitterIntegrat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Twitterintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7931,7 +7931,7 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsWhatsappIntegra
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Whatsappintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8010,7 +8010,7 @@ func (a ConversationsApi) PatchConversationsMessagingSupportedcontentSupportedCo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Supportedcontent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8089,7 +8089,7 @@ func (a ConversationsApi) PostAnalyticsConversationDetailsProperties(conversatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Propertyindexrequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8162,7 +8162,7 @@ func (a ConversationsApi) PostAnalyticsConversationsAggregatesQuery(body Convers
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversationaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8235,7 +8235,7 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconver
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8308,7 +8308,7 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsQuery(body Conversati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8387,7 +8387,7 @@ func (a ConversationsApi) PostConversationAssign(conversationId string, body Con
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8458,7 +8458,7 @@ func (a ConversationsApi) PostConversationDisconnect(conversationId string) (*st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8762,7 +8762,7 @@ func (a ConversationsApi) PostConversationParticipantSecureivrsessions(conversat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Securesession" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8841,7 +8841,7 @@ func (a ConversationsApi) PostConversationsCall(conversationId string, body Call
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8996,7 +8996,7 @@ func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Consulttransferresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9223,7 +9223,7 @@ func (a ConversationsApi) PostConversationsCallParticipants(conversationId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9374,7 +9374,7 @@ func (a ConversationsApi) PostConversationsCallbacks(body Createcallbackcommand)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Createcallbackresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9513,7 +9513,7 @@ func (a ConversationsApi) PostConversationsCallbacksBulkUpdate(body Bulkcallback
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkcallbackpatchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9586,7 +9586,7 @@ func (a ConversationsApi) PostConversationsCalls(body Createcallrequest) (*Creat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Createcallresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9671,7 +9671,7 @@ func (a ConversationsApi) PostConversationsChatCommunicationMessages(conversatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9748,7 +9748,7 @@ func (a ConversationsApi) PostConversationsChatCommunicationTyping(conversationI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchattyping" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9899,7 +9899,7 @@ func (a ConversationsApi) PostConversationsChats(body Createwebchatrequest) (*Ch
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Chatconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10051,7 +10051,7 @@ func (a ConversationsApi) PostConversationsEmailInboundmessages(conversationId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10130,7 +10130,7 @@ func (a ConversationsApi) PostConversationsEmailMessages(conversationId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10209,7 +10209,7 @@ func (a ConversationsApi) PostConversationsEmailMessagesDraftAttachmentsCopy(con
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10362,7 +10362,7 @@ func (a ConversationsApi) PostConversationsEmails(body Createemailrequest) (*Ema
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10435,7 +10435,7 @@ func (a ConversationsApi) PostConversationsFaxes(body Faxsendrequest) (*Faxsendr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Faxsendresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10522,7 +10522,7 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagedata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10601,7 +10601,7 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessagesMedia(con
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagemediadata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10677,7 +10677,7 @@ func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Textmessagelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10830,7 +10830,7 @@ func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessaging
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messageconversation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10905,7 +10905,7 @@ func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlesso
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sendagentlessoutboundmessageresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10980,7 +10980,7 @@ func (a ConversationsApi) PostConversationsMessagesInboundOpen(body Opennormaliz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Opennormalizedmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11053,7 +11053,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Fa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Facebookintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11126,7 +11126,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsLine(body Linein
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lineintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11201,7 +11201,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsOpen(body Openin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Openintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11274,7 +11274,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Twitterintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11349,7 +11349,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsWhatsapp(body Wh
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Whatsappintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11422,7 +11422,7 @@ func (a ConversationsApi) PostConversationsMessagingSupportedcontent(body Suppor
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Supportedcontent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11571,7 +11571,7 @@ func (a ConversationsApi) PutConversationTags(conversationId string, body Conver
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11662,7 +11662,7 @@ func (a ConversationsApi) PutConversationsCallParticipantCommunicationUuidata(co
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11741,7 +11741,7 @@ func (a ConversationsApi) PutConversationsCallRecordingstate(conversationId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11820,7 +11820,7 @@ func (a ConversationsApi) PutConversationsCallbackRecordingstate(conversationId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11899,7 +11899,7 @@ func (a ConversationsApi) PutConversationsChatRecordingstate(conversationId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -11978,7 +11978,7 @@ func (a ConversationsApi) PutConversationsCobrowsesessionRecordingstate(conversa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12057,7 +12057,7 @@ func (a ConversationsApi) PutConversationsEmailMessagesDraft(conversationId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12136,7 +12136,7 @@ func (a ConversationsApi) PutConversationsEmailRecordingstate(conversationId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12215,7 +12215,7 @@ func (a ConversationsApi) PutConversationsMessageRecordingstate(conversationId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12294,7 +12294,7 @@ func (a ConversationsApi) PutConversationsMessagingIntegrationsLineIntegrationId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lineintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12369,7 +12369,7 @@ func (a ConversationsApi) PutConversationsMessagingSupportedcontentDefault(body 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Supportedcontent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12444,7 +12444,7 @@ func (a ConversationsApi) PutConversationsMessagingThreadingtimeline(body Conver
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversationthreadingwindow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12523,7 +12523,7 @@ func (a ConversationsApi) PutConversationsScreenshareRecordingstate(conversation
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12602,7 +12602,7 @@ func (a ConversationsApi) PutConversationsSocialRecordingstate(conversationId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -12681,7 +12681,7 @@ func (a ConversationsApi) PutConversationsVideoRecordingstate(conversationId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

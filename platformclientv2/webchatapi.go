@@ -281,7 +281,7 @@ func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeploymen
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -346,7 +346,7 @@ func (a WebChatApi) GetWebchatDeployments() (*Webchatdeploymententitylisting, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatdeploymententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -422,7 +422,7 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatguestmediarequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -492,7 +492,7 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequests(conversationId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatguestmediarequestentitylist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -568,7 +568,7 @@ func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, mem
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmemberinfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -644,7 +644,7 @@ func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmemberinfoentitylist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -720,7 +720,7 @@ func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, me
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -798,7 +798,7 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmessageentitylist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -863,7 +863,7 @@ func (a WebChatApi) GetWebchatSettings() (*Webchatsettings, *APIResponse, error)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -947,7 +947,7 @@ func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatguestmediarequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1020,7 +1020,7 @@ func (a WebChatApi) PostWebchatDeployments(body Webchatdeployment) (*Webchatdepl
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1104,7 +1104,7 @@ func (a WebChatApi) PostWebchatGuestConversationMemberMessages(conversationId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1180,7 +1180,7 @@ func (a WebChatApi) PostWebchatGuestConversationMemberTyping(conversationId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchattyping" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1250,7 +1250,7 @@ func (a WebChatApi) PostWebchatGuestConversations(body Createwebchatconversation
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Createwebchatconversationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1329,7 +1329,7 @@ func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeploy
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1402,7 +1402,7 @@ func (a WebChatApi) PutWebchatSettings(body Webchatsettings) (*Webchatsettings, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webchatsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

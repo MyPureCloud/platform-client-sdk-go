@@ -449,7 +449,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekSchedul
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncscheduleresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1001,7 +1001,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherence(userId []string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Userscheduleadherence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1072,7 +1072,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdhocmodelingjob(jobId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Modelingstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1143,7 +1143,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentManagementunit(agentI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Agentmanagementunitreference" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1208,7 +1208,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentsMeManagementunit() (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Agentmanagementunitreference" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1283,7 +1283,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1360,7 +1360,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycode(b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunitactivitycode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1431,7 +1431,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunitactivitycodelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1509,7 +1509,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanni
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wfmintradayplanninggrouplisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1584,7 +1584,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Managementunitlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1661,7 +1661,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroup(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Planninggroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1732,7 +1732,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroups
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Planninggrouplist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1809,7 +1809,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRun(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buschedulerun" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1900,7 +1900,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRunR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Burescheduleresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1971,7 +1971,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRuns
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buschedulerunlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2048,7 +2048,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Servicegoaltemplate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2119,7 +2119,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Servicegoaltemplatelist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2204,7 +2204,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedule(b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buschedulemetadata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2287,7 +2287,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleGe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedulegenerationresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2372,7 +2372,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buheadcountforecastresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2461,7 +2461,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buagentschedulehistoryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2544,7 +2544,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buschedulelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2629,7 +2629,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bushorttermforecast" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2718,7 +2718,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buforecastresultresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2801,7 +2801,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buforecastgenerationresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2888,7 +2888,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Longtermforecastresultresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2971,7 +2971,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Forecastplanninggroupsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3050,7 +3050,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bushorttermforecastlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3119,7 +3119,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunits(feature stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunitlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3186,7 +3186,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitsDivisionviews
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunitlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3253,7 +3253,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementCalendarDataIcs(calendarId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3318,7 +3318,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementCalendarUrlIcs() (*Calenda
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Calendarurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3383,7 +3383,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataDeletejob() 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Historicalimportdeletejobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3448,7 +3448,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataImportstatus
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Historicalimportstatuslisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3523,7 +3523,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Managementunit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3594,7 +3594,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycode
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Activitycodecontainer" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3667,7 +3667,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userscheduleadherencelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3746,7 +3746,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wfmagent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3823,7 +3823,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgentShifttr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Shifttradelistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3894,7 +3894,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesM
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Shifttradematchessummaryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3965,7 +3965,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesU
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wfmuserentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4044,7 +4044,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeofflimit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4117,7 +4117,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeofflimitlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4194,7 +4194,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4265,7 +4265,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplans
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffplanlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4348,7 +4348,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4431,7 +4431,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Querytimeofflimitvaluesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4510,7 +4510,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4581,7 +4581,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(manage
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wfmuserentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4668,7 +4668,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Weekscheduleresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4751,7 +4751,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Weekschedulelistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4830,7 +4830,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Weekshifttradelistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4909,7 +4909,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplan(man
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4986,7 +4986,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplanrotationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5059,7 +5059,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplanrotationlistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5134,7 +5134,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(ma
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplanlistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5209,7 +5209,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunits(pageSize i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Managementunitlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5276,7 +5276,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitsDivisionvie
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Managementunitlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5343,7 +5343,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementNotifications() (*Notifica
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Notificationsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5414,7 +5414,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementSchedulingjob(jobId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedulingstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5479,7 +5479,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementShifttrades() (*Shifttrade
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Shifttradelistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5550,7 +5550,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequest(timeOffRequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5621,7 +5621,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequestWaitlistposi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Waitlistpositionlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5688,7 +5688,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5762,7 +5762,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUni
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5842,7 +5842,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunitactivitycode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5922,7 +5922,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggrou
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Planninggroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6075,7 +6075,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoalt
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Servicegoaltemplate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6149,7 +6149,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(managemen
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Managementunit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6231,7 +6231,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflim
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeofflimit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6311,7 +6311,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffpla
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6397,7 +6397,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeof
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6488,7 +6488,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShiftt
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Shifttraderesponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6570,7 +6570,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6650,7 +6650,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplanro
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplanrotationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6724,7 +6724,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementTimeoffrequest(timeOffRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6792,7 +6792,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceHistorical(body 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wfmhistoricaladherenceresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6860,7 +6860,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body B
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bucurrentagentschedulesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6934,7 +6934,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunitactivitycode" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7012,7 +7012,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncagentschedulessearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7088,7 +7088,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncintradayresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7162,7 +7162,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitPlanninggroup
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Planninggroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7236,7 +7236,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitServicegoalte
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Servicegoaltemplate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7331,7 +7331,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleA
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncagentschedulesqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7422,7 +7422,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleC
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncscheduleresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7513,7 +7513,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncschedulerunresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7606,7 +7606,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncscheduleresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7699,7 +7699,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Updatescheduleuploadresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7784,7 +7784,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buschedulemetadata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7869,7 +7869,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncschedulerunresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7956,7 +7956,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scheduleuploadprocessingresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8043,7 +8043,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Importscheduleuploadresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8136,7 +8136,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncforecastoperationresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8223,7 +8223,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncforecastoperationresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8310,7 +8310,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Importforecastresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8397,7 +8397,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Importforecastuploadresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8467,7 +8467,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Create
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Businessunit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8534,7 +8534,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementCalendarUrlIcs(language s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Calendarurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8599,7 +8599,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataDeletejob()
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Historicalimportdeletejobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8738,7 +8738,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Buasyncagentschedulessearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8814,7 +8814,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitHistoricala
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wfmhistoricaladherenceresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8890,7 +8890,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitMove(manage
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Movemanagementunitresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8964,7 +8964,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userschedulecontainer" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9040,7 +9040,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeofflimit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9114,7 +9114,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Querytimeofflimitvaluesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9188,7 +9188,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplan
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9262,7 +9262,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9338,7 +9338,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9412,7 +9412,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Waitlistpositionlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9503,7 +9503,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Matchshifttraderesponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9588,7 +9588,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Shifttraderesponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9673,7 +9673,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Searchshifttradesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9762,7 +9762,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkupdateshifttradestateresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9842,7 +9842,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCop
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9924,7 +9924,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanVal
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Validateworkplanresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10004,7 +10004,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplanrotationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10078,7 +10078,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplanrotationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10154,7 +10154,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10224,7 +10224,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunits(body Crea
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Managementunit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10292,7 +10292,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementNotificationsUpdate(body 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Updatenotificationsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10360,7 +10360,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementSchedules(body Currentuse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userschedulecontainer" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10428,7 +10428,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeofflimitsAvailableQue
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Availabletimeoffresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10496,7 +10496,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequests(body Crea
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeoffrequestresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -10578,7 +10578,7 @@ func (a WorkforceManagementApi) PutWorkforcemanagementManagementunitTimeofflimit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timeofflimit" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

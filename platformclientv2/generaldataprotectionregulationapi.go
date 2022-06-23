@@ -90,7 +90,7 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequest(requestId string) (*G
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gdprrequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -159,7 +159,7 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int, pageNu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gdprrequestentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -238,7 +238,7 @@ func (a GeneralDataProtectionRegulationApi) GetGdprSubjects(searchType string, s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gdprsubjectentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -313,7 +313,7 @@ func (a GeneralDataProtectionRegulationApi) PostGdprRequests(body Gdprrequest, d
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gdprrequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -90,7 +90,7 @@ func (a DataExtensionsApi) GetDataextensionsCoretype(coretypeName string) (*Core
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coretype" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -155,7 +155,7 @@ func (a DataExtensionsApi) GetDataextensionsCoretypes() (*Coretypelisting, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coretypelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -220,7 +220,7 @@ func (a DataExtensionsApi) GetDataextensionsLimits() (*Schemaquantitylimits, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schemaquantitylimits" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -98,7 +98,7 @@ func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Calibration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -177,7 +177,7 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -460,7 +460,7 @@ func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortB
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Agentactivityentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -535,7 +535,7 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Calibration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -625,7 +625,7 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Calibrationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -704,7 +704,7 @@ func (a QualityApi) GetQualityConversationEvaluation(conversationId string, eval
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -775,7 +775,7 @@ func (a QualityApi) GetQualityConversationSurveys(conversationId string) ([]Surv
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Survey" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -846,7 +846,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionId(transactionI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Qualityauditqueryexecutionstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -923,7 +923,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Qualityauditqueryexecutionresultsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1026,7 +1026,7 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sor
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1113,7 +1113,7 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluatoractivityentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1184,7 +1184,7 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1259,7 +1259,7 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1340,7 +1340,7 @@ func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1411,7 +1411,7 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1488,7 +1488,7 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1569,7 +1569,7 @@ func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sor
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1641,7 +1641,7 @@ func (a QualityApi) GetQualityFormsEvaluationsBulkContexts(contextId []string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1712,7 +1712,7 @@ func (a QualityApi) GetQualityFormsSurvey(formId string) (*Surveyform, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1787,7 +1787,7 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1868,7 +1868,7 @@ func (a QualityApi) GetQualityFormsSurveys(pageSize int, pageNumber int, sortBy 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1940,7 +1940,7 @@ func (a QualityApi) GetQualityFormsSurveysBulk(id []string) (*Surveyformentityli
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2014,7 +2014,7 @@ func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, publi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2085,7 +2085,7 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2158,7 +2158,7 @@ func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2229,7 +2229,7 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2302,7 +2302,7 @@ func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2373,7 +2373,7 @@ func (a QualityApi) GetQualityPublishedformsSurvey(formId string) (*Surveyform, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2446,7 +2446,7 @@ func (a QualityApi) GetQualityPublishedformsSurveys(pageSize int, pageNumber int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyformentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2517,7 +2517,7 @@ func (a QualityApi) GetQualitySurvey(surveyId string) (*Survey, *APIResponse, er
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Survey" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2584,7 +2584,7 @@ func (a QualityApi) GetQualitySurveysScorable(customerSurveyUrl string) (*Scorab
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scorablesurvey" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2663,7 +2663,7 @@ func (a QualityApi) PatchQualityFormsSurvey(formId string, body Surveyform) (*Su
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2736,7 +2736,7 @@ func (a QualityApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationaggre
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2809,7 +2809,7 @@ func (a QualityApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregationqu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2884,7 +2884,7 @@ func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Calibration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2965,7 +2965,7 @@ func (a QualityApi) PostQualityConversationEvaluations(conversationId string, bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3038,7 +3038,7 @@ func (a QualityApi) PostQualityConversationsAuditsQuery(body Qmauditqueryrequest
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Qualityauditqueryexecutionstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3111,7 +3111,7 @@ func (a QualityApi) PostQualityEvaluationsAggregatesQueryMe(body Evaluationaggre
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3184,7 +3184,7 @@ func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscorings
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationscoringset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3257,7 +3257,7 @@ func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3330,7 +3330,7 @@ func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3403,7 +3403,7 @@ func (a QualityApi) PostQualityFormsSurveys(body Surveyform) (*Surveyform, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3476,7 +3476,7 @@ func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3549,7 +3549,7 @@ func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Eva
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3622,7 +3622,7 @@ func (a QualityApi) PostQualityPublishedformsSurveys(body Publishform) (*Surveyf
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3695,7 +3695,7 @@ func (a QualityApi) PostQualitySurveysScoring(body Surveyformandscoringset) (*Su
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyscoringset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3774,7 +3774,7 @@ func (a QualityApi) PutQualityCalibration(calibrationId string, body Calibration
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Calibration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3863,7 +3863,7 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3942,7 +3942,7 @@ func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4021,7 +4021,7 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4100,7 +4100,7 @@ func (a QualityApi) PutQualityFormsSurvey(formId string, body Surveyform) (*Surv
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4175,7 +4175,7 @@ func (a QualityApi) PutQualitySurveysScorable(customerSurveyUrl string, body Sco
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scorablesurvey" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

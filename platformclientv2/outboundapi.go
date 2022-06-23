@@ -282,7 +282,7 @@ func (a OutboundApi) DeleteOutboundCampaign(campaignId string) (*Campaign, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -879,7 +879,7 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1398,7 +1398,7 @@ func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptli
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Attemptlimits" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1477,7 +1477,7 @@ func (a OutboundApi) GetOutboundAttemptlimits(pageSize int, pageNumber int, allo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Attemptlimitsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1548,7 +1548,7 @@ func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Call
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callabletimeset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1627,7 +1627,7 @@ func (a OutboundApi) GetOutboundCallabletimesets(pageSize int, pageNumber int, a
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callabletimesetentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1698,7 +1698,7 @@ func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1777,7 +1777,7 @@ func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int, pageNumbe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responsesetentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1848,7 +1848,7 @@ func (a OutboundApi) GetOutboundCampaign(campaignId string) (*Campaign, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1919,7 +1919,7 @@ func (a OutboundApi) GetOutboundCampaignAgentownedmappingpreviewResults(campaign
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Agentownedmappingpreviewlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1990,7 +1990,7 @@ func (a OutboundApi) GetOutboundCampaignDiagnostics(campaignId string) (*Campaig
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaigndiagnostics" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2061,7 +2061,7 @@ func (a OutboundApi) GetOutboundCampaignInteractions(campaignId string) (*Campai
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaigninteractions" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2132,7 +2132,7 @@ func (a OutboundApi) GetOutboundCampaignProgress(campaignId string) (*Campaignpr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignprogress" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2203,7 +2203,7 @@ func (a OutboundApi) GetOutboundCampaignStats(campaignId string) (*Campaignstats
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignstats" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2274,7 +2274,7 @@ func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignru
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignrule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2353,7 +2353,7 @@ func (a OutboundApi) GetOutboundCampaignrules(pageSize int, pageNumber int, allo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignruleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2444,7 +2444,7 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int, pageNumber int, filterTy
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2523,7 +2523,7 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int, pageNumber int, id []
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Commoncampaignentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2602,7 +2602,7 @@ func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int, pageNumb
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Commoncampaigndivisionviewentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2675,7 +2675,7 @@ func (a OutboundApi) GetOutboundCampaignsDivisionview(campaignId string) (*Campa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaigndivisionview" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2756,7 +2756,7 @@ func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int, pageNumber 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaigndivisionviewlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2831,7 +2831,7 @@ func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportS
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2908,7 +2908,7 @@ func (a OutboundApi) GetOutboundContactlistContact(contactListId string, contact
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dialercontact" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2981,7 +2981,7 @@ func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Exporturi" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3052,7 +3052,7 @@ func (a OutboundApi) GetOutboundContactlistImportstatus(contactListId string) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Importstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3123,7 +3123,7 @@ func (a OutboundApi) GetOutboundContactlistTimezonemappingpreview(contactListId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timezonemappingpreview" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3194,7 +3194,7 @@ func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlistfilter" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3275,7 +3275,7 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int, pageNumber int,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlistfilterentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3362,7 +3362,7 @@ func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlistentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3439,7 +3439,7 @@ func (a OutboundApi) GetOutboundContactlistsDivisionview(contactListId string, i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlistdivisionview" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3524,7 +3524,7 @@ func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlistdivisionviewlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3599,7 +3599,7 @@ func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dnclist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3672,7 +3672,7 @@ func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Exporturi" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3743,7 +3743,7 @@ func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importst
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Importstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3830,7 +3830,7 @@ func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dnclistentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3907,7 +3907,7 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dnclistdivisionview" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3994,7 +3994,7 @@ func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dnclistdivisionviewlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4065,7 +4065,7 @@ func (a OutboundApi) GetOutboundEvent(eventId string) (*Eventlog, *APIResponse, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Eventlog" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4144,7 +4144,7 @@ func (a OutboundApi) GetOutboundEvents(pageSize int, pageNumber int, filterType 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dialerevententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4215,7 +4215,7 @@ func (a OutboundApi) GetOutboundMessagingcampaign(messagingCampaignId string) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4286,7 +4286,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignprogress" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4371,7 +4371,7 @@ func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaignentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4444,7 +4444,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaign
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaigndivisionview" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4525,7 +4525,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaigndivisionviewentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4596,7 +4596,7 @@ func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIRespons
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ruleset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4675,7 +4675,7 @@ func (a OutboundApi) GetOutboundRulesets(pageSize int, pageNumber int, allowEmpt
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Rulesetentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4746,7 +4746,7 @@ func (a OutboundApi) GetOutboundSchedulesCampaign(campaignId string) (*Campaigns
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4811,7 +4811,7 @@ func (a OutboundApi) GetOutboundSchedulesCampaigns() ([]Campaignschedule, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Campaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4882,7 +4882,7 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailcampaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4947,7 +4947,7 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Messagingcampaignsch
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaignscheduleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5018,7 +5018,7 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaign(messagingCampaignId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5083,7 +5083,7 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaigns() (*Messagingcampaig
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaignscheduleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5154,7 +5154,7 @@ func (a OutboundApi) GetOutboundSchedulesSequence(sequenceId string) (*Sequences
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sequenceschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5219,7 +5219,7 @@ func (a OutboundApi) GetOutboundSchedulesSequences() ([]Sequenceschedule, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Sequenceschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5290,7 +5290,7 @@ func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignsequence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5369,7 +5369,7 @@ func (a OutboundApi) GetOutboundSequences(pageSize int, pageNumber int, allowEmp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignsequenceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5434,7 +5434,7 @@ func (a OutboundApi) GetOutboundSettings() (*Outboundsettings, *APIResponse, err
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5499,7 +5499,7 @@ func (a OutboundApi) GetOutboundWrapupcodemappings() (*Wrapupcodemapping, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wrapupcodemapping" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5638,7 +5638,7 @@ func (a OutboundApi) PostOutboundAttemptlimits(body Attemptlimits) (*Attemptlimi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Attemptlimits" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5721,7 +5721,7 @@ func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Auditsearchresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5794,7 +5794,7 @@ func (a OutboundApi) PostOutboundCallabletimesets(body Callabletimeset) (*Callab
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callabletimeset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5867,7 +5867,7 @@ func (a OutboundApi) PostOutboundCallanalysisresponsesets(body Responseset) (*Re
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5938,7 +5938,7 @@ func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6019,7 +6019,7 @@ func (a OutboundApi) PostOutboundCampaignCallbackSchedule(campaignId string, bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactcallbackrequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6092,7 +6092,7 @@ func (a OutboundApi) PostOutboundCampaignrules(body Campaignrule) (*Campaignrule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignrule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6165,7 +6165,7 @@ func (a OutboundApi) PostOutboundCampaigns(body Campaign) (*Campaign, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6238,7 +6238,7 @@ func (a OutboundApi) PostOutboundCampaignsProgress(body []string) ([]Campaignpro
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Campaignprogress" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6387,7 +6387,7 @@ func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Dialercontact" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6466,7 +6466,7 @@ func (a OutboundApi) PostOutboundContactlistContactsBulk(contactListId string, b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Dialercontact" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6539,7 +6539,7 @@ func (a OutboundApi) PostOutboundContactlistExport(contactListId string) (*Domai
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainentityref" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6612,7 +6612,7 @@ func (a OutboundApi) PostOutboundContactlistfilters(body Contactlistfilter) (*Co
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlistfilter" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6685,7 +6685,7 @@ func (a OutboundApi) PostOutboundContactlistfiltersPreview(body Contactlistfilte
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Filterpreviewresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6758,7 +6758,7 @@ func (a OutboundApi) PostOutboundContactlists(body Contactlist) (*Contactlist, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6895,7 +6895,7 @@ func (a OutboundApi) PostOutboundDnclistExport(dncListId string) (*Domainentityr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainentityref" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7044,7 +7044,7 @@ func (a OutboundApi) PostOutboundDnclists(body Dnclistcreate) (*Dnclist, *APIRes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dnclist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7117,7 +7117,7 @@ func (a OutboundApi) PostOutboundMessagingcampaigns(body Messagingcampaign) (*Me
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7190,7 +7190,7 @@ func (a OutboundApi) PostOutboundMessagingcampaignsProgress(body []string) ([]Ca
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Campaignprogress" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7263,7 +7263,7 @@ func (a OutboundApi) PostOutboundRulesets(body Ruleset) (*Ruleset, *APIResponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ruleset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7336,7 +7336,7 @@ func (a OutboundApi) PostOutboundSequences(body Campaignsequence) (*Campaignsequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignsequence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7415,7 +7415,7 @@ func (a OutboundApi) PutOutboundAttemptlimit(attemptLimitsId string, body Attemp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Attemptlimits" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7494,7 +7494,7 @@ func (a OutboundApi) PutOutboundCallabletimeset(callableTimeSetId string, body C
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callabletimeset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7573,7 +7573,7 @@ func (a OutboundApi) PutOutboundCallanalysisresponseset(callAnalysisSetId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7652,7 +7652,7 @@ func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Cam
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7739,7 +7739,7 @@ func (a OutboundApi) PutOutboundCampaignAgent(campaignId string, userId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7818,7 +7818,7 @@ func (a OutboundApi) PutOutboundCampaignrule(campaignRuleId string, body Campaig
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignrule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7897,7 +7897,7 @@ func (a OutboundApi) PutOutboundContactlist(contactListId string, body Contactli
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7982,7 +7982,7 @@ func (a OutboundApi) PutOutboundContactlistContact(contactListId string, contact
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dialercontact" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8061,7 +8061,7 @@ func (a OutboundApi) PutOutboundContactlistfilter(contactListFilterId string, bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlistfilter" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8140,7 +8140,7 @@ func (a OutboundApi) PutOutboundDnclist(dncListId string, body Dnclist) (*Dnclis
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dnclist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8219,7 +8219,7 @@ func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaign" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8298,7 +8298,7 @@ func (a OutboundApi) PutOutboundRuleset(ruleSetId string, body Ruleset) (*Rulese
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ruleset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8377,7 +8377,7 @@ func (a OutboundApi) PutOutboundSchedulesCampaign(campaignId string, body Campai
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8456,7 +8456,7 @@ func (a OutboundApi) PutOutboundSchedulesEmailcampaign(emailCampaignId string, b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emailcampaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8535,7 +8535,7 @@ func (a OutboundApi) PutOutboundSchedulesMessagingcampaign(messagingCampaignId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Messagingcampaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8614,7 +8614,7 @@ func (a OutboundApi) PutOutboundSchedulesSequence(sequenceId string, body Sequen
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sequenceschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8693,7 +8693,7 @@ func (a OutboundApi) PutOutboundSequence(sequenceId string, body Campaignsequenc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Campaignsequence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8766,7 +8766,7 @@ func (a OutboundApi) PutOutboundWrapupcodemappings(body Wrapupcodemapping) (*Wra
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Wrapupcodemapping" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

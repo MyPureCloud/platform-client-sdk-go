@@ -90,7 +90,7 @@ func (a ScriptsApi) GetScript(scriptId string) (*Script, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Script" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -169,7 +169,7 @@ func (a ScriptsApi) GetScriptPage(scriptId string, pageId string, scriptDataVers
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Page" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -242,7 +242,7 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Page" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -327,7 +327,7 @@ func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scriptentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -412,7 +412,7 @@ func (a ScriptsApi) GetScriptsDivisionviews(pageSize int, pageNumber int, expand
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scriptentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -493,7 +493,7 @@ func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scriptentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -574,7 +574,7 @@ func (a ScriptsApi) GetScriptsPublishedDivisionviews(pageSize int, pageNumber in
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scriptentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -647,7 +647,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptId(scriptId string, scriptDataVersi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Script" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -726,7 +726,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPage(scriptId string, pageId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Page" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -799,7 +799,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptData
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Page" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -878,7 +878,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -951,7 +951,7 @@ func (a ScriptsApi) GetScriptsUploadStatus(uploadId string, longPoll bool) (*Imp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Importscriptstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1025,7 +1025,7 @@ func (a ScriptsApi) PostScriptExport(scriptId string, body Exportscriptrequest) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Exportscriptresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

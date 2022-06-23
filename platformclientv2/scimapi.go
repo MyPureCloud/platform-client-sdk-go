@@ -95,7 +95,7 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*interface{}, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -171,7 +171,7 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*interface{}, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -251,7 +251,7 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -327,7 +327,7 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimgrouplistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -399,7 +399,7 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimconfigresourcetype" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -465,7 +465,7 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimconfigresourcetypeslistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -537,7 +537,7 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2schemadefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -605,7 +605,7 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2schemalistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -675,7 +675,7 @@ func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimservicep
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimserviceproviderconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -755,7 +755,7 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -833,7 +833,7 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimuserlistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -913,7 +913,7 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -994,7 +994,7 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimgrouplistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1066,7 +1066,7 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimconfigresourcetype" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1132,7 +1132,7 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimconfigresourcetypeslistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1204,7 +1204,7 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2schemadefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1272,7 +1272,7 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2schemalistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1342,7 +1342,7 @@ func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimservic
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimserviceproviderconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1422,7 +1422,7 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1500,7 +1500,7 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimuserlistresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1584,7 +1584,7 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1668,7 +1668,7 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1752,7 +1752,7 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1836,7 +1836,7 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1910,7 +1910,7 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1984,7 +1984,7 @@ func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2068,7 +2068,7 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2152,7 +2152,7 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2236,7 +2236,7 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2320,7 +2320,7 @@ func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scimv2user" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

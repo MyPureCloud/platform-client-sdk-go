@@ -161,7 +161,7 @@ func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*interface{},
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -233,7 +233,7 @@ func (a GroupsApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Fieldconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -304,7 +304,7 @@ func (a GroupsApi) GetGroup(groupId string) (*Group, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -375,7 +375,7 @@ func (a GroupsApi) GetGroupIndividuals(groupId string) (*Userentitylisting, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -454,7 +454,7 @@ func (a GroupsApi) GetGroupMembers(groupId string, pageSize int, pageNumber int,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -529,7 +529,7 @@ func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Groupprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -604,7 +604,7 @@ func (a GroupsApi) GetGroups(pageSize int, pageNumber int, id []string, jabberId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Groupentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -678,7 +678,7 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Groupssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -753,7 +753,7 @@ func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Groupprofileentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -832,7 +832,7 @@ func (a GroupsApi) PostGroupMembers(groupId string, body Groupmembersupdate) (*i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -905,7 +905,7 @@ func (a GroupsApi) PostGroups(body Groupcreate) (*Group, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -978,7 +978,7 @@ func (a GroupsApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Groupssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1052,7 +1052,7 @@ func (a GroupsApi) PutGroup(groupId string, body Groupupdate) (*Group, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Group" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -84,7 +84,7 @@ func (a UtilitiesApi) GetDate() (*Serverdate, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Serverdate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -149,7 +149,7 @@ func (a UtilitiesApi) GetIpranges() (*Ipaddressrangelisting, *APIResponse, error
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ipaddressrangelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -218,7 +218,7 @@ func (a UtilitiesApi) GetTimezones(pageSize int, pageNumber int) (*Timezoneentit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timezoneentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -291,7 +291,7 @@ func (a UtilitiesApi) PostCertificateDetails(body Certificate) (*Parsedcertifica
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Parsedcertificate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

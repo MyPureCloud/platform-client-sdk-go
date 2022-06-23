@@ -214,7 +214,7 @@ func (a VoicemailApi) GetVoicemailGroupMailbox(groupId string) (*Voicemailmailbo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmailboxinfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -289,7 +289,7 @@ func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessageentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -360,7 +360,7 @@ func (a VoicemailApi) GetVoicemailGroupPolicy(groupId string) (*Voicemailgrouppo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailgrouppolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -425,7 +425,7 @@ func (a VoicemailApi) GetVoicemailMailbox() (*Voicemailmailboxinfo, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmailboxinfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -490,7 +490,7 @@ func (a VoicemailApi) GetVoicemailMeMailbox() (*Voicemailmailboxinfo, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmailboxinfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -559,7 +559,7 @@ func (a VoicemailApi) GetVoicemailMeMessages(pageSize int, pageNumber int) (*Voi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessageentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -624,7 +624,7 @@ func (a VoicemailApi) GetVoicemailMePolicy() (*Voicemailuserpolicy, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailuserpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -697,7 +697,7 @@ func (a VoicemailApi) GetVoicemailMessage(messageId string, expand []string) (*V
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -770,7 +770,7 @@ func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmediainfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -839,7 +839,7 @@ func (a VoicemailApi) GetVoicemailMessages(ids string, expand []string) (*Voicem
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessageentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -904,7 +904,7 @@ func (a VoicemailApi) GetVoicemailPolicy() (*Voicemailorganizationpolicy, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailorganizationpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -979,7 +979,7 @@ func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessageentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1053,7 +1053,7 @@ func (a VoicemailApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemai
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1124,7 +1124,7 @@ func (a VoicemailApi) GetVoicemailUserpolicy(userId string) (*Voicemailuserpolic
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailuserpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1203,7 +1203,7 @@ func (a VoicemailApi) PatchVoicemailGroupPolicy(groupId string, body Voicemailgr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailgrouppolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1276,7 +1276,7 @@ func (a VoicemailApi) PatchVoicemailMePolicy(body Voicemailuserpolicy) (*Voicema
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailuserpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1357,7 +1357,7 @@ func (a VoicemailApi) PatchVoicemailMessage(messageId string, body Voicemailmess
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1436,7 +1436,7 @@ func (a VoicemailApi) PatchVoicemailUserpolicy(userId string, body Voicemailuser
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailuserpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1504,7 +1504,7 @@ func (a VoicemailApi) PostVoicemailMessages(body Copyvoicemailmessage) (*Voicema
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1577,7 +1577,7 @@ func (a VoicemailApi) PostVoicemailSearch(body Voicemailsearchrequest) (*Voicema
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1658,7 +1658,7 @@ func (a VoicemailApi) PutVoicemailMessage(messageId string, body Voicemailmessag
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1731,7 +1731,7 @@ func (a VoicemailApi) PutVoicemailPolicy(body Voicemailorganizationpolicy) (*Voi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailorganizationpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1810,7 +1810,7 @@ func (a VoicemailApi) PutVoicemailUserpolicy(userId string, body Voicemailuserpo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailuserpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -101,7 +101,7 @@ func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endW
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Leaderboard" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -196,7 +196,7 @@ func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filter
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Leaderboard" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -275,7 +275,7 @@ func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Overallbestpoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -340,7 +340,7 @@ func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Overallbestpoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -417,7 +417,7 @@ func (a GamificationApi) GetGamificationMetric(metricId string, workday time.Tim
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -488,7 +488,7 @@ func (a GamificationApi) GetGamificationMetricdefinition(metricDefinitionId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metricdefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -555,7 +555,7 @@ func (a GamificationApi) GetGamificationMetricdefinitions() (*Getmetricdefinitio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Getmetricdefinitionsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -626,7 +626,7 @@ func (a GamificationApi) GetGamificationMetrics(performanceProfileId string, wor
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Getmetricsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -697,7 +697,7 @@ func (a GamificationApi) GetGamificationProfile(profileId string) (*Performancep
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -768,7 +768,7 @@ func (a GamificationApi) GetGamificationProfileMembers(profileId string) (*Membe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Memberlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -847,7 +847,7 @@ func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -924,7 +924,7 @@ func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Getmetricresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -997,7 +997,7 @@ func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Getmetricsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1062,7 +1062,7 @@ func (a GamificationApi) GetGamificationProfiles() (*Getprofilesresponse, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Getprofilesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1135,7 +1135,7 @@ func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1202,7 +1202,7 @@ func (a GamificationApi) GetGamificationProfilesUsersMe(workday time.Time) (*Per
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1276,7 +1276,7 @@ func (a GamificationApi) GetGamificationScorecards(workday time.Time, expand []s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workdaymetriclisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1355,7 +1355,7 @@ func (a GamificationApi) GetGamificationScorecardsAttendance(startWorkday time.T
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Attendancestatuslisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1420,7 +1420,7 @@ func (a GamificationApi) GetGamificationScorecardsBestpoints() (*Userbestpoints,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userbestpoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1492,7 +1492,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Alltimepoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1564,7 +1564,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Tim
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Singleworkdayaveragepoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1645,7 +1645,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workdaypointstrend" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1725,7 +1725,7 @@ func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday ti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workdaymetriclisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1810,7 +1810,7 @@ func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Attendancestatuslisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1881,7 +1881,7 @@ func (a GamificationApi) GetGamificationScorecardsUserBestpoints(userId string) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userbestpoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1959,7 +1959,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Alltimepoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2046,7 +2046,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workdaypointstrend" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2133,7 +2133,7 @@ func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workdayvaluestrend" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2219,7 +2219,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersPointsAverage(filterType 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Singleworkdayaveragepoints" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2307,7 +2307,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesAverage(filterType 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Singleworkdayaveragevalues" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2402,7 +2402,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workdayvaluestrend" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2476,7 +2476,7 @@ func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Tim
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Singleworkdayaveragevalues" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2561,7 +2561,7 @@ func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workdayvaluestrend" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2626,7 +2626,7 @@ func (a GamificationApi) GetGamificationStatus() (*Gamificationstatus, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gamificationstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2697,7 +2697,7 @@ func (a GamificationApi) GetGamificationTemplate(templateId string) (*Objectivet
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Objectivetemplate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2762,7 +2762,7 @@ func (a GamificationApi) GetGamificationTemplates() (*Gettemplatesresponse, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gettemplatesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2837,7 +2837,7 @@ func (a GamificationApi) PostGamificationMetrics(body Createmetric) (*Metric, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2908,7 +2908,7 @@ func (a GamificationApi) PostGamificationProfileActivate(profileId string) (*Per
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2979,7 +2979,7 @@ func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*P
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3058,7 +3058,7 @@ func (a GamificationApi) PostGamificationProfileMembers(profileId string, body A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3137,7 +3137,7 @@ func (a GamificationApi) PostGamificationProfileMembersValidate(profileId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assignmentvalidation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3222,7 +3222,7 @@ func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3301,7 +3301,7 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3376,7 +3376,7 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3459,7 +3459,7 @@ func (a GamificationApi) PutGamificationMetric(metricId string, body Createmetri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3533,7 +3533,7 @@ func (a GamificationApi) PutGamificationProfile(profileId string, body Performan
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3618,7 +3618,7 @@ func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3691,7 +3691,7 @@ func (a GamificationApi) PutGamificationStatus(status Gamificationstatus) (*Gami
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gamificationstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

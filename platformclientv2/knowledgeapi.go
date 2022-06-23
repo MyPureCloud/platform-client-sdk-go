@@ -90,7 +90,7 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebase(knowledgeBaseId string) (*Kno
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -173,7 +173,7 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgecategory" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -256,7 +256,7 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgedocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -403,7 +403,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebase(knowledgeBaseId string) (*Knowle
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -490,7 +490,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Categorylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -573,7 +573,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgeextendedcategory" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -656,7 +656,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgedocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -751,7 +751,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Documentlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -834,7 +834,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledge
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgeimport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -917,7 +917,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgetraining" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1004,7 +1004,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Traininglisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1087,7 +1087,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgebaselisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1166,7 +1166,7 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body K
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1257,7 +1257,7 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgeextendedcategory" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1348,7 +1348,7 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgedocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1433,7 +1433,7 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBase
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Documentlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1524,7 +1524,7 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowled
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgeimport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1597,7 +1597,7 @@ func (a KnowledgeApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uplo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Uploadurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1682,7 +1682,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBase
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgeextendedcategory" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1767,7 +1767,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgedocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1852,7 +1852,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowled
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgeimport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1935,7 +1935,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgetraining" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2012,7 +2012,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgetraining" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2086,7 +2086,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2159,7 +2159,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebases(body Knowledgebase) (*Knowledg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

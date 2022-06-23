@@ -427,7 +427,7 @@ func (a ArchitectApi) DeleteArchitectPrompts(id []string) (*Operation, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -763,7 +763,7 @@ func (a ArchitectApi) DeleteFlows(id []string) (*Operation, *APIResponse, error)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -974,7 +974,7 @@ func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*interface{}, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1060,7 +1060,7 @@ func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dependencyobjectentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1125,7 +1125,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingBuild() (*Dependencystatus, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dependencystatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1217,7 +1217,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Consumedresourcesentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1306,7 +1306,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Consumingresourcesentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1385,7 +1385,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(nam
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dependencyobjectentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1471,7 +1471,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dependencyobject" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1542,7 +1542,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingType(typeId string) (*Depend
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dependencytype" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1611,7 +1611,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int, pageSi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dependencytypeentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1688,7 +1688,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(nam
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dependencyobjectentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1759,7 +1759,7 @@ func (a ArchitectApi) GetArchitectEmergencygroup(emergencyGroupId string) (*Emer
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emergencygroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1834,7 +1834,7 @@ func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int, pageSize int, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emergencygrouplisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1905,7 +1905,7 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ivr" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1980,7 +1980,7 @@ func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ivrentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2051,7 +2051,7 @@ func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Prompt" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2138,7 +2138,7 @@ func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, histor
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Historylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2215,7 +2215,7 @@ func (a ArchitectApi) GetArchitectPromptResource(promptId string, languageCode s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Promptasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2292,7 +2292,7 @@ func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber in
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Promptassetentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2373,7 +2373,7 @@ func (a ArchitectApi) GetArchitectPrompts(pageNumber int, pageSize int, name []s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Promptentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2444,7 +2444,7 @@ func (a ArchitectApi) GetArchitectSchedule(scheduleId string) (*Schedule, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2515,7 +2515,7 @@ func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedulegroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2594,7 +2594,7 @@ func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int, pageSize int, s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedulegroupentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2671,7 +2671,7 @@ func (a ArchitectApi) GetArchitectSchedules(pageNumber int, pageSize int, sortBy
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Scheduleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2742,7 +2742,7 @@ func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Systemprompt" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2829,7 +2829,7 @@ func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Historylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2906,7 +2906,7 @@ func (a ArchitectApi) GetArchitectSystempromptResource(promptId string, language
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Systempromptasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2985,7 +2985,7 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Systempromptassetentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3064,7 +3064,7 @@ func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, so
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Systempromptentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3137,7 +3137,7 @@ func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3224,7 +3224,7 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Historylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3297,7 +3297,7 @@ func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3376,7 +3376,7 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3455,7 +3455,7 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3532,7 +3532,7 @@ func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int, pageSize in
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowversionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3637,7 +3637,7 @@ func (a ArchitectApi) GetFlows(varType []string, pageNumber int, pageSize int, s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3712,7 +3712,7 @@ func (a ArchitectApi) GetFlowsDatatable(datatableId string, expand string) (*Dat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatable" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3791,7 +3791,7 @@ func (a ArchitectApi) GetFlowsDatatableExportJob(datatableId string, exportJobId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatableexportjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3870,7 +3870,7 @@ func (a ArchitectApi) GetFlowsDatatableImportJob(datatableId string, importJobId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatableimportjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3947,7 +3947,7 @@ func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatableimportentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4028,7 +4028,7 @@ func (a ArchitectApi) GetFlowsDatatableRow(datatableId string, rowId string, sho
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4107,7 +4107,7 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatablerowentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4188,7 +4188,7 @@ func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int, pageSize
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatablesdomainentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4263,7 +4263,7 @@ func (a ArchitectApi) GetFlowsDatatablesDivisionview(datatableId string, expand 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatable" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4344,7 +4344,7 @@ func (a ArchitectApi) GetFlowsDatatablesDivisionviews(expand string, pageNumber 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatablesdomainentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4435,7 +4435,7 @@ func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowdivisionviewentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4506,7 +4506,7 @@ func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowruntimeexecution" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4579,7 +4579,7 @@ func (a ArchitectApi) GetFlowsJob(jobId string, expand []string) (*Architectjobs
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Architectjobstateresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4652,7 +4652,7 @@ func (a ArchitectApi) GetFlowsMilestone(milestoneId string) (*Flowmilestone, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowmilestone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4737,7 +4737,7 @@ func (a ArchitectApi) GetFlowsMilestones(pageNumber int, pageSize int, sortBy st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowmilestonelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4818,7 +4818,7 @@ func (a ArchitectApi) GetFlowsMilestonesDivisionviews(pageNumber int, pageSize i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowmilestonedivisionviewentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4891,7 +4891,7 @@ func (a ArchitectApi) GetFlowsOutcome(flowOutcomeId string) (*Flowoutcome, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowoutcome" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4976,7 +4976,7 @@ func (a ArchitectApi) GetFlowsOutcomes(pageNumber int, pageSize int, sortBy stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowoutcomelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5057,7 +5057,7 @@ func (a ArchitectApi) GetFlowsOutcomesDivisionviews(pageNumber int, pageSize int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowoutcomedivisionviewentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5190,7 +5190,7 @@ func (a ArchitectApi) PostArchitectEmergencygroups(body Emergencygroup) (*Emerge
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emergencygroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5263,7 +5263,7 @@ func (a ArchitectApi) PostArchitectIvrs(body Ivr) (*Ivr, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ivr" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5336,7 +5336,7 @@ func (a ArchitectApi) PostArchitectPromptHistory(promptId string) (*Operation, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5415,7 +5415,7 @@ func (a ArchitectApi) PostArchitectPromptResources(promptId string, body Prompta
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Promptasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5488,7 +5488,7 @@ func (a ArchitectApi) PostArchitectPrompts(body Prompt) (*Prompt, *APIResponse, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Prompt" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5561,7 +5561,7 @@ func (a ArchitectApi) PostArchitectSchedulegroups(body Schedulegroup) (*Schedule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedulegroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5634,7 +5634,7 @@ func (a ArchitectApi) PostArchitectSchedules(body Schedule) (*Schedule, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5707,7 +5707,7 @@ func (a ArchitectApi) PostArchitectSystempromptHistory(promptId string) (*Operat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5786,7 +5786,7 @@ func (a ArchitectApi) PostArchitectSystempromptResources(promptId string, body S
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Systempromptasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5859,7 +5859,7 @@ func (a ArchitectApi) PostFlowHistory(flowId string) (*Operation, *APIResponse, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5938,7 +5938,7 @@ func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowve
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6013,7 +6013,7 @@ func (a ArchitectApi) PostFlows(body Flow, language string) (*Flow, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6087,7 +6087,7 @@ func (a ArchitectApi) PostFlowsActionsCheckin(flow string) (*Operation, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6159,7 +6159,7 @@ func (a ArchitectApi) PostFlowsActionsCheckout(flow string) (*Flow, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6231,7 +6231,7 @@ func (a ArchitectApi) PostFlowsActionsDeactivate(flow string) (*Flow, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6307,7 +6307,7 @@ func (a ArchitectApi) PostFlowsActionsPublish(flow string, version string) (*Ope
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6379,7 +6379,7 @@ func (a ArchitectApi) PostFlowsActionsRevert(flow string) (*Flow, *APIResponse, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6453,7 +6453,7 @@ func (a ArchitectApi) PostFlowsActionsUnlock(flow string) (*Flow, *APIResponse, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6526,7 +6526,7 @@ func (a ArchitectApi) PostFlowsDatatableExportJobs(datatableId string) (*Datatab
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatableexportjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6607,7 +6607,7 @@ func (a ArchitectApi) PostFlowsDatatableImportJobs(datatableId string, body Data
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatableimportjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6688,7 +6688,7 @@ func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow ma
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6763,7 +6763,7 @@ func (a ArchitectApi) PostFlowsDatatables(body Datatable) (*Datatable, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatable" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6838,7 +6838,7 @@ func (a ArchitectApi) PostFlowsExecutions(flowLaunchRequest Flowexecutionlaunchr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowexecutionlaunchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6903,7 +6903,7 @@ func (a ArchitectApi) PostFlowsJobs() (*Registerarchitectjobresponse, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Registerarchitectjobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6971,7 +6971,7 @@ func (a ArchitectApi) PostFlowsMilestones(body Flowmilestone) (*Flowmilestone, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowmilestone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7041,7 +7041,7 @@ func (a ArchitectApi) PostFlowsOutcomes(body Flowoutcome) (*Flowoutcome, *APIRes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowoutcome" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7120,7 +7120,7 @@ func (a ArchitectApi) PutArchitectEmergencygroup(emergencyGroupId string, body E
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Emergencygroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7199,7 +7199,7 @@ func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIRespons
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ivr" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7278,7 +7278,7 @@ func (a ArchitectApi) PutArchitectPrompt(promptId string, body Prompt) (*Prompt,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Prompt" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7363,7 +7363,7 @@ func (a ArchitectApi) PutArchitectPromptResource(promptId string, languageCode s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Promptasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7442,7 +7442,7 @@ func (a ArchitectApi) PutArchitectSchedule(scheduleId string, body Schedule) (*S
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7521,7 +7521,7 @@ func (a ArchitectApi) PutArchitectSchedulegroup(scheduleGroupId string, body Sch
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schedulegroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7606,7 +7606,7 @@ func (a ArchitectApi) PutArchitectSystempromptResource(promptId string, language
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Systempromptasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7685,7 +7685,7 @@ func (a ArchitectApi) PutFlow(flowId string, body Flow) (*Flow, *APIResponse, er
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7768,7 +7768,7 @@ func (a ArchitectApi) PutFlowsDatatable(datatableId string, body Datatable, expa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Datatable" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7850,7 +7850,7 @@ func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7924,7 +7924,7 @@ func (a ArchitectApi) PutFlowsMilestone(milestoneId string, body Flowmilestone) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowmilestone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8000,7 +8000,7 @@ func (a ArchitectApi) PutFlowsOutcome(flowOutcomeId string, body Flowoutcome) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Operation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

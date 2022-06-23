@@ -86,7 +86,7 @@ func (a SearchApi) GetDocumentationGknSearch(q64 string) (*Gkndocumentationsearc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gkndocumentationsearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -153,7 +153,7 @@ func (a SearchApi) GetDocumentationSearch(q64 string) (*Documentationsearchrespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Documentationsearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -227,7 +227,7 @@ func (a SearchApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Groupssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -301,7 +301,7 @@ func (a SearchApi) GetLocationsSearch(q64 string, expand []string) (*Locationsse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -377,7 +377,7 @@ func (a SearchApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonno
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -453,7 +453,7 @@ func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -529,7 +529,7 @@ func (a SearchApi) GetUsersSearch(q64 string, expand []string, integrationPresen
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -603,7 +603,7 @@ func (a SearchApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemailss
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -676,7 +676,7 @@ func (a SearchApi) PostAnalyticsConversationsTranscriptsQuery(body Transcriptcon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationwithoutattributesmultigetresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -744,7 +744,7 @@ func (a SearchApi) PostDocumentationGknSearch(body Gkndocumentationsearchrequest
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gkndocumentationsearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -812,7 +812,7 @@ func (a SearchApi) PostDocumentationSearch(body Documentationsearchrequest) (*Do
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Documentationsearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -885,7 +885,7 @@ func (a SearchApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Groupssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -959,7 +959,7 @@ func (a SearchApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, body
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Knowledgesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1032,7 +1032,7 @@ func (a SearchApi) PostLocationsSearch(body Locationsearchrequest) (*Locationsse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1107,7 +1107,7 @@ func (a SearchApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearch
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1182,7 +1182,7 @@ func (a SearchApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1255,7 +1255,7 @@ func (a SearchApi) PostSpeechandtextanalyticsTranscriptsSearch(body Transcriptse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonsearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1328,7 +1328,7 @@ func (a SearchApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1401,7 +1401,7 @@ func (a SearchApi) PostVoicemailSearch(body Voicemailsearchrequest) (*Voicemails
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Voicemailssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

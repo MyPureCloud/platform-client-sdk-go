@@ -90,7 +90,7 @@ func (a LicenseApi) GetLicenseDefinition(licenseId string) (*Licensedefinition, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Licensedefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -155,7 +155,7 @@ func (a LicenseApi) GetLicenseDefinitions() ([]Licensedefinition, *APIResponse, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Licensedefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -226,7 +226,7 @@ func (a LicenseApi) GetLicenseToggle(featureName string) (*Licenseorgtoggle, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Licenseorgtoggle" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -297,7 +297,7 @@ func (a LicenseApi) GetLicenseUser(userId string) (*Licenseuser, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Licenseuser" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -368,7 +368,7 @@ func (a LicenseApi) GetLicenseUsers(pageSize int, pageNumber int) (*Userlicenses
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userlicensesentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -436,7 +436,7 @@ func (a LicenseApi) PostLicenseInfer(body []string) ([]string, *APIResponse, err
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -504,7 +504,7 @@ func (a LicenseApi) PostLicenseOrganization(body Licensebatchassignmentrequest) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Licenseupdatestatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -575,7 +575,7 @@ func (a LicenseApi) PostLicenseToggle(featureName string) (*Licenseorgtoggle, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Licenseorgtoggle" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -643,7 +643,7 @@ func (a LicenseApi) PostLicenseUsers(body []string) (*map[string]interface{}, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -91,7 +91,7 @@ func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Fieldconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -156,7 +156,7 @@ func (a OrganizationApi) GetOrganizationsEmbeddedintegration() (*Embeddedintegra
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Embeddedintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -221,7 +221,7 @@ func (a OrganizationApi) GetOrganizationsIpaddressauthentication() (*Ipaddressau
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ipaddressauthentication" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -292,7 +292,7 @@ func (a OrganizationApi) GetOrganizationsLimitsChangerequest(requestId string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Limitchangerequestdetails" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -369,7 +369,7 @@ func (a OrganizationApi) GetOrganizationsLimitsChangerequests(after int, before 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Limitchangerequestsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -434,7 +434,7 @@ func (a OrganizationApi) GetOrganizationsLimitsDocs() (*Urlresponse, *APIRespons
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Urlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -505,7 +505,7 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespace(namespaceName string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Limitsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -576,7 +576,7 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaceDefaults(namespaceName s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Limitsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -645,7 +645,7 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumb
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -710,7 +710,7 @@ func (a OrganizationApi) GetOrganizationsMe() (*Organization, *APIResponse, erro
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -775,7 +775,7 @@ func (a OrganizationApi) GetOrganizationsWhitelist() (*Orgwhitelistsettings, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Orgwhitelistsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -854,7 +854,7 @@ func (a OrganizationApi) PatchOrganizationsFeature(featureName string, enabled F
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationfeatures" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -927,7 +927,7 @@ func (a OrganizationApi) PutOrganizationsEmbeddedintegration(body Embeddedintegr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Embeddedintegration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1000,7 +1000,7 @@ func (a OrganizationApi) PutOrganizationsIpaddressauthentication(body Ipaddressa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Ipaddressauthentication" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1068,7 +1068,7 @@ func (a OrganizationApi) PutOrganizationsMe(body Organization) (*Organization, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1141,7 +1141,7 @@ func (a OrganizationApi) PutOrganizationsWhitelist(body Orgwhitelistsettings) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Orgwhitelistsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

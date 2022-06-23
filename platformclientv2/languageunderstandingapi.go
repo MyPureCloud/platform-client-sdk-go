@@ -429,7 +429,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomain" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -520,7 +520,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nlufeedbacklisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -599,7 +599,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedback
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nlufeedbackresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -678,7 +678,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -755,7 +755,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(do
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainversionqualityreport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -832,7 +832,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainversionlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -901,7 +901,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -972,7 +972,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Miner" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1049,7 +1049,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Draft" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1120,7 +1120,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDrafts(minerId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Draftlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1199,7 +1199,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntent(minerId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Minerintent" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1272,7 +1272,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Minedintentslisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1337,7 +1337,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners() (*Minerlistin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Minerlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1416,7 +1416,7 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomain" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1496,7 +1496,7 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Draft" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1575,7 +1575,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domain
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nlufeedbackresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1660,7 +1660,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(d
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludetectionresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1737,7 +1737,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionPublish(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1814,7 +1814,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainversiontrainingresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1893,7 +1893,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domain
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1966,7 +1966,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomains(body Nludomai
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomain" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2045,7 +2045,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Draft" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2119,7 +2119,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Miner" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2192,7 +2192,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMiners(body Miner) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Miner" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2277,7 +2277,7 @@ func (a LanguageUnderstandingApi) PutLanguageunderstandingDomainVersion(domainId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Nludomainversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

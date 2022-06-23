@@ -154,7 +154,7 @@ func (a FaxApi) GetFaxDocument(documentId string) (*Faxdocument, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Faxdocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -225,7 +225,7 @@ func (a FaxApi) GetFaxDocumentContent(documentId string) (*Downloadresponse, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Downloadresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -294,7 +294,7 @@ func (a FaxApi) GetFaxDocuments(pageSize int, pageNumber int) (*Faxdocumententit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Faxdocumententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -359,7 +359,7 @@ func (a FaxApi) GetFaxSummary() (*Faxsummary, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Faxsummary" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -438,7 +438,7 @@ func (a FaxApi) PutFaxDocument(documentId string, body Faxdocument) (*Faxdocumen
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Faxdocument" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

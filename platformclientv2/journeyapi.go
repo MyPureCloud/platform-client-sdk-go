@@ -348,7 +348,7 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actionmap" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -429,7 +429,7 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actionmaplisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -500,7 +500,7 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actiontarget" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -569,7 +569,7 @@ func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Acti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actiontargetlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -640,7 +640,7 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actiontemplate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -719,7 +719,7 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actiontemplatelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -790,7 +790,7 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outcome" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -867,7 +867,7 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outcomelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -938,7 +938,7 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Journeysegment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1017,7 +1017,7 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Segmentlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1088,7 +1088,7 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Session" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1159,7 +1159,7 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outcomescoresresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1233,7 +1233,7 @@ func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionma
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actionmap" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1307,7 +1307,7 @@ func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchac
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actiontarget" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1381,7 +1381,7 @@ func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Pat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actiontemplate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1455,7 +1455,7 @@ func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*O
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outcome" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1529,7 +1529,7 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Journeysegment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1602,7 +1602,7 @@ func (a JourneyApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregation
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Journeyaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1670,7 +1670,7 @@ func (a JourneyApi) PostJourneyActionmaps(body Actionmap) (*Actionmap, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actionmap" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1738,7 +1738,7 @@ func (a JourneyApi) PostJourneyActiontemplates(body Actiontemplate) (*Actiontemp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Actiontemplate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1806,7 +1806,7 @@ func (a JourneyApi) PostJourneyOutcomes(body Outcome) (*Outcome, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outcome" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1874,7 +1874,7 @@ func (a JourneyApi) PostJourneySegments(body Journeysegment) (*Journeysegment, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Journeysegment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

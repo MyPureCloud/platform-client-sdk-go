@@ -152,7 +152,7 @@ func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string, inclu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Availabletopicentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -223,7 +223,7 @@ func (a NotificationsApi) GetNotificationsChannelSubscriptions(channelId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Channeltopicentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -290,7 +290,7 @@ func (a NotificationsApi) GetNotificationsChannels(includechannels string) (*Cha
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Channelentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -435,7 +435,7 @@ func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Channeltopicentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -502,7 +502,7 @@ func (a NotificationsApi) PostNotificationsChannels() (*Channel, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Channel" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -581,7 +581,7 @@ func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Channeltopicentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

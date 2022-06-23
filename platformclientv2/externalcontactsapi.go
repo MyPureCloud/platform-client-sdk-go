@@ -90,7 +90,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -167,7 +167,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -302,7 +302,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganiza
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -379,7 +379,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrga
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -514,7 +514,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -587,7 +587,7 @@ func (a ExternalContactsApi) GetExternalcontactsContact(contactId string, expand
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalcontact" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -666,7 +666,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, no
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Note" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -745,7 +745,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Notelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -820,7 +820,7 @@ func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumbe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -891,7 +891,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchema(schemaId string) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -968,7 +968,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersion(schemaId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1039,7 +1039,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersions(schemaId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1104,7 +1104,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemas() (*Dataschemali
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschemalisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1179,7 +1179,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalorganization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1260,7 +1260,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Contactlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1339,7 +1339,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganiz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Note" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1418,7 +1418,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Notelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1497,7 +1497,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Relationshiplisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1576,7 +1576,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, page
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalorganizationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1647,7 +1647,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchema(schemaId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1724,7 +1724,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersion(schem
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1795,7 +1795,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersions(sche
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1860,7 +1860,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemas() (*Datasch
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschemalisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1933,7 +1933,7 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Relationship" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2007,7 +2007,7 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reversewhitepageslookupresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2076,7 +2076,7 @@ func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cursorcontactlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2145,7 +2145,7 @@ func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cursornotelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2214,7 +2214,7 @@ func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cur
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cursororganizationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2283,7 +2283,7 @@ func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cur
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cursorrelationshiplisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2356,7 +2356,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContacts(body Bulkidsreques
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkfetchcontactsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2429,7 +2429,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsAdd(body Bulkcontac
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkcontactsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2502,7 +2502,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsRemove(body Bulkids
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkdeleteresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2575,7 +2575,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsUpdate(body Bulkcon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkcontactsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2648,7 +2648,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotes(body Bulkidsrequest) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkfetchnotesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2721,7 +2721,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesAdd(body Bulknotesrequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulknotesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2794,7 +2794,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesRemove(body Bulkidsreq
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkdeleteresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2867,7 +2867,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesUpdate(body Bulknotesr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulknotesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2940,7 +2940,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizations(body Bulkidsr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkfetchorganizationsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3013,7 +3013,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsAdd(body Bulko
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkorganizationsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3086,7 +3086,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsRemove(body Bu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkdeleteresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3159,7 +3159,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsUpdate(body Bu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkorganizationsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3232,7 +3232,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationships(body Bulkidsr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkfetchrelationshipsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3305,7 +3305,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsAdd(body Bulkr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkrelationshipsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3378,7 +3378,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsRemove(body Bu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkdeleteresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3451,7 +3451,7 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsUpdate(body Bu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Bulkrelationshipsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3530,7 +3530,7 @@ func (a ExternalContactsApi) PostExternalcontactsContactNotes(contactId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Note" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3603,7 +3603,7 @@ func (a ExternalContactsApi) PostExternalcontactsContacts(body Externalcontact) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalcontact" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3676,7 +3676,7 @@ func (a ExternalContactsApi) PostExternalcontactsContactsSchemas(body Dataschema
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3755,7 +3755,7 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationNotes(externalOrgan
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Note" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3828,7 +3828,7 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizations(body Externalorga
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalorganization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3901,7 +3901,7 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationsSchemas(body Datas
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3974,7 +3974,7 @@ func (a ExternalContactsApi) PostExternalcontactsRelationships(body Relationship
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Relationship" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4053,7 +4053,7 @@ func (a ExternalContactsApi) PutExternalcontactsContact(contactId string, body E
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalcontact" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4138,7 +4138,7 @@ func (a ExternalContactsApi) PutExternalcontactsContactNote(contactId string, no
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Note" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4217,7 +4217,7 @@ func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4370,7 +4370,7 @@ func (a ExternalContactsApi) PutExternalcontactsOrganization(externalOrganizatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalorganization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4455,7 +4455,7 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationNote(externalOrganiz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Note" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4532,7 +4532,7 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(ext
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Externalorganizationtrustorlink" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4611,7 +4611,7 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationsSchema(schemaId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4690,7 +4690,7 @@ func (a ExternalContactsApi) PutExternalcontactsRelationship(relationshipId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Relationship" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

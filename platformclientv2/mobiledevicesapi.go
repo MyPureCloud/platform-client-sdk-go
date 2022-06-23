@@ -154,7 +154,7 @@ func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIRes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userdevice" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -225,7 +225,7 @@ func (a MobileDevicesApi) GetMobiledevices(pageSize int, pageNumber int, sortOrd
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Directoryuserdeviceslisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -298,7 +298,7 @@ func (a MobileDevicesApi) PostMobiledevices(body Userdevice) (*Userdevice, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userdevice" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -372,7 +372,7 @@ func (a MobileDevicesApi) PutMobiledevice(deviceId string, body Userdevice) (*Us
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userdevice" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

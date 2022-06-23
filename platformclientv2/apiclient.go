@@ -222,7 +222,7 @@ func (c *APIClient) handleExpiredAccessToken() error {
 		startTime := time.Now().Unix()
 		sleepDuration := time.Millisecond * 200
 		// Check if we've gone over the wait threshold
-		for time.Now().Unix() - startTime < int64(c.configuration.RefreshTokenWaitTime) {
+		for time.Now().Unix()-startTime < int64(c.configuration.RefreshTokenWaitTime) {
 			time.Sleep(sleepDuration) // Sleep for 200ms on every iteration
 			if atomic.LoadInt64(&c.configuration.RefreshInProgress) == 0 {
 				return nil
@@ -232,13 +232,34 @@ func (c *APIClient) handleExpiredAccessToken() error {
 	}
 }
 
-// Int32 is an easy way to get a pointer
+// Int32 is an easy way to get an int32 pointer
 func Int32(v int) *int32 {
 	p := int32(v)
 	return &p
 }
 
-// String is an easy way to get a pointer
+// Int64 is an easy way to get an int64 pointer
+func Int64(v int) *int64 {
+	p := int64(v)
+	return &p
+}
+
+// Int is an easy way to get an int pointer
+func Int(v int) *int {
+	return &v
+}
+
+// Float32 is an easy way to get a float32 pointer
+func Float32(v float32) *float32 {
+	return &v
+}
+
+// Float64 is an easy way to get a float64 pointer
+func Float64(v float64) *float64 {
+	return &v
+}
+
+// String is an easy way to get a string pointer
 func String(v string) *string {
 	return &v
 }

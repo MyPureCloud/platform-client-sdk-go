@@ -154,7 +154,7 @@ func (a GreetingsApi) GetGreeting(greetingId string) (*Greeting, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Greeting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -227,7 +227,7 @@ func (a GreetingsApi) GetGreetingMedia(greetingId string, formatId string) (*Gre
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Greetingmediainfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -296,7 +296,7 @@ func (a GreetingsApi) GetGreetings(pageSize int, pageNumber int) (*Domainentityl
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -361,7 +361,7 @@ func (a GreetingsApi) GetGreetingsDefaults() (*Defaultgreetinglist, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Defaultgreetinglist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -436,7 +436,7 @@ func (a GreetingsApi) GetGroupGreetings(groupId string, pageSize int, pageNumber
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Greetinglisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -507,7 +507,7 @@ func (a GreetingsApi) GetGroupGreetingsDefaults(groupId string) (*Defaultgreetin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Defaultgreetinglist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -582,7 +582,7 @@ func (a GreetingsApi) GetUserGreetings(userId string, pageSize int, pageNumber i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -653,7 +653,7 @@ func (a GreetingsApi) GetUserGreetingsDefaults(userId string) (*Defaultgreetingl
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Defaultgreetinglist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -726,7 +726,7 @@ func (a GreetingsApi) PostGreetings(body Greeting) (*Greeting, *APIResponse, err
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Greeting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -805,7 +805,7 @@ func (a GreetingsApi) PostGroupGreetings(groupId string, body Greeting) (*Greeti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Greeting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -884,7 +884,7 @@ func (a GreetingsApi) PostUserGreetings(userId string, body Greeting) (*Greeting
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Greeting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -963,7 +963,7 @@ func (a GreetingsApi) PutGreeting(greetingId string, body Greeting) (*Greeting, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Greeting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1036,7 +1036,7 @@ func (a GreetingsApi) PutGreetingsDefaults(body Defaultgreetinglist) (*Defaultgr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Defaultgreetinglist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1115,7 +1115,7 @@ func (a GreetingsApi) PutGroupGreetingsDefaults(groupId string, body Defaultgree
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Defaultgreetinglist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1194,7 +1194,7 @@ func (a GreetingsApi) PutUserGreetingsDefaults(userId string, body Defaultgreeti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Defaultgreetinglist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -342,7 +342,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversation(conversati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversationmetrics" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -419,7 +419,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Transcripturl" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -490,7 +490,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgram(programId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Program" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -561,7 +561,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramMappings(program
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Programmappings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -630,7 +630,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Programsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -701,7 +701,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsGeneralJob(jobI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Generalprogramjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -770,7 +770,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsMappings(nextPa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Programsmappingsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -841,7 +841,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsPublishjob(jobI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Programjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -910,7 +910,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsUnpublished(nex
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Unpublishedprogramsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -975,7 +975,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentDialects() (*E
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Entitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1042,7 +1042,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentfeedback(diale
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sentimentfeedbackentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1107,7 +1107,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSettings() (*Speechtext
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Speechtextanalyticssettingsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1178,7 +1178,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Topic" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1257,7 +1257,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Topicsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1322,7 +1322,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsDialects() (*Enti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Entitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1389,7 +1389,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsGeneral(dialect s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Generaltopicsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1460,7 +1460,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Topicjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1533,7 +1533,7 @@ func (a SpeechTextAnalyticsApi) PatchSpeechandtextanalyticsSettings(body Speecht
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Speechtextanalyticssettingsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1606,7 +1606,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsPrograms(body Programr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Program" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1679,7 +1679,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsGeneralJobs(bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Generalprogramjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1752,7 +1752,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsPublishjobs(bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Programjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1825,7 +1825,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsSentimentfeedback(body
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sentimentfeedback" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1898,7 +1898,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopics(body Topicreque
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Topic" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1971,7 +1971,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopicsPublishjobs(body
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Topicjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2044,7 +2044,7 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTranscriptsSearch(body
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonsearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2123,7 +2123,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgram(programId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Program" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2202,7 +2202,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramMappings(program
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Programmappings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2275,7 +2275,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsSettings(body Speechtex
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Speechtextanalyticssettingsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2354,7 +2354,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsTopic(topicId string, b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Topic" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

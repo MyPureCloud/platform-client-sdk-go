@@ -84,7 +84,7 @@ func (a AuditApi) GetAuditsQueryRealtimeServicemapping() (*Auditqueryservicemapp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Auditqueryservicemapping" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -149,7 +149,7 @@ func (a AuditApi) GetAuditsQueryServicemapping() (*Auditqueryservicemapping, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Auditqueryservicemapping" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -220,7 +220,7 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Auditqueryexecutionstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -297,7 +297,7 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Auditqueryexecutionresultsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -370,7 +370,7 @@ func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutions
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Auditqueryexecutionstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -445,7 +445,7 @@ func (a AuditApi) PostAuditsQueryRealtime(body Auditrealtimequeryrequest, expand
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Auditrealtimequeryresultsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

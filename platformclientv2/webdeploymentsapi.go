@@ -224,7 +224,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersion(configurationId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymentconfigurationversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -297,7 +297,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymentconfigurationversionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -368,7 +368,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configura
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymentconfigurationversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -435,7 +435,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished boo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymentconfigurationversionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -506,7 +506,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*We
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -571,7 +571,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployments() (*Webdeploymententityl
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -642,7 +642,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurationVersionsDraftPublish(c
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymentconfigurationversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -715,7 +715,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurations(configurationVersion
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymentconfigurationversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -788,7 +788,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsDeployments(deployment Webdeploymen
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -867,7 +867,7 @@ func (a WebDeploymentsApi) PutWebdeploymentsConfigurationVersionsDraft(configura
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeploymentconfigurationversion" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -946,7 +946,7 @@ func (a WebDeploymentsApi) PutWebdeploymentsDeployment(deploymentId string, depl
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

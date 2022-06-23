@@ -92,7 +92,7 @@ func (a UploadsApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Upload
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Uploadurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -171,7 +171,7 @@ func (a UploadsApi) PostLanguageunderstandingMinerUploads(minerId string, body i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Uploadurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -244,7 +244,7 @@ func (a UploadsApi) PostUploadsPublicassetsImages(body Uploadurlrequest) (*Uploa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Uploadurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -317,7 +317,7 @@ func (a UploadsApi) PostUploadsRecordings(body Uploadurlrequest) (*Uploadurlresp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Uploadurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -390,7 +390,7 @@ func (a UploadsApi) PostUploadsWorkforcemanagementHistoricaldataCsv(body Uploadu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Uploadurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

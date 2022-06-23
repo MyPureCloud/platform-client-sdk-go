@@ -84,7 +84,7 @@ func (a ChatApi) GetChatSettings() (*Chatsettings, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Chatsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -157,7 +157,7 @@ func (a ChatApi) PatchChatSettings(body Chatsettings) (*Chatsettings, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Chatsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -230,7 +230,7 @@ func (a ChatApi) PutChatSettings(body Chatsettings) (*Chatsettings, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Chatsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

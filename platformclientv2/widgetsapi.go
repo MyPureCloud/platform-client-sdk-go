@@ -154,7 +154,7 @@ func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Widgetdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -219,7 +219,7 @@ func (a WidgetsApi) GetWidgetsDeployments() (*Widgetdeploymententitylisting, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Widgetdeploymententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -292,7 +292,7 @@ func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeploy
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Widgetdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -371,7 +371,7 @@ func (a WidgetsApi) PutWidgetsDeployment(deploymentId string, body Widgetdeploym
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Widgetdeployment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -90,7 +90,7 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Apiusagequeryresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -165,7 +165,7 @@ func (a UsageApi) PostUsageQuery(body Apiusagequery) (*Usageexecutionresult, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Usageexecutionresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

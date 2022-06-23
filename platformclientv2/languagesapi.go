@@ -222,7 +222,7 @@ func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Language" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -297,7 +297,7 @@ func (a LanguagesApi) GetLanguages(pageSize int, pageNumber int, sortOrder strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Languageentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -362,7 +362,7 @@ func (a LanguagesApi) GetLanguagesTranslations() (*Availabletranslations, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Availabletranslations" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -434,7 +434,7 @@ func (a LanguagesApi) GetLanguagesTranslationsBuiltin(language string) (*map[str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -506,7 +506,7 @@ func (a LanguagesApi) GetLanguagesTranslationsOrganization(language string) (*ma
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -577,7 +577,7 @@ func (a LanguagesApi) GetLanguagesTranslationsUser(userId string) (*map[string]i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -648,7 +648,7 @@ func (a LanguagesApi) GetRoutingLanguage(languageId string) (*Language, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Language" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -723,7 +723,7 @@ func (a LanguagesApi) PostLanguages(body Language) (*Language, *APIResponse, err
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Language" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

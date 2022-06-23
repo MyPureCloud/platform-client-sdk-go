@@ -294,7 +294,7 @@ func (a UsersApi) DeleteUser(userId string) (*interface{}, *APIResponse, error) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -633,7 +633,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncquerystatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -708,7 +708,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsuserdetailsasyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -773,7 +773,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabilityr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataavailabilityresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -849,7 +849,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -925,7 +925,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Divspermittedentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1009,7 +1009,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Divspermittedentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1080,7 +1080,7 @@ func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzsubject" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1145,7 +1145,7 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzsubject" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1217,7 +1217,7 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Fieldconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1298,7 +1298,7 @@ func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, ji
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userprofileentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1369,7 +1369,7 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Agentmaxutilization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1446,7 +1446,7 @@ func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSou
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "User" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1519,7 +1519,7 @@ func (a UsersApi) GetUserAdjacents(userId string, expand []string) (*Adjacents, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Adjacents" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1590,7 +1590,7 @@ func (a UsersApi) GetUserCallforwarding(userId string) (*Callforwarding, *APIRes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callforwarding" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1663,7 +1663,7 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]User" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1742,7 +1742,7 @@ func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1819,7 +1819,7 @@ func (a UsersApi) GetUserGeolocation(userId string, clientId string) (*Geolocati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Geolocation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1890,7 +1890,7 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outofoffice" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1967,7 +1967,7 @@ func (a UsersApi) GetUserProfile(userId string, expand []string, integrationPres
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2038,7 +2038,7 @@ func (a UsersApi) GetUserProfileskills(userId string) ([]string, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2117,7 +2117,7 @@ func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userqueueentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2188,7 +2188,7 @@ func (a UsersApi) GetUserRoles(subjectId string) (*Userauthorization, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2265,7 +2265,7 @@ func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumbe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userlanguageentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2342,7 +2342,7 @@ func (a UsersApi) GetUserRoutingskills(userId string, pageSize int, pageNumber i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userskillentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2413,7 +2413,7 @@ func (a UsersApi) GetUserRoutingstatus(userId string) (*Routingstatus, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Routingstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2484,7 +2484,7 @@ func (a UsersApi) GetUserState(userId string) (*Userstate, *APIResponse, error) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userstate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2555,7 +2555,7 @@ func (a UsersApi) GetUserStation(userId string) (*Userstations, *APIResponse, er
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userstations" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2628,7 +2628,7 @@ func (a UsersApi) GetUserSuperiors(userId string, expand []string) ([]User, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]User" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2703,7 +2703,7 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int, pageNumber int) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustorentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2784,7 +2784,7 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2873,7 +2873,7 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Developmentactivitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2960,7 +2960,7 @@ func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Developmentactivitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3040,7 +3040,7 @@ func (a UsersApi) GetUsersDevelopmentActivity(activityId string, varType string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Developmentactivity" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3111,7 +3111,7 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userme" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3187,7 +3187,7 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3266,7 +3266,7 @@ func (a UsersApi) PatchUser(userId string, body Updateuser) (*User, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "User" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3345,7 +3345,7 @@ func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callforwarding" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3432,7 +3432,7 @@ func (a UsersApi) PatchUserGeolocation(userId string, clientId string, body Geol
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Geolocation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3517,7 +3517,7 @@ func (a UsersApi) PatchUserQueue(queueId string, userId string, body Userqueue) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userqueue" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3598,7 +3598,7 @@ func (a UsersApi) PatchUserQueues(userId string, body []Userqueue, divisionId []
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userqueueentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3683,7 +3683,7 @@ func (a UsersApi) PatchUserRoutinglanguage(userId string, languageId string, bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userroutinglanguage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3762,7 +3762,7 @@ func (a UsersApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userlanguageentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3841,7 +3841,7 @@ func (a UsersApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingsk
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userskillentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3914,7 +3914,7 @@ func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3987,7 +3987,7 @@ func (a UsersApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquery) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Useraggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4060,7 +4060,7 @@ func (a UsersApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) (*As
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4133,7 +4133,7 @@ func (a UsersApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*Analyt
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsuserdetailsqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4206,7 +4206,7 @@ func (a UsersApi) PostAnalyticsUsersObservationsQuery(body Userobservationquery)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userobservationqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4723,7 +4723,7 @@ func (a UsersApi) PostUserRoutinglanguages(userId string, body Userroutinglangua
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userroutinglanguage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4802,7 +4802,7 @@ func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userroutingskill" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4875,7 +4875,7 @@ func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "User" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4950,7 +4950,7 @@ func (a UsersApi) PostUsersDevelopmentActivitiesAggregatesQuery(body Development
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Developmentactivityaggregateresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5089,7 +5089,7 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5168,7 +5168,7 @@ func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Agentmaxutilization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5247,7 +5247,7 @@ func (a UsersApi) PutUserCallforwarding(userId string, body Callforwarding) (*Ca
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Callforwarding" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5326,7 +5326,7 @@ func (a UsersApi) PutUserOutofoffice(userId string, body Outofoffice) (*Outofoff
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outofoffice" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5405,7 +5405,7 @@ func (a UsersApi) PutUserProfileskills(userId string, body []string) ([]string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5484,7 +5484,7 @@ func (a UsersApi) PutUserRoles(subjectId string, body []string) (*Userauthorizat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5569,7 +5569,7 @@ func (a UsersApi) PutUserRoutingskill(userId string, skillId string, body Userro
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userroutingskill" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5648,7 +5648,7 @@ func (a UsersApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskil
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userskillentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5727,7 +5727,7 @@ func (a UsersApi) PutUserRoutingstatus(userId string, body Routingstatus) (*Rout
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Routingstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5806,7 +5806,7 @@ func (a UsersApi) PutUserState(userId string, body Userstate) (*Userstate, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userstate" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

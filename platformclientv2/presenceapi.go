@@ -156,7 +156,7 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -229,7 +229,7 @@ func (a PresenceApi) GetPresencedefinitions(pageNumber int, pageSize int, delete
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationpresenceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -294,7 +294,7 @@ func (a PresenceApi) GetSystempresences() ([]Systempresence, *APIResponse, error
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Systempresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -373,7 +373,7 @@ func (a PresenceApi) GetUserPresence(userId string, sourceId string) (*Userprese
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -446,7 +446,7 @@ func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -533,7 +533,7 @@ func (a PresenceApi) PatchUserPresence(userId string, sourceId string, body User
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -614,7 +614,7 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -687,7 +687,7 @@ func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -766,7 +766,7 @@ func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -839,7 +839,7 @@ func (a PresenceApi) PutUsersPresencesBulk(body []Userpresence) ([]Userpresence,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Userpresence" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

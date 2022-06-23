@@ -84,7 +84,7 @@ func (a GeolocationApi) GetGeolocationsSettings() (*Geolocationsettings, *APIRes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Geolocationsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -161,7 +161,7 @@ func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Geolocation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -234,7 +234,7 @@ func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Ge
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Geolocationsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -321,7 +321,7 @@ func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Geolocation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -158,7 +158,7 @@ func (a ObjectsApi) GetAuthorizationDivision(divisionId string, objectCount bool
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -243,7 +243,7 @@ func (a ObjectsApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sort
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivisionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -310,7 +310,7 @@ func (a ObjectsApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIRespons
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -375,7 +375,7 @@ func (a ObjectsApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, error)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "int" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -534,7 +534,7 @@ func (a ObjectsApi) PostAuthorizationDivisionRestore(divisionId string, body Aut
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -607,7 +607,7 @@ func (a ObjectsApi) PostAuthorizationDivisions(body Authzdivision) (*Authzdivisi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -686,7 +686,7 @@ func (a ObjectsApi) PutAuthorizationDivision(divisionId string, body Authzdivisi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

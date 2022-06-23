@@ -95,7 +95,7 @@ func (a SuggestApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonn
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -171,7 +171,7 @@ func (a SuggestApi) GetSearchSuggest(q64 string, expand []string, profile bool) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -246,7 +246,7 @@ func (a SuggestApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -321,7 +321,7 @@ func (a SuggestApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Jsonnodesearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

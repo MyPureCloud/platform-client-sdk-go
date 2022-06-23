@@ -101,7 +101,7 @@ func (a BillingApi) GetBillingReportsBillableusage(startDate time.Time, endDate 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Billingusagereport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -176,7 +176,7 @@ func (a BillingApi) GetBillingTrusteebillingoverviewTrustorOrgId(trustorOrgId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trusteebillingoverview" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

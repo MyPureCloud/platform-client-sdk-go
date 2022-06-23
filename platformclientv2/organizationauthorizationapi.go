@@ -568,7 +568,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationPairing(pairingId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustrequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -639,7 +639,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustee(trusteeOrgId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustee" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -712,7 +712,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeClonedusers(trus
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cloneduserentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -789,7 +789,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUser(trusteeOrgI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustuser" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -866,7 +866,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUserRoles(truste
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -941,7 +941,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustuserentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1010,7 +1010,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustees(pageSize int, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1075,7 +1075,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteesDefault() (*Tru
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustee" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1146,7 +1146,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustor(trustorOrgId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustor" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1223,7 +1223,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorCloneduser(trust
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cloneduser" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1294,7 +1294,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorClonedusers(trus
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cloneduserentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1371,7 +1371,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUser(trustorOrgI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustuser" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1446,7 +1446,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustuserentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1515,7 +1515,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustors(pageSize int, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustorentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1588,7 +1588,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationPairings(body Trustreq
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustrequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1667,7 +1667,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeUsers(trusteeOr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustuser" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1740,7 +1740,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustees(body Trustcre
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustee" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1821,7 +1821,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Tr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1890,7 +1890,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesDefault(assign
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustee" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1971,7 +1971,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Tru
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2050,7 +2050,7 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustee(trusteeOrgId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustee" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2135,7 +2135,7 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoledivision
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2220,7 +2220,7 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoles(truste
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2297,7 +2297,7 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorCloneduser(trust
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Cloneduser" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2374,7 +2374,7 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorUser(trustorOrgI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trustuser" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

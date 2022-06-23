@@ -158,7 +158,7 @@ func (a OAuthApi) GetOauthAuthorization(clientId string, acceptLanguage string) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -227,7 +227,7 @@ func (a OAuthApi) GetOauthAuthorizations(acceptLanguage string) (*Oauthauthoriza
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthauthorizationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -298,7 +298,7 @@ func (a OAuthApi) GetOauthClient(clientId string) (*Oauthclient, *APIResponse, e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthclient" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -375,7 +375,7 @@ func (a OAuthApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Apiusagequeryresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -450,7 +450,7 @@ func (a OAuthApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Usageexecutionresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -515,7 +515,7 @@ func (a OAuthApi) GetOauthClients() (*Oauthcliententitylisting, *APIResponse, er
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthcliententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -590,7 +590,7 @@ func (a OAuthApi) GetOauthScope(scopeId string, acceptLanguage string) (*Oauthsc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthscope" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -659,7 +659,7 @@ func (a OAuthApi) GetOauthScopes(acceptLanguage string) (*Oauthscopelisting, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthscopelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -732,7 +732,7 @@ func (a OAuthApi) PostOauthClientSecret(clientId string) (*Oauthclient, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthclient" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -813,7 +813,7 @@ func (a OAuthApi) PostOauthClientUsageQuery(clientId string, body Apiusagequery)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Usageexecutionresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -888,7 +888,7 @@ func (a OAuthApi) PostOauthClients(body Oauthclientrequest) (*Oauthclient, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthclient" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -967,7 +967,7 @@ func (a OAuthApi) PutOauthClient(clientId string, body Oauthclientrequest) (*Oau
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthclient" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

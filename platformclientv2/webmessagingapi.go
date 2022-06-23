@@ -83,7 +83,7 @@ func (a WebMessagingApi) GetWebmessagingMessages(pageSize int, pageNumber int) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Webmessagingmessageentitylist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

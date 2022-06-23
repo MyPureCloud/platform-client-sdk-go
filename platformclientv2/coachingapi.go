@@ -92,7 +92,7 @@ func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*Coachinga
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentreference" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -237,7 +237,7 @@ func (a CoachingApi) GetCoachingAppointment(appointmentId string) (*Coachingappo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -316,7 +316,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotation(appointmentId string, anno
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingannotation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -393,7 +393,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingannotationlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -470,7 +470,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentstatusresponselist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -562,7 +562,7 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentresponselist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -647,7 +647,7 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentresponselist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -722,7 +722,7 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingnotification" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -793,7 +793,7 @@ func (a CoachingApi) GetCoachingNotifications(pageNumber int, pageSize int, expa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingnotificationlist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -874,7 +874,7 @@ func (a CoachingApi) PatchCoachingAppointment(appointmentId string, body Updatec
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -961,7 +961,7 @@ func (a CoachingApi) PatchCoachingAppointmentAnnotation(appointmentId string, an
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingannotation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1042,7 +1042,7 @@ func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body C
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentstatusresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1123,7 +1123,7 @@ func (a CoachingApi) PatchCoachingNotification(notificationId string, body Coach
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingnotification" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1204,7 +1204,7 @@ func (a CoachingApi) PostCoachingAppointmentAnnotations(appointmentId string, bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingannotation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1285,7 +1285,7 @@ func (a CoachingApi) PostCoachingAppointmentConversations(appointmentId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Addconversationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1358,7 +1358,7 @@ func (a CoachingApi) PostCoachingAppointments(body Createcoachingappointmentrequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1431,7 +1431,7 @@ func (a CoachingApi) PostCoachingAppointmentsAggregatesQuery(body Coachingappoin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingappointmentaggregateresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1504,7 +1504,7 @@ func (a CoachingApi) PostCoachingScheduleslotsQuery(body Coachingslotsrequest) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Coachingslotsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

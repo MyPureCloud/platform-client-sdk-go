@@ -290,7 +290,7 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportingturnsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -361,7 +361,7 @@ func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationwithoutattributes" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -428,7 +428,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetails(id []string) (*Analyticsc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationwithoutattributesmultigetresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -499,7 +499,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncquerystatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -574,7 +574,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationasyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -639,7 +639,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*Dataa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataavailabilityresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -708,7 +708,7 @@ func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int, pageSize int)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportingexportjoblisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -773,7 +773,7 @@ func (a AnalyticsApi) GetAnalyticsReportingExportsMetadata() (*Reportingexportme
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportingexportmetadatajoblisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -844,7 +844,7 @@ func (a AnalyticsApi) GetAnalyticsReportingMetadata(pageNumber int, pageSize int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportmetadataentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -917,7 +917,7 @@ func (a AnalyticsApi) GetAnalyticsReportingReportIdMetadata(reportId string, loc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportmetadata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -984,7 +984,7 @@ func (a AnalyticsApi) GetAnalyticsReportingReportformats() ([]string, *APIRespon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1055,7 +1055,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reports
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1130,7 +1130,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportrunentryentitydomainlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1201,7 +1201,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryLatest(scheduleId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportrunentry" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1280,7 +1280,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryRunId(runId string, sc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportrunentry" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1351,7 +1351,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedules(pageNumber int, pageSize in
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportscheduleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1416,7 +1416,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsreportingsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1481,7 +1481,7 @@ func (a AnalyticsApi) GetAnalyticsReportingTimeperiods() ([]string, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1552,7 +1552,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncquerystatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1627,7 +1627,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsuserdetailsasyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1692,7 +1692,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabil
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Dataavailabilityresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1765,7 +1765,7 @@ func (a AnalyticsApi) PatchAnalyticsReportingSettings(body Analyticsreportingset
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsreportingsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1838,7 +1838,7 @@ func (a AnalyticsApi) PostAnalyticsBotsAggregatesQuery(body Botaggregationquery)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Botaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1917,7 +1917,7 @@ func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Propertyindexrequest" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1990,7 +1990,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsAggregatesQuery(body Conversatio
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Conversationaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2063,7 +2063,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconversati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2136,7 +2136,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsQuery(body Conversationqu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2209,7 +2209,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsTranscriptsQuery(body Transcript
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsconversationwithoutattributesmultigetresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2282,7 +2282,7 @@ func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationagg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Evaluationaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2355,7 +2355,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquer
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2428,7 +2428,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationqu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowobservationqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2501,7 +2501,7 @@ func (a AnalyticsApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Journeyaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2574,7 +2574,7 @@ func (a AnalyticsApi) PostAnalyticsQueuesObservationsQuery(body Queueobservation
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Queueobservationqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2649,7 +2649,7 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportingexportjobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2720,7 +2720,7 @@ func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Runnowresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2795,7 +2795,7 @@ func (a AnalyticsApi) PostAnalyticsReportingSchedules(body Reportschedule) (*Rep
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2868,7 +2868,7 @@ func (a AnalyticsApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregation
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Surveyaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2941,7 +2941,7 @@ func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesQuery(body Transcriptagg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Transcriptaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3014,7 +3014,7 @@ func (a AnalyticsApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquer
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Useraggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3087,7 +3087,7 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Asyncqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3160,7 +3160,7 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*An
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Analyticsuserdetailsqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3233,7 +3233,7 @@ func (a AnalyticsApi) PostAnalyticsUsersObservationsQuery(body Userobservationqu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userobservationqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3312,7 +3312,7 @@ func (a AnalyticsApi) PutAnalyticsReportingSchedule(scheduleId string, body Repo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Reportschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

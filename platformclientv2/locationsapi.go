@@ -156,7 +156,7 @@ func (a LocationsApi) GetLocation(locationId string, expand []string) (*Location
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationdefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -227,7 +227,7 @@ func (a LocationsApi) GetLocationSublocations(locationId string) (*Locationentit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -300,7 +300,7 @@ func (a LocationsApi) GetLocations(pageSize int, pageNumber int, id []string, so
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -374,7 +374,7 @@ func (a LocationsApi) GetLocationsSearch(q64 string, expand []string) (*Location
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -453,7 +453,7 @@ func (a LocationsApi) PatchLocation(locationId string, body Locationupdatedefini
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationdefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -526,7 +526,7 @@ func (a LocationsApi) PostLocations(body Locationcreatedefinition) (*Locationdef
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationdefinition" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -599,7 +599,7 @@ func (a LocationsApi) PostLocationsSearch(body Locationsearchrequest) (*Location
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Locationssearchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

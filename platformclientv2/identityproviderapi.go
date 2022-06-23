@@ -84,7 +84,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersAdfs() (*interface{}, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -149,7 +149,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersCic() (*interface{}, *APIRes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -214,7 +214,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGeneric() (*interface{}, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -279,7 +279,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGsuite() (*interface{}, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -344,7 +344,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersIdentitynow() (*interface{},
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -409,7 +409,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOkta() (*interface{}, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -474,7 +474,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOnelogin() (*interface{}, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -539,7 +539,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPing() (*interface{}, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -604,7 +604,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPurecloud() (*interface{}, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -669,7 +669,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPureengage() (*interface{}, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -734,7 +734,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersSalesforce() (*interface{}, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -799,7 +799,7 @@ func (a IdentityProviderApi) GetIdentityproviders() (*Oauthproviderentitylisting
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthproviderentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -864,7 +864,7 @@ func (a IdentityProviderApi) GetIdentityprovidersAdfs() (*Adfs, *APIResponse, er
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Adfs" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -929,7 +929,7 @@ func (a IdentityProviderApi) GetIdentityprovidersCic() (*Customerinteractioncent
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Customerinteractioncenter" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -994,7 +994,7 @@ func (a IdentityProviderApi) GetIdentityprovidersGeneric() (*Genericsaml, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Genericsaml" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1059,7 +1059,7 @@ func (a IdentityProviderApi) GetIdentityprovidersGsuite() (*Gsuite, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Gsuite" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1124,7 +1124,7 @@ func (a IdentityProviderApi) GetIdentityprovidersIdentitynow() (*Identitynow, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Identitynow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1189,7 +1189,7 @@ func (a IdentityProviderApi) GetIdentityprovidersOkta() (*Okta, *APIResponse, er
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Okta" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1254,7 +1254,7 @@ func (a IdentityProviderApi) GetIdentityprovidersOnelogin() (*Onelogin, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Onelogin" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1319,7 +1319,7 @@ func (a IdentityProviderApi) GetIdentityprovidersPing() (*Pingidentity, *APIResp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Pingidentity" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1384,7 +1384,7 @@ func (a IdentityProviderApi) GetIdentityprovidersPurecloud() (*Purecloud, *APIRe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Purecloud" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1449,7 +1449,7 @@ func (a IdentityProviderApi) GetIdentityprovidersPureengage() (*Pureengage, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Pureengage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1514,7 +1514,7 @@ func (a IdentityProviderApi) GetIdentityprovidersSalesforce() (*Salesforce, *API
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Salesforce" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1587,7 +1587,7 @@ func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Oauthprovider
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1660,7 +1660,7 @@ func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncen
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1733,7 +1733,7 @@ func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Oau
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1806,7 +1806,7 @@ func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Oauthprov
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1879,7 +1879,7 @@ func (a IdentityProviderApi) PutIdentityprovidersIdentitynow(body Identitynow) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Identitynow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1952,7 +1952,7 @@ func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Oauthprovider
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2025,7 +2025,7 @@ func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Oauth
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2098,7 +2098,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Oauth
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2171,7 +2171,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Oau
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2244,7 +2244,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*O
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2317,7 +2317,7 @@ func (a IdentityProviderApi) PutIdentityprovidersSalesforce(body Salesforce) (*O
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Oauthprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -298,7 +298,7 @@ func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCoun
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -375,7 +375,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivisiongrantentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -460,7 +460,7 @@ func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivisionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -527,7 +527,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIR
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -592,7 +592,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "int" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -668,7 +668,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -744,7 +744,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Divspermittedentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -828,7 +828,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Divspermittedentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -903,7 +903,7 @@ func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Permissioncollectionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -970,7 +970,7 @@ func (a AuthorizationApi) GetAuthorizationProducts() (*Organizationproductentity
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationproductentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1045,7 +1045,7 @@ func (a AuthorizationApi) GetAuthorizationRole(roleId string, expand []string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainorganizationrole" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1124,7 +1124,7 @@ func (a AuthorizationApi) GetAuthorizationRoleComparedefaultRightRoleId(leftRole
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainorgroledifference" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1209,7 +1209,7 @@ func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageS
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Subjectdivisiongrantsentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1286,7 +1286,7 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1373,7 +1373,7 @@ func (a AuthorizationApi) GetAuthorizationRoles(pageSize int, pageNumber int, so
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationroleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1444,7 +1444,7 @@ func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubje
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzsubject" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1509,7 +1509,7 @@ func (a AuthorizationApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIRespo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzsubject" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1576,7 +1576,7 @@ func (a AuthorizationApi) GetAuthorizationSubjectsRolecounts(id []string) (*map[
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "map[string]interface{}" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1647,7 +1647,7 @@ func (a AuthorizationApi) GetUserRoles(subjectId string) (*Userauthorization, *A
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1728,7 +1728,7 @@ func (a AuthorizationApi) PatchAuthorizationRole(roleId string, body Domainorgan
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainorganizationrole" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1887,7 +1887,7 @@ func (a AuthorizationApi) PostAuthorizationDivisionRestore(divisionId string, bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1960,7 +1960,7 @@ func (a AuthorizationApi) PostAuthorizationDivisions(body Authzdivision) (*Authz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2121,7 +2121,7 @@ func (a AuthorizationApi) PostAuthorizationRoleComparedefaultRightRoleId(leftRol
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainorgroledifference" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2194,7 +2194,7 @@ func (a AuthorizationApi) PostAuthorizationRoles(body Domainorganizationrolecrea
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainorganizationrole" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2263,7 +2263,7 @@ func (a AuthorizationApi) PostAuthorizationRolesDefault(force bool) (*Organizati
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationroleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2642,7 +2642,7 @@ func (a AuthorizationApi) PutAuthorizationDivision(divisionId string, body Authz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Authzdivision" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2723,7 +2723,7 @@ func (a AuthorizationApi) PutAuthorizationRole(roleId string, body Domainorganiz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainorganizationrole" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2802,7 +2802,7 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersAdd(roleId string, body []str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2881,7 +2881,7 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersRemove(roleId string, body []
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2954,7 +2954,7 @@ func (a AuthorizationApi) PutAuthorizationRolesDefault(body []Domainorganization
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organizationroleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3033,7 +3033,7 @@ func (a AuthorizationApi) PutUserRoles(subjectId string, body []string) (*Userau
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userauthorization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

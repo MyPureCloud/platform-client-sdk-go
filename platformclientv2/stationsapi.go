@@ -154,7 +154,7 @@ func (a StationsApi) GetStation(stationId string) (*Station, *APIResponse, error
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Station" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -235,7 +235,7 @@ func (a StationsApi) GetStations(pageSize int, pageNumber int, sortBy string, na
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Stationentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -300,7 +300,7 @@ func (a StationsApi) GetStationsSettings() (*Stationsettings, *APIResponse, erro
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Stationsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -373,7 +373,7 @@ func (a StationsApi) PatchStationsSettings(body Stationsettings) (*Stationsettin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Stationsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

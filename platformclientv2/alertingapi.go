@@ -212,7 +212,7 @@ func (a AlertingApi) GetAlertingAlertsActive() (*Activealertcount, *APIResponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Activealertcount" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -285,7 +285,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Interactionstatsalert" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -352,7 +352,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlerts(expand []string) (*Intera
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Interactionstatsalertcontainer" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -417,7 +417,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlertsUnread() (*Unreadmetric, *
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Unreadmetric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -490,7 +490,7 @@ func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Interactionstatsrule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -557,7 +557,7 @@ func (a AlertingApi) GetAlertingInteractionstatsRules(expand []string) (*Interac
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Interactionstatsrulecontainer" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -632,7 +632,7 @@ func (a AlertingApi) PostAlertingInteractionstatsRules(body Interactionstatsrule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Interactionstatsrule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -713,7 +713,7 @@ func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unrea
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Unreadstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -794,7 +794,7 @@ func (a AlertingApi) PutAlertingInteractionstatsRule(ruleId string, body Interac
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Interactionstatsrule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

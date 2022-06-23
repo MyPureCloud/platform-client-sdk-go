@@ -94,7 +94,7 @@ func (a TextbotsApi) GetTextbotsBotsSearch(botType []string, botName string, bot
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Botsearchresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -175,7 +175,7 @@ func (a TextbotsApi) PostTextbotsBotflowsSessionTurns(sessionId string, turnRequ
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Textbotflowturnresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -250,7 +250,7 @@ func (a TextbotsApi) PostTextbotsBotflowsSessions(launchRequest Textbotflowlaunc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Textbotflowlaunchresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -325,7 +325,7 @@ func (a TextbotsApi) PostTextbotsBotsExecute(postTextRequest Posttextrequest) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Posttextresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

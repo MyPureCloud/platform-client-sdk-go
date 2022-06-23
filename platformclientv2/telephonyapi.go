@@ -109,7 +109,7 @@ func (a TelephonyApi) GetTelephonySiptraces(dateStart time.Time, dateEnd time.Ti
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sipsearchresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -180,7 +180,7 @@ func (a TelephonyApi) GetTelephonySiptracesDownloadDownloadId(downloadId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Signedurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -253,7 +253,7 @@ func (a TelephonyApi) PostTelephonySiptracesDownload(sIPSearchPublicRequest Sips
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sipdownloadresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

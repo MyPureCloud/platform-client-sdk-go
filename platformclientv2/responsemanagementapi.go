@@ -286,7 +286,7 @@ func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int, pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Libraryentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -357,7 +357,7 @@ func (a ResponseManagementApi) GetResponsemanagementLibrary(libraryId string) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Library" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -430,7 +430,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponse(responseId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Response" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -501,7 +501,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponseasset(responseAssetI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -572,7 +572,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponseassetsStatusStatusId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseassetstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -650,7 +650,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponses(libraryId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -723,7 +723,7 @@ func (a ResponseManagementApi) PostResponsemanagementLibraries(body Library) (*L
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Library" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -798,7 +798,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsSearch(body R
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseassetsearchresults" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -871,7 +871,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsUploads(body 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Createresponseassetresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -946,7 +946,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponses(body Response, ex
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Response" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1019,7 +1019,7 @@ func (a ResponseManagementApi) PostResponsemanagementResponsesQuery(body Respons
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responsequeryresults" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1100,7 +1100,7 @@ func (a ResponseManagementApi) PutResponsemanagementLibrary(libraryId string, bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Library" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1183,7 +1183,7 @@ func (a ResponseManagementApi) PutResponsemanagementResponse(responseId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Response" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1262,7 +1262,7 @@ func (a ResponseManagementApi) PutResponsemanagementResponseasset(responseAssetI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Responseasset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

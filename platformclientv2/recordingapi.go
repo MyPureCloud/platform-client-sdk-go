@@ -166,7 +166,7 @@ func (a RecordingApi) DeleteOrphanrecording(orphanId string) (*Orphanrecording, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Orphanrecording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -585,7 +585,7 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -668,7 +668,7 @@ func (a RecordingApi) GetConversationRecordingAnnotation(conversationId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Annotation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -745,7 +745,7 @@ func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Annotation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -816,7 +816,7 @@ func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Recordingmetadata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -893,7 +893,7 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingmetadata" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -970,7 +970,7 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Recording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1041,7 +1041,7 @@ func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *AP
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Orphanrecording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1130,7 +1130,7 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1211,7 +1211,7 @@ func (a RecordingApi) GetOrphanrecordings(pageSize int, pageNumber int, sortBy s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Orphanrecordinglisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1282,7 +1282,7 @@ func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobs
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Batchdownloadjobstatusresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1371,7 +1371,7 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Policyentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1442,7 +1442,7 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicy(policyId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Crossplatformpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1513,7 +1513,7 @@ func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1592,7 +1592,7 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Failedrecordingentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1673,7 +1673,7 @@ func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingjobentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1744,7 +1744,7 @@ func (a RecordingApi) GetRecordingKeyconfiguration(keyConfigurationId string) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingencryptionconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1809,7 +1809,7 @@ func (a RecordingApi) GetRecordingKeyconfigurations() (*Recordingencryptionconfi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingencryptionconfigurationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1880,7 +1880,7 @@ func (a RecordingApi) GetRecordingLocalkeysSetting(settingsId string) (*Localenc
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Localencryptionconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1945,7 +1945,7 @@ func (a RecordingApi) GetRecordingLocalkeysSettings() (*Localencryptionconfigura
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Localencryptionconfigurationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2034,7 +2034,7 @@ func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumbe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Policyentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2105,7 +2105,7 @@ func (a RecordingApi) GetRecordingMediaretentionpolicy(policyId string) (*Policy
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Policy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2174,7 +2174,7 @@ func (a RecordingApi) GetRecordingRecordingkeys(pageSize int, pageNumber int) (*
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Encryptionkeyentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2239,7 +2239,7 @@ func (a RecordingApi) GetRecordingRecordingkeysRotationschedule() (*Keyrotations
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Keyrotationschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2306,7 +2306,7 @@ func (a RecordingApi) GetRecordingSettings(createDefault bool) (*Recordingsettin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2375,7 +2375,7 @@ func (a RecordingApi) GetRecordingsScreensessions(pageSize int, pageNumber int) 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Screenrecordingsessionlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2454,7 +2454,7 @@ func (a RecordingApi) PatchRecordingCrossplatformMediaretentionpolicy(policyId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Crossplatformpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2533,7 +2533,7 @@ func (a RecordingApi) PatchRecordingMediaretentionpolicy(policyId string, body P
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Policy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2685,7 +2685,7 @@ func (a RecordingApi) PostConversationRecordingAnnotations(conversationId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Annotation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2758,7 +2758,7 @@ func (a RecordingApi) PostRecordingBatchrequests(body Batchdownloadjobsubmission
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Batchdownloadjobsubmissionresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2833,7 +2833,7 @@ func (a RecordingApi) PostRecordingCrossplatformMediaretentionpolicies(body Cros
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Crossplatformpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2908,7 +2908,7 @@ func (a RecordingApi) PostRecordingJobs(body Recordingjobsquery) (*Recordingjob,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2981,7 +2981,7 @@ func (a RecordingApi) PostRecordingKeyconfigurations(body Recordingencryptioncon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingencryptionconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3054,7 +3054,7 @@ func (a RecordingApi) PostRecordingKeyconfigurationsValidate(body Recordingencry
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingencryptionconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3127,7 +3127,7 @@ func (a RecordingApi) PostRecordingLocalkeys(body Localencryptionkeyrequest) (*E
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Encryptionkey" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3200,7 +3200,7 @@ func (a RecordingApi) PostRecordingLocalkeysSettings(body Localencryptionconfigu
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Localencryptionconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3275,7 +3275,7 @@ func (a RecordingApi) PostRecordingMediaretentionpolicies(body Policycreate) (*P
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Policy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3340,7 +3340,7 @@ func (a RecordingApi) PostRecordingRecordingkeys() (*Encryptionkey, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Encryptionkey" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3413,7 +3413,7 @@ func (a RecordingApi) PostRecordingsDeletionprotection(body Conversationdeletion
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Addressableentityref" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3632,7 +3632,7 @@ func (a RecordingApi) PutConversationRecording(conversationId string, recordingI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3723,7 +3723,7 @@ func (a RecordingApi) PutConversationRecordingAnnotation(conversationId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Annotation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3799,7 +3799,7 @@ func (a RecordingApi) PutOrphanrecording(orphanId string, body Orphanupdatereque
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3880,7 +3880,7 @@ func (a RecordingApi) PutRecordingCrossplatformMediaretentionpolicy(policyId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Crossplatformpolicy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3961,7 +3961,7 @@ func (a RecordingApi) PutRecordingJob(jobId string, body Executerecordingjobsque
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4040,7 +4040,7 @@ func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, bo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingencryptionconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4119,7 +4119,7 @@ func (a RecordingApi) PutRecordingLocalkeysSetting(settingsId string, body Local
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Localencryptionconfiguration" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4200,7 +4200,7 @@ func (a RecordingApi) PutRecordingMediaretentionpolicy(policyId string, body Pol
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Policy" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4273,7 +4273,7 @@ func (a RecordingApi) PutRecordingRecordingkeysRotationschedule(body Keyrotation
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Keyrotationschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4346,7 +4346,7 @@ func (a RecordingApi) PutRecordingSettings(body Recordingsettings) (*Recordingse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Recordingsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

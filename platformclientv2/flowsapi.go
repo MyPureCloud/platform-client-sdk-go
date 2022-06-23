@@ -92,7 +92,7 @@ func (a FlowsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquery) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowaggregatequeryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -165,7 +165,7 @@ func (a FlowsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationquery)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Flowobservationqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

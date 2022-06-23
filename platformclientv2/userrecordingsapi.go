@@ -156,7 +156,7 @@ func (a UserRecordingsApi) GetUserrecording(recordingId string, expand []string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userrecording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -229,7 +229,7 @@ func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Downloadresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -300,7 +300,7 @@ func (a UserRecordingsApi) GetUserrecordings(pageSize int, pageNumber int, expan
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userrecordingentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -365,7 +365,7 @@ func (a UserRecordingsApi) GetUserrecordingsSummary() (*Faxsummary, *APIResponse
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Faxsummary" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -446,7 +446,7 @@ func (a UserRecordingsApi) PutUserrecording(recordingId string, body Userrecordi
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Userrecording" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

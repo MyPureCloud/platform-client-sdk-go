@@ -496,7 +496,7 @@ func (a ContentManagementApi) GetContentmanagementDocument(documentId string, ex
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Document" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -579,7 +579,7 @@ func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId stri
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Documentauditentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -654,7 +654,7 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Downloadresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -738,7 +738,7 @@ func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Documententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -820,7 +820,7 @@ func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, page
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Queryresults" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -891,7 +891,7 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofile(securityProfil
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Securityprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -956,7 +956,7 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofiles() (*Securityp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Securityprofileentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1029,7 +1029,7 @@ func (a ContentManagementApi) GetContentmanagementShare(shareId string, expand [
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Share" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1110,7 +1110,7 @@ func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Sharedresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1185,7 +1185,7 @@ func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Shareentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1254,7 +1254,7 @@ func (a ContentManagementApi) GetContentmanagementStatus(pageSize int, pageNumbe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Commandstatusentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1325,7 +1325,7 @@ func (a ContentManagementApi) GetContentmanagementStatusStatusId(statusId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Commandstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1390,7 +1390,7 @@ func (a ContentManagementApi) GetContentmanagementUsage() (*Usage, *APIResponse,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Usage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1463,7 +1463,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspace(workspaceId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workspace" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1544,7 +1544,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Documententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1623,7 +1623,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMember(workspaceId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workspacemember" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1700,7 +1700,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workspacememberentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1779,7 +1779,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalue(workspaceId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Tagvalue" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1858,7 +1858,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Tagvalueentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1933,7 +1933,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaces(pageSize int, pageN
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workspaceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2006,7 +2006,7 @@ func (a ContentManagementApi) PostContentmanagementAuditquery(body Contentqueryr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Queryresults" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2089,7 +2089,7 @@ func (a ContentManagementApi) PostContentmanagementDocument(documentId string, b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Document" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2170,7 +2170,7 @@ func (a ContentManagementApi) PostContentmanagementDocumentContent(documentId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Replaceresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2249,7 +2249,7 @@ func (a ContentManagementApi) PostContentmanagementDocuments(body Documentupload
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Document" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2324,7 +2324,7 @@ func (a ContentManagementApi) PostContentmanagementQuery(body Queryrequest, expa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Queryresults" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2397,7 +2397,7 @@ func (a ContentManagementApi) PostContentmanagementShares(body Createsharereques
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Createshareresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2476,7 +2476,7 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvalues(workspaceI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Tagvalue" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2557,7 +2557,7 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvaluesQuery(works
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Tagvalueentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2630,7 +2630,7 @@ func (a ContentManagementApi) PostContentmanagementWorkspaces(body Workspacecrea
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workspace" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2709,7 +2709,7 @@ func (a ContentManagementApi) PutContentmanagementWorkspace(workspaceId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workspace" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2794,7 +2794,7 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceMember(workspaceId st
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Workspacemember" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2879,7 +2879,7 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceTagvalue(workspaceId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Tagvalue" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

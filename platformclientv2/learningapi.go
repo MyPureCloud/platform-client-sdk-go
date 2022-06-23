@@ -224,7 +224,7 @@ func (a LearningApi) GetLearningAssignment(assignmentId string, expand []string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -321,7 +321,7 @@ func (a LearningApi) GetLearningAssignments(moduleId string, interval string, co
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignmentsdomainentity" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -414,7 +414,7 @@ func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignmentsdomainentity" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -487,7 +487,7 @@ func (a LearningApi) GetLearningModule(moduleId string, expand []string) (*Learn
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -564,7 +564,7 @@ func (a LearningApi) GetLearningModuleJob(moduleId string, jobId string) (*Learn
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodulejobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -635,7 +635,7 @@ func (a LearningApi) GetLearningModuleRule(moduleId string) (*Learningmodulerule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodulerule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -714,7 +714,7 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -797,7 +797,7 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodulesdomainentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -871,7 +871,7 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -944,7 +944,7 @@ func (a LearningApi) PostLearningAssessmentsScoring(body Learningassessmentscori
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Assessmentscoringset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1017,7 +1017,7 @@ func (a LearningApi) PostLearningAssignmentReassign(assignmentId string) (*Learn
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1090,7 +1090,7 @@ func (a LearningApi) PostLearningAssignmentReset(assignmentId string) (*Learning
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1158,7 +1158,7 @@ func (a LearningApi) PostLearningAssignments(body Learningassignmentcreate) (*Le
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1231,7 +1231,7 @@ func (a LearningApi) PostLearningAssignmentsAggregatesQuery(body Learningassignm
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignmentaggregateresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1299,7 +1299,7 @@ func (a LearningApi) PostLearningAssignmentsBulkadd(body []Learningassignmentite
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignmentbulkaddresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1367,7 +1367,7 @@ func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*Learning
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignmentbulkremoveresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1448,7 +1448,7 @@ func (a LearningApi) PostLearningModuleJobs(moduleId string, body Learningmodule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodulejobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1519,7 +1519,7 @@ func (a LearningApi) PostLearningModulePublish(moduleId string) (*Learningmodule
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodulepublishresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1594,7 +1594,7 @@ func (a LearningApi) PostLearningModules(body Learningmodulerequest) (*Learningm
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1683,7 +1683,7 @@ func (a LearningApi) PostLearningRulesQuery(pageSize int, pageNumber int, body L
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningassignmentuserlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1764,7 +1764,7 @@ func (a LearningApi) PutLearningModule(moduleId string, body Learningmodulereque
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1845,7 +1845,7 @@ func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmoduler
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Learningmodulerule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

@@ -934,7 +934,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize in
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schemacategoryentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1009,7 +1009,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schemareferenceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1090,7 +1090,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Schemareferenceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1173,7 +1173,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1270,7 +1270,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Organization" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1343,7 +1343,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdge(edgeId string, expa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edge" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1414,7 +1414,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticNslookup(e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnosticresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1485,7 +1485,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticPing(edgeI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnosticresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1556,7 +1556,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticRoute(edge
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnosticresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1627,7 +1627,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticTracepath(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnosticresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1704,7 +1704,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLine(edgeId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgeline" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1779,7 +1779,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgelineentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1858,7 +1858,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterface(edg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainlogicalinterface" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -1933,7 +1933,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterfaces(ed
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Logicalinterfaceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2010,7 +2010,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogsJob(edgeId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgelogsjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2081,7 +2081,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeMetrics(edgeId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgemetrics" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2160,7 +2160,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterface(ed
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainphysicalinterface" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2231,7 +2231,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterfaces(e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Physicalinterfaceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2302,7 +2302,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSetuppackage(edgeId 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Vmpairinginfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2373,7 +2373,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareupdate(edgeI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainedgesoftwareupdatedto" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2444,7 +2444,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareversions(edg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainedgesoftwareversiondtoentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2529,7 +2529,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2608,7 +2608,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, page
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgeentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2673,7 +2673,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesAvailablelanguages(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Availablelanguagelist" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2738,7 +2738,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Certificateauthorityentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2809,7 +2809,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domaincertificateauthority" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2880,7 +2880,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDid(didId string) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Did" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -2951,7 +2951,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpool(didPoolId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Didpool" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3024,7 +3024,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Didpoolentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3106,7 +3106,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpoolsDids(varTyp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Didnumberentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3187,7 +3187,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDids(pageSize int, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Didentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3260,7 +3260,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroup(edgeGroup
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgegroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3337,7 +3337,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroupEdgetrunkb
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgetrunkbase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3412,7 +3412,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroups(pageSize
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgegroupentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3479,7 +3479,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgeversionreport()
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgeversionreport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3544,7 +3544,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExpired() (*Expired
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Expirededgelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3615,7 +3615,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtension(extension
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Extension" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3686,7 +3686,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(exten
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Extensionpool" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3759,7 +3759,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Extensionpoolentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3834,7 +3834,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensions(pageSize
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Extensionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3905,7 +3905,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLine(lineId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Line" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -3976,7 +3976,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Linebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4051,7 +4051,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pa
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Linebaseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4126,7 +4126,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLines(pageSize int,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Lineentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4198,7 +4198,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinesTemplate(lineB
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Line" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4274,7 +4274,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLogicalinterfaces(e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Logicalinterfaceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4346,7 +4346,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesMetrics(edgeIds str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Edgemetrics" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4419,7 +4419,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outbo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundroute" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4496,7 +4496,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroutes(page
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundrouteentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4567,7 +4567,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhone(phoneId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4638,7 +4638,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesetting(ph
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phonebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4715,7 +4715,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phonebaseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4784,7 +4784,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsAv
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phonemetabaseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4856,7 +4856,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phonebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -4955,7 +4955,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phoneentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5027,7 +5027,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonesTemplate(phon
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5101,7 +5101,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhysicalinterfaces(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Physicalinterfaceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5172,7 +5172,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSite(siteId string)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Site" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5249,7 +5249,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplan(site
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Numberplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5320,7 +5320,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplans(sit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Numberplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5393,7 +5393,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplansClas
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5470,7 +5470,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroute(s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundroutebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5551,7 +5551,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundroutebaseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5630,7 +5630,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Siteentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5699,7 +5699,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTimezones(pageSize 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Timezoneentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5770,7 +5770,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunk(trunkId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunk" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5841,7 +5841,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkMetrics(trunkI
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkmetrics" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -5916,7 +5916,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesetting(tr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkbase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6001,7 +6001,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettings(p
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkbaseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6072,7 +6072,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsAv
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkmetabaseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6144,7 +6144,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsTe
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkbase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6225,7 +6225,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunks(pageNumber i
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6297,7 +6297,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunksMetrics(trunk
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Trunkmetrics" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6364,7 +6364,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkswithrecording
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkrecordingenabledcount" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6443,7 +6443,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticNslookup(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnostic" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6522,7 +6522,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticPing(edge
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnostic" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6601,7 +6601,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticRoute(edg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnostic" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6680,7 +6680,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticTracepath
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgenetworkdiagnostic" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6761,7 +6761,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogicalinterfaces(e
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainlogicalinterface" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6918,7 +6918,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobs(edgeId str
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgelogsjobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -6992,7 +6992,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeReboot(edgeId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7071,7 +7071,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeSoftwareupdate(edge
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainedgesoftwareupdatedto" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7145,7 +7145,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeStatuscode(edgeId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7216,7 +7216,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeUnpair(edgeId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7289,7 +7289,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdges(body Edge) (*Edge
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edge" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7362,7 +7362,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesAddressvalidation(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Validateaddressresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7435,7 +7435,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesCertificateauthori
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domaincertificateauthority" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7508,7 +7508,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesDidpools(body Didp
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Didpool" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7581,7 +7581,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesEdgegroups(body Ed
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgegroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7654,7 +7654,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesExtensionpools(bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Extensionpool" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7729,7 +7729,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesOutboundroutes(bod
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundroute" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7866,7 +7866,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonebasesettings(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phonebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -7939,7 +7939,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhones(body Phone)
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8084,7 +8084,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteOutboundroutes
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundroutebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8221,7 +8221,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSites(body Site) (
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Site" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8294,7 +8294,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesTrunkbasesettings(
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkbase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8373,7 +8373,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdge(edgeId string, body
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edge" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8458,7 +8458,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLine(edgeId string, 
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgeline" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8543,7 +8543,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLogicalinterface(edg
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domainlogicalinterface" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8622,7 +8622,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesCertificateauthorit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Domaincertificateauthority" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8701,7 +8701,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDid(didId string, b
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Did" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8780,7 +8780,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDidpool(didPoolId s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Didpool" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8859,7 +8859,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroup(edgeGroup
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgegroup" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -8944,7 +8944,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroupEdgetrunkb
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Edgetrunkbase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9023,7 +9023,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtension(extension
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Extension" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9102,7 +9102,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtensionpool(exten
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Extensionpool" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9183,7 +9183,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesOutboundroute(outbo
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundroute" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9262,7 +9262,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhone(phoneId strin
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9341,7 +9341,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhonebasesetting(ph
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Phonebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9420,7 +9420,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSite(siteId string,
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Site" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9499,7 +9499,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteNumberplans(sit
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "[]Numberplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9584,7 +9584,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteOutboundroute(s
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Outboundroutebase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
@@ -9663,7 +9663,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesTrunkbasesetting(tr
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Trunkbase" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {

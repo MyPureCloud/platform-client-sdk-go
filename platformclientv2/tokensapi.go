@@ -206,7 +206,7 @@ func (a TokensApi) GetTokensMe() (*Tokeninfo, *APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
+	} else if response.HasBody {
 		if "Tokeninfo" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
