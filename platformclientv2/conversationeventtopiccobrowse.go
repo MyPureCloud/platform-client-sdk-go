@@ -9,8 +9,12 @@ import (
 
 // Conversationeventtopiccobrowse
 type Conversationeventtopiccobrowse struct { 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
@@ -114,6 +118,8 @@ func (o *Conversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		DisconnectType *string `json:"disconnectType,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
@@ -150,6 +156,8 @@ func (o *Conversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		DisconnectType: o.DisconnectType,
 		
@@ -197,6 +205,10 @@ func (o *Conversationeventtopiccobrowse) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := ConversationeventtopiccobrowseMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationeventtopiccobrowseMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if DisconnectType, ok := ConversationeventtopiccobrowseMap["disconnectType"].(string); ok {

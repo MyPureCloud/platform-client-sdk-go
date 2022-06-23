@@ -9,8 +9,12 @@ import (
 
 // Queueconversationvideoeventtopicchat
 type Queueconversationvideoeventtopicchat struct { 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Id - A globally unique identifier for this communication.
@@ -106,6 +110,8 @@ func (o *Queueconversationvideoeventtopicchat) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Provider *string `json:"provider,omitempty"`
@@ -138,6 +144,8 @@ func (o *Queueconversationvideoeventtopicchat) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Id: o.Id,
 		
@@ -181,6 +189,10 @@ func (o *Queueconversationvideoeventtopicchat) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := QueueconversationvideoeventtopicchatMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := QueueconversationvideoeventtopicchatMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Id, ok := QueueconversationvideoeventtopicchatMap["id"].(string); ok {

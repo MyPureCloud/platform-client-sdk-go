@@ -36,6 +36,10 @@ type Conversationeventtopicmessagedetails struct {
 	// Stickers - A list of stickers included in the message
 	Stickers *[]Conversationeventtopicmessagesticker `json:"stickers,omitempty"`
 
+
+	// MessageMetadata
+	MessageMetadata *Conversationeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
+
 }
 
 func (o *Conversationeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
@@ -65,6 +69,8 @@ func (o *Conversationeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
 		ErrorInfo *Conversationeventtopicerrordetails `json:"errorInfo,omitempty"`
 		
 		Stickers *[]Conversationeventtopicmessagesticker `json:"stickers,omitempty"`
+		
+		MessageMetadata *Conversationeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
 		*Alias
 	}{ 
 		MessageId: o.MessageId,
@@ -80,6 +86,8 @@ func (o *Conversationeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
 		ErrorInfo: o.ErrorInfo,
 		
 		Stickers: o.Stickers,
+		
+		MessageMetadata: o.MessageMetadata,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -122,6 +130,11 @@ func (o *Conversationeventtopicmessagedetails) UnmarshalJSON(b []byte) error {
 	if Stickers, ok := ConversationeventtopicmessagedetailsMap["stickers"].([]interface{}); ok {
 		StickersString, _ := json.Marshal(Stickers)
 		json.Unmarshal(StickersString, &o.Stickers)
+	}
+	
+	if MessageMetadata, ok := ConversationeventtopicmessagedetailsMap["messageMetadata"].(map[string]interface{}); ok {
+		MessageMetadataString, _ := json.Marshal(MessageMetadata)
+		json.Unmarshal(MessageMetadataString, &o.MessageMetadata)
 	}
 	
 

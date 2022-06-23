@@ -9,8 +9,12 @@ import (
 
 // Conversationeventtopiccallback
 type Conversationeventtopiccallback struct { 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Id - A globally unique identifier for this communication.
@@ -150,6 +154,8 @@ func (o *Conversationeventtopiccallback) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Direction *string `json:"direction,omitempty"`
@@ -200,6 +206,8 @@ func (o *Conversationeventtopiccallback) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Id: o.Id,
 		
@@ -261,6 +269,10 @@ func (o *Conversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := ConversationeventtopiccallbackMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationeventtopiccallbackMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Id, ok := ConversationeventtopiccallbackMap["id"].(string); ok {

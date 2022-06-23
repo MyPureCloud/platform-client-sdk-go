@@ -9,8 +9,12 @@ import (
 
 // Conversationeventtopicscreenshare
 type Conversationeventtopicscreenshare struct { 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Self - Address and name data for a call endpoint.
@@ -94,6 +98,8 @@ func (o *Conversationeventtopicscreenshare) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Self *Conversationeventtopicaddress `json:"self,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
@@ -124,6 +130,8 @@ func (o *Conversationeventtopicscreenshare) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Self: o.Self,
 		
@@ -165,6 +173,10 @@ func (o *Conversationeventtopicscreenshare) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := ConversationeventtopicscreenshareMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationeventtopicscreenshareMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Self, ok := ConversationeventtopicscreenshareMap["self"].(map[string]interface{}); ok {

@@ -9,8 +9,12 @@ import (
 
 // Queueconversationeventtopicscreenshare
 type Queueconversationeventtopicscreenshare struct { 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Self - Address and name data for a call endpoint.
@@ -94,6 +98,8 @@ func (o *Queueconversationeventtopicscreenshare) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Self *Queueconversationeventtopicaddress `json:"self,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
@@ -124,6 +130,8 @@ func (o *Queueconversationeventtopicscreenshare) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Self: o.Self,
 		
@@ -165,6 +173,10 @@ func (o *Queueconversationeventtopicscreenshare) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := QueueconversationeventtopicscreenshareMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := QueueconversationeventtopicscreenshareMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Self, ok := QueueconversationeventtopicscreenshareMap["self"].(map[string]interface{}); ok {

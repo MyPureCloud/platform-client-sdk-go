@@ -36,6 +36,10 @@ type Conversationmessageeventtopicmessagedetails struct {
 	// ErrorInfo
 	ErrorInfo *Conversationmessageeventtopicerrordetails `json:"errorInfo,omitempty"`
 
+
+	// MessageMetadata
+	MessageMetadata *Conversationmessageeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
+
 }
 
 func (o *Conversationmessageeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
@@ -65,6 +69,8 @@ func (o *Conversationmessageeventtopicmessagedetails) MarshalJSON() ([]byte, err
 		Stickers *[]Conversationmessageeventtopicmessagesticker `json:"stickers,omitempty"`
 		
 		ErrorInfo *Conversationmessageeventtopicerrordetails `json:"errorInfo,omitempty"`
+		
+		MessageMetadata *Conversationmessageeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
 		*Alias
 	}{ 
 		Message: o.Message,
@@ -80,6 +86,8 @@ func (o *Conversationmessageeventtopicmessagedetails) MarshalJSON() ([]byte, err
 		Stickers: o.Stickers,
 		
 		ErrorInfo: o.ErrorInfo,
+		
+		MessageMetadata: o.MessageMetadata,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -123,6 +131,11 @@ func (o *Conversationmessageeventtopicmessagedetails) UnmarshalJSON(b []byte) er
 	if ErrorInfo, ok := ConversationmessageeventtopicmessagedetailsMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+	if MessageMetadata, ok := ConversationmessageeventtopicmessagedetailsMap["messageMetadata"].(map[string]interface{}); ok {
+		MessageMetadataString, _ := json.Marshal(MessageMetadata)
+		json.Unmarshal(MessageMetadataString, &o.MessageMetadata)
 	}
 	
 

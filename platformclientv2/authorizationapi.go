@@ -1586,23 +1586,23 @@ func (a AuthorizationApi) GetAuthorizationSubjectsRolecounts(id []string) (*map[
 	return successPayload, response, err
 }
 
-// GetUserRoles invokes GET /api/v2/users/{userId}/roles
+// GetUserRoles invokes GET /api/v2/users/{subjectId}/roles
 //
 // Returns a listing of roles and permissions for a user.
-func (a AuthorizationApi) GetUserRoles(userId string) (*Userauthorization, *APIResponse, error) {
+func (a AuthorizationApi) GetUserRoles(subjectId string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/users/{userId}/roles"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path := a.Configuration.BasePath + "/api/v2/users/{subjectId}/roles"
+	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'userId' is set
-	if &userId == nil {
+	// verify the required parameter 'subjectId' is set
+	if &subjectId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling AuthorizationApi->GetUserRoles")
+		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->GetUserRoles")
 	}
 
 	headerParams := make(map[string]string)
@@ -2964,23 +2964,23 @@ func (a AuthorizationApi) PutAuthorizationRolesDefault(body []Domainorganization
 	return successPayload, response, err
 }
 
-// PutUserRoles invokes PUT /api/v2/users/{userId}/roles
+// PutUserRoles invokes PUT /api/v2/users/{subjectId}/roles
 //
 // Sets the user's roles
-func (a AuthorizationApi) PutUserRoles(userId string, body []string) (*Userauthorization, *APIResponse, error) {
+func (a AuthorizationApi) PutUserRoles(subjectId string, body []string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/users/{userId}/roles"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path := a.Configuration.BasePath + "/api/v2/users/{subjectId}/roles"
+	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'userId' is set
-	if &userId == nil {
+	// verify the required parameter 'subjectId' is set
+	if &subjectId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling AuthorizationApi->PutUserRoles")
+		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->PutUserRoles")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {

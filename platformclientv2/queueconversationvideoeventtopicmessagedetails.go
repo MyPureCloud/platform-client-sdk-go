@@ -36,6 +36,10 @@ type Queueconversationvideoeventtopicmessagedetails struct {
 	// Stickers - A list of stickers included in the message
 	Stickers *[]Queueconversationvideoeventtopicmessagesticker `json:"stickers,omitempty"`
 
+
+	// MessageMetadata
+	MessageMetadata *Queueconversationvideoeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
+
 }
 
 func (o *Queueconversationvideoeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
@@ -65,6 +69,8 @@ func (o *Queueconversationvideoeventtopicmessagedetails) MarshalJSON() ([]byte, 
 		ErrorInfo *Queueconversationvideoeventtopicerrordetails `json:"errorInfo,omitempty"`
 		
 		Stickers *[]Queueconversationvideoeventtopicmessagesticker `json:"stickers,omitempty"`
+		
+		MessageMetadata *Queueconversationvideoeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
 		*Alias
 	}{ 
 		MessageId: o.MessageId,
@@ -80,6 +86,8 @@ func (o *Queueconversationvideoeventtopicmessagedetails) MarshalJSON() ([]byte, 
 		ErrorInfo: o.ErrorInfo,
 		
 		Stickers: o.Stickers,
+		
+		MessageMetadata: o.MessageMetadata,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -122,6 +130,11 @@ func (o *Queueconversationvideoeventtopicmessagedetails) UnmarshalJSON(b []byte)
 	if Stickers, ok := QueueconversationvideoeventtopicmessagedetailsMap["stickers"].([]interface{}); ok {
 		StickersString, _ := json.Marshal(Stickers)
 		json.Unmarshal(StickersString, &o.Stickers)
+	}
+	
+	if MessageMetadata, ok := QueueconversationvideoeventtopicmessagedetailsMap["messageMetadata"].(map[string]interface{}); ok {
+		MessageMetadataString, _ := json.Marshal(MessageMetadata)
+		json.Unmarshal(MessageMetadataString, &o.MessageMetadata)
 	}
 	
 

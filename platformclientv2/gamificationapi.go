@@ -353,6 +353,8 @@ func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoi
 // GetGamificationMetric invokes GET /api/v2/gamification/metrics/{metricId}
 //
 // Gamified metric by id
+//
+// This API is deprecated. Use /api/v2/gamification/profiles/{profileId}/metrics/{metricId} instead.
 func (a GamificationApi) GetGamificationMetric(metricId string, workday time.Time, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -566,6 +568,8 @@ func (a GamificationApi) GetGamificationMetricdefinitions() (*Getmetricdefinitio
 // GetGamificationMetrics invokes GET /api/v2/gamification/metrics
 //
 // All gamified metrics for a given profile
+//
+// This API is deprecated. Use /api/v2/gamification/profiles/{profileId}/metrics instead.
 func (a GamificationApi) GetGamificationMetrics(performanceProfileId string, workday time.Time) (*Getmetricsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2771,6 +2775,8 @@ func (a GamificationApi) GetGamificationTemplates() (*Gettemplatesresponse, *API
 // PostGamificationMetrics invokes POST /api/v2/gamification/metrics
 //
 // Creates a gamified metric with a given metric definition and metric objective
+//
+// This API is deprecated. Use /api/v2/gamification/profiles/{profileId}/metrics instead.
 func (a GamificationApi) PostGamificationMetrics(body Createmetric) (*Metric, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3383,6 +3389,8 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile,
 // PutGamificationMetric invokes PUT /api/v2/gamification/metrics/{metricId}
 //
 // Updates a metric
+//
+// This API is deprecated. Use /api/v2/gamification/profiles/{profileId}/metrics/{metricId} instead.
 func (a GamificationApi) PutGamificationMetric(metricId string, body Createmetric, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

@@ -13,8 +13,12 @@ type Queueconversationsocialexpressioneventtopicmessage struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Held - True if this call is held and the person on this side hears silence.
@@ -136,6 +140,8 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) MarshalJSON() ([]by
 		
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Held *bool `json:"held,omitempty"`
 		
 		ErrorInfo *Queueconversationsocialexpressioneventtopicerrordetails `json:"errorInfo,omitempty"`
@@ -182,6 +188,8 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) MarshalJSON() ([]by
 		Id: o.Id,
 		
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Held: o.Held,
 		
@@ -241,6 +249,10 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) UnmarshalJSON(b []b
     
 	if State, ok := QueueconversationsocialexpressioneventtopicmessageMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := QueueconversationsocialexpressioneventtopicmessageMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Held, ok := QueueconversationsocialexpressioneventtopicmessageMap["held"].(bool); ok {

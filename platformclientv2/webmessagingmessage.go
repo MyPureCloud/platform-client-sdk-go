@@ -39,6 +39,10 @@ type Webmessagingmessage struct {
 	// OriginatingEntity - Specifies if this message was sent by a human agent or bot. The platform may use this to apply appropriate provider policies.
 	OriginatingEntity *string `json:"originatingEntity,omitempty"`
 
+
+	// Metadata - Additional metadata about this message.
+	Metadata *map[string]string `json:"metadata,omitempty"`
+
 }
 
 func (o *Webmessagingmessage) MarshalJSON() ([]byte, error) {
@@ -62,6 +66,8 @@ func (o *Webmessagingmessage) MarshalJSON() ([]byte, error) {
 		Direction *string `json:"direction,omitempty"`
 		
 		OriginatingEntity *string `json:"originatingEntity,omitempty"`
+		
+		Metadata *map[string]string `json:"metadata,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -79,6 +85,8 @@ func (o *Webmessagingmessage) MarshalJSON() ([]byte, error) {
 		Direction: o.Direction,
 		
 		OriginatingEntity: o.OriginatingEntity,
+		
+		Metadata: o.Metadata,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -125,6 +133,11 @@ func (o *Webmessagingmessage) UnmarshalJSON(b []byte) error {
 		o.OriginatingEntity = &OriginatingEntity
 	}
     
+	if Metadata, ok := WebmessagingmessageMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
 
 	return nil
 }

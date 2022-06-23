@@ -13,8 +13,12 @@ type Conversationeventtopiccall struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Recording - True if this call is being recorded.
@@ -160,6 +164,8 @@ func (o *Conversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Recording *bool `json:"recording,omitempty"`
 		
 		RecordingState *string `json:"recordingState,omitempty"`
@@ -214,6 +220,8 @@ func (o *Conversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Recording: o.Recording,
 		
@@ -281,6 +289,10 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
     
 	if State, ok := ConversationeventtopiccallMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationeventtopiccallMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Recording, ok := ConversationeventtopiccallMap["recording"].(bool); ok {

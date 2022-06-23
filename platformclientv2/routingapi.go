@@ -2149,8 +2149,8 @@ func (a RoutingApi) GetRoutingPredictors(before string, after string, limit stri
 
 // GetRoutingPredictorsKeyperformanceindicators invokes GET /api/v2/routing/predictors/keyperformanceindicators
 //
-// Get a list of Key Performance Indicators available for the predictors.
-func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators() ([]Keyperformanceindicator, *APIResponse, error) {
+// Get a list of Key Performance Indicators
+func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators(kpiGroup string) ([]Keyperformanceindicator, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors/keyperformanceindicators"
@@ -2176,6 +2176,8 @@ func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators() ([]Keyperform
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["kpiGroup"] = a.Configuration.APIClient.ParameterToString(kpiGroup, "")
 	
 
 	// to determine the Content-Type header

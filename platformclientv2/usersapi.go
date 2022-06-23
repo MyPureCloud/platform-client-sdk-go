@@ -2127,23 +2127,23 @@ func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joi
 	return successPayload, response, err
 }
 
-// GetUserRoles invokes GET /api/v2/users/{userId}/roles
+// GetUserRoles invokes GET /api/v2/users/{subjectId}/roles
 //
 // Returns a listing of roles and permissions for a user.
-func (a UsersApi) GetUserRoles(userId string) (*Userauthorization, *APIResponse, error) {
+func (a UsersApi) GetUserRoles(subjectId string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/users/{userId}/roles"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path := a.Configuration.BasePath + "/api/v2/users/{subjectId}/roles"
+	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'userId' is set
-	if &userId == nil {
+	// verify the required parameter 'subjectId' is set
+	if &subjectId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->GetUserRoles")
+		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->GetUserRoles")
 	}
 
 	headerParams := make(map[string]string)
@@ -5415,23 +5415,23 @@ func (a UsersApi) PutUserProfileskills(userId string, body []string) ([]string, 
 	return successPayload, response, err
 }
 
-// PutUserRoles invokes PUT /api/v2/users/{userId}/roles
+// PutUserRoles invokes PUT /api/v2/users/{subjectId}/roles
 //
 // Sets the user's roles
-func (a UsersApi) PutUserRoles(userId string, body []string) (*Userauthorization, *APIResponse, error) {
+func (a UsersApi) PutUserRoles(subjectId string, body []string) (*Userauthorization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/users/{userId}/roles"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path := a.Configuration.BasePath + "/api/v2/users/{subjectId}/roles"
+	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'userId' is set
-	if &userId == nil {
+	// verify the required parameter 'subjectId' is set
+	if &subjectId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling UsersApi->PutUserRoles")
+		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling UsersApi->PutUserRoles")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {

@@ -18,7 +18,7 @@ type Schedule struct {
 
 
 	// Division - The division to which this entity belongs.
-	Division *Division `json:"division,omitempty"`
+	Division *Writabledivision `json:"division,omitempty"`
 
 
 	// Description - The resource's description.
@@ -116,7 +116,7 @@ func (o *Schedule) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Division *Division `json:"division,omitempty"`
+		Division *Writabledivision `json:"division,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
 		

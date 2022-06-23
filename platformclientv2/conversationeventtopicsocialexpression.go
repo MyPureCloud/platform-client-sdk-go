@@ -9,8 +9,12 @@ import (
 
 // Conversationeventtopicsocialexpression
 type Conversationeventtopicsocialexpression struct { 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Id - A globally unique identifier for this communication.
@@ -114,6 +118,8 @@ func (o *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		SocialMediaId *string `json:"socialMediaId,omitempty"`
@@ -150,6 +156,8 @@ func (o *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Id: o.Id,
 		
@@ -197,6 +205,10 @@ func (o *Conversationeventtopicsocialexpression) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := ConversationeventtopicsocialexpressionMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationeventtopicsocialexpressionMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Id, ok := ConversationeventtopicsocialexpressionMap["id"].(string); ok {

@@ -13,8 +13,12 @@ type Queueconversationvideoeventtopicmessage struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// State - The connection state of this communication.
+	// State
 	State *string `json:"state,omitempty"`
+
+
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
 
 
 	// Held - True if this call is held and the person on this side hears silence.
@@ -136,6 +140,8 @@ func (o *Queueconversationvideoeventtopicmessage) MarshalJSON() ([]byte, error) 
 		
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Held *bool `json:"held,omitempty"`
 		
 		ErrorInfo *Queueconversationvideoeventtopicerrordetails `json:"errorInfo,omitempty"`
@@ -182,6 +188,8 @@ func (o *Queueconversationvideoeventtopicmessage) MarshalJSON() ([]byte, error) 
 		Id: o.Id,
 		
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Held: o.Held,
 		
@@ -241,6 +249,10 @@ func (o *Queueconversationvideoeventtopicmessage) UnmarshalJSON(b []byte) error 
     
 	if State, ok := QueueconversationvideoeventtopicmessageMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := QueueconversationvideoeventtopicmessageMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Held, ok := QueueconversationvideoeventtopicmessageMap["held"].(bool); ok {
