@@ -42,12 +42,14 @@ func testRetryErrorCode(t *testing.T, errorCode int) {
 	hook := func(logger retryablehttp.Logger, req *http.Request, retryNumber int) {
 		retryCount = retryNumber
 	}
+	responseHook := func(logger retryablehttp.Logger, res *http.Response) {}
 
 	APIClient := NewAPIClient(&Configuration{})
 	APIClient.client.RetryWaitMin = 10 * time.Millisecond
 	APIClient.client.RetryWaitMax = 50 * time.Millisecond
 	APIClient.client.RetryMax = 50
 	APIClient.client.RequestLogHook = hook
+	APIClient.client.ResponseLogHook = responseHook
 
 	// Create a request
 	testBytes := []byte("hello")
@@ -124,11 +126,13 @@ func testDoNotRetryErrorCode(t *testing.T, errorCode int) {
 	hook := func(logger retryablehttp.Logger, req *http.Request, retryNumber int) {
 		retryCount = retryNumber
 	}
+	responseHook := func(logger retryablehttp.Logger, res *http.Response) {}
 
 	APIClient := NewAPIClient(&Configuration{})
 	APIClient.client.RetryWaitMax = 0
 	APIClient.client.RetryMax = 0
 	APIClient.client.RequestLogHook = hook
+	APIClient.client.ResponseLogHook = responseHook
 
 	// Create a request
 	testBytes := []byte("hello")

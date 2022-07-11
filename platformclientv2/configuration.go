@@ -62,13 +62,16 @@ const (
 
 // RetryConfiguration has settings to configure the SDK retry logic
 type RetryConfiguration struct {
-	RetryWaitMin   time.Duration  `json:"retry_wait_min,omitempty"`
-	RetryWaitMax   time.Duration  `json:"retry_wait_max,omitempty"`
-	RetryMax       int            `json:"retry_max,omitempty"`
-	RequestLogHook RequestLogHook `json:"request_log_hook,omitempty"`
+	RetryWaitMin    time.Duration   `json:"retry_wait_min,omitempty"`
+	RetryWaitMax    time.Duration   `json:"retry_wait_max,omitempty"`
+	RetryMax        int             `json:"retry_max,omitempty"`
+	RequestLogHook  RequestLogHook  `json:"request_log_hook,omitempty"`
+  	ResponseLogHook ResponseLogHook `json:"response_log_hook,omitempty"`
 }
 
 type RequestLogHook func(*http.Request, int)
+
+type ResponseLogHook func(*http.Response)
 
 // LoggingConfiguration has settings to configure the SDK logging
 type LoggingConfiguration struct {

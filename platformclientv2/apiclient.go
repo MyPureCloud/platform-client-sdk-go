@@ -141,6 +141,11 @@ func (c *APIClient) CallAPI(path string, method string,
 				c.configuration.RetryConfiguration.RequestLogHook(req, retryNumber)
 			}
 		}
+		if c.configuration.RetryConfiguration.ResponseLogHook != nil {
+			c.client.ResponseLogHook = func(_ retryablehttp.Logger, res *http.Response) {
+				c.configuration.RetryConfiguration.ResponseLogHook(res)
+			}
+		}
 	}
 
 	requestBody, _ := request.BodyBytes()
