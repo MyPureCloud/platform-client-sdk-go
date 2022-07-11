@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Forecastsourcedaypointer - Pointer to look up source data for a short term forecast
+// Forecastsourcedaypointer
 type Forecastsourcedaypointer struct { 
 	// DayOfWeek - The forecast day of week for this source data
 	DayOfWeek *string `json:"dayOfWeek,omitempty"`

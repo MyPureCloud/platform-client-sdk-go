@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Servicegoaltemplatelist - List of service goal templates
+// Servicegoaltemplatelist
 type Servicegoaltemplatelist struct { 
 	// Entities
 	Entities *[]Servicegoaltemplate `json:"entities,omitempty"`

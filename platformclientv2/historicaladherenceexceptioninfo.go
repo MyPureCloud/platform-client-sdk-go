@@ -24,6 +24,14 @@ type Historicaladherenceexceptioninfo struct {
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 
 
+	// ScheduledSecondaryPresenceLookupIds - The lookup IDs used to retrieve the scheduled secondary statuses from map of lookup ID to corresponding secondary presence ID
+	ScheduledSecondaryPresenceLookupIds *[]string `json:"scheduledSecondaryPresenceLookupIds,omitempty"`
+
+
+	// ActualActivityCodeId - The ID of the actual activity code for this user
+	ActualActivityCodeId *string `json:"actualActivityCodeId,omitempty"`
+
+
 	// ActualActivityCategory - Activity for which the user is actually engaged
 	ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 
@@ -59,6 +67,10 @@ func (o *Historicaladherenceexceptioninfo) MarshalJSON() ([]byte, error) {
 		
 		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 		
+		ScheduledSecondaryPresenceLookupIds *[]string `json:"scheduledSecondaryPresenceLookupIds,omitempty"`
+		
+		ActualActivityCodeId *string `json:"actualActivityCodeId,omitempty"`
+		
 		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 		
 		SystemPresence *string `json:"systemPresence,omitempty"`
@@ -77,6 +89,10 @@ func (o *Historicaladherenceexceptioninfo) MarshalJSON() ([]byte, error) {
 		ScheduledActivityCodeId: o.ScheduledActivityCodeId,
 		
 		ScheduledActivityCategory: o.ScheduledActivityCategory,
+		
+		ScheduledSecondaryPresenceLookupIds: o.ScheduledSecondaryPresenceLookupIds,
+		
+		ActualActivityCodeId: o.ActualActivityCodeId,
 		
 		ActualActivityCategory: o.ActualActivityCategory,
 		
@@ -114,6 +130,15 @@ func (o *Historicaladherenceexceptioninfo) UnmarshalJSON(b []byte) error {
     
 	if ScheduledActivityCategory, ok := HistoricaladherenceexceptioninfoMap["scheduledActivityCategory"].(string); ok {
 		o.ScheduledActivityCategory = &ScheduledActivityCategory
+	}
+    
+	if ScheduledSecondaryPresenceLookupIds, ok := HistoricaladherenceexceptioninfoMap["scheduledSecondaryPresenceLookupIds"].([]interface{}); ok {
+		ScheduledSecondaryPresenceLookupIdsString, _ := json.Marshal(ScheduledSecondaryPresenceLookupIds)
+		json.Unmarshal(ScheduledSecondaryPresenceLookupIdsString, &o.ScheduledSecondaryPresenceLookupIds)
+	}
+	
+	if ActualActivityCodeId, ok := HistoricaladherenceexceptioninfoMap["actualActivityCodeId"].(string); ok {
+		o.ActualActivityCodeId = &ActualActivityCodeId
 	}
     
 	if ActualActivityCategory, ok := HistoricaladherenceexceptioninfoMap["actualActivityCategory"].(string); ok {

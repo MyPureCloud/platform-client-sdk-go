@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Createworkplanactivity - Activity configured for shift in work plan
+// Createworkplanactivity
 type Createworkplanactivity struct { 
 	// ActivityCodeId - ID of the activity code associated with this activity
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Updatetimeofflimitrequest - Contains time off limit object property values to be updated.
+// Updatetimeofflimitrequest
 type Updatetimeofflimitrequest struct { 
 	// DefaultLimitMinutes - The default time off limit value in minutes per granularity
 	DefaultLimitMinutes *int `json:"defaultLimitMinutes,omitempty"`

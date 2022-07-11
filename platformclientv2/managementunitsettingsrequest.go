@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Managementunitsettingsrequest - Management Unit Settings
+// Managementunitsettingsrequest
 type Managementunitsettingsrequest struct { 
 	// Adherence - Adherence settings for this management unit
 	Adherence *Adherencesettings `json:"adherence,omitempty"`

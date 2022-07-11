@@ -499,6 +499,9 @@ docs/GetGamificationScorecardsBestpoints-example.txt
 docs/GetGamificationScorecardsPointsAlltime-example.txt
 docs/GetGamificationScorecardsPointsAverage-example.txt
 docs/GetGamificationScorecardsPointsTrends-example.txt
+docs/GetGamificationScorecardsProfileMetricUserValuesTrends-example.txt
+docs/GetGamificationScorecardsProfileMetricUsersValuesTrends-example.txt
+docs/GetGamificationScorecardsProfileMetricValuesTrends-example.txt
 docs/GetGamificationScorecardsUser-example.txt
 docs/GetGamificationScorecardsUserAttendance-example.txt
 docs/GetGamificationScorecardsUserBestpoints-example.txt
@@ -629,6 +632,7 @@ docs/GetLearningModuleJob-example.txt
 docs/GetLearningModuleRule-example.txt
 docs/GetLearningModuleVersion-example.txt
 docs/GetLearningModules-example.txt
+docs/GetLearningModulesAssignments-example.txt
 docs/GetLicenseDefinition-example.txt
 docs/GetLicenseDefinitions-example.txt
 docs/GetLicenseToggle-example.txt
@@ -2038,6 +2042,8 @@ platformclientv2/assessmentlisting.go
 platformclientv2/assessmentquestiongroupscore.go
 platformclientv2/assessmentquestionscore.go
 platformclientv2/assessmentscoringset.go
+platformclientv2/assignedlearningmodule.go
+platformclientv2/assignedlearningmoduledomainentitylisting.go
 platformclientv2/assignedsegment.go
 platformclientv2/assignedwrapupcode.go
 platformclientv2/assignment.go
@@ -2107,6 +2113,7 @@ platformclientv2/availabletimeoffresponse.go
 platformclientv2/availabletopic.go
 platformclientv2/availabletopicentitylisting.go
 platformclientv2/availabletranslations.go
+platformclientv2/basemediasettings.go
 platformclientv2/baseprogramentity.go
 platformclientv2/basetopicentitiy.go
 platformclientv2/batchdownloadjobresult.go
@@ -3600,6 +3607,7 @@ platformclientv2/meteredevaluationassignment.go
 platformclientv2/metric.go
 platformclientv2/metricdefinition.go
 platformclientv2/metrics.go
+platformclientv2/metricvaluetrendaverage.go
 platformclientv2/minedintentslisting.go
 platformclientv2/miner.go
 platformclientv2/minerexecuterequest.go
@@ -4321,6 +4329,7 @@ platformclientv2/servicegoaltemplatelist.go
 platformclientv2/servicegoaltemplatereference.go
 platformclientv2/servicelevel.go
 platformclientv2/session.go
+platformclientv2/sessionenddetails.go
 platformclientv2/sessionlastevent.go
 platformclientv2/sessionsegmentassignment.go
 platformclientv2/setrecordingstate.go

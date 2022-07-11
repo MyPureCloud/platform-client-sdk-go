@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Businessunitactivitycodelisting - List of BusinessUnitActivityCode
+// Businessunitactivitycodelisting
 type Businessunitactivitycodelisting struct { 
 	// Entities
 	Entities *[]Businessunitactivitycode `json:"entities,omitempty"`

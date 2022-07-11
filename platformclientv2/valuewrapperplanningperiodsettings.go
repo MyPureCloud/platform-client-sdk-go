@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Valuewrapperplanningperiodsettings - An object to provide context to nullable fields in PATCH requests
+// Valuewrapperplanningperiodsettings
 type Valuewrapperplanningperiodsettings struct { 
 	// Value - The value for the associated field
 	Value *Planningperiodsettings `json:"value,omitempty"`

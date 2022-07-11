@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Userschedulecontainer - Container object to hold a map of user schedules
+// Userschedulecontainer
 type Userschedulecontainer struct { 
 	// ManagementUnitTimeZone - The reference time zone used for the management unit
 	ManagementUnitTimeZone *string `json:"managementUnitTimeZone,omitempty"`

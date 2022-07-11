@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Workplanshift - Shift in a work plan
+// Workplanshift
 type Workplanshift struct { 
 	// Name - Name of the shift
 	Name *string `json:"name,omitempty"`
@@ -84,6 +84,14 @@ type Workplanshift struct {
 	MaximumContiguousWorkTimeMinutes *int `json:"maximumContiguousWorkTimeMinutes,omitempty"`
 
 
+	// ConstrainDayOff - Whether day off rule is enabled
+	ConstrainDayOff *bool `json:"constrainDayOff,omitempty"`
+
+
+	// DayOffRule - The day off rule for agents to have next day off or previous day off. used if constrainDayOff = true
+	DayOffRule *string `json:"dayOffRule,omitempty"`
+
+
 	// Activities - Activities configured for this shift
 	Activities *[]Workplanactivity `json:"activities,omitempty"`
 
@@ -145,6 +153,10 @@ func (o *Workplanshift) MarshalJSON() ([]byte, error) {
 		
 		MaximumContiguousWorkTimeMinutes *int `json:"maximumContiguousWorkTimeMinutes,omitempty"`
 		
+		ConstrainDayOff *bool `json:"constrainDayOff,omitempty"`
+		
+		DayOffRule *string `json:"dayOffRule,omitempty"`
+		
 		Activities *[]Workplanactivity `json:"activities,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
@@ -191,6 +203,10 @@ func (o *Workplanshift) MarshalJSON() ([]byte, error) {
 		MinimumContiguousWorkTimeMinutes: o.MinimumContiguousWorkTimeMinutes,
 		
 		MaximumContiguousWorkTimeMinutes: o.MaximumContiguousWorkTimeMinutes,
+		
+		ConstrainDayOff: o.ConstrainDayOff,
+		
+		DayOffRule: o.DayOffRule,
 		
 		Activities: o.Activities,
 		
@@ -298,6 +314,14 @@ func (o *Workplanshift) UnmarshalJSON(b []byte) error {
 		o.MaximumContiguousWorkTimeMinutes = &MaximumContiguousWorkTimeMinutesInt
 	}
 	
+	if ConstrainDayOff, ok := WorkplanshiftMap["constrainDayOff"].(bool); ok {
+		o.ConstrainDayOff = &ConstrainDayOff
+	}
+    
+	if DayOffRule, ok := WorkplanshiftMap["dayOffRule"].(string); ok {
+		o.DayOffRule = &DayOffRule
+	}
+    
 	if Activities, ok := WorkplanshiftMap["activities"].([]interface{}); ok {
 		ActivitiesString, _ := json.Marshal(Activities)
 		json.Unmarshal(ActivitiesString, &o.Activities)

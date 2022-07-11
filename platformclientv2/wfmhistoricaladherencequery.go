@@ -28,6 +28,10 @@ type Wfmhistoricaladherencequery struct {
 	// IncludeExceptions - Whether user exceptions should be returned as part of the results
 	IncludeExceptions *bool `json:"includeExceptions,omitempty"`
 
+
+	// TeamIds - The teamIds to report on. If null or not set, adherence will be computed for requested users if applicable or otherwise all users in the management unit. Note: If teamIds is also specified, only adherence for users in the requested teams will be returned
+	TeamIds *[]string `json:"teamIds,omitempty"`
+
 }
 
 func (o *Wfmhistoricaladherencequery) MarshalJSON() ([]byte, error) {
@@ -61,6 +65,8 @@ func (o *Wfmhistoricaladherencequery) MarshalJSON() ([]byte, error) {
 		UserIds *[]string `json:"userIds,omitempty"`
 		
 		IncludeExceptions *bool `json:"includeExceptions,omitempty"`
+		
+		TeamIds *[]string `json:"teamIds,omitempty"`
 		*Alias
 	}{ 
 		StartDate: StartDate,
@@ -72,6 +78,8 @@ func (o *Wfmhistoricaladherencequery) MarshalJSON() ([]byte, error) {
 		UserIds: o.UserIds,
 		
 		IncludeExceptions: o.IncludeExceptions,
+		
+		TeamIds: o.TeamIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -106,6 +114,11 @@ func (o *Wfmhistoricaladherencequery) UnmarshalJSON(b []byte) error {
 		o.IncludeExceptions = &IncludeExceptions
 	}
     
+	if TeamIds, ok := WfmhistoricaladherencequeryMap["teamIds"].([]interface{}); ok {
+		TeamIdsString, _ := json.Marshal(TeamIds)
+		json.Unmarshal(TeamIdsString, &o.TeamIds)
+	}
+	
 
 	return nil
 }

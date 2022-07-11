@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Bushorttermforecastreference - A pointer to a short term forecast
+// Bushorttermforecastreference
 type Bushorttermforecastreference struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

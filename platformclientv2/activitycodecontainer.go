@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Activitycodecontainer - Container for a map of ActivityCodeId to ActivityCode
+// Activitycodecontainer
 type Activitycodecontainer struct { 
 	// ActivityCodes - Map of activity code id to activity code
 	ActivityCodes *map[string]Activitycode `json:"activityCodes,omitempty"`

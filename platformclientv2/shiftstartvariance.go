@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Shiftstartvariance - Variance in minutes among start times of shifts in work plan
+// Shiftstartvariance
 type Shiftstartvariance struct { 
 	// ApplicableDays - Days for which shift start variance is configured
 	ApplicableDays *[]string `json:"applicableDays,omitempty"`

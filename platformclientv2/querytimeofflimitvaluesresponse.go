@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Querytimeofflimitvaluesresponse - The list of date ranges with the time off limit, allocated and waitlisted values.
+// Querytimeofflimitvaluesresponse
 type Querytimeofflimitvaluesresponse struct { 
 	// Values
 	Values *[]Timeofflimitvaluerange `json:"values,omitempty"`

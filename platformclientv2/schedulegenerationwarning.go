@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Schedulegenerationwarning - Schedule generation warning
+// Schedulegenerationwarning
 type Schedulegenerationwarning struct { 
 	// UserId - ID of the user in the warning
 	UserId *string `json:"userId,omitempty"`

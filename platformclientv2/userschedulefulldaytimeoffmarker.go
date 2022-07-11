@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Userschedulefulldaytimeoffmarker - Marker to indicate an approved full day time off request
+// Userschedulefulldaytimeoffmarker
 type Userschedulefulldaytimeoffmarker struct { 
 	// ManagementUnitDate - The date associated with the time off request that this marker corresponds to.  Date only, in ISO-8601 format.
 	ManagementUnitDate *string `json:"managementUnitDate,omitempty"`

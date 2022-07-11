@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Activitycode - Activity code data
+// Activitycode
 type Activitycode struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

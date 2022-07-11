@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Managementunit - Management Unit object for Workforce Management
+// Managementunit
 type Managementunit struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

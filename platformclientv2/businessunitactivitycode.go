@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Businessunitactivitycode - Activity code data
+// Businessunitactivitycode
 type Businessunitactivitycode struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
@@ -44,6 +44,22 @@ type Businessunitactivitycode struct {
 	AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
 
 
+	// CountsTowardShrinkage - Whether or not this activity code counts toward shrinkage calculations
+	CountsTowardShrinkage *bool `json:"countsTowardShrinkage,omitempty"`
+
+
+	// PlannedShrinkage - Whether this activity code is considered planned or unplanned shrinkage
+	PlannedShrinkage *bool `json:"plannedShrinkage,omitempty"`
+
+
+	// Interruptible - Whether this activity code is considered interruptible
+	Interruptible *bool `json:"interruptible,omitempty"`
+
+
+	// SecondaryPresences - The secondary presences of this activity code
+	SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
+
+
 	// Metadata - Version metadata of this activity code
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
@@ -77,6 +93,14 @@ func (o *Businessunitactivitycode) MarshalJSON() ([]byte, error) {
 		
 		AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
 		
+		CountsTowardShrinkage *bool `json:"countsTowardShrinkage,omitempty"`
+		
+		PlannedShrinkage *bool `json:"plannedShrinkage,omitempty"`
+		
+		Interruptible *bool `json:"interruptible,omitempty"`
+		
+		SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -99,6 +123,14 @@ func (o *Businessunitactivitycode) MarshalJSON() ([]byte, error) {
 		CountsAsWorkTime: o.CountsAsWorkTime,
 		
 		AgentTimeOffSelectable: o.AgentTimeOffSelectable,
+		
+		CountsTowardShrinkage: o.CountsTowardShrinkage,
+		
+		PlannedShrinkage: o.PlannedShrinkage,
+		
+		Interruptible: o.Interruptible,
+		
+		SecondaryPresences: o.SecondaryPresences,
 		
 		Metadata: o.Metadata,
 		
@@ -151,6 +183,23 @@ func (o *Businessunitactivitycode) UnmarshalJSON(b []byte) error {
 		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
 	}
     
+	if CountsTowardShrinkage, ok := BusinessunitactivitycodeMap["countsTowardShrinkage"].(bool); ok {
+		o.CountsTowardShrinkage = &CountsTowardShrinkage
+	}
+    
+	if PlannedShrinkage, ok := BusinessunitactivitycodeMap["plannedShrinkage"].(bool); ok {
+		o.PlannedShrinkage = &PlannedShrinkage
+	}
+    
+	if Interruptible, ok := BusinessunitactivitycodeMap["interruptible"].(bool); ok {
+		o.Interruptible = &Interruptible
+	}
+    
+	if SecondaryPresences, ok := BusinessunitactivitycodeMap["secondaryPresences"].([]interface{}); ok {
+		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
+		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
+	}
+	
 	if Metadata, ok := BusinessunitactivitycodeMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)

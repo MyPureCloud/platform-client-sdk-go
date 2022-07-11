@@ -8,12 +8,20 @@ import (
 
 // Timeoffrequestquerybody
 type Timeoffrequestquerybody struct { 
+	// Ids - The set of ids to filter time off requests
+	Ids *[]string `json:"ids,omitempty"`
+
+
 	// UserIds - The set of user ids to filter time off requests
 	UserIds *[]string `json:"userIds,omitempty"`
 
 
 	// Statuses - The set of statuses to filter time off requests
 	Statuses *[]string `json:"statuses,omitempty"`
+
+
+	// Substatuses - The set of substatuses to filter time off requests
+	Substatuses *[]string `json:"substatuses,omitempty"`
 
 
 	// DateRange - The inclusive range of dates to filter time off requests
@@ -27,16 +35,24 @@ func (o *Timeoffrequestquerybody) MarshalJSON() ([]byte, error) {
 	type Alias Timeoffrequestquerybody
 	
 	return json.Marshal(&struct { 
+		Ids *[]string `json:"ids,omitempty"`
+		
 		UserIds *[]string `json:"userIds,omitempty"`
 		
 		Statuses *[]string `json:"statuses,omitempty"`
 		
+		Substatuses *[]string `json:"substatuses,omitempty"`
+		
 		DateRange *Daterange `json:"dateRange,omitempty"`
 		*Alias
 	}{ 
+		Ids: o.Ids,
+		
 		UserIds: o.UserIds,
 		
 		Statuses: o.Statuses,
+		
+		Substatuses: o.Substatuses,
 		
 		DateRange: o.DateRange,
 		Alias:    (*Alias)(o),
@@ -50,6 +66,11 @@ func (o *Timeoffrequestquerybody) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Ids, ok := TimeoffrequestquerybodyMap["ids"].([]interface{}); ok {
+		IdsString, _ := json.Marshal(Ids)
+		json.Unmarshal(IdsString, &o.Ids)
+	}
+	
 	if UserIds, ok := TimeoffrequestquerybodyMap["userIds"].([]interface{}); ok {
 		UserIdsString, _ := json.Marshal(UserIds)
 		json.Unmarshal(UserIdsString, &o.UserIds)
@@ -58,6 +79,11 @@ func (o *Timeoffrequestquerybody) UnmarshalJSON(b []byte) error {
 	if Statuses, ok := TimeoffrequestquerybodyMap["statuses"].([]interface{}); ok {
 		StatusesString, _ := json.Marshal(Statuses)
 		json.Unmarshal(StatusesString, &o.Statuses)
+	}
+	
+	if Substatuses, ok := TimeoffrequestquerybodyMap["substatuses"].([]interface{}); ok {
+		SubstatusesString, _ := json.Marshal(Substatuses)
+		json.Unmarshal(SubstatusesString, &o.Substatuses)
 	}
 	
 	if DateRange, ok := TimeoffrequestquerybodyMap["dateRange"].(map[string]interface{}); ok {

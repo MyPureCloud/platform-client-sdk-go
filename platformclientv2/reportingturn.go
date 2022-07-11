@@ -41,6 +41,10 @@ type Reportingturn struct {
 	AskActionResult *string `json:"askActionResult,omitempty"`
 
 
+	// SessionEndDetails - The details related to end of bot flow session.
+	SessionEndDetails *Sessionenddetails `json:"sessionEndDetails,omitempty"`
+
+
 	// Conversation - The conversation details, across potentially multiple Bot Flow sessions.
 	Conversation *Addressableentityref `json:"conversation,omitempty"`
 
@@ -76,6 +80,8 @@ func (o *Reportingturn) MarshalJSON() ([]byte, error) {
 		
 		AskActionResult *string `json:"askActionResult,omitempty"`
 		
+		SessionEndDetails *Sessionenddetails `json:"sessionEndDetails,omitempty"`
+		
 		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		*Alias
 	}{ 
@@ -94,6 +100,8 @@ func (o *Reportingturn) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		AskActionResult: o.AskActionResult,
+		
+		SessionEndDetails: o.SessionEndDetails,
 		
 		Conversation: o.Conversation,
 		Alias:    (*Alias)(o),
@@ -144,6 +152,11 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 		o.AskActionResult = &AskActionResult
 	}
     
+	if SessionEndDetails, ok := ReportingturnMap["sessionEndDetails"].(map[string]interface{}); ok {
+		SessionEndDetailsString, _ := json.Marshal(SessionEndDetails)
+		json.Unmarshal(SessionEndDetailsString, &o.SessionEndDetails)
+	}
+	
 	if Conversation, ok := ReportingturnMap["conversation"].(map[string]interface{}); ok {
 		ConversationString, _ := json.Marshal(Conversation)
 		json.Unmarshal(ConversationString, &o.Conversation)

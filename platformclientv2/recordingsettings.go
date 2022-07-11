@@ -15,10 +15,6 @@ type Recordingsettings struct {
 	// MaxConfigurableScreenRecordingStreams - Upper limit that maxSimultaneousStreams can be configured
 	MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
 
-
-	// RegionalRecordingStorageEnabled - Store call recordings in the region where they are intended to be recorded, otherwise in the organization's home region
-	RegionalRecordingStorageEnabled *bool `json:"regionalRecordingStorageEnabled,omitempty"`
-
 }
 
 func (o *Recordingsettings) MarshalJSON() ([]byte, error) {
@@ -30,15 +26,11 @@ func (o *Recordingsettings) MarshalJSON() ([]byte, error) {
 		MaxSimultaneousStreams *int `json:"maxSimultaneousStreams,omitempty"`
 		
 		MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
-		
-		RegionalRecordingStorageEnabled *bool `json:"regionalRecordingStorageEnabled,omitempty"`
 		*Alias
 	}{ 
 		MaxSimultaneousStreams: o.MaxSimultaneousStreams,
 		
 		MaxConfigurableScreenRecordingStreams: o.MaxConfigurableScreenRecordingStreams,
-		
-		RegionalRecordingStorageEnabled: o.RegionalRecordingStorageEnabled,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -60,10 +52,6 @@ func (o *Recordingsettings) UnmarshalJSON(b []byte) error {
 		o.MaxConfigurableScreenRecordingStreams = &MaxConfigurableScreenRecordingStreamsInt
 	}
 	
-	if RegionalRecordingStorageEnabled, ok := RecordingsettingsMap["regionalRecordingStorageEnabled"].(bool); ok {
-		o.RegionalRecordingStorageEnabled = &RegionalRecordingStorageEnabled
-	}
-    
 
 	return nil
 }

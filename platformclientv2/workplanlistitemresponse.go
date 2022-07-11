@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Workplanlistitemresponse - Work plan information
+// Workplanlistitemresponse
 type Workplanlistitemresponse struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

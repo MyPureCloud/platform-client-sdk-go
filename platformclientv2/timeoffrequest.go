@@ -29,8 +29,16 @@ type Timeoffrequest struct {
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`
 
 
+	// Paid - Whether this is a paid time off request
+	Paid *bool `json:"paid,omitempty"`
+
+
 	// Status - The status of this time off request
 	Status *string `json:"status,omitempty"`
+
+
+	// Substatus - The substatus of this time off request
+	Substatus *string `json:"substatus,omitempty"`
 
 
 	// PartialDayStartDateTimes - A set of start date-times in ISO-8601 format for partial day requests.  Will be not empty if isFullDayRequest == false
@@ -106,7 +114,11 @@ func (o *Timeoffrequest) MarshalJSON() ([]byte, error) {
 		
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
+		Paid *bool `json:"paid,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
+		
+		Substatus *string `json:"substatus,omitempty"`
 		
 		PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
 		
@@ -139,7 +151,11 @@ func (o *Timeoffrequest) MarshalJSON() ([]byte, error) {
 		
 		ActivityCodeId: o.ActivityCodeId,
 		
+		Paid: o.Paid,
+		
 		Status: o.Status,
+		
+		Substatus: o.Substatus,
 		
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
@@ -192,8 +208,16 @@ func (o *Timeoffrequest) UnmarshalJSON(b []byte) error {
 		o.ActivityCodeId = &ActivityCodeId
 	}
     
+	if Paid, ok := TimeoffrequestMap["paid"].(bool); ok {
+		o.Paid = &Paid
+	}
+    
 	if Status, ok := TimeoffrequestMap["status"].(string); ok {
 		o.Status = &Status
+	}
+    
+	if Substatus, ok := TimeoffrequestMap["substatus"].(string); ok {
+		o.Substatus = &Substatus
 	}
     
 	if PartialDayStartDateTimes, ok := TimeoffrequestMap["partialDayStartDateTimes"].([]interface{}); ok {

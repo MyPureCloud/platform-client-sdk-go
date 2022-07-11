@@ -36,6 +36,10 @@ type Createadmintimeoffrequest struct {
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
+
+	// Paid - Whether this is a paid time off request
+	Paid *bool `json:"paid,omitempty"`
+
 }
 
 func (o *Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
@@ -57,6 +61,8 @@ func (o *Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 		PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
 		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
+		
+		Paid *bool `json:"paid,omitempty"`
 		*Alias
 	}{ 
 		Status: o.Status,
@@ -72,6 +78,8 @@ func (o *Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
 		DailyDurationMinutes: o.DailyDurationMinutes,
+		
+		Paid: o.Paid,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -115,6 +123,10 @@ func (o *Createadmintimeoffrequest) UnmarshalJSON(b []byte) error {
 		o.DailyDurationMinutes = &DailyDurationMinutesInt
 	}
 	
+	if Paid, ok := CreateadmintimeoffrequestMap["paid"].(bool); ok {
+		o.Paid = &Paid
+	}
+    
 
 	return nil
 }

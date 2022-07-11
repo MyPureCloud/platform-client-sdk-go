@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Workplan - Work plan information
+// Workplan
 type Workplan struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

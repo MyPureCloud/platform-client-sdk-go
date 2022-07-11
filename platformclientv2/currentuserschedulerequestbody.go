@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Currentuserschedulerequestbody - POST request body for fetching the current user's schedule over a given range
+// Currentuserschedulerequestbody
 type Currentuserschedulerequestbody struct { 
 	// StartDate - Beginning of the range of schedules to fetch, in ISO-8601 format
 	StartDate *time.Time `json:"startDate,omitempty"`

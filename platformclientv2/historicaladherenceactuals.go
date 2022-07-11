@@ -12,6 +12,10 @@ type Historicaladherenceactuals struct {
 	ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 
 
+	// ActualSecondaryPresenceLookupId - The lookup ID used to retrieve the actual secondary status from map of lookup ID to corresponding secondary presence ID
+	ActualSecondaryPresenceLookupId *string `json:"actualSecondaryPresenceLookupId,omitempty"`
+
+
 	// StartOffsetSeconds - Actual start offset in seconds relative to query start time
 	StartOffsetSeconds *int `json:"startOffsetSeconds,omitempty"`
 
@@ -29,12 +33,16 @@ func (o *Historicaladherenceactuals) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 		
+		ActualSecondaryPresenceLookupId *string `json:"actualSecondaryPresenceLookupId,omitempty"`
+		
 		StartOffsetSeconds *int `json:"startOffsetSeconds,omitempty"`
 		
 		EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
 		*Alias
 	}{ 
 		ActualActivityCategory: o.ActualActivityCategory,
+		
+		ActualSecondaryPresenceLookupId: o.ActualSecondaryPresenceLookupId,
 		
 		StartOffsetSeconds: o.StartOffsetSeconds,
 		
@@ -52,6 +60,10 @@ func (o *Historicaladherenceactuals) UnmarshalJSON(b []byte) error {
 	
 	if ActualActivityCategory, ok := HistoricaladherenceactualsMap["actualActivityCategory"].(string); ok {
 		o.ActualActivityCategory = &ActualActivityCategory
+	}
+    
+	if ActualSecondaryPresenceLookupId, ok := HistoricaladherenceactualsMap["actualSecondaryPresenceLookupId"].(string); ok {
+		o.ActualSecondaryPresenceLookupId = &ActualSecondaryPresenceLookupId
 	}
     
 	if StartOffsetSeconds, ok := HistoricaladherenceactualsMap["startOffsetSeconds"].(float64); ok {

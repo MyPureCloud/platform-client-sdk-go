@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Planninggrouplist - List of planning groups
+// Planninggrouplist
 type Planninggrouplist struct { 
 	// Entities
 	Entities *[]Planninggroup `json:"entities,omitempty"`

@@ -125,6 +125,10 @@ type Queuerequest struct {
 	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 
+	// PeerId - The ID of the external Queue
+	PeerId *string `json:"peerId,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -210,6 +214,8 @@ func (o *Queuerequest) MarshalJSON() ([]byte, error) {
 		
 		OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 		
+		PeerId *string `json:"peerId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -270,6 +276,8 @@ func (o *Queuerequest) MarshalJSON() ([]byte, error) {
 		OutboundMessagingAddresses: o.OutboundMessagingAddresses,
 		
 		OutboundEmailAddress: o.OutboundEmailAddress,
+		
+		PeerId: o.PeerId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -417,6 +425,10 @@ func (o *Queuerequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(OutboundEmailAddressString, &o.OutboundEmailAddress)
 	}
 	
+	if PeerId, ok := QueuerequestMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+    
 	if SelfUri, ok := QueuerequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

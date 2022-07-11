@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Timeofflimitrange - A single range filled with time off limit interval values
+// Timeofflimitrange
 type Timeofflimitrange struct { 
 	// StartDate - Start date of the range. The end date is determined by 'granularity' and the size of 'limitMinutesPerInterval'. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	StartDate *time.Time `json:"startDate,omitempty"`

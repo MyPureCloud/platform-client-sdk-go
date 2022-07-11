@@ -44,6 +44,10 @@ type Historicaladherencequeryresult struct {
 	// Actuals - List of actual activity with offset for this user
 	Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
 
+
+	// ActualsEndsDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ActualsEndsDate *time.Time `json:"actualsEndsDate,omitempty"`
+
 }
 
 func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
@@ -67,6 +71,14 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		EndDate = nil
 	}
 	
+	ActualsEndsDate := new(string)
+	if o.ActualsEndsDate != nil {
+		
+		*ActualsEndsDate = timeutil.Strftime(o.ActualsEndsDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ActualsEndsDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -85,6 +97,8 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		DayMetrics *[]Historicaladherencedaymetrics `json:"dayMetrics,omitempty"`
 		
 		Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
+		
+		ActualsEndsDate *string `json:"actualsEndsDate,omitempty"`
 		*Alias
 	}{ 
 		UserId: o.UserId,
@@ -104,6 +118,8 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		DayMetrics: o.DayMetrics,
 		
 		Actuals: o.Actuals,
+		
+		ActualsEndsDate: ActualsEndsDate,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -154,6 +170,11 @@ func (o *Historicaladherencequeryresult) UnmarshalJSON(b []byte) error {
 	if Actuals, ok := HistoricaladherencequeryresultMap["actuals"].([]interface{}); ok {
 		ActualsString, _ := json.Marshal(Actuals)
 		json.Unmarshal(ActualsString, &o.Actuals)
+	}
+	
+	if actualsEndsDateString, ok := HistoricaladherencequeryresultMap["actualsEndsDate"].(string); ok {
+		ActualsEndsDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", actualsEndsDateString)
+		o.ActualsEndsDate = &ActualsEndsDate
 	}
 	
 

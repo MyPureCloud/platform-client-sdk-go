@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Availabletimeoffresponse - The list of date ranges with available time off values and the current waitlist per granularity.
+// Availabletimeoffresponse
 type Availabletimeoffresponse struct { 
 	// Values
 	Values *[]Availabletimeoffrange `json:"values,omitempty"`

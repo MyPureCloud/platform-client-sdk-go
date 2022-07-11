@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Wfmagent - Workforce management agent data
+// Wfmagent
 type Wfmagent struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

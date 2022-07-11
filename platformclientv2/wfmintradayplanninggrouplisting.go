@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Wfmintradayplanninggrouplisting - A list of IntradayPlanningGroup objects
+// Wfmintradayplanninggrouplisting
 type Wfmintradayplanninggrouplisting struct { 
 	// Entities
 	Entities *[]Forecastplanninggroupresponse `json:"entities,omitempty"`

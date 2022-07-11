@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Timeofflimitvaluerange - The date range with lists of time off limit, allocated and waitlisted minutes.
+// Timeofflimitvaluerange
 type Timeofflimitvaluerange struct { 
 	// TimeOffLimit - The ID of the time off limit
 	TimeOffLimit *Timeofflimitreference `json:"timeOffLimit,omitempty"`

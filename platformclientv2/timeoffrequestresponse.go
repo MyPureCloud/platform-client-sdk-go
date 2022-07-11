@@ -29,15 +29,23 @@ type Timeoffrequestresponse struct {
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`
 
 
+	// Paid - Whether this is a paid time off request
+	Paid *bool `json:"paid,omitempty"`
+
+
 	// Status - The status of this time off request
 	Status *string `json:"status,omitempty"`
 
 
-	// PartialDayStartDateTimes - A set of start date-times in ISO-8601 format for partial day requests.  Will be not empty if isFullDayRequest == false
+	// Substatus - The substatus of this time off request
+	Substatus *string `json:"substatus,omitempty"`
+
+
+	// PartialDayStartDateTimes - A set of start date-times in ISO-8601 format for partial day requests. Will be not empty if isFullDayRequest == false
 	PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
 
 
-	// FullDayManagementUnitDates - A set of dates in yyyy-MM-dd format.  Should be interpreted in the management unit's configured time zone.  Will be not empty if isFullDayRequest == true
+	// FullDayManagementUnitDates - A set of dates in yyyy-MM-dd format.  Should be interpreted in the management unit's configured time zone. Will be not empty if isFullDayRequest == true
 	FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 
 
@@ -122,7 +130,11 @@ func (o *Timeoffrequestresponse) MarshalJSON() ([]byte, error) {
 		
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
+		Paid *bool `json:"paid,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
+		
+		Substatus *string `json:"substatus,omitempty"`
 		
 		PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
 		
@@ -159,7 +171,11 @@ func (o *Timeoffrequestresponse) MarshalJSON() ([]byte, error) {
 		
 		ActivityCodeId: o.ActivityCodeId,
 		
+		Paid: o.Paid,
+		
 		Status: o.Status,
+		
+		Substatus: o.Substatus,
 		
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
@@ -216,8 +232,16 @@ func (o *Timeoffrequestresponse) UnmarshalJSON(b []byte) error {
 		o.ActivityCodeId = &ActivityCodeId
 	}
     
+	if Paid, ok := TimeoffrequestresponseMap["paid"].(bool); ok {
+		o.Paid = &Paid
+	}
+    
 	if Status, ok := TimeoffrequestresponseMap["status"].(string); ok {
 		o.Status = &Status
+	}
+    
+	if Substatus, ok := TimeoffrequestresponseMap["substatus"].(string); ok {
+		o.Substatus = &Substatus
 	}
     
 	if PartialDayStartDateTimes, ok := TimeoffrequestresponseMap["partialDayStartDateTimes"].([]interface{}); ok {

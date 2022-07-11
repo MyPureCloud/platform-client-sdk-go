@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Deletableuserreference - User reference with delete flag to remove the user from an associated entity
+// Deletableuserreference
 type Deletableuserreference struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

@@ -125,6 +125,10 @@ type Createqueuerequest struct {
 	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 
+	// PeerId - The ID of the external Queue
+	PeerId *string `json:"peerId,omitempty"`
+
+
 	// SourceQueueId - The id of an existing queue to copy the settings (does not include GPR settings) from when creating a new queue.
 	SourceQueueId *string `json:"sourceQueueId,omitempty"`
 
@@ -214,6 +218,8 @@ func (o *Createqueuerequest) MarshalJSON() ([]byte, error) {
 		
 		OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 		
+		PeerId *string `json:"peerId,omitempty"`
+		
 		SourceQueueId *string `json:"sourceQueueId,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -276,6 +282,8 @@ func (o *Createqueuerequest) MarshalJSON() ([]byte, error) {
 		OutboundMessagingAddresses: o.OutboundMessagingAddresses,
 		
 		OutboundEmailAddress: o.OutboundEmailAddress,
+		
+		PeerId: o.PeerId,
 		
 		SourceQueueId: o.SourceQueueId,
 		
@@ -425,6 +433,10 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(OutboundEmailAddressString, &o.OutboundEmailAddress)
 	}
 	
+	if PeerId, ok := CreatequeuerequestMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+    
 	if SourceQueueId, ok := CreatequeuerequestMap["sourceQueueId"].(string); ok {
 		o.SourceQueueId = &SourceQueueId
 	}

@@ -2849,7 +2849,7 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 // GetRoutingQueues invokes GET /api/v2/routing/queues
 //
 // Get list of queues.
-func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder string, name string, id []string, divisionId []string, peerId []string, hasPeer bool) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues"
@@ -2887,6 +2887,10 @@ func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder str
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+	queryParams["peerId"] = a.Configuration.APIClient.ParameterToString(peerId, "multi")
+	
+	queryParams["hasPeer"] = a.Configuration.APIClient.ParameterToString(hasPeer, "")
 	
 
 	// to determine the Content-Type header

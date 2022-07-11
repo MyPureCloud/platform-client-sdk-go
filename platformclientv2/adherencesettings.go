@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Adherencesettings - Schedule Adherence Configuration
+// Adherencesettings
 type Adherencesettings struct { 
 	// SevereAlertThresholdMinutes - The threshold in minutes where an alert will be triggered when an agent is considered severely out of adherence
 	SevereAlertThresholdMinutes *int `json:"severeAlertThresholdMinutes,omitempty"`

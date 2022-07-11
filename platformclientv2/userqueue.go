@@ -121,6 +121,10 @@ type Userqueue struct {
 	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 
+	// PeerId - The ID of the external Queue
+	PeerId *string `json:"peerId,omitempty"`
+
+
 	// Joined
 	Joined *bool `json:"joined,omitempty"`
 
@@ -208,6 +212,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		
 		OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 		
+		PeerId *string `json:"peerId,omitempty"`
+		
 		Joined *bool `json:"joined,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -268,6 +274,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		OutboundMessagingAddresses: o.OutboundMessagingAddresses,
 		
 		OutboundEmailAddress: o.OutboundEmailAddress,
+		
+		PeerId: o.PeerId,
 		
 		Joined: o.Joined,
 		
@@ -413,6 +421,10 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(OutboundEmailAddressString, &o.OutboundEmailAddress)
 	}
 	
+	if PeerId, ok := UserqueueMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+    
 	if Joined, ok := UserqueueMap["joined"].(bool); ok {
 		o.Joined = &Joined
 	}

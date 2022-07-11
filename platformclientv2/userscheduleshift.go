@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Userscheduleshift - Single shift in a user's schedule
+// Userscheduleshift
 type Userscheduleshift struct { 
 	// WeekSchedule - The schedule to which this shift belongs
 	WeekSchedule *Weekschedulereference `json:"weekSchedule,omitempty"`

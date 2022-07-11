@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Agentmanagementunitreference - A reference from agent to management unit
+// Agentmanagementunitreference
 type Agentmanagementunitreference struct { 
 	// User - The user (agent) for whom the management unit was requested
 	User *Userreference `json:"user,omitempty"`

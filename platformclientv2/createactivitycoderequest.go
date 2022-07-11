@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Createactivitycoderequest - Activity Code
+// Createactivitycoderequest
 type Createactivitycoderequest struct { 
 	// Name - The name of the activity code
 	Name *string `json:"name,omitempty"`
@@ -31,6 +31,22 @@ type Createactivitycoderequest struct {
 	// AgentTimeOffSelectable - Whether an agent can select this activity code when creating or editing a time off request
 	AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
 
+
+	// CountsTowardShrinkage - Whether or not this activity code counts toward shrinkage calculations
+	CountsTowardShrinkage *bool `json:"countsTowardShrinkage,omitempty"`
+
+
+	// PlannedShrinkage - Whether this activity code is considered planned or unplanned shrinkage
+	PlannedShrinkage *bool `json:"plannedShrinkage,omitempty"`
+
+
+	// Interruptible - Whether this activity code is considered interruptible
+	Interruptible *bool `json:"interruptible,omitempty"`
+
+
+	// SecondaryPresences - The secondary presences of this activity code
+	SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
+
 }
 
 func (o *Createactivitycoderequest) MarshalJSON() ([]byte, error) {
@@ -50,6 +66,14 @@ func (o *Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 		CountsAsWorkTime *bool `json:"countsAsWorkTime,omitempty"`
 		
 		AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
+		
+		CountsTowardShrinkage *bool `json:"countsTowardShrinkage,omitempty"`
+		
+		PlannedShrinkage *bool `json:"plannedShrinkage,omitempty"`
+		
+		Interruptible *bool `json:"interruptible,omitempty"`
+		
+		SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -63,6 +87,14 @@ func (o *Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 		CountsAsWorkTime: o.CountsAsWorkTime,
 		
 		AgentTimeOffSelectable: o.AgentTimeOffSelectable,
+		
+		CountsTowardShrinkage: o.CountsTowardShrinkage,
+		
+		PlannedShrinkage: o.PlannedShrinkage,
+		
+		Interruptible: o.Interruptible,
+		
+		SecondaryPresences: o.SecondaryPresences,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -99,6 +131,23 @@ func (o *Createactivitycoderequest) UnmarshalJSON(b []byte) error {
 		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
 	}
     
+	if CountsTowardShrinkage, ok := CreateactivitycoderequestMap["countsTowardShrinkage"].(bool); ok {
+		o.CountsTowardShrinkage = &CountsTowardShrinkage
+	}
+    
+	if PlannedShrinkage, ok := CreateactivitycoderequestMap["plannedShrinkage"].(bool); ok {
+		o.PlannedShrinkage = &PlannedShrinkage
+	}
+    
+	if Interruptible, ok := CreateactivitycoderequestMap["interruptible"].(bool); ok {
+		o.Interruptible = &Interruptible
+	}
+    
+	if SecondaryPresences, ok := CreateactivitycoderequestMap["secondaryPresences"].([]interface{}); ok {
+		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
+		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
+	}
+	
 
 	return nil
 }

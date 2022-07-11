@@ -20,6 +20,10 @@ type Uploadurlrequest struct {
 	SignedUrlTimeoutSeconds *int `json:"signedUrlTimeoutSeconds,omitempty"`
 
 
+	// ContentType - The content type of the file to upload. Allows all MIME types
+	ContentType *string `json:"contentType,omitempty"`
+
+
 	// ServerSideEncryption
 	ServerSideEncryption *string `json:"serverSideEncryption,omitempty"`
 
@@ -37,6 +41,8 @@ func (o *Uploadurlrequest) MarshalJSON() ([]byte, error) {
 		
 		SignedUrlTimeoutSeconds *int `json:"signedUrlTimeoutSeconds,omitempty"`
 		
+		ContentType *string `json:"contentType,omitempty"`
+		
 		ServerSideEncryption *string `json:"serverSideEncryption,omitempty"`
 		*Alias
 	}{ 
@@ -45,6 +51,8 @@ func (o *Uploadurlrequest) MarshalJSON() ([]byte, error) {
 		ContentMd5: o.ContentMd5,
 		
 		SignedUrlTimeoutSeconds: o.SignedUrlTimeoutSeconds,
+		
+		ContentType: o.ContentType,
 		
 		ServerSideEncryption: o.ServerSideEncryption,
 		Alias:    (*Alias)(o),
@@ -71,6 +79,10 @@ func (o *Uploadurlrequest) UnmarshalJSON(b []byte) error {
 		o.SignedUrlTimeoutSeconds = &SignedUrlTimeoutSecondsInt
 	}
 	
+	if ContentType, ok := UploadurlrequestMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+    
 	if ServerSideEncryption, ok := UploadurlrequestMap["serverSideEncryption"].(string); ok {
 		o.ServerSideEncryption = &ServerSideEncryption
 	}

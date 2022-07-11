@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Buservicelevel - Service goal service level configuration
+// Buservicelevel
 type Buservicelevel struct { 
 	// Include - Whether to include service level targets in the associated configuration
 	Include *bool `json:"include,omitempty"`

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Buabandonrate - Service goal abandon rate configuration
+// Buabandonrate
 type Buabandonrate struct { 
 	// Include - Whether to include abandon rate in the associated configuration
 	Include *bool `json:"include,omitempty"`

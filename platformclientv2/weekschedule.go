@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Weekschedule - Week schedule information
+// Weekschedule
 type Weekschedule struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

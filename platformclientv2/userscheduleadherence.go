@@ -37,6 +37,10 @@ type Userscheduleadherence struct {
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 
 
+	// ScheduledActivityCode - Activity code for which the user is currently scheduled
+	ScheduledActivityCode *Activitycodereference `json:"scheduledActivityCode,omitempty"`
+
+
 	// SystemPresence - Actual underlying system presence value
 	SystemPresence *string `json:"systemPresence,omitempty"`
 
@@ -134,6 +138,8 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		
 		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 		
+		ScheduledActivityCode *Activitycodereference `json:"scheduledActivityCode,omitempty"`
+		
 		SystemPresence *string `json:"systemPresence,omitempty"`
 		
 		OrganizationSecondaryPresenceId *string `json:"organizationSecondaryPresenceId,omitempty"`
@@ -174,6 +180,8 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		Team: o.Team,
 		
 		ScheduledActivityCategory: o.ScheduledActivityCategory,
+		
+		ScheduledActivityCode: o.ScheduledActivityCode,
 		
 		SystemPresence: o.SystemPresence,
 		
@@ -243,6 +251,11 @@ func (o *Userscheduleadherence) UnmarshalJSON(b []byte) error {
 		o.ScheduledActivityCategory = &ScheduledActivityCategory
 	}
     
+	if ScheduledActivityCode, ok := UserscheduleadherenceMap["scheduledActivityCode"].(map[string]interface{}); ok {
+		ScheduledActivityCodeString, _ := json.Marshal(ScheduledActivityCode)
+		json.Unmarshal(ScheduledActivityCodeString, &o.ScheduledActivityCode)
+	}
+	
 	if SystemPresence, ok := UserscheduleadherenceMap["systemPresence"].(string); ok {
 		o.SystemPresence = &SystemPresence
 	}

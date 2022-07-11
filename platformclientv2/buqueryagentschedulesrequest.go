@@ -15,6 +15,10 @@ type Buqueryagentschedulesrequest struct {
 	// UserIds - The IDs of the users to query.  Omit to query all user schedules in the management unit. 
 	UserIds *[]string `json:"userIds,omitempty"`
 
+
+	// TeamIds - The teamIds to request. If null or not set, results will be queried for requested users if applicable or otherwise all users in the management unit
+	TeamIds *[]string `json:"teamIds,omitempty"`
+
 }
 
 func (o *Buqueryagentschedulesrequest) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Buqueryagentschedulesrequest) MarshalJSON() ([]byte, error) {
 		ManagementUnitId *string `json:"managementUnitId,omitempty"`
 		
 		UserIds *[]string `json:"userIds,omitempty"`
+		
+		TeamIds *[]string `json:"teamIds,omitempty"`
 		*Alias
 	}{ 
 		ManagementUnitId: o.ManagementUnitId,
 		
 		UserIds: o.UserIds,
+		
+		TeamIds: o.TeamIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -49,6 +57,11 @@ func (o *Buqueryagentschedulesrequest) UnmarshalJSON(b []byte) error {
 	if UserIds, ok := BuqueryagentschedulesrequestMap["userIds"].([]interface{}); ok {
 		UserIdsString, _ := json.Marshal(UserIds)
 		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if TeamIds, ok := BuqueryagentschedulesrequestMap["teamIds"].([]interface{}); ok {
+		TeamIdsString, _ := json.Marshal(TeamIds)
+		json.Unmarshal(TeamIdsString, &o.TeamIds)
 	}
 	
 

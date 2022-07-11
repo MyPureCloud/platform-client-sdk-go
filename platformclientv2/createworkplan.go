@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Createworkplan - Work plan information
+// Createworkplan
 type Createworkplan struct { 
 	// Name - Name of this work plan
 	Name *string `json:"name,omitempty"`

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Createmanagementunitapirequest - Create Management Unit
+// Createmanagementunitapirequest
 type Createmanagementunitapirequest struct { 
 	// Name - The name of the management unit
 	Name *string `json:"name,omitempty"`

@@ -10321,6 +10321,143 @@
     "return": "Workdaypointstrend",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar startWorkday time.Time // Start workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar endWorkday time.Time // End workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar dayOfWeek string // Optional filter to specify which day of weeks to be included in the response\n// Points trends of the requesting user\ndata, response, err := apiInstance.GetGamificationScorecardsPointsTrends(startWorkday, endWorkday, dayOfWeek)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationScorecardsPointsTrends: %v\\n\", err)\n}"
   },
+  "getgamificationscorecardsprofilemetricuservaluestrends": {
+    "operationId": "getgamificationscorecardsprofilemetricuservaluestrends",
+    "functionName": "GetGamificationScorecardsProfileMetricUserValuesTrends",
+    "signature": "GetGamificationScorecardsProfileMetricUserValuesTrends(profileId, metricId, userId, startWorkday, endWorkday, referenceWorkday, timeZone)",
+    "parameters": [
+      {
+        "name": "profileId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "metricId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "startWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "endWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "referenceWorkday",
+        "type": "time.Time",
+        "required": "false"
+      },
+      {
+        "name": "timeZone",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Metricvaluetrendaverage",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\nvar metricId string // metricId\nvar userId string // \nvar startWorkday time.Time // Start workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar endWorkday time.Time // End workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar referenceWorkday time.Time // Reference workday for the trend. Used to determine the associated metric definition. If not set, then the value of endWorkday is used. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar timeZone string // Timezone for the workday. Defaults to UTC\n// Average performance values trends by metric of a user\ndata, response, err := apiInstance.GetGamificationScorecardsProfileMetricUserValuesTrends(profileId, metricId, userId, startWorkday, endWorkday, referenceWorkday, timeZone)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationScorecardsProfileMetricUserValuesTrends: %v\\n\", err)\n}"
+  },
+  "getgamificationscorecardsprofilemetricusersvaluestrends": {
+    "operationId": "getgamificationscorecardsprofilemetricusersvaluestrends",
+    "functionName": "GetGamificationScorecardsProfileMetricUsersValuesTrends",
+    "signature": "GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, filterId, startWorkday, endWorkday, referenceWorkday, timeZone)",
+    "parameters": [
+      {
+        "name": "profileId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "metricId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "startWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "endWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "referenceWorkday",
+        "type": "time.Time",
+        "required": "false"
+      },
+      {
+        "name": "timeZone",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Metricvaluetrendaverage",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\nvar metricId string // metricId\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type. For example, division Id\nvar startWorkday time.Time // Start workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar endWorkday time.Time // End workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar referenceWorkday time.Time // Reference workday for the trend. Used to determine the associated metric definition. If not set, then the value of endWorkday is used. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar timeZone string // Timezone for the workday. Defaults to UTC\n// Average performance values trends by metric of a division or a performance profile\ndata, response, err := apiInstance.GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, filterId, startWorkday, endWorkday, referenceWorkday, timeZone)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationScorecardsProfileMetricUsersValuesTrends: %v\\n\", err)\n}"
+  },
+  "getgamificationscorecardsprofilemetricvaluestrends": {
+    "operationId": "getgamificationscorecardsprofilemetricvaluestrends",
+    "functionName": "GetGamificationScorecardsProfileMetricValuesTrends",
+    "signature": "GetGamificationScorecardsProfileMetricValuesTrends(profileId, metricId, startWorkday, endWorkday, filterType, referenceWorkday, timeZone)",
+    "parameters": [
+      {
+        "name": "profileId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "metricId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "startWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "endWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "referenceWorkday",
+        "type": "time.Time",
+        "required": "false"
+      },
+      {
+        "name": "timeZone",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Metricvaluetrendaverage",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\nvar metricId string // metricId\nvar startWorkday time.Time // Start workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar endWorkday time.Time // End workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar filterType string // Filter type for the query request. If not set, returns the values trends of the requesting user\nvar referenceWorkday time.Time // Reference workday for the trend. Used to determine the associated metric definition. If not set, then the value of endWorkday is used. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar timeZone string // Timezone for the workday. Defaults to UTC\n// Average performance values trends by metric of the requesting user\ndata, response, err := apiInstance.GetGamificationScorecardsProfileMetricValuesTrends(profileId, metricId, startWorkday, endWorkday, filterType, referenceWorkday, timeZone)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationScorecardsProfileMetricValuesTrends: %v\\n\", err)\n}"
+  },
   "getgamificationscorecardsuser": {
     "operationId": "getgamificationscorecardsuser",
     "functionName": "GetGamificationScorecardsUser",
@@ -15490,6 +15627,50 @@
     ],
     "return": "Learningmodulesdomainentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar isArchived bool // Archive status\nvar types []string // Specifies the module types.\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Sort order\nvar sortBy string // Sort by\nvar searchTerm string // Search Term (searchable by name)\nvar expand []string // Fields to expand in response(case insensitive)\nvar isPublished string // Specifies if only the Unpublished (isPublished is \\\"False\\\") or Published (isPublished is \\\"True\\\") modules are returned. If isPublished is \\\"Any\\\" or omitted, both types are returned\n// Get all learning modules of an organization\ndata, response, err := apiInstance.GetLearningModules(isArchived, types, pageSize, pageNumber, sortOrder, sortBy, searchTerm, expand, isPublished)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningModules: %v\\n\", err)\n}"
+  },
+  "getlearningmodulesassignments": {
+    "operationId": "getlearningmodulesassignments",
+    "functionName": "GetLearningModulesAssignments",
+    "signature": "GetLearningModulesAssignments(userIds, pageSize, pageNumber, searchTerm, overdue, assignmentStates, expand)",
+    "parameters": [
+      {
+        "name": "userIds",
+        "type": "[]string",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "searchTerm",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "overdue",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "assignmentStates",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Assignedlearningmoduledomainentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar userIds []string // The IDs of the users to include\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar searchTerm string // Search Term (searches by name and description)\nvar overdue string // Specifies if only modules with overdue/not overdue (overdue is \\\"True\\\" or \\\"False\\\") assignments are returned. If overdue is \\\"Any\\\" or omitted, both are returned and can including modules that are unassigned.\nvar assignmentStates []string // Specifies the assignment states to return.\nvar expand []string // Fields to expand in response(case insensitive)\n// Get all learning modules of an organization including assignments for a specific user\ndata, response, err := apiInstance.GetLearningModulesAssignments(userIds, pageSize, pageNumber, searchTerm, overdue, assignmentStates, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningModulesAssignments: %v\\n\", err)\n}"
   },
   "patchlearningassignment": {
     "operationId": "patchlearningassignment",
@@ -23501,7 +23682,7 @@
   "getroutingqueues": {
     "operationId": "getroutingqueues",
     "functionName": "GetRoutingQueues",
-    "signature": "GetRoutingQueues(pageNumber, pageSize, sortOrder, name, id, divisionId)",
+    "signature": "GetRoutingQueues(pageNumber, pageSize, sortOrder, name, id, divisionId, peerId, hasPeer)",
     "parameters": [
       {
         "name": "pageNumber",
@@ -23532,10 +23713,20 @@
         "name": "divisionId",
         "type": "[]string",
         "required": "false"
+      },
+      {
+        "name": "peerId",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "hasPeer",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Queueentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar sortOrder string // Note: results are sorted by name.\nvar name string // Filter by queue name\nvar id []string // Filter by queue ID(s)\nvar divisionId []string // Filter by queue division ID(s)\n// Get list of queues.\ndata, response, err := apiInstance.GetRoutingQueues(pageNumber, pageSize, sortOrder, name, id, divisionId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingQueues: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar sortOrder string // Note: results are sorted by name.\nvar name string // Filter by queue name\nvar id []string // Filter by queue ID(s)\nvar divisionId []string // Filter by queue division ID(s)\nvar peerId []string // Filter by queue peer ID(s)\nvar hasPeer bool // Filter by queues associated with peer\n// Get list of queues.\ndata, response, err := apiInstance.GetRoutingQueues(pageNumber, pageSize, sortOrder, name, id, divisionId, peerId, hasPeer)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingQueues: %v\\n\", err)\n}"
   },
   "getroutingqueuesdivisionviews": {
     "operationId": "getroutingqueuesdivisionviews",

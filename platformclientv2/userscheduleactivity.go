@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Userscheduleactivity - Represents a single activity in a user's shift
+// Userscheduleactivity
 type Userscheduleactivity struct { 
 	// ActivityCodeId - The id for the activity code.  Look up a map of activity codes with the activities route
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`

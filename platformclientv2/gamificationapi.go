@@ -1655,6 +1655,313 @@ func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time
 	return successPayload, response, err
 }
 
+// GetGamificationScorecardsProfileMetricUserValuesTrends invokes GET /api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/{userId}/values/trends
+//
+// Average performance values trends by metric of a user
+func (a GamificationApi) GetGamificationScorecardsProfileMetricUserValuesTrends(profileId string, metricId string, userId string, startWorkday time.Time, endWorkday time.Time, referenceWorkday time.Time, timeZone string) (*Metricvaluetrendaverage, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/{userId}/values/trends"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	defaultReturn := new(Metricvaluetrendaverage)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationScorecardsProfileMetricUserValuesTrends")
+	}
+	// verify the required parameter 'metricId' is set
+	if &metricId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->GetGamificationScorecardsProfileMetricUserValuesTrends")
+	}
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationScorecardsProfileMetricUserValuesTrends")
+	}
+	// verify the required parameter 'startWorkday' is set
+	if &startWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsProfileMetricUserValuesTrends")
+	}
+	// verify the required parameter 'endWorkday' is set
+	if &endWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsProfileMetricUserValuesTrends")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
+	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
+	
+	queryParams["referenceWorkday"] = a.Configuration.APIClient.ParameterToString(referenceWorkday, "")
+	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Metricvaluetrendaverage
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Metricvaluetrendaverage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetGamificationScorecardsProfileMetricUsersValuesTrends invokes GET /api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/values/trends
+//
+// Average performance values trends by metric of a division or a performance profile
+func (a GamificationApi) GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId string, metricId string, filterType string, filterId string, startWorkday time.Time, endWorkday time.Time, referenceWorkday time.Time, timeZone string) (*Metricvaluetrendaverage, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/values/trends"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	defaultReturn := new(Metricvaluetrendaverage)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
+	}
+	// verify the required parameter 'metricId' is set
+	if &metricId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
+	}
+	// verify the required parameter 'filterType' is set
+	if &filterType == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
+	}
+	// verify the required parameter 'filterId' is set
+	if &filterId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
+	}
+	// verify the required parameter 'startWorkday' is set
+	if &startWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
+	}
+	// verify the required parameter 'endWorkday' is set
+	if &endWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
+	
+	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
+	
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
+	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
+	
+	queryParams["referenceWorkday"] = a.Configuration.APIClient.ParameterToString(referenceWorkday, "")
+	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Metricvaluetrendaverage
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Metricvaluetrendaverage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetGamificationScorecardsProfileMetricValuesTrends invokes GET /api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/values/trends
+//
+// Average performance values trends by metric of the requesting user
+func (a GamificationApi) GetGamificationScorecardsProfileMetricValuesTrends(profileId string, metricId string, startWorkday time.Time, endWorkday time.Time, filterType string, referenceWorkday time.Time, timeZone string) (*Metricvaluetrendaverage, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/values/trends"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	defaultReturn := new(Metricvaluetrendaverage)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationScorecardsProfileMetricValuesTrends")
+	}
+	// verify the required parameter 'metricId' is set
+	if &metricId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->GetGamificationScorecardsProfileMetricValuesTrends")
+	}
+	// verify the required parameter 'startWorkday' is set
+	if &startWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'startWorkday' when calling GamificationApi->GetGamificationScorecardsProfileMetricValuesTrends")
+	}
+	// verify the required parameter 'endWorkday' is set
+	if &endWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'endWorkday' when calling GamificationApi->GetGamificationScorecardsProfileMetricValuesTrends")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
+	
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
+	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
+	
+	queryParams["referenceWorkday"] = a.Configuration.APIClient.ParameterToString(referenceWorkday, "")
+	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Metricvaluetrendaverage
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Metricvaluetrendaverage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetGamificationScorecardsUser invokes GET /api/v2/gamification/scorecards/users/{userId}
 //
 // Workday performance metrics for a user
