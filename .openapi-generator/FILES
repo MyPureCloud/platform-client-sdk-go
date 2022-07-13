@@ -172,6 +172,7 @@ docs/DeleteSpeechandtextanalyticsSentimentfeedback-example.txt
 docs/DeleteSpeechandtextanalyticsSentimentfeedbackSentimentFeedbackId-example.txt
 docs/DeleteSpeechandtextanalyticsTopic-example.txt
 docs/DeleteStationAssociateduser-example.txt
+docs/DeleteTeam-example.txt
 docs/DeleteTelephonyProvidersEdge-example.txt
 docs/DeleteTelephonyProvidersEdgeLogicalinterface-example.txt
 docs/DeleteTelephonyProvidersEdgeSoftwareupdate-example.txt
@@ -894,6 +895,8 @@ docs/GetStation-example.txt
 docs/GetStations-example.txt
 docs/GetStationsSettings-example.txt
 docs/GetSystempresences-example.txt
+docs/GetTeam-example.txt
+docs/GetTeams-example.txt
 docs/GetTelephonyProvidersEdge-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticPing-example.txt
@@ -1041,6 +1044,7 @@ docs/GetWebmessagingMessages-example.txt
 docs/GetWidgetsDeployment-example.txt
 docs/GetWidgetsDeployments-example.txt
 docs/GetWorkforcemanagementAdherence-example.txt
+docs/GetWorkforcemanagementAdherenceHistoricalJob-example.txt
 docs/GetWorkforcemanagementAdhocmodelingjob-example.txt
 docs/GetWorkforcemanagementAgentManagementunit-example.txt
 docs/GetWorkforcemanagementAgentsMeManagementunit-example.txt
@@ -1204,6 +1208,7 @@ docs/PatchScimV2Group-example.txt
 docs/PatchScimV2User-example.txt
 docs/PatchSpeechandtextanalyticsSettings-example.txt
 docs/PatchStationsSettings-example.txt
+docs/PatchTeam-example.txt
 docs/PatchUser-example.txt
 docs/PatchUserCallforwarding-example.txt
 docs/PatchUserGeolocation-example.txt
@@ -1569,6 +1574,9 @@ docs/PostSpeechandtextanalyticsTopics-example.txt
 docs/PostSpeechandtextanalyticsTopicsPublishjobs-example.txt
 docs/PostSpeechandtextanalyticsTranscriptsSearch-example.txt
 docs/PostSpeechandtextanalyticsTranscriptsSearch-example.txt
+docs/PostTeams-example.txt
+docs/PostTeamsSearch-example.txt
+docs/PostTeamsSearch-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticPing-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticRoute-example.txt
@@ -1873,6 +1881,7 @@ docs/SearchApi.json
 docs/SpeechTextAnalyticsApi.json
 docs/StationsApi.json
 docs/SuggestApi.json
+docs/TeamsApi.json
 docs/TelephonyApi.json
 docs/TelephonyProvidersEdgeApi.json
 docs/TextbotsApi.json
@@ -1964,6 +1973,7 @@ platformclientv2/aggregationresultentry.go
 platformclientv2/alertingapi.go
 platformclientv2/alltimepoints.go
 platformclientv2/amazonlexrequest.go
+platformclientv2/analyticsagentgroup.go
 platformclientv2/analyticsapi.go
 platformclientv2/analyticsconversation.go
 platformclientv2/analyticsconversationasyncqueryresponse.go
@@ -2765,6 +2775,7 @@ platformclientv2/customerinteractioncenter.go
 platformclientv2/customerstartdetaileventtopiccustomerstartevent.go
 platformclientv2/customeventattribute.go
 platformclientv2/customeventattributelist.go
+platformclientv2/customi18nlabels.go
 platformclientv2/dataactionconditionpredicate.go
 platformclientv2/dataavailabilityresponse.go
 platformclientv2/dataextensionsapi.go
@@ -3517,6 +3528,7 @@ platformclientv2/localdaterange.go
 platformclientv2/localencryptionconfiguration.go
 platformclientv2/localencryptionconfigurationlisting.go
 platformclientv2/localencryptionkeyrequest.go
+platformclientv2/localizedlabels.go
 platformclientv2/location.go
 platformclientv2/locationaddress.go
 platformclientv2/locationaddressverificationdetails.go
@@ -4468,7 +4480,12 @@ platformclientv2/tagvalue.go
 platformclientv2/tagvalueentitylisting.go
 platformclientv2/targetperformanceprofile.go
 platformclientv2/team.go
+platformclientv2/teamentitylisting.go
 platformclientv2/teamreference.go
+platformclientv2/teamsapi.go
+platformclientv2/teamsearchcriteria.go
+platformclientv2/teamsearchrequest.go
+platformclientv2/teamssearchresponse.go
 platformclientv2/telephonyapi.go
 platformclientv2/telephonyprovidersedgeapi.go
 platformclientv2/templateparameter.go

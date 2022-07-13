@@ -117,7 +117,7 @@ type Analyticssession struct {
 	EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 
 
-	// ExtendedDeliveryStatus - Extended email delivery status
+	// ExtendedDeliveryStatus - Extended delivery status
 	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 
 
@@ -287,6 +287,10 @@ type Analyticssession struct {
 
 	// ProposedAgents - Proposed agents
 	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
+
+
+	// AgentGroups - Conditional group routing agent groups
+	AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
 
 
 	// MediaEndpointStats - MediaEndpointStats associated with this session
@@ -468,6 +472,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
 		
+		AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
+		
 		MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
 		
 		Flow *Analyticsflow `json:"flow,omitempty"`
@@ -616,6 +622,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		WaitingInteractionCounts: o.WaitingInteractionCounts,
 		
 		ProposedAgents: o.ProposedAgents,
+		
+		AgentGroups: o.AgentGroups,
 		
 		MediaEndpointStats: o.MediaEndpointStats,
 		
@@ -929,6 +937,11 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if ProposedAgents, ok := AnalyticssessionMap["proposedAgents"].([]interface{}); ok {
 		ProposedAgentsString, _ := json.Marshal(ProposedAgents)
 		json.Unmarshal(ProposedAgentsString, &o.ProposedAgents)
+	}
+	
+	if AgentGroups, ok := AnalyticssessionMap["agentGroups"].([]interface{}); ok {
+		AgentGroupsString, _ := json.Marshal(AgentGroups)
+		json.Unmarshal(AgentGroupsString, &o.AgentGroups)
 	}
 	
 	if MediaEndpointStats, ok := AnalyticssessionMap["mediaEndpointStats"].([]interface{}); ok {

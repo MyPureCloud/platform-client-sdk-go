@@ -26205,6 +26205,20 @@
     "return": "Jsonsearchresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Transcriptsearchrequest // Search request options\n// Search resources.\ndata, response, err := apiInstance.PostSpeechandtextanalyticsTranscriptsSearch(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostSpeechandtextanalyticsTranscriptsSearch: %v\\n\", err)\n}"
   },
+  "postteamssearch": {
+    "operationId": "postteamssearch",
+    "functionName": "PostTeamsSearch",
+    "signature": "PostTeamsSearch(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Teamsearchrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Teamssearchresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar body platformclientv2.Teamsearchrequest // Search request options\n// Search resources.\ndata, response, err := apiInstance.PostTeamsSearch(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTeamsSearch: %v\\n\", err)\n}"
+  },
   "postuserssearch": {
     "operationId": "postuserssearch",
     "functionName": "PostUsersSearch",
@@ -26815,6 +26829,100 @@
     ],
     "return": "Stationsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewStationsApiWithConfig(config)\n\nvar body platformclientv2.Stationsettings // Station settings\n// Patch an organization's StationSettings\ndata, response, err := apiInstance.PatchStationsSettings(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchStationsSettings: %v\\n\", err)\n}"
+  },
+  "deleteteam": {
+    "operationId": "deleteteam",
+    "functionName": "DeleteTeam",
+    "signature": "DeleteTeam(teamId)",
+    "parameters": [
+      {
+        "name": "teamId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar teamId string // Team ID\n// Delete team\nresponse, err := apiInstance.DeleteTeam(teamId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteTeam: %v\\n\", err)\n}"
+  },
+  "getteam": {
+    "operationId": "getteam",
+    "functionName": "GetTeam",
+    "signature": "GetTeam(teamId)",
+    "parameters": [
+      {
+        "name": "teamId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Team",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar teamId string // Team ID\n// Get team\ndata, response, err := apiInstance.GetTeam(teamId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTeam: %v\\n\", err)\n}"
+  },
+  "getteams": {
+    "operationId": "getteams",
+    "functionName": "GetTeams",
+    "signature": "GetTeams(pageSize, name, after, before, expand)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Teamentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar pageSize int // Page size\nvar name string // Return only teams whose names start with this value (case-insensitive matching)\nvar after string // The cursor that points to the next item in the complete list of teams\nvar before string // The cursor that points to the previous item in the complete list of teams\nvar expand string // Expand the name on each user\n// Get Team listing\ndata, response, err := apiInstance.GetTeams(pageSize, name, after, before, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTeams: %v\\n\", err)\n}"
+  },
+  "patchteam": {
+    "operationId": "patchteam",
+    "functionName": "PatchTeam",
+    "signature": "PatchTeam(teamId, body)",
+    "parameters": [
+      {
+        "name": "teamId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Team",
+        "required": "true"
+      }
+    ],
+    "return": "Team",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar teamId string // Team ID\nvar body platformclientv2.Team // Team\n// Update team\ndata, response, err := apiInstance.PatchTeam(teamId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchTeam: %v\\n\", err)\n}"
+  },
+  "postteams": {
+    "operationId": "postteams",
+    "functionName": "PostTeams",
+    "signature": "PostTeams(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Team",
+        "required": "true"
+      }
+    ],
+    "return": "Team",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar body platformclientv2.Team // Team\n// Create a team\ndata, response, err := apiInstance.PostTeams(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTeams: %v\\n\", err)\n}"
   },
   "gettelephonysiptraces": {
     "operationId": "gettelephonysiptraces",
@@ -31826,6 +31934,20 @@
     ],
     "return": "[]Userscheduleadherence",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar userId []string // User Id(s) for which to fetch current schedule adherence information.  Min 1, Max of 100 userIds per request\n// Get a list of UserScheduleAdherence records for the requested users\ndata, response, err := apiInstance.GetWorkforcemanagementAdherence(userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAdherence: %v\\n\", err)\n}"
+  },
+  "getworkforcemanagementadherencehistoricaljob": {
+    "operationId": "getworkforcemanagementadherencehistoricaljob",
+    "functionName": "GetWorkforcemanagementAdherenceHistoricalJob",
+    "signature": "GetWorkforcemanagementAdherenceHistoricalJob(jobId)",
+    "parameters": [
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Wfmhistoricaladherenceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar jobId string // jobId\n// Query the status of a historical adherence request operation. Only the user who started the operation can query the status\ndata, response, err := apiInstance.GetWorkforcemanagementAdherenceHistoricalJob(jobId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAdherenceHistoricalJob: %v\\n\", err)\n}"
   },
   "getworkforcemanagementadhocmodelingjob": {
     "operationId": "getworkforcemanagementadhocmodelingjob",

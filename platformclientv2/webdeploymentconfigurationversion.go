@@ -33,6 +33,10 @@ type Webdeploymentconfigurationversion struct {
 	DefaultLanguage *string `json:"defaultLanguage,omitempty"`
 
 
+	// CustomI18nLabels - The localization settings for homescreen app
+	CustomI18nLabels *[]Customi18nlabels `json:"customI18nLabels,omitempty"`
+
+
 	// Messenger - The settings for messenger
 	Messenger *Messengersettings `json:"messenger,omitempty"`
 
@@ -132,6 +136,8 @@ func (o *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		
 		DefaultLanguage *string `json:"defaultLanguage,omitempty"`
 		
+		CustomI18nLabels *[]Customi18nlabels `json:"customI18nLabels,omitempty"`
+		
 		Messenger *Messengersettings `json:"messenger,omitempty"`
 		
 		Position *Positionsettings `json:"position,omitempty"`
@@ -172,6 +178,8 @@ func (o *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		Languages: o.Languages,
 		
 		DefaultLanguage: o.DefaultLanguage,
+		
+		CustomI18nLabels: o.CustomI18nLabels,
 		
 		Messenger: o.Messenger,
 		
@@ -236,6 +244,11 @@ func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
 		o.DefaultLanguage = &DefaultLanguage
 	}
     
+	if CustomI18nLabels, ok := WebdeploymentconfigurationversionMap["customI18nLabels"].([]interface{}); ok {
+		CustomI18nLabelsString, _ := json.Marshal(CustomI18nLabels)
+		json.Unmarshal(CustomI18nLabelsString, &o.CustomI18nLabels)
+	}
+	
 	if Messenger, ok := WebdeploymentconfigurationversionMap["messenger"].(map[string]interface{}); ok {
 		MessengerString, _ := json.Marshal(Messenger)
 		json.Unmarshal(MessengerString, &o.Messenger)
