@@ -39,6 +39,10 @@ type Policyconditions struct {
 	// TimeAllowed
 	TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
 
+
+	// CustomerParticipation - This condition is to filter out conversation with and without customer participation.
+	CustomerParticipation *string `json:"customerParticipation,omitempty"`
+
 }
 
 func (o *Policyconditions) MarshalJSON() ([]byte, error) {
@@ -62,6 +66,8 @@ func (o *Policyconditions) MarshalJSON() ([]byte, error) {
 		WrapupCodes *[]Wrapupcode `json:"wrapupCodes,omitempty"`
 		
 		TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
+		
+		CustomerParticipation *string `json:"customerParticipation,omitempty"`
 		*Alias
 	}{ 
 		ForUsers: o.ForUsers,
@@ -79,6 +85,8 @@ func (o *Policyconditions) MarshalJSON() ([]byte, error) {
 		WrapupCodes: o.WrapupCodes,
 		
 		TimeAllowed: o.TimeAllowed,
+		
+		CustomerParticipation: o.CustomerParticipation,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -130,6 +138,10 @@ func (o *Policyconditions) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(TimeAllowedString, &o.TimeAllowed)
 	}
 	
+	if CustomerParticipation, ok := PolicyconditionsMap["customerParticipation"].(string); ok {
+		o.CustomerParticipation = &CustomerParticipation
+	}
+    
 
 	return nil
 }

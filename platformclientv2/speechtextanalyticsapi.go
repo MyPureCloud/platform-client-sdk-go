@@ -574,7 +574,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramMappings(program
 // GetSpeechandtextanalyticsPrograms invokes GET /api/v2/speechandtextanalytics/programs
 //
 // Get the list of Speech & Text Analytics programs
-func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage string, pageSize int) (*Programsentitylisting, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage string, pageSize int, state string) (*Programsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs"
@@ -604,6 +604,8 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage strin
 	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
 
 	// to determine the Content-Type header

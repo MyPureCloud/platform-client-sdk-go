@@ -33,6 +33,10 @@ type Punctualityevent struct {
 	ActivityCode *string `json:"activityCode,omitempty"`
 
 
+	// ActivityName - The activity name
+	ActivityName *string `json:"activityName,omitempty"`
+
+
 	// Category - The category for the activity
 	Category *string `json:"category,omitempty"`
 
@@ -84,6 +88,8 @@ func (o *Punctualityevent) MarshalJSON() ([]byte, error) {
 		
 		ActivityCode *string `json:"activityCode,omitempty"`
 		
+		ActivityName *string `json:"activityName,omitempty"`
+		
 		Category *string `json:"category,omitempty"`
 		
 		Points *int `json:"points,omitempty"`
@@ -104,6 +110,8 @@ func (o *Punctualityevent) MarshalJSON() ([]byte, error) {
 		ActivityCodeId: o.ActivityCodeId,
 		
 		ActivityCode: o.ActivityCode,
+		
+		ActivityName: o.ActivityName,
 		
 		Category: o.Category,
 		
@@ -148,6 +156,10 @@ func (o *Punctualityevent) UnmarshalJSON(b []byte) error {
     
 	if ActivityCode, ok := PunctualityeventMap["activityCode"].(string); ok {
 		o.ActivityCode = &ActivityCode
+	}
+    
+	if ActivityName, ok := PunctualityeventMap["activityName"].(string); ok {
+		o.ActivityName = &ActivityName
 	}
     
 	if Category, ok := PunctualityeventMap["category"].(string); ok {

@@ -156,6 +156,10 @@ type Queueconversationvideoeventtopicparticipant struct {
 	// Videos
 	Videos *[]Queueconversationvideoeventtopicvideo `json:"videos,omitempty"`
 
+
+	// Workflow
+	Workflow *Queueconversationvideoeventtopicworkflow `json:"workflow,omitempty"`
+
 }
 
 func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, error) {
@@ -269,6 +273,8 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		SocialExpressions *[]Queueconversationvideoeventtopicsocialexpression `json:"socialExpressions,omitempty"`
 		
 		Videos *[]Queueconversationvideoeventtopicvideo `json:"videos,omitempty"`
+		
+		Workflow *Queueconversationvideoeventtopicworkflow `json:"workflow,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -344,6 +350,8 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		SocialExpressions: o.SocialExpressions,
 		
 		Videos: o.Videos,
+		
+		Workflow: o.Workflow,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -519,6 +527,11 @@ func (o *Queueconversationvideoeventtopicparticipant) UnmarshalJSON(b []byte) er
 	if Videos, ok := QueueconversationvideoeventtopicparticipantMap["videos"].([]interface{}); ok {
 		VideosString, _ := json.Marshal(Videos)
 		json.Unmarshal(VideosString, &o.Videos)
+	}
+	
+	if Workflow, ok := QueueconversationvideoeventtopicparticipantMap["workflow"].(map[string]interface{}); ok {
+		WorkflowString, _ := json.Marshal(Workflow)
+		json.Unmarshal(WorkflowString, &o.Workflow)
 	}
 	
 
