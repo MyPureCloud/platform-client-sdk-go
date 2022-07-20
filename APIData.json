@@ -9936,6 +9936,52 @@
     "return": "Faxdocument",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\nvar body platformclientv2.Faxdocument // Document\n// Update a fax document.\ndata, response, err := apiInstance.PutFaxDocument(documentId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutFaxDocument: %v\\n\", err)\n}"
   },
+  "deleteemployeeperformanceexternalmetricsdefinition": {
+    "operationId": "deleteemployeeperformanceexternalmetricsdefinition",
+    "functionName": "DeleteEmployeeperformanceExternalmetricsDefinition",
+    "signature": "DeleteEmployeeperformanceExternalmetricsDefinition(metricId)",
+    "parameters": [
+      {
+        "name": "metricId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar metricId string // Specifies the External Metric Definition ID\n// Delete an External Metric Definition\nresponse, err := apiInstance.DeleteEmployeeperformanceExternalmetricsDefinition(metricId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteEmployeeperformanceExternalmetricsDefinition: %v\\n\", err)\n}"
+  },
+  "getemployeeperformanceexternalmetricsdefinition": {
+    "operationId": "getemployeeperformanceexternalmetricsdefinition",
+    "functionName": "GetEmployeeperformanceExternalmetricsDefinition",
+    "signature": "GetEmployeeperformanceExternalmetricsDefinition(metricId)",
+    "parameters": [
+      {
+        "name": "metricId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Externalmetricdefinition",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar metricId string // Specifies the External Metric Definition ID\n// Get an External Metric Definition\ndata, response, err := apiInstance.GetEmployeeperformanceExternalmetricsDefinition(metricId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetEmployeeperformanceExternalmetricsDefinition: %v\\n\", err)\n}"
+  },
+  "getemployeeperformanceexternalmetricsdefinitions": {
+    "operationId": "getemployeeperformanceexternalmetricsdefinitions",
+    "functionName": "GetEmployeeperformanceExternalmetricsDefinitions",
+    "signature": "GetEmployeeperformanceExternalmetricsDefinitions(pageSize, pageNumber)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Externalmetricdefinitionlisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Get a list of External Metric Definitions of an organization, sorted by name in ascending order\ndata, response, err := apiInstance.GetEmployeeperformanceExternalmetricsDefinitions(pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetEmployeeperformanceExternalmetricsDefinitions: %v\\n\", err)\n}"
+  },
   "getgamificationleaderboard": {
     "operationId": "getgamificationleaderboard",
     "functionName": "GetGamificationLeaderboard",
@@ -10764,6 +10810,53 @@
     "signature": "GetGamificationTemplates()",
     "return": "Gettemplatesresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\n// All objective templates\ndata, response, err := apiInstance.GetGamificationTemplates()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationTemplates: %v\\n\", err)\n}"
+  },
+  "patchemployeeperformanceexternalmetricsdefinition": {
+    "operationId": "patchemployeeperformanceexternalmetricsdefinition",
+    "functionName": "PatchEmployeeperformanceExternalmetricsDefinition",
+    "signature": "PatchEmployeeperformanceExternalmetricsDefinition(metricId, body)",
+    "parameters": [
+      {
+        "name": "metricId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Externalmetricdefinitionupdaterequest",
+        "required": "true"
+      }
+    ],
+    "return": "Externalmetricdefinition",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar metricId string // Specifies the metric definition ID\nvar body platformclientv2.Externalmetricdefinitionupdaterequest // The External Metric Definition parameters to be updated\n// Update External Metric Definition\ndata, response, err := apiInstance.PatchEmployeeperformanceExternalmetricsDefinition(metricId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchEmployeeperformanceExternalmetricsDefinition: %v\\n\", err)\n}"
+  },
+  "postemployeeperformanceexternalmetricsdata": {
+    "operationId": "postemployeeperformanceexternalmetricsdata",
+    "functionName": "PostEmployeeperformanceExternalmetricsData",
+    "signature": "PostEmployeeperformanceExternalmetricsData(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Externalmetricdatawriterequest",
+        "required": "false"
+      }
+    ],
+    "return": "Externalmetricdatawriteresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar body platformclientv2.Externalmetricdatawriterequest // The External Metric Data to be added\n// Write External Metric Data\ndata, response, err := apiInstance.PostEmployeeperformanceExternalmetricsData(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostEmployeeperformanceExternalmetricsData: %v\\n\", err)\n}"
+  },
+  "postemployeeperformanceexternalmetricsdefinitions": {
+    "operationId": "postemployeeperformanceexternalmetricsdefinitions",
+    "functionName": "PostEmployeeperformanceExternalmetricsDefinitions",
+    "signature": "PostEmployeeperformanceExternalmetricsDefinitions(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Externalmetricdefinitioncreaterequest",
+        "required": "false"
+      }
+    ],
+    "return": "Externalmetricdefinition",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar body platformclientv2.Externalmetricdefinitioncreaterequest // The External Metric Definition to be created\n// Create External Metric Definition\ndata, response, err := apiInstance.PostEmployeeperformanceExternalmetricsDefinitions(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostEmployeeperformanceExternalmetricsDefinitions: %v\\n\", err)\n}"
   },
   "postgamificationmetrics": {
     "operationId": "postgamificationmetrics",

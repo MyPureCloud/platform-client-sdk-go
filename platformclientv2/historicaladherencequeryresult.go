@@ -41,12 +41,12 @@ type Historicaladherencequeryresult struct {
 	DayMetrics *[]Historicaladherencedaymetrics `json:"dayMetrics,omitempty"`
 
 
+	// ActualsEndDate - The end date of the actual activities in ISO-8601 format.
+	ActualsEndDate *time.Time `json:"actualsEndDate,omitempty"`
+
+
 	// Actuals - List of actual activity with offset for this user
 	Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
-
-
-	// ActualsEndsDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	ActualsEndsDate *time.Time `json:"actualsEndsDate,omitempty"`
 
 }
 
@@ -71,12 +71,12 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		EndDate = nil
 	}
 	
-	ActualsEndsDate := new(string)
-	if o.ActualsEndsDate != nil {
+	ActualsEndDate := new(string)
+	if o.ActualsEndDate != nil {
 		
-		*ActualsEndsDate = timeutil.Strftime(o.ActualsEndsDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ActualsEndDate = timeutil.Strftime(o.ActualsEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
-		ActualsEndsDate = nil
+		ActualsEndDate = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -96,9 +96,9 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		
 		DayMetrics *[]Historicaladherencedaymetrics `json:"dayMetrics,omitempty"`
 		
-		Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
+		ActualsEndDate *string `json:"actualsEndDate,omitempty"`
 		
-		ActualsEndsDate *string `json:"actualsEndsDate,omitempty"`
+		Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
 		*Alias
 	}{ 
 		UserId: o.UserId,
@@ -117,9 +117,9 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		
 		DayMetrics: o.DayMetrics,
 		
-		Actuals: o.Actuals,
+		ActualsEndDate: ActualsEndDate,
 		
-		ActualsEndsDate: ActualsEndsDate,
+		Actuals: o.Actuals,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -167,14 +167,14 @@ func (o *Historicaladherencequeryresult) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DayMetricsString, &o.DayMetrics)
 	}
 	
+	if actualsEndDateString, ok := HistoricaladherencequeryresultMap["actualsEndDate"].(string); ok {
+		ActualsEndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", actualsEndDateString)
+		o.ActualsEndDate = &ActualsEndDate
+	}
+	
 	if Actuals, ok := HistoricaladherencequeryresultMap["actuals"].([]interface{}); ok {
 		ActualsString, _ := json.Marshal(Actuals)
 		json.Unmarshal(ActualsString, &o.Actuals)
-	}
-	
-	if actualsEndsDateString, ok := HistoricaladherencequeryresultMap["actualsEndsDate"].(string); ok {
-		ActualsEndsDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", actualsEndsDateString)
-		o.ActualsEndsDate = &ActualsEndsDate
 	}
 	
 

@@ -73,6 +73,10 @@ type Userqueue struct {
 	SkillEvaluationMethod *string `json:"skillEvaluationMethod,omitempty"`
 
 
+	// MemberGroups - The groups of agents associated with the queue, if any.  Queue membership will update to match group membership changes.
+	MemberGroups *[]Membergroup `json:"memberGroups,omitempty"`
+
+
 	// QueueFlow - The in-queue flow to use for call conversations waiting in queue.
 	QueueFlow *Domainentityref `json:"queueFlow,omitempty"`
 
@@ -101,6 +105,10 @@ type Userqueue struct {
 	EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
 
 
+	// AgentOwnedRouting - The Agent Owned Routing settings for the queue
+	AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
+
+
 	// CallingPartyName - The name to use for caller identification for outbound calls from this queue.
 	CallingPartyName *string `json:"callingPartyName,omitempty"`
 
@@ -121,7 +129,7 @@ type Userqueue struct {
 	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 
-	// PeerId - The ID of the external Queue
+	// PeerId - The ID of an associated external queue.
 	PeerId *string `json:"peerId,omitempty"`
 
 
@@ -188,6 +196,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		
 		SkillEvaluationMethod *string `json:"skillEvaluationMethod,omitempty"`
 		
+		MemberGroups *[]Membergroup `json:"memberGroups,omitempty"`
+		
 		QueueFlow *Domainentityref `json:"queueFlow,omitempty"`
 		
 		EmailInQueueFlow *Domainentityref `json:"emailInQueueFlow,omitempty"`
@@ -201,6 +211,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		EnableTranscription *bool `json:"enableTranscription,omitempty"`
 		
 		EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
+		
+		AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
 		
 		CallingPartyName *string `json:"callingPartyName,omitempty"`
 		
@@ -251,6 +263,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		
 		SkillEvaluationMethod: o.SkillEvaluationMethod,
 		
+		MemberGroups: o.MemberGroups,
+		
 		QueueFlow: o.QueueFlow,
 		
 		EmailInQueueFlow: o.EmailInQueueFlow,
@@ -264,6 +278,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		EnableTranscription: o.EnableTranscription,
 		
 		EnableManualAssignment: o.EnableManualAssignment,
+		
+		AgentOwnedRouting: o.AgentOwnedRouting,
 		
 		CallingPartyName: o.CallingPartyName,
 		
@@ -365,6 +381,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 		o.SkillEvaluationMethod = &SkillEvaluationMethod
 	}
     
+	if MemberGroups, ok := UserqueueMap["memberGroups"].([]interface{}); ok {
+		MemberGroupsString, _ := json.Marshal(MemberGroups)
+		json.Unmarshal(MemberGroupsString, &o.MemberGroups)
+	}
+	
 	if QueueFlow, ok := UserqueueMap["queueFlow"].(map[string]interface{}); ok {
 		QueueFlowString, _ := json.Marshal(QueueFlow)
 		json.Unmarshal(QueueFlowString, &o.QueueFlow)
@@ -398,6 +419,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 		o.EnableManualAssignment = &EnableManualAssignment
 	}
     
+	if AgentOwnedRouting, ok := UserqueueMap["agentOwnedRouting"].(map[string]interface{}); ok {
+		AgentOwnedRoutingString, _ := json.Marshal(AgentOwnedRouting)
+		json.Unmarshal(AgentOwnedRoutingString, &o.AgentOwnedRouting)
+	}
+	
 	if CallingPartyName, ok := UserqueueMap["callingPartyName"].(string); ok {
 		o.CallingPartyName = &CallingPartyName
 	}

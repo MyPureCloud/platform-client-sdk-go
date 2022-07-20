@@ -15,6 +15,10 @@ type Ring struct {
 	// Actions - The actions that will be performed just before moving conversations to the next bullseye ring.
 	Actions *Actions `json:"actions,omitempty"`
 
+
+	// MemberGroups - The groups of agents associated with the ring, if any.  Ring membership will update to match group membership changes.
+	MemberGroups *[]Membergroup `json:"memberGroups,omitempty"`
+
 }
 
 func (o *Ring) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Ring) MarshalJSON() ([]byte, error) {
 		ExpansionCriteria *[]Expansioncriterium `json:"expansionCriteria,omitempty"`
 		
 		Actions *Actions `json:"actions,omitempty"`
+		
+		MemberGroups *[]Membergroup `json:"memberGroups,omitempty"`
 		*Alias
 	}{ 
 		ExpansionCriteria: o.ExpansionCriteria,
 		
 		Actions: o.Actions,
+		
+		MemberGroups: o.MemberGroups,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Ring) UnmarshalJSON(b []byte) error {
 	if Actions, ok := RingMap["actions"].(map[string]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if MemberGroups, ok := RingMap["memberGroups"].([]interface{}); ok {
+		MemberGroupsString, _ := json.Marshal(MemberGroups)
+		json.Unmarshal(MemberGroupsString, &o.MemberGroups)
 	}
 	
 
