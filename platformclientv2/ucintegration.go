@@ -40,6 +40,14 @@ type Ucintegration struct {
 	I10n *map[string]Uci10n `json:"i10n,omitempty"`
 
 
+	// PolledPresence - polledPresence
+	PolledPresence *bool `json:"polledPresence,omitempty"`
+
+
+	// UserPermissions - userPermissions
+	UserPermissions *[]string `json:"userPermissions,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -67,6 +75,10 @@ func (o *Ucintegration) MarshalJSON() ([]byte, error) {
 		
 		I10n *map[string]Uci10n `json:"i10n,omitempty"`
 		
+		PolledPresence *bool `json:"polledPresence,omitempty"`
+		
+		UserPermissions *[]string `json:"userPermissions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -85,6 +97,10 @@ func (o *Ucintegration) MarshalJSON() ([]byte, error) {
 		BadgeIcons: o.BadgeIcons,
 		
 		I10n: o.I10n,
+		
+		PolledPresence: o.PolledPresence,
+		
+		UserPermissions: o.UserPermissions,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -131,6 +147,15 @@ func (o *Ucintegration) UnmarshalJSON(b []byte) error {
 	if I10n, ok := UcintegrationMap["i10n"].(map[string]interface{}); ok {
 		I10nString, _ := json.Marshal(I10n)
 		json.Unmarshal(I10nString, &o.I10n)
+	}
+	
+	if PolledPresence, ok := UcintegrationMap["polledPresence"].(bool); ok {
+		o.PolledPresence = &PolledPresence
+	}
+    
+	if UserPermissions, ok := UcintegrationMap["userPermissions"].([]interface{}); ok {
+		UserPermissionsString, _ := json.Marshal(UserPermissions)
+		json.Unmarshal(UserPermissionsString, &o.UserPermissions)
 	}
 	
 	if SelfUri, ok := UcintegrationMap["selfUri"].(string); ok {

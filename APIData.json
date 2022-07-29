@@ -10414,7 +10414,7 @@
   "getgamificationscorecardsprofilemetricusersvaluestrends": {
     "operationId": "getgamificationscorecardsprofilemetricusersvaluestrends",
     "functionName": "GetGamificationScorecardsProfileMetricUsersValuesTrends",
-    "signature": "GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, filterId, startWorkday, endWorkday, referenceWorkday, timeZone)",
+    "signature": "GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, startWorkday, endWorkday, filterId, referenceWorkday, timeZone)",
     "parameters": [
       {
         "name": "profileId",
@@ -10432,11 +10432,6 @@
         "required": "true"
       },
       {
-        "name": "filterId",
-        "type": "string",
-        "required": "true"
-      },
-      {
         "name": "startWorkday",
         "type": "time.Time",
         "required": "true"
@@ -10445,6 +10440,11 @@
         "name": "endWorkday",
         "type": "time.Time",
         "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "false"
       },
       {
         "name": "referenceWorkday",
@@ -10458,7 +10458,7 @@
       }
     ],
     "return": "Metricvaluetrendaverage",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\nvar metricId string // metricId\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type. For example, division Id\nvar startWorkday time.Time // Start workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar endWorkday time.Time // End workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar referenceWorkday time.Time // Reference workday for the trend. Used to determine the associated metric definition. If not set, then the value of endWorkday is used. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar timeZone string // Timezone for the workday. Defaults to UTC\n// Average performance values trends by metric of a division or a performance profile\ndata, response, err := apiInstance.GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, filterId, startWorkday, endWorkday, referenceWorkday, timeZone)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationScorecardsProfileMetricUsersValuesTrends: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\nvar metricId string // metricId\nvar filterType string // Filter type for the query request.\nvar startWorkday time.Time // Start workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar endWorkday time.Time // End workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar filterId string // ID for the filter type. Only required when filterType is Division.\nvar referenceWorkday time.Time // Reference workday for the trend. Used to determine the associated metric definition. If not set, then the value of endWorkday is used. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar timeZone string // Timezone for the workday. Defaults to UTC\n// Average performance values trends by metric of a division or a performance profile\ndata, response, err := apiInstance.GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, startWorkday, endWorkday, filterId, referenceWorkday, timeZone)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationScorecardsProfileMetricUsersValuesTrends: %v\\n\", err)\n}"
   },
   "getgamificationscorecardsprofilemetricvaluestrends": {
     "operationId": "getgamificationscorecardsprofilemetricvaluestrends",
@@ -15764,6 +15764,20 @@
     ],
     "return": "Assignedlearningmoduledomainentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar userIds []string // The IDs of the users to include\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar searchTerm string // Search Term (searches by name and description)\nvar overdue string // Specifies if only modules with overdue/not overdue (overdue is \\\"True\\\" or \\\"False\\\") assignments are returned. If overdue is \\\"Any\\\" or omitted, both are returned and can including modules that are unassigned.\nvar assignmentStates []string // Specifies the assignment states to return.\nvar expand []string // Fields to expand in response(case insensitive)\n// Get all learning modules of an organization including assignments for a specific user\ndata, response, err := apiInstance.GetLearningModulesAssignments(userIds, pageSize, pageNumber, searchTerm, overdue, assignmentStates, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningModulesAssignments: %v\\n\", err)\n}"
+  },
+  "getlearningmodulescoverartcoverartid": {
+    "operationId": "getlearningmodulescoverartcoverartid",
+    "functionName": "GetLearningModulesCoverartCoverArtId",
+    "signature": "GetLearningModulesCoverartCoverArtId(coverArtId)",
+    "parameters": [
+      {
+        "name": "coverArtId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Learningmodulecoverartresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar coverArtId string // Key identifier for the cover art\n// Get a specific Learning Module cover art using ID\ndata, response, err := apiInstance.GetLearningModulesCoverartCoverArtId(coverArtId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningModulesCoverartCoverArtId: %v\\n\", err)\n}"
   },
   "patchlearningassignment": {
     "operationId": "patchlearningassignment",
@@ -29815,6 +29829,20 @@
     ],
     "return": "Uploadurlresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewUploadsApiWithConfig(config)\n\nvar minerId string // Miner ID\nvar body platformclientv2.interface{} // query\n// Creates a presigned URL for uploading a chat corpus which will be used for mining by intent miner\ndata, response, err := apiInstance.PostLanguageunderstandingMinerUploads(minerId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostLanguageunderstandingMinerUploads: %v\\n\", err)\n}"
+  },
+  "postuploadslearningcoverart": {
+    "operationId": "postuploadslearningcoverart",
+    "functionName": "PostUploadsLearningCoverart",
+    "signature": "PostUploadsLearningCoverart(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Learningcoverartuploadurlrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Uploadurlresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewUploadsApiWithConfig(config)\n\nvar body platformclientv2.Learningcoverartuploadurlrequest // query\n// Generates pre-signed URL to upload cover art for learning modules\ndata, response, err := apiInstance.PostUploadsLearningCoverart(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostUploadsLearningCoverart: %v\\n\", err)\n}"
   },
   "postuploadspublicassetsimages": {
     "operationId": "postuploadspublicassetsimages",

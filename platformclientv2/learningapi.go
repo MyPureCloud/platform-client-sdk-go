@@ -891,6 +891,77 @@ func (a LearningApi) GetLearningModulesAssignments(userIds []string, pageSize in
 	return successPayload, response, err
 }
 
+// GetLearningModulesCoverartCoverArtId invokes GET /api/v2/learning/modules/coverart/{coverArtId}
+//
+// Get a specific Learning Module cover art using ID
+func (a LearningApi) GetLearningModulesCoverartCoverArtId(coverArtId string) (*Learningmodulecoverartresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/learning/modules/coverart/{coverArtId}"
+	path = strings.Replace(path, "{coverArtId}", fmt.Sprintf("%v", coverArtId), -1)
+	defaultReturn := new(Learningmodulecoverartresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'coverArtId' is set
+	if &coverArtId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'coverArtId' when calling LearningApi->GetLearningModulesCoverartCoverArtId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Learningmodulecoverartresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Learningmodulecoverartresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchLearningAssignment invokes PATCH /api/v2/learning/assignments/{assignmentId}
 //
 // Update Learning Assignment

@@ -637,6 +637,7 @@ docs/GetLearningModuleRule-example.txt
 docs/GetLearningModuleVersion-example.txt
 docs/GetLearningModules-example.txt
 docs/GetLearningModulesAssignments-example.txt
+docs/GetLearningModulesCoverartCoverArtId-example.txt
 docs/GetLicenseDefinition-example.txt
 docs/GetLicenseDefinitions-example.txt
 docs/GetLicenseToggle-example.txt
@@ -1613,6 +1614,7 @@ docs/PostTelephonySiptracesDownload-example.txt
 docs/PostTextbotsBotflowsSessionTurns-example.txt
 docs/PostTextbotsBotflowsSessions-example.txt
 docs/PostTextbotsBotsExecute-example.txt
+docs/PostUploadsLearningCoverart-example.txt
 docs/PostUploadsPublicassetsImages-example.txt
 docs/PostUploadsRecordings-example.txt
 docs/PostUploadsWorkforcemanagementHistoricaldataCsv-example.txt
@@ -3489,6 +3491,7 @@ platformclientv2/learningassignmentuser.go
 platformclientv2/learningassignmentuserlisting.go
 platformclientv2/learningassignmentuserquery.go
 platformclientv2/learningcoverartthumbnail.go
+platformclientv2/learningcoverartuploadurlrequest.go
 platformclientv2/learningmodule.go
 platformclientv2/learningmodulecoverartrequest.go
 platformclientv2/learningmodulecoverartresponse.go

@@ -8,7 +8,7 @@ import (
 
 // Burescheduleresult
 type Burescheduleresult struct { 
-	// GenerationResults - The generation results.  Note the result will always be delivered via the downloadUrl; however the schema is included for documentation
+	// GenerationResults - The generation results.  Note the result will always be delivered via the generationResultsDownloadUrl; however the schema is included for documentation
 	GenerationResults *Schedulegenerationresult `json:"generationResults,omitempty"`
 
 
@@ -16,7 +16,7 @@ type Burescheduleresult struct {
 	GenerationResultsDownloadUrl *string `json:"generationResultsDownloadUrl,omitempty"`
 
 
-	// HeadcountForecast - The headcount forecast.  Note the result will always be delivered via the downloadUrl; however the schema is included for documentation
+	// HeadcountForecast - The headcount forecast.  Note the result will always be delivered via the headcountForecastDownloadUrl; however the schema is included for documentation
 	HeadcountForecast *Buheadcountforecast `json:"headcountForecast,omitempty"`
 
 

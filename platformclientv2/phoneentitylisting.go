@@ -24,10 +24,6 @@ type Phoneentitylisting struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -42,6 +38,10 @@ type Phoneentitylisting struct {
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PageCount
@@ -63,8 +63,6 @@ func (o *Phoneentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -72,6 +70,8 @@ func (o *Phoneentitylisting) MarshalJSON() ([]byte, error) {
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -84,8 +84,6 @@ func (o *Phoneentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
@@ -93,6 +91,8 @@ func (o *Phoneentitylisting) MarshalJSON() ([]byte, error) {
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -126,10 +126,6 @@ func (o *Phoneentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := PhoneentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := PhoneentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -144,6 +140,10 @@ func (o *Phoneentitylisting) UnmarshalJSON(b []byte) error {
     
 	if PreviousUri, ok := PhoneentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := PhoneentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := PhoneentitylistingMap["pageCount"].(float64); ok {

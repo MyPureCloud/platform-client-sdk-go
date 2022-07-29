@@ -1963,7 +1963,7 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUserValuesTrends(
 // GetGamificationScorecardsProfileMetricUsersValuesTrends invokes GET /api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/values/trends
 //
 // Average performance values trends by metric of a division or a performance profile
-func (a GamificationApi) GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId string, metricId string, filterType string, filterId string, startWorkday time.Time, endWorkday time.Time, referenceWorkday time.Time, timeZone string) (*Metricvaluetrendaverage, *APIResponse, error) {
+func (a GamificationApi) GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId string, metricId string, filterType string, startWorkday time.Time, endWorkday time.Time, filterId string, referenceWorkday time.Time, timeZone string) (*Metricvaluetrendaverage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/values/trends"
@@ -1988,11 +1988,6 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUsersValuesTrends
 	if &filterType == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
-	}
-	// verify the required parameter 'filterId' is set
-	if &filterId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationScorecardsProfileMetricUsersValuesTrends")
 	}
 	// verify the required parameter 'startWorkday' is set
 	if &startWorkday == nil {
