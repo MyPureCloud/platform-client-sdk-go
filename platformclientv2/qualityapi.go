@@ -111,13 +111,13 @@ func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId 
 // DeleteQualityConversationEvaluation invokes DELETE /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}
 //
 // Delete an evaluation
-func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, evaluationId string, expand string) (*Evaluation, *APIResponse, error) {
+func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, evaluationId string, expand string) (*Evaluationresponse, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{evaluationId}", fmt.Sprintf("%v", evaluationId), -1)
-	defaultReturn := new(Evaluation)
+	defaultReturn := new(Evaluationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -171,14 +171,14 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluation
+	var successPayload *Evaluationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluation" == "string" {
+		if "Evaluationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -638,13 +638,13 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pa
 // GetQualityConversationEvaluation invokes GET /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}
 //
 // Get an evaluation
-func (a QualityApi) GetQualityConversationEvaluation(conversationId string, evaluationId string, expand string) (*Evaluation, *APIResponse, error) {
+func (a QualityApi) GetQualityConversationEvaluation(conversationId string, evaluationId string, expand string) (*Evaluationresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{evaluationId}", fmt.Sprintf("%v", evaluationId), -1)
-	defaultReturn := new(Evaluation)
+	defaultReturn := new(Evaluationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -698,14 +698,14 @@ func (a QualityApi) GetQualityConversationEvaluation(conversationId string, eval
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluation
+	var successPayload *Evaluationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluation" == "string" {
+		if "Evaluationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -3789,13 +3789,13 @@ func (a QualityApi) PutQualityCalibration(calibrationId string, body Calibration
 // Update an evaluation
 //
 // The quality:evaluation:edit permission allows modification of most fields, while the quality:evaluation:editScore permission allows an evaluator to change just the question scores, and the quality:evaluation:editAgentSignoff permission allows an agent to change the agent comments and sign off on the evaluation.
-func (a QualityApi) PutQualityConversationEvaluation(conversationId string, evaluationId string, body Evaluation, expand string) (*Evaluation, *APIResponse, error) {
+func (a QualityApi) PutQualityConversationEvaluation(conversationId string, evaluationId string, body Evaluation, expand string) (*Evaluationresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{evaluationId}", fmt.Sprintf("%v", evaluationId), -1)
-	defaultReturn := new(Evaluation)
+	defaultReturn := new(Evaluationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3857,14 +3857,14 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 	// body params
 	postBody = &body
 
-	var successPayload *Evaluation
+	var successPayload *Evaluationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluation" == "string" {
+		if "Evaluationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

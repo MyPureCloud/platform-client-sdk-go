@@ -111,6 +111,10 @@ type Workitemsusereventsnotificationworkitem struct {
 	// AlertTimeoutSeconds
 	AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 
+
+	// CustomFields
+	CustomFields *map[string]Workitemsusereventsnotificationcustomattribute `json:"customFields,omitempty"`
+
 }
 
 func (o *Workitemsusereventsnotificationworkitem) MarshalJSON() ([]byte, error) {
@@ -170,6 +174,8 @@ func (o *Workitemsusereventsnotificationworkitem) MarshalJSON() ([]byte, error) 
 		AssignmentId *string `json:"assignmentId,omitempty"`
 		
 		AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
+		
+		CustomFields *map[string]Workitemsusereventsnotificationcustomattribute `json:"customFields,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -223,6 +229,8 @@ func (o *Workitemsusereventsnotificationworkitem) MarshalJSON() ([]byte, error) 
 		AssignmentId: o.AssignmentId,
 		
 		AlertTimeoutSeconds: o.AlertTimeoutSeconds,
+		
+		CustomFields: o.CustomFields,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -341,6 +349,11 @@ func (o *Workitemsusereventsnotificationworkitem) UnmarshalJSON(b []byte) error 
 	if AlertTimeoutSeconds, ok := WorkitemsusereventsnotificationworkitemMap["alertTimeoutSeconds"].(float64); ok {
 		AlertTimeoutSecondsInt := int(AlertTimeoutSeconds)
 		o.AlertTimeoutSeconds = &AlertTimeoutSecondsInt
+	}
+	
+	if CustomFields, ok := WorkitemsusereventsnotificationworkitemMap["customFields"].(map[string]interface{}); ok {
+		CustomFieldsString, _ := json.Marshal(CustomFields)
+		json.Unmarshal(CustomFieldsString, &o.CustomFields)
 	}
 	
 

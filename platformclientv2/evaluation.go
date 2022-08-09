@@ -34,7 +34,7 @@ type Evaluation struct {
 
 
 	// Calibration
-	Calibration **Calibration `json:"calibration,omitempty"`
+	Calibration *Calibration `json:"calibration,omitempty"`
 
 
 	// Status
@@ -168,7 +168,7 @@ func (o *Evaluation) MarshalJSON() ([]byte, error) {
 		
 		Agent *User `json:"agent,omitempty"`
 		
-		Calibration **Calibration `json:"calibration,omitempty"`
+		Calibration *Calibration `json:"calibration,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		

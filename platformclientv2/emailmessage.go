@@ -61,6 +61,14 @@ type Emailmessage struct {
 	HistoryIncluded *bool `json:"historyIncluded,omitempty"`
 
 
+	// EmailSizeBytes - Indicates an estimation of the size of the current email as a whole, in its final, ready to be sent form.
+	EmailSizeBytes *int `json:"emailSizeBytes,omitempty"`
+
+
+	// MaxEmailSizeBytes - Indicates the maximum allowed size for an email to be send via SMTP server, based on the email domain configuration
+	MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -106,6 +114,10 @@ func (o *Emailmessage) MarshalJSON() ([]byte, error) {
 		
 		HistoryIncluded *bool `json:"historyIncluded,omitempty"`
 		
+		EmailSizeBytes *int `json:"emailSizeBytes,omitempty"`
+		
+		MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -134,6 +146,10 @@ func (o *Emailmessage) MarshalJSON() ([]byte, error) {
 		Time: Time,
 		
 		HistoryIncluded: o.HistoryIncluded,
+		
+		EmailSizeBytes: o.EmailSizeBytes,
+		
+		MaxEmailSizeBytes: o.MaxEmailSizeBytes,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -206,6 +222,16 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
 		o.HistoryIncluded = &HistoryIncluded
 	}
     
+	if EmailSizeBytes, ok := EmailmessageMap["emailSizeBytes"].(float64); ok {
+		EmailSizeBytesInt := int(EmailSizeBytes)
+		o.EmailSizeBytes = &EmailSizeBytesInt
+	}
+	
+	if MaxEmailSizeBytes, ok := EmailmessageMap["maxEmailSizeBytes"].(float64); ok {
+		MaxEmailSizeBytesInt := int(MaxEmailSizeBytes)
+		o.MaxEmailSizeBytes = &MaxEmailSizeBytesInt
+	}
+	
 	if SelfUri, ok := EmailmessageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

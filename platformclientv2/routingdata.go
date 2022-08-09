@@ -28,11 +28,11 @@ type Routingdata struct {
 	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
 
 
-	// ScoredAgents - A list of scored agents for routing decisions
+	// ScoredAgents - A list of scored agents for routing decisions. For Agent Owned Callbacks use one scored agent with a score of 100.
 	ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
 
 
-	// RoutingFlags - An array of flags indicating how the conversation should be routed
+	// RoutingFlags - An array of flags indicating how the conversation should be routed. Use \"AGENT_OWNED_CALLBACK\" when creating an Agent Owned Callback.
 	RoutingFlags *[]string `json:"routingFlags,omitempty"`
 
 }

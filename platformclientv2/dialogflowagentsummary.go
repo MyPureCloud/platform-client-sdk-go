@@ -16,12 +16,16 @@ type Dialogflowagentsummary struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Project - The project this Dialogflow agent belongs to
+	// Project - The project this Dialogflow agent belongs to.
 	Project *Dialogflowproject `json:"project,omitempty"`
 
 
-	// Description - A description of the Dialogflow agent
+	// Description - A description of the Dialogflow agent.
 	Description *string `json:"description,omitempty"`
+
+
+	// Integration - The Integration this Dialogflow agent was referenced from.
+	Integration *Domainentityref `json:"integration,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -43,6 +47,8 @@ func (o *Dialogflowagentsummary) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		Integration *Domainentityref `json:"integration,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -53,6 +59,8 @@ func (o *Dialogflowagentsummary) MarshalJSON() ([]byte, error) {
 		Project: o.Project,
 		
 		Description: o.Description,
+		
+		Integration: o.Integration,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -83,6 +91,11 @@ func (o *Dialogflowagentsummary) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
+	if Integration, ok := DialogflowagentsummaryMap["integration"].(map[string]interface{}); ok {
+		IntegrationString, _ := json.Marshal(Integration)
+		json.Unmarshal(IntegrationString, &o.Integration)
+	}
+	
 	if SelfUri, ok := DialogflowagentsummaryMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

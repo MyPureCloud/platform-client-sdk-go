@@ -364,6 +364,7 @@ docs/GetConversationRecordingAnnotations-example.txt
 docs/GetConversationRecordingmetadata-example.txt
 docs/GetConversationRecordingmetadataRecordingId-example.txt
 docs/GetConversationRecordings-example.txt
+docs/GetConversationSecureattributes-example.txt
 docs/GetConversations-example.txt
 docs/GetConversationsCall-example.txt
 docs/GetConversationsCallParticipantWrapup-example.txt
@@ -393,6 +394,8 @@ docs/GetConversationsEmailParticipantWrapup-example.txt
 docs/GetConversationsEmailParticipantWrapupcodes-example.txt
 docs/GetConversationsEmailSettings-example.txt
 docs/GetConversationsEmails-example.txt
+docs/GetConversationsKeyconfiguration-example.txt
+docs/GetConversationsKeyconfigurations-example.txt
 docs/GetConversationsMessage-example.txt
 docs/GetConversationsMessageCommunicationMessagesMediaMediaId-example.txt
 docs/GetConversationsMessageDetails-example.txt
@@ -805,6 +808,7 @@ docs/GetRoutingAssessment-example.txt
 docs/GetRoutingAssessments-example.txt
 docs/GetRoutingAssessmentsJob-example.txt
 docs/GetRoutingAssessmentsJobs-example.txt
+docs/GetRoutingAvailablemediatypes-example.txt
 docs/GetRoutingEmailDomain-example.txt
 docs/GetRoutingEmailDomainRoute-example.txt
 docs/GetRoutingEmailDomainRoutes-example.txt
@@ -1141,6 +1145,7 @@ docs/PatchCoachingAppointmentStatus-example.txt
 docs/PatchCoachingNotification-example.txt
 docs/PatchConversationParticipant-example.txt
 docs/PatchConversationParticipantAttributes-example.txt
+docs/PatchConversationSecureattributes-example.txt
 docs/PatchConversationsCall-example.txt
 docs/PatchConversationsCallParticipant-example.txt
 docs/PatchConversationsCallParticipantAttributes-example.txt
@@ -1359,6 +1364,8 @@ docs/PostConversationsEmailMessagesDraftAttachmentsCopy-example.txt
 docs/PostConversationsEmailParticipantReplace-example.txt
 docs/PostConversationsEmails-example.txt
 docs/PostConversationsFaxes-example.txt
+docs/PostConversationsKeyconfigurations-example.txt
+docs/PostConversationsKeyconfigurationsValidate-example.txt
 docs/PostConversationsMessageCommunicationMessages-example.txt
 docs/PostConversationsMessageCommunicationMessagesMedia-example.txt
 docs/PostConversationsMessageMessagesBulk-example.txt
@@ -1714,6 +1721,7 @@ docs/PutContentmanagementWorkspaceTagvalue-example.txt
 docs/PutConversationParticipantFlaggedreason-example.txt
 docs/PutConversationRecording-example.txt
 docs/PutConversationRecordingAnnotation-example.txt
+docs/PutConversationSecureattributes-example.txt
 docs/PutConversationTags-example.txt
 docs/PutConversationsCallParticipantCommunicationUuidata-example.txt
 docs/PutConversationsCallRecordingstate-example.txt
@@ -1722,6 +1730,7 @@ docs/PutConversationsChatRecordingstate-example.txt
 docs/PutConversationsCobrowsesessionRecordingstate-example.txt
 docs/PutConversationsEmailMessagesDraft-example.txt
 docs/PutConversationsEmailRecordingstate-example.txt
+docs/PutConversationsKeyconfiguration-example.txt
 docs/PutConversationsMessageRecordingstate-example.txt
 docs/PutConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/PutConversationsMessagingSupportedcontentDefault-example.txt
@@ -2124,6 +2133,8 @@ platformclientv2/authzsubject.go
 platformclientv2/automatictimezonemappingsettings.go
 platformclientv2/autostart.go
 platformclientv2/availablelanguagelist.go
+platformclientv2/availablemediatype.go
+platformclientv2/availablemediatypeentitylisting.go
 platformclientv2/availabletime.go
 platformclientv2/availabletimeoffrange.go
 platformclientv2/availabletimeoffrequest.go
@@ -2576,6 +2587,8 @@ platformclientv2/conversationemaileventtopicjourneycustomersession.go
 platformclientv2/conversationemaileventtopicscoredagent.go
 platformclientv2/conversationemaileventtopicurireference.go
 platformclientv2/conversationemaileventtopicwrapup.go
+platformclientv2/conversationencryptionconfiguration.go
+platformclientv2/conversationencryptionconfigurationlisting.go
 platformclientv2/conversationentitylisting.go
 platformclientv2/conversationeventcobrowse.go
 platformclientv2/conversationeventpresence.go
@@ -2675,6 +2688,7 @@ platformclientv2/conversationscreenshareeventtopicscreenshareconversation.go
 platformclientv2/conversationscreenshareeventtopicscreensharemediaparticipant.go
 platformclientv2/conversationscreenshareeventtopicurireference.go
 platformclientv2/conversationscreenshareeventtopicwrapup.go
+platformclientv2/conversationsecureattributes.go
 platformclientv2/conversationsocialexpressioneventtopicconversationroutingdata.go
 platformclientv2/conversationsocialexpressioneventtopicdetail.go
 platformclientv2/conversationsocialexpressioneventtopicerrorbody.go
@@ -3062,6 +3076,7 @@ platformclientv2/evaluationentitylisting.go
 platformclientv2/evaluationform.go
 platformclientv2/evaluationformandscoringset.go
 platformclientv2/evaluationformentitylisting.go
+platformclientv2/evaluationformresponse.go
 platformclientv2/evaluationqualityv2topiccalibration.go
 platformclientv2/evaluationqualityv2topicevaluationscoringset.go
 platformclientv2/evaluationqualityv2topicevaluationv2.go
@@ -3070,6 +3085,7 @@ platformclientv2/evaluationquestion.go
 platformclientv2/evaluationquestiongroup.go
 platformclientv2/evaluationquestiongroupscore.go
 platformclientv2/evaluationquestionscore.go
+platformclientv2/evaluationresponse.go
 platformclientv2/evaluationscoringset.go
 platformclientv2/evaluatoractivity.go
 platformclientv2/evaluatoractivityentitylisting.go
@@ -5062,6 +5078,10 @@ platformclientv2/workdayvaluesmetricitem.go
 platformclientv2/workdayvaluestrend.go
 platformclientv2/workdayvaluestrenditem.go
 platformclientv2/workforcemanagementapi.go
+platformclientv2/workitemseventsnotificationcustomattribute.go
+platformclientv2/workitemseventsnotificationdelta.go
+platformclientv2/workitemseventsnotificationworkitem.go
+platformclientv2/workitemsusereventsnotificationcustomattribute.go
 platformclientv2/workitemsusereventsnotificationdelta.go
 platformclientv2/workitemsusereventsnotificationworkitem.go
 platformclientv2/workplan.go

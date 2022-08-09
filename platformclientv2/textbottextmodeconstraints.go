@@ -11,6 +11,10 @@ type Textbottextmodeconstraints struct {
 	// LanguagePreferences - The list of language preferences by their ISO language code.
 	LanguagePreferences *[]string `json:"languagePreferences,omitempty"`
 
+
+	// NoInputTimeoutMilliseconds - The amount of time, in milliseconds, before the client should send the 'NoInput' event  to trigger the \"no input\" bot response and handling on digital channels.  Note: This optional field will only be returned for 'Digital Bot Flow' turns.
+	NoInputTimeoutMilliseconds *int `json:"noInputTimeoutMilliseconds,omitempty"`
+
 }
 
 func (o *Textbottextmodeconstraints) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Textbottextmodeconstraints) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		LanguagePreferences *[]string `json:"languagePreferences,omitempty"`
+		
+		NoInputTimeoutMilliseconds *int `json:"noInputTimeoutMilliseconds,omitempty"`
 		*Alias
 	}{ 
 		LanguagePreferences: o.LanguagePreferences,
+		
+		NoInputTimeoutMilliseconds: o.NoInputTimeoutMilliseconds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -37,6 +45,11 @@ func (o *Textbottextmodeconstraints) UnmarshalJSON(b []byte) error {
 	if LanguagePreferences, ok := TextbottextmodeconstraintsMap["languagePreferences"].([]interface{}); ok {
 		LanguagePreferencesString, _ := json.Marshal(LanguagePreferences)
 		json.Unmarshal(LanguagePreferencesString, &o.LanguagePreferences)
+	}
+	
+	if NoInputTimeoutMilliseconds, ok := TextbottextmodeconstraintsMap["noInputTimeoutMilliseconds"].(float64); ok {
+		NoInputTimeoutMillisecondsInt := int(NoInputTimeoutMilliseconds)
+		o.NoInputTimeoutMilliseconds = &NoInputTimeoutMillisecondsInt
 	}
 	
 

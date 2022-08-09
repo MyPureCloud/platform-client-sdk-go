@@ -9,7 +9,7 @@ import (
 // Bulkidsrequest
 type Bulkidsrequest struct { 
 	// Entities
-	Entities *[]Entity `json:"entities,omitempty"`
+	Entities *[]Writableentity `json:"entities,omitempty"`
 
 }
 
@@ -19,7 +19,7 @@ func (o *Bulkidsrequest) MarshalJSON() ([]byte, error) {
 	type Alias Bulkidsrequest
 	
 	return json.Marshal(&struct { 
-		Entities *[]Entity `json:"entities,omitempty"`
+		Entities *[]Writableentity `json:"entities,omitempty"`
 		*Alias
 	}{ 
 		Entities: o.Entities,

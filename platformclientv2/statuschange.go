@@ -21,12 +21,12 @@ type Statuschange struct {
 	PreviousStatus *string `json:"previousStatus,omitempty"`
 
 
+	// Namespace - The namespace for the status change
+	Namespace *string `json:"namespace,omitempty"`
+
+
 	// Message - A short message describing the status change
 	Message *string `json:"message,omitempty"`
-
-
-	// ChangedBy - If applicable, the user who updated the change request to this status
-	ChangedBy *string `json:"changedBy,omitempty"`
 
 
 	// RejectReason - The reason for rejecting the limit override request
@@ -54,9 +54,9 @@ func (o *Statuschange) MarshalJSON() ([]byte, error) {
 		
 		PreviousStatus *string `json:"previousStatus,omitempty"`
 		
-		Message *string `json:"message,omitempty"`
+		Namespace *string `json:"namespace,omitempty"`
 		
-		ChangedBy *string `json:"changedBy,omitempty"`
+		Message *string `json:"message,omitempty"`
 		
 		RejectReason *string `json:"rejectReason,omitempty"`
 		*Alias
@@ -67,9 +67,9 @@ func (o *Statuschange) MarshalJSON() ([]byte, error) {
 		
 		PreviousStatus: o.PreviousStatus,
 		
-		Message: o.Message,
+		Namespace: o.Namespace,
 		
-		ChangedBy: o.ChangedBy,
+		Message: o.Message,
 		
 		RejectReason: o.RejectReason,
 		Alias:    (*Alias)(o),
@@ -96,12 +96,12 @@ func (o *Statuschange) UnmarshalJSON(b []byte) error {
 		o.PreviousStatus = &PreviousStatus
 	}
     
-	if Message, ok := StatuschangeMap["message"].(string); ok {
-		o.Message = &Message
+	if Namespace, ok := StatuschangeMap["namespace"].(string); ok {
+		o.Namespace = &Namespace
 	}
     
-	if ChangedBy, ok := StatuschangeMap["changedBy"].(string); ok {
-		o.ChangedBy = &ChangedBy
+	if Message, ok := StatuschangeMap["message"].(string); ok {
+		o.Message = &Message
 	}
     
 	if RejectReason, ok := StatuschangeMap["rejectReason"].(string); ok {

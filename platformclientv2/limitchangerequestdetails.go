@@ -33,10 +33,6 @@ type Limitchangerequestdetails struct {
 	SupportCaseUrl *string `json:"supportCaseUrl,omitempty"`
 
 
-	// CreatedBy - The user who created the change request
-	CreatedBy *string `json:"createdBy,omitempty"`
-
-
 	// Status - Current status of the limit change request
 	Status *string `json:"status,omitempty"`
 
@@ -55,10 +51,6 @@ type Limitchangerequestdetails struct {
 
 	// DateCompleted - The date of the limit change request completion (ChangeImplemented, Rejected, or RollbackImplemented. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
-
-
-	// LastChangedBy - The user who last updated the status of the limit change request
-	LastChangedBy *string `json:"lastChangedBy,omitempty"`
 
 
 	// RejectReason - The reason for rejecting the limit override request
@@ -104,8 +96,6 @@ func (o *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 		
 		SupportCaseUrl *string `json:"supportCaseUrl,omitempty"`
 		
-		CreatedBy *string `json:"createdBy,omitempty"`
-		
 		Status *string `json:"status,omitempty"`
 		
 		CurrentValue *float64 `json:"currentValue,omitempty"`
@@ -115,8 +105,6 @@ func (o *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 		StatusHistory *[]Statuschange `json:"statusHistory,omitempty"`
 		
 		DateCompleted *string `json:"dateCompleted,omitempty"`
-		
-		LastChangedBy *string `json:"lastChangedBy,omitempty"`
 		
 		RejectReason *string `json:"rejectReason,omitempty"`
 		
@@ -135,8 +123,6 @@ func (o *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 		
 		SupportCaseUrl: o.SupportCaseUrl,
 		
-		CreatedBy: o.CreatedBy,
-		
 		Status: o.Status,
 		
 		CurrentValue: o.CurrentValue,
@@ -146,8 +132,6 @@ func (o *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 		StatusHistory: o.StatusHistory,
 		
 		DateCompleted: DateCompleted,
-		
-		LastChangedBy: o.LastChangedBy,
 		
 		RejectReason: o.RejectReason,
 		
@@ -187,10 +171,6 @@ func (o *Limitchangerequestdetails) UnmarshalJSON(b []byte) error {
 		o.SupportCaseUrl = &SupportCaseUrl
 	}
     
-	if CreatedBy, ok := LimitchangerequestdetailsMap["createdBy"].(string); ok {
-		o.CreatedBy = &CreatedBy
-	}
-    
 	if Status, ok := LimitchangerequestdetailsMap["status"].(string); ok {
 		o.Status = &Status
 	}
@@ -214,10 +194,6 @@ func (o *Limitchangerequestdetails) UnmarshalJSON(b []byte) error {
 		o.DateCompleted = &DateCompleted
 	}
 	
-	if LastChangedBy, ok := LimitchangerequestdetailsMap["lastChangedBy"].(string); ok {
-		o.LastChangedBy = &LastChangedBy
-	}
-    
 	if RejectReason, ok := LimitchangerequestdetailsMap["rejectReason"].(string); ok {
 		o.RejectReason = &RejectReason
 	}

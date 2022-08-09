@@ -23,6 +23,10 @@ type Cursornotelisting struct {
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
+
+	// Cursors - The cursor that points to the next set of entities being returned.
+	Cursors *Cursors `json:"cursors,omitempty"`
+
 }
 
 func (o *Cursornotelisting) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Cursornotelisting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		Cursors *Cursors `json:"cursors,omitempty"`
 		*Alias
 	}{ 
 		Entities: o.Entities,
@@ -47,6 +53,8 @@ func (o *Cursornotelisting) MarshalJSON() ([]byte, error) {
 		SelfUri: o.SelfUri,
 		
 		PreviousUri: o.PreviousUri,
+		
+		Cursors: o.Cursors,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -75,6 +83,11 @@ func (o *Cursornotelisting) UnmarshalJSON(b []byte) error {
 		o.PreviousUri = &PreviousUri
 	}
     
+	if Cursors, ok := CursornotelistingMap["cursors"].(map[string]interface{}); ok {
+		CursorsString, _ := json.Marshal(Cursors)
+		json.Unmarshal(CursorsString, &o.Cursors)
+	}
+	
 
 	return nil
 }
