@@ -52,6 +52,14 @@ type Flowversion struct {
 	DateCreated *int `json:"dateCreated,omitempty"`
 
 
+	// DateCheckedIn
+	DateCheckedIn *int `json:"dateCheckedIn,omitempty"`
+
+
+	// DateSaved
+	DateSaved *int `json:"dateSaved,omitempty"`
+
+
 	// GenerationId
 	GenerationId *string `json:"generationId,omitempty"`
 
@@ -113,6 +121,10 @@ func (o *Flowversion) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *int `json:"dateCreated,omitempty"`
 		
+		DateCheckedIn *int `json:"dateCheckedIn,omitempty"`
+		
+		DateSaved *int `json:"dateSaved,omitempty"`
+		
 		GenerationId *string `json:"generationId,omitempty"`
 		
 		PublishResultUri *string `json:"publishResultUri,omitempty"`
@@ -151,6 +163,10 @@ func (o *Flowversion) MarshalJSON() ([]byte, error) {
 		ConfigurationUri: o.ConfigurationUri,
 		
 		DateCreated: o.DateCreated,
+		
+		DateCheckedIn: o.DateCheckedIn,
+		
+		DateSaved: o.DateSaved,
 		
 		GenerationId: o.GenerationId,
 		
@@ -223,6 +239,16 @@ func (o *Flowversion) UnmarshalJSON(b []byte) error {
 	if DateCreated, ok := FlowversionMap["dateCreated"].(float64); ok {
 		DateCreatedInt := int(DateCreated)
 		o.DateCreated = &DateCreatedInt
+	}
+	
+	if DateCheckedIn, ok := FlowversionMap["dateCheckedIn"].(float64); ok {
+		DateCheckedInInt := int(DateCheckedIn)
+		o.DateCheckedIn = &DateCheckedInInt
+	}
+	
+	if DateSaved, ok := FlowversionMap["dateSaved"].(float64); ok {
+		DateSavedInt := int(DateSaved)
+		o.DateSaved = &DateSavedInt
 	}
 	
 	if GenerationId, ok := FlowversionMap["generationId"].(string); ok {

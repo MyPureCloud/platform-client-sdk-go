@@ -4815,6 +4815,8 @@ func (a UsersApi) PostUserRoutingskills(userId string, body Userroutingskillpost
 // PostUsers invokes POST /api/v2/users
 //
 // Create user
+//
+// If user creation is successful but the provided password is invalid or configuration fails, POST api/v2/users/{userId}/password can be used to re-attempt password configuration.
 func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

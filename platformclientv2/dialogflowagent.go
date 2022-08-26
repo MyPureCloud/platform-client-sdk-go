@@ -32,6 +32,10 @@ type Dialogflowagent struct {
 	Environments *[]string `json:"environments,omitempty"`
 
 
+	// Integration - The Integration this Dialogflow agent was referenced from.
+	Integration *Domainentityref `json:"integration,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -55,6 +59,8 @@ func (o *Dialogflowagent) MarshalJSON() ([]byte, error) {
 		
 		Environments *[]string `json:"environments,omitempty"`
 		
+		Integration *Domainentityref `json:"integration,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -69,6 +75,8 @@ func (o *Dialogflowagent) MarshalJSON() ([]byte, error) {
 		Intents: o.Intents,
 		
 		Environments: o.Environments,
+		
+		Integration: o.Integration,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -108,6 +116,11 @@ func (o *Dialogflowagent) UnmarshalJSON(b []byte) error {
 	if Environments, ok := DialogflowagentMap["environments"].([]interface{}); ok {
 		EnvironmentsString, _ := json.Marshal(Environments)
 		json.Unmarshal(EnvironmentsString, &o.Environments)
+	}
+	
+	if Integration, ok := DialogflowagentMap["integration"].(map[string]interface{}); ok {
+		IntegrationString, _ := json.Marshal(Integration)
+		json.Unmarshal(IntegrationString, &o.Integration)
 	}
 	
 	if SelfUri, ok := DialogflowagentMap["selfUri"].(string); ok {

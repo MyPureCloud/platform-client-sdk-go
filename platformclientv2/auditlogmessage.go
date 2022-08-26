@@ -33,6 +33,10 @@ type Auditlogmessage struct {
 	ServiceName *string `json:"serviceName,omitempty"`
 
 
+	// Level - Level of this audit message, USER or SYSTEM.
+	Level *string `json:"level,omitempty"`
+
+
 	// EventDate - Date and time of when the audit message was logged. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EventDate *time.Time `json:"eventDate,omitempty"`
 
@@ -92,6 +96,8 @@ func (o *Auditlogmessage) MarshalJSON() ([]byte, error) {
 		
 		ServiceName *string `json:"serviceName,omitempty"`
 		
+		Level *string `json:"level,omitempty"`
+		
 		EventDate *string `json:"eventDate,omitempty"`
 		
 		Message *Messageinfo `json:"message,omitempty"`
@@ -120,6 +126,8 @@ func (o *Auditlogmessage) MarshalJSON() ([]byte, error) {
 		RemoteIp: o.RemoteIp,
 		
 		ServiceName: o.ServiceName,
+		
+		Level: o.Level,
 		
 		EventDate: EventDate,
 		
@@ -172,6 +180,10 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	
 	if ServiceName, ok := AuditlogmessageMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
+	}
+    
+	if Level, ok := AuditlogmessageMap["level"].(string); ok {
+		o.Level = &Level
 	}
     
 	if eventDateString, ok := AuditlogmessageMap["eventDate"].(string); ok {

@@ -105,6 +105,10 @@ type Evaluation struct {
 	AuthorizedActions *[]string `json:"authorizedActions,omitempty"`
 
 
+	// HasAssistanceFailed - Is true when evaluation assistance didn't execute successfully
+	HasAssistanceFailed *bool `json:"hasAssistanceFailed,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -204,6 +208,8 @@ func (o *Evaluation) MarshalJSON() ([]byte, error) {
 		
 		AuthorizedActions *[]string `json:"authorizedActions,omitempty"`
 		
+		HasAssistanceFailed *bool `json:"hasAssistanceFailed,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -254,6 +260,8 @@ func (o *Evaluation) MarshalJSON() ([]byte, error) {
 		IsScoringIndex: o.IsScoringIndex,
 		
 		AuthorizedActions: o.AuthorizedActions,
+		
+		HasAssistanceFailed: o.HasAssistanceFailed,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -377,6 +385,10 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AuthorizedActionsString, &o.AuthorizedActions)
 	}
 	
+	if HasAssistanceFailed, ok := EvaluationMap["hasAssistanceFailed"].(bool); ok {
+		o.HasAssistanceFailed = &HasAssistanceFailed
+	}
+    
 	if SelfUri, ok := EvaluationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

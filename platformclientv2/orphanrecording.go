@@ -57,6 +57,10 @@ type Orphanrecording struct {
 	SourceOrphaningId *string `json:"sourceOrphaningId,omitempty"`
 
 
+	// Region
+	Region *string `json:"region,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -108,6 +112,8 @@ func (o *Orphanrecording) MarshalJSON() ([]byte, error) {
 		
 		SourceOrphaningId *string `json:"sourceOrphaningId,omitempty"`
 		
+		Region *string `json:"region,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -134,6 +140,8 @@ func (o *Orphanrecording) MarshalJSON() ([]byte, error) {
 		OrphanStatus: o.OrphanStatus,
 		
 		SourceOrphaningId: o.SourceOrphaningId,
+		
+		Region: o.Region,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -198,6 +206,10 @@ func (o *Orphanrecording) UnmarshalJSON(b []byte) error {
     
 	if SourceOrphaningId, ok := OrphanrecordingMap["sourceOrphaningId"].(string); ok {
 		o.SourceOrphaningId = &SourceOrphaningId
+	}
+    
+	if Region, ok := OrphanrecordingMap["region"].(string); ok {
+		o.Region = &Region
 	}
     
 	if SelfUri, ok := OrphanrecordingMap["selfUri"].(string); ok {

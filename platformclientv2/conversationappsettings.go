@@ -27,6 +27,10 @@ type Conversationappsettings struct {
 	// Markdown - The markdown for the messenger app
 	Markdown *Markdown `json:"markdown,omitempty"`
 
+
+	// ConversationDisconnect - The conversation disconnect settings for the messenger app
+	ConversationDisconnect *Conversationdisconnectsettings `json:"conversationDisconnect,omitempty"`
+
 }
 
 func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
 		AutoStart *Autostart `json:"autoStart,omitempty"`
 		
 		Markdown *Markdown `json:"markdown,omitempty"`
+		
+		ConversationDisconnect *Conversationdisconnectsettings `json:"conversationDisconnect,omitempty"`
 		*Alias
 	}{ 
 		ShowAgentTypingIndicator: o.ShowAgentTypingIndicator,
@@ -55,6 +61,8 @@ func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
 		AutoStart: o.AutoStart,
 		
 		Markdown: o.Markdown,
+		
+		ConversationDisconnect: o.ConversationDisconnect,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -86,6 +94,11 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	if Markdown, ok := ConversationappsettingsMap["markdown"].(map[string]interface{}); ok {
 		MarkdownString, _ := json.Marshal(Markdown)
 		json.Unmarshal(MarkdownString, &o.Markdown)
+	}
+	
+	if ConversationDisconnect, ok := ConversationappsettingsMap["conversationDisconnect"].(map[string]interface{}); ok {
+		ConversationDisconnectString, _ := json.Marshal(ConversationDisconnect)
+		json.Unmarshal(ConversationDisconnectString, &o.ConversationDisconnect)
 	}
 	
 

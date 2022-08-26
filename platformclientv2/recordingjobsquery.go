@@ -9,11 +9,11 @@ import (
 
 // Recordingjobsquery
 type Recordingjobsquery struct { 
-	// Action - Operation to perform bulk task
+	// Action - Operation to perform bulk task. The date when the action will be performed can either be specified as an absolute date for all recordings with the actionDate/screenRecordingActionDate parameters, or as the number of days after each recording's creation time with the actionAge/screenRecordingActionAge parameters. If the operation will cause the delete date of a recording to be older than the export date, the export date will be adjusted to the delete date.
 	Action *string `json:"action,omitempty"`
 
 
-	// ActionDate - The date when the action will be performed. If the operation will cause the delete date of a recording to be older than the export date, the export date will be adjusted to the delete date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// ActionDate - The date when the action will be performed. If screenRecordingActionDate is also provided, this value is only used for non-screen recordings. Otherwise this value is used for all recordings. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ActionDate *time.Time `json:"actionDate,omitempty"`
 
 
@@ -21,7 +21,7 @@ type Recordingjobsquery struct {
 	IntegrationId *string `json:"integrationId,omitempty"`
 
 
-	// IncludeScreenRecordings - Include Screen recordings for export action, default value = true 
+	// IncludeScreenRecordings - Whether to include Screen recordings for the action, default value = true 
 	IncludeScreenRecordings *bool `json:"includeScreenRecordings,omitempty"`
 
 

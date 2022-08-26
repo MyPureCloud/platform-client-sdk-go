@@ -49,6 +49,10 @@ type Dnclist struct {
 	LoginId *string `json:"loginId,omitempty"`
 
 
+	// CampaignId - A dnc.com campaignId. Optional if the dncSourceType is dnc.com.
+	CampaignId *string `json:"campaignId,omitempty"`
+
+
 	// DncCodes - The list of dnc.com codes to be treated as DNC. Required if the dncSourceType is dnc.com.
 	DncCodes *[]string `json:"dncCodes,omitempty"`
 
@@ -108,6 +112,8 @@ func (o *Dnclist) MarshalJSON() ([]byte, error) {
 		
 		LoginId *string `json:"loginId,omitempty"`
 		
+		CampaignId *string `json:"campaignId,omitempty"`
+		
 		DncCodes *[]string `json:"dncCodes,omitempty"`
 		
 		LicenseId *string `json:"licenseId,omitempty"`
@@ -136,6 +142,8 @@ func (o *Dnclist) MarshalJSON() ([]byte, error) {
 		ContactMethod: o.ContactMethod,
 		
 		LoginId: o.LoginId,
+		
+		CampaignId: o.CampaignId,
 		
 		DncCodes: o.DncCodes,
 		
@@ -198,6 +206,10 @@ func (o *Dnclist) UnmarshalJSON(b []byte) error {
     
 	if LoginId, ok := DnclistMap["loginId"].(string); ok {
 		o.LoginId = &LoginId
+	}
+    
+	if CampaignId, ok := DnclistMap["campaignId"].(string); ok {
+		o.CampaignId = &CampaignId
 	}
     
 	if DncCodes, ok := DnclistMap["dncCodes"].([]interface{}); ok {
