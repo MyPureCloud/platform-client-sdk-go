@@ -40,12 +40,12 @@ type Evaluationquestion struct {
 	AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
 
 
-	// IsCritical
-	IsCritical *bool `json:"isCritical,omitempty"`
-
-
 	// IsKill
 	IsKill *bool `json:"isKill,omitempty"`
+
+
+	// IsCritical
+	IsCritical *bool `json:"isCritical,omitempty"`
 
 }
 
@@ -71,9 +71,9 @@ func (o *Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
 		
-		IsCritical *bool `json:"isCritical,omitempty"`
-		
 		IsKill *bool `json:"isKill,omitempty"`
+		
+		IsCritical *bool `json:"isCritical,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -92,9 +92,9 @@ func (o *Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		AnswerOptions: o.AnswerOptions,
 		
-		IsCritical: o.IsCritical,
-		
 		IsKill: o.IsKill,
+		
+		IsCritical: o.IsCritical,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -140,12 +140,12 @@ func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AnswerOptionsString, &o.AnswerOptions)
 	}
 	
-	if IsCritical, ok := EvaluationquestionMap["isCritical"].(bool); ok {
-		o.IsCritical = &IsCritical
-	}
-    
 	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {
 		o.IsKill = &IsKill
+	}
+    
+	if IsCritical, ok := EvaluationquestionMap["isCritical"].(bool); ok {
+		o.IsCritical = &IsCritical
 	}
     
 

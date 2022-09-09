@@ -60,6 +60,10 @@ type Workitemseventsnotificationworkitem struct {
 	StatusId *string `json:"statusId,omitempty"`
 
 
+	// StatusCategory
+	StatusCategory *string `json:"statusCategory,omitempty"`
+
+
 	// DateClosed
 	DateClosed *string `json:"dateClosed,omitempty"`
 
@@ -112,6 +116,10 @@ type Workitemseventsnotificationworkitem struct {
 	AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 
 
+	// QueueId
+	QueueId *string `json:"queueId,omitempty"`
+
+
 	// CustomFields
 	CustomFields *map[string]Workitemseventsnotificationcustomattribute `json:"customFields,omitempty"`
 
@@ -149,6 +157,8 @@ func (o *Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		
 		StatusId *string `json:"statusId,omitempty"`
 		
+		StatusCategory *string `json:"statusCategory,omitempty"`
+		
 		DateClosed *string `json:"dateClosed,omitempty"`
 		
 		WorkbinId *string `json:"workbinId,omitempty"`
@@ -174,6 +184,8 @@ func (o *Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		AssignmentId *string `json:"assignmentId,omitempty"`
 		
 		AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
+		
+		QueueId *string `json:"queueId,omitempty"`
 		
 		CustomFields *map[string]Workitemseventsnotificationcustomattribute `json:"customFields,omitempty"`
 		*Alias
@@ -204,6 +216,8 @@ func (o *Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		
 		StatusId: o.StatusId,
 		
+		StatusCategory: o.StatusCategory,
+		
 		DateClosed: o.DateClosed,
 		
 		WorkbinId: o.WorkbinId,
@@ -229,6 +243,8 @@ func (o *Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		AssignmentId: o.AssignmentId,
 		
 		AlertTimeoutSeconds: o.AlertTimeoutSeconds,
+		
+		QueueId: o.QueueId,
 		
 		CustomFields: o.CustomFields,
 		Alias:    (*Alias)(o),
@@ -297,6 +313,10 @@ func (o *Workitemseventsnotificationworkitem) UnmarshalJSON(b []byte) error {
 		o.StatusId = &StatusId
 	}
     
+	if StatusCategory, ok := WorkitemseventsnotificationworkitemMap["statusCategory"].(string); ok {
+		o.StatusCategory = &StatusCategory
+	}
+    
 	if DateClosed, ok := WorkitemseventsnotificationworkitemMap["dateClosed"].(string); ok {
 		o.DateClosed = &DateClosed
 	}
@@ -351,6 +371,10 @@ func (o *Workitemseventsnotificationworkitem) UnmarshalJSON(b []byte) error {
 		o.AlertTimeoutSeconds = &AlertTimeoutSecondsInt
 	}
 	
+	if QueueId, ok := WorkitemseventsnotificationworkitemMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+    
 	if CustomFields, ok := WorkitemseventsnotificationworkitemMap["customFields"].(map[string]interface{}); ok {
 		CustomFieldsString, _ := json.Marshal(CustomFields)
 		json.Unmarshal(CustomFieldsString, &o.CustomFields)

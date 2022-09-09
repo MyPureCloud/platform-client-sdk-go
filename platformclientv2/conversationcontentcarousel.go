@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// Conversationcontentcarousel
+// Conversationcontentcarousel - Carousel content object.
 type Conversationcontentcarousel struct { 
-	// Cards - A List of card objects.
+	// Cards - An array of card objects.
 	Cards *[]Conversationcontentcard `json:"cards,omitempty"`
 
 }

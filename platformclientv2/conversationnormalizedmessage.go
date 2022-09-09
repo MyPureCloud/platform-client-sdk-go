@@ -24,7 +24,7 @@ type Conversationnormalizedmessage struct {
 	Text *string `json:"text,omitempty"`
 
 
-	// Content - List of content elements
+	// Content - List of content elements.
 	Content *[]Conversationmessagecontent `json:"content,omitempty"`
 
 

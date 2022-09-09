@@ -57,6 +57,10 @@ type Analyticssession struct {
 	Authenticated *bool `json:"authenticated,omitempty"`
 
 
+	// BargedParticipantId - The participantId being barged in on (if someone (e.g. an agent) is being barged in on, this would correspond to one of the other participantIds present in the conversation)
+	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+
+
 	// CallbackNumbers - Callback phone number(s)
 	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 
@@ -356,6 +360,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		Authenticated *bool `json:"authenticated,omitempty"`
 		
+		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+		
 		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 		
 		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
@@ -506,6 +512,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		AssignerId: o.AssignerId,
 		
 		Authenticated: o.Authenticated,
+		
+		BargedParticipantId: o.BargedParticipantId,
 		
 		CallbackNumbers: o.CallbackNumbers,
 		
@@ -691,6 +699,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
     
 	if Authenticated, ok := AnalyticssessionMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
+	}
+    
+	if BargedParticipantId, ok := AnalyticssessionMap["bargedParticipantId"].(string); ok {
+		o.BargedParticipantId = &BargedParticipantId
 	}
     
 	if CallbackNumbers, ok := AnalyticssessionMap["callbackNumbers"].([]interface{}); ok {

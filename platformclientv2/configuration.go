@@ -346,7 +346,6 @@ func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret
 	formParams["grant_type"] = []string{"client_credentials"}
 	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}
 
@@ -388,7 +387,6 @@ func (c *Configuration) AuthorizeCodeGrant(clientID string, clientSecret string,
 	formParams["redirect_uri"] = []string{redirectUri}
 	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
 	if err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 
@@ -431,7 +429,6 @@ func (c *Configuration) RefreshAuthorizationCodeGrant(clientID string, clientSec
 	formParams["refresh_token"] = []string{refreshToken}
 	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
 	if err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 

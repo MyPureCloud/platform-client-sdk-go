@@ -20,8 +20,8 @@ type Whatsappintegrationupdaterequest struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
-	// MessagingSetting
-	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+	// MessagingSetting - Defines the message settings to be applied for this integration
+	MessagingSetting *Messagingsettingrequestreference `json:"messagingSetting,omitempty"`
 
 
 	// Action - The action used to activate and then confirm a WhatsApp Integration.
@@ -57,7 +57,7 @@ func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
-		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		MessagingSetting *Messagingsettingrequestreference `json:"messagingSetting,omitempty"`
 		
 		Action *string `json:"action,omitempty"`
 		

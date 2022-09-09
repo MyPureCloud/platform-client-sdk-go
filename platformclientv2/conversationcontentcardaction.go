@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Conversationcontentcardaction - CardAction Object
+// Conversationcontentcardaction - A card action that a user can take.
 type Conversationcontentcardaction struct { 
 	// VarType - Describes the type of action.
 	VarType *string `json:"type,omitempty"`
@@ -16,7 +16,7 @@ type Conversationcontentcardaction struct {
 	Text *string `json:"text,omitempty"`
 
 
-	// Payload - Text to be returned as the payload from a ButtonResponse when a button is clicked.
+	// Payload - Text to be returned as the payload from a ButtonResponse when a button is clicked. The payload and text are a combination which will have to be unique across each card and carousel in order to determine which button was clicked in that card or carousel.
 	Payload *string `json:"payload,omitempty"`
 
 

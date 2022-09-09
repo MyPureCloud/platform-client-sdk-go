@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Conversationcontentcard
+// Conversationcontentcard - Card content object.
 type Conversationcontentcard struct { 
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`

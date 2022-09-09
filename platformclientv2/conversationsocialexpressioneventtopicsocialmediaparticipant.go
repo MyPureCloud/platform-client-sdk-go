@@ -45,6 +45,10 @@ type Conversationsocialexpressioneventtopicsocialmediaparticipant struct {
 	State *string `json:"state,omitempty"`
 
 
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
+
+
 	// Direction
 	Direction *string `json:"direction,omitempty"`
 
@@ -234,6 +238,8 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJS
 		
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Direction *string `json:"direction,omitempty"`
 		
 		DisconnectType *string `json:"disconnectType,omitempty"`
@@ -310,6 +316,8 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJS
 		Purpose: o.Purpose,
 		
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Direction: o.Direction,
 		
@@ -417,6 +425,10 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
     
 	if State, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Direction, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["direction"].(string); ok {

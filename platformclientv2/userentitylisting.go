@@ -24,10 +24,6 @@ type Userentitylisting struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -42,6 +38,10 @@ type Userentitylisting struct {
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PageCount
@@ -63,8 +63,6 @@ func (o *Userentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -72,6 +70,8 @@ func (o *Userentitylisting) MarshalJSON() ([]byte, error) {
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -84,8 +84,6 @@ func (o *Userentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
@@ -93,6 +91,8 @@ func (o *Userentitylisting) MarshalJSON() ([]byte, error) {
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -126,10 +126,6 @@ func (o *Userentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := UserentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := UserentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -144,6 +140,10 @@ func (o *Userentitylisting) UnmarshalJSON(b []byte) error {
     
 	if PreviousUri, ok := UserentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := UserentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := UserentitylistingMap["pageCount"].(float64); ok {

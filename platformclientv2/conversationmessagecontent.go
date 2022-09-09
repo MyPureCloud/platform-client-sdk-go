@@ -6,18 +6,14 @@ import (
 	"strings"
 )
 
-// Conversationmessagecontent - Message content element.
+// Conversationmessagecontent - Message content element. If contentType = \"Attachment\" only one item is allowed.
 type Conversationmessagecontent struct { 
-	// ContentType - Type of this content element. If contentType = \"Attachment\" only one item is allowed.
+	// ContentType - Type of this content element.
 	ContentType *string `json:"contentType,omitempty"`
 
 
 	// Location - Location content.
 	Location *Conversationcontentlocation `json:"location,omitempty"`
-
-
-	// Story - Ephemeral story content.
-	Story *Conversationcontentstory `json:"story,omitempty"`
 
 
 	// Attachment - Attachment content.
@@ -28,23 +24,23 @@ type Conversationmessagecontent struct {
 	QuickReply *Conversationcontentquickreply `json:"quickReply,omitempty"`
 
 
-	// Template - Template notification content.
-	Template *Conversationcontentnotificationtemplate `json:"template,omitempty"`
-
-
 	// ButtonResponse - Button response content.
 	ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
 
 
-	// Generic - Generic Template Object (Deprecated).
-	Generic *Conversationcontentgeneric `json:"generic,omitempty"`
+	// Template - Template notification content.
+	Template *Conversationcontentnotificationtemplate `json:"template,omitempty"`
 
 
-	// Card - Card (Generic Template) Object
+	// Story - Ephemeral story content.
+	Story *Conversationcontentstory `json:"story,omitempty"`
+
+
+	// Card - Card content
 	Card *Conversationcontentcard `json:"card,omitempty"`
 
 
-	// Carousel - Carousel (Multiple Generic Template) Object
+	// Carousel - Carousel content
 	Carousel *Conversationcontentcarousel `json:"carousel,omitempty"`
 
 }
@@ -59,17 +55,15 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		
 		Location *Conversationcontentlocation `json:"location,omitempty"`
 		
-		Story *Conversationcontentstory `json:"story,omitempty"`
-		
 		Attachment *Conversationcontentattachment `json:"attachment,omitempty"`
 		
 		QuickReply *Conversationcontentquickreply `json:"quickReply,omitempty"`
 		
-		Template *Conversationcontentnotificationtemplate `json:"template,omitempty"`
-		
 		ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
 		
-		Generic *Conversationcontentgeneric `json:"generic,omitempty"`
+		Template *Conversationcontentnotificationtemplate `json:"template,omitempty"`
+		
+		Story *Conversationcontentstory `json:"story,omitempty"`
 		
 		Card *Conversationcontentcard `json:"card,omitempty"`
 		
@@ -80,17 +74,15 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		
 		Location: o.Location,
 		
-		Story: o.Story,
-		
 		Attachment: o.Attachment,
 		
 		QuickReply: o.QuickReply,
 		
-		Template: o.Template,
-		
 		ButtonResponse: o.ButtonResponse,
 		
-		Generic: o.Generic,
+		Template: o.Template,
+		
+		Story: o.Story,
 		
 		Card: o.Card,
 		
@@ -115,11 +107,6 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(LocationString, &o.Location)
 	}
 	
-	if Story, ok := ConversationmessagecontentMap["story"].(map[string]interface{}); ok {
-		StoryString, _ := json.Marshal(Story)
-		json.Unmarshal(StoryString, &o.Story)
-	}
-	
 	if Attachment, ok := ConversationmessagecontentMap["attachment"].(map[string]interface{}); ok {
 		AttachmentString, _ := json.Marshal(Attachment)
 		json.Unmarshal(AttachmentString, &o.Attachment)
@@ -130,19 +117,19 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(QuickReplyString, &o.QuickReply)
 	}
 	
-	if Template, ok := ConversationmessagecontentMap["template"].(map[string]interface{}); ok {
-		TemplateString, _ := json.Marshal(Template)
-		json.Unmarshal(TemplateString, &o.Template)
-	}
-	
 	if ButtonResponse, ok := ConversationmessagecontentMap["buttonResponse"].(map[string]interface{}); ok {
 		ButtonResponseString, _ := json.Marshal(ButtonResponse)
 		json.Unmarshal(ButtonResponseString, &o.ButtonResponse)
 	}
 	
-	if Generic, ok := ConversationmessagecontentMap["generic"].(map[string]interface{}); ok {
-		GenericString, _ := json.Marshal(Generic)
-		json.Unmarshal(GenericString, &o.Generic)
+	if Template, ok := ConversationmessagecontentMap["template"].(map[string]interface{}); ok {
+		TemplateString, _ := json.Marshal(Template)
+		json.Unmarshal(TemplateString, &o.Template)
+	}
+	
+	if Story, ok := ConversationmessagecontentMap["story"].(map[string]interface{}); ok {
+		StoryString, _ := json.Marshal(Story)
+		json.Unmarshal(StoryString, &o.Story)
 	}
 	
 	if Card, ok := ConversationmessagecontentMap["card"].(map[string]interface{}); ok {

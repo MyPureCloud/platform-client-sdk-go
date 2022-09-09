@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Conversationcontentstory - Story object.
+// Conversationcontentstory - An ephemeral story.
 type Conversationcontentstory struct { 
 	// VarType - Type of ephemeral story attachment.
 	VarType *string `json:"type,omitempty"`

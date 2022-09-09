@@ -35,6 +35,10 @@ type Conversationcontentattachment struct {
 	// Filename - Suggested file name for attachment.
 	Filename *string `json:"filename,omitempty"`
 
+
+	// ContentSizeBytes - Size in bytes of the attachment content.
+	ContentSizeBytes *int `json:"contentSizeBytes,omitempty"`
+
 }
 
 func (o *Conversationcontentattachment) MarshalJSON() ([]byte, error) {
@@ -56,6 +60,8 @@ func (o *Conversationcontentattachment) MarshalJSON() ([]byte, error) {
 		Sha256 *string `json:"sha256,omitempty"`
 		
 		Filename *string `json:"filename,omitempty"`
+		
+		ContentSizeBytes *int `json:"contentSizeBytes,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -71,6 +77,8 @@ func (o *Conversationcontentattachment) MarshalJSON() ([]byte, error) {
 		Sha256: o.Sha256,
 		
 		Filename: o.Filename,
+		
+		ContentSizeBytes: o.ContentSizeBytes,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -110,6 +118,11 @@ func (o *Conversationcontentattachment) UnmarshalJSON(b []byte) error {
 		o.Filename = &Filename
 	}
     
+	if ContentSizeBytes, ok := ConversationcontentattachmentMap["contentSizeBytes"].(float64); ok {
+		ContentSizeBytesInt := int(ContentSizeBytes)
+		o.ContentSizeBytes = &ContentSizeBytesInt
+	}
+	
 
 	return nil
 }

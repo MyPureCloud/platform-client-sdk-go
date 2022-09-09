@@ -39,6 +39,42 @@ type Knowledgeimportjobstatistics struct {
 	// CountDocumentImportFailure - Number of documents failed to import.
 	CountDocumentImportFailure *int `json:"countDocumentImportFailure,omitempty"`
 
+
+	// CountCategoryValidationSuccess - Number of categories that validated successfully for import.
+	CountCategoryValidationSuccess *int `json:"countCategoryValidationSuccess,omitempty"`
+
+
+	// CountCategoryValidationFailure - Number of categories that failed validation for import.
+	CountCategoryValidationFailure *int `json:"countCategoryValidationFailure,omitempty"`
+
+
+	// CountCategoryImportSuccess - Number of imported categories.
+	CountCategoryImportSuccess *int `json:"countCategoryImportSuccess,omitempty"`
+
+
+	// CountCategoryImportFailure - Number of categories failed to import.
+	CountCategoryImportFailure *int `json:"countCategoryImportFailure,omitempty"`
+
+
+	// CountLabelValidationSuccess - Number of labels that validated successfully for import.
+	CountLabelValidationSuccess *int `json:"countLabelValidationSuccess,omitempty"`
+
+
+	// CountLabelValidationFailure - Number of labels that failed validation for import.
+	CountLabelValidationFailure *int `json:"countLabelValidationFailure,omitempty"`
+
+
+	// CountLabelImportSuccess - Number of imported labels.
+	CountLabelImportSuccess *int `json:"countLabelImportSuccess,omitempty"`
+
+
+	// CountLabelImportFailure - Number of labels failed to import.
+	CountLabelImportFailure *int `json:"countLabelImportFailure,omitempty"`
+
+
+	// MigrationDetected - Shows whether the import treated as migration or not.
+	MigrationDetected *bool `json:"migrationDetected,omitempty"`
+
 }
 
 func (o *Knowledgeimportjobstatistics) MarshalJSON() ([]byte, error) {
@@ -62,6 +98,24 @@ func (o *Knowledgeimportjobstatistics) MarshalJSON() ([]byte, error) {
 		CountDocumentImportSuccess *int `json:"countDocumentImportSuccess,omitempty"`
 		
 		CountDocumentImportFailure *int `json:"countDocumentImportFailure,omitempty"`
+		
+		CountCategoryValidationSuccess *int `json:"countCategoryValidationSuccess,omitempty"`
+		
+		CountCategoryValidationFailure *int `json:"countCategoryValidationFailure,omitempty"`
+		
+		CountCategoryImportSuccess *int `json:"countCategoryImportSuccess,omitempty"`
+		
+		CountCategoryImportFailure *int `json:"countCategoryImportFailure,omitempty"`
+		
+		CountLabelValidationSuccess *int `json:"countLabelValidationSuccess,omitempty"`
+		
+		CountLabelValidationFailure *int `json:"countLabelValidationFailure,omitempty"`
+		
+		CountLabelImportSuccess *int `json:"countLabelImportSuccess,omitempty"`
+		
+		CountLabelImportFailure *int `json:"countLabelImportFailure,omitempty"`
+		
+		MigrationDetected *bool `json:"migrationDetected,omitempty"`
 		*Alias
 	}{ 
 		CountDocumentImportActivityCreate: o.CountDocumentImportActivityCreate,
@@ -79,6 +133,24 @@ func (o *Knowledgeimportjobstatistics) MarshalJSON() ([]byte, error) {
 		CountDocumentImportSuccess: o.CountDocumentImportSuccess,
 		
 		CountDocumentImportFailure: o.CountDocumentImportFailure,
+		
+		CountCategoryValidationSuccess: o.CountCategoryValidationSuccess,
+		
+		CountCategoryValidationFailure: o.CountCategoryValidationFailure,
+		
+		CountCategoryImportSuccess: o.CountCategoryImportSuccess,
+		
+		CountCategoryImportFailure: o.CountCategoryImportFailure,
+		
+		CountLabelValidationSuccess: o.CountLabelValidationSuccess,
+		
+		CountLabelValidationFailure: o.CountLabelValidationFailure,
+		
+		CountLabelImportSuccess: o.CountLabelImportSuccess,
+		
+		CountLabelImportFailure: o.CountLabelImportFailure,
+		
+		MigrationDetected: o.MigrationDetected,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -130,6 +202,50 @@ func (o *Knowledgeimportjobstatistics) UnmarshalJSON(b []byte) error {
 		o.CountDocumentImportFailure = &CountDocumentImportFailureInt
 	}
 	
+	if CountCategoryValidationSuccess, ok := KnowledgeimportjobstatisticsMap["countCategoryValidationSuccess"].(float64); ok {
+		CountCategoryValidationSuccessInt := int(CountCategoryValidationSuccess)
+		o.CountCategoryValidationSuccess = &CountCategoryValidationSuccessInt
+	}
+	
+	if CountCategoryValidationFailure, ok := KnowledgeimportjobstatisticsMap["countCategoryValidationFailure"].(float64); ok {
+		CountCategoryValidationFailureInt := int(CountCategoryValidationFailure)
+		o.CountCategoryValidationFailure = &CountCategoryValidationFailureInt
+	}
+	
+	if CountCategoryImportSuccess, ok := KnowledgeimportjobstatisticsMap["countCategoryImportSuccess"].(float64); ok {
+		CountCategoryImportSuccessInt := int(CountCategoryImportSuccess)
+		o.CountCategoryImportSuccess = &CountCategoryImportSuccessInt
+	}
+	
+	if CountCategoryImportFailure, ok := KnowledgeimportjobstatisticsMap["countCategoryImportFailure"].(float64); ok {
+		CountCategoryImportFailureInt := int(CountCategoryImportFailure)
+		o.CountCategoryImportFailure = &CountCategoryImportFailureInt
+	}
+	
+	if CountLabelValidationSuccess, ok := KnowledgeimportjobstatisticsMap["countLabelValidationSuccess"].(float64); ok {
+		CountLabelValidationSuccessInt := int(CountLabelValidationSuccess)
+		o.CountLabelValidationSuccess = &CountLabelValidationSuccessInt
+	}
+	
+	if CountLabelValidationFailure, ok := KnowledgeimportjobstatisticsMap["countLabelValidationFailure"].(float64); ok {
+		CountLabelValidationFailureInt := int(CountLabelValidationFailure)
+		o.CountLabelValidationFailure = &CountLabelValidationFailureInt
+	}
+	
+	if CountLabelImportSuccess, ok := KnowledgeimportjobstatisticsMap["countLabelImportSuccess"].(float64); ok {
+		CountLabelImportSuccessInt := int(CountLabelImportSuccess)
+		o.CountLabelImportSuccess = &CountLabelImportSuccessInt
+	}
+	
+	if CountLabelImportFailure, ok := KnowledgeimportjobstatisticsMap["countLabelImportFailure"].(float64); ok {
+		CountLabelImportFailureInt := int(CountLabelImportFailure)
+		o.CountLabelImportFailure = &CountLabelImportFailureInt
+	}
+	
+	if MigrationDetected, ok := KnowledgeimportjobstatisticsMap["migrationDetected"].(bool); ok {
+		o.MigrationDetected = &MigrationDetected
+	}
+    
 
 	return nil
 }

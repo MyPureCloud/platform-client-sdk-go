@@ -1849,7 +1849,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersions(knowledgeBaseId 
 // GetKnowledgeKnowledgebaseDocuments invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents
 //
 // Get documents.
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocuments(knowledgeBaseId string, before string, after string, pageSize string, interval string, categoryId []string, includeSubcategories bool, includeDrafts bool, labelIds []string, expand []string) (*Knowledgedocumentresponselisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocuments(knowledgeBaseId string, before string, after string, pageSize string, interval string, documentId []string, categoryId []string, includeSubcategories bool, includeDrafts bool, labelIds []string, expand []string) (*Knowledgedocumentresponselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents"
@@ -1889,6 +1889,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocuments(knowledgeBaseId string,
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
+	
+	queryParams["documentId"] = a.Configuration.APIClient.ParameterToString(documentId, "multi")
 	
 	queryParams["categoryId"] = a.Configuration.APIClient.ParameterToString(categoryId, "multi")
 	

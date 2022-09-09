@@ -35,6 +35,14 @@ type Transcripttopic struct {
 	// Duration
 	Duration *Topicduration `json:"duration,omitempty"`
 
+
+	// Offset - Location of the phrase
+	Offset *Topicoffset `json:"offset,omitempty"`
+
+
+	// RecordingLocation - Location of the phrase in the recording in milliseconds
+	RecordingLocation *int `json:"recordingLocation,omitempty"`
+
 }
 
 func (o *Transcripttopic) MarshalJSON() ([]byte, error) {
@@ -56,6 +64,10 @@ func (o *Transcripttopic) MarshalJSON() ([]byte, error) {
 		StartTimeMilliseconds *int `json:"startTimeMilliseconds,omitempty"`
 		
 		Duration *Topicduration `json:"duration,omitempty"`
+		
+		Offset *Topicoffset `json:"offset,omitempty"`
+		
+		RecordingLocation *int `json:"recordingLocation,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -71,6 +83,10 @@ func (o *Transcripttopic) MarshalJSON() ([]byte, error) {
 		StartTimeMilliseconds: o.StartTimeMilliseconds,
 		
 		Duration: o.Duration,
+		
+		Offset: o.Offset,
+		
+		RecordingLocation: o.RecordingLocation,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -111,6 +127,16 @@ func (o *Transcripttopic) UnmarshalJSON(b []byte) error {
 	if Duration, ok := TranscripttopicMap["duration"].(map[string]interface{}); ok {
 		DurationString, _ := json.Marshal(Duration)
 		json.Unmarshal(DurationString, &o.Duration)
+	}
+	
+	if Offset, ok := TranscripttopicMap["offset"].(map[string]interface{}); ok {
+		OffsetString, _ := json.Marshal(Offset)
+		json.Unmarshal(OffsetString, &o.Offset)
+	}
+	
+	if RecordingLocation, ok := TranscripttopicMap["recordingLocation"].(float64); ok {
+		RecordingLocationInt := int(RecordingLocation)
+		o.RecordingLocation = &RecordingLocationInt
 	}
 	
 

@@ -132,6 +132,7 @@ docs/DeleteOutboundContactlistContact-example.txt
 docs/DeleteOutboundContactlistContacts-example.txt
 docs/DeleteOutboundContactlistfilter-example.txt
 docs/DeleteOutboundContactlists-example.txt
+docs/DeleteOutboundDigitalruleset-example.txt
 docs/DeleteOutboundDnclist-example.txt
 docs/DeleteOutboundMessagingcampaign-example.txt
 docs/DeleteOutboundMessagingcampaignProgress-example.txt
@@ -247,6 +248,7 @@ docs/GetAnalyticsConversationsDetailsJobResults-example.txt
 docs/GetAnalyticsConversationsDetailsJobResults-example.txt
 docs/GetAnalyticsConversationsDetailsJobsAvailability-example.txt
 docs/GetAnalyticsConversationsDetailsJobsAvailability-example.txt
+docs/GetAnalyticsDataretentionSettings-example.txt
 docs/GetAnalyticsReportingExports-example.txt
 docs/GetAnalyticsReportingExportsMetadata-example.txt
 docs/GetAnalyticsReportingMetadata-example.txt
@@ -748,6 +750,8 @@ docs/GetOutboundContactlistfilters-example.txt
 docs/GetOutboundContactlists-example.txt
 docs/GetOutboundContactlistsDivisionview-example.txt
 docs/GetOutboundContactlistsDivisionviews-example.txt
+docs/GetOutboundDigitalruleset-example.txt
+docs/GetOutboundDigitalrulesets-example.txt
 docs/GetOutboundDnclist-example.txt
 docs/GetOutboundDnclistExport-example.txt
 docs/GetOutboundDnclistImportstatus-example.txt
@@ -823,6 +827,7 @@ docs/GetRecordingMediaretentionpolicy-example.txt
 docs/GetRecordingRecordingkeys-example.txt
 docs/GetRecordingRecordingkeysRotationschedule-example.txt
 docs/GetRecordingSettings-example.txt
+docs/GetRecordingsRetentionQuery-example.txt
 docs/GetRecordingsScreensessions-example.txt
 docs/GetResponsemanagementLibraries-example.txt
 docs/GetResponsemanagementLibrary-example.txt
@@ -1073,6 +1078,7 @@ docs/GetWebdeploymentsConfigurationVersions-example.txt
 docs/GetWebdeploymentsConfigurationVersionsDraft-example.txt
 docs/GetWebdeploymentsConfigurations-example.txt
 docs/GetWebdeploymentsDeployment-example.txt
+docs/GetWebdeploymentsDeploymentConfigurations-example.txt
 docs/GetWebdeploymentsDeployments-example.txt
 docs/GetWebmessagingMessages-example.txt
 docs/GetWidgetsDeployment-example.txt
@@ -1567,6 +1573,7 @@ docs/PostOutboundContactlistfilters-example.txt
 docs/PostOutboundContactlistfiltersPreview-example.txt
 docs/PostOutboundContactlists-example.txt
 docs/PostOutboundConversationDnc-example.txt
+docs/PostOutboundDigitalrulesets-example.txt
 docs/PostOutboundDnclistExport-example.txt
 docs/PostOutboundDnclistPhonenumbers-example.txt
 docs/PostOutboundDnclists-example.txt
@@ -1672,6 +1679,7 @@ docs/PostUploadsPublicassetsImages-example.txt
 docs/PostUploadsRecordings-example.txt
 docs/PostUploadsWorkforcemanagementHistoricaldataCsv-example.txt
 docs/PostUsageQuery-example.txt
+docs/PostUserExternalid-example.txt
 docs/PostUserGreetings-example.txt
 docs/PostUserInvite-example.txt
 docs/PostUserPassword-example.txt
@@ -1746,6 +1754,7 @@ docs/PostWorkforcemanagementTimeoffrequests-example.txt
 docs/PresenceApi.json
 docs/PutAlertingInteractionstatsAlert-example.txt
 docs/PutAlertingInteractionstatsRule-example.txt
+docs/PutAnalyticsDataretentionSettings-example.txt
 docs/PutAnalyticsReportingSchedule-example.txt
 docs/PutArchitectEmergencygroup-example.txt
 docs/PutArchitectIvr-example.txt
@@ -1847,6 +1856,7 @@ docs/PutOutboundCampaignrule-example.txt
 docs/PutOutboundContactlist-example.txt
 docs/PutOutboundContactlistContact-example.txt
 docs/PutOutboundContactlistfilter-example.txt
+docs/PutOutboundDigitalruleset-example.txt
 docs/PutOutboundDnclist-example.txt
 docs/PutOutboundMessagingcampaign-example.txt
 docs/PutOutboundRuleset-example.txt
@@ -2044,6 +2054,7 @@ platformclientv2/analyticsconversationqueryresponse.go
 platformclientv2/analyticsconversationsegment.go
 platformclientv2/analyticsconversationwithoutattributes.go
 platformclientv2/analyticsconversationwithoutattributesmultigetresponse.go
+platformclientv2/analyticsdataretentionresponse.go
 platformclientv2/analyticsevaluation.go
 platformclientv2/analyticsflow.go
 platformclientv2/analyticsflowoutcome.go
@@ -2071,6 +2082,7 @@ platformclientv2/apiresponse.go
 platformclientv2/apiusagequery.go
 platformclientv2/apiusagequeryresult.go
 platformclientv2/apiusagerow.go
+platformclientv2/appendtodncactionsettings.go
 platformclientv2/architectapi.go
 platformclientv2/architectdependencytrackingbuildnotificationclient.go
 platformclientv2/architectdependencytrackingbuildnotificationdependencytrackingbuildnotification.go
@@ -2480,8 +2492,11 @@ platformclientv2/contact.go
 platformclientv2/contactablestatus.go
 platformclientv2/contactaddress.go
 platformclientv2/contactaddressableentityref.go
+platformclientv2/contactaddressconditionsettings.go
+platformclientv2/contactaddresstypeconditionsettings.go
 platformclientv2/contactcallbackrequest.go
 platformclientv2/contactcentersettings.go
+platformclientv2/contactcolumnconditionsettings.go
 platformclientv2/contactcolumntimezone.go
 platformclientv2/contactcolumntodataactionfieldmapping.go
 platformclientv2/contactdetaileventtopiccontactupdateevent.go
@@ -2547,7 +2562,6 @@ platformclientv2/conversationaggregationview.go
 platformclientv2/conversationappsettings.go
 platformclientv2/conversationassociation.go
 platformclientv2/conversationbasic.go
-platformclientv2/conversationbuttoncomponent.go
 platformclientv2/conversationcallbackeventtopiccallbackconversation.go
 platformclientv2/conversationcallbackeventtopiccallbackmediaparticipant.go
 platformclientv2/conversationcallbackeventtopicconversationroutingdata.go
@@ -2579,6 +2593,7 @@ platformclientv2/conversationcalleventtopicscoredagent.go
 platformclientv2/conversationcalleventtopicurireference.go
 platformclientv2/conversationcalleventtopicwrapup.go
 platformclientv2/conversationchannel.go
+platformclientv2/conversationchannelmetadata.go
 platformclientv2/conversationchat.go
 platformclientv2/conversationchateventtopicchatconversation.go
 platformclientv2/conversationchateventtopicchatmediaparticipant.go
@@ -2606,13 +2621,11 @@ platformclientv2/conversationcobrowseeventtopicjourneycustomersession.go
 platformclientv2/conversationcobrowseeventtopicscoredagent.go
 platformclientv2/conversationcobrowseeventtopicurireference.go
 platformclientv2/conversationcobrowseeventtopicwrapup.go
-platformclientv2/conversationcontentactions.go
 platformclientv2/conversationcontentattachment.go
 platformclientv2/conversationcontentbuttonresponse.go
 platformclientv2/conversationcontentcard.go
 platformclientv2/conversationcontentcardaction.go
 platformclientv2/conversationcontentcarousel.go
-platformclientv2/conversationcontentgeneric.go
 platformclientv2/conversationcontentlocation.go
 platformclientv2/conversationcontentnotificationtemplate.go
 platformclientv2/conversationcontentquickreply.go
@@ -2707,7 +2720,6 @@ platformclientv2/conversationmessagemetadata.go
 platformclientv2/conversationmessagemetadatacontent.go
 platformclientv2/conversationmessagemetadataevent.go
 platformclientv2/conversationmessagingchannel.go
-platformclientv2/conversationmessagingchannelmetadata.go
 platformclientv2/conversationmessagingfromrecipient.go
 platformclientv2/conversationmessagingtorecipient.go
 platformclientv2/conversationmetrics.go
@@ -2964,6 +2976,11 @@ platformclientv2/didnumber.go
 platformclientv2/didnumberentitylisting.go
 platformclientv2/didpool.go
 platformclientv2/didpoolentitylisting.go
+platformclientv2/digitalaction.go
+platformclientv2/digitalcondition.go
+platformclientv2/digitalrule.go
+platformclientv2/digitalruleset.go
+platformclientv2/digitalrulesetentitylisting.go
 platformclientv2/digitlength.go
 platformclientv2/digits.go
 platformclientv2/directoryuserdeviceslisting.go
@@ -3038,6 +3055,7 @@ platformclientv2/domainresourceconditionnode.go
 platformclientv2/domainresourceconditionvalue.go
 platformclientv2/domainrole.go
 platformclientv2/domainschemareference.go
+platformclientv2/donotsendactionsettings.go
 platformclientv2/downloadresponse.go
 platformclientv2/draft.go
 platformclientv2/draftintents.go
@@ -3193,6 +3211,7 @@ platformclientv2/externalcontactsunresolvedcontactchangedtopictwitterid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicwhatsappid.go
 platformclientv2/externaldatasource.go
 platformclientv2/externalmetricdataitem.go
+platformclientv2/externalmetricdataprocesseditem.go
 platformclientv2/externalmetricdataunprocesseditem.go
 platformclientv2/externalmetricdatawriterequest.go
 platformclientv2/externalmetricdatawriteresponse.go
@@ -3588,6 +3607,10 @@ platformclientv2/languageoverride.go
 platformclientv2/languagereference.go
 platformclientv2/languagesapi.go
 platformclientv2/languageunderstandingapi.go
+platformclientv2/lastattemptbycolumnconditionsettings.go
+platformclientv2/lastattemptoverallconditionsettings.go
+platformclientv2/lastresultbycolumnconditionsettings.go
+platformclientv2/lastresultoverallconditionsettings.go
 platformclientv2/launcherbuttonsettings.go
 platformclientv2/leaderboard.go
 platformclientv2/leaderboarditem.go
@@ -3705,6 +3728,8 @@ platformclientv2/managementunitreference.go
 platformclientv2/managementunitsettingsrequest.go
 platformclientv2/managementunitsettingsresponse.go
 platformclientv2/manager.go
+platformclientv2/markcontactaddressuncontactableactionsettings.go
+platformclientv2/markcontactuncontactableactionsettings.go
 platformclientv2/markdown.go
 platformclientv2/matchshifttraderequest.go
 platformclientv2/matchshifttraderesponse.go
@@ -3754,6 +3779,7 @@ platformclientv2/messagingintegration.go
 platformclientv2/messagingintegrationentitylisting.go
 platformclientv2/messagingrecipient.go
 platformclientv2/messagingsettingreference.go
+platformclientv2/messagingsettingrequestreference.go
 platformclientv2/messagingsticker.go
 platformclientv2/messagingstickerentitylisting.go
 platformclientv2/messagingtemplate.go
@@ -4304,6 +4330,8 @@ platformclientv2/recordingjobfailedrecording.go
 platformclientv2/recordingjobsquery.go
 platformclientv2/recordingmessagingmessage.go
 platformclientv2/recordingmetadata.go
+platformclientv2/recordingretention.go
+platformclientv2/recordingretentioncursorentitylisting.go
 platformclientv2/recordingsettings.go
 platformclientv2/recordingtranscodecompletetopicmediaresult.go
 platformclientv2/recordingtranscodecompletetopicrecording.go
@@ -4501,6 +4529,7 @@ platformclientv2/session.go
 platformclientv2/sessionenddetails.go
 platformclientv2/sessionlastevent.go
 platformclientv2/sessionsegmentassignment.go
+platformclientv2/setcontenttemplateactionsettings.go
 platformclientv2/setrecordingstate.go
 platformclientv2/settimeofflimitvaluesrequest.go
 platformclientv2/settingdirection.go
@@ -4705,6 +4734,7 @@ platformclientv2/topic.go
 platformclientv2/topicduration.go
 platformclientv2/topicjob.go
 platformclientv2/topicjobrequest.go
+platformclientv2/topicoffset.go
 platformclientv2/topicrequest.go
 platformclientv2/topicsentitylisting.go
 platformclientv2/traininglisting.go
@@ -4800,9 +4830,11 @@ platformclientv2/unreadmetric.go
 platformclientv2/unreadstatus.go
 platformclientv2/updateactioninput.go
 platformclientv2/updateactivitycoderequest.go
+platformclientv2/updateanalyticsdataretentionrequest.go
 platformclientv2/updatebusinessunitrequest.go
 platformclientv2/updatebusinessunitsettings.go
 platformclientv2/updatecoachingappointmentrequest.go
+platformclientv2/updatecontactcolumnactionsettings.go
 platformclientv2/updatedraftinput.go
 platformclientv2/updatemanagementunitrequest.go
 platformclientv2/updatenotificationresponse.go
@@ -4858,6 +4890,7 @@ platformclientv2/userdevice.go
 platformclientv2/userenddetaileventtopicuserendevent.go
 platformclientv2/userentitylisting.go
 platformclientv2/userexpands.go
+platformclientv2/userexternalidentifier.go
 platformclientv2/usergreetingeventgreeting.go
 platformclientv2/usergreetingeventgreetingaudiofile.go
 platformclientv2/usergreetingeventgreetingowner.go
@@ -5018,6 +5051,7 @@ platformclientv2/webchatroutingtarget.go
 platformclientv2/webchatsettings.go
 platformclientv2/webchattyping.go
 platformclientv2/webdeployment.go
+platformclientv2/webdeploymentactiveconfigurationondeployment.go
 platformclientv2/webdeploymentconfigurationversion.go
 platformclientv2/webdeploymentconfigurationversionentitylisting.go
 platformclientv2/webdeploymentconfigurationversionentityref.go

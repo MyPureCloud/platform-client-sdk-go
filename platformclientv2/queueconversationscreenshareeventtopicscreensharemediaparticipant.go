@@ -45,6 +45,10 @@ type Queueconversationscreenshareeventtopicscreensharemediaparticipant struct {
 	State *string `json:"state,omitempty"`
 
 
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
+
+
 	// Direction
 	Direction *string `json:"direction,omitempty"`
 
@@ -230,6 +234,8 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Mars
 		
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Direction *string `json:"direction,omitempty"`
 		
 		DisconnectType *string `json:"disconnectType,omitempty"`
@@ -304,6 +310,8 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Mars
 		Purpose: o.Purpose,
 		
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Direction: o.Direction,
 		
@@ -409,6 +417,10 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
     
 	if State, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Direction, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["direction"].(string); ok {

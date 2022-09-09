@@ -9,7 +9,7 @@ import (
 // Externalmetricdatawriteresponse - External metric data write response
 type Externalmetricdatawriteresponse struct { 
 	// ProcessedEntities - The list of processed entities
-	ProcessedEntities *[]Externalmetricdataitem `json:"processedEntities,omitempty"`
+	ProcessedEntities *[]Externalmetricdataprocesseditem `json:"processedEntities,omitempty"`
 
 
 	// UnprocessedEntities - The list of unprocessed entities
@@ -23,7 +23,7 @@ func (o *Externalmetricdatawriteresponse) MarshalJSON() ([]byte, error) {
 	type Alias Externalmetricdatawriteresponse
 	
 	return json.Marshal(&struct { 
-		ProcessedEntities *[]Externalmetricdataitem `json:"processedEntities,omitempty"`
+		ProcessedEntities *[]Externalmetricdataprocesseditem `json:"processedEntities,omitempty"`
 		
 		UnprocessedEntities *[]Externalmetricdataunprocesseditem `json:"unprocessedEntities,omitempty"`
 		*Alias

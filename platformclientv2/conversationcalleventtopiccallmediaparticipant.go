@@ -45,6 +45,10 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 	State *string `json:"state,omitempty"`
 
 
+	// InitialState
+	InitialState *string `json:"initialState,omitempty"`
+
+
 	// Direction
 	Direction *string `json:"direction,omitempty"`
 
@@ -282,6 +286,8 @@ func (o *Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, 
 		
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Direction *string `json:"direction,omitempty"`
 		
 		DisconnectType *string `json:"disconnectType,omitempty"`
@@ -378,6 +384,8 @@ func (o *Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, 
 		Purpose: o.Purpose,
 		
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Direction: o.Direction,
 		
@@ -505,6 +513,10 @@ func (o *Conversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []byte)
     
 	if State, ok := ConversationcalleventtopiccallmediaparticipantMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationcalleventtopiccallmediaparticipantMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Direction, ok := ConversationcalleventtopiccallmediaparticipantMap["direction"].(string); ok {
