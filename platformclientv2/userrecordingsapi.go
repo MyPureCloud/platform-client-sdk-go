@@ -169,7 +169,7 @@ func (a UserRecordingsApi) GetUserrecording(recordingId string, expand []string)
 // GetUserrecordingMedia invokes GET /api/v2/userrecordings/{recordingId}/media
 //
 // Download a user recording.
-func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId string) (*Downloadresponse, *APIResponse, error) {
+func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId string, async bool) (*Downloadresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/userrecordings/{recordingId}/media"
@@ -203,6 +203,8 @@ func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId st
 	}
 	
 	queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, "")
+	
+	queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, "")
 	
 
 	// to determine the Content-Type header

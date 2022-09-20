@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// Createbusinessunitsettings
-type Createbusinessunitsettings struct { 
+// Createbusinessunitsettingsrequest
+type Createbusinessunitsettingsrequest struct { 
 	// StartDayOfWeek - The start day of week for this business unit
 	StartDayOfWeek *string `json:"startDayOfWeek,omitempty"`
 
@@ -21,14 +21,14 @@ type Createbusinessunitsettings struct {
 
 
 	// Scheduling - Scheduling settings
-	Scheduling *Buschedulingsettings `json:"scheduling,omitempty"`
+	Scheduling *Buschedulingsettingsrequest `json:"scheduling,omitempty"`
 
 }
 
-func (o *Createbusinessunitsettings) MarshalJSON() ([]byte, error) {
+func (o *Createbusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Createbusinessunitsettings
+	type Alias Createbusinessunitsettingsrequest
 	
 	return json.Marshal(&struct { 
 		StartDayOfWeek *string `json:"startDayOfWeek,omitempty"`
@@ -37,7 +37,7 @@ func (o *Createbusinessunitsettings) MarshalJSON() ([]byte, error) {
 		
 		ShortTermForecasting *Bushorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
 		
-		Scheduling *Buschedulingsettings `json:"scheduling,omitempty"`
+		Scheduling *Buschedulingsettingsrequest `json:"scheduling,omitempty"`
 		*Alias
 	}{ 
 		StartDayOfWeek: o.StartDayOfWeek,
@@ -51,27 +51,27 @@ func (o *Createbusinessunitsettings) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Createbusinessunitsettings) UnmarshalJSON(b []byte) error {
-	var CreatebusinessunitsettingsMap map[string]interface{}
-	err := json.Unmarshal(b, &CreatebusinessunitsettingsMap)
+func (o *Createbusinessunitsettingsrequest) UnmarshalJSON(b []byte) error {
+	var CreatebusinessunitsettingsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatebusinessunitsettingsrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if StartDayOfWeek, ok := CreatebusinessunitsettingsMap["startDayOfWeek"].(string); ok {
+	if StartDayOfWeek, ok := CreatebusinessunitsettingsrequestMap["startDayOfWeek"].(string); ok {
 		o.StartDayOfWeek = &StartDayOfWeek
 	}
     
-	if TimeZone, ok := CreatebusinessunitsettingsMap["timeZone"].(string); ok {
+	if TimeZone, ok := CreatebusinessunitsettingsrequestMap["timeZone"].(string); ok {
 		o.TimeZone = &TimeZone
 	}
     
-	if ShortTermForecasting, ok := CreatebusinessunitsettingsMap["shortTermForecasting"].(map[string]interface{}); ok {
+	if ShortTermForecasting, ok := CreatebusinessunitsettingsrequestMap["shortTermForecasting"].(map[string]interface{}); ok {
 		ShortTermForecastingString, _ := json.Marshal(ShortTermForecasting)
 		json.Unmarshal(ShortTermForecastingString, &o.ShortTermForecasting)
 	}
 	
-	if Scheduling, ok := CreatebusinessunitsettingsMap["scheduling"].(map[string]interface{}); ok {
+	if Scheduling, ok := CreatebusinessunitsettingsrequestMap["scheduling"].(map[string]interface{}); ok {
 		SchedulingString, _ := json.Marshal(Scheduling)
 		json.Unmarshal(SchedulingString, &o.Scheduling)
 	}
@@ -81,7 +81,7 @@ func (o *Createbusinessunitsettings) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Createbusinessunitsettings) String() string {
+func (o *Createbusinessunitsettingsrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

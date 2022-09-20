@@ -143,6 +143,7 @@ docs/DeleteOutboundSchedulesMessagingcampaign-example.txt
 docs/DeleteOutboundSchedulesSequence-example.txt
 docs/DeleteOutboundSequence-example.txt
 docs/DeletePresencedefinition-example.txt
+docs/DeleteProcessautomationTrigger-example.txt
 docs/DeleteQualityCalibration-example.txt
 docs/DeleteQualityConversationEvaluation-example.txt
 docs/DeleteQualityForm-example.txt
@@ -499,7 +500,6 @@ docs/GetGamificationLeaderboardBestpoints-example.txt
 docs/GetGamificationMetric-example.txt
 docs/GetGamificationMetricdefinition-example.txt
 docs/GetGamificationMetricdefinitions-example.txt
-docs/GetGamificationMetrics-example.txt
 docs/GetGamificationProfile-example.txt
 docs/GetGamificationProfileMembers-example.txt
 docs/GetGamificationProfileMetric-example.txt
@@ -582,8 +582,6 @@ docs/GetIntegrationsClientappsUnifiedcommunications-example.txt
 docs/GetIntegrationsCredential-example.txt
 docs/GetIntegrationsCredentials-example.txt
 docs/GetIntegrationsCredentialsTypes-example.txt
-docs/GetIntegrationsEventlog-example.txt
-docs/GetIntegrationsEventlogEventId-example.txt
 docs/GetIntegrationsSpeechDialogflowAgent-example.txt
 docs/GetIntegrationsSpeechDialogflowAgents-example.txt
 docs/GetIntegrationsSpeechLexBotAlias-example.txt
@@ -601,6 +599,8 @@ docs/GetIntegrationsUserapps-example.txt
 docs/GetIpranges-example.txt
 docs/GetJourneyActionmap-example.txt
 docs/GetJourneyActionmaps-example.txt
+docs/GetJourneyActionmapsEstimatesJob-example.txt
+docs/GetJourneyActionmapsEstimatesJobResults-example.txt
 docs/GetJourneyActiontarget-example.txt
 docs/GetJourneyActiontargets-example.txt
 docs/GetJourneyActiontemplate-example.txt
@@ -781,6 +781,9 @@ docs/GetOutboundSettings-example.txt
 docs/GetOutboundWrapupcodemappings-example.txt
 docs/GetPresencedefinition-example.txt
 docs/GetPresencedefinitions-example.txt
+docs/GetProcessautomationTrigger-example.txt
+docs/GetProcessautomationTriggers-example.txt
+docs/GetProcessautomationTriggersTopics-example.txt
 docs/GetProfilesGroups-example.txt
 docs/GetProfilesUsers-example.txt
 docs/GetQualityAgentsActivity-example.txt
@@ -1463,7 +1466,6 @@ docs/PostFlowsExecutions-example.txt
 docs/PostFlowsJobs-example.txt
 docs/PostFlowsMilestones-example.txt
 docs/PostFlowsOutcomes-example.txt
-docs/PostGamificationMetrics-example.txt
 docs/PostGamificationProfileActivate-example.txt
 docs/PostGamificationProfileDeactivate-example.txt
 docs/PostGamificationProfileMembers-example.txt
@@ -1487,8 +1489,8 @@ docs/PostIntegrationsActionTest-example.txt
 docs/PostIntegrationsActions-example.txt
 docs/PostIntegrationsActionsDrafts-example.txt
 docs/PostIntegrationsCredentials-example.txt
-docs/PostIntegrationsWorkforcemanagementVendorconnection-example.txt
 docs/PostJourneyActionmaps-example.txt
+docs/PostJourneyActionmapsEstimatesJobs-example.txt
 docs/PostJourneyActiontemplates-example.txt
 docs/PostJourneyOutcomes-example.txt
 docs/PostJourneySegments-example.txt
@@ -1582,6 +1584,9 @@ docs/PostOutboundMessagingcampaignsProgress-example.txt
 docs/PostOutboundRulesets-example.txt
 docs/PostOutboundSequences-example.txt
 docs/PostPresencedefinitions-example.txt
+docs/PostProcessautomationTriggerTest-example.txt
+docs/PostProcessautomationTriggers-example.txt
+docs/PostProcessautomationTriggersTopicTest-example.txt
 docs/PostQualityCalibrations-example.txt
 docs/PostQualityConversationEvaluations-example.txt
 docs/PostQualityConversationsAuditsQuery-example.txt
@@ -1752,6 +1757,7 @@ docs/PostWorkforcemanagementSchedules-example.txt
 docs/PostWorkforcemanagementTimeofflimitsAvailableQuery-example.txt
 docs/PostWorkforcemanagementTimeoffrequests-example.txt
 docs/PresenceApi.json
+docs/ProcessAutomationApi.json
 docs/PutAlertingInteractionstatsAlert-example.txt
 docs/PutAlertingInteractionstatsRule-example.txt
 docs/PutAnalyticsDataretentionSettings-example.txt
@@ -1867,6 +1873,7 @@ docs/PutOutboundSchedulesSequence-example.txt
 docs/PutOutboundSequence-example.txt
 docs/PutOutboundWrapupcodemappings-example.txt
 docs/PutPresencedefinition-example.txt
+docs/PutProcessautomationTrigger-example.txt
 docs/PutQualityCalibration-example.txt
 docs/PutQualityConversationEvaluation-example.txt
 docs/PutQualityForm-example.txt
@@ -1985,6 +1992,9 @@ platformclientv2/actioninput.go
 platformclientv2/actionmap.go
 platformclientv2/actionmapaction.go
 platformclientv2/actionmapactiontemplate.go
+platformclientv2/actionmapestimateoutcomecriteria.go
+platformclientv2/actionmapestimaterequest.go
+platformclientv2/actionmapestimateresult.go
 platformclientv2/actionmaplisting.go
 platformclientv2/actionmapschedulegroup.go
 platformclientv2/actionmapschedulegroups.go
@@ -2327,7 +2337,8 @@ platformclientv2/buschedulereference.go
 platformclientv2/buschedulereferenceformuroute.go
 platformclientv2/buschedulerun.go
 platformclientv2/buschedulerunlisting.go
-platformclientv2/buschedulingsettings.go
+platformclientv2/buschedulingsettingsrequest.go
+platformclientv2/buschedulingsettingsresponse.go
 platformclientv2/busearchagentschedulesrequest.go
 platformclientv2/buservicelevel.go
 platformclientv2/bushorttermforecast.go
@@ -2335,13 +2346,13 @@ platformclientv2/bushorttermforecastingsettings.go
 platformclientv2/bushorttermforecastlisting.go
 platformclientv2/bushorttermforecastlistitem.go
 platformclientv2/bushorttermforecastreference.go
-platformclientv2/businessunit.go
 platformclientv2/businessunitactivitycode.go
 platformclientv2/businessunitactivitycodelisting.go
 platformclientv2/businessunitlisting.go
 platformclientv2/businessunitlistitem.go
 platformclientv2/businessunitreference.go
-platformclientv2/businessunitsettings.go
+platformclientv2/businessunitresponse.go
+platformclientv2/businessunitsettingsresponse.go
 platformclientv2/buttoncomponent.go
 platformclientv2/buttonresponse.go
 platformclientv2/buupdateagentscheduleuploadschema.go
@@ -2797,7 +2808,7 @@ platformclientv2/createagenttimeoffrequest.go
 platformclientv2/createbenefitassessmentjobrequest.go
 platformclientv2/createbenefitassessmentrequest.go
 platformclientv2/createbusinessunitrequest.go
-platformclientv2/createbusinessunitsettings.go
+platformclientv2/createbusinessunitsettingsrequest.go
 platformclientv2/createcallbackcommand.go
 platformclientv2/createcallbackonconversationcommand.go
 platformclientv2/createcallbackresponse.go
@@ -2825,6 +2836,7 @@ platformclientv2/createsharerequestmember.go
 platformclientv2/createshareresponse.go
 platformclientv2/createtimeofflimitrequest.go
 platformclientv2/createtimeoffplanrequest.go
+platformclientv2/createtriggerrequest.go
 platformclientv2/createuser.go
 platformclientv2/createwebchatconversationrequest.go
 platformclientv2/createwebchatconversationresponse.go
@@ -3140,6 +3152,7 @@ platformclientv2/errorbody.go
 platformclientv2/errordetails.go
 platformclientv2/errorinfo.go
 platformclientv2/estimatedwaittimepredictions.go
+platformclientv2/estimatejobasyncresponse.go
 platformclientv2/evaluation.go
 platformclientv2/evaluationaggregatedatacontainer.go
 platformclientv2/evaluationaggregatequeryclause.go
@@ -3172,7 +3185,6 @@ platformclientv2/evaluatoractivity.go
 platformclientv2/evaluatoractivityentitylisting.go
 platformclientv2/eventcobrowse.go
 platformclientv2/eventcondition.go
-platformclientv2/evententity.go
 platformclientv2/eventlog.go
 platformclientv2/eventmessage.go
 platformclientv2/eventpresence.go
@@ -3408,8 +3420,6 @@ platformclientv2/integrationactionfields.go
 platformclientv2/integrationconfiguration.go
 platformclientv2/integrationconfigurationinfo.go
 platformclientv2/integrationentitylisting.go
-platformclientv2/integrationevent.go
-platformclientv2/integrationevententitylisting.go
 platformclientv2/integrationexport.go
 platformclientv2/integrationsapi.go
 platformclientv2/integrationstatusinfo.go
@@ -3632,6 +3642,7 @@ platformclientv2/learningassignmentbulkremoveresponse.go
 platformclientv2/learningassignmentcreate.go
 platformclientv2/learningassignmententity.go
 platformclientv2/learningassignmentitem.go
+platformclientv2/learningassignmentreassign.go
 platformclientv2/learningassignmentreference.go
 platformclientv2/learningassignmentruleruntopiclearningassignmentrulerunnotification.go
 platformclientv2/learningassignmentruleruntopiclearningassignmentscreated.go
@@ -3731,8 +3742,11 @@ platformclientv2/manager.go
 platformclientv2/markcontactaddressuncontactableactionsettings.go
 platformclientv2/markcontactuncontactableactionsettings.go
 platformclientv2/markdown.go
+platformclientv2/matchcriteria.go
+platformclientv2/matchcriteriatestresult.go
 platformclientv2/matchshifttraderequest.go
 platformclientv2/matchshifttraderesponse.go
+platformclientv2/matchtestresult.go
 platformclientv2/maxlength.go
 platformclientv2/maxparticipants.go
 platformclientv2/mediaparticipantrequest.go
@@ -4024,6 +4038,7 @@ platformclientv2/presencedetailquerypredicate.go
 platformclientv2/presenceeventorganizationpresence.go
 platformclientv2/presenceeventuserpresence.go
 platformclientv2/presencesetting.go
+platformclientv2/processautomationapi.go
 platformclientv2/processscheduleupdateuploadrequest.go
 platformclientv2/program.go
 platformclientv2/programjob.go
@@ -4510,6 +4525,7 @@ platformclientv2/segment.go
 platformclientv2/segmentdetailqueryclause.go
 platformclientv2/segmentdetailqueryfilter.go
 platformclientv2/segmentdetailquerypredicate.go
+platformclientv2/segmentestimatecount.go
 platformclientv2/segmentlisting.go
 platformclientv2/selectedanswer.go
 platformclientv2/selectedcolumns.go
@@ -4537,6 +4553,7 @@ platformclientv2/setuuidatarequest.go
 platformclientv2/setwrapperdayofweek.go
 platformclientv2/setwrapperroutepathrequest.go
 platformclientv2/setwrapperstring.go
+platformclientv2/setwrappersynctimeoffproperty.go
 platformclientv2/share.go
 platformclientv2/sharedentity.go
 platformclientv2/sharedresponse.go
@@ -4678,7 +4695,14 @@ platformclientv2/templateparameter.go
 platformclientv2/termattribute.go
 platformclientv2/testexecutionoperationresult.go
 platformclientv2/testexecutionresult.go
+platformclientv2/testmatcheseventoperation.go
+platformclientv2/testmatchesoperation.go
 platformclientv2/testmessage.go
+platformclientv2/testmodeeventresults.go
+platformclientv2/testmoderesults.go
+platformclientv2/testmodetrigger.go
+platformclientv2/testschemaoperation.go
+platformclientv2/testtargetoperation.go
 platformclientv2/textbotchannel.go
 platformclientv2/textbotdisconnectaction.go
 platformclientv2/textboterrorinputevent.go
@@ -4731,6 +4755,7 @@ platformclientv2/tokeninfo.go
 platformclientv2/tokeninfocloneduser.go
 platformclientv2/tokensapi.go
 platformclientv2/topic.go
+platformclientv2/topiccursorentitylisting.go
 platformclientv2/topicduration.go
 platformclientv2/topicjob.go
 platformclientv2/topicjobrequest.go
@@ -4760,6 +4785,9 @@ platformclientv2/transcripttopic.go
 platformclientv2/transcripttopics.go
 platformclientv2/transcripturl.go
 platformclientv2/transferrequest.go
+platformclientv2/trigger.go
+platformclientv2/triggerentitylisting.go
+platformclientv2/triggertarget.go
 platformclientv2/trunk.go
 platformclientv2/trunkbase.go
 platformclientv2/trunkbaseassignment.go
@@ -4832,7 +4860,7 @@ platformclientv2/updateactioninput.go
 platformclientv2/updateactivitycoderequest.go
 platformclientv2/updateanalyticsdataretentionrequest.go
 platformclientv2/updatebusinessunitrequest.go
-platformclientv2/updatebusinessunitsettings.go
+platformclientv2/updatebusinessunitsettingsrequest.go
 platformclientv2/updatecoachingappointmentrequest.go
 platformclientv2/updatecontactcolumnactionsettings.go
 platformclientv2/updatedraftinput.go
@@ -4846,6 +4874,7 @@ platformclientv2/updatescheduleuploadschema.go
 platformclientv2/updateservicegoaltemplate.go
 platformclientv2/updatetimeofflimitrequest.go
 platformclientv2/updatetimeoffplanrequest.go
+platformclientv2/updatetriggerrequest.go
 platformclientv2/updateuser.go
 platformclientv2/updateworkplanrotationagentrequest.go
 platformclientv2/updateworkplanrotationrequest.go
@@ -4860,8 +4889,6 @@ platformclientv2/usageapi.go
 platformclientv2/usageexecutionresult.go
 platformclientv2/usageitem.go
 platformclientv2/user.go
-platformclientv2/useractioncategory.go
-platformclientv2/useractioncategoryentitylisting.go
 platformclientv2/useragentinfo.go
 platformclientv2/useraggregatedatacontainer.go
 platformclientv2/useraggregatequeryclause.go
@@ -5009,7 +5036,6 @@ platformclientv2/validationservicerequest.go
 platformclientv2/valuewrapperdate.go
 platformclientv2/valuewrapperplanningperiodsettings.go
 platformclientv2/valuewrapperstring.go
-platformclientv2/vendorconnectionrequest.go
 platformclientv2/video.go
 platformclientv2/viewfilter.go
 platformclientv2/visibilitycondition.go

@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// Businessunit
-type Businessunit struct { 
+// Businessunitresponse
+type Businessunitresponse struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -17,7 +17,7 @@ type Businessunit struct {
 
 
 	// Settings - Settings for this business unit
-	Settings *Businessunitsettings `json:"settings,omitempty"`
+	Settings *Businessunitsettingsresponse `json:"settings,omitempty"`
 
 
 	// Division - The division to which this entity belongs.
@@ -29,17 +29,17 @@ type Businessunit struct {
 
 }
 
-func (o *Businessunit) MarshalJSON() ([]byte, error) {
+func (o *Businessunitresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Businessunit
+	type Alias Businessunitresponse
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		
-		Settings *Businessunitsettings `json:"settings,omitempty"`
+		Settings *Businessunitsettingsresponse `json:"settings,omitempty"`
 		
 		Division *Divisionreference `json:"division,omitempty"`
 		
@@ -59,32 +59,32 @@ func (o *Businessunit) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Businessunit) UnmarshalJSON(b []byte) error {
-	var BusinessunitMap map[string]interface{}
-	err := json.Unmarshal(b, &BusinessunitMap)
+func (o *Businessunitresponse) UnmarshalJSON(b []byte) error {
+	var BusinessunitresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BusinessunitresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := BusinessunitMap["id"].(string); ok {
+	if Id, ok := BusinessunitresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := BusinessunitMap["name"].(string); ok {
+	if Name, ok := BusinessunitresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
     
-	if Settings, ok := BusinessunitMap["settings"].(map[string]interface{}); ok {
+	if Settings, ok := BusinessunitresponseMap["settings"].(map[string]interface{}); ok {
 		SettingsString, _ := json.Marshal(Settings)
 		json.Unmarshal(SettingsString, &o.Settings)
 	}
 	
-	if Division, ok := BusinessunitMap["division"].(map[string]interface{}); ok {
+	if Division, ok := BusinessunitresponseMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
-	if SelfUri, ok := BusinessunitMap["selfUri"].(string); ok {
+	if SelfUri, ok := BusinessunitresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -93,7 +93,7 @@ func (o *Businessunit) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Businessunit) String() string {
+func (o *Businessunitresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

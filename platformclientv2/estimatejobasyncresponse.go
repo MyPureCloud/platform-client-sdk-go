@@ -6,14 +6,10 @@ import (
 	"strings"
 )
 
-// Useractioncategory
-type Useractioncategory struct { 
+// Estimatejobasyncresponse
+type Estimatejobasyncresponse struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -21,44 +17,36 @@ type Useractioncategory struct {
 
 }
 
-func (o *Useractioncategory) MarshalJSON() ([]byte, error) {
+func (o *Estimatejobasyncresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Useractioncategory
+	type Alias Estimatejobasyncresponse
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
 		
-		Name: o.Name,
-		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
 	})
 }
 
-func (o *Useractioncategory) UnmarshalJSON(b []byte) error {
-	var UseractioncategoryMap map[string]interface{}
-	err := json.Unmarshal(b, &UseractioncategoryMap)
+func (o *Estimatejobasyncresponse) UnmarshalJSON(b []byte) error {
+	var EstimatejobasyncresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &EstimatejobasyncresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := UseractioncategoryMap["id"].(string); ok {
+	if Id, ok := EstimatejobasyncresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := UseractioncategoryMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if SelfUri, ok := UseractioncategoryMap["selfUri"].(string); ok {
+	if SelfUri, ok := EstimatejobasyncresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -67,7 +55,7 @@ func (o *Useractioncategory) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Useractioncategory) String() string {
+func (o *Estimatejobasyncresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

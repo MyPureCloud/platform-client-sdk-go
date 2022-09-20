@@ -16,6 +16,10 @@ type Patchactiontemplate struct {
 	Description *string `json:"description,omitempty"`
 
 
+	// Version - The version of the action template.
+	Version *int `json:"version,omitempty"`
+
+
 	// MediaType - Media type of action described by the action template.
 	MediaType *string `json:"mediaType,omitempty"`
 
@@ -39,6 +43,8 @@ func (o *Patchactiontemplate) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		Version *int `json:"version,omitempty"`
+		
 		MediaType *string `json:"mediaType,omitempty"`
 		
 		State *string `json:"state,omitempty"`
@@ -49,6 +55,8 @@ func (o *Patchactiontemplate) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Description: o.Description,
+		
+		Version: o.Version,
 		
 		MediaType: o.MediaType,
 		
@@ -74,6 +82,11 @@ func (o *Patchactiontemplate) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
+	if Version, ok := PatchactiontemplateMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
 	if MediaType, ok := PatchactiontemplateMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
 	}

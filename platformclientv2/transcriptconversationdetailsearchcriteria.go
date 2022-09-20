@@ -20,10 +20,6 @@ type Transcriptconversationdetailsearchcriteria struct {
 	StartValue *string `json:"startValue,omitempty"`
 
 
-	// Fields - Field names to search against
-	Fields *[]string `json:"fields,omitempty"`
-
-
 	// Value - A value for the search to match against
 	Value *string `json:"value,omitempty"`
 
@@ -38,6 +34,10 @@ type Transcriptconversationdetailsearchcriteria struct {
 
 	// DateFormat - Set date format for criteria values when using date range search type.  Supports Java date format syntax, example yyyy-MM-dd'T'HH:mm:ss.SSSX.
 	DateFormat *string `json:"dateFormat,omitempty"`
+
+
+	// Fields - Field names to search against
+	Fields *[]string `json:"fields,omitempty"`
 
 
 	// VarType
@@ -57,8 +57,6 @@ func (o *Transcriptconversationdetailsearchcriteria) MarshalJSON() ([]byte, erro
 		
 		StartValue *string `json:"startValue,omitempty"`
 		
-		Fields *[]string `json:"fields,omitempty"`
-		
 		Value *string `json:"value,omitempty"`
 		
 		Operator *string `json:"operator,omitempty"`
@@ -66,6 +64,8 @@ func (o *Transcriptconversationdetailsearchcriteria) MarshalJSON() ([]byte, erro
 		Group *[]Transcriptconversationdetailsearchcriteria `json:"group,omitempty"`
 		
 		DateFormat *string `json:"dateFormat,omitempty"`
+		
+		Fields *[]string `json:"fields,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		*Alias
@@ -76,8 +76,6 @@ func (o *Transcriptconversationdetailsearchcriteria) MarshalJSON() ([]byte, erro
 		
 		StartValue: o.StartValue,
 		
-		Fields: o.Fields,
-		
 		Value: o.Value,
 		
 		Operator: o.Operator,
@@ -85,6 +83,8 @@ func (o *Transcriptconversationdetailsearchcriteria) MarshalJSON() ([]byte, erro
 		Group: o.Group,
 		
 		DateFormat: o.DateFormat,
+		
+		Fields: o.Fields,
 		
 		VarType: o.VarType,
 		Alias:    (*Alias)(o),
@@ -111,11 +111,6 @@ func (o *Transcriptconversationdetailsearchcriteria) UnmarshalJSON(b []byte) err
 		o.StartValue = &StartValue
 	}
     
-	if Fields, ok := TranscriptconversationdetailsearchcriteriaMap["fields"].([]interface{}); ok {
-		FieldsString, _ := json.Marshal(Fields)
-		json.Unmarshal(FieldsString, &o.Fields)
-	}
-	
 	if Value, ok := TranscriptconversationdetailsearchcriteriaMap["value"].(string); ok {
 		o.Value = &Value
 	}
@@ -133,6 +128,11 @@ func (o *Transcriptconversationdetailsearchcriteria) UnmarshalJSON(b []byte) err
 		o.DateFormat = &DateFormat
 	}
     
+	if Fields, ok := TranscriptconversationdetailsearchcriteriaMap["fields"].([]interface{}); ok {
+		FieldsString, _ := json.Marshal(Fields)
+		json.Unmarshal(FieldsString, &o.Fields)
+	}
+	
 	if VarType, ok := TranscriptconversationdetailsearchcriteriaMap["type"].(string); ok {
 		o.VarType = &VarType
 	}

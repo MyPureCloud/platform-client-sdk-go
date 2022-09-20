@@ -31,6 +31,10 @@ type Writabledialercontact struct {
 	// PhoneNumberStatus - A map of phone number columns to PhoneNumberStatuses, which indicate if the phone number is callable or not.
 	PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
 
+
+	// ContactableStatus - A map of media types(voice, sms and email) to ContactableStatus, which indicates where or not the contact can be contacted using the specified media type.
+	ContactableStatus *map[string]Contactablestatus `json:"contactableStatus,omitempty"`
+
 }
 
 func (o *Writabledialercontact) MarshalJSON() ([]byte, error) {
@@ -50,6 +54,8 @@ func (o *Writabledialercontact) MarshalJSON() ([]byte, error) {
 		Callable *bool `json:"callable,omitempty"`
 		
 		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
+		
+		ContactableStatus *map[string]Contactablestatus `json:"contactableStatus,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -63,6 +69,8 @@ func (o *Writabledialercontact) MarshalJSON() ([]byte, error) {
 		Callable: o.Callable,
 		
 		PhoneNumberStatus: o.PhoneNumberStatus,
+		
+		ContactableStatus: o.ContactableStatus,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -99,6 +107,11 @@ func (o *Writabledialercontact) UnmarshalJSON(b []byte) error {
 	if PhoneNumberStatus, ok := WritabledialercontactMap["phoneNumberStatus"].(map[string]interface{}); ok {
 		PhoneNumberStatusString, _ := json.Marshal(PhoneNumberStatus)
 		json.Unmarshal(PhoneNumberStatusString, &o.PhoneNumberStatus)
+	}
+	
+	if ContactableStatus, ok := WritabledialercontactMap["contactableStatus"].(map[string]interface{}); ok {
+		ContactableStatusString, _ := json.Marshal(ContactableStatus)
+		json.Unmarshal(ContactableStatusString, &o.ContactableStatus)
 	}
 	
 

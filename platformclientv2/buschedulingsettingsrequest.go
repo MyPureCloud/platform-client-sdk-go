@@ -6,17 +6,17 @@ import (
 	"strings"
 )
 
-// Buschedulingsettings
-type Buschedulingsettings struct { 
+// Buschedulingsettingsrequest
+type Buschedulingsettingsrequest struct { 
 	// MessageSeverities - Schedule generation message severity configuration
 	MessageSeverities *[]Schedulermessagetypeseverity `json:"messageSeverities,omitempty"`
 
 }
 
-func (o *Buschedulingsettings) MarshalJSON() ([]byte, error) {
+func (o *Buschedulingsettingsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Buschedulingsettings
+	type Alias Buschedulingsettingsrequest
 	
 	return json.Marshal(&struct { 
 		MessageSeverities *[]Schedulermessagetypeseverity `json:"messageSeverities,omitempty"`
@@ -27,14 +27,14 @@ func (o *Buschedulingsettings) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Buschedulingsettings) UnmarshalJSON(b []byte) error {
-	var BuschedulingsettingsMap map[string]interface{}
-	err := json.Unmarshal(b, &BuschedulingsettingsMap)
+func (o *Buschedulingsettingsrequest) UnmarshalJSON(b []byte) error {
+	var BuschedulingsettingsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BuschedulingsettingsrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if MessageSeverities, ok := BuschedulingsettingsMap["messageSeverities"].([]interface{}); ok {
+	if MessageSeverities, ok := BuschedulingsettingsrequestMap["messageSeverities"].([]interface{}); ok {
 		MessageSeveritiesString, _ := json.Marshal(MessageSeverities)
 		json.Unmarshal(MessageSeveritiesString, &o.MessageSeverities)
 	}
@@ -44,7 +44,7 @@ func (o *Buschedulingsettings) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Buschedulingsettings) String() string {
+func (o *Buschedulingsettingsrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

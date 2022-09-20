@@ -40,6 +40,10 @@ type Dialercontact struct {
 	PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
 
 
+	// ContactableStatus - A map of media types(voice, sms and email) to ContactableStatus, which indicates where or not the contact can be contacted using the specified media type.
+	ContactableStatus *map[string]Contactablestatus `json:"contactableStatus,omitempty"`
+
+
 	// ContactColumnTimeZones - Map containing data about the timezone the contact is mapped to. This will only be populated if the contact list has automatic timezone mapping turned on. The key is the column name. The value is the timezone it mapped to and the type of column: Phone or Zip
 	ContactColumnTimeZones *map[string]Contactcolumntimezone `json:"contactColumnTimeZones,omitempty"`
 
@@ -75,6 +79,8 @@ func (o *Dialercontact) MarshalJSON() ([]byte, error) {
 		
 		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
 		
+		ContactableStatus *map[string]Contactablestatus `json:"contactableStatus,omitempty"`
+		
 		ContactColumnTimeZones *map[string]Contactcolumntimezone `json:"contactColumnTimeZones,omitempty"`
 		
 		ConfigurationOverrides *Configurationoverrides `json:"configurationOverrides,omitempty"`
@@ -97,6 +103,8 @@ func (o *Dialercontact) MarshalJSON() ([]byte, error) {
 		Callable: o.Callable,
 		
 		PhoneNumberStatus: o.PhoneNumberStatus,
+		
+		ContactableStatus: o.ContactableStatus,
 		
 		ContactColumnTimeZones: o.ContactColumnTimeZones,
 		
@@ -148,6 +156,11 @@ func (o *Dialercontact) UnmarshalJSON(b []byte) error {
 	if PhoneNumberStatus, ok := DialercontactMap["phoneNumberStatus"].(map[string]interface{}); ok {
 		PhoneNumberStatusString, _ := json.Marshal(PhoneNumberStatus)
 		json.Unmarshal(PhoneNumberStatusString, &o.PhoneNumberStatus)
+	}
+	
+	if ContactableStatus, ok := DialercontactMap["contactableStatus"].(map[string]interface{}); ok {
+		ContactableStatusString, _ := json.Marshal(ContactableStatus)
+		json.Unmarshal(ContactableStatusString, &o.ContactableStatus)
 	}
 	
 	if ContactColumnTimeZones, ok := DialercontactMap["contactColumnTimeZones"].(map[string]interface{}); ok {

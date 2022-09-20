@@ -26,7 +26,7 @@ type Externalmetricdataitem struct {
 
 
 	// Value - The value of the metric data. When value is null, the metric data will be deleted.
-	Value *float64 `json:"value,omitempty"`
+	Value *float32 `json:"value,omitempty"`
 
 
 	// Count - The number of data points. The default value is 1.
@@ -55,7 +55,7 @@ func (o *Externalmetricdataitem) MarshalJSON() ([]byte, error) {
 		
 		DateOccurred *string `json:"dateOccurred,omitempty"`
 		
-		Value *float64 `json:"value,omitempty"`
+		Value *float32 `json:"value,omitempty"`
 		
 		Count *int `json:"count,omitempty"`
 		*Alias
@@ -100,7 +100,8 @@ func (o *Externalmetricdataitem) UnmarshalJSON(b []byte) error {
 	}
 	
 	if Value, ok := ExternalmetricdataitemMap["value"].(float64); ok {
-		o.Value = &Value
+		ValueFloat32 := float32(Value)
+		o.Value = &ValueFloat32
 	}
     
 	if Count, ok := ExternalmetricdataitemMap["count"].(float64); ok {

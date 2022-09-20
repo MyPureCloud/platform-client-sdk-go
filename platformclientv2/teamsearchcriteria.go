@@ -20,10 +20,6 @@ type Teamsearchcriteria struct {
 	StartValue *string `json:"startValue,omitempty"`
 
 
-	// Fields - Field names to search against
-	Fields *[]string `json:"fields,omitempty"`
-
-
 	// Value - A value for the search to match against
 	Value *string `json:"value,omitempty"`
 
@@ -38,6 +34,10 @@ type Teamsearchcriteria struct {
 
 	// DateFormat - Set date format for criteria values when using date range search type.  Supports Java date format syntax, example yyyy-MM-dd'T'HH:mm:ss.SSSX.
 	DateFormat *string `json:"dateFormat,omitempty"`
+
+
+	// Fields - Field names to search against
+	Fields *[]string `json:"fields,omitempty"`
 
 
 	// VarType - Search Type
@@ -57,8 +57,6 @@ func (o *Teamsearchcriteria) MarshalJSON() ([]byte, error) {
 		
 		StartValue *string `json:"startValue,omitempty"`
 		
-		Fields *[]string `json:"fields,omitempty"`
-		
 		Value *string `json:"value,omitempty"`
 		
 		Operator *string `json:"operator,omitempty"`
@@ -66,6 +64,8 @@ func (o *Teamsearchcriteria) MarshalJSON() ([]byte, error) {
 		Group *[]Teamsearchcriteria `json:"group,omitempty"`
 		
 		DateFormat *string `json:"dateFormat,omitempty"`
+		
+		Fields *[]string `json:"fields,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		*Alias
@@ -76,8 +76,6 @@ func (o *Teamsearchcriteria) MarshalJSON() ([]byte, error) {
 		
 		StartValue: o.StartValue,
 		
-		Fields: o.Fields,
-		
 		Value: o.Value,
 		
 		Operator: o.Operator,
@@ -85,6 +83,8 @@ func (o *Teamsearchcriteria) MarshalJSON() ([]byte, error) {
 		Group: o.Group,
 		
 		DateFormat: o.DateFormat,
+		
+		Fields: o.Fields,
 		
 		VarType: o.VarType,
 		Alias:    (*Alias)(o),
@@ -111,11 +111,6 @@ func (o *Teamsearchcriteria) UnmarshalJSON(b []byte) error {
 		o.StartValue = &StartValue
 	}
     
-	if Fields, ok := TeamsearchcriteriaMap["fields"].([]interface{}); ok {
-		FieldsString, _ := json.Marshal(Fields)
-		json.Unmarshal(FieldsString, &o.Fields)
-	}
-	
 	if Value, ok := TeamsearchcriteriaMap["value"].(string); ok {
 		o.Value = &Value
 	}
@@ -133,6 +128,11 @@ func (o *Teamsearchcriteria) UnmarshalJSON(b []byte) error {
 		o.DateFormat = &DateFormat
 	}
     
+	if Fields, ok := TeamsearchcriteriaMap["fields"].([]interface{}); ok {
+		FieldsString, _ := json.Marshal(Fields)
+		json.Unmarshal(FieldsString, &o.Fields)
+	}
+	
 	if VarType, ok := TeamsearchcriteriaMap["type"].(string); ok {
 		o.VarType = &VarType
 	}

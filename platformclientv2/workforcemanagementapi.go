@@ -1296,12 +1296,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentsMeManagementunit() (
 // Get business unit
 //
 // Expanding \&quot;settings\&quot; will retrieve all settings.  All other expands will retrieve only the requested settings field(s).
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitId string, expand []string) (*Businessunit, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitId string, expand []string) (*Businessunitresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}"
 	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	defaultReturn := new(Businessunit)
+	defaultReturn := new(Businessunitresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1350,14 +1350,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitI
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Businessunit
+	var successPayload *Businessunitresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Businessunit" == "string" {
+		if "Businessunitresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5774,12 +5774,12 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyRe
 // PatchWorkforcemanagementBusinessunit invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}
 //
 // Update business unit
-func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUnitId string, body Updatebusinessunitrequest) (*Businessunit, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUnitId string, body Updatebusinessunitrequest) (*Businessunitresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}"
 	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	defaultReturn := new(Businessunit)
+	defaultReturn := new(Businessunitresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5829,14 +5829,14 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUni
 	// body params
 	postBody = &body
 
-	var successPayload *Businessunit
+	var successPayload *Businessunitresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Businessunit" == "string" {
+		if "Businessunitresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -8485,11 +8485,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 // Add a new business unit
 //
 // It may take a minute or two for a new business unit to be available for api operations
-func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Createbusinessunitrequest) (*Businessunit, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Createbusinessunitrequest) (*Businessunitresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits"
-	defaultReturn := new(Businessunit)
+	defaultReturn := new(Businessunitresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -8534,14 +8534,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Create
 	// body params
 	postBody = &body
 
-	var successPayload *Businessunit
+	var successPayload *Businessunitresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Businessunit" == "string" {
+		if "Businessunitresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

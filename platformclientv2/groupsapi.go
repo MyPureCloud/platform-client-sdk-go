@@ -693,7 +693,7 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 // Get group profile listing
 //
 // This api is deprecated. Use /api/v2/groups instead.
-func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, sortOrder string) (*Groupprofileentitylisting, *APIResponse, error) {
+func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string) (*Groupprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/profiles/groups"
@@ -725,6 +725,8 @@ func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, 
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["jabberId"] = a.Configuration.APIClient.ParameterToString(jabberId, "multi")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	

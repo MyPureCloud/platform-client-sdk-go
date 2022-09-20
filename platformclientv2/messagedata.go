@@ -41,7 +41,7 @@ type Messagedata struct {
 	MessengerType *string `json:"messengerType,omitempty"`
 
 
-	// TextBody - The body of the text message.
+	// TextBody - The body of the text message. (Deprecated - Instead use normalizedMessage.text)
 	TextBody *string `json:"textBody,omitempty"`
 
 
@@ -49,11 +49,11 @@ type Messagedata struct {
 	Status *string `json:"status,omitempty"`
 
 
-	// Media - The media details associated to a message.
+	// Media - The media details associated to a message. (Deprecated - Instead use normalizedMessage.content[index].attachment)
 	Media *[]Messagemedia `json:"media,omitempty"`
 
 
-	// Stickers - The sticker details associated to a message.
+	// Stickers - The sticker details associated to a message. (Deprecated - Instead use normalizedMessage.content[index].attachment
 	Stickers *[]Messagesticker `json:"stickers,omitempty"`
 
 

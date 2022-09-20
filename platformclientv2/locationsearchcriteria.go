@@ -20,10 +20,6 @@ type Locationsearchcriteria struct {
 	StartValue *string `json:"startValue,omitempty"`
 
 
-	// Fields - Field names to search against
-	Fields *[]string `json:"fields,omitempty"`
-
-
 	// Value - A value for the search to match against
 	Value *string `json:"value,omitempty"`
 
@@ -43,6 +39,10 @@ type Locationsearchcriteria struct {
 	// VarType - Search Type
 	VarType *string `json:"type,omitempty"`
 
+
+	// Fields - Field names to search against
+	Fields *[]string `json:"fields,omitempty"`
+
 }
 
 func (o *Locationsearchcriteria) MarshalJSON() ([]byte, error) {
@@ -57,8 +57,6 @@ func (o *Locationsearchcriteria) MarshalJSON() ([]byte, error) {
 		
 		StartValue *string `json:"startValue,omitempty"`
 		
-		Fields *[]string `json:"fields,omitempty"`
-		
 		Value *string `json:"value,omitempty"`
 		
 		Operator *string `json:"operator,omitempty"`
@@ -68,6 +66,8 @@ func (o *Locationsearchcriteria) MarshalJSON() ([]byte, error) {
 		DateFormat *string `json:"dateFormat,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		Fields *[]string `json:"fields,omitempty"`
 		*Alias
 	}{ 
 		EndValue: o.EndValue,
@@ -75,8 +75,6 @@ func (o *Locationsearchcriteria) MarshalJSON() ([]byte, error) {
 		Values: o.Values,
 		
 		StartValue: o.StartValue,
-		
-		Fields: o.Fields,
 		
 		Value: o.Value,
 		
@@ -87,6 +85,8 @@ func (o *Locationsearchcriteria) MarshalJSON() ([]byte, error) {
 		DateFormat: o.DateFormat,
 		
 		VarType: o.VarType,
+		
+		Fields: o.Fields,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -111,11 +111,6 @@ func (o *Locationsearchcriteria) UnmarshalJSON(b []byte) error {
 		o.StartValue = &StartValue
 	}
     
-	if Fields, ok := LocationsearchcriteriaMap["fields"].([]interface{}); ok {
-		FieldsString, _ := json.Marshal(Fields)
-		json.Unmarshal(FieldsString, &o.Fields)
-	}
-	
 	if Value, ok := LocationsearchcriteriaMap["value"].(string); ok {
 		o.Value = &Value
 	}
@@ -137,6 +132,11 @@ func (o *Locationsearchcriteria) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
+	if Fields, ok := LocationsearchcriteriaMap["fields"].([]interface{}); ok {
+		FieldsString, _ := json.Marshal(Fields)
+		json.Unmarshal(FieldsString, &o.Fields)
+	}
+	
 
 	return nil
 }

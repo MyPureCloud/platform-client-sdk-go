@@ -92,6 +92,10 @@ type Assignedlearningmodule struct {
 	// CoverArt - The cover art for the learning module
 	CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
 
+
+	// ArchivalMode - The mode of archival for learning module
+	ArchivalMode *string `json:"archivalMode,omitempty"`
+
 }
 
 func (o *Assignedlearningmodule) MarshalJSON() ([]byte, error) {
@@ -157,6 +161,8 @@ func (o *Assignedlearningmodule) MarshalJSON() ([]byte, error) {
 		SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 		
 		CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
+		
+		ArchivalMode *string `json:"archivalMode,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -200,6 +206,8 @@ func (o *Assignedlearningmodule) MarshalJSON() ([]byte, error) {
 		SummaryData: o.SummaryData,
 		
 		CoverArt: o.CoverArt,
+		
+		ArchivalMode: o.ArchivalMode,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -307,6 +315,10 @@ func (o *Assignedlearningmodule) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CoverArtString, &o.CoverArt)
 	}
 	
+	if ArchivalMode, ok := AssignedlearningmoduleMap["archivalMode"].(string); ok {
+		o.ArchivalMode = &ArchivalMode
+	}
+    
 
 	return nil
 }
