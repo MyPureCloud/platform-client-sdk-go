@@ -22,7 +22,7 @@ type Webdeployment struct {
 
 
 	// Configuration - The config version this deployment uses
-	Configuration *Webdeploymentconfigurationversionentityref `json:"configuration,omitempty"`
+	Configuration *Webdeploymentconfigurationversion `json:"configuration,omitempty"`
 
 
 	// AllowAllDomains - Property indicates whether all domains are allowed or not. allowedDomains must be empty when this is set as true.
@@ -90,7 +90,7 @@ func (o *Webdeployment) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
-		Configuration *Webdeploymentconfigurationversionentityref `json:"configuration,omitempty"`
+		Configuration *Webdeploymentconfigurationversion `json:"configuration,omitempty"`
 		
 		AllowAllDomains *bool `json:"allowAllDomains,omitempty"`
 		

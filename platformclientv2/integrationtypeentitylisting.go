@@ -24,12 +24,12 @@ type Integrationtypeentitylisting struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
@@ -63,9 +63,9 @@ func (o *Integrationtypeentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -84,9 +84,9 @@ func (o *Integrationtypeentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -126,12 +126,12 @@ func (o *Integrationtypeentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := IntegrationtypeentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := IntegrationtypeentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+    
+	if LastUri, ok := IntegrationtypeentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := IntegrationtypeentitylistingMap["selfUri"].(string); ok {

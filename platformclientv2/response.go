@@ -61,6 +61,10 @@ type Response struct {
 	Assets *[]Addressableentityref `json:"assets,omitempty"`
 
 
+	// Footer - Footer template definition for responseType.Footer.
+	Footer *Footertemplate `json:"footer,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -106,6 +110,8 @@ func (o *Response) MarshalJSON() ([]byte, error) {
 		
 		Assets *[]Addressableentityref `json:"assets,omitempty"`
 		
+		Footer *Footertemplate `json:"footer,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -134,6 +140,8 @@ func (o *Response) MarshalJSON() ([]byte, error) {
 		MessagingTemplate: o.MessagingTemplate,
 		
 		Assets: o.Assets,
+		
+		Footer: o.Footer,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -206,6 +214,11 @@ func (o *Response) UnmarshalJSON(b []byte) error {
 	if Assets, ok := ResponseMap["assets"].([]interface{}); ok {
 		AssetsString, _ := json.Marshal(Assets)
 		json.Unmarshal(AssetsString, &o.Assets)
+	}
+	
+	if Footer, ok := ResponseMap["footer"].(map[string]interface{}); ok {
+		FooterString, _ := json.Marshal(Footer)
+		json.Unmarshal(FooterString, &o.Footer)
 	}
 	
 	if SelfUri, ok := ResponseMap["selfUri"].(string); ok {

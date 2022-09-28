@@ -69,6 +69,10 @@ type Messagingcampaign struct {
 	Errors *[]Resterrordetail `json:"errors,omitempty"`
 
 
+	// EmailConfig - Configuration for this messaging campaign to send Email messages.
+	EmailConfig *Emailconfig `json:"emailConfig,omitempty"`
+
+
 	// SmsConfig - Configuration for this messaging campaign to send SMS messages.
 	SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
 
@@ -130,6 +134,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		
 		Errors *[]Resterrordetail `json:"errors,omitempty"`
 		
+		EmailConfig *Emailconfig `json:"emailConfig,omitempty"`
+		
 		SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -164,6 +170,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		ContactListFilters: o.ContactListFilters,
 		
 		Errors: o.Errors,
+		
+		EmailConfig: o.EmailConfig,
 		
 		SmsConfig: o.SmsConfig,
 		
@@ -248,6 +256,11 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if Errors, ok := MessagingcampaignMap["errors"].([]interface{}); ok {
 		ErrorsString, _ := json.Marshal(Errors)
 		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if EmailConfig, ok := MessagingcampaignMap["emailConfig"].(map[string]interface{}); ok {
+		EmailConfigString, _ := json.Marshal(EmailConfig)
+		json.Unmarshal(EmailConfigString, &o.EmailConfig)
 	}
 	
 	if SmsConfig, ok := MessagingcampaignMap["smsConfig"].(map[string]interface{}); ok {

@@ -24,12 +24,12 @@ type Interactionstatsalertcontainer struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
@@ -63,9 +63,9 @@ func (o *Interactionstatsalertcontainer) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -84,9 +84,9 @@ func (o *Interactionstatsalertcontainer) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -126,12 +126,12 @@ func (o *Interactionstatsalertcontainer) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := InteractionstatsalertcontainerMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := InteractionstatsalertcontainerMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+    
+	if LastUri, ok := InteractionstatsalertcontainerMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := InteractionstatsalertcontainerMap["selfUri"].(string); ok {

@@ -24079,7 +24079,7 @@
   "putconversationrecording": {
     "operationId": "putconversationrecording",
     "functionName": "PutConversationRecording",
-    "signature": "PutConversationRecording(conversationId, recordingId, body)",
+    "signature": "PutConversationRecording(conversationId, recordingId, body, clearExport)",
     "parameters": [
       {
         "name": "conversationId",
@@ -24095,10 +24095,15 @@
         "name": "body",
         "type": "Recording",
         "required": "true"
+      },
+      {
+        "name": "clearExport",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Recording",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar conversationId string // Conversation ID\nvar recordingId string // Recording ID\nvar body platformclientv2.Recording // recording\n// Updates the retention records on a recording.\ndata, response, err := apiInstance.PutConversationRecording(conversationId, recordingId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutConversationRecording: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar conversationId string // Conversation ID\nvar recordingId string // Recording ID\nvar body platformclientv2.Recording // recording\nvar clearExport bool // Whether to clear the pending export for the recording\n// Updates the retention records on a recording.\ndata, response, err := apiInstance.PutConversationRecording(conversationId, recordingId, body, clearExport)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutConversationRecording: %v\\n\", err)\n}"
   },
   "putconversationrecordingannotation": {
     "operationId": "putconversationrecordingannotation",
@@ -25077,6 +25082,39 @@
     ],
     "return": "Predictor",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar predictorId string // Predictor ID\n// Retrieve a single predictor.\ndata, response, err := apiInstance.GetRoutingPredictor(predictorId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingPredictor: %v\\n\", err)\n}"
+  },
+  "getroutingpredictormodelfeatures": {
+    "operationId": "getroutingpredictormodelfeatures",
+    "functionName": "GetRoutingPredictorModelFeatures",
+    "signature": "GetRoutingPredictorModelFeatures(predictorId, modelId)",
+    "parameters": [
+      {
+        "name": "predictorId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "modelId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Predictormodelfeaturelisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar predictorId string // Predictor ID\nvar modelId string // Model ID\n// Retrieve Predictor Model Features.\ndata, response, err := apiInstance.GetRoutingPredictorModelFeatures(predictorId, modelId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingPredictorModelFeatures: %v\\n\", err)\n}"
+  },
+  "getroutingpredictormodels": {
+    "operationId": "getroutingpredictormodels",
+    "functionName": "GetRoutingPredictorModels",
+    "signature": "GetRoutingPredictorModels(predictorId)",
+    "parameters": [
+      {
+        "name": "predictorId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Predictormodels",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar predictorId string // Predictor ID\n// Retrieve Predictor Models and Top Features.\ndata, response, err := apiInstance.GetRoutingPredictorModels(predictorId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingPredictorModels: %v\\n\", err)\n}"
   },
   "getroutingpredictors": {
     "operationId": "getroutingpredictors",
@@ -33289,9 +33327,16 @@
   "getwebdeploymentsdeployments": {
     "operationId": "getwebdeploymentsdeployments",
     "functionName": "GetWebdeploymentsDeployments",
-    "signature": "GetWebdeploymentsDeployments()",
+    "signature": "GetWebdeploymentsDeployments(expand)",
+    "parameters": [
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
     "return": "Webdeploymententitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\n// Get deployments\ndata, response, err := apiInstance.GetWebdeploymentsDeployments()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWebdeploymentsDeployments: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected. Valid values:\n// Get deployments\ndata, response, err := apiInstance.GetWebdeploymentsDeployments(expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWebdeploymentsDeployments: %v\\n\", err)\n}"
   },
   "postwebdeploymentsconfigurationversionsdraftpublish": {
     "operationId": "postwebdeploymentsconfigurationversionsdraftpublish",

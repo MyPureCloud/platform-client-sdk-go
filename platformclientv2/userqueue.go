@@ -109,6 +109,10 @@ type Userqueue struct {
 	AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
 
 
+	// VipRouting - The VIP Routing settings for the queue
+	VipRouting *Viprouting `json:"vipRouting,omitempty"`
+
+
 	// CallingPartyName - The name to use for caller identification for outbound calls from this queue.
 	CallingPartyName *string `json:"callingPartyName,omitempty"`
 
@@ -214,6 +218,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		
 		AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
 		
+		VipRouting *Viprouting `json:"vipRouting,omitempty"`
+		
 		CallingPartyName *string `json:"callingPartyName,omitempty"`
 		
 		CallingPartyNumber *string `json:"callingPartyNumber,omitempty"`
@@ -280,6 +286,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		EnableManualAssignment: o.EnableManualAssignment,
 		
 		AgentOwnedRouting: o.AgentOwnedRouting,
+		
+		VipRouting: o.VipRouting,
 		
 		CallingPartyName: o.CallingPartyName,
 		
@@ -422,6 +430,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if AgentOwnedRouting, ok := UserqueueMap["agentOwnedRouting"].(map[string]interface{}); ok {
 		AgentOwnedRoutingString, _ := json.Marshal(AgentOwnedRouting)
 		json.Unmarshal(AgentOwnedRoutingString, &o.AgentOwnedRouting)
+	}
+	
+	if VipRouting, ok := UserqueueMap["vipRouting"].(map[string]interface{}); ok {
+		VipRoutingString, _ := json.Marshal(VipRouting)
+		json.Unmarshal(VipRoutingString, &o.VipRouting)
 	}
 	
 	if CallingPartyName, ok := UserqueueMap["callingPartyName"].(string); ok {

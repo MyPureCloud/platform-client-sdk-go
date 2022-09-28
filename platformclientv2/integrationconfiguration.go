@@ -33,7 +33,7 @@ type Integrationconfiguration struct {
 
 
 	// Credentials - Credentials required by the integration. The required keys are indicated in the credentials property of the Integration Type
-	Credentials *map[string]Credentialinfo `json:"credentials,omitempty"`
+	Credentials *map[string]Integrationconfigurationcredential `json:"credentials,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -59,7 +59,7 @@ func (o *Integrationconfiguration) MarshalJSON() ([]byte, error) {
 		
 		Notes *string `json:"notes,omitempty"`
 		
-		Credentials *map[string]Credentialinfo `json:"credentials,omitempty"`
+		Credentials *map[string]Integrationconfigurationcredential `json:"credentials,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias

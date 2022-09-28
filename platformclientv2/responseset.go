@@ -37,6 +37,10 @@ type Responseset struct {
 	BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
 
 
+	// AmdSpeechDistinguishEnabled - Whether to enable answering machine detection
+	AmdSpeechDistinguishEnabled *bool `json:"amdSpeechDistinguishEnabled,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -78,6 +82,8 @@ func (o *Responseset) MarshalJSON() ([]byte, error) {
 		
 		BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
 		
+		AmdSpeechDistinguishEnabled *bool `json:"amdSpeechDistinguishEnabled,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -94,6 +100,8 @@ func (o *Responseset) MarshalJSON() ([]byte, error) {
 		Responses: o.Responses,
 		
 		BeepDetectionEnabled: o.BeepDetectionEnabled,
+		
+		AmdSpeechDistinguishEnabled: o.AmdSpeechDistinguishEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -137,6 +145,10 @@ func (o *Responseset) UnmarshalJSON(b []byte) error {
 	
 	if BeepDetectionEnabled, ok := ResponsesetMap["beepDetectionEnabled"].(bool); ok {
 		o.BeepDetectionEnabled = &BeepDetectionEnabled
+	}
+    
+	if AmdSpeechDistinguishEnabled, ok := ResponsesetMap["amdSpeechDistinguishEnabled"].(bool); ok {
+		o.AmdSpeechDistinguishEnabled = &AmdSpeechDistinguishEnabled
 	}
     
 	if SelfUri, ok := ResponsesetMap["selfUri"].(string); ok {

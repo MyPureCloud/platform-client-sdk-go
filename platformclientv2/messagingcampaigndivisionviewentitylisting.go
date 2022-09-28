@@ -24,12 +24,12 @@ type Messagingcampaigndivisionviewentitylisting struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
@@ -63,9 +63,9 @@ func (o *Messagingcampaigndivisionviewentitylisting) MarshalJSON() ([]byte, erro
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -84,9 +84,9 @@ func (o *Messagingcampaigndivisionviewentitylisting) MarshalJSON() ([]byte, erro
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -126,12 +126,12 @@ func (o *Messagingcampaigndivisionviewentitylisting) UnmarshalJSON(b []byte) err
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := MessagingcampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := MessagingcampaigndivisionviewentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+    
+	if LastUri, ok := MessagingcampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := MessagingcampaigndivisionviewentitylistingMap["selfUri"].(string); ok {

@@ -3636,7 +3636,7 @@ func (a RecordingApi) PostRecordingsScreensessionsMetadata(body Screenrecordingm
 // Updates the retention records on a recording.
 //
 // Currently supports updating and removing both archive and delete dates for eligible recordings. A request to change the archival date of an archived recording will result in a restoration of the recording until the new date set. The recording:recording:view permission is required for the recording, as well as either the recording:recording:editRetention or recording:screenRecording:editRetention permissions depending on the type of recording.
-func (a RecordingApi) PutConversationRecording(conversationId string, recordingId string, body Recording) (*Recording, *APIResponse, error) {
+func (a RecordingApi) PutConversationRecording(conversationId string, recordingId string, body Recording, clearExport bool) (*Recording, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}"
@@ -3679,6 +3679,8 @@ func (a RecordingApi) PutConversationRecording(conversationId string, recordingI
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["clearExport"] = a.Configuration.APIClient.ParameterToString(clearExport, "")
 	
 
 	// to determine the Content-Type header

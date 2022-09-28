@@ -28,6 +28,10 @@ type Opennormalizedmessage struct {
 	Content *[]Openmessagecontent `json:"content,omitempty"`
 
 
+	// Events - List of event elements.
+	Events *[]Openmessageevent `json:"events,omitempty"`
+
+
 	// Status - Message receipt status, only used with type Receipt.
 	Status *string `json:"status,omitempty"`
 
@@ -65,6 +69,8 @@ func (o *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
 		
 		Content *[]Openmessagecontent `json:"content,omitempty"`
 		
+		Events *[]Openmessageevent `json:"events,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
 		
 		Reasons *[]Reason `json:"reasons,omitempty"`
@@ -85,6 +91,8 @@ func (o *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		Content: o.Content,
+		
+		Events: o.Events,
 		
 		Status: o.Status,
 		
@@ -126,6 +134,11 @@ func (o *Opennormalizedmessage) UnmarshalJSON(b []byte) error {
 	if Content, ok := OpennormalizedmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)
+	}
+	
+	if Events, ok := OpennormalizedmessageMap["events"].([]interface{}); ok {
+		EventsString, _ := json.Marshal(Events)
+		json.Unmarshal(EventsString, &o.Events)
 	}
 	
 	if Status, ok := OpennormalizedmessageMap["status"].(string); ok {

@@ -853,6 +853,8 @@ docs/GetRoutingLanguages-example.txt
 docs/GetRoutingMessageRecipient-example.txt
 docs/GetRoutingMessageRecipients-example.txt
 docs/GetRoutingPredictor-example.txt
+docs/GetRoutingPredictorModelFeatures-example.txt
+docs/GetRoutingPredictorModels-example.txt
 docs/GetRoutingPredictors-example.txt
 docs/GetRoutingPredictorsKeyperformanceindicators-example.txt
 docs/GetRoutingQueue-example.txt
@@ -2238,6 +2240,7 @@ platformclientv2/botconnectorbotversion.go
 platformclientv2/botconnectorbotversionsummaryentitylisting.go
 platformclientv2/botintent.go
 platformclientv2/botlist.go
+platformclientv2/botmessengerprofile.go
 platformclientv2/botsearchresponse.go
 platformclientv2/botsearchresponseentitylisting.go
 platformclientv2/botslot.go
@@ -3307,6 +3310,7 @@ platformclientv2/flowsapi.go
 platformclientv2/flowstartdetaileventtopicflowstartevent.go
 platformclientv2/flowversion.go
 platformclientv2/flowversionentitylisting.go
+platformclientv2/footertemplate.go
 platformclientv2/forecastabandonrateresponse.go
 platformclientv2/forecastaveragespeedofanswerresponse.go
 platformclientv2/forecastplanninggroupdata.go
@@ -3393,6 +3397,7 @@ platformclientv2/historicalimportstatuslisting.go
 platformclientv2/historyentry.go
 platformclientv2/historylisting.go
 platformclientv2/homerrecord.go
+platformclientv2/humanize.go
 platformclientv2/identitynow.go
 platformclientv2/identityproviderapi.go
 platformclientv2/idleeventtrigger.go
@@ -3418,6 +3423,7 @@ platformclientv2/integration.go
 platformclientv2/integrationaction.go
 platformclientv2/integrationactionfields.go
 platformclientv2/integrationconfiguration.go
+platformclientv2/integrationconfigurationcredential.go
 platformclientv2/integrationconfigurationinfo.go
 platformclientv2/integrationentitylisting.go
 platformclientv2/integrationexport.go
@@ -3889,6 +3895,7 @@ platformclientv2/openintegrationentitylisting.go
 platformclientv2/openintegrationrequest.go
 platformclientv2/openintegrationupdaterequest.go
 platformclientv2/openmessagecontent.go
+platformclientv2/openmessageevent.go
 platformclientv2/openmessagingchannel.go
 platformclientv2/openmessagingfromrecipient.go
 platformclientv2/openmessagingtorecipient.go
@@ -4028,6 +4035,10 @@ platformclientv2/predictionresults.go
 platformclientv2/predictiverouting.go
 platformclientv2/predictor.go
 platformclientv2/predictorlisting.go
+platformclientv2/predictormodel.go
+platformclientv2/predictormodelfeature.go
+platformclientv2/predictormodelfeaturelisting.go
+platformclientv2/predictormodels.go
 platformclientv2/predictorschedule.go
 platformclientv2/predictorworkloadbalancing.go
 platformclientv2/presenceapi.go
@@ -5038,6 +5049,10 @@ platformclientv2/valuewrapperplanningperiodsettings.go
 platformclientv2/valuewrapperstring.go
 platformclientv2/video.go
 platformclientv2/viewfilter.go
+platformclientv2/vipbackup.go
+platformclientv2/vipcallmediasettings.go
+platformclientv2/vipmediasettings.go
+platformclientv2/viprouting.go
 platformclientv2/visibilitycondition.go
 platformclientv2/vmpairinginfo.go
 platformclientv2/voicemail.go
@@ -5080,7 +5095,6 @@ platformclientv2/webdeployment.go
 platformclientv2/webdeploymentactiveconfigurationondeployment.go
 platformclientv2/webdeploymentconfigurationversion.go
 platformclientv2/webdeploymentconfigurationversionentitylisting.go
-platformclientv2/webdeploymentconfigurationversionentityref.go
 platformclientv2/webdeploymententitylisting.go
 platformclientv2/webdeploymentsapi.go
 platformclientv2/webdeploymentsconfigtopicwebmessagingconfigchangeeventbody.go

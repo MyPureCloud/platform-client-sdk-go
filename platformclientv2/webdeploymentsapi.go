@@ -592,7 +592,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentI
 // GetWebdeploymentsDeployments invokes GET /api/v2/webdeployments/deployments
 //
 // Get deployments
-func (a WebDeploymentsApi) GetWebdeploymentsDeployments() (*Webdeploymententitylisting, *APIResponse, error) {
+func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Webdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments"
@@ -618,6 +618,8 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployments() (*Webdeploymententityl
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header

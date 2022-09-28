@@ -40,7 +40,7 @@ type Dialercontact struct {
 	PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
 
 
-	// ContactableStatus - A map of media types(voice, sms and email) to ContactableStatus, which indicates where or not the contact can be contacted using the specified media type.
+	// ContactableStatus - A map of media types (Voice, SMS and Email) to ContactableStatus, which indicates if the contact can be contacted using the specified media type.
 	ContactableStatus *map[string]Contactablestatus `json:"contactableStatus,omitempty"`
 
 
