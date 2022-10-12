@@ -61,6 +61,10 @@ type Messagingcampaign struct {
 	MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 
 
+	// RuleSets - Rule Sets to be applied while this campaign is sending messages
+	RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
+
+
 	// ContactListFilters - The contact list filter to check before sending a message for this messaging campaign.
 	ContactListFilters *[]Domainentityref `json:"contactListFilters,omitempty"`
 
@@ -130,6 +134,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		
 		MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 		
+		RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
+		
 		ContactListFilters *[]Domainentityref `json:"contactListFilters,omitempty"`
 		
 		Errors *[]Resterrordetail `json:"errors,omitempty"`
@@ -166,6 +172,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		ContactSorts: o.ContactSorts,
 		
 		MessagesPerMinute: o.MessagesPerMinute,
+		
+		RuleSets: o.RuleSets,
 		
 		ContactListFilters: o.ContactListFilters,
 		
@@ -246,6 +254,11 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if MessagesPerMinute, ok := MessagingcampaignMap["messagesPerMinute"].(float64); ok {
 		MessagesPerMinuteInt := int(MessagesPerMinute)
 		o.MessagesPerMinute = &MessagesPerMinuteInt
+	}
+	
+	if RuleSets, ok := MessagingcampaignMap["ruleSets"].([]interface{}); ok {
+		RuleSetsString, _ := json.Marshal(RuleSets)
+		json.Unmarshal(RuleSetsString, &o.RuleSets)
 	}
 	
 	if ContactListFilters, ok := MessagingcampaignMap["contactListFilters"].([]interface{}); ok {

@@ -21,8 +21,16 @@ type Recordingjobsquery struct {
 	IntegrationId *string `json:"integrationId,omitempty"`
 
 
+	// IncludeRecordingsWithSensitiveData - Whether to include recordings with PCI DSS and/or PII data, default value = false 
+	IncludeRecordingsWithSensitiveData *bool `json:"includeRecordingsWithSensitiveData,omitempty"`
+
+
 	// IncludeScreenRecordings - Whether to include Screen recordings for the action, default value = true 
 	IncludeScreenRecordings *bool `json:"includeScreenRecordings,omitempty"`
+
+
+	// ClearExport - For DELETE action, setting this to true will clear any pending exports for recordings. This field is not used for EXPORT action. Default value = false
+	ClearExport *bool `json:"clearExport,omitempty"`
 
 
 	// ConversationQuery - Conversation Query. Note: After the recording is created, it might take up to 48 hours for the recording to be included in the submitted job query.  This result depends on the analytics data lake job completion. See also: https://developer.genesys.cloud/analyticsdatamanagement/analytics/jobs/conversation-details-job#data-availability
@@ -50,7 +58,11 @@ func (o *Recordingjobsquery) MarshalJSON() ([]byte, error) {
 		
 		IntegrationId *string `json:"integrationId,omitempty"`
 		
+		IncludeRecordingsWithSensitiveData *bool `json:"includeRecordingsWithSensitiveData,omitempty"`
+		
 		IncludeScreenRecordings *bool `json:"includeScreenRecordings,omitempty"`
+		
+		ClearExport *bool `json:"clearExport,omitempty"`
 		
 		ConversationQuery *Asyncconversationquery `json:"conversationQuery,omitempty"`
 		*Alias
@@ -61,7 +73,11 @@ func (o *Recordingjobsquery) MarshalJSON() ([]byte, error) {
 		
 		IntegrationId: o.IntegrationId,
 		
+		IncludeRecordingsWithSensitiveData: o.IncludeRecordingsWithSensitiveData,
+		
 		IncludeScreenRecordings: o.IncludeScreenRecordings,
+		
+		ClearExport: o.ClearExport,
 		
 		ConversationQuery: o.ConversationQuery,
 		Alias:    (*Alias)(o),
@@ -88,8 +104,16 @@ func (o *Recordingjobsquery) UnmarshalJSON(b []byte) error {
 		o.IntegrationId = &IntegrationId
 	}
     
+	if IncludeRecordingsWithSensitiveData, ok := RecordingjobsqueryMap["includeRecordingsWithSensitiveData"].(bool); ok {
+		o.IncludeRecordingsWithSensitiveData = &IncludeRecordingsWithSensitiveData
+	}
+    
 	if IncludeScreenRecordings, ok := RecordingjobsqueryMap["includeScreenRecordings"].(bool); ok {
 		o.IncludeScreenRecordings = &IncludeScreenRecordings
+	}
+    
+	if ClearExport, ok := RecordingjobsqueryMap["clearExport"].(bool); ok {
+		o.ClearExport = &ClearExport
 	}
     
 	if ConversationQuery, ok := RecordingjobsqueryMap["conversationQuery"].(map[string]interface{}); ok {

@@ -15,6 +15,10 @@ type Emailcolumn struct {
 	// VarType - Indicates the type of the email column. For example, 'work' or 'personal'.
 	VarType *string `json:"type,omitempty"`
 
+
+	// ContactableTimeColumn - A column that indicates the timezone to use for a given contact when checking contactable times.
+	ContactableTimeColumn *string `json:"contactableTimeColumn,omitempty"`
+
 }
 
 func (o *Emailcolumn) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Emailcolumn) MarshalJSON() ([]byte, error) {
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		ContactableTimeColumn *string `json:"contactableTimeColumn,omitempty"`
 		*Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
+		
+		ContactableTimeColumn: o.ContactableTimeColumn,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -48,6 +56,10 @@ func (o *Emailcolumn) UnmarshalJSON(b []byte) error {
     
 	if VarType, ok := EmailcolumnMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+    
+	if ContactableTimeColumn, ok := EmailcolumnMap["contactableTimeColumn"].(string); ok {
+		o.ContactableTimeColumn = &ContactableTimeColumn
 	}
     
 

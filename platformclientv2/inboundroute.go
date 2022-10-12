@@ -52,12 +52,16 @@ type Inboundroute struct {
 	ReplyEmailAddress *Queueemailaddress `json:"replyEmailAddress,omitempty"`
 
 
-	// AutoBcc - The recipients that should be  automatically blind copied on outbound emails associated with this InboundRoute.
+	// AutoBcc - The recipients that should be automatically blind copied on outbound emails associated with this InboundRoute.
 	AutoBcc *[]Emailaddress `json:"autoBcc,omitempty"`
 
 
 	// SpamFlow - The flow to use for processing inbound emails that have been marked as spam.
 	SpamFlow *Domainentityref `json:"spamFlow,omitempty"`
+
+
+	// Signature - The configuration for the canned response signature that will be appended to outbound emails sent via this route
+	Signature *Signature `json:"signature,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -97,6 +101,8 @@ func (o *Inboundroute) MarshalJSON() ([]byte, error) {
 		
 		SpamFlow *Domainentityref `json:"spamFlow,omitempty"`
 		
+		Signature *Signature `json:"signature,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -125,6 +131,8 @@ func (o *Inboundroute) MarshalJSON() ([]byte, error) {
 		AutoBcc: o.AutoBcc,
 		
 		SpamFlow: o.SpamFlow,
+		
+		Signature: o.Signature,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -196,6 +204,11 @@ func (o *Inboundroute) UnmarshalJSON(b []byte) error {
 	if SpamFlow, ok := InboundrouteMap["spamFlow"].(map[string]interface{}); ok {
 		SpamFlowString, _ := json.Marshal(SpamFlow)
 		json.Unmarshal(SpamFlowString, &o.SpamFlow)
+	}
+	
+	if Signature, ok := InboundrouteMap["signature"].(map[string]interface{}); ok {
+		SignatureString, _ := json.Marshal(Signature)
+		json.Unmarshal(SignatureString, &o.Signature)
 	}
 	
 	if SelfUri, ok := InboundrouteMap["selfUri"].(string); ok {

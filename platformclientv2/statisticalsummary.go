@@ -51,6 +51,14 @@ type Statisticalsummary struct {
 	// Target
 	Target *float32 `json:"target,omitempty"`
 
+
+	// P95
+	P95 *int `json:"p95,omitempty"`
+
+
+	// P99
+	P99 *int `json:"p99,omitempty"`
+
 }
 
 func (o *Statisticalsummary) MarshalJSON() ([]byte, error) {
@@ -80,6 +88,10 @@ func (o *Statisticalsummary) MarshalJSON() ([]byte, error) {
 		Denominator *float32 `json:"denominator,omitempty"`
 		
 		Target *float32 `json:"target,omitempty"`
+		
+		P95 *int `json:"p95,omitempty"`
+		
+		P99 *int `json:"p99,omitempty"`
 		*Alias
 	}{ 
 		Max: o.Max,
@@ -103,6 +115,10 @@ func (o *Statisticalsummary) MarshalJSON() ([]byte, error) {
 		Denominator: o.Denominator,
 		
 		Target: o.Target,
+		
+		P95: o.P95,
+		
+		P99: o.P99,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -169,6 +185,16 @@ func (o *Statisticalsummary) UnmarshalJSON(b []byte) error {
 		o.Target = &TargetFloat32
 	}
     
+	if P95, ok := StatisticalsummaryMap["p95"].(float64); ok {
+		P95Int := int(P95)
+		o.P95 = &P95Int
+	}
+	
+	if P99, ok := StatisticalsummaryMap["p99"].(float64); ok {
+		P99Int := int(P99)
+		o.P99 = &P99Int
+	}
+	
 
 	return nil
 }

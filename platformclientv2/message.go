@@ -13,6 +13,10 @@ type Message struct {
 	State *string `json:"state,omitempty"`
 
 
+	// InitialState - The initial connection state of this communication.
+	InitialState *string `json:"initialState,omitempty"`
+
+
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
@@ -116,10 +120,6 @@ type Message struct {
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
-
-	// InitialState - The initial connection state of this communication.
-	InitialState *string `json:"initialState,omitempty"`
-
 }
 
 func (o *Message) MarshalJSON() ([]byte, error) {
@@ -161,6 +161,8 @@ func (o *Message) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
+		
+		InitialState *string `json:"initialState,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
 		
@@ -213,11 +215,11 @@ func (o *Message) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
-		
-		InitialState *string `json:"initialState,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Id: o.Id,
 		
@@ -270,8 +272,6 @@ func (o *Message) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
-		
-		InitialState: o.InitialState,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -285,6 +285,10 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := MessageMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := MessageMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Id, ok := MessageMap["id"].(string); ok {
@@ -401,10 +405,6 @@ func (o *Message) UnmarshalJSON(b []byte) error {
     
 	if AgentAssistantId, ok := MessageMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
-	}
-    
-	if InitialState, ok := MessageMap["initialState"].(string); ok {
-		o.InitialState = &InitialState
 	}
     
 

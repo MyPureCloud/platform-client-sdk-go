@@ -43,6 +43,14 @@ type Conversationmessagecontent struct {
 	// Carousel - Carousel content
 	Carousel *Conversationcontentcarousel `json:"carousel,omitempty"`
 
+
+	// Text - Text content.
+	Text *Conversationcontenttext `json:"text,omitempty"`
+
+
+	// QuickReplyV2 - Quick reply V2 content.
+	QuickReplyV2 *Conversationcontentquickreplyv2 `json:"quickReplyV2,omitempty"`
+
 }
 
 func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
@@ -68,6 +76,10 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		Card *Conversationcontentcard `json:"card,omitempty"`
 		
 		Carousel *Conversationcontentcarousel `json:"carousel,omitempty"`
+		
+		Text *Conversationcontenttext `json:"text,omitempty"`
+		
+		QuickReplyV2 *Conversationcontentquickreplyv2 `json:"quickReplyV2,omitempty"`
 		*Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -87,6 +99,10 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		Card: o.Card,
 		
 		Carousel: o.Carousel,
+		
+		Text: o.Text,
+		
+		QuickReplyV2: o.QuickReplyV2,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -140,6 +156,16 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 	if Carousel, ok := ConversationmessagecontentMap["carousel"].(map[string]interface{}); ok {
 		CarouselString, _ := json.Marshal(Carousel)
 		json.Unmarshal(CarouselString, &o.Carousel)
+	}
+	
+	if Text, ok := ConversationmessagecontentMap["text"].(map[string]interface{}); ok {
+		TextString, _ := json.Marshal(Text)
+		json.Unmarshal(TextString, &o.Text)
+	}
+	
+	if QuickReplyV2, ok := ConversationmessagecontentMap["quickReplyV2"].(map[string]interface{}); ok {
+		QuickReplyV2String, _ := json.Marshal(QuickReplyV2)
+		json.Unmarshal(QuickReplyV2String, &o.QuickReplyV2)
 	}
 	
 

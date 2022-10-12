@@ -4422,7 +4422,7 @@ func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsSearch(sessionId string,
 // PostKnowledgeGuestSessionDocumentsSearchSuggestions invokes POST /api/v2/knowledge/guest/sessions/{sessionId}/documents/search/suggestions
 //
 // Query the knowledge documents to provide suggestions for auto completion.
-func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsSearchSuggestions(sessionId string, body Knowledgedocumentsuggestionrequest) (*Knowledgeguestdocumentsuggestion, *APIResponse, error) {
+func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsSearchSuggestions(sessionId string, body Knowledgeguestdocumentsuggestionrequest) (*Knowledgeguestdocumentsuggestion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/search/suggestions"

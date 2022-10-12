@@ -61,12 +61,28 @@ type Auditlogmessage struct {
 	Status *string `json:"status,omitempty"`
 
 
+	// Application - Name of the application used to perform the audit's action
+	Application *string `json:"application,omitempty"`
+
+
+	// InitiatingAction - Id and action of the audit initiating the transaction
+	InitiatingAction *Initiatingaction `json:"initiatingAction,omitempty"`
+
+
+	// TransactionInitiator - Whether the current audit is the initiator of the transaction
+	TransactionInitiator *bool `json:"transactionInitiator,omitempty"`
+
+
 	// PropertyChanges - List of properties that were changed and changes made to those properties.
 	PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
 
 
 	// Context - Additional context for this message.
 	Context *map[string]string `json:"context,omitempty"`
+
+
+	// EntityChanges - List of entities that were changed and changes made to those entities.
+	EntityChanges *[]Entitychange `json:"entityChanges,omitempty"`
 
 }
 
@@ -110,9 +126,17 @@ func (o *Auditlogmessage) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		Application *string `json:"application,omitempty"`
+		
+		InitiatingAction *Initiatingaction `json:"initiatingAction,omitempty"`
+		
+		TransactionInitiator *bool `json:"transactionInitiator,omitempty"`
+		
 		PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
 		
 		Context *map[string]string `json:"context,omitempty"`
+		
+		EntityChanges *[]Entitychange `json:"entityChanges,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -141,9 +165,17 @@ func (o *Auditlogmessage) MarshalJSON() ([]byte, error) {
 		
 		Status: o.Status,
 		
+		Application: o.Application,
+		
+		InitiatingAction: o.InitiatingAction,
+		
+		TransactionInitiator: o.TransactionInitiator,
+		
 		PropertyChanges: o.PropertyChanges,
 		
 		Context: o.Context,
+		
+		EntityChanges: o.EntityChanges,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -213,6 +245,19 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 		o.Status = &Status
 	}
     
+	if Application, ok := AuditlogmessageMap["application"].(string); ok {
+		o.Application = &Application
+	}
+    
+	if InitiatingAction, ok := AuditlogmessageMap["initiatingAction"].(map[string]interface{}); ok {
+		InitiatingActionString, _ := json.Marshal(InitiatingAction)
+		json.Unmarshal(InitiatingActionString, &o.InitiatingAction)
+	}
+	
+	if TransactionInitiator, ok := AuditlogmessageMap["transactionInitiator"].(bool); ok {
+		o.TransactionInitiator = &TransactionInitiator
+	}
+    
 	if PropertyChanges, ok := AuditlogmessageMap["propertyChanges"].([]interface{}); ok {
 		PropertyChangesString, _ := json.Marshal(PropertyChanges)
 		json.Unmarshal(PropertyChangesString, &o.PropertyChanges)
@@ -221,6 +266,11 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	if Context, ok := AuditlogmessageMap["context"].(map[string]interface{}); ok {
 		ContextString, _ := json.Marshal(Context)
 		json.Unmarshal(ContextString, &o.Context)
+	}
+	
+	if EntityChanges, ok := AuditlogmessageMap["entityChanges"].([]interface{}); ok {
+		EntityChangesString, _ := json.Marshal(EntityChanges)
+		json.Unmarshal(EntityChangesString, &o.EntityChanges)
 	}
 	
 

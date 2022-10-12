@@ -61,6 +61,10 @@ type Analyticssession struct {
 	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
 
 
+	// Bcc - Blind carbon copy email address(es)
+	Bcc *[]string `json:"bcc,omitempty"`
+
+
 	// CallbackNumbers - Callback phone number(s)
 	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 
@@ -71,6 +75,10 @@ type Analyticssession struct {
 
 	// CallbackUserName - The name of the user requesting a call back
 	CallbackUserName *string `json:"callbackUserName,omitempty"`
+
+
+	// Cc - Carbon copy email address(es)
+	Cc *[]string `json:"cc,omitempty"`
 
 
 	// CoachedParticipantId - The participantId being coached (if someone (e.g. an agent) is being coached, this would correspond to one of the other participantIds present in the conversation)
@@ -362,11 +370,15 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
 		
+		Bcc *[]string `json:"bcc,omitempty"`
+		
 		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 		
 		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
 		
 		CallbackUserName *string `json:"callbackUserName,omitempty"`
+		
+		Cc *[]string `json:"cc,omitempty"`
 		
 		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 		
@@ -515,11 +527,15 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		BargedParticipantId: o.BargedParticipantId,
 		
+		Bcc: o.Bcc,
+		
 		CallbackNumbers: o.CallbackNumbers,
 		
 		CallbackScheduledTime: CallbackScheduledTime,
 		
 		CallbackUserName: o.CallbackUserName,
+		
+		Cc: o.Cc,
 		
 		CoachedParticipantId: o.CoachedParticipantId,
 		
@@ -705,6 +721,11 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 		o.BargedParticipantId = &BargedParticipantId
 	}
     
+	if Bcc, ok := AnalyticssessionMap["bcc"].([]interface{}); ok {
+		BccString, _ := json.Marshal(Bcc)
+		json.Unmarshal(BccString, &o.Bcc)
+	}
+	
 	if CallbackNumbers, ok := AnalyticssessionMap["callbackNumbers"].([]interface{}); ok {
 		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
 		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
@@ -719,6 +740,11 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 		o.CallbackUserName = &CallbackUserName
 	}
     
+	if Cc, ok := AnalyticssessionMap["cc"].([]interface{}); ok {
+		CcString, _ := json.Marshal(Cc)
+		json.Unmarshal(CcString, &o.Cc)
+	}
+	
 	if CoachedParticipantId, ok := AnalyticssessionMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}

@@ -21,10 +21,6 @@ type Webdeployment struct {
 	Description *string `json:"description,omitempty"`
 
 
-	// Configuration - The config version this deployment uses
-	Configuration *Webdeploymentconfigurationversion `json:"configuration,omitempty"`
-
-
 	// AllowAllDomains - Property indicates whether all domains are allowed or not. allowedDomains must be empty when this is set as true.
 	AllowAllDomains *bool `json:"allowAllDomains,omitempty"`
 
@@ -55,6 +51,10 @@ type Webdeployment struct {
 
 	// Status - The current status of the deployment
 	Status *string `json:"status,omitempty"`
+
+
+	// Configuration - The config version this deployment uses
+	Configuration *Webdeploymentconfigurationversionentityref `json:"configuration,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -90,8 +90,6 @@ func (o *Webdeployment) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
-		Configuration *Webdeploymentconfigurationversion `json:"configuration,omitempty"`
-		
 		AllowAllDomains *bool `json:"allowAllDomains,omitempty"`
 		
 		AllowedDomains *[]string `json:"allowedDomains,omitempty"`
@@ -108,6 +106,8 @@ func (o *Webdeployment) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		Configuration *Webdeploymentconfigurationversionentityref `json:"configuration,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -116,8 +116,6 @@ func (o *Webdeployment) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Description: o.Description,
-		
-		Configuration: o.Configuration,
 		
 		AllowAllDomains: o.AllowAllDomains,
 		
@@ -134,6 +132,8 @@ func (o *Webdeployment) MarshalJSON() ([]byte, error) {
 		Flow: o.Flow,
 		
 		Status: o.Status,
+		
+		Configuration: o.Configuration,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -159,11 +159,6 @@ func (o *Webdeployment) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
-	if Configuration, ok := WebdeploymentMap["configuration"].(map[string]interface{}); ok {
-		ConfigurationString, _ := json.Marshal(Configuration)
-		json.Unmarshal(ConfigurationString, &o.Configuration)
-	}
-	
 	if AllowAllDomains, ok := WebdeploymentMap["allowAllDomains"].(bool); ok {
 		o.AllowAllDomains = &AllowAllDomains
 	}
@@ -201,6 +196,11 @@ func (o *Webdeployment) UnmarshalJSON(b []byte) error {
 		o.Status = &Status
 	}
     
+	if Configuration, ok := WebdeploymentMap["configuration"].(map[string]interface{}); ok {
+		ConfigurationString, _ := json.Marshal(Configuration)
+		json.Unmarshal(ConfigurationString, &o.Configuration)
+	}
+	
 	if SelfUri, ok := WebdeploymentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

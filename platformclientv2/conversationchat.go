@@ -13,6 +13,10 @@ type Conversationchat struct {
 	State *string `json:"state,omitempty"`
 
 
+	// InitialState - The initial connection state of this communication.
+	InitialState *string `json:"initialState,omitempty"`
+
+
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
@@ -88,10 +92,6 @@ type Conversationchat struct {
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
-
-	// InitialState - The initial connection state of this communication.
-	InitialState *string `json:"initialState,omitempty"`
-
 }
 
 func (o *Conversationchat) MarshalJSON() ([]byte, error) {
@@ -134,6 +134,8 @@ func (o *Conversationchat) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		InitialState *string `json:"initialState,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		RoomId *string `json:"roomId,omitempty"`
@@ -171,11 +173,11 @@ func (o *Conversationchat) MarshalJSON() ([]byte, error) {
 		AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-		
-		InitialState *string `json:"initialState,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Id: o.Id,
 		
@@ -214,8 +216,6 @@ func (o *Conversationchat) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
-		
-		InitialState: o.InitialState,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -229,6 +229,10 @@ func (o *Conversationchat) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := ConversationchatMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := ConversationchatMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Id, ok := ConversationchatMap["id"].(string); ok {
@@ -313,10 +317,6 @@ func (o *Conversationchat) UnmarshalJSON(b []byte) error {
 	
 	if AfterCallWorkRequired, ok := ConversationchatMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
-	}
-    
-	if InitialState, ok := ConversationchatMap["initialState"].(string); ok {
-		o.InitialState = &InitialState
 	}
     
 

@@ -3989,7 +3989,7 @@ func (a ConversationsApi) GetConversationsMessageCommunicationMessagesMediaMedia
 // GetConversationsMessageDetails invokes GET /api/v2/conversations/messages/{messageId}/details
 //
 // Get message
-func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Messagedata, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessageDetails(messageId string, useNormalizedMessage bool) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{messageId}/details"
@@ -4021,6 +4021,8 @@ func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Mes
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// to determine the Content-Type header
@@ -4060,7 +4062,7 @@ func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Mes
 // GetConversationsMessageMessage invokes GET /api/v2/conversations/messages/{conversationId}/messages/{messageId}
 //
 // Get conversation message
-func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, messageId string) (*Messagedata, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, messageId string, useNormalizedMessage bool) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/messages/{messageId}"
@@ -4098,6 +4100,8 @@ func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, 
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// to determine the Content-Type header
@@ -10658,6 +10662,79 @@ func (a ConversationsApi) PostConversationsEmails(body Createemailrequest) (*Ema
 	return successPayload, response, err
 }
 
+// PostConversationsEmailsAgentless invokes POST /api/v2/conversations/emails/agentless
+//
+// Create an email conversation, per API
+func (a ConversationsApi) PostConversationsEmailsAgentless(body Agentlessemailsendrequestdto) (*Agentlessemailsendresponsedto, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/emails/agentless"
+	defaultReturn := new(Agentlessemailsendresponsedto)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsEmailsAgentless")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Agentlessemailsendresponsedto
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Agentlessemailsendresponsedto" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostConversationsFaxes invokes POST /api/v2/conversations/faxes
 //
 // Create Fax Conversation
@@ -10882,7 +10959,7 @@ func (a ConversationsApi) PostConversationsKeyconfigurationsValidate(body Conver
 // Send message
 //
 // Send message on existing conversation/communication. Only one message body field can be accepted, per request. Example: 1 textBody, 1 mediaId, 1 stickerId, or 1 messageTemplate.
-func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversationId string, communicationId string, body Additionalmessage) (*Messagedata, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversationId string, communicationId string, body Additionalmessage, useNormalizedMessage bool) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/communications/{communicationId}/messages"
@@ -10925,6 +11002,8 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversa
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// to determine the Content-Type header
@@ -11048,7 +11127,7 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessagesMedia(con
 // Get messages in batch
 //
 // The path parameter [conversationId] should contain the conversationId of the conversation being filtered. The body should contain the messageId(s) of messages being requested. For example: [\&quot;a3069a33b-bbb1-4703-9d68-061d9e9db96e\&quot;, \&quot;55bc6be3-078c-4a49-a4e6-1e05776ed7e8\&quot;]
-func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId string, body []string) (*Textmessagelisting, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId string, useNormalizedMessage bool, body []string) (*Textmessagelisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/messages/bulk"
@@ -11080,6 +11159,8 @@ func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId st
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// to determine the Content-Type header

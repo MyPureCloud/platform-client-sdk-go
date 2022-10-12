@@ -6,14 +6,14 @@ import (
 	"strings"
 )
 
-// Webdeploymententitylisting
-type Webdeploymententitylisting struct { 
+// Expandablewebdeploymententitylisting
+type Expandablewebdeploymententitylisting struct { 
 	// Total
 	Total *int `json:"total,omitempty"`
 
 
 	// Entities
-	Entities *[]Webdeployment `json:"entities,omitempty"`
+	Entities *[]Expandablewebdeployment `json:"entities,omitempty"`
 
 
 	// SelfUri
@@ -21,15 +21,15 @@ type Webdeploymententitylisting struct {
 
 }
 
-func (o *Webdeploymententitylisting) MarshalJSON() ([]byte, error) {
+func (o *Expandablewebdeploymententitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Webdeploymententitylisting
+	type Alias Expandablewebdeploymententitylisting
 	
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
-		Entities *[]Webdeployment `json:"entities,omitempty"`
+		Entities *[]Expandablewebdeployment `json:"entities,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
@@ -43,24 +43,24 @@ func (o *Webdeploymententitylisting) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Webdeploymententitylisting) UnmarshalJSON(b []byte) error {
-	var WebdeploymententitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &WebdeploymententitylistingMap)
+func (o *Expandablewebdeploymententitylisting) UnmarshalJSON(b []byte) error {
+	var ExpandablewebdeploymententitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &ExpandablewebdeploymententitylistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Total, ok := WebdeploymententitylistingMap["total"].(float64); ok {
+	if Total, ok := ExpandablewebdeploymententitylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if Entities, ok := WebdeploymententitylistingMap["entities"].([]interface{}); ok {
+	if Entities, ok := ExpandablewebdeploymententitylistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if SelfUri, ok := WebdeploymententitylistingMap["selfUri"].(string); ok {
+	if SelfUri, ok := ExpandablewebdeploymententitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -69,7 +69,7 @@ func (o *Webdeploymententitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Webdeploymententitylisting) String() string {
+func (o *Expandablewebdeploymententitylisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

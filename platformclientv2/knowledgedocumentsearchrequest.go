@@ -35,6 +35,22 @@ type Knowledgedocumentsearchrequest struct {
 	// IncludeDraftDocuments - Indicates whether the search results would also include draft documents.
 	IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 
+
+	// Interval - Retrieves the documents created/modified/published in specified date and time range.
+	Interval *Documentqueryinterval `json:"interval,omitempty"`
+
+
+	// Filter - Filter for the document search.
+	Filter *Documentquery `json:"filter,omitempty"`
+
+
+	// SortOrder - The sort order for search results.
+	SortOrder *string `json:"sortOrder,omitempty"`
+
+
+	// SortBy - The field in the documents that you want to sort the search results by.
+	SortBy *string `json:"sortBy,omitempty"`
+
 }
 
 func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
@@ -56,6 +72,14 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		
 		IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
+		
+		Interval *Documentqueryinterval `json:"interval,omitempty"`
+		
+		Filter *Documentquery `json:"filter,omitempty"`
+		
+		SortOrder *string `json:"sortOrder,omitempty"`
+		
+		SortBy *string `json:"sortBy,omitempty"`
 		*Alias
 	}{ 
 		Query: o.Query,
@@ -71,6 +95,14 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		PageCount: o.PageCount,
 		
 		IncludeDraftDocuments: o.IncludeDraftDocuments,
+		
+		Interval: o.Interval,
+		
+		Filter: o.Filter,
+		
+		SortOrder: o.SortOrder,
+		
+		SortBy: o.SortBy,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -112,6 +144,24 @@ func (o *Knowledgedocumentsearchrequest) UnmarshalJSON(b []byte) error {
 	
 	if IncludeDraftDocuments, ok := KnowledgedocumentsearchrequestMap["includeDraftDocuments"].(bool); ok {
 		o.IncludeDraftDocuments = &IncludeDraftDocuments
+	}
+    
+	if Interval, ok := KnowledgedocumentsearchrequestMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
+	}
+	
+	if Filter, ok := KnowledgedocumentsearchrequestMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if SortOrder, ok := KnowledgedocumentsearchrequestMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+    
+	if SortBy, ok := KnowledgedocumentsearchrequestMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
 	}
     
 

@@ -592,11 +592,11 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentI
 // GetWebdeploymentsDeployments invokes GET /api/v2/webdeployments/deployments
 //
 // Get deployments
-func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Webdeploymententitylisting, *APIResponse, error) {
+func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Expandablewebdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments"
-	defaultReturn := new(Webdeploymententitylisting)
+	defaultReturn := new(Expandablewebdeploymententitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -640,14 +640,14 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Webde
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Webdeploymententitylisting
+	var successPayload *Expandablewebdeploymententitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Webdeploymententitylisting" == "string" {
+		if "Expandablewebdeploymententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

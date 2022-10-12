@@ -19,6 +19,14 @@ type Knowledgedocumentsuggestionrequest struct {
 	// IncludeDraftDocuments - Indicates whether the suggestion results would also include draft documents.
 	IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 
+
+	// Interval - Retrieves the documents created/modified/published in specified date and time range.
+	Interval *Documentqueryinterval `json:"interval,omitempty"`
+
+
+	// Filter - Filter for the document suggestions.
+	Filter *Documentquery `json:"filter,omitempty"`
+
 }
 
 func (o *Knowledgedocumentsuggestionrequest) MarshalJSON() ([]byte, error) {
@@ -32,6 +40,10 @@ func (o *Knowledgedocumentsuggestionrequest) MarshalJSON() ([]byte, error) {
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
+		
+		Interval *Documentqueryinterval `json:"interval,omitempty"`
+		
+		Filter *Documentquery `json:"filter,omitempty"`
 		*Alias
 	}{ 
 		Query: o.Query,
@@ -39,6 +51,10 @@ func (o *Knowledgedocumentsuggestionrequest) MarshalJSON() ([]byte, error) {
 		PageSize: o.PageSize,
 		
 		IncludeDraftDocuments: o.IncludeDraftDocuments,
+		
+		Interval: o.Interval,
+		
+		Filter: o.Filter,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -63,6 +79,16 @@ func (o *Knowledgedocumentsuggestionrequest) UnmarshalJSON(b []byte) error {
 		o.IncludeDraftDocuments = &IncludeDraftDocuments
 	}
     
+	if Interval, ok := KnowledgedocumentsuggestionrequestMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
+	}
+	
+	if Filter, ok := KnowledgedocumentsuggestionrequestMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
 
 	return nil
 }

@@ -13,6 +13,10 @@ type Callbasic struct {
 	State *string `json:"state,omitempty"`
 
 
+	// InitialState - The initial connection state of this communication.
+	InitialState *string `json:"initialState,omitempty"`
+
+
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
@@ -124,10 +128,6 @@ type Callbasic struct {
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
-
-	// InitialState - The initial connection state of this communication.
-	InitialState *string `json:"initialState,omitempty"`
-
 }
 
 func (o *Callbasic) MarshalJSON() ([]byte, error) {
@@ -169,6 +169,8 @@ func (o *Callbasic) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
+		
+		InitialState *string `json:"initialState,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
 		
@@ -225,11 +227,11 @@ func (o *Callbasic) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
-		
-		InitialState *string `json:"initialState,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
+		
+		InitialState: o.InitialState,
 		
 		Id: o.Id,
 		
@@ -286,8 +288,6 @@ func (o *Callbasic) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
-		
-		InitialState: o.InitialState,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -301,6 +301,10 @@ func (o *Callbasic) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := CallbasicMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if InitialState, ok := CallbasicMap["initialState"].(string); ok {
+		o.InitialState = &InitialState
 	}
     
 	if Id, ok := CallbasicMap["id"].(string); ok {
@@ -425,10 +429,6 @@ func (o *Callbasic) UnmarshalJSON(b []byte) error {
     
 	if AgentAssistantId, ok := CallbasicMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
-	}
-    
-	if InitialState, ok := CallbasicMap["initialState"].(string); ok {
-		o.InitialState = &InitialState
 	}
     
 

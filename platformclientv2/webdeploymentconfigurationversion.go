@@ -21,6 +21,10 @@ type Webdeploymentconfigurationversion struct {
 	Version *string `json:"version,omitempty"`
 
 
+	// HeadlessMode - Headless Mode Support which Controls UI components. When enabled, native UI components will be disabled and allows for custom-built UI.
+	HeadlessMode *Webdeploymentheadlessmode `json:"headlessMode,omitempty"`
+
+
 	// Description - The description of the configuration
 	Description *string `json:"description,omitempty"`
 
@@ -130,6 +134,8 @@ func (o *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		
 		Version *string `json:"version,omitempty"`
 		
+		HeadlessMode *Webdeploymentheadlessmode `json:"headlessMode,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		
 		Languages *[]string `json:"languages,omitempty"`
@@ -172,6 +178,8 @@ func (o *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Version: o.Version,
+		
+		HeadlessMode: o.HeadlessMode,
 		
 		Description: o.Description,
 		
@@ -231,6 +239,11 @@ func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
 		o.Version = &Version
 	}
     
+	if HeadlessMode, ok := WebdeploymentconfigurationversionMap["headlessMode"].(map[string]interface{}); ok {
+		HeadlessModeString, _ := json.Marshal(HeadlessMode)
+		json.Unmarshal(HeadlessModeString, &o.HeadlessMode)
+	}
+	
 	if Description, ok := WebdeploymentconfigurationversionMap["description"].(string); ok {
 		o.Description = &Description
 	}

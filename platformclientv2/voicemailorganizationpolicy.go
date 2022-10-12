@@ -37,6 +37,10 @@ type Voicemailorganizationpolicy struct {
 	SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 
 
+	// IncludeEmailTranscriptions - Whether to include the voicemail transcription in the notification email
+	IncludeEmailTranscriptions *bool `json:"includeEmailTranscriptions,omitempty"`
+
+
 	// DisableEmailPii - Removes any PII from emails. This overrides any analogous group configuration value. This is always true if HIPAA is enabled or unknown for an organization.
 	DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
 
@@ -74,6 +78,8 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		
 		SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 		
+		IncludeEmailTranscriptions *bool `json:"includeEmailTranscriptions,omitempty"`
+		
 		DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
@@ -92,6 +98,8 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		InteractiveResponseRequired: o.InteractiveResponseRequired,
 		
 		SendEmailNotifications: o.SendEmailNotifications,
+		
+		IncludeEmailTranscriptions: o.IncludeEmailTranscriptions,
 		
 		DisableEmailPii: o.DisableEmailPii,
 		
@@ -135,6 +143,10 @@ func (o *Voicemailorganizationpolicy) UnmarshalJSON(b []byte) error {
     
 	if SendEmailNotifications, ok := VoicemailorganizationpolicyMap["sendEmailNotifications"].(bool); ok {
 		o.SendEmailNotifications = &SendEmailNotifications
+	}
+    
+	if IncludeEmailTranscriptions, ok := VoicemailorganizationpolicyMap["includeEmailTranscriptions"].(bool); ok {
+		o.IncludeEmailTranscriptions = &IncludeEmailTranscriptions
 	}
     
 	if DisableEmailPii, ok := VoicemailorganizationpolicyMap["disableEmailPii"].(bool); ok {

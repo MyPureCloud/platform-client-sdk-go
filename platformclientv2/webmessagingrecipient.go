@@ -20,6 +20,10 @@ type Webmessagingrecipient struct {
 	Nickname *string `json:"nickname,omitempty"`
 
 
+	// Image - URL of an image that represents the recipient.
+	Image *string `json:"image,omitempty"`
+
+
 	// AdditionalIds - List of recipient additional identifiers
 	AdditionalIds *[]Recipientadditionalidentifier `json:"additionalIds,omitempty"`
 
@@ -37,6 +41,8 @@ func (o *Webmessagingrecipient) MarshalJSON() ([]byte, error) {
 		
 		Nickname *string `json:"nickname,omitempty"`
 		
+		Image *string `json:"image,omitempty"`
+		
 		AdditionalIds *[]Recipientadditionalidentifier `json:"additionalIds,omitempty"`
 		*Alias
 	}{ 
@@ -45,6 +51,8 @@ func (o *Webmessagingrecipient) MarshalJSON() ([]byte, error) {
 		LastName: o.LastName,
 		
 		Nickname: o.Nickname,
+		
+		Image: o.Image,
 		
 		AdditionalIds: o.AdditionalIds,
 		Alias:    (*Alias)(o),
@@ -68,6 +76,10 @@ func (o *Webmessagingrecipient) UnmarshalJSON(b []byte) error {
     
 	if Nickname, ok := WebmessagingrecipientMap["nickname"].(string); ok {
 		o.Nickname = &Nickname
+	}
+    
+	if Image, ok := WebmessagingrecipientMap["image"].(string); ok {
+		o.Image = &Image
 	}
     
 	if AdditionalIds, ok := WebmessagingrecipientMap["additionalIds"].([]interface{}); ok {
