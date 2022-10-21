@@ -184,6 +184,7 @@ docs/DeleteSpeechandtextanalyticsSentimentfeedbackSentimentFeedbackId-example.tx
 docs/DeleteSpeechandtextanalyticsTopic-example.txt
 docs/DeleteStationAssociateduser-example.txt
 docs/DeleteTeam-example.txt
+docs/DeleteTeamMembers-example.txt
 docs/DeleteTelephonyProvidersEdge-example.txt
 docs/DeleteTelephonyProvidersEdgeLogicalinterface-example.txt
 docs/DeleteTelephonyProvidersEdgeSoftwareupdate-example.txt
@@ -444,6 +445,7 @@ docs/GetEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinitions-example.txt
 docs/GetExternalcontactsContact-example.txt
 docs/GetExternalcontactsContactIdentifiers-example.txt
+docs/GetExternalcontactsContactJourneySessions-example.txt
 docs/GetExternalcontactsContactNote-example.txt
 docs/GetExternalcontactsContactNotes-example.txt
 docs/GetExternalcontactsContactUnresolved-example.txt
@@ -954,6 +956,7 @@ docs/GetStations-example.txt
 docs/GetStationsSettings-example.txt
 docs/GetSystempresences-example.txt
 docs/GetTeam-example.txt
+docs/GetTeamMembers-example.txt
 docs/GetTeams-example.txt
 docs/GetTelephonyProvidersEdge-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticNslookup-example.txt
@@ -1429,6 +1432,7 @@ docs/PostConversationsKeyconfigurations-example.txt
 docs/PostConversationsKeyconfigurationsValidate-example.txt
 docs/PostConversationsMessageCommunicationMessages-example.txt
 docs/PostConversationsMessageCommunicationMessagesMedia-example.txt
+docs/PostConversationsMessageCommunicationTyping-example.txt
 docs/PostConversationsMessageMessagesBulk-example.txt
 docs/PostConversationsMessageParticipantReplace-example.txt
 docs/PostConversationsMessages-example.txt
@@ -1674,6 +1678,7 @@ docs/PostSpeechandtextanalyticsTopics-example.txt
 docs/PostSpeechandtextanalyticsTopicsPublishjobs-example.txt
 docs/PostSpeechandtextanalyticsTranscriptsSearch-example.txt
 docs/PostSpeechandtextanalyticsTranscriptsSearch-example.txt
+docs/PostTeamMembers-example.txt
 docs/PostTeams-example.txt
 docs/PostTeamsSearch-example.txt
 docs/PostTeamsSearch-example.txt
@@ -1725,6 +1730,8 @@ docs/PostUsersDevelopmentActivitiesAggregatesQuery-example.txt
 docs/PostUsersMePassword-example.txt
 docs/PostUsersSearch-example.txt
 docs/PostUsersSearch-example.txt
+docs/PostUsersSearchTeamsAssign-example.txt
+docs/PostUsersSearchTeamsAssign-example.txt
 docs/PostVoicemailMessages-example.txt
 docs/PostVoicemailSearch-example.txt
 docs/PostVoicemailSearch-example.txt
@@ -1770,6 +1777,8 @@ docs/PostWorkforcemanagementManagementunitTimeoffplans-example.txt
 docs/PostWorkforcemanagementManagementunitTimeoffrequests-example.txt
 docs/PostWorkforcemanagementManagementunitTimeoffrequestsQuery-example.txt
 docs/PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery-example.txt
+docs/PostWorkforcemanagementManagementunitUserTimeoffbalanceJobs-example.txt
+docs/PostWorkforcemanagementManagementunitUserTimeoffrequestTimeoffbalanceJobs-example.txt
 docs/PostWorkforcemanagementManagementunitWeekShifttradeMatch-example.txt
 docs/PostWorkforcemanagementManagementunitWeekShifttrades-example.txt
 docs/PostWorkforcemanagementManagementunitWeekShifttradesSearch-example.txt
@@ -3459,6 +3468,7 @@ platformclientv2/historyentry.go
 platformclientv2/historylisting.go
 platformclientv2/holdupdatedevent.go
 platformclientv2/homerrecord.go
+platformclientv2/hristimeofftype.go
 platformclientv2/humanize.go
 platformclientv2/identifierclaimrequest.go
 platformclientv2/identitynow.go
@@ -3674,6 +3684,7 @@ platformclientv2/knowledgeimportjobrequest.go
 platformclientv2/knowledgeimportjobresponse.go
 platformclientv2/knowledgeimportjobsettings.go
 platformclientv2/knowledgeimportjobstatistics.go
+platformclientv2/knowledgesearchclientapplication.go
 platformclientv2/knowledgesearchdocument.go
 platformclientv2/knowledgesearchrequest.go
 platformclientv2/knowledgesearchresponse.go
@@ -3855,6 +3866,7 @@ platformclientv2/messagemediapolicy.go
 platformclientv2/messagemediapolicyconditions.go
 platformclientv2/messagesticker.go
 platformclientv2/messagestickerattachment.go
+platformclientv2/messagetypingeventrequest.go
 platformclientv2/messagingapi.go
 platformclientv2/messagingcampaign.go
 platformclientv2/messagingcampaigndivisionview.go
@@ -4630,6 +4642,7 @@ platformclientv2/servicelevel.go
 platformclientv2/session.go
 platformclientv2/sessionenddetails.go
 platformclientv2/sessionlastevent.go
+platformclientv2/sessionlisting.go
 platformclientv2/sessionsegmentassignment.go
 platformclientv2/setcontenttemplateactionsettings.go
 platformclientv2/setrecordingstate.go
@@ -4773,7 +4786,11 @@ platformclientv2/tagvalue.go
 platformclientv2/tagvalueentitylisting.go
 platformclientv2/targetperformanceprofile.go
 platformclientv2/team.go
+platformclientv2/teamaddmemberfailure.go
 platformclientv2/teamentitylisting.go
+platformclientv2/teammemberaddlistingresponse.go
+platformclientv2/teammemberentitylisting.go
+platformclientv2/teammembers.go
 platformclientv2/teamreference.go
 platformclientv2/teamsapi.go
 platformclientv2/teamsearchcriteria.go
@@ -4823,6 +4840,10 @@ platformclientv2/textstyleproperties.go
 platformclientv2/ticker.go
 platformclientv2/timeallowed.go
 platformclientv2/timeinterval.go
+platformclientv2/timeoffbalancejobreference.go
+platformclientv2/timeoffbalancerequest.go
+platformclientv2/timeoffbalanceresponse.go
+platformclientv2/timeoffbalancesresponse.go
 platformclientv2/timeofflimit.go
 platformclientv2/timeofflimitlisting.go
 platformclientv2/timeofflimitrange.go
@@ -5036,6 +5057,7 @@ platformclientv2/userrecording.go
 platformclientv2/userrecordingentitylisting.go
 platformclientv2/userrecordingsapi.go
 platformclientv2/userreference.go
+platformclientv2/userreferencewithname.go
 platformclientv2/userroutinglanguage.go
 platformclientv2/userroutinglanguagepost.go
 platformclientv2/userroutingskill.go

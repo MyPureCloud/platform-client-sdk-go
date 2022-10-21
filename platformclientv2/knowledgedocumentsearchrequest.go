@@ -51,6 +51,10 @@ type Knowledgedocumentsearchrequest struct {
 	// SortBy - The field in the documents that you want to sort the search results by.
 	SortBy *string `json:"sortBy,omitempty"`
 
+
+	// Application - The client application details from which search request was sent.
+	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
+
 }
 
 func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
@@ -80,6 +84,8 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		SortOrder *string `json:"sortOrder,omitempty"`
 		
 		SortBy *string `json:"sortBy,omitempty"`
+		
+		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 		*Alias
 	}{ 
 		Query: o.Query,
@@ -103,6 +109,8 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		SortOrder: o.SortOrder,
 		
 		SortBy: o.SortBy,
+		
+		Application: o.Application,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -164,6 +172,11 @@ func (o *Knowledgedocumentsearchrequest) UnmarshalJSON(b []byte) error {
 		o.SortBy = &SortBy
 	}
     
+	if Application, ok := KnowledgedocumentsearchrequestMap["application"].(map[string]interface{}); ok {
+		ApplicationString, _ := json.Marshal(Application)
+		json.Unmarshal(ApplicationString, &o.Application)
+	}
+	
 
 	return nil
 }

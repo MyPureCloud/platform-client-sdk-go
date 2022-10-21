@@ -95,7 +95,7 @@ func (a ProcessAutomationApi) DeleteProcessautomationTrigger(triggerId string) (
 
 // GetProcessautomationTrigger invokes GET /api/v2/processautomation/triggers/{triggerId}
 //
-// Retrieve a single Trigger matching id.
+// Retrieve a single Trigger matching id
 func (a ProcessAutomationApi) GetProcessautomationTrigger(triggerId string) (*Trigger, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -166,7 +166,7 @@ func (a ProcessAutomationApi) GetProcessautomationTrigger(triggerId string) (*Tr
 
 // GetProcessautomationTriggers invokes GET /api/v2/processautomation/triggers
 //
-// Retrieves all triggers
+// Retrieves all triggers, optionally filtered by query parameters.
 func (a ProcessAutomationApi) GetProcessautomationTriggers(before string, after string, pageSize string, topicName string, enabled bool) (*Triggerentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

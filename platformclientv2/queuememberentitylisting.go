@@ -28,12 +28,12 @@ type Queuememberentitylisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 }
 
@@ -53,9 +53,9 @@ func (o *Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
 		Entities: o.Entities,
@@ -68,9 +68,9 @@ func (o *Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri: o.NextUri,
 		
-		SelfUri: o.SelfUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -105,12 +105,12 @@ func (o *Queuememberentitylisting) UnmarshalJSON(b []byte) error {
 		o.NextUri = &NextUri
 	}
     
-	if SelfUri, ok := QueuememberentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if PreviousUri, ok := QueuememberentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if SelfUri, ok := QueuememberentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 

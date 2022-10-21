@@ -11,6 +11,14 @@ type Predictorworkloadbalancing struct {
 	// Enabled - Flag to activate and deactivate workload balancing.
 	Enabled *bool `json:"enabled,omitempty"`
 
+
+	// MinimumOccupancy - Desired minimum occupancy threshold of agents. Must be between 0 and 100.
+	MinimumOccupancy *int `json:"minimumOccupancy,omitempty"`
+
+
+	// MaximumOccupancy - Desired maximum occupancy threshold of agents. Must be between 0 and 100.
+	MaximumOccupancy *int `json:"maximumOccupancy,omitempty"`
+
 }
 
 func (o *Predictorworkloadbalancing) MarshalJSON() ([]byte, error) {
@@ -20,9 +28,17 @@ func (o *Predictorworkloadbalancing) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		MinimumOccupancy *int `json:"minimumOccupancy,omitempty"`
+		
+		MaximumOccupancy *int `json:"maximumOccupancy,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
+		
+		MinimumOccupancy: o.MinimumOccupancy,
+		
+		MaximumOccupancy: o.MaximumOccupancy,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -38,6 +54,16 @@ func (o *Predictorworkloadbalancing) UnmarshalJSON(b []byte) error {
 		o.Enabled = &Enabled
 	}
     
+	if MinimumOccupancy, ok := PredictorworkloadbalancingMap["minimumOccupancy"].(float64); ok {
+		MinimumOccupancyInt := int(MinimumOccupancy)
+		o.MinimumOccupancy = &MinimumOccupancyInt
+	}
+	
+	if MaximumOccupancy, ok := PredictorworkloadbalancingMap["maximumOccupancy"].(float64); ok {
+		MaximumOccupancyInt := int(MaximumOccupancy)
+		o.MaximumOccupancy = &MaximumOccupancyInt
+	}
+	
 
 	return nil
 }

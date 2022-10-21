@@ -35,6 +35,10 @@ type Knowledgedocumentsearch struct {
 	// Results - Documents matching the search query.
 	Results *[]Knowledgedocumentsearchresult `json:"results,omitempty"`
 
+
+	// Application - The client application details from which search happened.
+	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
+
 }
 
 func (o *Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
@@ -56,6 +60,8 @@ func (o *Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		
 		Results *[]Knowledgedocumentsearchresult `json:"results,omitempty"`
+		
+		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 		*Alias
 	}{ 
 		Query: o.Query,
@@ -71,6 +77,8 @@ func (o *Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		PageCount: o.PageCount,
 		
 		Results: o.Results,
+		
+		Application: o.Application,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -113,6 +121,11 @@ func (o *Knowledgedocumentsearch) UnmarshalJSON(b []byte) error {
 	if Results, ok := KnowledgedocumentsearchMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if Application, ok := KnowledgedocumentsearchMap["application"].(map[string]interface{}); ok {
+		ApplicationString, _ := json.Marshal(Application)
+		json.Unmarshal(ApplicationString, &o.Application)
 	}
 	
 

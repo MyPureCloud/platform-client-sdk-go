@@ -231,7 +231,7 @@ func (a PresenceApi) GetPresenceSource(sourceId string) (*Source, *APIResponse, 
 // GetPresenceSources invokes GET /api/v2/presence/sources
 //
 // Get a list of Presence Sources
-func (a PresenceApi) GetPresenceSources(deleted string) (*Sourceentitylisting, *APIResponse, error) {
+func (a PresenceApi) GetPresenceSources(deactivated string) (*Sourceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/sources"
@@ -258,7 +258,7 @@ func (a PresenceApi) GetPresenceSources(deleted string) (*Sourceentitylisting, *
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
+	queryParams["deactivated"] = a.Configuration.APIClient.ParameterToString(deactivated, "")
 	
 
 	// to determine the Content-Type header

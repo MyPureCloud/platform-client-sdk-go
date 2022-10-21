@@ -32,16 +32,16 @@ type Schedulegroupentitylisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// PageCount
@@ -67,11 +67,11 @@ func (o *Schedulegroupentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -88,11 +88,11 @@ func (o *Schedulegroupentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri: o.NextUri,
 		
+		PreviousUri: o.PreviousUri,
+		
 		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
-		
-		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -134,16 +134,16 @@ func (o *Schedulegroupentitylisting) UnmarshalJSON(b []byte) error {
 		o.NextUri = &NextUri
 	}
     
+	if PreviousUri, ok := SchedulegroupentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
 	if LastUri, ok := SchedulegroupentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := SchedulegroupentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if PreviousUri, ok := SchedulegroupentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := SchedulegroupentitylistingMap["pageCount"].(float64); ok {

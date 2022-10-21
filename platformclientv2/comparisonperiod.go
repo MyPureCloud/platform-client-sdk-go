@@ -25,22 +25,6 @@ type Comparisonperiod struct {
 	DateEnded *time.Time `json:"dateEnded,omitempty"`
 
 
-	// KpiTotalOn - Absolute metric (in which the KPI is based) total for the interactions handled by predictive routing (GPR was on)
-	KpiTotalOn *int `json:"kpiTotalOn,omitempty"`
-
-
-	// KpiTotalOff - Absolute metric (in which the KPI is based) total for the interactions not routed by predictive routing (GPR was off)
-	KpiTotalOff *int `json:"kpiTotalOff,omitempty"`
-
-
-	// InteractionCountOn - Total interactions handled by predictive routing (GPR was on)
-	InteractionCountOn *int `json:"interactionCountOn,omitempty"`
-
-
-	// InteractionCountOff - Total interactions not routed by predictive routing (GPR was off)
-	InteractionCountOff *int `json:"interactionCountOff,omitempty"`
-
-
 	// KpiResults - KPI results for each metric
 	KpiResults *[]Kpiresult `json:"kpiResults,omitempty"`
 
@@ -80,14 +64,6 @@ func (o *Comparisonperiod) MarshalJSON() ([]byte, error) {
 		
 		DateEnded *string `json:"dateEnded,omitempty"`
 		
-		KpiTotalOn *int `json:"kpiTotalOn,omitempty"`
-		
-		KpiTotalOff *int `json:"kpiTotalOff,omitempty"`
-		
-		InteractionCountOn *int `json:"interactionCountOn,omitempty"`
-		
-		InteractionCountOff *int `json:"interactionCountOff,omitempty"`
-		
 		KpiResults *[]Kpiresult `json:"kpiResults,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -100,14 +76,6 @@ func (o *Comparisonperiod) MarshalJSON() ([]byte, error) {
 		DateStarted: DateStarted,
 		
 		DateEnded: DateEnded,
-		
-		KpiTotalOn: o.KpiTotalOn,
-		
-		KpiTotalOff: o.KpiTotalOff,
-		
-		InteractionCountOn: o.InteractionCountOn,
-		
-		InteractionCountOff: o.InteractionCountOff,
 		
 		KpiResults: o.KpiResults,
 		
@@ -139,26 +107,6 @@ func (o *Comparisonperiod) UnmarshalJSON(b []byte) error {
 	if dateEndedString, ok := ComparisonperiodMap["dateEnded"].(string); ok {
 		DateEnded, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateEndedString)
 		o.DateEnded = &DateEnded
-	}
-	
-	if KpiTotalOn, ok := ComparisonperiodMap["kpiTotalOn"].(float64); ok {
-		KpiTotalOnInt := int(KpiTotalOn)
-		o.KpiTotalOn = &KpiTotalOnInt
-	}
-	
-	if KpiTotalOff, ok := ComparisonperiodMap["kpiTotalOff"].(float64); ok {
-		KpiTotalOffInt := int(KpiTotalOff)
-		o.KpiTotalOff = &KpiTotalOffInt
-	}
-	
-	if InteractionCountOn, ok := ComparisonperiodMap["interactionCountOn"].(float64); ok {
-		InteractionCountOnInt := int(InteractionCountOn)
-		o.InteractionCountOn = &InteractionCountOnInt
-	}
-	
-	if InteractionCountOff, ok := ComparisonperiodMap["interactionCountOff"].(float64); ok {
-		InteractionCountOffInt := int(InteractionCountOff)
-		o.InteractionCountOff = &InteractionCountOffInt
 	}
 	
 	if KpiResults, ok := ComparisonperiodMap["kpiResults"].([]interface{}); ok {
