@@ -17,6 +17,10 @@ type Knowledgeexportjobresponse struct {
 	DownloadURL *string `json:"downloadURL,omitempty"`
 
 
+	// FileType - File type of the document
+	FileType *string `json:"fileType,omitempty"`
+
+
 	// CountDocumentProcessed - The current count of the number of records processed.
 	CountDocumentProcessed *int `json:"countDocumentProcessed,omitempty"`
 
@@ -76,6 +80,8 @@ func (o *Knowledgeexportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		DownloadURL *string `json:"downloadURL,omitempty"`
 		
+		FileType *string `json:"fileType,omitempty"`
+		
 		CountDocumentProcessed *int `json:"countDocumentProcessed,omitempty"`
 		
 		ExportFilter *Knowledgeexportjobfilter `json:"exportFilter,omitempty"`
@@ -96,6 +102,8 @@ func (o *Knowledgeexportjobresponse) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		DownloadURL: o.DownloadURL,
+		
+		FileType: o.FileType,
 		
 		CountDocumentProcessed: o.CountDocumentProcessed,
 		
@@ -129,6 +137,10 @@ func (o *Knowledgeexportjobresponse) UnmarshalJSON(b []byte) error {
     
 	if DownloadURL, ok := KnowledgeexportjobresponseMap["downloadURL"].(string); ok {
 		o.DownloadURL = &DownloadURL
+	}
+    
+	if FileType, ok := KnowledgeexportjobresponseMap["fileType"].(string); ok {
+		o.FileType = &FileType
 	}
     
 	if CountDocumentProcessed, ok := KnowledgeexportjobresponseMap["countDocumentProcessed"].(float64); ok {

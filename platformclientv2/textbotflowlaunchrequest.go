@@ -27,6 +27,10 @@ type Textbotflowlaunchrequest struct {
 	// Channel - Channel information relevant to the bot flow.
 	Channel *Textbotchannel `json:"channel,omitempty"`
 
+
+	// Language - The language that the bot will use in the session. Validated against list of supported languages and if the value is omitted or is invalid, the default language will be used.
+	Language *string `json:"language,omitempty"`
+
 }
 
 func (o *Textbotflowlaunchrequest) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Textbotflowlaunchrequest) MarshalJSON() ([]byte, error) {
 		InputData *Textbotinputoutputdata `json:"inputData,omitempty"`
 		
 		Channel *Textbotchannel `json:"channel,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
 		*Alias
 	}{ 
 		Flow: o.Flow,
@@ -55,6 +61,8 @@ func (o *Textbotflowlaunchrequest) MarshalJSON() ([]byte, error) {
 		InputData: o.InputData,
 		
 		Channel: o.Channel,
+		
+		Language: o.Language,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -89,6 +97,10 @@ func (o *Textbotflowlaunchrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ChannelString, &o.Channel)
 	}
 	
+	if Language, ok := TextbotflowlaunchrequestMap["language"].(string); ok {
+		o.Language = &Language
+	}
+    
 
 	return nil
 }

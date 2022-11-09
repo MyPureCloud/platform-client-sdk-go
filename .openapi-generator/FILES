@@ -170,6 +170,7 @@ docs/DeleteRoutingQueueUser-example.txt
 docs/DeleteRoutingQueueWrapupcode-example.txt
 docs/DeleteRoutingSettings-example.txt
 docs/DeleteRoutingSkill-example.txt
+docs/DeleteRoutingSkillgroup-example.txt
 docs/DeleteRoutingSmsAddress-example.txt
 docs/DeleteRoutingSmsPhonenumber-example.txt
 docs/DeleteRoutingUserUtilization-example.txt
@@ -506,7 +507,6 @@ docs/GetGamificationLeaderboard-example.txt
 docs/GetGamificationLeaderboardAll-example.txt
 docs/GetGamificationLeaderboardAllBestpoints-example.txt
 docs/GetGamificationLeaderboardBestpoints-example.txt
-docs/GetGamificationMetric-example.txt
 docs/GetGamificationMetricdefinition-example.txt
 docs/GetGamificationMetricdefinitions-example.txt
 docs/GetGamificationProfile-example.txt
@@ -889,6 +889,10 @@ docs/GetRoutingSettings-example.txt
 docs/GetRoutingSettingsContactcenter-example.txt
 docs/GetRoutingSettingsTranscription-example.txt
 docs/GetRoutingSkill-example.txt
+docs/GetRoutingSkillgroup-example.txt
+docs/GetRoutingSkillgroupMembers-example.txt
+docs/GetRoutingSkillgroupMembersDivisions-example.txt
+docs/GetRoutingSkillgroups-example.txt
 docs/GetRoutingSkills-example.txt
 docs/GetRoutingSmsAddress-example.txt
 docs/GetRoutingSmsAddresses-example.txt
@@ -1275,6 +1279,7 @@ docs/PatchRoutingQueueMembers-example.txt
 docs/PatchRoutingQueueUser-example.txt
 docs/PatchRoutingQueueUsers-example.txt
 docs/PatchRoutingSettingsContactcenter-example.txt
+docs/PatchRoutingSkillgroup-example.txt
 docs/PatchScimGroup-example.txt
 docs/PatchScimUser-example.txt
 docs/PatchScimV2Group-example.txt
@@ -1318,6 +1323,7 @@ docs/PatchWorkforcemanagementManagementunitWorkplan-example.txt
 docs/PatchWorkforcemanagementManagementunitWorkplanrotation-example.txt
 docs/PatchWorkforcemanagementTimeoffrequest-example.txt
 docs/PostAlertingInteractionstatsRules-example.txt
+docs/PostAnalyticsActionsAggregatesQuery-example.txt
 docs/PostAnalyticsBotsAggregatesQuery-example.txt
 docs/PostAnalyticsConversationDetailsProperties-example.txt
 docs/PostAnalyticsConversationDetailsProperties-example.txt
@@ -1659,6 +1665,8 @@ docs/PostRoutingQueueMembers-example.txt
 docs/PostRoutingQueueUsers-example.txt
 docs/PostRoutingQueueWrapupcodes-example.txt
 docs/PostRoutingQueues-example.txt
+docs/PostRoutingSkillgroupMembersDivisions-example.txt
+docs/PostRoutingSkillgroups-example.txt
 docs/PostRoutingSkills-example.txt
 docs/PostRoutingSmsAddresses-example.txt
 docs/PostRoutingSmsPhonenumbers-example.txt
@@ -1851,7 +1859,6 @@ docs/PutFlowsDatatable-example.txt
 docs/PutFlowsDatatableRow-example.txt
 docs/PutFlowsMilestone-example.txt
 docs/PutFlowsOutcome-example.txt
-docs/PutGamificationMetric-example.txt
 docs/PutGamificationProfile-example.txt
 docs/PutGamificationProfileMetric-example.txt
 docs/PutGamificationStatus-example.txt
@@ -2024,6 +2031,13 @@ platformclientv2/acdstartdetaileventtopicacdstartevent.go
 platformclientv2/achievedoutcome.go
 platformclientv2/acknowledgescreenrecordingrequest.go
 platformclientv2/action.go
+platformclientv2/actionaggregatedatacontainer.go
+platformclientv2/actionaggregatequeryclause.go
+platformclientv2/actionaggregatequeryfilter.go
+platformclientv2/actionaggregatequerypredicate.go
+platformclientv2/actionaggregatequeryresponse.go
+platformclientv2/actionaggregationquery.go
+platformclientv2/actionaggregationview.go
 platformclientv2/actionconfig.go
 platformclientv2/actioncontract.go
 platformclientv2/actioncontractinput.go
@@ -4119,8 +4133,10 @@ platformclientv2/predictiverouting.go
 platformclientv2/predictor.go
 platformclientv2/predictorlisting.go
 platformclientv2/predictormodel.go
+platformclientv2/predictormodelbrief.go
 platformclientv2/predictormodelfeature.go
 platformclientv2/predictormodelfeaturelisting.go
+platformclientv2/predictormodelretrainingerror.go
 platformclientv2/predictormodels.go
 platformclientv2/predictorschedule.go
 platformclientv2/predictorworkloadbalancing.go
@@ -4684,6 +4700,14 @@ platformclientv2/site.go
 platformclientv2/siteconnection.go
 platformclientv2/siteentitylisting.go
 platformclientv2/skillentitylisting.go
+platformclientv2/skillgroup.go
+platformclientv2/skillgroupcondition.go
+platformclientv2/skillgroupentitylisting.go
+platformclientv2/skillgrouplanguagecondition.go
+platformclientv2/skillgroupmemberdivisionlist.go
+platformclientv2/skillgroupmemberdivisions.go
+platformclientv2/skillgroupmemberentitylisting.go
+platformclientv2/skillgrouproutingcondition.go
 platformclientv2/skillstoremove.go
 platformclientv2/smsaddress.go
 platformclientv2/smsaddressentitylisting.go

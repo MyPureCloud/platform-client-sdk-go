@@ -17,7 +17,7 @@ type Knowledgeimportjobresponse struct {
 	UploadKey *string `json:"uploadKey,omitempty"`
 
 
-	// FileType - file type of the document
+	// FileType - File type of the document
 	FileType *string `json:"fileType,omitempty"`
 
 

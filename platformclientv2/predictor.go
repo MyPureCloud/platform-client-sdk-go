@@ -49,6 +49,10 @@ type Predictor struct {
 	ErrorCode *string `json:"errorCode,omitempty"`
 
 
+	// Models - Predictor's models
+	Models *[]Predictormodelbrief `json:"models,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -96,6 +100,8 @@ func (o *Predictor) MarshalJSON() ([]byte, error) {
 		
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
+		Models *[]Predictormodelbrief `json:"models,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -118,6 +124,8 @@ func (o *Predictor) MarshalJSON() ([]byte, error) {
 		WorkloadBalancingConfig: o.WorkloadBalancingConfig,
 		
 		ErrorCode: o.ErrorCode,
+		
+		Models: o.Models,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -177,6 +185,11 @@ func (o *Predictor) UnmarshalJSON(b []byte) error {
 		o.ErrorCode = &ErrorCode
 	}
     
+	if Models, ok := PredictorMap["models"].([]interface{}); ok {
+		ModelsString, _ := json.Marshal(Models)
+		json.Unmarshal(ModelsString, &o.Models)
+	}
+	
 	if SelfUri, ok := PredictorMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

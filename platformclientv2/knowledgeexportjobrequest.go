@@ -11,6 +11,10 @@ type Knowledgeexportjobrequest struct {
 	// ExportFilter - What to export.
 	ExportFilter *Knowledgeexportjobfilter `json:"exportFilter,omitempty"`
 
+
+	// FileType - File type of the document
+	FileType *string `json:"fileType,omitempty"`
+
 }
 
 func (o *Knowledgeexportjobrequest) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Knowledgeexportjobrequest) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		ExportFilter *Knowledgeexportjobfilter `json:"exportFilter,omitempty"`
+		
+		FileType *string `json:"fileType,omitempty"`
 		*Alias
 	}{ 
 		ExportFilter: o.ExportFilter,
+		
+		FileType: o.FileType,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -39,6 +47,10 @@ func (o *Knowledgeexportjobrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExportFilterString, &o.ExportFilter)
 	}
 	
+	if FileType, ok := KnowledgeexportjobrequestMap["fileType"].(string); ok {
+		o.FileType = &FileType
+	}
+    
 
 	return nil
 }

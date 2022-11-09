@@ -4045,7 +4045,7 @@ func (a ArchitectApi) GetFlowsDatatableRow(datatableId string, rowId string, sho
 // Returns the rows for the datatable with the given id
 //
 // Returns all of the rows for the datatable with the given datatableId.  By default this will just be a truncated list returning the key for each row. Set showBrief to false to return all of the row contents.
-func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, pageSize int, showbrief bool) (*Datatablerowentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, pageSize int, showbrief bool, sortOrder string) (*Datatablerowentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows"
@@ -4083,6 +4083,8 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, 
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["showbrief"] = a.Configuration.APIClient.ParameterToString(showbrief, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header

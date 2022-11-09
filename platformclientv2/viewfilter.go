@@ -592,6 +592,10 @@ type Viewfilter struct {
 	ActionCategoryName *string `json:"actionCategoryName,omitempty"`
 
 
+	// IntegrationIds - The list of integration IDs for Data Action
+	IntegrationIds *[]string `json:"integrationIds,omitempty"`
+
+
 	// ResponseStatuses - The list of Response codes for Data Action
 	ResponseStatuses *[]string `json:"responseStatuses,omitempty"`
 
@@ -907,6 +911,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		ActionCategoryName *string `json:"actionCategoryName,omitempty"`
 		
+		IntegrationIds *[]string `json:"integrationIds,omitempty"`
+		
 		ResponseStatuses *[]string `json:"responseStatuses,omitempty"`
 		
 		AvailableDashboard *string `json:"availableDashboard,omitempty"`
@@ -1207,6 +1213,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		DataActionIds: o.DataActionIds,
 		
 		ActionCategoryName: o.ActionCategoryName,
+		
+		IntegrationIds: o.IntegrationIds,
 		
 		ResponseStatuses: o.ResponseStatuses,
 		
@@ -1927,6 +1935,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.ActionCategoryName = &ActionCategoryName
 	}
     
+	if IntegrationIds, ok := ViewfilterMap["integrationIds"].([]interface{}); ok {
+		IntegrationIdsString, _ := json.Marshal(IntegrationIds)
+		json.Unmarshal(IntegrationIdsString, &o.IntegrationIds)
+	}
+	
 	if ResponseStatuses, ok := ViewfilterMap["responseStatuses"].([]interface{}); ok {
 		ResponseStatusesString, _ := json.Marshal(ResponseStatuses)
 		json.Unmarshal(ResponseStatusesString, &o.ResponseStatuses)

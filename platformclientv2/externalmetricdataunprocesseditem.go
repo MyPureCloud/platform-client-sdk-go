@@ -29,8 +29,12 @@ type Externalmetricdataunprocesseditem struct {
 	Value *float32 `json:"value,omitempty"`
 
 
-	// Count - The number of data points. The default value is 1.
+	// Count - The number of data points. The default value is 0 when type is Cumulative and the metric data already exists, otherwise 1. When total count reaches 0, the metric data will be deleted.
 	Count *int `json:"count,omitempty"`
+
+
+	// VarType - The type of the metric data. The default value is Total.
+	VarType *string `json:"type,omitempty"`
 
 
 	// Message - The error message
@@ -67,6 +71,8 @@ func (o *Externalmetricdataunprocesseditem) MarshalJSON() ([]byte, error) {
 		
 		Count *int `json:"count,omitempty"`
 		
+		VarType *string `json:"type,omitempty"`
+		
 		Message *string `json:"message,omitempty"`
 		
 		Code *string `json:"code,omitempty"`
@@ -83,6 +89,8 @@ func (o *Externalmetricdataunprocesseditem) MarshalJSON() ([]byte, error) {
 		Value: o.Value,
 		
 		Count: o.Count,
+		
+		VarType: o.VarType,
 		
 		Message: o.Message,
 		
@@ -125,6 +133,10 @@ func (o *Externalmetricdataunprocesseditem) UnmarshalJSON(b []byte) error {
 		o.Count = &CountInt
 	}
 	
+	if VarType, ok := ExternalmetricdataunprocesseditemMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
 	if Message, ok := ExternalmetricdataunprocesseditemMap["message"].(string); ok {
 		o.Message = &Message
 	}

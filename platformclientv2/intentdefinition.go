@@ -8,6 +8,10 @@ import (
 
 // Intentdefinition
 type Intentdefinition struct { 
+	// Id - ID of the intent.
+	Id *string `json:"id,omitempty"`
+
+
 	// Name - The name of the intent.
 	Name *string `json:"name,omitempty"`
 
@@ -31,6 +35,8 @@ func (o *Intentdefinition) MarshalJSON() ([]byte, error) {
 	type Alias Intentdefinition
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Name *string `json:"name,omitempty"`
 		
 		EntityTypeBindings *[]Namedentitytypebinding `json:"entityTypeBindings,omitempty"`
@@ -40,6 +46,8 @@ func (o *Intentdefinition) MarshalJSON() ([]byte, error) {
 		Utterances *[]Nluutterance `json:"utterances,omitempty"`
 		*Alias
 	}{ 
+		Id: o.Id,
+		
 		Name: o.Name,
 		
 		EntityTypeBindings: o.EntityTypeBindings,
@@ -58,6 +66,10 @@ func (o *Intentdefinition) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := IntentdefinitionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Name, ok := IntentdefinitionMap["name"].(string); ok {
 		o.Name = &Name
 	}

@@ -73,7 +73,7 @@ type Queueconversationeventtopicemail struct {
 	MessageId *string `json:"messageId,omitempty"`
 
 
-	// Direction - Whether a call is inbound or outbound.
+	// Direction - Whether an email is inbound or outbound.
 	Direction *string `json:"direction,omitempty"`
 
 

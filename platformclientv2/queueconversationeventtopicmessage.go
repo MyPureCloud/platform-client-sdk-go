@@ -21,6 +21,10 @@ type Queueconversationeventtopicmessage struct {
 	InitialState *string `json:"initialState,omitempty"`
 
 
+	// Direction - Whether a message is inbound or outbound.
+	Direction *string `json:"direction,omitempty"`
+
+
 	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
@@ -142,6 +146,8 @@ func (o *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		
 		InitialState *string `json:"initialState,omitempty"`
 		
+		Direction *string `json:"direction,omitempty"`
+		
 		Held *bool `json:"held,omitempty"`
 		
 		ErrorInfo *Queueconversationeventtopicerrordetails `json:"errorInfo,omitempty"`
@@ -190,6 +196,8 @@ func (o *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		State: o.State,
 		
 		InitialState: o.InitialState,
+		
+		Direction: o.Direction,
 		
 		Held: o.Held,
 		
@@ -253,6 +261,10 @@ func (o *Queueconversationeventtopicmessage) UnmarshalJSON(b []byte) error {
     
 	if InitialState, ok := QueueconversationeventtopicmessageMap["initialState"].(string); ok {
 		o.InitialState = &InitialState
+	}
+    
+	if Direction, ok := QueueconversationeventtopicmessageMap["direction"].(string); ok {
+		o.Direction = &Direction
 	}
     
 	if Held, ok := QueueconversationeventtopicmessageMap["held"].(bool); ok {

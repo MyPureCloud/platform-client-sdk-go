@@ -28,6 +28,10 @@ type Voicemailgrouppolicy struct {
 	DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
 
 
+	// IncludeEmailTranscriptions - Whether to include the voicemail transcription in a group notification email
+	IncludeEmailTranscriptions *bool `json:"includeEmailTranscriptions,omitempty"`
+
+
 	// LanguagePreference - The language preference for the group.  Used for group voicemail transcription
 	LanguagePreference *string `json:"languagePreference,omitempty"`
 
@@ -69,6 +73,8 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		
 		DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
 		
+		IncludeEmailTranscriptions *bool `json:"includeEmailTranscriptions,omitempty"`
+		
 		LanguagePreference *string `json:"languagePreference,omitempty"`
 		
 		RotateCallsSecs *int `json:"rotateCallsSecs,omitempty"`
@@ -91,6 +97,8 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		SendEmailNotifications: o.SendEmailNotifications,
 		
 		DisableEmailPii: o.DisableEmailPii,
+		
+		IncludeEmailTranscriptions: o.IncludeEmailTranscriptions,
 		
 		LanguagePreference: o.LanguagePreference,
 		
@@ -133,6 +141,10 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
     
 	if DisableEmailPii, ok := VoicemailgrouppolicyMap["disableEmailPii"].(bool); ok {
 		o.DisableEmailPii = &DisableEmailPii
+	}
+    
+	if IncludeEmailTranscriptions, ok := VoicemailgrouppolicyMap["includeEmailTranscriptions"].(bool); ok {
+		o.IncludeEmailTranscriptions = &IncludeEmailTranscriptions
 	}
     
 	if LanguagePreference, ok := VoicemailgrouppolicyMap["languagePreference"].(string); ok {

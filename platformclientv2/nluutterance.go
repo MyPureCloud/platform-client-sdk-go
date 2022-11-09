@@ -8,6 +8,10 @@ import (
 
 // Nluutterance
 type Nluutterance struct { 
+	// Id - ID of the utterance.
+	Id *string `json:"id,omitempty"`
+
+
 	// Segments - The list of segments that that constitute this utterance for the given intent.
 	Segments *[]Nluutterancesegment `json:"segments,omitempty"`
 
@@ -19,9 +23,13 @@ func (o *Nluutterance) MarshalJSON() ([]byte, error) {
 	type Alias Nluutterance
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Segments *[]Nluutterancesegment `json:"segments,omitempty"`
 		*Alias
 	}{ 
+		Id: o.Id,
+		
 		Segments: o.Segments,
 		Alias:    (*Alias)(o),
 	})
@@ -34,6 +42,10 @@ func (o *Nluutterance) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := NluutteranceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Segments, ok := NluutteranceMap["segments"].([]interface{}); ok {
 		SegmentsString, _ := json.Marshal(Segments)
 		json.Unmarshal(SegmentsString, &o.Segments)

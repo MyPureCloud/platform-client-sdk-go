@@ -23,6 +23,10 @@ type Nluinfo struct {
 	// EngineVersion
 	EngineVersion *string `json:"engineVersion,omitempty"`
 
+
+	// NluData
+	NluData *Nludomainversion `json:"nluData,omitempty"`
+
 }
 
 func (o *Nluinfo) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Nluinfo) MarshalJSON() ([]byte, error) {
 		Intents *[]Intent `json:"intents,omitempty"`
 		
 		EngineVersion *string `json:"engineVersion,omitempty"`
+		
+		NluData *Nludomainversion `json:"nluData,omitempty"`
 		*Alias
 	}{ 
 		Domain: o.Domain,
@@ -47,6 +53,8 @@ func (o *Nluinfo) MarshalJSON() ([]byte, error) {
 		Intents: o.Intents,
 		
 		EngineVersion: o.EngineVersion,
+		
+		NluData: o.NluData,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -77,6 +85,11 @@ func (o *Nluinfo) UnmarshalJSON(b []byte) error {
 		o.EngineVersion = &EngineVersion
 	}
     
+	if NluData, ok := NluinfoMap["nluData"].(map[string]interface{}); ok {
+		NluDataString, _ := json.Marshal(NluData)
+		json.Unmarshal(NluDataString, &o.NluData)
+	}
+	
 
 	return nil
 }

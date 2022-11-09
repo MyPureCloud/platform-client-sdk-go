@@ -29,8 +29,20 @@ type Externalmetricdataprocesseditem struct {
 	Value *float32 `json:"value,omitempty"`
 
 
-	// Count - The number of data points. The default value is 1.
+	// Count - The number of data points. The default value is 0 when type is Cumulative and the metric data already exists, otherwise 1. When total count reaches 0, the metric data will be deleted.
 	Count *int `json:"count,omitempty"`
+
+
+	// VarType - The type of the metric data. The default value is Total.
+	VarType *string `json:"type,omitempty"`
+
+
+	// TotalValue - The total value of the metric data.
+	TotalValue *float32 `json:"totalValue,omitempty"`
+
+
+	// TotalCount - The total number of data points.
+	TotalCount *int `json:"totalCount,omitempty"`
 
 }
 
@@ -58,6 +70,12 @@ func (o *Externalmetricdataprocesseditem) MarshalJSON() ([]byte, error) {
 		Value *float32 `json:"value,omitempty"`
 		
 		Count *int `json:"count,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		TotalValue *float32 `json:"totalValue,omitempty"`
+		
+		TotalCount *int `json:"totalCount,omitempty"`
 		*Alias
 	}{ 
 		UserId: o.UserId,
@@ -71,6 +89,12 @@ func (o *Externalmetricdataprocesseditem) MarshalJSON() ([]byte, error) {
 		Value: o.Value,
 		
 		Count: o.Count,
+		
+		VarType: o.VarType,
+		
+		TotalValue: o.TotalValue,
+		
+		TotalCount: o.TotalCount,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -107,6 +131,20 @@ func (o *Externalmetricdataprocesseditem) UnmarshalJSON(b []byte) error {
 	if Count, ok := ExternalmetricdataprocesseditemMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt
+	}
+	
+	if VarType, ok := ExternalmetricdataprocesseditemMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
+	if TotalValue, ok := ExternalmetricdataprocesseditemMap["totalValue"].(float64); ok {
+		TotalValueFloat32 := float32(TotalValue)
+		o.TotalValue = &TotalValueFloat32
+	}
+    
+	if TotalCount, ok := ExternalmetricdataprocesseditemMap["totalCount"].(float64); ok {
+		TotalCountInt := int(TotalCount)
+		o.TotalCount = &TotalCountInt
 	}
 	
 
