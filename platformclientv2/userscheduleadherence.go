@@ -69,6 +69,10 @@ type Userscheduleadherence struct {
 	Impact *string `json:"impact,omitempty"`
 
 
+	// AdherenceExplanation - Currently applicable explanation for the adherence state
+	AdherenceExplanation *Realtimeadherenceexplanation `json:"adherenceExplanation,omitempty"`
+
+
 	// TimeOfAdherenceChange - Time when the user entered the current adherenceState in ISO-8601 format
 	TimeOfAdherenceChange *time.Time `json:"timeOfAdherenceChange,omitempty"`
 
@@ -154,6 +158,8 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		
 		Impact *string `json:"impact,omitempty"`
 		
+		AdherenceExplanation *Realtimeadherenceexplanation `json:"adherenceExplanation,omitempty"`
+		
 		TimeOfAdherenceChange *string `json:"timeOfAdherenceChange,omitempty"`
 		
 		PresenceUpdateTime *string `json:"presenceUpdateTime,omitempty"`
@@ -196,6 +202,8 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		AdherenceState: o.AdherenceState,
 		
 		Impact: o.Impact,
+		
+		AdherenceExplanation: o.AdherenceExplanation,
 		
 		TimeOfAdherenceChange: TimeOfAdherenceChange,
 		
@@ -284,6 +292,11 @@ func (o *Userscheduleadherence) UnmarshalJSON(b []byte) error {
 		o.Impact = &Impact
 	}
     
+	if AdherenceExplanation, ok := UserscheduleadherenceMap["adherenceExplanation"].(map[string]interface{}); ok {
+		AdherenceExplanationString, _ := json.Marshal(AdherenceExplanation)
+		json.Unmarshal(AdherenceExplanationString, &o.AdherenceExplanation)
+	}
+	
 	if timeOfAdherenceChangeString, ok := UserscheduleadherenceMap["timeOfAdherenceChange"].(string); ok {
 		TimeOfAdherenceChange, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeOfAdherenceChangeString)
 		o.TimeOfAdherenceChange = &TimeOfAdherenceChange

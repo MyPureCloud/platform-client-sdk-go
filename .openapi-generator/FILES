@@ -327,6 +327,7 @@ docs/GetAuthorizationRoleComparedefaultRightRoleId-example.txt
 docs/GetAuthorizationRoleSubjectgrants-example.txt
 docs/GetAuthorizationRoleUsers-example.txt
 docs/GetAuthorizationRoles-example.txt
+docs/GetAuthorizationSettings-example.txt
 docs/GetAuthorizationSubject-example.txt
 docs/GetAuthorizationSubject-example.txt
 docs/GetAuthorizationSubjectsMe-example.txt
@@ -1110,8 +1111,11 @@ docs/GetWebmessagingMessages-example.txt
 docs/GetWidgetsDeployment-example.txt
 docs/GetWidgetsDeployments-example.txt
 docs/GetWorkforcemanagementAdherence-example.txt
+docs/GetWorkforcemanagementAdherenceExplanation-example.txt
+docs/GetWorkforcemanagementAdherenceExplanationsJob-example.txt
 docs/GetWorkforcemanagementAdherenceHistoricalJob-example.txt
 docs/GetWorkforcemanagementAdhocmodelingjob-example.txt
+docs/GetWorkforcemanagementAgentAdherenceExplanation-example.txt
 docs/GetWorkforcemanagementAgentManagementunit-example.txt
 docs/GetWorkforcemanagementAgentsMeManagementunit-example.txt
 docs/GetWorkforcemanagementBusinessunit-example.txt
@@ -1170,6 +1174,7 @@ docs/GetWorkforcemanagementManagementunitsDivisionviews-example.txt
 docs/GetWorkforcemanagementNotifications-example.txt
 docs/GetWorkforcemanagementSchedulingjob-example.txt
 docs/GetWorkforcemanagementShifttrades-example.txt
+docs/GetWorkforcemanagementShrinkageJob-example.txt
 docs/GetWorkforcemanagementTimeoffrequest-example.txt
 docs/GetWorkforcemanagementTimeoffrequestWaitlistpositions-example.txt
 docs/GetWorkforcemanagementTimeoffrequests-example.txt
@@ -1196,6 +1201,7 @@ docs/OrganizationAuthorizationApi.json
 docs/OutboundApi.json
 docs/PatchAnalyticsReportingSettings-example.txt
 docs/PatchAuthorizationRole-example.txt
+docs/PatchAuthorizationSettings-example.txt
 docs/PatchChatSettings-example.txt
 docs/PatchCoachingAppointment-example.txt
 docs/PatchCoachingAppointmentAnnotation-example.txt
@@ -1309,6 +1315,7 @@ docs/PatchVoicemailMePolicy-example.txt
 docs/PatchVoicemailMessage-example.txt
 docs/PatchVoicemailUserpolicy-example.txt
 docs/PatchWebchatGuestConversationMediarequest-example.txt
+docs/PatchWorkforcemanagementAgentAdherenceExplanation-example.txt
 docs/PatchWorkforcemanagementBusinessunit-example.txt
 docs/PatchWorkforcemanagementBusinessunitActivitycode-example.txt
 docs/PatchWorkforcemanagementBusinessunitPlanninggroup-example.txt
@@ -1751,9 +1758,14 @@ docs/PostWebdeploymentsConfigurationVersionsDraftPublish-example.txt
 docs/PostWebdeploymentsConfigurations-example.txt
 docs/PostWebdeploymentsDeployments-example.txt
 docs/PostWidgetsDeployments-example.txt
+docs/PostWorkforcemanagementAdherenceExplanations-example.txt
+docs/PostWorkforcemanagementAdherenceExplanationsQuery-example.txt
 docs/PostWorkforcemanagementAdherenceHistorical-example.txt
+docs/PostWorkforcemanagementAgentAdherenceExplanations-example.txt
+docs/PostWorkforcemanagementAgentAdherenceExplanationsQuery-example.txt
 docs/PostWorkforcemanagementAgentschedulesMine-example.txt
 docs/PostWorkforcemanagementBusinessunitActivitycodes-example.txt
+docs/PostWorkforcemanagementBusinessunitAdherenceExplanationsQuery-example.txt
 docs/PostWorkforcemanagementBusinessunitAgentschedulesSearch-example.txt
 docs/PostWorkforcemanagementBusinessunitIntraday-example.txt
 docs/PostWorkforcemanagementBusinessunitPlanninggroups-example.txt
@@ -1779,6 +1791,7 @@ docs/PostWorkforcemanagementManagementunitAgentschedulesSearch-example.txt
 docs/PostWorkforcemanagementManagementunitHistoricaladherencequery-example.txt
 docs/PostWorkforcemanagementManagementunitMove-example.txt
 docs/PostWorkforcemanagementManagementunitSchedulesSearch-example.txt
+docs/PostWorkforcemanagementManagementunitShrinkageJobs-example.txt
 docs/PostWorkforcemanagementManagementunitTimeofflimits-example.txt
 docs/PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery-example.txt
 docs/PostWorkforcemanagementManagementunitTimeoffplans-example.txt
@@ -2067,6 +2080,8 @@ platformclientv2/activitycodecontainer.go
 platformclientv2/activitycodereference.go
 platformclientv2/acwdetaileventtopicaftercallworkevent.go
 platformclientv2/acwsettings.go
+platformclientv2/addadherenceexplanationadminrequest.go
+platformclientv2/addadherenceexplanationagentrequest.go
 platformclientv2/addconversationrequest.go
 platformclientv2/addconversationresponse.go
 platformclientv2/additionalmessage.go
@@ -2077,7 +2092,14 @@ platformclientv2/addshifttraderequest.go
 platformclientv2/addworkplanrotationagentrequest.go
 platformclientv2/addworkplanrotationrequest.go
 platformclientv2/adfs.go
+platformclientv2/adherenceexplanationasyncresponse.go
+platformclientv2/adherenceexplanationjob.go
+platformclientv2/adherenceexplanationjobreference.go
+platformclientv2/adherenceexplanationlisting.go
+platformclientv2/adherenceexplanationlistingagentqueryresponse.go
+platformclientv2/adherenceexplanationlistingbuqueryresponse.go
 platformclientv2/adherenceexplanationnotification.go
+platformclientv2/adherenceexplanationresponse.go
 platformclientv2/adherencesettings.go
 platformclientv2/adhocrecordingtopicconversationdata.go
 platformclientv2/adhocrecordingtopiclockdata.go
@@ -2103,6 +2125,8 @@ platformclientv2/agentmaxutilization.go
 platformclientv2/agentownedmappingpreview.go
 platformclientv2/agentownedmappingpreviewlisting.go
 platformclientv2/agentownedrouting.go
+platformclientv2/agentqueryadherenceexplanationsrequest.go
+platformclientv2/agentqueryadherenceexplanationsresponse.go
 platformclientv2/agenttimeoffrequestpatch.go
 platformclientv2/aggregatemetricdata.go
 platformclientv2/aggregateviewdata.go
@@ -2249,6 +2273,7 @@ platformclientv2/audittopicpropertychange.go
 platformclientv2/audituser.go
 platformclientv2/authenticationsettings.go
 platformclientv2/authorizationapi.go
+platformclientv2/authorizationsettings.go
 platformclientv2/authzdivision.go
 platformclientv2/authzdivisionentitylisting.go
 platformclientv2/authzdivisiongrantentitylisting.go
@@ -2389,6 +2414,8 @@ platformclientv2/bulkupdateshifttradestateresultitem.go
 platformclientv2/bullseye.go
 platformclientv2/bumanagementunitschedulesummary.go
 platformclientv2/buplanninggroupheadcountforecast.go
+platformclientv2/buqueryadherenceexplanationsrequest.go
+platformclientv2/buqueryadherenceexplanationsresponse.go
 platformclientv2/buqueryagentschedulesrequest.go
 platformclientv2/burescheduleagentscheduleresult.go
 platformclientv2/bureschedulerequest.go
@@ -2947,6 +2974,8 @@ platformclientv2/customeventattribute.go
 platformclientv2/customeventattributelist.go
 platformclientv2/customi18nlabels.go
 platformclientv2/dataactionconditionpredicate.go
+platformclientv2/dataactionconditionsettings.go
+platformclientv2/dataactioncontactcolumnfieldmapping.go
 platformclientv2/dataavailabilityresponse.go
 platformclientv2/dataextensionsapi.go
 platformclientv2/dataschema.go
@@ -3062,6 +3091,7 @@ platformclientv2/didpool.go
 platformclientv2/didpoolentitylisting.go
 platformclientv2/digitalaction.go
 platformclientv2/digitalcondition.go
+platformclientv2/digitaldataactionconditionpredicate.go
 platformclientv2/digitalrule.go
 platformclientv2/digitalruleset.go
 platformclientv2/digitalrulesetentitylisting.go
@@ -3478,6 +3508,11 @@ platformclientv2/historicaladherencequeryresult.go
 platformclientv2/historicalimportdeletejobresponse.go
 platformclientv2/historicalimportstatus.go
 platformclientv2/historicalimportstatuslisting.go
+platformclientv2/historicalshrinkageactivitycategoryresponse.go
+platformclientv2/historicalshrinkageactivitycoderesponse.go
+platformclientv2/historicalshrinkageaggregateresponse.go
+platformclientv2/historicalshrinkageresult.go
+platformclientv2/historicalshrinkageresultlisting.go
 platformclientv2/historyentry.go
 platformclientv2/historylisting.go
 platformclientv2/holdupdatedevent.go
@@ -4182,6 +4217,7 @@ platformclientv2/qualityauditlogmessage.go
 platformclientv2/qualityauditqueryexecutionresultsresponse.go
 platformclientv2/qualityauditqueryexecutionstatusresponse.go
 platformclientv2/qualityauditqueryfilter.go
+platformclientv2/queryadherenceexplanationsresponse.go
 platformclientv2/querydivision.go
 platformclientv2/queryfacetinfo.go
 platformclientv2/queryrequest.go
@@ -4993,6 +5029,7 @@ platformclientv2/unreadmetric.go
 platformclientv2/unreadstatus.go
 platformclientv2/updateactioninput.go
 platformclientv2/updateactivitycoderequest.go
+platformclientv2/updateadherenceexplanationstatusrequest.go
 platformclientv2/updateanalyticsdataretentionrequest.go
 platformclientv2/updatebusinessunitrequest.go
 platformclientv2/updatebusinessunitsettingsrequest.go
@@ -5334,6 +5371,8 @@ platformclientv2/wfmhistoricaladherenceresponse.go
 platformclientv2/wfmhistoricaladherenceresultwrapper.go
 platformclientv2/wfmhistoricaldatauploadpurgerequeststatustopichistoricaldatauploadpurgerequestupdate.go
 platformclientv2/wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate.go
+platformclientv2/wfmhistoricalshrinkagerequest.go
+platformclientv2/wfmhistoricalshrinkageresponse.go
 platformclientv2/wfmintradaydataupdatetopicintradaydatagroup.go
 platformclientv2/wfmintradaydataupdatetopicintradaydataupdate.go
 platformclientv2/wfmintradaydataupdatetopicintradayforecastdata.go

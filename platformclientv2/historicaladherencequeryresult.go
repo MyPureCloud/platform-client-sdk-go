@@ -13,6 +13,10 @@ type Historicaladherencequeryresult struct {
 	UserId *string `json:"userId,omitempty"`
 
 
+	// ManagementUnitId - The ID of the management unit of the user for whom the adherence is queried
+	ManagementUnitId *string `json:"managementUnitId,omitempty"`
+
+
 	// StartDate - Beginning of the date range that was queried, in ISO-8601 format
 	StartDate *time.Time `json:"startDate,omitempty"`
 
@@ -82,6 +86,8 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
+		ManagementUnitId *string `json:"managementUnitId,omitempty"`
+		
 		StartDate *string `json:"startDate,omitempty"`
 		
 		EndDate *string `json:"endDate,omitempty"`
@@ -102,6 +108,8 @@ func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		UserId: o.UserId,
+		
+		ManagementUnitId: o.ManagementUnitId,
 		
 		StartDate: StartDate,
 		
@@ -133,6 +141,10 @@ func (o *Historicaladherencequeryresult) UnmarshalJSON(b []byte) error {
 	
 	if UserId, ok := HistoricaladherencequeryresultMap["userId"].(string); ok {
 		o.UserId = &UserId
+	}
+    
+	if ManagementUnitId, ok := HistoricaladherencequeryresultMap["managementUnitId"].(string); ok {
+		o.ManagementUnitId = &ManagementUnitId
 	}
     
 	if startDateString, ok := HistoricaladherencequeryresultMap["startDate"].(string); ok {

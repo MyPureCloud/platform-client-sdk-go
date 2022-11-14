@@ -31,7 +31,7 @@ func NewAnalyticsApiWithConfig(config *Configuration) *AnalyticsApi {
 
 // DeleteAnalyticsConversationsDetailsJob invokes DELETE /api/v2/analytics/conversations/details/jobs/{jobId}
 //
-// Delete/cancel an async request
+// Delete/cancel an async details job
 func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -513,7 +513,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 
 // GetAnalyticsConversationsDetailsJobResults invokes GET /api/v2/analytics/conversations/details/jobs/{jobId}/results
 //
-// Fetch a page of results for an async query
+// Fetch a page of results for an async details job
 func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -1848,7 +1848,7 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 // GetRoutingEmailDomains invokes GET /api/v2/routing/email/domains
 //
 // Get domains
-func (a RoutingApi) GetRoutingEmailDomains(excludeStatus bool) (*Inbounddomainentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, excludeStatus bool) (*Inbounddomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains"
@@ -1874,6 +1874,10 @@ func (a RoutingApi) GetRoutingEmailDomains(excludeStatus bool) (*Inbounddomainen
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["excludeStatus"] = a.Configuration.APIClient.ParameterToString(excludeStatus, "")
 	

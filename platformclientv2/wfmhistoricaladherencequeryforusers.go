@@ -17,7 +17,7 @@ type Wfmhistoricaladherencequeryforusers struct {
 	EndDate *time.Time `json:"endDate,omitempty"`
 
 
-	// TimeZone - The time zone, in olson format, to use in defining days when computing adherence. If it is not set, the business unit time zone will be used. The results will be returned as UTC timestamps regardless of the time zone input.
+	// TimeZone - The time zone, in olson format, to use in defining days when computing adherence. The results will be returned as UTC timestamps regardless of the time zone input.
 	TimeZone *string `json:"timeZone,omitempty"`
 
 
