@@ -72,9 +72,9 @@ func (a BillingApi) GetBillingReportsBillableusage(startDate time.Time, endDate 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["startDate"] = a.Configuration.APIClient.ParameterToString(startDate, "")
+	queryParams["startDate"] = startDate.Format(time.RFC3339)
 	
-	queryParams["endDate"] = a.Configuration.APIClient.ParameterToString(endDate, "")
+	queryParams["endDate"] = endDate.Format(time.RFC3339)
 	
 
 	// to determine the Content-Type header
