@@ -17,6 +17,10 @@ type Dialerresponsesetconfigchangeresponseset struct {
 	BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -64,6 +68,8 @@ func (o *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error)
 		
 		BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -78,6 +84,8 @@ func (o *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error)
 		Responses: o.Responses,
 		
 		BeepDetectionEnabled: o.BeepDetectionEnabled,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -108,6 +116,11 @@ func (o *Dialerresponsesetconfigchangeresponseset) UnmarshalJSON(b []byte) error
 		o.BeepDetectionEnabled = &BeepDetectionEnabled
 	}
     
+	if AdditionalProperties, ok := DialerresponsesetconfigchangeresponsesetMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 	if Id, ok := DialerresponsesetconfigchangeresponsesetMap["id"].(string); ok {
 		o.Id = &Id
 	}

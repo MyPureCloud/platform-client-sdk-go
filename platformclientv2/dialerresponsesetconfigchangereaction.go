@@ -19,6 +19,10 @@ type Dialerresponsesetconfigchangereaction struct {
 	// ReactionType
 	ReactionType *string `json:"reactionType,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialerresponsesetconfigchangereaction) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Dialerresponsesetconfigchangereaction) MarshalJSON() ([]byte, error) {
 		Name *string `json:"name,omitempty"`
 		
 		ReactionType *string `json:"reactionType,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Data: o.Data,
@@ -39,6 +45,8 @@ func (o *Dialerresponsesetconfigchangereaction) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		ReactionType: o.ReactionType,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -62,6 +70,11 @@ func (o *Dialerresponsesetconfigchangereaction) UnmarshalJSON(b []byte) error {
 		o.ReactionType = &ReactionType
 	}
     
+	if AdditionalProperties, ok := DialerresponsesetconfigchangereactionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

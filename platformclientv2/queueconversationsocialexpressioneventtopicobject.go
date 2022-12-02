@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Queueconversationsocialexpressioneventtopicobject - The number of peer participants from the perspective of the participant in the conference.
+// Queueconversationsocialexpressioneventtopicobject
 type Queueconversationsocialexpressioneventtopicobject struct { }
 
 func (o *Queueconversationsocialexpressioneventtopicobject) MarshalJSON() ([]byte, error) {

@@ -25,6 +25,10 @@ type Dialercontactlistfilterconfigchangecontactlistfilter struct {
 	FilterType *string `json:"filterType,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -76,6 +80,8 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) MarshalJSON() ([]
 		
 		FilterType *string `json:"filterType,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -94,6 +100,8 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) MarshalJSON() ([]
 		Clauses: o.Clauses,
 		
 		FilterType: o.FilterType,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -134,6 +142,11 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) UnmarshalJSON(b [
 		o.FilterType = &FilterType
 	}
     
+	if AdditionalProperties, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 	if Id, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["id"].(string); ok {
 		o.Id = &Id
 	}

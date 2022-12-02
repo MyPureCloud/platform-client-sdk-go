@@ -33,6 +33,10 @@ type Dialerattemptlimitsconfigchangeattemptlimits struct {
 	BreadthFirstRecalls *bool `json:"breadthFirstRecalls,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -88,6 +92,8 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) MarshalJSON() ([]byte, er
 		
 		BreadthFirstRecalls *bool `json:"breadthFirstRecalls,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -110,6 +116,8 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) MarshalJSON() ([]byte, er
 		RecallEntries: o.RecallEntries,
 		
 		BreadthFirstRecalls: o.BreadthFirstRecalls,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -158,6 +166,11 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) UnmarshalJSON(b []byte) e
 		o.BreadthFirstRecalls = &BreadthFirstRecalls
 	}
     
+	if AdditionalProperties, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 	if Id, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["id"].(string); ok {
 		o.Id = &Id
 	}

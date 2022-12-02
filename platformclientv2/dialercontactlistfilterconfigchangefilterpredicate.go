@@ -31,6 +31,10 @@ type Dialercontactlistfilterconfigchangefilterpredicate struct {
 	// Inverted - Whether or not to invert to result of evaluating the predicate
 	Inverted *bool `json:"inverted,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]byte, error) {
@@ -50,6 +54,8 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]by
 		VarRange *Dialercontactlistfilterconfigchangerange `json:"range,omitempty"`
 		
 		Inverted *bool `json:"inverted,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Column: o.Column,
@@ -63,6 +69,8 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]by
 		VarRange: o.VarRange,
 		
 		Inverted: o.Inverted,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -99,6 +107,11 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) UnmarshalJSON(b []b
 		o.Inverted = &Inverted
 	}
     
+	if AdditionalProperties, ok := DialercontactlistfilterconfigchangefilterpredicateMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

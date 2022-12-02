@@ -12,6 +12,10 @@ type Dialerrulesetconfigchangecondition struct {
 	DataAction *Dialerrulesetconfigchangeurireference `json:"dataAction,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// VarType - The type of the condition
 	VarType *string `json:"type,omitempty"`
 
@@ -81,6 +85,8 @@ func (o *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		DataAction *Dialerrulesetconfigchangeurireference `json:"dataAction,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		Inverted *bool `json:"inverted,omitempty"`
@@ -113,6 +119,8 @@ func (o *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 		*Alias
 	}{ 
 		DataAction: o.DataAction,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		VarType: o.VarType,
 		
@@ -157,6 +165,11 @@ func (o *Dialerrulesetconfigchangecondition) UnmarshalJSON(b []byte) error {
 	if DataAction, ok := DialerrulesetconfigchangeconditionMap["dataAction"].(map[string]interface{}); ok {
 		DataActionString, _ := json.Marshal(DataAction)
 		json.Unmarshal(DataActionString, &o.DataAction)
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangeconditionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 	if VarType, ok := DialerrulesetconfigchangeconditionMap["type"].(string); ok {

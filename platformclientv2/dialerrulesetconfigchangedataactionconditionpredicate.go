@@ -27,6 +27,10 @@ type Dialerrulesetconfigchangedataactionconditionpredicate struct {
 	// Inverted - If true, inverts the result of evaluating this Predicate. Default is false.
 	Inverted *bool `json:"inverted,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([
 		OutputFieldMissingResolution *bool `json:"outputFieldMissingResolution,omitempty"`
 		
 		Inverted *bool `json:"inverted,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		OutputField: o.OutputField,
@@ -55,6 +61,8 @@ func (o *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([
 		OutputFieldMissingResolution: o.OutputFieldMissingResolution,
 		
 		Inverted: o.Inverted,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -86,6 +94,11 @@ func (o *Dialerrulesetconfigchangedataactionconditionpredicate) UnmarshalJSON(b 
 		o.Inverted = &Inverted
 	}
     
+	if AdditionalProperties, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

@@ -27,6 +27,10 @@ type Queueconversationsocialexpressioneventtopicdialerpreview struct {
 	// PhoneNumberColumns - The phone number columns associated with this campaign
 	PhoneNumberColumns *[]Queueconversationsocialexpressioneventtopicphonenumbercolumn `json:"phoneNumberColumns,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Queueconversationsocialexpressioneventtopicdialerpreview) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Queueconversationsocialexpressioneventtopicdialerpreview) MarshalJSON()
 		CampaignId *string `json:"campaignId,omitempty"`
 		
 		PhoneNumberColumns *[]Queueconversationsocialexpressioneventtopicphonenumbercolumn `json:"phoneNumberColumns,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -55,6 +61,8 @@ func (o *Queueconversationsocialexpressioneventtopicdialerpreview) MarshalJSON()
 		CampaignId: o.CampaignId,
 		
 		PhoneNumberColumns: o.PhoneNumberColumns,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -85,6 +93,11 @@ func (o *Queueconversationsocialexpressioneventtopicdialerpreview) UnmarshalJSON
 	if PhoneNumberColumns, ok := QueueconversationsocialexpressioneventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)
+	}
+	
+	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicdialerpreviewMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

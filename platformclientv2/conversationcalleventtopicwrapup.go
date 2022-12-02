@@ -28,6 +28,10 @@ type Conversationcalleventtopicwrapup struct {
 	// EndTime - The timestamp when the wrapup was finished.
 	EndTime *time.Time `json:"endTime,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Conversationcalleventtopicwrapup) MarshalJSON() ([]byte, error) {
@@ -53,6 +57,8 @@ func (o *Conversationcalleventtopicwrapup) MarshalJSON() ([]byte, error) {
 		DurationSeconds *int `json:"durationSeconds,omitempty"`
 		
 		EndTime *string `json:"endTime,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Code: o.Code,
@@ -64,6 +70,8 @@ func (o *Conversationcalleventtopicwrapup) MarshalJSON() ([]byte, error) {
 		DurationSeconds: o.DurationSeconds,
 		
 		EndTime: EndTime,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -96,6 +104,11 @@ func (o *Conversationcalleventtopicwrapup) UnmarshalJSON(b []byte) error {
 	if endTimeString, ok := ConversationcalleventtopicwrapupMap["endTime"].(string); ok {
 		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
 		o.EndTime = &EndTime
+	}
+	
+	if AdditionalProperties, ok := ConversationcalleventtopicwrapupMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

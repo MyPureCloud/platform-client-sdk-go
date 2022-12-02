@@ -23,6 +23,10 @@ type Dialerrulesetconfigchangeaction struct {
 	// Properties - Map of key-value pairs pertinent to the action (different actions require different properties)
 	Properties *map[string]string `json:"properties,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialerrulesetconfigchangeaction) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Dialerrulesetconfigchangeaction) MarshalJSON() ([]byte, error) {
 		UpdateOption *string `json:"updateOption,omitempty"`
 		
 		Properties *map[string]string `json:"properties,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		VarType: o.VarType,
@@ -47,6 +53,8 @@ func (o *Dialerrulesetconfigchangeaction) MarshalJSON() ([]byte, error) {
 		UpdateOption: o.UpdateOption,
 		
 		Properties: o.Properties,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -73,6 +81,11 @@ func (o *Dialerrulesetconfigchangeaction) UnmarshalJSON(b []byte) error {
 	if Properties, ok := DialerrulesetconfigchangeactionMap["properties"].(map[string]interface{}); ok {
 		PropertiesString, _ := json.Marshal(Properties)
 		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangeactionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

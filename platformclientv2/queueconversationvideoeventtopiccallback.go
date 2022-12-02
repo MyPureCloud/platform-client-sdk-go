@@ -112,6 +112,10 @@ type Queueconversationvideoeventtopiccallback struct {
 	// CallerIdName - The name displayed to recipients of the phone call.
 	CallerIdName *string `json:"callerIdName,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error) {
@@ -203,6 +207,8 @@ func (o *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error)
 		CallerId *string `json:"callerId,omitempty"`
 		
 		CallerIdName *string `json:"callerIdName,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -256,6 +262,8 @@ func (o *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error)
 		CallerId: o.CallerId,
 		
 		CallerIdName: o.CallerIdName,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -381,6 +389,11 @@ func (o *Queueconversationvideoeventtopiccallback) UnmarshalJSON(b []byte) error
 		o.CallerIdName = &CallerIdName
 	}
     
+	if AdditionalProperties, ok := QueueconversationvideoeventtopiccallbackMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

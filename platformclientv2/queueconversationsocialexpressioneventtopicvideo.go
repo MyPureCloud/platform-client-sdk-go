@@ -84,6 +84,10 @@ type Queueconversationsocialexpressioneventtopicvideo struct {
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte, error) {
@@ -145,6 +149,8 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte
 		AfterCallWork *Queueconversationsocialexpressioneventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -184,6 +190,8 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -278,6 +286,11 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) UnmarshalJSON(b []byt
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
     
+	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicvideoMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

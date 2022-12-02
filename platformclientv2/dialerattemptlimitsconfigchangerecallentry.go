@@ -15,6 +15,10 @@ type Dialerattemptlimitsconfigchangerecallentry struct {
 	// MinutesBetweenAttempts - How long to wait between recall attempts
 	MinutesBetweenAttempts *int `json:"minutesBetweenAttempts,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialerattemptlimitsconfigchangerecallentry) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Dialerattemptlimitsconfigchangerecallentry) MarshalJSON() ([]byte, erro
 		NbrAttempts *int `json:"nbrAttempts,omitempty"`
 		
 		MinutesBetweenAttempts *int `json:"minutesBetweenAttempts,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		NbrAttempts: o.NbrAttempts,
 		
 		MinutesBetweenAttempts: o.MinutesBetweenAttempts,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Dialerattemptlimitsconfigchangerecallentry) UnmarshalJSON(b []byte) err
 	if MinutesBetweenAttempts, ok := DialerattemptlimitsconfigchangerecallentryMap["minutesBetweenAttempts"].(float64); ok {
 		MinutesBetweenAttemptsInt := int(MinutesBetweenAttempts)
 		o.MinutesBetweenAttempts = &MinutesBetweenAttemptsInt
+	}
+	
+	if AdditionalProperties, ok := DialerattemptlimitsconfigchangerecallentryMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

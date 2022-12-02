@@ -19,6 +19,10 @@ type Dialercampaignruleconfigchangecampaignrulecondition struct {
 	// ConditionType - The type of this condition
 	ConditionType *string `json:"conditionType,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]b
 		Parameters *map[string]string `json:"parameters,omitempty"`
 		
 		ConditionType *string `json:"conditionType,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -39,6 +45,8 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]b
 		Parameters: o.Parameters,
 		
 		ConditionType: o.ConditionType,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -63,6 +71,11 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) UnmarshalJSON(b []
 		o.ConditionType = &ConditionType
 	}
     
+	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleconditionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

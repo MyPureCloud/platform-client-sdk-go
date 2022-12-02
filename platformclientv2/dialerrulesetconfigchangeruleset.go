@@ -21,6 +21,10 @@ type Dialerrulesetconfigchangeruleset struct {
 	Rules *[]Dialerrulesetconfigchangerule `json:"rules,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -70,6 +74,8 @@ func (o *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
 		
 		Rules *[]Dialerrulesetconfigchangerule `json:"rules,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -86,6 +92,8 @@ func (o *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
 		Queue: o.Queue,
 		
 		Rules: o.Rules,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -120,6 +128,11 @@ func (o *Dialerrulesetconfigchangeruleset) UnmarshalJSON(b []byte) error {
 	if Rules, ok := DialerrulesetconfigchangerulesetMap["rules"].([]interface{}); ok {
 		RulesString, _ := json.Marshal(Rules)
 		json.Unmarshal(RulesString, &o.Rules)
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangerulesetMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 	if Id, ok := DialerrulesetconfigchangerulesetMap["id"].(string); ok {

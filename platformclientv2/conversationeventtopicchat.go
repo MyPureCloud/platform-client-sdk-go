@@ -76,6 +76,10 @@ type Conversationeventtopicchat struct {
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Conversationeventtopicchat) MarshalJSON() ([]byte, error) {
@@ -141,6 +145,8 @@ func (o *Conversationeventtopicchat) MarshalJSON() ([]byte, error) {
 		AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -176,6 +182,8 @@ func (o *Conversationeventtopicchat) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -261,6 +269,11 @@ func (o *Conversationeventtopicchat) UnmarshalJSON(b []byte) error {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
     
+	if AdditionalProperties, ok := ConversationeventtopicchatMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

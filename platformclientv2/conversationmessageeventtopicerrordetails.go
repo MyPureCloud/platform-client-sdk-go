@@ -35,6 +35,10 @@ type Conversationmessageeventtopicerrordetails struct {
 	// Uri
 	Uri *string `json:"uri,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Conversationmessageeventtopicerrordetails) MarshalJSON() ([]byte, error) {
@@ -56,6 +60,8 @@ func (o *Conversationmessageeventtopicerrordetails) MarshalJSON() ([]byte, error
 		ContextId *string `json:"contextId,omitempty"`
 		
 		Uri *string `json:"uri,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Status: o.Status,
@@ -71,6 +77,8 @@ func (o *Conversationmessageeventtopicerrordetails) MarshalJSON() ([]byte, error
 		ContextId: o.ContextId,
 		
 		Uri: o.Uri,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -112,6 +120,11 @@ func (o *Conversationmessageeventtopicerrordetails) UnmarshalJSON(b []byte) erro
 		o.Uri = &Uri
 	}
     
+	if AdditionalProperties, ok := ConversationmessageeventtopicerrordetailsMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

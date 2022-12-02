@@ -11,6 +11,10 @@ type Queueconversationsocialexpressioneventtopicworkflow struct {
 	// WorkflowId - The id of the workflow
 	WorkflowId *string `json:"workflowId,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Queueconversationsocialexpressioneventtopicworkflow) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Queueconversationsocialexpressioneventtopicworkflow) MarshalJSON() ([]b
 	
 	return json.Marshal(&struct { 
 		WorkflowId *string `json:"workflowId,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		WorkflowId: o.WorkflowId,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -38,6 +46,11 @@ func (o *Queueconversationsocialexpressioneventtopicworkflow) UnmarshalJSON(b []
 		o.WorkflowId = &WorkflowId
 	}
     
+	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicworkflowMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

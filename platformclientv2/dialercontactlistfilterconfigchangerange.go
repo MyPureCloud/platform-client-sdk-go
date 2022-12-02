@@ -27,6 +27,10 @@ type Dialercontactlistfilterconfigchangerange struct {
 	// InSet - Elements that apply to the IN operator
 	InSet *[]string `json:"inSet,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error)
 		MaxInclusive *bool `json:"maxInclusive,omitempty"`
 		
 		InSet *[]string `json:"inSet,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Min: o.Min,
@@ -55,6 +61,8 @@ func (o *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error)
 		MaxInclusive: o.MaxInclusive,
 		
 		InSet: o.InSet,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -85,6 +93,11 @@ func (o *Dialercontactlistfilterconfigchangerange) UnmarshalJSON(b []byte) error
 	if InSet, ok := DialercontactlistfilterconfigchangerangeMap["inSet"].([]interface{}); ok {
 		InSetString, _ := json.Marshal(InSet)
 		json.Unmarshal(InSetString, &o.InSet)
+	}
+	
+	if AdditionalProperties, ok := DialercontactlistfilterconfigchangerangeMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

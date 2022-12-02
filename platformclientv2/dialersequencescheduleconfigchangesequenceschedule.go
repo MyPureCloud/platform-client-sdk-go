@@ -21,6 +21,10 @@ type Dialersequencescheduleconfigchangesequenceschedule struct {
 	Sequence *Dialersequencescheduleconfigchangeurireference `json:"sequence,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -70,6 +74,8 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]by
 		
 		Sequence *Dialersequencescheduleconfigchangeurireference `json:"sequence,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -86,6 +92,8 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]by
 		TimeZone: o.TimeZone,
 		
 		Sequence: o.Sequence,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -119,6 +127,11 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) UnmarshalJSON(b []b
 	if Sequence, ok := DialersequencescheduleconfigchangesequencescheduleMap["sequence"].(map[string]interface{}); ok {
 		SequenceString, _ := json.Marshal(Sequence)
 		json.Unmarshal(SequenceString, &o.Sequence)
+	}
+	
+	if AdditionalProperties, ok := DialersequencescheduleconfigchangesequencescheduleMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 	if Id, ok := DialersequencescheduleconfigchangesequencescheduleMap["id"].(string); ok {

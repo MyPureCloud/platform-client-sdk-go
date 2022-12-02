@@ -19,6 +19,10 @@ type Dialercallabletimesetconfigchangetimeslot struct {
 	// Day - The day this time slot applies
 	Day *int `json:"day,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercallabletimesetconfigchangetimeslot) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Dialercallabletimesetconfigchangetimeslot) MarshalJSON() ([]byte, error
 		StopTime *string `json:"stopTime,omitempty"`
 		
 		Day *int `json:"day,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		StartTime: o.StartTime,
@@ -39,6 +45,8 @@ func (o *Dialercallabletimesetconfigchangetimeslot) MarshalJSON() ([]byte, error
 		StopTime: o.StopTime,
 		
 		Day: o.Day,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -61,6 +69,11 @@ func (o *Dialercallabletimesetconfigchangetimeslot) UnmarshalJSON(b []byte) erro
 	if Day, ok := DialercallabletimesetconfigchangetimeslotMap["day"].(float64); ok {
 		DayInt := int(Day)
 		o.Day = &DayInt
+	}
+	
+	if AdditionalProperties, ok := DialercallabletimesetconfigchangetimeslotMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

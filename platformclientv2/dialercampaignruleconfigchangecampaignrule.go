@@ -29,6 +29,10 @@ type Dialercampaignruleconfigchangecampaignrule struct {
 	Enabled *bool `json:"enabled,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -82,6 +86,8 @@ func (o *Dialercampaignruleconfigchangecampaignrule) MarshalJSON() ([]byte, erro
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -102,6 +108,8 @@ func (o *Dialercampaignruleconfigchangecampaignrule) MarshalJSON() ([]byte, erro
 		MatchAnyConditions: o.MatchAnyConditions,
 		
 		Enabled: o.Enabled,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -146,6 +154,11 @@ func (o *Dialercampaignruleconfigchangecampaignrule) UnmarshalJSON(b []byte) err
 		o.Enabled = &Enabled
 	}
     
+	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 	if Id, ok := DialercampaignruleconfigchangecampaignruleMap["id"].(string); ok {
 		o.Id = &Id
 	}

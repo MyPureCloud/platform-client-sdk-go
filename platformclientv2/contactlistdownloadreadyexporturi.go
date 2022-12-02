@@ -15,6 +15,10 @@ type Contactlistdownloadreadyexporturi struct {
 	// ExportTimestamp
 	ExportTimestamp *string `json:"exportTimestamp,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Contactlistdownloadreadyexporturi) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Contactlistdownloadreadyexporturi) MarshalJSON() ([]byte, error) {
 		Uri *string `json:"uri,omitempty"`
 		
 		ExportTimestamp *string `json:"exportTimestamp,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Uri: o.Uri,
 		
 		ExportTimestamp: o.ExportTimestamp,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Contactlistdownloadreadyexporturi) UnmarshalJSON(b []byte) error {
 		o.ExportTimestamp = &ExportTimestamp
 	}
     
+	if AdditionalProperties, ok := ContactlistdownloadreadyexporturiMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

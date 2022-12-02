@@ -27,6 +27,10 @@ type Queueconversationeventtopicaddress struct {
 	// AddressDisplayable - The displayable address. This field is acquired from the Address Normalization Table.  The addressRaw could have gone through some transformations, such as only using the numeric portion, before being run through the Address Normalization Table.
 	AddressDisplayable *string `json:"addressDisplayable,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 		AddressRaw *string `json:"addressRaw,omitempty"`
 		
 		AddressDisplayable *string `json:"addressDisplayable,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -55,6 +61,8 @@ func (o *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 		AddressRaw: o.AddressRaw,
 		
 		AddressDisplayable: o.AddressDisplayable,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -86,6 +94,11 @@ func (o *Queueconversationeventtopicaddress) UnmarshalJSON(b []byte) error {
 		o.AddressDisplayable = &AddressDisplayable
 	}
     
+	if AdditionalProperties, ok := QueueconversationeventtopicaddressMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

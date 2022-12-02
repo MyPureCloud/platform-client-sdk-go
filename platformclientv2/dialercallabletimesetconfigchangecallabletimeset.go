@@ -13,6 +13,10 @@ type Dialercallabletimesetconfigchangecallabletimeset struct {
 	CallableTimes *[]Dialercallabletimesetconfigchangecallabletime `json:"callableTimes,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -58,6 +62,8 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) MarshalJSON() ([]byte
 	return json.Marshal(&struct { 
 		CallableTimes *[]Dialercallabletimesetconfigchangecallabletime `json:"callableTimes,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -70,6 +76,8 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) MarshalJSON() ([]byte
 		*Alias
 	}{ 
 		CallableTimes: o.CallableTimes,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -94,6 +102,11 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) UnmarshalJSON(b []byt
 	if CallableTimes, ok := DialercallabletimesetconfigchangecallabletimesetMap["callableTimes"].([]interface{}); ok {
 		CallableTimesString, _ := json.Marshal(CallableTimes)
 		json.Unmarshal(CallableTimesString, &o.CallableTimes)
+	}
+	
+	if AdditionalProperties, ok := DialercallabletimesetconfigchangecallabletimesetMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 	if Id, ok := DialercallabletimesetconfigchangecallabletimesetMap["id"].(string); ok {

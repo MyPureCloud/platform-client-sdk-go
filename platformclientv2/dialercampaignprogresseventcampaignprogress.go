@@ -27,6 +27,10 @@ type Dialercampaignprogresseventcampaignprogress struct {
 	// Percentage - numberOfContactsContacted/totalNumberOfContacts*100
 	Percentage *int `json:"percentage,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, err
 		TotalNumberOfContacts *float32 `json:"totalNumberOfContacts,omitempty"`
 		
 		Percentage *int `json:"percentage,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Campaign: o.Campaign,
@@ -55,6 +61,8 @@ func (o *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, err
 		TotalNumberOfContacts: o.TotalNumberOfContacts,
 		
 		Percentage: o.Percentage,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -89,6 +97,11 @@ func (o *Dialercampaignprogresseventcampaignprogress) UnmarshalJSON(b []byte) er
 	if Percentage, ok := DialercampaignprogresseventcampaignprogressMap["percentage"].(float64); ok {
 		PercentageInt := int(Percentage)
 		o.Percentage = &PercentageInt
+	}
+	
+	if AdditionalProperties, ok := DialercampaignprogresseventcampaignprogressMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

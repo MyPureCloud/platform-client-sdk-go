@@ -15,6 +15,10 @@ type Dialercampaignconfigchangeresterrordetail struct {
 	// Details - additional information regarding the error
 	Details *string `json:"details,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercampaignconfigchangeresterrordetail) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Dialercampaignconfigchangeresterrordetail) MarshalJSON() ([]byte, error
 		VarError *string `json:"error,omitempty"`
 		
 		Details *string `json:"details,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		VarError: o.VarError,
 		
 		Details: o.Details,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Dialercampaignconfigchangeresterrordetail) UnmarshalJSON(b []byte) erro
 		o.Details = &Details
 	}
     
+	if AdditionalProperties, ok := DialercampaignconfigchangeresterrordetailMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

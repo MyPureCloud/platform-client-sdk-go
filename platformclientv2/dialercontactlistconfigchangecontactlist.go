@@ -53,6 +53,10 @@ type Dialercontactlistconfigchangecontactlist struct {
 	Division *Dialercontactlistconfigchangeurireference `json:"division,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -118,6 +122,8 @@ func (o *Dialercontactlistconfigchangecontactlist) MarshalJSON() ([]byte, error)
 		
 		Division *Dialercontactlistconfigchangeurireference `json:"division,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -150,6 +156,8 @@ func (o *Dialercontactlistconfigchangecontactlist) MarshalJSON() ([]byte, error)
 		ZipCodeColumnName: o.ZipCodeColumnName,
 		
 		Division: o.Division,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -221,6 +229,11 @@ func (o *Dialercontactlistconfigchangecontactlist) UnmarshalJSON(b []byte) error
 	if Division, ok := DialercontactlistconfigchangecontactlistMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if AdditionalProperties, ok := DialercontactlistconfigchangecontactlistMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 	if Id, ok := DialercontactlistconfigchangecontactlistMap["id"].(string); ok {

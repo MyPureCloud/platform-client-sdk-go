@@ -15,6 +15,10 @@ type Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping struct {
 	// DataActionField - The name of an output field from the data action that the contact column data will be passed to
 	DataActionField *string `json:"dataActionField,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) Marshal
 		ContactColumnName *string `json:"contactColumnName,omitempty"`
 		
 		DataActionField *string `json:"dataActionField,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		ContactColumnName: o.ContactColumnName,
 		
 		DataActionField: o.DataActionField,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) Unmarsh
 		o.DataActionField = &DataActionField
 	}
     
+	if AdditionalProperties, ok := DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

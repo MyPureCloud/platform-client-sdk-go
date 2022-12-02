@@ -21,6 +21,10 @@ type Dialercampaignscheduleconfigchangecampaignschedule struct {
 	Campaign *Dialercampaignscheduleconfigchangeurireference `json:"campaign,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -70,6 +74,8 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) MarshalJSON() ([]by
 		
 		Campaign *Dialercampaignscheduleconfigchangeurireference `json:"campaign,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -86,6 +92,8 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) MarshalJSON() ([]by
 		TimeZone: o.TimeZone,
 		
 		Campaign: o.Campaign,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -119,6 +127,11 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) UnmarshalJSON(b []b
 	if Campaign, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["campaign"].(map[string]interface{}); ok {
 		CampaignString, _ := json.Marshal(Campaign)
 		json.Unmarshal(CampaignString, &o.Campaign)
+	}
+	
+	if AdditionalProperties, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 	if Id, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["id"].(string); ok {

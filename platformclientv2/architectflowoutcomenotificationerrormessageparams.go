@@ -7,15 +7,23 @@ import (
 )
 
 // Architectflowoutcomenotificationerrormessageparams - The error message params, if the action failed
-type Architectflowoutcomenotificationerrormessageparams struct { }
+type Architectflowoutcomenotificationerrormessageparams struct { 
+	// AdditionalProperties
+	AdditionalProperties *map[string]string `json:"additionalProperties,omitempty"`
+
+}
 
 func (o *Architectflowoutcomenotificationerrormessageparams) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflowoutcomenotificationerrormessageparams
 	
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(o),
+	return json.Marshal(&struct { 
+		AdditionalProperties *map[string]string `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
 }
 
@@ -24,6 +32,11 @@ func (o *Architectflowoutcomenotificationerrormessageparams) UnmarshalJSON(b []b
 	err := json.Unmarshal(b, &ArchitectflowoutcomenotificationerrormessageparamsMap)
 	if err != nil {
 		return err
+	}
+	
+	if AdditionalProperties, ok := ArchitectflowoutcomenotificationerrormessageparamsMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

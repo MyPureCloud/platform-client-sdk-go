@@ -27,6 +27,10 @@ type Conversationeventtopicdialerpreview struct {
 	// PhoneNumberColumns - The phone number columns associated with this campaign
 	PhoneNumberColumns *[]Conversationeventtopicphonenumbercolumn `json:"phoneNumberColumns,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Conversationeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Conversationeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
 		CampaignId *string `json:"campaignId,omitempty"`
 		
 		PhoneNumberColumns *[]Conversationeventtopicphonenumbercolumn `json:"phoneNumberColumns,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -55,6 +61,8 @@ func (o *Conversationeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
 		CampaignId: o.CampaignId,
 		
 		PhoneNumberColumns: o.PhoneNumberColumns,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -85,6 +93,11 @@ func (o *Conversationeventtopicdialerpreview) UnmarshalJSON(b []byte) error {
 	if PhoneNumberColumns, ok := ConversationeventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)
+	}
+	
+	if AdditionalProperties, ok := ConversationeventtopicdialerpreviewMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

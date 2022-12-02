@@ -27,6 +27,10 @@ type Outboundmessagingmessagingcampaignprogresseventcampaignprogress struct {
 	// Percentage - numberOfContactsContacted/totalNumberOfContacts*100
 	Percentage *int `json:"percentage,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Outboundmessagingmessagingcampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Outboundmessagingmessagingcampaignprogresseventcampaignprogress) Marsha
 		TotalNumberOfContacts *float32 `json:"totalNumberOfContacts,omitempty"`
 		
 		Percentage *int `json:"percentage,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Campaign: o.Campaign,
@@ -55,6 +61,8 @@ func (o *Outboundmessagingmessagingcampaignprogresseventcampaignprogress) Marsha
 		TotalNumberOfContacts: o.TotalNumberOfContacts,
 		
 		Percentage: o.Percentage,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -89,6 +97,11 @@ func (o *Outboundmessagingmessagingcampaignprogresseventcampaignprogress) Unmars
 	if Percentage, ok := OutboundmessagingmessagingcampaignprogresseventcampaignprogressMap["percentage"].(float64); ok {
 		PercentageInt := int(Percentage)
 		o.Percentage = &PercentageInt
+	}
+	
+	if AdditionalProperties, ok := OutboundmessagingmessagingcampaignprogresseventcampaignprogressMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

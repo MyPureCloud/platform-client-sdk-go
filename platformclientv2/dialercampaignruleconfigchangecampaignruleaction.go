@@ -23,6 +23,10 @@ type Dialercampaignruleconfigchangecampaignruleaction struct {
 	// CampaignRuleActionEntities
 	CampaignRuleActionEntities *Dialercampaignruleconfigchangecampaignruleactionentities `json:"campaignRuleActionEntities,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercampaignruleconfigchangecampaignruleaction) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Dialercampaignruleconfigchangecampaignruleaction) MarshalJSON() ([]byte
 		ActionType *string `json:"actionType,omitempty"`
 		
 		CampaignRuleActionEntities *Dialercampaignruleconfigchangecampaignruleactionentities `json:"campaignRuleActionEntities,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -47,6 +53,8 @@ func (o *Dialercampaignruleconfigchangecampaignruleaction) MarshalJSON() ([]byte
 		ActionType: o.ActionType,
 		
 		CampaignRuleActionEntities: o.CampaignRuleActionEntities,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -74,6 +82,11 @@ func (o *Dialercampaignruleconfigchangecampaignruleaction) UnmarshalJSON(b []byt
 	if CampaignRuleActionEntities, ok := DialercampaignruleconfigchangecampaignruleactionMap["campaignRuleActionEntities"].(map[string]interface{}); ok {
 		CampaignRuleActionEntitiesString, _ := json.Marshal(CampaignRuleActionEntities)
 		json.Unmarshal(CampaignRuleActionEntitiesString, &o.CampaignRuleActionEntities)
+	}
+	
+	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleactionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

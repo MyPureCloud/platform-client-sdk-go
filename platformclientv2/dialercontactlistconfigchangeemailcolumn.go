@@ -15,6 +15,10 @@ type Dialercontactlistconfigchangeemailcolumn struct {
 	// VarType - The type of the email address column, for example, 'work' or 'home'
 	VarType *string `json:"type,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercontactlistconfigchangeemailcolumn) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Dialercontactlistconfigchangeemailcolumn) MarshalJSON() ([]byte, error)
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Dialercontactlistconfigchangeemailcolumn) UnmarshalJSON(b []byte) error
 		o.VarType = &VarType
 	}
     
+	if AdditionalProperties, ok := DialercontactlistconfigchangeemailcolumnMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

@@ -15,6 +15,10 @@ type Userroutingstatususerparam struct {
 	// Value
 	Value *string `json:"value,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Userroutingstatususerparam) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Userroutingstatususerparam) MarshalJSON() ([]byte, error) {
 		Key *string `json:"key,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Key: o.Key,
 		
 		Value: o.Value,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Userroutingstatususerparam) UnmarshalJSON(b []byte) error {
 		o.Value = &Value
 	}
     
+	if AdditionalProperties, ok := UserroutingstatususerparamMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

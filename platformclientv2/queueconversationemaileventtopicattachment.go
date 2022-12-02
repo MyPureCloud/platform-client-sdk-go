@@ -27,6 +27,10 @@ type Queueconversationemaileventtopicattachment struct {
 	// ContentLength - The length of the attachment file.
 	ContentLength *int `json:"contentLength,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Queueconversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Queueconversationemaileventtopicattachment) MarshalJSON() ([]byte, erro
 		ContentType *string `json:"contentType,omitempty"`
 		
 		ContentLength *int `json:"contentLength,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		AttachmentId: o.AttachmentId,
@@ -55,6 +61,8 @@ func (o *Queueconversationemaileventtopicattachment) MarshalJSON() ([]byte, erro
 		ContentType: o.ContentType,
 		
 		ContentLength: o.ContentLength,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -85,6 +93,11 @@ func (o *Queueconversationemaileventtopicattachment) UnmarshalJSON(b []byte) err
 	if ContentLength, ok := QueueconversationemaileventtopicattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
+	}
+	
+	if AdditionalProperties, ok := QueueconversationemaileventtopicattachmentMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

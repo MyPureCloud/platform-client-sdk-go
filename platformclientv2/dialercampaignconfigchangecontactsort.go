@@ -19,6 +19,10 @@ type Dialercampaignconfigchangecontactsort struct {
 	// Numeric - Whether that column contains numeric data
 	Numeric *bool `json:"numeric,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Dialercampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
 		Direction *string `json:"direction,omitempty"`
 		
 		Numeric *bool `json:"numeric,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		FieldName: o.FieldName,
@@ -39,6 +45,8 @@ func (o *Dialercampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
 		Direction: o.Direction,
 		
 		Numeric: o.Numeric,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -62,6 +70,11 @@ func (o *Dialercampaignconfigchangecontactsort) UnmarshalJSON(b []byte) error {
 		o.Numeric = &Numeric
 	}
     
+	if AdditionalProperties, ok := DialercampaignconfigchangecontactsortMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

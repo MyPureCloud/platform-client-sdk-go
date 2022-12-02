@@ -121,6 +121,10 @@ type Dialercampaignconfigchangecampaign struct {
 	AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
@@ -220,6 +224,8 @@ func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
 		
 		AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -286,6 +292,8 @@ func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
 		Division: o.Division,
 		
 		AgentOwnedColumn: o.AgentOwnedColumn,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Id: o.Id,
 		
@@ -439,6 +447,11 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 		o.AgentOwnedColumn = &AgentOwnedColumn
 	}
     
+	if AdditionalProperties, ok := DialercampaignconfigchangecampaignMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 	if Id, ok := DialercampaignconfigchangecampaignMap["id"].(string); ok {
 		o.Id = &Id
 	}

@@ -27,6 +27,10 @@ type Contactlistimportstatusimportstatus struct {
 	// FailureReason - if the import has failed, the reason for the failure
 	FailureReason *string `json:"failureReason,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		PercentageComplete *int `json:"percentageComplete,omitempty"`
 		
 		FailureReason *string `json:"failureReason,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		ImportState: o.ImportState,
@@ -55,6 +61,8 @@ func (o *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		PercentageComplete: o.PercentageComplete,
 		
 		FailureReason: o.FailureReason,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -89,6 +97,11 @@ func (o *Contactlistimportstatusimportstatus) UnmarshalJSON(b []byte) error {
 		o.FailureReason = &FailureReason
 	}
     
+	if AdditionalProperties, ok := ContactlistimportstatusimportstatusMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

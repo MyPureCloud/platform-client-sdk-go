@@ -12,6 +12,10 @@ type Dialercampaignruleconfigchangecampaignruleactionentities struct {
 	UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
 
 
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+
 	// Campaigns - A list of campaignIds to act on
 	Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
 
@@ -29,12 +33,16 @@ func (o *Dialercampaignruleconfigchangecampaignruleactionentities) MarshalJSON()
 	return json.Marshal(&struct { 
 		UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
 		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
 		Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
 		
 		Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
 		*Alias
 	}{ 
 		UseTriggeringEntity: o.UseTriggeringEntity,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		
 		Campaigns: o.Campaigns,
 		
@@ -54,6 +62,11 @@ func (o *Dialercampaignruleconfigchangecampaignruleactionentities) UnmarshalJSON
 		o.UseTriggeringEntity = &UseTriggeringEntity
 	}
     
+	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 	if Campaigns, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["campaigns"].([]interface{}); ok {
 		CampaignsString, _ := json.Marshal(Campaigns)
 		json.Unmarshal(CampaignsString, &o.Campaigns)

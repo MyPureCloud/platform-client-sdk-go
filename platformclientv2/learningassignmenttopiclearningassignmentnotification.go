@@ -52,6 +52,10 @@ type Learningassignmenttopiclearningassignmentnotification struct {
 	// IsOverdue
 	IsOverdue *bool `json:"isOverdue,omitempty"`
 
+
+	// LengthInMinutes
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+
 }
 
 func (o *Learningassignmenttopiclearningassignmentnotification) MarshalJSON() ([]byte, error) {
@@ -105,6 +109,8 @@ func (o *Learningassignmenttopiclearningassignmentnotification) MarshalJSON() ([
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		IsOverdue *bool `json:"isOverdue,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -128,6 +134,8 @@ func (o *Learningassignmenttopiclearningassignmentnotification) MarshalJSON() ([
 		DateModified: DateModified,
 		
 		IsOverdue: o.IsOverdue,
+		
+		LengthInMinutes: o.LengthInMinutes,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -191,6 +199,11 @@ func (o *Learningassignmenttopiclearningassignmentnotification) UnmarshalJSON(b 
 		o.IsOverdue = &IsOverdue
 	}
     
+	if LengthInMinutes, ok := LearningassignmenttopiclearningassignmentnotificationMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
 
 	return nil
 }

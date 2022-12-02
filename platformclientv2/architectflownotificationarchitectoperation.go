@@ -40,8 +40,8 @@ type Architectflownotificationarchitectoperation struct {
 	ErrorCode *string `json:"errorCode,omitempty"`
 
 
-	// ErrorMessageParams - The error message params, if the action failed
-	ErrorMessageParams *interface{} `json:"errorMessageParams,omitempty"`
+	// ErrorMessageParams
+	ErrorMessageParams *Architectflownotificationerrormessageparams `json:"errorMessageParams,omitempty"`
 
 
 	// ErrorDetails - The error details, if the action failed
@@ -71,7 +71,7 @@ func (o *Architectflownotificationarchitectoperation) MarshalJSON() ([]byte, err
 		
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
-		ErrorMessageParams *interface{} `json:"errorMessageParams,omitempty"`
+		ErrorMessageParams *Architectflownotificationerrormessageparams `json:"errorMessageParams,omitempty"`
 		
 		ErrorDetails *[]Architectflownotificationerrordetail `json:"errorDetails,omitempty"`
 		*Alias

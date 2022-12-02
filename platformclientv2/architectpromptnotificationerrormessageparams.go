@@ -7,15 +7,23 @@ import (
 )
 
 // Architectpromptnotificationerrormessageparams - The error message params, if the action failed
-type Architectpromptnotificationerrormessageparams struct { }
+type Architectpromptnotificationerrormessageparams struct { 
+	// AdditionalProperties
+	AdditionalProperties *map[string]string `json:"additionalProperties,omitempty"`
+
+}
 
 func (o *Architectpromptnotificationerrormessageparams) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectpromptnotificationerrormessageparams
 	
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(o),
+	return json.Marshal(&struct { 
+		AdditionalProperties *map[string]string `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
 }
 
@@ -24,6 +32,11 @@ func (o *Architectpromptnotificationerrormessageparams) UnmarshalJSON(b []byte) 
 	err := json.Unmarshal(b, &ArchitectpromptnotificationerrormessageparamsMap)
 	if err != nil {
 		return err
+	}
+	
+	if AdditionalProperties, ok := ArchitectpromptnotificationerrormessageparamsMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

@@ -15,6 +15,10 @@ type Dialercallabletimesetconfigchangecallabletime struct {
 	// TimeZoneId - The ISO ID for the timezone
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
 }
 
 func (o *Dialercallabletimesetconfigchangecallabletime) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Dialercallabletimesetconfigchangecallabletime) MarshalJSON() ([]byte, e
 		TimeSlots *[]Dialercallabletimesetconfigchangetimeslot `json:"timeSlots,omitempty"`
 		
 		TimeZoneId *string `json:"timeZoneId,omitempty"`
+		
+		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		TimeSlots: o.TimeSlots,
 		
 		TimeZoneId: o.TimeZoneId,
+		
+		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -51,6 +59,11 @@ func (o *Dialercallabletimesetconfigchangecallabletime) UnmarshalJSON(b []byte) 
 		o.TimeZoneId = &TimeZoneId
 	}
     
+	if AdditionalProperties, ok := DialercallabletimesetconfigchangecallabletimeMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
 
 	return nil
 }

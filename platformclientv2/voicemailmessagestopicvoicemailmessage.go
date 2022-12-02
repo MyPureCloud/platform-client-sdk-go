@@ -33,6 +33,10 @@ type Voicemailmessagestopicvoicemailmessage struct {
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
 
+	// CreatedDateString
+	CreatedDateString *string `json:"createdDateString,omitempty"`
+
+
 	// CallerAddress
 	CallerAddress *string `json:"callerAddress,omitempty"`
 
@@ -63,6 +67,10 @@ type Voicemailmessagestopicvoicemailmessage struct {
 
 	// CopiedFrom
 	CopiedFrom *Voicemailmessagestopicvoicemailcopyrecord `json:"copiedFrom,omitempty"`
+
+
+	// ModifiedDateString
+	ModifiedDateString *string `json:"modifiedDateString,omitempty"`
 
 }
 
@@ -100,6 +108,8 @@ func (o *Voicemailmessagestopicvoicemailmessage) MarshalJSON() ([]byte, error) {
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		
+		CreatedDateString *string `json:"createdDateString,omitempty"`
+		
 		CallerAddress *string `json:"callerAddress,omitempty"`
 		
 		CallerName *string `json:"callerName,omitempty"`
@@ -115,6 +125,8 @@ func (o *Voicemailmessagestopicvoicemailmessage) MarshalJSON() ([]byte, error) {
 		CopiedTo *[]Voicemailmessagestopicvoicemailcopyrecord `json:"copiedTo,omitempty"`
 		
 		CopiedFrom *Voicemailmessagestopicvoicemailcopyrecord `json:"copiedFrom,omitempty"`
+		
+		ModifiedDateString *string `json:"modifiedDateString,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -128,6 +140,8 @@ func (o *Voicemailmessagestopicvoicemailmessage) MarshalJSON() ([]byte, error) {
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
+		
+		CreatedDateString: o.CreatedDateString,
 		
 		CallerAddress: o.CallerAddress,
 		
@@ -144,6 +158,8 @@ func (o *Voicemailmessagestopicvoicemailmessage) MarshalJSON() ([]byte, error) {
 		CopiedTo: o.CopiedTo,
 		
 		CopiedFrom: o.CopiedFrom,
+		
+		ModifiedDateString: o.ModifiedDateString,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -183,6 +199,10 @@ func (o *Voicemailmessagestopicvoicemailmessage) UnmarshalJSON(b []byte) error {
 		o.ModifiedDate = &ModifiedDate
 	}
 	
+	if CreatedDateString, ok := VoicemailmessagestopicvoicemailmessageMap["createdDateString"].(string); ok {
+		o.CreatedDateString = &CreatedDateString
+	}
+    
 	if CallerAddress, ok := VoicemailmessagestopicvoicemailmessageMap["callerAddress"].(string); ok {
 		o.CallerAddress = &CallerAddress
 	}
@@ -217,6 +237,10 @@ func (o *Voicemailmessagestopicvoicemailmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CopiedFromString, &o.CopiedFrom)
 	}
 	
+	if ModifiedDateString, ok := VoicemailmessagestopicvoicemailmessageMap["modifiedDateString"].(string); ok {
+		o.ModifiedDateString = &ModifiedDateString
+	}
+    
 
 	return nil
 }
