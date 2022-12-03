@@ -33,6 +33,10 @@ type Developmentactivity struct {
 	IsPassed *bool `json:"isPassed,omitempty"`
 
 
+	// IsLatest - True if this is the latest version of assignment assigned to the user
+	IsLatest *bool `json:"isLatest,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -108,6 +112,8 @@ func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
 		
 		IsPassed *bool `json:"isPassed,omitempty"`
 		
+		IsLatest *bool `json:"isLatest,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -136,6 +142,8 @@ func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
 		PercentageScore: o.PercentageScore,
 		
 		IsPassed: o.IsPassed,
+		
+		IsLatest: o.IsLatest,
 		
 		SelfUri: o.SelfUri,
 		
@@ -189,6 +197,10 @@ func (o *Developmentactivity) UnmarshalJSON(b []byte) error {
 	
 	if IsPassed, ok := DevelopmentactivityMap["isPassed"].(bool); ok {
 		o.IsPassed = &IsPassed
+	}
+    
+	if IsLatest, ok := DevelopmentactivityMap["isLatest"].(bool); ok {
+		o.IsLatest = &IsLatest
 	}
     
 	if SelfUri, ok := DevelopmentactivityMap["selfUri"].(string); ok {

@@ -8,7 +8,7 @@ import (
 
 // Responsefilter - Used to filter response queries
 type Responsefilter struct { 
-	// Name - Field to filter on. Allowed values are 'name' and 'libraryId.
+	// Name - Field to filter on. Allowed values are 'name', 'libraryId', 'text.contentType', 'messagingTemplate' and 'responseType'
 	Name *string `json:"name,omitempty"`
 
 
@@ -16,7 +16,7 @@ type Responsefilter struct {
 	Operator *string `json:"operator,omitempty"`
 
 
-	// Values - Values to filter on.
+	// Values - Values to filter on. If name is 'responseType' then allowed values are 'CampaignSmsTemplate', 'CampaignEmailTemplate', 'Footer' and 'Signature'
 	Values *[]string `json:"values,omitempty"`
 
 }

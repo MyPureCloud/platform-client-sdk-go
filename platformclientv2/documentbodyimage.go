@@ -11,6 +11,10 @@ type Documentbodyimage struct {
 	// Url - The URL for the image.
 	Url *string `json:"url,omitempty"`
 
+
+	// Hyperlink - The URL of the page that the hyperlink goes to.
+	Hyperlink *string `json:"hyperlink,omitempty"`
+
 }
 
 func (o *Documentbodyimage) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Documentbodyimage) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
+		
+		Hyperlink *string `json:"hyperlink,omitempty"`
 		*Alias
 	}{ 
 		Url: o.Url,
+		
+		Hyperlink: o.Hyperlink,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -36,6 +44,10 @@ func (o *Documentbodyimage) UnmarshalJSON(b []byte) error {
 	
 	if Url, ok := DocumentbodyimageMap["url"].(string); ok {
 		o.Url = &Url
+	}
+    
+	if Hyperlink, ok := DocumentbodyimageMap["hyperlink"].(string); ok {
+		o.Hyperlink = &Hyperlink
 	}
     
 

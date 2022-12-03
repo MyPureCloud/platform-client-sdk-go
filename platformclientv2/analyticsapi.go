@@ -224,7 +224,7 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 // GetAnalyticsBotflowReportingturns invokes GET /api/v2/analytics/botflows/{botFlowId}/reportingturns
 //
 // Get Reporting Turns.
-func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after string, pageSize string, actionId string, sessionId string, language string) (*Reportingturnsresponse, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after string, pageSize string, actionId string, sessionId string, language string, askActionResults string) (*Reportingturnsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/botflows/{botFlowId}/reportingturns"
@@ -266,6 +266,8 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 	queryParams["sessionId"] = a.Configuration.APIClient.ParameterToString(sessionId, "")
 	
 	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
+	
+	queryParams["askActionResults"] = a.Configuration.APIClient.ParameterToString(askActionResults, "")
 	
 
 	// to determine the Content-Type header

@@ -7117,6 +7117,80 @@ func (a OutboundApi) PostOutboundDigitalrulesets(body Digitalruleset) (*Digitalr
 	return successPayload, response, err
 }
 
+// PostOutboundDnclistEmailaddresses invokes POST /api/v2/outbound/dnclists/{dncListId}/emailaddresses
+//
+// Add email addresses to a DNC list.
+//
+// Only Internal DNC lists may be appended to
+func (a OutboundApi) PostOutboundDnclistEmailaddresses(dncListId string, body []string) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/emailaddresses"
+	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'dncListId' is set
+	if &dncListId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->PostOutboundDnclistEmailaddresses")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// true
+		return nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundDnclistEmailaddresses")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PostOutboundDnclistExport invokes POST /api/v2/outbound/dnclists/{dncListId}/export
 //
 // Initiate the export of a dnc list.

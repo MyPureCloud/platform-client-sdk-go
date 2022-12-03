@@ -29,6 +29,14 @@ type Phoneestablishedevent struct {
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 
 
+	// Ani - The automatic number identification if it is available for this conversation.
+	Ani *string `json:"ani,omitempty"`
+
+
+	// Dnis - The dialed number identification if it is available for this conversation.
+	Dnis *string `json:"dnis,omitempty"`
+
+
 	// InitialConfiguration - Metadata about this communication.
 	InitialConfiguration *Initialconfiguration `json:"initialConfiguration,omitempty"`
 
@@ -62,6 +70,10 @@ func (o *Phoneestablishedevent) MarshalJSON() ([]byte, error) {
 		
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
+		Ani *string `json:"ani,omitempty"`
+		
+		Dnis *string `json:"dnis,omitempty"`
+		
 		InitialConfiguration *Initialconfiguration `json:"initialConfiguration,omitempty"`
 		
 		SourceConfiguration *Sourceconfiguration `json:"sourceConfiguration,omitempty"`
@@ -76,6 +88,10 @@ func (o *Phoneestablishedevent) MarshalJSON() ([]byte, error) {
 		CommunicationId: o.CommunicationId,
 		
 		PhoneNumber: o.PhoneNumber,
+		
+		Ani: o.Ani,
+		
+		Dnis: o.Dnis,
 		
 		InitialConfiguration: o.InitialConfiguration,
 		
@@ -110,6 +126,14 @@ func (o *Phoneestablishedevent) UnmarshalJSON(b []byte) error {
     
 	if PhoneNumber, ok := PhoneestablishedeventMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
+	}
+    
+	if Ani, ok := PhoneestablishedeventMap["ani"].(string); ok {
+		o.Ani = &Ani
+	}
+    
+	if Dnis, ok := PhoneestablishedeventMap["dnis"].(string); ok {
+		o.Dnis = &Dnis
 	}
     
 	if InitialConfiguration, ok := PhoneestablishedeventMap["initialConfiguration"].(map[string]interface{}); ok {

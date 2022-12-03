@@ -37,6 +37,14 @@ type Userestablishedevent struct {
 	StationId *string `json:"stationId,omitempty"`
 
 
+	// Ani - The automatic number identification if it is available for this conversation.
+	Ani *string `json:"ani,omitempty"`
+
+
+	// Dnis - The dialed number identification if it is available for this conversation.
+	Dnis *string `json:"dnis,omitempty"`
+
+
 	// AfterCallWorkRequired - Indicates whether or not this user will be required to complete after call work.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
@@ -82,6 +90,10 @@ func (o *Userestablishedevent) MarshalJSON() ([]byte, error) {
 		
 		StationId *string `json:"stationId,omitempty"`
 		
+		Ani *string `json:"ani,omitempty"`
+		
+		Dnis *string `json:"dnis,omitempty"`
+		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		QueueId *string `json:"queueId,omitempty"`
@@ -104,6 +116,10 @@ func (o *Userestablishedevent) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		StationId: o.StationId,
+		
+		Ani: o.Ani,
+		
+		Dnis: o.Dnis,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
@@ -150,6 +166,14 @@ func (o *Userestablishedevent) UnmarshalJSON(b []byte) error {
     
 	if StationId, ok := UserestablishedeventMap["stationId"].(string); ok {
 		o.StationId = &StationId
+	}
+    
+	if Ani, ok := UserestablishedeventMap["ani"].(string); ok {
+		o.Ani = &Ani
+	}
+    
+	if Dnis, ok := UserestablishedeventMap["dnis"].(string); ok {
+		o.Dnis = &Dnis
 	}
     
 	if AfterCallWorkRequired, ok := UserestablishedeventMap["afterCallWorkRequired"].(bool); ok {

@@ -57,6 +57,10 @@ type Limitchangerequestdetails struct {
 	RejectReason *string `json:"rejectReason,omitempty"`
 
 
+	// ApprovalNamespaces - The approval breakdown for this override request.
+	ApprovalNamespaces *[]Approvalnamespace `json:"approvalNamespaces,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -108,6 +112,8 @@ func (o *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 		
 		RejectReason *string `json:"rejectReason,omitempty"`
 		
+		ApprovalNamespaces *[]Approvalnamespace `json:"approvalNamespaces,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -134,6 +140,8 @@ func (o *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 		DateCompleted: DateCompleted,
 		
 		RejectReason: o.RejectReason,
+		
+		ApprovalNamespaces: o.ApprovalNamespaces,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -198,6 +206,11 @@ func (o *Limitchangerequestdetails) UnmarshalJSON(b []byte) error {
 		o.RejectReason = &RejectReason
 	}
     
+	if ApprovalNamespaces, ok := LimitchangerequestdetailsMap["approvalNamespaces"].([]interface{}); ok {
+		ApprovalNamespacesString, _ := json.Marshal(ApprovalNamespaces)
+		json.Unmarshal(ApprovalNamespacesString, &o.ApprovalNamespaces)
+	}
+	
 	if SelfUri, ok := LimitchangerequestdetailsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -1918,7 +1918,7 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 // GetArchitectIvrs invokes GET /api/v2/architect/ivrs
 //
 // Get IVR configs.
-func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, dnis string) (*Ivrentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, dnis string, scheduleGroup string) (*Ivrentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs"
@@ -1956,6 +1956,8 @@ func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy stri
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 	queryParams["dnis"] = a.Configuration.APIClient.ParameterToString(dnis, "")
+	
+	queryParams["scheduleGroup"] = a.Configuration.APIClient.ParameterToString(scheduleGroup, "")
 	
 
 	// to determine the Content-Type header

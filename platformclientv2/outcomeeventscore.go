@@ -19,6 +19,14 @@ type Outcomeeventscore struct {
 	// Probability - Represents the likelihood of a customer reaching or achieving a given outcome.
 	Probability *float32 `json:"probability,omitempty"`
 
+
+	// Percentile - Represents the predicted probability's percentile score when compared with all other generated probabilities for a given outcome.
+	Percentile *int `json:"percentile,omitempty"`
+
+
+	// SessionMaxPercentile - Represents the maximum likelihood percentile score reached for a given outcome by the current session.
+	SessionMaxPercentile *int `json:"sessionMaxPercentile,omitempty"`
+
 }
 
 func (o *Outcomeeventscore) MarshalJSON() ([]byte, error) {
@@ -32,6 +40,10 @@ func (o *Outcomeeventscore) MarshalJSON() ([]byte, error) {
 		SessionMaxProbability *float32 `json:"sessionMaxProbability,omitempty"`
 		
 		Probability *float32 `json:"probability,omitempty"`
+		
+		Percentile *int `json:"percentile,omitempty"`
+		
+		SessionMaxPercentile *int `json:"sessionMaxPercentile,omitempty"`
 		*Alias
 	}{ 
 		Outcome: o.Outcome,
@@ -39,6 +51,10 @@ func (o *Outcomeeventscore) MarshalJSON() ([]byte, error) {
 		SessionMaxProbability: o.SessionMaxProbability,
 		
 		Probability: o.Probability,
+		
+		Percentile: o.Percentile,
+		
+		SessionMaxPercentile: o.SessionMaxPercentile,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -63,6 +79,16 @@ func (o *Outcomeeventscore) UnmarshalJSON(b []byte) error {
 	if Probability, ok := OutcomeeventscoreMap["probability"].(float64); ok {
 		ProbabilityFloat32 := float32(Probability)
 		o.Probability = &ProbabilityFloat32
+	}
+	
+	if Percentile, ok := OutcomeeventscoreMap["percentile"].(float64); ok {
+		PercentileInt := int(Percentile)
+		o.Percentile = &PercentileInt
+	}
+	
+	if SessionMaxPercentile, ok := OutcomeeventscoreMap["sessionMaxPercentile"].(float64); ok {
+		SessionMaxPercentileInt := int(SessionMaxPercentile)
+		o.SessionMaxPercentile = &SessionMaxPercentileInt
 	}
 	
 

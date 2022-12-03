@@ -17,6 +17,10 @@ type Timeoffbalanceresponse struct {
 	HrisTimeOffTypeId *string `json:"hrisTimeOffTypeId,omitempty"`
 
 
+	// HrisTimeOffTypeSecondaryId - The secondary ID of the time off type configured in HRIS integration
+	HrisTimeOffTypeSecondaryId *string `json:"hrisTimeOffTypeSecondaryId,omitempty"`
+
+
 	// StartDate - The Start date of the requested date range. The end date is determined by the size of interval list. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	StartDate *time.Time `json:"startDate,omitempty"`
 
@@ -43,6 +47,8 @@ func (o *Timeoffbalanceresponse) MarshalJSON() ([]byte, error) {
 		
 		HrisTimeOffTypeId *string `json:"hrisTimeOffTypeId,omitempty"`
 		
+		HrisTimeOffTypeSecondaryId *string `json:"hrisTimeOffTypeSecondaryId,omitempty"`
+		
 		StartDate *string `json:"startDate,omitempty"`
 		
 		BalanceMinutesPerDay *[]int `json:"balanceMinutesPerDay,omitempty"`
@@ -51,6 +57,8 @@ func (o *Timeoffbalanceresponse) MarshalJSON() ([]byte, error) {
 		ActivityCodeId: o.ActivityCodeId,
 		
 		HrisTimeOffTypeId: o.HrisTimeOffTypeId,
+		
+		HrisTimeOffTypeSecondaryId: o.HrisTimeOffTypeSecondaryId,
 		
 		StartDate: StartDate,
 		
@@ -72,6 +80,10 @@ func (o *Timeoffbalanceresponse) UnmarshalJSON(b []byte) error {
     
 	if HrisTimeOffTypeId, ok := TimeoffbalanceresponseMap["hrisTimeOffTypeId"].(string); ok {
 		o.HrisTimeOffTypeId = &HrisTimeOffTypeId
+	}
+    
+	if HrisTimeOffTypeSecondaryId, ok := TimeoffbalanceresponseMap["hrisTimeOffTypeSecondaryId"].(string); ok {
+		o.HrisTimeOffTypeSecondaryId = &HrisTimeOffTypeSecondaryId
 	}
     
 	if startDateString, ok := TimeoffbalanceresponseMap["startDate"].(string); ok {

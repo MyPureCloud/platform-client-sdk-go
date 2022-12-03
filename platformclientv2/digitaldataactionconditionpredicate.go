@@ -27,10 +27,6 @@ type Digitaldataactionconditionpredicate struct {
 	// OutputFieldMissingResolution - The result of this predicate if the requested output field is missing from the data action's result
 	OutputFieldMissingResolution *bool `json:"outputFieldMissingResolution,omitempty"`
 
-
-	// ValueType - The data type the value should be treated as.
-	ValueType *string `json:"valueType,omitempty"`
-
 }
 
 func (o *Digitaldataactionconditionpredicate) MarshalJSON() ([]byte, error) {
@@ -48,8 +44,6 @@ func (o *Digitaldataactionconditionpredicate) MarshalJSON() ([]byte, error) {
 		Inverted *bool `json:"inverted,omitempty"`
 		
 		OutputFieldMissingResolution *bool `json:"outputFieldMissingResolution,omitempty"`
-		
-		ValueType *string `json:"valueType,omitempty"`
 		*Alias
 	}{ 
 		OutputField: o.OutputField,
@@ -61,8 +55,6 @@ func (o *Digitaldataactionconditionpredicate) MarshalJSON() ([]byte, error) {
 		Inverted: o.Inverted,
 		
 		OutputFieldMissingResolution: o.OutputFieldMissingResolution,
-		
-		ValueType: o.ValueType,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -92,10 +84,6 @@ func (o *Digitaldataactionconditionpredicate) UnmarshalJSON(b []byte) error {
     
 	if OutputFieldMissingResolution, ok := DigitaldataactionconditionpredicateMap["outputFieldMissingResolution"].(bool); ok {
 		o.OutputFieldMissingResolution = &OutputFieldMissingResolution
-	}
-    
-	if ValueType, ok := DigitaldataactionconditionpredicateMap["valueType"].(string); ok {
-		o.ValueType = &ValueType
 	}
     
 

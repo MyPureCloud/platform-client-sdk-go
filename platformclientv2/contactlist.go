@@ -41,6 +41,10 @@ type Contactlist struct {
 	PhoneColumns *[]Contactphonenumbercolumn `json:"phoneColumns,omitempty"`
 
 
+	// EmailColumns - Indicates which columns are email addresses
+	EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
+
+
 	// ImportStatus - The status of the import process.
 	ImportStatus *Importstatus `json:"importStatus,omitempty"`
 
@@ -112,6 +116,8 @@ func (o *Contactlist) MarshalJSON() ([]byte, error) {
 		
 		PhoneColumns *[]Contactphonenumbercolumn `json:"phoneColumns,omitempty"`
 		
+		EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
+		
 		ImportStatus *Importstatus `json:"importStatus,omitempty"`
 		
 		PreviewModeColumnName *string `json:"previewModeColumnName,omitempty"`
@@ -144,6 +150,8 @@ func (o *Contactlist) MarshalJSON() ([]byte, error) {
 		ColumnNames: o.ColumnNames,
 		
 		PhoneColumns: o.PhoneColumns,
+		
+		EmailColumns: o.EmailColumns,
 		
 		ImportStatus: o.ImportStatus,
 		
@@ -207,6 +215,11 @@ func (o *Contactlist) UnmarshalJSON(b []byte) error {
 	if PhoneColumns, ok := ContactlistMap["phoneColumns"].([]interface{}); ok {
 		PhoneColumnsString, _ := json.Marshal(PhoneColumns)
 		json.Unmarshal(PhoneColumnsString, &o.PhoneColumns)
+	}
+	
+	if EmailColumns, ok := ContactlistMap["emailColumns"].([]interface{}); ok {
+		EmailColumnsString, _ := json.Marshal(EmailColumns)
+		json.Unmarshal(EmailColumnsString, &o.EmailColumns)
 	}
 	
 	if ImportStatus, ok := ContactlistMap["importStatus"].(map[string]interface{}); ok {

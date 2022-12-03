@@ -33,6 +33,14 @@ type Routingestablishedevent struct {
 	QueueId *string `json:"queueId,omitempty"`
 
 
+	// Ani - The automatic number identification if it is available for this conversation.
+	Ani *string `json:"ani,omitempty"`
+
+
+	// Dnis - The dialed number identification if it is available for this conversation.
+	Dnis *string `json:"dnis,omitempty"`
+
+
 	// SkillIds - The unique identifiers (V4 UUID) for the skills that should be used to determine the destination for the conversation.
 	SkillIds *[]string `json:"skillIds,omitempty"`
 
@@ -76,6 +84,10 @@ func (o *Routingestablishedevent) MarshalJSON() ([]byte, error) {
 		
 		QueueId *string `json:"queueId,omitempty"`
 		
+		Ani *string `json:"ani,omitempty"`
+		
+		Dnis *string `json:"dnis,omitempty"`
+		
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
 		LanguageId *string `json:"languageId,omitempty"`
@@ -96,6 +108,10 @@ func (o *Routingestablishedevent) MarshalJSON() ([]byte, error) {
 		PhoneNumber: o.PhoneNumber,
 		
 		QueueId: o.QueueId,
+		
+		Ani: o.Ani,
+		
+		Dnis: o.Dnis,
 		
 		SkillIds: o.SkillIds,
 		
@@ -138,6 +154,14 @@ func (o *Routingestablishedevent) UnmarshalJSON(b []byte) error {
     
 	if QueueId, ok := RoutingestablishedeventMap["queueId"].(string); ok {
 		o.QueueId = &QueueId
+	}
+    
+	if Ani, ok := RoutingestablishedeventMap["ani"].(string); ok {
+		o.Ani = &Ani
+	}
+    
+	if Dnis, ok := RoutingestablishedeventMap["dnis"].(string); ok {
+		o.Dnis = &Dnis
 	}
     
 	if SkillIds, ok := RoutingestablishedeventMap["skillIds"].([]interface{}); ok {

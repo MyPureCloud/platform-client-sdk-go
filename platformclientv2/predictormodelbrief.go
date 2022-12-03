@@ -20,6 +20,10 @@ type Predictormodelbrief struct {
 	// RetrainingErrors - The model's retraining errors.
 	RetrainingErrors *[]Predictormodelretrainingerror `json:"retrainingErrors,omitempty"`
 
+
+	// State - The state of the model
+	State *string `json:"state,omitempty"`
+
 }
 
 func (o *Predictormodelbrief) MarshalJSON() ([]byte, error) {
@@ -41,6 +45,8 @@ func (o *Predictormodelbrief) MarshalJSON() ([]byte, error) {
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		RetrainingErrors *[]Predictormodelretrainingerror `json:"retrainingErrors,omitempty"`
+		
+		State *string `json:"state,omitempty"`
 		*Alias
 	}{ 
 		MediaType: o.MediaType,
@@ -48,6 +54,8 @@ func (o *Predictormodelbrief) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		RetrainingErrors: o.RetrainingErrors,
+		
+		State: o.State,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -73,6 +81,10 @@ func (o *Predictormodelbrief) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RetrainingErrorsString, &o.RetrainingErrors)
 	}
 	
+	if State, ok := PredictormodelbriefMap["state"].(string); ok {
+		o.State = &State
+	}
+    
 
 	return nil
 }

@@ -727,7 +727,7 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 // GetLearningModules invokes GET /api/v2/learning/modules
 //
 // Get all learning modules of an organization
-func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, isPublished string) (*Learningmodulesdomainentitylisting, *APIResponse, error) {
+func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, isPublished string, statuses []string) (*Learningmodulesdomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules"
@@ -771,6 +771,8 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["isPublished"] = a.Configuration.APIClient.ParameterToString(isPublished, "")
+	
+	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
 	
 
 	// to determine the Content-Type header

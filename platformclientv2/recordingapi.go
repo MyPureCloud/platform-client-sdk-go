@@ -1821,7 +1821,7 @@ func (a RecordingApi) GetRecordingKeyconfigurations() (*Recordingencryptionconfi
 
 // GetRecordingLocalkeysSetting invokes GET /api/v2/recording/localkeys/settings/{settingsId}
 //
-// Get the local encryption settings
+// Get the local encryption settings. Replaced by API recording/keyconfigurations/{keyConfigurationId}
 func (a RecordingApi) GetRecordingLocalkeysSetting(settingsId string) (*Localencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1892,7 +1892,7 @@ func (a RecordingApi) GetRecordingLocalkeysSetting(settingsId string) (*Localenc
 
 // GetRecordingLocalkeysSettings invokes GET /api/v2/recording/localkeys/settings
 //
-// gets a list local key settings data
+// gets a list local key settings data. Replaced by API recording/keyconfigurations
 func (a RecordingApi) GetRecordingLocalkeysSettings() (*Localencryptionconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3142,7 +3142,7 @@ func (a RecordingApi) PostRecordingKeyconfigurationsValidate(body Recordingencry
 
 // PostRecordingLocalkeys invokes POST /api/v2/recording/localkeys
 //
-// create a local recording key
+// create a local key management recording key
 func (a RecordingApi) PostRecordingLocalkeys(body Localencryptionkeyrequest) (*Encryptionkey, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3215,7 +3215,7 @@ func (a RecordingApi) PostRecordingLocalkeys(body Localencryptionkeyrequest) (*E
 
 // PostRecordingLocalkeysSettings invokes POST /api/v2/recording/localkeys/settings
 //
-// create settings for local key creation
+// create settings for local key creation. Replaced by API recording/keyconfigurations
 func (a RecordingApi) PostRecordingLocalkeysSettings(body Localencryptionconfiguration) (*Localencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4130,7 +4130,7 @@ func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, bo
 
 // PutRecordingLocalkeysSetting invokes PUT /api/v2/recording/localkeys/settings/{settingsId}
 //
-// Update the local encryption settings
+// Update the local encryption settings. Replaced by API recording/keyconfigurations/{keyConfigurationId}
 func (a RecordingApi) PutRecordingLocalkeysSetting(settingsId string, body Localencryptionconfiguration) (*Localencryptionconfiguration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

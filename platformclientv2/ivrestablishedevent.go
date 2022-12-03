@@ -33,6 +33,14 @@ type Ivrestablishedevent struct {
 	IvrName *string `json:"ivrName,omitempty"`
 
 
+	// Ani - The automatic number identification if it is available for this conversation.
+	Ani *string `json:"ani,omitempty"`
+
+
+	// Dnis - The dialed number identification if it is available for this conversation.
+	Dnis *string `json:"dnis,omitempty"`
+
+
 	// InitialConfiguration - Metadata about this communication.
 	InitialConfiguration *Initialconfiguration `json:"initialConfiguration,omitempty"`
 
@@ -68,6 +76,10 @@ func (o *Ivrestablishedevent) MarshalJSON() ([]byte, error) {
 		
 		IvrName *string `json:"ivrName,omitempty"`
 		
+		Ani *string `json:"ani,omitempty"`
+		
+		Dnis *string `json:"dnis,omitempty"`
+		
 		InitialConfiguration *Initialconfiguration `json:"initialConfiguration,omitempty"`
 		
 		SourceConfiguration *Sourceconfiguration `json:"sourceConfiguration,omitempty"`
@@ -84,6 +96,10 @@ func (o *Ivrestablishedevent) MarshalJSON() ([]byte, error) {
 		IvrPhoneNumber: o.IvrPhoneNumber,
 		
 		IvrName: o.IvrName,
+		
+		Ani: o.Ani,
+		
+		Dnis: o.Dnis,
 		
 		InitialConfiguration: o.InitialConfiguration,
 		
@@ -122,6 +138,14 @@ func (o *Ivrestablishedevent) UnmarshalJSON(b []byte) error {
     
 	if IvrName, ok := IvrestablishedeventMap["ivrName"].(string); ok {
 		o.IvrName = &IvrName
+	}
+    
+	if Ani, ok := IvrestablishedeventMap["ani"].(string); ok {
+		o.Ani = &Ani
+	}
+    
+	if Dnis, ok := IvrestablishedeventMap["dnis"].(string); ok {
+		o.Dnis = &Dnis
 	}
     
 	if InitialConfiguration, ok := IvrestablishedeventMap["initialConfiguration"].(map[string]interface{}); ok {

@@ -28,6 +28,10 @@ type Contactlistdivisionview struct {
 	PhoneColumns *[]Contactphonenumbercolumn `json:"phoneColumns,omitempty"`
 
 
+	// EmailColumns - Indicates which columns are email addresses.
+	EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
+
+
 	// ImportStatus - The status of the import process.
 	ImportStatus *Importstatus `json:"importStatus,omitempty"`
 
@@ -57,6 +61,8 @@ func (o *Contactlistdivisionview) MarshalJSON() ([]byte, error) {
 		
 		PhoneColumns *[]Contactphonenumbercolumn `json:"phoneColumns,omitempty"`
 		
+		EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
+		
 		ImportStatus *Importstatus `json:"importStatus,omitempty"`
 		
 		Size *int `json:"size,omitempty"`
@@ -73,6 +79,8 @@ func (o *Contactlistdivisionview) MarshalJSON() ([]byte, error) {
 		ColumnNames: o.ColumnNames,
 		
 		PhoneColumns: o.PhoneColumns,
+		
+		EmailColumns: o.EmailColumns,
 		
 		ImportStatus: o.ImportStatus,
 		
@@ -111,6 +119,11 @@ func (o *Contactlistdivisionview) UnmarshalJSON(b []byte) error {
 	if PhoneColumns, ok := ContactlistdivisionviewMap["phoneColumns"].([]interface{}); ok {
 		PhoneColumnsString, _ := json.Marshal(PhoneColumns)
 		json.Unmarshal(PhoneColumnsString, &o.PhoneColumns)
+	}
+	
+	if EmailColumns, ok := ContactlistdivisionviewMap["emailColumns"].([]interface{}); ok {
+		EmailColumnsString, _ := json.Marshal(EmailColumns)
+		json.Unmarshal(EmailColumnsString, &o.EmailColumns)
 	}
 	
 	if ImportStatus, ok := ContactlistdivisionviewMap["importStatus"].(map[string]interface{}); ok {

@@ -1618,6 +1618,7 @@ docs/PostOutboundContactlistfiltersPreview-example.txt
 docs/PostOutboundContactlists-example.txt
 docs/PostOutboundConversationDnc-example.txt
 docs/PostOutboundDigitalrulesets-example.txt
+docs/PostOutboundDnclistEmailaddresses-example.txt
 docs/PostOutboundDnclistExport-example.txt
 docs/PostOutboundDnclistPhonenumbers-example.txt
 docs/PostOutboundDnclists-example.txt
@@ -2173,6 +2174,7 @@ platformclientv2/apiusagequery.go
 platformclientv2/apiusagequeryresult.go
 platformclientv2/apiusagerow.go
 platformclientv2/appendtodncactionsettings.go
+platformclientv2/approvalnamespace.go
 platformclientv2/architectapi.go
 platformclientv2/architectdependencytrackingbuildnotificationclient.go
 platformclientv2/architectdependencytrackingbuildnotificationdependencytrackingbuildnotification.go
@@ -4049,7 +4051,6 @@ platformclientv2/openintegrationentitylisting.go
 platformclientv2/openintegrationrequest.go
 platformclientv2/openintegrationupdaterequest.go
 platformclientv2/openmessagecontent.go
-platformclientv2/openmessageevent.go
 platformclientv2/openmessagingchannel.go
 platformclientv2/openmessagingfromrecipient.go
 platformclientv2/openmessagingtorecipient.go

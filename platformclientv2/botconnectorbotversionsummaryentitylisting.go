@@ -32,16 +32,16 @@ type Botconnectorbotversionsummaryentitylisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// PageCount
@@ -67,11 +67,11 @@ func (o *Botconnectorbotversionsummaryentitylisting) MarshalJSON() ([]byte, erro
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -88,11 +88,11 @@ func (o *Botconnectorbotversionsummaryentitylisting) MarshalJSON() ([]byte, erro
 		
 		NextUri: o.NextUri,
 		
+		PreviousUri: o.PreviousUri,
+		
 		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
-		
-		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -134,16 +134,16 @@ func (o *Botconnectorbotversionsummaryentitylisting) UnmarshalJSON(b []byte) err
 		o.NextUri = &NextUri
 	}
     
+	if PreviousUri, ok := BotconnectorbotversionsummaryentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
 	if LastUri, ok := BotconnectorbotversionsummaryentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := BotconnectorbotversionsummaryentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if PreviousUri, ok := BotconnectorbotversionsummaryentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := BotconnectorbotversionsummaryentitylistingMap["pageCount"].(float64); ok {
