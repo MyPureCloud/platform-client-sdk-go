@@ -25,6 +25,10 @@ type Minerexecuterequest struct {
 	MediaType *string `json:"mediaType,omitempty"`
 
 
+	// ParticipantType - Type of the participant, either agent, customer or both.
+	ParticipantType *string `json:"participantType,omitempty"`
+
+
 	// QueueIds - List of queue IDs for filtering conversations.
 	QueueIds *[]string `json:"queueIds,omitempty"`
 
@@ -58,6 +62,8 @@ func (o *Minerexecuterequest) MarshalJSON() ([]byte, error) {
 		
 		MediaType *string `json:"mediaType,omitempty"`
 		
+		ParticipantType *string `json:"participantType,omitempty"`
+		
 		QueueIds *[]string `json:"queueIds,omitempty"`
 		*Alias
 	}{ 
@@ -68,6 +74,8 @@ func (o *Minerexecuterequest) MarshalJSON() ([]byte, error) {
 		UploadKey: o.UploadKey,
 		
 		MediaType: o.MediaType,
+		
+		ParticipantType: o.ParticipantType,
 		
 		QueueIds: o.QueueIds,
 		Alias:    (*Alias)(o),
@@ -97,6 +105,10 @@ func (o *Minerexecuterequest) UnmarshalJSON(b []byte) error {
     
 	if MediaType, ok := MinerexecuterequestMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if ParticipantType, ok := MinerexecuterequestMap["participantType"].(string); ok {
+		o.ParticipantType = &ParticipantType
 	}
     
 	if QueueIds, ok := MinerexecuterequestMap["queueIds"].([]interface{}); ok {

@@ -137,6 +137,10 @@ type Campaign struct {
 	Division *Domainentityref `json:"division,omitempty"`
 
 
+	// DynamicContactQueueingSettings - Settings for dynamic queueing of contacts.
+	DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -228,6 +232,8 @@ func (o *Campaign) MarshalJSON() ([]byte, error) {
 		
 		Division *Domainentityref `json:"division,omitempty"`
 		
+		DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -294,6 +300,8 @@ func (o *Campaign) MarshalJSON() ([]byte, error) {
 		ContactListFilters: o.ContactListFilters,
 		
 		Division: o.Division,
+		
+		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -455,6 +463,11 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if Division, ok := CampaignMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if DynamicContactQueueingSettings, ok := CampaignMap["dynamicContactQueueingSettings"].(map[string]interface{}); ok {
+		DynamicContactQueueingSettingsString, _ := json.Marshal(DynamicContactQueueingSettings)
+		json.Unmarshal(DynamicContactQueueingSettingsString, &o.DynamicContactQueueingSettings)
 	}
 	
 	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {

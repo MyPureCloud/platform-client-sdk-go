@@ -27,6 +27,10 @@ type Intentdefinition struct {
 	// Utterances - The utterances that act as training phrases for the intent.
 	Utterances *[]Nluutterance `json:"utterances,omitempty"`
 
+
+	// AdditionalLanguages - Additional languages for intents
+	AdditionalLanguages *map[string]Additionallanguagesintent `json:"additionalLanguages,omitempty"`
+
 }
 
 func (o *Intentdefinition) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Intentdefinition) MarshalJSON() ([]byte, error) {
 		EntityNameReferences *[]string `json:"entityNameReferences,omitempty"`
 		
 		Utterances *[]Nluutterance `json:"utterances,omitempty"`
+		
+		AdditionalLanguages *map[string]Additionallanguagesintent `json:"additionalLanguages,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -55,6 +61,8 @@ func (o *Intentdefinition) MarshalJSON() ([]byte, error) {
 		EntityNameReferences: o.EntityNameReferences,
 		
 		Utterances: o.Utterances,
+		
+		AdditionalLanguages: o.AdditionalLanguages,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -87,6 +95,11 @@ func (o *Intentdefinition) UnmarshalJSON(b []byte) error {
 	if Utterances, ok := IntentdefinitionMap["utterances"].([]interface{}); ok {
 		UtterancesString, _ := json.Marshal(Utterances)
 		json.Unmarshal(UtterancesString, &o.Utterances)
+	}
+	
+	if AdditionalLanguages, ok := IntentdefinitionMap["additionalLanguages"].(map[string]interface{}); ok {
+		AdditionalLanguagesString, _ := json.Marshal(AdditionalLanguages)
+		json.Unmarshal(AdditionalLanguagesString, &o.AdditionalLanguages)
 	}
 	
 

@@ -581,7 +581,7 @@ func (a PresenceApi) GetSystempresences() ([]Systempresence, *APIResponse, error
 //
 // Get a user's Presence
 //
-// Get a user&#39;s presence for the specified source that is not specifically listed.  Used to support custom presence sources.
+// Get a user&#39;s presence for the specified source that is not specifically listed.  Used to support custom presence sources. This endpoint does not support registered presence sources.
 func (a PresenceApi) GetUserPresence(userId string, sourceId string) (*Userpresence, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -733,7 +733,7 @@ func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *A
 //
 // Patch a user's Presence
 //
-// Patch a user&#39;s presence for the specified source that is not specifically listed. The presence object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the &#39;source&#39; defined in the path as the user&#39;s primary presence source. Option 2: Provide the presenceDefinition value. The &#39;id&#39; is the only value required within the presenceDefinition. Option 3: Provide the message value. Option 1 can be combined with Option 2 and/or Option 3.
+// Patch a user&#39;s presence for the specified source that is not specifically listed. This endpoint does not support registered presence sources. The presence object can be patched one of three ways. Option 1: Set the &#39;primary&#39; property to true. This will set the &#39;source&#39; defined in the path as the user&#39;s primary presence source. Option 2: Provide the presenceDefinition value. The &#39;id&#39; is the only value required within the presenceDefinition. Option 3: Provide the message value. Option 1 can be combined with Option 2 and/or Option 3.
 func (a PresenceApi) PatchUserPresence(userId string, sourceId string, body Userpresence) (*Userpresence, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

@@ -24,6 +24,10 @@ type Externalorganizationlisting struct {
 	Total *int `json:"total,omitempty"`
 
 
+	// PartialResults
+	PartialResults *bool `json:"partialResults,omitempty"`
+
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -32,12 +36,12 @@ type Externalorganizationlisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// SelfUri
@@ -63,13 +67,15 @@ func (o *Externalorganizationlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		PartialResults *bool `json:"partialResults,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -84,13 +90,15 @@ func (o *Externalorganizationlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		PartialResults: o.PartialResults,
+		
 		FirstUri: o.FirstUri,
 		
 		NextUri: o.NextUri,
 		
-		PreviousUri: o.PreviousUri,
-		
 		LastUri: o.LastUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -126,6 +134,10 @@ func (o *Externalorganizationlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if PartialResults, ok := ExternalorganizationlistingMap["partialResults"].(bool); ok {
+		o.PartialResults = &PartialResults
+	}
+    
 	if FirstUri, ok := ExternalorganizationlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -134,12 +146,12 @@ func (o *Externalorganizationlisting) UnmarshalJSON(b []byte) error {
 		o.NextUri = &NextUri
 	}
     
-	if PreviousUri, ok := ExternalorganizationlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if LastUri, ok := ExternalorganizationlistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if PreviousUri, ok := ExternalorganizationlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if SelfUri, ok := ExternalorganizationlistingMap["selfUri"].(string); ok {

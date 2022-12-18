@@ -297,12 +297,12 @@ type Analyticssession struct {
 	WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 
 
-	// ProposedAgents - Proposed agents
-	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
-
-
 	// AgentGroups - Conditional group routing agent groups
 	AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
+
+
+	// ProposedAgents - Proposed agents
+	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
 
 
 	// MediaEndpointStats - MediaEndpointStats associated with this session
@@ -488,9 +488,9 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 		
-		ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
-		
 		AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
+		
+		ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
 		
 		MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
 		
@@ -645,9 +645,9 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		WaitingInteractionCounts: o.WaitingInteractionCounts,
 		
-		ProposedAgents: o.ProposedAgents,
-		
 		AgentGroups: o.AgentGroups,
+		
+		ProposedAgents: o.ProposedAgents,
 		
 		MediaEndpointStats: o.MediaEndpointStats,
 		
@@ -972,14 +972,14 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(WaitingInteractionCountsString, &o.WaitingInteractionCounts)
 	}
 	
-	if ProposedAgents, ok := AnalyticssessionMap["proposedAgents"].([]interface{}); ok {
-		ProposedAgentsString, _ := json.Marshal(ProposedAgents)
-		json.Unmarshal(ProposedAgentsString, &o.ProposedAgents)
-	}
-	
 	if AgentGroups, ok := AnalyticssessionMap["agentGroups"].([]interface{}); ok {
 		AgentGroupsString, _ := json.Marshal(AgentGroups)
 		json.Unmarshal(AgentGroupsString, &o.AgentGroups)
+	}
+	
+	if ProposedAgents, ok := AnalyticssessionMap["proposedAgents"].([]interface{}); ok {
+		ProposedAgentsString, _ := json.Marshal(ProposedAgents)
+		json.Unmarshal(ProposedAgentsString, &o.ProposedAgents)
 	}
 	
 	if MediaEndpointStats, ok := AnalyticssessionMap["mediaEndpointStats"].([]interface{}); ok {

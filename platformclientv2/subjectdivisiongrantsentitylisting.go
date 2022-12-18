@@ -32,12 +32,12 @@ type Subjectdivisiongrantsentitylisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// SelfUri
@@ -67,9 +67,9 @@ func (o *Subjectdivisiongrantsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -88,9 +88,9 @@ func (o *Subjectdivisiongrantsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri: o.NextUri,
 		
-		PreviousUri: o.PreviousUri,
-		
 		LastUri: o.LastUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -134,12 +134,12 @@ func (o *Subjectdivisiongrantsentitylisting) UnmarshalJSON(b []byte) error {
 		o.NextUri = &NextUri
 	}
     
-	if PreviousUri, ok := SubjectdivisiongrantsentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if LastUri, ok := SubjectdivisiongrantsentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if PreviousUri, ok := SubjectdivisiongrantsentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if SelfUri, ok := SubjectdivisiongrantsentitylistingMap["selfUri"].(string); ok {

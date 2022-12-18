@@ -16339,7 +16339,7 @@
   "getlanguageunderstandingdomainfeedback": {
     "operationId": "getlanguageunderstandingdomainfeedback",
     "functionName": "GetLanguageunderstandingDomainFeedback",
-    "signature": "GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, pageNumber, pageSize, enableCursorPagination, after, fields)",
+    "signature": "GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, language, pageNumber, pageSize, enableCursorPagination, after, fields)",
     "parameters": [
       {
         "name": "domainId",
@@ -16372,6 +16372,11 @@
         "required": "false"
       },
       {
+        "name": "language",
+        "type": "string",
+        "required": "false"
+      },
+      {
         "name": "pageNumber",
         "type": "int",
         "required": "false"
@@ -16398,7 +16403,7 @@
       }
     ],
     "return": "Nlufeedbacklisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar domainId string // ID of the NLU domain.\nvar intentName string // The top intent name to retrieve feedback for.\nvar assessment string // The top assessment to retrieve feedback for.\nvar dateStart time.Time // Begin of time window as ISO-8601 date.\nvar dateEnd time.Time // End of time window as ISO-8601 date.\nvar includeDeleted bool // Whether to include soft-deleted items in the result.\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar enableCursorPagination bool // Enable Cursor Pagination\nvar after string // The cursor that points to the end of the set of entities that has been returned. This is considered only when enableCursorPagination=true\nvar fields []string // Fields and properties to get, comma-separated\n// Get all feedback in the given NLU Domain Version.\ndata, response, err := apiInstance.GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, pageNumber, pageSize, enableCursorPagination, after, fields)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingDomainFeedback: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar domainId string // ID of the NLU domain.\nvar intentName string // The top intent name to retrieve feedback for.\nvar assessment string // The top assessment to retrieve feedback for.\nvar dateStart time.Time // Begin of time window as ISO-8601 date.\nvar dateEnd time.Time // End of time window as ISO-8601 date.\nvar includeDeleted bool // Whether to include soft-deleted items in the result.\nvar language string // Whether to filter response based on the language, e.g. en-us, pt-br.\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar enableCursorPagination bool // Enable Cursor Pagination\nvar after string // The cursor that points to the end of the set of entities that has been returned. This is considered only when enableCursorPagination=true\nvar fields []string // Fields and properties to get, comma-separated\n// Get all feedback in the given NLU Domain Version.\ndata, response, err := apiInstance.GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, language, pageNumber, pageSize, enableCursorPagination, after, fields)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingDomainFeedback: %v\\n\", err)\n}"
   },
   "getlanguageunderstandingdomainfeedbackfeedbackid": {
     "operationId": "getlanguageunderstandingdomainfeedbackfeedbackid",
@@ -16532,7 +16537,7 @@
   "getlanguageunderstandingminerdraft": {
     "operationId": "getlanguageunderstandingminerdraft",
     "functionName": "GetLanguageunderstandingMinerDraft",
-    "signature": "GetLanguageunderstandingMinerDraft(minerId, draftId)",
+    "signature": "GetLanguageunderstandingMinerDraft(minerId, draftId, draftIntentId, draftTopicId)",
     "parameters": [
       {
         "name": "minerId",
@@ -16543,10 +16548,20 @@
         "name": "draftId",
         "type": "string",
         "required": "true"
+      },
+      {
+        "name": "draftIntentId",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "draftTopicId",
+        "type": "string",
+        "required": "false"
       }
     ],
     "return": "Draft",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar minerId string // Miner ID\nvar draftId string // Draft ID\n// Get information about a draft.\ndata, response, err := apiInstance.GetLanguageunderstandingMinerDraft(minerId, draftId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMinerDraft: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar minerId string // Miner ID\nvar draftId string // Draft ID\nvar draftIntentId string // Parameter to filter a specific intent.\nvar draftTopicId string // Parameter to filter a specific topic.\n// Get information about a draft.\ndata, response, err := apiInstance.GetLanguageunderstandingMinerDraft(minerId, draftId, draftIntentId, draftTopicId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMinerDraft: %v\\n\", err)\n}"
   },
   "getlanguageunderstandingminerdrafts": {
     "operationId": "getlanguageunderstandingminerdrafts",
@@ -16605,12 +16620,81 @@
     "return": "Minedintentslisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar minerId string // Miner ID\nvar expand string // Option to fetch utterances.\n// Retrieve a list of mined intents.\ndata, response, err := apiInstance.GetLanguageunderstandingMinerIntents(minerId, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMinerIntents: %v\\n\", err)\n}"
   },
+  "getlanguageunderstandingminertopic": {
+    "operationId": "getlanguageunderstandingminertopic",
+    "functionName": "GetLanguageunderstandingMinerTopic",
+    "signature": "GetLanguageunderstandingMinerTopic(minerId, topicId, expand)",
+    "parameters": [
+      {
+        "name": "minerId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Minertopic",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar minerId string // Miner ID\nvar topicId string // The ID of the topic to be retrieved.\nvar expand string // Option to fetch phrases\n// Retrieves details of a particular topic.\ndata, response, err := apiInstance.GetLanguageunderstandingMinerTopic(minerId, topicId, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMinerTopic: %v\\n\", err)\n}"
+  },
+  "getlanguageunderstandingminertopicphrase": {
+    "operationId": "getlanguageunderstandingminertopicphrase",
+    "functionName": "GetLanguageunderstandingMinerTopicPhrase",
+    "signature": "GetLanguageunderstandingMinerTopicPhrase(minerId, topicId, phraseId)",
+    "parameters": [
+      {
+        "name": "minerId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "phraseId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Minertopicphrase",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar minerId string // Miner ID\nvar topicId string // The ID of the topic to be retrieved.\nvar phraseId string // The ID of the phrase to be retrieved.\n// Retrieves utterances related to a phrase in a topic.\ndata, response, err := apiInstance.GetLanguageunderstandingMinerTopicPhrase(minerId, topicId, phraseId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMinerTopicPhrase: %v\\n\", err)\n}"
+  },
+  "getlanguageunderstandingminertopics": {
+    "operationId": "getlanguageunderstandingminertopics",
+    "functionName": "GetLanguageunderstandingMinerTopics",
+    "signature": "GetLanguageunderstandingMinerTopics(minerId)",
+    "parameters": [
+      {
+        "name": "minerId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Minertopicslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar minerId string // Miner ID\n// Retrieve a list of mined topics.\ndata, response, err := apiInstance.GetLanguageunderstandingMinerTopics(minerId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMinerTopics: %v\\n\", err)\n}"
+  },
   "getlanguageunderstandingminers": {
     "operationId": "getlanguageunderstandingminers",
     "functionName": "GetLanguageunderstandingMiners",
-    "signature": "GetLanguageunderstandingMiners()",
+    "signature": "GetLanguageunderstandingMiners(minerType)",
+    "parameters": [
+      {
+        "name": "minerType",
+        "type": "string",
+        "required": "false"
+      }
+    ],
     "return": "Minerlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\n// Retrieve the list of miners created.\ndata, response, err := apiInstance.GetLanguageunderstandingMiners()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMiners: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar minerType string // Type of miner, either intent or topic\n// Retrieve the list of miners created.\ndata, response, err := apiInstance.GetLanguageunderstandingMiners(minerType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingMiners: %v\\n\", err)\n}"
   },
   "patchlanguageunderstandingdomain": {
     "operationId": "patchlanguageunderstandingdomain",
@@ -16739,7 +16823,7 @@
   "postlanguageunderstandingdomainversions": {
     "operationId": "postlanguageunderstandingdomainversions",
     "functionName": "PostLanguageunderstandingDomainVersions",
-    "signature": "PostLanguageunderstandingDomainVersions(domainId, body)",
+    "signature": "PostLanguageunderstandingDomainVersions(domainId, body, includeUtterances)",
     "parameters": [
       {
         "name": "domainId",
@@ -16750,10 +16834,15 @@
         "name": "body",
         "type": "Nludomainversion",
         "required": "true"
+      },
+      {
+        "name": "includeUtterances",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Nludomainversion",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar domainId string // ID of the NLU domain.\nvar body platformclientv2.Nludomainversion // The NLU Domain Version to create.\n// Create an NLU Domain Version.\ndata, response, err := apiInstance.PostLanguageunderstandingDomainVersions(domainId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostLanguageunderstandingDomainVersions: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar domainId string // ID of the NLU domain.\nvar body platformclientv2.Nludomainversion // The NLU Domain Version to create.\nvar includeUtterances bool // Whether utterances for intent definition should be included when marshalling response.\n// Create an NLU Domain Version.\ndata, response, err := apiInstance.PostLanguageunderstandingDomainVersions(domainId, body, includeUtterances)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostLanguageunderstandingDomainVersions: %v\\n\", err)\n}"
   },
   "postlanguageunderstandingdomains": {
     "operationId": "postlanguageunderstandingdomains",
@@ -19347,6 +19436,42 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar dncListId string // DncList ID\n// Delete dialer DNC list\nresponse, err := apiInstance.DeleteOutboundDnclist(dncListId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundDnclist: %v\\n\", err)\n}"
   },
+  "deleteoutbounddnclistemailaddresses": {
+    "operationId": "deleteoutbounddnclistemailaddresses",
+    "functionName": "DeleteOutboundDnclistEmailaddresses",
+    "signature": "DeleteOutboundDnclistEmailaddresses(dncListId, expiredOnly)",
+    "parameters": [
+      {
+        "name": "dncListId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expiredOnly",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar dncListId string // DncList ID\nvar expiredOnly bool // Set to true to only remove DNC entries that are expired\n// Deletes all or expired email addresses from a DNC list.\nresponse, err := apiInstance.DeleteOutboundDnclistEmailaddresses(dncListId, expiredOnly)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundDnclistEmailaddresses: %v\\n\", err)\n}"
+  },
+  "deleteoutbounddnclistphonenumbers": {
+    "operationId": "deleteoutbounddnclistphonenumbers",
+    "functionName": "DeleteOutboundDnclistPhonenumbers",
+    "signature": "DeleteOutboundDnclistPhonenumbers(dncListId, expiredOnly)",
+    "parameters": [
+      {
+        "name": "dncListId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expiredOnly",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar dncListId string // DncList ID\nvar expiredOnly bool // Set to true to only remove DNC entries that are expired\n// Deletes all or expired phone numbers from a DNC list.\nresponse, err := apiInstance.DeleteOutboundDnclistPhonenumbers(dncListId, expiredOnly)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundDnclistPhonenumbers: %v\\n\", err)\n}"
+  },
   "deleteoutboundmessagingcampaign": {
     "operationId": "deleteoutboundmessagingcampaign",
     "functionName": "DeleteOutboundMessagingcampaign",
@@ -20956,6 +21081,42 @@
     "signature": "GetOutboundWrapupcodemappings()",
     "return": "Wrapupcodemapping",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\n// Get the Dialer wrap up code mapping.\ndata, response, err := apiInstance.GetOutboundWrapupcodemappings()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundWrapupcodemappings: %v\\n\", err)\n}"
+  },
+  "patchoutbounddnclistemailaddresses": {
+    "operationId": "patchoutbounddnclistemailaddresses",
+    "functionName": "PatchOutboundDnclistEmailaddresses",
+    "signature": "PatchOutboundDnclistEmailaddresses(dncListId, body)",
+    "parameters": [
+      {
+        "name": "dncListId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Dncpatchemailsrequest",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar dncListId string // DncList ID\nvar body platformclientv2.Dncpatchemailsrequest // DNC Emails\n// Add emails to or Delete emails from a DNC list.\nresponse, err := apiInstance.PatchOutboundDnclistEmailaddresses(dncListId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchOutboundDnclistEmailaddresses: %v\\n\", err)\n}"
+  },
+  "patchoutbounddnclistphonenumbers": {
+    "operationId": "patchoutbounddnclistphonenumbers",
+    "functionName": "PatchOutboundDnclistPhonenumbers",
+    "signature": "PatchOutboundDnclistPhonenumbers(dncListId, body)",
+    "parameters": [
+      {
+        "name": "dncListId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Dncpatchphonenumbersrequest",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar dncListId string // DncList ID\nvar body platformclientv2.Dncpatchphonenumbersrequest // DNC Phone Numbers\n// Add numbers to or delete numbers from a DNC list.\nresponse, err := apiInstance.PatchOutboundDnclistPhonenumbers(dncListId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchOutboundDnclistPhonenumbers: %v\\n\", err)\n}"
   },
   "patchoutboundsettings": {
     "operationId": "patchoutboundsettings",
@@ -29456,6 +29617,13 @@
     ],
     "return": "Team",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar body platformclientv2.Team // Team\n// Create a team\ndata, response, err := apiInstance.PostTeams(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTeams: %v\\n\", err)\n}"
+  },
+  "gettelephonymediaregions": {
+    "operationId": "gettelephonymediaregions",
+    "functionName": "GetTelephonyMediaregions",
+    "signature": "GetTelephonyMediaregions()",
+    "return": "Mediaregions",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyApiWithConfig(config)\n\n// Retrieve the list of AWS regions media can stream through.\ndata, response, err := apiInstance.GetTelephonyMediaregions()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyMediaregions: %v\\n\", err)\n}"
   },
   "gettelephonysiptraces": {
     "operationId": "gettelephonysiptraces",

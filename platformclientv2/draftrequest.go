@@ -11,6 +11,10 @@ type Draftrequest struct {
 	// Intents - Draft intent object.
 	Intents *[]Draftintents `json:"intents,omitempty"`
 
+
+	// Topics - Draft topic object.
+	Topics *[]Drafttopicrequest `json:"topics,omitempty"`
+
 }
 
 func (o *Draftrequest) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Draftrequest) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Intents *[]Draftintents `json:"intents,omitempty"`
+		
+		Topics *[]Drafttopicrequest `json:"topics,omitempty"`
 		*Alias
 	}{ 
 		Intents: o.Intents,
+		
+		Topics: o.Topics,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -37,6 +45,11 @@ func (o *Draftrequest) UnmarshalJSON(b []byte) error {
 	if Intents, ok := DraftrequestMap["intents"].([]interface{}); ok {
 		IntentsString, _ := json.Marshal(Intents)
 		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if Topics, ok := DraftrequestMap["topics"].([]interface{}); ok {
+		TopicsString, _ := json.Marshal(Topics)
+		json.Unmarshal(TopicsString, &o.Topics)
 	}
 	
 

@@ -64,6 +64,10 @@ type Inboundroute struct {
 	Signature *Signature `json:"signature,omitempty"`
 
 
+	// HistoryInclusion - The configuration to indicate how the history of a conversation has to be included in a draft
+	HistoryInclusion *string `json:"historyInclusion,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -103,6 +107,8 @@ func (o *Inboundroute) MarshalJSON() ([]byte, error) {
 		
 		Signature *Signature `json:"signature,omitempty"`
 		
+		HistoryInclusion *string `json:"historyInclusion,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -133,6 +139,8 @@ func (o *Inboundroute) MarshalJSON() ([]byte, error) {
 		SpamFlow: o.SpamFlow,
 		
 		Signature: o.Signature,
+		
+		HistoryInclusion: o.HistoryInclusion,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -211,6 +219,10 @@ func (o *Inboundroute) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SignatureString, &o.Signature)
 	}
 	
+	if HistoryInclusion, ok := InboundrouteMap["historyInclusion"].(string); ok {
+		o.HistoryInclusion = &HistoryInclusion
+	}
+    
 	if SelfUri, ok := InboundrouteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

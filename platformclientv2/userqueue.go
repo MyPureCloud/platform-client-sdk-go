@@ -109,8 +109,8 @@ type Userqueue struct {
 	AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
 
 
-	// VipRouting - The VIP Routing settings for the queue
-	VipRouting *Viprouting `json:"vipRouting,omitempty"`
+	// DirectRouting - The Direct Routing settings for the queue
+	DirectRouting *Directrouting `json:"directRouting,omitempty"`
 
 
 	// CallingPartyName - The name to use for caller identification for outbound calls from this queue.
@@ -218,7 +218,7 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		
 		AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
 		
-		VipRouting *Viprouting `json:"vipRouting,omitempty"`
+		DirectRouting *Directrouting `json:"directRouting,omitempty"`
 		
 		CallingPartyName *string `json:"callingPartyName,omitempty"`
 		
@@ -287,7 +287,7 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		
 		AgentOwnedRouting: o.AgentOwnedRouting,
 		
-		VipRouting: o.VipRouting,
+		DirectRouting: o.DirectRouting,
 		
 		CallingPartyName: o.CallingPartyName,
 		
@@ -432,9 +432,9 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AgentOwnedRoutingString, &o.AgentOwnedRouting)
 	}
 	
-	if VipRouting, ok := UserqueueMap["vipRouting"].(map[string]interface{}); ok {
-		VipRoutingString, _ := json.Marshal(VipRouting)
-		json.Unmarshal(VipRoutingString, &o.VipRouting)
+	if DirectRouting, ok := UserqueueMap["directRouting"].(map[string]interface{}); ok {
+		DirectRoutingString, _ := json.Marshal(DirectRouting)
+		json.Unmarshal(DirectRoutingString, &o.DirectRouting)
 	}
 	
 	if CallingPartyName, ok := UserqueueMap["callingPartyName"].(string); ok {

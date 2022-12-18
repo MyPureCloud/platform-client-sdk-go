@@ -24,6 +24,10 @@ type Contactlisting struct {
 	Total *int `json:"total,omitempty"`
 
 
+	// PartialResults
+	PartialResults *bool `json:"partialResults,omitempty"`
+
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -32,12 +36,12 @@ type Contactlisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// SelfUri
@@ -63,13 +67,15 @@ func (o *Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		PartialResults *bool `json:"partialResults,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -84,13 +90,15 @@ func (o *Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		PartialResults: o.PartialResults,
+		
 		FirstUri: o.FirstUri,
 		
 		NextUri: o.NextUri,
 		
-		PreviousUri: o.PreviousUri,
-		
 		LastUri: o.LastUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -126,6 +134,10 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if PartialResults, ok := ContactlistingMap["partialResults"].(bool); ok {
+		o.PartialResults = &PartialResults
+	}
+    
 	if FirstUri, ok := ContactlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -134,12 +146,12 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
 		o.NextUri = &NextUri
 	}
     
-	if PreviousUri, ok := ContactlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if LastUri, ok := ContactlistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if PreviousUri, ok := ContactlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if SelfUri, ok := ContactlistingMap["selfUri"].(string); ok {

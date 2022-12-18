@@ -18,11 +18,15 @@ type Draft struct {
 
 
 	// Miner - Miner to which the draft belongs.
-	Miner **Miner `json:"miner,omitempty"`
+	Miner *Miner `json:"miner,omitempty"`
 
 
 	// Intents - Draft intent object.
 	Intents *[]Draftintents `json:"intents,omitempty"`
+
+
+	// Topics - Draft topic object.
+	Topics *[]Drafttopics `json:"topics,omitempty"`
 
 
 	// DateCreated - Date when the draft was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -64,9 +68,11 @@ func (o *Draft) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Miner **Miner `json:"miner,omitempty"`
+		Miner *Miner `json:"miner,omitempty"`
 		
 		Intents *[]Draftintents `json:"intents,omitempty"`
+		
+		Topics *[]Drafttopics `json:"topics,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
@@ -82,6 +88,8 @@ func (o *Draft) MarshalJSON() ([]byte, error) {
 		Miner: o.Miner,
 		
 		Intents: o.Intents,
+		
+		Topics: o.Topics,
 		
 		DateCreated: DateCreated,
 		
@@ -115,6 +123,11 @@ func (o *Draft) UnmarshalJSON(b []byte) error {
 	if Intents, ok := DraftMap["intents"].([]interface{}); ok {
 		IntentsString, _ := json.Marshal(Intents)
 		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if Topics, ok := DraftMap["topics"].([]interface{}); ok {
+		TopicsString, _ := json.Marshal(Topics)
+		json.Unmarshal(TopicsString, &o.Topics)
 	}
 	
 	if dateCreatedString, ok := DraftMap["dateCreated"].(string); ok {

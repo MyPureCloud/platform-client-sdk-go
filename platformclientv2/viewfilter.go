@@ -611,6 +611,10 @@ type Viewfilter struct {
 	// MyDashboard - Filter to indicate the dashboard owned by the user.
 	MyDashboard *bool `json:"myDashboard,omitempty"`
 
+
+	// StationErrors - The list of agent errors that are related to station
+	StationErrors *[]string `json:"stationErrors,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -920,6 +924,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		FavouriteDashboard *bool `json:"favouriteDashboard,omitempty"`
 		
 		MyDashboard *bool `json:"myDashboard,omitempty"`
+		
+		StationErrors *[]string `json:"stationErrors,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1223,6 +1229,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		FavouriteDashboard: o.FavouriteDashboard,
 		
 		MyDashboard: o.MyDashboard,
+		
+		StationErrors: o.StationErrors,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1957,6 +1965,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.MyDashboard = &MyDashboard
 	}
     
+	if StationErrors, ok := ViewfilterMap["stationErrors"].([]interface{}); ok {
+		StationErrorsString, _ := json.Marshal(StationErrors)
+		json.Unmarshal(StationErrorsString, &o.StationErrors)
+	}
+	
 
 	return nil
 }

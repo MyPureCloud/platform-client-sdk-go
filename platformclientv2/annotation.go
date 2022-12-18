@@ -28,7 +28,7 @@ type Annotation struct {
 	DurationMs *int `json:"durationMs,omitempty"`
 
 
-	// AbsoluteLocation - Offset of annotation (milliseconds) from start of recording.
+	// AbsoluteLocation - Offset of annotation (milliseconds) from start of recording (after removing the cumulative duration of all pauses).
 	AbsoluteLocation *int `json:"absoluteLocation,omitempty"`
 
 

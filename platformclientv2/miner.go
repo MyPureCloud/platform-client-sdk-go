@@ -21,6 +21,10 @@ type Miner struct {
 	Language *string `json:"language,omitempty"`
 
 
+	// MinerType - Type of the miner, intent or topic.
+	MinerType *string `json:"minerType,omitempty"`
+
+
 	// DateCreated - Date when the miner was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -45,12 +49,24 @@ type Miner struct {
 	Message *string `json:"message,omitempty"`
 
 
+	// ErrorInfo - Error Information
+	ErrorInfo *Errorinfo `json:"errorInfo,omitempty"`
+
+
+	// WarningInfo - Warning Information
+	WarningInfo *Errorinfo `json:"warningInfo,omitempty"`
+
+
 	// ConversationDataUploaded - Flag to indicate whether data file to be mined was uploaded.
 	ConversationDataUploaded *bool `json:"conversationDataUploaded,omitempty"`
 
 
 	// MediaType - Media type for filtering conversations.
 	MediaType *string `json:"mediaType,omitempty"`
+
+
+	// ParticipantType - Type of the participant, either agent, customer or both.
+	ParticipantType *string `json:"participantType,omitempty"`
 
 
 	// QueueIds - List of queue IDs for filtering conversations.
@@ -66,7 +82,19 @@ type Miner struct {
 
 
 	// LatestDraftVersion - Latest draft details of the miner.
-	LatestDraftVersion *Draft `json:"latestDraftVersion,omitempty"`
+	LatestDraftVersion **Draft `json:"latestDraftVersion,omitempty"`
+
+
+	// ConversationsFetchedCount - Number of conversations/transcripts fetched.
+	ConversationsFetchedCount *int `json:"conversationsFetchedCount,omitempty"`
+
+
+	// ConversationsValidCount - Number of conversations/recordings/transcripts that were found valid for mining purposes.
+	ConversationsValidCount *int `json:"conversationsValidCount,omitempty"`
+
+
+	// GetminedItemCount - Number of intents or topics based on the miner type.
+	GetminedItemCount *int `json:"getminedItemCount,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -132,6 +160,8 @@ func (o *Miner) MarshalJSON() ([]byte, error) {
 		
 		Language *string `json:"language,omitempty"`
 		
+		MinerType *string `json:"minerType,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
@@ -144,9 +174,15 @@ func (o *Miner) MarshalJSON() ([]byte, error) {
 		
 		Message *string `json:"message,omitempty"`
 		
+		ErrorInfo *Errorinfo `json:"errorInfo,omitempty"`
+		
+		WarningInfo *Errorinfo `json:"warningInfo,omitempty"`
+		
 		ConversationDataUploaded *bool `json:"conversationDataUploaded,omitempty"`
 		
 		MediaType *string `json:"mediaType,omitempty"`
+		
+		ParticipantType *string `json:"participantType,omitempty"`
 		
 		QueueIds *[]string `json:"queueIds,omitempty"`
 		
@@ -154,7 +190,13 @@ func (o *Miner) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		LatestDraftVersion *Draft `json:"latestDraftVersion,omitempty"`
+		LatestDraftVersion **Draft `json:"latestDraftVersion,omitempty"`
+		
+		ConversationsFetchedCount *int `json:"conversationsFetchedCount,omitempty"`
+		
+		ConversationsValidCount *int `json:"conversationsValidCount,omitempty"`
+		
+		GetminedItemCount *int `json:"getminedItemCount,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
@@ -164,6 +206,8 @@ func (o *Miner) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Language: o.Language,
+		
+		MinerType: o.MinerType,
 		
 		DateCreated: DateCreated,
 		
@@ -177,9 +221,15 @@ func (o *Miner) MarshalJSON() ([]byte, error) {
 		
 		Message: o.Message,
 		
+		ErrorInfo: o.ErrorInfo,
+		
+		WarningInfo: o.WarningInfo,
+		
 		ConversationDataUploaded: o.ConversationDataUploaded,
 		
 		MediaType: o.MediaType,
+		
+		ParticipantType: o.ParticipantType,
 		
 		QueueIds: o.QueueIds,
 		
@@ -188,6 +238,12 @@ func (o *Miner) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		LatestDraftVersion: o.LatestDraftVersion,
+		
+		ConversationsFetchedCount: o.ConversationsFetchedCount,
+		
+		ConversationsValidCount: o.ConversationsValidCount,
+		
+		GetminedItemCount: o.GetminedItemCount,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -211,6 +267,10 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
     
 	if Language, ok := MinerMap["language"].(string); ok {
 		o.Language = &Language
+	}
+    
+	if MinerType, ok := MinerMap["minerType"].(string); ok {
+		o.MinerType = &MinerType
 	}
     
 	if dateCreatedString, ok := MinerMap["dateCreated"].(string); ok {
@@ -241,12 +301,26 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
 		o.Message = &Message
 	}
     
+	if ErrorInfo, ok := MinerMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+	if WarningInfo, ok := MinerMap["warningInfo"].(map[string]interface{}); ok {
+		WarningInfoString, _ := json.Marshal(WarningInfo)
+		json.Unmarshal(WarningInfoString, &o.WarningInfo)
+	}
+	
 	if ConversationDataUploaded, ok := MinerMap["conversationDataUploaded"].(bool); ok {
 		o.ConversationDataUploaded = &ConversationDataUploaded
 	}
     
 	if MediaType, ok := MinerMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if ParticipantType, ok := MinerMap["participantType"].(string); ok {
+		o.ParticipantType = &ParticipantType
 	}
     
 	if QueueIds, ok := MinerMap["queueIds"].([]interface{}); ok {
@@ -267,6 +341,21 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
 	if LatestDraftVersion, ok := MinerMap["latestDraftVersion"].(map[string]interface{}); ok {
 		LatestDraftVersionString, _ := json.Marshal(LatestDraftVersion)
 		json.Unmarshal(LatestDraftVersionString, &o.LatestDraftVersion)
+	}
+	
+	if ConversationsFetchedCount, ok := MinerMap["conversationsFetchedCount"].(float64); ok {
+		ConversationsFetchedCountInt := int(ConversationsFetchedCount)
+		o.ConversationsFetchedCount = &ConversationsFetchedCountInt
+	}
+	
+	if ConversationsValidCount, ok := MinerMap["conversationsValidCount"].(float64); ok {
+		ConversationsValidCountInt := int(ConversationsValidCount)
+		o.ConversationsValidCount = &ConversationsValidCountInt
+	}
+	
+	if GetminedItemCount, ok := MinerMap["getminedItemCount"].(float64); ok {
+		GetminedItemCountInt := int(GetminedItemCount)
+		o.GetminedItemCount = &GetminedItemCountInt
 	}
 	
 	if SelfUri, ok := MinerMap["selfUri"].(string); ok {

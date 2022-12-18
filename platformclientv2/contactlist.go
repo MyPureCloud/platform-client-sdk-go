@@ -73,6 +73,10 @@ type Contactlist struct {
 	ZipCodeColumnName *string `json:"zipCodeColumnName,omitempty"`
 
 
+	// ColumnDataTypeSpecifications - The settings of the columns selected for dynamic queueing
+	ColumnDataTypeSpecifications *[]Columndatatypespecification `json:"columnDataTypeSpecifications,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -132,6 +136,8 @@ func (o *Contactlist) MarshalJSON() ([]byte, error) {
 		
 		ZipCodeColumnName *string `json:"zipCodeColumnName,omitempty"`
 		
+		ColumnDataTypeSpecifications *[]Columndatatypespecification `json:"columnDataTypeSpecifications,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -166,6 +172,8 @@ func (o *Contactlist) MarshalJSON() ([]byte, error) {
 		AutomaticTimeZoneMapping: o.AutomaticTimeZoneMapping,
 		
 		ZipCodeColumnName: o.ZipCodeColumnName,
+		
+		ColumnDataTypeSpecifications: o.ColumnDataTypeSpecifications,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -254,6 +262,11 @@ func (o *Contactlist) UnmarshalJSON(b []byte) error {
 		o.ZipCodeColumnName = &ZipCodeColumnName
 	}
     
+	if ColumnDataTypeSpecifications, ok := ContactlistMap["columnDataTypeSpecifications"].([]interface{}); ok {
+		ColumnDataTypeSpecificationsString, _ := json.Marshal(ColumnDataTypeSpecifications)
+		json.Unmarshal(ColumnDataTypeSpecificationsString, &o.ColumnDataTypeSpecifications)
+	}
+	
 	if SelfUri, ok := ContactlistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

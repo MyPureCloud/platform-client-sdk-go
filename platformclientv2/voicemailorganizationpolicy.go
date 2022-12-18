@@ -45,6 +45,10 @@ type Voicemailorganizationpolicy struct {
 	DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
 
 
+	// MaximumRecordingTimeSeconds - Default value for the maximum length of time in seconds of a recorded voicemail
+	MaximumRecordingTimeSeconds *int `json:"maximumRecordingTimeSeconds,omitempty"`
+
+
 	// ModifiedDate - The date the policy was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
@@ -82,6 +86,8 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		
 		DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
 		
+		MaximumRecordingTimeSeconds *int `json:"maximumRecordingTimeSeconds,omitempty"`
+		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		*Alias
 	}{ 
@@ -102,6 +108,8 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		IncludeEmailTranscriptions: o.IncludeEmailTranscriptions,
 		
 		DisableEmailPii: o.DisableEmailPii,
+		
+		MaximumRecordingTimeSeconds: o.MaximumRecordingTimeSeconds,
 		
 		ModifiedDate: ModifiedDate,
 		Alias:    (*Alias)(o),
@@ -153,6 +161,11 @@ func (o *Voicemailorganizationpolicy) UnmarshalJSON(b []byte) error {
 		o.DisableEmailPii = &DisableEmailPii
 	}
     
+	if MaximumRecordingTimeSeconds, ok := VoicemailorganizationpolicyMap["maximumRecordingTimeSeconds"].(float64); ok {
+		MaximumRecordingTimeSecondsInt := int(MaximumRecordingTimeSeconds)
+		o.MaximumRecordingTimeSeconds = &MaximumRecordingTimeSecondsInt
+	}
+	
 	if modifiedDateString, ok := VoicemailorganizationpolicyMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate

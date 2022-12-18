@@ -134,6 +134,8 @@ docs/DeleteOutboundContactlistfilter-example.txt
 docs/DeleteOutboundContactlists-example.txt
 docs/DeleteOutboundDigitalruleset-example.txt
 docs/DeleteOutboundDnclist-example.txt
+docs/DeleteOutboundDnclistEmailaddresses-example.txt
+docs/DeleteOutboundDnclistPhonenumbers-example.txt
 docs/DeleteOutboundMessagingcampaign-example.txt
 docs/DeleteOutboundMessagingcampaignProgress-example.txt
 docs/DeleteOutboundRuleset-example.txt
@@ -668,6 +670,9 @@ docs/GetLanguageunderstandingMinerDraft-example.txt
 docs/GetLanguageunderstandingMinerDrafts-example.txt
 docs/GetLanguageunderstandingMinerIntent-example.txt
 docs/GetLanguageunderstandingMinerIntents-example.txt
+docs/GetLanguageunderstandingMinerTopic-example.txt
+docs/GetLanguageunderstandingMinerTopicPhrase-example.txt
+docs/GetLanguageunderstandingMinerTopics-example.txt
 docs/GetLanguageunderstandingMiners-example.txt
 docs/GetLearningAssignment-example.txt
 docs/GetLearningAssignments-example.txt
@@ -963,6 +968,7 @@ docs/GetSystempresences-example.txt
 docs/GetTeam-example.txt
 docs/GetTeamMembers-example.txt
 docs/GetTeams-example.txt
+docs/GetTelephonyMediaregions-example.txt
 docs/GetTelephonyProvidersEdge-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticPing-example.txt
@@ -1271,6 +1277,8 @@ docs/PatchLearningAssignment-example.txt
 docs/PatchLocation-example.txt
 docs/PatchMessagingSupportedcontentSupportedContentId-example.txt
 docs/PatchOrganizationsFeature-example.txt
+docs/PatchOutboundDnclistEmailaddresses-example.txt
+docs/PatchOutboundDnclistPhonenumbers-example.txt
 docs/PatchOutboundSettings-example.txt
 docs/PatchQualityFormsSurvey-example.txt
 docs/PatchRecordingCrossplatformMediaretentionpolicy-example.txt
@@ -2085,6 +2093,8 @@ platformclientv2/addadherenceexplanationadminrequest.go
 platformclientv2/addadherenceexplanationagentrequest.go
 platformclientv2/addconversationrequest.go
 platformclientv2/addconversationresponse.go
+platformclientv2/additionallanguagesintent.go
+platformclientv2/additionallanguagessynonyms.go
 platformclientv2/additionalmessage.go
 platformclientv2/address.go
 platformclientv2/addressableentityref.go
@@ -3124,6 +3134,9 @@ platformclientv2/digitalrulesetentitylisting.go
 platformclientv2/digitlength.go
 platformclientv2/digits.go
 platformclientv2/directoryuserdeviceslisting.go
+platformclientv2/directrouting.go
+platformclientv2/directroutingcallmediasettings.go
+platformclientv2/directroutingmediasettings.go
 platformclientv2/disallowedentitylearningassignmentitem.go
 platformclientv2/disallowedentitylearningassignmentreference.go
 platformclientv2/disconnectreason.go
@@ -3139,6 +3152,8 @@ platformclientv2/dnclistdownloadreadyobject.go
 platformclientv2/dnclistentitylisting.go
 platformclientv2/dnclistimportstatusimportstatus.go
 platformclientv2/dnclistimportstatusobject.go
+platformclientv2/dncpatchemailsrequest.go
+platformclientv2/dncpatchphonenumbersrequest.go
 platformclientv2/dnsrecordentry.go
 platformclientv2/document.go
 platformclientv2/documentarticle.go
@@ -3611,6 +3626,7 @@ platformclientv2/journeyaggregatequeryresponse.go
 platformclientv2/journeyaggregationquery.go
 platformclientv2/journeyaggregationview.go
 platformclientv2/journeyapi.go
+platformclientv2/journeyapp.go
 platformclientv2/journeycampaign.go
 platformclientv2/journeycontext.go
 platformclientv2/journeycustomer.go
@@ -3911,6 +3927,7 @@ platformclientv2/maxlength.go
 platformclientv2/maxparticipants.go
 platformclientv2/mediaparticipantrequest.go
 platformclientv2/mediapolicies.go
+platformclientv2/mediaregions.go
 platformclientv2/mediaresult.go
 platformclientv2/mediasetting.go
 platformclientv2/mediasummary.go
@@ -3977,6 +3994,9 @@ platformclientv2/miner.go
 platformclientv2/minerexecuterequest.go
 platformclientv2/minerintent.go
 platformclientv2/minerlisting.go
+platformclientv2/minertopic.go
+platformclientv2/minertopicphrase.go
+platformclientv2/minertopicslisting.go
 platformclientv2/minlength.go
 platformclientv2/mobiledevicesapi.go
 platformclientv2/modelingprocessingerror.go
@@ -3991,6 +4011,7 @@ platformclientv2/namedentitytypebinding.go
 platformclientv2/namedentitytypedefinition.go
 platformclientv2/namedentitytypeitem.go
 platformclientv2/namedentitytypemechanism.go
+platformclientv2/networkconnectivity.go
 platformclientv2/nluconfusionmatrixcolumn.go
 platformclientv2/nluconfusionmatrixrow.go
 platformclientv2/nludetectioncontext.go
@@ -4512,6 +4533,8 @@ platformclientv2/recipientadditionalidentifier.go
 platformclientv2/recipientlisting.go
 platformclientv2/record.go
 platformclientv2/recording.go
+platformclientv2/recordingannotationflow.go
+platformclientv2/recordingannotationqueue.go
 platformclientv2/recordingapi.go
 platformclientv2/recordingarchiverestoretopicmediaresult.go
 platformclientv2/recordingarchiverestoretopicrecording.go
@@ -4692,6 +4715,7 @@ platformclientv2/script.go
 platformclientv2/scriptentitylisting.go
 platformclientv2/scriptsapi.go
 platformclientv2/scrollpercentageeventtrigger.go
+platformclientv2/sdklibrary.go
 platformclientv2/searchaggregation.go
 platformclientv2/searchapi.go
 platformclientv2/searchcriteria.go
@@ -4967,6 +4991,7 @@ platformclientv2/topicduration.go
 platformclientv2/topicjob.go
 platformclientv2/topicjobrequest.go
 platformclientv2/topicoffset.go
+platformclientv2/topicphrase.go
 platformclientv2/topicrequest.go
 platformclientv2/topicsentitylisting.go
 platformclientv2/traininglisting.go
@@ -5265,10 +5290,6 @@ platformclientv2/valuewrapperstring.go
 platformclientv2/verificationresult.go
 platformclientv2/video.go
 platformclientv2/viewfilter.go
-platformclientv2/vipbackup.go
-platformclientv2/vipcallmediasettings.go
-platformclientv2/vipmediasettings.go
-platformclientv2/viprouting.go
 platformclientv2/visibilitycondition.go
 platformclientv2/vmpairinginfo.go
 platformclientv2/voicemail.go
@@ -5422,6 +5443,9 @@ platformclientv2/wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadre
 platformclientv2/wfmhistoricalshrinkagecalculationscompletetopichistoricalshrinkagecalculationscompletenotification.go
 platformclientv2/wfmhistoricalshrinkagerequest.go
 platformclientv2/wfmhistoricalshrinkageresponse.go
+platformclientv2/wfmintegrationshristimeofftypesjobtopicerrorbody.go
+platformclientv2/wfmintegrationshristimeofftypesjobtopichristimeofftype.go
+platformclientv2/wfmintegrationshristimeofftypesjobtopichristimeofftypesjobnotification.go
 platformclientv2/wfmintradaydataupdatetopicintradaydatagroup.go
 platformclientv2/wfmintradaydataupdatetopicintradaydataupdate.go
 platformclientv2/wfmintradaydataupdatetopicintradayforecastdata.go
@@ -5442,6 +5466,9 @@ platformclientv2/wfmprocessuploadrequest.go
 platformclientv2/wfmscheduleactivity.go
 platformclientv2/wfmschedulereference.go
 platformclientv2/wfmscheduletopicwfmschedulenotification.go
+platformclientv2/wfmtimeoffbalancejobtopicerrorbody.go
+platformclientv2/wfmtimeoffbalancejobtopictimeoffbalance.go
+platformclientv2/wfmtimeoffbalancejobtopictimeoffbalancejobnotification.go
 platformclientv2/wfmtimeoffrequestupdatetopictimeoffrequestupdate.go
 platformclientv2/wfmtimeoffrequestupdatetopicuserreference.go
 platformclientv2/wfmupdateagentdetailstopicwfmupdateagentdetailscomplete.go

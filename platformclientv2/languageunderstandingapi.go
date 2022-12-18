@@ -442,7 +442,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 // GetLanguageunderstandingDomainFeedback invokes GET /api/v2/languageunderstanding/domains/{domainId}/feedback
 //
 // Get all feedback in the given NLU Domain Version.
-func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, pageNumber int, pageSize int, enableCursorPagination bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, language string, pageNumber int, pageSize int, enableCursorPagination bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback"
@@ -484,6 +484,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
 	queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
@@ -985,7 +987,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) 
 // GetLanguageunderstandingMinerDraft invokes GET /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}
 //
 // Get information about a draft.
-func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId string, draftId string) (*Draft, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId string, draftId string, draftIntentId string, draftTopicId string) (*Draft, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}"
@@ -1023,6 +1025,10 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId str
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["draftIntentId"] = a.Configuration.APIClient.ParameterToString(draftIntentId, "")
+	
+	queryParams["draftTopicId"] = a.Configuration.APIClient.ParameterToString(draftTopicId, "")
 	
 
 	// to determine the Content-Type header
@@ -1282,10 +1288,243 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId s
 	return successPayload, response, err
 }
 
+// GetLanguageunderstandingMinerTopic invokes GET /api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}
+//
+// Retrieves details of a particular topic.
+func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopic(minerId string, topicId string, expand string) (*Minertopic, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}"
+	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{topicId}", fmt.Sprintf("%v", topicId), -1)
+	defaultReturn := new(Minertopic)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'minerId' is set
+	if &minerId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerTopic")
+	}
+	// verify the required parameter 'topicId' is set
+	if &topicId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'topicId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerTopic")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Minertopic
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Minertopic" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetLanguageunderstandingMinerTopicPhrase invokes GET /api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}/phrases/{phraseId}
+//
+// Retrieves utterances related to a phrase in a topic.
+func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopicPhrase(minerId string, topicId string, phraseId string) (*Minertopicphrase, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}/phrases/{phraseId}"
+	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{topicId}", fmt.Sprintf("%v", topicId), -1)
+	path = strings.Replace(path, "{phraseId}", fmt.Sprintf("%v", phraseId), -1)
+	defaultReturn := new(Minertopicphrase)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'minerId' is set
+	if &minerId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerTopicPhrase")
+	}
+	// verify the required parameter 'topicId' is set
+	if &topicId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'topicId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerTopicPhrase")
+	}
+	// verify the required parameter 'phraseId' is set
+	if &phraseId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'phraseId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerTopicPhrase")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Minertopicphrase
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Minertopicphrase" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetLanguageunderstandingMinerTopics invokes GET /api/v2/languageunderstanding/miners/{minerId}/topics
+//
+// Retrieve a list of mined topics.
+func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopics(minerId string) (*Minertopicslisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/topics"
+	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	defaultReturn := new(Minertopicslisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'minerId' is set
+	if &minerId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'minerId' when calling LanguageUnderstandingApi->GetLanguageunderstandingMinerTopics")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Minertopicslisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Minertopicslisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetLanguageunderstandingMiners invokes GET /api/v2/languageunderstanding/miners
 //
 // Retrieve the list of miners created.
-func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners() (*Minerlisting, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners(minerType string) (*Minerlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners"
@@ -1311,6 +1550,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners() (*Minerlistin
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["minerType"] = a.Configuration.APIClient.ParameterToString(minerType, "")
 	
 
 	// to determine the Content-Type header
@@ -1827,7 +2068,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 // PostLanguageunderstandingDomainVersions invokes POST /api/v2/languageunderstanding/domains/{domainId}/versions
 //
 // Create an NLU Domain Version.
-func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domainId string, body Nludomainversion) (*Nludomainversion, *APIResponse, error) {
+func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domainId string, body Nludomainversion, includeUtterances bool) (*Nludomainversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions"
@@ -1864,6 +2105,8 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domain
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, "")
 	
 
 	// to determine the Content-Type header

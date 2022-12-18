@@ -73,6 +73,10 @@ type Messagingcampaign struct {
 	Errors *[]Resterrordetail `json:"errors,omitempty"`
 
 
+	// DynamicContactQueueingSettings - Indicates (when true) that the campaign supports dynamic queueing of the contact list at the time of a request for contacts.
+	DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
+
+
 	// EmailConfig - Configuration for this messaging campaign to send Email messages.
 	EmailConfig *Emailconfig `json:"emailConfig,omitempty"`
 
@@ -140,6 +144,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		
 		Errors *[]Resterrordetail `json:"errors,omitempty"`
 		
+		DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
+		
 		EmailConfig *Emailconfig `json:"emailConfig,omitempty"`
 		
 		SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
@@ -178,6 +184,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		ContactListFilters: o.ContactListFilters,
 		
 		Errors: o.Errors,
+		
+		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
 		
 		EmailConfig: o.EmailConfig,
 		
@@ -269,6 +277,11 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if Errors, ok := MessagingcampaignMap["errors"].([]interface{}); ok {
 		ErrorsString, _ := json.Marshal(Errors)
 		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if DynamicContactQueueingSettings, ok := MessagingcampaignMap["dynamicContactQueueingSettings"].(map[string]interface{}); ok {
+		DynamicContactQueueingSettingsString, _ := json.Marshal(DynamicContactQueueingSettings)
+		json.Unmarshal(DynamicContactQueueingSettingsString, &o.DynamicContactQueueingSettings)
 	}
 	
 	if EmailConfig, ok := MessagingcampaignMap["emailConfig"].(map[string]interface{}); ok {

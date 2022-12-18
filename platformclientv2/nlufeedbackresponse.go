@@ -29,6 +29,10 @@ type Nlufeedbackresponse struct {
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
+	// Language - The language of the version to which feedback is linked, e.g. en-us, de-de
+	Language *string `json:"language,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -58,6 +62,8 @@ func (o *Nlufeedbackresponse) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		Language *string `json:"language,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -70,6 +76,8 @@ func (o *Nlufeedbackresponse) MarshalJSON() ([]byte, error) {
 		Version: o.Version,
 		
 		DateCreated: DateCreated,
+		
+		Language: o.Language,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -106,6 +114,10 @@ func (o *Nlufeedbackresponse) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
+	if Language, ok := NlufeedbackresponseMap["language"].(string); ok {
+		o.Language = &Language
+	}
+    
 	if SelfUri, ok := NlufeedbackresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

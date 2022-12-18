@@ -19,6 +19,10 @@ type Nlufeedbackrequest struct {
 	// VersionId - The domain version ID of the feedback.
 	VersionId *string `json:"versionId,omitempty"`
 
+
+	// Language - The language of the version to which feedback is linked, e.g. en-us, de-de
+	Language *string `json:"language,omitempty"`
+
 }
 
 func (o *Nlufeedbackrequest) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Nlufeedbackrequest) MarshalJSON() ([]byte, error) {
 		Intents *[]Intentfeedback `json:"intents,omitempty"`
 		
 		VersionId *string `json:"versionId,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
 		*Alias
 	}{ 
 		Text: o.Text,
@@ -39,6 +45,8 @@ func (o *Nlufeedbackrequest) MarshalJSON() ([]byte, error) {
 		Intents: o.Intents,
 		
 		VersionId: o.VersionId,
+		
+		Language: o.Language,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -61,6 +69,10 @@ func (o *Nlufeedbackrequest) UnmarshalJSON(b []byte) error {
 	
 	if VersionId, ok := NlufeedbackrequestMap["versionId"].(string); ok {
 		o.VersionId = &VersionId
+	}
+    
+	if Language, ok := NlufeedbackrequestMap["language"].(string); ok {
+		o.Language = &Language
 	}
     
 

@@ -15,6 +15,10 @@ type Namedentitytypeitem struct {
 	// Synonyms - Synonyms for the given named entity value.
 	Synonyms *[]string `json:"synonyms,omitempty"`
 
+
+	// AdditionalLanguages - Additional Language Synonyms for the given named entity value.
+	AdditionalLanguages *map[string]Additionallanguagessynonyms `json:"additionalLanguages,omitempty"`
+
 }
 
 func (o *Namedentitytypeitem) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Namedentitytypeitem) MarshalJSON() ([]byte, error) {
 		Value *string `json:"value,omitempty"`
 		
 		Synonyms *[]string `json:"synonyms,omitempty"`
+		
+		AdditionalLanguages *map[string]Additionallanguagessynonyms `json:"additionalLanguages,omitempty"`
 		*Alias
 	}{ 
 		Value: o.Value,
 		
 		Synonyms: o.Synonyms,
+		
+		AdditionalLanguages: o.AdditionalLanguages,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -49,6 +57,11 @@ func (o *Namedentitytypeitem) UnmarshalJSON(b []byte) error {
 	if Synonyms, ok := NamedentitytypeitemMap["synonyms"].([]interface{}); ok {
 		SynonymsString, _ := json.Marshal(Synonyms)
 		json.Unmarshal(SynonymsString, &o.Synonyms)
+	}
+	
+	if AdditionalLanguages, ok := NamedentitytypeitemMap["additionalLanguages"].(map[string]interface{}); ok {
+		AdditionalLanguagesString, _ := json.Marshal(AdditionalLanguages)
+		json.Unmarshal(AdditionalLanguagesString, &o.AdditionalLanguages)
 	}
 	
 
