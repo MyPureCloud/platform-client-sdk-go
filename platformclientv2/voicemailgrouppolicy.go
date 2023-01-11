@@ -55,6 +55,10 @@ type Voicemailgrouppolicy struct {
 	// InteractiveResponsePromptId - The prompt to use when connecting a user to a Group Ring call
 	InteractiveResponsePromptId *string `json:"interactiveResponsePromptId,omitempty"`
 
+
+	// InteractiveResponseRequired - Whether user should be prompted with a confirmation prompt when connecting to a Group Ring call
+	InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
+
 }
 
 func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
@@ -86,6 +90,8 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		GroupAlertType *string `json:"groupAlertType,omitempty"`
 		
 		InteractiveResponsePromptId *string `json:"interactiveResponsePromptId,omitempty"`
+		
+		InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -111,6 +117,8 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		GroupAlertType: o.GroupAlertType,
 		
 		InteractiveResponsePromptId: o.InteractiveResponsePromptId,
+		
+		InteractiveResponseRequired: o.InteractiveResponseRequired,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -171,6 +179,10 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
     
 	if InteractiveResponsePromptId, ok := VoicemailgrouppolicyMap["interactiveResponsePromptId"].(string); ok {
 		o.InteractiveResponsePromptId = &InteractiveResponsePromptId
+	}
+    
+	if InteractiveResponseRequired, ok := VoicemailgrouppolicyMap["interactiveResponseRequired"].(bool); ok {
+		o.InteractiveResponseRequired = &InteractiveResponseRequired
 	}
     
 

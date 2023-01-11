@@ -32,6 +32,10 @@ type Knowledgedocumentsearchrequest struct {
 	PageCount *int `json:"pageCount,omitempty"`
 
 
+	// QueryType - The type of the query that initiates the search.
+	QueryType *string `json:"queryType,omitempty"`
+
+
 	// IncludeDraftDocuments - Indicates whether the search results would also include draft documents.
 	IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 
@@ -55,6 +59,10 @@ type Knowledgedocumentsearchrequest struct {
 	// Application - The client application details from which search request was sent.
 	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 
+
+	// ConversationContext - Conversation context information if the search is initiated in the context of a conversation.
+	ConversationContext *Knowledgeconversationcontext `json:"conversationContext,omitempty"`
+
 }
 
 func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
@@ -75,6 +83,8 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		
+		QueryType *string `json:"queryType,omitempty"`
+		
 		IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 		
 		Interval *Documentqueryinterval `json:"interval,omitempty"`
@@ -86,6 +96,8 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		SortBy *string `json:"sortBy,omitempty"`
 		
 		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
+		
+		ConversationContext *Knowledgeconversationcontext `json:"conversationContext,omitempty"`
 		*Alias
 	}{ 
 		Query: o.Query,
@@ -100,6 +112,8 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		
 		PageCount: o.PageCount,
 		
+		QueryType: o.QueryType,
+		
 		IncludeDraftDocuments: o.IncludeDraftDocuments,
 		
 		Interval: o.Interval,
@@ -111,6 +125,8 @@ func (o *Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		SortBy: o.SortBy,
 		
 		Application: o.Application,
+		
+		ConversationContext: o.ConversationContext,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -150,6 +166,10 @@ func (o *Knowledgedocumentsearchrequest) UnmarshalJSON(b []byte) error {
 		o.PageCount = &PageCountInt
 	}
 	
+	if QueryType, ok := KnowledgedocumentsearchrequestMap["queryType"].(string); ok {
+		o.QueryType = &QueryType
+	}
+    
 	if IncludeDraftDocuments, ok := KnowledgedocumentsearchrequestMap["includeDraftDocuments"].(bool); ok {
 		o.IncludeDraftDocuments = &IncludeDraftDocuments
 	}
@@ -175,6 +195,11 @@ func (o *Knowledgedocumentsearchrequest) UnmarshalJSON(b []byte) error {
 	if Application, ok := KnowledgedocumentsearchrequestMap["application"].(map[string]interface{}); ok {
 		ApplicationString, _ := json.Marshal(Application)
 		json.Unmarshal(ApplicationString, &o.Application)
+	}
+	
+	if ConversationContext, ok := KnowledgedocumentsearchrequestMap["conversationContext"].(map[string]interface{}); ok {
+		ConversationContextString, _ := json.Marshal(ConversationContext)
+		json.Unmarshal(ConversationContextString, &o.ConversationContext)
 	}
 	
 

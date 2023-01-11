@@ -615,6 +615,10 @@ type Viewfilter struct {
 	// StationErrors - The list of agent errors that are related to station
 	StationErrors *[]string `json:"stationErrors,omitempty"`
 
+
+	// CanonicalContactIds - The canonical contact ids are used to filter the view
+	CanonicalContactIds *[]string `json:"canonicalContactIds,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -926,6 +930,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		MyDashboard *bool `json:"myDashboard,omitempty"`
 		
 		StationErrors *[]string `json:"stationErrors,omitempty"`
+		
+		CanonicalContactIds *[]string `json:"canonicalContactIds,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1231,6 +1237,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		MyDashboard: o.MyDashboard,
 		
 		StationErrors: o.StationErrors,
+		
+		CanonicalContactIds: o.CanonicalContactIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1968,6 +1976,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if StationErrors, ok := ViewfilterMap["stationErrors"].([]interface{}); ok {
 		StationErrorsString, _ := json.Marshal(StationErrors)
 		json.Unmarshal(StationErrorsString, &o.StationErrors)
+	}
+	
+	if CanonicalContactIds, ok := ViewfilterMap["canonicalContactIds"].([]interface{}); ok {
+		CanonicalContactIdsString, _ := json.Marshal(CanonicalContactIds)
+		json.Unmarshal(CanonicalContactIdsString, &o.CanonicalContactIds)
 	}
 	
 

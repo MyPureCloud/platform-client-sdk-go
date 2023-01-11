@@ -113,6 +113,22 @@ type Site struct {
 	SiteConnections *[]Siteconnection `json:"siteConnections,omitempty"`
 
 
+	// MediaRegions - The ordered list of AWS regions through which media can stream.
+	MediaRegions *[]string `json:"mediaRegions,omitempty"`
+
+
+	// CallerId - The caller ID value for the site.
+	CallerId *string `json:"callerId,omitempty"`
+
+
+	// CallerName - The caller name for the site.
+	CallerName *string `json:"callerName,omitempty"`
+
+
+	// CloudProxyForceTurn - Enables premises Edge Force Turn 
+	CloudProxyForceTurn *bool `json:"cloudProxyForceTurn,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -192,6 +208,14 @@ func (o *Site) MarshalJSON() ([]byte, error) {
 		
 		SiteConnections *[]Siteconnection `json:"siteConnections,omitempty"`
 		
+		MediaRegions *[]string `json:"mediaRegions,omitempty"`
+		
+		CallerId *string `json:"callerId,omitempty"`
+		
+		CallerName *string `json:"callerName,omitempty"`
+		
+		CloudProxyForceTurn *bool `json:"cloudProxyForceTurn,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -246,6 +270,14 @@ func (o *Site) MarshalJSON() ([]byte, error) {
 		CoreSite: o.CoreSite,
 		
 		SiteConnections: o.SiteConnections,
+		
+		MediaRegions: o.MediaRegions,
+		
+		CallerId: o.CallerId,
+		
+		CallerName: o.CallerName,
+		
+		CloudProxyForceTurn: o.CloudProxyForceTurn,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -377,6 +409,23 @@ func (o *Site) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SiteConnectionsString, &o.SiteConnections)
 	}
 	
+	if MediaRegions, ok := SiteMap["mediaRegions"].([]interface{}); ok {
+		MediaRegionsString, _ := json.Marshal(MediaRegions)
+		json.Unmarshal(MediaRegionsString, &o.MediaRegions)
+	}
+	
+	if CallerId, ok := SiteMap["callerId"].(string); ok {
+		o.CallerId = &CallerId
+	}
+    
+	if CallerName, ok := SiteMap["callerName"].(string); ok {
+		o.CallerName = &CallerName
+	}
+    
+	if CloudProxyForceTurn, ok := SiteMap["cloudProxyForceTurn"].(bool); ok {
+		o.CloudProxyForceTurn = &CloudProxyForceTurn
+	}
+    
 	if SelfUri, ok := SiteMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

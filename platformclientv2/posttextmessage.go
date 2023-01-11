@@ -17,7 +17,7 @@ type Posttextmessage struct {
 
 
 	// Content - A list of content elements in message
-	Content *[]Messagecontent `json:"content,omitempty"`
+	Content *[]Conversationmessagecontent `json:"content,omitempty"`
 
 }
 
@@ -31,7 +31,7 @@ func (o *Posttextmessage) MarshalJSON() ([]byte, error) {
 		
 		Text *string `json:"text,omitempty"`
 		
-		Content *[]Messagecontent `json:"content,omitempty"`
+		Content *[]Conversationmessagecontent `json:"content,omitempty"`
 		*Alias
 	}{ 
 		VarType: o.VarType,

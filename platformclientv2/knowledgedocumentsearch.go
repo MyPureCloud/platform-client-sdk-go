@@ -32,12 +32,20 @@ type Knowledgedocumentsearch struct {
 	PageCount *int `json:"pageCount,omitempty"`
 
 
+	// QueryType - The type of the query that initiates the search.
+	QueryType *string `json:"queryType,omitempty"`
+
+
 	// Results - Documents matching the search query.
 	Results *[]Knowledgedocumentsearchresult `json:"results,omitempty"`
 
 
 	// Application - The client application details from which search happened.
 	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
+
+
+	// ConversationContext - Conversation context information if the search is initiated in the context of a conversation.
+	ConversationContext *Knowledgeconversationcontextresponse `json:"conversationContext,omitempty"`
 
 }
 
@@ -59,9 +67,13 @@ func (o *Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		
+		QueryType *string `json:"queryType,omitempty"`
+		
 		Results *[]Knowledgedocumentsearchresult `json:"results,omitempty"`
 		
 		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
+		
+		ConversationContext *Knowledgeconversationcontextresponse `json:"conversationContext,omitempty"`
 		*Alias
 	}{ 
 		Query: o.Query,
@@ -76,9 +88,13 @@ func (o *Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		
 		PageCount: o.PageCount,
 		
+		QueryType: o.QueryType,
+		
 		Results: o.Results,
 		
 		Application: o.Application,
+		
+		ConversationContext: o.ConversationContext,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -118,6 +134,10 @@ func (o *Knowledgedocumentsearch) UnmarshalJSON(b []byte) error {
 		o.PageCount = &PageCountInt
 	}
 	
+	if QueryType, ok := KnowledgedocumentsearchMap["queryType"].(string); ok {
+		o.QueryType = &QueryType
+	}
+    
 	if Results, ok := KnowledgedocumentsearchMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)
@@ -126,6 +146,11 @@ func (o *Knowledgedocumentsearch) UnmarshalJSON(b []byte) error {
 	if Application, ok := KnowledgedocumentsearchMap["application"].(map[string]interface{}); ok {
 		ApplicationString, _ := json.Marshal(Application)
 		json.Unmarshal(ApplicationString, &o.Application)
+	}
+	
+	if ConversationContext, ok := KnowledgedocumentsearchMap["conversationContext"].(map[string]interface{}); ok {
+		ConversationContextString, _ := json.Marshal(ConversationContext)
+		json.Unmarshal(ConversationContextString, &o.ConversationContext)
 	}
 	
 

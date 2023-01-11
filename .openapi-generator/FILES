@@ -848,6 +848,7 @@ docs/GetRecordingMediaretentionpolicy-example.txt
 docs/GetRecordingRecordingkeys-example.txt
 docs/GetRecordingRecordingkeysRotationschedule-example.txt
 docs/GetRecordingSettings-example.txt
+docs/GetRecordingUploadsReport-example.txt
 docs/GetRecordingsRetentionQuery-example.txt
 docs/GetRecordingsScreensessions-example.txt
 docs/GetResponsemanagementLibraries-example.txt
@@ -1660,6 +1661,7 @@ docs/PostRecordingLocalkeys-example.txt
 docs/PostRecordingLocalkeysSettings-example.txt
 docs/PostRecordingMediaretentionpolicies-example.txt
 docs/PostRecordingRecordingkeys-example.txt
+docs/PostRecordingUploadsReports-example.txt
 docs/PostRecordingsDeletionprotection-example.txt
 docs/PostRecordingsScreensessionsAcknowledge-example.txt
 docs/PostRecordingsScreensessionsMetadata-example.txt
@@ -3732,6 +3734,8 @@ platformclientv2/knowledgecategory.go
 platformclientv2/knowledgecategoryrequest.go
 platformclientv2/knowledgecontextreference.go
 platformclientv2/knowledgecontextvaluereference.go
+platformclientv2/knowledgeconversationcontext.go
+platformclientv2/knowledgeconversationcontextresponse.go
 platformclientv2/knowledgedocument.go
 platformclientv2/knowledgedocumentalternative.go
 platformclientv2/knowledgedocumentbulkrequest.go
@@ -4557,6 +4561,8 @@ platformclientv2/recordingretentioncursorentitylisting.go
 platformclientv2/recordingsettings.go
 platformclientv2/recordingtranscodecompletetopicmediaresult.go
 platformclientv2/recordingtranscodecompletetopicrecording.go
+platformclientv2/recordinguploadreport.go
+platformclientv2/recordinguploadreportrequest.go
 platformclientv2/referrer.go
 platformclientv2/regiontimezone.go
 platformclientv2/registerarchitectjobresponse.go
@@ -5285,6 +5291,7 @@ platformclientv2/validateworkplanresponse.go
 platformclientv2/validationlimits.go
 platformclientv2/validationservicerequest.go
 platformclientv2/valuewrapperdate.go
+platformclientv2/valuewrapperhristimeofftype.go
 platformclientv2/valuewrapperplanningperiodsettings.go
 platformclientv2/valuewrapperstring.go
 platformclientv2/verificationresult.go

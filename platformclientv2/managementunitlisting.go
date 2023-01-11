@@ -36,12 +36,12 @@ type Managementunitlisting struct {
 	PageCount *int `json:"pageCount,omitempty"`
 
 
-	// LastUri - Deprecated, paging is not supported
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// PreviousUri - Deprecated, paging is not supported
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri - Deprecated, paging is not supported
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
@@ -69,9 +69,9 @@ func (o *Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
@@ -90,9 +90,9 @@ func (o *Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		PageCount: o.PageCount,
 		
-		LastUri: o.LastUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -139,12 +139,12 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.PageCount = &PageCountInt
 	}
 	
-	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {

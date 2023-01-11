@@ -32,6 +32,10 @@ type Historicalshrinkageresult struct {
 	// ShrinkageForActivityCategories - Shrinkage for activity categories
 	ShrinkageForActivityCategories *[]Historicalshrinkageactivitycategoryresponse `json:"shrinkageForActivityCategories,omitempty"`
 
+
+	// BusinessUnitIds - List of all business units of all the agents in response
+	BusinessUnitIds *[]string `json:"businessUnitIds,omitempty"`
+
 }
 
 func (o *Historicalshrinkageresult) MarshalJSON() ([]byte, error) {
@@ -67,6 +71,8 @@ func (o *Historicalshrinkageresult) MarshalJSON() ([]byte, error) {
 		AggregatedShrinkage *Historicalshrinkageaggregateresponse `json:"aggregatedShrinkage,omitempty"`
 		
 		ShrinkageForActivityCategories *[]Historicalshrinkageactivitycategoryresponse `json:"shrinkageForActivityCategories,omitempty"`
+		
+		BusinessUnitIds *[]string `json:"businessUnitIds,omitempty"`
 		*Alias
 	}{ 
 		StartDate: StartDate,
@@ -80,6 +86,8 @@ func (o *Historicalshrinkageresult) MarshalJSON() ([]byte, error) {
 		AggregatedShrinkage: o.AggregatedShrinkage,
 		
 		ShrinkageForActivityCategories: o.ShrinkageForActivityCategories,
+		
+		BusinessUnitIds: o.BusinessUnitIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -119,6 +127,11 @@ func (o *Historicalshrinkageresult) UnmarshalJSON(b []byte) error {
 	if ShrinkageForActivityCategories, ok := HistoricalshrinkageresultMap["shrinkageForActivityCategories"].([]interface{}); ok {
 		ShrinkageForActivityCategoriesString, _ := json.Marshal(ShrinkageForActivityCategories)
 		json.Unmarshal(ShrinkageForActivityCategoriesString, &o.ShrinkageForActivityCategories)
+	}
+	
+	if BusinessUnitIds, ok := HistoricalshrinkageresultMap["businessUnitIds"].([]interface{}); ok {
+		BusinessUnitIdsString, _ := json.Marshal(BusinessUnitIds)
+		json.Unmarshal(BusinessUnitIdsString, &o.BusinessUnitIds)
 	}
 	
 

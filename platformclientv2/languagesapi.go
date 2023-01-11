@@ -33,7 +33,7 @@ func NewLanguagesApiWithConfig(config *Configuration) *LanguagesApi {
 //
 // Delete Language (Deprecated)
 //
-// This endpoint is deprecated. It has been moved to /routing/languages/{languageId}
+// This endpoint is deprecated. Please see the Routing API (DELETE /api/v2/routing/languages/{languageId})
 func (a LanguagesApi) DeleteLanguage(languageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -95,75 +95,11 @@ func (a LanguagesApi) DeleteLanguage(languageId string) (*APIResponse, error) {
 	return response, err
 }
 
-// DeleteRoutingLanguage invokes DELETE /api/v2/routing/languages/{languageId}
-//
-// Delete Language
-func (a LanguagesApi) DeleteRoutingLanguage(languageId string) (*APIResponse, error) {
-	var httpMethod = "DELETE"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/languages/{languageId}"
-	path = strings.Replace(path, "{languageId}", fmt.Sprintf("%v", languageId), -1)
-	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'languageId' is set
-	if &languageId == nil {
-		// false
-		return nil, errors.New("Missing required parameter 'languageId' when calling LanguagesApi->DeleteRoutingLanguage")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	}
-	return response, err
-}
-
 // GetLanguage invokes GET /api/v2/languages/{languageId}
 //
-// Get language (Deprecated)
+// Get Language (Deprecated)
 //
-// This endpoint is deprecated. It has been moved to /routing/languages/{languageId}
+// This endpoint is deprecated. Please see the Routing API (GET /api/v2/routing/languages/{languageId})
 func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -236,7 +172,7 @@ func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, e
 //
 // Get the list of supported languages. (Deprecated)
 //
-// This endpoint is deprecated. It has been moved to /routing/languages
+// This endpoint is deprecated. Please see the Routing API (GET /api/v2/routing/languages)
 func (a LanguagesApi) GetLanguages(pageSize int, pageNumber int, sortOrder string, name string) (*Languageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -587,82 +523,11 @@ func (a LanguagesApi) GetLanguagesTranslationsUser(userId string) (*map[string]i
 	return successPayload, response, err
 }
 
-// GetRoutingLanguage invokes GET /api/v2/routing/languages/{languageId}
-//
-// Get language
-func (a LanguagesApi) GetRoutingLanguage(languageId string) (*Language, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/languages/{languageId}"
-	path = strings.Replace(path, "{languageId}", fmt.Sprintf("%v", languageId), -1)
-	defaultReturn := new(Language)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'languageId' is set
-	if &languageId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'languageId' when calling LanguagesApi->GetRoutingLanguage")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Language
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Language" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
 // PostLanguages invokes POST /api/v2/languages
 //
 // Create Language (Deprecated)
 //
-// This endpoint is deprecated. It has been moved to /routing/languages
+// This endpoint is deprecated. Please see the Routing API. (POST /api/v2/routing/languages
 func (a LanguagesApi) PostLanguages(body Language) (*Language, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

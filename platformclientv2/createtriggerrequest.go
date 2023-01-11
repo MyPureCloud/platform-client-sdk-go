@@ -28,8 +28,12 @@ type Createtriggerrequest struct {
 	TopicName *string `json:"topicName,omitempty"`
 
 
-	// EventTTLSeconds - How long each event is meaningful after origination, in seconds. Events older than this threshold may be dropped if the platform is delayed in processing events. Unset means events are valid indefinitely.
+	// EventTTLSeconds - Optional length of time that events are meaningful after origination. Events older than this threshold may be dropped if the platform is delayed in processing events. Unset means events are valid indefinitely, otherwise must be set to at least 10 seconds. Only one of eventTTLSeconds or delayBySeconds can be set.
 	EventTTLSeconds *int `json:"eventTTLSeconds,omitempty"`
+
+
+	// DelayBySeconds - Optional delay invoking target after trigger fires. Must be in the range of 60 to 900 seconds. Only one of eventTTLSeconds or delayBySeconds can be set. Until delayed triggers are released supplying this attribute will cause a failure.
+	DelayBySeconds *int `json:"delayBySeconds,omitempty"`
 
 
 	// Description - Description of the trigger. Can be up to 512 characters in length.
@@ -55,6 +59,8 @@ func (o *Createtriggerrequest) MarshalJSON() ([]byte, error) {
 		
 		EventTTLSeconds *int `json:"eventTTLSeconds,omitempty"`
 		
+		DelayBySeconds *int `json:"delayBySeconds,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		*Alias
 	}{ 
@@ -69,6 +75,8 @@ func (o *Createtriggerrequest) MarshalJSON() ([]byte, error) {
 		TopicName: o.TopicName,
 		
 		EventTTLSeconds: o.EventTTLSeconds,
+		
+		DelayBySeconds: o.DelayBySeconds,
 		
 		Description: o.Description,
 		Alias:    (*Alias)(o),
@@ -107,6 +115,11 @@ func (o *Createtriggerrequest) UnmarshalJSON(b []byte) error {
 	if EventTTLSeconds, ok := CreatetriggerrequestMap["eventTTLSeconds"].(float64); ok {
 		EventTTLSecondsInt := int(EventTTLSeconds)
 		o.EventTTLSeconds = &EventTTLSecondsInt
+	}
+	
+	if DelayBySeconds, ok := CreatetriggerrequestMap["delayBySeconds"].(float64); ok {
+		DelayBySecondsInt := int(DelayBySeconds)
+		o.DelayBySeconds = &DelayBySecondsInt
 	}
 	
 	if Description, ok := CreatetriggerrequestMap["description"].(string); ok {

@@ -32,12 +32,12 @@ type Messagingcampaigndivisionviewentitylisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
@@ -67,9 +67,9 @@ func (o *Messagingcampaigndivisionviewentitylisting) MarshalJSON() ([]byte, erro
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -88,9 +88,9 @@ func (o *Messagingcampaigndivisionviewentitylisting) MarshalJSON() ([]byte, erro
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -134,12 +134,12 @@ func (o *Messagingcampaigndivisionviewentitylisting) UnmarshalJSON(b []byte) err
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := MessagingcampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if PreviousUri, ok := MessagingcampaigndivisionviewentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := MessagingcampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := MessagingcampaigndivisionviewentitylistingMap["selfUri"].(string); ok {

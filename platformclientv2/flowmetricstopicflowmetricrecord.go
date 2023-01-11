@@ -125,6 +125,10 @@ type Flowmetricstopicflowmetricrecord struct {
 	EntryType *string `json:"entryType,omitempty"`
 
 
+	// ErrorCode - A code corresponding to the error that occurred
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+
 	// ExitReason - The exit reason for this flow, e.g. DISCONNECT
 	ExitReason *string `json:"exitReason,omitempty"`
 
@@ -458,6 +462,8 @@ func (o *Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		
 		EntryType *string `json:"entryType,omitempty"`
 		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
 		ExitReason *string `json:"exitReason,omitempty"`
 		
 		ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
@@ -646,6 +652,8 @@ func (o *Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		EntryReason: o.EntryReason,
 		
 		EntryType: o.EntryType,
+		
+		ErrorCode: o.ErrorCode,
 		
 		ExitReason: o.ExitReason,
 		
@@ -908,6 +916,10 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
     
 	if EntryType, ok := FlowmetricstopicflowmetricrecordMap["entryType"].(string); ok {
 		o.EntryType = &EntryType
+	}
+    
+	if ErrorCode, ok := FlowmetricstopicflowmetricrecordMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
 	}
     
 	if ExitReason, ok := FlowmetricstopicflowmetricrecordMap["exitReason"].(string); ok {

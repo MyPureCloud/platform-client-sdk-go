@@ -32,12 +32,12 @@ type Physicalinterfaceentitylisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
@@ -67,9 +67,9 @@ func (o *Physicalinterfaceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -88,9 +88,9 @@ func (o *Physicalinterfaceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -134,12 +134,12 @@ func (o *Physicalinterfaceentitylisting) UnmarshalJSON(b []byte) error {
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := PhysicalinterfaceentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if PreviousUri, ok := PhysicalinterfaceentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := PhysicalinterfaceentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := PhysicalinterfaceentitylistingMap["selfUri"].(string); ok {

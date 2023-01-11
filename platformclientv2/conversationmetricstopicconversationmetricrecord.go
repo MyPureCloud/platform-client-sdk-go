@@ -113,6 +113,10 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 
 
+	// ErrorCode - A code corresponding to the error that occurred
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+
 	// ExtendedDeliveryStatus - Extended delivery status
 	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 
@@ -392,6 +396,8 @@ func (o *Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte
 		
 		EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
 		ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
@@ -550,6 +556,8 @@ func (o *Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte
 		EdgeId: o.EdgeId,
 		
 		EligibleAgentCounts: o.EligibleAgentCounts,
+		
+		ErrorCode: o.ErrorCode,
 		
 		ExtendedDeliveryStatus: o.ExtendedDeliveryStatus,
 		
@@ -778,6 +786,10 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 		json.Unmarshal(EligibleAgentCountsString, &o.EligibleAgentCounts)
 	}
 	
+	if ErrorCode, ok := ConversationmetricstopicconversationmetricrecordMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+    
 	if ExtendedDeliveryStatus, ok := ConversationmetricstopicconversationmetricrecordMap["extendedDeliveryStatus"].(string); ok {
 		o.ExtendedDeliveryStatus = &ExtendedDeliveryStatus
 	}

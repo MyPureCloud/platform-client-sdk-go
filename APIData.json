@@ -16947,19 +16947,6 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Delete Language (Deprecated)\nresponse, err := apiInstance.DeleteLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteLanguage: %v\\n\", err)\n}"
   },
-  "deleteroutinglanguage": {
-    "operationId": "deleteroutinglanguage",
-    "functionName": "DeleteRoutingLanguage",
-    "signature": "DeleteRoutingLanguage(languageId)",
-    "parameters": [
-      {
-        "name": "languageId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Delete Language\nresponse, err := apiInstance.DeleteRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingLanguage: %v\\n\", err)\n}"
-  },
   "getlanguage": {
     "operationId": "getlanguage",
     "functionName": "GetLanguage",
@@ -16972,7 +16959,7 @@
       }
     ],
     "return": "Language",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get language (Deprecated)\ndata, response, err := apiInstance.GetLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguage: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get Language (Deprecated)\ndata, response, err := apiInstance.GetLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguage: %v\\n\", err)\n}"
   },
   "getlanguages": {
     "operationId": "getlanguages",
@@ -17051,20 +17038,6 @@
     ],
     "return": "map[string]interface{}",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar userId string // The user id\n// Get effective language translation for a user\ndata, response, err := apiInstance.GetLanguagesTranslationsUser(userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslationsUser: %v\\n\", err)\n}"
-  },
-  "getroutinglanguage": {
-    "operationId": "getroutinglanguage",
-    "functionName": "GetRoutingLanguage",
-    "signature": "GetRoutingLanguage(languageId)",
-    "parameters": [
-      {
-        "name": "languageId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Language",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get language\ndata, response, err := apiInstance.GetRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingLanguage: %v\\n\", err)\n}"
   },
   "postlanguages": {
     "operationId": "postlanguages",
@@ -22255,7 +22228,7 @@
   "getprocessautomationtriggers": {
     "operationId": "getprocessautomationtriggers",
     "functionName": "GetProcessautomationTriggers",
-    "signature": "GetProcessautomationTriggers(before, after, pageSize, topicName, enabled)",
+    "signature": "GetProcessautomationTriggers(before, after, pageSize, topicName, enabled, hasDelayBy)",
     "parameters": [
       {
         "name": "before",
@@ -22281,10 +22254,15 @@
         "name": "enabled",
         "type": "bool",
         "required": "false"
+      },
+      {
+        "name": "hasDelayBy",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Triggerentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewProcessAutomationApiWithConfig(config)\n\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar topicName string // Topic name(s). Separated by commas\nvar enabled bool // Boolean indicating desired enabled state of triggers\n// Retrieves all triggers, optionally filtered by query parameters.\ndata, response, err := apiInstance.GetProcessautomationTriggers(before, after, pageSize, topicName, enabled)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetProcessautomationTriggers: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewProcessAutomationApiWithConfig(config)\n\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar topicName string // Topic name(s). Separated by commas\nvar enabled bool // Boolean indicating desired enabled state of triggers\nvar hasDelayBy bool // Boolean to filter based on delayBySeconds being set in triggers. Default returns all, true returns only those with delayBySeconds set, false returns those without delayBySeconds set.\n// Retrieves all triggers, optionally filtered by query parameters.\ndata, response, err := apiInstance.GetProcessautomationTriggers(before, after, pageSize, topicName, enabled, hasDelayBy)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetProcessautomationTriggers: %v\\n\", err)\n}"
   },
   "getprocessautomationtriggerstopics": {
     "operationId": "getprocessautomationtriggerstopics",
@@ -24387,6 +24365,20 @@
     "return": "Recordingsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar createDefault bool // If no settings are found, a new one is created with default values\n// Get the Recording Settings for the Organization\ndata, response, err := apiInstance.GetRecordingSettings(createDefault)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingSettings: %v\\n\", err)\n}"
   },
+  "getrecordinguploadsreport": {
+    "operationId": "getrecordinguploadsreport",
+    "functionName": "GetRecordingUploadsReport",
+    "signature": "GetRecordingUploadsReport(reportId)",
+    "parameters": [
+      {
+        "name": "reportId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Recordinguploadreport",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar reportId string // reportId\n// Get the status of a recording upload status report\ndata, response, err := apiInstance.GetRecordingUploadsReport(reportId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingUploadsReport: %v\\n\", err)\n}"
+  },
   "getrecordingsretentionquery": {
     "operationId": "getrecordingsretentionquery",
     "functionName": "GetRecordingsRetentionQuery",
@@ -24628,6 +24620,20 @@
     "signature": "PostRecordingRecordingkeys()",
     "return": "Encryptionkey",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\n// Create encryption key\ndata, response, err := apiInstance.PostRecordingRecordingkeys()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostRecordingRecordingkeys: %v\\n\", err)\n}"
+  },
+  "postrecordinguploadsreports": {
+    "operationId": "postrecordinguploadsreports",
+    "functionName": "PostRecordingUploadsReports",
+    "signature": "PostRecordingUploadsReports(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Recordinguploadreportrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Recordinguploadreport",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar body platformclientv2.Recordinguploadreportrequest // Report parameters\n// Creates a recording upload status report\ndata, response, err := apiInstance.PostRecordingUploadsReports(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostRecordingUploadsReports: %v\\n\", err)\n}"
   },
   "postrecordingsdeletionprotection": {
     "operationId": "postrecordingsdeletionprotection",
@@ -25239,6 +25245,19 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar domainId string // domain ID\n// Delete an outbound domain\nresponse, err := apiInstance.DeleteRoutingEmailOutboundDomain(domainId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingEmailOutboundDomain: %v\\n\", err)\n}"
   },
+  "deleteroutinglanguage": {
+    "operationId": "deleteroutinglanguage",
+    "functionName": "DeleteRoutingLanguage",
+    "signature": "DeleteRoutingLanguage(languageId)",
+    "parameters": [
+      {
+        "name": "languageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar languageId string // Language ID\n// Delete a routing language\nresponse, err := apiInstance.DeleteRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingLanguage: %v\\n\", err)\n}"
+  },
   "deleteroutingpredictor": {
     "operationId": "deleteroutingpredictor",
     "functionName": "DeleteRoutingPredictor",
@@ -25674,6 +25693,20 @@
     "signature": "GetRoutingEmailSetup()",
     "return": "Emailsetup",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\n// Get email setup\ndata, response, err := apiInstance.GetRoutingEmailSetup()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingEmailSetup: %v\\n\", err)\n}"
+  },
+  "getroutinglanguage": {
+    "operationId": "getroutinglanguage",
+    "functionName": "GetRoutingLanguage",
+    "signature": "GetRoutingLanguage(languageId)",
+    "parameters": [
+      {
+        "name": "languageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Language",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get a routing language\ndata, response, err := apiInstance.GetRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingLanguage: %v\\n\", err)\n}"
   },
   "getroutinglanguages": {
     "operationId": "getroutinglanguages",

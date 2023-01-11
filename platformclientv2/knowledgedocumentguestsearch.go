@@ -32,6 +32,10 @@ type Knowledgedocumentguestsearch struct {
 	PageCount *int `json:"pageCount,omitempty"`
 
 
+	// QueryType - The type of the query that initiates the search.
+	QueryType *string `json:"queryType,omitempty"`
+
+
 	// SessionId - Session ID of the search.
 	SessionId *string `json:"sessionId,omitempty"`
 
@@ -59,6 +63,8 @@ func (o *Knowledgedocumentguestsearch) MarshalJSON() ([]byte, error) {
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		
+		QueryType *string `json:"queryType,omitempty"`
+		
 		SessionId *string `json:"sessionId,omitempty"`
 		
 		Results *[]Knowledgedocumentguestsearchresult `json:"results,omitempty"`
@@ -75,6 +81,8 @@ func (o *Knowledgedocumentguestsearch) MarshalJSON() ([]byte, error) {
 		Total: o.Total,
 		
 		PageCount: o.PageCount,
+		
+		QueryType: o.QueryType,
 		
 		SessionId: o.SessionId,
 		
@@ -118,6 +126,10 @@ func (o *Knowledgedocumentguestsearch) UnmarshalJSON(b []byte) error {
 		o.PageCount = &PageCountInt
 	}
 	
+	if QueryType, ok := KnowledgedocumentguestsearchMap["queryType"].(string); ok {
+		o.QueryType = &QueryType
+	}
+    
 	if SessionId, ok := KnowledgedocumentguestsearchMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}

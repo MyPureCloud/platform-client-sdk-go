@@ -167,7 +167,7 @@ func (a ProcessAutomationApi) GetProcessautomationTrigger(triggerId string) (*Tr
 // GetProcessautomationTriggers invokes GET /api/v2/processautomation/triggers
 //
 // Retrieves all triggers, optionally filtered by query parameters.
-func (a ProcessAutomationApi) GetProcessautomationTriggers(before string, after string, pageSize string, topicName string, enabled bool) (*Triggerentitylisting, *APIResponse, error) {
+func (a ProcessAutomationApi) GetProcessautomationTriggers(before string, after string, pageSize string, topicName string, enabled bool, hasDelayBy bool) (*Triggerentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/processautomation/triggers"
@@ -203,6 +203,8 @@ func (a ProcessAutomationApi) GetProcessautomationTriggers(before string, after 
 	queryParams["topicName"] = a.Configuration.APIClient.ParameterToString(topicName, "")
 	
 	queryParams["enabled"] = a.Configuration.APIClient.ParameterToString(enabled, "")
+	
+	queryParams["hasDelayBy"] = a.Configuration.APIClient.ParameterToString(hasDelayBy, "")
 	
 
 	// to determine the Content-Type header
