@@ -34222,6 +34222,24 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar deploymentId string // The deployment ID\n// Delete a deployment\nresponse, err := apiInstance.DeleteWebdeploymentsDeployment(deploymentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWebdeploymentsDeployment: %v\\n\", err)\n}"
   },
+  "deletewebdeploymentstokenrevoke": {
+    "operationId": "deletewebdeploymentstokenrevoke",
+    "functionName": "DeleteWebdeploymentsTokenRevoke",
+    "signature": "DeleteWebdeploymentsTokenRevoke(xJourneySessionId, xJourneySessionType)",
+    "parameters": [
+      {
+        "name": "xJourneySessionId",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "xJourneySessionType",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar xJourneySessionId string // The Customer's journey sessionId.\nvar xJourneySessionType string // The Customer's journey session type.\n// Invalidate JWT\nresponse, err := apiInstance.DeleteWebdeploymentsTokenRevoke(xJourneySessionId, xJourneySessionType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWebdeploymentsTokenRevoke: %v\\n\", err)\n}"
+  },
   "getwebdeploymentsconfigurationversion": {
     "operationId": "getwebdeploymentsconfigurationversion",
     "functionName": "GetWebdeploymentsConfigurationVersion",
@@ -34371,6 +34389,34 @@
     ],
     "return": "Webdeployment",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar deployment platformclientv2.Webdeployment // \n// Create a deployment\ndata, response, err := apiInstance.PostWebdeploymentsDeployments(deployment)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWebdeploymentsDeployments: %v\\n\", err)\n}"
+  },
+  "postwebdeploymentstokenoauthcodegrantjwtexchange": {
+    "operationId": "postwebdeploymentstokenoauthcodegrantjwtexchange",
+    "functionName": "PostWebdeploymentsTokenOauthcodegrantjwtexchange",
+    "signature": "PostWebdeploymentsTokenOauthcodegrantjwtexchange(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Webdeploymentsoauthexchangerequest",
+        "required": "true"
+      }
+    ],
+    "return": "Webdeploymentsauthorizationresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar body platformclientv2.Webdeploymentsoauthexchangerequest // webDeploymentsOAuthExchangeRequest\n// Exchange an oAuth code (obtained using the Authorization Code Flow) for a JWT that can be used by webdeployments.\ndata, response, err := apiInstance.PostWebdeploymentsTokenOauthcodegrantjwtexchange(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWebdeploymentsTokenOauthcodegrantjwtexchange: %v\\n\", err)\n}"
+  },
+  "postwebdeploymentstokenrefresh": {
+    "operationId": "postwebdeploymentstokenrefresh",
+    "functionName": "PostWebdeploymentsTokenRefresh",
+    "signature": "PostWebdeploymentsTokenRefresh(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Webdeploymentsrefreshjwtrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Signeddata",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar body platformclientv2.Webdeploymentsrefreshjwtrequest // \n// Refresh a JWT.\ndata, response, err := apiInstance.PostWebdeploymentsTokenRefresh(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWebdeploymentsTokenRefresh: %v\\n\", err)\n}"
   },
   "putwebdeploymentsconfigurationversionsdraft": {
     "operationId": "putwebdeploymentsconfigurationversionsdraft",
@@ -34760,6 +34806,20 @@
     ],
     "return": "Adherenceexplanationjob",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar jobId string // The ID of the job\n// Query the status of an adherence explanation operation. Only the user who started the operation can query the status\ndata, response, err := apiInstance.GetWorkforcemanagementAdherenceExplanationsJob(jobId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAdherenceExplanationsJob: %v\\n\", err)\n}"
+  },
+  "getworkforcemanagementadherencehistoricalbulkjob": {
+    "operationId": "getworkforcemanagementadherencehistoricalbulkjob",
+    "functionName": "GetWorkforcemanagementAdherenceHistoricalBulkJob",
+    "signature": "GetWorkforcemanagementAdherenceHistoricalBulkJob(jobId)",
+    "parameters": [
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Wfmhistoricaladherencebulkresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar jobId string // ID of the job to get\n// Request to fetch the status of the historical adherence bulk job. Only the user who started the operation can query the status\ndata, response, err := apiInstance.GetWorkforcemanagementAdherenceHistoricalBulkJob(jobId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAdherenceHistoricalBulkJob: %v\\n\", err)\n}"
   },
   "getworkforcemanagementadherencehistoricaljob": {
     "operationId": "getworkforcemanagementadherencehistoricaljob",
@@ -36385,6 +36445,20 @@
     ],
     "return": "Wfmhistoricaladherenceresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar body platformclientv2.Wfmhistoricaladherencequeryforusers // body\n// Request a historical adherence report for users across management units\ndata, response, err := apiInstance.PostWorkforcemanagementAdherenceHistorical(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAdherenceHistorical: %v\\n\", err)\n}"
+  },
+  "postworkforcemanagementadherencehistoricalbulk": {
+    "operationId": "postworkforcemanagementadherencehistoricalbulk",
+    "functionName": "PostWorkforcemanagementAdherenceHistoricalBulk",
+    "signature": "PostWorkforcemanagementAdherenceHistoricalBulk(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Wfmhistoricaladherencebulkquery",
+        "required": "false"
+      }
+    ],
+    "return": "Wfmhistoricaladherencebulkresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar body platformclientv2.Wfmhistoricaladherencebulkquery // body\n// Request a historical adherence report in bulk\ndata, response, err := apiInstance.PostWorkforcemanagementAdherenceHistoricalBulk(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAdherenceHistoricalBulk: %v\\n\", err)\n}"
   },
   "postworkforcemanagementagentadherenceexplanations": {
     "operationId": "postworkforcemanagementagentadherenceexplanations",

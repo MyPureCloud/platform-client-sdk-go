@@ -68,6 +68,10 @@ type Reportingdataexporttopicdataexportnotification struct {
 	// ScheduleExpression
 	ScheduleExpression *string `json:"scheduleExpression,omitempty"`
 
+
+	// ScheduleStaticLinkUrl
+	ScheduleStaticLinkUrl *string `json:"scheduleStaticLinkUrl,omitempty"`
+
 }
 
 func (o *Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, error) {
@@ -121,6 +125,8 @@ func (o *Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, 
 		EmailErrorDescription *string `json:"emailErrorDescription,omitempty"`
 		
 		ScheduleExpression *string `json:"scheduleExpression,omitempty"`
+		
+		ScheduleStaticLinkUrl *string `json:"scheduleStaticLinkUrl,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -152,6 +158,8 @@ func (o *Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, 
 		EmailErrorDescription: o.EmailErrorDescription,
 		
 		ScheduleExpression: o.ScheduleExpression,
+		
+		ScheduleStaticLinkUrl: o.ScheduleStaticLinkUrl,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -225,6 +233,10 @@ func (o *Reportingdataexporttopicdataexportnotification) UnmarshalJSON(b []byte)
     
 	if ScheduleExpression, ok := ReportingdataexporttopicdataexportnotificationMap["scheduleExpression"].(string); ok {
 		o.ScheduleExpression = &ScheduleExpression
+	}
+    
+	if ScheduleStaticLinkUrl, ok := ReportingdataexporttopicdataexportnotificationMap["scheduleStaticLinkUrl"].(string); ok {
+		o.ScheduleStaticLinkUrl = &ScheduleStaticLinkUrl
 	}
     
 

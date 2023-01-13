@@ -41,14 +41,6 @@ type Journeysessioneventsnotificationsessionevent struct {
 	VarType *string `json:"type,omitempty"`
 
 
-	// ExternalId
-	ExternalId *string `json:"externalId,omitempty"`
-
-
-	// ExternalUrl
-	ExternalUrl *string `json:"externalUrl,omitempty"`
-
-
 	// OutcomeAchievements
 	OutcomeAchievements *[]Journeysessioneventsnotificationoutcomeachievement `json:"outcomeAchievements,omitempty"`
 
@@ -228,10 +220,6 @@ func (o *Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, er
 		
 		VarType *string `json:"type,omitempty"`
 		
-		ExternalId *string `json:"externalId,omitempty"`
-		
-		ExternalUrl *string `json:"externalUrl,omitempty"`
-		
 		OutcomeAchievements *[]Journeysessioneventsnotificationoutcomeachievement `json:"outcomeAchievements,omitempty"`
 		
 		SegmentAssignments *[]Journeysessioneventsnotificationsegmentassignment `json:"segmentAssignments,omitempty"`
@@ -310,10 +298,6 @@ func (o *Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, er
 		CustomerIdType: o.CustomerIdType,
 		
 		VarType: o.VarType,
-		
-		ExternalId: o.ExternalId,
-		
-		ExternalUrl: o.ExternalUrl,
 		
 		OutcomeAchievements: o.OutcomeAchievements,
 		
@@ -420,14 +404,6 @@ func (o *Journeysessioneventsnotificationsessionevent) UnmarshalJSON(b []byte) e
     
 	if VarType, ok := JourneysessioneventsnotificationsessioneventMap["type"].(string); ok {
 		o.VarType = &VarType
-	}
-    
-	if ExternalId, ok := JourneysessioneventsnotificationsessioneventMap["externalId"].(string); ok {
-		o.ExternalId = &ExternalId
-	}
-    
-	if ExternalUrl, ok := JourneysessioneventsnotificationsessioneventMap["externalUrl"].(string); ok {
-		o.ExternalUrl = &ExternalUrl
 	}
     
 	if OutcomeAchievements, ok := JourneysessioneventsnotificationsessioneventMap["outcomeAchievements"].([]interface{}); ok {

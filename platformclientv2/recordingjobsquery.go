@@ -13,8 +13,20 @@ type Recordingjobsquery struct {
 	Action *string `json:"action,omitempty"`
 
 
-	// ActionDate - The date when the action will be performed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// ActionDate - The date when the action will be performed. If screenRecordingActionDate is also provided, this value is only used for non-screen recordings. Otherwise this value is used for all recordings. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ActionDate *time.Time `json:"actionDate,omitempty"`
+
+
+	// ActionAge - The number of days after each recording's creation date when the action will be performed. If screenRecordingActionAge is also provided, this value is only used for non-screen recordings. Otherwise this value is used for all recordings.
+	ActionAge *int `json:"actionAge,omitempty"`
+
+
+	// ScreenRecordingActionDate - The date when the action will be performed for screen recordings. If this is provided then includeScreenRecordings must be true. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ScreenRecordingActionDate *time.Time `json:"screenRecordingActionDate,omitempty"`
+
+
+	// ScreenRecordingActionAge - The number of days after each screen recording's creation date when the action will be performed. If this is provided then includeScreenRecordings must be true.
+	ScreenRecordingActionAge *int `json:"screenRecordingActionAge,omitempty"`
 
 
 	// IntegrationId - IntegrationId to Access AWS S3 bucket for bulk recording exports. This field is required and used only for EXPORT action.
@@ -51,10 +63,24 @@ func (o *Recordingjobsquery) MarshalJSON() ([]byte, error) {
 		ActionDate = nil
 	}
 	
+	ScreenRecordingActionDate := new(string)
+	if o.ScreenRecordingActionDate != nil {
+		
+		*ScreenRecordingActionDate = timeutil.Strftime(o.ScreenRecordingActionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ScreenRecordingActionDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Action *string `json:"action,omitempty"`
 		
 		ActionDate *string `json:"actionDate,omitempty"`
+		
+		ActionAge *int `json:"actionAge,omitempty"`
+		
+		ScreenRecordingActionDate *string `json:"screenRecordingActionDate,omitempty"`
+		
+		ScreenRecordingActionAge *int `json:"screenRecordingActionAge,omitempty"`
 		
 		IntegrationId *string `json:"integrationId,omitempty"`
 		
@@ -70,6 +96,12 @@ func (o *Recordingjobsquery) MarshalJSON() ([]byte, error) {
 		Action: o.Action,
 		
 		ActionDate: ActionDate,
+		
+		ActionAge: o.ActionAge,
+		
+		ScreenRecordingActionDate: ScreenRecordingActionDate,
+		
+		ScreenRecordingActionAge: o.ScreenRecordingActionAge,
 		
 		IntegrationId: o.IntegrationId,
 		
@@ -98,6 +130,21 @@ func (o *Recordingjobsquery) UnmarshalJSON(b []byte) error {
 	if actionDateString, ok := RecordingjobsqueryMap["actionDate"].(string); ok {
 		ActionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", actionDateString)
 		o.ActionDate = &ActionDate
+	}
+	
+	if ActionAge, ok := RecordingjobsqueryMap["actionAge"].(float64); ok {
+		ActionAgeInt := int(ActionAge)
+		o.ActionAge = &ActionAgeInt
+	}
+	
+	if screenRecordingActionDateString, ok := RecordingjobsqueryMap["screenRecordingActionDate"].(string); ok {
+		ScreenRecordingActionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", screenRecordingActionDateString)
+		o.ScreenRecordingActionDate = &ScreenRecordingActionDate
+	}
+	
+	if ScreenRecordingActionAge, ok := RecordingjobsqueryMap["screenRecordingActionAge"].(float64); ok {
+		ScreenRecordingActionAgeInt := int(ScreenRecordingActionAge)
+		o.ScreenRecordingActionAge = &ScreenRecordingActionAgeInt
 	}
 	
 	if IntegrationId, ok := RecordingjobsqueryMap["integrationId"].(string); ok {

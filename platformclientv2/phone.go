@@ -62,7 +62,7 @@ type Phone struct {
 
 
 	// PhoneBaseSettings - Phone Base Settings
-	PhoneBaseSettings *Domainentityref `json:"phoneBaseSettings,omitempty"`
+	PhoneBaseSettings *Phonebasesettings `json:"phoneBaseSettings,omitempty"`
 
 
 	// LineBaseSettings
@@ -162,7 +162,7 @@ func (o *Phone) MarshalJSON() ([]byte, error) {
 		
 		Site *Domainentityref `json:"site,omitempty"`
 		
-		PhoneBaseSettings *Domainentityref `json:"phoneBaseSettings,omitempty"`
+		PhoneBaseSettings *Phonebasesettings `json:"phoneBaseSettings,omitempty"`
 		
 		LineBaseSettings *Domainentityref `json:"lineBaseSettings,omitempty"`
 		
