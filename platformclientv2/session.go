@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,176 +10,191 @@ import (
 
 // Session
 type Session struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// CustomerId - Primary identifier of the customer in the source where the events for the session originate from.
 	CustomerId *string `json:"customerId,omitempty"`
 
-
 	// CustomerIdType - Type of source customer identifier (e.g. cookie, email, phone).
 	CustomerIdType *string `json:"customerIdType,omitempty"`
-
 
 	// VarType - Session types indicate the type or category of sessions (e.g. web, ticket, delivery, atm).
 	VarType *string `json:"type,omitempty"`
 
-
 	// ExternalId - Unique identifier in the external system where the events for the session originate from.
 	ExternalId *string `json:"externalId,omitempty"`
-
 
 	// ExternalUrl - A URL that identifies an external system-of-record resource that may have more detailed information on the session.
 	ExternalUrl *string `json:"externalUrl,omitempty"`
 
-
 	// ShortId - Shortened numeric identifier of 4-6 digits.
 	ShortId *string `json:"shortId,omitempty"`
-
 
 	// OutcomeAchievements - List of the outcome achievements by the customer in this session.
 	OutcomeAchievements *[]Outcomeachievement `json:"outcomeAchievements,omitempty"`
 
-
 	// SegmentAssignments - List of the segment assignments to the customer in this session.
 	SegmentAssignments *[]Sessionsegmentassignment `json:"segmentAssignments,omitempty"`
-
 
 	// Attributes - Attributes projected from the session's event stream.
 	Attributes *map[string]Customeventattribute `json:"attributes,omitempty"`
 
-
 	// AttributeLists - List-type attributes projected from the session's event stream.
 	AttributeLists *map[string]Customeventattributelist `json:"attributeLists,omitempty"`
-
 
 	// Browser - Customer's browser.
 	Browser *Browser `json:"browser,omitempty"`
 
-
 	// Device - Customer's device.
 	Device *Device `json:"device,omitempty"`
-
 
 	// Geolocation - Customer's geolocation.
 	Geolocation *Journeygeolocation `json:"geolocation,omitempty"`
 
-
 	// IpAddress - Customer's IP address.
 	IpAddress *string `json:"ipAddress,omitempty"`
-
 
 	// IpOrganization - Customer's IP-based organization or ISP name.
 	IpOrganization *string `json:"ipOrganization,omitempty"`
 
-
 	// LastPage - The webpage where the customer's last web interaction occurred.
 	LastPage *Journeypage `json:"lastPage,omitempty"`
-
 
 	// MktCampaign - Marketing / traffic source information.
 	MktCampaign *Journeycampaign `json:"mktCampaign,omitempty"`
 
-
 	// Referrer - Identifies the page URL that originally generated the request for the current page being viewed.
 	Referrer *Referrer `json:"referrer,omitempty"`
-
 
 	// SearchTerms - Search terms associated with the session.
 	SearchTerms *[]string `json:"searchTerms,omitempty"`
 
-
 	// UserAgentString - String identifying the user agent.
 	UserAgentString *string `json:"userAgentString,omitempty"`
-
 
 	// DurationInSeconds - Indicates how long the session has been active (valid for an individual device).
 	DurationInSeconds *int `json:"durationInSeconds,omitempty"`
 
-
 	// EventCount - The count of all events performed during the session.
 	EventCount *int `json:"eventCount,omitempty"`
-
 
 	// PageviewCount - The count of all pageviews performed during the session.
 	PageviewCount *int `json:"pageviewCount,omitempty"`
 
-
 	// ScreenviewCount - The count of all screenviews performed during the session.
 	ScreenviewCount *int `json:"screenviewCount,omitempty"`
-
 
 	// LastEvent - Information about the most recent event in this session.
 	LastEvent *Sessionlastevent `json:"lastEvent,omitempty"`
 
-
 	// LastConnectedQueue - The last queue connected to this session.
 	LastConnectedQueue *Connectedqueue `json:"lastConnectedQueue,omitempty"`
-
 
 	// LastConnectedUser - The last user connected to this session.
 	LastConnectedUser *Connecteduser `json:"lastConnectedUser,omitempty"`
 
-
 	// LastUserDisposition - The last user disposition connected to this session.
 	LastUserDisposition *Conversationuserdisposition `json:"lastUserDisposition,omitempty"`
-
 
 	// ConversationChannels - Represents the channels used for this conversation.
 	ConversationChannels *[]Conversationchannel `json:"conversationChannels,omitempty"`
 
-
 	// OriginatingDirection - The original direction of the conversation.
 	OriginatingDirection *string `json:"originatingDirection,omitempty"`
-
 
 	// ConversationSubject - The subject for the conversation, for example an email subject.
 	ConversationSubject *string `json:"conversationSubject,omitempty"`
 
-
 	// LastUserDisconnectType - Disconnect reason for the last user connected to the conversation.
 	LastUserDisconnectType *string `json:"lastUserDisconnectType,omitempty"`
-
 
 	// LastAcdOutcome - Last ACD outcome for the conversation.
 	LastAcdOutcome *string `json:"lastAcdOutcome,omitempty"`
 
-
 	// Authenticated - Indicates whether or not the session is authenticated.
 	Authenticated *bool `json:"authenticated,omitempty"`
-
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
-
 	// CreatedDate - Timestamp indicating when the session was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
-
 
 	// EndedDate - Timestamp indicating when the session was ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndedDate *time.Time `json:"endedDate,omitempty"`
 
-
 	// ExternalContact - The external contact associated with this session.
 	ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
-
 
 	// AwayDate - Timestamp indicating when the visitor should be considered as away. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	AwayDate *time.Time `json:"awayDate,omitempty"`
 
-
 	// IdleDate - Timestamp indicating when the visitor should be considered as idle. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	IdleDate *time.Time `json:"idleDate,omitempty"`
 
-
 	// Conversation - The conversation for this session.
 	Conversation *Addressableentityref `json:"conversation,omitempty"`
-
 }
 
-func (o *Session) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Session) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Session) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "CreatedDate","EndedDate","AwayDate","IdleDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Session
@@ -299,7 +315,7 @@ func (o *Session) MarshalJSON() ([]byte, error) {
 		IdleDate *string `json:"idleDate,omitempty"`
 		
 		Conversation *Addressableentityref `json:"conversation,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -384,7 +400,7 @@ func (o *Session) MarshalJSON() ([]byte, error) {
 		IdleDate: IdleDate,
 		
 		Conversation: o.Conversation,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

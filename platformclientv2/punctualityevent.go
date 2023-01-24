@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,52 +10,98 @@ import (
 
 // Punctualityevent
 type Punctualityevent struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// DateScheduleStart - The scheduled activity start time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateScheduleStart *time.Time `json:"dateScheduleStart,omitempty"`
-
 
 	// DateStart - The time the user started the activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateStart *time.Time `json:"dateStart,omitempty"`
 
-
 	// LengthMinutes - The length of the activity in minutes
 	LengthMinutes *int `json:"lengthMinutes,omitempty"`
-
 
 	// Description - The description of the activity
 	Description *string `json:"description,omitempty"`
 
-
 	// ActivityCodeId - The ID of the activity code associated with this activity
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`
-
 
 	// ActivityCode - The activity code
 	ActivityCode *string `json:"activityCode,omitempty"`
 
-
 	// ActivityName - The activity name
 	ActivityName *string `json:"activityName,omitempty"`
-
 
 	// Category - The category for the activity
 	Category *string `json:"category,omitempty"`
 
-
 	// Points - The points earned for this activity
 	Points *int `json:"points,omitempty"`
-
 
 	// Delta - Difference between this activity and the last activity in seconds
 	Delta *float64 `json:"delta,omitempty"`
 
-
 	// Bullseye
 	Bullseye *bool `json:"bullseye,omitempty"`
-
 }
 
-func (o *Punctualityevent) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Punctualityevent) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Punctualityevent) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateScheduleStart","DateStart", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Punctualityevent
@@ -97,7 +144,7 @@ func (o *Punctualityevent) MarshalJSON() ([]byte, error) {
 		Delta *float64 `json:"delta,omitempty"`
 		
 		Bullseye *bool `json:"bullseye,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		DateScheduleStart: DateScheduleStart,
 		
@@ -120,7 +167,7 @@ func (o *Punctualityevent) MarshalJSON() ([]byte, error) {
 		Delta: o.Delta,
 		
 		Bullseye: o.Bullseye,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

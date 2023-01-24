@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,80 +10,119 @@ import (
 
 // Learningassignment - Learning module assignment with user information
 type Learningassignment struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Assessment - The assessment associated with this assignment
 	Assessment *Learningassessment `json:"assessment,omitempty"`
 
-
 	// CreatedBy - The user who created the assignment
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
-
 
 	// DateCreated - The date when the assignment was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-
 	// ModifiedBy - The user who modified the assignment
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
-
 
 	// DateModified - The date when the assignment was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-
 	// IsOverdue - True if the assignment is overdue
 	IsOverdue *bool `json:"isOverdue,omitempty"`
-
 
 	// PercentageScore - The user's percentage score for this assignment
 	PercentageScore *float32 `json:"percentageScore,omitempty"`
 
-
 	// IsRule - True if this assignment was created by a Rule
 	IsRule *bool `json:"isRule,omitempty"`
-
 
 	// IsManual - True if this assignment was created manually
 	IsManual *bool `json:"isManual,omitempty"`
 
-
 	// IsPassed - True if the assessment was passed
 	IsPassed *bool `json:"isPassed,omitempty"`
-
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
-
 	// State - The Learning Assignment state
 	State *string `json:"state,omitempty"`
-
 
 	// DateRecommendedForCompletion - The recommended completion date of the assignment. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateRecommendedForCompletion *time.Time `json:"dateRecommendedForCompletion,omitempty"`
 
-
 	// Version - The version of Learning module assigned
 	Version *int `json:"version,omitempty"`
-
 
 	// Module - The Learning module object associated with this assignment
 	Module *Learningmodule `json:"module,omitempty"`
 
-
 	// User - The user to whom the assignment is assigned
 	User *Userreference `json:"user,omitempty"`
 
-
 	// AssessmentForm - The assessment form associated with this assignment
 	AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
-
 }
 
-func (o *Learningassignment) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Learningassignment) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Learningassignment) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified","DateRecommendedForCompletion", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignment
@@ -147,7 +187,7 @@ func (o *Learningassignment) MarshalJSON() ([]byte, error) {
 		User *Userreference `json:"user,omitempty"`
 		
 		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -184,7 +224,7 @@ func (o *Learningassignment) MarshalJSON() ([]byte, error) {
 		User: o.User,
 		
 		AssessmentForm: o.AssessmentForm,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

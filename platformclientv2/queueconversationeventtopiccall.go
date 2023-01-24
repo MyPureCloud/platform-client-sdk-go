@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,124 +10,152 @@ import (
 
 // Queueconversationeventtopiccall
 type Queueconversationeventtopiccall struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
-
 
 	// State
 	State *string `json:"state,omitempty"`
 
-
 	// InitialState
 	InitialState *string `json:"initialState,omitempty"`
-
 
 	// Recording - True if this call is being recorded.
 	Recording *bool `json:"recording,omitempty"`
 
-
 	// RecordingState - State of recording on this call.
 	RecordingState *string `json:"recordingState,omitempty"`
-
 
 	// Muted - True if this call is muted so that remote participants can't hear any audio from this end.
 	Muted *bool `json:"muted,omitempty"`
 
-
 	// Confined - True if this call is held and the person on this side hears hold music.
 	Confined *bool `json:"confined,omitempty"`
-
 
 	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
-
 	// ErrorInfo
 	ErrorInfo *Queueconversationeventtopicerrordetails `json:"errorInfo,omitempty"`
-
 
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
-
 	// StartHoldTime - The timestamp the call was placed on hold in the cloud clock if the call is currently on hold.
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
-
 
 	// Direction - Whether a call is inbound or outbound.
 	Direction *string `json:"direction,omitempty"`
 
-
 	// DocumentId - If call is a fax of a document in content management, the id of the document in content management.
 	DocumentId *string `json:"documentId,omitempty"`
-
 
 	// Self
 	Self *Queueconversationeventtopicaddress `json:"self,omitempty"`
 
-
 	// Other - Address and name data for a call endpoint.
 	Other *Queueconversationeventtopicaddress `json:"other,omitempty"`
-
 
 	// Provider - The source provider of the call.
 	Provider *string `json:"provider,omitempty"`
 
-
 	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
-
 
 	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
-
 	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
-
 
 	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
-
 	// DisconnectReasons - List of reasons that this call was disconnected. This will be set once the call disconnects.
 	DisconnectReasons *[]Queueconversationeventtopicdisconnectreason `json:"disconnectReasons,omitempty"`
-
 
 	// FaxStatus
 	FaxStatus *Queueconversationeventtopicfaxstatus `json:"faxStatus,omitempty"`
 
-
 	// UuiData - User to User Information (UUI) data managed by SIP session application.
 	UuiData *string `json:"uuiData,omitempty"`
-
 
 	// BargedTime - The timestamp when this participant was connected to the barge conference in the provider clock.
 	BargedTime *time.Time `json:"bargedTime,omitempty"`
 
-
 	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
-
 
 	// AfterCallWork
 	AfterCallWork *Queueconversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
-
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-
 
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
-
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-
 }
 
-func (o *Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Queueconversationeventtopiccall) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime","BargedTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopiccall
@@ -221,7 +250,7 @@ func (o *Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -280,7 +309,7 @@ func (o *Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		AgentAssistantId: o.AgentAssistantId,
 		
 		AdditionalProperties: o.AdditionalProperties,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

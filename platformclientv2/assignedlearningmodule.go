@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,96 +10,131 @@ import (
 
 // Assignedlearningmodule - Learning module response
 type Assignedlearningmodule struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - The name of learning module
 	Name *string `json:"name,omitempty"`
 
-
 	// CreatedBy - The user who created learning module
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
-
 
 	// DateCreated - The date/time learning module was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-
 	// ModifiedBy - The user who modified learning module
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
-
 
 	// DateModified - The date/time learning module was modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-
 	// Version - The version of published learning module
 	Version *int `json:"version,omitempty"`
-
 
 	// ExternalId - The external ID of the learning module
 	ExternalId *string `json:"externalId,omitempty"`
 
-
 	// Source - The source of the learning module
 	Source *string `json:"source,omitempty"`
-
 
 	// Rule - The rule for learning module; read-only, and only populated when requested via expand param.
 	Rule *Learningmodulerule `json:"rule,omitempty"`
 
-
 	// CurrentAssignments - The current assignments for the requested users
 	CurrentAssignments *[]Learningassignment `json:"currentAssignments,omitempty"`
-
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
-
 	// IsArchived - If true, learning module is archived
 	IsArchived *bool `json:"isArchived,omitempty"`
-
 
 	// IsPublished - If true, learning module is published
 	IsPublished *bool `json:"isPublished,omitempty"`
 
-
 	// Description - The description of learning module
 	Description *string `json:"description,omitempty"`
-
 
 	// CompletionTimeInDays - The completion time of learning module in days
 	CompletionTimeInDays *int `json:"completionTimeInDays,omitempty"`
 
-
 	// VarType - The type for the learning module
 	VarType *string `json:"type,omitempty"`
-
 
 	// InformSteps - The list of inform steps in a learning module
 	InformSteps *[]Learningmoduleinformstep `json:"informSteps,omitempty"`
 
-
 	// AssessmentForm - The assessment form for learning module
 	AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
-
 
 	// SummaryData - The learning module summary data
 	SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 
-
 	// CoverArt - The cover art for the learning module
 	CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
 
-
 	// ArchivalMode - The mode of archival for learning module
 	ArchivalMode *string `json:"archivalMode,omitempty"`
-
 }
 
-func (o *Assignedlearningmodule) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Assignedlearningmodule) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Assignedlearningmodule) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assignedlearningmodule
@@ -163,7 +199,7 @@ func (o *Assignedlearningmodule) MarshalJSON() ([]byte, error) {
 		CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
 		
 		ArchivalMode *string `json:"archivalMode,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -208,7 +244,7 @@ func (o *Assignedlearningmodule) MarshalJSON() ([]byte, error) {
 		CoverArt: o.CoverArt,
 		
 		ArchivalMode: o.ArchivalMode,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

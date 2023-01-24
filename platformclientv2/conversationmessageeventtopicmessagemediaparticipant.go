@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,164 +10,182 @@ import (
 
 // Conversationmessageeventtopicmessagemediaparticipant
 type Conversationmessageeventtopicmessagemediaparticipant struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id
 	Id *string `json:"id,omitempty"`
-
 
 	// Name
 	Name *string `json:"name,omitempty"`
 
-
 	// Address
 	Address *string `json:"address,omitempty"`
-
 
 	// StartTime
 	StartTime *time.Time `json:"startTime,omitempty"`
 
-
 	// ConnectedTime
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
-
 
 	// EndTime
 	EndTime *time.Time `json:"endTime,omitempty"`
 
-
 	// StartHoldTime
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
-
 
 	// Purpose
 	Purpose *string `json:"purpose,omitempty"`
 
-
 	// State
 	State *string `json:"state,omitempty"`
-
 
 	// InitialState
 	InitialState *string `json:"initialState,omitempty"`
 
-
 	// Direction
 	Direction *string `json:"direction,omitempty"`
-
 
 	// DisconnectType
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
-
 	// Held
 	Held *bool `json:"held,omitempty"`
-
 
 	// WrapupRequired
 	WrapupRequired *bool `json:"wrapupRequired,omitempty"`
 
-
 	// WrapupPrompt
 	WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
-
 
 	// User
 	User *Conversationmessageeventtopicurireference `json:"user,omitempty"`
 
-
 	// Queue
 	Queue *Conversationmessageeventtopicurireference `json:"queue,omitempty"`
-
 
 	// Team
 	Team *Conversationmessageeventtopicurireference `json:"team,omitempty"`
 
-
 	// Attributes
 	Attributes *map[string]string `json:"attributes,omitempty"`
-
 
 	// ErrorInfo
 	ErrorInfo *Conversationmessageeventtopicerrorbody `json:"errorInfo,omitempty"`
 
-
 	// Script
 	Script *Conversationmessageeventtopicurireference `json:"script,omitempty"`
-
 
 	// WrapupTimeoutMs
 	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
-
 	// WrapupSkipped
 	WrapupSkipped *bool `json:"wrapupSkipped,omitempty"`
-
 
 	// AlertingTimeoutMs
 	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
-
 	// Provider
 	Provider *string `json:"provider,omitempty"`
-
 
 	// ExternalContact
 	ExternalContact *Conversationmessageeventtopicurireference `json:"externalContact,omitempty"`
 
-
 	// ExternalOrganization
 	ExternalOrganization *Conversationmessageeventtopicurireference `json:"externalOrganization,omitempty"`
-
 
 	// Wrapup
 	Wrapup *Conversationmessageeventtopicwrapup `json:"wrapup,omitempty"`
 
-
 	// ConversationRoutingData
 	ConversationRoutingData *Conversationmessageeventtopicconversationroutingdata `json:"conversationRoutingData,omitempty"`
-
 
 	// Peer
 	Peer *string `json:"peer,omitempty"`
 
-
 	// ScreenRecordingState
 	ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
-
 
 	// FlaggedReason
 	FlaggedReason *string `json:"flaggedReason,omitempty"`
 
-
 	// JourneyContext
 	JourneyContext *Conversationmessageeventtopicjourneycontext `json:"journeyContext,omitempty"`
-
 
 	// StartAcwTime
 	StartAcwTime *time.Time `json:"startAcwTime,omitempty"`
 
-
 	// EndAcwTime
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
-
 
 	// Messages
 	Messages *[]Conversationmessageeventtopicmessagedetails `json:"messages,omitempty"`
 
-
 	// VarType
 	VarType *string `json:"type,omitempty"`
-
 
 	// RecipientCountry
 	RecipientCountry *string `json:"recipientCountry,omitempty"`
 
-
 	// RecipientType
 	RecipientType *string `json:"recipientType,omitempty"`
-
 }
 
-func (o *Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Conversationmessageeventtopicmessagemediaparticipant) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationmessageeventtopicmessagemediaparticipant
@@ -297,7 +316,7 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]
 		RecipientCountry *string `json:"recipientCountry,omitempty"`
 		
 		RecipientType *string `json:"recipientType,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -376,7 +395,7 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]
 		RecipientCountry: o.RecipientCountry,
 		
 		RecipientType: o.RecipientType,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

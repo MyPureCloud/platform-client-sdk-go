@@ -279,3 +279,24 @@ func copy(data []byte, v interface{}) {
 
 	reflect.ValueOf(v).Elem().Set(reflect.ValueOf(&dataS))
 }
+
+func getFieldName(t reflect.Type, field string) string {
+	// Find JSON prop name
+	structField, ok := t.Elem().FieldByName(field)
+	if ok {
+		tag := structField.Tag.Get("json")
+		if tag != "" {
+			tagParts := strings.Split(tag, ",")
+			if len(tagParts) > 0 {
+				return tagParts[0]
+			}
+		}
+	}
+
+	return field
+}
+
+// toTime is a helper function for models to prevent a static import of the "time" package duplicating dynamic imports determined by the codegen process
+func toTime(o interface{}) *time.Time {
+	return o.(*time.Time)
+}

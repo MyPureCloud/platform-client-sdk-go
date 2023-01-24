@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,52 +10,98 @@ import (
 
 // Performanceprofile
 type Performanceprofile struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - A name for this performance profile
 	Name *string `json:"name,omitempty"`
 
-
 	// Division - The division for this performance profile associate to
 	Division *Division `json:"division,omitempty"`
-
 
 	// Description - A description about this performance profile
 	Description *string `json:"description,omitempty"`
 
-
 	// MetricOrders - Order of the associated metrics. The list should contain valid ids for metrics
 	MetricOrders *[]string `json:"metricOrders,omitempty"`
-
 
 	// DateCreated - Creation date for this performance profile. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-
 	// ReportingIntervals - The reporting interval periods for this performance profile
 	ReportingIntervals *[]Reportinginterval `json:"reportingIntervals,omitempty"`
-
 
 	// Active - The flag for active profiles
 	Active *bool `json:"active,omitempty"`
 
-
 	// MemberCount - The number of members in this performance profile
 	MemberCount *int `json:"memberCount,omitempty"`
-
 
 	// MaxLeaderboardRankSize - The maximum rank size for the leaderboard. This counts the number of ranks can be retrieved in a leaderboard queries
 	MaxLeaderboardRankSize *int `json:"maxLeaderboardRankSize,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Performanceprofile) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Performanceprofile) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Performanceprofile) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Performanceprofile
@@ -89,7 +136,7 @@ func (o *Performanceprofile) MarshalJSON() ([]byte, error) {
 		MaxLeaderboardRankSize *int `json:"maxLeaderboardRankSize,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -112,7 +159,7 @@ func (o *Performanceprofile) MarshalJSON() ([]byte, error) {
 		MaxLeaderboardRankSize: o.MaxLeaderboardRankSize,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

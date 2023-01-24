@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,96 +9,131 @@ import (
 
 // Flow
 type Flow struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The flow identifier
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - The flow name
 	Name *string `json:"name,omitempty"`
 
-
 	// Division - The division to which this entity belongs.
 	Division *Writabledivision `json:"division,omitempty"`
-
 
 	// Description
 	Description *string `json:"description,omitempty"`
 
-
 	// VarType
 	VarType *string `json:"type,omitempty"`
-
 
 	// LockedUser - User that has the flow locked.
 	LockedUser *User `json:"lockedUser,omitempty"`
 
-
 	// LockedClient - OAuth client that has the flow locked.
 	LockedClient *Domainentityref `json:"lockedClient,omitempty"`
-
 
 	// Active
 	Active *bool `json:"active,omitempty"`
 
-
 	// System
 	System *bool `json:"system,omitempty"`
-
 
 	// Deleted
 	Deleted *bool `json:"deleted,omitempty"`
 
-
 	// PublishedVersion
 	PublishedVersion *Flowversion `json:"publishedVersion,omitempty"`
-
 
 	// SavedVersion
 	SavedVersion *Flowversion `json:"savedVersion,omitempty"`
 
-
 	// InputSchema - json schema describing the inputs for the flow
 	InputSchema *interface{} `json:"inputSchema,omitempty"`
-
 
 	// OutputSchema - json schema describing the outputs for the flow
 	OutputSchema *interface{} `json:"outputSchema,omitempty"`
 
-
 	// CheckedInVersion
 	CheckedInVersion *Flowversion `json:"checkedInVersion,omitempty"`
-
 
 	// DebugVersion
 	DebugVersion *Flowversion `json:"debugVersion,omitempty"`
 
-
 	// PublishedBy
 	PublishedBy *User `json:"publishedBy,omitempty"`
-
 
 	// CurrentOperation
 	CurrentOperation *Operation `json:"currentOperation,omitempty"`
 
-
 	// NluInfo - Information about the natural language understanding configuration for the published version of the flow
 	NluInfo *Nluinfo `json:"nluInfo,omitempty"`
-
 
 	// SupportedLanguages - List of supported languages for the published version of the flow.
 	SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
 
-
 	// CompatibleFlowTypes - Compatible flow types designate which flow types are allowed to embed a flow’s configuration within their own flow configuration.  Currently the only flows that can be embedded are Common Module flows and the embedding flow can invoke them using the Call Common Module action.
 	CompatibleFlowTypes *[]string `json:"compatibleFlowTypes,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Flow) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Flow) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Flow) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flow
@@ -146,7 +182,7 @@ func (o *Flow) MarshalJSON() ([]byte, error) {
 		CompatibleFlowTypes *[]string `json:"compatibleFlowTypes,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -191,7 +227,7 @@ func (o *Flow) MarshalJSON() ([]byte, error) {
 		CompatibleFlowTypes: o.CompatibleFlowTypes,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

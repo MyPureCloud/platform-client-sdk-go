@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,56 +9,101 @@ import (
 
 // Scimv2schemaattribute - A complex type that defines service provider attributes or subattributes and their qualities.
 type Scimv2schemaattribute struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Name - The name of the attribute.
 	Name *string `json:"name,omitempty"`
-
 
 	// VarType - The data type of the attribute.
 	VarType *string `json:"type,omitempty"`
 
-
 	// SubAttributes - The list of subattributes for an attribute of the type \"complex\". Uses the same schema as \"attributes\".
 	SubAttributes *[]Scimv2schemaattribute `json:"subAttributes,omitempty"`
-
 
 	// MultiValued - Indicates whether an attribute contains multiple values.
 	MultiValued *bool `json:"multiValued,omitempty"`
 
-
 	// Description - The description of the attribute.
 	Description *string `json:"description,omitempty"`
-
 
 	// Required - Indicates whether an attribute is required.
 	Required *bool `json:"required,omitempty"`
 
-
 	// CanonicalValues - The list of standard values that service providers may use. Service providers may ignore unsupported values.
 	CanonicalValues *[]string `json:"canonicalValues,omitempty"`
-
 
 	// CaseExact - Indicates whether a string attribute is case-sensitive. If set to \"true\", the server preserves case sensitivity. If set to \"false\", the server may change the case. The server also uses case sensitivity when evaluating filters. See section 3.4.2.2 \"Filtering\" in RFC 7644 for details.
 	CaseExact *bool `json:"caseExact,omitempty"`
 
-
 	// Mutability - The circumstances under which an attribute can be defined or redefined. The default is \"readWrite\".
 	Mutability *string `json:"mutability,omitempty"`
-
 
 	// Returned - The circumstances under which an attribute and its values are returned in response to a GET, PUT, POST, or PATCH request.
 	Returned *string `json:"returned,omitempty"`
 
-
 	// Uniqueness - The method by which the service provider enforces the uniqueness of an attribute value. A server can reject a value by returning the HTTP response code 400 (Bad Request). A client can enforce uniqueness to a greater degree than the server provider enforces. For example, a client could make a value unique even though the server has \"uniqueness\" set to \"none\".
 	Uniqueness *string `json:"uniqueness,omitempty"`
 
-
 	// ReferenceTypes - The list of SCIM resource types that may be referenced. Only applies when \"type\" is set to \"reference\".
 	ReferenceTypes *[]string `json:"referenceTypes,omitempty"`
-
 }
 
-func (o *Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Scimv2schemaattribute) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2schemaattribute
@@ -86,7 +132,7 @@ func (o *Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
 		Uniqueness *string `json:"uniqueness,omitempty"`
 		
 		ReferenceTypes *[]string `json:"referenceTypes,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Name: o.Name,
 		
@@ -111,7 +157,7 @@ func (o *Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
 		Uniqueness: o.Uniqueness,
 		
 		ReferenceTypes: o.ReferenceTypes,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,96 +10,131 @@ import (
 
 // Userscheduleadherence
 type Userscheduleadherence struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name
 	Name *string `json:"name,omitempty"`
 
-
 	// User - The user for whom this status applies
 	User *Userreference `json:"user,omitempty"`
-
 
 	// BusinessUnit - The business unit to which this user belongs
 	BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
 
-
 	// ManagementUnit - The management unit to which this user belongs
 	ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
-
 
 	// Team - The team to which this user belongs
 	Team *Teamreference `json:"team,omitempty"`
 
-
 	// ScheduledActivityCategory - Activity for which the user is scheduled
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
-
 
 	// ScheduledActivityCode - Activity code for which the user is currently scheduled
 	ScheduledActivityCode *Activitycodereference `json:"scheduledActivityCode,omitempty"`
 
-
 	// SystemPresence - Actual underlying system presence value
 	SystemPresence *string `json:"systemPresence,omitempty"`
-
 
 	// OrganizationSecondaryPresenceId - Organization Secondary Presence Id.
 	OrganizationSecondaryPresenceId *string `json:"organizationSecondaryPresenceId,omitempty"`
 
-
 	// RoutingStatus - Actual underlying routing status, used to determine whether a user is actually in adherence when OnQueue
 	RoutingStatus *string `json:"routingStatus,omitempty"`
-
 
 	// ActualActivityCategory - Activity in which the user is actually engaged
 	ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 
-
 	// IsOutOfOffice - Whether the user is marked OutOfOffice
 	IsOutOfOffice *bool `json:"isOutOfOffice,omitempty"`
-
 
 	// AdherenceState - The user's current adherence state
 	AdherenceState *string `json:"adherenceState,omitempty"`
 
-
 	// Impact - The impact of the user's current adherenceState
 	Impact *string `json:"impact,omitempty"`
-
 
 	// AdherenceExplanation - Currently applicable explanation for the adherence state
 	AdherenceExplanation *Realtimeadherenceexplanation `json:"adherenceExplanation,omitempty"`
 
-
 	// TimeOfAdherenceChange - Time when the user entered the current adherenceState in ISO-8601 format
 	TimeOfAdherenceChange *time.Time `json:"timeOfAdherenceChange,omitempty"`
-
 
 	// PresenceUpdateTime - Time when presence was last updated. Used to calculate time in current status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	PresenceUpdateTime *time.Time `json:"presenceUpdateTime,omitempty"`
 
-
 	// ActiveQueues - The list of queues to which this user is joined
 	ActiveQueues *[]Queuereference `json:"activeQueues,omitempty"`
-
 
 	// ActiveQueuesModifiedTime - Time when the list of active queues for this user was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ActiveQueuesModifiedTime *time.Time `json:"activeQueuesModifiedTime,omitempty"`
 
-
 	// RemovedFromManagementUnit - For notification purposes. Used to indicate that a user was removed from the management unit
 	RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Userscheduleadherence) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Userscheduleadherence) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "TimeOfAdherenceChange","PresenceUpdateTime","ActiveQueuesModifiedTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userscheduleadherence
@@ -171,7 +207,7 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -216,7 +252,7 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		RemovedFromManagementUnit: o.RemovedFromManagementUnit,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

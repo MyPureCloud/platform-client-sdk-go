@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,148 +10,170 @@ import (
 
 // Chatmediaparticipant
 type Chatmediaparticipant struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The unique participant ID.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - The display friendly name of the participant.
 	Name *string `json:"name,omitempty"`
 
-
 	// Address - The participant address.
 	Address *string `json:"address,omitempty"`
-
 
 	// StartTime - The time when this participant first joined the conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartTime *time.Time `json:"startTime,omitempty"`
 
-
 	// ConnectedTime - The time when this participant went connected for this media (eg: video connected time). Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
-
 
 	// EndTime - The time when this participant went disconnected for this media (eg: video disconnected time). Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndTime *time.Time `json:"endTime,omitempty"`
 
-
 	// StartHoldTime - The time when this participant's hold started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
-
 
 	// Purpose - The participant's purpose.  Values can be: 'agent', 'user', 'customer', 'external', 'acd', 'ivr
 	Purpose *string `json:"purpose,omitempty"`
 
-
 	// State - The participant's state.  Values can be: 'alerting', 'connected', 'disconnected', 'dialing', 'contacting
 	State *string `json:"state,omitempty"`
-
 
 	// Direction - The participant's direction.  Values can be: 'inbound' or 'outbound'
 	Direction *string `json:"direction,omitempty"`
 
-
 	// DisconnectType - The reason the participant was disconnected from the conversation.
 	DisconnectType *string `json:"disconnectType,omitempty"`
-
 
 	// Held - Value is true when the participant is on hold.
 	Held *bool `json:"held,omitempty"`
 
-
 	// WrapupRequired - Value is true when the participant requires wrap-up.
 	WrapupRequired *bool `json:"wrapupRequired,omitempty"`
-
 
 	// WrapupPrompt - The wrap-up prompt indicating the type of wrap-up to be performed.
 	WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
 
-
 	// User - The PureCloud user for this participant.
 	User *Domainentityref `json:"user,omitempty"`
-
 
 	// Queue - The PureCloud queue for this participant.
 	Queue *Domainentityref `json:"queue,omitempty"`
 
-
 	// Team - The PureCloud team for this participant.
 	Team *Domainentityref `json:"team,omitempty"`
-
 
 	// Attributes - A list of ad-hoc attributes for the participant.
 	Attributes *map[string]string `json:"attributes,omitempty"`
 
-
 	// ErrorInfo - If the conversation ends in error, contains additional error details.
 	ErrorInfo *Errorinfo `json:"errorInfo,omitempty"`
-
 
 	// Script - The Engage script that should be used by this participant.
 	Script *Domainentityref `json:"script,omitempty"`
 
-
 	// WrapupTimeoutMs - The amount of time the participant has to complete wrap-up.
 	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
-
 
 	// WrapupSkipped - Value is true when the participant has skipped wrap-up.
 	WrapupSkipped *bool `json:"wrapupSkipped,omitempty"`
 
-
 	// AlertingTimeoutMs - Specifies how long the agent has to answer an interaction before being marked as not responding.
 	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
-
 
 	// Provider - The source provider for the communication.
 	Provider *string `json:"provider,omitempty"`
 
-
 	// ExternalContact - If this participant represents an external contact, then this will be the reference for the external contact.
 	ExternalContact *Domainentityref `json:"externalContact,omitempty"`
-
 
 	// ExternalOrganization - If this participant represents an external org, then this will be the reference for the external org.
 	ExternalOrganization *Domainentityref `json:"externalOrganization,omitempty"`
 
-
 	// Wrapup - Wrapup for this participant, if it has been applied.
 	Wrapup *Wrapup `json:"wrapup,omitempty"`
-
 
 	// Peer - The peer communication corresponding to a matching leg for this communication.
 	Peer *string `json:"peer,omitempty"`
 
-
 	// FlaggedReason - The reason specifying why participant flagged the conversation.
 	FlaggedReason *string `json:"flaggedReason,omitempty"`
-
 
 	// JourneyContext - Journey System data/context that is applicable to this communication.  When used for historical purposes, the context should be immutable.  When null, there is no applicable Journey System context.
 	JourneyContext *Journeycontext `json:"journeyContext,omitempty"`
 
-
 	// ConversationRoutingData - Information on how a communication should be routed to an agent.
 	ConversationRoutingData *Conversationroutingdata `json:"conversationRoutingData,omitempty"`
-
 
 	// StartAcwTime - The timestamp when this participant started after-call work. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartAcwTime *time.Time `json:"startAcwTime,omitempty"`
 
-
 	// EndAcwTime - The timestamp when this participant ended after-call work. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
-
 
 	// RoomId - The ID of the chat room.
 	RoomId *string `json:"roomId,omitempty"`
 
-
 	// AvatarImageUrl - If available, the URI to the avatar image of this communication.
 	AvatarImageUrl *string `json:"avatarImageUrl,omitempty"`
-
 }
 
-func (o *Chatmediaparticipant) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Chatmediaparticipant) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Chatmediaparticipant) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Chatmediaparticipant
@@ -273,7 +296,7 @@ func (o *Chatmediaparticipant) MarshalJSON() ([]byte, error) {
 		RoomId *string `json:"roomId,omitempty"`
 		
 		AvatarImageUrl *string `json:"avatarImageUrl,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -344,7 +367,7 @@ func (o *Chatmediaparticipant) MarshalJSON() ([]byte, error) {
 		RoomId: o.RoomId,
 		
 		AvatarImageUrl: o.AvatarImageUrl,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

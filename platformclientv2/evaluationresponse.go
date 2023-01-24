@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,112 +10,143 @@ import (
 
 // Evaluationresponse
 type Evaluationresponse struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name
 	Name *string `json:"name,omitempty"`
 
-
 	// Conversation
 	Conversation *Conversationreference `json:"conversation,omitempty"`
-
 
 	// EvaluationForm - Evaluation form used for evaluation.
 	EvaluationForm *Evaluationformresponse `json:"evaluationForm,omitempty"`
 
-
 	// Evaluator
 	Evaluator *User `json:"evaluator,omitempty"`
-
 
 	// Agent
 	Agent *User `json:"agent,omitempty"`
 
-
 	// Calibration
 	Calibration **Calibration `json:"calibration,omitempty"`
-
 
 	// Status
 	Status *string `json:"status,omitempty"`
 
-
 	// Answers
 	Answers *Evaluationscoringset `json:"answers,omitempty"`
-
 
 	// AgentHasRead
 	AgentHasRead *bool `json:"agentHasRead,omitempty"`
 
-
 	// ReleaseDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReleaseDate *time.Time `json:"releaseDate,omitempty"`
-
 
 	// AssignedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	AssignedDate *time.Time `json:"assignedDate,omitempty"`
 
-
 	// ChangedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ChangedDate *time.Time `json:"changedDate,omitempty"`
-
 
 	// Queue
 	Queue *Queue `json:"queue,omitempty"`
 
-
 	// MediaType - List of different communication types used in conversation.
 	MediaType *[]string `json:"mediaType,omitempty"`
-
 
 	// Rescore - Is only true when evaluation is re-scored.
 	Rescore *bool `json:"rescore,omitempty"`
 
-
 	// ConversationDate - Date of conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationDate *time.Time `json:"conversationDate,omitempty"`
-
 
 	// ConversationEndDate - End date of conversation if it had completed before evaluation creation. Null if created before the conversation ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationEndDate *time.Time `json:"conversationEndDate,omitempty"`
 
-
 	// NeverRelease - Signifies if the evaluation is never to be released. This cannot be set true if release date is also set.
 	NeverRelease *bool `json:"neverRelease,omitempty"`
-
 
 	// ResourceId - Only used for email evaluations. Will be null for all other evaluations.
 	ResourceId *string `json:"resourceId,omitempty"`
 
-
 	// ResourceType - The type of resource. Only used for email evaluations. Will be null for evaluations on all other resources.
 	ResourceType *string `json:"resourceType,omitempty"`
-
 
 	// Redacted - Is only true when the user making the request does not have sufficient permissions to see evaluation
 	Redacted *bool `json:"redacted,omitempty"`
 
-
 	// IsScoringIndex
 	IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
-
 
 	// AuthorizedActions - List of user authorized actions on evaluation. Possible values: edit, editScore, editAgentSignoff, delete, viewAudit
 	AuthorizedActions *[]string `json:"authorizedActions,omitempty"`
 
-
 	// HasAssistanceFailed - Is true when evaluation assistance didn't execute successfully
 	HasAssistanceFailed *bool `json:"hasAssistanceFailed,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Evaluationresponse) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Evaluationresponse) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","ConversationDate","ConversationEndDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationresponse
@@ -211,7 +243,7 @@ func (o *Evaluationresponse) MarshalJSON() ([]byte, error) {
 		HasAssistanceFailed *bool `json:"hasAssistanceFailed,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -264,7 +296,7 @@ func (o *Evaluationresponse) MarshalJSON() ([]byte, error) {
 		HasAssistanceFailed: o.HasAssistanceFailed,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

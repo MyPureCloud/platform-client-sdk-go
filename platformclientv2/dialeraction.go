@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,44 +9,92 @@ import (
 
 // Dialeraction
 type Dialeraction struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// VarType - The type of this DialerAction.
 	VarType *string `json:"type,omitempty"`
-
 
 	// ActionTypeName - Additional type specification for this DialerAction.
 	ActionTypeName *string `json:"actionTypeName,omitempty"`
 
-
 	// UpdateOption - Specifies how a contact attribute should be updated. Required for MODIFY_CONTACT_ATTRIBUTE.
 	UpdateOption *string `json:"updateOption,omitempty"`
-
 
 	// Properties - A map of key-value pairs pertinent to the DialerAction. Different types of DialerActions require different properties. MODIFY_CONTACT_ATTRIBUTE with an updateOption of SET takes a contact column as the key and accepts any value. SCHEDULE_CALLBACK takes a key 'callbackOffset' that specifies how far in the future the callback should be scheduled, in minutes. SET_CALLER_ID takes two keys: 'callerAddress', which should be the caller id phone number, and 'callerName'. For either key, you can also specify a column on the contact to get the value from. To do this, specify 'contact.Column', where 'Column' is the name of the contact column from which to get the value. SET_SKILLS takes a key 'skills' with an array of skill ids wrapped into a string (Example: {'skills': '['skillIdHere']'} ).
 	Properties *map[string]string `json:"properties,omitempty"`
 
-
 	// DataAction - The Data Action to use for this action. Required for a dataActionBehavior.
 	DataAction *Domainentityref `json:"dataAction,omitempty"`
-
 
 	// ContactColumnToDataActionFieldMappings - A list of mappings defining which contact data fields will be passed to which data action input fields for this condition. Valid for a dataActionBehavior.
 	ContactColumnToDataActionFieldMappings *[]Contactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
 
-
 	// ContactIdField - The input field from the data action that the contactId will be passed to for this condition. Valid for a dataActionBehavior.
 	ContactIdField *string `json:"contactIdField,omitempty"`
-
 
 	// CallAnalysisResultField - The input field from the data action that the callAnalysisResult will be passed to for this condition. Valid for a wrapup dataActionBehavior.
 	CallAnalysisResultField *string `json:"callAnalysisResultField,omitempty"`
 
-
 	// AgentWrapupField - The input field from the data action that the agentWrapup will be passed to for this condition. Valid for a wrapup dataActionBehavior.
 	AgentWrapupField *string `json:"agentWrapupField,omitempty"`
-
 }
 
-func (o *Dialeraction) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Dialeraction) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Dialeraction) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialeraction
@@ -68,7 +117,7 @@ func (o *Dialeraction) MarshalJSON() ([]byte, error) {
 		CallAnalysisResultField *string `json:"callAnalysisResultField,omitempty"`
 		
 		AgentWrapupField *string `json:"agentWrapupField,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		VarType: o.VarType,
 		
@@ -87,7 +136,7 @@ func (o *Dialeraction) MarshalJSON() ([]byte, error) {
 		CallAnalysisResultField: o.CallAnalysisResultField,
 		
 		AgentWrapupField: o.AgentWrapupField,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

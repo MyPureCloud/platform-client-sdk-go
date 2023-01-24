@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,120 +9,149 @@ import (
 
 // Createworkplan
 type Createworkplan struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Name - Name of this work plan
 	Name *string `json:"name,omitempty"`
-
 
 	// Enabled - Whether the work plan is enabled for scheduling
 	Enabled *bool `json:"enabled,omitempty"`
 
-
 	// ConstrainWeeklyPaidTime - Whether the weekly paid time constraint is enabled for this work plan
 	ConstrainWeeklyPaidTime *bool `json:"constrainWeeklyPaidTime,omitempty"`
-
 
 	// FlexibleWeeklyPaidTime - Whether the weekly paid time constraint is flexible for this work plan
 	FlexibleWeeklyPaidTime *bool `json:"flexibleWeeklyPaidTime,omitempty"`
 
-
 	// WeeklyExactPaidMinutes - Exact weekly paid time in minutes for this work plan. Used if flexibleWeeklyPaidTime == false
 	WeeklyExactPaidMinutes *int `json:"weeklyExactPaidMinutes,omitempty"`
-
 
 	// WeeklyMinimumPaidMinutes - Minimum weekly paid time in minutes for this work plan. Used if flexibleWeeklyPaidTime == true
 	WeeklyMinimumPaidMinutes *int `json:"weeklyMinimumPaidMinutes,omitempty"`
 
-
 	// WeeklyMaximumPaidMinutes - Maximum weekly paid time in minutes for this work plan. Used if flexibleWeeklyPaidTime == true
 	WeeklyMaximumPaidMinutes *int `json:"weeklyMaximumPaidMinutes,omitempty"`
-
 
 	// ConstrainPaidTimeGranularity - Whether paid time granularity should be constrained for this workplan
 	ConstrainPaidTimeGranularity *bool `json:"constrainPaidTimeGranularity,omitempty"`
 
-
 	// PaidTimeGranularityMinutes - Granularity in minutes allowed for shift paid time in this work plan. Used if constrainPaidTimeGranularity == true
 	PaidTimeGranularityMinutes *int `json:"paidTimeGranularityMinutes,omitempty"`
-
 
 	// ConstrainMinimumTimeBetweenShifts - Whether the minimum time between shifts constraint is enabled for this work plan
 	ConstrainMinimumTimeBetweenShifts *bool `json:"constrainMinimumTimeBetweenShifts,omitempty"`
 
-
 	// MinimumTimeBetweenShiftsMinutes - Minimum time between shifts in minutes defined in this work plan. Used if constrainMinimumTimeBetweenShifts == true
 	MinimumTimeBetweenShiftsMinutes *int `json:"minimumTimeBetweenShiftsMinutes,omitempty"`
-
 
 	// MaximumDays - Maximum number days in a week allowed to be scheduled for this work plan
 	MaximumDays *int `json:"maximumDays,omitempty"`
 
-
 	// MinimumConsecutiveNonWorkingMinutesPerWeek - Minimum amount of consecutive non working minutes per week that agents who are assigned this work plan are allowed to have off
 	MinimumConsecutiveNonWorkingMinutesPerWeek *int `json:"minimumConsecutiveNonWorkingMinutesPerWeek,omitempty"`
-
 
 	// ConstrainMaximumConsecutiveWorkingWeekends - Whether to constrain the maximum consecutive working weekends
 	ConstrainMaximumConsecutiveWorkingWeekends *bool `json:"constrainMaximumConsecutiveWorkingWeekends,omitempty"`
 
-
 	// MaximumConsecutiveWorkingWeekends - The maximum number of consecutive weekends that agents who are assigned to this work plan are allowed to work
 	MaximumConsecutiveWorkingWeekends *int `json:"maximumConsecutiveWorkingWeekends,omitempty"`
-
 
 	// MinimumWorkingDaysPerWeek - The minimum number of days that agents assigned to a work plan must work per week
 	MinimumWorkingDaysPerWeek *int `json:"minimumWorkingDaysPerWeek,omitempty"`
 
-
 	// ConstrainMaximumConsecutiveWorkingDays - Whether to constrain the maximum consecutive working days
 	ConstrainMaximumConsecutiveWorkingDays *bool `json:"constrainMaximumConsecutiveWorkingDays,omitempty"`
-
 
 	// MaximumConsecutiveWorkingDays - The maximum number of consecutive days that agents assigned to this work plan are allowed to work. Used if constrainMaximumConsecutiveWorkingDays == true
 	MaximumConsecutiveWorkingDays *int `json:"maximumConsecutiveWorkingDays,omitempty"`
 
-
 	// MinimumShiftStartDistanceMinutes - The time period in minutes for the duration between the start times of two consecutive working days
 	MinimumShiftStartDistanceMinutes *int `json:"minimumShiftStartDistanceMinutes,omitempty"`
-
 
 	// MinimumDaysOffPerPlanningPeriod - Minimum days off in the planning period
 	MinimumDaysOffPerPlanningPeriod *int `json:"minimumDaysOffPerPlanningPeriod,omitempty"`
 
-
 	// MaximumDaysOffPerPlanningPeriod - Maximum days off in the planning period
 	MaximumDaysOffPerPlanningPeriod *int `json:"maximumDaysOffPerPlanningPeriod,omitempty"`
-
 
 	// MinimumPaidMinutesPerPlanningPeriod - Minimum paid minutes in the planning period
 	MinimumPaidMinutesPerPlanningPeriod *int `json:"minimumPaidMinutesPerPlanningPeriod,omitempty"`
 
-
 	// MaximumPaidMinutesPerPlanningPeriod - Maximum paid minutes in the planning period
 	MaximumPaidMinutesPerPlanningPeriod *int `json:"maximumPaidMinutesPerPlanningPeriod,omitempty"`
-
 
 	// OptionalDays - Optional days to schedule for this work plan
 	OptionalDays *Setwrapperdayofweek `json:"optionalDays,omitempty"`
 
-
 	// ShiftStartVarianceType - This constraint ensures that an agent starts each workday within a user-defined time threshold
 	ShiftStartVarianceType *string `json:"shiftStartVarianceType,omitempty"`
-
 
 	// ShiftStartVariances - Variance in minutes among start times of shifts in this work plan
 	ShiftStartVariances *Listwrappershiftstartvariance `json:"shiftStartVariances,omitempty"`
 
-
 	// Shifts - Shifts in this work plan
 	Shifts *[]Createworkplanshift `json:"shifts,omitempty"`
 
-
 	// Agents - Agents in this work plan
 	Agents *[]Userreference `json:"agents,omitempty"`
-
 }
 
-func (o *Createworkplan) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Createworkplan) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Createworkplan) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createworkplan
@@ -182,7 +212,7 @@ func (o *Createworkplan) MarshalJSON() ([]byte, error) {
 		Shifts *[]Createworkplanshift `json:"shifts,omitempty"`
 		
 		Agents *[]Userreference `json:"agents,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Name: o.Name,
 		
@@ -239,7 +269,7 @@ func (o *Createworkplan) MarshalJSON() ([]byte, error) {
 		Shifts: o.Shifts,
 		
 		Agents: o.Agents,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

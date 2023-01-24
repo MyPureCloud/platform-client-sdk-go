@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,112 +10,143 @@ import (
 
 // Phone
 type Phone struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - The name of the entity.
 	Name *string `json:"name,omitempty"`
 
-
 	// Division - The division to which this entity belongs.
 	Division *Division `json:"division,omitempty"`
-
 
 	// Description - The resource's description.
 	Description *string `json:"description,omitempty"`
 
-
 	// Version - The current version of the resource.
 	Version *int `json:"version,omitempty"`
-
 
 	// DateCreated - The date the resource was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-
 	// DateModified - The date of the last modification to the resource. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
-
 
 	// ModifiedBy - The ID of the user that last modified the resource.
 	ModifiedBy *string `json:"modifiedBy,omitempty"`
 
-
 	// CreatedBy - The ID of the user that created the resource.
 	CreatedBy *string `json:"createdBy,omitempty"`
-
 
 	// State - Indicates if the resource is active, inactive, or deleted.
 	State *string `json:"state,omitempty"`
 
-
 	// ModifiedByApp - The application that last modified the resource.
 	ModifiedByApp *string `json:"modifiedByApp,omitempty"`
-
 
 	// CreatedByApp - The application that created the resource.
 	CreatedByApp *string `json:"createdByApp,omitempty"`
 
-
 	// Site - The site associated to the phone.
 	Site *Domainentityref `json:"site,omitempty"`
-
 
 	// PhoneBaseSettings - Phone Base Settings
 	PhoneBaseSettings *Phonebasesettings `json:"phoneBaseSettings,omitempty"`
 
-
 	// LineBaseSettings
 	LineBaseSettings *Domainentityref `json:"lineBaseSettings,omitempty"`
-
 
 	// PhoneMetaBase
 	PhoneMetaBase *Domainentityref `json:"phoneMetaBase,omitempty"`
 
-
 	// Lines - Lines
 	Lines *[]Line `json:"lines,omitempty"`
-
 
 	// Status - The status of the phone and lines from the primary Edge.
 	Status *Phonestatus `json:"status,omitempty"`
 
-
 	// SecondaryStatus - The status of the phone and lines from the secondary Edge.
 	SecondaryStatus *Phonestatus `json:"secondaryStatus,omitempty"`
-
 
 	// UserAgentInfo - User Agent Information for this phone. This includes model, firmware version, and manufacturer.
 	UserAgentInfo *Useragentinfo `json:"userAgentInfo,omitempty"`
 
-
 	// Properties
 	Properties *map[string]interface{} `json:"properties,omitempty"`
-
 
 	// Capabilities
 	Capabilities *Phonecapabilities `json:"capabilities,omitempty"`
 
-
 	// WebRtcUser - This is the user associated with a WebRTC type phone.  It is required for all WebRTC phones.
 	WebRtcUser *Domainentityref `json:"webRtcUser,omitempty"`
-
 
 	// PrimaryEdge
 	PrimaryEdge *Edge `json:"primaryEdge,omitempty"`
 
-
 	// SecondaryEdge
 	SecondaryEdge *Edge `json:"secondaryEdge,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Phone) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Phone) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Phone) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phone
@@ -187,7 +219,7 @@ func (o *Phone) MarshalJSON() ([]byte, error) {
 		SecondaryEdge *Edge `json:"secondaryEdge,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -240,7 +272,7 @@ func (o *Phone) MarshalJSON() ([]byte, error) {
 		SecondaryEdge: o.SecondaryEdge,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

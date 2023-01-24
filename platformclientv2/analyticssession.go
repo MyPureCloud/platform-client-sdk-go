@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,320 +10,299 @@ import (
 
 // Analyticssession
 type Analyticssession struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// ActiveSkillIds - ID(s) of Skill(s) that are active on the conversation
 	ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
-
 
 	// AcwSkipped - Marker for an agent that skipped after call work
 	AcwSkipped *bool `json:"acwSkipped,omitempty"`
 
-
 	// AddressFrom - The address that initiated an action
 	AddressFrom *string `json:"addressFrom,omitempty"`
-
 
 	// AddressOther - The email address for the participant on the other side of the email conversation
 	AddressOther *string `json:"addressOther,omitempty"`
 
-
 	// AddressSelf - The email address for the participant on this side of the email conversation
 	AddressSelf *string `json:"addressSelf,omitempty"`
-
 
 	// AddressTo - The address receiving an action
 	AddressTo *string `json:"addressTo,omitempty"`
 
-
 	// AgentAssistantId - Unique identifier of the active virtual agent assistant
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
-
 
 	// AgentBullseyeRing - Bullseye ring of the targeted agent
 	AgentBullseyeRing *int `json:"agentBullseyeRing,omitempty"`
 
-
 	// AgentOwned - Flag indicating an agent-owned callback
 	AgentOwned *bool `json:"agentOwned,omitempty"`
-
 
 	// Ani - Automatic Number Identification (caller's number)
 	Ani *string `json:"ani,omitempty"`
 
-
 	// AssignerId - ID of the user that manually assigned a conversation
 	AssignerId *string `json:"assignerId,omitempty"`
-
 
 	// Authenticated - Flag that indicates that the identity of the customer has been asserted as verified by the provider.
 	Authenticated *bool `json:"authenticated,omitempty"`
 
-
 	// BargedParticipantId - The participantId being barged in on (if someone (e.g. an agent) is being barged in on, this would correspond to one of the other participantIds present in the conversation)
 	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
-
 
 	// Bcc - Blind carbon copy email address(es)
 	Bcc *[]string `json:"bcc,omitempty"`
 
-
 	// CallbackNumbers - Callback phone number(s)
 	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
-
 
 	// CallbackScheduledTime - Scheduled callback date/time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
 
-
 	// CallbackUserName - The name of the user requesting a call back
 	CallbackUserName *string `json:"callbackUserName,omitempty"`
-
 
 	// Cc - Carbon copy email address(es)
 	Cc *[]string `json:"cc,omitempty"`
 
-
 	// CoachedParticipantId - The participantId being coached (if someone (e.g. an agent) is being coached, this would correspond to one of the other participantIds present in the conversation)
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
-
 
 	// CobrowseRole - Describes side of the cobrowse (sharer or viewer)
 	CobrowseRole *string `json:"cobrowseRole,omitempty"`
 
-
 	// CobrowseRoomId - A unique identifier for a PureCloud cobrowse room
 	CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
-
 
 	// DeliveryStatus - The email or SMS delivery status
 	DeliveryStatus *string `json:"deliveryStatus,omitempty"`
 
-
 	// DeliveryStatusChangeDate - Date and time of the most recent delivery status change. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DeliveryStatusChangeDate *time.Time `json:"deliveryStatusChangeDate,omitempty"`
-
 
 	// DestinationAddresses - Destination address(es) of transfers or consults
 	DestinationAddresses *[]string `json:"destinationAddresses,omitempty"`
 
-
 	// Direction - The direction of the communication
 	Direction *string `json:"direction,omitempty"`
-
 
 	// DispositionAnalyzer - (Dialer) Analyzer (for example speech.person)
 	DispositionAnalyzer *string `json:"dispositionAnalyzer,omitempty"`
 
-
 	// DispositionName - (Dialer) Result of the analysis (for example disposition.classification.callable.machine)
 	DispositionName *string `json:"dispositionName,omitempty"`
-
 
 	// Dnis - Dialed number identification service (number dialed by the calling party)
 	Dnis *string `json:"dnis,omitempty"`
 
-
 	// EdgeId - Unique identifier of the edge device
 	EdgeId *string `json:"edgeId,omitempty"`
-
 
 	// EligibleAgentCounts - Number of eligible agents for each predictive routing attempt
 	EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 
-
 	// ExtendedDeliveryStatus - Extended delivery status
 	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
-
 
 	// FlowInType - Type of flow in that occurred when entering ACD.
 	FlowInType *string `json:"flowInType,omitempty"`
 
-
 	// FlowOutType - Type of flow out that occurred when emitting tFlowOut.
 	FlowOutType *string `json:"flowOutType,omitempty"`
-
 
 	// JourneyActionId - Identifier of the journey action.
 	JourneyActionId *string `json:"journeyActionId,omitempty"`
 
-
 	// JourneyActionMapId - Identifier of the journey action map that triggered the action.
 	JourneyActionMapId *string `json:"journeyActionMapId,omitempty"`
-
 
 	// JourneyActionMapVersion - Version of the journey action map that triggered the action.
 	JourneyActionMapVersion *int `json:"journeyActionMapVersion,omitempty"`
 
-
 	// JourneyCustomerId - Primary identifier of the journey customer in the source where the activities originate from.
 	JourneyCustomerId *string `json:"journeyCustomerId,omitempty"`
-
 
 	// JourneyCustomerIdType - Type of primary identifier of the journey customer (e.g. cookie).
 	JourneyCustomerIdType *string `json:"journeyCustomerIdType,omitempty"`
 
-
 	// JourneyCustomerSessionId - Unique identifier of the journey session.
 	JourneyCustomerSessionId *string `json:"journeyCustomerSessionId,omitempty"`
-
 
 	// JourneyCustomerSessionIdType - Type or category of journey sessions (e.g. web, ticket, delivery, atm).
 	JourneyCustomerSessionIdType *string `json:"journeyCustomerSessionIdType,omitempty"`
 
-
 	// MediaBridgeId - Media bridge ID for the conference session consistent across all participants
 	MediaBridgeId *string `json:"mediaBridgeId,omitempty"`
-
 
 	// MediaCount - Count of any media (images, files, etc) included in this session
 	MediaCount *int `json:"mediaCount,omitempty"`
 
-
 	// MediaType - The session media type
 	MediaType *string `json:"mediaType,omitempty"`
-
 
 	// MessageType - Message type for messaging services. E.g.: sms, facebook, twitter, line
 	MessageType *string `json:"messageType,omitempty"`
 
-
 	// MonitoredParticipantId - The participantId being monitored (if someone (e.g. an agent) is being monitored, this would correspond to one of the other participantIds present in the conversation)
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
-
 
 	// OutboundCampaignId - (Dialer) Unique identifier of the outbound campaign
 	OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
 
-
 	// OutboundContactId - (Dialer) Unique identifier of the contact
 	OutboundContactId *string `json:"outboundContactId,omitempty"`
-
 
 	// OutboundContactListId - (Dialer) Unique identifier of the contact list that this contact belongs to
 	OutboundContactListId *string `json:"outboundContactListId,omitempty"`
 
-
 	// PeerId - This identifies pairs of related sessions on a conversation. E.g. an external session’s peerId will be the session that the call originally connected to, e.g. if an IVR was dialed, the IVR session, which will also have the external session’s ID as its peer. After that point, any transfers of that session to other internal components (acd, agent, etc.) will all spawn new sessions whose peerIds point back to that original external session.
 	PeerId *string `json:"peerId,omitempty"`
-
 
 	// ProtocolCallId - The original voice protocol call ID, e.g. a SIP call ID
 	ProtocolCallId *string `json:"protocolCallId,omitempty"`
 
-
 	// Provider - The source provider for the communication.
 	Provider *string `json:"provider,omitempty"`
-
 
 	// Recording - Flag determining if an audio recording was started or not
 	Recording *bool `json:"recording,omitempty"`
 
-
 	// Remote - Name, phone number, or email address of the remote party.
 	Remote *string `json:"remote,omitempty"`
-
 
 	// RemoteNameDisplayable - Unique identifier for the remote party
 	RemoteNameDisplayable *string `json:"remoteNameDisplayable,omitempty"`
 
-
 	// RemovedSkillIds - ID(s) of Skill(s) that have been removed by bullseye routing
 	RemovedSkillIds *[]string `json:"removedSkillIds,omitempty"`
-
 
 	// RequestedRoutings - Routing type(s) for requested/attempted routing methods.
 	RequestedRoutings *[]string `json:"requestedRoutings,omitempty"`
 
-
 	// RoomId - Unique identifier for the room
 	RoomId *string `json:"roomId,omitempty"`
-
 
 	// RoutingRing - Routing ring for bullseye or preferred agent routing
 	RoutingRing *int `json:"routingRing,omitempty"`
 
-
 	// ScreenShareAddressSelf - Direct ScreenShare address
 	ScreenShareAddressSelf *string `json:"screenShareAddressSelf,omitempty"`
-
 
 	// ScreenShareRoomId - A unique identifier for a PureCloud ScreenShare room
 	ScreenShareRoomId *string `json:"screenShareRoomId,omitempty"`
 
-
 	// ScriptId - A unique identifier for a script
 	ScriptId *string `json:"scriptId,omitempty"`
-
 
 	// SelectedAgentId - Selected agent ID
 	SelectedAgentId *string `json:"selectedAgentId,omitempty"`
 
-
 	// SelectedAgentRank - Selected agent GPR rank
 	SelectedAgentRank *int `json:"selectedAgentRank,omitempty"`
-
 
 	// SessionDnis - Dialed number for the current session; this can be different from dnis, e.g. if the call was transferred
 	SessionDnis *string `json:"sessionDnis,omitempty"`
 
-
 	// SessionId - The unique identifier of this session
 	SessionId *string `json:"sessionId,omitempty"`
-
 
 	// SharingScreen - Flag determining if screenShare is started or not (true/false)
 	SharingScreen *bool `json:"sharingScreen,omitempty"`
 
-
 	// SkipEnabled - (Dialer) Whether the agent can skip the dialer contact
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
-
 
 	// TimeoutSeconds - The number of seconds before PureCloud begins the call for a call back (0 disables automatic calling)
 	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
-
 	// UsedRouting - Complete routing method
 	UsedRouting *string `json:"usedRouting,omitempty"`
-
 
 	// VideoAddressSelf - Direct Video address
 	VideoAddressSelf *string `json:"videoAddressSelf,omitempty"`
 
-
 	// VideoRoomId - A unique identifier for a PureCloud video room
 	VideoRoomId *string `json:"videoRoomId,omitempty"`
-
 
 	// WaitingInteractionCounts - Number of waiting interactions for each predictive routing attempt
 	WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 
-
 	// AgentGroups - Conditional group routing agent groups
 	AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
-
 
 	// ProposedAgents - Proposed agents
 	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
 
-
 	// MediaEndpointStats - MediaEndpointStats associated with this session
 	MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
-
 
 	// Flow - IVR flow execution associated with this session
 	Flow *Analyticsflow `json:"flow,omitempty"`
 
-
 	// Metrics - List of metrics for this session
 	Metrics *[]Analyticssessionmetric `json:"metrics,omitempty"`
 
-
 	// Segments - List of segments for this session
 	Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
-
 }
 
-func (o *Analyticssession) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Analyticssession) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Analyticssession) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "CallbackScheduledTime","DeliveryStatusChangeDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticssession
@@ -499,7 +479,7 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		Metrics *[]Analyticssessionmetric `json:"metrics,omitempty"`
 		
 		Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		ActiveSkillIds: o.ActiveSkillIds,
 		
@@ -656,7 +636,7 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		Metrics: o.Metrics,
 		
 		Segments: o.Segments,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

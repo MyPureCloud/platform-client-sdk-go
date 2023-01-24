@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,68 +10,110 @@ import (
 
 // V2mobiusalertstopicalert
 type V2mobiusalertstopicalert struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Rule
 	Rule *V2mobiusalertstopicalertruleproperties `json:"rule,omitempty"`
-
 
 	// Id
 	Id *string `json:"id,omitempty"`
 
-
 	// UserId
 	UserId *string `json:"userId,omitempty"`
-
 
 	// Notifications
 	Notifications *[]V2mobiusalertstopicalertnotification `json:"notifications,omitempty"`
 
-
 	// DateStart
 	DateStart *time.Time `json:"dateStart,omitempty"`
-
 
 	// DateEnd
 	DateEnd *time.Time `json:"dateEnd,omitempty"`
 
-
 	// Conditions
 	Conditions *V2mobiusalertstopiccondition `json:"conditions,omitempty"`
-
 
 	// AdditionalProperties
 	AdditionalProperties *map[string]string `json:"additionalProperties,omitempty"`
 
-
 	// Active
 	Active *bool `json:"active,omitempty"`
-
 
 	// Unread
 	Unread *bool `json:"unread,omitempty"`
 
-
 	// Muted
 	Muted *bool `json:"muted,omitempty"`
-
 
 	// Snoozed
 	Snoozed *bool `json:"snoozed,omitempty"`
 
-
 	// DateMutedUntil
 	DateMutedUntil *time.Time `json:"dateMutedUntil,omitempty"`
-
 
 	// DateSnoozedUntil
 	DateSnoozedUntil *time.Time `json:"dateSnoozedUntil,omitempty"`
 
-
 	// Action
 	Action *string `json:"action,omitempty"`
-
 }
 
-func (o *V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *V2mobiusalertstopicalert) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateStart","DateEnd","DateMutedUntil","DateSnoozedUntil", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias V2mobiusalertstopicalert
@@ -137,7 +180,7 @@ func (o *V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
 		DateSnoozedUntil *string `json:"dateSnoozedUntil,omitempty"`
 		
 		Action *string `json:"action,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Rule: o.Rule,
 		
@@ -168,7 +211,7 @@ func (o *V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
 		DateSnoozedUntil: DateSnoozedUntil,
 		
 		Action: o.Action,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

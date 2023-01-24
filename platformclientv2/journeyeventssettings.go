@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,48 +9,95 @@ import (
 
 // Journeyeventssettings - Settings concerning journey events
 type Journeyeventssettings struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Enabled - Whether or not journey event collection is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
-
 
 	// ExcludedQueryParameters - List of parameters to be excluded from the query string.
 	ExcludedQueryParameters *[]string `json:"excludedQueryParameters,omitempty"`
 
-
 	// ShouldKeepUrlFragment - Whether or not to keep the URL fragment.
 	ShouldKeepUrlFragment *bool `json:"shouldKeepUrlFragment,omitempty"`
-
 
 	// SearchQueryParameters - List of query parameters used for search (e.g. 'q').
 	SearchQueryParameters *[]string `json:"searchQueryParameters,omitempty"`
 
-
 	// PageviewConfig - Controls how the pageview events are tracked.
 	PageviewConfig *string `json:"pageviewConfig,omitempty"`
-
 
 	// ClickEvents - Tracks when and where a visitor clicks on a webpage.
 	ClickEvents *[]Selectoreventtrigger `json:"clickEvents,omitempty"`
 
-
 	// FormsTrackEvents - Controls how the form submitted and form abandoned events are tracked after a visitor interacts with a form element.
 	FormsTrackEvents *[]Formstracktrigger `json:"formsTrackEvents,omitempty"`
-
 
 	// IdleEvents - Tracks when and where a visitor becomes inactive on a webpage.
 	IdleEvents *[]Idleeventtrigger `json:"idleEvents,omitempty"`
 
-
 	// InViewportEvents - Tracks when elements become visible or hidden on screen.
 	InViewportEvents *[]Selectoreventtrigger `json:"inViewportEvents,omitempty"`
 
-
 	// ScrollDepthEvents - Tracks when a visitor scrolls to a specific percentage of a webpage.
 	ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
-
 }
 
-func (o *Journeyeventssettings) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Journeyeventssettings) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Journeyeventssettings) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeyeventssettings
@@ -74,7 +122,7 @@ func (o *Journeyeventssettings) MarshalJSON() ([]byte, error) {
 		InViewportEvents *[]Selectoreventtrigger `json:"inViewportEvents,omitempty"`
 		
 		ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Enabled: o.Enabled,
 		
@@ -95,7 +143,7 @@ func (o *Journeyeventssettings) MarshalJSON() ([]byte, error) {
 		InViewportEvents: o.InViewportEvents,
 		
 		ScrollDepthEvents: o.ScrollDepthEvents,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

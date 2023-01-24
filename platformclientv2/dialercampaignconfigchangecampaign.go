@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,144 +10,167 @@ import (
 
 // Dialercampaignconfigchangecampaign
 type Dialercampaignconfigchangecampaign struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// ContactList
 	ContactList *Dialercampaignconfigchangeurireference `json:"contactList,omitempty"`
-
 
 	// Queue - A UriReference for a resource
 	Queue *Dialercampaignconfigchangeurireference `json:"queue,omitempty"`
 
-
 	// DialingMode - dialing mode of the campaign
 	DialingMode *string `json:"dialingMode,omitempty"`
-
 
 	// Script - A UriReference for a resource
 	Script *Dialercampaignconfigchangeurireference `json:"script,omitempty"`
 
-
 	// EdgeGroup - A UriReference for a resource
 	EdgeGroup *Dialercampaignconfigchangeurireference `json:"edgeGroup,omitempty"`
-
 
 	// Site - A UriReference for a resource
 	Site *Dialercampaignconfigchangeurireference `json:"site,omitempty"`
 
-
 	// CampaignStatus
 	CampaignStatus *string `json:"campaignStatus,omitempty"`
-
 
 	// PhoneColumns - the contact list phone columns to be called for the campaign
 	PhoneColumns *[]Dialercampaignconfigchangephonecolumn `json:"phoneColumns,omitempty"`
 
-
 	// AbandonRate - the targeted abandon rate percentage
 	AbandonRate *float32 `json:"abandonRate,omitempty"`
-
 
 	// DncLists - identifiers of the do not call lists
 	DncLists *[]Dialercampaignconfigchangeurireference `json:"dncLists,omitempty"`
 
-
 	// CallableTimeSet - A UriReference for a resource
 	CallableTimeSet *Dialercampaignconfigchangeurireference `json:"callableTimeSet,omitempty"`
-
 
 	// CallAnalysisResponseSet - A UriReference for a resource
 	CallAnalysisResponseSet *Dialercampaignconfigchangeurireference `json:"callAnalysisResponseSet,omitempty"`
 
-
 	// CallerName - caller id name to be displayed on the outbound call
 	CallerName *string `json:"callerName,omitempty"`
-
 
 	// CallerAddress - caller id phone number to be displayed on the outbound call
 	CallerAddress *string `json:"callerAddress,omitempty"`
 
-
 	// OutboundLineCount - for agentless campaigns, the number of outbound lines to be concurrently dialed
 	OutboundLineCount *int `json:"outboundLineCount,omitempty"`
-
 
 	// Errors - a list of current error conditions associated with the campaign
 	Errors *[]Dialercampaignconfigchangeresterrordetail `json:"errors,omitempty"`
 
-
 	// RuleSets - identifiers of the rule sets
 	RuleSets *[]Dialercampaignconfigchangeurireference `json:"ruleSets,omitempty"`
-
 
 	// SkipPreviewDisabled - for preview campaigns, indicator of whether the agent can skip a preview without placing a call
 	SkipPreviewDisabled *bool `json:"skipPreviewDisabled,omitempty"`
 
-
 	// PreviewTimeOutSeconds - for preview campaigns, number of seconds before a call will be automatically placed. A value of 0 indicates no automatic placement of calls
 	PreviewTimeOutSeconds *int `json:"previewTimeOutSeconds,omitempty"`
-
 
 	// SingleNumberPreview - for preview campaigns with multiple phone columns, indicator if one (true) or multiple (false) phone numbers will be available to call for each preview
 	SingleNumberPreview *bool `json:"singleNumberPreview,omitempty"`
 
-
 	// ContactSort
 	ContactSort *Dialercampaignconfigchangecontactsort `json:"contactSort,omitempty"`
-
 
 	// ContactSorts - List of contact sort objects.
 	ContactSorts *[]Dialercampaignconfigchangecontactsort `json:"contactSorts,omitempty"`
 
-
 	// NoAnswerTimeout - for non-preview campaigns, how long to wait before dispositioning as 'no-answer', default 30 seconds
 	NoAnswerTimeout *int `json:"noAnswerTimeout,omitempty"`
-
 
 	// CallAnalysisLanguage - The language the edge will use to analyze the call
 	CallAnalysisLanguage *string `json:"callAnalysisLanguage,omitempty"`
 
-
 	// Priority - The priority of this campaign relative to other campaigns
 	Priority *int `json:"priority,omitempty"`
-
 
 	// ContactListFilters - List of contact filters
 	ContactListFilters *[]Dialercampaignconfigchangeurireference `json:"contactListFilters,omitempty"`
 
-
 	// Division - A UriReference for a resource
 	Division *Dialercampaignconfigchangeurireference `json:"division,omitempty"`
-
 
 	// AgentOwnedColumn - For Preview Campaigns. Name of the contact column in the contact list containing the userIds of agents to assign specific contact records to.
 	AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
 
-
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-
 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-
 	// Name - The UI-visible name of the object
 	Name *string `json:"name,omitempty"`
-
 
 	// DateCreated - Creation time of the entity
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-
 	// DateModified - Last modified time of the entity
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-
 	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
-
 }
 
-func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Dialercampaignconfigchangecampaign) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignconfigchangecampaign
@@ -235,7 +259,7 @@ func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		ContactList: o.ContactList,
 		
@@ -304,7 +328,7 @@ func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

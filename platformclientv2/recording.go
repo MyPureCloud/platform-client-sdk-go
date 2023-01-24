@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,136 +10,161 @@ import (
 
 // Recording
 type Recording struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name
 	Name *string `json:"name,omitempty"`
 
-
 	// ConversationId
 	ConversationId *string `json:"conversationId,omitempty"`
-
 
 	// Path
 	Path *string `json:"path,omitempty"`
 
-
 	// StartTime - The start time of the recording. Null when there is no playable media.
 	StartTime *string `json:"startTime,omitempty"`
-
 
 	// EndTime - The end time of the recording. Null when there is no playable media.
 	EndTime *string `json:"endTime,omitempty"`
 
-
 	// Media - The type of media that the recording is. At the moment that could be audio, chat, or email.
 	Media *string `json:"media,omitempty"`
-
 
 	// Annotations - Annotations that belong to the recording.
 	Annotations *[]Annotation `json:"annotations,omitempty"`
 
-
 	// Transcript - Represents a chat transcript
 	Transcript *[]Chatmessage `json:"transcript,omitempty"`
-
 
 	// EmailTranscript - Represents an email transcript
 	EmailTranscript *[]Recordingemailmessage `json:"emailTranscript,omitempty"`
 
-
 	// MessagingTranscript - Represents a messaging transcript
 	MessagingTranscript *[]Recordingmessagingmessage `json:"messagingTranscript,omitempty"`
-
 
 	// FileState - Represents the current file state for a recording. Examples: Uploading, Archived, etc
 	FileState *string `json:"fileState,omitempty"`
 
-
 	// RestoreExpirationTime - The amount of time a restored recording will remain restored before being archived again. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	RestoreExpirationTime *time.Time `json:"restoreExpirationTime,omitempty"`
-
 
 	// MediaUris - The different mediaUris for the recording. Null when there is no playable media.
 	MediaUris *map[string]Mediaresult `json:"mediaUris,omitempty"`
 
-
 	// EstimatedTranscodeTimeMs
 	EstimatedTranscodeTimeMs *int `json:"estimatedTranscodeTimeMs,omitempty"`
-
 
 	// ActualTranscodeTimeMs
 	ActualTranscodeTimeMs *int `json:"actualTranscodeTimeMs,omitempty"`
 
-
 	// ArchiveDate - The date the recording will be archived. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ArchiveDate *time.Time `json:"archiveDate,omitempty"`
-
 
 	// ArchiveMedium - The type of archive medium used. Example: CloudArchive
 	ArchiveMedium *string `json:"archiveMedium,omitempty"`
 
-
 	// DeleteDate - The date the recording will be deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DeleteDate *time.Time `json:"deleteDate,omitempty"`
-
 
 	// ExportDate - The date the recording will be exported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExportDate *time.Time `json:"exportDate,omitempty"`
 
-
 	// ExportedDate - The date the recording was exported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExportedDate *time.Time `json:"exportedDate,omitempty"`
-
 
 	// OutputDurationMs - Duration of transcoded media in milliseconds
 	OutputDurationMs *int `json:"outputDurationMs,omitempty"`
 
-
 	// OutputSizeInBytes - Size of transcoded media in bytes. 0 if there is no transcoded media.
 	OutputSizeInBytes *int `json:"outputSizeInBytes,omitempty"`
-
 
 	// MaxAllowedRestorationsForOrg - How many archive restorations the organization is allowed to have.
 	MaxAllowedRestorationsForOrg *int `json:"maxAllowedRestorationsForOrg,omitempty"`
 
-
 	// RemainingRestorationsAllowedForOrg - The remaining archive restorations the organization has.
 	RemainingRestorationsAllowedForOrg *int `json:"remainingRestorationsAllowedForOrg,omitempty"`
-
 
 	// SessionId - The session id represents an external resource id, such as email, call, chat, etc
 	SessionId *string `json:"sessionId,omitempty"`
 
-
 	// Users - The users participating in the conversation
 	Users *[]User `json:"users,omitempty"`
-
 
 	// RecordingFileRole - Role of the file recording. It can be either customer_experience or adhoc.
 	RecordingFileRole *string `json:"recordingFileRole,omitempty"`
 
-
 	// RecordingErrorStatus - Status of a recording that cannot be returned because of an error
 	RecordingErrorStatus *string `json:"recordingErrorStatus,omitempty"`
-
 
 	// OriginalRecordingStartTime - The start time of the full recording, before any segment access restrictions are applied. Null when there is no playable media. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	OriginalRecordingStartTime *time.Time `json:"originalRecordingStartTime,omitempty"`
 
-
 	// CreationTime - The creation time of the recording. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Recording) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Recording) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Recording) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "RestoreExpirationTime","ArchiveDate","DeleteDate","ExportDate","ExportedDate","OriginalRecordingStartTime","CreationTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recording
@@ -263,7 +289,7 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		CreationTime *string `json:"creationTime,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -328,7 +354,7 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		CreationTime: CreationTime,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

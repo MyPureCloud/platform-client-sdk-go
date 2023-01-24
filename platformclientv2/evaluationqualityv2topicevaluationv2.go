@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,96 +10,131 @@ import (
 
 // Evaluationqualityv2topicevaluationv2
 type Evaluationqualityv2topicevaluationv2 struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id
 	Id *string `json:"id,omitempty"`
-
 
 	// ConversationId
 	ConversationId *string `json:"conversationId,omitempty"`
 
-
 	// Agent
 	Agent *Evaluationqualityv2topicuser `json:"agent,omitempty"`
-
 
 	// Evaluator
 	Evaluator *Evaluationqualityv2topicuser `json:"evaluator,omitempty"`
 
-
 	// EventTime
 	EventTime *time.Time `json:"eventTime,omitempty"`
-
 
 	// EvaluationFormId
 	EvaluationFormId *string `json:"evaluationFormId,omitempty"`
 
-
 	// FormName
 	FormName *string `json:"formName,omitempty"`
-
 
 	// ScoringSet
 	ScoringSet *Evaluationqualityv2topicevaluationscoringset `json:"scoringSet,omitempty"`
 
-
 	// ContextId
 	ContextId *string `json:"contextId,omitempty"`
-
 
 	// Status
 	Status *string `json:"status,omitempty"`
 
-
 	// AgentHasRead
 	AgentHasRead *bool `json:"agentHasRead,omitempty"`
-
 
 	// ReleaseDate
 	ReleaseDate *time.Time `json:"releaseDate,omitempty"`
 
-
 	// AssignedDate
 	AssignedDate *time.Time `json:"assignedDate,omitempty"`
-
 
 	// ChangedDate
 	ChangedDate *time.Time `json:"changedDate,omitempty"`
 
-
 	// EventType
 	EventType *string `json:"eventType,omitempty"`
-
 
 	// ResourceId
 	ResourceId *string `json:"resourceId,omitempty"`
 
-
 	// ResourceType
 	ResourceType *string `json:"resourceType,omitempty"`
-
 
 	// DivisionIds
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
-
 	// Rescore
 	Rescore *bool `json:"rescore,omitempty"`
-
 
 	// ConversationDate
 	ConversationDate *time.Time `json:"conversationDate,omitempty"`
 
-
 	// MediaType
 	MediaType *[]string `json:"mediaType,omitempty"`
 
-
 	// Calibration
 	Calibration *Evaluationqualityv2topiccalibration `json:"calibration,omitempty"`
-
 }
 
-func (o *Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Evaluationqualityv2topicevaluationv2) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "EventTime","ReleaseDate","AssignedDate","ChangedDate","ConversationDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationqualityv2topicevaluationv2
@@ -187,7 +223,7 @@ func (o *Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		MediaType *[]string `json:"mediaType,omitempty"`
 		
 		Calibration *Evaluationqualityv2topiccalibration `json:"calibration,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -232,7 +268,7 @@ func (o *Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		MediaType: o.MediaType,
 		
 		Calibration: o.Calibration,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

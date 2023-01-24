@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,40 +9,89 @@ import (
 
 // Agentlessemailsendrequestdto
 type Agentlessemailsendrequestdto struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// SenderType - The direction of the message.
 	SenderType *string `json:"senderType,omitempty"`
-
 
 	// ConversationId - The identifier of the conversation.
 	ConversationId *string `json:"conversationId,omitempty"`
 
-
 	// FromAddress - The sender of the message.
 	FromAddress *Emailaddress `json:"fromAddress,omitempty"`
-
 
 	// ToAddresses - The recipient(s) of the message.
 	ToAddresses *[]Emailaddress `json:"toAddresses,omitempty"`
 
-
 	// ReplyToAddress - The address to use for reply.
 	ReplyToAddress *Emailaddress `json:"replyToAddress,omitempty"`
-
 
 	// Subject - The subject of the message.
 	Subject *string `json:"subject,omitempty"`
 
-
 	// TextBody - The Content of the message, in plain text.
 	TextBody *string `json:"textBody,omitempty"`
 
-
 	// HtmlBody - The Content of the message, in HTML. Links, images and styles are allowed
 	HtmlBody *string `json:"htmlBody,omitempty"`
-
 }
 
-func (o *Agentlessemailsendrequestdto) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Agentlessemailsendrequestdto) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Agentlessemailsendrequestdto) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agentlessemailsendrequestdto
@@ -62,7 +112,7 @@ func (o *Agentlessemailsendrequestdto) MarshalJSON() ([]byte, error) {
 		TextBody *string `json:"textBody,omitempty"`
 		
 		HtmlBody *string `json:"htmlBody,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		SenderType: o.SenderType,
 		
@@ -79,7 +129,7 @@ func (o *Agentlessemailsendrequestdto) MarshalJSON() ([]byte, error) {
 		TextBody: o.TextBody,
 		
 		HtmlBody: o.HtmlBody,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

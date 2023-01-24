@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,144 +10,167 @@ import (
 
 // Campaign
 type Campaign struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - The name of the Campaign.
 	Name *string `json:"name,omitempty"`
 
-
 	// DateCreated - Creation time of the entity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
 
 	// DateModified - Last modified time of the entity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-
 	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
-
 
 	// ContactList - The ContactList for this Campaign to dial.
 	ContactList *Domainentityref `json:"contactList,omitempty"`
 
-
 	// Queue - The Queue for this Campaign to route calls to. Required for all dialing modes except agentless.
 	Queue *Domainentityref `json:"queue,omitempty"`
-
 
 	// DialingMode - The strategy this Campaign will use for dialing.
 	DialingMode *string `json:"dialingMode,omitempty"`
 
-
 	// Script - The Script to be displayed to agents that are handling outbound calls. Required for all dialing modes except agentless.
 	Script *Domainentityref `json:"script,omitempty"`
-
 
 	// EdgeGroup - The EdgeGroup that will place the calls. Required for all dialing modes except preview.
 	EdgeGroup *Domainentityref `json:"edgeGroup,omitempty"`
 
-
 	// Site - The identifier of the site to be used for dialing; can be set in place of an edge group.
 	Site *Domainentityref `json:"site,omitempty"`
-
 
 	// CampaignStatus - The current status of the Campaign. A Campaign may be turned 'on' or 'off'. Required for updates.
 	CampaignStatus *string `json:"campaignStatus,omitempty"`
 
-
 	// PhoneColumns - The ContactPhoneNumberColumns on the ContactList that this Campaign should dial.
 	PhoneColumns *[]Phonecolumn `json:"phoneColumns,omitempty"`
-
 
 	// AbandonRate - The targeted abandon rate percentage. Required for progressive, power, and predictive campaigns.
 	AbandonRate *float64 `json:"abandonRate,omitempty"`
 
-
 	// DncLists - DncLists for this Campaign to check before placing a call.
 	DncLists *[]Domainentityref `json:"dncLists,omitempty"`
-
 
 	// CallableTimeSet - The callable time set for this campaign to check before placing a call.
 	CallableTimeSet *Domainentityref `json:"callableTimeSet,omitempty"`
 
-
 	// CallAnalysisResponseSet - The call analysis response set to handle call analysis results from the edge. Required for all dialing modes except preview.
 	CallAnalysisResponseSet *Domainentityref `json:"callAnalysisResponseSet,omitempty"`
-
 
 	// Errors - A list of current error conditions associated with the campaign.
 	Errors *[]Resterrordetail `json:"errors,omitempty"`
 
-
 	// CallerName - The caller id name to be displayed on the outbound call.
 	CallerName *string `json:"callerName,omitempty"`
-
 
 	// CallerAddress - The caller id phone number to be displayed on the outbound call.
 	CallerAddress *string `json:"callerAddress,omitempty"`
 
-
 	// OutboundLineCount - The number of outbound lines to be concurrently dialed. Only applicable to non-preview campaigns; only required for agentless.
 	OutboundLineCount *int `json:"outboundLineCount,omitempty"`
-
 
 	// RuleSets - Rule sets to be applied while this campaign is dialing.
 	RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
 
-
 	// SkipPreviewDisabled - Whether or not agents can skip previews without placing a call. Only applicable for preview campaigns.
 	SkipPreviewDisabled *bool `json:"skipPreviewDisabled,omitempty"`
-
 
 	// PreviewTimeOutSeconds - The number of seconds before a call will be automatically placed on a preview. A value of 0 indicates no automatic placement of calls. Only applicable to preview campaigns.
 	PreviewTimeOutSeconds *int `json:"previewTimeOutSeconds,omitempty"`
 
-
 	// AlwaysRunning - Indicates (when true) that the campaign will remain on after contacts are depleted, allowing additional contacts to be appended/added to the contact list and processed by the still-running campaign. The campaign can still be turned off manually.
 	AlwaysRunning *bool `json:"alwaysRunning,omitempty"`
-
 
 	// ContactSort - The order in which to sort contacts for dialing, based on a column.
 	ContactSort *Contactsort `json:"contactSort,omitempty"`
 
-
 	// ContactSorts - The order in which to sort contacts for dialing, based on up to four columns.
 	ContactSorts *[]Contactsort `json:"contactSorts,omitempty"`
-
 
 	// NoAnswerTimeout - How long to wait before dispositioning a call as 'no-answer'. Default 30 seconds. Only applicable to non-preview campaigns.
 	NoAnswerTimeout *int `json:"noAnswerTimeout,omitempty"`
 
-
 	// CallAnalysisLanguage - The language the edge will use to analyze the call.
 	CallAnalysisLanguage *string `json:"callAnalysisLanguage,omitempty"`
-
 
 	// Priority - The priority of this campaign relative to other campaigns that are running on the same queue. 5 is the highest priority, 1 the lowest.
 	Priority *int `json:"priority,omitempty"`
 
-
 	// ContactListFilters - Filter to apply to the contact list before dialing. Currently a campaign can only have one filter applied.
 	ContactListFilters *[]Domainentityref `json:"contactListFilters,omitempty"`
-
 
 	// Division - The division this campaign belongs to.
 	Division *Domainentityref `json:"division,omitempty"`
 
-
 	// DynamicContactQueueingSettings - Settings for dynamic queueing of contacts.
 	DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Campaign) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Campaign) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Campaign) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaign
@@ -235,7 +259,7 @@ func (o *Campaign) MarshalJSON() ([]byte, error) {
 		DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -304,7 +328,7 @@ func (o *Campaign) MarshalJSON() ([]byte, error) {
 		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

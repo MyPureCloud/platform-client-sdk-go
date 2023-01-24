@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,88 +10,125 @@ import (
 
 // Voicemailmessage
 type Voicemailmessage struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Conversation - The conversation that the voicemail message is associated with
 	Conversation *Conversation `json:"conversation,omitempty"`
 
-
 	// Read - Whether the voicemail message is marked as read
 	Read *bool `json:"read,omitempty"`
-
 
 	// AudioRecordingDurationSeconds - The voicemail message's audio recording duration in seconds
 	AudioRecordingDurationSeconds *int `json:"audioRecordingDurationSeconds,omitempty"`
 
-
 	// AudioRecordingSizeBytes - The voicemail message's audio recording size in bytes
 	AudioRecordingSizeBytes *int `json:"audioRecordingSizeBytes,omitempty"`
-
 
 	// CreatedDate - The date the voicemail message was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 
-
 	// ModifiedDate - The date the voicemail message was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
-
 
 	// DeletedDate - The date the voicemail message deleted property was set to true. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DeletedDate *time.Time `json:"deletedDate,omitempty"`
 
-
 	// CallerAddress - The caller address
 	CallerAddress *string `json:"callerAddress,omitempty"`
-
 
 	// CallerName - Optionally the name of the caller that left the voicemail message if the caller was a known user
 	CallerName *string `json:"callerName,omitempty"`
 
-
 	// CallerUser - Optionally the user that left the voicemail message if the caller was a known user
 	CallerUser *User `json:"callerUser,omitempty"`
-
 
 	// Deleted - Whether the voicemail message has been marked as deleted
 	Deleted *bool `json:"deleted,omitempty"`
 
-
 	// Note - An optional note
 	Note *string `json:"note,omitempty"`
-
 
 	// User - The user that the voicemail message belongs to or null which means the voicemail message belongs to a group or queue
 	User *User `json:"user,omitempty"`
 
-
 	// Group - The group that the voicemail message belongs to or null which means the voicemail message belongs to a user or queue
 	Group *Group `json:"group,omitempty"`
-
 
 	// Queue - The queue that the voicemail message belongs to or null which means the voicemail message belongs to a user or group
 	Queue *Queue `json:"queue,omitempty"`
 
-
 	// CopiedFrom - Represents where this voicemail message was copied from
 	CopiedFrom *Voicemailcopyrecord `json:"copiedFrom,omitempty"`
-
 
 	// CopiedTo - Represents where this voicemail has been copied to
 	CopiedTo *[]Voicemailcopyrecord `json:"copiedTo,omitempty"`
 
-
 	// DeleteRetentionPolicy - The retention policy for this voicemail when deleted is set to true
 	DeleteRetentionPolicy *Voicemailretentionpolicy `json:"deleteRetentionPolicy,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Voicemailmessage) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Voicemailmessage) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Voicemailmessage) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "CreatedDate","ModifiedDate","DeletedDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailmessage
@@ -159,7 +197,7 @@ func (o *Voicemailmessage) MarshalJSON() ([]byte, error) {
 		DeleteRetentionPolicy *Voicemailretentionpolicy `json:"deleteRetentionPolicy,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -200,7 +238,7 @@ func (o *Voicemailmessage) MarshalJSON() ([]byte, error) {
 		DeleteRetentionPolicy: o.DeleteRetentionPolicy,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

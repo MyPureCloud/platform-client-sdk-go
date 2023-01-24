@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,60 +10,104 @@ import (
 
 // Apiusagerow
 type Apiusagerow struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// ClientId - Client Id associated with this query result
 	ClientId *string `json:"clientId,omitempty"`
-
 
 	// ClientName - Client Name associated with this query result
 	ClientName *string `json:"clientName,omitempty"`
 
-
 	// OrganizationId - Organization Id associated with this query result
 	OrganizationId *string `json:"organizationId,omitempty"`
-
 
 	// UserId - User Id associated with this query result
 	UserId *string `json:"userId,omitempty"`
 
-
 	// TemplateUri - Template Uri associated with this query result
 	TemplateUri *string `json:"templateUri,omitempty"`
-
 
 	// HttpMethod - HTTP Method associated with this query result
 	HttpMethod *string `json:"httpMethod,omitempty"`
 
-
 	// Status200 - Number of requests resulting in a 2xx HTTP status code
 	Status200 *int `json:"status200,omitempty"`
-
 
 	// Status300 - Number of requests resulting in a 3xx HTTP status code
 	Status300 *int `json:"status300,omitempty"`
 
-
 	// Status400 - Number of requests resulting in a 4xx HTTP status code
 	Status400 *int `json:"status400,omitempty"`
-
 
 	// Status500 - Number of requests resulting in a 5xx HTTP status code
 	Status500 *int `json:"status500,omitempty"`
 
-
 	// Status429 - Number of requests resulting in a 429 HTTP status code, this is a subset of the count returned with status400
 	Status429 *int `json:"status429,omitempty"`
-
 
 	// Requests - Total number of requests
 	Requests *int `json:"requests,omitempty"`
 
-
 	// Date - Date of requests, based on granularity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Date *time.Time `json:"date,omitempty"`
-
 }
 
-func (o *Apiusagerow) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Apiusagerow) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Apiusagerow) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "Date", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Apiusagerow
@@ -101,7 +146,7 @@ func (o *Apiusagerow) MarshalJSON() ([]byte, error) {
 		Requests *int `json:"requests,omitempty"`
 		
 		Date *string `json:"date,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		ClientId: o.ClientId,
 		
@@ -128,7 +173,7 @@ func (o *Apiusagerow) MarshalJSON() ([]byte, error) {
 		Requests: o.Requests,
 		
 		Date: Date,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

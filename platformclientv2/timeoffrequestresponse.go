@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,88 +10,125 @@ import (
 
 // Timeoffrequestresponse
 type Timeoffrequestresponse struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// User - The user associated with this time off request
 	User *Userreference `json:"user,omitempty"`
 
-
 	// IsFullDayRequest - Whether this is a full day request (false means partial day)
 	IsFullDayRequest *bool `json:"isFullDayRequest,omitempty"`
-
 
 	// MarkedAsRead - Whether this request has been marked as read by the agent
 	MarkedAsRead *bool `json:"markedAsRead,omitempty"`
 
-
 	// ActivityCodeId - The ID of the activity code associated with this time off request. Activity code must be of the TimeOff category
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`
-
 
 	// Paid - Whether this is a paid time off request
 	Paid *bool `json:"paid,omitempty"`
 
-
 	// Status - The status of this time off request
 	Status *string `json:"status,omitempty"`
-
 
 	// Substatus - The substatus of this time off request
 	Substatus *string `json:"substatus,omitempty"`
 
-
 	// PartialDayStartDateTimes - A set of start date-times in ISO-8601 format for partial day requests. Will be not empty if isFullDayRequest == false
 	PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
-
 
 	// FullDayManagementUnitDates - A set of dates in yyyy-MM-dd format.  Should be interpreted in the management unit's configured time zone. Will be not empty if isFullDayRequest == true
 	FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 
-
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
-
 
 	// Notes - Notes about the time off request
 	Notes *string `json:"notes,omitempty"`
 
-
 	// SubmittedBy - The user who submitted this time off request
 	SubmittedBy *Userreference `json:"submittedBy,omitempty"`
-
 
 	// SubmittedDate - The timestamp when this request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SubmittedDate *time.Time `json:"submittedDate,omitempty"`
 
-
 	// ReviewedBy - The user who reviewed this time off request
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
-
 
 	// ReviewedDate - The timestamp when this request was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReviewedDate *time.Time `json:"reviewedDate,omitempty"`
 
-
 	// ModifiedBy - The user who last modified this TimeOffRequestResponse
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
-
 
 	// ModifiedDate - The timestamp when this request was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
-
 	// Metadata - The version metadata of the time off request
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Timeoffrequestresponse) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Timeoffrequestresponse) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Timeoffrequestresponse) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "SubmittedDate","ReviewedDate","ModifiedDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeoffrequestresponse
@@ -159,7 +197,7 @@ func (o *Timeoffrequestresponse) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -200,7 +238,7 @@ func (o *Timeoffrequestresponse) MarshalJSON() ([]byte, error) {
 		Metadata: o.Metadata,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,88 +10,125 @@ import (
 
 // Conversationeventtopicsocialexpression
 type Conversationeventtopicsocialexpression struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// State
 	State *string `json:"state,omitempty"`
-
 
 	// InitialState
 	InitialState *string `json:"initialState,omitempty"`
 
-
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
-
 
 	// SocialMediaId - A globally unique identifier for the social media.
 	SocialMediaId *string `json:"socialMediaId,omitempty"`
 
-
 	// SocialMediaHub - The social network of the communication
 	SocialMediaHub *string `json:"socialMediaHub,omitempty"`
-
 
 	// SocialUserName - The social media user name of the communication
 	SocialUserName *string `json:"socialUserName,omitempty"`
 
-
 	// PreviewText - The text preview of the communication contents
 	PreviewText *string `json:"previewText,omitempty"`
-
 
 	// RecordingId - A globally unique identifier for the recording associated with this chat.
 	RecordingId *string `json:"recordingId,omitempty"`
 
-
 	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
-
 
 	// Provider - The source provider of the social expression.
 	Provider *string `json:"provider,omitempty"`
 
-
 	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
-
 
 	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
-
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
-
 
 	// StartHoldTime - The timestamp the chat was placed on hold in the cloud clock if the chat is currently on hold.
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
 
-
 	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
-
 
 	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
-
 	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Conversationeventtopicwrapup `json:"wrapup,omitempty"`
-
 
 	// AfterCallWork - A communication's after-call work data.
 	AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
-
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
-
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-
 }
 
-func (o *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Conversationeventtopicsocialexpression) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicsocialexpression
@@ -159,7 +197,7 @@ func (o *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		State: o.State,
 		
@@ -200,7 +238,7 @@ func (o *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AdditionalProperties: o.AdditionalProperties,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

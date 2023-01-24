@@ -142,6 +142,128 @@ func TestValueSerialization(t *testing.T) {
 	}
 }
 
+func TestCustomSerialization1(t *testing.T) {
+	patchBody := Patchactionmap{}
+
+	// Use SetField to trigger custom serialization
+	patchBody.SetField("Id", String("111-111"))
+
+	// These manually set fields won't appear in the output when SetField is used
+	patchBody.Version = Int(1)
+	patchBody.DisplayName = String("manually set display name")
+
+	// Validate serialization
+	j, err := json.Marshal(patchBody)
+	if err != nil {
+		t.Error(err)
+	}
+	s := string(j)
+	expected := `{"id":"111-111"}`
+	if s != expected {
+		t.Log("Patchactionmap did not serialize correctly")
+		t.Logf("Expected: %v", expected)
+		t.Logf("Actual:   %v", s)
+		t.FailNow()
+	}
+}
+
+func TestCustomSerialization2(t *testing.T) {
+	patchBody := Patchactionmap{}
+
+	// These manually set fields won't appear in the output when SetField is used
+	patchBody.Id = String("999-999")
+	patchBody.Version = Int(1)
+	patchBody.DisplayName = String("manually set display name")
+	patchBody.IsActive = Bool(true)
+
+	// Use SetField to trigger custom serialization
+	patchBody.SetField("Id", String("222-222"))
+	patchBody.SetField("Version", Int(2))
+	patchBody.SetField("DisplayName", nil)
+
+	// Validate serialization
+	j, err := json.Marshal(patchBody)
+	if err != nil {
+		t.Error(err)
+	}
+	s := string(j)
+	expected := `{"displayName":null,"id":"222-222","version":2}`
+	if s != expected {
+		t.Log("Patchactionmap did not serialize correctly")
+		t.Logf("Expected: %v", expected)
+		t.Logf("Actual:   %v", s)
+		t.FailNow()
+	}
+}
+
+func TestCustomSerialization3(t *testing.T) {
+	patchBody := Patchactionmap{}
+
+	// These manually set fields won't appear in the output when SetField is used
+	patchBody.Version = Int(1)
+	patchBody.DisplayName = String("manually set display name")
+
+	// Use SetField to trigger custom serialization
+	patchBody.SetField("Id", String("333-333"))
+	patchBody.SetField("Version", Int(3))
+	patchBody.SetField("DisplayName", nil)
+
+	// Use default serialization on nested struct
+	patchAction := Patchaction{}
+	patchAction.ActionTargetId = String("12345")
+	patchAction.IsPacingEnabled = Bool(false)
+	patchAction.MediaType = nil
+	patchBody.SetField("Action", &patchAction)
+
+	// Validate serialization
+	j, err := json.Marshal(patchBody)
+	if err != nil {
+		t.Error(err)
+	}
+	s := string(j)
+	expected := `{"action":{"actionTargetId":"12345","isPacingEnabled":false},"displayName":null,"id":"333-333","version":3}`
+	if s != expected {
+		t.Log("Patchactionmap did not serialize correctly")
+		t.Logf("Expected: %v", expected)
+		t.Logf("Actual:   %v", s)
+		t.FailNow()
+	}
+}
+
+func TestCustomSerialization4(t *testing.T) {
+	patchBody := Patchactionmap{}
+
+	// These manually set fields won't appear in the output when SetField is used
+	patchBody.Version = Int(1)
+	patchBody.DisplayName = String("manually set display name")
+
+	// Use SetField to trigger custom serialization
+	patchBody.SetField("Id", String("444-444"))
+	patchBody.SetField("Version", Int(4))
+	patchBody.SetField("DisplayName", nil)
+
+	// Use custom serialization on nested struct
+	patchAction := Patchaction{}
+	patchAction.SetField("ActionTargetId", String("12345"))
+	patchAction.IsPacingEnabled = Bool(false)
+	patchAction.SetField("MediaType", nil)
+	patchBody.SetField("Action", &patchAction)
+
+	// Validate serialization
+	j, err := json.Marshal(patchBody)
+	if err != nil {
+		t.Error(err)
+	}
+	s := string(j)
+	expected := `{"action":{"actionTargetId":"12345","mediaType":null},"displayName":null,"id":"444-444","version":4}`
+	if s != expected {
+		t.Log("Patchactionmap did not serialize correctly")
+		t.Logf("Expected: %v", expected)
+		t.Logf("Actual:   %v", s)
+		t.FailNow()
+	}
+}
+
 func TestAuthentication(t *testing.T) {
 	err := GetDefaultConfiguration().AuthorizeClientCredentials(config.clientID, config.clientSecret)
 	if err != nil {

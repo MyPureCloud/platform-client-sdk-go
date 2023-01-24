@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,48 +9,95 @@ import (
 
 // Conversationquery
 type Conversationquery struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// ConversationFilters - Filters that target conversation-level data
 	ConversationFilters *[]Conversationdetailqueryfilter `json:"conversationFilters,omitempty"`
-
 
 	// SegmentFilters - Filters that target individual segments within a conversation
 	SegmentFilters *[]Segmentdetailqueryfilter `json:"segmentFilters,omitempty"`
 
-
 	// EvaluationFilters - Filters that target evaluations
 	EvaluationFilters *[]Evaluationdetailqueryfilter `json:"evaluationFilters,omitempty"`
-
 
 	// SurveyFilters - Filters that target surveys
 	SurveyFilters *[]Surveydetailqueryfilter `json:"surveyFilters,omitempty"`
 
-
 	// ResolutionFilters - Filters that target resolutions
 	ResolutionFilters *[]Resolutiondetailqueryfilter `json:"resolutionFilters,omitempty"`
-
 
 	// Order - Sort the result set in ascending/descending order. Default is ascending
 	Order *string `json:"order,omitempty"`
 
-
 	// OrderBy - Specify which data element within the result set to use for sorting. The options  to use as a basis for sorting the results: conversationStart, segmentStart, and segmentEnd. If not specified, the default is conversationStart
 	OrderBy *string `json:"orderBy,omitempty"`
-
 
 	// Interval - Specifies the date and time range of data being queried. Results will only include conversations that started on a day touched by the interval. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	Interval *string `json:"interval,omitempty"`
 
-
 	// Aggregations - Include faceted search and aggregate roll-ups describing your search results. This does not function as a filter, but rather, summary data about the data matching your filters
 	Aggregations *[]Analyticsqueryaggregation `json:"aggregations,omitempty"`
 
-
 	// Paging - Page size and number to control iterating through large result sets. Default page size is 25
 	Paging *Pagingspec `json:"paging,omitempty"`
-
 }
 
-func (o *Conversationquery) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Conversationquery) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Conversationquery) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationquery
@@ -74,7 +122,7 @@ func (o *Conversationquery) MarshalJSON() ([]byte, error) {
 		Aggregations *[]Analyticsqueryaggregation `json:"aggregations,omitempty"`
 		
 		Paging *Pagingspec `json:"paging,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		ConversationFilters: o.ConversationFilters,
 		
@@ -95,7 +143,7 @@ func (o *Conversationquery) MarshalJSON() ([]byte, error) {
 		Aggregations: o.Aggregations,
 		
 		Paging: o.Paging,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

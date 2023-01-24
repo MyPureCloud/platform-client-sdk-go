@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,80 +10,119 @@ import (
 
 // Shifttraderesponse
 type Shifttraderesponse struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The ID of this shift trade
 	Id *string `json:"id,omitempty"`
-
 
 	// WeekDate - The start week date of the associated schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	WeekDate *time.Time `json:"weekDate,omitempty"`
 
-
 	// Schedule - A reference to the associated schedule
 	Schedule *Buschedulereferenceformuroute `json:"schedule,omitempty"`
-
 
 	// State - The state of this shift trade
 	State *string `json:"state,omitempty"`
 
-
 	// InitiatingUser - The user who initiated this trade
 	InitiatingUser *Userreference `json:"initiatingUser,omitempty"`
-
 
 	// InitiatingShiftId - The ID of the shift offered for trade by the initiating user
 	InitiatingShiftId *string `json:"initiatingShiftId,omitempty"`
 
-
 	// InitiatingShiftStart - The start date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftStart *time.Time `json:"initiatingShiftStart,omitempty"`
-
 
 	// InitiatingShiftEnd - The end date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftEnd *time.Time `json:"initiatingShiftEnd,omitempty"`
 
-
 	// ReceivingUser - The user matching the trade, or if the state is not Matched, the user to whom the trade request was sent
 	ReceivingUser *Userreference `json:"receivingUser,omitempty"`
-
 
 	// ReceivingShiftId - The ID of the shift being exchanged for the initiating shift, null if the receiving user is picking up a shift
 	ReceivingShiftId *string `json:"receivingShiftId,omitempty"`
 
-
 	// ReceivingShiftStart - The start date/time of the receiving shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReceivingShiftStart *time.Time `json:"receivingShiftStart,omitempty"`
-
 
 	// ReceivingShiftEnd - The end date/time of the receiving shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReceivingShiftEnd *time.Time `json:"receivingShiftEnd,omitempty"`
 
-
 	// Expiration - When this shift trade offer will expire if not matched or approved. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Expiration *time.Time `json:"expiration,omitempty"`
-
 
 	// OneSided - Whether this is a one-sided shift trade (e.g. the initiating user is not asking for a shift in return)
 	OneSided *bool `json:"oneSided,omitempty"`
 
-
 	// AcceptableIntervals
 	AcceptableIntervals *[]string `json:"acceptableIntervals,omitempty"`
-
 
 	// ReviewedBy - The user who reviewed this shift trade
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
-
 	// ReviewedDate - The timestamp when this shift trade was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReviewedDate *time.Time `json:"reviewedDate,omitempty"`
 
-
 	// Metadata - Version data for this trade
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
-
 }
 
-func (o *Shifttraderesponse) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Shifttraderesponse) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Shifttraderesponse) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "InitiatingShiftStart","InitiatingShiftEnd","ReceivingShiftStart","ReceivingShiftEnd","Expiration","ReviewedDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{ "WeekDate", }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttraderesponse
@@ -178,7 +218,7 @@ func (o *Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		ReviewedDate *string `json:"reviewedDate,omitempty"`
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -215,7 +255,7 @@ func (o *Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		ReviewedDate: ReviewedDate,
 		
 		Metadata: o.Metadata,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,76 +10,116 @@ import (
 
 // Interactionstatsalert
 type Interactionstatsalert struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - Name of the rule that generated the alert
 	Name *string `json:"name,omitempty"`
 
-
 	// Dimension - The dimension of concern.
 	Dimension *string `json:"dimension,omitempty"`
-
 
 	// DimensionValue - The value of the dimension.
 	DimensionValue *string `json:"dimensionValue,omitempty"`
 
-
 	// Metric - The metric to be assessed.
 	Metric *string `json:"metric,omitempty"`
-
 
 	// MediaType - The media type.
 	MediaType *string `json:"mediaType,omitempty"`
 
-
 	// NumericRange - The comparison descriptor used against the metric's value.
 	NumericRange *string `json:"numericRange,omitempty"`
-
 
 	// Statistic - The statistic of concern for the metric.
 	Statistic *string `json:"statistic,omitempty"`
 
-
 	// Value - The threshold value.
 	Value *float64 `json:"value,omitempty"`
-
 
 	// RuleId - The id of the rule.
 	RuleId *string `json:"ruleId,omitempty"`
 
-
 	// Unread - Indicates if the alert has been read.
 	Unread *bool `json:"unread,omitempty"`
-
 
 	// StartDate - The date/time the alert was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartDate *time.Time `json:"startDate,omitempty"`
 
-
 	// EndDate - The date/time the owning rule exiting in alarm status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndDate *time.Time `json:"endDate,omitempty"`
-
 
 	// NotificationUsers - The ids of users who were notified of alarm state change.
 	NotificationUsers *[]User `json:"notificationUsers,omitempty"`
 
-
 	// AlertTypes - A collection of notification methods.
 	AlertTypes *[]string `json:"alertTypes,omitempty"`
-
 
 	// RuleUri
 	RuleUri *string `json:"ruleUri,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Interactionstatsalert) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Interactionstatsalert) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Interactionstatsalert) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "StartDate","EndDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Interactionstatsalert
@@ -133,7 +174,7 @@ func (o *Interactionstatsalert) MarshalJSON() ([]byte, error) {
 		RuleUri *string `json:"ruleUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -168,7 +209,7 @@ func (o *Interactionstatsalert) MarshalJSON() ([]byte, error) {
 		RuleUri: o.RuleUri,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,84 +10,122 @@ import (
 
 // Cobrowsesession
 type Cobrowsesession struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// State - The connection state of this communication.
 	State *string `json:"state,omitempty"`
-
 
 	// InitialState - The initial connection state of this communication.
 	InitialState *string `json:"initialState,omitempty"`
 
-
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
-
 
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
-
 	// Self - Address and name data for a call endpoint.
 	Self *Address `json:"self,omitempty"`
-
 
 	// CobrowseSessionId - The co-browse session ID.
 	CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
 
-
 	// CobrowseRole - This value identifies the role of the co-browse client within the co-browse session (a client is a sharer or a viewer).
 	CobrowseRole *string `json:"cobrowseRole,omitempty"`
-
 
 	// Controlling - ID of co-browse participants for which this client has been granted control (list is empty if this client cannot control any shared pages).
 	Controlling *[]string `json:"controlling,omitempty"`
 
-
 	// ViewerUrl - The URL that can be used to open co-browse session in web browser.
 	ViewerUrl *string `json:"viewerUrl,omitempty"`
-
 
 	// ProviderEventTime - The time when the provider event which triggered this conversation update happened in the corrected provider clock (milliseconds since 1970-01-01 00:00:00 UTC). Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ProviderEventTime *time.Time `json:"providerEventTime,omitempty"`
 
-
 	// StartAlertingTime - The timestamp the communication has when it is first put into an alerting state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartAlertingTime *time.Time `json:"startAlertingTime,omitempty"`
-
 
 	// ConnectedTime - The timestamp when this communication was connected in the cloud clock. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
-
 	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
-
 
 	// Provider - The source provider for the co-browse session.
 	Provider *string `json:"provider,omitempty"`
 
-
 	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
-
 
 	// Segments - The time line of the participant's call, divided into activity segments.
 	Segments *[]Segment `json:"segments,omitempty"`
 
-
 	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Wrapup `json:"wrapup,omitempty"`
-
 
 	// AfterCallWork - After-call work for the communication.
 	AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
 
-
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-
 }
 
-func (o *Cobrowsesession) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Cobrowsesession) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Cobrowsesession) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "ProviderEventTime","StartAlertingTime","ConnectedTime","DisconnectedTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Cobrowsesession
@@ -161,7 +200,7 @@ func (o *Cobrowsesession) MarshalJSON() ([]byte, error) {
 		AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		State: o.State,
 		
@@ -200,7 +239,7 @@ func (o *Cobrowsesession) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

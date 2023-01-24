@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 91.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 91.1.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -243,6 +243,37 @@ if err != nil {
     fmt.Printf("Error calling GetUser: %v\n", err)
 } else {
     fmt.Printf("Hello, %v\n", *user.Name)
+}
+```
+
+#### PATCH requests and custom serialization
+
+For many PATCH resources, it is necessary for the request to distinguish between the sending application not sending a field and sending the field with no value. The Go SDK applies `omitempty` to all struct properties by default, which results in all properties without a value to be excluded from the resulting JSON object. In other words, it is impossible to send a payload with `{"someProp":null}`.
+
+When making requests that need to distinguish between the client not setting a value and setting it to `nil`, use the `SetField` function on model properties. The property name _must_ be a property on the struct and the value must be a pointer. After constructing the object in this manner, use it in the request as normal. The custom serialization will be applied manually. This is accomplished using a special property named `SetFieldNames` that has been added to every model to support this behavior. Consider the following example:
+
+```go
+patchBody := platformclientv2.Patchactionmap{}
+
+// These manually set fields won't appear in the output when SetField is used, unless overridden using SetField
+patchBody.Id = String("999-999")
+patchBody.Version = Int(1)
+patchBody.DisplayName = String("manually set display name")
+patchBody.IsActive = Bool(true)
+
+// Use SetField to trigger custom serialization
+patchBody.SetField("Id", String("222-222"))
+patchBody.SetField("Version", Int(2))
+patchBody.SetField("DisplayName", nil)
+```
+
+This serializes to the JSON document below. Note that only the properties set using `SetField` are included, and the new values replaced the directly set values. This behavior allowed the `displayName` property to be `null` in the JSON document while omitting properties that weren't explicitly set.
+
+```json
+{
+  "displayName": null,
+  "id": "222-222",
+  "version": 2
 }
 ```
 

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,80 +9,119 @@ import (
 
 // Batchconversationeventrequest - A maximum of 100 events are allowed per request
 type Batchconversationeventrequest struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// EndTransferEvents - EndTransfer events for this batch
 	EndTransferEvents *[]Endtransferevent `json:"endTransferEvents,omitempty"`
-
 
 	// PhoneTransferEvents - PhoneTransfer events for this batch
 	PhoneTransferEvents *[]Phonetransferevent `json:"phoneTransferEvents,omitempty"`
 
-
 	// ProgressTransferEvents - ProgressTransfer events for this batch
 	ProgressTransferEvents *[]Progresstransferevent `json:"progressTransferEvents,omitempty"`
-
 
 	// RoutingTransferEvents - RoutingTransfer events for this batch
 	RoutingTransferEvents *[]Routingtransferevent `json:"routingTransferEvents,omitempty"`
 
-
 	// UserTransferEvents - UserTransfer events for this batch
 	UserTransferEvents *[]Usertransferevent `json:"userTransferEvents,omitempty"`
-
 
 	// CommunicationAnsweredEvents - CommunicationAnswered events for this batch
 	CommunicationAnsweredEvents *[]Communicationansweredevent `json:"communicationAnsweredEvents,omitempty"`
 
-
 	// CommunicationDispositionAppliedEvents - CommunicationDispositionApplied events for this batch
 	CommunicationDispositionAppliedEvents *[]Communicationdispositionappliedevent `json:"communicationDispositionAppliedEvents,omitempty"`
-
 
 	// HoldUpdatedEvents - HoldUpdated events for this batch
 	HoldUpdatedEvents *[]Holdupdatedevent `json:"holdUpdatedEvents,omitempty"`
 
-
 	// ExternalEstablishedEvents - ExternalEstablished events for this batch
 	ExternalEstablishedEvents *[]Externalestablishedevent `json:"externalEstablishedEvents,omitempty"`
-
 
 	// IvrEstablishedEvents - IvrEstablished events for this batch
 	IvrEstablishedEvents *[]Ivrestablishedevent `json:"ivrEstablishedEvents,omitempty"`
 
-
 	// PhoneEstablishedEvents - PhoneEstablished events for this batch
 	PhoneEstablishedEvents *[]Phoneestablishedevent `json:"phoneEstablishedEvents,omitempty"`
-
 
 	// RoutingEstablishedEvents - RoutingEstablished events for this batch
 	RoutingEstablishedEvents *[]Routingestablishedevent `json:"routingEstablishedEvents,omitempty"`
 
-
 	// UserEstablishedEvents - UserEstablished events for this batch
 	UserEstablishedEvents *[]Userestablishedevent `json:"userEstablishedEvents,omitempty"`
-
 
 	// AudioUpdatedEvents - AudioUpdated events for this batch
 	AudioUpdatedEvents *[]Audioupdatedevent `json:"audioUpdatedEvents,omitempty"`
 
-
 	// CommunicationEndedEvents - CommunicationEnded events for this batch
 	CommunicationEndedEvents *[]Communicationendedevent `json:"communicationEndedEvents,omitempty"`
-
 
 	// ConsultTransferEvents - ConsultTransfer events for this batch
 	ConsultTransferEvents *[]Consulttransferevent `json:"consultTransferEvents,omitempty"`
 
-
 	// ProgressConsultTransferEvents - ProgressConsultTransfer events for this batch
 	ProgressConsultTransferEvents *[]Progressconsulttransferevent `json:"progressConsultTransferEvents,omitempty"`
 
-
 	// EndConsultTransferEvents - EndConsultTransfer events for this batch
 	EndConsultTransferEvents *[]Endconsulttransferevent `json:"endConsultTransferEvents,omitempty"`
-
 }
 
-func (o *Batchconversationeventrequest) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Batchconversationeventrequest) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Batchconversationeventrequest) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Batchconversationeventrequest
@@ -122,7 +162,7 @@ func (o *Batchconversationeventrequest) MarshalJSON() ([]byte, error) {
 		ProgressConsultTransferEvents *[]Progressconsulttransferevent `json:"progressConsultTransferEvents,omitempty"`
 		
 		EndConsultTransferEvents *[]Endconsulttransferevent `json:"endConsultTransferEvents,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		EndTransferEvents: o.EndTransferEvents,
 		
@@ -159,7 +199,7 @@ func (o *Batchconversationeventrequest) MarshalJSON() ([]byte, error) {
 		ProgressConsultTransferEvents: o.ProgressConsultTransferEvents,
 		
 		EndConsultTransferEvents: o.EndConsultTransferEvents,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

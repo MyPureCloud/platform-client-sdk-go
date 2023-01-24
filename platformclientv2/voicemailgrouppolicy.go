@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,60 +9,104 @@ import (
 
 // Voicemailgrouppolicy
 type Voicemailgrouppolicy struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Name
 	Name *string `json:"name,omitempty"`
-
 
 	// Group - The group associated with the policy
 	Group *Group `json:"group,omitempty"`
 
-
 	// Enabled - Whether voicemail is enabled for the group
 	Enabled *bool `json:"enabled,omitempty"`
-
 
 	// SendEmailNotifications - Whether email notifications are sent to group members when a new voicemail is received
 	SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 
-
 	// DisableEmailPii - Removes any PII from group emails. This is overridden by the analogous organization configuration value. This is always true if HIPAA is enabled or unknown for an organization.
 	DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
-
 
 	// IncludeEmailTranscriptions - Whether to include the voicemail transcription in a group notification email
 	IncludeEmailTranscriptions *bool `json:"includeEmailTranscriptions,omitempty"`
 
-
 	// LanguagePreference - The language preference for the group.  Used for group voicemail transcription
 	LanguagePreference *string `json:"languagePreference,omitempty"`
-
 
 	// RotateCallsSecs - How many seconds to ring before rotating to the next member in the group
 	RotateCallsSecs *int `json:"rotateCallsSecs,omitempty"`
 
-
 	// StopRingingAfterRotations - How many rotations to go through
 	StopRingingAfterRotations *int `json:"stopRingingAfterRotations,omitempty"`
-
 
 	// OverflowGroupId - A fallback group to contact when all of the members in this group did not answer the call.
 	OverflowGroupId *string `json:"overflowGroupId,omitempty"`
 
-
 	// GroupAlertType - Specifies if the members in this group should be contacted randomly, in a specific order, or by round-robin.
 	GroupAlertType *string `json:"groupAlertType,omitempty"`
-
 
 	// InteractiveResponsePromptId - The prompt to use when connecting a user to a Group Ring call
 	InteractiveResponsePromptId *string `json:"interactiveResponsePromptId,omitempty"`
 
-
 	// InteractiveResponseRequired - Whether user should be prompted with a confirmation prompt when connecting to a Group Ring call
 	InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
-
 }
 
-func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Voicemailgrouppolicy) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailgrouppolicy
@@ -92,7 +137,7 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		InteractiveResponsePromptId *string `json:"interactiveResponsePromptId,omitempty"`
 		
 		InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Name: o.Name,
 		
@@ -119,7 +164,7 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		InteractiveResponsePromptId: o.InteractiveResponsePromptId,
 		
 		InteractiveResponseRequired: o.InteractiveResponseRequired,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

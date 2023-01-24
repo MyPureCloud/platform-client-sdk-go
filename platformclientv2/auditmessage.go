@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,72 +9,113 @@ import (
 
 // Auditmessage
 type Auditmessage struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - AuditMessage ID.
 	Id *string `json:"id,omitempty"`
-
 
 	// User
 	User *Audituser `json:"user,omitempty"`
 
-
 	// CorrelationId - Correlation ID.
 	CorrelationId *string `json:"correlationId,omitempty"`
-
 
 	// TransactionId - Transaction ID.
 	TransactionId *string `json:"transactionId,omitempty"`
 
-
 	// TransactionInitiator - Whether or not this audit can be considered the initiator of the transaction it is a part of.
 	TransactionInitiator *bool `json:"transactionInitiator,omitempty"`
-
 
 	// Application - The application through which the action of this AuditMessage was initiated.
 	Application *string `json:"application,omitempty"`
 
-
 	// ServiceName - The name of the service which sent this AuditMessage.
 	ServiceName *string `json:"serviceName,omitempty"`
-
 
 	// Level - The level of this audit. USER or SYSTEM.
 	Level *string `json:"level,omitempty"`
 
-
 	// Timestamp - The time at which the action of this AuditMessage was initiated.
 	Timestamp *string `json:"timestamp,omitempty"`
-
 
 	// ReceivedTimestamp - The time at which this AuditMessage was received.
 	ReceivedTimestamp *string `json:"receivedTimestamp,omitempty"`
 
-
 	// Status - The status of the action of this AuditMessage
 	Status *string `json:"status,omitempty"`
-
 
 	// ActionContext - The context of a system-level action
 	ActionContext *string `json:"actionContext,omitempty"`
 
-
 	// Action - A string representing the action that took place
 	Action *string `json:"action,omitempty"`
-
 
 	// Changes - Details about any changes that occurred in this audit
 	Changes *[]Change `json:"changes,omitempty"`
 
-
 	// Entity
 	Entity *Auditentity `json:"entity,omitempty"`
 
-
 	// ServiceContext - The service-specific context associated with this AuditMessage.
 	ServiceContext *Servicecontext `json:"serviceContext,omitempty"`
-
 }
 
-func (o *Auditmessage) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Auditmessage) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Auditmessage) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditmessage
@@ -110,7 +152,7 @@ func (o *Auditmessage) MarshalJSON() ([]byte, error) {
 		Entity *Auditentity `json:"entity,omitempty"`
 		
 		ServiceContext *Servicecontext `json:"serviceContext,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -143,7 +185,7 @@ func (o *Auditmessage) MarshalJSON() ([]byte, error) {
 		Entity: o.Entity,
 		
 		ServiceContext: o.ServiceContext,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

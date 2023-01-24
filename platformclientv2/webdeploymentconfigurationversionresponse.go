@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,96 +10,131 @@ import (
 
 // Webdeploymentconfigurationversionresponse - Details about the configuration version of a Web Deployment
 type Webdeploymentconfigurationversionresponse struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The configuration version ID
 	Id *string `json:"id,omitempty"`
-
 
 	// Name - The configuration version name
 	Name *string `json:"name,omitempty"`
 
-
 	// Version - The version of the configuration
 	Version *string `json:"version,omitempty"`
-
 
 	// HeadlessMode - Headless Mode Support which Controls UI components. When enabled, native UI components will be disabled and allows for custom-built UI.
 	HeadlessMode *Webdeploymentheadlessmode `json:"headlessMode,omitempty"`
 
-
 	// Description - The description of the configuration
 	Description *string `json:"description,omitempty"`
-
 
 	// Languages - A list of languages supported on the configuration required if the messenger is enabled
 	Languages *[]string `json:"languages,omitempty"`
 
-
 	// DefaultLanguage - The default language to use for the configuration required if the messenger is enabled
 	DefaultLanguage *string `json:"defaultLanguage,omitempty"`
-
 
 	// CustomI18nLabels - The localization settings for homescreen app
 	CustomI18nLabels *[]Customi18nlabels `json:"customI18nLabels,omitempty"`
 
-
 	// Messenger - The settings for messenger
 	Messenger *Messengersettings `json:"messenger,omitempty"`
-
 
 	// Position - The settings for position
 	Position *Positionsettings `json:"position,omitempty"`
 
-
 	// SupportCenter - The settings for support center
 	SupportCenter *Supportcentersettings `json:"supportCenter,omitempty"`
-
 
 	// Cobrowse - The settings for cobrowse
 	Cobrowse *Cobrowsesettings `json:"cobrowse,omitempty"`
 
-
 	// JourneyEvents - The settings for journey events
 	JourneyEvents *Journeyeventssettings `json:"journeyEvents,omitempty"`
-
 
 	// AuthenticationSettings - The settings for authenticated deployments
 	AuthenticationSettings *Authenticationsettings `json:"authenticationSettings,omitempty"`
 
-
 	// DateCreated - The date the configuration version was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
 
 	// DateModified - The date the configuration version was most recently modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-
 	// DatePublished - The date the configuration version was most recently published. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DatePublished *time.Time `json:"datePublished,omitempty"`
-
 
 	// LastModifiedUser - A reference to the user who most recently modified the configuration version
 	LastModifiedUser *Addressableentityref `json:"lastModifiedUser,omitempty"`
 
-
 	// CreatedUser - A reference to the user who created the configuration version
 	CreatedUser *Addressableentityref `json:"createdUser,omitempty"`
-
 
 	// PublishedUser - A reference to the user who published the configuration version
 	PublishedUser *Addressableentityref `json:"publishedUser,omitempty"`
 
-
 	// Status - The current status of the configuration version
 	Status *string `json:"status,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Webdeploymentconfigurationversionresponse) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Webdeploymentconfigurationversionresponse) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Webdeploymentconfigurationversionresponse) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified","DatePublished", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webdeploymentconfigurationversionresponse
@@ -171,7 +207,7 @@ func (o *Webdeploymentconfigurationversionresponse) MarshalJSON() ([]byte, error
 		Status *string `json:"status,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -216,7 +252,7 @@ func (o *Webdeploymentconfigurationversionresponse) MarshalJSON() ([]byte, error
 		Status: o.Status,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

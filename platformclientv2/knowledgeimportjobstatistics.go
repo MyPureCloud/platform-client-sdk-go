@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,76 +9,116 @@ import (
 
 // Knowledgeimportjobstatistics
 type Knowledgeimportjobstatistics struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// CountDocumentImportActivityCreate - Number of documents will be created by the import.
 	CountDocumentImportActivityCreate *int `json:"countDocumentImportActivityCreate,omitempty"`
-
 
 	// CountDocumentImportActivityUpdate - Number of documents will be updated by the import.
 	CountDocumentImportActivityUpdate *int `json:"countDocumentImportActivityUpdate,omitempty"`
 
-
 	// CountDocumentStateDraft - Number of documents will be imported as draft.
 	CountDocumentStateDraft *int `json:"countDocumentStateDraft,omitempty"`
-
 
 	// CountDocumentStatePublished - Number of documents will be imported as published.
 	CountDocumentStatePublished *int `json:"countDocumentStatePublished,omitempty"`
 
-
 	// CountDocumentValidationSuccess - Number of documents that validated successfully for import.
 	CountDocumentValidationSuccess *int `json:"countDocumentValidationSuccess,omitempty"`
-
 
 	// CountDocumentValidationFailure - Number of documents that failed validation for import.
 	CountDocumentValidationFailure *int `json:"countDocumentValidationFailure,omitempty"`
 
-
 	// CountDocumentImportSuccess - Number of imported documents.
 	CountDocumentImportSuccess *int `json:"countDocumentImportSuccess,omitempty"`
-
 
 	// CountDocumentImportFailure - Number of documents failed to import.
 	CountDocumentImportFailure *int `json:"countDocumentImportFailure,omitempty"`
 
-
 	// CountCategoryValidationSuccess - Number of categories that validated successfully for import.
 	CountCategoryValidationSuccess *int `json:"countCategoryValidationSuccess,omitempty"`
-
 
 	// CountCategoryValidationFailure - Number of categories that failed validation for import.
 	CountCategoryValidationFailure *int `json:"countCategoryValidationFailure,omitempty"`
 
-
 	// CountCategoryImportSuccess - Number of imported categories.
 	CountCategoryImportSuccess *int `json:"countCategoryImportSuccess,omitempty"`
-
 
 	// CountCategoryImportFailure - Number of categories failed to import.
 	CountCategoryImportFailure *int `json:"countCategoryImportFailure,omitempty"`
 
-
 	// CountLabelValidationSuccess - Number of labels that validated successfully for import.
 	CountLabelValidationSuccess *int `json:"countLabelValidationSuccess,omitempty"`
-
 
 	// CountLabelValidationFailure - Number of labels that failed validation for import.
 	CountLabelValidationFailure *int `json:"countLabelValidationFailure,omitempty"`
 
-
 	// CountLabelImportSuccess - Number of imported labels.
 	CountLabelImportSuccess *int `json:"countLabelImportSuccess,omitempty"`
-
 
 	// CountLabelImportFailure - Number of labels failed to import.
 	CountLabelImportFailure *int `json:"countLabelImportFailure,omitempty"`
 
-
 	// MigrationDetected - Shows whether the import treated as migration or not.
 	MigrationDetected *bool `json:"migrationDetected,omitempty"`
-
 }
 
-func (o *Knowledgeimportjobstatistics) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Knowledgeimportjobstatistics) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Knowledgeimportjobstatistics) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgeimportjobstatistics
@@ -116,7 +157,7 @@ func (o *Knowledgeimportjobstatistics) MarshalJSON() ([]byte, error) {
 		CountLabelImportFailure *int `json:"countLabelImportFailure,omitempty"`
 		
 		MigrationDetected *bool `json:"migrationDetected,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		CountDocumentImportActivityCreate: o.CountDocumentImportActivityCreate,
 		
@@ -151,7 +192,7 @@ func (o *Knowledgeimportjobstatistics) MarshalJSON() ([]byte, error) {
 		CountLabelImportFailure: o.CountLabelImportFailure,
 		
 		MigrationDetected: o.MigrationDetected,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

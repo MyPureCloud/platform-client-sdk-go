@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,80 +9,119 @@ import (
 
 // Reportingexportjobrequest
 type Reportingexportjobrequest struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Name - The user supplied name of the export request
 	Name *string `json:"name,omitempty"`
-
 
 	// TimeZone - The requested timezone of the exported data. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London
 	TimeZone *string `json:"timeZone,omitempty"`
 
-
 	// ExportFormat - The requested format of the exported data
 	ExportFormat *string `json:"exportFormat,omitempty"`
-
 
 	// Interval - The time period used to limit the the exported data. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	Interval *string `json:"interval,omitempty"`
 
-
 	// Period - The Period of the request in which to break down the intervals. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
 	Period *string `json:"period,omitempty"`
-
 
 	// ViewType - The type of view export job to be created
 	ViewType *string `json:"viewType,omitempty"`
 
-
 	// Filter - Filters to apply to create the view
 	Filter *Viewfilter `json:"filter,omitempty"`
-
 
 	// Read - Indicates if the request has been marked as read
 	Read *bool `json:"read,omitempty"`
 
-
 	// Locale - The locale use for localization of the exported data, i.e. en-us, es-mx  
 	Locale *string `json:"locale,omitempty"`
-
 
 	// HasFormatDurations - Indicates if durations are formatted in hh:mm:ss format instead of ms
 	HasFormatDurations *bool `json:"hasFormatDurations,omitempty"`
 
-
 	// HasSplitFilters - Indicates if filters will be split in aggregate detail exports
 	HasSplitFilters *bool `json:"hasSplitFilters,omitempty"`
-
 
 	// ExcludeEmptyRows - Excludes empty rows from the exports
 	ExcludeEmptyRows *bool `json:"excludeEmptyRows,omitempty"`
 
-
 	// HasSplitByMedia - Indicates if media type will be split in aggregate detail exports
 	HasSplitByMedia *bool `json:"hasSplitByMedia,omitempty"`
-
 
 	// HasSummaryRow - Indicates if summary row needs to be present in exports
 	HasSummaryRow *bool `json:"hasSummaryRow,omitempty"`
 
-
 	// CsvDelimiter - The user supplied csv delimiter string value either of type 'comma' or 'semicolon' permitted for the export request
 	CsvDelimiter *string `json:"csvDelimiter,omitempty"`
-
 
 	// SelectedColumns - The list of ordered selected columns from the export view by the user
 	SelectedColumns *[]Selectedcolumns `json:"selectedColumns,omitempty"`
 
-
 	// HasCustomParticipantAttributes - Indicates if custom participant attributes will be exported
 	HasCustomParticipantAttributes *bool `json:"hasCustomParticipantAttributes,omitempty"`
 
-
 	// RecipientEmails - The list of email recipients for the exports
 	RecipientEmails *[]string `json:"recipientEmails,omitempty"`
-
 }
 
-func (o *Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Reportingexportjobrequest) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingexportjobrequest
@@ -122,7 +162,7 @@ func (o *Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 		HasCustomParticipantAttributes *bool `json:"hasCustomParticipantAttributes,omitempty"`
 		
 		RecipientEmails *[]string `json:"recipientEmails,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Name: o.Name,
 		
@@ -159,7 +199,7 @@ func (o *Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 		HasCustomParticipantAttributes: o.HasCustomParticipantAttributes,
 		
 		RecipientEmails: o.RecipientEmails,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

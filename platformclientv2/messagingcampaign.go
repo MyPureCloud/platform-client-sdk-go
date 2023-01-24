@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,88 +10,125 @@ import (
 
 // Messagingcampaign
 type Messagingcampaign struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name
 	Name *string `json:"name,omitempty"`
 
-
 	// DateCreated - Creation time of the entity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
 
 	// DateModified - Last modified time of the entity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-
 	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
-
 
 	// Division - The division this entity belongs to.
 	Division *Domainentityref `json:"division,omitempty"`
 
-
 	// CampaignStatus - The current status of the messaging campaign. A messaging campaign may be turned 'on' or 'off'.
 	CampaignStatus *string `json:"campaignStatus,omitempty"`
-
 
 	// CallableTimeSet - The callable time set for this messaging campaign.
 	CallableTimeSet *Domainentityref `json:"callableTimeSet,omitempty"`
 
-
 	// ContactList - The contact list that this messaging campaign will send messages for.
 	ContactList *Domainentityref `json:"contactList,omitempty"`
-
 
 	// DncLists - The dnc lists to check before sending a message for this messaging campaign.
 	DncLists *[]Domainentityref `json:"dncLists,omitempty"`
 
-
 	// AlwaysRunning - Whether this messaging campaign is always running
 	AlwaysRunning *bool `json:"alwaysRunning,omitempty"`
-
 
 	// ContactSorts - The order in which to sort contacts for dialing, based on up to four columns.
 	ContactSorts *[]Contactsort `json:"contactSorts,omitempty"`
 
-
 	// MessagesPerMinute - How many messages this messaging campaign will send per minute.
 	MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
-
 
 	// RuleSets - Rule Sets to be applied while this campaign is sending messages
 	RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
 
-
 	// ContactListFilters - The contact list filter to check before sending a message for this messaging campaign.
 	ContactListFilters *[]Domainentityref `json:"contactListFilters,omitempty"`
-
 
 	// Errors - A list of current error conditions associated with this messaging campaign.
 	Errors *[]Resterrordetail `json:"errors,omitempty"`
 
-
 	// DynamicContactQueueingSettings - Indicates (when true) that the campaign supports dynamic queueing of the contact list at the time of a request for contacts.
 	DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
-
 
 	// EmailConfig - Configuration for this messaging campaign to send Email messages.
 	EmailConfig *Emailconfig `json:"emailConfig,omitempty"`
 
-
 	// SmsConfig - Configuration for this messaging campaign to send SMS messages.
 	SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Messagingcampaign) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Messagingcampaign) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagingcampaign
@@ -151,7 +189,7 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -192,7 +230,7 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		SmsConfig: o.SmsConfig,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

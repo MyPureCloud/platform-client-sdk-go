@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,144 +10,167 @@ import (
 
 // Queue
 type Queue struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name
 	Name *string `json:"name,omitempty"`
 
-
 	// Division - The division to which this entity belongs.
 	Division *Division `json:"division,omitempty"`
-
 
 	// Description - The queue description.
 	Description *string `json:"description,omitempty"`
 
-
 	// DateCreated - The date the queue was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
 
 	// DateModified - The date of the last modification to the queue. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-
 	// ModifiedBy - The ID of the user that last modified the queue.
 	ModifiedBy *string `json:"modifiedBy,omitempty"`
-
 
 	// CreatedBy - The ID of the user that created the queue.
 	CreatedBy *string `json:"createdBy,omitempty"`
 
-
 	// MemberCount - The total number of members in the queue.
 	MemberCount *int `json:"memberCount,omitempty"`
-
 
 	// UserMemberCount - The number of user members (i.e., non-group members) in the queue.
 	UserMemberCount *int `json:"userMemberCount,omitempty"`
 
-
 	// JoinedMemberCount - The number of joined members in the queue.
 	JoinedMemberCount *int `json:"joinedMemberCount,omitempty"`
-
 
 	// MediaSettings - The media settings for the queue. Valid key values: CALL, CALLBACK, CHAT, EMAIL, MESSAGE, SOCIAL_EXPRESSION, VIDEO_COMM
 	MediaSettings *map[string]Mediasetting `json:"mediaSettings,omitempty"`
 
-
 	// RoutingRules - The routing rules for the queue, used for Preferred Agent Routing.
 	RoutingRules *[]Routingrule `json:"routingRules,omitempty"`
-
 
 	// Bullseye - The bullseye settings for the queue.
 	Bullseye *Bullseye `json:"bullseye,omitempty"`
 
-
 	// AcwSettings - The ACW settings for the queue.
 	AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
-
 
 	// SkillEvaluationMethod - The skill evaluation method to use when routing conversations.
 	SkillEvaluationMethod *string `json:"skillEvaluationMethod,omitempty"`
 
-
 	// MemberGroups - The groups of agents associated with the queue, if any.  Queue membership will update to match group membership changes.
 	MemberGroups *[]Membergroup `json:"memberGroups,omitempty"`
-
 
 	// QueueFlow - The in-queue flow to use for call conversations waiting in queue.
 	QueueFlow *Domainentityref `json:"queueFlow,omitempty"`
 
-
 	// EmailInQueueFlow - The in-queue flow to use for email conversations waiting in queue.
 	EmailInQueueFlow *Domainentityref `json:"emailInQueueFlow,omitempty"`
-
 
 	// MessageInQueueFlow - The in-queue flow to use for message conversations waiting in queue.
 	MessageInQueueFlow *Domainentityref `json:"messageInQueueFlow,omitempty"`
 
-
 	// WhisperPrompt - The prompt used for whisper on the queue, if configured.
 	WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
-
 
 	// OnHoldPrompt - The audio to be played when calls on this queue are on hold. If not configured, the default on-hold music will play.
 	OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
 
-
 	// AutoAnswerOnly - Specifies whether the configured whisper should play for all ACD calls, or only for those which are auto-answered.
 	AutoAnswerOnly *bool `json:"autoAnswerOnly,omitempty"`
-
 
 	// EnableTranscription - Indicates whether voice transcription is enabled for this queue.
 	EnableTranscription *bool `json:"enableTranscription,omitempty"`
 
-
 	// EnableManualAssignment - Indicates whether manual assignment is enabled for this queue.
 	EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
-
 
 	// AgentOwnedRouting - The Agent Owned Routing settings for the queue
 	AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
 
-
 	// DirectRouting - The Direct Routing settings for the queue
 	DirectRouting *Directrouting `json:"directRouting,omitempty"`
-
 
 	// CallingPartyName - The name to use for caller identification for outbound calls from this queue.
 	CallingPartyName *string `json:"callingPartyName,omitempty"`
 
-
 	// CallingPartyNumber - The phone number to use for caller identification for outbound calls from this queue.
 	CallingPartyNumber *string `json:"callingPartyNumber,omitempty"`
-
 
 	// DefaultScripts - The default script Ids for the communication types.
 	DefaultScripts *map[string]Script `json:"defaultScripts,omitempty"`
 
-
 	// OutboundMessagingAddresses - The messaging addresses for the queue.
 	OutboundMessagingAddresses *Queuemessagingaddresses `json:"outboundMessagingAddresses,omitempty"`
-
 
 	// OutboundEmailAddress
 	OutboundEmailAddress **Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
-
 	// PeerId - The ID of an associated external queue.
 	PeerId *string `json:"peerId,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Queue) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Queue) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Queue) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCreated","DateModified", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queue
@@ -235,7 +259,7 @@ func (o *Queue) MarshalJSON() ([]byte, error) {
 		PeerId *string `json:"peerId,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -304,7 +328,7 @@ func (o *Queue) MarshalJSON() ([]byte, error) {
 		PeerId: o.PeerId,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

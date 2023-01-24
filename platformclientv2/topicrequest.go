@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,40 +9,89 @@ import (
 
 // Topicrequest
 type Topicrequest struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Name - The topic name
 	Name *string `json:"name,omitempty"`
-
 
 	// Description - The topic description
 	Description *string `json:"description,omitempty"`
 
-
 	// Strictness - The topic strictness, default value is 72
 	Strictness *string `json:"strictness,omitempty"`
-
 
 	// ProgramIds - The ids of programs associated to the topic
 	ProgramIds *[]string `json:"programIds,omitempty"`
 
-
 	// Tags - The topic tags
 	Tags *[]string `json:"tags,omitempty"`
-
 
 	// Dialect - The topic dialect
 	Dialect *string `json:"dialect,omitempty"`
 
-
 	// Participants - The topic participants, default value is All
 	Participants *string `json:"participants,omitempty"`
 
-
 	// Phrases - The topic phrases
 	Phrases *[]Phrase `json:"phrases,omitempty"`
-
 }
 
-func (o *Topicrequest) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Topicrequest) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Topicrequest) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Topicrequest
@@ -62,7 +112,7 @@ func (o *Topicrequest) MarshalJSON() ([]byte, error) {
 		Participants *string `json:"participants,omitempty"`
 		
 		Phrases *[]Phrase `json:"phrases,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Name: o.Name,
 		
@@ -79,7 +129,7 @@ func (o *Topicrequest) MarshalJSON() ([]byte, error) {
 		Participants: o.Participants,
 		
 		Phrases: o.Phrases,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

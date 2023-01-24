@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,76 +10,116 @@ import (
 
 // Messagedata
 type Messagedata struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// Name
 	Name *string `json:"name,omitempty"`
 
-
 	// ProviderMessageId - The unique identifier of the message from provider
 	ProviderMessageId *string `json:"providerMessageId,omitempty"`
-
 
 	// Timestamp - The time when the message was received or sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
-
 	// FromAddress - The sender of the text message.
 	FromAddress *string `json:"fromAddress,omitempty"`
-
 
 	// ToAddress - The recipient of the text message.
 	ToAddress *string `json:"toAddress,omitempty"`
 
-
 	// Direction - The direction of the message.
 	Direction *string `json:"direction,omitempty"`
-
 
 	// MessengerType - Type of text messenger.
 	MessengerType *string `json:"messengerType,omitempty"`
 
-
 	// TextBody - The body of the text message. (Deprecated - Instead use normalizedMessage.text)
 	TextBody *string `json:"textBody,omitempty"`
-
 
 	// Status - The status of the message.
 	Status *string `json:"status,omitempty"`
 
-
 	// Media - The media details associated to a message. (Deprecated - Instead use normalizedMessage.content[index].attachment)
 	Media *[]Messagemedia `json:"media,omitempty"`
-
 
 	// Stickers - The sticker details associated to a message. (Deprecated - Instead use normalizedMessage.content[index].attachment
 	Stickers *[]Messagesticker `json:"stickers,omitempty"`
 
-
 	// NormalizedMessage - The message into normalized format
 	NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
-
 
 	// NormalizedReceipts - The delivery event associated with this message in normalized format, if the message direction was outbound
 	NormalizedReceipts *[]Conversationnormalizedmessage `json:"normalizedReceipts,omitempty"`
 
-
 	// CreatedBy - User who sent this message.
 	CreatedBy *User `json:"createdBy,omitempty"`
-
 
 	// ConversationId - The id of the conversation of this message.
 	ConversationId *string `json:"conversationId,omitempty"`
 
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
 }
 
-func (o *Messagedata) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Messagedata) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Messagedata) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "Timestamp", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagedata
@@ -125,7 +166,7 @@ func (o *Messagedata) MarshalJSON() ([]byte, error) {
 		ConversationId *string `json:"conversationId,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -160,7 +201,7 @@ func (o *Messagedata) MarshalJSON() ([]byte, error) {
 		ConversationId: o.ConversationId,
 		
 		SelfUri: o.SelfUri,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

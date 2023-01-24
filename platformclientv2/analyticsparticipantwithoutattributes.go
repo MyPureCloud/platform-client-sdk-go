@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,44 +9,92 @@ import (
 
 // Analyticsparticipantwithoutattributes
 type Analyticsparticipantwithoutattributes struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// ExternalContactId - External contact identifier
 	ExternalContactId *string `json:"externalContactId,omitempty"`
-
 
 	// ExternalOrganizationId - External organization identifier
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
-
 	// FlaggedReason - Reason for which participant flagged conversation
 	FlaggedReason *string `json:"flaggedReason,omitempty"`
-
 
 	// ParticipantId - Unique identifier for the participant
 	ParticipantId *string `json:"participantId,omitempty"`
 
-
 	// ParticipantName - A human readable name identifying the participant
 	ParticipantName *string `json:"participantName,omitempty"`
-
 
 	// Purpose - The participant's purpose
 	Purpose *string `json:"purpose,omitempty"`
 
-
 	// TeamId - The team ID the user is a member of
 	TeamId *string `json:"teamId,omitempty"`
-
 
 	// UserId - Unique identifier for the user
 	UserId *string `json:"userId,omitempty"`
 
-
 	// Sessions - List of sessions associated to this participant
 	Sessions *[]Analyticssession `json:"sessions,omitempty"`
-
 }
 
-func (o *Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Analyticsparticipantwithoutattributes) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsparticipantwithoutattributes
@@ -68,7 +117,7 @@ func (o *Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
 		UserId *string `json:"userId,omitempty"`
 		
 		Sessions *[]Analyticssession `json:"sessions,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		ExternalContactId: o.ExternalContactId,
 		
@@ -87,7 +136,7 @@ func (o *Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		Sessions: o.Sessions,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

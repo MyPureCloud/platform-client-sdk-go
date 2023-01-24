@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,164 +10,182 @@ import (
 
 // Queueconversationvideoeventtopicparticipant
 type Queueconversationvideoeventtopicparticipant struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - A globally unique identifier for this conversation.
 	Id *string `json:"id,omitempty"`
-
 
 	// ConnectedTime - The timestamp when this participant was connected to the conversation in the provider clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
-
 	// EndTime - The timestamp when this participant disconnected from the conversation in the provider clock.
 	EndTime *time.Time `json:"endTime,omitempty"`
-
 
 	// UserId - If this participant represents a user, then this will be the globally unique identifier for the user.
 	UserId *string `json:"userId,omitempty"`
 
-
 	// ExternalContactId - If this participant represents an external contact, then this will be the globally unique identifier for the external contact.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
-
 
 	// ExternalOrganizationId - If this participant represents an external org, then this will be the globally unique identifier for the external org.
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
-
 	// Name - A human readable name identifying the participant.
 	Name *string `json:"name,omitempty"`
-
 
 	// QueueId - If present, the queue id that the communication channel came in on.
 	QueueId *string `json:"queueId,omitempty"`
 
-
 	// GroupId - If present, the group id that the participant represents.
 	GroupId *string `json:"groupId,omitempty"`
-
 
 	// TeamId - The team id that this participant is a member of when added to the conversation.
 	TeamId *string `json:"teamId,omitempty"`
 
-
 	// Purpose - A well known string that specifies the purpose or type of this participant.
 	Purpose *string `json:"purpose,omitempty"`
-
 
 	// ConsultParticipantId - If this participant is part of a consult transfer, then this will be the participant id of the participant being transferred.
 	ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 
-
 	// Address - The address for the this participant. For a phone call this will be the ANI.
 	Address *string `json:"address,omitempty"`
-
 
 	// WrapupRequired - True iff this participant is required to enter wrapup for this conversation.
 	WrapupRequired *bool `json:"wrapupRequired,omitempty"`
 
-
 	// WrapupExpected - True when a participant is expected to enter a wrapup code once the call connects.
 	WrapupExpected *bool `json:"wrapupExpected,omitempty"`
-
 
 	// WrapupPrompt - This field controls how the UI prompts the agent for a wrapup.
 	WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
 
-
 	// WrapupTimeoutMs - Specifies how long a timed ACW session will last.
 	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
-
 
 	// Wrapup
 	Wrapup *Queueconversationvideoeventtopicwrapup `json:"wrapup,omitempty"`
 
-
 	// StartAcwTime - The timestamp when this participant started after-call work.
 	StartAcwTime *time.Time `json:"startAcwTime,omitempty"`
-
 
 	// EndAcwTime - The timestamp when this participant ended after-call work.
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
-
 	// ConversationRoutingData
 	ConversationRoutingData *Queueconversationvideoeventtopicconversationroutingdata `json:"conversationRoutingData,omitempty"`
-
 
 	// AlertingTimeoutMs - Specifies how long the agent has to answer an interaction before being marked as not responding.
 	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
-
 	// MonitoredParticipantId - If this participant is a monitor, then this will be the id of the participant that is being monitored.
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
-
 
 	// CoachedParticipantId - If this participant is a coach, then this will be the id of the participant that is being coached.
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
-
 	// BargedParticipantId - If this participant created a barge in conference, then this will be the id of the participant that is barged in.
 	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
-
 
 	// ScreenRecordingState - The current screen recording state for this participant.
 	ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
 
-
 	// FlaggedReason - If this participant has flagged the conversation, the reason code given.
 	FlaggedReason *string `json:"flaggedReason,omitempty"`
-
 
 	// Attributes - Additional participant attributes
 	Attributes *map[string]string `json:"attributes,omitempty"`
 
-
 	// Calls
 	Calls *[]Queueconversationvideoeventtopiccall `json:"calls,omitempty"`
-
 
 	// Callbacks
 	Callbacks *[]Queueconversationvideoeventtopiccallback `json:"callbacks,omitempty"`
 
-
 	// Chats
 	Chats *[]Queueconversationvideoeventtopicchat `json:"chats,omitempty"`
-
 
 	// Cobrowsesessions
 	Cobrowsesessions *[]Queueconversationvideoeventtopiccobrowse `json:"cobrowsesessions,omitempty"`
 
-
 	// Emails
 	Emails *[]Queueconversationvideoeventtopicemail `json:"emails,omitempty"`
-
 
 	// Messages
 	Messages *[]Queueconversationvideoeventtopicmessage `json:"messages,omitempty"`
 
-
 	// Screenshares
 	Screenshares *[]Queueconversationvideoeventtopicscreenshare `json:"screenshares,omitempty"`
-
 
 	// SocialExpressions
 	SocialExpressions *[]Queueconversationvideoeventtopicsocialexpression `json:"socialExpressions,omitempty"`
 
-
 	// Videos
 	Videos *[]Queueconversationvideoeventtopicvideo `json:"videos,omitempty"`
-
 
 	// Workflow
 	Workflow *Queueconversationvideoeventtopicworkflow `json:"workflow,omitempty"`
 
-
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-
 }
 
-func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Queueconversationvideoeventtopicparticipant) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "ConnectedTime","EndTime","StartAcwTime","EndAcwTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationvideoeventtopicparticipant
@@ -281,7 +300,7 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		Workflow *Queueconversationvideoeventtopicworkflow `json:"workflow,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -360,7 +379,7 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		Workflow: o.Workflow,
 		
 		AdditionalProperties: o.AdditionalProperties,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

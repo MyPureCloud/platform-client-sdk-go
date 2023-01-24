@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,52 +10,98 @@ import (
 
 // Voicemailorganizationpolicy
 type Voicemailorganizationpolicy struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Enabled - Whether voicemail is enabled for this organization
 	Enabled *bool `json:"enabled,omitempty"`
-
 
 	// AlertTimeoutSeconds - The organization's default number of seconds to ring a user's phone before a call is transferred to voicemail
 	AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 
-
 	// PinConfiguration - The configuration for user PINs to access their voicemail from a phone
 	PinConfiguration *Pinconfiguration `json:"pinConfiguration,omitempty"`
-
 
 	// VoicemailExtension - The extension for voicemail retrieval.  The default value is *86.
 	VoicemailExtension *string `json:"voicemailExtension,omitempty"`
 
-
 	// PinRequired - If this is true, a PIN is required when accessing a user's voicemail from a phone.
 	PinRequired *bool `json:"pinRequired,omitempty"`
-
 
 	// InteractiveResponseRequired - Whether user should be prompted with a confirmation prompt when connecting to a Group Ring call
 	InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
 
-
 	// SendEmailNotifications - Whether email notifications are sent for new voicemails in the organization. If false, new voicemail email notifications are not be sent for the organization overriding any user or group setting.
 	SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
-
 
 	// IncludeEmailTranscriptions - Whether to include the voicemail transcription in the notification email
 	IncludeEmailTranscriptions *bool `json:"includeEmailTranscriptions,omitempty"`
 
-
 	// DisableEmailPii - Removes any PII from emails. This overrides any analogous group configuration value. This is always true if HIPAA is enabled or unknown for an organization.
 	DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
-
 
 	// MaximumRecordingTimeSeconds - Default value for the maximum length of time in seconds of a recorded voicemail
 	MaximumRecordingTimeSeconds *int `json:"maximumRecordingTimeSeconds,omitempty"`
 
-
 	// ModifiedDate - The date the policy was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
-
 }
 
-func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Voicemailorganizationpolicy) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "ModifiedDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailorganizationpolicy
@@ -89,7 +136,7 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		MaximumRecordingTimeSeconds *int `json:"maximumRecordingTimeSeconds,omitempty"`
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Enabled: o.Enabled,
 		
@@ -112,7 +159,7 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		MaximumRecordingTimeSeconds: o.MaximumRecordingTimeSeconds,
 		
 		ModifiedDate: ModifiedDate,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

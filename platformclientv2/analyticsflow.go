@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,68 +9,110 @@ import (
 
 // Analyticsflow
 type Analyticsflow struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// EndingLanguage - Flow ending language, e.g. en-us
 	EndingLanguage *string `json:"endingLanguage,omitempty"`
-
 
 	// EntryReason - The particular entry reason for this flow, e.g. an address, userId, or flowId
 	EntryReason *string `json:"entryReason,omitempty"`
 
-
 	// EntryType - The entry type for this flow, e.g. dnis, dialer, agent, flow, or direct
 	EntryType *string `json:"entryType,omitempty"`
-
 
 	// ExitReason - The exit reason for this flow, e.g. DISCONNECT
 	ExitReason *string `json:"exitReason,omitempty"`
 
-
 	// FlowId - The unique identifier of this flow
 	FlowId *string `json:"flowId,omitempty"`
-
 
 	// FlowName - The name of this flow at the time of flow execution
 	FlowName *string `json:"flowName,omitempty"`
 
-
 	// FlowType - The type of this flow
 	FlowType *string `json:"flowType,omitempty"`
-
 
 	// FlowVersion - The version of this flow
 	FlowVersion *string `json:"flowVersion,omitempty"`
 
-
 	// IssuedCallback - Flag indicating whether the flow issued a callback
 	IssuedCallback *bool `json:"issuedCallback,omitempty"`
-
 
 	// RecognitionFailureReason - The recognition failure reason causing to exit/disconnect
 	RecognitionFailureReason *string `json:"recognitionFailureReason,omitempty"`
 
-
 	// StartingLanguage - Flow starting language, e.g. en-us
 	StartingLanguage *string `json:"startingLanguage,omitempty"`
-
 
 	// TransferTargetAddress - The address of a flow transfer target, e.g. a phone number, an email address, or a queueId
 	TransferTargetAddress *string `json:"transferTargetAddress,omitempty"`
 
-
 	// TransferTargetName - The name of a flow transfer target
 	TransferTargetName *string `json:"transferTargetName,omitempty"`
-
 
 	// TransferType - The type of transfer for flows that ended with a transfer
 	TransferType *string `json:"transferType,omitempty"`
 
-
 	// Outcomes - Flow outcomes
 	Outcomes *[]Analyticsflowoutcome `json:"outcomes,omitempty"`
-
 }
 
-func (o *Analyticsflow) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Analyticsflow) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Analyticsflow) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsflow
@@ -104,7 +147,7 @@ func (o *Analyticsflow) MarshalJSON() ([]byte, error) {
 		TransferType *string `json:"transferType,omitempty"`
 		
 		Outcomes *[]Analyticsflowoutcome `json:"outcomes,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		EndingLanguage: o.EndingLanguage,
 		
@@ -135,7 +178,7 @@ func (o *Analyticsflow) MarshalJSON() ([]byte, error) {
 		TransferType: o.TransferType,
 		
 		Outcomes: o.Outcomes,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

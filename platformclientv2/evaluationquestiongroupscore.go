@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -8,68 +9,110 @@ import (
 
 // Evaluationquestiongroupscore
 type Evaluationquestiongroupscore struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// QuestionGroupId
 	QuestionGroupId *string `json:"questionGroupId,omitempty"`
-
 
 	// TotalScore - Score of all questions in the group
 	TotalScore *float32 `json:"totalScore,omitempty"`
 
-
 	// MaxTotalScore - Maximum possible score of all questions in the group
 	MaxTotalScore *float32 `json:"maxTotalScore,omitempty"`
-
 
 	// MarkedNA
 	MarkedNA *bool `json:"markedNA,omitempty"`
 
-
 	// TotalCriticalScore - Score of only the critical questions in the group
 	TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
-
 
 	// MaxTotalCriticalScore - Maximum possible score of only the critical questions in the group
 	MaxTotalCriticalScore *float32 `json:"maxTotalCriticalScore,omitempty"`
 
-
 	// TotalNonCriticalScore - Score of only the non critical questions in the group
 	TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
-
 
 	// MaxTotalNonCriticalScore - Maximum possible score of only the non critical questions in the group
 	MaxTotalNonCriticalScore *float32 `json:"maxTotalNonCriticalScore,omitempty"`
 
-
 	// TotalScoreUnweighted - Unweighted score of all questions in the group
 	TotalScoreUnweighted *float32 `json:"totalScoreUnweighted,omitempty"`
-
 
 	// MaxTotalScoreUnweighted - Maximum possible unweighted score of all questions in the group
 	MaxTotalScoreUnweighted *float32 `json:"maxTotalScoreUnweighted,omitempty"`
 
-
 	// TotalCriticalScoreUnweighted - Unweighted score of only the critical questions in the group
 	TotalCriticalScoreUnweighted *float32 `json:"totalCriticalScoreUnweighted,omitempty"`
-
 
 	// MaxTotalCriticalScoreUnweighted - Maximum possible unweighted score of only the critical questions in the group
 	MaxTotalCriticalScoreUnweighted *float32 `json:"maxTotalCriticalScoreUnweighted,omitempty"`
 
-
 	// TotalNonCriticalScoreUnweighted - Unweighted score of only the non critical questions in the group
 	TotalNonCriticalScoreUnweighted *float32 `json:"totalNonCriticalScoreUnweighted,omitempty"`
-
 
 	// MaxTotalNonCriticalScoreUnweighted - Maximum possible unweighted score of only the non critical questions in the group
 	MaxTotalNonCriticalScoreUnweighted *float32 `json:"maxTotalNonCriticalScoreUnweighted,omitempty"`
 
-
 	// QuestionScores
 	QuestionScores *[]Evaluationquestionscore `json:"questionScores,omitempty"`
-
 }
 
-func (o *Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Evaluationquestiongroupscore) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationquestiongroupscore
@@ -104,7 +147,7 @@ func (o *Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
 		MaxTotalNonCriticalScoreUnweighted *float32 `json:"maxTotalNonCriticalScoreUnweighted,omitempty"`
 		
 		QuestionScores *[]Evaluationquestionscore `json:"questionScores,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		QuestionGroupId: o.QuestionGroupId,
 		
@@ -135,7 +178,7 @@ func (o *Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
 		MaxTotalNonCriticalScoreUnweighted: o.MaxTotalNonCriticalScoreUnweighted,
 		
 		QuestionScores: o.QuestionScores,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

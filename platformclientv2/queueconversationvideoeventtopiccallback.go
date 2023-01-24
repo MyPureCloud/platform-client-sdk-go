@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,116 +10,146 @@ import (
 
 // Queueconversationvideoeventtopiccallback
 type Queueconversationvideoeventtopiccallback struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// State
 	State *string `json:"state,omitempty"`
-
 
 	// InitialState
 	InitialState *string `json:"initialState,omitempty"`
 
-
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
-
 
 	// Direction - The direction of the call
 	Direction *string `json:"direction,omitempty"`
 
-
 	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
-
 
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
-
 	// StartHoldTime - The timestamp the callback was placed on hold in the cloud clock if the callback is currently on hold.
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
-
 
 	// DialerPreview
 	DialerPreview *Queueconversationvideoeventtopicdialerpreview `json:"dialerPreview,omitempty"`
 
-
 	// Voicemail
 	Voicemail *Queueconversationvideoeventtopicvoicemail `json:"voicemail,omitempty"`
-
 
 	// CallbackNumbers - The phone number(s) to use to place the callback.
 	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 
-
 	// CallbackUserName - The name of the user requesting a callback.
 	CallbackUserName *string `json:"callbackUserName,omitempty"`
-
 
 	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
 
-
 	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
-
 
 	// ExternalCampaign - True if the call for the callback uses external dialing.
 	ExternalCampaign *bool `json:"externalCampaign,omitempty"`
 
-
 	// SkipEnabled - True if the ability to skip a callback should be enabled.
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
-
 
 	// Provider - The source provider of the callback.
 	Provider *string `json:"provider,omitempty"`
 
-
 	// TimeoutSeconds - The number of seconds before the system automatically places a call for a callback.  0 means the automatic placement is disabled.
 	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
-
 
 	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
-
 	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
-
 
 	// CallbackScheduledTime - The timestamp when this communication is scheduled in the provider clock. If this value is missing it indicates the callback will be placed immediately.
 	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
 
-
 	// AutomatedCallbackConfigId - The id of the config for automatically placing the callback (and handling the disposition). If null, the callback will not be placed automatically but routed to an agent as per normal.
 	AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
-
 
 	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationvideoeventtopicwrapup `json:"wrapup,omitempty"`
 
-
 	// AfterCallWork - A communication's after-call work data.
 	AfterCallWork *Queueconversationvideoeventtopicaftercallwork `json:"afterCallWork,omitempty"`
-
 
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
-
 	// CallerId - The phone number displayed to recipients of the phone call. The value should conform to the E164 format.
 	CallerId *string `json:"callerId,omitempty"`
-
 
 	// CallerIdName - The name displayed to recipients of the phone call.
 	CallerIdName *string `json:"callerIdName,omitempty"`
 
-
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-
 }
 
-func (o *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Queueconversationvideoeventtopiccallback) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime","CallbackScheduledTime", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationvideoeventtopiccallback
@@ -209,7 +240,7 @@ func (o *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error)
 		CallerIdName *string `json:"callerIdName,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		State: o.State,
 		
@@ -264,7 +295,7 @@ func (o *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error)
 		CallerIdName: o.CallerIdName,
 		
 		AdditionalProperties: o.AdditionalProperties,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

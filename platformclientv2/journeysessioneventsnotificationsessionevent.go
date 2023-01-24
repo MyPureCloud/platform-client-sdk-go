@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,164 +10,182 @@ import (
 
 // Journeysessioneventsnotificationsessionevent
 type Journeysessioneventsnotificationsessionevent struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id
 	Id *string `json:"id,omitempty"`
-
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
-
 	// CreatedDate
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
-
 
 	// EndedDate
 	EndedDate *time.Time `json:"endedDate,omitempty"`
 
-
 	// ExternalContact
 	ExternalContact *Journeysessioneventsnotificationexternalcontact `json:"externalContact,omitempty"`
-
 
 	// CustomerId
 	CustomerId *string `json:"customerId,omitempty"`
 
-
 	// CustomerIdType
 	CustomerIdType *string `json:"customerIdType,omitempty"`
-
 
 	// VarType
 	VarType *string `json:"type,omitempty"`
 
-
 	// OutcomeAchievements
 	OutcomeAchievements *[]Journeysessioneventsnotificationoutcomeachievement `json:"outcomeAchievements,omitempty"`
-
 
 	// SegmentAssignments
 	SegmentAssignments *[]Journeysessioneventsnotificationsegmentassignment `json:"segmentAssignments,omitempty"`
 
-
 	// Attributes
 	Attributes *map[string]Journeysessioneventsnotificationcustomeventattribute `json:"attributes,omitempty"`
-
 
 	// AttributeLists
 	AttributeLists *map[string]Journeysessioneventsnotificationcustomeventattributelist `json:"attributeLists,omitempty"`
 
-
 	// AwayDate
 	AwayDate *time.Time `json:"awayDate,omitempty"`
-
 
 	// Browser
 	Browser *Journeysessioneventsnotificationbrowser `json:"browser,omitempty"`
 
-
 	// Device
 	Device *Journeysessioneventsnotificationdevice `json:"device,omitempty"`
-
 
 	// Geolocation
 	Geolocation *Journeysessioneventsnotificationgeolocation `json:"geolocation,omitempty"`
 
-
 	// IdleDate
 	IdleDate *time.Time `json:"idleDate,omitempty"`
-
 
 	// IpAddress
 	IpAddress *string `json:"ipAddress,omitempty"`
 
-
 	// IpOrganization
 	IpOrganization *string `json:"ipOrganization,omitempty"`
-
 
 	// LastPage
 	LastPage *Journeysessioneventsnotificationpage `json:"lastPage,omitempty"`
 
-
 	// MktCampaign
 	MktCampaign *Journeysessioneventsnotificationmktcampaign `json:"mktCampaign,omitempty"`
-
 
 	// Referrer
 	Referrer *Journeysessioneventsnotificationreferrer `json:"referrer,omitempty"`
 
-
 	// SearchTerms
 	SearchTerms *[]string `json:"searchTerms,omitempty"`
-
 
 	// UserAgentString
 	UserAgentString *string `json:"userAgentString,omitempty"`
 
-
 	// DurationInSeconds
 	DurationInSeconds *int `json:"durationInSeconds,omitempty"`
-
 
 	// EventCount
 	EventCount *int `json:"eventCount,omitempty"`
 
-
 	// PageviewCount
 	PageviewCount *int `json:"pageviewCount,omitempty"`
-
 
 	// ScreenviewCount
 	ScreenviewCount *int `json:"screenviewCount,omitempty"`
 
-
 	// LastEvent
 	LastEvent *Journeysessioneventsnotificationsessionlastevent `json:"lastEvent,omitempty"`
-
 
 	// Conversation
 	Conversation *Journeysessioneventsnotificationconversation `json:"conversation,omitempty"`
 
-
 	// OriginatingDirection
 	OriginatingDirection *string `json:"originatingDirection,omitempty"`
-
 
 	// ConversationSubject
 	ConversationSubject *string `json:"conversationSubject,omitempty"`
 
-
 	// LastUserDisposition
 	LastUserDisposition *Journeysessioneventsnotificationconversationuserdisposition `json:"lastUserDisposition,omitempty"`
-
 
 	// LastConnectedUser
 	LastConnectedUser *Journeysessioneventsnotificationuser `json:"lastConnectedUser,omitempty"`
 
-
 	// LastConnectedQueue
 	LastConnectedQueue *Journeysessioneventsnotificationconnectedqueue `json:"lastConnectedQueue,omitempty"`
-
 
 	// ConversationChannels
 	ConversationChannels *[]Journeysessioneventsnotificationconversationchannel `json:"conversationChannels,omitempty"`
 
-
 	// LastUserDisconnectType
 	LastUserDisconnectType *string `json:"lastUserDisconnectType,omitempty"`
-
 
 	// LastAcdOutcome
 	LastAcdOutcome *string `json:"lastAcdOutcome,omitempty"`
 
-
 	// Authenticated
 	Authenticated *bool `json:"authenticated,omitempty"`
-
 }
 
-func (o *Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Journeysessioneventsnotificationsessionevent) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "CreatedDate","EndedDate","AwayDate","IdleDate", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeysessioneventsnotificationsessionevent
@@ -281,7 +300,7 @@ func (o *Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, er
 		LastAcdOutcome *string `json:"lastAcdOutcome,omitempty"`
 		
 		Authenticated *bool `json:"authenticated,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -360,7 +379,7 @@ func (o *Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, er
 		LastAcdOutcome: o.LastAcdOutcome,
 		
 		Authenticated: o.Authenticated,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 

@@ -2,6 +2,7 @@ package platformclientv2
 import (
 	"time"
 	"github.com/leekchan/timeutil"
+	"reflect"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -9,68 +10,110 @@ import (
 
 // Developmentactivity - Development Activity object
 type Developmentactivity struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
 
 	// DateCompleted - Date that activity was completed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
 
-
 	// CreatedBy - User that created activity
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
-
 
 	// DateCreated - Date activity was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-
 	// PercentageScore - The user's percentage score for this activity
 	PercentageScore *float32 `json:"percentageScore,omitempty"`
-
 
 	// IsPassed - True if the activity was passed
 	IsPassed *bool `json:"isPassed,omitempty"`
 
-
 	// IsLatest - True if this is the latest version of assignment assigned to the user
 	IsLatest *bool `json:"isLatest,omitempty"`
-
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
-
 	// Name - The name of the activity
 	Name *string `json:"name,omitempty"`
-
 
 	// VarType - The type of activity
 	VarType *string `json:"type,omitempty"`
 
-
 	// Status - The status of the activity
 	Status *string `json:"status,omitempty"`
-
 
 	// DateDue - Due date for completion of the activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateDue *time.Time `json:"dateDue,omitempty"`
 
-
 	// Facilitator - Facilitator of the activity
 	Facilitator *Userreference `json:"facilitator,omitempty"`
-
 
 	// Attendees - List of users attending the activity
 	Attendees *[]Userreference `json:"attendees,omitempty"`
 
-
 	// IsOverdue - Indicates if the activity is overdue
 	IsOverdue *bool `json:"isOverdue,omitempty"`
-
 }
 
-func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Developmentactivity) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Developmentactivity) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{ "DateCompleted","DateCreated","DateDue", }
+		localDateTimeFields := []string{  }
+		dateFields := []string{  }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Developmentactivity
@@ -129,7 +172,7 @@ func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
 		Attendees *[]Userreference `json:"attendees,omitempty"`
 		
 		IsOverdue *bool `json:"isOverdue,omitempty"`
-		*Alias
+		Alias
 	}{ 
 		Id: o.Id,
 		
@@ -160,7 +203,7 @@ func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
 		Attendees: o.Attendees,
 		
 		IsOverdue: o.IsOverdue,
-		Alias:    (*Alias)(o),
+		Alias:    (Alias)(o),
 	})
 }
 
