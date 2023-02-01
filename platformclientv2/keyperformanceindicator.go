@@ -39,6 +39,9 @@ type Keyperformanceindicator struct {
 	// WrapUpCodeConfig - Defines what wrap up codes are mapped to Key Performance Indicator.
 	WrapUpCodeConfig *Wrapupcodeconfig `json:"wrapUpCodeConfig,omitempty"`
 
+	// OutcomeConfig - Defines what outcome ids are mapped to Key Performance Indicator.
+	OutcomeConfig *Outcomeconfig `json:"outcomeConfig,omitempty"`
+
 	// Status - The status of the Key Performance Indicator.
 	Status *string `json:"status,omitempty"`
 
@@ -89,7 +92,9 @@ func (o Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -144,6 +149,8 @@ func (o Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 		
 		WrapUpCodeConfig *Wrapupcodeconfig `json:"wrapUpCodeConfig,omitempty"`
 		
+		OutcomeConfig *Outcomeconfig `json:"outcomeConfig,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
 		
 		KpiGroup *string `json:"kpiGroup,omitempty"`
@@ -168,6 +175,8 @@ func (o Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 		Source: o.Source,
 		
 		WrapUpCodeConfig: o.WrapUpCodeConfig,
+		
+		OutcomeConfig: o.OutcomeConfig,
 		
 		Status: o.Status,
 		
@@ -222,6 +231,11 @@ func (o *Keyperformanceindicator) UnmarshalJSON(b []byte) error {
 	if WrapUpCodeConfig, ok := KeyperformanceindicatorMap["wrapUpCodeConfig"].(map[string]interface{}); ok {
 		WrapUpCodeConfigString, _ := json.Marshal(WrapUpCodeConfig)
 		json.Unmarshal(WrapUpCodeConfigString, &o.WrapUpCodeConfig)
+	}
+	
+	if OutcomeConfig, ok := KeyperformanceindicatorMap["outcomeConfig"].(map[string]interface{}); ok {
+		OutcomeConfigString, _ := json.Marshal(OutcomeConfig)
+		json.Unmarshal(OutcomeConfigString, &o.OutcomeConfig)
 	}
 	
 	if Status, ok := KeyperformanceindicatorMap["status"].(string); ok {

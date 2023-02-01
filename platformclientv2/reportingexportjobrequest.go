@@ -35,7 +35,7 @@ type Reportingexportjobrequest struct {
 	// Read - Indicates if the request has been marked as read
 	Read *bool `json:"read,omitempty"`
 
-	// Locale - The locale use for localization of the exported data, i.e. en-us, es-mx  
+	// Locale - The locale used for localization of the exported data, i.e. en-US, es
 	Locale *string `json:"locale,omitempty"`
 
 	// HasFormatDurations - Indicates if durations are formatted in hh:mm:ss format instead of ms
@@ -106,7 +106,9 @@ func (o Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")

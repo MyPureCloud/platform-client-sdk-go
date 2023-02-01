@@ -25,6 +25,12 @@ type Createmetric struct {
 
 	// Name - The name of this metric
 	Name *string `json:"name,omitempty"`
+
+	// Precision - The precision of the metric, must be between 0 and 5
+	Precision *int `json:"precision,omitempty"`
+
+	// TimeDisplayUnit - The time unit in which the metric should be displayed -- this parameter is ignored when displaying non-time values
+	TimeDisplayUnit *string `json:"timeDisplayUnit,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -67,7 +73,9 @@ func (o Createmetric) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -97,6 +105,10 @@ func (o Createmetric) MarshalJSON() ([]byte, error) {
 		PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
+		
+		Precision *int `json:"precision,omitempty"`
+		
+		TimeDisplayUnit *string `json:"timeDisplayUnit,omitempty"`
 		Alias
 	}{ 
 		MetricDefinitionId: o.MetricDefinitionId,
@@ -108,6 +120,10 @@ func (o Createmetric) MarshalJSON() ([]byte, error) {
 		PerformanceProfileId: o.PerformanceProfileId,
 		
 		Name: o.Name,
+		
+		Precision: o.Precision,
+		
+		TimeDisplayUnit: o.TimeDisplayUnit,
 		Alias:    (Alias)(o),
 	})
 }
@@ -138,6 +154,15 @@ func (o *Createmetric) UnmarshalJSON(b []byte) error {
     
 	if Name, ok := CreatemetricMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if Precision, ok := CreatemetricMap["precision"].(float64); ok {
+		PrecisionInt := int(Precision)
+		o.Precision = &PrecisionInt
+	}
+	
+	if TimeDisplayUnit, ok := CreatemetricMap["timeDisplayUnit"].(string); ok {
+		o.TimeDisplayUnit = &TimeDisplayUnit
 	}
     
 

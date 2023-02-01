@@ -117,6 +117,9 @@ type Queueconversationcobrowseeventtopiccobrowsemediaparticipant struct {
 	// EndAcwTime
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+	// MediaRoles
+	MediaRoles *[]string `json:"mediaRoles,omitempty"`
+
 	// CobrowseSessionId
 	CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
 
@@ -173,7 +176,9 @@ func (o Queueconversationcobrowseeventtopiccobrowsemediaparticipant) MarshalJSON
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -320,6 +325,8 @@ func (o Queueconversationcobrowseeventtopiccobrowsemediaparticipant) MarshalJSON
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
 		
+		MediaRoles *[]string `json:"mediaRoles,omitempty"`
+		
 		CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
 		
 		CobrowseRole *string `json:"cobrowseRole,omitempty"`
@@ -400,6 +407,8 @@ func (o Queueconversationcobrowseeventtopiccobrowsemediaparticipant) MarshalJSON
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
+		
+		MediaRoles: o.MediaRoles,
 		
 		CobrowseSessionId: o.CobrowseSessionId,
 		
@@ -578,6 +587,11 @@ func (o *Queueconversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJ
 	if endAcwTimeString, ok := QueueconversationcobrowseeventtopiccobrowsemediaparticipantMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if MediaRoles, ok := QueueconversationcobrowseeventtopiccobrowsemediaparticipantMap["mediaRoles"].([]interface{}); ok {
+		MediaRolesString, _ := json.Marshal(MediaRoles)
+		json.Unmarshal(MediaRolesString, &o.MediaRoles)
 	}
 	
 	if CobrowseSessionId, ok := QueueconversationcobrowseeventtopiccobrowsemediaparticipantMap["cobrowseSessionId"].(string); ok {

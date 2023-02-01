@@ -117,6 +117,9 @@ type Conversationemaileventtopicemailmediaparticipant struct {
 	// EndAcwTime
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+	// MediaRoles
+	MediaRoles *[]string `json:"mediaRoles,omitempty"`
+
 	// Subject
 	Subject *string `json:"subject,omitempty"`
 
@@ -176,7 +179,9 @@ func (o Conversationemaileventtopicemailmediaparticipant) MarshalJSON() ([]byte,
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -315,6 +320,8 @@ func (o Conversationemaileventtopicemailmediaparticipant) MarshalJSON() ([]byte,
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
 		
+		MediaRoles *[]string `json:"mediaRoles,omitempty"`
+		
 		Subject *string `json:"subject,omitempty"`
 		
 		MessagesSent *int `json:"messagesSent,omitempty"`
@@ -397,6 +404,8 @@ func (o Conversationemaileventtopicemailmediaparticipant) MarshalJSON() ([]byte,
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
+		
+		MediaRoles: o.MediaRoles,
 		
 		Subject: o.Subject,
 		
@@ -577,6 +586,11 @@ func (o *Conversationemaileventtopicemailmediaparticipant) UnmarshalJSON(b []byt
 	if endAcwTimeString, ok := ConversationemaileventtopicemailmediaparticipantMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if MediaRoles, ok := ConversationemaileventtopicemailmediaparticipantMap["mediaRoles"].([]interface{}); ok {
+		MediaRolesString, _ := json.Marshal(MediaRoles)
+		json.Unmarshal(MediaRolesString, &o.MediaRoles)
 	}
 	
 	if Subject, ok := ConversationemaileventtopicemailmediaparticipantMap["subject"].(string); ok {

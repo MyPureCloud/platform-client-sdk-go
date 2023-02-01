@@ -90,6 +90,9 @@ type Participantbasic struct {
 	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Wrapup `json:"wrapup,omitempty"`
 
+	// MediaRoles - List of roles this participant's media has had on the conversation, ie monitor, coach, etc.
+	MediaRoles *[]string `json:"mediaRoles,omitempty"`
+
 	// ConversationRoutingData - Information on how a communication should be routed to an agent.
 	ConversationRoutingData *Conversationroutingdata `json:"conversationRoutingData,omitempty"`
 
@@ -191,7 +194,9 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -304,6 +309,8 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		
 		Wrapup *Wrapup `json:"wrapup,omitempty"`
 		
+		MediaRoles *[]string `json:"mediaRoles,omitempty"`
+		
 		ConversationRoutingData *Conversationroutingdata `json:"conversationRoutingData,omitempty"`
 		
 		AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
@@ -396,6 +403,8 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		WrapupSkipped: o.WrapupSkipped,
 		
 		Wrapup: o.Wrapup,
+		
+		MediaRoles: o.MediaRoles,
 		
 		ConversationRoutingData: o.ConversationRoutingData,
 		
@@ -554,6 +563,11 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if Wrapup, ok := ParticipantbasicMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if MediaRoles, ok := ParticipantbasicMap["mediaRoles"].([]interface{}); ok {
+		MediaRolesString, _ := json.Marshal(MediaRoles)
+		json.Unmarshal(MediaRolesString, &o.MediaRoles)
 	}
 	
 	if ConversationRoutingData, ok := ParticipantbasicMap["conversationRoutingData"].(map[string]interface{}); ok {

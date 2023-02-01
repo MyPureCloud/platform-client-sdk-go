@@ -24,6 +24,9 @@ type Analyticsevaluation struct {
 	// EvaluationId - Unique identifier for the evaluation
 	EvaluationId *string `json:"evaluationId,omitempty"`
 
+	// EvaluationStatus - Status of evaluation
+	EvaluationStatus *string `json:"evaluationStatus,omitempty"`
+
 	// EvaluatorId - A unique identifier of the user who evaluated the interaction
 	EvaluatorId *string `json:"evaluatorId,omitempty"`
 
@@ -95,7 +98,9 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -132,6 +137,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		
 		EvaluationId *string `json:"evaluationId,omitempty"`
 		
+		EvaluationStatus *string `json:"evaluationStatus,omitempty"`
+		
 		EvaluatorId *string `json:"evaluatorId,omitempty"`
 		
 		EventTime *string `json:"eventTime,omitempty"`
@@ -160,6 +167,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		Deleted: o.Deleted,
 		
 		EvaluationId: o.EvaluationId,
+		
+		EvaluationStatus: o.EvaluationStatus,
 		
 		EvaluatorId: o.EvaluatorId,
 		
@@ -205,6 +214,10 @@ func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
     
 	if EvaluationId, ok := AnalyticsevaluationMap["evaluationId"].(string); ok {
 		o.EvaluationId = &EvaluationId
+	}
+    
+	if EvaluationStatus, ok := AnalyticsevaluationMap["evaluationStatus"].(string); ok {
+		o.EvaluationStatus = &EvaluationStatus
 	}
     
 	if EvaluatorId, ok := AnalyticsevaluationMap["evaluatorId"].(string); ok {

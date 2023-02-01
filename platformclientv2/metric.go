@@ -39,6 +39,12 @@ type Metric struct {
 	// DateUnlinked - The unlinked workday for this metric if this metric was ever unlinked. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	DateUnlinked *time.Time `json:"dateUnlinked,omitempty"`
 
+	// Precision - The precision of the metric, must be between 0 and 5
+	Precision *int `json:"precision,omitempty"`
+
+	// TimeDisplayUnit - The time unit in which the metric should be displayed -- this parameter is ignored when displaying non-time values
+	TimeDisplayUnit *string `json:"timeDisplayUnit,omitempty"`
+
 	// SourcePerformanceProfile - The source performance profile when this metric is linked
 	SourcePerformanceProfile *Performanceprofile `json:"sourcePerformanceProfile,omitempty"`
 
@@ -86,7 +92,9 @@ func (o Metric) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -140,6 +148,10 @@ func (o Metric) MarshalJSON() ([]byte, error) {
 		
 		DateUnlinked *string `json:"dateUnlinked,omitempty"`
 		
+		Precision *int `json:"precision,omitempty"`
+		
+		TimeDisplayUnit *string `json:"timeDisplayUnit,omitempty"`
+		
 		SourcePerformanceProfile *Performanceprofile `json:"sourcePerformanceProfile,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -162,6 +174,10 @@ func (o Metric) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateUnlinked: DateUnlinked,
+		
+		Precision: o.Precision,
+		
+		TimeDisplayUnit: o.TimeDisplayUnit,
 		
 		SourcePerformanceProfile: o.SourcePerformanceProfile,
 		
@@ -217,6 +233,15 @@ func (o *Metric) UnmarshalJSON(b []byte) error {
 		o.DateUnlinked = &DateUnlinked
 	}
 	
+	if Precision, ok := MetricMap["precision"].(float64); ok {
+		PrecisionInt := int(Precision)
+		o.Precision = &PrecisionInt
+	}
+	
+	if TimeDisplayUnit, ok := MetricMap["timeDisplayUnit"].(string); ok {
+		o.TimeDisplayUnit = &TimeDisplayUnit
+	}
+    
 	if SourcePerformanceProfile, ok := MetricMap["sourcePerformanceProfile"].(map[string]interface{}); ok {
 		SourcePerformanceProfileString, _ := json.Marshal(SourcePerformanceProfile)
 		json.Unmarshal(SourcePerformanceProfileString, &o.SourcePerformanceProfile)

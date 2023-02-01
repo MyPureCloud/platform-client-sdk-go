@@ -84,6 +84,12 @@ type Smsphonenumber struct {
 	// SupportsVoice - Set to true if this phone number has the capability to support voice
 	SupportsVoice *bool `json:"supportsVoice,omitempty"`
 
+	// Integration - The Genesys Cloud integration this phone number belongs to.
+	Integration *Domainentityref `json:"integration,omitempty"`
+
+	// Compliance - Compliance configuration for short codes, including help, stop and opt in.
+	Compliance *Compliance `json:"compliance,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -128,7 +134,9 @@ func (o Smsphonenumber) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -237,6 +245,10 @@ func (o Smsphonenumber) MarshalJSON() ([]byte, error) {
 		
 		SupportsVoice *bool `json:"supportsVoice,omitempty"`
 		
+		Integration *Domainentityref `json:"integration,omitempty"`
+		
+		Compliance *Compliance `json:"compliance,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -287,6 +299,10 @@ func (o Smsphonenumber) MarshalJSON() ([]byte, error) {
 		SupportsMms: o.SupportsMms,
 		
 		SupportsVoice: o.SupportsVoice,
+		
+		Integration: o.Integration,
+		
+		Compliance: o.Compliance,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -407,6 +423,16 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 		o.SupportsVoice = &SupportsVoice
 	}
     
+	if Integration, ok := SmsphonenumberMap["integration"].(map[string]interface{}); ok {
+		IntegrationString, _ := json.Marshal(Integration)
+		json.Unmarshal(IntegrationString, &o.Integration)
+	}
+	
+	if Compliance, ok := SmsphonenumberMap["compliance"].(map[string]interface{}); ok {
+		ComplianceString, _ := json.Marshal(Compliance)
+		json.Unmarshal(ComplianceString, &o.Compliance)
+	}
+	
 	if SelfUri, ok := SmsphonenumberMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

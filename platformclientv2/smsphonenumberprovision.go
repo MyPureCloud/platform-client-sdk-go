@@ -14,9 +14,6 @@ type Smsphonenumberprovision struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Name
-	Name *string `json:"name,omitempty"`
-
 	// PhoneNumber - A phone number to be used for SMS communications. E.g. +13175555555 or +34234234234
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 
@@ -25,6 +22,9 @@ type Smsphonenumberprovision struct {
 
 	// CountryCode - The ISO 3166-1 alpha-2 country code of the country this phone number is associated with.
 	CountryCode *string `json:"countryCode,omitempty"`
+
+	// Name
+	Name *string `json:"name,omitempty"`
 
 	// AddressId - The id of an address added on your account. Due to regulatory requirements in some countries, an address may be required when provisioning a sms number. In those cases you should provide the provisioned sms address id here
 	AddressId *string `json:"addressId,omitempty"`
@@ -73,7 +73,9 @@ func (o Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -96,13 +98,13 @@ func (o Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
 		PhoneNumberType *string `json:"phoneNumberType,omitempty"`
 		
 		CountryCode *string `json:"countryCode,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
 		
 		AddressId *string `json:"addressId,omitempty"`
 		
@@ -111,13 +113,13 @@ func (o Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
 	}{ 
 		Id: o.Id,
 		
-		Name: o.Name,
-		
 		PhoneNumber: o.PhoneNumber,
 		
 		PhoneNumberType: o.PhoneNumberType,
 		
 		CountryCode: o.CountryCode,
+		
+		Name: o.Name,
 		
 		AddressId: o.AddressId,
 		
@@ -137,10 +139,6 @@ func (o *Smsphonenumberprovision) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if Name, ok := SmsphonenumberprovisionMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
 	if PhoneNumber, ok := SmsphonenumberprovisionMap["phoneNumber"].(string); ok {
 		o.PhoneNumber = &PhoneNumber
 	}
@@ -151,6 +149,10 @@ func (o *Smsphonenumberprovision) UnmarshalJSON(b []byte) error {
     
 	if CountryCode, ok := SmsphonenumberprovisionMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
+	}
+    
+	if Name, ok := SmsphonenumberprovisionMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
 	if AddressId, ok := SmsphonenumberprovisionMap["addressId"].(string); ok {

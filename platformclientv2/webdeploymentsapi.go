@@ -157,6 +157,78 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeployment(deploymentId string) (
 	return response, err
 }
 
+// DeleteWebdeploymentsDeploymentCobrowseSessionId invokes DELETE /api/v2/webdeployments/deployments/{deploymentId}/cobrowse/{sessionId}
+//
+// Deletes a cobrowse session
+func (a WebDeploymentsApi) DeleteWebdeploymentsDeploymentCobrowseSessionId(deploymentId string, sessionId string) (*interface{}, *APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}/cobrowse/{sessionId}"
+	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	defaultReturn := new(interface{})
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'deploymentId' is set
+	if &deploymentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WebDeploymentsApi->DeleteWebdeploymentsDeploymentCobrowseSessionId")
+	}
+	// verify the required parameter 'sessionId' is set
+	if &sessionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sessionId' when calling WebDeploymentsApi->DeleteWebdeploymentsDeploymentCobrowseSessionId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *interface{}
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "interface{}" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // DeleteWebdeploymentsTokenRevoke invokes DELETE /api/v2/webdeployments/token/revoke
 //
 // Invalidate JWT
@@ -567,6 +639,78 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*We
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Webdeployment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWebdeploymentsDeploymentCobrowseSessionId invokes GET /api/v2/webdeployments/deployments/{deploymentId}/cobrowse/{sessionId}
+//
+// Retrieves a cobrowse session
+func (a WebDeploymentsApi) GetWebdeploymentsDeploymentCobrowseSessionId(deploymentId string, sessionId string) (*Cobrowsewebmessagingsession, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}/cobrowse/{sessionId}"
+	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	defaultReturn := new(Cobrowsewebmessagingsession)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'deploymentId' is set
+	if &deploymentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling WebDeploymentsApi->GetWebdeploymentsDeploymentCobrowseSessionId")
+	}
+	// verify the required parameter 'sessionId' is set
+	if &sessionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sessionId' when calling WebDeploymentsApi->GetWebdeploymentsDeploymentCobrowseSessionId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cobrowsewebmessagingsession
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Cobrowsewebmessagingsession" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

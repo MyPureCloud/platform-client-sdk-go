@@ -7816,6 +7816,20 @@
     "return": "string",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversation ID\nvar body platformclientv2.Conversationuser // Targeted user\n// Attempts to manually assign a specified conversation to a specified user.  Ignores bullseye ring, PAR score, skills, and languages.\ndata, response, err := apiInstance.PostConversationAssign(conversationId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationAssign: %v\\n\", err)\n}"
   },
+  "postconversationcobrowse": {
+    "operationId": "postconversationcobrowse",
+    "functionName": "PostConversationCobrowse",
+    "signature": "PostConversationCobrowse(conversationId)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Cobrowsewebmessagingsession",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // Conversation ID\n// Creates a cobrowse session\ndata, response, err := apiInstance.PostConversationCobrowse(conversationId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationCobrowse: %v\\n\", err)\n}"
+  },
   "postconversationdisconnect": {
     "operationId": "postconversationdisconnect",
     "functionName": "PostConversationDisconnect",
@@ -8260,7 +8274,7 @@
         "required": "true"
       }
     ],
-    "return": "Emailmessage",
+    "return": "Emailmessagereply",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversationId\nvar body platformclientv2.Emailmessage // Reply\n// Send an email reply\ndata, response, err := apiInstance.PostConversationsEmailMessages(conversationId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsEmailMessages: %v\\n\", err)\n}"
   },
   "postconversationsemailmessagesdraftattachmentscopy": {
@@ -16339,7 +16353,7 @@
   "getlanguageunderstandingdomainfeedback": {
     "operationId": "getlanguageunderstandingdomainfeedback",
     "functionName": "GetLanguageunderstandingDomainFeedback",
-    "signature": "GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, language, pageNumber, pageSize, enableCursorPagination, after, fields)",
+    "signature": "GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, language, pageNumber, pageSize, enableCursorPagination, includeTrainingUtterances, after, fields)",
     "parameters": [
       {
         "name": "domainId",
@@ -16392,6 +16406,11 @@
         "required": "false"
       },
       {
+        "name": "includeTrainingUtterances",
+        "type": "bool",
+        "required": "false"
+      },
+      {
         "name": "after",
         "type": "string",
         "required": "false"
@@ -16403,7 +16422,7 @@
       }
     ],
     "return": "Nlufeedbacklisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar domainId string // ID of the NLU domain.\nvar intentName string // The top intent name to retrieve feedback for.\nvar assessment string // The top assessment to retrieve feedback for.\nvar dateStart time.Time // Begin of time window as ISO-8601 date.\nvar dateEnd time.Time // End of time window as ISO-8601 date.\nvar includeDeleted bool // Whether to include soft-deleted items in the result.\nvar language string // Whether to filter response based on the language, e.g. en-us, pt-br.\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar enableCursorPagination bool // Enable Cursor Pagination\nvar after string // The cursor that points to the end of the set of entities that has been returned. This is considered only when enableCursorPagination=true\nvar fields []string // Fields and properties to get, comma-separated\n// Get all feedback in the given NLU Domain Version.\ndata, response, err := apiInstance.GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, language, pageNumber, pageSize, enableCursorPagination, after, fields)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingDomainFeedback: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar domainId string // ID of the NLU domain.\nvar intentName string // The top intent name to retrieve feedback for.\nvar assessment string // The top assessment to retrieve feedback for.\nvar dateStart time.Time // Begin of time window as ISO-8601 date.\nvar dateEnd time.Time // End of time window as ISO-8601 date.\nvar includeDeleted bool // Whether to include soft-deleted items in the result.\nvar language string // Whether to filter response based on the language, e.g. en-us, pt-br.\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar enableCursorPagination bool // Enable Cursor Pagination\nvar includeTrainingUtterances bool // Include Training Utterances. By default they're included.\nvar after string // The cursor that points to the end of the set of entities that has been returned. This is considered only when enableCursorPagination=true\nvar fields []string // Fields and properties to get, comma-separated\n// Get all feedback in the given NLU Domain Version.\ndata, response, err := apiInstance.GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, language, pageNumber, pageSize, enableCursorPagination, includeTrainingUtterances, after, fields)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguageunderstandingDomainFeedback: %v\\n\", err)\n}"
   },
   "getlanguageunderstandingdomainfeedbackfeedbackid": {
     "operationId": "getlanguageunderstandingdomainfeedbackfeedbackid",
@@ -17180,7 +17199,7 @@
       }
     ],
     "return": "Learningassignmentsdomainentity",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // Specifies the ID of the learning module. Fetch assignments for learning module ID\nvar interval string // Specifies the range of dueDates to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if only the non-overdue (overdue is \\\"False\\\") or overdue (overdue is \\\"True\\\") assignments are returned. If overdue is \\\"Any\\\" or if the overdue parameter is not supplied, all assignments are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar pass string // Specifies if only the failed (pass is \\\"False\\\") or passed (pass is \\\"True\\\") assignments (completed with assessment)are returned. If pass is \\\"Any\\\" or if the pass parameter is not supplied, all assignments are returned\nvar minPercentageScore float32 // The minimum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar maxPercentageScore float32 // The maximum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar sortOrder string // Specifies result set sort order; if not specified, default sort order is descending (Desc)\nvar sortBy string // Specifies which field to sort the results by, default sort is by recommendedCompletionDate\nvar userId []string // Specifies the list of user IDs to be queried, up to 100 user IDs.\nvar types []string // Specifies the assignment types, currently not supported and will be ignored. For now, all learning assignments regardless of types will be returned\nvar states []string // Specifies the assignment states to filter by\nvar expand []string // Specifies the expand option for returning additional information\n// List of Learning module Assignments\ndata, response, err := apiInstance.GetLearningAssignments(moduleId, interval, completionInterval, overdue, pageSize, pageNumber, pass, minPercentageScore, maxPercentageScore, sortOrder, sortBy, userId, types, states, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningAssignments: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // Specifies the ID of the learning module. Fetch assignments for learning module ID\nvar interval string // Specifies the range of dueDates to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if only the non-overdue (overdue is \\\"False\\\") or overdue (overdue is \\\"True\\\") assignments are returned. If overdue is \\\"Any\\\" or if the overdue parameter is not supplied, all assignments are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar pass string // Specifies if only the failed (pass is \\\"False\\\") or passed (pass is \\\"True\\\") assignments (completed with assessment)are returned. If pass is \\\"Any\\\" or if the pass parameter is not supplied, all assignments are returned\nvar minPercentageScore float32 // The minimum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar maxPercentageScore float32 // The maximum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar sortOrder string // Specifies result set sort order; if not specified, default sort order is descending (Desc)\nvar sortBy string // Specifies which field to sort the results by, default sort is by recommendedCompletionDate\nvar userId []string // Specifies the list of user IDs to be queried, up to 100 user IDs.\nvar types []string // Specifies the module types to filter by\nvar states []string // Specifies the assignment states to filter by\nvar expand []string // Specifies the expand option for returning additional information\n// List of Learning module Assignments\ndata, response, err := apiInstance.GetLearningAssignments(moduleId, interval, completionInterval, overdue, pageSize, pageNumber, pass, minPercentageScore, maxPercentageScore, sortOrder, sortBy, userId, types, states, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningAssignments: %v\\n\", err)\n}"
   },
   "getlearningassignmentsme": {
     "operationId": "getlearningassignmentsme",
@@ -17259,7 +17278,7 @@
       }
     ],
     "return": "Learningassignmentsdomainentity",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // Specifies the ID of the learning module. Fetch assignments for learning module ID\nvar interval string // Specifies the range of dueDates to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if only the non-overdue (overdue is \\\"False\\\") or overdue (overdue is \\\"True\\\") assignments are returned. If overdue is \\\"Any\\\" or if the overdue parameter is not supplied, all assignments are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar pass string // Specifies if only the failed (pass is \\\"False\\\") or passed (pass is \\\"True\\\") assignments (completed with assessment)are returned. If pass is \\\"Any\\\" or if the pass parameter is not supplied, all assignments are returned\nvar minPercentageScore float32 // The minimum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar maxPercentageScore float32 // The maximum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar sortOrder string // Specifies result set sort order; if not specified, default sort order is descending (Desc)\nvar sortBy string // Specifies which field to sort the results by, default sort is by recommendedCompletionDate\nvar types []string // Specifies the assignment types, currently not supported and will be ignored. For now, all learning assignments regardless of types will be returned\nvar states []string // Specifies the assignment states to filter by\nvar expand []string // Specifies the expand option for returning additional information\n// List of Learning Assignments assigned to current user\ndata, response, err := apiInstance.GetLearningAssignmentsMe(moduleId, interval, completionInterval, overdue, pageSize, pageNumber, pass, minPercentageScore, maxPercentageScore, sortOrder, sortBy, types, states, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningAssignmentsMe: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // Specifies the ID of the learning module. Fetch assignments for learning module ID\nvar interval string // Specifies the range of dueDates to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if only the non-overdue (overdue is \\\"False\\\") or overdue (overdue is \\\"True\\\") assignments are returned. If overdue is \\\"Any\\\" or if the overdue parameter is not supplied, all assignments are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar pass string // Specifies if only the failed (pass is \\\"False\\\") or passed (pass is \\\"True\\\") assignments (completed with assessment)are returned. If pass is \\\"Any\\\" or if the pass parameter is not supplied, all assignments are returned\nvar minPercentageScore float32 // The minimum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar maxPercentageScore float32 // The maximum assessment score for an assignment (completed with assessment) to be included in the results (inclusive)\nvar sortOrder string // Specifies result set sort order; if not specified, default sort order is descending (Desc)\nvar sortBy string // Specifies which field to sort the results by, default sort is by recommendedCompletionDate\nvar types []string // Specifies the module types to filter by\nvar states []string // Specifies the assignment states to filter by\nvar expand []string // Specifies the expand option for returning additional information\n// List of Learning Assignments assigned to current user\ndata, response, err := apiInstance.GetLearningAssignmentsMe(moduleId, interval, completionInterval, overdue, pageSize, pageNumber, pass, minPercentageScore, maxPercentageScore, sortOrder, sortBy, types, states, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningAssignmentsMe: %v\\n\", err)\n}"
   },
   "getlearningmodule": {
     "operationId": "getlearningmodule",
@@ -18666,6 +18685,42 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar trusteeUserId string // Id of the cloned user to delete\n// Deletes cloned user\nresponse, err := apiInstance.DeleteOrgauthorizationTrusteeCloneduser(trusteeOrgId, trusteeUserId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOrgauthorizationTrusteeCloneduser: %v\\n\", err)\n}"
   },
+  "deleteorgauthorizationtrusteegroup": {
+    "operationId": "deleteorgauthorizationtrusteegroup",
+    "functionName": "DeleteOrgauthorizationTrusteeGroup",
+    "signature": "DeleteOrgauthorizationTrusteeGroup(trusteeOrgId, trusteeGroupId)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trusteeGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar trusteeGroupId string // Trustee Group Id\n// Delete Trustee Group\nresponse, err := apiInstance.DeleteOrgauthorizationTrusteeGroup(trusteeOrgId, trusteeGroupId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOrgauthorizationTrusteeGroup: %v\\n\", err)\n}"
+  },
+  "deleteorgauthorizationtrusteegrouproles": {
+    "operationId": "deleteorgauthorizationtrusteegrouproles",
+    "functionName": "DeleteOrgauthorizationTrusteeGroupRoles",
+    "signature": "DeleteOrgauthorizationTrusteeGroupRoles(trusteeOrgId, trusteeGroupId)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trusteeGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar trusteeGroupId string // Trustee Group Id\n// Delete Trustee Group Roles\nresponse, err := apiInstance.DeleteOrgauthorizationTrusteeGroupRoles(trusteeOrgId, trusteeGroupId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOrgauthorizationTrusteeGroupRoles: %v\\n\", err)\n}"
+  },
   "deleteorgauthorizationtrusteeuser": {
     "operationId": "deleteorgauthorizationtrusteeuser",
     "functionName": "DeleteOrgauthorizationTrusteeUser",
@@ -18733,6 +18788,24 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustor Organization Id\nvar trusteeUserId string // Trustee User Id\n// Delete Cloned User\nresponse, err := apiInstance.DeleteOrgauthorizationTrustorCloneduser(trustorOrgId, trusteeUserId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOrgauthorizationTrustorCloneduser: %v\\n\", err)\n}"
   },
+  "deleteorgauthorizationtrustorgroup": {
+    "operationId": "deleteorgauthorizationtrustorgroup",
+    "functionName": "DeleteOrgauthorizationTrustorGroup",
+    "signature": "DeleteOrgauthorizationTrustorGroup(trustorOrgId, trustorGroupId)",
+    "parameters": [
+      {
+        "name": "trustorOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trustorGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustor Organization Id\nvar trustorGroupId string // Trustor Group Id\n// Delete Trustee Group\nresponse, err := apiInstance.DeleteOrgauthorizationTrustorGroup(trustorOrgId, trustorGroupId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOrgauthorizationTrustorGroup: %v\\n\", err)\n}"
+  },
   "deleteorgauthorizationtrustoruser": {
     "operationId": "deleteorgauthorizationtrustoruser",
     "functionName": "DeleteOrgauthorizationTrustorUser",
@@ -18792,6 +18865,68 @@
     ],
     "return": "Cloneduserentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\n// The list of cloned users from the trustee organization (i.e. users with a native user record).\ndata, response, err := apiInstance.GetOrgauthorizationTrusteeClonedusers(trusteeOrgId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrusteeClonedusers: %v\\n\", err)\n}"
+  },
+  "getorgauthorizationtrusteegroup": {
+    "operationId": "getorgauthorizationtrusteegroup",
+    "functionName": "GetOrgauthorizationTrusteeGroup",
+    "signature": "GetOrgauthorizationTrusteeGroup(trusteeOrgId, trusteeGroupId)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trusteeGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Trustgroup",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar trusteeGroupId string // Trustee Group Id\n// Get Trustee Group\ndata, response, err := apiInstance.GetOrgauthorizationTrusteeGroup(trusteeOrgId, trusteeGroupId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrusteeGroup: %v\\n\", err)\n}"
+  },
+  "getorgauthorizationtrusteegrouproles": {
+    "operationId": "getorgauthorizationtrusteegrouproles",
+    "functionName": "GetOrgauthorizationTrusteeGroupRoles",
+    "signature": "GetOrgauthorizationTrusteeGroupRoles(trusteeOrgId, trusteeGroupId)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trusteeGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Userauthorization",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar trusteeGroupId string // Trustee Group Id\n// Get Trustee Group Roles\ndata, response, err := apiInstance.GetOrgauthorizationTrusteeGroupRoles(trusteeOrgId, trusteeGroupId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrusteeGroupRoles: %v\\n\", err)\n}"
+  },
+  "getorgauthorizationtrusteegroups": {
+    "operationId": "getorgauthorizationtrusteegroups",
+    "functionName": "GetOrgauthorizationTrusteeGroups",
+    "signature": "GetOrgauthorizationTrusteeGroups(trusteeOrgId, pageSize, pageNumber)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Trustgroupentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// The list of trustee groups for this organization (i.e. groups granted access to this organization).\ndata, response, err := apiInstance.GetOrgauthorizationTrusteeGroups(trusteeOrgId, pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrusteeGroups: %v\\n\", err)\n}"
   },
   "getorgauthorizationtrusteeuser": {
     "operationId": "getorgauthorizationtrusteeuser",
@@ -18928,6 +19063,49 @@
     "return": "Cloneduserentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustor Organization Id\n// The list of cloned users in the trustor organization (i.e. users with a native user record).\ndata, response, err := apiInstance.GetOrgauthorizationTrustorClonedusers(trustorOrgId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrustorClonedusers: %v\\n\", err)\n}"
   },
+  "getorgauthorizationtrustorgroup": {
+    "operationId": "getorgauthorizationtrustorgroup",
+    "functionName": "GetOrgauthorizationTrustorGroup",
+    "signature": "GetOrgauthorizationTrustorGroup(trustorOrgId, trustorGroupId)",
+    "parameters": [
+      {
+        "name": "trustorOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trustorGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Trustgroup",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustor Organization Id\nvar trustorGroupId string // Trustor Group Id\n// Get Trustee Group\ndata, response, err := apiInstance.GetOrgauthorizationTrustorGroup(trustorOrgId, trustorGroupId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrustorGroup: %v\\n\", err)\n}"
+  },
+  "getorgauthorizationtrustorgroups": {
+    "operationId": "getorgauthorizationtrustorgroups",
+    "functionName": "GetOrgauthorizationTrustorGroups",
+    "signature": "GetOrgauthorizationTrustorGroups(trustorOrgId, pageSize, pageNumber)",
+    "parameters": [
+      {
+        "name": "trustorOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Trustgroupentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustee Organization Id\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// The list of groups in the trustor organization (i.e. groups granted access).\ndata, response, err := apiInstance.GetOrgauthorizationTrustorGroups(trustorOrgId, pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrustorGroups: %v\\n\", err)\n}"
+  },
   "getorgauthorizationtrustoruser": {
     "operationId": "getorgauthorizationtrustoruser",
     "functionName": "GetOrgauthorizationTrustorUser",
@@ -19003,6 +19181,25 @@
     ],
     "return": "Trustrequest",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar body platformclientv2.Trustrequestcreate // Pairing Info\n// A pairing id is created by the trustee and given to the trustor to create a trust.\ndata, response, err := apiInstance.PostOrgauthorizationPairings(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostOrgauthorizationPairings: %v\\n\", err)\n}"
+  },
+  "postorgauthorizationtrusteegroups": {
+    "operationId": "postorgauthorizationtrusteegroups",
+    "functionName": "PostOrgauthorizationTrusteeGroups",
+    "signature": "PostOrgauthorizationTrusteeGroups(trusteeOrgId, body)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Trustmembercreate",
+        "required": "true"
+      }
+    ],
+    "return": "Trustgroup",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar body platformclientv2.Trustmembercreate // Trust\n// Add a group to the trust.\ndata, response, err := apiInstance.PostOrgauthorizationTrusteeGroups(trusteeOrgId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostOrgauthorizationTrusteeGroups: %v\\n\", err)\n}"
   },
   "postorgauthorizationtrusteeusers": {
     "operationId": "postorgauthorizationtrusteeusers",
@@ -19143,6 +19340,54 @@
     "return": "Trustee",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar body platformclientv2.Trustupdate // Client\n// Update Org Trust\ndata, response, err := apiInstance.PutOrgauthorizationTrustee(trusteeOrgId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOrgauthorizationTrustee: %v\\n\", err)\n}"
   },
+  "putorgauthorizationtrusteegrouproledivisions": {
+    "operationId": "putorgauthorizationtrusteegrouproledivisions",
+    "functionName": "PutOrgauthorizationTrusteeGroupRoledivisions",
+    "signature": "PutOrgauthorizationTrusteeGroupRoledivisions(trusteeOrgId, trusteeGroupId, body)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trusteeGroupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Roledivisiongrants",
+        "required": "true"
+      }
+    ],
+    "return": "Userauthorization",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar trusteeGroupId string // Trustee Group Id\nvar body platformclientv2.Roledivisiongrants // Set of roles with corresponding divisions to apply\n// Update Trustee Group Roles\ndata, response, err := apiInstance.PutOrgauthorizationTrusteeGroupRoledivisions(trusteeOrgId, trusteeGroupId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOrgauthorizationTrusteeGroupRoledivisions: %v\\n\", err)\n}"
+  },
+  "putorgauthorizationtrusteegrouproles": {
+    "operationId": "putorgauthorizationtrusteegrouproles",
+    "functionName": "PutOrgauthorizationTrusteeGroupRoles",
+    "signature": "PutOrgauthorizationTrusteeGroupRoles(trusteeOrgId, trusteeGroupId, body)",
+    "parameters": [
+      {
+        "name": "trusteeOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trusteeGroupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "[]string",
+        "required": "true"
+      }
+    ],
+    "return": "Userauthorization",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trusteeOrgId string // Trustee Organization Id\nvar trusteeGroupId string // Trustee Group Id\nvar body platformclientv2.[]string // List of roles\n// Update Trustee Group Roles\ndata, response, err := apiInstance.PutOrgauthorizationTrusteeGroupRoles(trusteeOrgId, trusteeGroupId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOrgauthorizationTrusteeGroupRoles: %v\\n\", err)\n}"
+  },
   "putorgauthorizationtrusteeuserroledivisions": {
     "operationId": "putorgauthorizationtrusteeuserroledivisions",
     "functionName": "PutOrgauthorizationTrusteeUserRoledivisions",
@@ -19209,6 +19454,25 @@
     ],
     "return": "Cloneduser",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustor Organization Id\nvar trusteeUserId string // Trustee User Id\n// Creates a clone of the trustee user in the trustor org.\ndata, response, err := apiInstance.PutOrgauthorizationTrustorCloneduser(trustorOrgId, trusteeUserId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOrgauthorizationTrustorCloneduser: %v\\n\", err)\n}"
+  },
+  "putorgauthorizationtrustorgroup": {
+    "operationId": "putorgauthorizationtrustorgroup",
+    "functionName": "PutOrgauthorizationTrustorGroup",
+    "signature": "PutOrgauthorizationTrustorGroup(trustorOrgId, trustorGroupId)",
+    "parameters": [
+      {
+        "name": "trustorOrgId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "trustorGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Trustgroup",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustor Organization Id\nvar trustorGroupId string // Trustor Group Id\n// Add a Trustee Group to the trust.\ndata, response, err := apiInstance.PutOrgauthorizationTrustorGroup(trustorOrgId, trustorGroupId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOrgauthorizationTrustorGroup: %v\\n\", err)\n}"
   },
   "putorgauthorizationtrustoruser": {
     "operationId": "putorgauthorizationtrustoruser",
@@ -34222,6 +34486,25 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar deploymentId string // The deployment ID\n// Delete a deployment\nresponse, err := apiInstance.DeleteWebdeploymentsDeployment(deploymentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWebdeploymentsDeployment: %v\\n\", err)\n}"
   },
+  "deletewebdeploymentsdeploymentcobrowsesessionid": {
+    "operationId": "deletewebdeploymentsdeploymentcobrowsesessionid",
+    "functionName": "DeleteWebdeploymentsDeploymentCobrowseSessionId",
+    "signature": "DeleteWebdeploymentsDeploymentCobrowseSessionId(deploymentId, sessionId)",
+    "parameters": [
+      {
+        "name": "deploymentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sessionId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "interface{}",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar deploymentId string // WebMessaging deployment ID\nvar sessionId string // Cobrowse session id or join code\n// Deletes a cobrowse session\ndata, response, err := apiInstance.DeleteWebdeploymentsDeploymentCobrowseSessionId(deploymentId, sessionId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWebdeploymentsDeploymentCobrowseSessionId: %v\\n\", err)\n}"
+  },
   "deletewebdeploymentstokenrevoke": {
     "operationId": "deletewebdeploymentstokenrevoke",
     "functionName": "DeleteWebdeploymentsTokenRevoke",
@@ -34314,6 +34597,25 @@
     ],
     "return": "Webdeployment",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar deploymentId string // The deployment ID\n// Get a deployment\ndata, response, err := apiInstance.GetWebdeploymentsDeployment(deploymentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWebdeploymentsDeployment: %v\\n\", err)\n}"
+  },
+  "getwebdeploymentsdeploymentcobrowsesessionid": {
+    "operationId": "getwebdeploymentsdeploymentcobrowsesessionid",
+    "functionName": "GetWebdeploymentsDeploymentCobrowseSessionId",
+    "signature": "GetWebdeploymentsDeploymentCobrowseSessionId(deploymentId, sessionId)",
+    "parameters": [
+      {
+        "name": "deploymentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sessionId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Cobrowsewebmessagingsession",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar deploymentId string // WebMessaging deployment ID\nvar sessionId string // Cobrowse session id or join code\n// Retrieves a cobrowse session\ndata, response, err := apiInstance.GetWebdeploymentsDeploymentCobrowseSessionId(deploymentId, sessionId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWebdeploymentsDeploymentCobrowseSessionId: %v\\n\", err)\n}"
   },
   "getwebdeploymentsdeploymentconfigurations": {
     "operationId": "getwebdeploymentsdeploymentconfigurations",

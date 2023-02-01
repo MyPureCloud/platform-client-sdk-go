@@ -8699,6 +8699,77 @@ func (a ConversationsApi) PostConversationAssign(conversationId string, body Con
 	return successPayload, response, err
 }
 
+// PostConversationCobrowse invokes POST /api/v2/conversations/{conversationId}/cobrowse
+//
+// Creates a cobrowse session
+func (a ConversationsApi) PostConversationCobrowse(conversationId string) (*Cobrowsewebmessagingsession, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/cobrowse"
+	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	defaultReturn := new(Cobrowsewebmessagingsession)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationCobrowse")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cobrowsewebmessagingsession
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Cobrowsewebmessagingsession" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostConversationDisconnect invokes POST /api/v2/conversations/{conversationId}/disconnect
 //
 // Performs a full conversation teardown. Issues disconnect requests for any connected media. Applies a system wrap-up code to any participants that are pending wrap-up. This is not intended to be the normal way of ending interactions but is available in the event of problems with the application to allow a resynchronization of state across all components. It is recommended that users submit a support case if they are relying on this endpoint systematically as there is likely something that needs investigation.
@@ -10366,12 +10437,12 @@ func (a ConversationsApi) PostConversationsEmailInboundmessages(conversationId s
 // PostConversationsEmailMessages invokes POST /api/v2/conversations/emails/{conversationId}/messages
 //
 // Send an email reply
-func (a ConversationsApi) PostConversationsEmailMessages(conversationId string, body Emailmessage) (*Emailmessage, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsEmailMessages(conversationId string, body Emailmessage) (*Emailmessagereply, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/emails/{conversationId}/messages"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	defaultReturn := new(Emailmessage)
+	defaultReturn := new(Emailmessagereply)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -10426,14 +10497,14 @@ func (a ConversationsApi) PostConversationsEmailMessages(conversationId string, 
 	// body params
 	postBody = &body
 
-	var successPayload *Emailmessage
+	var successPayload *Emailmessagereply
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Emailmessage" == "string" {
+		if "Emailmessagereply" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

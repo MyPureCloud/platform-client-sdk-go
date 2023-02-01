@@ -442,7 +442,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 // GetLanguageunderstandingDomainFeedback invokes GET /api/v2/languageunderstanding/domains/{domainId}/feedback
 //
 // Get all feedback in the given NLU Domain Version.
-func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, language string, pageNumber int, pageSize int, enableCursorPagination bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, language string, pageNumber int, pageSize int, enableCursorPagination bool, includeTrainingUtterances bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback"
@@ -492,6 +492,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["enableCursorPagination"] = a.Configuration.APIClient.ParameterToString(enableCursorPagination, "")
+	
+	queryParams["includeTrainingUtterances"] = a.Configuration.APIClient.ParameterToString(includeTrainingUtterances, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	

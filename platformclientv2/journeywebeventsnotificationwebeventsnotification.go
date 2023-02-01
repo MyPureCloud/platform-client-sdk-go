@@ -44,6 +44,9 @@ type Journeywebeventsnotificationwebeventsnotification struct {
 
 	// OutcomeAchievedEvent
 	OutcomeAchievedEvent *Journeywebeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
+
+	// SegmentAssignmentEvent
+	SegmentAssignmentEvent *Journeywebeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -86,7 +89,9 @@ func (o Journeywebeventsnotificationwebeventsnotification) MarshalJSON() ([]byte
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -136,6 +141,8 @@ func (o Journeywebeventsnotificationwebeventsnotification) MarshalJSON() ([]byte
 		WebActionEvent *Journeywebeventsnotificationwebactionmessage `json:"webActionEvent,omitempty"`
 		
 		OutcomeAchievedEvent *Journeywebeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
+		
+		SegmentAssignmentEvent *Journeywebeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -159,6 +166,8 @@ func (o Journeywebeventsnotificationwebeventsnotification) MarshalJSON() ([]byte
 		WebActionEvent: o.WebActionEvent,
 		
 		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
+		
+		SegmentAssignmentEvent: o.SegmentAssignmentEvent,
 		Alias:    (Alias)(o),
 	})
 }
@@ -218,6 +227,11 @@ func (o *Journeywebeventsnotificationwebeventsnotification) UnmarshalJSON(b []by
 	if OutcomeAchievedEvent, ok := JourneywebeventsnotificationwebeventsnotificationMap["outcomeAchievedEvent"].(map[string]interface{}); ok {
 		OutcomeAchievedEventString, _ := json.Marshal(OutcomeAchievedEvent)
 		json.Unmarshal(OutcomeAchievedEventString, &o.OutcomeAchievedEvent)
+	}
+	
+	if SegmentAssignmentEvent, ok := JourneywebeventsnotificationwebeventsnotificationMap["segmentAssignmentEvent"].(map[string]interface{}); ok {
+		SegmentAssignmentEventString, _ := json.Marshal(SegmentAssignmentEvent)
+		json.Unmarshal(SegmentAssignmentEventString, &o.SegmentAssignmentEvent)
 	}
 	
 

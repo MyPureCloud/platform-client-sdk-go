@@ -117,6 +117,9 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 	// EndAcwTime
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+	// MediaRoles
+	MediaRoles *[]string `json:"mediaRoles,omitempty"`
+
 	// Muted
 	Muted *bool `json:"muted,omitempty"`
 
@@ -200,7 +203,9 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -347,6 +352,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
 		
+		MediaRoles *[]string `json:"mediaRoles,omitempty"`
+		
 		Muted *bool `json:"muted,omitempty"`
 		
 		Confined *bool `json:"confined,omitempty"`
@@ -445,6 +452,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
+		
+		MediaRoles: o.MediaRoles,
 		
 		Muted: o.Muted,
 		
@@ -641,6 +650,11 @@ func (o *Conversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []byte)
 	if endAcwTimeString, ok := ConversationcalleventtopiccallmediaparticipantMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if MediaRoles, ok := ConversationcalleventtopiccallmediaparticipantMap["mediaRoles"].([]interface{}); ok {
+		MediaRolesString, _ := json.Marshal(MediaRoles)
+		json.Unmarshal(MediaRolesString, &o.MediaRoles)
 	}
 	
 	if Muted, ok := ConversationcalleventtopiccallmediaparticipantMap["muted"].(bool); ok {

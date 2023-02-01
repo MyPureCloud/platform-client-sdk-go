@@ -248,6 +248,8 @@ func (a StationsApi) GetStations(pageSize int, pageNumber int, sortBy string, na
 // GetStationsSettings invokes GET /api/v2/stations/settings
 //
 // Get an organization's StationSettings
+//
+// This route is deprecated as the FreeSeatingConfiguration feature it references has been removed
 func (a StationsApi) GetStationsSettings() (*Stationsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -313,6 +315,8 @@ func (a StationsApi) GetStationsSettings() (*Stationsettings, *APIResponse, erro
 // PatchStationsSettings invokes PATCH /api/v2/stations/settings
 //
 // Patch an organization's StationSettings
+//
+// This route is deprecated as the FreeSeatingConfiguration feature it references has been removed
 func (a StationsApi) PatchStationsSettings(body Stationsettings) (*Stationsettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

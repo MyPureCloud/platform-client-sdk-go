@@ -51,6 +51,9 @@ type Emailmessage struct {
 	// HistoryIncluded - Indicates whether the history of previous emails of the conversation is included within the email bodies of this message.
 	HistoryIncluded *bool `json:"historyIncluded,omitempty"`
 
+	// State
+	State *string `json:"state,omitempty"`
+
 	// EmailSizeBytes - Indicates an estimation of the size of the current email as a whole, in its final, ready to be sent form.
 	EmailSizeBytes *int `json:"emailSizeBytes,omitempty"`
 
@@ -101,7 +104,9 @@ func (o Emailmessage) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -156,6 +161,8 @@ func (o Emailmessage) MarshalJSON() ([]byte, error) {
 		
 		HistoryIncluded *bool `json:"historyIncluded,omitempty"`
 		
+		State *string `json:"state,omitempty"`
+		
 		EmailSizeBytes *int `json:"emailSizeBytes,omitempty"`
 		
 		MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
@@ -188,6 +195,8 @@ func (o Emailmessage) MarshalJSON() ([]byte, error) {
 		Time: Time,
 		
 		HistoryIncluded: o.HistoryIncluded,
+		
+		State: o.State,
 		
 		EmailSizeBytes: o.EmailSizeBytes,
 		
@@ -262,6 +271,10 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
 	
 	if HistoryIncluded, ok := EmailmessageMap["historyIncluded"].(bool); ok {
 		o.HistoryIncluded = &HistoryIncluded
+	}
+    
+	if State, ok := EmailmessageMap["state"].(string); ok {
+		o.State = &State
 	}
     
 	if EmailSizeBytes, ok := EmailmessageMap["emailSizeBytes"].(float64); ok {

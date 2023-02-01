@@ -87,6 +87,9 @@ type Conversationeventtopicparticipant struct {
 	// BargedParticipantId - If this participant created a barge in conference, then this will be the id of the participant that is barged in.
 	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
 
+	// MediaRoles - List of roles this participant's media has had on the conversation, ie monitor, coach, etc.
+	MediaRoles *[]string `json:"mediaRoles,omitempty"`
+
 	// ScreenRecordingState - The current screen recording state for this participant.
 	ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
 
@@ -170,7 +173,9 @@ func (o Conversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -273,6 +278,8 @@ func (o Conversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 		
 		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
 		
+		MediaRoles *[]string `json:"mediaRoles,omitempty"`
+		
 		ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
 		
 		FlaggedReason *string `json:"flaggedReason,omitempty"`
@@ -351,6 +358,8 @@ func (o Conversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 		CoachedParticipantId: o.CoachedParticipantId,
 		
 		BargedParticipantId: o.BargedParticipantId,
+		
+		MediaRoles: o.MediaRoles,
 		
 		ScreenRecordingState: o.ScreenRecordingState,
 		
@@ -498,6 +507,11 @@ func (o *Conversationeventtopicparticipant) UnmarshalJSON(b []byte) error {
 		o.BargedParticipantId = &BargedParticipantId
 	}
     
+	if MediaRoles, ok := ConversationeventtopicparticipantMap["mediaRoles"].([]interface{}); ok {
+		MediaRolesString, _ := json.Marshal(MediaRoles)
+		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
 	if ScreenRecordingState, ok := ConversationeventtopicparticipantMap["screenRecordingState"].(string); ok {
 		o.ScreenRecordingState = &ScreenRecordingState
 	}

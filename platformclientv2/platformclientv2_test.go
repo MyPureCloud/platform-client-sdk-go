@@ -6,6 +6,7 @@ import (
 	"os"
 	"reflect"
 	"testing"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -207,6 +208,8 @@ func TestCustomSerialization3(t *testing.T) {
 	patchBody.SetField("Id", String("333-333"))
 	patchBody.SetField("Version", Int(3))
 	patchBody.SetField("DisplayName", nil)
+	parsedDate, _ := time.Parse(time.RFC3339, "2023-02-01T08:52:04.571291Z")
+	patchBody.SetField("EndDate", &parsedDate)
 
 	// Use default serialization on nested struct
 	patchAction := Patchaction{}
@@ -221,7 +224,7 @@ func TestCustomSerialization3(t *testing.T) {
 		t.Error(err)
 	}
 	s := string(j)
-	expected := `{"action":{"actionTargetId":"12345","isPacingEnabled":false},"displayName":null,"id":"333-333","version":3}`
+	expected := `{"action":{"actionTargetId":"12345","isPacingEnabled":false},"displayName":null,"endDate":"2023-02-01T08:52:04.571291Z","id":"333-333","version":3}`
 	if s != expected {
 		t.Log("Patchactionmap did not serialize correctly")
 		t.Logf("Expected: %v", expected)
@@ -241,6 +244,7 @@ func TestCustomSerialization4(t *testing.T) {
 	patchBody.SetField("Id", String("444-444"))
 	patchBody.SetField("Version", Int(4))
 	patchBody.SetField("DisplayName", nil)
+	patchBody.SetField("EndDate", nil)
 
 	// Use custom serialization on nested struct
 	patchAction := Patchaction{}
@@ -255,7 +259,7 @@ func TestCustomSerialization4(t *testing.T) {
 		t.Error(err)
 	}
 	s := string(j)
-	expected := `{"action":{"actionTargetId":"12345","mediaType":null},"displayName":null,"id":"444-444","version":4}`
+	expected := `{"action":{"actionTargetId":"12345","mediaType":null},"displayName":null,"endDate":null,"id":"444-444","version":4}`
 	if s != expected {
 		t.Log("Patchactionmap did not serialize correctly")
 		t.Logf("Expected: %v", expected)

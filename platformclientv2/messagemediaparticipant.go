@@ -54,6 +54,9 @@ type Messagemediaparticipant struct {
 	// WrapupPrompt - The wrap-up prompt indicating the type of wrap-up to be performed.
 	WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
 
+	// MediaRoles - List of roles this participant's media has had on the conversation, ie monitor, coach, etc
+	MediaRoles *[]string `json:"mediaRoles,omitempty"`
+
 	// User - The PureCloud user for this participant.
 	User *Domainentityref `json:"user,omitempty"`
 
@@ -173,7 +176,9 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if contains(dateTimeFields, fieldName) {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
 			} else if contains(localDateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
@@ -270,6 +275,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
 		
+		MediaRoles *[]string `json:"mediaRoles,omitempty"`
+		
 		User *Domainentityref `json:"user,omitempty"`
 		
 		Queue *Domainentityref `json:"queue,omitempty"`
@@ -350,6 +357,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		WrapupRequired: o.WrapupRequired,
 		
 		WrapupPrompt: o.WrapupPrompt,
+		
+		MediaRoles: o.MediaRoles,
 		
 		User: o.User,
 		
@@ -473,6 +482,11 @@ func (o *Messagemediaparticipant) UnmarshalJSON(b []byte) error {
 		o.WrapupPrompt = &WrapupPrompt
 	}
     
+	if MediaRoles, ok := MessagemediaparticipantMap["mediaRoles"].([]interface{}); ok {
+		MediaRolesString, _ := json.Marshal(MediaRoles)
+		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
 	if User, ok := MessagemediaparticipantMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)

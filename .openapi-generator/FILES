@@ -115,10 +115,13 @@ docs/DeleteNotificationsChannelSubscriptions-example.txt
 docs/DeleteOauthClient-example.txt
 docs/DeleteOrgauthorizationTrustee-example.txt
 docs/DeleteOrgauthorizationTrusteeCloneduser-example.txt
+docs/DeleteOrgauthorizationTrusteeGroup-example.txt
+docs/DeleteOrgauthorizationTrusteeGroupRoles-example.txt
 docs/DeleteOrgauthorizationTrusteeUser-example.txt
 docs/DeleteOrgauthorizationTrusteeUserRoles-example.txt
 docs/DeleteOrgauthorizationTrustor-example.txt
 docs/DeleteOrgauthorizationTrustorCloneduser-example.txt
+docs/DeleteOrgauthorizationTrustorGroup-example.txt
 docs/DeleteOrgauthorizationTrustorUser-example.txt
 docs/DeleteOrphanrecording-example.txt
 docs/DeleteOutboundAttemptlimit-example.txt
@@ -218,6 +221,7 @@ docs/DeleteWebchatGuestConversationMember-example.txt
 docs/DeleteWebchatSettings-example.txt
 docs/DeleteWebdeploymentsConfiguration-example.txt
 docs/DeleteWebdeploymentsDeployment-example.txt
+docs/DeleteWebdeploymentsDeploymentCobrowseSessionId-example.txt
 docs/DeleteWebdeploymentsTokenRevoke-example.txt
 docs/DeleteWidgetsDeployment-example.txt
 docs/DeleteWorkforcemanagementBusinessunit-example.txt
@@ -723,6 +727,9 @@ docs/GetOrganizationsWhitelist-example.txt
 docs/GetOrgauthorizationPairing-example.txt
 docs/GetOrgauthorizationTrustee-example.txt
 docs/GetOrgauthorizationTrusteeClonedusers-example.txt
+docs/GetOrgauthorizationTrusteeGroup-example.txt
+docs/GetOrgauthorizationTrusteeGroupRoles-example.txt
+docs/GetOrgauthorizationTrusteeGroups-example.txt
 docs/GetOrgauthorizationTrusteeUser-example.txt
 docs/GetOrgauthorizationTrusteeUserRoles-example.txt
 docs/GetOrgauthorizationTrusteeUsers-example.txt
@@ -731,6 +738,8 @@ docs/GetOrgauthorizationTrusteesDefault-example.txt
 docs/GetOrgauthorizationTrustor-example.txt
 docs/GetOrgauthorizationTrustorCloneduser-example.txt
 docs/GetOrgauthorizationTrustorClonedusers-example.txt
+docs/GetOrgauthorizationTrustorGroup-example.txt
+docs/GetOrgauthorizationTrustorGroups-example.txt
 docs/GetOrgauthorizationTrustorUser-example.txt
 docs/GetOrgauthorizationTrustorUsers-example.txt
 docs/GetOrgauthorizationTrustors-example.txt
@@ -1113,6 +1122,7 @@ docs/GetWebdeploymentsConfigurationVersions-example.txt
 docs/GetWebdeploymentsConfigurationVersionsDraft-example.txt
 docs/GetWebdeploymentsConfigurations-example.txt
 docs/GetWebdeploymentsDeployment-example.txt
+docs/GetWebdeploymentsDeploymentCobrowseSessionId-example.txt
 docs/GetWebdeploymentsDeploymentConfigurations-example.txt
 docs/GetWebdeploymentsDeployments-example.txt
 docs/GetWebmessagingMessages-example.txt
@@ -1423,6 +1433,7 @@ docs/PostContentmanagementWorkspaceTagvalues-example.txt
 docs/PostContentmanagementWorkspaceTagvaluesQuery-example.txt
 docs/PostContentmanagementWorkspaces-example.txt
 docs/PostConversationAssign-example.txt
+docs/PostConversationCobrowse-example.txt
 docs/PostConversationDisconnect-example.txt
 docs/PostConversationParticipantCallbacks-example.txt
 docs/PostConversationParticipantDigits-example.txt
@@ -1606,6 +1617,7 @@ docs/PostOauthClientSecret-example.txt
 docs/PostOauthClientUsageQuery-example.txt
 docs/PostOauthClients-example.txt
 docs/PostOrgauthorizationPairings-example.txt
+docs/PostOrgauthorizationTrusteeGroups-example.txt
 docs/PostOrgauthorizationTrusteeUsers-example.txt
 docs/PostOrgauthorizationTrustees-example.txt
 docs/PostOrgauthorizationTrusteesAudits-example.txt
@@ -1921,9 +1933,12 @@ docs/PutOrganizationsIpaddressauthentication-example.txt
 docs/PutOrganizationsMe-example.txt
 docs/PutOrganizationsWhitelist-example.txt
 docs/PutOrgauthorizationTrustee-example.txt
+docs/PutOrgauthorizationTrusteeGroupRoledivisions-example.txt
+docs/PutOrgauthorizationTrusteeGroupRoles-example.txt
 docs/PutOrgauthorizationTrusteeUserRoledivisions-example.txt
 docs/PutOrgauthorizationTrusteeUserRoles-example.txt
 docs/PutOrgauthorizationTrustorCloneduser-example.txt
+docs/PutOrgauthorizationTrustorGroup-example.txt
 docs/PutOrgauthorizationTrustorUser-example.txt
 docs/PutOrphanrecording-example.txt
 docs/PutOutboundAttemptlimit-example.txt
@@ -2583,6 +2598,7 @@ platformclientv2/cobrowseconversationentitylisting.go
 platformclientv2/cobrowsemediaparticipant.go
 platformclientv2/cobrowsesession.go
 platformclientv2/cobrowsesettings.go
+platformclientv2/cobrowsewebmessagingsession.go
 platformclientv2/columndatatypespecification.go
 platformclientv2/columnstatus.go
 platformclientv2/commandstatus.go
@@ -2596,6 +2612,8 @@ platformclientv2/communicationdispositionappliedevent.go
 platformclientv2/communicationendedevent.go
 platformclientv2/comparisonperiod.go
 platformclientv2/comparisonperiodlisting.go
+platformclientv2/compliance.go
+platformclientv2/complianceresponse.go
 platformclientv2/condition.go
 platformclientv2/conditionalgrouprouting.go
 platformclientv2/conditionalgrouproutingrule.go
@@ -3291,6 +3309,7 @@ platformclientv2/emailmediapolicy.go
 platformclientv2/emailmediapolicyconditions.go
 platformclientv2/emailmessage.go
 platformclientv2/emailmessagelisting.go
+platformclientv2/emailmessagereply.go
 platformclientv2/emailoutbounddomainresult.go
 platformclientv2/emailsetup.go
 platformclientv2/emailssettings.go
@@ -3551,6 +3570,7 @@ platformclientv2/guestmemberinfo.go
 platformclientv2/headcountforecast.go
 platformclientv2/headcountinterval.go
 platformclientv2/helplink.go
+platformclientv2/helpsettings.go
 platformclientv2/historicaladherenceactuals.go
 platformclientv2/historicaladherencedaymetrics.go
 platformclientv2/historicaladherenceexceptioninfo.go
@@ -3710,6 +3730,8 @@ platformclientv2/journeywebeventsnotificationoutcome.go
 platformclientv2/journeywebeventsnotificationoutcomeachievedmessage.go
 platformclientv2/journeywebeventsnotificationpage.go
 platformclientv2/journeywebeventsnotificationreferrer.go
+platformclientv2/journeywebeventsnotificationsegment.go
+platformclientv2/journeywebeventsnotificationsegmentassignmentmessage.go
 platformclientv2/journeywebeventsnotificationsession.go
 platformclientv2/journeywebeventsnotificationwebactionmessage.go
 platformclientv2/journeywebeventsnotificationwebeventsnotification.go
@@ -4086,6 +4108,7 @@ platformclientv2/openmessagingfromrecipient.go
 platformclientv2/openmessagingtorecipient.go
 platformclientv2/opennormalizedmessage.go
 platformclientv2/operation.go
+platformclientv2/optinsettings.go
 platformclientv2/organization.go
 platformclientv2/organizationapi.go
 platformclientv2/organizationauthorizationapi.go
@@ -4126,6 +4149,7 @@ platformclientv2/outboundrouteentitylisting.go
 platformclientv2/outboundsettings.go
 platformclientv2/outcome.go
 platformclientv2/outcomeachievement.go
+platformclientv2/outcomeconfig.go
 platformclientv2/outcomeeventscore.go
 platformclientv2/outcomelisting.go
 platformclientv2/outcomeprobabilitycondition.go
@@ -4864,6 +4888,7 @@ platformclientv2/stationsettings.go
 platformclientv2/statisticalresponse.go
 platformclientv2/statisticalsummary.go
 platformclientv2/statuschange.go
+platformclientv2/stopsettings.go
 platformclientv2/storysetting.go
 platformclientv2/streetaddress.go
 platformclientv2/subjectdivisiongrants.go
@@ -5067,6 +5092,7 @@ platformclientv2/trusteeauthorization.go
 platformclientv2/trusteebillingoverview.go
 platformclientv2/trustentitylisting.go
 platformclientv2/trustgroup.go
+platformclientv2/trustgroupentitylisting.go
 platformclientv2/trustmembercreate.go
 platformclientv2/trustor.go
 platformclientv2/trustorauditqueryrequest.go
