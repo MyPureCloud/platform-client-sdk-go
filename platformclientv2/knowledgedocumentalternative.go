@@ -11,7 +11,7 @@ import (
 type Knowledgedocumentalternative struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Phrase - Alternate phrasing to the document title.
+	// Phrase - Alternate phrasing to the document title, having a limit of 500 words.
 	Phrase *string `json:"phrase,omitempty"`
 
 	// Autocomplete - Autocomplete enabled for the alternate phrase.

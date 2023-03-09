@@ -23,6 +23,9 @@ type Callconversation struct {
 	// OtherMediaUris - The list of other media channels involved in the conversation.
 	OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 
+	// RecentTransfers - The list of the most recent 20 transfer commands applied to this conversation.
+	RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
+
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
@@ -104,6 +107,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		
+		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
+		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
 		MaxParticipants *int `json:"maxParticipants,omitempty"`
@@ -118,6 +123,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		Participants: o.Participants,
 		
 		OtherMediaUris: o.OtherMediaUris,
+		
+		RecentTransfers: o.RecentTransfers,
 		
 		RecordingState: o.RecordingState,
 		
@@ -151,6 +158,11 @@ func (o *Callconversation) UnmarshalJSON(b []byte) error {
 	if OtherMediaUris, ok := CallconversationMap["otherMediaUris"].([]interface{}); ok {
 		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
 		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+	if RecentTransfers, ok := CallconversationMap["recentTransfers"].([]interface{}); ok {
+		RecentTransfersString, _ := json.Marshal(RecentTransfers)
+		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
 	}
 	
 	if RecordingState, ok := CallconversationMap["recordingState"].(string); ok {

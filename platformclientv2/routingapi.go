@@ -4777,7 +4777,7 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 // GetRoutingSmsPhonenumber invokes GET /api/v2/routing/sms/phonenumbers/{addressId}
 //
 // Get a phone number provisioned for SMS.
-func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string, expand string) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
@@ -4809,6 +4809,8 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber,
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header
@@ -5435,6 +5437,83 @@ func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Userskillentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetUserSkillgroups invokes GET /api/v2/users/{userId}/skillgroups
+//
+// Get skill groups for a user
+func (a RoutingApi) GetUserSkillgroups(userId string, pageSize int, after string, before string) (*Userskillgroupentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/users/{userId}/skillgroups"
+	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	defaultReturn := new(Userskillgroupentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling RoutingApi->GetUserSkillgroups")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Userskillgroupentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Userskillgroupentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

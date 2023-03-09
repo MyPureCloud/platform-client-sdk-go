@@ -469,6 +469,15 @@ type Viewfilter struct {
 
 	// CanonicalContactIds - The canonical contact ids are used to filter the view
 	CanonicalContactIds *[]string `json:"canonicalContactIds,omitempty"`
+
+	// AlertRuleIds - The list of Alert Rule IDs
+	AlertRuleIds *[]string `json:"alertRuleIds,omitempty"`
+
+	// EvaluationFormContextIds - The list of Evaluation Form Context IDs
+	EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
+
+	// EvaluationStatuses - The evaluation statuses that are used to filter the view
+	EvaluationStatuses *[]string `json:"evaluationStatuses,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -839,6 +848,12 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		StationErrors *[]string `json:"stationErrors,omitempty"`
 		
 		CanonicalContactIds *[]string `json:"canonicalContactIds,omitempty"`
+		
+		AlertRuleIds *[]string `json:"alertRuleIds,omitempty"`
+		
+		EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
+		
+		EvaluationStatuses *[]string `json:"evaluationStatuses,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1146,6 +1161,12 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		StationErrors: o.StationErrors,
 		
 		CanonicalContactIds: o.CanonicalContactIds,
+		
+		AlertRuleIds: o.AlertRuleIds,
+		
+		EvaluationFormContextIds: o.EvaluationFormContextIds,
+		
+		EvaluationStatuses: o.EvaluationStatuses,
 		Alias:    (Alias)(o),
 	})
 }
@@ -1888,6 +1909,21 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if CanonicalContactIds, ok := ViewfilterMap["canonicalContactIds"].([]interface{}); ok {
 		CanonicalContactIdsString, _ := json.Marshal(CanonicalContactIds)
 		json.Unmarshal(CanonicalContactIdsString, &o.CanonicalContactIds)
+	}
+	
+	if AlertRuleIds, ok := ViewfilterMap["alertRuleIds"].([]interface{}); ok {
+		AlertRuleIdsString, _ := json.Marshal(AlertRuleIds)
+		json.Unmarshal(AlertRuleIdsString, &o.AlertRuleIds)
+	}
+	
+	if EvaluationFormContextIds, ok := ViewfilterMap["evaluationFormContextIds"].([]interface{}); ok {
+		EvaluationFormContextIdsString, _ := json.Marshal(EvaluationFormContextIds)
+		json.Unmarshal(EvaluationFormContextIdsString, &o.EvaluationFormContextIds)
+	}
+	
+	if EvaluationStatuses, ok := ViewfilterMap["evaluationStatuses"].([]interface{}); ok {
+		EvaluationStatusesString, _ := json.Marshal(EvaluationStatuses)
+		json.Unmarshal(EvaluationStatusesString, &o.EvaluationStatuses)
 	}
 	
 

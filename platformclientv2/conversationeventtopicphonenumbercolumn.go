@@ -16,9 +16,6 @@ type Conversationeventtopicphonenumbercolumn struct {
 
 	// VarType
 	VarType *string `json:"type,omitempty"`
-
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -87,15 +84,11 @@ func (o Conversationeventtopicphonenumbercolumn) MarshalJSON() ([]byte, error) {
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
-		
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -115,11 +108,6 @@ func (o *Conversationeventtopicphonenumbercolumn) UnmarshalJSON(b []byte) error 
 		o.VarType = &VarType
 	}
     
-	if AdditionalProperties, ok := ConversationeventtopicphonenumbercolumnMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
-	}
-	
 
 	return nil
 }

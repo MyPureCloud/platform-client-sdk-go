@@ -14,6 +14,12 @@ type Channeltopic struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// State
+	State *string `json:"state,omitempty"`
+
+	// RejectionReason
+	RejectionReason *string `json:"rejectionReason,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -83,10 +89,18 @@ func (o Channeltopic) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		State *string `json:"state,omitempty"`
+		
+		RejectionReason *string `json:"rejectionReason,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		State: o.State,
+		
+		RejectionReason: o.RejectionReason,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -102,6 +116,14 @@ func (o *Channeltopic) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := ChanneltopicMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if State, ok := ChanneltopicMap["state"].(string); ok {
+		o.State = &State
+	}
+    
+	if RejectionReason, ok := ChanneltopicMap["rejectionReason"].(string); ok {
+		o.RejectionReason = &RejectionReason
 	}
     
 	if SelfUri, ok := ChanneltopicMap["selfUri"].(string); ok {

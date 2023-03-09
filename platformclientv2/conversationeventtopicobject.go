@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Conversationeventtopicobject
+// Conversationeventtopicobject - The number of peer participants from the perspective of the participant in the conference.
 type Conversationeventtopicobject struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`}

@@ -26,9 +26,6 @@ type Queueconversationcalleventtopicwrapup struct {
 
 	// EndTime - The timestamp when the wrapup was finished.
 	EndTime *time.Time `json:"endTime,omitempty"`
-
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -111,8 +108,6 @@ func (o Queueconversationcalleventtopicwrapup) MarshalJSON() ([]byte, error) {
 		DurationSeconds *int `json:"durationSeconds,omitempty"`
 		
 		EndTime *string `json:"endTime,omitempty"`
-		
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		Alias
 	}{ 
 		Code: o.Code,
@@ -124,8 +119,6 @@ func (o Queueconversationcalleventtopicwrapup) MarshalJSON() ([]byte, error) {
 		DurationSeconds: o.DurationSeconds,
 		
 		EndTime: EndTime,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -158,11 +151,6 @@ func (o *Queueconversationcalleventtopicwrapup) UnmarshalJSON(b []byte) error {
 	if endTimeString, ok := QueueconversationcalleventtopicwrapupMap["endTime"].(string); ok {
 		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
 		o.EndTime = &EndTime
-	}
-	
-	if AdditionalProperties, ok := QueueconversationcalleventtopicwrapupMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

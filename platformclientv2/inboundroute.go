@@ -56,6 +56,9 @@ type Inboundroute struct {
 	// HistoryInclusion - The configuration to indicate how the history of a conversation has to be included in a draft
 	HistoryInclusion *string `json:"historyInclusion,omitempty"`
 
+	// AllowMultipleActions - Control if multiple actions are allowed on this route. When true the disconnect has to be done manually. When false a conversation will be disconnected by the system after every action
+	AllowMultipleActions *bool `json:"allowMultipleActions,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -153,6 +156,8 @@ func (o Inboundroute) MarshalJSON() ([]byte, error) {
 		
 		HistoryInclusion *string `json:"historyInclusion,omitempty"`
 		
+		AllowMultipleActions *bool `json:"allowMultipleActions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -185,6 +190,8 @@ func (o Inboundroute) MarshalJSON() ([]byte, error) {
 		Signature: o.Signature,
 		
 		HistoryInclusion: o.HistoryInclusion,
+		
+		AllowMultipleActions: o.AllowMultipleActions,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -265,6 +272,10 @@ func (o *Inboundroute) UnmarshalJSON(b []byte) error {
 	
 	if HistoryInclusion, ok := InboundrouteMap["historyInclusion"].(string); ok {
 		o.HistoryInclusion = &HistoryInclusion
+	}
+    
+	if AllowMultipleActions, ok := InboundrouteMap["allowMultipleActions"].(bool); ok {
+		o.AllowMultipleActions = &AllowMultipleActions
 	}
     
 	if SelfUri, ok := InboundrouteMap["selfUri"].(string); ok {

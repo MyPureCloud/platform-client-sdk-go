@@ -53,6 +53,9 @@ type Station struct {
 	// WebRtcCallAppearances - The number of call appearances on the station.
 	WebRtcCallAppearances *int `json:"webRtcCallAppearances,omitempty"`
 
+	// WebRtcRequireMediaHelper - True when the media helper required.
+	WebRtcRequireMediaHelper *bool `json:"webRtcRequireMediaHelper,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -148,6 +151,8 @@ func (o Station) MarshalJSON() ([]byte, error) {
 		
 		WebRtcCallAppearances *int `json:"webRtcCallAppearances,omitempty"`
 		
+		WebRtcRequireMediaHelper *bool `json:"webRtcRequireMediaHelper,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -178,6 +183,8 @@ func (o Station) MarshalJSON() ([]byte, error) {
 		WebRtcForceTurn: o.WebRtcForceTurn,
 		
 		WebRtcCallAppearances: o.WebRtcCallAppearances,
+		
+		WebRtcRequireMediaHelper: o.WebRtcRequireMediaHelper,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -251,6 +258,10 @@ func (o *Station) UnmarshalJSON(b []byte) error {
 		o.WebRtcCallAppearances = &WebRtcCallAppearancesInt
 	}
 	
+	if WebRtcRequireMediaHelper, ok := StationMap["webRtcRequireMediaHelper"].(bool); ok {
+		o.WebRtcRequireMediaHelper = &WebRtcRequireMediaHelper
+	}
+    
 	if SelfUri, ok := StationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

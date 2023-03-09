@@ -48,6 +48,9 @@ type Conversation struct {
 	// Divisions - Identifiers of divisions associated with this conversation
 	Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
 
+	// RecentTransfers - The list of the most recent 20 transfer commands applied to this conversation.
+	RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -155,6 +158,8 @@ func (o Conversation) MarshalJSON() ([]byte, error) {
 		
 		Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
 		
+		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -181,6 +186,8 @@ func (o Conversation) MarshalJSON() ([]byte, error) {
 		State: o.State,
 		
 		Divisions: o.Divisions,
+		
+		RecentTransfers: o.RecentTransfers,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -246,6 +253,11 @@ func (o *Conversation) UnmarshalJSON(b []byte) error {
 	if Divisions, ok := ConversationMap["divisions"].([]interface{}); ok {
 		DivisionsString, _ := json.Marshal(Divisions)
 		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
+	if RecentTransfers, ok := ConversationMap["recentTransfers"].([]interface{}); ok {
+		RecentTransfersString, _ := json.Marshal(RecentTransfers)
+		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
 	}
 	
 	if SelfUri, ok := ConversationMap["selfUri"].(string); ok {

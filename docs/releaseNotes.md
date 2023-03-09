@@ -1,286 +1,490 @@
-Platform API version: 6586
+Platform API version: 6711
 
 
-**Bugfixes**
+# Major Changes (19 changes)
 
-* handled case for nil date serialization when using SetField
+**/api/v2/recording/localkeys/settings/{settingsId}** (1 change)
 
-# Major Changes (4 changes)
+* Path /api/v2/recording/localkeys/settings/{settingsId} was removed
 
-**POST /api/v2/conversations/emails/{conversationId}/messages** (1 change)
+**/api/v2/recording/localkeys/settings** (1 change)
 
-* Response 200 type was changed from EmailMessage to EmailMessageReply
+* Path /api/v2/recording/localkeys/settings was removed
 
-**GET /api/v2/languageunderstanding/domains/{domainId}/feedback** (1 change)
+**GET /api/v2/knowledge/guest/sessions/{sessionId}/documents** (1 change)
 
-* Parameter includeTrainingUtterances was added
+* Parameter includeSubcategories was removed
 
-**GET /api/v2/stations/settings** (1 change)
+**POST /api/v2/notifications/channels/{channelId}/subscriptions** (1 change)
 
-* Has been deprecated
+* Parameter ignoreErrors was added
 
-**PATCH /api/v2/stations/settings** (1 change)
+**PUT /api/v2/notifications/channels/{channelId}/subscriptions** (1 change)
 
-* Has been deprecated
+* Parameter ignoreErrors was added
+
+**GET /api/v2/quality/evaluations/query** (1 change)
+
+* Parameter assigneeUserId was added
+
+**GET /api/v2/routing/sms/phonenumbers/{addressId}** (1 change)
+
+* Parameter expand was added
+
+**GET /api/v2/telephony/providers/edges** (1 change)
+
+* Parameter showCloudMedia was added
+
+**LocalEncryptionConfigurationListing** (1 change)
+
+* Model LocalEncryptionConfigurationListing was removed
+
+**ChannelMetadata** (1 change)
+
+* Model ChannelMetadata was removed
+
+**Reason** (1 change)
+
+* Model Reason was removed
+
+**PresenceSetting** (1 change)
+
+* Model PresenceSetting was removed
+
+**OpenMessageContent** (1 change)
+
+* Property attachment was changed from ContentAttachment to ConversationContentAttachment
+
+**OpenMessagingChannel** (1 change)
+
+* Property metadata was changed from ChannelMetadata to ConversationChannelMetadata
+
+**OpenNormalizedMessage** (1 change)
+
+* Property reasons was changed from Reason[] to ConversationReason[]
+
+**EventSetting** (1 change)
+
+* Property presence was removed
+
+**ApprovalNamespace** (1 change)
+
+* Enum value contacts was removed from property namespace
+
+**LimitChangeRequestDetails** (1 change)
+
+* Enum value contacts was removed from property namespace
+
+**StatusChange** (1 change)
+
+* Enum value contacts was removed from property namespace
 
 
-# Minor Changes (102 changes)
+# Minor Changes (121 changes)
 
-**/api/v2/conversations/{conversationId}/cobrowse** (2 changes)
+**/api/v2/conversations/participants/attributes/search** (2 changes)
 
 * Path was added
 * Operation POST was added
 
-**POST /api/v2/conversations/messaging/integrations/whatsapp** (1 change)
+**POST /api/v2/conversations/messages/{conversationId}/communications/{communicationId}/messages** (1 change)
 
 * Response 409 was added
 
-**/api/v2/webdeployments/deployments/{deploymentId}/cobrowse/{sessionId}** (3 changes)
+**POST /api/v2/conversations/messages/agentless** (1 change)
+
+* Response 409 was added
+
+**/api/v2/outbound/dnclists/{dncListId}/customexclusioncolumns** (3 changes)
+
+* Path was added
+* Operation DELETE was added
+* Operation PATCH was added
+
+**/api/v2/journey/outcomes/predictors/{predictorId}** (3 changes)
 
 * Path was added
 * Operation GET was added
 * Operation DELETE was added
 
-**/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}** (3 changes)
-
-* Path was added
-* Operation GET was added
-* Operation DELETE was added
-
-**/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}/roledivisions** (2 changes)
-
-* Path was added
-* Operation PUT was added
-
-**/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}/roles** (4 changes)
-
-* Path was added
-* Operation GET was added
-* Operation PUT was added
-* Operation DELETE was added
-
-**/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups** (3 changes)
+**/api/v2/journey/outcomes/predictors** (3 changes)
 
 * Path was added
 * Operation GET was added
 * Operation POST was added
 
-**/api/v2/orgauthorization/trustors/{trustorOrgId}/groups/{trustorGroupId}** (4 changes)
+**POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents** (1 change)
+
+* Response 409 was added
+
+**/api/v2/speechandtextanalytics/programs/{programId}/transcriptionengines** (3 changes)
 
 * Path was added
 * Operation GET was added
 * Operation PUT was added
-* Operation DELETE was added
 
-**/api/v2/orgauthorization/trustors/{trustorOrgId}/groups** (2 changes)
+**/api/v2/speechandtextanalytics/programs/transcriptionengines/dialects** (2 changes)
 
 * Path was added
 * Operation GET was added
 
-**AnalyticsEvaluation** (1 change)
+**/api/v2/infrastructureascode/jobs/{jobId}** (2 changes)
 
-* Optional property evaluationStatus was added
+* Path was added
+* Operation GET was added
 
-**JourneyAggregateQueryPredicate** (10 changes)
+**/api/v2/infrastructureascode/jobs** (3 changes)
 
-* Enum value journeyIpGeolocationCountry was added to property dimension
-* Enum value touchpointAgentId was added to property dimension
-* Enum value touchpointAttributionScope was added to property dimension
-* Enum value touchpointChannelMessageType was added to property dimension
-* Enum value touchpointChannelPlatform was added to property dimension
-* Enum value touchpointChannelType was added to property dimension
-* Enum value touchpointConversationId was added to property dimension
-* Enum value touchpointInteractionType was added to property dimension
-* Enum value touchpointQueueId was added to property dimension
-* Enum value touchpointWrapupCode was added to property dimension
+* Path was added
+* Operation GET was added
+* Operation POST was added
 
-**JourneyAggregationView** (1 change)
+**/api/v2/users/{userId}/skillgroups** (2 changes)
 
-* Enum value oJourneyOutcomeTouchpointValue was added to property target
+* Path was added
+* Operation GET was added
 
-**JourneyAggregationQuery** (11 changes)
+**/api/v2/learning/assignments/{assignmentId}/reschedule** (2 changes)
 
-* Enum value journeyIpGeolocationCountry was added to property groupBy
-* Enum value touchpointAgentId was added to property groupBy
-* Enum value touchpointAttributionScope was added to property groupBy
-* Enum value touchpointChannelMessageType was added to property groupBy
-* Enum value touchpointChannelPlatform was added to property groupBy
-* Enum value touchpointChannelType was added to property groupBy
-* Enum value touchpointConversationId was added to property groupBy
-* Enum value touchpointInteractionType was added to property groupBy
-* Enum value touchpointQueueId was added to property groupBy
-* Enum value touchpointWrapupCode was added to property groupBy
-* Enum value oJourneyOutcomeTouchpointValue was added to property metrics
+* Path was added
+* Operation PATCH was added
 
-**ReportingExportJobResponse** (1 change)
+**/api/v2/learning/scheduleslots/query** (2 changes)
 
-* Enum value INTERACTION_DETAIL_VIEW was added to property viewType
+* Path was added
+* Operation POST was added
 
-**ReportingExportMetadataJobResponse** (1 change)
+**/api/v2/workforcemanagement/agents/me/possibleworkshifts** (2 changes)
 
-* Enum value INTERACTION_DETAIL_VIEW was added to property viewType
+* Path was added
+* Operation POST was added
 
-**ReportingExportJobRequest** (1 change)
+**Station** (1 change)
 
-* Enum value INTERACTION_DETAIL_VIEW was added to property viewType
+* Optional property webRtcRequireMediaHelper was added
+
+**ViewFilter** (3 changes)
+
+* Optional property alertRuleIds was added
+* Optional property evaluationFormContextIds was added
+* Optional property evaluationStatuses was added
 
 **AuditQueryExecutionStatusResponse** (1 change)
 
-* Enum value Scripter was added to property serviceName
+* Enum value GDPR was added to property serviceName
 
 **AuditQueryRequest** (1 change)
 
-* Enum value Scripter was added to property serviceName
+* Enum value GDPR was added to property serviceName
 
-**AuditLogMessage** (7 changes)
+**AuditLogMessage** (3 changes)
 
-* Enum value Scripter was added to property serviceName
-* Enum value ComposerPage was added to property entityType
-* Enum value ComposerScript was added to property entityType
-* Enum value ComposerPublishedScript was added to property entityType
-* Enum value ComposerTemplate was added to property entityType
-* Enum value IntentMiner was added to property entityType
-* Enum value TopicMiner was added to property entityType
+* Enum value GDPR was added to property serviceName
+* Enum value RestoreAll was added to property action
+* Enum value RestoreDeleted was added to property action
 
-**EntityChange** (6 changes)
+**InitiatingAction** (2 changes)
 
-* Enum value ComposerPage was added to property entityType
-* Enum value ComposerScript was added to property entityType
-* Enum value ComposerPublishedScript was added to property entityType
-* Enum value ComposerTemplate was added to property entityType
-* Enum value IntentMiner was added to property entityType
-* Enum value TopicMiner was added to property entityType
+* Enum value RestoreAll was added to property actionContext
+* Enum value RestoreDeleted was added to property actionContext
 
 **AuditRealtimeQueryRequest** (1 change)
 
-* Enum value Scripter was added to property serviceName
+* Enum value GDPR was added to property serviceName
 
-**AuditQueryEntity** (6 changes)
+**AuditQueryEntity** (2 changes)
 
-* Enum value ComposerPage was added to property name
-* Enum value ComposerScript was added to property name
-* Enum value ComposerPublishedScript was added to property name
-* Enum value ComposerTemplate was added to property name
-* Enum value IntentMiner was added to property name
-* Enum value TopicMiner was added to property name
+* Enum value RestoreAll was added to property actions
+* Enum value RestoreDeleted was added to property actions
 
 **AuditQueryService** (1 change)
 
-* Enum value Scripter was added to property name
+* Enum value GDPR was added to property name
 
-**CobrowseWebMessagingSession** (1 change)
+**InboundRoute** (1 change)
+
+* Optional property allowMultipleActions was added
+
+**InstagramId** (1 change)
 
 * Model was added
 
-**Participant** (1 change)
+**InstagramScopedId** (1 change)
 
-* Optional property mediaRoles was added
+* Model was added
 
-**CallMediaParticipant** (1 change)
+**Conversation** (1 change)
 
-* Optional property mediaRoles was added
+* Optional property recentTransfers was added
 
-**CallbackMediaParticipant** (1 change)
+**Evaluation** (2 changes)
 
-* Optional property mediaRoles was added
+* Optional property assignee was added
+* Optional property evaluationSource was added
 
-**ChatMediaParticipant** (1 change)
+**EvaluationScoringSet** (1 change)
 
-* Optional property mediaRoles was added
+* Optional property privateComments was added
 
-**CobrowseMediaParticipant** (1 change)
+**EvaluationSource** (1 change)
 
-* Optional property mediaRoles was added
+* Model was added
 
-**EmailMessage** (1 change)
+**TransferDestination** (1 change)
+
+* Model was added
+
+**TransferInitiator** (1 change)
+
+* Model was added
+
+**TransferResponse** (1 change)
+
+* Model was added
+
+**JsonCursorSearchResponse** (1 change)
+
+* Model was added
+
+**ConversationParticipantSearchCriteria** (1 change)
+
+* Model was added
+
+**ConversationParticipantSearchRequest** (1 change)
+
+* Model was added
+
+**CallConversation** (1 change)
+
+* Optional property recentTransfers was added
+
+**TransferRequest** (1 change)
+
+* Optional property transferType was added
+
+**CallbackConversation** (1 change)
+
+* Optional property recentTransfers was added
+
+**ChatConversation** (1 change)
+
+* Optional property recentTransfers was added
+
+**CobrowseConversation** (1 change)
+
+* Optional property recentTransfers was added
+
+**EmailMessage** (2 changes)
+
+* Enum value Edited was added to property state
+* Optional property draftType was added
+
+**EmailConversation** (1 change)
+
+* Optional property recentTransfers was added
+
+**MessageConversation** (1 change)
+
+* Optional property recentTransfers was added
+
+**DncPatchCustomExclusionColumnsRequest** (1 change)
+
+* Model was added
+
+**DncList** (1 change)
+
+* Optional property customExclusionColumn was added
+
+**DncListCreate** (1 change)
+
+* Optional property customExclusionColumn was added
+
+**DialerAction** (1 change)
+
+* Enum value APPEND_CUSTOM_ENTRY_TO_DNC_LIST was added to property actionTypeName
+
+**AppendToDncActionSettings** (1 change)
+
+* Optional property listType was added
+
+**ActionConfig** (1 change)
+
+* Optional property timeoutSeconds was added
+
+**OutcomePredictor** (1 change)
+
+* Model was added
+
+**OutcomeRef** (1 change)
+
+* Model was added
+
+**OutcomePredictorRequest** (1 change)
+
+* Model was added
+
+**OutcomeRefRequest** (1 change)
+
+* Model was added
+
+**OutcomePredictorListing** (1 change)
+
+* Model was added
+
+**KnowledgeExportJobDocumentsFilter** (1 change)
+
+* Optional property entities was added
+
+**ApprovalNamespace** (2 changes)
+
+* Enum value callback was added to property namespace
+* Enum value presence was added to property namespace
+
+**LimitChangeRequestDetails** (2 changes)
+
+* Enum value callback was added to property namespace
+* Enum value presence was added to property namespace
+
+**StatusChange** (2 changes)
+
+* Enum value callback was added to property namespace
+* Enum value presence was added to property namespace
+
+**ChannelTopic** (2 changes)
 
 * Optional property state was added
+* Optional property rejectionReason was added
 
-**EmailMediaParticipant** (1 change)
+**EvaluationResponse** (2 changes)
 
-* Optional property mediaRoles was added
+* Optional property assignee was added
+* Optional property evaluationSource was added
 
-**EmailMessageReply** (1 change)
+**OrphanRecording** (3 changes)
 
-* Model was added
+* Enum value ap-east-1 was added to property region
+* Enum value ap-southeast-3 was added to property region
+* Enum value eu-west-3 was added to property region
 
-**MessageMediaParticipant** (1 change)
+**Check** (1 change)
 
-* Optional property mediaRoles was added
+* Enum value SalesAmountValue was added to property type
 
-**ParticipantBasic** (1 change)
-
-* Optional property mediaRoles was added
-
-**Metric** (2 changes)
-
-* Optional property precision was added
-* Optional property timeDisplayUnit was added
-
-**CreateMetric** (2 changes)
-
-* Optional property precision was added
-* Optional property timeDisplayUnit was added
-
-**DocumentQueryPredicate** (1 change)
-
-* Enum value documentId was added to property fields
-
-**TrustGroupEntityListing** (1 change)
+**ProgramTranscriptionEngines** (1 change)
 
 * Model was added
 
-**Compliance** (1 change)
+**TranscriptionEngines** (1 change)
 
 * Model was added
 
-**ComplianceResponse** (1 change)
+**TranscriptionEnginesRequest** (1 change)
 
 * Model was added
 
-**HelpSettings** (1 change)
+**SupportedDialectsEntityListing** (1 change)
 
 * Model was added
 
-**OptInSettings** (1 change)
+**InfrastructureascodeJob** (1 change)
 
 * Model was added
 
-**SmsPhoneNumber** (2 changes)
-
-* Optional property integration was added
-* Optional property compliance was added
-
-**StopSettings** (1 change)
+**AcceleratorInput** (1 change)
 
 * Model was added
 
-**KeyPerformanceIndicator** (4 changes)
+**AcceleratorParameter** (1 change)
 
-* Enum value SalesValue was added to property kpiType
-* Enum value Outcome was added to property source
-* Enum value None was added to property source
-* Optional property outcomeConfig was added
+* Model was added
 
-**OutcomeConfig** (1 change)
+**UserSkillGroupEntityListing** (1 change)
+
+* Model was added
+
+**DevelopmentActivity** (1 change)
+
+* Enum value External was added to property type
+
+**LearningModule** (1 change)
+
+* Enum value External was added to property type
+
+**LearningAssignmentReschedule** (1 change)
+
+* Model was added
+
+**LearningModuleRequest** (1 change)
+
+* Enum value External was added to property type
+
+**AssignedLearningModule** (1 change)
+
+* Enum value External was added to property type
+
+**LearningScheduleSlotsQueryResponse** (1 change)
+
+* Model was added
+
+**LearningSlot** (1 change)
+
+* Model was added
+
+**LearningSlotFullDayTimeOffMarker** (1 change)
+
+* Model was added
+
+**LearningSlotScheduleActivity** (1 change)
+
+* Model was added
+
+**LearningSlotWfmScheduleActivity** (1 change)
+
+* Model was added
+
+**LearningScheduleSlotsQueryRequest** (1 change)
+
+* Model was added
+
+**WfmServiceGoalImpact** (1 change)
+
+* Model was added
+
+**WfmServiceGoalImpactSettings** (1 change)
+
+* Model was added
+
+**AgentPossibleWorkShiftsResponse** (1 change)
+
+* Model was added
+
+**DailyPossibleShift** (1 change)
+
+* Model was added
+
+**PossibleWorkShiftsForWeek** (1 change)
+
+* Model was added
+
+**AgentPossibleWorkShiftsRequest** (1 change)
 
 * Model was added
 
 
 # Point Changes (4 changes)
 
-**GET /api/v2/stations/settings** (1 change)
+**POST /api/v2/conversations/{conversationId}/cobrowse** (1 change)
+
+* Summary was changed
+
+**GET /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}** (1 change)
+
+* Description was changed for parameter expand
+
+**GET /api/v2/quality/evaluations/query** (1 change)
 
 * Description was changed
 
-**PATCH /api/v2/stations/settings** (1 change)
+**POST /api/v2/recording/jobs** (1 change)
 
 * Description was changed
-
-**GET /api/v2/learning/assignments** (1 change)
-
-* Description was changed for parameter types
-
-**GET /api/v2/learning/assignments/me** (1 change)
-
-* Description was changed for parameter types

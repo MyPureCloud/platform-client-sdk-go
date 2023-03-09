@@ -369,7 +369,7 @@ func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*APIRespon
 // PostNotificationsChannelSubscriptions invokes POST /api/v2/notifications/channels/{channelId}/subscriptions
 //
 // Add a list of subscriptions to the existing list of subscriptions
-func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string, body []Channeltopic) (*Channeltopicentitylisting, *APIResponse, error) {
+func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string, body []Channeltopic, ignoreErrors bool) (*Channeltopicentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}/subscriptions"
@@ -406,6 +406,8 @@ func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["ignoreErrors"] = a.Configuration.APIClient.ParameterToString(ignoreErrors, "")
 	
 
 	// to determine the Content-Type header
@@ -515,7 +517,7 @@ func (a NotificationsApi) PostNotificationsChannels() (*Channel, *APIResponse, e
 // PutNotificationsChannelSubscriptions invokes PUT /api/v2/notifications/channels/{channelId}/subscriptions
 //
 // Replace the current list of subscriptions with a new list.
-func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string, body []Channeltopic) (*Channeltopicentitylisting, *APIResponse, error) {
+func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string, body []Channeltopic, ignoreErrors bool) (*Channeltopicentitylisting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}/subscriptions"
@@ -552,6 +554,8 @@ func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string,
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["ignoreErrors"] = a.Configuration.APIClient.ParameterToString(ignoreErrors, "")
 	
 
 	// to determine the Content-Type header

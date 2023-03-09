@@ -15,7 +15,7 @@ type Openmessagecontent struct {
 	ContentType *string `json:"contentType,omitempty"`
 
 	// Attachment - Attachment content.
-	Attachment *Contentattachment `json:"attachment,omitempty"`
+	Attachment *Conversationcontentattachment `json:"attachment,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Openmessagecontent) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		ContentType *string `json:"contentType,omitempty"`
 		
-		Attachment *Contentattachment `json:"attachment,omitempty"`
+		Attachment *Conversationcontentattachment `json:"attachment,omitempty"`
 		Alias
 	}{ 
 		ContentType: o.ContentType,

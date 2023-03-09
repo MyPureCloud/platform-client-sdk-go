@@ -20,6 +20,9 @@ type Queueconversationeventtopicconversation struct {
 	// Participants
 	Participants *[]Queueconversationeventtopicparticipant `json:"participants,omitempty"`
 
+	// RecentTransfers
+	RecentTransfers *[]Queueconversationeventtopicrecenttransfer `json:"recentTransfers,omitempty"`
+
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
@@ -99,6 +102,8 @@ func (o Queueconversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		
 		Participants *[]Queueconversationeventtopicparticipant `json:"participants,omitempty"`
 		
+		RecentTransfers *[]Queueconversationeventtopicrecenttransfer `json:"recentTransfers,omitempty"`
+		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
 		Address *string `json:"address,omitempty"`
@@ -111,6 +116,8 @@ func (o Queueconversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		MaxParticipants: o.MaxParticipants,
 		
 		Participants: o.Participants,
+		
+		RecentTransfers: o.RecentTransfers,
 		
 		RecordingState: o.RecordingState,
 		
@@ -140,6 +147,11 @@ func (o *Queueconversationeventtopicconversation) UnmarshalJSON(b []byte) error 
 	if Participants, ok := QueueconversationeventtopicconversationMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if RecentTransfers, ok := QueueconversationeventtopicconversationMap["recentTransfers"].([]interface{}); ok {
+		RecentTransfersString, _ := json.Marshal(RecentTransfers)
+		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
 	}
 	
 	if RecordingState, ok := QueueconversationeventtopicconversationMap["recordingState"].(string); ok {

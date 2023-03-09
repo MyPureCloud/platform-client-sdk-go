@@ -54,6 +54,9 @@ type Dnclist struct {
 	// Division - The division this DncList belongs to.
 	Division *Domainentityref `json:"division,omitempty"`
 
+	// CustomExclusionColumn - The column to evaluate exclusion against. Required if the dncSourceType is rds_custom.
+	CustomExclusionColumn *string `json:"customExclusionColumn,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -165,6 +168,8 @@ func (o Dnclist) MarshalJSON() ([]byte, error) {
 		
 		Division *Domainentityref `json:"division,omitempty"`
 		
+		CustomExclusionColumn *string `json:"customExclusionColumn,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -195,6 +200,8 @@ func (o Dnclist) MarshalJSON() ([]byte, error) {
 		LicenseId: o.LicenseId,
 		
 		Division: o.Division,
+		
+		CustomExclusionColumn: o.CustomExclusionColumn,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -271,6 +278,10 @@ func (o *Dnclist) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
+	if CustomExclusionColumn, ok := DnclistMap["customExclusionColumn"].(string); ok {
+		o.CustomExclusionColumn = &CustomExclusionColumn
+	}
+    
 	if SelfUri, ok := DnclistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -11,6 +11,9 @@ import (
 type Actionconfig struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// TimeoutSeconds - Optional 1-60 second timeout enforced on the execution or test of this action. This setting is invalid for Custom Authentication Actions.
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
+
 	// Request - Configuration of outbound request.
 	Request *Requestconfig `json:"request,omitempty"`
 
@@ -81,11 +84,15 @@ func (o Actionconfig) MarshalJSON() ([]byte, error) {
 	type Alias Actionconfig
 	
 	return json.Marshal(&struct { 
+		TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
+		
 		Request *Requestconfig `json:"request,omitempty"`
 		
 		Response *Responseconfig `json:"response,omitempty"`
 		Alias
 	}{ 
+		TimeoutSeconds: o.TimeoutSeconds,
+		
 		Request: o.Request,
 		
 		Response: o.Response,
@@ -98,6 +105,11 @@ func (o *Actionconfig) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &ActionconfigMap)
 	if err != nil {
 		return err
+	}
+	
+	if TimeoutSeconds, ok := ActionconfigMap["timeoutSeconds"].(float64); ok {
+		TimeoutSecondsInt := int(TimeoutSeconds)
+		o.TimeoutSeconds = &TimeoutSecondsInt
 	}
 	
 	if Request, ok := ActionconfigMap["request"].(map[string]interface{}); ok {

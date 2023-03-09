@@ -36,6 +36,9 @@ type Audittopicauditlogmessage struct {
 	// ServiceName
 	ServiceName *string `json:"serviceName,omitempty"`
 
+	// Level
+	Level *string `json:"level,omitempty"`
+
 	// EventTime
 	EventTime *time.Time `json:"eventTime,omitempty"`
 
@@ -145,6 +148,8 @@ func (o Audittopicauditlogmessage) MarshalJSON() ([]byte, error) {
 		
 		ServiceName *string `json:"serviceName,omitempty"`
 		
+		Level *string `json:"level,omitempty"`
+		
 		EventTime *string `json:"eventTime,omitempty"`
 		
 		Message *Audittopicmessageinfo `json:"message,omitempty"`
@@ -175,6 +180,8 @@ func (o Audittopicauditlogmessage) MarshalJSON() ([]byte, error) {
 		RemoteIp: o.RemoteIp,
 		
 		ServiceName: o.ServiceName,
+		
+		Level: o.Level,
 		
 		EventTime: EventTime,
 		
@@ -233,6 +240,10 @@ func (o *Audittopicauditlogmessage) UnmarshalJSON(b []byte) error {
 	
 	if ServiceName, ok := AudittopicauditlogmessageMap["serviceName"].(string); ok {
 		o.ServiceName = &ServiceName
+	}
+    
+	if Level, ok := AudittopicauditlogmessageMap["level"].(string); ok {
+		o.Level = &Level
 	}
     
 	if eventTimeString, ok := AudittopicauditlogmessageMap["eventTime"].(string); ok {

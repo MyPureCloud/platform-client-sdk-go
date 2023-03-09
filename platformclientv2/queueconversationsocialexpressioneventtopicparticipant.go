@@ -128,9 +128,6 @@ type Queueconversationsocialexpressioneventtopicparticipant struct {
 
 	// Workflow
 	Workflow *Queueconversationsocialexpressioneventtopicworkflow `json:"workflow,omitempty"`
-
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -305,8 +302,6 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		Videos *[]Queueconversationsocialexpressioneventtopicvideo `json:"videos,omitempty"`
 		
 		Workflow *Queueconversationsocialexpressioneventtopicworkflow `json:"workflow,omitempty"`
-		
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -386,8 +381,6 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		Videos: o.Videos,
 		
 		Workflow: o.Workflow,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -573,11 +566,6 @@ func (o *Queueconversationsocialexpressioneventtopicparticipant) UnmarshalJSON(b
 	if Workflow, ok := QueueconversationsocialexpressioneventtopicparticipantMap["workflow"].(map[string]interface{}); ok {
 		WorkflowString, _ := json.Marshal(Workflow)
 		json.Unmarshal(WorkflowString, &o.Workflow)
-	}
-	
-	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicparticipantMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

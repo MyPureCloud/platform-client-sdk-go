@@ -15,7 +15,7 @@ type Knowledgeguestdocument struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Title - Document title.
+	// Title - Document title, having a limit of 500 words.
 	Title *string `json:"title,omitempty"`
 
 	// Visible - Indicates if the knowledge document should be included in search results.

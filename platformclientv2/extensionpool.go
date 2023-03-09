@@ -48,10 +48,10 @@ type Extensionpool struct {
 	// CreatedByApp - The application that created the resource.
 	CreatedByApp *string `json:"createdByApp,omitempty"`
 
-	// StartNumber - The starting phone number for the range of this Extension pool. Must be in E.164 format
+	// StartNumber - The starting phone number for the range of this Extension pool. The number must be between 3 and 9 digits in length and the same length as the endNumber.
 	StartNumber *string `json:"startNumber,omitempty"`
 
-	// EndNumber - The ending phone number for the range of this Extension pool. Must be in E.164 format
+	// EndNumber - The ending phone number for the range of this Extension pool. The number must be between 3 and 9 digits in length and the same length as the startNumber.
 	EndNumber *string `json:"endNumber,omitempty"`
 
 	// SelfUri - The URI for this object

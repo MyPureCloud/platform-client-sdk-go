@@ -51,8 +51,11 @@ type Emailmessage struct {
 	// HistoryIncluded - Indicates whether the history of previous emails of the conversation is included within the email bodies of this message.
 	HistoryIncluded *bool `json:"historyIncluded,omitempty"`
 
-	// State
+	// State - The state of the current draft.
 	State *string `json:"state,omitempty"`
+
+	// DraftType - The type of draft that need to be treated.
+	DraftType *string `json:"draftType,omitempty"`
 
 	// EmailSizeBytes - Indicates an estimation of the size of the current email as a whole, in its final, ready to be sent form.
 	EmailSizeBytes *int `json:"emailSizeBytes,omitempty"`
@@ -163,6 +166,8 @@ func (o Emailmessage) MarshalJSON() ([]byte, error) {
 		
 		State *string `json:"state,omitempty"`
 		
+		DraftType *string `json:"draftType,omitempty"`
+		
 		EmailSizeBytes *int `json:"emailSizeBytes,omitempty"`
 		
 		MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
@@ -197,6 +202,8 @@ func (o Emailmessage) MarshalJSON() ([]byte, error) {
 		HistoryIncluded: o.HistoryIncluded,
 		
 		State: o.State,
+		
+		DraftType: o.DraftType,
 		
 		EmailSizeBytes: o.EmailSizeBytes,
 		
@@ -275,6 +282,10 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
     
 	if State, ok := EmailmessageMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if DraftType, ok := EmailmessageMap["draftType"].(string); ok {
+		o.DraftType = &DraftType
 	}
     
 	if EmailSizeBytes, ok := EmailmessageMap["emailSizeBytes"].(float64); ok {

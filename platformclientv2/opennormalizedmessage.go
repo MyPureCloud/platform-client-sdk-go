@@ -30,7 +30,7 @@ type Opennormalizedmessage struct {
 	Status *string `json:"status,omitempty"`
 
 	// Reasons - List of reasons for a message receipt that indicates the message has failed. Only used with Failed status.
-	Reasons *[]Reason `json:"reasons,omitempty"`
+	Reasons *[]Conversationreason `json:"reasons,omitempty"`
 
 	// IsFinalReceipt - Indicates if this is the last message receipt for this message, or if another message receipt can be expected.
 	IsFinalReceipt *bool `json:"isFinalReceipt,omitempty"`
@@ -117,7 +117,7 @@ func (o Opennormalizedmessage) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
-		Reasons *[]Reason `json:"reasons,omitempty"`
+		Reasons *[]Conversationreason `json:"reasons,omitempty"`
 		
 		IsFinalReceipt *bool `json:"isFinalReceipt,omitempty"`
 		

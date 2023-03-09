@@ -937,8 +937,8 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 //
 // Queries Evaluations and returns a paged list
 //
-// Query params must include one of conversationId, evaluatorUserId, or agentUserId. When querying by agentUserId (and not conversationId or evaluatorUserId), the results are sorted by release date. Evaluations set to &#39;Never Release&#39; are omitted in this case. When querying by evaluatorUserId or conversationId (including when combined with agentUserId), the results are sorted by assigned date.
-func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, agentUserId string, evaluatorUserId string, queueId string, startTime string, endTime string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
+// Query params must include one of conversationId, evaluatorUserId, agentUserId or assigneeUserId. When querying by agentUserId (and not conversationId or evaluatorUserId), the results are sorted by release date. Evaluations set to &#39;Never Release&#39; are omitted in this case. When querying by evaluatorUserId or conversationId (including when combined with agentUserId), the results are sorted by assigned date.
+func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, agentUserId string, evaluatorUserId string, assigneeUserId string, queueId string, startTime string, endTime string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/evaluations/query"
@@ -982,6 +982,8 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sor
 	queryParams["agentUserId"] = a.Configuration.APIClient.ParameterToString(agentUserId, "")
 	
 	queryParams["evaluatorUserId"] = a.Configuration.APIClient.ParameterToString(evaluatorUserId, "")
+	
+	queryParams["assigneeUserId"] = a.Configuration.APIClient.ParameterToString(assigneeUserId, "")
 	
 	queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, "")
 	

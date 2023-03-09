@@ -13,9 +13,6 @@ type Conversationeventtopicworkflow struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// WorkflowId - The id of the workflow
 	WorkflowId *string `json:"workflowId,omitempty"`
-
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -82,13 +79,9 @@ func (o Conversationeventtopicworkflow) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		WorkflowId *string `json:"workflowId,omitempty"`
-		
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		Alias
 	}{ 
 		WorkflowId: o.WorkflowId,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -104,11 +97,6 @@ func (o *Conversationeventtopicworkflow) UnmarshalJSON(b []byte) error {
 		o.WorkflowId = &WorkflowId
 	}
     
-	if AdditionalProperties, ok := ConversationeventtopicworkflowMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
-	}
-	
 
 	return nil
 }

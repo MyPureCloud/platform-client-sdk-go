@@ -1038,6 +1038,80 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 	return successPayload, response, err
 }
 
+// PatchLearningAssignmentReschedule invokes PATCH /api/v2/learning/assignments/{assignmentId}/reschedule
+//
+// Reschedule Learning Assignment
+func (a LearningApi) PatchLearningAssignmentReschedule(assignmentId string, body Learningassignmentreschedule) (*Learningassignment, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}/reschedule"
+	path = strings.Replace(path, "{assignmentId}", fmt.Sprintf("%v", assignmentId), -1)
+	defaultReturn := new(Learningassignment)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'assignmentId' is set
+	if &assignmentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'assignmentId' when calling LearningApi->PatchLearningAssignmentReschedule")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Learningassignment
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Learningassignment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostLearningAssessmentsScoring invokes POST /api/v2/learning/assessments/scoring
 //
 // Score learning assessment for preview
@@ -1842,6 +1916,79 @@ func (a LearningApi) PostLearningRulesQuery(pageSize int, pageNumber int, body L
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Learningassignmentuserlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostLearningScheduleslotsQuery invokes POST /api/v2/learning/scheduleslots/query
+//
+// Get list of possible slots where a learning activity can be scheduled.
+func (a LearningApi) PostLearningScheduleslotsQuery(body Learningscheduleslotsqueryrequest) (*Learningscheduleslotsqueryresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/learning/scheduleslots/query"
+	defaultReturn := new(Learningscheduleslotsqueryresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PostLearningScheduleslotsQuery")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Learningscheduleslotsqueryresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Learningscheduleslotsqueryresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

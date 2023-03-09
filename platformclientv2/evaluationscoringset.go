@@ -29,6 +29,9 @@ type Evaluationscoringset struct {
 	// Comments - Overall comments from the evaluator
 	Comments *string `json:"comments,omitempty"`
 
+	// PrivateComments - Overall private comments from the evaluator
+	PrivateComments *string `json:"privateComments,omitempty"`
+
 	// AgentComments - Comments from the agent while reviewing evaluation results
 	AgentComments *string `json:"agentComments,omitempty"`
 
@@ -111,6 +114,8 @@ func (o Evaluationscoringset) MarshalJSON() ([]byte, error) {
 		
 		Comments *string `json:"comments,omitempty"`
 		
+		PrivateComments *string `json:"privateComments,omitempty"`
+		
 		AgentComments *string `json:"agentComments,omitempty"`
 		
 		TranscriptTopics *[]Transcripttopic `json:"transcriptTopics,omitempty"`
@@ -127,6 +132,8 @@ func (o Evaluationscoringset) MarshalJSON() ([]byte, error) {
 		AnyFailedKillQuestions: o.AnyFailedKillQuestions,
 		
 		Comments: o.Comments,
+		
+		PrivateComments: o.PrivateComments,
 		
 		AgentComments: o.AgentComments,
 		
@@ -168,6 +175,10 @@ func (o *Evaluationscoringset) UnmarshalJSON(b []byte) error {
     
 	if Comments, ok := EvaluationscoringsetMap["comments"].(string); ok {
 		o.Comments = &Comments
+	}
+    
+	if PrivateComments, ok := EvaluationscoringsetMap["privateComments"].(string); ok {
+		o.PrivateComments = &PrivateComments
 	}
     
 	if AgentComments, ok := EvaluationscoringsetMap["agentComments"].(string); ok {

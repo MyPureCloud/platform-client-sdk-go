@@ -13,9 +13,6 @@ type Eventsetting struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Typing - Settings regarding typing events
 	Typing *Typingsetting `json:"typing,omitempty"`
-
-	// Presence - Settings regarding presence events
-	Presence *Presencesetting `json:"presence,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -82,13 +79,9 @@ func (o Eventsetting) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Typing *Typingsetting `json:"typing,omitempty"`
-		
-		Presence *Presencesetting `json:"presence,omitempty"`
 		Alias
 	}{ 
 		Typing: o.Typing,
-		
-		Presence: o.Presence,
 		Alias:    (Alias)(o),
 	})
 }
@@ -103,11 +96,6 @@ func (o *Eventsetting) UnmarshalJSON(b []byte) error {
 	if Typing, ok := EventsettingMap["typing"].(map[string]interface{}); ok {
 		TypingString, _ := json.Marshal(Typing)
 		json.Unmarshal(TypingString, &o.Typing)
-	}
-	
-	if Presence, ok := EventsettingMap["presence"].(map[string]interface{}); ok {
-		PresenceString, _ := json.Marshal(Presence)
-		json.Unmarshal(PresenceString, &o.Presence)
 	}
 	
 

@@ -23,6 +23,9 @@ type Callbackconversation struct {
 	// OtherMediaUris - The list of other media channels involved in the conversation.
 	OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 
+	// RecentTransfers - The list of the most recent 20 transfer commands applied to this conversation.
+	RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -98,6 +101,8 @@ func (o Callbackconversation) MarshalJSON() ([]byte, error) {
 		
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		
+		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Callbackconversation) MarshalJSON() ([]byte, error) {
 		Participants: o.Participants,
 		
 		OtherMediaUris: o.OtherMediaUris,
+		
+		RecentTransfers: o.RecentTransfers,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -137,6 +144,11 @@ func (o *Callbackconversation) UnmarshalJSON(b []byte) error {
 	if OtherMediaUris, ok := CallbackconversationMap["otherMediaUris"].([]interface{}); ok {
 		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
 		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+	if RecentTransfers, ok := CallbackconversationMap["recentTransfers"].([]interface{}); ok {
+		RecentTransfersString, _ := json.Marshal(RecentTransfers)
+		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
 	}
 	
 	if SelfUri, ok := CallbackconversationMap["selfUri"].(string); ok {

@@ -941,7 +941,7 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocument(sessionId string, documen
 // GetKnowledgeGuestSessionDocuments invokes GET /api/v2/knowledge/guest/sessions/{sessionId}/documents
 //
 // Get documents.
-func (a KnowledgeApi) GetKnowledgeGuestSessionDocuments(sessionId string, categoryId []string, includeSubcategories bool, pageSize int) (*Knowledgeguestdocumentresponselisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeGuestSessionDocuments(sessionId string, categoryId []string, pageSize int) (*Knowledgeguestdocumentresponselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents"
@@ -970,8 +970,6 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocuments(sessionId string, catego
 	}
 	
 	queryParams["categoryId"] = a.Configuration.APIClient.ParameterToString(categoryId, "multi")
-	
-	queryParams["includeSubcategories"] = a.Configuration.APIClient.ParameterToString(includeSubcategories, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	

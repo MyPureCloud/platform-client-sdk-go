@@ -16,6 +16,9 @@ type Appendtodncactionsettings struct {
 
 	// ExpirationDuration - If 'expire' is set to true, how long to keep the record.
 	ExpirationDuration *string `json:"expirationDuration,omitempty"`
+
+	// ListType - The Dnc List Type to append entries to
+	ListType *string `json:"listType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Appendtodncactionsettings) MarshalJSON() ([]byte, error) {
 		Expire *bool `json:"expire,omitempty"`
 		
 		ExpirationDuration *string `json:"expirationDuration,omitempty"`
+		
+		ListType *string `json:"listType,omitempty"`
 		Alias
 	}{ 
 		Expire: o.Expire,
 		
 		ExpirationDuration: o.ExpirationDuration,
+		
+		ListType: o.ListType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Appendtodncactionsettings) UnmarshalJSON(b []byte) error {
     
 	if ExpirationDuration, ok := AppendtodncactionsettingsMap["expirationDuration"].(string); ok {
 		o.ExpirationDuration = &ExpirationDuration
+	}
+    
+	if ListType, ok := AppendtodncactionsettingsMap["listType"].(string); ok {
+		o.ListType = &ListType
 	}
     
 

@@ -25,9 +25,6 @@ type Queueconversationvideoeventtopicdialerpreview struct {
 
 	// PhoneNumberColumns - The phone number columns associated with this campaign
 	PhoneNumberColumns *[]Queueconversationvideoeventtopicphonenumbercolumn `json:"phoneNumberColumns,omitempty"`
-
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -102,8 +99,6 @@ func (o Queueconversationvideoeventtopicdialerpreview) MarshalJSON() ([]byte, er
 		CampaignId *string `json:"campaignId,omitempty"`
 		
 		PhoneNumberColumns *[]Queueconversationvideoeventtopicphonenumbercolumn `json:"phoneNumberColumns,omitempty"`
-		
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -115,8 +110,6 @@ func (o Queueconversationvideoeventtopicdialerpreview) MarshalJSON() ([]byte, er
 		CampaignId: o.CampaignId,
 		
 		PhoneNumberColumns: o.PhoneNumberColumns,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -147,11 +140,6 @@ func (o *Queueconversationvideoeventtopicdialerpreview) UnmarshalJSON(b []byte) 
 	if PhoneNumberColumns, ok := QueueconversationvideoeventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
 		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)
-	}
-	
-	if AdditionalProperties, ok := QueueconversationvideoeventtopicdialerpreviewMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

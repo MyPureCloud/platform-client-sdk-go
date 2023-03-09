@@ -62,9 +62,6 @@ type Queueconversationsocialexpressioneventtopicchat struct {
 
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -187,8 +184,6 @@ func (o Queueconversationsocialexpressioneventtopicchat) MarshalJSON() ([]byte, 
 		AfterCallWork *Queueconversationsocialexpressioneventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-		
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -224,8 +219,6 @@ func (o Queueconversationsocialexpressioneventtopicchat) MarshalJSON() ([]byte, 
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -311,11 +304,6 @@ func (o *Queueconversationsocialexpressioneventtopicchat) UnmarshalJSON(b []byte
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
     
-	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicchatMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
-	}
-	
 
 	return nil
 }

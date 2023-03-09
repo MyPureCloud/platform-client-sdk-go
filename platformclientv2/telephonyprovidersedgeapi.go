@@ -2542,7 +2542,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 // GetTelephonyProvidersEdges invokes GET /api/v2/telephony/providers/edges
 //
 // Get the list of edges.
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, pageNumber int, name string, siteId string, edgeGroupId string, sortBy string, managed bool) (*Edgeentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, pageNumber int, name string, siteId string, edgeGroupId string, sortBy string, managed bool, showCloudMedia bool) (*Edgeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges"
@@ -2582,6 +2582,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, page
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
+	
+	queryParams["showCloudMedia"] = a.Configuration.APIClient.ParameterToString(showCloudMedia, "")
 	
 
 	// to determine the Content-Type header

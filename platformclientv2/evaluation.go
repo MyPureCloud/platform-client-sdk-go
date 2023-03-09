@@ -42,6 +42,9 @@ type Evaluation struct {
 	// AgentHasRead
 	AgentHasRead *bool `json:"agentHasRead,omitempty"`
 
+	// Assignee
+	Assignee *User `json:"assignee,omitempty"`
+
 	// ReleaseDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReleaseDate *time.Time `json:"releaseDate,omitempty"`
 
@@ -81,11 +84,14 @@ type Evaluation struct {
 	// IsScoringIndex
 	IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
 
-	// AuthorizedActions - List of user authorized actions on evaluation. Possible values: edit, editScore, editAgentSignoff, delete, viewAudit
+	// AuthorizedActions - List of user authorized actions on evaluation. Possible values: assign, edit, editScore, editAgentSignoff, delete, release, viewAudit
 	AuthorizedActions *[]string `json:"authorizedActions,omitempty"`
 
 	// HasAssistanceFailed - Is true when evaluation assistance didn't execute successfully
 	HasAssistanceFailed *bool `json:"hasAssistanceFailed,omitempty"`
+
+	// EvaluationSource - The source that created the evaluation.
+	EvaluationSource *Evaluationsource `json:"evaluationSource,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -214,6 +220,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		AgentHasRead *bool `json:"agentHasRead,omitempty"`
 		
+		Assignee *User `json:"assignee,omitempty"`
+		
 		ReleaseDate *string `json:"releaseDate,omitempty"`
 		
 		AssignedDate *string `json:"assignedDate,omitempty"`
@@ -244,6 +252,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		HasAssistanceFailed *bool `json:"hasAssistanceFailed,omitempty"`
 		
+		EvaluationSource *Evaluationsource `json:"evaluationSource,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -266,6 +276,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		Answers: o.Answers,
 		
 		AgentHasRead: o.AgentHasRead,
+		
+		Assignee: o.Assignee,
 		
 		ReleaseDate: ReleaseDate,
 		
@@ -296,6 +308,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		AuthorizedActions: o.AuthorizedActions,
 		
 		HasAssistanceFailed: o.HasAssistanceFailed,
+		
+		EvaluationSource: o.EvaluationSource,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -355,6 +369,11 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 		o.AgentHasRead = &AgentHasRead
 	}
     
+	if Assignee, ok := EvaluationMap["assignee"].(map[string]interface{}); ok {
+		AssigneeString, _ := json.Marshal(Assignee)
+		json.Unmarshal(AssigneeString, &o.Assignee)
+	}
+	
 	if releaseDateString, ok := EvaluationMap["releaseDate"].(string); ok {
 		ReleaseDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", releaseDateString)
 		o.ReleaseDate = &ReleaseDate
@@ -423,6 +442,11 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 		o.HasAssistanceFailed = &HasAssistanceFailed
 	}
     
+	if EvaluationSource, ok := EvaluationMap["evaluationSource"].(map[string]interface{}); ok {
+		EvaluationSourceString, _ := json.Marshal(EvaluationSource)
+		json.Unmarshal(EvaluationSourceString, &o.EvaluationSource)
+	}
+	
 	if SelfUri, ok := EvaluationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

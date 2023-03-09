@@ -11,8 +11,11 @@ import (
 type Knowledgeexportjobdocumentsfilter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Interval - Retrieves the documents modified in specified date and time range. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
+	// Interval - Retrieves the documents modified in specified date and time range. Cannot be used together with entities filter. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	Interval *string `json:"interval,omitempty"`
+
+	// Entities - Retrieves the documents with the given ids. Cannot be used together with internal filter.
+	Entities *[]Entity `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Knowledgeexportjobdocumentsfilter) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
+		
+		Entities *[]Entity `json:"entities,omitempty"`
 		Alias
 	}{ 
 		Interval: o.Interval,
+		
+		Entities: o.Entities,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +104,11 @@ func (o *Knowledgeexportjobdocumentsfilter) UnmarshalJSON(b []byte) error {
 		o.Interval = &Interval
 	}
     
+	if Entities, ok := KnowledgeexportjobdocumentsfilterMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
 
 	return nil
 }
