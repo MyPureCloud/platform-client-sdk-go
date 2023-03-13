@@ -16,6 +16,9 @@ type Triggertarget struct {
 
 	// Id - The ID of the entity to target
 	Id *string `json:"id,omitempty"`
+
+	// WorkflowTargetSettings - Optional config for the target. Until the feature gets enabled will always operate in TopLevelPrimitives mode.
+	WorkflowTargetSettings *Workflowtargetsettings `json:"workflowTargetSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Triggertarget) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
+		
+		WorkflowTargetSettings *Workflowtargetsettings `json:"workflowTargetSettings,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
 		
 		Id: o.Id,
+		
+		WorkflowTargetSettings: o.WorkflowTargetSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Triggertarget) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if WorkflowTargetSettings, ok := TriggertargetMap["workflowTargetSettings"].(map[string]interface{}); ok {
+		WorkflowTargetSettingsString, _ := json.Marshal(WorkflowTargetSettings)
+		json.Unmarshal(WorkflowTargetSettingsString, &o.WorkflowTargetSettings)
+	}
+	
 
 	return nil
 }
