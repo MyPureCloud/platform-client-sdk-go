@@ -18,17 +18,20 @@ type Wrapupcode struct {
 	// Name - The wrap-up code name.
 	Name *string `json:"name,omitempty"`
 
-	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// Division - The division to which this entity belongs.
+	Division *Starrabledivision `json:"division,omitempty"`
+
+	// DateCreated - Date when the assistant wrap-up code was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// DateModified - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateModified - Date when the wrapup-code was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
+
+	// CreatedBy - The wrap-up code name.
+	CreatedBy *string `json:"createdBy,omitempty"`
 
 	// ModifiedBy
 	ModifiedBy *string `json:"modifiedBy,omitempty"`
-
-	// CreatedBy
-	CreatedBy *string `json:"createdBy,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -117,13 +120,15 @@ func (o Wrapupcode) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Starrabledivision `json:"division,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		ModifiedBy *string `json:"modifiedBy,omitempty"`
-		
 		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		ModifiedBy *string `json:"modifiedBy,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -132,13 +137,15 @@ func (o Wrapupcode) MarshalJSON() ([]byte, error) {
 		
 		Name: o.Name,
 		
+		Division: o.Division,
+		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: o.ModifiedBy,
-		
 		CreatedBy: o.CreatedBy,
+		
+		ModifiedBy: o.ModifiedBy,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -160,6 +167,11 @@ func (o *Wrapupcode) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if Division, ok := WrapupcodeMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if dateCreatedString, ok := WrapupcodeMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -170,12 +182,12 @@ func (o *Wrapupcode) UnmarshalJSON(b []byte) error {
 		o.DateModified = &DateModified
 	}
 	
-	if ModifiedBy, ok := WrapupcodeMap["modifiedBy"].(string); ok {
-		o.ModifiedBy = &ModifiedBy
-	}
-    
 	if CreatedBy, ok := WrapupcodeMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
+	}
+    
+	if ModifiedBy, ok := WrapupcodeMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
 	}
     
 	if SelfUri, ok := WrapupcodeMap["selfUri"].(string); ok {

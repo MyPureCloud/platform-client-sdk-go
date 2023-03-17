@@ -5140,7 +5140,7 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 // GetRoutingWrapupcodes invokes GET /api/v2/routing/wrapupcodes
 //
 // Get list of wrapup codes.
-func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy string, sortOrder string, name string) (*Wrapupcodeentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, divisionId []string) (*Wrapupcodeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes"
@@ -5176,6 +5176,8 @@ func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy s
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
 	// to determine the Content-Type header
@@ -8089,7 +8091,7 @@ func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision) (*S
 // PostRoutingWrapupcodes invokes POST /api/v2/routing/wrapupcodes
 //
 // Create a wrap-up code
-func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcode) (*Wrapupcode, *APIResponse, error) {
+func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcoderequest) (*Wrapupcode, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes"
@@ -9011,7 +9013,7 @@ func (a RoutingApi) PutRoutingUtilization(body Utilization) (*Utilization, *APIR
 // PutRoutingWrapupcode invokes PUT /api/v2/routing/wrapupcodes/{codeId}
 //
 // Update wrap-up code
-func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcode) (*Wrapupcode, *APIResponse, error) {
+func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcoderequest) (*Wrapupcode, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes/{codeId}"

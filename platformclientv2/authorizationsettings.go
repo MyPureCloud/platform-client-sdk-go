@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -19,6 +20,12 @@ type Authorizationsettings struct {
 
 	// AnalysisDays - Integer number of days to analyze user usage
 	AnalysisDays *int `json:"analysisDays,omitempty"`
+
+	// DateLastCalculated - The date and time of the most recent unused role calculation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateLastCalculated *time.Time `json:"dateLastCalculated,omitempty"`
+
+	// DateLastActive - The date of the most recent org activity used for analysis. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	DateLastActive *time.Time `json:"dateLastActive,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -53,9 +60,9 @@ func (o Authorizationsettings) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateLastCalculated", }
 		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateFields := []string{ "DateLastActive", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -86,12 +93,31 @@ func (o Authorizationsettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Authorizationsettings
 	
+	DateLastCalculated := new(string)
+	if o.DateLastCalculated != nil {
+		
+		*DateLastCalculated = timeutil.Strftime(o.DateLastCalculated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateLastCalculated = nil
+	}
+	
+	DateLastActive := new(string)
+	if o.DateLastActive != nil {
+		*DateLastActive = timeutil.Strftime(o.DateLastActive, "%Y-%m-%d")
+	} else {
+		DateLastActive = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		AnalysisEnabled *bool `json:"analysisEnabled,omitempty"`
 		
 		AnalysisDays *int `json:"analysisDays,omitempty"`
+		
+		DateLastCalculated *string `json:"dateLastCalculated,omitempty"`
+		
+		DateLastActive *string `json:"dateLastActive,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -101,6 +127,10 @@ func (o Authorizationsettings) MarshalJSON() ([]byte, error) {
 		AnalysisEnabled: o.AnalysisEnabled,
 		
 		AnalysisDays: o.AnalysisDays,
+		
+		DateLastCalculated: DateLastCalculated,
+		
+		DateLastActive: DateLastActive,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -125,6 +155,16 @@ func (o *Authorizationsettings) UnmarshalJSON(b []byte) error {
 	if AnalysisDays, ok := AuthorizationsettingsMap["analysisDays"].(float64); ok {
 		AnalysisDaysInt := int(AnalysisDays)
 		o.AnalysisDays = &AnalysisDaysInt
+	}
+	
+	if dateLastCalculatedString, ok := AuthorizationsettingsMap["dateLastCalculated"].(string); ok {
+		DateLastCalculated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateLastCalculatedString)
+		o.DateLastCalculated = &DateLastCalculated
+	}
+	
+	if dateLastActiveString, ok := AuthorizationsettingsMap["dateLastActive"].(string); ok {
+		DateLastActive, _ := time.Parse("2006-01-02", dateLastActiveString)
+		o.DateLastActive = &DateLastActive
 	}
 	
 	if SelfUri, ok := AuthorizationsettingsMap["selfUri"].(string); ok {

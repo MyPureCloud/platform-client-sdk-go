@@ -820,6 +820,7 @@ docs/GetOutboundSequence-example.txt
 docs/GetOutboundSequences-example.txt
 docs/GetOutboundSettings-example.txt
 docs/GetOutboundWrapupcodemappings-example.txt
+docs/GetPresenceSettings-example.txt
 docs/GetPresenceSource-example.txt
 docs/GetPresenceSources-example.txt
 docs/GetPresenceUserPrimarysource-example.txt
@@ -1780,7 +1781,6 @@ docs/PostTelephonyProvidersEdgesPhonebasesettings-example.txt
 docs/PostTelephonyProvidersEdgesPhones-example.txt
 docs/PostTelephonyProvidersEdgesPhonesReboot-example.txt
 docs/PostTelephonyProvidersEdgesSiteOutboundroutes-example.txt
-docs/PostTelephonyProvidersEdgesSiteRebalance-example.txt
 docs/PostTelephonyProvidersEdgesSites-example.txt
 docs/PostTelephonyProvidersEdgesTrunkbasesettings-example.txt
 docs/PostTelephonySiptracesDownload-example.txt
@@ -1996,6 +1996,7 @@ docs/PutOutboundSchedulesMessagingcampaign-example.txt
 docs/PutOutboundSchedulesSequence-example.txt
 docs/PutOutboundSequence-example.txt
 docs/PutOutboundWrapupcodemappings-example.txt
+docs/PutPresenceSettings-example.txt
 docs/PutPresenceSource-example.txt
 docs/PutPresenceUserPrimarysource-example.txt
 docs/PutPresencedefinition-example.txt
@@ -3399,7 +3400,10 @@ platformclientv2/evaluationquestiongroupscore.go
 platformclientv2/evaluationquestionscore.go
 platformclientv2/evaluationresponse.go
 platformclientv2/evaluationscoringset.go
+platformclientv2/evaluationsettings.go
+platformclientv2/evaluationsettingsassignee.go
 platformclientv2/evaluationsource.go
+platformclientv2/evaluationversion.go
 platformclientv2/evaluatoractivity.go
 platformclientv2/evaluatoractivityentitylisting.go
 platformclientv2/eventcobrowse.go
@@ -4215,6 +4219,7 @@ platformclientv2/overallbestpoints.go
 platformclientv2/overallbestpointsitem.go
 platformclientv2/page.go
 platformclientv2/pagednamespacelisting.go
+platformclientv2/pagelessdomainentitylistingevaluationversion.go
 platformclientv2/pagingspec.go
 platformclientv2/parameter.go
 platformclientv2/parsedcertificate.go
@@ -4321,6 +4326,7 @@ platformclientv2/presencedetailqueryfilter.go
 platformclientv2/presencedetailquerypredicate.go
 platformclientv2/presenceeventorganizationpresence.go
 platformclientv2/presenceeventuserpresence.go
+platformclientv2/presencesettings.go
 platformclientv2/processautomationapi.go
 platformclientv2/processscheduleupdateuploadrequest.go
 platformclientv2/program.go
@@ -4710,6 +4716,7 @@ platformclientv2/responsesetentitylisting.go
 platformclientv2/responsesubstitution.go
 platformclientv2/responsetext.go
 platformclientv2/resterrordetail.go
+platformclientv2/restorepresencesettings.go
 platformclientv2/resultcounters.go
 platformclientv2/retentionduration.go
 platformclientv2/reversewhitepageslookupresult.go
@@ -4850,6 +4857,7 @@ platformclientv2/sessionlisting.go
 platformclientv2/sessionsegmentassignment.go
 platformclientv2/setcontenttemplateactionsettings.go
 platformclientv2/setrecordingstate.go
+platformclientv2/setsmsphonenumberactionsettings.go
 platformclientv2/settimeofflimitvaluesrequest.go
 platformclientv2/settingdirection.go
 platformclientv2/settings.go
@@ -4920,6 +4928,7 @@ platformclientv2/sourceplanninggrouprequest.go
 platformclientv2/speechtextanalyticsapi.go
 platformclientv2/speechtextanalyticssettingsrequest.go
 platformclientv2/speechtextanalyticssettingsresponse.go
+platformclientv2/starrabledivision.go
 platformclientv2/stateventcampaigntopicintervalmetrics.go
 platformclientv2/stateventcampaigntopicmetricstats.go
 platformclientv2/stateventcampaigntopicstatsnotification.go
@@ -5685,7 +5694,9 @@ platformclientv2/wrapupcodeconfig.go
 platformclientv2/wrapupcodeentitylisting.go
 platformclientv2/wrapupcodemapping.go
 platformclientv2/wrapupcodereference.go
+platformclientv2/wrapupcoderequest.go
 platformclientv2/wrapupdetaileventtopicwrapupevent.go
 platformclientv2/writabledialercontact.go
 platformclientv2/writabledivision.go
 platformclientv2/writableentity.go
+platformclientv2/writablestarrabledivision.go

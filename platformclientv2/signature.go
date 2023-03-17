@@ -19,6 +19,9 @@ type Signature struct {
 
 	// AlwaysIncluded - A toggle that defines if a signature is always included or only set on the first email in an email chain.
 	AlwaysIncluded *bool `json:"alwaysIncluded,omitempty"`
+
+	// InclusionType - The configuration to indicate when the signature of a conversation has to be included
+	InclusionType *string `json:"inclusionType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Signature) MarshalJSON() ([]byte, error) {
 		CannedResponseId *string `json:"cannedResponseId,omitempty"`
 		
 		AlwaysIncluded *bool `json:"alwaysIncluded,omitempty"`
+		
+		InclusionType *string `json:"inclusionType,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -96,6 +101,8 @@ func (o Signature) MarshalJSON() ([]byte, error) {
 		CannedResponseId: o.CannedResponseId,
 		
 		AlwaysIncluded: o.AlwaysIncluded,
+		
+		InclusionType: o.InclusionType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Signature) UnmarshalJSON(b []byte) error {
     
 	if AlwaysIncluded, ok := SignatureMap["alwaysIncluded"].(bool); ok {
 		o.AlwaysIncluded = &AlwaysIncluded
+	}
+    
+	if InclusionType, ok := SignatureMap["inclusionType"].(string); ok {
+		o.InclusionType = &InclusionType
 	}
     
 
