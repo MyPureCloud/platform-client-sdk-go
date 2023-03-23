@@ -77,6 +77,15 @@ type Evaluationqualityv2topicevaluationv2 struct {
 
 	// Calibration
 	Calibration *Evaluationqualityv2topiccalibration `json:"calibration,omitempty"`
+
+	// EvaluationSource
+	EvaluationSource *Evaluationqualityv2topicevaluationsource `json:"evaluationSource,omitempty"`
+
+	// AssigneeUserId
+	AssigneeUserId *string `json:"assigneeUserId,omitempty"`
+
+	// PreviousAssigneeUserId
+	PreviousAssigneeUserId *string `json:"previousAssigneeUserId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -225,6 +234,12 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		MediaType *[]string `json:"mediaType,omitempty"`
 		
 		Calibration *Evaluationqualityv2topiccalibration `json:"calibration,omitempty"`
+		
+		EvaluationSource *Evaluationqualityv2topicevaluationsource `json:"evaluationSource,omitempty"`
+		
+		AssigneeUserId *string `json:"assigneeUserId,omitempty"`
+		
+		PreviousAssigneeUserId *string `json:"previousAssigneeUserId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -270,6 +285,12 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		MediaType: o.MediaType,
 		
 		Calibration: o.Calibration,
+		
+		EvaluationSource: o.EvaluationSource,
+		
+		AssigneeUserId: o.AssigneeUserId,
+		
+		PreviousAssigneeUserId: o.PreviousAssigneeUserId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -380,6 +401,19 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CalibrationString, &o.Calibration)
 	}
 	
+	if EvaluationSource, ok := Evaluationqualityv2topicevaluationv2Map["evaluationSource"].(map[string]interface{}); ok {
+		EvaluationSourceString, _ := json.Marshal(EvaluationSource)
+		json.Unmarshal(EvaluationSourceString, &o.EvaluationSource)
+	}
+	
+	if AssigneeUserId, ok := Evaluationqualityv2topicevaluationv2Map["assigneeUserId"].(string); ok {
+		o.AssigneeUserId = &AssigneeUserId
+	}
+    
+	if PreviousAssigneeUserId, ok := Evaluationqualityv2topicevaluationv2Map["previousAssigneeUserId"].(string); ok {
+		o.PreviousAssigneeUserId = &PreviousAssigneeUserId
+	}
+    
 
 	return nil
 }

@@ -42,12 +42,6 @@ type Journeysessioneventsnotificationsessionevent struct {
 	// SegmentAssignments
 	SegmentAssignments *[]Journeysessioneventsnotificationsegmentassignment `json:"segmentAssignments,omitempty"`
 
-	// Attributes
-	Attributes *map[string]Journeysessioneventsnotificationcustomeventattribute `json:"attributes,omitempty"`
-
-	// AttributeLists
-	AttributeLists *map[string]Journeysessioneventsnotificationcustomeventattributelist `json:"attributeLists,omitempty"`
-
 	// AwayDate
 	AwayDate *time.Time `json:"awayDate,omitempty"`
 
@@ -245,10 +239,6 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		
 		SegmentAssignments *[]Journeysessioneventsnotificationsegmentassignment `json:"segmentAssignments,omitempty"`
 		
-		Attributes *map[string]Journeysessioneventsnotificationcustomeventattribute `json:"attributes,omitempty"`
-		
-		AttributeLists *map[string]Journeysessioneventsnotificationcustomeventattributelist `json:"attributeLists,omitempty"`
-		
 		AwayDate *string `json:"awayDate,omitempty"`
 		
 		Browser *Journeysessioneventsnotificationbrowser `json:"browser,omitempty"`
@@ -323,10 +313,6 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		OutcomeAchievements: o.OutcomeAchievements,
 		
 		SegmentAssignments: o.SegmentAssignments,
-		
-		Attributes: o.Attributes,
-		
-		AttributeLists: o.AttributeLists,
 		
 		AwayDate: AwayDate,
 		
@@ -435,16 +421,6 @@ func (o *Journeysessioneventsnotificationsessionevent) UnmarshalJSON(b []byte) e
 	if SegmentAssignments, ok := JourneysessioneventsnotificationsessioneventMap["segmentAssignments"].([]interface{}); ok {
 		SegmentAssignmentsString, _ := json.Marshal(SegmentAssignments)
 		json.Unmarshal(SegmentAssignmentsString, &o.SegmentAssignments)
-	}
-	
-	if Attributes, ok := JourneysessioneventsnotificationsessioneventMap["attributes"].(map[string]interface{}); ok {
-		AttributesString, _ := json.Marshal(Attributes)
-		json.Unmarshal(AttributesString, &o.Attributes)
-	}
-	
-	if AttributeLists, ok := JourneysessioneventsnotificationsessioneventMap["attributeLists"].(map[string]interface{}); ok {
-		AttributeListsString, _ := json.Marshal(AttributeLists)
-		json.Unmarshal(AttributeListsString, &o.AttributeLists)
 	}
 	
 	if awayDateString, ok := JourneysessioneventsnotificationsessioneventMap["awayDate"].(string); ok {

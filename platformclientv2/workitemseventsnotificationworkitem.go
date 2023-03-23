@@ -97,6 +97,9 @@ type Workitemseventsnotificationworkitem struct {
 
 	// CustomFields
 	CustomFields *map[string]Workitemseventsnotificationcustomattribute `json:"customFields,omitempty"`
+
+	// Wrapup
+	Wrapup *Workitemseventsnotificationwrapup `json:"wrapup,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -219,6 +222,8 @@ func (o Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		QueueId *string `json:"queueId,omitempty"`
 		
 		CustomFields *map[string]Workitemseventsnotificationcustomattribute `json:"customFields,omitempty"`
+		
+		Wrapup *Workitemseventsnotificationwrapup `json:"wrapup,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -278,6 +283,8 @@ func (o Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		QueueId: o.QueueId,
 		
 		CustomFields: o.CustomFields,
+		
+		Wrapup: o.Wrapup,
 		Alias:    (Alias)(o),
 	})
 }
@@ -409,6 +416,11 @@ func (o *Workitemseventsnotificationworkitem) UnmarshalJSON(b []byte) error {
 	if CustomFields, ok := WorkitemseventsnotificationworkitemMap["customFields"].(map[string]interface{}); ok {
 		CustomFieldsString, _ := json.Marshal(CustomFields)
 		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+	if Wrapup, ok := WorkitemseventsnotificationworkitemMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
 	}
 	
 
