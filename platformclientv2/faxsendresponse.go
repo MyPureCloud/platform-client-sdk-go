@@ -23,6 +23,9 @@ type Faxsendresponse struct {
 	// UploadMethodType
 	UploadMethodType *string `json:"uploadMethodType,omitempty"`
 
+	// Headers
+	Headers *map[string]string `json:"headers,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -98,6 +101,8 @@ func (o Faxsendresponse) MarshalJSON() ([]byte, error) {
 		
 		UploadMethodType *string `json:"uploadMethodType,omitempty"`
 		
+		Headers *map[string]string `json:"headers,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Faxsendresponse) MarshalJSON() ([]byte, error) {
 		UploadDestinationUri: o.UploadDestinationUri,
 		
 		UploadMethodType: o.UploadMethodType,
+		
+		Headers: o.Headers,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -137,6 +144,11 @@ func (o *Faxsendresponse) UnmarshalJSON(b []byte) error {
 		o.UploadMethodType = &UploadMethodType
 	}
     
+	if Headers, ok := FaxsendresponseMap["headers"].(map[string]interface{}); ok {
+		HeadersString, _ := json.Marshal(Headers)
+		json.Unmarshal(HeadersString, &o.Headers)
+	}
+	
 	if SelfUri, ok := FaxsendresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -45,8 +45,8 @@ type Queuerequest struct {
 	// JoinedMemberCount - The number of joined members in the queue.
 	JoinedMemberCount *int `json:"joinedMemberCount,omitempty"`
 
-	// MediaSettings - The media settings for the queue. Valid key values: CALL, CALLBACK, CHAT, EMAIL, MESSAGE, SOCIAL_EXPRESSION, VIDEO_COMM
-	MediaSettings *map[string]Mediasetting `json:"mediaSettings,omitempty"`
+	// MediaSettings - The media settings for the queue.
+	MediaSettings *Queuemediasettings `json:"mediaSettings,omitempty"`
 
 	// RoutingRules - The routing rules for the queue, used for Preferred Agent Routing.
 	RoutingRules *[]Routingrule `json:"routingRules,omitempty"`
@@ -216,7 +216,7 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		
 		JoinedMemberCount *int `json:"joinedMemberCount,omitempty"`
 		
-		MediaSettings *map[string]Mediasetting `json:"mediaSettings,omitempty"`
+		MediaSettings *Queuemediasettings `json:"mediaSettings,omitempty"`
 		
 		RoutingRules *[]Routingrule `json:"routingRules,omitempty"`
 		

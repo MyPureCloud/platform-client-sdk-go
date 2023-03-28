@@ -345,6 +345,7 @@ docs/GetAuthorizationSubjectsRolecounts-example.txt
 docs/GetBillingReportsBillableusage-example.txt
 docs/GetBillingTrusteebillingoverviewTrustorOrgId-example.txt
 docs/GetChatSettings-example.txt
+docs/GetChatsSettings-example.txt
 docs/GetCoachingAppointment-example.txt
 docs/GetCoachingAppointmentAnnotation-example.txt
 docs/GetCoachingAppointmentAnnotations-example.txt
@@ -1242,6 +1243,7 @@ docs/PatchAnalyticsReportingSettings-example.txt
 docs/PatchAuthorizationRole-example.txt
 docs/PatchAuthorizationSettings-example.txt
 docs/PatchChatSettings-example.txt
+docs/PatchChatsSettings-example.txt
 docs/PatchCoachingAppointment-example.txt
 docs/PatchCoachingAppointmentAnnotation-example.txt
 docs/PatchCoachingAppointmentStatus-example.txt
@@ -1898,6 +1900,7 @@ docs/PutAuthorizationRoleUsersAdd-example.txt
 docs/PutAuthorizationRoleUsersRemove-example.txt
 docs/PutAuthorizationRolesDefault-example.txt
 docs/PutChatSettings-example.txt
+docs/PutChatsSettings-example.txt
 docs/PutContentmanagementWorkspace-example.txt
 docs/PutContentmanagementWorkspaceMember-example.txt
 docs/PutContentmanagementWorkspaceTagvalue-example.txt
@@ -2539,6 +2542,7 @@ platformclientv2/callbackconversationentitylisting.go
 platformclientv2/callbackdisconnectidentifier.go
 platformclientv2/callbackidentifier.go
 platformclientv2/callbackmediaparticipant.go
+platformclientv2/callbackmediasettings.go
 platformclientv2/callbasic.go
 platformclientv2/callcommand.go
 platformclientv2/callconversation.go
@@ -4012,7 +4016,7 @@ platformclientv2/mediaparticipantrequest.go
 platformclientv2/mediapolicies.go
 platformclientv2/mediaregions.go
 platformclientv2/mediaresult.go
-platformclientv2/mediasetting.go
+platformclientv2/mediasettings.go
 platformclientv2/mediasummary.go
 platformclientv2/mediasummarydetail.go
 platformclientv2/mediatranscription.go
@@ -4603,6 +4607,7 @@ platformclientv2/queueconversationvideoeventtopicworkflow.go
 platformclientv2/queueconversationvideoeventtopicwrapup.go
 platformclientv2/queueemailaddress.go
 platformclientv2/queueentitylisting.go
+platformclientv2/queuemediasettings.go
 platformclientv2/queuemember.go
 platformclientv2/queuememberentitylisting.go
 platformclientv2/queuememberentitylistingv1.go
@@ -4846,6 +4851,7 @@ platformclientv2/sequenceschedule.go
 platformclientv2/serverdate.go
 platformclientv2/servicecontext.go
 platformclientv2/servicegoaltemplate.go
+platformclientv2/servicegoaltemplateimpactoverride.go
 platformclientv2/servicegoaltemplatelist.go
 platformclientv2/servicegoaltemplatereference.go
 platformclientv2/servicelevel.go

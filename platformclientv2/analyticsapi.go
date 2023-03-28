@@ -224,6 +224,8 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 // GetAnalyticsBotflowReportingturns invokes GET /api/v2/analytics/botflows/{botFlowId}/reportingturns
 //
 // Get Reporting Turns.
+//
+// Returns the reporting turns grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list.
 func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after string, pageSize string, actionId string, sessionId string, language string, askActionResults string) (*Reportingturnsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -985,7 +985,7 @@ func (a AuthorizationApi) GetAuthorizationProducts() (*Organizationproductentity
 // Get a single organization role.
 //
 // Get the organization role specified by its ID.
-func (a AuthorizationApi) GetAuthorizationRole(roleId string, expand []string) (*Domainorganizationrole, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationRole(roleId string, userCount bool, expand []string) (*Domainorganizationrole, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}"
@@ -1017,6 +1017,8 @@ func (a AuthorizationApi) GetAuthorizationRole(roleId string, expand []string) (
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["userCount"] = a.Configuration.APIClient.ParameterToString(userCount, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	

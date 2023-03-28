@@ -1912,7 +1912,7 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 // GetRoutingEmailDomains invokes GET /api/v2/routing/email/domains
 //
 // Get domains
-func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, excludeStatus bool) (*Inbounddomainentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, excludeStatus bool, filter string) (*Inbounddomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains"
@@ -1944,6 +1944,8 @@ func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, exclude
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["excludeStatus"] = a.Configuration.APIClient.ParameterToString(excludeStatus, "")
+	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header
@@ -2196,7 +2198,7 @@ func (a RoutingApi) GetRoutingEmailOutboundDomainSearch(domainId string) (*Outbo
 // GetRoutingEmailOutboundDomains invokes GET /api/v2/routing/email/outbound/domains
 //
 // Get outbound domains
-func (a RoutingApi) GetRoutingEmailOutboundDomains() (*Outbounddomainentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailOutboundDomains(filter string) (*Outbounddomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains"
@@ -2222,6 +2224,8 @@ func (a RoutingApi) GetRoutingEmailOutboundDomains() (*Outbounddomainentitylisti
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header
