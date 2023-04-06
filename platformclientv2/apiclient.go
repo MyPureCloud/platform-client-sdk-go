@@ -148,6 +148,32 @@ func (c *APIClient) CallAPI(path string, method string,
 		}
 	}
 
+	if c.configuration.ProxyConfiguration != nil {
+
+                var proxyUrl *url.URL
+
+                if c.configuration.ProxyConfiguration.Auth != nil && c.configuration.ProxyConfiguration.Auth.UserName != "" && c.configuration.ProxyConfiguration.Auth.Password != "" {
+                        proxyUrl = &url.URL{
+                                Scheme: c.configuration.ProxyConfiguration.Protocol,
+                                User: url.UserPassword(c.configuration.ProxyConfiguration.Auth.UserName,
+                                        c.configuration.ProxyConfiguration.Auth.Password),
+                                Host: c.configuration.ProxyConfiguration.Host + ":" + c.configuration.ProxyConfiguration.Port,
+                        }
+                } else {
+
+                        urlString := c.configuration.ProxyConfiguration.Protocol + "://" +
+                                c.configuration.ProxyConfiguration.Host + ":" +
+                                c.configuration.ProxyConfiguration.Port
+                        proxyUrl, _ = url.Parse(urlString)
+                }
+
+                tr := &http.Transport{
+                        Proxy: http.ProxyURL(proxyUrl),
+                }
+
+                c.client.HTTPClient.Transport = tr
+        }
+
 	requestBody, _ := request.BodyBytes()
 
 	// Execute request

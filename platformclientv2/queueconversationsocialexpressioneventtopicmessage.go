@@ -86,6 +86,9 @@ type Queueconversationsocialexpressioneventtopicmessage struct {
 
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+	// ByoSmsIntegrationId
+	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -224,6 +227,8 @@ func (o Queueconversationsocialexpressioneventtopicmessage) MarshalJSON() ([]byt
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+		
+		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -275,6 +280,8 @@ func (o Queueconversationsocialexpressioneventtopicmessage) MarshalJSON() ([]byt
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
+		
+		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -394,6 +401,10 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) UnmarshalJSON(b []b
     
 	if AgentAssistantId, ok := QueueconversationsocialexpressioneventtopicmessageMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
+	}
+    
+	if ByoSmsIntegrationId, ok := QueueconversationsocialexpressioneventtopicmessageMap["byoSmsIntegrationId"].(string); ok {
+		o.ByoSmsIntegrationId = &ByoSmsIntegrationId
 	}
     
 

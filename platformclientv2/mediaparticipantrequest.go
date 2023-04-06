@@ -12,7 +12,7 @@ type Mediaparticipantrequest struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Wrapup - Wrap-up to assign to this participant.
-	Wrapup *Extendedwrapup `json:"wrapup,omitempty"`
+	Wrapup *Wrapupinput `json:"wrapup,omitempty"`
 
 	// State - The state to update to set for this participant's communications.  Possible values are: 'connected' and 'disconnected'.
 	State *string `json:"state,omitempty"`
@@ -96,7 +96,7 @@ func (o Mediaparticipantrequest) MarshalJSON() ([]byte, error) {
 	type Alias Mediaparticipantrequest
 	
 	return json.Marshal(&struct { 
-		Wrapup *Extendedwrapup `json:"wrapup,omitempty"`
+		Wrapup *Wrapupinput `json:"wrapup,omitempty"`
 		
 		State *string `json:"state,omitempty"`
 		

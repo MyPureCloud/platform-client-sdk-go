@@ -11,6 +11,12 @@ import (
 type Fileuploadsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// EnableAttachments - whether or not attachments is enabled
+	EnableAttachments *bool `json:"enableAttachments,omitempty"`
+
+	// UseSupportedContentProfile - whether or not supported content profile is enabled
+	UseSupportedContentProfile *bool `json:"useSupportedContentProfile,omitempty"`
+
 	// Modes - The list of supported file upload modes
 	Modes *[]Fileuploadmode `json:"modes,omitempty"`
 }
@@ -78,9 +84,17 @@ func (o Fileuploadsettings) MarshalJSON() ([]byte, error) {
 	type Alias Fileuploadsettings
 	
 	return json.Marshal(&struct { 
+		EnableAttachments *bool `json:"enableAttachments,omitempty"`
+		
+		UseSupportedContentProfile *bool `json:"useSupportedContentProfile,omitempty"`
+		
 		Modes *[]Fileuploadmode `json:"modes,omitempty"`
 		Alias
 	}{ 
+		EnableAttachments: o.EnableAttachments,
+		
+		UseSupportedContentProfile: o.UseSupportedContentProfile,
+		
 		Modes: o.Modes,
 		Alias:    (Alias)(o),
 	})
@@ -93,6 +107,14 @@ func (o *Fileuploadsettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if EnableAttachments, ok := FileuploadsettingsMap["enableAttachments"].(bool); ok {
+		o.EnableAttachments = &EnableAttachments
+	}
+    
+	if UseSupportedContentProfile, ok := FileuploadsettingsMap["useSupportedContentProfile"].(bool); ok {
+		o.UseSupportedContentProfile = &UseSupportedContentProfile
+	}
+    
 	if Modes, ok := FileuploadsettingsMap["modes"].([]interface{}); ok {
 		ModesString, _ := json.Marshal(Modes)
 		json.Unmarshal(ModesString, &o.Modes)

@@ -478,6 +478,18 @@ type Viewfilter struct {
 
 	// EvaluationStatuses - The evaluation statuses that are used to filter the view
 	EvaluationStatuses *[]string `json:"evaluationStatuses,omitempty"`
+
+	// IsAnalyzedForSensitiveData - Filter to indicate the transcript has been analyzed for sensitive data.
+	IsAnalyzedForSensitiveData *bool `json:"isAnalyzedForSensitiveData,omitempty"`
+
+	// HasSensitiveData - Filter to indicate the transcript contains sensitive data.
+	HasSensitiveData *bool `json:"hasSensitiveData,omitempty"`
+
+	// SubPath - Filter for Sub Path
+	SubPath *string `json:"subPath,omitempty"`
+
+	// UserState - The user supplied state value in the view
+	UserState *string `json:"userState,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -854,6 +866,14 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
 		
 		EvaluationStatuses *[]string `json:"evaluationStatuses,omitempty"`
+		
+		IsAnalyzedForSensitiveData *bool `json:"isAnalyzedForSensitiveData,omitempty"`
+		
+		HasSensitiveData *bool `json:"hasSensitiveData,omitempty"`
+		
+		SubPath *string `json:"subPath,omitempty"`
+		
+		UserState *string `json:"userState,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1167,6 +1187,14 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		EvaluationFormContextIds: o.EvaluationFormContextIds,
 		
 		EvaluationStatuses: o.EvaluationStatuses,
+		
+		IsAnalyzedForSensitiveData: o.IsAnalyzedForSensitiveData,
+		
+		HasSensitiveData: o.HasSensitiveData,
+		
+		SubPath: o.SubPath,
+		
+		UserState: o.UserState,
 		Alias:    (Alias)(o),
 	})
 }
@@ -1926,6 +1954,22 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EvaluationStatusesString, &o.EvaluationStatuses)
 	}
 	
+	if IsAnalyzedForSensitiveData, ok := ViewfilterMap["isAnalyzedForSensitiveData"].(bool); ok {
+		o.IsAnalyzedForSensitiveData = &IsAnalyzedForSensitiveData
+	}
+    
+	if HasSensitiveData, ok := ViewfilterMap["hasSensitiveData"].(bool); ok {
+		o.HasSensitiveData = &HasSensitiveData
+	}
+    
+	if SubPath, ok := ViewfilterMap["subPath"].(string); ok {
+		o.SubPath = &SubPath
+	}
+    
+	if UserState, ok := ViewfilterMap["userState"].(string); ok {
+		o.UserState = &UserState
+	}
+    
 
 	return nil
 }

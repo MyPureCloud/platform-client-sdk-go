@@ -727,6 +727,8 @@ docs/GetOauthAuthorization-example.txt
 docs/GetOauthAuthorizations-example.txt
 docs/GetOauthClient-example.txt
 docs/GetOauthClientUsageQueryResult-example.txt
+docs/GetOauthClientUsageQueryResult-example.txt
+docs/GetOauthClientUsageSummary-example.txt
 docs/GetOauthClientUsageSummary-example.txt
 docs/GetOauthClients-example.txt
 docs/GetOauthScope-example.txt
@@ -1251,6 +1253,7 @@ docs/PatchCoachingNotification-example.txt
 docs/PatchConversationParticipant-example.txt
 docs/PatchConversationParticipantAttributes-example.txt
 docs/PatchConversationSecureattributes-example.txt
+docs/PatchConversationsAftercallworkConversationIdParticipantCommunication-example.txt
 docs/PatchConversationsCall-example.txt
 docs/PatchConversationsCallParticipant-example.txt
 docs/PatchConversationsCallParticipantAttributes-example.txt
@@ -1653,6 +1656,7 @@ docs/PostMobiledevices-example.txt
 docs/PostNotificationsChannelSubscriptions-example.txt
 docs/PostNotificationsChannels-example.txt
 docs/PostOauthClientSecret-example.txt
+docs/PostOauthClientUsageQuery-example.txt
 docs/PostOauthClientUsageQuery-example.txt
 docs/PostOauthClients-example.txt
 docs/PostOrgauthorizationPairings-example.txt
@@ -2184,6 +2188,7 @@ platformclientv2/adhocrecordingtopicworkspacedata.go
 platformclientv2/adjacents.go
 platformclientv2/admintimeoffrequestpatch.go
 platformclientv2/aftercallwork.go
+platformclientv2/aftercallworkupdate.go
 platformclientv2/agent.go
 platformclientv2/agentactivity.go
 platformclientv2/agentactivitychangedtopicagentactivity.go
@@ -3403,6 +3408,7 @@ platformclientv2/evaluationquestion.go
 platformclientv2/evaluationquestiongroup.go
 platformclientv2/evaluationquestiongroupscore.go
 platformclientv2/evaluationquestionscore.go
+platformclientv2/evaluationreference.go
 platformclientv2/evaluationresponse.go
 platformclientv2/evaluationscoringset.go
 platformclientv2/evaluationsettings.go
@@ -3428,7 +3434,6 @@ platformclientv2/expirededgelisting.go
 platformclientv2/exportscriptrequest.go
 platformclientv2/exportscriptresponse.go
 platformclientv2/exporturi.go
-platformclientv2/extendedwrapup.go
 platformclientv2/extension.go
 platformclientv2/extensionentitylisting.go
 platformclientv2/extensionpool.go
@@ -4170,6 +4175,7 @@ platformclientv2/organizationapi.go
 platformclientv2/organizationauthorizationapi.go
 platformclientv2/organizationfeatures.go
 platformclientv2/organizationpresence.go
+platformclientv2/organizationpresencedefinition.go
 platformclientv2/organizationpresenceentitylisting.go
 platformclientv2/organizationproductentitylisting.go
 platformclientv2/organizationroleentitylisting.go
@@ -4980,6 +4986,7 @@ platformclientv2/supportcentersettings.go
 platformclientv2/supportcenterstylesetting.go
 platformclientv2/supportedcontent.go
 platformclientv2/supportedcontentlisting.go
+platformclientv2/supportedcontentprofile.go
 platformclientv2/supportedcontentreference.go
 platformclientv2/supporteddialectsentitylisting.go
 platformclientv2/supportedlanguage.go
@@ -5704,6 +5711,7 @@ platformclientv2/wrapupcodemapping.go
 platformclientv2/wrapupcodereference.go
 platformclientv2/wrapupcoderequest.go
 platformclientv2/wrapupdetaileventtopicwrapupevent.go
+platformclientv2/wrapupinput.go
 platformclientv2/writabledialercontact.go
 platformclientv2/writabledivision.go
 platformclientv2/writableentity.go

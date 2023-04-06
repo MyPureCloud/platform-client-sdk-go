@@ -46,6 +46,9 @@ type Conversationnormalizedmessage struct {
 
 	// Metadata - Additional metadata about this message.
 	Metadata *map[string]string `json:"metadata,omitempty"`
+
+	// ByoSmsIntegrationId - The internal id representing the customer supplied sms integration message.
+	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -134,6 +137,8 @@ func (o Conversationnormalizedmessage) MarshalJSON() ([]byte, error) {
 		Direction *string `json:"direction,omitempty"`
 		
 		Metadata *map[string]string `json:"metadata,omitempty"`
+		
+		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -159,6 +164,8 @@ func (o Conversationnormalizedmessage) MarshalJSON() ([]byte, error) {
 		Direction: o.Direction,
 		
 		Metadata: o.Metadata,
+		
+		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -223,6 +230,10 @@ func (o *Conversationnormalizedmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
+	if ByoSmsIntegrationId, ok := ConversationnormalizedmessageMap["byoSmsIntegrationId"].(string); ok {
+		o.ByoSmsIntegrationId = &ByoSmsIntegrationId
+	}
+    
 
 	return nil
 }

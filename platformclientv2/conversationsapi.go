@@ -6659,6 +6659,97 @@ func (a ConversationsApi) PatchConversationSecureattributes(conversationId strin
 	return successPayload, response, err
 }
 
+// PatchConversationsAftercallworkConversationIdParticipantCommunication invokes PATCH /api/v2/conversations/aftercallwork/{conversationId}/participants/{participantId}/communications/{communicationId}
+//
+// Update after-call work for this conversation communication.
+func (a ConversationsApi) PatchConversationsAftercallworkConversationIdParticipantCommunication(conversationId string, participantId string, communicationId string, body Aftercallworkupdate) (*Aftercallworkupdate, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/aftercallwork/{conversationId}/participants/{participantId}/communications/{communicationId}"
+	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{participantId}", fmt.Sprintf("%v", participantId), -1)
+	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
+	defaultReturn := new(Aftercallworkupdate)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsAftercallworkConversationIdParticipantCommunication")
+	}
+	// verify the required parameter 'participantId' is set
+	if &participantId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsAftercallworkConversationIdParticipantCommunication")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsAftercallworkConversationIdParticipantCommunication")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsAftercallworkConversationIdParticipantCommunication")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Aftercallworkupdate
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Aftercallworkupdate" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchConversationsCall invokes PATCH /api/v2/conversations/calls/{conversationId}
 //
 // Update a conversation by setting its recording state, merging in other conversations to create a conference, or disconnecting all of the participants
@@ -10193,7 +10284,7 @@ func (a ConversationsApi) PostConversationsCallParticipantCoach(conversationId s
 // PostConversationsCallParticipantCommunicationWrapup invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsCallParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsCallParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -10584,7 +10675,7 @@ func (a ConversationsApi) PostConversationsCallParticipants(conversationId strin
 // PostConversationsCallbackParticipantCommunicationWrapup invokes POST /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsCallbackParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsCallbackParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -11188,7 +11279,7 @@ func (a ConversationsApi) PostConversationsChatCommunicationTyping(conversationI
 // PostConversationsChatParticipantCommunicationWrapup invokes POST /api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsChatParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsChatParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -11418,7 +11509,7 @@ func (a ConversationsApi) PostConversationsChats(body Createwebchatrequest) (*Ch
 // PostConversationsCobrowsesessionParticipantCommunicationWrapup invokes POST /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsCobrowsesessionParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsCobrowsesessionParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -11807,7 +11898,7 @@ func (a ConversationsApi) PostConversationsEmailMessagesDraftAttachmentsCopy(con
 // PostConversationsEmailParticipantCommunicationWrapup invokes POST /api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsEmailParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsEmailParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -12657,7 +12748,7 @@ func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId st
 // PostConversationsMessageParticipantCommunicationWrapup invokes POST /api/v2/conversations/messages/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsMessageParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessageParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -13554,7 +13645,7 @@ func (a ConversationsApi) PostConversationsParticipantsAttributesSearch(body Con
 // PostConversationsScreenshareParticipantCommunicationWrapup invokes POST /api/v2/conversations/screenshares/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsScreenshareParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsScreenshareParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/screenshares/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -13633,7 +13724,7 @@ func (a ConversationsApi) PostConversationsScreenshareParticipantCommunicationWr
 // PostConversationsSocialParticipantCommunicationWrapup invokes POST /api/v2/conversations/socials/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsSocialParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsSocialParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/socials/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"
@@ -13712,7 +13803,7 @@ func (a ConversationsApi) PostConversationsSocialParticipantCommunicationWrapup(
 // PostConversationsVideoParticipantCommunicationWrapup invokes POST /api/v2/conversations/videos/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
-func (a ConversationsApi) PostConversationsVideoParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Extendedwrapup) (*APIResponse, error) {
+func (a ConversationsApi) PostConversationsVideoParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/videos/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup"

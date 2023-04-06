@@ -23,14 +23,14 @@ type Textmessagelisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,11 +113,11 @@ func (o Textmessagelisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		PageCount *int `json:"pageCount,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,11 +134,11 @@ func (o Textmessagelisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		FirstUri: o.FirstUri,
-		
 		PageCount: o.PageCount,
 		
 		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,10 +176,6 @@ func (o *Textmessagelisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := TextmessagelistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if PageCount, ok := TextmessagelistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
@@ -187,6 +183,10 @@ func (o *Textmessagelisting) UnmarshalJSON(b []byte) error {
 	
 	if LastUri, ok := TextmessagelistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := TextmessagelistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := TextmessagelistingMap["selfUri"].(string); ok {

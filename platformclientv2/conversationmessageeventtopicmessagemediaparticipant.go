@@ -131,6 +131,9 @@ type Conversationmessageeventtopicmessagemediaparticipant struct {
 
 	// RecipientType
 	RecipientType *string `json:"recipientType,omitempty"`
+
+	// ByoSmsIntegrationId
+	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -323,6 +326,8 @@ func (o Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]b
 		RecipientCountry *string `json:"recipientCountry,omitempty"`
 		
 		RecipientType *string `json:"recipientType,omitempty"`
+		
+		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -404,6 +409,8 @@ func (o Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]b
 		RecipientCountry: o.RecipientCountry,
 		
 		RecipientType: o.RecipientType,
+		
+		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -594,6 +601,10 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
     
 	if RecipientType, ok := ConversationmessageeventtopicmessagemediaparticipantMap["recipientType"].(string); ok {
 		o.RecipientType = &RecipientType
+	}
+    
+	if ByoSmsIntegrationId, ok := ConversationmessageeventtopicmessagemediaparticipantMap["byoSmsIntegrationId"].(string); ok {
+		o.ByoSmsIntegrationId = &ByoSmsIntegrationId
 	}
     
 

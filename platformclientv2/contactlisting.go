@@ -26,20 +26,20 @@ type Contactlisting struct {
 	// PartialResults
 	PartialResults *bool `json:"partialResults,omitempty"`
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults *bool `json:"partialResults,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults: o.PartialResults,
 		
+		NextUri: o.NextUri,
+		
 		FirstUri: o.FirstUri,
 		
-		NextUri: o.NextUri,
+		SelfUri: o.SelfUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -187,12 +187,16 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
 		o.PartialResults = &PartialResults
 	}
     
+	if NextUri, ok := ContactlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if FirstUri, ok := ContactlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if NextUri, ok := ContactlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if SelfUri, ok := ContactlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PreviousUri, ok := ContactlistingMap["previousUri"].(string); ok {
@@ -201,10 +205,6 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := ContactlistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := ContactlistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := ContactlistingMap["pageCount"].(float64); ok {

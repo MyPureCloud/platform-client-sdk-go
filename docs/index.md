@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 95.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 96.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -18,7 +18,7 @@ Some macOS users encounter the error "argument list too long" when building or i
 Retrieve the package from https://github.com/MyPureCloud/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/mypurecloud/platform-client-sdk-go/v95/platformclientv2
+go get github.com/mypurecloud/platform-client-sdk-go/v96/platformclientv2
 ```
 
 ## Using the SDK
@@ -27,7 +27,7 @@ go get github.com/mypurecloud/platform-client-sdk-go/v95/platformclientv2
 
 ```go
 import (
-	"github.com/mypurecloud/platform-client-sdk-go/v95/platformclientv2"
+	"github.com/mypurecloud/platform-client-sdk-go/v96/platformclientv2"
 )
 ```
 
@@ -105,6 +105,32 @@ config.LoggingConfiguration.SetLogToConsole(true)
 config.LoggingConfiguration.SetLogFilePath("/var/log/golangsdk.log")
 ```
 
+#### SDK Proxy
+
+Using a proxy is accomplished by setting the proxy settings on the configuration object
+
+The `ProxyConfiguration` object has 3 properties that determine the URL for proxying.
+Port - Port of the Proxy server
+Host - Host Ip or DNS of the proxy server
+Protocol - Protocol required to connect to the Proxy (http or https)
+
+The 'ProxyConfiguration' has another section which is an optional section. If the proxy requires authentication to connect to
+'Auth' needs to be mentioned under the 'ProxyConfiguration'.
+
+Example logging configuration:
+```go
+proxyconf := ProxyConfiguration{}
+config.ProxyConfiguration := &proxyconf
+config.ProxyConfiguration.Host = platformclientv2.LTrace
+config.ProxyConfiguration.Port = true
+config.ProxyConfiguration.Protocol = true
+
+auth := Auth{}
+config.ProxyConfiguration.Auth = &auth
+config.ProxyConfiguration.Auth.UserName = userName
+config.ProxyConfiguration.Auth.Password = password
+```
+
 #### Configuration file
 
 A number of configuration parameters can be applied using a configuration file. There are two sources for this file:
@@ -134,6 +160,12 @@ refresh_token_wait_max = 10
 [general]
 live_reload_config = true
 host = https://api.mypurecloud.com
+[proxy]
+port = 8888
+host = hostserverip
+protocol = http
+auth-username = username
+auth-password = password
 ```
 
 JSON:
@@ -159,7 +191,18 @@ JSON:
     "general": {
         "live_reload_config": true,
         "host": "https://api.mypurecloud.com"
+    },
+    {
+    "proxy": {
+        "host": "hostname",
+        "protocol": "http",
+        "port": "8888"
+        "auth": {
+            "username": "username",
+            "password": "password"
+        }
     }
+}
 }
 ```
 

@@ -34,6 +34,9 @@ type Digitalcondition struct {
 
 	// LastResultOverallConditionSettings - The settings for a 'last result overall' condition.
 	LastResultOverallConditionSettings *Lastresultoverallconditionsettings `json:"lastResultOverallConditionSettings,omitempty"`
+
+	// DataActionConditionSettings - The settings for a 'data action' condition.
+	DataActionConditionSettings *Dataactionconditionsettings `json:"dataActionConditionSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Digitalcondition) MarshalJSON() ([]byte, error) {
 		LastResultByColumnConditionSettings *Lastresultbycolumnconditionsettings `json:"lastResultByColumnConditionSettings,omitempty"`
 		
 		LastResultOverallConditionSettings *Lastresultoverallconditionsettings `json:"lastResultOverallConditionSettings,omitempty"`
+		
+		DataActionConditionSettings *Dataactionconditionsettings `json:"dataActionConditionSettings,omitempty"`
 		Alias
 	}{ 
 		Inverted: o.Inverted,
@@ -131,6 +136,8 @@ func (o Digitalcondition) MarshalJSON() ([]byte, error) {
 		LastResultByColumnConditionSettings: o.LastResultByColumnConditionSettings,
 		
 		LastResultOverallConditionSettings: o.LastResultOverallConditionSettings,
+		
+		DataActionConditionSettings: o.DataActionConditionSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -179,6 +186,11 @@ func (o *Digitalcondition) UnmarshalJSON(b []byte) error {
 	if LastResultOverallConditionSettings, ok := DigitalconditionMap["lastResultOverallConditionSettings"].(map[string]interface{}); ok {
 		LastResultOverallConditionSettingsString, _ := json.Marshal(LastResultOverallConditionSettings)
 		json.Unmarshal(LastResultOverallConditionSettingsString, &o.LastResultOverallConditionSettings)
+	}
+	
+	if DataActionConditionSettings, ok := DigitalconditionMap["dataActionConditionSettings"].(map[string]interface{}); ok {
+		DataActionConditionSettingsString, _ := json.Marshal(DataActionConditionSettings)
+		json.Unmarshal(DataActionConditionSettingsString, &o.DataActionConditionSettings)
 	}
 	
 

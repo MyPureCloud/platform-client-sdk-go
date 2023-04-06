@@ -134,6 +134,9 @@ type Messagemediaparticipant struct {
 
 	// Authenticated - If true, the participant member is authenticated.
 	Authenticated *bool `json:"authenticated,omitempty"`
+
+	// MonitoredParticipantId - The ID of the participant being monitored when performing a message monitor.
+	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -328,6 +331,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		RecipientType *string `json:"recipientType,omitempty"`
 		
 		Authenticated *bool `json:"authenticated,omitempty"`
+		
+		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -411,6 +416,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		RecipientType: o.RecipientType,
 		
 		Authenticated: o.Authenticated,
+		
+		MonitoredParticipantId: o.MonitoredParticipantId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -607,6 +614,10 @@ func (o *Messagemediaparticipant) UnmarshalJSON(b []byte) error {
     
 	if Authenticated, ok := MessagemediaparticipantMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
+	}
+    
+	if MonitoredParticipantId, ok := MessagemediaparticipantMap["monitoredParticipantId"].(string); ok {
+		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
     
 

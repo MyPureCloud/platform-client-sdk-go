@@ -44,6 +44,7 @@ type Configuration struct {
 	LoggingConfiguration     *LoggingConfiguration `json:"loggingConfiguration,omitempty"`
 	ConfigFilePath           string                `json:"configFilePath,omitempty"`
 	AutoReloadConfig         bool                  `json:"autoReloadConfig,omitempty"`
+	ProxyConfiguration       *ProxyConfiguration   `json:"proxyConfiguration,omitempty"`
 }
 
 const (
@@ -67,6 +68,19 @@ type RetryConfiguration struct {
 	RetryMax        int             `json:"retry_max,omitempty"`
 	RequestLogHook  RequestLogHook  `json:"request_log_hook,omitempty"`
   	ResponseLogHook ResponseLogHook `json:"response_log_hook,omitempty"`
+}
+
+// ProxyConfiguration has settings to configure the SDK Proxy logic
+type ProxyConfiguration struct {
+	Protocol    string   `json:"protocol,omitempty"`
+	Host        string   `json:"host,omitempty"`
+	Port        string   `json:"port,omitempty"`
+	Auth  		*Auth     `json:"auth,omitempty"`
+}
+
+type Auth struct {
+	UserName    string   `json:"username,omitempty"`
+	Password    string   `json:"password,omitempty"`
 }
 
 type RequestLogHook func(*http.Request, int)
@@ -202,6 +216,50 @@ func (c *Configuration) updateConfigFromFile() error {
 		return err
 	}
 
+	//proxy
+    if getConfigString("proxy", "host") != "" {
+                if isJson {
+                        proxyI := getObject("proxy")
+                        jsonbody, err := json.Marshal(proxyI)
+                        if err != nil {
+                                return err
+                        }
+                        proxyconf := ProxyConfiguration{}
+                        if err := json.Unmarshal(jsonbody, &proxyconf); err != nil {
+                                return err
+                        }
+                        c.ProxyConfiguration = &proxyconf
+                } else {
+                        proxyconf := ProxyConfiguration{}
+                        c.ProxyConfiguration = &proxyconf
+
+                        hostProxy := getConfigString("proxy", "host")
+                        if hostProxy != "" {
+                                c.ProxyConfiguration.Host = hostProxy
+                        }
+
+                        port := getConfigString("proxy", "port")
+                        if port != "" {
+                                c.ProxyConfiguration.Port = port
+                        }
+
+                        protocol := getConfigString("proxy", "protocol")
+                        if port != "" {
+                                c.ProxyConfiguration.Protocol = protocol
+                        }
+
+                        userName := getConfigString("proxy", "auth-username")
+                        password := getConfigString("proxy", "auth-password")
+                        if userName != "" && password != "" {
+                                auth := Auth{}
+                                c.ProxyConfiguration.Auth = &auth
+                                c.ProxyConfiguration.Auth.UserName = userName
+                                c.ProxyConfiguration.Auth.Password = password
+                        }
+                }
+        }
+
+
 	// logging
 	logLevel := getConfigString("logging", "log_level")
 	if logLevel != "" {
@@ -272,6 +330,10 @@ func getConfigString(section, key string) string {
 	value := viper.GetString(fmt.Sprintf("%s.%s", section, key))
 
 	return strings.Trim(fmt.Sprintf("%s", value), " ")
+}
+
+func getObject(section string) interface{} {
+        return viper.Get(fmt.Sprintf("%s", section))
 }
 
 func getConfigBool(section, key string) bool {

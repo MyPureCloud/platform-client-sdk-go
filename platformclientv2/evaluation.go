@@ -72,6 +72,9 @@ type Evaluation struct {
 	// NeverRelease - Signifies if the evaluation is never to be released. This cannot be set true if release date is also set.
 	NeverRelease *bool `json:"neverRelease,omitempty"`
 
+	// Assigned - Set to false to unassign the evaluation. This cannot be set to false when assignee is also set.
+	Assigned *bool `json:"assigned,omitempty"`
+
 	// ResourceId - Only used for email evaluations. Will be null for all other evaluations.
 	ResourceId *string `json:"resourceId,omitempty"`
 
@@ -240,6 +243,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		NeverRelease *bool `json:"neverRelease,omitempty"`
 		
+		Assigned *bool `json:"assigned,omitempty"`
+		
 		ResourceId *string `json:"resourceId,omitempty"`
 		
 		ResourceType *string `json:"resourceType,omitempty"`
@@ -296,6 +301,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		ConversationEndDate: ConversationEndDate,
 		
 		NeverRelease: o.NeverRelease,
+		
+		Assigned: o.Assigned,
 		
 		ResourceId: o.ResourceId,
 		
@@ -415,6 +422,10 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	
 	if NeverRelease, ok := EvaluationMap["neverRelease"].(bool); ok {
 		o.NeverRelease = &NeverRelease
+	}
+    
+	if Assigned, ok := EvaluationMap["assigned"].(bool); ok {
+		o.Assigned = &Assigned
 	}
     
 	if ResourceId, ok := EvaluationMap["resourceId"].(string); ok {

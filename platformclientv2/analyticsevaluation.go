@@ -12,6 +12,9 @@ import (
 type Analyticsevaluation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// AssigneeId - UserId of the assignee
+	AssigneeId *string `json:"assigneeId,omitempty"`
+
 	// CalibrationId - The calibration ID used for the purpose of training evaluators
 	CalibrationId *string `json:"calibrationId,omitempty"`
 
@@ -129,6 +132,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		AssigneeId *string `json:"assigneeId,omitempty"`
+		
 		CalibrationId *string `json:"calibrationId,omitempty"`
 		
 		ContextId *string `json:"contextId,omitempty"`
@@ -160,6 +165,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		OTotalScore *int `json:"oTotalScore,omitempty"`
 		Alias
 	}{ 
+		AssigneeId: o.AssigneeId,
+		
 		CalibrationId: o.CalibrationId,
 		
 		ContextId: o.ContextId,
@@ -200,6 +207,10 @@ func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if AssigneeId, ok := AnalyticsevaluationMap["assigneeId"].(string); ok {
+		o.AssigneeId = &AssigneeId
+	}
+    
 	if CalibrationId, ok := AnalyticsevaluationMap["calibrationId"].(string); ok {
 		o.CalibrationId = &CalibrationId
 	}

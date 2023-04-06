@@ -126,8 +126,11 @@ type Userme struct {
 	// Organization - Organization details for this user.
 	Organization *Organization `json:"organization,omitempty"`
 
-	// PresenceDefinitions - The first 100 presence definitions for user's organization.
+	// PresenceDefinitions - The first 100 non-divisioned presence definitions for user's organization.
 	PresenceDefinitions *[]Organizationpresence `json:"presenceDefinitions,omitempty"`
+
+	// DivisionedPresenceDefinitions - The presence definitions that the user has access to
+	DivisionedPresenceDefinitions *[]Organizationpresencedefinition `json:"divisionedPresenceDefinitions,omitempty"`
 
 	// LocationDefinitions - The first 100 site locations for user's organization
 	LocationDefinitions *[]Locationdefinition `json:"locationDefinitions,omitempty"`
@@ -315,6 +318,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		
 		PresenceDefinitions *[]Organizationpresence `json:"presenceDefinitions,omitempty"`
 		
+		DivisionedPresenceDefinitions *[]Organizationpresencedefinition `json:"divisionedPresenceDefinitions,omitempty"`
+		
 		LocationDefinitions *[]Locationdefinition `json:"locationDefinitions,omitempty"`
 		
 		OrgAuthorization *[]Domainorganizationrole `json:"orgAuthorization,omitempty"`
@@ -417,6 +422,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		Organization: o.Organization,
 		
 		PresenceDefinitions: o.PresenceDefinitions,
+		
+		DivisionedPresenceDefinitions: o.DivisionedPresenceDefinitions,
 		
 		LocationDefinitions: o.LocationDefinitions,
 		
@@ -636,6 +643,11 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if PresenceDefinitions, ok := UsermeMap["presenceDefinitions"].([]interface{}); ok {
 		PresenceDefinitionsString, _ := json.Marshal(PresenceDefinitions)
 		json.Unmarshal(PresenceDefinitionsString, &o.PresenceDefinitions)
+	}
+	
+	if DivisionedPresenceDefinitions, ok := UsermeMap["divisionedPresenceDefinitions"].([]interface{}); ok {
+		DivisionedPresenceDefinitionsString, _ := json.Marshal(DivisionedPresenceDefinitions)
+		json.Unmarshal(DivisionedPresenceDefinitionsString, &o.DivisionedPresenceDefinitions)
 	}
 	
 	if LocationDefinitions, ok := UsermeMap["locationDefinitions"].([]interface{}); ok {

@@ -59,6 +59,9 @@ type Reportingdataexporttopicdataexportnotification struct {
 
 	// ScheduleStaticLinkUrl
 	ScheduleStaticLinkUrl *string `json:"scheduleStaticLinkUrl,omitempty"`
+
+	// ExportAllowedToRerun
+	ExportAllowedToRerun *bool `json:"exportAllowedToRerun,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -171,6 +174,8 @@ func (o Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, e
 		ScheduleExpression *string `json:"scheduleExpression,omitempty"`
 		
 		ScheduleStaticLinkUrl *string `json:"scheduleStaticLinkUrl,omitempty"`
+		
+		ExportAllowedToRerun *bool `json:"exportAllowedToRerun,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -204,6 +209,8 @@ func (o Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, e
 		ScheduleExpression: o.ScheduleExpression,
 		
 		ScheduleStaticLinkUrl: o.ScheduleStaticLinkUrl,
+		
+		ExportAllowedToRerun: o.ExportAllowedToRerun,
 		Alias:    (Alias)(o),
 	})
 }
@@ -281,6 +288,10 @@ func (o *Reportingdataexporttopicdataexportnotification) UnmarshalJSON(b []byte)
     
 	if ScheduleStaticLinkUrl, ok := ReportingdataexporttopicdataexportnotificationMap["scheduleStaticLinkUrl"].(string); ok {
 		o.ScheduleStaticLinkUrl = &ScheduleStaticLinkUrl
+	}
+    
+	if ExportAllowedToRerun, ok := ReportingdataexporttopicdataexportnotificationMap["exportAllowedToRerun"].(bool); ok {
+		o.ExportAllowedToRerun = &ExportAllowedToRerun
 	}
     
 

@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// Extendedwrapup
-type Extendedwrapup struct { 
+// Wrapupinput
+type Wrapupinput struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Code - The user configured wrap up code id.
@@ -38,7 +38,7 @@ type Extendedwrapup struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Extendedwrapup) SetField(field string, fieldValue interface{}) {
+func (o *Wrapupinput) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -59,7 +59,7 @@ func (o *Extendedwrapup) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Extendedwrapup) MarshalJSON() ([]byte, error) {
+func (o Wrapupinput) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -97,7 +97,7 @@ func (o Extendedwrapup) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Extendedwrapup
+	type Alias Wrapupinput
 	
 	EndTime := new(string)
 	if o.EndTime != nil {
@@ -144,45 +144,45 @@ func (o Extendedwrapup) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Extendedwrapup) UnmarshalJSON(b []byte) error {
-	var ExtendedwrapupMap map[string]interface{}
-	err := json.Unmarshal(b, &ExtendedwrapupMap)
+func (o *Wrapupinput) UnmarshalJSON(b []byte) error {
+	var WrapupinputMap map[string]interface{}
+	err := json.Unmarshal(b, &WrapupinputMap)
 	if err != nil {
 		return err
 	}
 	
-	if Code, ok := ExtendedwrapupMap["code"].(string); ok {
+	if Code, ok := WrapupinputMap["code"].(string); ok {
 		o.Code = &Code
 	}
     
-	if Name, ok := ExtendedwrapupMap["name"].(string); ok {
+	if Name, ok := WrapupinputMap["name"].(string); ok {
 		o.Name = &Name
 	}
     
-	if Notes, ok := ExtendedwrapupMap["notes"].(string); ok {
+	if Notes, ok := WrapupinputMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
     
-	if Tags, ok := ExtendedwrapupMap["tags"].([]interface{}); ok {
+	if Tags, ok := WrapupinputMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)
 	}
 	
-	if DurationSeconds, ok := ExtendedwrapupMap["durationSeconds"].(float64); ok {
+	if DurationSeconds, ok := WrapupinputMap["durationSeconds"].(float64); ok {
 		DurationSecondsInt := int(DurationSeconds)
 		o.DurationSeconds = &DurationSecondsInt
 	}
 	
-	if endTimeString, ok := ExtendedwrapupMap["endTime"].(string); ok {
+	if endTimeString, ok := WrapupinputMap["endTime"].(string); ok {
 		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
 		o.EndTime = &EndTime
 	}
 	
-	if Provisional, ok := ExtendedwrapupMap["provisional"].(bool); ok {
+	if Provisional, ok := WrapupinputMap["provisional"].(bool); ok {
 		o.Provisional = &Provisional
 	}
     
-	if DisableEndTimeUpdates, ok := ExtendedwrapupMap["disableEndTimeUpdates"].(bool); ok {
+	if DisableEndTimeUpdates, ok := WrapupinputMap["disableEndTimeUpdates"].(bool); ok {
 		o.DisableEndTimeUpdates = &DisableEndTimeUpdates
 	}
     
@@ -191,7 +191,7 @@ func (o *Extendedwrapup) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Extendedwrapup) String() string {
+func (o *Wrapupinput) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
