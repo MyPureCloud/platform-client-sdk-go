@@ -36,7 +36,7 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*interface{}, *A
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*interface{}, *A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -112,7 +123,7 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*interface{}, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -141,6 +152,17 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*interface{}, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -188,7 +210,7 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Scimv2group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -221,6 +243,17 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 	
 	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -302,6 +335,17 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -344,7 +388,7 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/resourcetypes/{resourceType}"
-	path = strings.Replace(path, "{resourceType}", fmt.Sprintf("%v", resourceType), -1)
+	path = strings.Replace(path, "{resourceType}", url.PathEscape(fmt.Sprintf("%v", resourceType)), -1)
 	defaultReturn := new(Scimconfigresourcetype)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -373,6 +417,17 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -440,6 +495,17 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -482,7 +548,7 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/schemas/{schemaId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Scimv2schemadefinition)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -511,6 +577,17 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -580,6 +657,17 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -646,6 +734,17 @@ func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimservicep
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -692,7 +791,7 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Scimv2user)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -725,6 +824,17 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 	
 	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -808,6 +918,17 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -850,7 +971,7 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Scimv2group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -883,6 +1004,17 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 	
 	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -969,6 +1101,17 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1011,7 +1154,7 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/resourcetypes/{resourceType}"
-	path = strings.Replace(path, "{resourceType}", fmt.Sprintf("%v", resourceType), -1)
+	path = strings.Replace(path, "{resourceType}", url.PathEscape(fmt.Sprintf("%v", resourceType)), -1)
 	defaultReturn := new(Scimconfigresourcetype)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1040,6 +1183,17 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1107,6 +1261,17 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1149,7 +1314,7 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/schemas/{schemaId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Scimv2schemadefinition)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1178,6 +1343,17 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1247,6 +1423,17 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1313,6 +1500,17 @@ func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimservic
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1359,7 +1557,7 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Scimv2user)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1392,6 +1590,17 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 	
 	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1475,6 +1684,17 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1517,7 +1737,7 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Scimv2group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1551,6 +1771,17 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
@@ -1601,7 +1832,7 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Scimv2user)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1635,6 +1866,17 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
@@ -1685,7 +1927,7 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Scimv2group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1719,6 +1961,17 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
@@ -1769,7 +2022,7 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Scimv2user)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1803,6 +2056,17 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
@@ -1882,6 +2146,17 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
@@ -1956,6 +2231,17 @@ func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIRespon
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
@@ -2001,7 +2287,7 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Scimv2group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2035,6 +2321,17 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
@@ -2085,7 +2382,7 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Scimv2user)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2119,6 +2416,17 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
@@ -2169,7 +2477,7 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Scimv2group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2203,6 +2511,17 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
@@ -2253,7 +2572,7 @@ func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Scimv2user)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2287,6 +2606,17 @@ func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }

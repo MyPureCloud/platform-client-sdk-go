@@ -36,7 +36,7 @@ func (a IntegrationsApi) DeleteIntegration(integrationId string) (*Integration, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	defaultReturn := new(Integration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a IntegrationsApi) DeleteIntegration(integrationId string) (*Integration, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -107,7 +118,7 @@ func (a IntegrationsApi) DeleteIntegrationsAction(actionId string) (*APIResponse
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -135,6 +146,17 @@ func (a IntegrationsApi) DeleteIntegrationsAction(actionId string) (*APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -171,7 +193,7 @@ func (a IntegrationsApi) DeleteIntegrationsActionDraft(actionId string) (*APIRes
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -199,6 +221,17 @@ func (a IntegrationsApi) DeleteIntegrationsActionDraft(actionId string) (*APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -235,7 +268,7 @@ func (a IntegrationsApi) DeleteIntegrationsCredential(credentialId string) (*API
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/credentials/{credentialId}"
-	path = strings.Replace(path, "{credentialId}", fmt.Sprintf("%v", credentialId), -1)
+	path = strings.Replace(path, "{credentialId}", url.PathEscape(fmt.Sprintf("%v", credentialId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -263,6 +296,17 @@ func (a IntegrationsApi) DeleteIntegrationsCredential(credentialId string) (*API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -299,7 +343,7 @@ func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, page
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	defaultReturn := new(Integration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -340,6 +384,17 @@ func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, page
 	
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -382,7 +437,7 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}/config/current"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	defaultReturn := new(Integrationconfiguration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -411,6 +466,17 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -489,6 +555,17 @@ func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy st
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -530,7 +607,7 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Action)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -563,6 +640,17 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 	
 	queryParams["includeConfig"] = a.Configuration.APIClient.ParameterToString(includeConfig, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -605,7 +693,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Action)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -638,6 +726,17 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 	
 	queryParams["includeConfig"] = a.Configuration.APIClient.ParameterToString(includeConfig, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -680,8 +779,8 @@ func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileN
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/schemas/{fileName}"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
-	path = strings.Replace(path, "{fileName}", fmt.Sprintf("%v", fileName), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
+	path = strings.Replace(path, "{fileName}", url.PathEscape(fmt.Sprintf("%v", fileName)), -1)
 	defaultReturn := new(Jsonschemadocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -715,6 +814,17 @@ func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileN
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -757,8 +867,8 @@ func (a IntegrationsApi) GetIntegrationsActionDraftTemplate(actionId string, fil
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/templates/{fileName}"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
-	path = strings.Replace(path, "{fileName}", fmt.Sprintf("%v", fileName), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
+	path = strings.Replace(path, "{fileName}", url.PathEscape(fmt.Sprintf("%v", fileName)), -1)
 	defaultReturn := new(string)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -792,6 +902,17 @@ func (a IntegrationsApi) GetIntegrationsActionDraftTemplate(actionId string, fil
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -834,7 +955,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/validation"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Draftvalidationresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -863,6 +984,17 @@ func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -905,8 +1037,8 @@ func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/schemas/{fileName}"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
-	path = strings.Replace(path, "{fileName}", fmt.Sprintf("%v", fileName), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
+	path = strings.Replace(path, "{fileName}", url.PathEscape(fmt.Sprintf("%v", fileName)), -1)
 	defaultReturn := new(Jsonschemadocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -940,6 +1072,17 @@ func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -982,8 +1125,8 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/templates/{fileName}"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
-	path = strings.Replace(path, "{fileName}", fmt.Sprintf("%v", fileName), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
+	path = strings.Replace(path, "{fileName}", url.PathEscape(fmt.Sprintf("%v", fileName)), -1)
 	defaultReturn := new(string)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1017,6 +1160,17 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1105,6 +1259,17 @@ func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, ne
 	queryParams["includeAuthActions"] = a.Configuration.APIClient.ParameterToString(includeAuthActions, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1183,6 +1348,17 @@ func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int, pageNumb
 	
 	queryParams["secure"] = a.Configuration.APIClient.ParameterToString(secure, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1271,6 +1447,17 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber i
 	queryParams["includeAuthActions"] = a.Configuration.APIClient.ParameterToString(includeAuthActions, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1312,8 +1499,8 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBot(integration
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/botconnector/{integrationId}/bots/{botId}"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
-	path = strings.Replace(path, "{botId}", fmt.Sprintf("%v", botId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
+	path = strings.Replace(path, "{botId}", url.PathEscape(fmt.Sprintf("%v", botId)), -1)
 	defaultReturn := new(Botconnectorbot)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1349,6 +1536,17 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBot(integration
 	
 	queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1391,8 +1589,8 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotVersions(int
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/botconnector/{integrationId}/bots/{botId}/versions"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
-	path = strings.Replace(path, "{botId}", fmt.Sprintf("%v", botId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
+	path = strings.Replace(path, "{botId}", url.PathEscape(fmt.Sprintf("%v", botId)), -1)
 	defaultReturn := new(Botconnectorbotversionsummaryentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1430,6 +1628,17 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotVersions(int
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1472,7 +1681,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBots(integratio
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/botconnector/{integrationId}/bots"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	defaultReturn := new(Botlist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1501,6 +1710,17 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBots(integratio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1543,7 +1763,7 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotsSummaries(i
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/botconnector/{integrationId}/bots/summaries"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	defaultReturn := new(Botconnectorbotsummaryentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1576,6 +1796,17 @@ func (a IntegrationsApi) GetIntegrationsBotconnectorIntegrationIdBotsSummaries(i
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1653,6 +1884,17 @@ func (a IntegrationsApi) GetIntegrationsClientapps(pageSize int, pageNumber int,
 	
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1733,6 +1975,17 @@ func (a IntegrationsApi) GetIntegrationsClientappsUnifiedcommunications(pageSize
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1774,7 +2027,7 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/credentials/{credentialId}"
-	path = strings.Replace(path, "{credentialId}", fmt.Sprintf("%v", credentialId), -1)
+	path = strings.Replace(path, "{credentialId}", url.PathEscape(fmt.Sprintf("%v", credentialId)), -1)
 	defaultReturn := new(Credential)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1803,6 +2056,17 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1873,6 +2137,17 @@ func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int, pageSize int
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1938,6 +2213,17 @@ func (a IntegrationsApi) GetIntegrationsCredentialsTypes() (*Credentialtypelisti
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1979,7 +2265,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/dialogflow/agents/{agentId}"
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
 	defaultReturn := new(Dialogflowagent)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2008,6 +2294,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2080,6 +2377,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int, p
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2121,7 +2429,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexb
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/lex/bot/alias/{aliasId}"
-	path = strings.Replace(path, "{aliasId}", fmt.Sprintf("%v", aliasId), -1)
+	path = strings.Replace(path, "{aliasId}", url.PathEscape(fmt.Sprintf("%v", aliasId)), -1)
 	defaultReturn := new(Lexbotalias)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2150,6 +2458,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexb
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2192,7 +2511,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, p
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/lex/bot/{botId}/aliases"
-	path = strings.Replace(path, "{botId}", fmt.Sprintf("%v", botId), -1)
+	path = strings.Replace(path, "{botId}", url.PathEscape(fmt.Sprintf("%v", botId)), -1)
 	defaultReturn := new(Lexbotaliasentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2229,6 +2548,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, p
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2301,6 +2631,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int, pageSize i
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2342,7 +2683,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngine(engineId string, include
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/tts/engines/{engineId}"
-	path = strings.Replace(path, "{engineId}", fmt.Sprintf("%v", engineId), -1)
+	path = strings.Replace(path, "{engineId}", url.PathEscape(fmt.Sprintf("%v", engineId)), -1)
 	defaultReturn := new(Ttsengineentity)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2373,6 +2714,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngine(engineId string, include
 	
 	queryParams["includeVoices"] = a.Configuration.APIClient.ParameterToString(includeVoices, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2415,8 +2767,8 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, vo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/tts/engines/{engineId}/voices/{voiceId}"
-	path = strings.Replace(path, "{engineId}", fmt.Sprintf("%v", engineId), -1)
-	path = strings.Replace(path, "{voiceId}", fmt.Sprintf("%v", voiceId), -1)
+	path = strings.Replace(path, "{engineId}", url.PathEscape(fmt.Sprintf("%v", engineId)), -1)
+	path = strings.Replace(path, "{voiceId}", url.PathEscape(fmt.Sprintf("%v", voiceId)), -1)
 	defaultReturn := new(Ttsvoiceentity)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2450,6 +2802,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, vo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2492,7 +2855,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, p
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/tts/engines/{engineId}/voices"
-	path = strings.Replace(path, "{engineId}", fmt.Sprintf("%v", engineId), -1)
+	path = strings.Replace(path, "{engineId}", url.PathEscape(fmt.Sprintf("%v", engineId)), -1)
 	defaultReturn := new(Ttsvoiceentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2525,6 +2888,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, p
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2601,6 +2975,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngines(pageNumber int, pageSiz
 	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2666,6 +3051,17 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsSettings() (*Ttssettings, *APIR
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2707,7 +3103,7 @@ func (a IntegrationsApi) GetIntegrationsType(typeId string) (*Integrationtype, *
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/types/{typeId}"
-	path = strings.Replace(path, "{typeId}", fmt.Sprintf("%v", typeId), -1)
+	path = strings.Replace(path, "{typeId}", url.PathEscape(fmt.Sprintf("%v", typeId)), -1)
 	defaultReturn := new(Integrationtype)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2736,6 +3132,17 @@ func (a IntegrationsApi) GetIntegrationsType(typeId string) (*Integrationtype, *
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2778,8 +3185,8 @@ func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configTy
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/types/{typeId}/configschemas/{configType}"
-	path = strings.Replace(path, "{typeId}", fmt.Sprintf("%v", typeId), -1)
-	path = strings.Replace(path, "{configType}", fmt.Sprintf("%v", configType), -1)
+	path = strings.Replace(path, "{typeId}", url.PathEscape(fmt.Sprintf("%v", typeId)), -1)
+	path = strings.Replace(path, "{configType}", url.PathEscape(fmt.Sprintf("%v", configType)), -1)
 	defaultReturn := new(Jsonschemadocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2813,6 +3220,17 @@ func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configTy
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2890,6 +3308,17 @@ func (a IntegrationsApi) GetIntegrationsTypes(pageSize int, pageNumber int, sort
 	
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2970,6 +3399,17 @@ func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int, pageNumber int, s
 	queryParams["appHost"] = a.Configuration.APIClient.ParameterToString(appHost, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3011,7 +3451,7 @@ func (a IntegrationsApi) PatchIntegration(integrationId string, pageSize int, pa
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	defaultReturn := new(Integration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3052,6 +3492,17 @@ func (a IntegrationsApi) PatchIntegration(integrationId string, pageSize int, pa
 	
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3097,7 +3548,7 @@ func (a IntegrationsApi) PatchIntegrationsAction(actionId string, body Updateact
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Action)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3131,6 +3582,17 @@ func (a IntegrationsApi) PatchIntegrationsAction(actionId string, body Updateact
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3176,7 +3638,7 @@ func (a IntegrationsApi) PatchIntegrationsActionDraft(actionId string, body Upda
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Action)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3210,6 +3672,17 @@ func (a IntegrationsApi) PatchIntegrationsActionDraft(actionId string, body Upda
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3279,6 +3752,17 @@ func (a IntegrationsApi) PostIntegrations(body Createintegrationrequest) (*Integ
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3323,7 +3807,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Action)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3352,6 +3836,17 @@ func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3394,7 +3889,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/publish"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Action)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3428,6 +3923,17 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3473,7 +3979,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/test"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Testexecutionresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3507,6 +4013,17 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3552,7 +4069,7 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/execute"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3586,6 +4103,17 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3631,7 +4159,7 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/test"
-	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
+	path = strings.Replace(path, "{actionId}", url.PathEscape(fmt.Sprintf("%v", actionId)), -1)
 	defaultReturn := new(Testexecutionresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3665,6 +4193,17 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3739,6 +4278,17 @@ func (a IntegrationsApi) PostIntegrationsActions(body Postactioninput) (*Action,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3812,6 +4362,17 @@ func (a IntegrationsApi) PostIntegrationsActionsDrafts(body Postactioninput) (*A
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3880,6 +4441,17 @@ func (a IntegrationsApi) PostIntegrationsCredentials(body Credential) (*Credenti
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3924,7 +4496,7 @@ func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}/config/current"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	defaultReturn := new(Integrationconfiguration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3953,6 +4525,17 @@ func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3998,7 +4581,7 @@ func (a IntegrationsApi) PutIntegrationsBotconnectorIntegrationIdBots(integratio
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/botconnector/{integrationId}/bots"
-	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4031,6 +4614,17 @@ func (a IntegrationsApi) PutIntegrationsBotconnectorIntegrationIdBots(integratio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4070,7 +4664,7 @@ func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Cre
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/credentials/{credentialId}"
-	path = strings.Replace(path, "{credentialId}", fmt.Sprintf("%v", credentialId), -1)
+	path = strings.Replace(path, "{credentialId}", url.PathEscape(fmt.Sprintf("%v", credentialId)), -1)
 	defaultReturn := new(Credentialinfo)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4099,6 +4693,17 @@ func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Cre
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4172,6 +4777,17 @@ func (a IntegrationsApi) PutIntegrationsSpeechTtsSettings(body Ttssettings) (*Tt
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

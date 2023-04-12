@@ -36,7 +36,7 @@ func (a LicenseApi) GetLicenseDefinition(licenseId string) (*Licensedefinition, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/license/definitions/{licenseId}"
-	path = strings.Replace(path, "{licenseId}", fmt.Sprintf("%v", licenseId), -1)
+	path = strings.Replace(path, "{licenseId}", url.PathEscape(fmt.Sprintf("%v", licenseId)), -1)
 	defaultReturn := new(Licensedefinition)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a LicenseApi) GetLicenseDefinition(licenseId string) (*Licensedefinition, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -131,6 +142,17 @@ func (a LicenseApi) GetLicenseDefinitions() ([]Licensedefinition, *APIResponse, 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -172,7 +194,7 @@ func (a LicenseApi) GetLicenseToggle(featureName string) (*Licenseorgtoggle, *AP
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/license/toggles/{featureName}"
-	path = strings.Replace(path, "{featureName}", fmt.Sprintf("%v", featureName), -1)
+	path = strings.Replace(path, "{featureName}", url.PathEscape(fmt.Sprintf("%v", featureName)), -1)
 	defaultReturn := new(Licenseorgtoggle)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -201,6 +223,17 @@ func (a LicenseApi) GetLicenseToggle(featureName string) (*Licenseorgtoggle, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -243,7 +276,7 @@ func (a LicenseApi) GetLicenseUser(userId string) (*Licenseuser, *APIResponse, e
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/license/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Licenseuser)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -272,6 +305,17 @@ func (a LicenseApi) GetLicenseUser(userId string) (*Licenseuser, *APIResponse, e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -344,6 +388,17 @@ func (a LicenseApi) GetLicenseUsers(pageSize int, pageNumber int) (*Userlicenses
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -408,6 +463,17 @@ func (a LicenseApi) PostLicenseInfer(body []string) ([]string, *APIResponse, err
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -477,6 +543,17 @@ func (a LicenseApi) PostLicenseOrganization(body Licensebatchassignmentrequest) 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -521,7 +598,7 @@ func (a LicenseApi) PostLicenseToggle(featureName string) (*Licenseorgtoggle, *A
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/license/toggles/{featureName}"
-	path = strings.Replace(path, "{featureName}", fmt.Sprintf("%v", featureName), -1)
+	path = strings.Replace(path, "{featureName}", url.PathEscape(fmt.Sprintf("%v", featureName)), -1)
 	defaultReturn := new(Licenseorgtoggle)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -550,6 +627,17 @@ func (a LicenseApi) PostLicenseToggle(featureName string) (*Licenseorgtoggle, *A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -615,6 +703,17 @@ func (a LicenseApi) PostLicenseUsers(body []string) (*map[string]interface{}, *A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

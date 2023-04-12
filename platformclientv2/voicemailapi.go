@@ -38,7 +38,7 @@ func (a VoicemailApi) DeleteVoicemailMessage(messageId string) (*APIResponse, er
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/messages/{messageId}"
-	path = strings.Replace(path, "{messageId}", fmt.Sprintf("%v", messageId), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -66,6 +66,17 @@ func (a VoicemailApi) DeleteVoicemailMessage(messageId string) (*APIResponse, er
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -125,6 +136,17 @@ func (a VoicemailApi) DeleteVoicemailMessages() (*APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -160,7 +182,7 @@ func (a VoicemailApi) GetVoicemailGroupMailbox(groupId string) (*Voicemailmailbo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/groups/{groupId}/mailbox"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Voicemailmailboxinfo)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -189,6 +211,17 @@ func (a VoicemailApi) GetVoicemailGroupMailbox(groupId string) (*Voicemailmailbo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -231,7 +264,7 @@ func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int, pa
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/groups/{groupId}/messages"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Voicemailmessageentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -264,6 +297,17 @@ func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int, pa
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -306,7 +350,7 @@ func (a VoicemailApi) GetVoicemailGroupPolicy(groupId string) (*Voicemailgrouppo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/groups/{groupId}/policy"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Voicemailgrouppolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -335,6 +379,17 @@ func (a VoicemailApi) GetVoicemailGroupPolicy(groupId string) (*Voicemailgrouppo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -401,6 +456,17 @@ func (a VoicemailApi) GetVoicemailMailbox() (*Voicemailmailboxinfo, *APIResponse
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -465,6 +531,17 @@ func (a VoicemailApi) GetVoicemailMeMailbox() (*Voicemailmailboxinfo, *APIRespon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -535,6 +612,17 @@ func (a VoicemailApi) GetVoicemailMeMessages(pageSize int, pageNumber int) (*Voi
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -600,6 +688,17 @@ func (a VoicemailApi) GetVoicemailMePolicy() (*Voicemailuserpolicy, *APIResponse
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -641,7 +740,7 @@ func (a VoicemailApi) GetVoicemailMessage(messageId string, expand []string) (*V
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/messages/{messageId}"
-	path = strings.Replace(path, "{messageId}", fmt.Sprintf("%v", messageId), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
 	defaultReturn := new(Voicemailmessage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -672,6 +771,17 @@ func (a VoicemailApi) GetVoicemailMessage(messageId string, expand []string) (*V
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -714,7 +824,7 @@ func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/messages/{messageId}/media"
-	path = strings.Replace(path, "{messageId}", fmt.Sprintf("%v", messageId), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
 	defaultReturn := new(Voicemailmediainfo)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -745,6 +855,17 @@ func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string
 	
 	queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -815,6 +936,17 @@ func (a VoicemailApi) GetVoicemailMessages(ids string, expand []string) (*Voicem
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -880,6 +1012,17 @@ func (a VoicemailApi) GetVoicemailPolicy() (*Voicemailorganizationpolicy, *APIRe
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -921,7 +1064,7 @@ func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int, pa
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/queues/{queueId}/messages"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Voicemailmessageentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -954,6 +1097,17 @@ func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int, pa
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1029,6 +1183,17 @@ func (a VoicemailApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemai
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1070,7 +1235,7 @@ func (a VoicemailApi) GetVoicemailUserpolicy(userId string) (*Voicemailuserpolic
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/userpolicies/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Voicemailuserpolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1099,6 +1264,17 @@ func (a VoicemailApi) GetVoicemailUserpolicy(userId string) (*Voicemailuserpolic
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1141,7 +1317,7 @@ func (a VoicemailApi) PatchVoicemailGroupPolicy(groupId string, body Voicemailgr
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/groups/{groupId}/policy"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Voicemailgrouppolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1175,6 +1351,17 @@ func (a VoicemailApi) PatchVoicemailGroupPolicy(groupId string, body Voicemailgr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1249,6 +1436,17 @@ func (a VoicemailApi) PatchVoicemailMePolicy(body Voicemailuserpolicy) (*Voicema
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1295,7 +1493,7 @@ func (a VoicemailApi) PatchVoicemailMessage(messageId string, body Voicemailmess
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/messages/{messageId}"
-	path = strings.Replace(path, "{messageId}", fmt.Sprintf("%v", messageId), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
 	defaultReturn := new(Voicemailmessage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1329,6 +1527,17 @@ func (a VoicemailApi) PatchVoicemailMessage(messageId string, body Voicemailmess
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1374,7 +1583,7 @@ func (a VoicemailApi) PatchVoicemailUserpolicy(userId string, body Voicemailuser
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/userpolicies/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Voicemailuserpolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1408,6 +1617,17 @@ func (a VoicemailApi) PatchVoicemailUserpolicy(userId string, body Voicemailuser
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1476,6 +1696,17 @@ func (a VoicemailApi) PostVoicemailMessages(body Copyvoicemailmessage) (*Voicema
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1550,6 +1781,17 @@ func (a VoicemailApi) PostVoicemailSearch(body Voicemailsearchrequest) (*Voicema
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1596,7 +1838,7 @@ func (a VoicemailApi) PutVoicemailMessage(messageId string, body Voicemailmessag
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/messages/{messageId}"
-	path = strings.Replace(path, "{messageId}", fmt.Sprintf("%v", messageId), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
 	defaultReturn := new(Voicemailmessage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1630,6 +1872,17 @@ func (a VoicemailApi) PutVoicemailMessage(messageId string, body Voicemailmessag
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1704,6 +1957,17 @@ func (a VoicemailApi) PutVoicemailPolicy(body Voicemailorganizationpolicy) (*Voi
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1748,7 +2012,7 @@ func (a VoicemailApi) PutVoicemailUserpolicy(userId string, body Voicemailuserpo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/userpolicies/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Voicemailuserpolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1782,6 +2046,17 @@ func (a VoicemailApi) PutVoicemailUserpolicy(userId string, body Voicemailuserpo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

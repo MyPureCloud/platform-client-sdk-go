@@ -36,7 +36,7 @@ func (a RoutingApi) DeleteRoutingAssessment(assessmentId string) (*APIResponse, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/assessments/{assessmentId}"
-	path = strings.Replace(path, "{assessmentId}", fmt.Sprintf("%v", assessmentId), -1)
+	path = strings.Replace(path, "{assessmentId}", url.PathEscape(fmt.Sprintf("%v", assessmentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a RoutingApi) DeleteRoutingAssessment(assessmentId string) (*APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a RoutingApi) DeleteRoutingEmailDomain(domainId string) (*APIResponse, err
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -128,6 +139,17 @@ func (a RoutingApi) DeleteRoutingEmailDomain(domainId string) (*APIResponse, err
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -164,8 +186,8 @@ func (a RoutingApi) DeleteRoutingEmailDomainRoute(domainName string, routeId str
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}"
-	path = strings.Replace(path, "{domainName}", fmt.Sprintf("%v", domainName), -1)
-	path = strings.Replace(path, "{routeId}", fmt.Sprintf("%v", routeId), -1)
+	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
+	path = strings.Replace(path, "{routeId}", url.PathEscape(fmt.Sprintf("%v", routeId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -198,6 +220,17 @@ func (a RoutingApi) DeleteRoutingEmailDomainRoute(domainName string, routeId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -234,7 +267,7 @@ func (a RoutingApi) DeleteRoutingEmailOutboundDomain(domainId string) (*APIRespo
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -262,6 +295,17 @@ func (a RoutingApi) DeleteRoutingEmailOutboundDomain(domainId string) (*APIRespo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -298,7 +342,7 @@ func (a RoutingApi) DeleteRoutingLanguage(languageId string) (*APIResponse, erro
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/languages/{languageId}"
-	path = strings.Replace(path, "{languageId}", fmt.Sprintf("%v", languageId), -1)
+	path = strings.Replace(path, "{languageId}", url.PathEscape(fmt.Sprintf("%v", languageId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -326,6 +370,17 @@ func (a RoutingApi) DeleteRoutingLanguage(languageId string) (*APIResponse, erro
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -362,7 +417,7 @@ func (a RoutingApi) DeleteRoutingPredictor(predictorId string) (*APIResponse, er
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}"
-	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	path = strings.Replace(path, "{predictorId}", url.PathEscape(fmt.Sprintf("%v", predictorId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -390,6 +445,17 @@ func (a RoutingApi) DeleteRoutingPredictor(predictorId string) (*APIResponse, er
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -426,7 +492,7 @@ func (a RoutingApi) DeleteRoutingQueue(queueId string, forceDelete bool) (*APIRe
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -456,6 +522,17 @@ func (a RoutingApi) DeleteRoutingQueue(queueId string, forceDelete bool) (*APIRe
 	
 	queryParams["forceDelete"] = a.Configuration.APIClient.ParameterToString(forceDelete, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -492,8 +569,8 @@ func (a RoutingApi) DeleteRoutingQueueMember(queueId string, memberId string) (*
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members/{memberId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -526,6 +603,17 @@ func (a RoutingApi) DeleteRoutingQueueMember(queueId string, memberId string) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -562,8 +650,8 @@ func (a RoutingApi) DeleteRoutingQueueUser(queueId string, memberId string) (*AP
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users/{memberId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -596,6 +684,17 @@ func (a RoutingApi) DeleteRoutingQueueUser(queueId string, memberId string) (*AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -632,8 +731,8 @@ func (a RoutingApi) DeleteRoutingQueueWrapupcode(queueId string, codeId string) 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/wrapupcodes/{codeId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{codeId}", fmt.Sprintf("%v", codeId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{codeId}", url.PathEscape(fmt.Sprintf("%v", codeId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -666,6 +765,17 @@ func (a RoutingApi) DeleteRoutingQueueWrapupcode(queueId string, codeId string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -725,6 +835,17 @@ func (a RoutingApi) DeleteRoutingSettings() (*APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -760,7 +881,7 @@ func (a RoutingApi) DeleteRoutingSkill(skillId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skills/{skillId}"
-	path = strings.Replace(path, "{skillId}", fmt.Sprintf("%v", skillId), -1)
+	path = strings.Replace(path, "{skillId}", url.PathEscape(fmt.Sprintf("%v", skillId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -788,6 +909,17 @@ func (a RoutingApi) DeleteRoutingSkill(skillId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -824,7 +956,7 @@ func (a RoutingApi) DeleteRoutingSkillgroup(skillGroupId string) (*APIResponse, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skillgroups/{skillGroupId}"
-	path = strings.Replace(path, "{skillGroupId}", fmt.Sprintf("%v", skillGroupId), -1)
+	path = strings.Replace(path, "{skillGroupId}", url.PathEscape(fmt.Sprintf("%v", skillGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -852,6 +984,17 @@ func (a RoutingApi) DeleteRoutingSkillgroup(skillGroupId string) (*APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -888,7 +1031,7 @@ func (a RoutingApi) DeleteRoutingSmsAddress(addressId string) (*APIResponse, err
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/addresses/{addressId}"
-	path = strings.Replace(path, "{addressId}", fmt.Sprintf("%v", addressId), -1)
+	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -916,6 +1059,17 @@ func (a RoutingApi) DeleteRoutingSmsAddress(addressId string) (*APIResponse, err
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -952,7 +1106,7 @@ func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string) (*APIResponse,
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
-	path = strings.Replace(path, "{addressId}", fmt.Sprintf("%v", addressId), -1)
+	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -980,6 +1134,17 @@ func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string) (*APIResponse,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1016,7 +1181,7 @@ func (a RoutingApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, e
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/users/{userId}/utilization"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1044,6 +1209,17 @@ func (a RoutingApi) DeleteRoutingUserUtilization(userId string) (*APIResponse, e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1103,6 +1279,17 @@ func (a RoutingApi) DeleteRoutingUtilization() (*APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1138,7 +1325,7 @@ func (a RoutingApi) DeleteRoutingWrapupcode(codeId string) (*APIResponse, error)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes/{codeId}"
-	path = strings.Replace(path, "{codeId}", fmt.Sprintf("%v", codeId), -1)
+	path = strings.Replace(path, "{codeId}", url.PathEscape(fmt.Sprintf("%v", codeId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1166,6 +1353,17 @@ func (a RoutingApi) DeleteRoutingWrapupcode(codeId string) (*APIResponse, error)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1202,8 +1400,8 @@ func (a RoutingApi) DeleteUserRoutinglanguage(userId string, languageId string) 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routinglanguages/{languageId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{languageId}", fmt.Sprintf("%v", languageId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{languageId}", url.PathEscape(fmt.Sprintf("%v", languageId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1236,6 +1434,17 @@ func (a RoutingApi) DeleteUserRoutinglanguage(userId string, languageId string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1272,8 +1481,8 @@ func (a RoutingApi) DeleteUserRoutingskill(userId string, skillId string) (*APIR
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills/{skillId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{skillId}", fmt.Sprintf("%v", skillId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{skillId}", url.PathEscape(fmt.Sprintf("%v", skillId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1306,6 +1515,17 @@ func (a RoutingApi) DeleteUserRoutingskill(userId string, skillId string) (*APIR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1342,7 +1562,7 @@ func (a RoutingApi) GetRoutingAssessment(assessmentId string) (*Benefitassessmen
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/assessments/{assessmentId}"
-	path = strings.Replace(path, "{assessmentId}", fmt.Sprintf("%v", assessmentId), -1)
+	path = strings.Replace(path, "{assessmentId}", url.PathEscape(fmt.Sprintf("%v", assessmentId)), -1)
 	defaultReturn := new(Benefitassessment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1371,6 +1591,17 @@ func (a RoutingApi) GetRoutingAssessment(assessmentId string) (*Benefitassessmen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1447,6 +1678,17 @@ func (a RoutingApi) GetRoutingAssessments(before string, after string, limit str
 	queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1488,7 +1730,7 @@ func (a RoutingApi) GetRoutingAssessmentsJob(jobId string) (*Benefitassessmentjo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/assessments/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Benefitassessmentjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1517,6 +1759,17 @@ func (a RoutingApi) GetRoutingAssessmentsJob(jobId string) (*Benefitassessmentjo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1585,6 +1838,17 @@ func (a RoutingApi) GetRoutingAssessmentsJobs(divisionId []string) (*Assessmentj
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1650,6 +1914,17 @@ func (a RoutingApi) GetRoutingAvailablemediatypes() (*Availablemediatypeentityli
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1691,7 +1966,7 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *API
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Inbounddomain)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1720,6 +1995,17 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1762,8 +2048,8 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}"
-	path = strings.Replace(path, "{domainName}", fmt.Sprintf("%v", domainName), -1)
-	path = strings.Replace(path, "{routeId}", fmt.Sprintf("%v", routeId), -1)
+	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
+	path = strings.Replace(path, "{routeId}", url.PathEscape(fmt.Sprintf("%v", routeId)), -1)
 	defaultReturn := new(Inboundroute)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1797,6 +2083,17 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1839,7 +2136,7 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes"
-	path = strings.Replace(path, "{domainName}", fmt.Sprintf("%v", domainName), -1)
+	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
 	defaultReturn := new(Inboundrouteentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1874,6 +2171,17 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 	
 	queryParams["pattern"] = a.Configuration.APIClient.ParameterToString(pattern, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1948,6 +2256,17 @@ func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, exclude
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1989,7 +2308,7 @@ func (a RoutingApi) GetRoutingEmailOutboundDomain(domainId string) (*Outbounddom
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Outbounddomain)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2018,6 +2337,17 @@ func (a RoutingApi) GetRoutingEmailOutboundDomain(domainId string) (*Outbounddom
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2060,7 +2390,7 @@ func (a RoutingApi) GetRoutingEmailOutboundDomainActivation(domainId string) (*E
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}/activation"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Emailoutbounddomainresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2089,6 +2419,17 @@ func (a RoutingApi) GetRoutingEmailOutboundDomainActivation(domainId string) (*E
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2131,7 +2472,7 @@ func (a RoutingApi) GetRoutingEmailOutboundDomainSearch(domainId string) (*Outbo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}/search"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Outbounddomain)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2160,6 +2501,17 @@ func (a RoutingApi) GetRoutingEmailOutboundDomainSearch(domainId string) (*Outbo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2228,6 +2580,17 @@ func (a RoutingApi) GetRoutingEmailOutboundDomains(filter string) (*Outbounddoma
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2293,6 +2656,17 @@ func (a RoutingApi) GetRoutingEmailSetup() (*Emailsetup, *APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2334,7 +2708,7 @@ func (a RoutingApi) GetRoutingLanguage(languageId string) (*Language, *APIRespon
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/languages/{languageId}"
-	path = strings.Replace(path, "{languageId}", fmt.Sprintf("%v", languageId), -1)
+	path = strings.Replace(path, "{languageId}", url.PathEscape(fmt.Sprintf("%v", languageId)), -1)
 	defaultReturn := new(Language)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2363,6 +2737,17 @@ func (a RoutingApi) GetRoutingLanguage(languageId string) (*Language, *APIRespon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2439,6 +2824,17 @@ func (a RoutingApi) GetRoutingLanguages(pageSize int, pageNumber int, sortOrder 
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2480,7 +2876,7 @@ func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/message/recipients/{recipientId}"
-	path = strings.Replace(path, "{recipientId}", fmt.Sprintf("%v", recipientId), -1)
+	path = strings.Replace(path, "{recipientId}", url.PathEscape(fmt.Sprintf("%v", recipientId)), -1)
 	defaultReturn := new(Recipient)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2509,6 +2905,17 @@ func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2581,6 +2988,17 @@ func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize i
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2622,7 +3040,7 @@ func (a RoutingApi) GetRoutingPredictor(predictorId string) (*Predictor, *APIRes
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}"
-	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	path = strings.Replace(path, "{predictorId}", url.PathEscape(fmt.Sprintf("%v", predictorId)), -1)
 	defaultReturn := new(Predictor)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2651,6 +3069,17 @@ func (a RoutingApi) GetRoutingPredictor(predictorId string) (*Predictor, *APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2693,8 +3122,8 @@ func (a RoutingApi) GetRoutingPredictorModelFeatures(predictorId string, modelId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}/models/{modelId}/features"
-	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
-	path = strings.Replace(path, "{modelId}", fmt.Sprintf("%v", modelId), -1)
+	path = strings.Replace(path, "{predictorId}", url.PathEscape(fmt.Sprintf("%v", predictorId)), -1)
+	path = strings.Replace(path, "{modelId}", url.PathEscape(fmt.Sprintf("%v", modelId)), -1)
 	defaultReturn := new(Predictormodelfeaturelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2728,6 +3157,17 @@ func (a RoutingApi) GetRoutingPredictorModelFeatures(predictorId string, modelId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2770,7 +3210,7 @@ func (a RoutingApi) GetRoutingPredictorModels(predictorId string) (*Predictormod
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}/models"
-	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	path = strings.Replace(path, "{predictorId}", url.PathEscape(fmt.Sprintf("%v", predictorId)), -1)
 	defaultReturn := new(Predictormodels)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2799,6 +3239,17 @@ func (a RoutingApi) GetRoutingPredictorModels(predictorId string) (*Predictormod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2875,6 +3326,17 @@ func (a RoutingApi) GetRoutingPredictors(before string, after string, limit stri
 	queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2942,6 +3404,17 @@ func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators(kpiGroup string
 	queryParams["kpiGroup"] = a.Configuration.APIClient.ParameterToString(kpiGroup, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2983,7 +3456,7 @@ func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Queue)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3012,6 +3485,17 @@ func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3054,8 +3538,8 @@ func (a RoutingApi) GetRoutingQueueComparisonperiod(queueId string, comparisonPe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/comparisonperiods/{comparisonPeriodId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{comparisonPeriodId}", fmt.Sprintf("%v", comparisonPeriodId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{comparisonPeriodId}", url.PathEscape(fmt.Sprintf("%v", comparisonPeriodId)), -1)
 	defaultReturn := new(Comparisonperiod)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3089,6 +3573,17 @@ func (a RoutingApi) GetRoutingQueueComparisonperiod(queueId string, comparisonPe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3131,7 +3626,7 @@ func (a RoutingApi) GetRoutingQueueComparisonperiods(queueId string) (*Compariso
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/comparisonperiods"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Comparisonperiodlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3160,6 +3655,17 @@ func (a RoutingApi) GetRoutingQueueComparisonperiods(queueId string) (*Compariso
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3202,7 +3708,7 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/estimatedwaittime"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Estimatedwaittimepredictions)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3233,6 +3739,17 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 	
 	queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3275,8 +3792,8 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/mediatypes/{mediaType}/estimatedwaittime"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{mediaType}", fmt.Sprintf("%v", mediaType), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{mediaType}", url.PathEscape(fmt.Sprintf("%v", mediaType)), -1)
 	defaultReturn := new(Estimatedwaittimepredictions)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3310,6 +3827,17 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3352,7 +3880,7 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageS
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Queuememberentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3406,6 +3934,17 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageS
 	queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3447,7 +3986,7 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSiz
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Queuememberentitylistingv1)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3499,6 +4038,17 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSiz
 	queryParams["presence"] = a.Configuration.APIClient.ParameterToString(presence, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3540,7 +4090,7 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/wrapupcodes"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Wrapupcodeentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3573,6 +4123,17 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3655,6 +4216,17 @@ func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder str
 	queryParams["hasPeer"] = a.Configuration.APIClient.ParameterToString(hasPeer, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3734,6 +4306,17 @@ func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int, pageNumber int, 
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3804,6 +4387,17 @@ func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber in
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3878,6 +4472,17 @@ func (a RoutingApi) GetRoutingQueuesMe(pageNumber int, pageSize int, joined bool
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3942,6 +4547,17 @@ func (a RoutingApi) GetRoutingSettings() (*Routingsettings, *APIResponse, error)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4008,6 +4624,17 @@ func (a RoutingApi) GetRoutingSettingsContactcenter() (*Contactcentersettings, *
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4073,6 +4700,17 @@ func (a RoutingApi) GetRoutingSettingsTranscription() (*Transcriptionsettings, *
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4114,7 +4752,7 @@ func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skills/{skillId}"
-	path = strings.Replace(path, "{skillId}", fmt.Sprintf("%v", skillId), -1)
+	path = strings.Replace(path, "{skillId}", url.PathEscape(fmt.Sprintf("%v", skillId)), -1)
 	defaultReturn := new(Routingskill)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4143,6 +4781,17 @@ func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4185,7 +4834,7 @@ func (a RoutingApi) GetRoutingSkillgroup(skillGroupId string) (*Skillgroup, *API
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skillgroups/{skillGroupId}"
-	path = strings.Replace(path, "{skillGroupId}", fmt.Sprintf("%v", skillGroupId), -1)
+	path = strings.Replace(path, "{skillGroupId}", url.PathEscape(fmt.Sprintf("%v", skillGroupId)), -1)
 	defaultReturn := new(Skillgroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4214,6 +4863,17 @@ func (a RoutingApi) GetRoutingSkillgroup(skillGroupId string) (*Skillgroup, *API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4256,7 +4916,7 @@ func (a RoutingApi) GetRoutingSkillgroupMembers(skillGroupId string, pageSize in
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skillgroups/{skillGroupId}/members"
-	path = strings.Replace(path, "{skillGroupId}", fmt.Sprintf("%v", skillGroupId), -1)
+	path = strings.Replace(path, "{skillGroupId}", url.PathEscape(fmt.Sprintf("%v", skillGroupId)), -1)
 	defaultReturn := new(Skillgroupmemberentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4293,6 +4953,17 @@ func (a RoutingApi) GetRoutingSkillgroupMembers(skillGroupId string, pageSize in
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4335,7 +5006,7 @@ func (a RoutingApi) GetRoutingSkillgroupMembersDivisions(skillGroupId string, ex
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skillgroups/{skillGroupId}/members/divisions"
-	path = strings.Replace(path, "{skillGroupId}", fmt.Sprintf("%v", skillGroupId), -1)
+	path = strings.Replace(path, "{skillGroupId}", url.PathEscape(fmt.Sprintf("%v", skillGroupId)), -1)
 	defaultReturn := new(Skillgroupmemberdivisionlist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4366,6 +5037,17 @@ func (a RoutingApi) GetRoutingSkillgroupMembersDivisions(skillGroupId string, ex
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4440,6 +5122,17 @@ func (a RoutingApi) GetRoutingSkillgroups(pageSize int, name string, after strin
 	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4513,6 +5206,17 @@ func (a RoutingApi) GetRoutingSkills(pageSize int, pageNumber int, name string, 
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4554,7 +5258,7 @@ func (a RoutingApi) GetRoutingSmsAddress(addressId string) (*Smsaddress, *APIRes
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/addresses/{addressId}"
-	path = strings.Replace(path, "{addressId}", fmt.Sprintf("%v", addressId), -1)
+	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
 	defaultReturn := new(Smsaddress)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4583,6 +5287,17 @@ func (a RoutingApi) GetRoutingSmsAddress(addressId string) (*Smsaddress, *APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4652,6 +5367,17 @@ func (a RoutingApi) GetRoutingSmsAddresses(pageSize int, pageNumber int) (*Smsad
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4744,6 +5470,17 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 	queryParams["addressRequirement"] = a.Configuration.APIClient.ParameterToString(addressRequirement, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4785,7 +5522,7 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string, expand string) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
-	path = strings.Replace(path, "{addressId}", fmt.Sprintf("%v", addressId), -1)
+	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
 	defaultReturn := new(Smsphonenumber)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4816,6 +5553,17 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string, expand string) (*
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4900,6 +5648,17 @@ func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberTyp
 	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4941,7 +5700,7 @@ func (a RoutingApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilizati
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/users/{userId}/utilization"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Agentmaxutilization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4970,6 +5729,17 @@ func (a RoutingApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilizati
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5036,6 +5806,17 @@ func (a RoutingApi) GetRoutingUtilization() (*Utilization, *APIResponse, error) 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5077,7 +5858,7 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes/{codeId}"
-	path = strings.Replace(path, "{codeId}", fmt.Sprintf("%v", codeId), -1)
+	path = strings.Replace(path, "{codeId}", url.PathEscape(fmt.Sprintf("%v", codeId)), -1)
 	defaultReturn := new(Wrapupcode)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5106,6 +5887,17 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5186,6 +5978,17 @@ func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy s
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5227,7 +6030,7 @@ func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, j
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/queues"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userqueueentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5264,6 +6067,17 @@ func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, j
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5306,7 +6120,7 @@ func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNum
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routinglanguages"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userlanguageentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5341,6 +6155,17 @@ func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNum
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5383,7 +6208,7 @@ func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userskillentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5418,6 +6243,17 @@ func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5460,7 +6296,7 @@ func (a RoutingApi) GetUserSkillgroups(userId string, pageSize int, after string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/skillgroups"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userskillgroupentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5495,6 +6331,17 @@ func (a RoutingApi) GetUserSkillgroups(userId string, pageSize int, after string
 	
 	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5539,7 +6386,7 @@ func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routing
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/conversations/{conversationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Routingconversationattributesresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5573,6 +6420,17 @@ func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routing
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5618,7 +6476,7 @@ func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainp
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Inbounddomain)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5652,6 +6510,17 @@ func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5697,7 +6566,7 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/validate"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Inbounddomain)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5731,6 +6600,17 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5776,7 +6656,7 @@ func (a RoutingApi) PatchRoutingPredictor(predictorId string, body Patchpredicto
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}"
-	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	path = strings.Replace(path, "{predictorId}", url.PathEscape(fmt.Sprintf("%v", predictorId)), -1)
 	defaultReturn := new(Predictor)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5805,6 +6685,17 @@ func (a RoutingApi) PatchRoutingPredictor(predictorId string, body Patchpredicto
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5850,8 +6741,8 @@ func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, bod
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members/{memberId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5889,6 +6780,17 @@ func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, bod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5928,7 +6830,7 @@ func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember)
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Queuememberentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5962,6 +6864,17 @@ func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6007,8 +6920,8 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users/{memberId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6046,6 +6959,17 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6085,7 +7009,7 @@ func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Queuememberentitylistingv1)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6119,6 +7043,17 @@ func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6192,6 +7127,17 @@ func (a RoutingApi) PatchRoutingSettingsContactcenter(body Contactcentersettings
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6230,7 +7176,7 @@ func (a RoutingApi) PatchRoutingSkillgroup(skillGroupId string, body Skillgroup)
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skillgroups/{skillGroupId}"
-	path = strings.Replace(path, "{skillGroupId}", fmt.Sprintf("%v", skillGroupId), -1)
+	path = strings.Replace(path, "{skillGroupId}", url.PathEscape(fmt.Sprintf("%v", skillGroupId)), -1)
 	defaultReturn := new(Skillgroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6264,6 +7210,17 @@ func (a RoutingApi) PatchRoutingSkillgroup(skillGroupId string, body Skillgroup)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6309,8 +7266,8 @@ func (a RoutingApi) PatchUserQueue(queueId string, userId string, body Userqueue
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/queues/{queueId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userqueue)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6349,6 +7306,17 @@ func (a RoutingApi) PatchUserQueue(queueId string, userId string, body Userqueue
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6394,7 +7362,7 @@ func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId 
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/queues"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userqueueentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6430,6 +7398,17 @@ func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId 
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6475,8 +7454,8 @@ func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, b
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routinglanguages/{languageId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{languageId}", fmt.Sprintf("%v", languageId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{languageId}", url.PathEscape(fmt.Sprintf("%v", languageId)), -1)
 	defaultReturn := new(Userroutinglanguage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6515,6 +7494,17 @@ func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6560,7 +7550,7 @@ func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userrout
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routinglanguages/bulk"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userlanguageentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6594,6 +7584,17 @@ func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userrout
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6639,7 +7640,7 @@ func (a RoutingApi) PatchUserRoutingskillsBulk(userId string, body []Userrouting
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills/bulk"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userskillentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6673,6 +7674,17 @@ func (a RoutingApi) PatchUserRoutingskillsBulk(userId string, body []Userrouting
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6747,6 +7759,17 @@ func (a RoutingApi) PostAnalyticsQueuesObservationsQuery(body Queueobservationqu
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6814,6 +7837,17 @@ func (a RoutingApi) PostRoutingAssessments(body Createbenefitassessmentrequest) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6883,6 +7917,17 @@ func (a RoutingApi) PostRoutingAssessmentsJobs(body Createbenefitassessmentjobre
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6927,7 +7972,7 @@ func (a RoutingApi) PostRoutingEmailDomainRoutes(domainName string, body Inbound
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes"
-	path = strings.Replace(path, "{domainName}", fmt.Sprintf("%v", domainName), -1)
+	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
 	defaultReturn := new(Inboundroute)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6961,6 +8006,17 @@ func (a RoutingApi) PostRoutingEmailDomainRoutes(domainName string, body Inbound
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7008,7 +8064,7 @@ func (a RoutingApi) PostRoutingEmailDomainTestconnection(domainId string, body T
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/testconnection"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Testmessage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7037,6 +8093,17 @@ func (a RoutingApi) PostRoutingEmailDomainTestconnection(domainId string, body T
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7111,6 +8178,17 @@ func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7183,6 +8261,17 @@ func (a RoutingApi) PostRoutingEmailOutboundDomains(body Outbounddomain) (*Email
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7257,6 +8346,17 @@ func (a RoutingApi) PostRoutingEmailOutboundDomainsSimulated(body Outbounddomain
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7330,6 +8430,17 @@ func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7398,6 +8509,17 @@ func (a RoutingApi) PostRoutingPredictors(body Createpredictorrequest) (*Predict
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7442,7 +8564,7 @@ func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentit
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7477,6 +8599,17 @@ func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentit
 	
 	queryParams["delete"] = a.Configuration.APIClient.ParameterToString(delete, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7516,7 +8649,7 @@ func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity,
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7551,6 +8684,17 @@ func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity,
 	
 	queryParams["delete"] = a.Configuration.APIClient.ParameterToString(delete, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7590,7 +8734,7 @@ func (a RoutingApi) PostRoutingQueueWrapupcodes(queueId string, body []Wrapupcod
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/wrapupcodes"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := make([]Wrapupcode, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7624,6 +8768,17 @@ func (a RoutingApi) PostRoutingQueueWrapupcodes(queueId string, body []Wrapupcod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7698,6 +8853,17 @@ func (a RoutingApi) PostRoutingQueues(body Createqueuerequest) (*Queue, *APIResp
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7742,7 +8908,7 @@ func (a RoutingApi) PostRoutingSkillgroupMembersDivisions(skillGroupId string, b
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skillgroups/{skillGroupId}/members/divisions"
-	path = strings.Replace(path, "{skillGroupId}", fmt.Sprintf("%v", skillGroupId), -1)
+	path = strings.Replace(path, "{skillGroupId}", url.PathEscape(fmt.Sprintf("%v", skillGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7770,6 +8936,17 @@ func (a RoutingApi) PostRoutingSkillgroupMembersDivisions(skillGroupId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7837,6 +9014,17 @@ func (a RoutingApi) PostRoutingSkillgroups(body Skillgroup) (*Skillgroup, *APIRe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7911,6 +9099,17 @@ func (a RoutingApi) PostRoutingSkills(body Routingskill) (*Routingskill, *APIRes
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7983,6 +9182,17 @@ func (a RoutingApi) PostRoutingSmsAddresses(body Smsaddressprovision) (*Smsaddre
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8057,6 +9267,17 @@ func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision) (*S
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8130,6 +9351,17 @@ func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcoderequest) (*Wrapupcode,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8174,7 +9406,7 @@ func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglang
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routinglanguages"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userroutinglanguage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8208,6 +9440,17 @@ func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglang
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8253,7 +9496,7 @@ func (a RoutingApi) PostUserRoutingskills(userId string, body Userroutingskillpo
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userroutingskill)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8287,6 +9530,17 @@ func (a RoutingApi) PostUserRoutingskills(userId string, body Userroutingskillpo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8332,8 +9586,8 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}"
-	path = strings.Replace(path, "{domainName}", fmt.Sprintf("%v", domainName), -1)
-	path = strings.Replace(path, "{routeId}", fmt.Sprintf("%v", routeId), -1)
+	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
+	path = strings.Replace(path, "{routeId}", url.PathEscape(fmt.Sprintf("%v", routeId)), -1)
 	defaultReturn := new(Inboundroute)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8372,6 +9626,17 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8417,7 +9682,7 @@ func (a RoutingApi) PutRoutingEmailOutboundDomainActivation(domainId string) (*E
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}/activation"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Emailoutbounddomainresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8446,6 +9711,17 @@ func (a RoutingApi) PutRoutingEmailOutboundDomainActivation(domainId string) (*E
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8488,7 +9764,7 @@ func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipien
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/message/recipients/{recipientId}"
-	path = strings.Replace(path, "{recipientId}", fmt.Sprintf("%v", recipientId), -1)
+	path = strings.Replace(path, "{recipientId}", url.PathEscape(fmt.Sprintf("%v", recipientId)), -1)
 	defaultReturn := new(Recipient)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8522,6 +9798,17 @@ func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipien
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8567,7 +9854,7 @@ func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}"
-	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
 	defaultReturn := new(Queue)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8601,6 +9888,17 @@ func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8675,6 +9973,17 @@ func (a RoutingApi) PutRoutingSettings(body Routingsettings) (*Routingsettings, 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8748,6 +10057,17 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8792,7 +10112,7 @@ func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumb
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
-	path = strings.Replace(path, "{addressId}", fmt.Sprintf("%v", addressId), -1)
+	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
 	defaultReturn := new(Smsphonenumber)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8826,6 +10146,17 @@ func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumb
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8871,7 +10202,7 @@ func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilization) (
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/users/{userId}/utilization"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Agentmaxutilization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8905,6 +10236,17 @@ func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilization) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8979,6 +10321,17 @@ func (a RoutingApi) PutRoutingUtilization(body Utilization) (*Utilization, *APIR
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -9023,7 +10376,7 @@ func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcoderequest) 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes/{codeId}"
-	path = strings.Replace(path, "{codeId}", fmt.Sprintf("%v", codeId), -1)
+	path = strings.Replace(path, "{codeId}", url.PathEscape(fmt.Sprintf("%v", codeId)), -1)
 	defaultReturn := new(Wrapupcode)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9057,6 +10410,17 @@ func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcoderequest) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9102,8 +10466,8 @@ func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body User
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills/{skillId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{skillId}", fmt.Sprintf("%v", skillId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{skillId}", url.PathEscape(fmt.Sprintf("%v", skillId)), -1)
 	defaultReturn := new(Userroutingskill)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9142,6 +10506,17 @@ func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body User
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9187,7 +10562,7 @@ func (a RoutingApi) PutUserRoutingskillsBulk(userId string, body []Userroutingsk
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills/bulk"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userskillentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9221,6 +10596,17 @@ func (a RoutingApi) PutUserRoutingskillsBulk(userId string, body []Userroutingsk
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

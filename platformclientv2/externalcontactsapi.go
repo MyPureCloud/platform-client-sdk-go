@@ -36,7 +36,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*i
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -107,8 +118,8 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string,
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
-	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
+	path = strings.Replace(path, "{noteId}", url.PathEscape(fmt.Sprintf("%v", noteId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -142,6 +153,17 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -184,7 +206,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactsSchema(schemaId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/schemas/{schemaId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -212,6 +234,17 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactsSchema(schemaId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -248,7 +281,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganiza
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -277,6 +310,17 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganiza
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -319,8 +363,8 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrga
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
-	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
+	path = strings.Replace(path, "{noteId}", url.PathEscape(fmt.Sprintf("%v", noteId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -354,6 +398,17 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrga
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -396,7 +451,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationTrustor(externalO
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/trustor"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -424,6 +479,17 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationTrustor(externalO
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -460,7 +526,7 @@ func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId s
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/relationships/{relationshipId}"
-	path = strings.Replace(path, "{relationshipId}", fmt.Sprintf("%v", relationshipId), -1)
+	path = strings.Replace(path, "{relationshipId}", url.PathEscape(fmt.Sprintf("%v", relationshipId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -489,6 +555,17 @@ func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -531,7 +608,7 @@ func (a ExternalContactsApi) GetExternalcontactsContact(contactId string, expand
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Externalcontact)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -562,6 +639,17 @@ func (a ExternalContactsApi) GetExternalcontactsContact(contactId string, expand
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -604,7 +692,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactIdentifiers(contactId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/identifiers"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Entitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -633,6 +721,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactIdentifiers(contactId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -675,7 +774,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactJourneySessions(contactId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/journey/sessions"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Sessionlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -710,6 +809,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactJourneySessions(contactId
 	
 	queryParams["includeMerged"] = a.Configuration.APIClient.ParameterToString(includeMerged, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -752,8 +862,8 @@ func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, no
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
-	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
+	path = strings.Replace(path, "{noteId}", url.PathEscape(fmt.Sprintf("%v", noteId)), -1)
 	defaultReturn := new(Note)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -789,6 +899,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, no
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -831,7 +952,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Notelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -868,6 +989,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -910,7 +1042,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactUnresolved(contactId stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/unresolved"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Externalcontact)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -941,6 +1073,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactUnresolved(contactId stri
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1017,6 +1160,17 @@ func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumbe
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1058,7 +1212,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchema(schemaId string) 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/schemas/{schemaId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1087,6 +1241,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchema(schemaId string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1129,8 +1294,8 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersion(schemaId s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/schemas/{schemaId}/versions/{versionId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1164,6 +1329,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersion(schemaId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1206,7 +1382,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersions(schemaId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/schemas/{schemaId}/versions"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1235,6 +1411,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemaVersions(schemaId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1301,6 +1488,17 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemas() (*Dataschemali
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1342,7 +1540,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	defaultReturn := new(Externalorganization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1375,6 +1573,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 	
 	queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1417,7 +1626,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/contacts"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	defaultReturn := new(Contactlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1456,6 +1665,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1498,8 +1718,8 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganiz
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
-	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
+	path = strings.Replace(path, "{noteId}", url.PathEscape(fmt.Sprintf("%v", noteId)), -1)
 	defaultReturn := new(Note)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1535,6 +1755,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganiz
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1577,7 +1808,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	defaultReturn := new(Notelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1614,6 +1845,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1656,7 +1898,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/relationships"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	defaultReturn := new(Relationshiplisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1693,6 +1935,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1773,6 +2026,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, page
 	queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1814,7 +2078,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchema(schemaId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/schemas/{schemaId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1843,6 +2107,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchema(schemaId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1885,8 +2160,8 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersion(schem
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/schemas/{schemaId}/versions/{versionId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1920,6 +2195,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersion(schem
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1962,7 +2248,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersions(sche
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/schemas/{schemaId}/versions"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1991,6 +2277,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemaVersions(sche
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2057,6 +2354,17 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemas() (*Datasch
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2098,7 +2406,7 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/relationships/{relationshipId}"
-	path = strings.Replace(path, "{relationshipId}", fmt.Sprintf("%v", relationshipId), -1)
+	path = strings.Replace(path, "{relationshipId}", url.PathEscape(fmt.Sprintf("%v", relationshipId)), -1)
 	defaultReturn := new(Relationship)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2129,6 +2437,17 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2204,6 +2523,17 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2272,6 +2602,17 @@ func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor s
 	
 	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2342,6 +2683,17 @@ func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor stri
 	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2410,6 +2762,17 @@ func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cur
 	
 	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2480,6 +2843,17 @@ func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cur
 	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2521,7 +2895,7 @@ func (a ExternalContactsApi) PatchExternalcontactsContactIdentifiers(contactId s
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/identifiers"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Contactidentifier)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2555,6 +2929,17 @@ func (a ExternalContactsApi) PatchExternalcontactsContactIdentifiers(contactId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2629,6 +3014,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContacts(body Bulkidsreques
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2701,6 +3097,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsAdd(body Bulkcontac
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2775,6 +3182,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsRemove(body Bulkids
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2847,6 +3265,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsUnresolved(body Bul
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2921,6 +3350,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsUpdate(body Bulkcon
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2993,6 +3433,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotes(body Bulkidsrequest) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3067,6 +3518,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesAdd(body Bulknotesrequ
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3139,6 +3601,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesRemove(body Bulkidsreq
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3213,6 +3686,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkNotesUpdate(body Bulknotesr
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3285,6 +3769,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizations(body Bulkidsr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3359,6 +3854,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsAdd(body Bulko
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3431,6 +3937,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsRemove(body Bu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3505,6 +4022,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsUpdate(body Bu
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3577,6 +4105,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationships(body Bulkidsr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3651,6 +4190,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsAdd(body Bulkr
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3723,6 +4273,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsRemove(body Bu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3797,6 +4358,17 @@ func (a ExternalContactsApi) PostExternalcontactsBulkRelationshipsUpdate(body Bu
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3841,7 +4413,7 @@ func (a ExternalContactsApi) PostExternalcontactsContactNotes(contactId string, 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Note)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3875,6 +4447,17 @@ func (a ExternalContactsApi) PostExternalcontactsContactNotes(contactId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3920,7 +4503,7 @@ func (a ExternalContactsApi) PostExternalcontactsContactPromotion(contactId stri
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/promotion"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Externalcontact)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3949,6 +4532,17 @@ func (a ExternalContactsApi) PostExternalcontactsContactPromotion(contactId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4019,6 +4613,17 @@ func (a ExternalContactsApi) PostExternalcontactsContacts(body Externalcontact) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4092,6 +4697,17 @@ func (a ExternalContactsApi) PostExternalcontactsContactsSchemas(body Dataschema
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4168,6 +4784,17 @@ func (a ExternalContactsApi) PostExternalcontactsIdentifierlookup(identifier Con
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4241,6 +4868,17 @@ func (a ExternalContactsApi) PostExternalcontactsMergeContacts(body Mergerequest
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4285,7 +4923,7 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationNotes(externalOrgan
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	defaultReturn := new(Note)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4319,6 +4957,17 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationNotes(externalOrgan
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4393,6 +5042,17 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizations(body Externalorga
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4465,6 +5125,17 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizationsSchemas(body Datas
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4539,6 +5210,17 @@ func (a ExternalContactsApi) PostExternalcontactsRelationships(body Relationship
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4583,7 +5265,7 @@ func (a ExternalContactsApi) PutExternalcontactsContact(contactId string, body E
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Externalcontact)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4617,6 +5299,17 @@ func (a ExternalContactsApi) PutExternalcontactsContact(contactId string, body E
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4662,8 +5355,8 @@ func (a ExternalContactsApi) PutExternalcontactsContactNote(contactId string, no
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}"
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
-	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
+	path = strings.Replace(path, "{noteId}", url.PathEscape(fmt.Sprintf("%v", noteId)), -1)
 	defaultReturn := new(Note)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4702,6 +5395,17 @@ func (a ExternalContactsApi) PutExternalcontactsContactNote(contactId string, no
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4747,7 +5451,7 @@ func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/schemas/{schemaId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4781,6 +5485,17 @@ func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4828,7 +5543,7 @@ func (a ExternalContactsApi) PutExternalcontactsConversation(conversationId stri
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/conversations/{conversationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4861,6 +5576,17 @@ func (a ExternalContactsApi) PutExternalcontactsConversation(conversationId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4900,7 +5626,7 @@ func (a ExternalContactsApi) PutExternalcontactsOrganization(externalOrganizatio
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
 	defaultReturn := new(Externalorganization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4934,6 +5660,17 @@ func (a ExternalContactsApi) PutExternalcontactsOrganization(externalOrganizatio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4979,8 +5716,8 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationNote(externalOrganiz
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
-	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
+	path = strings.Replace(path, "{noteId}", url.PathEscape(fmt.Sprintf("%v", noteId)), -1)
 	defaultReturn := new(Note)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5019,6 +5756,17 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationNote(externalOrganiz
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5064,8 +5812,8 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(ext
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/trustor/{trustorId}"
-	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
-	path = strings.Replace(path, "{trustorId}", fmt.Sprintf("%v", trustorId), -1)
+	path = strings.Replace(path, "{externalOrganizationId}", url.PathEscape(fmt.Sprintf("%v", externalOrganizationId)), -1)
+	path = strings.Replace(path, "{trustorId}", url.PathEscape(fmt.Sprintf("%v", trustorId)), -1)
 	defaultReturn := new(Externalorganizationtrustorlink)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5099,6 +5847,17 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(ext
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5141,7 +5900,7 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationsSchema(schemaId str
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/schemas/{schemaId}"
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Dataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5175,6 +5934,17 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationsSchema(schemaId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5220,7 +5990,7 @@ func (a ExternalContactsApi) PutExternalcontactsRelationship(relationshipId stri
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/relationships/{relationshipId}"
-	path = strings.Replace(path, "{relationshipId}", fmt.Sprintf("%v", relationshipId), -1)
+	path = strings.Replace(path, "{relationshipId}", url.PathEscape(fmt.Sprintf("%v", relationshipId)), -1)
 	defaultReturn := new(Relationship)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5254,6 +6024,17 @@ func (a ExternalContactsApi) PutExternalcontactsRelationship(relationshipId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

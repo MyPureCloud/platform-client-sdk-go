@@ -36,7 +36,7 @@ func (a ScriptsApi) GetScript(scriptId string) (*Script, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/{scriptId}"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
 	defaultReturn := new(Script)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a ScriptsApi) GetScript(scriptId string) (*Script, *APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -107,8 +118,8 @@ func (a ScriptsApi) GetScriptPage(scriptId string, pageId string, scriptDataVers
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/{scriptId}/pages/{pageId}"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
-	path = strings.Replace(path, "{pageId}", fmt.Sprintf("%v", pageId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
+	path = strings.Replace(path, "{pageId}", url.PathEscape(fmt.Sprintf("%v", pageId)), -1)
 	defaultReturn := new(Page)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -144,6 +155,17 @@ func (a ScriptsApi) GetScriptPage(scriptId string, pageId string, scriptDataVers
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -186,7 +208,7 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/{scriptId}/pages"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
 	defaultReturn := make([]Page, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -217,6 +239,17 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -303,6 +336,17 @@ func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name
 	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -388,6 +432,17 @@ func (a ScriptsApi) GetScriptsDivisionviews(pageSize int, pageNumber int, expand
 	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -468,6 +523,17 @@ func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand str
 	
 	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -550,6 +616,17 @@ func (a ScriptsApi) GetScriptsPublishedDivisionviews(pageSize int, pageNumber in
 	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -591,7 +668,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptId(scriptId string, scriptDataVersi
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/published/{scriptId}"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
 	defaultReturn := new(Script)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -622,6 +699,17 @@ func (a ScriptsApi) GetScriptsPublishedScriptId(scriptId string, scriptDataVersi
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -664,8 +752,8 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPage(scriptId string, pageId stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/published/{scriptId}/pages/{pageId}"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
-	path = strings.Replace(path, "{pageId}", fmt.Sprintf("%v", pageId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
+	path = strings.Replace(path, "{pageId}", url.PathEscape(fmt.Sprintf("%v", pageId)), -1)
 	defaultReturn := new(Page)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -701,6 +789,17 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPage(scriptId string, pageId stri
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -743,7 +842,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptData
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/published/{scriptId}/pages"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
 	defaultReturn := make([]Page, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -774,6 +873,17 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptData
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -816,7 +926,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/published/{scriptId}/variables"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -853,6 +963,17 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input 
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -895,7 +1016,7 @@ func (a ScriptsApi) GetScriptsUploadStatus(uploadId string, longPoll bool) (*Imp
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/uploads/{uploadId}/status"
-	path = strings.Replace(path, "{uploadId}", fmt.Sprintf("%v", uploadId), -1)
+	path = strings.Replace(path, "{uploadId}", url.PathEscape(fmt.Sprintf("%v", uploadId)), -1)
 	defaultReturn := new(Importscriptstatusresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -926,6 +1047,17 @@ func (a ScriptsApi) GetScriptsUploadStatus(uploadId string, longPoll bool) (*Imp
 	
 	queryParams["longPoll"] = a.Configuration.APIClient.ParameterToString(longPoll, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -968,7 +1100,7 @@ func (a ScriptsApi) PostScriptExport(scriptId string, body Exportscriptrequest) 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/{scriptId}/export"
-	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
+	path = strings.Replace(path, "{scriptId}", url.PathEscape(fmt.Sprintf("%v", scriptId)), -1)
 	defaultReturn := new(Exportscriptresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -997,6 +1129,17 @@ func (a ScriptsApi) PostScriptExport(scriptId string, body Exportscriptrequest) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

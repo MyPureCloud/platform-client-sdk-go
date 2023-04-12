@@ -36,7 +36,7 @@ func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*API
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/details/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a AnalyticsApi) DeleteAnalyticsReportingSchedule(scheduleId string) (*APIR
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -128,6 +139,17 @@ func (a AnalyticsApi) DeleteAnalyticsReportingSchedule(scheduleId string) (*APIR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -164,7 +186,7 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/users/details/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -192,6 +214,17 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -230,7 +263,7 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/botflows/{botFlowId}/reportingturns"
-	path = strings.Replace(path, "{botFlowId}", fmt.Sprintf("%v", botFlowId), -1)
+	path = strings.Replace(path, "{botFlowId}", url.PathEscape(fmt.Sprintf("%v", botFlowId)), -1)
 	defaultReturn := new(Reportingturnsresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -271,6 +304,17 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 	
 	queryParams["askActionResults"] = a.Configuration.APIClient.ParameterToString(askActionResults, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -313,7 +357,7 @@ func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*A
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/{conversationId}/details"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Analyticsconversationwithoutattributes)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -342,6 +386,17 @@ func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -410,6 +465,17 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetails(id []string) (*Analyticsc
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -451,7 +517,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/details/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Asyncquerystatus)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -480,6 +546,17 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -522,7 +599,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/details/jobs/{jobId}/results"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Analyticsconversationasyncqueryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -555,6 +632,17 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -621,6 +709,17 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*Dataa
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -685,6 +784,17 @@ func (a AnalyticsApi) GetAnalyticsDataretentionSettings() (*Analyticsdataretenti
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -755,6 +865,17 @@ func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int, pageSize int)
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -819,6 +940,17 @@ func (a AnalyticsApi) GetAnalyticsReportingExportsMetadata() (*Reportingexportme
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -891,6 +1023,17 @@ func (a AnalyticsApi) GetAnalyticsReportingMetadata(pageNumber int, pageSize int
 	queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -932,7 +1075,7 @@ func (a AnalyticsApi) GetAnalyticsReportingReportIdMetadata(reportId string, loc
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/{reportId}/metadata"
-	path = strings.Replace(path, "{reportId}", fmt.Sprintf("%v", reportId), -1)
+	path = strings.Replace(path, "{reportId}", url.PathEscape(fmt.Sprintf("%v", reportId)), -1)
 	defaultReturn := new(Reportmetadata)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -963,6 +1106,17 @@ func (a AnalyticsApi) GetAnalyticsReportingReportIdMetadata(reportId string, loc
 	
 	queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1031,6 +1185,17 @@ func (a AnalyticsApi) GetAnalyticsReportingReportformats() ([]string, *APIRespon
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1072,7 +1237,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reports
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Reportschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1101,6 +1266,17 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reports
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1143,7 +1319,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pa
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/history"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Reportrunentryentitydomainlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1176,6 +1352,17 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pa
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1218,7 +1405,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryLatest(scheduleId stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/history/latest"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Reportrunentry)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1247,6 +1434,17 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryLatest(scheduleId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1291,8 +1489,8 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryRunId(runId string, sc
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/history/{runId}"
-	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{runId}", url.PathEscape(fmt.Sprintf("%v", runId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Reportrunentry)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1326,6 +1524,17 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryRunId(runId string, sc
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1398,6 +1607,17 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedules(pageNumber int, pageSize in
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1462,6 +1682,17 @@ func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1528,6 +1759,17 @@ func (a AnalyticsApi) GetAnalyticsReportingTimeperiods() ([]string, *APIResponse
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1569,7 +1811,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/users/details/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Asyncquerystatus)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1598,6 +1840,17 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1640,7 +1893,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/users/details/jobs/{jobId}/results"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Analyticsuserdetailsasyncqueryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1673,6 +1926,17 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor st
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1738,6 +2002,17 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabil
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1808,6 +2083,17 @@ func (a AnalyticsApi) PatchAnalyticsReportingSettings(body Analyticsreportingset
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1882,6 +2168,17 @@ func (a AnalyticsApi) PostAnalyticsActionsAggregatesQuery(body Actionaggregation
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1955,6 +2252,17 @@ func (a AnalyticsApi) PostAnalyticsBotsAggregatesQuery(body Botaggregationquery)
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1999,7 +2307,7 @@ func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/{conversationId}/details/properties"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Propertyindexrequest)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2033,6 +2341,17 @@ func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2107,6 +2426,17 @@ func (a AnalyticsApi) PostAnalyticsConversationsAggregatesQuery(body Conversatio
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2179,6 +2509,17 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconversati
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2253,6 +2594,17 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsQuery(body Conversationqu
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2325,6 +2677,17 @@ func (a AnalyticsApi) PostAnalyticsConversationsTranscriptsQuery(body Transcript
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2399,6 +2762,17 @@ func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationagg
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2471,6 +2845,17 @@ func (a AnalyticsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquer
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2545,6 +2930,17 @@ func (a AnalyticsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationqu
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2618,6 +3014,17 @@ func (a AnalyticsApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregati
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2690,6 +3097,17 @@ func (a AnalyticsApi) PostAnalyticsQueuesObservationsQuery(body Queueobservation
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2766,6 +3184,17 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2810,7 +3239,7 @@ func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string)
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/runreport"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Runnowresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2839,6 +3268,17 @@ func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2911,6 +3351,17 @@ func (a AnalyticsApi) PostAnalyticsReportingSchedules(body Reportschedule) (*Rep
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2985,6 +3436,17 @@ func (a AnalyticsApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregation
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3057,6 +3519,17 @@ func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesQuery(body Transcriptagg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3131,6 +3604,17 @@ func (a AnalyticsApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquer
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3203,6 +3687,17 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3277,6 +3772,17 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*An
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3349,6 +3855,17 @@ func (a AnalyticsApi) PostAnalyticsUsersObservationsQuery(body Userobservationqu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3423,6 +3940,17 @@ func (a AnalyticsApi) PutAnalyticsDataretentionSettings(body Updateanalyticsdata
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3467,7 +3995,7 @@ func (a AnalyticsApi) PutAnalyticsReportingSchedule(scheduleId string, body Repo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Reportschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3501,6 +4029,17 @@ func (a AnalyticsApi) PutAnalyticsReportingSchedule(scheduleId string, body Repo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

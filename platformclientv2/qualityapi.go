@@ -37,7 +37,7 @@ func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/calibrations/{calibrationId}"
-	path = strings.Replace(path, "{calibrationId}", fmt.Sprintf("%v", calibrationId), -1)
+	path = strings.Replace(path, "{calibrationId}", url.PathEscape(fmt.Sprintf("%v", calibrationId)), -1)
 	defaultReturn := new(Calibration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -73,6 +73,17 @@ func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId 
 	
 	queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -115,8 +126,8 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{evaluationId}", fmt.Sprintf("%v", evaluationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{evaluationId}", url.PathEscape(fmt.Sprintf("%v", evaluationId)), -1)
 	defaultReturn := new(Evaluationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -152,6 +163,17 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -194,7 +216,7 @@ func (a QualityApi) DeleteQualityForm(formId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -222,6 +244,17 @@ func (a QualityApi) DeleteQualityForm(formId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -258,7 +291,7 @@ func (a QualityApi) DeleteQualityFormsEvaluation(formId string) (*APIResponse, e
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -286,6 +319,17 @@ func (a QualityApi) DeleteQualityFormsEvaluation(formId string) (*APIResponse, e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -322,7 +366,7 @@ func (a QualityApi) DeleteQualityFormsSurvey(formId string) (*APIResponse, error
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -350,6 +394,17 @@ func (a QualityApi) DeleteQualityFormsSurvey(formId string) (*APIResponse, error
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -436,6 +491,17 @@ func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortB
 	queryParams["group"] = a.Configuration.APIClient.ParameterToString(group, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -477,7 +543,7 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/calibrations/{calibrationId}"
-	path = strings.Replace(path, "{calibrationId}", fmt.Sprintf("%v", calibrationId), -1)
+	path = strings.Replace(path, "{calibrationId}", url.PathEscape(fmt.Sprintf("%v", calibrationId)), -1)
 	defaultReturn := new(Calibration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -510,6 +576,17 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 	
 	queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -601,6 +678,17 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pa
 	queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -642,8 +730,8 @@ func (a QualityApi) GetQualityConversationEvaluation(conversationId string, eval
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{evaluationId}", fmt.Sprintf("%v", evaluationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{evaluationId}", url.PathEscape(fmt.Sprintf("%v", evaluationId)), -1)
 	defaultReturn := new(Evaluationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -679,6 +767,17 @@ func (a QualityApi) GetQualityConversationEvaluation(conversationId string, eval
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -721,7 +820,7 @@ func (a QualityApi) GetQualityConversationSurveys(conversationId string) ([]Surv
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/surveys"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := make([]Survey, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -750,6 +849,17 @@ func (a QualityApi) GetQualityConversationSurveys(conversationId string) ([]Surv
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -792,7 +902,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionId(transactionI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/audits/query/{transactionId}"
-	path = strings.Replace(path, "{transactionId}", fmt.Sprintf("%v", transactionId), -1)
+	path = strings.Replace(path, "{transactionId}", url.PathEscape(fmt.Sprintf("%v", transactionId)), -1)
 	defaultReturn := new(Qualityauditqueryexecutionstatusresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -821,6 +931,17 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionId(transactionI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -863,7 +984,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/audits/query/{transactionId}/results"
-	path = strings.Replace(path, "{transactionId}", fmt.Sprintf("%v", transactionId), -1)
+	path = strings.Replace(path, "{transactionId}", url.PathEscape(fmt.Sprintf("%v", transactionId)), -1)
 	defaultReturn := new(Qualityauditqueryexecutionresultsresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -898,6 +1019,17 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1004,6 +1136,17 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sor
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1091,6 +1234,17 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, s
 	queryParams["group"] = a.Configuration.APIClient.ParameterToString(group, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1132,7 +1286,7 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1161,6 +1315,17 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1203,7 +1368,7 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}/versions"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationformentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1236,6 +1401,17 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1318,6 +1494,17 @@ func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string,
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1359,7 +1546,7 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1388,6 +1575,17 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1430,7 +1628,7 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}/versions"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationformentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1465,6 +1663,17 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1547,6 +1756,17 @@ func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sor
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1619,6 +1839,17 @@ func (a QualityApi) GetQualityFormsEvaluationsBulkContexts(contextId []string) (
 	queryParams["contextId"] = a.Configuration.APIClient.ParameterToString(contextId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1660,7 +1891,7 @@ func (a QualityApi) GetQualityFormsSurvey(formId string) (*Surveyform, *APIRespo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Surveyform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1689,6 +1920,17 @@ func (a QualityApi) GetQualityFormsSurvey(formId string) (*Surveyform, *APIRespo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1731,7 +1973,7 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, p
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys/{formId}/versions"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Surveyformentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1764,6 +2006,17 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, p
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1846,6 +2099,17 @@ func (a QualityApi) GetQualityFormsSurveys(pageSize int, pageNumber int, sortBy 
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1917,6 +2181,17 @@ func (a QualityApi) GetQualityFormsSurveysBulk(id []string) (*Surveyformentityli
 	
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1992,6 +2267,17 @@ func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, publi
 	queryParams["published"] = a.Configuration.APIClient.ParameterToString(published, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2033,7 +2319,7 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2062,6 +2348,17 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2136,6 +2433,17 @@ func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name 
 	queryParams["onlyLatestPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestPerContext, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2177,7 +2485,7 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/evaluations/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2206,6 +2514,17 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2280,6 +2599,17 @@ func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber
 	queryParams["onlyLatestPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestPerContext, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2321,7 +2651,7 @@ func (a QualityApi) GetQualityPublishedformsSurvey(formId string) (*Surveyform, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/surveys/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Surveyform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2350,6 +2680,17 @@ func (a QualityApi) GetQualityPublishedformsSurvey(formId string) (*Surveyform, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2424,6 +2765,17 @@ func (a QualityApi) GetQualityPublishedformsSurveys(pageSize int, pageNumber int
 	queryParams["onlyLatestEnabledPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestEnabledPerContext, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2465,7 +2817,7 @@ func (a QualityApi) GetQualitySurvey(surveyId string) (*Survey, *APIResponse, er
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/surveys/{surveyId}"
-	path = strings.Replace(path, "{surveyId}", fmt.Sprintf("%v", surveyId), -1)
+	path = strings.Replace(path, "{surveyId}", url.PathEscape(fmt.Sprintf("%v", surveyId)), -1)
 	defaultReturn := new(Survey)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2494,6 +2846,17 @@ func (a QualityApi) GetQualitySurvey(surveyId string) (*Survey, *APIResponse, er
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2562,6 +2925,17 @@ func (a QualityApi) GetQualitySurveysScorable(customerSurveyUrl string) (*Scorab
 	queryParams["customerSurveyUrl"] = a.Configuration.APIClient.ParameterToString(customerSurveyUrl, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2603,7 +2977,7 @@ func (a QualityApi) PatchQualityFormsSurvey(formId string, body Surveyform) (*Su
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Surveyform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2637,6 +3011,17 @@ func (a QualityApi) PatchQualityFormsSurvey(formId string, body Surveyform) (*Su
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2711,6 +3096,17 @@ func (a QualityApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationaggre
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2783,6 +3179,17 @@ func (a QualityApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregationqu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2859,6 +3266,17 @@ func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand strin
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2903,7 +3321,7 @@ func (a QualityApi) PostQualityConversationEvaluations(conversationId string, bo
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Evaluation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2939,6 +3357,17 @@ func (a QualityApi) PostQualityConversationEvaluations(conversationId string, bo
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3013,6 +3442,17 @@ func (a QualityApi) PostQualityConversationsAuditsQuery(body Qmauditqueryrequest
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3085,6 +3525,17 @@ func (a QualityApi) PostQualityEvaluationsAggregatesQueryMe(body Evaluationaggre
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3159,6 +3610,17 @@ func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscorings
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3231,6 +3693,17 @@ func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3305,6 +3778,17 @@ func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluatio
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3377,6 +3861,17 @@ func (a QualityApi) PostQualityFormsSurveys(body Surveyform) (*Surveyform, *APIR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3451,6 +3946,17 @@ func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3523,6 +4029,17 @@ func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Eva
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3597,6 +4114,17 @@ func (a QualityApi) PostQualityPublishedformsSurveys(body Publishform) (*Surveyf
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3670,6 +4198,17 @@ func (a QualityApi) PostQualitySurveysScoring(body Surveyformandscoringset) (*Su
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3714,7 +4253,7 @@ func (a QualityApi) PutQualityCalibration(calibrationId string, body Calibration
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/calibrations/{calibrationId}"
-	path = strings.Replace(path, "{calibrationId}", fmt.Sprintf("%v", calibrationId), -1)
+	path = strings.Replace(path, "{calibrationId}", url.PathEscape(fmt.Sprintf("%v", calibrationId)), -1)
 	defaultReturn := new(Calibration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3748,6 +4287,17 @@ func (a QualityApi) PutQualityCalibration(calibrationId string, body Calibration
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3795,8 +4345,8 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{evaluationId}", fmt.Sprintf("%v", evaluationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{evaluationId}", url.PathEscape(fmt.Sprintf("%v", evaluationId)), -1)
 	defaultReturn := new(Evaluationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3837,6 +4387,17 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3882,7 +4443,7 @@ func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluat
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3916,6 +4477,17 @@ func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluat
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3961,7 +4533,7 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Evaluationform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3995,6 +4567,17 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4040,7 +4623,7 @@ func (a QualityApi) PutQualityFormsSurvey(formId string, body Surveyform) (*Surv
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys/{formId}"
-	path = strings.Replace(path, "{formId}", fmt.Sprintf("%v", formId), -1)
+	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
 	defaultReturn := new(Surveyform)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4074,6 +4657,17 @@ func (a QualityApi) PutQualityFormsSurvey(formId string, body Surveyform) (*Surv
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4149,6 +4743,17 @@ func (a QualityApi) PutQualitySurveysScorable(customerSurveyUrl string, body Sco
 	
 	queryParams["customerSurveyUrl"] = a.Configuration.APIClient.ParameterToString(customerSurveyUrl, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

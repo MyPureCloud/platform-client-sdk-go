@@ -36,7 +36,7 @@ func (a OutboundApi) DeleteOutboundAttemptlimit(attemptLimitsId string) (*APIRes
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/attemptlimits/{attemptLimitsId}"
-	path = strings.Replace(path, "{attemptLimitsId}", fmt.Sprintf("%v", attemptLimitsId), -1)
+	path = strings.Replace(path, "{attemptLimitsId}", url.PathEscape(fmt.Sprintf("%v", attemptLimitsId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a OutboundApi) DeleteOutboundAttemptlimit(attemptLimitsId string) (*APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a OutboundApi) DeleteOutboundCallabletimeset(callableTimeSetId string) (*A
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callabletimesets/{callableTimeSetId}"
-	path = strings.Replace(path, "{callableTimeSetId}", fmt.Sprintf("%v", callableTimeSetId), -1)
+	path = strings.Replace(path, "{callableTimeSetId}", url.PathEscape(fmt.Sprintf("%v", callableTimeSetId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -128,6 +139,17 @@ func (a OutboundApi) DeleteOutboundCallabletimeset(callableTimeSetId string) (*A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -164,7 +186,7 @@ func (a OutboundApi) DeleteOutboundCallanalysisresponseset(callAnalysisSetId str
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callanalysisresponsesets/{callAnalysisSetId}"
-	path = strings.Replace(path, "{callAnalysisSetId}", fmt.Sprintf("%v", callAnalysisSetId), -1)
+	path = strings.Replace(path, "{callAnalysisSetId}", url.PathEscape(fmt.Sprintf("%v", callAnalysisSetId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -192,6 +214,17 @@ func (a OutboundApi) DeleteOutboundCallanalysisresponseset(callAnalysisSetId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -228,7 +261,7 @@ func (a OutboundApi) DeleteOutboundCampaign(campaignId string) (*Campaign, *APIR
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaign)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -257,6 +290,17 @@ func (a OutboundApi) DeleteOutboundCampaign(campaignId string) (*Campaign, *APIR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -299,7 +343,7 @@ func (a OutboundApi) DeleteOutboundCampaignProgress(campaignId string) (*APIResp
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/progress"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -327,6 +371,17 @@ func (a OutboundApi) DeleteOutboundCampaignProgress(campaignId string) (*APIResp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -363,7 +418,7 @@ func (a OutboundApi) DeleteOutboundCampaignrule(campaignRuleId string) (*APIResp
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaignrules/{campaignRuleId}"
-	path = strings.Replace(path, "{campaignRuleId}", fmt.Sprintf("%v", campaignRuleId), -1)
+	path = strings.Replace(path, "{campaignRuleId}", url.PathEscape(fmt.Sprintf("%v", campaignRuleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -391,6 +446,17 @@ func (a OutboundApi) DeleteOutboundCampaignrule(campaignRuleId string) (*APIResp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -427,7 +493,7 @@ func (a OutboundApi) DeleteOutboundContactlist(contactListId string) (*APIRespon
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -455,6 +521,17 @@ func (a OutboundApi) DeleteOutboundContactlist(contactListId string) (*APIRespon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -491,8 +568,8 @@ func (a OutboundApi) DeleteOutboundContactlistContact(contactListId string, cont
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/contacts/{contactId}"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -525,6 +602,17 @@ func (a OutboundApi) DeleteOutboundContactlistContact(contactListId string, cont
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -561,7 +649,7 @@ func (a OutboundApi) DeleteOutboundContactlistContacts(contactListId string, con
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/contacts"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -596,6 +684,17 @@ func (a OutboundApi) DeleteOutboundContactlistContacts(contactListId string, con
 	
 	queryParams["contactIds"] = a.Configuration.APIClient.ParameterToString(contactIds, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -632,7 +731,7 @@ func (a OutboundApi) DeleteOutboundContactlistfilter(contactListFilterId string)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlistfilters/{contactListFilterId}"
-	path = strings.Replace(path, "{contactListFilterId}", fmt.Sprintf("%v", contactListFilterId), -1)
+	path = strings.Replace(path, "{contactListFilterId}", url.PathEscape(fmt.Sprintf("%v", contactListFilterId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -660,6 +759,17 @@ func (a OutboundApi) DeleteOutboundContactlistfilter(contactListFilterId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -726,6 +836,17 @@ func (a OutboundApi) DeleteOutboundContactlists(id []string) (*APIResponse, erro
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -761,7 +882,7 @@ func (a OutboundApi) DeleteOutboundDigitalruleset(digitalRuleSetId string) (*API
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/digitalrulesets/{digitalRuleSetId}"
-	path = strings.Replace(path, "{digitalRuleSetId}", fmt.Sprintf("%v", digitalRuleSetId), -1)
+	path = strings.Replace(path, "{digitalRuleSetId}", url.PathEscape(fmt.Sprintf("%v", digitalRuleSetId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -789,6 +910,17 @@ func (a OutboundApi) DeleteOutboundDigitalruleset(digitalRuleSetId string) (*API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -825,7 +957,7 @@ func (a OutboundApi) DeleteOutboundDnclist(dncListId string) (*APIResponse, erro
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -853,6 +985,17 @@ func (a OutboundApi) DeleteOutboundDnclist(dncListId string) (*APIResponse, erro
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -891,7 +1034,7 @@ func (a OutboundApi) DeleteOutboundDnclistCustomexclusioncolumns(dncListId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/customexclusioncolumns"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -921,6 +1064,17 @@ func (a OutboundApi) DeleteOutboundDnclistCustomexclusioncolumns(dncListId strin
 	
 	queryParams["expiredOnly"] = a.Configuration.APIClient.ParameterToString(expiredOnly, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -959,7 +1113,7 @@ func (a OutboundApi) DeleteOutboundDnclistEmailaddresses(dncListId string, expir
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/emailaddresses"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -989,6 +1143,17 @@ func (a OutboundApi) DeleteOutboundDnclistEmailaddresses(dncListId string, expir
 	
 	queryParams["expiredOnly"] = a.Configuration.APIClient.ParameterToString(expiredOnly, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1027,7 +1192,7 @@ func (a OutboundApi) DeleteOutboundDnclistPhonenumbers(dncListId string, expired
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/phonenumbers"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1057,6 +1222,17 @@ func (a OutboundApi) DeleteOutboundDnclistPhonenumbers(dncListId string, expired
 	
 	queryParams["expiredOnly"] = a.Configuration.APIClient.ParameterToString(expiredOnly, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1093,7 +1269,7 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	defaultReturn := new(Messagingcampaign)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1122,6 +1298,17 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1164,7 +1351,7 @@ func (a OutboundApi) DeleteOutboundMessagingcampaignProgress(messagingCampaignId
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1192,6 +1379,17 @@ func (a OutboundApi) DeleteOutboundMessagingcampaignProgress(messagingCampaignId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1228,7 +1426,7 @@ func (a OutboundApi) DeleteOutboundRuleset(ruleSetId string) (*APIResponse, erro
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/rulesets/{ruleSetId}"
-	path = strings.Replace(path, "{ruleSetId}", fmt.Sprintf("%v", ruleSetId), -1)
+	path = strings.Replace(path, "{ruleSetId}", url.PathEscape(fmt.Sprintf("%v", ruleSetId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1256,6 +1454,17 @@ func (a OutboundApi) DeleteOutboundRuleset(ruleSetId string) (*APIResponse, erro
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1292,7 +1501,7 @@ func (a OutboundApi) DeleteOutboundSchedulesCampaign(campaignId string) (*APIRes
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/campaigns/{campaignId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1320,6 +1529,17 @@ func (a OutboundApi) DeleteOutboundSchedulesCampaign(campaignId string) (*APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1356,7 +1576,7 @@ func (a OutboundApi) DeleteOutboundSchedulesEmailcampaign(emailCampaignId string
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}"
-	path = strings.Replace(path, "{emailCampaignId}", fmt.Sprintf("%v", emailCampaignId), -1)
+	path = strings.Replace(path, "{emailCampaignId}", url.PathEscape(fmt.Sprintf("%v", emailCampaignId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1384,6 +1604,17 @@ func (a OutboundApi) DeleteOutboundSchedulesEmailcampaign(emailCampaignId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1420,7 +1651,7 @@ func (a OutboundApi) DeleteOutboundSchedulesMessagingcampaign(messagingCampaignI
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1448,6 +1679,17 @@ func (a OutboundApi) DeleteOutboundSchedulesMessagingcampaign(messagingCampaignI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1484,7 +1726,7 @@ func (a OutboundApi) DeleteOutboundSchedulesSequence(sequenceId string) (*APIRes
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/sequences/{sequenceId}"
-	path = strings.Replace(path, "{sequenceId}", fmt.Sprintf("%v", sequenceId), -1)
+	path = strings.Replace(path, "{sequenceId}", url.PathEscape(fmt.Sprintf("%v", sequenceId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1512,6 +1754,17 @@ func (a OutboundApi) DeleteOutboundSchedulesSequence(sequenceId string) (*APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1548,7 +1801,7 @@ func (a OutboundApi) DeleteOutboundSequence(sequenceId string) (*APIResponse, er
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/sequences/{sequenceId}"
-	path = strings.Replace(path, "{sequenceId}", fmt.Sprintf("%v", sequenceId), -1)
+	path = strings.Replace(path, "{sequenceId}", url.PathEscape(fmt.Sprintf("%v", sequenceId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1576,6 +1829,17 @@ func (a OutboundApi) DeleteOutboundSequence(sequenceId string) (*APIResponse, er
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1612,7 +1876,7 @@ func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptli
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/attemptlimits/{attemptLimitsId}"
-	path = strings.Replace(path, "{attemptLimitsId}", fmt.Sprintf("%v", attemptLimitsId), -1)
+	path = strings.Replace(path, "{attemptLimitsId}", url.PathEscape(fmt.Sprintf("%v", attemptLimitsId)), -1)
 	defaultReturn := new(Attemptlimits)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1641,6 +1905,17 @@ func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptli
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1721,6 +1996,17 @@ func (a OutboundApi) GetOutboundAttemptlimits(pageSize int, pageNumber int, allo
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1762,7 +2048,7 @@ func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Call
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callabletimesets/{callableTimeSetId}"
-	path = strings.Replace(path, "{callableTimeSetId}", fmt.Sprintf("%v", callableTimeSetId), -1)
+	path = strings.Replace(path, "{callableTimeSetId}", url.PathEscape(fmt.Sprintf("%v", callableTimeSetId)), -1)
 	defaultReturn := new(Callabletimeset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1791,6 +2077,17 @@ func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Call
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1871,6 +2168,17 @@ func (a OutboundApi) GetOutboundCallabletimesets(pageSize int, pageNumber int, a
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1912,7 +2220,7 @@ func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callanalysisresponsesets/{callAnalysisSetId}"
-	path = strings.Replace(path, "{callAnalysisSetId}", fmt.Sprintf("%v", callAnalysisSetId), -1)
+	path = strings.Replace(path, "{callAnalysisSetId}", url.PathEscape(fmt.Sprintf("%v", callAnalysisSetId)), -1)
 	defaultReturn := new(Responseset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1941,6 +2249,17 @@ func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2021,6 +2340,17 @@ func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int, pageNumbe
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2062,7 +2392,7 @@ func (a OutboundApi) GetOutboundCampaign(campaignId string) (*Campaign, *APIResp
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaign)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2091,6 +2421,17 @@ func (a OutboundApi) GetOutboundCampaign(campaignId string) (*Campaign, *APIResp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2133,7 +2474,7 @@ func (a OutboundApi) GetOutboundCampaignAgentownedmappingpreviewResults(campaign
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview/results"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Agentownedmappingpreviewlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2162,6 +2503,17 @@ func (a OutboundApi) GetOutboundCampaignAgentownedmappingpreviewResults(campaign
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2204,7 +2556,7 @@ func (a OutboundApi) GetOutboundCampaignDiagnostics(campaignId string) (*Campaig
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/diagnostics"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaigndiagnostics)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2233,6 +2585,17 @@ func (a OutboundApi) GetOutboundCampaignDiagnostics(campaignId string) (*Campaig
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2275,7 +2638,7 @@ func (a OutboundApi) GetOutboundCampaignInteractions(campaignId string) (*Campai
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/interactions"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaigninteractions)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2304,6 +2667,17 @@ func (a OutboundApi) GetOutboundCampaignInteractions(campaignId string) (*Campai
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2346,7 +2720,7 @@ func (a OutboundApi) GetOutboundCampaignProgress(campaignId string) (*Campaignpr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/progress"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaignprogress)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2375,6 +2749,17 @@ func (a OutboundApi) GetOutboundCampaignProgress(campaignId string) (*Campaignpr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2417,7 +2802,7 @@ func (a OutboundApi) GetOutboundCampaignStats(campaignId string) (*Campaignstats
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/stats"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaignstats)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2446,6 +2831,17 @@ func (a OutboundApi) GetOutboundCampaignStats(campaignId string) (*Campaignstats
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2488,7 +2884,7 @@ func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignru
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaignrules/{campaignRuleId}"
-	path = strings.Replace(path, "{campaignRuleId}", fmt.Sprintf("%v", campaignRuleId), -1)
+	path = strings.Replace(path, "{campaignRuleId}", url.PathEscape(fmt.Sprintf("%v", campaignRuleId)), -1)
 	defaultReturn := new(Campaignrule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2517,6 +2913,17 @@ func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignru
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2596,6 +3003,17 @@ func (a OutboundApi) GetOutboundCampaignrules(pageSize int, pageNumber int, allo
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2688,6 +3106,17 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int, pageNumber int, filterTy
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2766,6 +3195,17 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int, pageNumber int, id []
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2846,6 +3286,17 @@ func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int, pageNumb
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2889,7 +3340,7 @@ func (a OutboundApi) GetOutboundCampaignsDivisionview(campaignId string) (*Campa
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/divisionviews/{campaignId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaigndivisionview)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2918,6 +3369,17 @@ func (a OutboundApi) GetOutboundCampaignsDivisionview(campaignId string) (*Campa
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3000,6 +3462,17 @@ func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int, pageNumber 
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3041,7 +3514,7 @@ func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportS
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := new(Contactlist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3074,6 +3547,17 @@ func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportS
 	
 	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3116,8 +3600,8 @@ func (a OutboundApi) GetOutboundContactlistContact(contactListId string, contact
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/contacts/{contactId}"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Dialercontact)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3151,6 +3635,17 @@ func (a OutboundApi) GetOutboundContactlistContact(contactListId string, contact
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3193,7 +3688,7 @@ func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/export"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := new(Exporturi)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3224,6 +3719,17 @@ func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download
 	
 	queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3266,7 +3772,7 @@ func (a OutboundApi) GetOutboundContactlistImportstatus(contactListId string) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/importstatus"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := new(Importstatus)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3295,6 +3801,17 @@ func (a OutboundApi) GetOutboundContactlistImportstatus(contactListId string) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3337,7 +3854,7 @@ func (a OutboundApi) GetOutboundContactlistTimezonemappingpreview(contactListId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/timezonemappingpreview"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := new(Timezonemappingpreview)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3366,6 +3883,17 @@ func (a OutboundApi) GetOutboundContactlistTimezonemappingpreview(contactListId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3408,7 +3936,7 @@ func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlistfilters/{contactListFilterId}"
-	path = strings.Replace(path, "{contactListFilterId}", fmt.Sprintf("%v", contactListFilterId), -1)
+	path = strings.Replace(path, "{contactListFilterId}", url.PathEscape(fmt.Sprintf("%v", contactListFilterId)), -1)
 	defaultReturn := new(Contactlistfilter)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3437,6 +3965,17 @@ func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3518,6 +4057,17 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int, pageNumber int,
 	
 	queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3606,6 +4156,17 @@ func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSi
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3649,7 +4210,7 @@ func (a OutboundApi) GetOutboundContactlistsDivisionview(contactListId string, i
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/divisionviews/{contactListId}"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := new(Contactlistdivisionview)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3682,6 +4243,17 @@ func (a OutboundApi) GetOutboundContactlistsDivisionview(contactListId string, i
 	
 	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3768,6 +4340,17 @@ func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bo
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3809,7 +4392,7 @@ func (a OutboundApi) GetOutboundDigitalruleset(digitalRuleSetId string) (*Digita
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/digitalrulesets/{digitalRuleSetId}"
-	path = strings.Replace(path, "{digitalRuleSetId}", fmt.Sprintf("%v", digitalRuleSetId), -1)
+	path = strings.Replace(path, "{digitalRuleSetId}", url.PathEscape(fmt.Sprintf("%v", digitalRuleSetId)), -1)
 	defaultReturn := new(Digitalruleset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3838,6 +4421,17 @@ func (a OutboundApi) GetOutboundDigitalruleset(digitalRuleSetId string) (*Digita
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3916,6 +4510,17 @@ func (a OutboundApi) GetOutboundDigitalrulesets(pageSize int, pageNumber int, so
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3957,7 +4562,7 @@ func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	defaultReturn := new(Dnclist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3990,6 +4595,17 @@ func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bo
 	
 	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4032,7 +4648,7 @@ func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/export"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	defaultReturn := new(Exporturi)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4063,6 +4679,17 @@ func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string)
 	
 	queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4105,7 +4732,7 @@ func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importst
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/importstatus"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	defaultReturn := new(Importstatus)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4134,6 +4761,17 @@ func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importst
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4222,6 +4860,17 @@ func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize b
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4265,7 +4914,7 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/divisionviews/{dncListId}"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	defaultReturn := new(Dnclistdivisionview)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4298,6 +4947,17 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 	
 	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4386,6 +5046,17 @@ func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, 
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4427,7 +5098,7 @@ func (a OutboundApi) GetOutboundEvent(eventId string) (*Eventlog, *APIResponse, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/events/{eventId}"
-	path = strings.Replace(path, "{eventId}", fmt.Sprintf("%v", eventId), -1)
+	path = strings.Replace(path, "{eventId}", url.PathEscape(fmt.Sprintf("%v", eventId)), -1)
 	defaultReturn := new(Eventlog)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4456,6 +5127,17 @@ func (a OutboundApi) GetOutboundEvent(eventId string) (*Eventlog, *APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4536,6 +5218,17 @@ func (a OutboundApi) GetOutboundEvents(pageSize int, pageNumber int, filterType 
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4577,7 +5270,7 @@ func (a OutboundApi) GetOutboundMessagingcampaign(messagingCampaignId string) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	defaultReturn := new(Messagingcampaign)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4606,6 +5299,17 @@ func (a OutboundApi) GetOutboundMessagingcampaign(messagingCampaignId string) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4648,7 +5352,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	defaultReturn := new(Campaignprogress)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4677,6 +5381,17 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4763,6 +5478,17 @@ func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int,
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4806,7 +5532,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaign
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/divisionviews/{messagingCampaignId}"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	defaultReturn := new(Messagingcampaigndivisionview)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4835,6 +5561,17 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaign
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4917,6 +5654,17 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pa
 	queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4958,7 +5706,7 @@ func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIRespons
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/rulesets/{ruleSetId}"
-	path = strings.Replace(path, "{ruleSetId}", fmt.Sprintf("%v", ruleSetId), -1)
+	path = strings.Replace(path, "{ruleSetId}", url.PathEscape(fmt.Sprintf("%v", ruleSetId)), -1)
 	defaultReturn := new(Ruleset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4987,6 +5735,17 @@ func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIRespons
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5067,6 +5826,17 @@ func (a OutboundApi) GetOutboundRulesets(pageSize int, pageNumber int, allowEmpt
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5108,7 +5878,7 @@ func (a OutboundApi) GetOutboundSchedulesCampaign(campaignId string) (*Campaigns
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/campaigns/{campaignId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaignschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5137,6 +5907,17 @@ func (a OutboundApi) GetOutboundSchedulesCampaign(campaignId string) (*Campaigns
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5203,6 +5984,17 @@ func (a OutboundApi) GetOutboundSchedulesCampaigns() ([]Campaignschedule, *APIRe
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5244,7 +6036,7 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}"
-	path = strings.Replace(path, "{emailCampaignId}", fmt.Sprintf("%v", emailCampaignId), -1)
+	path = strings.Replace(path, "{emailCampaignId}", url.PathEscape(fmt.Sprintf("%v", emailCampaignId)), -1)
 	defaultReturn := new(Emailcampaignschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5273,6 +6065,17 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5339,6 +6142,17 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Messagingcampaignsch
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5380,7 +6194,7 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaign(messagingCampaignId s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	defaultReturn := new(Messagingcampaignschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5409,6 +6223,17 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaign(messagingCampaignId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5475,6 +6300,17 @@ func (a OutboundApi) GetOutboundSchedulesMessagingcampaigns() (*Messagingcampaig
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5516,7 +6352,7 @@ func (a OutboundApi) GetOutboundSchedulesSequence(sequenceId string) (*Sequences
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/sequences/{sequenceId}"
-	path = strings.Replace(path, "{sequenceId}", fmt.Sprintf("%v", sequenceId), -1)
+	path = strings.Replace(path, "{sequenceId}", url.PathEscape(fmt.Sprintf("%v", sequenceId)), -1)
 	defaultReturn := new(Sequenceschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5545,6 +6381,17 @@ func (a OutboundApi) GetOutboundSchedulesSequence(sequenceId string) (*Sequences
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5611,6 +6458,17 @@ func (a OutboundApi) GetOutboundSchedulesSequences() ([]Sequenceschedule, *APIRe
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5652,7 +6510,7 @@ func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/sequences/{sequenceId}"
-	path = strings.Replace(path, "{sequenceId}", fmt.Sprintf("%v", sequenceId), -1)
+	path = strings.Replace(path, "{sequenceId}", url.PathEscape(fmt.Sprintf("%v", sequenceId)), -1)
 	defaultReturn := new(Campaignsequence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5681,6 +6539,17 @@ func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5761,6 +6630,17 @@ func (a OutboundApi) GetOutboundSequences(pageSize int, pageNumber int, allowEmp
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5825,6 +6705,17 @@ func (a OutboundApi) GetOutboundSettings() (*Outboundsettings, *APIResponse, err
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5891,6 +6782,17 @@ func (a OutboundApi) GetOutboundWrapupcodemappings() (*Wrapupcodemapping, *APIRe
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5934,7 +6836,7 @@ func (a OutboundApi) PatchOutboundDnclistCustomexclusioncolumns(dncListId string
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/customexclusioncolumns"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5967,6 +6869,17 @@ func (a OutboundApi) PatchOutboundDnclistCustomexclusioncolumns(dncListId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6008,7 +6921,7 @@ func (a OutboundApi) PatchOutboundDnclistEmailaddresses(dncListId string, body D
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/emailaddresses"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6041,6 +6954,17 @@ func (a OutboundApi) PatchOutboundDnclistEmailaddresses(dncListId string, body D
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6082,7 +7006,7 @@ func (a OutboundApi) PatchOutboundDnclistPhonenumbers(dncListId string, body Dnc
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/phonenumbers"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6115,6 +7039,17 @@ func (a OutboundApi) PatchOutboundDnclistPhonenumbers(dncListId string, body Dnc
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6182,6 +7117,17 @@ func (a OutboundApi) PatchOutboundSettings(body Outboundsettings) (*APIResponse,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6248,6 +7194,17 @@ func (a OutboundApi) PostOutboundAttemptlimits(body Attemptlimits) (*Attemptlimi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6332,6 +7289,17 @@ func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, p
 	queryParams["facetsOnly"] = a.Configuration.APIClient.ParameterToString(facetsOnly, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6404,6 +7372,17 @@ func (a OutboundApi) PostOutboundCallabletimesets(body Callabletimeset) (*Callab
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6478,6 +7457,17 @@ func (a OutboundApi) PostOutboundCallanalysisresponsesets(body Responseset) (*Re
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6522,7 +7512,7 @@ func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId str
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6551,6 +7541,17 @@ func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6595,7 +7596,7 @@ func (a OutboundApi) PostOutboundCampaignCallbackSchedule(campaignId string, bod
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/callback/schedule"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Contactcallbackrequest)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6629,6 +7630,17 @@ func (a OutboundApi) PostOutboundCampaignCallbackSchedule(campaignId string, bod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6703,6 +7715,17 @@ func (a OutboundApi) PostOutboundCampaignrules(body Campaignrule) (*Campaignrule
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6775,6 +7798,17 @@ func (a OutboundApi) PostOutboundCampaigns(body Campaign) (*Campaign, *APIRespon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6849,6 +7883,17 @@ func (a OutboundApi) PostOutboundCampaignsProgress(body []string) ([]Campaignpro
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6893,7 +7938,7 @@ func (a OutboundApi) PostOutboundContactlistClear(contactListId string) (*APIRes
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/clear"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6921,6 +7966,17 @@ func (a OutboundApi) PostOutboundContactlistClear(contactListId string) (*APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6957,7 +8013,7 @@ func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/contacts"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := make([]Dialercontact, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6997,6 +8053,17 @@ func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body 
 	
 	queryParams["doNotQueue"] = a.Configuration.APIClient.ParameterToString(doNotQueue, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7042,7 +8109,7 @@ func (a OutboundApi) PostOutboundContactlistContactsBulk(contactListId string, b
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/contacts/bulk"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := make([]Dialercontact, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7076,6 +8143,17 @@ func (a OutboundApi) PostOutboundContactlistContactsBulk(contactListId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7123,7 +8201,7 @@ func (a OutboundApi) PostOutboundContactlistExport(contactListId string) (*Domai
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/export"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := new(Domainentityref)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7152,6 +8230,17 @@ func (a OutboundApi) PostOutboundContactlistExport(contactListId string) (*Domai
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7222,6 +8311,17 @@ func (a OutboundApi) PostOutboundContactlistfilters(body Contactlistfilter) (*Co
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7296,6 +8396,17 @@ func (a OutboundApi) PostOutboundContactlistfiltersPreview(body Contactlistfilte
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7369,6 +8480,17 @@ func (a OutboundApi) PostOutboundContactlists(body Contactlist) (*Contactlist, *
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7413,7 +8535,7 @@ func (a OutboundApi) PostOutboundConversationDnc(conversationId string) (*APIRes
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/conversations/{conversationId}/dnc"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7441,6 +8563,17 @@ func (a OutboundApi) PostOutboundConversationDnc(conversationId string) (*APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7506,6 +8639,17 @@ func (a OutboundApi) PostOutboundDigitalrulesets(body Digitalruleset) (*Digitalr
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7552,7 +8696,7 @@ func (a OutboundApi) PostOutboundDnclistEmailaddresses(dncListId string, body []
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/emailaddresses"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7585,6 +8729,17 @@ func (a OutboundApi) PostOutboundDnclistEmailaddresses(dncListId string, body []
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7626,7 +8781,7 @@ func (a OutboundApi) PostOutboundDnclistExport(dncListId string) (*Domainentityr
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/export"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	defaultReturn := new(Domainentityref)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7655,6 +8810,17 @@ func (a OutboundApi) PostOutboundDnclistExport(dncListId string) (*Domainentityr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7699,7 +8865,7 @@ func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []st
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/phonenumbers"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7734,6 +8900,17 @@ func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []st
 	
 	queryParams["expirationDateTime"] = a.Configuration.APIClient.ParameterToString(expirationDateTime, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7801,6 +8978,17 @@ func (a OutboundApi) PostOutboundDnclists(body Dnclistcreate) (*Dnclist, *APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7875,6 +9063,17 @@ func (a OutboundApi) PostOutboundMessagingcampaigns(body Messagingcampaign) (*Me
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7947,6 +9146,17 @@ func (a OutboundApi) PostOutboundMessagingcampaignsProgress(body []string) ([]Ca
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8021,6 +9231,17 @@ func (a OutboundApi) PostOutboundRulesets(body Ruleset) (*Ruleset, *APIResponse,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8094,6 +9315,17 @@ func (a OutboundApi) PostOutboundSequences(body Campaignsequence) (*Campaignsequ
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8138,7 +9370,7 @@ func (a OutboundApi) PutOutboundAttemptlimit(attemptLimitsId string, body Attemp
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/attemptlimits/{attemptLimitsId}"
-	path = strings.Replace(path, "{attemptLimitsId}", fmt.Sprintf("%v", attemptLimitsId), -1)
+	path = strings.Replace(path, "{attemptLimitsId}", url.PathEscape(fmt.Sprintf("%v", attemptLimitsId)), -1)
 	defaultReturn := new(Attemptlimits)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8172,6 +9404,17 @@ func (a OutboundApi) PutOutboundAttemptlimit(attemptLimitsId string, body Attemp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8217,7 +9460,7 @@ func (a OutboundApi) PutOutboundCallabletimeset(callableTimeSetId string, body C
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callabletimesets/{callableTimeSetId}"
-	path = strings.Replace(path, "{callableTimeSetId}", fmt.Sprintf("%v", callableTimeSetId), -1)
+	path = strings.Replace(path, "{callableTimeSetId}", url.PathEscape(fmt.Sprintf("%v", callableTimeSetId)), -1)
 	defaultReturn := new(Callabletimeset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8251,6 +9494,17 @@ func (a OutboundApi) PutOutboundCallabletimeset(callableTimeSetId string, body C
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8296,7 +9550,7 @@ func (a OutboundApi) PutOutboundCallanalysisresponseset(callAnalysisSetId string
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callanalysisresponsesets/{callAnalysisSetId}"
-	path = strings.Replace(path, "{callAnalysisSetId}", fmt.Sprintf("%v", callAnalysisSetId), -1)
+	path = strings.Replace(path, "{callAnalysisSetId}", url.PathEscape(fmt.Sprintf("%v", callAnalysisSetId)), -1)
 	defaultReturn := new(Responseset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8330,6 +9584,17 @@ func (a OutboundApi) PutOutboundCallanalysisresponseset(callAnalysisSetId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8375,7 +9640,7 @@ func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Cam
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaign)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8409,6 +9674,17 @@ func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Cam
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8456,8 +9732,8 @@ func (a OutboundApi) PutOutboundCampaignAgent(campaignId string, userId string, 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/agents/{userId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(string)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8496,6 +9772,17 @@ func (a OutboundApi) PutOutboundCampaignAgent(campaignId string, userId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8541,7 +9828,7 @@ func (a OutboundApi) PutOutboundCampaignrule(campaignRuleId string, body Campaig
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaignrules/{campaignRuleId}"
-	path = strings.Replace(path, "{campaignRuleId}", fmt.Sprintf("%v", campaignRuleId), -1)
+	path = strings.Replace(path, "{campaignRuleId}", url.PathEscape(fmt.Sprintf("%v", campaignRuleId)), -1)
 	defaultReturn := new(Campaignrule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8575,6 +9862,17 @@ func (a OutboundApi) PutOutboundCampaignrule(campaignRuleId string, body Campaig
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8620,7 +9918,7 @@ func (a OutboundApi) PutOutboundContactlist(contactListId string, body Contactli
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
 	defaultReturn := new(Contactlist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8654,6 +9952,17 @@ func (a OutboundApi) PutOutboundContactlist(contactListId string, body Contactli
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8699,8 +10008,8 @@ func (a OutboundApi) PutOutboundContactlistContact(contactListId string, contact
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/contacts/{contactId}"
-	path = strings.Replace(path, "{contactListId}", fmt.Sprintf("%v", contactListId), -1)
-	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	path = strings.Replace(path, "{contactListId}", url.PathEscape(fmt.Sprintf("%v", contactListId)), -1)
+	path = strings.Replace(path, "{contactId}", url.PathEscape(fmt.Sprintf("%v", contactId)), -1)
 	defaultReturn := new(Dialercontact)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8739,6 +10048,17 @@ func (a OutboundApi) PutOutboundContactlistContact(contactListId string, contact
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8784,7 +10104,7 @@ func (a OutboundApi) PutOutboundContactlistfilter(contactListFilterId string, bo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlistfilters/{contactListFilterId}"
-	path = strings.Replace(path, "{contactListFilterId}", fmt.Sprintf("%v", contactListFilterId), -1)
+	path = strings.Replace(path, "{contactListFilterId}", url.PathEscape(fmt.Sprintf("%v", contactListFilterId)), -1)
 	defaultReturn := new(Contactlistfilter)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8818,6 +10138,17 @@ func (a OutboundApi) PutOutboundContactlistfilter(contactListFilterId string, bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8863,7 +10194,7 @@ func (a OutboundApi) PutOutboundDigitalruleset(digitalRuleSetId string, body Dig
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/digitalrulesets/{digitalRuleSetId}"
-	path = strings.Replace(path, "{digitalRuleSetId}", fmt.Sprintf("%v", digitalRuleSetId), -1)
+	path = strings.Replace(path, "{digitalRuleSetId}", url.PathEscape(fmt.Sprintf("%v", digitalRuleSetId)), -1)
 	defaultReturn := new(Digitalruleset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8897,6 +10228,17 @@ func (a OutboundApi) PutOutboundDigitalruleset(digitalRuleSetId string, body Dig
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8942,7 +10284,7 @@ func (a OutboundApi) PutOutboundDnclist(dncListId string, body Dnclist) (*Dnclis
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}"
-	path = strings.Replace(path, "{dncListId}", fmt.Sprintf("%v", dncListId), -1)
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
 	defaultReturn := new(Dnclist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8976,6 +10318,17 @@ func (a OutboundApi) PutOutboundDnclist(dncListId string, body Dnclist) (*Dnclis
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9021,7 +10374,7 @@ func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, bo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	defaultReturn := new(Messagingcampaign)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9055,6 +10408,17 @@ func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9100,7 +10464,7 @@ func (a OutboundApi) PutOutboundRuleset(ruleSetId string, body Ruleset) (*Rulese
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/rulesets/{ruleSetId}"
-	path = strings.Replace(path, "{ruleSetId}", fmt.Sprintf("%v", ruleSetId), -1)
+	path = strings.Replace(path, "{ruleSetId}", url.PathEscape(fmt.Sprintf("%v", ruleSetId)), -1)
 	defaultReturn := new(Ruleset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9134,6 +10498,17 @@ func (a OutboundApi) PutOutboundRuleset(ruleSetId string, body Ruleset) (*Rulese
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9179,7 +10554,7 @@ func (a OutboundApi) PutOutboundSchedulesCampaign(campaignId string, body Campai
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/campaigns/{campaignId}"
-	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	path = strings.Replace(path, "{campaignId}", url.PathEscape(fmt.Sprintf("%v", campaignId)), -1)
 	defaultReturn := new(Campaignschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9213,6 +10588,17 @@ func (a OutboundApi) PutOutboundSchedulesCampaign(campaignId string, body Campai
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9258,7 +10644,7 @@ func (a OutboundApi) PutOutboundSchedulesEmailcampaign(emailCampaignId string, b
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}"
-	path = strings.Replace(path, "{emailCampaignId}", fmt.Sprintf("%v", emailCampaignId), -1)
+	path = strings.Replace(path, "{emailCampaignId}", url.PathEscape(fmt.Sprintf("%v", emailCampaignId)), -1)
 	defaultReturn := new(Emailcampaignschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9292,6 +10678,17 @@ func (a OutboundApi) PutOutboundSchedulesEmailcampaign(emailCampaignId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9337,7 +10734,7 @@ func (a OutboundApi) PutOutboundSchedulesMessagingcampaign(messagingCampaignId s
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}"
-	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	path = strings.Replace(path, "{messagingCampaignId}", url.PathEscape(fmt.Sprintf("%v", messagingCampaignId)), -1)
 	defaultReturn := new(Messagingcampaignschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9371,6 +10768,17 @@ func (a OutboundApi) PutOutboundSchedulesMessagingcampaign(messagingCampaignId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9416,7 +10824,7 @@ func (a OutboundApi) PutOutboundSchedulesSequence(sequenceId string, body Sequen
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/sequences/{sequenceId}"
-	path = strings.Replace(path, "{sequenceId}", fmt.Sprintf("%v", sequenceId), -1)
+	path = strings.Replace(path, "{sequenceId}", url.PathEscape(fmt.Sprintf("%v", sequenceId)), -1)
 	defaultReturn := new(Sequenceschedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9450,6 +10858,17 @@ func (a OutboundApi) PutOutboundSchedulesSequence(sequenceId string, body Sequen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9495,7 +10914,7 @@ func (a OutboundApi) PutOutboundSequence(sequenceId string, body Campaignsequenc
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/sequences/{sequenceId}"
-	path = strings.Replace(path, "{sequenceId}", fmt.Sprintf("%v", sequenceId), -1)
+	path = strings.Replace(path, "{sequenceId}", url.PathEscape(fmt.Sprintf("%v", sequenceId)), -1)
 	defaultReturn := new(Campaignsequence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9529,6 +10948,17 @@ func (a OutboundApi) PutOutboundSequence(sequenceId string, body Campaignsequenc
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9602,6 +11032,17 @@ func (a OutboundApi) PutOutboundWrapupcodemappings(body Wrapupcodemapping) (*Wra
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

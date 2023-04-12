@@ -36,7 +36,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsConfiguration(configurationId str
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations/{configurationId}"
-	path = strings.Replace(path, "{configurationId}", fmt.Sprintf("%v", configurationId), -1)
+	path = strings.Replace(path, "{configurationId}", url.PathEscape(fmt.Sprintf("%v", configurationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsConfiguration(configurationId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeployment(deploymentId string) (
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -128,6 +139,17 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeployment(deploymentId string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -164,8 +186,8 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeploymentCobrowseSessionId(deplo
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}/cobrowse/{sessionId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -194,6 +216,17 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeploymentCobrowseSessionId(deplo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -254,6 +287,17 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsTokenRevoke(xJourneySessionId str
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -295,8 +339,8 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersion(configurationId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations/{configurationId}/versions/{versionId}"
-	path = strings.Replace(path, "{configurationId}", fmt.Sprintf("%v", configurationId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{configurationId}", url.PathEscape(fmt.Sprintf("%v", configurationId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(Webdeploymentconfigurationversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -330,6 +374,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersion(configurationId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -374,7 +429,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations/{configurationId}/versions"
-	path = strings.Replace(path, "{configurationId}", fmt.Sprintf("%v", configurationId), -1)
+	path = strings.Replace(path, "{configurationId}", url.PathEscape(fmt.Sprintf("%v", configurationId)), -1)
 	defaultReturn := new(Webdeploymentconfigurationversionentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -403,6 +458,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -445,7 +511,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configura
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations/{configurationId}/versions/draft"
-	path = strings.Replace(path, "{configurationId}", fmt.Sprintf("%v", configurationId), -1)
+	path = strings.Replace(path, "{configurationId}", url.PathEscape(fmt.Sprintf("%v", configurationId)), -1)
 	defaultReturn := new(Webdeploymentconfigurationversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -474,6 +540,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configura
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -542,6 +619,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished boo
 	queryParams["showOnlyPublished"] = a.Configuration.APIClient.ParameterToString(showOnlyPublished, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -583,7 +671,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*We
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
 	defaultReturn := new(Webdeployment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -612,6 +700,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*We
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -654,8 +753,8 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentCobrowseSessionId(deployme
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}/cobrowse/{sessionId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(Cobrowsewebmessagingsession)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -684,6 +783,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentCobrowseSessionId(deployme
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -726,7 +836,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}/configurations"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
 	defaultReturn := new(Webdeploymentactiveconfigurationondeployment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -757,6 +867,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentI
 	
 	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -825,6 +946,17 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Expan
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -866,7 +998,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurationVersionsDraftPublish(c
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations/{configurationId}/versions/draft/publish"
-	path = strings.Replace(path, "{configurationId}", fmt.Sprintf("%v", configurationId), -1)
+	path = strings.Replace(path, "{configurationId}", url.PathEscape(fmt.Sprintf("%v", configurationId)), -1)
 	defaultReturn := new(Webdeploymentconfigurationversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -895,6 +1027,17 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurationVersionsDraftPublish(c
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -965,6 +1108,17 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurations(configurationVersion
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1039,6 +1193,17 @@ func (a WebDeploymentsApi) PostWebdeploymentsDeployments(deployment Webdeploymen
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1107,6 +1272,17 @@ func (a WebDeploymentsApi) PostWebdeploymentsTokenOauthcodegrantjwtexchange(body
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1170,6 +1346,17 @@ func (a WebDeploymentsApi) PostWebdeploymentsTokenRefresh(body Webdeploymentsref
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1214,7 +1401,7 @@ func (a WebDeploymentsApi) PutWebdeploymentsConfigurationVersionsDraft(configura
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations/{configurationId}/versions/draft"
-	path = strings.Replace(path, "{configurationId}", fmt.Sprintf("%v", configurationId), -1)
+	path = strings.Replace(path, "{configurationId}", url.PathEscape(fmt.Sprintf("%v", configurationId)), -1)
 	defaultReturn := new(Webdeploymentconfigurationversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1248,6 +1435,17 @@ func (a WebDeploymentsApi) PutWebdeploymentsConfigurationVersionsDraft(configura
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1293,7 +1491,7 @@ func (a WebDeploymentsApi) PutWebdeploymentsDeployment(deploymentId string, depl
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
 	defaultReturn := new(Webdeployment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1327,6 +1525,17 @@ func (a WebDeploymentsApi) PutWebdeploymentsDeployment(deploymentId string, depl
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

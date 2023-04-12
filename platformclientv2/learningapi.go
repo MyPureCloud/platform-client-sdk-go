@@ -36,7 +36,7 @@ func (a LearningApi) DeleteLearningAssignment(assignmentId string) (*APIResponse
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}"
-	path = strings.Replace(path, "{assignmentId}", fmt.Sprintf("%v", assignmentId), -1)
+	path = strings.Replace(path, "{assignmentId}", url.PathEscape(fmt.Sprintf("%v", assignmentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a LearningApi) DeleteLearningAssignment(assignmentId string) (*APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -102,7 +113,7 @@ func (a LearningApi) DeleteLearningModule(moduleId string) (*APIResponse, error)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -130,6 +141,17 @@ func (a LearningApi) DeleteLearningModule(moduleId string) (*APIResponse, error)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -168,7 +190,7 @@ func (a LearningApi) GetLearningAssignment(assignmentId string, expand []string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}"
-	path = strings.Replace(path, "{assignmentId}", fmt.Sprintf("%v", assignmentId), -1)
+	path = strings.Replace(path, "{assignmentId}", url.PathEscape(fmt.Sprintf("%v", assignmentId)), -1)
 	defaultReturn := new(Learningassignment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -199,6 +221,17 @@ func (a LearningApi) GetLearningAssignment(assignmentId string, expand []string)
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -297,6 +330,17 @@ func (a LearningApi) GetLearningAssignments(moduleId string, interval string, co
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -390,6 +434,17 @@ func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, 
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -431,7 +486,7 @@ func (a LearningApi) GetLearningModule(moduleId string, expand []string) (*Learn
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
 	defaultReturn := new(Learningmodule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -462,6 +517,17 @@ func (a LearningApi) GetLearningModule(moduleId string, expand []string) (*Learn
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -504,8 +570,8 @@ func (a LearningApi) GetLearningModuleJob(moduleId string, jobId string) (*Learn
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/jobs/{jobId}"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Learningmodulejobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -539,6 +605,17 @@ func (a LearningApi) GetLearningModuleJob(moduleId string, jobId string) (*Learn
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -581,7 +658,7 @@ func (a LearningApi) GetLearningModuleRule(moduleId string) (*Learningmodulerule
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/rule"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
 	defaultReturn := new(Learningmodulerule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -610,6 +687,17 @@ func (a LearningApi) GetLearningModuleRule(moduleId string) (*Learningmodulerule
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -652,8 +740,8 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/versions/{versionId}"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(Learningmodule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -689,6 +777,17 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -775,6 +874,17 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -859,6 +969,17 @@ func (a LearningApi) GetLearningModulesAssignments(userIds []string, pageSize in
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -900,7 +1021,7 @@ func (a LearningApi) GetLearningModulesCoverartCoverArtId(coverArtId string) (*L
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/coverart/{coverArtId}"
-	path = strings.Replace(path, "{coverArtId}", fmt.Sprintf("%v", coverArtId), -1)
+	path = strings.Replace(path, "{coverArtId}", url.PathEscape(fmt.Sprintf("%v", coverArtId)), -1)
 	defaultReturn := new(Learningmodulecoverartresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -929,6 +1050,17 @@ func (a LearningApi) GetLearningModulesCoverartCoverArtId(coverArtId string) (*L
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -971,7 +1103,7 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}"
-	path = strings.Replace(path, "{assignmentId}", fmt.Sprintf("%v", assignmentId), -1)
+	path = strings.Replace(path, "{assignmentId}", url.PathEscape(fmt.Sprintf("%v", assignmentId)), -1)
 	defaultReturn := new(Learningassignment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1000,6 +1132,17 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1045,7 +1188,7 @@ func (a LearningApi) PatchLearningAssignmentReschedule(assignmentId string, body
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}/reschedule"
-	path = strings.Replace(path, "{assignmentId}", fmt.Sprintf("%v", assignmentId), -1)
+	path = strings.Replace(path, "{assignmentId}", url.PathEscape(fmt.Sprintf("%v", assignmentId)), -1)
 	defaultReturn := new(Learningassignment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1074,6 +1217,17 @@ func (a LearningApi) PatchLearningAssignmentReschedule(assignmentId string, body
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1148,6 +1302,17 @@ func (a LearningApi) PostLearningAssessmentsScoring(body Learningassessmentscori
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1194,7 +1359,7 @@ func (a LearningApi) PostLearningAssignmentReassign(assignmentId string) (*Learn
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}/reassign"
-	path = strings.Replace(path, "{assignmentId}", fmt.Sprintf("%v", assignmentId), -1)
+	path = strings.Replace(path, "{assignmentId}", url.PathEscape(fmt.Sprintf("%v", assignmentId)), -1)
 	defaultReturn := new(Learningassignment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1223,6 +1388,17 @@ func (a LearningApi) PostLearningAssignmentReassign(assignmentId string) (*Learn
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1267,7 +1443,7 @@ func (a LearningApi) PostLearningAssignmentReset(assignmentId string) (*Learning
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}/reset"
-	path = strings.Replace(path, "{assignmentId}", fmt.Sprintf("%v", assignmentId), -1)
+	path = strings.Replace(path, "{assignmentId}", url.PathEscape(fmt.Sprintf("%v", assignmentId)), -1)
 	defaultReturn := new(Learningassignment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1296,6 +1472,17 @@ func (a LearningApi) PostLearningAssignmentReset(assignmentId string) (*Learning
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1361,6 +1548,17 @@ func (a LearningApi) PostLearningAssignments(body Learningassignmentcreate) (*Le
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1435,6 +1633,17 @@ func (a LearningApi) PostLearningAssignmentsAggregatesQuery(body Learningassignm
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1502,6 +1711,17 @@ func (a LearningApi) PostLearningAssignmentsBulkadd(body []Learningassignmentite
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1571,6 +1791,17 @@ func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*Learning
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1617,7 +1848,7 @@ func (a LearningApi) PostLearningModuleJobs(moduleId string, body Learningmodule
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/jobs"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
 	defaultReturn := new(Learningmodulejobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1651,6 +1882,17 @@ func (a LearningApi) PostLearningModuleJobs(moduleId string, body Learningmodule
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1696,7 +1938,7 @@ func (a LearningApi) PostLearningModulePublish(moduleId string) (*Learningmodule
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/publish"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
 	defaultReturn := new(Learningmodulepublishresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1725,6 +1967,17 @@ func (a LearningApi) PostLearningModulePublish(moduleId string) (*Learningmodule
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1797,6 +2050,17 @@ func (a LearningApi) PostLearningModules(body Learningmodulerequest) (*Learningm
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1887,6 +2151,17 @@ func (a LearningApi) PostLearningRulesQuery(pageSize int, pageNumber int, body L
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1960,6 +2235,17 @@ func (a LearningApi) PostLearningScheduleslotsQuery(body Learningscheduleslotsqu
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2006,7 +2292,7 @@ func (a LearningApi) PutLearningModule(moduleId string, body Learningmodulereque
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
 	defaultReturn := new(Learningmodule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2040,6 +2326,17 @@ func (a LearningApi) PutLearningModule(moduleId string, body Learningmodulereque
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2087,7 +2384,7 @@ func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmoduler
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/rule"
-	path = strings.Replace(path, "{moduleId}", fmt.Sprintf("%v", moduleId), -1)
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
 	defaultReturn := new(Learningmodulerule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2121,6 +2418,17 @@ func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmoduler
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

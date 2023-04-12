@@ -71,6 +71,17 @@ func (a SuggestApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonn
 	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -147,6 +158,17 @@ func (a SuggestApi) GetSearchSuggest(q64 string, expand []string, profile bool) 
 	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -218,6 +240,17 @@ func (a SuggestApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearc
 	
 	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -293,6 +326,17 @@ func (a SuggestApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (
 	
 	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

@@ -61,6 +61,17 @@ func (a TelephonyApi) GetTelephonyMediaregions() (*Mediaregions, *APIResponse, e
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -150,6 +161,17 @@ func (a TelephonyApi) GetTelephonySiptraces(dateStart time.Time, dateEnd time.Ti
 	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -191,7 +213,7 @@ func (a TelephonyApi) GetTelephonySiptracesDownloadDownloadId(downloadId string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/siptraces/download/{downloadId}"
-	path = strings.Replace(path, "{downloadId}", fmt.Sprintf("%v", downloadId), -1)
+	path = strings.Replace(path, "{downloadId}", url.PathEscape(fmt.Sprintf("%v", downloadId)), -1)
 	defaultReturn := new(Signedurlresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -220,6 +242,17 @@ func (a TelephonyApi) GetTelephonySiptracesDownloadDownloadId(downloadId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -290,6 +323,17 @@ func (a TelephonyApi) PostTelephonySiptracesDownload(sIPSearchPublicRequest Sips
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

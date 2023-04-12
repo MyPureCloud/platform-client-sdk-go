@@ -36,7 +36,7 @@ func (a ContentManagementApi) DeleteContentmanagementDocument(documentId string,
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -66,6 +66,17 @@ func (a ContentManagementApi) DeleteContentmanagementDocument(documentId string,
 	
 	queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -104,7 +115,7 @@ func (a ContentManagementApi) DeleteContentmanagementShare(shareId string) (*API
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/shares/{shareId}"
-	path = strings.Replace(path, "{shareId}", fmt.Sprintf("%v", shareId), -1)
+	path = strings.Replace(path, "{shareId}", url.PathEscape(fmt.Sprintf("%v", shareId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -132,6 +143,17 @@ func (a ContentManagementApi) DeleteContentmanagementShare(shareId string) (*API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -168,7 +190,7 @@ func (a ContentManagementApi) DeleteContentmanagementStatusStatusId(statusId str
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/status/{statusId}"
-	path = strings.Replace(path, "{statusId}", fmt.Sprintf("%v", statusId), -1)
+	path = strings.Replace(path, "{statusId}", url.PathEscape(fmt.Sprintf("%v", statusId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -196,6 +218,17 @@ func (a ContentManagementApi) DeleteContentmanagementStatusStatusId(statusId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -232,7 +265,7 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspace(workspaceId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -262,6 +295,17 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspace(workspaceId strin
 	
 	queryParams["moveChildrenToWorkspaceId"] = a.Configuration.APIClient.ParameterToString(moveChildrenToWorkspaceId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -298,8 +342,8 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspaceMember(workspaceId
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -332,6 +376,17 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspaceMember(workspaceId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -370,8 +425,8 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspaceTagvalue(workspace
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
-	path = strings.Replace(path, "{tagId}", fmt.Sprintf("%v", tagId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
+	path = strings.Replace(path, "{tagId}", url.PathEscape(fmt.Sprintf("%v", tagId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -404,6 +459,17 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspaceTagvalue(workspace
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -440,7 +506,7 @@ func (a ContentManagementApi) GetContentmanagementDocument(documentId string, ex
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Document)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -471,6 +537,17 @@ func (a ContentManagementApi) GetContentmanagementDocument(documentId string, ex
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -513,7 +590,7 @@ func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents/{documentId}/audits"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Documentauditentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -554,6 +631,17 @@ func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId stri
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -596,7 +684,7 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents/{documentId}/content"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Downloadresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -629,6 +717,17 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 	
 	queryParams["contentType"] = a.Configuration.APIClient.ParameterToString(contentType, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -714,6 +813,17 @@ func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, 
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -796,6 +906,17 @@ func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, page
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -837,7 +958,7 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofile(securityProfil
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/securityprofiles/{securityProfileId}"
-	path = strings.Replace(path, "{securityProfileId}", fmt.Sprintf("%v", securityProfileId), -1)
+	path = strings.Replace(path, "{securityProfileId}", url.PathEscape(fmt.Sprintf("%v", securityProfileId)), -1)
 	defaultReturn := new(Securityprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -866,6 +987,17 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofile(securityProfil
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -932,6 +1064,17 @@ func (a ContentManagementApi) GetContentmanagementSecurityprofiles() (*Securityp
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -973,7 +1116,7 @@ func (a ContentManagementApi) GetContentmanagementShare(shareId string, expand [
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/shares/{shareId}"
-	path = strings.Replace(path, "{shareId}", fmt.Sprintf("%v", shareId), -1)
+	path = strings.Replace(path, "{shareId}", url.PathEscape(fmt.Sprintf("%v", shareId)), -1)
 	defaultReturn := new(Share)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1004,6 +1147,17 @@ func (a ContentManagementApi) GetContentmanagementShare(shareId string, expand [
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1048,7 +1202,7 @@ func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/shared/{sharedId}"
-	path = strings.Replace(path, "{sharedId}", fmt.Sprintf("%v", sharedId), -1)
+	path = strings.Replace(path, "{sharedId}", url.PathEscape(fmt.Sprintf("%v", sharedId)), -1)
 	defaultReturn := new(Sharedresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1085,6 +1239,17 @@ func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1161,6 +1326,17 @@ func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1230,6 +1406,17 @@ func (a ContentManagementApi) GetContentmanagementStatus(pageSize int, pageNumbe
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1271,7 +1458,7 @@ func (a ContentManagementApi) GetContentmanagementStatusStatusId(statusId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/status/{statusId}"
-	path = strings.Replace(path, "{statusId}", fmt.Sprintf("%v", statusId), -1)
+	path = strings.Replace(path, "{statusId}", url.PathEscape(fmt.Sprintf("%v", statusId)), -1)
 	defaultReturn := new(Commandstatus)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1300,6 +1487,17 @@ func (a ContentManagementApi) GetContentmanagementStatusStatusId(statusId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1366,6 +1564,17 @@ func (a ContentManagementApi) GetContentmanagementUsage() (*Usage, *APIResponse,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1407,7 +1616,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspace(workspaceId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	defaultReturn := new(Workspace)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1438,6 +1647,17 @@ func (a ContentManagementApi) GetContentmanagementWorkspace(workspaceId string, 
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1480,7 +1700,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/documents"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	defaultReturn := new(Documententitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1519,6 +1739,17 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1561,8 +1792,8 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMember(workspaceId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	defaultReturn := new(Workspacemember)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1598,6 +1829,17 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMember(workspaceId st
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1640,7 +1882,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/members"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	defaultReturn := new(Workspacememberentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1675,6 +1917,17 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId s
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1717,8 +1970,8 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalue(workspaceId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
-	path = strings.Replace(path, "{tagId}", fmt.Sprintf("%v", tagId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
+	path = strings.Replace(path, "{tagId}", url.PathEscape(fmt.Sprintf("%v", tagId)), -1)
 	defaultReturn := new(Tagvalue)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1754,6 +2007,17 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalue(workspaceId 
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1796,7 +2060,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	defaultReturn := new(Tagvalueentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1833,6 +2097,17 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1909,6 +2184,17 @@ func (a ContentManagementApi) GetContentmanagementWorkspaces(pageSize int, pageN
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1979,6 +2265,17 @@ func (a ContentManagementApi) PostContentmanagementAuditquery(body Contentqueryr
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2023,7 +2320,7 @@ func (a ContentManagementApi) PostContentmanagementDocument(documentId string, b
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Document)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2061,6 +2358,17 @@ func (a ContentManagementApi) PostContentmanagementDocument(documentId string, b
 	
 	queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2106,7 +2414,7 @@ func (a ContentManagementApi) PostContentmanagementDocumentContent(documentId st
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents/{documentId}/content"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Replaceresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2142,6 +2450,17 @@ func (a ContentManagementApi) PostContentmanagementDocumentContent(documentId st
 	
 	queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2222,6 +2541,17 @@ func (a ContentManagementApi) PostContentmanagementDocuments(body Documentupload
 	queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2297,6 +2627,17 @@ func (a ContentManagementApi) PostContentmanagementQuery(body Queryrequest, expa
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2370,6 +2711,17 @@ func (a ContentManagementApi) PostContentmanagementShares(body Createsharereques
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2414,7 +2766,7 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvalues(workspaceI
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	defaultReturn := new(Tagvalue)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2448,6 +2800,17 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvalues(workspaceI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2493,7 +2856,7 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvaluesQuery(works
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/query"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	defaultReturn := new(Tagvalueentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2529,6 +2892,17 @@ func (a ContentManagementApi) PostContentmanagementWorkspaceTagvaluesQuery(works
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2603,6 +2977,17 @@ func (a ContentManagementApi) PostContentmanagementWorkspaces(body Workspacecrea
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2647,7 +3032,7 @@ func (a ContentManagementApi) PutContentmanagementWorkspace(workspaceId string, 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
 	defaultReturn := new(Workspace)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2681,6 +3066,17 @@ func (a ContentManagementApi) PutContentmanagementWorkspace(workspaceId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2726,8 +3122,8 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceMember(workspaceId st
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	defaultReturn := new(Workspacemember)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2766,6 +3162,17 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceMember(workspaceId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2811,8 +3218,8 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceTagvalue(workspaceId 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}"
-	path = strings.Replace(path, "{workspaceId}", fmt.Sprintf("%v", workspaceId), -1)
-	path = strings.Replace(path, "{tagId}", fmt.Sprintf("%v", tagId), -1)
+	path = strings.Replace(path, "{workspaceId}", url.PathEscape(fmt.Sprintf("%v", workspaceId)), -1)
+	path = strings.Replace(path, "{tagId}", url.PathEscape(fmt.Sprintf("%v", tagId)), -1)
 	defaultReturn := new(Tagvalue)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2851,6 +3258,17 @@ func (a ContentManagementApi) PutContentmanagementWorkspaceTagvalue(workspaceId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

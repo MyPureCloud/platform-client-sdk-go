@@ -36,7 +36,7 @@ func (a TeamsApi) DeleteTeam(teamId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/teams/{teamId}"
-	path = strings.Replace(path, "{teamId}", fmt.Sprintf("%v", teamId), -1)
+	path = strings.Replace(path, "{teamId}", url.PathEscape(fmt.Sprintf("%v", teamId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a TeamsApi) DeleteTeam(teamId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a TeamsApi) DeleteTeamMembers(teamId string, id string) (*APIResponse, err
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/teams/{teamId}/members"
-	path = strings.Replace(path, "{teamId}", fmt.Sprintf("%v", teamId), -1)
+	path = strings.Replace(path, "{teamId}", url.PathEscape(fmt.Sprintf("%v", teamId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -135,6 +146,17 @@ func (a TeamsApi) DeleteTeamMembers(teamId string, id string) (*APIResponse, err
 	
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -171,7 +193,7 @@ func (a TeamsApi) GetTeam(teamId string) (*Team, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/teams/{teamId}"
-	path = strings.Replace(path, "{teamId}", fmt.Sprintf("%v", teamId), -1)
+	path = strings.Replace(path, "{teamId}", url.PathEscape(fmt.Sprintf("%v", teamId)), -1)
 	defaultReturn := new(Team)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -200,6 +222,17 @@ func (a TeamsApi) GetTeam(teamId string) (*Team, *APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -242,7 +275,7 @@ func (a TeamsApi) GetTeamMembers(teamId string, pageSize int, before string, aft
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/teams/{teamId}/members"
-	path = strings.Replace(path, "{teamId}", fmt.Sprintf("%v", teamId), -1)
+	path = strings.Replace(path, "{teamId}", url.PathEscape(fmt.Sprintf("%v", teamId)), -1)
 	defaultReturn := new(Teammemberentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -279,6 +312,17 @@ func (a TeamsApi) GetTeamMembers(teamId string, pageSize int, before string, aft
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -355,6 +399,17 @@ func (a TeamsApi) GetTeams(pageSize int, name string, after string, before strin
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -396,7 +451,7 @@ func (a TeamsApi) PatchTeam(teamId string, body Team) (*Team, *APIResponse, erro
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/teams/{teamId}"
-	path = strings.Replace(path, "{teamId}", fmt.Sprintf("%v", teamId), -1)
+	path = strings.Replace(path, "{teamId}", url.PathEscape(fmt.Sprintf("%v", teamId)), -1)
 	defaultReturn := new(Team)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -430,6 +485,17 @@ func (a TeamsApi) PatchTeam(teamId string, body Team) (*Team, *APIResponse, erro
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -475,7 +541,7 @@ func (a TeamsApi) PostTeamMembers(teamId string, body Teammembers) (*Teammembera
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/teams/{teamId}/members"
-	path = strings.Replace(path, "{teamId}", fmt.Sprintf("%v", teamId), -1)
+	path = strings.Replace(path, "{teamId}", url.PathEscape(fmt.Sprintf("%v", teamId)), -1)
 	defaultReturn := new(Teammemberaddlistingresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -509,6 +575,17 @@ func (a TeamsApi) PostTeamMembers(teamId string, body Teammembers) (*Teammembera
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -583,6 +660,17 @@ func (a TeamsApi) PostTeams(body Team) (*Team, *APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -655,6 +743,17 @@ func (a TeamsApi) PostTeamsSearch(body Teamsearchrequest) (*Teamssearchresponse,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

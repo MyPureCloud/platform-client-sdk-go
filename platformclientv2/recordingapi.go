@@ -36,9 +36,9 @@ func (a RecordingApi) DeleteConversationRecordingAnnotation(conversationId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
-	path = strings.Replace(path, "{annotationId}", fmt.Sprintf("%v", annotationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
+	path = strings.Replace(path, "{annotationId}", url.PathEscape(fmt.Sprintf("%v", annotationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -77,6 +77,17 @@ func (a RecordingApi) DeleteConversationRecordingAnnotation(conversationId strin
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -112,7 +123,7 @@ func (a RecordingApi) DeleteOrphanrecording(orphanId string) (*Orphanrecording, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings/{orphanId}"
-	path = strings.Replace(path, "{orphanId}", fmt.Sprintf("%v", orphanId), -1)
+	path = strings.Replace(path, "{orphanId}", url.PathEscape(fmt.Sprintf("%v", orphanId)), -1)
 	defaultReturn := new(Orphanrecording)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -141,6 +152,17 @@ func (a RecordingApi) DeleteOrphanrecording(orphanId string) (*Orphanrecording, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -215,6 +237,17 @@ func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicies(ids str
 	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -250,7 +283,7 @@ func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicy(policyId 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/crossplatform/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -278,6 +311,17 @@ func (a RecordingApi) DeleteRecordingCrossplatformMediaretentionpolicy(policyId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -314,7 +358,7 @@ func (a RecordingApi) DeleteRecordingJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -342,6 +386,17 @@ func (a RecordingApi) DeleteRecordingJob(jobId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -410,6 +465,17 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicies(ids string) (*APIRes
 	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -445,7 +511,7 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*API
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -473,6 +539,17 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -509,8 +586,8 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
 	defaultReturn := new(Recording)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -561,6 +638,17 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 	queryParams["mediaFormats"] = a.Configuration.APIClient.ParameterToString(mediaFormats, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -602,9 +690,9 @@ func (a RecordingApi) GetConversationRecordingAnnotation(conversationId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
-	path = strings.Replace(path, "{annotationId}", fmt.Sprintf("%v", annotationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
+	path = strings.Replace(path, "{annotationId}", url.PathEscape(fmt.Sprintf("%v", annotationId)), -1)
 	defaultReturn := new(Annotation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -643,6 +731,17 @@ func (a RecordingApi) GetConversationRecordingAnnotation(conversationId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -685,8 +784,8 @@ func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
 	defaultReturn := make([]Annotation, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -720,6 +819,17 @@ func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -762,7 +872,7 @@ func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordingmetadata"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := make([]Recordingmetadata, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -791,6 +901,17 @@ func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -833,8 +954,8 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordingmetadata/{recordingId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
 	defaultReturn := new(Recordingmetadata)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -868,6 +989,17 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -910,7 +1042,7 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := make([]Recording, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -945,6 +1077,17 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 	
 	queryParams["mediaFormats"] = a.Configuration.APIClient.ParameterToString(mediaFormats, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -987,7 +1130,7 @@ func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *AP
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings/{orphanId}"
-	path = strings.Replace(path, "{orphanId}", fmt.Sprintf("%v", orphanId), -1)
+	path = strings.Replace(path, "{orphanId}", url.PathEscape(fmt.Sprintf("%v", orphanId)), -1)
 	defaultReturn := new(Orphanrecording)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1016,6 +1159,17 @@ func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1060,7 +1214,7 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings/{orphanId}/media"
-	path = strings.Replace(path, "{orphanId}", fmt.Sprintf("%v", orphanId), -1)
+	path = strings.Replace(path, "{orphanId}", url.PathEscape(fmt.Sprintf("%v", orphanId)), -1)
 	defaultReturn := new(Recording)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1105,6 +1259,17 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 	
 	queryParams["mediaFormats"] = a.Configuration.APIClient.ParameterToString(mediaFormats, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1187,6 +1352,17 @@ func (a RecordingApi) GetOrphanrecordings(pageSize int, pageNumber int, sortBy s
 	queryParams["media"] = a.Configuration.APIClient.ParameterToString(media, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1228,7 +1404,7 @@ func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobs
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/batchrequests/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Batchdownloadjobstatusresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1257,6 +1433,17 @@ func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobs
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1347,6 +1534,17 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize i
 	queryParams["deleteDaysThreshold"] = a.Configuration.APIClient.ParameterToString(deleteDaysThreshold, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1388,7 +1586,7 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicy(policyId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/crossplatform/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	defaultReturn := new(Crossplatformpolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1417,6 +1615,17 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicy(policyId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1459,7 +1668,7 @@ func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Recordingjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1488,6 +1697,17 @@ func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1530,7 +1750,7 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/jobs/{jobId}/failedrecordings"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Failedrecordingentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1567,6 +1787,17 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 	
 	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1649,6 +1880,17 @@ func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy stri
 	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1690,7 +1932,7 @@ func (a RecordingApi) GetRecordingKeyconfiguration(keyConfigurationId string) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/keyconfigurations/{keyConfigurationId}"
-	path = strings.Replace(path, "{keyConfigurationId}", fmt.Sprintf("%v", keyConfigurationId), -1)
+	path = strings.Replace(path, "{keyConfigurationId}", url.PathEscape(fmt.Sprintf("%v", keyConfigurationId)), -1)
 	defaultReturn := new(Recordingencryptionconfiguration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1719,6 +1961,17 @@ func (a RecordingApi) GetRecordingKeyconfiguration(keyConfigurationId string) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1784,6 +2037,17 @@ func (a RecordingApi) GetRecordingKeyconfigurations() (*Recordingencryptionconfi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1874,6 +2138,17 @@ func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumbe
 	queryParams["deleteDaysThreshold"] = a.Configuration.APIClient.ParameterToString(deleteDaysThreshold, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1915,7 +2190,7 @@ func (a RecordingApi) GetRecordingMediaretentionpolicy(policyId string) (*Policy
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	defaultReturn := new(Policy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1944,6 +2219,17 @@ func (a RecordingApi) GetRecordingMediaretentionpolicy(policyId string) (*Policy
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2014,6 +2300,17 @@ func (a RecordingApi) GetRecordingRecordingkeys(pageSize int, pageNumber int) (*
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2078,6 +2375,17 @@ func (a RecordingApi) GetRecordingRecordingkeysRotationschedule() (*Keyrotations
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2146,6 +2454,17 @@ func (a RecordingApi) GetRecordingSettings(createDefault bool) (*Recordingsettin
 	queryParams["createDefault"] = a.Configuration.APIClient.ParameterToString(createDefault, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2187,7 +2506,7 @@ func (a RecordingApi) GetRecordingUploadsReport(reportId string) (*Recordinguplo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/uploads/reports/{reportId}"
-	path = strings.Replace(path, "{reportId}", fmt.Sprintf("%v", reportId), -1)
+	path = strings.Replace(path, "{reportId}", url.PathEscape(fmt.Sprintf("%v", reportId)), -1)
 	defaultReturn := new(Recordinguploadreport)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2216,6 +2535,17 @@ func (a RecordingApi) GetRecordingUploadsReport(reportId string) (*Recordinguplo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2293,6 +2623,17 @@ func (a RecordingApi) GetRecordingsRetentionQuery(retentionThresholdDays int, cu
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2362,6 +2703,17 @@ func (a RecordingApi) GetRecordingsScreensessions(pageSize int, pageNumber int) 
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2403,7 +2755,7 @@ func (a RecordingApi) PatchRecordingCrossplatformMediaretentionpolicy(policyId s
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/crossplatform/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	defaultReturn := new(Crossplatformpolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2437,6 +2789,17 @@ func (a RecordingApi) PatchRecordingCrossplatformMediaretentionpolicy(policyId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2482,7 +2845,7 @@ func (a RecordingApi) PatchRecordingMediaretentionpolicy(policyId string, body P
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	defaultReturn := new(Policy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2516,6 +2879,17 @@ func (a RecordingApi) PatchRecordingMediaretentionpolicy(policyId string, body P
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2561,7 +2935,7 @@ func (a RecordingApi) PatchRecordingsScreensession(recordingSessionId string, bo
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recordings/screensessions/{recordingSessionId}"
-	path = strings.Replace(path, "{recordingSessionId}", fmt.Sprintf("%v", recordingSessionId), -1)
+	path = strings.Replace(path, "{recordingSessionId}", url.PathEscape(fmt.Sprintf("%v", recordingSessionId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2589,6 +2963,17 @@ func (a RecordingApi) PatchRecordingsScreensession(recordingSessionId string, bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2628,8 +3013,8 @@ func (a RecordingApi) PostConversationRecordingAnnotations(conversationId string
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
 	defaultReturn := new(Annotation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2668,6 +3053,17 @@ func (a RecordingApi) PostConversationRecordingAnnotations(conversationId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2741,6 +3137,17 @@ func (a RecordingApi) PostRecordingBatchrequests(body Batchdownloadjobsubmission
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2817,6 +3224,17 @@ func (a RecordingApi) PostRecordingCrossplatformMediaretentionpolicies(body Cros
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2892,6 +3310,17 @@ func (a RecordingApi) PostRecordingJobs(body Recordingjobsquery) (*Recordingjob,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2964,6 +3393,17 @@ func (a RecordingApi) PostRecordingKeyconfigurations(body Recordingencryptioncon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3038,6 +3478,17 @@ func (a RecordingApi) PostRecordingKeyconfigurationsValidate(body Recordingencry
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3110,6 +3561,17 @@ func (a RecordingApi) PostRecordingLocalkeys(body Localencryptionkeyrequest) (*E
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3186,6 +3648,17 @@ func (a RecordingApi) PostRecordingMediaretentionpolicies(body Policycreate) (*P
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3253,6 +3726,17 @@ func (a RecordingApi) PostRecordingRecordingkeys() (*Encryptionkey, *APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3323,6 +3807,17 @@ func (a RecordingApi) PostRecordingUploadsReports(body Recordinguploadreportrequ
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3397,6 +3892,17 @@ func (a RecordingApi) PostRecordingsDeletionprotection(body Conversationdeletion
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3469,6 +3975,17 @@ func (a RecordingApi) PostRecordingsScreensessionsAcknowledge(body Acknowledgesc
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3535,6 +4052,17 @@ func (a RecordingApi) PostRecordingsScreensessionsMetadata(body Screenrecordingm
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3575,8 +4103,8 @@ func (a RecordingApi) PutConversationRecording(conversationId string, recordingI
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
 	defaultReturn := new(Recording)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3617,6 +4145,17 @@ func (a RecordingApi) PutConversationRecording(conversationId string, recordingI
 	
 	queryParams["clearExport"] = a.Configuration.APIClient.ParameterToString(clearExport, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3662,9 +4201,9 @@ func (a RecordingApi) PutConversationRecordingAnnotation(conversationId string, 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}/annotations/{annotationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{recordingId}", fmt.Sprintf("%v", recordingId), -1)
-	path = strings.Replace(path, "{annotationId}", fmt.Sprintf("%v", annotationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{recordingId}", url.PathEscape(fmt.Sprintf("%v", recordingId)), -1)
+	path = strings.Replace(path, "{annotationId}", url.PathEscape(fmt.Sprintf("%v", annotationId)), -1)
 	defaultReturn := new(Annotation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3708,6 +4247,17 @@ func (a RecordingApi) PutConversationRecordingAnnotation(conversationId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3755,7 +4305,7 @@ func (a RecordingApi) PutOrphanrecording(orphanId string, body Orphanupdatereque
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings/{orphanId}"
-	path = strings.Replace(path, "{orphanId}", fmt.Sprintf("%v", orphanId), -1)
+	path = strings.Replace(path, "{orphanId}", url.PathEscape(fmt.Sprintf("%v", orphanId)), -1)
 	defaultReturn := new(Recording)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3784,6 +4334,17 @@ func (a RecordingApi) PutOrphanrecording(orphanId string, body Orphanupdatereque
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3831,7 +4392,7 @@ func (a RecordingApi) PutRecordingCrossplatformMediaretentionpolicy(policyId str
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/crossplatform/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	defaultReturn := new(Crossplatformpolicy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3865,6 +4426,17 @@ func (a RecordingApi) PutRecordingCrossplatformMediaretentionpolicy(policyId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3912,7 +4484,7 @@ func (a RecordingApi) PutRecordingJob(jobId string, body Executerecordingjobsque
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Recordingjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3946,6 +4518,17 @@ func (a RecordingApi) PutRecordingJob(jobId string, body Executerecordingjobsque
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3991,7 +4574,7 @@ func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, bo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/keyconfigurations/{keyConfigurationId}"
-	path = strings.Replace(path, "{keyConfigurationId}", fmt.Sprintf("%v", keyConfigurationId), -1)
+	path = strings.Replace(path, "{keyConfigurationId}", url.PathEscape(fmt.Sprintf("%v", keyConfigurationId)), -1)
 	defaultReturn := new(Recordingencryptionconfiguration)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4025,6 +4608,17 @@ func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4072,7 +4666,7 @@ func (a RecordingApi) PutRecordingMediaretentionpolicy(policyId string, body Pol
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/mediaretentionpolicies/{policyId}"
-	path = strings.Replace(path, "{policyId}", fmt.Sprintf("%v", policyId), -1)
+	path = strings.Replace(path, "{policyId}", url.PathEscape(fmt.Sprintf("%v", policyId)), -1)
 	defaultReturn := new(Policy)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4106,6 +4700,17 @@ func (a RecordingApi) PutRecordingMediaretentionpolicy(policyId string, body Pol
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4180,6 +4785,17 @@ func (a RecordingApi) PutRecordingRecordingkeysRotationschedule(body Keyrotation
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4253,6 +4869,17 @@ func (a RecordingApi) PutRecordingSettings(body Recordingsettings) (*Recordingse
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4321,6 +4948,17 @@ func (a RecordingApi) PutRecordingsDeletionprotection(protect bool, body Convers
 	
 	queryParams["protect"] = a.Configuration.APIClient.ParameterToString(protect, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

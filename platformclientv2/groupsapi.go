@@ -36,7 +36,7 @@ func (a GroupsApi) DeleteGroup(groupId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a GroupsApi) DeleteGroup(groupId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*interface{},
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/members"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -136,6 +147,17 @@ func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*interface{},
 	
 	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -209,6 +231,17 @@ func (a GroupsApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, e
 	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -250,7 +283,7 @@ func (a GroupsApi) GetGroup(groupId string) (*Group, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -279,6 +312,17 @@ func (a GroupsApi) GetGroup(groupId string) (*Group, *APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -321,7 +365,7 @@ func (a GroupsApi) GetGroupIndividuals(groupId string) (*Userentitylisting, *API
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/individuals"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Userentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -350,6 +394,17 @@ func (a GroupsApi) GetGroupIndividuals(groupId string) (*Userentitylisting, *API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -392,7 +447,7 @@ func (a GroupsApi) GetGroupMembers(groupId string, pageSize int, pageNumber int,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/members"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Userentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -429,6 +484,17 @@ func (a GroupsApi) GetGroupMembers(groupId string, pageSize int, pageNumber int,
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -473,7 +539,7 @@ func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/profile"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Groupprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -504,6 +570,17 @@ func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile
 	
 	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -580,6 +657,17 @@ func (a GroupsApi) GetGroups(pageSize int, pageNumber int, id []string, jabberId
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -653,6 +741,17 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -731,6 +830,17 @@ func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, 
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -772,7 +882,7 @@ func (a GroupsApi) PostGroupMembers(groupId string, body Groupmembersupdate) (*i
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/members"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -806,6 +916,17 @@ func (a GroupsApi) PostGroupMembers(groupId string, body Groupmembersupdate) (*i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -880,6 +1001,17 @@ func (a GroupsApi) PostGroups(body Groupcreate) (*Group, *APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -953,6 +1085,17 @@ func (a GroupsApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -997,7 +1140,7 @@ func (a GroupsApi) PutGroup(groupId string, body Groupupdate) (*Group, *APIRespo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Group)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1026,6 +1169,17 @@ func (a GroupsApi) PutGroup(groupId string, body Groupupdate) (*Group, *APIRespo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

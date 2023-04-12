@@ -38,7 +38,7 @@ func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*Coachinga
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Coachingappointmentreference)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -67,6 +67,17 @@ func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*Coachinga
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -111,8 +122,8 @@ func (a CoachingApi) DeleteCoachingAppointmentAnnotation(appointmentId string, a
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/annotations/{annotationId}"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
-	path = strings.Replace(path, "{annotationId}", fmt.Sprintf("%v", annotationId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
+	path = strings.Replace(path, "{annotationId}", url.PathEscape(fmt.Sprintf("%v", annotationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -145,6 +156,17 @@ func (a CoachingApi) DeleteCoachingAppointmentAnnotation(appointmentId string, a
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -183,7 +205,7 @@ func (a CoachingApi) GetCoachingAppointment(appointmentId string) (*Coachingappo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Coachingappointmentresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -212,6 +234,17 @@ func (a CoachingApi) GetCoachingAppointment(appointmentId string) (*Coachingappo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -256,8 +289,8 @@ func (a CoachingApi) GetCoachingAppointmentAnnotation(appointmentId string, anno
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/annotations/{annotationId}"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
-	path = strings.Replace(path, "{annotationId}", fmt.Sprintf("%v", annotationId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
+	path = strings.Replace(path, "{annotationId}", url.PathEscape(fmt.Sprintf("%v", annotationId)), -1)
 	defaultReturn := new(Coachingannotation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -291,6 +324,17 @@ func (a CoachingApi) GetCoachingAppointmentAnnotation(appointmentId string, anno
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -335,7 +379,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/annotations"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Coachingannotationlist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -368,6 +412,17 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -412,7 +467,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/statuses"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Coachingappointmentstatusresponselist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -445,6 +500,17 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -538,6 +604,17 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 	queryParams["intervalCondition"] = a.Configuration.APIClient.ParameterToString(intervalCondition, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -623,6 +700,17 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, 
 	queryParams["intervalCondition"] = a.Configuration.APIClient.ParameterToString(intervalCondition, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -666,7 +754,7 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/notifications/{notificationId}"
-	path = strings.Replace(path, "{notificationId}", fmt.Sprintf("%v", notificationId), -1)
+	path = strings.Replace(path, "{notificationId}", url.PathEscape(fmt.Sprintf("%v", notificationId)), -1)
 	defaultReturn := new(Coachingnotification)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -697,6 +785,17 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -769,6 +868,17 @@ func (a CoachingApi) GetCoachingNotifications(pageNumber int, pageSize int, expa
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -812,7 +922,7 @@ func (a CoachingApi) PatchCoachingAppointment(appointmentId string, body Updatec
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Coachingappointmentresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -846,6 +956,17 @@ func (a CoachingApi) PatchCoachingAppointment(appointmentId string, body Updatec
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -893,8 +1014,8 @@ func (a CoachingApi) PatchCoachingAppointmentAnnotation(appointmentId string, an
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/annotations/{annotationId}"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
-	path = strings.Replace(path, "{annotationId}", fmt.Sprintf("%v", annotationId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
+	path = strings.Replace(path, "{annotationId}", url.PathEscape(fmt.Sprintf("%v", annotationId)), -1)
 	defaultReturn := new(Coachingannotation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -933,6 +1054,17 @@ func (a CoachingApi) PatchCoachingAppointmentAnnotation(appointmentId string, an
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -980,7 +1112,7 @@ func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body C
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/status"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Coachingappointmentstatusresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1014,6 +1146,17 @@ func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body C
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1061,7 +1204,7 @@ func (a CoachingApi) PatchCoachingNotification(notificationId string, body Coach
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/notifications/{notificationId}"
-	path = strings.Replace(path, "{notificationId}", fmt.Sprintf("%v", notificationId), -1)
+	path = strings.Replace(path, "{notificationId}", url.PathEscape(fmt.Sprintf("%v", notificationId)), -1)
 	defaultReturn := new(Coachingnotification)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1095,6 +1238,17 @@ func (a CoachingApi) PatchCoachingNotification(notificationId string, body Coach
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1142,7 +1296,7 @@ func (a CoachingApi) PostCoachingAppointmentAnnotations(appointmentId string, bo
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/annotations"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Coachingannotation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1176,6 +1330,17 @@ func (a CoachingApi) PostCoachingAppointmentAnnotations(appointmentId string, bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1223,7 +1388,7 @@ func (a CoachingApi) PostCoachingAppointmentConversations(appointmentId string, 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/conversations"
-	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	path = strings.Replace(path, "{appointmentId}", url.PathEscape(fmt.Sprintf("%v", appointmentId)), -1)
 	defaultReturn := new(Addconversationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1257,6 +1422,17 @@ func (a CoachingApi) PostCoachingAppointmentConversations(appointmentId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1331,6 +1507,17 @@ func (a CoachingApi) PostCoachingAppointments(body Createcoachingappointmentrequ
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1404,6 +1591,17 @@ func (a CoachingApi) PostCoachingAppointmentsAggregatesQuery(body Coachingappoin
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1476,6 +1674,17 @@ func (a CoachingApi) PostCoachingScheduleslotsQuery(body Coachingslotsrequest) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

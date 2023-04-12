@@ -36,7 +36,7 @@ func (a DataExtensionsApi) GetDataextensionsCoretype(coretypeName string) (*Core
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/dataextensions/coretypes/{coretypeName}"
-	path = strings.Replace(path, "{coretypeName}", fmt.Sprintf("%v", coretypeName), -1)
+	path = strings.Replace(path, "{coretypeName}", url.PathEscape(fmt.Sprintf("%v", coretypeName)), -1)
 	defaultReturn := new(Coretype)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a DataExtensionsApi) GetDataextensionsCoretype(coretypeName string) (*Core
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -131,6 +142,17 @@ func (a DataExtensionsApi) GetDataextensionsCoretypes() (*Coretypelisting, *APIR
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -195,6 +217,17 @@ func (a DataExtensionsApi) GetDataextensionsLimits() (*Schemaquantitylimits, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

@@ -39,7 +39,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunit(businessUn
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -67,6 +67,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunit(businessUn
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -103,8 +114,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitActivitycod
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes/{activityCodeId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{activityCodeId}", fmt.Sprintf("%v", activityCodeId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{activityCodeId}", url.PathEscape(fmt.Sprintf("%v", activityCodeId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -137,6 +148,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitActivitycod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -173,8 +195,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitPlanninggro
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{planningGroupId}", fmt.Sprintf("%v", planningGroupId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{planningGroupId}", url.PathEscape(fmt.Sprintf("%v", planningGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -207,6 +229,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitPlanninggro
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -243,8 +276,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitSchedulingR
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{runId}", url.PathEscape(fmt.Sprintf("%v", runId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -277,6 +310,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitSchedulingR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -313,8 +357,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitServicegoal
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates/{serviceGoalTemplateId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{serviceGoalTemplateId}", fmt.Sprintf("%v", serviceGoalTemplateId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{serviceGoalTemplateId}", url.PathEscape(fmt.Sprintf("%v", serviceGoalTemplateId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -347,6 +391,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitServicegoal
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -383,9 +438,9 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekSchedul
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Buasyncscheduleresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -424,6 +479,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekSchedul
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -468,9 +534,9 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekShortte
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{forecastId}", url.PathEscape(fmt.Sprintf("%v", forecastId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -508,6 +574,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekShortte
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -567,6 +644,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementCalendarUrlIcs() (*APIR
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -602,7 +690,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(manageme
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -630,6 +718,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(manageme
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -666,8 +765,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffli
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/{timeOffLimitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{timeOffLimitId}", fmt.Sprintf("%v", timeOffLimitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{timeOffLimitId}", url.PathEscape(fmt.Sprintf("%v", timeOffLimitId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -700,6 +799,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffli
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -736,8 +846,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffpl
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{timeOffPlanId}", fmt.Sprintf("%v", timeOffPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{timeOffPlanId}", url.PathEscape(fmt.Sprintf("%v", timeOffPlanId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -770,6 +880,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffpl
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -806,8 +927,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplan(
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanId}", fmt.Sprintf("%v", workPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanId}", url.PathEscape(fmt.Sprintf("%v", workPlanId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -840,6 +961,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplan(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -876,8 +1008,8 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplanr
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanRotationId}", fmt.Sprintf("%v", workPlanRotationId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanRotationId}", url.PathEscape(fmt.Sprintf("%v", workPlanRotationId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -910,6 +1042,17 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWorkplanr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -977,6 +1120,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherence(userId []string)
 	queryParams["userId"] = a.Configuration.APIClient.ParameterToString(userId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1018,7 +1172,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceExplanation(expla
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/adherence/explanations/{explanationId}"
-	path = strings.Replace(path, "{explanationId}", fmt.Sprintf("%v", explanationId), -1)
+	path = strings.Replace(path, "{explanationId}", url.PathEscape(fmt.Sprintf("%v", explanationId)), -1)
 	defaultReturn := new(Adherenceexplanationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1047,6 +1201,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceExplanation(expla
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1091,7 +1256,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceExplanationsJob(j
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/adherence/explanations/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Adherenceexplanationjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1120,6 +1285,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceExplanationsJob(j
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1164,7 +1340,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceHistoricalBulkJob
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/adherence/historical/bulk/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Wfmhistoricaladherencebulkresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1193,6 +1369,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceHistoricalBulkJob
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1237,7 +1424,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceHistoricalJob(job
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/adherence/historical/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Wfmhistoricaladherenceresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1266,6 +1453,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceHistoricalJob(job
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1308,7 +1506,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdhocmodelingjob(jobId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/adhocmodelingjobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Modelingstatusresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1337,6 +1535,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdhocmodelingjob(jobId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1379,8 +1588,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentAdherenceExplanation(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/agents/{agentId}/adherence/explanations/{explanationId}"
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
-	path = strings.Replace(path, "{explanationId}", fmt.Sprintf("%v", explanationId), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
+	path = strings.Replace(path, "{explanationId}", url.PathEscape(fmt.Sprintf("%v", explanationId)), -1)
 	defaultReturn := new(Adherenceexplanationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1414,6 +1623,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentAdherenceExplanation(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1456,7 +1676,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentManagementunit(agentI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/agents/{agentId}/managementunit"
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
 	defaultReturn := new(Agentmanagementunitreference)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1485,6 +1705,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentManagementunit(agentI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1551,6 +1782,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAgentsMeManagementunit() (
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1594,7 +1836,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Businessunitresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1625,6 +1867,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitI
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1667,8 +1920,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycode(b
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes/{activityCodeId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{activityCodeId}", fmt.Sprintf("%v", activityCodeId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{activityCodeId}", url.PathEscape(fmt.Sprintf("%v", activityCodeId)), -1)
 	defaultReturn := new(Businessunitactivitycode)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1702,6 +1955,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycode(b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1744,7 +2008,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Businessunitactivitycodelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1773,6 +2037,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1815,7 +2090,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanni
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/intraday/planninggroups"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Wfmintradayplanninggrouplisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1851,6 +2126,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanni
 	
 	queryParams["date"] = a.Configuration.APIClient.ParameterToString(date, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1893,7 +2179,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/managementunits"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Managementunitlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1926,6 +2212,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1968,8 +2265,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroup(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{planningGroupId}", fmt.Sprintf("%v", planningGroupId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{planningGroupId}", url.PathEscape(fmt.Sprintf("%v", planningGroupId)), -1)
 	defaultReturn := new(Planninggroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2003,6 +2300,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroup(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2045,7 +2353,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroups
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Planninggrouplist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2074,6 +2382,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroups
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2116,8 +2435,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRun(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{runId}", url.PathEscape(fmt.Sprintf("%v", runId)), -1)
 	defaultReturn := new(Buschedulerun)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2151,6 +2470,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRun(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2193,8 +2523,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRunR
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}/result"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{runId}", url.PathEscape(fmt.Sprintf("%v", runId)), -1)
 	defaultReturn := new(Burescheduleresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2243,6 +2573,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRunR
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2284,7 +2625,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRuns
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Buschedulerunlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2313,6 +2654,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRuns
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2355,8 +2707,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates/{serviceGoalTemplateId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{serviceGoalTemplateId}", fmt.Sprintf("%v", serviceGoalTemplateId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{serviceGoalTemplateId}", url.PathEscape(fmt.Sprintf("%v", serviceGoalTemplateId)), -1)
 	defaultReturn := new(Servicegoaltemplate)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2390,6 +2742,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2432,7 +2795,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Servicegoaltemplatelist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2461,6 +2824,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitServicegoaltem
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2503,9 +2877,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedule(b
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Buschedulemetadata)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2546,6 +2920,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedule(b
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2588,9 +2973,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleGe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/generationresults"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Schedulegenerationresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2629,6 +3014,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleGe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2671,9 +3067,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/headcountforecast"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Buheadcountforecastresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2714,6 +3110,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHe
 	
 	queryParams["forceDownload"] = a.Configuration.APIClient.ParameterToString(forceDownload, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2756,10 +3163,10 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHi
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/history/agents/{agentId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
 	defaultReturn := new(Buagentschedulehistoryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2804,6 +3211,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHi
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2847,8 +3265,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
 	defaultReturn := new(Buschedulelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2886,6 +3304,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2928,9 +3357,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{forecastId}", url.PathEscape(fmt.Sprintf("%v", forecastId)), -1)
 	defaultReturn := new(Bushorttermforecast)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2971,6 +3400,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3015,9 +3455,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/data"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{forecastId}", url.PathEscape(fmt.Sprintf("%v", forecastId)), -1)
 	defaultReturn := new(Buforecastresultresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3061,6 +3501,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3102,9 +3553,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/generationresults"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{forecastId}", url.PathEscape(fmt.Sprintf("%v", forecastId)), -1)
 	defaultReturn := new(Buforecastgenerationresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3143,6 +3594,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3187,9 +3649,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/longtermforecastdata"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{forecastId}", url.PathEscape(fmt.Sprintf("%v", forecastId)), -1)
 	defaultReturn := new(Longtermforecastresultresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3230,6 +3692,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3272,9 +3745,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/planninggroups"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{forecastId}", url.PathEscape(fmt.Sprintf("%v", forecastId)), -1)
 	defaultReturn := new(Forecastplanninggroupsresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3313,6 +3786,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3357,8 +3841,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Bushorttermforecastlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3392,6 +3876,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3462,6 +3957,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunits(feature stri
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3528,6 +4034,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitsDivisionviews
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3596,6 +4113,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementCalendarDataIcs(calendarId
 	queryParams["calendarId"] = a.Configuration.APIClient.ParameterToString(calendarId, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3660,6 +4188,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementCalendarUrlIcs() (*Calenda
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3726,6 +4265,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataDeletejob() 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3791,6 +4341,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataImportstatus
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3834,7 +4395,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Managementunit)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3865,6 +4426,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3907,7 +4479,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycode
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/activitycodes"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Activitycodecontainer)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3936,6 +4508,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycode
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3978,7 +4561,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/adherence"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Userscheduleadherencelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4009,6 +4592,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4051,8 +4645,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
 	defaultReturn := new(Wfmagent)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4088,6 +4682,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 	
 	queryParams["excludeCapabilities"] = a.Configuration.APIClient.ParameterToString(excludeCapabilities, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4130,8 +4735,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgentShifttr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}/shifttrades"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
 	defaultReturn := new(Shifttradelistresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4165,6 +4770,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgentShifttr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4207,7 +4823,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesM
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/shifttrades/matched"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Shifttradematchessummaryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4236,6 +4852,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesM
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4278,7 +4905,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesU
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/shifttrades/users"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Wfmuserentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4307,6 +4934,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesU
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4351,8 +4989,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/{timeOffLimitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{timeOffLimitId}", fmt.Sprintf("%v", timeOffLimitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{timeOffLimitId}", url.PathEscape(fmt.Sprintf("%v", timeOffLimitId)), -1)
 	defaultReturn := new(Timeofflimit)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4386,6 +5024,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4430,7 +5079,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Timeofflimitlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4459,6 +5108,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4501,8 +5161,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{timeOffPlanId}", fmt.Sprintf("%v", timeOffPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{timeOffPlanId}", url.PathEscape(fmt.Sprintf("%v", timeOffPlanId)), -1)
 	defaultReturn := new(Timeoffplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4536,6 +5196,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4578,7 +5249,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplans
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Timeoffplanlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4607,6 +5278,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplans
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4649,9 +5331,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{timeOffRequestId}", fmt.Sprintf("%v", timeOffRequestId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{timeOffRequestId}", url.PathEscape(fmt.Sprintf("%v", timeOffRequestId)), -1)
 	defaultReturn := new(Timeoffrequestresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4690,6 +5372,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4732,9 +5425,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}/timeofflimits"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{timeOffRequestId}", fmt.Sprintf("%v", timeOffRequestId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{timeOffRequestId}", url.PathEscape(fmt.Sprintf("%v", timeOffRequestId)), -1)
 	defaultReturn := new(Querytimeofflimitvaluesresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4773,6 +5466,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4815,8 +5519,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Timeoffrequestlist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4852,6 +5556,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 	
 	queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4894,7 +5609,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(manage
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Wfmuserentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4923,6 +5638,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(manage
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4965,9 +5691,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Weekscheduleresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5011,6 +5737,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5052,8 +5789,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
 	defaultReturn := new(Weekschedulelistresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5093,6 +5830,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 	
 	queryParams["latestWeekDate"] = a.Configuration.APIClient.ParameterToString(latestWeekDate, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5135,8 +5883,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Weekshifttradelistresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5172,6 +5920,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 	
 	queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5214,8 +5973,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplan(man
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanId}", fmt.Sprintf("%v", workPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanId}", url.PathEscape(fmt.Sprintf("%v", workPlanId)), -1)
 	defaultReturn := new(Workplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5251,6 +6010,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplan(man
 	
 	queryParams["includeOnly"] = a.Configuration.APIClient.ParameterToString(includeOnly, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5293,8 +6063,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanRotationId}", fmt.Sprintf("%v", workPlanRotationId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanRotationId}", url.PathEscape(fmt.Sprintf("%v", workPlanRotationId)), -1)
 	defaultReturn := new(Workplanrotationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5328,6 +6098,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5370,7 +6151,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Workplanrotationlistresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5401,6 +6182,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5445,7 +6237,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(ma
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Workplanlistresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5476,6 +6268,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(ma
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5552,6 +6355,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunits(pageSize i
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5618,6 +6432,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitsDivisionvie
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5686,6 +6511,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementNotifications() (*Notifica
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5727,7 +6563,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementSchedulingjob(jobId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/schedulingjobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Schedulingstatusresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5756,6 +6592,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementSchedulingjob(jobId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5822,6 +6669,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementShifttrades() (*Shifttrade
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5863,7 +6721,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementShrinkageJob(jobId string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/shrinkage/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Wfmhistoricalshrinkageresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5892,6 +6750,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementShrinkageJob(jobId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5934,7 +6803,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequest(timeOffRequ
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/timeoffrequests/{timeOffRequestId}"
-	path = strings.Replace(path, "{timeOffRequestId}", fmt.Sprintf("%v", timeOffRequestId), -1)
+	path = strings.Replace(path, "{timeOffRequestId}", url.PathEscape(fmt.Sprintf("%v", timeOffRequestId)), -1)
 	defaultReturn := new(Timeoffrequestresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5963,6 +6832,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequest(timeOffRequ
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6005,7 +6885,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequestWaitlistposi
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/timeoffrequests/{timeOffRequestId}/waitlistpositions"
-	path = strings.Replace(path, "{timeOffRequestId}", fmt.Sprintf("%v", timeOffRequestId), -1)
+	path = strings.Replace(path, "{timeOffRequestId}", url.PathEscape(fmt.Sprintf("%v", timeOffRequestId)), -1)
 	defaultReturn := new(Waitlistpositionlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6034,6 +6914,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequestWaitlistposi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6102,6 +6993,17 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyRe
 	queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6143,8 +7045,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementAgentAdherenceExplanatio
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/agents/{agentId}/adherence/explanations/{explanationId}"
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
-	path = strings.Replace(path, "{explanationId}", fmt.Sprintf("%v", explanationId), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
+	path = strings.Replace(path, "{explanationId}", url.PathEscape(fmt.Sprintf("%v", explanationId)), -1)
 	defaultReturn := new(Adherenceexplanationasyncresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6183,6 +7085,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementAgentAdherenceExplanatio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6228,7 +7141,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUni
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Businessunitresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6257,6 +7170,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUni
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6302,8 +7226,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes/{activityCodeId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{activityCodeId}", fmt.Sprintf("%v", activityCodeId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{activityCodeId}", url.PathEscape(fmt.Sprintf("%v", activityCodeId)), -1)
 	defaultReturn := new(Businessunitactivitycode)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6337,6 +7261,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6382,8 +7317,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggrou
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{planningGroupId}", fmt.Sprintf("%v", planningGroupId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{planningGroupId}", url.PathEscape(fmt.Sprintf("%v", planningGroupId)), -1)
 	defaultReturn := new(Planninggroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6417,6 +7352,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggrou
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6462,8 +7408,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitSchedulingRu
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{runId}", url.PathEscape(fmt.Sprintf("%v", runId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6496,6 +7442,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitSchedulingRu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6535,8 +7492,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoalt
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates/{serviceGoalTemplateId}"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{serviceGoalTemplateId}", fmt.Sprintf("%v", serviceGoalTemplateId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{serviceGoalTemplateId}", url.PathEscape(fmt.Sprintf("%v", serviceGoalTemplateId)), -1)
 	defaultReturn := new(Servicegoaltemplate)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6570,6 +7527,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoalt
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6615,7 +7583,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(managemen
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Managementunit)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6644,6 +7612,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(managemen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6691,8 +7670,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflim
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/{timeOffLimitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{timeOffLimitId}", fmt.Sprintf("%v", timeOffLimitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{timeOffLimitId}", url.PathEscape(fmt.Sprintf("%v", timeOffLimitId)), -1)
 	defaultReturn := new(Timeofflimit)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6726,6 +7705,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflim
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6771,8 +7761,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffpla
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{timeOffPlanId}", fmt.Sprintf("%v", timeOffPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{timeOffPlanId}", url.PathEscape(fmt.Sprintf("%v", timeOffPlanId)), -1)
 	defaultReturn := new(Timeoffplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6806,6 +7796,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffpla
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6851,9 +7852,9 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeof
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{timeOffRequestId}", fmt.Sprintf("%v", timeOffRequestId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{timeOffRequestId}", url.PathEscape(fmt.Sprintf("%v", timeOffRequestId)), -1)
 	defaultReturn := new(Timeoffrequestresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6892,6 +7893,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeof
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6937,9 +7949,9 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShiftt
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{tradeId}", fmt.Sprintf("%v", tradeId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{tradeId}", url.PathEscape(fmt.Sprintf("%v", tradeId)), -1)
 	defaultReturn := new(Shifttraderesponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6983,6 +7995,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShiftt
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7028,8 +8051,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanId}", fmt.Sprintf("%v", workPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanId}", url.PathEscape(fmt.Sprintf("%v", workPlanId)), -1)
 	defaultReturn := new(Workplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7065,6 +8088,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 	
 	queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7110,8 +8144,8 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplanro
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanRotationId}", fmt.Sprintf("%v", workPlanRotationId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanRotationId}", url.PathEscape(fmt.Sprintf("%v", workPlanRotationId)), -1)
 	defaultReturn := new(Workplanrotationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7145,6 +8179,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplanro
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7190,7 +8235,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementTimeoffrequest(timeOffRe
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/timeoffrequests/{timeOffRequestId}"
-	path = strings.Replace(path, "{timeOffRequestId}", fmt.Sprintf("%v", timeOffRequestId), -1)
+	path = strings.Replace(path, "{timeOffRequestId}", url.PathEscape(fmt.Sprintf("%v", timeOffRequestId)), -1)
 	defaultReturn := new(Timeoffrequestresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7219,6 +8264,17 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementTimeoffrequest(timeOffRe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7292,6 +8348,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceExplanations(bod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7370,6 +8437,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceExplanationsQuer
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7437,6 +8515,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceHistorical(body 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7506,6 +8595,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceHistoricalBulk(b
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7550,7 +8650,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentAdherenceExplanation
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/agents/{agentId}/adherence/explanations"
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
 	defaultReturn := new(Adherenceexplanationasyncresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7584,6 +8684,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentAdherenceExplanation
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7629,7 +8740,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentAdherenceExplanation
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/agents/{agentId}/adherence/explanations/query"
-	path = strings.Replace(path, "{agentId}", fmt.Sprintf("%v", agentId), -1)
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
 	defaultReturn := new(Agentqueryadherenceexplanationsresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7667,6 +8778,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentAdherenceExplanation
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7741,6 +8863,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentsMePossibleworkshift
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7809,6 +8942,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body B
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7853,7 +8997,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Businessunitactivitycode)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7882,6 +9026,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7927,7 +9082,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAdherenceExpl
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/adherence/explanations/query"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Buqueryadherenceexplanationsresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7965,6 +9120,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAdherenceExpl
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8010,7 +9176,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/agentschedules/search"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Buasyncagentschedulessearchresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8043,6 +9209,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8088,7 +9265,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/intraday"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Asyncintradayresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8119,6 +9296,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 	
 	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8164,7 +9352,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitPlanninggroup
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Planninggroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8193,6 +9381,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitPlanninggroup
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8238,7 +9437,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitServicegoalte
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	defaultReturn := new(Servicegoaltemplate)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8267,6 +9466,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitServicegoalte
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8312,9 +9522,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleA
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/agentschedules/query"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Buasyncagentschedulesqueryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8363,6 +9573,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleA
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8407,9 +9628,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleC
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/copy"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Buasyncscheduleresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8453,6 +9674,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleC
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8498,9 +9730,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleR
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/reschedule"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Buasyncschedulerunresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8544,6 +9776,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8591,9 +9834,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/update"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Buasyncscheduleresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8637,6 +9880,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8684,9 +9938,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/{scheduleId}/update/uploadurl"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Updatescheduleuploadresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8730,6 +9984,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleU
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8775,8 +10040,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
 	defaultReturn := new(Buschedulemetadata)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8815,6 +10080,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8860,8 +10136,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/generate"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
 	defaultReturn := new(Buasyncschedulerunresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8900,6 +10176,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8947,8 +10234,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/import"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
 	defaultReturn := new(Scheduleuploadprocessingresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8987,6 +10274,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9034,8 +10332,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules/import/uploadurl"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekId}", url.PathEscape(fmt.Sprintf("%v", weekId)), -1)
 	defaultReturn := new(Importscheduleuploadresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9074,6 +10372,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekSchedules
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9119,9 +10428,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/copy"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{forecastId}", url.PathEscape(fmt.Sprintf("%v", forecastId)), -1)
 	defaultReturn := new(Asyncforecastoperationresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9168,6 +10477,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -9212,8 +10532,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/generate"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Asyncforecastoperationresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9254,6 +10574,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	
 	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9301,8 +10632,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/import"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Importforecastresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9341,6 +10672,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9388,8 +10730,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/import/uploadurl"
-	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Importforecastuploadresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9428,6 +10770,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9499,6 +10852,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Create
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -9569,6 +10933,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementCalendarUrlIcs(language s
 	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -9634,6 +11009,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataDeletejob()
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -9698,6 +11084,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataValidate(bo
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -9736,7 +11133,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agentschedules/search"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Buasyncagentschedulessearchresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9769,6 +11166,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9816,7 +11224,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitHistoricala
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/historicaladherencequery"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Wfmhistoricaladherenceresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9845,6 +11253,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitHistoricala
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9892,7 +11311,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitMove(manage
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/move"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Movemanagementunitresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9921,6 +11340,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitMove(manage
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9966,7 +11396,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSe
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/schedules/search"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Userschedulecontainer)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9995,6 +11425,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10042,7 +11483,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitShrinkageJo
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/shrinkage/jobs"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Wfmhistoricalshrinkageresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10071,6 +11512,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitShrinkageJo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10118,7 +11570,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Timeofflimit)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10147,6 +11599,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10192,7 +11655,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/values/query"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Querytimeofflimitvaluesresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10221,6 +11684,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10266,7 +11740,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplan
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Timeoffplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10295,6 +11769,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplan
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10340,7 +11825,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Timeoffrequestlist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10369,6 +11854,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10416,7 +11912,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests/query"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Timeoffrequestlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10445,6 +11941,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10490,7 +11997,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests/waitlistpositions/query"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Waitlistpositionlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10519,6 +12026,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10564,8 +12082,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoff
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffbalance/jobs"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Timeoffbalancesresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10604,6 +12122,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoff
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10649,9 +12178,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoff
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}/timeoffbalance/jobs"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{timeOffRequestId}", fmt.Sprintf("%v", timeOffRequestId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{timeOffRequestId}", url.PathEscape(fmt.Sprintf("%v", timeOffRequestId)), -1)
 	defaultReturn := new(Timeoffbalancesresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10690,6 +12219,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoff
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10732,9 +12272,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}/match"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	path = strings.Replace(path, "{tradeId}", fmt.Sprintf("%v", tradeId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
+	path = strings.Replace(path, "{tradeId}", url.PathEscape(fmt.Sprintf("%v", tradeId)), -1)
 	defaultReturn := new(Matchshifttraderesponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10778,6 +12318,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10823,8 +12374,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Shifttraderesponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10863,6 +12414,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10908,8 +12470,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/search"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Searchshifttradesresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -10948,6 +12510,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -10995,8 +12568,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/state/bulk"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{weekDateId}", url.PathEscape(fmt.Sprintf("%v", weekDateId)), -1)
 	defaultReturn := new(Bulkupdateshifttradestateresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -11037,6 +12610,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 	
 	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11082,8 +12666,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCop
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/copy"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanId}", fmt.Sprintf("%v", workPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanId}", url.PathEscape(fmt.Sprintf("%v", workPlanId)), -1)
 	defaultReturn := new(Workplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -11117,6 +12701,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCop
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11162,8 +12757,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanVal
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/validate"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanId}", fmt.Sprintf("%v", workPlanId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanId}", url.PathEscape(fmt.Sprintf("%v", workPlanId)), -1)
 	defaultReturn := new(Validateworkplanresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -11199,6 +12794,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanVal
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11244,8 +12850,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations/{workPlanRotationId}/copy"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{workPlanRotationId}", fmt.Sprintf("%v", workPlanRotationId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{workPlanRotationId}", url.PathEscape(fmt.Sprintf("%v", workPlanRotationId)), -1)
 	defaultReturn := new(Workplanrotationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -11279,6 +12885,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11324,7 +12941,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplanrotations"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Workplanrotationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -11353,6 +12970,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11398,7 +13026,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
 	defaultReturn := new(Workplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -11429,6 +13057,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 	
 	queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11500,6 +13139,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunits(body Crea
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -11567,6 +13217,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementNotificationsUpdate(body 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11636,6 +13297,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementSchedules(body Currentuse
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -11703,6 +13375,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeofflimitsAvailableQue
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -11772,6 +13455,17 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequests(body Crea
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -11818,8 +13512,8 @@ func (a WorkforceManagementApi) PutWorkforcemanagementManagementunitTimeofflimit
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/{timeOffLimitId}/values"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	path = strings.Replace(path, "{timeOffLimitId}", fmt.Sprintf("%v", timeOffLimitId), -1)
+	path = strings.Replace(path, "{managementUnitId}", url.PathEscape(fmt.Sprintf("%v", managementUnitId)), -1)
+	path = strings.Replace(path, "{timeOffLimitId}", url.PathEscape(fmt.Sprintf("%v", timeOffLimitId)), -1)
 	defaultReturn := new(Timeofflimit)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -11853,6 +13547,17 @@ func (a WorkforceManagementApi) PutWorkforcemanagementManagementunitTimeofflimit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

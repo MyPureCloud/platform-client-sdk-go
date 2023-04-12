@@ -36,7 +36,7 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequest(requestId string) (*G
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gdpr/requests/{requestId}"
-	path = strings.Replace(path, "{requestId}", fmt.Sprintf("%v", requestId), -1)
+	path = strings.Replace(path, "{requestId}", url.PathEscape(fmt.Sprintf("%v", requestId)), -1)
 	defaultReturn := new(Gdprrequest)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequest(requestId string) (*G
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -134,6 +145,17 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int, pageNu
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -214,6 +236,17 @@ func (a GeneralDataProtectionRegulationApi) GetGdprSubjects(searchType string, s
 	queryParams["searchValue"] = a.Configuration.APIClient.ParameterToString(searchValue, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -285,6 +318,17 @@ func (a GeneralDataProtectionRegulationApi) PostGdprRequests(body Gdprrequest, d
 	
 	queryParams["deleteConfirmed"] = a.Configuration.APIClient.ParameterToString(deleteConfirmed, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

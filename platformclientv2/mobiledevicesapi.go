@@ -36,7 +36,7 @@ func (a MobileDevicesApi) DeleteMobiledevice(deviceId string) (*APIResponse, err
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/mobiledevices/{deviceId}"
-	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceId), -1)
+	path = strings.Replace(path, "{deviceId}", url.PathEscape(fmt.Sprintf("%v", deviceId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a MobileDevicesApi) DeleteMobiledevice(deviceId string) (*APIResponse, err
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIRes
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/mobiledevices/{deviceId}"
-	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceId), -1)
+	path = strings.Replace(path, "{deviceId}", url.PathEscape(fmt.Sprintf("%v", deviceId)), -1)
 	defaultReturn := new(Userdevice)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -129,6 +140,17 @@ func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -201,6 +223,17 @@ func (a MobileDevicesApi) GetMobiledevices(pageSize int, pageNumber int, sortOrd
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -271,6 +304,17 @@ func (a MobileDevicesApi) PostMobiledevices(body Userdevice) (*Userdevice, *APIR
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -315,7 +359,7 @@ func (a MobileDevicesApi) PutMobiledevice(deviceId string, body Userdevice) (*Us
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/mobiledevices/{deviceId}"
-	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceId), -1)
+	path = strings.Replace(path, "{deviceId}", url.PathEscape(fmt.Sprintf("%v", deviceId)), -1)
 	defaultReturn := new(Userdevice)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -344,6 +388,17 @@ func (a MobileDevicesApi) PutMobiledevice(deviceId string, body Userdevice) (*Us
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

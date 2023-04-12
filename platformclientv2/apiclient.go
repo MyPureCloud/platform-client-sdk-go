@@ -206,23 +206,6 @@ func (c *APIClient) CallAPI(path string, method string,
 	return NewAPIResponse(res, body)
 }
 
-func buildURL(basePath string, path string, queryParams map[string]string) (*url.URL, error) {
-	urlString := basePath + path
-	if len(queryParams) > 0 {
-		urlString += "?"
-		for k, v := range queryParams {
-			urlString += fmt.Sprintf("%v=%v&", strings.TrimSpace(k), strings.TrimSpace(v))
-		}
-		urlString = urlString[:len(urlString)-1]
-	}
-
-	u, err := url.Parse(urlString)
-	if err != nil {
-		return nil, err
-	}
-	return u, nil
-}
-
 // ParameterToString joins a parameter in the desired format
 func (c *APIClient) ParameterToString(obj interface{}, collectionFormat string) string {
 	sep := ","

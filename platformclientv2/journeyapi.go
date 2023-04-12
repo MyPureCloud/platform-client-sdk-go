@@ -36,7 +36,7 @@ func (a JourneyApi) DeleteJourneyActionmap(actionMapId string) (*APIResponse, er
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actionmaps/{actionMapId}"
-	path = strings.Replace(path, "{actionMapId}", fmt.Sprintf("%v", actionMapId), -1)
+	path = strings.Replace(path, "{actionMapId}", url.PathEscape(fmt.Sprintf("%v", actionMapId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a JourneyApi) DeleteJourneyActionmap(actionMapId string) (*APIResponse, er
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a JourneyApi) DeleteJourneyActiontemplate(actionTemplateId string, hardDel
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actiontemplates/{actionTemplateId}"
-	path = strings.Replace(path, "{actionTemplateId}", fmt.Sprintf("%v", actionTemplateId), -1)
+	path = strings.Replace(path, "{actionTemplateId}", url.PathEscape(fmt.Sprintf("%v", actionTemplateId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -130,6 +141,17 @@ func (a JourneyApi) DeleteJourneyActiontemplate(actionTemplateId string, hardDel
 	
 	queryParams["hardDelete"] = a.Configuration.APIClient.ParameterToString(hardDelete, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -166,7 +188,7 @@ func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/outcomes/{outcomeId}"
-	path = strings.Replace(path, "{outcomeId}", fmt.Sprintf("%v", outcomeId), -1)
+	path = strings.Replace(path, "{outcomeId}", url.PathEscape(fmt.Sprintf("%v", outcomeId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -194,6 +216,17 @@ func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -230,7 +263,7 @@ func (a JourneyApi) DeleteJourneyOutcomesPredictor(predictorId string) (*APIResp
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/outcomes/predictors/{predictorId}"
-	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	path = strings.Replace(path, "{predictorId}", url.PathEscape(fmt.Sprintf("%v", predictorId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -258,6 +291,17 @@ func (a JourneyApi) DeleteJourneyOutcomesPredictor(predictorId string) (*APIResp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -294,7 +338,7 @@ func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/segments/{segmentId}"
-	path = strings.Replace(path, "{segmentId}", fmt.Sprintf("%v", segmentId), -1)
+	path = strings.Replace(path, "{segmentId}", url.PathEscape(fmt.Sprintf("%v", segmentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -322,6 +366,17 @@ func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -358,7 +413,7 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actionmaps/{actionMapId}"
-	path = strings.Replace(path, "{actionMapId}", fmt.Sprintf("%v", actionMapId), -1)
+	path = strings.Replace(path, "{actionMapId}", url.PathEscape(fmt.Sprintf("%v", actionMapId)), -1)
 	defaultReturn := new(Actionmap)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -387,6 +442,17 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -469,6 +535,17 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -510,7 +587,7 @@ func (a JourneyApi) GetJourneyActionmapsEstimatesJob(jobId string) (*string, *AP
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actionmaps/estimates/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(string)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -539,6 +616,17 @@ func (a JourneyApi) GetJourneyActionmapsEstimatesJob(jobId string) (*string, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -581,7 +669,7 @@ func (a JourneyApi) GetJourneyActionmapsEstimatesJobResults(jobId string) (*Acti
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actionmaps/estimates/jobs/{jobId}/results"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Actionmapestimateresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -610,6 +698,17 @@ func (a JourneyApi) GetJourneyActionmapsEstimatesJobResults(jobId string) (*Acti
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -652,7 +751,7 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actiontargets/{actionTargetId}"
-	path = strings.Replace(path, "{actionTargetId}", fmt.Sprintf("%v", actionTargetId), -1)
+	path = strings.Replace(path, "{actionTargetId}", url.PathEscape(fmt.Sprintf("%v", actionTargetId)), -1)
 	defaultReturn := new(Actiontarget)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -681,6 +780,17 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -751,6 +861,17 @@ func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Acti
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -792,7 +913,7 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actiontemplates/{actionTemplateId}"
-	path = strings.Replace(path, "{actionTemplateId}", fmt.Sprintf("%v", actionTemplateId), -1)
+	path = strings.Replace(path, "{actionTemplateId}", url.PathEscape(fmt.Sprintf("%v", actionTemplateId)), -1)
 	defaultReturn := new(Actiontemplate)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -821,6 +942,17 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -901,6 +1033,17 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -942,7 +1085,7 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/outcomes/{outcomeId}"
-	path = strings.Replace(path, "{outcomeId}", fmt.Sprintf("%v", outcomeId), -1)
+	path = strings.Replace(path, "{outcomeId}", url.PathEscape(fmt.Sprintf("%v", outcomeId)), -1)
 	defaultReturn := new(Outcome)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -971,6 +1114,17 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1049,6 +1203,17 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1090,7 +1255,7 @@ func (a JourneyApi) GetJourneyOutcomesPredictor(predictorId string) (*Outcomepre
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/outcomes/predictors/{predictorId}"
-	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	path = strings.Replace(path, "{predictorId}", url.PathEscape(fmt.Sprintf("%v", predictorId)), -1)
 	defaultReturn := new(Outcomepredictor)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1119,6 +1284,17 @@ func (a JourneyApi) GetJourneyOutcomesPredictor(predictorId string) (*Outcomepre
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1185,6 +1361,17 @@ func (a JourneyApi) GetJourneyOutcomesPredictors() (*Outcomepredictorlisting, *A
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1226,7 +1413,7 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/segments/{segmentId}"
-	path = strings.Replace(path, "{segmentId}", fmt.Sprintf("%v", segmentId), -1)
+	path = strings.Replace(path, "{segmentId}", url.PathEscape(fmt.Sprintf("%v", segmentId)), -1)
 	defaultReturn := new(Journeysegment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1255,6 +1442,17 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1335,6 +1533,17 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1376,7 +1585,7 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/sessions/{sessionId}"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(Session)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1405,6 +1614,17 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1447,7 +1667,7 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/sessions/{sessionId}/outcomescores"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(Outcomescoresresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1476,6 +1696,17 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1518,7 +1749,7 @@ func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionma
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actionmaps/{actionMapId}"
-	path = strings.Replace(path, "{actionMapId}", fmt.Sprintf("%v", actionMapId), -1)
+	path = strings.Replace(path, "{actionMapId}", url.PathEscape(fmt.Sprintf("%v", actionMapId)), -1)
 	defaultReturn := new(Actionmap)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1547,6 +1778,17 @@ func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionma
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1592,7 +1834,7 @@ func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchac
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actiontargets/{actionTargetId}"
-	path = strings.Replace(path, "{actionTargetId}", fmt.Sprintf("%v", actionTargetId), -1)
+	path = strings.Replace(path, "{actionTargetId}", url.PathEscape(fmt.Sprintf("%v", actionTargetId)), -1)
 	defaultReturn := new(Actiontarget)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1621,6 +1863,17 @@ func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchac
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1666,7 +1919,7 @@ func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Pat
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actiontemplates/{actionTemplateId}"
-	path = strings.Replace(path, "{actionTemplateId}", fmt.Sprintf("%v", actionTemplateId), -1)
+	path = strings.Replace(path, "{actionTemplateId}", url.PathEscape(fmt.Sprintf("%v", actionTemplateId)), -1)
 	defaultReturn := new(Actiontemplate)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1695,6 +1948,17 @@ func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Pat
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1740,7 +2004,7 @@ func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*O
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/outcomes/{outcomeId}"
-	path = strings.Replace(path, "{outcomeId}", fmt.Sprintf("%v", outcomeId), -1)
+	path = strings.Replace(path, "{outcomeId}", url.PathEscape(fmt.Sprintf("%v", outcomeId)), -1)
 	defaultReturn := new(Outcome)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1769,6 +2033,17 @@ func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*O
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1814,7 +2089,7 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/segments/{segmentId}"
-	path = strings.Replace(path, "{segmentId}", fmt.Sprintf("%v", segmentId), -1)
+	path = strings.Replace(path, "{segmentId}", url.PathEscape(fmt.Sprintf("%v", segmentId)), -1)
 	defaultReturn := new(Journeysegment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1843,6 +2118,17 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1917,6 +2203,17 @@ func (a JourneyApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregation
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1984,6 +2281,17 @@ func (a JourneyApi) PostJourneyActionmaps(body Actionmap) (*Actionmap, *APIRespo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2058,6 +2366,17 @@ func (a JourneyApi) PostJourneyActionmapsEstimatesJobs(body Actionmapestimatereq
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2125,6 +2444,17 @@ func (a JourneyApi) PostJourneyActiontemplates(body Actiontemplate) (*Actiontemp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2194,6 +2524,17 @@ func (a JourneyApi) PostJourneyOutcomes(body Outcome) (*Outcome, *APIResponse, e
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2262,6 +2603,17 @@ func (a JourneyApi) PostJourneyOutcomesPredictors(body Outcomepredictorrequest) 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2329,6 +2681,17 @@ func (a JourneyApi) PostJourneySegments(body Journeysegment) (*Journeysegment, *
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

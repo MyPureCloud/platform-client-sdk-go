@@ -36,7 +36,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsProgram(programId st
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/{programId}"
-	path = strings.Replace(path, "{programId}", fmt.Sprintf("%v", programId), -1)
+	path = strings.Replace(path, "{programId}", url.PathEscape(fmt.Sprintf("%v", programId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -66,6 +66,17 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsProgram(programId st
 	
 	queryParams["forceDelete"] = a.Configuration.APIClient.ParameterToString(forceDelete, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -125,6 +136,17 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedback() 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -160,7 +182,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedbackSen
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/sentimentfeedback/{sentimentFeedbackId}"
-	path = strings.Replace(path, "{sentimentFeedbackId}", fmt.Sprintf("%v", sentimentFeedbackId), -1)
+	path = strings.Replace(path, "{sentimentFeedbackId}", url.PathEscape(fmt.Sprintf("%v", sentimentFeedbackId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -188,6 +210,17 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsSentimentfeedbackSen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -224,7 +257,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsTopic(topicId string
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/topics/{topicId}"
-	path = strings.Replace(path, "{topicId}", fmt.Sprintf("%v", topicId), -1)
+	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -252,6 +285,17 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsTopic(topicId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -288,7 +332,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversation(conversati
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/conversations/{conversationId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Conversationmetrics)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -317,6 +361,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversation(conversati
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -359,8 +414,8 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/conversations/{conversationId}/communications/{communicationId}/transcripturl"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
 	defaultReturn := new(Transcripturl)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -394,6 +449,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -436,7 +502,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgram(programId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/{programId}"
-	path = strings.Replace(path, "{programId}", fmt.Sprintf("%v", programId), -1)
+	path = strings.Replace(path, "{programId}", url.PathEscape(fmt.Sprintf("%v", programId)), -1)
 	defaultReturn := new(Program)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -465,6 +531,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgram(programId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -507,7 +584,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramMappings(program
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/{programId}/mappings"
-	path = strings.Replace(path, "{programId}", fmt.Sprintf("%v", programId), -1)
+	path = strings.Replace(path, "{programId}", url.PathEscape(fmt.Sprintf("%v", programId)), -1)
 	defaultReturn := new(Programmappings)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -536,6 +613,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramMappings(program
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -578,7 +666,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramTranscriptioneng
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/{programId}/transcriptionengines"
-	path = strings.Replace(path, "{programId}", fmt.Sprintf("%v", programId), -1)
+	path = strings.Replace(path, "{programId}", url.PathEscape(fmt.Sprintf("%v", programId)), -1)
 	defaultReturn := new(Programtranscriptionengines)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -607,6 +695,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramTranscriptioneng
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -679,6 +778,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage strin
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -720,7 +830,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsGeneralJob(jobI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/general/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Generalprogramjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -749,6 +859,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsGeneralJob(jobI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -819,6 +940,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsMappings(nextPa
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -860,7 +992,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsPublishjob(jobI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/publishjobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Programjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -889,6 +1021,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsPublishjob(jobI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -954,6 +1097,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsTranscriptionen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1024,6 +1178,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsUnpublished(nex
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1088,6 +1253,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentDialects() (*E
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1156,6 +1332,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSentimentfeedback(diale
 	queryParams["dialect"] = a.Configuration.APIClient.ParameterToString(dialect, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1221,6 +1408,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsSettings() (*Speechtext
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1262,7 +1460,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/topics/{topicId}"
-	path = strings.Replace(path, "{topicId}", fmt.Sprintf("%v", topicId), -1)
+	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
 	defaultReturn := new(Topic)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1291,6 +1489,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1371,6 +1580,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string,
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1435,6 +1655,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsDialects() (*Enti
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1503,6 +1734,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsGeneral(dialect s
 	queryParams["dialect"] = a.Configuration.APIClient.ParameterToString(dialect, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1544,7 +1786,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/topics/publishjobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Topicjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1573,6 +1815,17 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1643,6 +1896,17 @@ func (a SpeechTextAnalyticsApi) PatchSpeechandtextanalyticsSettings(body Speecht
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1717,6 +1981,17 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsPrograms(body Programr
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1789,6 +2064,17 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsGeneralJobs(bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1863,6 +2149,17 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsProgramsPublishjobs(bo
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1935,6 +2232,17 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsSentimentfeedback(body
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2009,6 +2317,17 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopics(body Topicreque
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2081,6 +2400,17 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTopicsPublishjobs(body
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2155,6 +2485,17 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTranscriptsSearch(body
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2199,7 +2540,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgram(programId strin
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/{programId}"
-	path = strings.Replace(path, "{programId}", fmt.Sprintf("%v", programId), -1)
+	path = strings.Replace(path, "{programId}", url.PathEscape(fmt.Sprintf("%v", programId)), -1)
 	defaultReturn := new(Program)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2233,6 +2574,17 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgram(programId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2278,7 +2630,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramMappings(program
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/{programId}/mappings"
-	path = strings.Replace(path, "{programId}", fmt.Sprintf("%v", programId), -1)
+	path = strings.Replace(path, "{programId}", url.PathEscape(fmt.Sprintf("%v", programId)), -1)
 	defaultReturn := new(Programmappings)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2312,6 +2664,17 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramMappings(program
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2357,7 +2720,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramTranscriptioneng
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs/{programId}/transcriptionengines"
-	path = strings.Replace(path, "{programId}", fmt.Sprintf("%v", programId), -1)
+	path = strings.Replace(path, "{programId}", url.PathEscape(fmt.Sprintf("%v", programId)), -1)
 	defaultReturn := new(Programtranscriptionengines)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2391,6 +2754,17 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgramTranscriptioneng
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2465,6 +2839,17 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsSettings(body Speechtex
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2509,7 +2894,7 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsTopic(topicId string, b
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/topics/{topicId}"
-	path = strings.Replace(path, "{topicId}", fmt.Sprintf("%v", topicId), -1)
+	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
 	defaultReturn := new(Topic)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2543,6 +2928,17 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsTopic(topicId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

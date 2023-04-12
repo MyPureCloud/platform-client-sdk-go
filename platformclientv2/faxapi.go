@@ -36,7 +36,7 @@ func (a FaxApi) DeleteFaxDocument(documentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/fax/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a FaxApi) DeleteFaxDocument(documentId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a FaxApi) GetFaxDocument(documentId string) (*Faxdocument, *APIResponse, e
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/fax/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Faxdocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -129,6 +140,17 @@ func (a FaxApi) GetFaxDocument(documentId string) (*Faxdocument, *APIResponse, e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -171,7 +193,7 @@ func (a FaxApi) GetFaxDocumentContent(documentId string) (*Downloadresponse, *AP
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/fax/documents/{documentId}/content"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Downloadresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -200,6 +222,17 @@ func (a FaxApi) GetFaxDocumentContent(documentId string) (*Downloadresponse, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -270,6 +303,17 @@ func (a FaxApi) GetFaxDocuments(pageSize int, pageNumber int) (*Faxdocumententit
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -335,6 +379,17 @@ func (a FaxApi) GetFaxSummary() (*Faxsummary, *APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -376,7 +431,7 @@ func (a FaxApi) PutFaxDocument(documentId string, body Faxdocument) (*Faxdocumen
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/fax/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Faxdocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -410,6 +465,17 @@ func (a FaxApi) PutFaxDocument(documentId string, body Faxdocument) (*Faxdocumen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

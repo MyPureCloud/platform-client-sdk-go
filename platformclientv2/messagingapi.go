@@ -36,7 +36,7 @@ func (a MessagingApi) DeleteMessagingSupportedcontentSupportedContentId(supporte
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/messaging/supportedcontent/{supportedContentId}"
-	path = strings.Replace(path, "{supportedContentId}", fmt.Sprintf("%v", supportedContentId), -1)
+	path = strings.Replace(path, "{supportedContentId}", url.PathEscape(fmt.Sprintf("%v", supportedContentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a MessagingApi) DeleteMessagingSupportedcontentSupportedContentId(supporte
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -128,6 +139,17 @@ func (a MessagingApi) GetMessagingSupportedcontent(pageSize int, pageNumber int)
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -169,7 +191,7 @@ func (a MessagingApi) GetMessagingSupportedcontentSupportedContentId(supportedCo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/messaging/supportedcontent/{supportedContentId}"
-	path = strings.Replace(path, "{supportedContentId}", fmt.Sprintf("%v", supportedContentId), -1)
+	path = strings.Replace(path, "{supportedContentId}", url.PathEscape(fmt.Sprintf("%v", supportedContentId)), -1)
 	defaultReturn := new(Supportedcontent)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -198,6 +220,17 @@ func (a MessagingApi) GetMessagingSupportedcontentSupportedContentId(supportedCo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -240,7 +273,7 @@ func (a MessagingApi) PatchMessagingSupportedcontentSupportedContentId(supported
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/messaging/supportedcontent/{supportedContentId}"
-	path = strings.Replace(path, "{supportedContentId}", fmt.Sprintf("%v", supportedContentId), -1)
+	path = strings.Replace(path, "{supportedContentId}", url.PathEscape(fmt.Sprintf("%v", supportedContentId)), -1)
 	defaultReturn := new(Supportedcontent)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -274,6 +307,17 @@ func (a MessagingApi) PatchMessagingSupportedcontentSupportedContentId(supported
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -347,6 +391,17 @@ func (a MessagingApi) PostMessagingSupportedcontent(body Supportedcontent) (*Sup
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

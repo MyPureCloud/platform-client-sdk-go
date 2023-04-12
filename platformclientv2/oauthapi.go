@@ -36,7 +36,7 @@ func (a OAuthApi) DeleteOauthClient(clientId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}"
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a OAuthApi) DeleteOauthClient(clientId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a OAuthApi) GetOauthAuthorization(clientId string, acceptLanguage string) 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/authorizations/{clientId}"
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Oauthauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -129,6 +140,17 @@ func (a OAuthApi) GetOauthAuthorization(clientId string, acceptLanguage string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -199,6 +221,17 @@ func (a OAuthApi) GetOauthAuthorizations(acceptLanguage string) (*Oauthauthoriza
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -244,7 +277,7 @@ func (a OAuthApi) GetOauthClient(clientId string) (*Oauthclient, *APIResponse, e
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}"
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Oauthclient)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -273,6 +306,17 @@ func (a OAuthApi) GetOauthClient(clientId string) (*Oauthclient, *APIResponse, e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -315,8 +359,8 @@ func (a OAuthApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}/usage/query/results/{executionId}"
-	path = strings.Replace(path, "{executionId}", fmt.Sprintf("%v", executionId), -1)
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{executionId}", url.PathEscape(fmt.Sprintf("%v", executionId)), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Apiusagequeryresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -350,6 +394,17 @@ func (a OAuthApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -394,7 +449,7 @@ func (a OAuthApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}/usage/summary"
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Usageexecutionresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -425,6 +480,17 @@ func (a OAuthApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 	
 	queryParams["days"] = a.Configuration.APIClient.ParameterToString(days, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -491,6 +557,17 @@ func (a OAuthApi) GetOauthClients() (*Oauthcliententitylisting, *APIResponse, er
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -532,7 +609,7 @@ func (a OAuthApi) GetOauthScope(scopeId string, acceptLanguage string) (*Oauthsc
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/scopes/{scopeId}"
-	path = strings.Replace(path, "{scopeId}", fmt.Sprintf("%v", scopeId), -1)
+	path = strings.Replace(path, "{scopeId}", url.PathEscape(fmt.Sprintf("%v", scopeId)), -1)
 	defaultReturn := new(Oauthscope)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -561,6 +638,17 @@ func (a OAuthApi) GetOauthScope(scopeId string, acceptLanguage string) (*Oauthsc
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -631,6 +719,17 @@ func (a OAuthApi) GetOauthScopes(acceptLanguage string) (*Oauthscopelisting, *AP
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -678,7 +777,7 @@ func (a OAuthApi) PostOauthClientSecret(clientId string) (*Oauthclient, *APIResp
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}/secret"
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Oauthclient)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -707,6 +806,17 @@ func (a OAuthApi) PostOauthClientSecret(clientId string) (*Oauthclient, *APIResp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -751,7 +861,7 @@ func (a OAuthApi) PostOauthClientUsageQuery(clientId string, body Apiusagequery)
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}/usage/query"
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Usageexecutionresult)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -785,6 +895,17 @@ func (a OAuthApi) PostOauthClientUsageQuery(clientId string, body Apiusagequery)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -861,6 +982,17 @@ func (a OAuthApi) PostOauthClients(body Oauthclientrequest) (*Oauthclient, *APIR
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -905,7 +1037,7 @@ func (a OAuthApi) PutOauthClient(clientId string, body Oauthclientrequest) (*Oau
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}"
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Oauthclient)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -939,6 +1071,17 @@ func (a OAuthApi) PutOauthClient(clientId string, body Oauthclientrequest) (*Oau
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

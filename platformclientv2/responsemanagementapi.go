@@ -38,7 +38,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementLibrary(libraryId string)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/libraries/{libraryId}"
-	path = strings.Replace(path, "{libraryId}", fmt.Sprintf("%v", libraryId), -1)
+	path = strings.Replace(path, "{libraryId}", url.PathEscape(fmt.Sprintf("%v", libraryId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -66,6 +66,17 @@ func (a ResponseManagementApi) DeleteResponsemanagementLibrary(libraryId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -104,7 +115,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponse(responseId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/responses/{responseId}"
-	path = strings.Replace(path, "{responseId}", fmt.Sprintf("%v", responseId), -1)
+	path = strings.Replace(path, "{responseId}", url.PathEscape(fmt.Sprintf("%v", responseId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -132,6 +143,17 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponse(responseId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -168,7 +190,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponseasset(responseAss
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/responseassets/{responseAssetId}"
-	path = strings.Replace(path, "{responseAssetId}", fmt.Sprintf("%v", responseAssetId), -1)
+	path = strings.Replace(path, "{responseAssetId}", url.PathEscape(fmt.Sprintf("%v", responseAssetId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -196,6 +218,17 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponseasset(responseAss
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -262,6 +295,17 @@ func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int, pa
 	queryParams["messagingTemplateFilter"] = a.Configuration.APIClient.ParameterToString(messagingTemplateFilter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -303,7 +347,7 @@ func (a ResponseManagementApi) GetResponsemanagementLibrary(libraryId string) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/libraries/{libraryId}"
-	path = strings.Replace(path, "{libraryId}", fmt.Sprintf("%v", libraryId), -1)
+	path = strings.Replace(path, "{libraryId}", url.PathEscape(fmt.Sprintf("%v", libraryId)), -1)
 	defaultReturn := new(Library)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -332,6 +376,17 @@ func (a ResponseManagementApi) GetResponsemanagementLibrary(libraryId string) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -374,7 +429,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponse(responseId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/responses/{responseId}"
-	path = strings.Replace(path, "{responseId}", fmt.Sprintf("%v", responseId), -1)
+	path = strings.Replace(path, "{responseId}", url.PathEscape(fmt.Sprintf("%v", responseId)), -1)
 	defaultReturn := new(Response)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -405,6 +460,17 @@ func (a ResponseManagementApi) GetResponsemanagementResponse(responseId string, 
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -447,7 +513,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponseasset(responseAssetI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/responseassets/{responseAssetId}"
-	path = strings.Replace(path, "{responseAssetId}", fmt.Sprintf("%v", responseAssetId), -1)
+	path = strings.Replace(path, "{responseAssetId}", url.PathEscape(fmt.Sprintf("%v", responseAssetId)), -1)
 	defaultReturn := new(Responseasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -476,6 +542,17 @@ func (a ResponseManagementApi) GetResponsemanagementResponseasset(responseAssetI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -518,7 +595,7 @@ func (a ResponseManagementApi) GetResponsemanagementResponseassetsStatusStatusId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/responseassets/status/{statusId}"
-	path = strings.Replace(path, "{statusId}", fmt.Sprintf("%v", statusId), -1)
+	path = strings.Replace(path, "{statusId}", url.PathEscape(fmt.Sprintf("%v", statusId)), -1)
 	defaultReturn := new(Responseassetstatus)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -547,6 +624,17 @@ func (a ResponseManagementApi) GetResponsemanagementResponseassetsStatusStatusId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -626,6 +714,17 @@ func (a ResponseManagementApi) GetResponsemanagementResponses(libraryId string, 
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -695,6 +794,17 @@ func (a ResponseManagementApi) PostResponsemanagementLibraries(body Library) (*L
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -771,6 +881,17 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsSearch(body R
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -843,6 +964,17 @@ func (a ResponseManagementApi) PostResponsemanagementResponseassetsUploads(body 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -919,6 +1051,17 @@ func (a ResponseManagementApi) PostResponsemanagementResponses(body Response, ex
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -992,6 +1135,17 @@ func (a ResponseManagementApi) PostResponsemanagementResponsesQuery(body Respons
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1038,7 +1192,7 @@ func (a ResponseManagementApi) PutResponsemanagementLibrary(libraryId string, bo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/libraries/{libraryId}"
-	path = strings.Replace(path, "{libraryId}", fmt.Sprintf("%v", libraryId), -1)
+	path = strings.Replace(path, "{libraryId}", url.PathEscape(fmt.Sprintf("%v", libraryId)), -1)
 	defaultReturn := new(Library)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1072,6 +1226,17 @@ func (a ResponseManagementApi) PutResponsemanagementLibrary(libraryId string, bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1119,7 +1284,7 @@ func (a ResponseManagementApi) PutResponsemanagementResponse(responseId string, 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/responses/{responseId}"
-	path = strings.Replace(path, "{responseId}", fmt.Sprintf("%v", responseId), -1)
+	path = strings.Replace(path, "{responseId}", url.PathEscape(fmt.Sprintf("%v", responseId)), -1)
 	defaultReturn := new(Response)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1155,6 +1320,17 @@ func (a ResponseManagementApi) PutResponsemanagementResponse(responseId string, 
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1200,7 +1376,7 @@ func (a ResponseManagementApi) PutResponsemanagementResponseasset(responseAssetI
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/responseassets/{responseAssetId}"
-	path = strings.Replace(path, "{responseAssetId}", fmt.Sprintf("%v", responseAssetId), -1)
+	path = strings.Replace(path, "{responseAssetId}", url.PathEscape(fmt.Sprintf("%v", responseAssetId)), -1)
 	defaultReturn := new(Responseasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1234,6 +1410,17 @@ func (a ResponseManagementApi) PutResponsemanagementResponseasset(responseAssetI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

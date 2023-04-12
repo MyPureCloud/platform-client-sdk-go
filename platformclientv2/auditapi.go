@@ -60,6 +60,17 @@ func (a AuditApi) GetAuditsQueryRealtimeServicemapping() (*Auditqueryservicemapp
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -125,6 +136,17 @@ func (a AuditApi) GetAuditsQueryServicemapping() (*Auditqueryservicemapping, *AP
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -166,7 +188,7 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/audits/query/{transactionId}"
-	path = strings.Replace(path, "{transactionId}", fmt.Sprintf("%v", transactionId), -1)
+	path = strings.Replace(path, "{transactionId}", url.PathEscape(fmt.Sprintf("%v", transactionId)), -1)
 	defaultReturn := new(Auditqueryexecutionstatusresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -195,6 +217,17 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -237,7 +270,7 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/audits/query/{transactionId}/results"
-	path = strings.Replace(path, "{transactionId}", fmt.Sprintf("%v", transactionId), -1)
+	path = strings.Replace(path, "{transactionId}", url.PathEscape(fmt.Sprintf("%v", transactionId)), -1)
 	defaultReturn := new(Auditqueryexecutionresultsresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -272,6 +305,17 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -342,6 +386,17 @@ func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutions
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -417,6 +472,17 @@ func (a AuditApi) PostAuditsQueryRealtime(body Auditrealtimequeryrequest, expand
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

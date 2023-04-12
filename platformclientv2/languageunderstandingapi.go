@@ -37,7 +37,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomain(domainId str
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -65,6 +65,17 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomain(domainId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -101,8 +112,8 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainFeedbackFeedb
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback/{feedbackId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{feedbackId}", fmt.Sprintf("%v", feedbackId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{feedbackId}", url.PathEscape(fmt.Sprintf("%v", feedbackId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -135,6 +146,17 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainFeedbackFeedb
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -171,8 +193,8 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainVersion(domai
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{domainVersionId}", url.PathEscape(fmt.Sprintf("%v", domainVersionId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -205,6 +227,17 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainVersion(domai
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -241,7 +274,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMiner(minerId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -269,6 +302,17 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMiner(minerId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -305,8 +349,8 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMinerDraft(minerId 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
-	path = strings.Replace(path, "{draftId}", fmt.Sprintf("%v", draftId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
+	path = strings.Replace(path, "{draftId}", url.PathEscape(fmt.Sprintf("%v", draftId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -339,6 +383,17 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMinerDraft(minerId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -375,7 +430,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Nludomain)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -404,6 +459,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -446,7 +512,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Nlufeedbacklisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -500,6 +566,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -541,8 +618,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedback
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback/{feedbackId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{feedbackId}", fmt.Sprintf("%v", feedbackId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{feedbackId}", url.PathEscape(fmt.Sprintf("%v", feedbackId)), -1)
 	defaultReturn := new(Nlufeedbackresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -578,6 +655,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedback
 	
 	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -620,8 +708,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{domainVersionId}", url.PathEscape(fmt.Sprintf("%v", domainVersionId)), -1)
 	defaultReturn := new(Nludomainversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -657,6 +745,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 	
 	queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -699,8 +798,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(do
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/report"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{domainVersionId}", url.PathEscape(fmt.Sprintf("%v", domainVersionId)), -1)
 	defaultReturn := new(Nludomainversionqualityreport)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -734,6 +833,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(do
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -776,7 +886,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Nludomainversionlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -811,6 +921,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -881,6 +1002,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -922,7 +1054,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
 	defaultReturn := new(Miner)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -951,6 +1083,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -993,8 +1136,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
-	path = strings.Replace(path, "{draftId}", fmt.Sprintf("%v", draftId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
+	path = strings.Replace(path, "{draftId}", url.PathEscape(fmt.Sprintf("%v", draftId)), -1)
 	defaultReturn := new(Draft)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1032,6 +1175,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId str
 	
 	queryParams["draftTopicId"] = a.Configuration.APIClient.ParameterToString(draftTopicId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1074,7 +1228,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDrafts(minerId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/drafts"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
 	defaultReturn := new(Draftlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1103,6 +1257,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDrafts(minerId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1145,8 +1310,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntent(minerId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/intents/{intentId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
-	path = strings.Replace(path, "{intentId}", fmt.Sprintf("%v", intentId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
+	path = strings.Replace(path, "{intentId}", url.PathEscape(fmt.Sprintf("%v", intentId)), -1)
 	defaultReturn := new(Minerintent)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1182,6 +1347,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntent(minerId st
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1224,7 +1400,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/intents"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
 	defaultReturn := new(Minedintentslisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1255,6 +1431,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId s
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1297,8 +1484,8 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopic(minerId str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
-	path = strings.Replace(path, "{topicId}", fmt.Sprintf("%v", topicId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
+	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
 	defaultReturn := new(Minertopic)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1334,6 +1521,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopic(minerId str
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1376,9 +1574,9 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopicPhrase(miner
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}/phrases/{phraseId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
-	path = strings.Replace(path, "{topicId}", fmt.Sprintf("%v", topicId), -1)
-	path = strings.Replace(path, "{phraseId}", fmt.Sprintf("%v", phraseId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
+	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
+	path = strings.Replace(path, "{phraseId}", url.PathEscape(fmt.Sprintf("%v", phraseId)), -1)
 	defaultReturn := new(Minertopicphrase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1417,6 +1615,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopicPhrase(miner
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1459,7 +1668,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopics(minerId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/topics"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
 	defaultReturn := new(Minertopicslisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1488,6 +1697,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopics(minerId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1556,6 +1776,17 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners(minerType strin
 	queryParams["minerType"] = a.Configuration.APIClient.ParameterToString(minerType, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1597,7 +1828,7 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Nludomain)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1631,6 +1862,17 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1676,8 +1918,8 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId s
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
-	path = strings.Replace(path, "{draftId}", fmt.Sprintf("%v", draftId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
+	path = strings.Replace(path, "{draftId}", url.PathEscape(fmt.Sprintf("%v", draftId)), -1)
 	defaultReturn := new(Draft)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1711,6 +1953,17 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1756,7 +2009,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domain
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Nlufeedbackresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1790,6 +2043,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domain
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1835,8 +2099,8 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(d
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/detect"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{domainVersionId}", url.PathEscape(fmt.Sprintf("%v", domainVersionId)), -1)
 	defaultReturn := new(Nludetectionresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1875,6 +2139,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(d
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1920,8 +2195,8 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionPublish(
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/publish"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{domainVersionId}", url.PathEscape(fmt.Sprintf("%v", domainVersionId)), -1)
 	defaultReturn := new(Nludomainversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1955,6 +2230,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionPublish(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1997,8 +2283,8 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/train"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{domainVersionId}", url.PathEscape(fmt.Sprintf("%v", domainVersionId)), -1)
 	defaultReturn := new(Nludomainversiontrainingresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2032,6 +2318,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2074,7 +2371,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domain
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
 	defaultReturn := new(Nludomainversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2110,6 +2407,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domain
 	
 	queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2184,6 +2492,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomains(body Nludomai
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2228,7 +2547,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId s
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/drafts"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
 	defaultReturn := new(Draft)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2262,6 +2581,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2307,7 +2637,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/miners/{minerId}/execute"
-	path = strings.Replace(path, "{minerId}", fmt.Sprintf("%v", minerId), -1)
+	path = strings.Replace(path, "{minerId}", url.PathEscape(fmt.Sprintf("%v", minerId)), -1)
 	defaultReturn := new(Miner)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2336,6 +2666,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2410,6 +2751,17 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMiners(body Miner) (*
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2454,8 +2806,8 @@ func (a LanguageUnderstandingApi) PutLanguageunderstandingDomainVersion(domainId
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	path = strings.Replace(path, "{domainVersionId}", url.PathEscape(fmt.Sprintf("%v", domainVersionId)), -1)
 	defaultReturn := new(Nludomainversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2494,6 +2846,17 @@ func (a LanguageUnderstandingApi) PutLanguageunderstandingDomainVersion(domainId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

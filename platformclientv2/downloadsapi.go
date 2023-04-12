@@ -38,7 +38,7 @@ func (a DownloadsApi) GetDownload(downloadId string, contentDisposition string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/downloads/{downloadId}"
-	path = strings.Replace(path, "{downloadId}", fmt.Sprintf("%v", downloadId), -1)
+	path = strings.Replace(path, "{downloadId}", url.PathEscape(fmt.Sprintf("%v", downloadId)), -1)
 	defaultReturn := new(Urlresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -73,6 +73,17 @@ func (a DownloadsApi) GetDownload(downloadId string, contentDisposition string, 
 	
 	queryParams["redirectToAuth"] = a.Configuration.APIClient.ParameterToString(redirectToAuth, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

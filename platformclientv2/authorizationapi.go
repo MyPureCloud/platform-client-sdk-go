@@ -36,7 +36,7 @@ func (a AuthorizationApi) DeleteAuthorizationDivision(divisionId string, force b
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -66,6 +66,17 @@ func (a AuthorizationApi) DeleteAuthorizationDivision(divisionId string, force b
 	
 	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -102,7 +113,7 @@ func (a AuthorizationApi) DeleteAuthorizationRole(roleId string) (*APIResponse, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -130,6 +141,17 @@ func (a AuthorizationApi) DeleteAuthorizationRole(roleId string) (*APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -166,9 +188,9 @@ func (a AuthorizationApi) DeleteAuthorizationSubjectDivisionRole(subjectId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -207,6 +229,17 @@ func (a AuthorizationApi) DeleteAuthorizationSubjectDivisionRole(subjectId strin
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -242,7 +275,7 @@ func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCoun
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	defaultReturn := new(Authzdivision)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -273,6 +306,17 @@ func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCoun
 	
 	queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -317,7 +361,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}/grants"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	defaultReturn := new(Authzdivisiongrantentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -350,6 +394,17 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -436,6 +491,17 @@ func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -503,6 +569,17 @@ func (a AuthorizationApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIR
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -567,6 +644,17 @@ func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -644,6 +732,17 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string
 	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -720,6 +819,17 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission s
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -763,7 +873,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisionspermitted/paged/{subjectId}"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
 	defaultReturn := new(Divspermittedentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -803,6 +913,17 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -879,6 +1000,17 @@ func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber i
 	queryParams["query"] = a.Configuration.APIClient.ParameterToString(query, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -946,6 +1078,17 @@ func (a AuthorizationApi) GetAuthorizationProducts() (*Organizationproductentity
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -989,7 +1132,7 @@ func (a AuthorizationApi) GetAuthorizationRole(roleId string, userCount bool, ex
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	defaultReturn := new(Domainorganizationrole)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1022,6 +1165,17 @@ func (a AuthorizationApi) GetAuthorizationRole(roleId string, userCount bool, ex
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1066,8 +1220,8 @@ func (a AuthorizationApi) GetAuthorizationRoleComparedefaultRightRoleId(leftRole
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}"
-	path = strings.Replace(path, "{leftRoleId}", fmt.Sprintf("%v", leftRoleId), -1)
-	path = strings.Replace(path, "{rightRoleId}", fmt.Sprintf("%v", rightRoleId), -1)
+	path = strings.Replace(path, "{leftRoleId}", url.PathEscape(fmt.Sprintf("%v", leftRoleId)), -1)
+	path = strings.Replace(path, "{rightRoleId}", url.PathEscape(fmt.Sprintf("%v", rightRoleId)), -1)
 	defaultReturn := new(Domainorgroledifference)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1101,6 +1255,17 @@ func (a AuthorizationApi) GetAuthorizationRoleComparedefaultRightRoleId(leftRole
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1145,7 +1310,7 @@ func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageS
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}/subjectgrants"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	defaultReturn := new(Subjectdivisiongrantsentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1186,6 +1351,17 @@ func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageS
 	
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1230,7 +1406,7 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}/users"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	defaultReturn := new(Userentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1263,6 +1439,17 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int,
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1351,6 +1538,17 @@ func (a AuthorizationApi) GetAuthorizationRoles(pageSize int, pageNumber int, so
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1416,6 +1614,17 @@ func (a AuthorizationApi) GetAuthorizationSettings() (*Authorizationsettings, *A
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1457,7 +1666,7 @@ func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubje
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
 	defaultReturn := new(Authzsubject)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1486,6 +1695,17 @@ func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubje
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1551,6 +1771,17 @@ func (a AuthorizationApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIRespo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1619,6 +1850,17 @@ func (a AuthorizationApi) GetAuthorizationSubjectsRolecounts(id []string) (*map[
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1660,7 +1902,7 @@ func (a AuthorizationApi) GetUserRoles(subjectId string) (*Userauthorization, *A
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{subjectId}/roles"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1689,6 +1931,17 @@ func (a AuthorizationApi) GetUserRoles(subjectId string) (*Userauthorization, *A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1733,7 +1986,7 @@ func (a AuthorizationApi) PatchAuthorizationRole(roleId string, body Domainorgan
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	defaultReturn := new(Domainorganizationrole)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1767,6 +2020,17 @@ func (a AuthorizationApi) PatchAuthorizationRole(roleId string, body Domainorgan
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1843,6 +2107,17 @@ func (a AuthorizationApi) PatchAuthorizationSettings(body Authorizationsettings)
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1889,8 +2164,8 @@ func (a AuthorizationApi) PostAuthorizationDivisionObject(divisionId string, obj
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}/objects/{objectType}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
-	path = strings.Replace(path, "{objectType}", fmt.Sprintf("%v", objectType), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
+	path = strings.Replace(path, "{objectType}", url.PathEscape(fmt.Sprintf("%v", objectType)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1928,6 +2203,17 @@ func (a AuthorizationApi) PostAuthorizationDivisionObject(divisionId string, obj
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1967,7 +2253,7 @@ func (a AuthorizationApi) PostAuthorizationDivisionRestore(divisionId string, bo
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}/restore"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	defaultReturn := new(Authzdivision)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2001,6 +2287,17 @@ func (a AuthorizationApi) PostAuthorizationDivisionRestore(divisionId string, bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2075,6 +2372,17 @@ func (a AuthorizationApi) PostAuthorizationDivisions(body Authzdivision) (*Authz
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2119,7 +2427,7 @@ func (a AuthorizationApi) PostAuthorizationRole(roleId string, body Subjectdivis
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2154,6 +2462,17 @@ func (a AuthorizationApi) PostAuthorizationRole(roleId string, body Subjectdivis
 	
 	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2195,8 +2514,8 @@ func (a AuthorizationApi) PostAuthorizationRoleComparedefaultRightRoleId(leftRol
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}"
-	path = strings.Replace(path, "{leftRoleId}", fmt.Sprintf("%v", leftRoleId), -1)
-	path = strings.Replace(path, "{rightRoleId}", fmt.Sprintf("%v", rightRoleId), -1)
+	path = strings.Replace(path, "{leftRoleId}", url.PathEscape(fmt.Sprintf("%v", leftRoleId)), -1)
+	path = strings.Replace(path, "{rightRoleId}", url.PathEscape(fmt.Sprintf("%v", rightRoleId)), -1)
 	defaultReturn := new(Domainorgroledifference)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2235,6 +2554,17 @@ func (a AuthorizationApi) PostAuthorizationRoleComparedefaultRightRoleId(leftRol
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2309,6 +2639,17 @@ func (a AuthorizationApi) PostAuthorizationRoles(body Domainorganizationrolecrea
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2381,6 +2722,17 @@ func (a AuthorizationApi) PostAuthorizationRolesDefault(force bool) (*Organizati
 	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2422,7 +2774,7 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkadd(subjectId string, body
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}/bulkadd"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2457,6 +2809,17 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkadd(subjectId string, body
 	
 	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2496,7 +2859,7 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkremove(subjectId string, b
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}/bulkremove"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2529,6 +2892,17 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkremove(subjectId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2570,7 +2944,7 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkreplace(subjectId string, 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}/bulkreplace"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2605,6 +2979,17 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkreplace(subjectId string, 
 	
 	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2644,9 +3029,9 @@ func (a AuthorizationApi) PostAuthorizationSubjectDivisionRole(subjectId string,
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2687,6 +3072,17 @@ func (a AuthorizationApi) PostAuthorizationSubjectDivisionRole(subjectId string,
 	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2722,7 +3118,7 @@ func (a AuthorizationApi) PutAuthorizationDivision(divisionId string, body Authz
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	defaultReturn := new(Authzdivision)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2756,6 +3152,17 @@ func (a AuthorizationApi) PutAuthorizationDivision(divisionId string, body Authz
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2803,7 +3210,7 @@ func (a AuthorizationApi) PutAuthorizationRole(roleId string, body Domainorganiz
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	defaultReturn := new(Domainorganizationrole)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2837,6 +3244,17 @@ func (a AuthorizationApi) PutAuthorizationRole(roleId string, body Domainorganiz
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2882,7 +3300,7 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersAdd(roleId string, body []str
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}/users/add"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	defaultReturn := make([]string, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2916,6 +3334,17 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersAdd(roleId string, body []str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2961,7 +3390,7 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersRemove(roleId string, body []
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}/users/remove"
-	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleId), -1)
+	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
 	defaultReturn := make([]string, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2995,6 +3424,17 @@ func (a AuthorizationApi) PutAuthorizationRoleUsersRemove(roleId string, body []
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3069,6 +3509,17 @@ func (a AuthorizationApi) PutAuthorizationRolesDefault(body []Domainorganization
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3113,7 +3564,7 @@ func (a AuthorizationApi) PutUserRoles(subjectId string, body []string) (*Userau
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{subjectId}/roles"
-	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	path = strings.Replace(path, "{subjectId}", url.PathEscape(fmt.Sprintf("%v", subjectId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3147,6 +3598,17 @@ func (a AuthorizationApi) PutUserRoles(subjectId string, body []string) (*Userau
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

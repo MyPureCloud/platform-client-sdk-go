@@ -36,7 +36,7 @@ func (a PresenceApi) DeletePresenceSource(sourceId string) (*APIResponse, error)
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/sources/{sourceId}"
-	path = strings.Replace(path, "{sourceId}", fmt.Sprintf("%v", sourceId), -1)
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a PresenceApi) DeletePresenceSource(sourceId string) (*APIResponse, error)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presencedefinitions/{presenceId}"
-	path = strings.Replace(path, "{presenceId}", fmt.Sprintf("%v", presenceId), -1)
+	path = strings.Replace(path, "{presenceId}", url.PathEscape(fmt.Sprintf("%v", presenceId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -128,6 +139,17 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -188,6 +210,17 @@ func (a PresenceApi) GetPresenceSettings() (*Presencesettings, *APIResponse, err
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -229,7 +262,7 @@ func (a PresenceApi) GetPresenceSource(sourceId string) (*Source, *APIResponse, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/sources/{sourceId}"
-	path = strings.Replace(path, "{sourceId}", fmt.Sprintf("%v", sourceId), -1)
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
 	defaultReturn := new(Source)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -258,6 +291,17 @@ func (a PresenceApi) GetPresenceSource(sourceId string) (*Source, *APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -326,6 +370,17 @@ func (a PresenceApi) GetPresenceSources(deactivated string) (*Sourceentitylistin
 	queryParams["deactivated"] = a.Configuration.APIClient.ParameterToString(deactivated, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -367,7 +422,7 @@ func (a PresenceApi) GetPresenceUserPrimarysource(userId string) (*Userprimaryso
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/users/{userId}/primarysource"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userprimarysource)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -396,6 +451,17 @@ func (a PresenceApi) GetPresenceUserPrimarysource(userId string) (*Userprimaryso
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -438,7 +504,7 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presencedefinitions/{presenceId}"
-	path = strings.Replace(path, "{presenceId}", fmt.Sprintf("%v", presenceId), -1)
+	path = strings.Replace(path, "{presenceId}", url.PathEscape(fmt.Sprintf("%v", presenceId)), -1)
 	defaultReturn := new(Organizationpresence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -469,6 +535,17 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 	
 	queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -543,6 +620,17 @@ func (a PresenceApi) GetPresencedefinitions(pageNumber int, pageSize int, delete
 	queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -608,6 +696,17 @@ func (a PresenceApi) GetSystempresences() ([]Systempresence, *APIResponse, error
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -651,8 +750,8 @@ func (a PresenceApi) GetUserPresence(userId string, sourceId string) (*Userprese
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/presences/{sourceId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{sourceId}", fmt.Sprintf("%v", sourceId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
 	defaultReturn := new(Userpresence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -686,6 +785,17 @@ func (a PresenceApi) GetUserPresence(userId string, sourceId string) (*Userprese
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -730,7 +840,7 @@ func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *A
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/presences/purecloud"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userpresence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -759,6 +869,17 @@ func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -803,8 +924,8 @@ func (a PresenceApi) PatchUserPresence(userId string, sourceId string, body User
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/presences/{sourceId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{sourceId}", fmt.Sprintf("%v", sourceId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
 	defaultReturn := new(Userpresence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -843,6 +964,17 @@ func (a PresenceApi) PatchUserPresence(userId string, sourceId string, body User
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -890,7 +1022,7 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/presences/purecloud"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userpresence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -924,6 +1056,17 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -998,6 +1141,17 @@ func (a PresenceApi) PostPresenceSources(body Source) (*Source, *APIResponse, er
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1070,6 +1224,17 @@ func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1144,6 +1309,17 @@ func (a PresenceApi) PutPresenceSettings(body Presencesettings) (*Presencesettin
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1188,7 +1364,7 @@ func (a PresenceApi) PutPresenceSource(sourceId string, body Source) (*Source, *
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/sources/{sourceId}"
-	path = strings.Replace(path, "{sourceId}", fmt.Sprintf("%v", sourceId), -1)
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
 	defaultReturn := new(Source)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1222,6 +1398,17 @@ func (a PresenceApi) PutPresenceSource(sourceId string, body Source) (*Source, *
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1267,7 +1454,7 @@ func (a PresenceApi) PutPresenceUserPrimarysource(userId string, body Userprimar
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/users/{userId}/primarysource"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userprimarysource)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1301,6 +1488,17 @@ func (a PresenceApi) PutPresenceUserPrimarysource(userId string, body Userprimar
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1346,7 +1544,7 @@ func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationp
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presencedefinitions/{presenceId}"
-	path = strings.Replace(path, "{presenceId}", fmt.Sprintf("%v", presenceId), -1)
+	path = strings.Replace(path, "{presenceId}", url.PathEscape(fmt.Sprintf("%v", presenceId)), -1)
 	defaultReturn := new(Organizationpresence)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1380,6 +1578,17 @@ func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1453,6 +1662,17 @@ func (a PresenceApi) PutUsersPresencesBulk(body []Userpresence) ([]Userpresence,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

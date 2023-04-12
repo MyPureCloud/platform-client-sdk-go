@@ -36,7 +36,7 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebase(knowledgeBaseId string) (*Kno
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -65,6 +65,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebase(knowledgeBaseId string) (*Kno
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -107,8 +118,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseCategory(knowledgeBaseId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/categories/{categoryId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{categoryId}", fmt.Sprintf("%v", categoryId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{categoryId}", url.PathEscape(fmt.Sprintf("%v", categoryId)), -1)
 	defaultReturn := new(Categoryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -142,6 +153,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseCategory(knowledgeBaseId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -184,8 +206,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseDocument(knowledgeBaseId strin
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -218,6 +240,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseDocument(knowledgeBaseId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -254,9 +287,9 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseDocumentVariation(documentVari
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}"
-	path = strings.Replace(path, "{documentVariationId}", fmt.Sprintf("%v", documentVariationId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{documentVariationId}", url.PathEscape(fmt.Sprintf("%v", documentVariationId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -295,6 +328,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseDocumentVariation(documentVari
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -330,8 +374,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseExportJob(knowledgeBaseId stri
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/export/jobs/{exportJobId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{exportJobId}", fmt.Sprintf("%v", exportJobId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{exportJobId}", url.PathEscape(fmt.Sprintf("%v", exportJobId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -364,6 +408,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseExportJob(knowledgeBaseId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -400,8 +455,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseImportJob(knowledgeBaseId stri
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/import/jobs/{importJobId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{importJobId}", fmt.Sprintf("%v", importJobId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{importJobId}", url.PathEscape(fmt.Sprintf("%v", importJobId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -434,6 +489,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseImportJob(knowledgeBaseId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -470,8 +536,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLabel(knowledgeBaseId string, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/labels/{labelId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{labelId}", fmt.Sprintf("%v", labelId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{labelId}", url.PathEscape(fmt.Sprintf("%v", labelId)), -1)
 	defaultReturn := new(Labelresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -505,6 +571,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLabel(knowledgeBaseId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -547,9 +624,9 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId st
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}"
-	path = strings.Replace(path, "{categoryId}", fmt.Sprintf("%v", categoryId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{categoryId}", url.PathEscape(fmt.Sprintf("%v", categoryId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgecategory)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -588,6 +665,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -630,9 +718,9 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId st
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgedocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -671,6 +759,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -713,9 +812,9 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowle
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
-	path = strings.Replace(path, "{importId}", fmt.Sprintf("%v", importId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
+	path = strings.Replace(path, "{importId}", url.PathEscape(fmt.Sprintf("%v", importId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -754,6 +853,17 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowle
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -789,7 +899,7 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionCategories(sessionId string, befor
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/categories"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(Guestcategoryresponselisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -832,6 +942,17 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionCategories(sessionId string, befor
 	queryParams["includeDocumentCount"] = a.Configuration.APIClient.ParameterToString(includeDocumentCount, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -873,8 +994,8 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocument(sessionId string, documen
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/{documentId}"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Knowledgeguestdocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -903,6 +1024,17 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocument(sessionId string, documen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -945,7 +1077,7 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocuments(sessionId string, catego
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(Knowledgeguestdocumentresponselisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -973,6 +1105,17 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocuments(sessionId string, catego
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1015,7 +1158,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebase(knowledgeBaseId string) (*Knowle
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1044,6 +1187,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebase(knowledgeBaseId string) (*Knowle
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1086,7 +1240,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseCategories(knowledgeBaseId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/categories"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Categoryresponselisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1134,6 +1288,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseCategories(knowledgeBaseId string
 	queryParams["includeDocumentCount"] = a.Configuration.APIClient.ParameterToString(includeDocumentCount, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1175,8 +1340,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseCategory(knowledgeBaseId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/categories/{categoryId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{categoryId}", fmt.Sprintf("%v", categoryId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{categoryId}", url.PathEscape(fmt.Sprintf("%v", categoryId)), -1)
 	defaultReturn := new(Categoryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1210,6 +1375,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseCategory(knowledgeBaseId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1252,8 +1428,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocument(knowledgeBaseId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Knowledgedocumentresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1291,6 +1467,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocument(knowledgeBaseId string, 
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1333,9 +1520,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariati
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}"
-	path = strings.Replace(path, "{documentVariationId}", fmt.Sprintf("%v", documentVariationId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{documentVariationId}", url.PathEscape(fmt.Sprintf("%v", documentVariationId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Documentvariation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1376,6 +1563,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariati
 	
 	queryParams["documentState"] = a.Configuration.APIClient.ParameterToString(documentState, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1418,8 +1616,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Documentvariationlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1462,6 +1660,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseI
 	queryParams["documentState"] = a.Configuration.APIClient.ParameterToString(documentState, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1503,9 +1712,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersion(knowledgeBaseId s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/versions/{versionId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(Knowledgedocumentversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1546,6 +1755,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersion(knowledgeBaseId s
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1588,10 +1808,10 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersionVariation(knowledg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/versions/{versionId}/variations/{variationId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
-	path = strings.Replace(path, "{variationId}", fmt.Sprintf("%v", variationId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
+	path = strings.Replace(path, "{variationId}", url.PathEscape(fmt.Sprintf("%v", variationId)), -1)
 	defaultReturn := new(Knowledgedocumentversionvariation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1636,6 +1856,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersionVariation(knowledg
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1677,9 +1908,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersionVariations(knowled
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/versions/{versionId}/variations"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(Knowledgedocumentversionvariationlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1725,6 +1956,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersionVariations(knowled
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1766,8 +2008,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersions(knowledgeBaseId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/versions"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Knowledgedocumentversionlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1810,6 +2052,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVersions(knowledgeBaseId 
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1851,7 +2104,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocuments(knowledgeBaseId string,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgedocumentresponselisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1901,6 +2154,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocuments(knowledgeBaseId string,
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1942,8 +2206,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseExportJob(knowledgeBaseId string,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/export/jobs/{exportJobId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{exportJobId}", fmt.Sprintf("%v", exportJobId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{exportJobId}", url.PathEscape(fmt.Sprintf("%v", exportJobId)), -1)
 	defaultReturn := new(Knowledgeexportjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1977,6 +2241,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseExportJob(knowledgeBaseId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2019,8 +2294,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseImportJob(knowledgeBaseId string,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/import/jobs/{importJobId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{importJobId}", fmt.Sprintf("%v", importJobId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{importJobId}", url.PathEscape(fmt.Sprintf("%v", importJobId)), -1)
 	defaultReturn := new(Knowledgeimportjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2054,6 +2329,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseImportJob(knowledgeBaseId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2096,8 +2382,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLabel(knowledgeBaseId string, lab
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/labels/{labelId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{labelId}", fmt.Sprintf("%v", labelId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{labelId}", url.PathEscape(fmt.Sprintf("%v", labelId)), -1)
 	defaultReturn := new(Labelresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2131,6 +2417,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLabel(knowledgeBaseId string, lab
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2173,7 +2470,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLabels(knowledgeBaseId string, be
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/labels"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Labellisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2212,6 +2509,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLabels(knowledgeBaseId string, be
 	
 	queryParams["includeDocumentCount"] = a.Configuration.APIClient.ParameterToString(includeDocumentCount, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2254,8 +2562,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Categorylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2300,6 +2608,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2341,9 +2660,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}"
-	path = strings.Replace(path, "{categoryId}", fmt.Sprintf("%v", categoryId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{categoryId}", url.PathEscape(fmt.Sprintf("%v", categoryId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgeextendedcategory)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2382,6 +2701,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2424,9 +2754,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgedocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2465,6 +2795,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2507,8 +2848,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Documentlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2561,6 +2902,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 	queryParams["documentIds"] = a.Configuration.APIClient.ParameterToString(documentIds, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2602,9 +2954,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledge
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
-	path = strings.Replace(path, "{importId}", fmt.Sprintf("%v", importId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
+	path = strings.Replace(path, "{importId}", url.PathEscape(fmt.Sprintf("%v", importId)), -1)
 	defaultReturn := new(Knowledgeimport)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2643,6 +2995,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledge
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2685,9 +3048,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings/{trainingId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
-	path = strings.Replace(path, "{trainingId}", fmt.Sprintf("%v", trainingId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
+	path = strings.Replace(path, "{trainingId}", url.PathEscape(fmt.Sprintf("%v", trainingId)), -1)
 	defaultReturn := new(Knowledgetraining)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2726,6 +3089,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2768,8 +3142,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Traininglisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2814,6 +3188,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 	queryParams["knowledgeDocumentsState"] = a.Configuration.APIClient.ParameterToString(knowledgeDocumentsState, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2855,8 +3240,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroup(knowledgeBaseId s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups/{groupId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
 	defaultReturn := new(Unansweredgroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2892,6 +3277,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroup(knowledgeBaseId s
 	
 	queryParams["app"] = a.Configuration.APIClient.ParameterToString(app, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2934,9 +3330,9 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(knowle
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups/{groupId}/phrasegroups/{phraseGroupId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
-	path = strings.Replace(path, "{phraseGroupId}", fmt.Sprintf("%v", phraseGroupId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
+	path = strings.Replace(path, "{phraseGroupId}", url.PathEscape(fmt.Sprintf("%v", phraseGroupId)), -1)
 	defaultReturn := new(Unansweredphrasegroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2977,6 +3373,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(knowle
 	
 	queryParams["app"] = a.Configuration.APIClient.ParameterToString(app, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3019,7 +3426,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroups(knowledgeBaseId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Unansweredgroups)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3050,6 +3457,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroups(knowledgeBaseId 
 	
 	queryParams["app"] = a.Configuration.APIClient.ParameterToString(app, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3134,6 +3552,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3175,8 +3604,8 @@ func (a KnowledgeApi) PatchKnowledgeGuestSessionDocumentsSearchSearchId(sessionI
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/search/{searchId}"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
-	path = strings.Replace(path, "{searchId}", fmt.Sprintf("%v", searchId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
+	path = strings.Replace(path, "{searchId}", url.PathEscape(fmt.Sprintf("%v", searchId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3209,6 +3638,17 @@ func (a KnowledgeApi) PatchKnowledgeGuestSessionDocumentsSearchSearchId(sessionI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3248,7 +3688,7 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body K
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3282,6 +3722,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body K
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3327,8 +3778,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseCategory(knowledgeBaseId string
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/categories/{categoryId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{categoryId}", fmt.Sprintf("%v", categoryId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{categoryId}", url.PathEscape(fmt.Sprintf("%v", categoryId)), -1)
 	defaultReturn := new(Categoryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3367,6 +3818,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseCategory(knowledgeBaseId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3412,8 +3874,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocument(knowledgeBaseId string
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Knowledgedocumentresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3452,6 +3914,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocument(knowledgeBaseId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3497,9 +3970,9 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentVariation(documentVaria
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}"
-	path = strings.Replace(path, "{documentVariationId}", fmt.Sprintf("%v", documentVariationId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{documentVariationId}", url.PathEscape(fmt.Sprintf("%v", documentVariationId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Documentvariation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3543,6 +4016,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentVariation(documentVaria
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3588,8 +4072,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentsSearchSearchId(knowled
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/search/{searchId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{searchId}", fmt.Sprintf("%v", searchId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{searchId}", url.PathEscape(fmt.Sprintf("%v", searchId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3622,6 +4106,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentsSearchSearchId(knowled
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3661,8 +4156,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseImportJob(knowledgeBaseId strin
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/import/jobs/{importJobId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{importJobId}", fmt.Sprintf("%v", importJobId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{importJobId}", url.PathEscape(fmt.Sprintf("%v", importJobId)), -1)
 	defaultReturn := new(Knowledgeimportjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3701,6 +4196,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseImportJob(knowledgeBaseId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3746,8 +4252,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLabel(knowledgeBaseId string, l
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/labels/{labelId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{labelId}", fmt.Sprintf("%v", labelId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{labelId}", url.PathEscape(fmt.Sprintf("%v", labelId)), -1)
 	defaultReturn := new(Labelresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3786,6 +4292,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLabel(knowledgeBaseId string, l
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3831,9 +4348,9 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId str
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}"
-	path = strings.Replace(path, "{categoryId}", fmt.Sprintf("%v", categoryId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{categoryId}", url.PathEscape(fmt.Sprintf("%v", categoryId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgeextendedcategory)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3877,6 +4394,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3922,9 +4450,9 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId str
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}"
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgedocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3968,6 +4496,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4013,8 +4552,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBase
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Documentlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4053,6 +4592,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBase
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4098,9 +4648,9 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowled
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
-	path = strings.Replace(path, "{importId}", fmt.Sprintf("%v", importId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
+	path = strings.Replace(path, "{importId}", url.PathEscape(fmt.Sprintf("%v", importId)), -1)
 	defaultReturn := new(Knowledgeimport)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4144,6 +4694,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowled
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4189,9 +4750,9 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(know
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups/{groupId}/phrasegroups/{phraseGroupId}"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
-	path = strings.Replace(path, "{phraseGroupId}", fmt.Sprintf("%v", phraseGroupId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{groupId}", url.PathEscape(fmt.Sprintf("%v", groupId)), -1)
+	path = strings.Replace(path, "{phraseGroupId}", url.PathEscape(fmt.Sprintf("%v", phraseGroupId)), -1)
 	defaultReturn := new(Unansweredphrasegroupupdateresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4235,6 +4796,17 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(know
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4309,6 +4881,17 @@ func (a KnowledgeApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uplo
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4353,7 +4936,7 @@ func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsSearch(sessionId string,
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/search"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(Knowledgedocumentguestsearch)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4379,6 +4962,17 @@ func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsSearch(sessionId string,
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4424,7 +5018,7 @@ func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsSearchSuggestions(sessio
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/search/suggestions"
-	path = strings.Replace(path, "{sessionId}", fmt.Sprintf("%v", sessionId), -1)
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
 	defaultReturn := new(Knowledgeguestdocumentsuggestion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4448,6 +5042,17 @@ func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsSearchSuggestions(sessio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4517,6 +5122,17 @@ func (a KnowledgeApi) PostKnowledgeGuestSessions(body Knowledgeguestsession) (*K
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4561,7 +5177,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseCategories(knowledgeBaseId strin
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/categories"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Categoryresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4595,6 +5211,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseCategories(knowledgeBaseId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4640,8 +5267,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentVariations(knowledgeBase
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Documentvariation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4680,6 +5307,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentVariations(knowledgeBase
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4725,8 +5363,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentVersions(knowledgeBaseId
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/versions"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{documentId}", fmt.Sprintf("%v", documentId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	defaultReturn := new(Knowledgedocumentversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4765,6 +5403,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentVersions(knowledgeBaseId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4810,7 +5459,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId string
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgedocumentresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4844,6 +5493,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4889,7 +5549,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsSearch(knowledgeBaseId 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/search"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgedocumentsearch)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4920,6 +5580,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsSearch(knowledgeBaseId 
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4965,7 +5636,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsSearchSuggestions(knowl
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/search/suggestions"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgedocumentsuggestion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4994,6 +5665,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsSearchSuggestions(knowl
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5039,7 +5721,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseExportJobs(knowledgeBaseId strin
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/export/jobs"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgeexportjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5073,6 +5755,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseExportJobs(knowledgeBaseId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5118,7 +5811,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseImportJobs(knowledgeBaseId strin
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/import/jobs"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgeimportjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5152,6 +5845,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseImportJobs(knowledgeBaseId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5197,7 +5901,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLabels(knowledgeBaseId string, b
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/labels"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Labelresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5231,6 +5935,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLabels(knowledgeBaseId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5276,8 +5991,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBase
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgeextendedcategory)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5316,6 +6031,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBase
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5361,8 +6087,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseI
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgedocument)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5401,6 +6127,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5446,8 +6183,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowled
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgeimport)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5486,6 +6223,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowled
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5531,9 +6279,9 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledg
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings/{trainingId}/promote"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
-	path = strings.Replace(path, "{trainingId}", fmt.Sprintf("%v", trainingId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
+	path = strings.Replace(path, "{trainingId}", url.PathEscape(fmt.Sprintf("%v", trainingId)), -1)
 	defaultReturn := new(Knowledgetraining)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5572,6 +6320,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5614,8 +6373,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseI
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Knowledgetraining)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5649,6 +6408,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5691,7 +6461,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, b
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/search"
-	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	defaultReturn := new(Knowledgesearchresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5720,6 +6490,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5793,6 +6574,17 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebases(body Knowledgebase) (*Knowledg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

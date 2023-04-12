@@ -36,7 +36,7 @@ func (a NotificationsApi) DeleteNotificationsChannelSubscriptions(channelId stri
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}/subscriptions"
-	path = strings.Replace(path, "{channelId}", fmt.Sprintf("%v", channelId), -1)
+	path = strings.Replace(path, "{channelId}", url.PathEscape(fmt.Sprintf("%v", channelId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a NotificationsApi) DeleteNotificationsChannelSubscriptions(channelId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -128,6 +139,17 @@ func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string, inclu
 	queryParams["includePreview"] = a.Configuration.APIClient.ParameterToString(includePreview, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -169,7 +191,7 @@ func (a NotificationsApi) GetNotificationsChannelSubscriptions(channelId string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}/subscriptions"
-	path = strings.Replace(path, "{channelId}", fmt.Sprintf("%v", channelId), -1)
+	path = strings.Replace(path, "{channelId}", url.PathEscape(fmt.Sprintf("%v", channelId)), -1)
 	defaultReturn := new(Channeltopicentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -198,6 +220,17 @@ func (a NotificationsApi) GetNotificationsChannelSubscriptions(channelId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -266,6 +299,17 @@ func (a NotificationsApi) GetNotificationsChannels(includechannels string) (*Cha
 	queryParams["includechannels"] = a.Configuration.APIClient.ParameterToString(includechannels, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -309,7 +353,7 @@ func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*APIRespon
 	var httpMethod = "HEAD"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}"
-	path = strings.Replace(path, "{channelId}", fmt.Sprintf("%v", channelId), -1)
+	path = strings.Replace(path, "{channelId}", url.PathEscape(fmt.Sprintf("%v", channelId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -337,6 +381,17 @@ func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*APIRespon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -373,7 +428,7 @@ func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}/subscriptions"
-	path = strings.Replace(path, "{channelId}", fmt.Sprintf("%v", channelId), -1)
+	path = strings.Replace(path, "{channelId}", url.PathEscape(fmt.Sprintf("%v", channelId)), -1)
 	defaultReturn := new(Channeltopicentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -409,6 +464,17 @@ func (a NotificationsApi) PostNotificationsChannelSubscriptions(channelId string
 	
 	queryParams["ignoreErrors"] = a.Configuration.APIClient.ParameterToString(ignoreErrors, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -480,6 +546,17 @@ func (a NotificationsApi) PostNotificationsChannels() (*Channel, *APIResponse, e
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -521,7 +598,7 @@ func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string,
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}/subscriptions"
-	path = strings.Replace(path, "{channelId}", fmt.Sprintf("%v", channelId), -1)
+	path = strings.Replace(path, "{channelId}", url.PathEscape(fmt.Sprintf("%v", channelId)), -1)
 	defaultReturn := new(Channeltopicentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -557,6 +634,17 @@ func (a NotificationsApi) PutNotificationsChannelSubscriptions(channelId string,
 	
 	queryParams["ignoreErrors"] = a.Configuration.APIClient.ParameterToString(ignoreErrors, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

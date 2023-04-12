@@ -36,7 +36,7 @@ func (a WebChatApi) DeleteWebchatDeployment(deploymentId string) (*APIResponse, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/deployments/{deploymentId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a WebChatApi) DeleteWebchatDeployment(deploymentId string) (*APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,8 +111,8 @@ func (a WebChatApi) DeleteWebchatGuestConversationMember(conversationId string, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -133,6 +144,17 @@ func (a WebChatApi) DeleteWebchatGuestConversationMember(conversationId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -192,6 +214,17 @@ func (a WebChatApi) DeleteWebchatSettings() (*APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -227,7 +260,7 @@ func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeploymen
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/deployments/{deploymentId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
 	defaultReturn := new(Webchatdeployment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -256,6 +289,17 @@ func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeploymen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -322,6 +366,17 @@ func (a WebChatApi) GetWebchatDeployments() (*Webchatdeploymententitylisting, *A
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -363,8 +418,8 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{mediaRequestId}", fmt.Sprintf("%v", mediaRequestId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{mediaRequestId}", url.PathEscape(fmt.Sprintf("%v", mediaRequestId)), -1)
 	defaultReturn := new(Webchatguestmediarequest)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -397,6 +452,17 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -439,7 +505,7 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequests(conversationId stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/mediarequests"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Webchatguestmediarequestentitylist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -467,6 +533,17 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequests(conversationId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -509,8 +586,8 @@ func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, mem
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	defaultReturn := new(Webchatmemberinfo)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -543,6 +620,17 @@ func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, mem
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -585,7 +673,7 @@ func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pa
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/members"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Webchatmemberinfoentitylist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -619,6 +707,17 @@ func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pa
 	
 	queryParams["excludeDisconnectedMembers"] = a.Configuration.APIClient.ParameterToString(excludeDisconnectedMembers, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -661,8 +760,8 @@ func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, me
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/messages/{messageId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{messageId}", fmt.Sprintf("%v", messageId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
 	defaultReturn := new(Webchatmessage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -695,6 +794,17 @@ func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, me
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -737,7 +847,7 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/messages"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	defaultReturn := new(Webchatmessageentitylist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -773,6 +883,17 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 	
 	queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -839,6 +960,17 @@ func (a WebChatApi) GetWebchatSettings() (*Webchatsettings, *APIResponse, error)
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -880,8 +1012,8 @@ func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId str
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{mediaRequestId}", fmt.Sprintf("%v", mediaRequestId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{mediaRequestId}", url.PathEscape(fmt.Sprintf("%v", mediaRequestId)), -1)
 	defaultReturn := new(Webchatguestmediarequest)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -919,6 +1051,17 @@ func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -993,6 +1136,17 @@ func (a WebChatApi) PostWebchatDeployments(body Webchatdeployment) (*Webchatdepl
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1037,8 +1191,8 @@ func (a WebChatApi) PostWebchatGuestConversationMemberMessages(conversationId st
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}/messages"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	defaultReturn := new(Webchatmessage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1076,6 +1230,17 @@ func (a WebChatApi) PostWebchatGuestConversationMemberMessages(conversationId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1121,8 +1286,8 @@ func (a WebChatApi) PostWebchatGuestConversationMemberTyping(conversationId stri
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}/typing"
-	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{memberId}", url.PathEscape(fmt.Sprintf("%v", memberId)), -1)
 	defaultReturn := new(Webchattyping)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1155,6 +1320,17 @@ func (a WebChatApi) PostWebchatGuestConversationMemberTyping(conversationId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1223,6 +1399,17 @@ func (a WebChatApi) PostWebchatGuestConversations(body Createwebchatconversation
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1267,7 +1454,7 @@ func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeploy
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/deployments/{deploymentId}"
-	path = strings.Replace(path, "{deploymentId}", fmt.Sprintf("%v", deploymentId), -1)
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
 	defaultReturn := new(Webchatdeployment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1301,6 +1488,17 @@ func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeploy
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1374,6 +1572,17 @@ func (a WebChatApi) PutWebchatSettings(body Webchatsettings) (*Webchatsettings, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

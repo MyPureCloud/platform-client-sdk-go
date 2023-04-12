@@ -60,6 +60,17 @@ func (a GeolocationApi) GetGeolocationsSettings() (*Geolocationsettings, *APIRes
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -101,8 +112,8 @@ func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/geolocations/{clientId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Geolocation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -136,6 +147,17 @@ func (a GeolocationApi) GetUserGeolocation(userId string, clientId string) (*Geo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -207,6 +229,17 @@ func (a GeolocationApi) PatchGeolocationsSettings(body Geolocationsettings) (*Ge
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -253,8 +286,8 @@ func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, bod
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/geolocations/{clientId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{clientId}", url.PathEscape(fmt.Sprintf("%v", clientId)), -1)
 	defaultReturn := new(Geolocation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -293,6 +326,17 @@ func (a GeolocationApi) PatchUserGeolocation(userId string, clientId string, bod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

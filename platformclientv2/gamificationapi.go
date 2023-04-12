@@ -37,7 +37,7 @@ func (a GamificationApi) DeleteEmployeeperformanceExternalmetricsDefinition(metr
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/employeeperformance/externalmetrics/definitions/{metricId}"
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -65,6 +65,17 @@ func (a GamificationApi) DeleteEmployeeperformanceExternalmetricsDefinition(metr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -101,7 +112,7 @@ func (a GamificationApi) GetEmployeeperformanceExternalmetricsDefinition(metricI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/employeeperformance/externalmetrics/definitions/{metricId}"
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
 	defaultReturn := new(Externalmetricdefinition)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -130,6 +141,17 @@ func (a GamificationApi) GetEmployeeperformanceExternalmetricsDefinition(metricI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -199,6 +221,17 @@ func (a GamificationApi) GetEmployeeperformanceExternalmetricsDefinitions(pageSi
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -280,6 +313,17 @@ func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endW
 	
 	queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -376,6 +420,17 @@ func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filter
 	queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -455,6 +510,17 @@ func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType stri
 	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -520,6 +586,17 @@ func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoi
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -561,7 +638,7 @@ func (a GamificationApi) GetGamificationMetricdefinition(metricDefinitionId stri
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/metricdefinitions/{metricDefinitionId}"
-	path = strings.Replace(path, "{metricDefinitionId}", fmt.Sprintf("%v", metricDefinitionId), -1)
+	path = strings.Replace(path, "{metricDefinitionId}", url.PathEscape(fmt.Sprintf("%v", metricDefinitionId)), -1)
 	defaultReturn := new(Metricdefinition)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -590,6 +667,17 @@ func (a GamificationApi) GetGamificationMetricdefinition(metricDefinitionId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -658,6 +746,17 @@ func (a GamificationApi) GetGamificationMetricdefinitions() (*Getmetricdefinitio
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -699,7 +798,7 @@ func (a GamificationApi) GetGamificationProfile(profileId string) (*Performancep
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Performanceprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -728,6 +827,17 @@ func (a GamificationApi) GetGamificationProfile(profileId string) (*Performancep
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -770,7 +880,7 @@ func (a GamificationApi) GetGamificationProfileMembers(profileId string) (*Membe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/members"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Memberlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -799,6 +909,17 @@ func (a GamificationApi) GetGamificationProfileMembers(profileId string) (*Membe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -841,8 +962,8 @@ func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics/{metricId}"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
 	defaultReturn := new(Metric)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -878,6 +999,17 @@ func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId
 	
 	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -920,7 +1052,7 @@ func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Getmetricresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -955,6 +1087,17 @@ func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand 
 	
 	queryParams["metricIds"] = a.Configuration.APIClient.ParameterToString(metricIds, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -997,7 +1140,7 @@ func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics/objectivedetails"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Getmetricsresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1028,6 +1171,17 @@ func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId
 	
 	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1094,6 +1248,17 @@ func (a GamificationApi) GetGamificationProfiles() (*Getprofilesresponse, *APIRe
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1135,7 +1300,7 @@ func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Performanceprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1166,6 +1331,17 @@ func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time
 	
 	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1233,6 +1409,17 @@ func (a GamificationApi) GetGamificationProfilesUsersMe(workday time.Time) (*Per
 	
 	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1307,6 +1494,17 @@ func (a GamificationApi) GetGamificationScorecards(workday time.Time, expand []s
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1387,6 +1585,17 @@ func (a GamificationApi) GetGamificationScorecardsAttendance(startWorkday time.T
 	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1451,6 +1660,17 @@ func (a GamificationApi) GetGamificationScorecardsBestpoints() (*Userbestpoints,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1524,6 +1744,17 @@ func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.
 	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1595,6 +1826,17 @@ func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Tim
 	
 	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1677,6 +1919,17 @@ func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time
 	queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1718,9 +1971,9 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUserValuesTrends(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/{userId}/values/trends"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Metricvaluetrendaverage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1778,6 +2031,17 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUserValuesTrends(
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1819,8 +2083,8 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUsersValuesTrends
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/values/trends"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
 	defaultReturn := new(Metricvaluetrendaverage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1882,6 +2146,17 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUsersValuesTrends
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1923,8 +2198,8 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricValuesTrends(prof
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/values/trends"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
 	defaultReturn := new(Metricvaluetrendaverage)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1979,6 +2254,17 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricValuesTrends(prof
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2020,7 +2306,7 @@ func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday ti
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/users/{userId}"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Workdaymetriclisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2058,6 +2344,17 @@ func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday ti
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2100,7 +2397,7 @@ func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/users/{userId}/attendance"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Attendancestatuslisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2144,6 +2441,17 @@ func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, 
 	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2185,7 +2493,7 @@ func (a GamificationApi) GetGamificationScorecardsUserBestpoints(userId string) 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/users/{userId}/bestpoints"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Userbestpoints)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2214,6 +2522,17 @@ func (a GamificationApi) GetGamificationScorecardsUserBestpoints(userId string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2256,7 +2575,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/users/{userId}/points/alltime"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Alltimepoints)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2292,6 +2611,17 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId strin
 	
 	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2334,7 +2664,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/users/{userId}/points/trends"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Workdaypointstrend)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2380,6 +2710,17 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 	queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2421,7 +2762,7 @@ func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/users/{userId}/values/trends"
-	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
 	defaultReturn := new(Workdayvaluestrend)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2466,6 +2807,17 @@ func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string
 	
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2552,6 +2904,17 @@ func (a GamificationApi) GetGamificationScorecardsUsersPointsAverage(filterType 
 	
 	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2640,6 +3003,17 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesAverage(filterType 
 	
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2736,6 +3110,17 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType s
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2809,6 +3194,17 @@ func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Tim
 	
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2895,6 +3291,17 @@ func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time
 	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2960,6 +3367,17 @@ func (a GamificationApi) GetGamificationStatus() (*Gamificationstatus, *APIRespo
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3001,7 +3419,7 @@ func (a GamificationApi) GetGamificationTemplate(templateId string) (*Objectivet
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/templates/{templateId}"
-	path = strings.Replace(path, "{templateId}", fmt.Sprintf("%v", templateId), -1)
+	path = strings.Replace(path, "{templateId}", url.PathEscape(fmt.Sprintf("%v", templateId)), -1)
 	defaultReturn := new(Objectivetemplate)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3030,6 +3448,17 @@ func (a GamificationApi) GetGamificationTemplate(templateId string) (*Objectivet
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3096,6 +3525,17 @@ func (a GamificationApi) GetGamificationTemplates() (*Gettemplatesresponse, *API
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3137,7 +3577,7 @@ func (a GamificationApi) PatchEmployeeperformanceExternalmetricsDefinition(metri
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/employeeperformance/externalmetrics/definitions/{metricId}"
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
 	defaultReturn := new(Externalmetricdefinition)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3171,6 +3611,17 @@ func (a GamificationApi) PatchEmployeeperformanceExternalmetricsDefinition(metri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3240,6 +3691,17 @@ func (a GamificationApi) PostEmployeeperformanceExternalmetricsData(body Externa
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3308,6 +3770,17 @@ func (a GamificationApi) PostEmployeeperformanceExternalmetricsDefinitions(body 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3352,7 +3825,7 @@ func (a GamificationApi) PostGamificationProfileActivate(profileId string) (*Per
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/activate"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Performanceprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3381,6 +3854,17 @@ func (a GamificationApi) PostGamificationProfileActivate(profileId string) (*Per
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3423,7 +3907,7 @@ func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*P
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/deactivate"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Performanceprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3452,6 +3936,17 @@ func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*P
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3494,7 +3989,7 @@ func (a GamificationApi) PostGamificationProfileMembers(profileId string, body A
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/members"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Assignment)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3528,6 +4023,17 @@ func (a GamificationApi) PostGamificationProfileMembers(profileId string, body A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3573,7 +4079,7 @@ func (a GamificationApi) PostGamificationProfileMembersValidate(profileId string
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/members/validate"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Assignmentvalidation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3607,6 +4113,17 @@ func (a GamificationApi) PostGamificationProfileMembersValidate(profileId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3652,8 +4169,8 @@ func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId strin
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{sourceProfileId}/metrics/{sourceMetricId}/link"
-	path = strings.Replace(path, "{sourceProfileId}", fmt.Sprintf("%v", sourceProfileId), -1)
-	path = strings.Replace(path, "{sourceMetricId}", fmt.Sprintf("%v", sourceMetricId), -1)
+	path = strings.Replace(path, "{sourceProfileId}", url.PathEscape(fmt.Sprintf("%v", sourceProfileId)), -1)
+	path = strings.Replace(path, "{sourceMetricId}", url.PathEscape(fmt.Sprintf("%v", sourceMetricId)), -1)
 	defaultReturn := new(Metric)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3692,6 +4209,17 @@ func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3737,7 +4265,7 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Metric)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3771,6 +4299,17 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3847,6 +4386,17 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile,
 	queryParams["copyMetrics"] = a.Configuration.APIClient.ParameterToString(copyMetrics, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3891,7 +4441,7 @@ func (a GamificationApi) PutGamificationProfile(profileId string, body Performan
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
 	defaultReturn := new(Performanceprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3920,6 +4470,17 @@ func (a GamificationApi) PutGamificationProfile(profileId string, body Performan
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3965,8 +4526,8 @@ func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics/{metricId}"
-	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
-	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	path = strings.Replace(path, "{profileId}", url.PathEscape(fmt.Sprintf("%v", profileId)), -1)
+	path = strings.Replace(path, "{metricId}", url.PathEscape(fmt.Sprintf("%v", metricId)), -1)
 	defaultReturn := new(Metric)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4005,6 +4566,17 @@ func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4078,6 +4650,17 @@ func (a GamificationApi) PutGamificationStatus(status Gamificationstatus) (*Gami
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

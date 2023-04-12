@@ -77,6 +77,17 @@ func (a BillingApi) GetBillingReportsBillableusage(startDate time.Time, endDate 
 	queryParams["endDate"] = a.Configuration.APIClient.ParameterToString(endDate, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -120,7 +131,7 @@ func (a BillingApi) GetBillingTrusteebillingoverviewTrustorOrgId(trustorOrgId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/billing/trusteebillingoverview/{trustorOrgId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
 	defaultReturn := new(Trusteebillingoverview)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -151,6 +162,17 @@ func (a BillingApi) GetBillingTrusteebillingoverviewTrustorOrgId(trustorOrgId st
 	
 	queryParams["billingPeriodIndex"] = a.Configuration.APIClient.ParameterToString(billingPeriodIndex, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

@@ -36,7 +36,7 @@ func (a ArchitectApi) DeleteArchitectEmergencygroup(emergencyGroupId string) (*A
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/emergencygroups/{emergencyGroupId}"
-	path = strings.Replace(path, "{emergencyGroupId}", fmt.Sprintf("%v", emergencyGroupId), -1)
+	path = strings.Replace(path, "{emergencyGroupId}", url.PathEscape(fmt.Sprintf("%v", emergencyGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a ArchitectApi) DeleteArchitectEmergencygroup(emergencyGroupId string) (*A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a ArchitectApi) DeleteArchitectIvr(ivrId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs/{ivrId}"
-	path = strings.Replace(path, "{ivrId}", fmt.Sprintf("%v", ivrId), -1)
+	path = strings.Replace(path, "{ivrId}", url.PathEscape(fmt.Sprintf("%v", ivrId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -128,6 +139,17 @@ func (a ArchitectApi) DeleteArchitectIvr(ivrId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -164,7 +186,7 @@ func (a ArchitectApi) DeleteArchitectPrompt(promptId string, allResources bool) 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -194,6 +216,17 @@ func (a ArchitectApi) DeleteArchitectPrompt(promptId string, allResources bool) 
 	
 	queryParams["allResources"] = a.Configuration.APIClient.ParameterToString(allResources, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -230,8 +263,8 @@ func (a ArchitectApi) DeleteArchitectPromptResource(promptId string, languageCod
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources/{languageCode}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -264,6 +297,17 @@ func (a ArchitectApi) DeleteArchitectPromptResource(promptId string, languageCod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -300,8 +344,8 @@ func (a ArchitectApi) DeleteArchitectPromptResourceAudio(promptId string, langua
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources/{languageCode}/audio"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -334,6 +378,17 @@ func (a ArchitectApi) DeleteArchitectPromptResourceAudio(promptId string, langua
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -403,6 +458,17 @@ func (a ArchitectApi) DeleteArchitectPrompts(id []string) (*Operation, *APIRespo
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -444,7 +510,7 @@ func (a ArchitectApi) DeleteArchitectSchedule(scheduleId string) (*APIResponse, 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -472,6 +538,17 @@ func (a ArchitectApi) DeleteArchitectSchedule(scheduleId string) (*APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -508,7 +585,7 @@ func (a ArchitectApi) DeleteArchitectSchedulegroup(scheduleGroupId string) (*API
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedulegroups/{scheduleGroupId}"
-	path = strings.Replace(path, "{scheduleGroupId}", fmt.Sprintf("%v", scheduleGroupId), -1)
+	path = strings.Replace(path, "{scheduleGroupId}", url.PathEscape(fmt.Sprintf("%v", scheduleGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -536,6 +613,17 @@ func (a ArchitectApi) DeleteArchitectSchedulegroup(scheduleGroupId string) (*API
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -572,8 +660,8 @@ func (a ArchitectApi) DeleteArchitectSystempromptResource(promptId string, langu
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/resources/{languageCode}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -606,6 +694,17 @@ func (a ArchitectApi) DeleteArchitectSystempromptResource(promptId string, langu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -642,7 +741,7 @@ func (a ArchitectApi) DeleteFlow(flowId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -670,6 +769,17 @@ func (a ArchitectApi) DeleteFlow(flowId string) (*APIResponse, error) {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -739,6 +849,17 @@ func (a ArchitectApi) DeleteFlows(id []string) (*Operation, *APIResponse, error)
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -782,7 +903,7 @@ func (a ArchitectApi) DeleteFlowsDatatable(datatableId string, force bool) (*API
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -812,6 +933,17 @@ func (a ArchitectApi) DeleteFlowsDatatable(datatableId string, force bool) (*API
 	
 	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -850,8 +982,8 @@ func (a ArchitectApi) DeleteFlowsDatatableRow(datatableId string, rowId string) 
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows/{rowId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
-	path = strings.Replace(path, "{rowId}", fmt.Sprintf("%v", rowId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
+	path = strings.Replace(path, "{rowId}", url.PathEscape(fmt.Sprintf("%v", rowId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -884,6 +1016,17 @@ func (a ArchitectApi) DeleteFlowsDatatableRow(datatableId string, rowId string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -920,7 +1063,7 @@ func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*interface{}, *A
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/milestones/{milestoneId}"
-	path = strings.Replace(path, "{milestoneId}", fmt.Sprintf("%v", milestoneId), -1)
+	path = strings.Replace(path, "{milestoneId}", url.PathEscape(fmt.Sprintf("%v", milestoneId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -949,6 +1092,17 @@ func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*interface{}, *A
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1036,6 +1190,17 @@ func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int
 	queryParams["consumingResourceType"] = a.Configuration.APIClient.ParameterToString(consumingResourceType, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1100,6 +1265,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingBuild() (*Dependencystatus, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1193,6 +1369,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1282,6 +1469,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 	queryParams["flowFilter"] = a.Configuration.APIClient.ParameterToString(flowFilter, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1360,6 +1558,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(nam
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1447,6 +1656,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version st
 	queryParams["consumedResourceRequest"] = a.Configuration.APIClient.ParameterToString(consumedResourceRequest, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1488,7 +1708,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingType(typeId string) (*Depend
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/types/{typeId}"
-	path = strings.Replace(path, "{typeId}", fmt.Sprintf("%v", typeId), -1)
+	path = strings.Replace(path, "{typeId}", url.PathEscape(fmt.Sprintf("%v", typeId)), -1)
 	defaultReturn := new(Dependencytype)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1517,6 +1737,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingType(typeId string) (*Depend
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1586,6 +1817,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int, pageSi
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1664,6 +1906,17 @@ func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(nam
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1705,7 +1958,7 @@ func (a ArchitectApi) GetArchitectEmergencygroup(emergencyGroupId string) (*Emer
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/emergencygroups/{emergencyGroupId}"
-	path = strings.Replace(path, "{emergencyGroupId}", fmt.Sprintf("%v", emergencyGroupId), -1)
+	path = strings.Replace(path, "{emergencyGroupId}", url.PathEscape(fmt.Sprintf("%v", emergencyGroupId)), -1)
 	defaultReturn := new(Emergencygroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1734,6 +1987,17 @@ func (a ArchitectApi) GetArchitectEmergencygroup(emergencyGroupId string) (*Emer
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1810,6 +2074,17 @@ func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int, pageSize int, 
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1851,7 +2126,7 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs/{ivrId}"
-	path = strings.Replace(path, "{ivrId}", fmt.Sprintf("%v", ivrId), -1)
+	path = strings.Replace(path, "{ivrId}", url.PathEscape(fmt.Sprintf("%v", ivrId)), -1)
 	defaultReturn := new(Ivr)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1880,6 +2155,17 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1960,6 +2246,17 @@ func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy stri
 	queryParams["scheduleGroup"] = a.Configuration.APIClient.ParameterToString(scheduleGroup, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2001,7 +2298,7 @@ func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Prompt)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2030,6 +2327,17 @@ func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2072,8 +2380,8 @@ func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, histor
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/history/{historyId}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{historyId}", fmt.Sprintf("%v", historyId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{historyId}", url.PathEscape(fmt.Sprintf("%v", historyId)), -1)
 	defaultReturn := new(Historylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2118,6 +2426,17 @@ func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, histor
 	queryParams["action"] = a.Configuration.APIClient.ParameterToString(action, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2159,8 +2478,8 @@ func (a ArchitectApi) GetArchitectPromptResource(promptId string, languageCode s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources/{languageCode}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Promptasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2194,6 +2513,17 @@ func (a ArchitectApi) GetArchitectPromptResource(promptId string, languageCode s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2238,7 +2568,7 @@ func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber in
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Promptassetentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2271,6 +2601,17 @@ func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber in
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2353,6 +2694,17 @@ func (a ArchitectApi) GetArchitectPrompts(pageNumber int, pageSize int, name []s
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2394,7 +2746,7 @@ func (a ArchitectApi) GetArchitectSchedule(scheduleId string) (*Schedule, *APIRe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Schedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2423,6 +2775,17 @@ func (a ArchitectApi) GetArchitectSchedule(scheduleId string) (*Schedule, *APIRe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2465,7 +2828,7 @@ func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedu
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedulegroups/{scheduleGroupId}"
-	path = strings.Replace(path, "{scheduleGroupId}", fmt.Sprintf("%v", scheduleGroupId), -1)
+	path = strings.Replace(path, "{scheduleGroupId}", url.PathEscape(fmt.Sprintf("%v", scheduleGroupId)), -1)
 	defaultReturn := new(Schedulegroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2494,6 +2857,17 @@ func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2574,6 +2948,17 @@ func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int, pageSize int, s
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2651,6 +3036,17 @@ func (a ArchitectApi) GetArchitectSchedules(pageNumber int, pageSize int, sortBy
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2692,7 +3088,7 @@ func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Systemprompt)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2721,6 +3117,17 @@ func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2763,8 +3170,8 @@ func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/history/{historyId}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{historyId}", fmt.Sprintf("%v", historyId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{historyId}", url.PathEscape(fmt.Sprintf("%v", historyId)), -1)
 	defaultReturn := new(Historylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2809,6 +3216,17 @@ func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, 
 	queryParams["action"] = a.Configuration.APIClient.ParameterToString(action, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2850,8 +3268,8 @@ func (a ArchitectApi) GetArchitectSystempromptResource(promptId string, language
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/resources/{languageCode}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Systempromptasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2885,6 +3303,17 @@ func (a ArchitectApi) GetArchitectSystempromptResource(promptId string, language
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2927,7 +3356,7 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/resources"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Systempromptassetentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2964,6 +3393,17 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3044,6 +3484,17 @@ func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, so
 	queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3085,7 +3536,7 @@ func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
 	defaultReturn := new(Flow)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3116,6 +3567,17 @@ func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse,
 	
 	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3158,8 +3620,8 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/history/{historyId}"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
-	path = strings.Replace(path, "{historyId}", fmt.Sprintf("%v", historyId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
+	path = strings.Replace(path, "{historyId}", url.PathEscape(fmt.Sprintf("%v", historyId)), -1)
 	defaultReturn := new(Historylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3204,6 +3666,17 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 	queryParams["action"] = a.Configuration.APIClient.ParameterToString(action, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3245,7 +3718,7 @@ func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/latestconfiguration"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3276,6 +3749,17 @@ func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*
 	
 	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3318,8 +3802,8 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions/{versionId}"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(Flowversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3355,6 +3839,17 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 	
 	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3397,8 +3892,8 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions/{versionId}/configuration"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
-	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
 	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3434,6 +3929,17 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 	
 	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3476,7 +3982,7 @@ func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int, pageSize in
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
 	defaultReturn := new(Flowversionentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3511,6 +4017,17 @@ func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int, pageSize in
 	
 	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3617,6 +4134,17 @@ func (a ArchitectApi) GetFlows(varType []string, pageNumber int, pageSize int, s
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3660,7 +4188,7 @@ func (a ArchitectApi) GetFlowsDatatable(datatableId string, expand string) (*Dat
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(Datatable)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3691,6 +4219,17 @@ func (a ArchitectApi) GetFlowsDatatable(datatableId string, expand string) (*Dat
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3735,8 +4274,8 @@ func (a ArchitectApi) GetFlowsDatatableExportJob(datatableId string, exportJobId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/export/jobs/{exportJobId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
-	path = strings.Replace(path, "{exportJobId}", fmt.Sprintf("%v", exportJobId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
+	path = strings.Replace(path, "{exportJobId}", url.PathEscape(fmt.Sprintf("%v", exportJobId)), -1)
 	defaultReturn := new(Datatableexportjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3770,6 +4309,17 @@ func (a ArchitectApi) GetFlowsDatatableExportJob(datatableId string, exportJobId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3814,8 +4364,8 @@ func (a ArchitectApi) GetFlowsDatatableImportJob(datatableId string, importJobId
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs/{importJobId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
-	path = strings.Replace(path, "{importJobId}", fmt.Sprintf("%v", importJobId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
+	path = strings.Replace(path, "{importJobId}", url.PathEscape(fmt.Sprintf("%v", importJobId)), -1)
 	defaultReturn := new(Datatableimportjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3849,6 +4399,17 @@ func (a ArchitectApi) GetFlowsDatatableImportJob(datatableId string, importJobId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3893,7 +4454,7 @@ func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(Datatableimportentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3926,6 +4487,17 @@ func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3970,8 +4542,8 @@ func (a ArchitectApi) GetFlowsDatatableRow(datatableId string, rowId string, sho
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows/{rowId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
-	path = strings.Replace(path, "{rowId}", fmt.Sprintf("%v", rowId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
+	path = strings.Replace(path, "{rowId}", url.PathEscape(fmt.Sprintf("%v", rowId)), -1)
 	defaultReturn := new(map[string]interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4007,6 +4579,17 @@ func (a ArchitectApi) GetFlowsDatatableRow(datatableId string, rowId string, sho
 	
 	queryParams["showbrief"] = a.Configuration.APIClient.ParameterToString(showbrief, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4051,7 +4634,7 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(Datatablerowentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4088,6 +4671,17 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, 
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4170,6 +4764,17 @@ func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int, pageSize
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4213,7 +4818,7 @@ func (a ArchitectApi) GetFlowsDatatablesDivisionview(datatableId string, expand 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/divisionviews/{datatableId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(Datatable)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4244,6 +4849,17 @@ func (a ArchitectApi) GetFlowsDatatablesDivisionview(datatableId string, expand 
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4325,6 +4941,17 @@ func (a ArchitectApi) GetFlowsDatatablesDivisionviews(expand string, pageNumber 
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4417,6 +5044,17 @@ func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int, pa
 	queryParams["includeSchemas"] = a.Configuration.APIClient.ParameterToString(includeSchemas, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4458,7 +5096,7 @@ func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexe
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/executions/{flowExecutionId}"
-	path = strings.Replace(path, "{flowExecutionId}", fmt.Sprintf("%v", flowExecutionId), -1)
+	path = strings.Replace(path, "{flowExecutionId}", url.PathEscape(fmt.Sprintf("%v", flowExecutionId)), -1)
 	defaultReturn := new(Flowruntimeexecution)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4487,6 +5125,17 @@ func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4529,7 +5178,7 @@ func (a ArchitectApi) GetFlowsJob(jobId string, expand []string) (*Architectjobs
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/jobs/{jobId}"
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Architectjobstateresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4560,6 +5209,17 @@ func (a ArchitectApi) GetFlowsJob(jobId string, expand []string) (*Architectjobs
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4604,7 +5264,7 @@ func (a ArchitectApi) GetFlowsMilestone(milestoneId string) (*Flowmilestone, *AP
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/milestones/{milestoneId}"
-	path = strings.Replace(path, "{milestoneId}", fmt.Sprintf("%v", milestoneId), -1)
+	path = strings.Replace(path, "{milestoneId}", url.PathEscape(fmt.Sprintf("%v", milestoneId)), -1)
 	defaultReturn := new(Flowmilestone)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4633,6 +5293,17 @@ func (a ArchitectApi) GetFlowsMilestone(milestoneId string) (*Flowmilestone, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4719,6 +5390,17 @@ func (a ArchitectApi) GetFlowsMilestones(pageNumber int, pageSize int, sortBy st
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4800,6 +5482,17 @@ func (a ArchitectApi) GetFlowsMilestonesDivisionviews(pageNumber int, pageSize i
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4843,7 +5536,7 @@ func (a ArchitectApi) GetFlowsOutcome(flowOutcomeId string) (*Flowoutcome, *APIR
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/outcomes/{flowOutcomeId}"
-	path = strings.Replace(path, "{flowOutcomeId}", fmt.Sprintf("%v", flowOutcomeId), -1)
+	path = strings.Replace(path, "{flowOutcomeId}", url.PathEscape(fmt.Sprintf("%v", flowOutcomeId)), -1)
 	defaultReturn := new(Flowoutcome)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4872,6 +5565,17 @@ func (a ArchitectApi) GetFlowsOutcome(flowOutcomeId string) (*Flowoutcome, *APIR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4958,6 +5662,17 @@ func (a ArchitectApi) GetFlowsOutcomes(pageNumber int, pageSize int, sortBy stri
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5039,6 +5754,17 @@ func (a ArchitectApi) GetFlowsOutcomesDivisionviews(pageNumber int, pageSize int
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5105,6 +5831,17 @@ func (a ArchitectApi) PostArchitectDependencytrackingBuild() (*APIResponse, erro
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5168,6 +5905,17 @@ func (a ArchitectApi) PostArchitectEmergencygroups(body Emergencygroup) (*Emerge
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5242,6 +5990,17 @@ func (a ArchitectApi) PostArchitectIvrs(body Ivr) (*Ivr, *APIResponse, error) {
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5288,7 +6047,7 @@ func (a ArchitectApi) PostArchitectPromptHistory(promptId string) (*Operation, *
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/history"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Operation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5317,6 +6076,17 @@ func (a ArchitectApi) PostArchitectPromptHistory(promptId string) (*Operation, *
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5359,7 +6129,7 @@ func (a ArchitectApi) PostArchitectPromptResources(promptId string, body Prompta
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Promptasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5393,6 +6163,17 @@ func (a ArchitectApi) PostArchitectPromptResources(promptId string, body Prompta
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5467,6 +6248,17 @@ func (a ArchitectApi) PostArchitectPrompts(body Prompt) (*Prompt, *APIResponse, 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5539,6 +6331,17 @@ func (a ArchitectApi) PostArchitectSchedulegroups(body Schedulegroup) (*Schedule
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5613,6 +6416,17 @@ func (a ArchitectApi) PostArchitectSchedules(body Schedule) (*Schedule, *APIResp
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5659,7 +6473,7 @@ func (a ArchitectApi) PostArchitectSystempromptHistory(promptId string) (*Operat
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/history"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Operation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5688,6 +6502,17 @@ func (a ArchitectApi) PostArchitectSystempromptHistory(promptId string) (*Operat
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5730,7 +6555,7 @@ func (a ArchitectApi) PostArchitectSystempromptResources(promptId string, body S
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/resources"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Systempromptasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5764,6 +6589,17 @@ func (a ArchitectApi) PostArchitectSystempromptResources(promptId string, body S
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5811,7 +6647,7 @@ func (a ArchitectApi) PostFlowHistory(flowId string) (*Operation, *APIResponse, 
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/history"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
 	defaultReturn := new(Operation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5840,6 +6676,17 @@ func (a ArchitectApi) PostFlowHistory(flowId string) (*Operation, *APIResponse, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5882,7 +6729,7 @@ func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowve
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
 	defaultReturn := new(Flowversion)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5916,6 +6763,17 @@ func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowve
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5991,6 +6849,17 @@ func (a ArchitectApi) PostFlows(body Flow, language string) (*Flow, *APIResponse
 	
 	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6069,6 +6938,17 @@ func (a ArchitectApi) PostFlowsActionsCheckin(flow string) (*Operation, *APIResp
 	queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6141,6 +7021,17 @@ func (a ArchitectApi) PostFlowsActionsCheckout(flow string) (*Flow, *APIResponse
 	queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6212,6 +7103,17 @@ func (a ArchitectApi) PostFlowsActionsDeactivate(flow string) (*Flow, *APIRespon
 	
 	queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6289,6 +7191,17 @@ func (a ArchitectApi) PostFlowsActionsPublish(flow string, version string) (*Ope
 	queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6360,6 +7273,17 @@ func (a ArchitectApi) PostFlowsActionsRevert(flow string) (*Flow, *APIResponse, 
 	
 	queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6435,6 +7359,17 @@ func (a ArchitectApi) PostFlowsActionsUnlock(flow string) (*Flow, *APIResponse, 
 	queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6478,7 +7413,7 @@ func (a ArchitectApi) PostFlowsDatatableExportJobs(datatableId string) (*Datatab
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/export/jobs"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(Datatableexportjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6507,6 +7442,17 @@ func (a ArchitectApi) PostFlowsDatatableExportJobs(datatableId string) (*Datatab
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6551,7 +7497,7 @@ func (a ArchitectApi) PostFlowsDatatableImportJobs(datatableId string, body Data
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(Datatableimportjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6585,6 +7531,17 @@ func (a ArchitectApi) PostFlowsDatatableImportJobs(datatableId string, body Data
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6632,7 +7589,7 @@ func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow ma
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(map[string]interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6666,6 +7623,17 @@ func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow ma
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6742,6 +7710,17 @@ func (a ArchitectApi) PostFlowsDatatables(body Datatable) (*Datatable, *APIRespo
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6817,6 +7796,17 @@ func (a ArchitectApi) PostFlowsExecutions(flowLaunchRequest Flowexecutionlaunchr
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6885,6 +7875,17 @@ func (a ArchitectApi) PostFlowsJobs() (*Registerarchitectjobresponse, *APIRespon
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6949,6 +7950,17 @@ func (a ArchitectApi) PostFlowsMilestones(body Flowmilestone) (*Flowmilestone, *
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7020,6 +8032,17 @@ func (a ArchitectApi) PostFlowsOutcomes(body Flowoutcome) (*Flowoutcome, *APIRes
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7064,7 +8087,7 @@ func (a ArchitectApi) PutArchitectEmergencygroup(emergencyGroupId string, body E
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/emergencygroups/{emergencyGroupId}"
-	path = strings.Replace(path, "{emergencyGroupId}", fmt.Sprintf("%v", emergencyGroupId), -1)
+	path = strings.Replace(path, "{emergencyGroupId}", url.PathEscape(fmt.Sprintf("%v", emergencyGroupId)), -1)
 	defaultReturn := new(Emergencygroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7098,6 +8121,17 @@ func (a ArchitectApi) PutArchitectEmergencygroup(emergencyGroupId string, body E
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7143,7 +8177,7 @@ func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIRespons
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs/{ivrId}"
-	path = strings.Replace(path, "{ivrId}", fmt.Sprintf("%v", ivrId), -1)
+	path = strings.Replace(path, "{ivrId}", url.PathEscape(fmt.Sprintf("%v", ivrId)), -1)
 	defaultReturn := new(Ivr)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7177,6 +8211,17 @@ func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIRespons
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7222,7 +8267,7 @@ func (a ArchitectApi) PutArchitectPrompt(promptId string, body Prompt) (*Prompt,
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
 	defaultReturn := new(Prompt)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7256,6 +8301,17 @@ func (a ArchitectApi) PutArchitectPrompt(promptId string, body Prompt) (*Prompt,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7301,8 +8357,8 @@ func (a ArchitectApi) PutArchitectPromptResource(promptId string, languageCode s
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources/{languageCode}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Promptasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7341,6 +8397,17 @@ func (a ArchitectApi) PutArchitectPromptResource(promptId string, languageCode s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7386,7 +8453,7 @@ func (a ArchitectApi) PutArchitectSchedule(scheduleId string, body Schedule) (*S
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
+	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
 	defaultReturn := new(Schedule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7420,6 +8487,17 @@ func (a ArchitectApi) PutArchitectSchedule(scheduleId string, body Schedule) (*S
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7465,7 +8543,7 @@ func (a ArchitectApi) PutArchitectSchedulegroup(scheduleGroupId string, body Sch
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedulegroups/{scheduleGroupId}"
-	path = strings.Replace(path, "{scheduleGroupId}", fmt.Sprintf("%v", scheduleGroupId), -1)
+	path = strings.Replace(path, "{scheduleGroupId}", url.PathEscape(fmt.Sprintf("%v", scheduleGroupId)), -1)
 	defaultReturn := new(Schedulegroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7499,6 +8577,17 @@ func (a ArchitectApi) PutArchitectSchedulegroup(scheduleGroupId string, body Sch
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7544,8 +8633,8 @@ func (a ArchitectApi) PutArchitectSystempromptResource(promptId string, language
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/resources/{languageCode}"
-	path = strings.Replace(path, "{promptId}", fmt.Sprintf("%v", promptId), -1)
-	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
 	defaultReturn := new(Systempromptasset)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7584,6 +8673,17 @@ func (a ArchitectApi) PutArchitectSystempromptResource(promptId string, language
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7629,7 +8729,7 @@ func (a ArchitectApi) PutFlow(flowId string, body Flow) (*Flow, *APIResponse, er
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}"
-	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
 	defaultReturn := new(Flow)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7663,6 +8763,17 @@ func (a ArchitectApi) PutFlow(flowId string, body Flow) (*Flow, *APIResponse, er
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7710,7 +8821,7 @@ func (a ArchitectApi) PutFlowsDatatable(datatableId string, body Datatable, expa
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
 	defaultReturn := new(Datatable)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7746,6 +8857,17 @@ func (a ArchitectApi) PutFlowsDatatable(datatableId string, body Datatable, expa
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7793,8 +8915,8 @@ func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, bod
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows/{rowId}"
-	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
-	path = strings.Replace(path, "{rowId}", fmt.Sprintf("%v", rowId), -1)
+	path = strings.Replace(path, "{datatableId}", url.PathEscape(fmt.Sprintf("%v", datatableId)), -1)
+	path = strings.Replace(path, "{rowId}", url.PathEscape(fmt.Sprintf("%v", rowId)), -1)
 	defaultReturn := new(map[string]interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7828,6 +8950,17 @@ func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, bod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7873,7 +9006,7 @@ func (a ArchitectApi) PutFlowsMilestone(milestoneId string, body Flowmilestone) 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/milestones/{milestoneId}"
-	path = strings.Replace(path, "{milestoneId}", fmt.Sprintf("%v", milestoneId), -1)
+	path = strings.Replace(path, "{milestoneId}", url.PathEscape(fmt.Sprintf("%v", milestoneId)), -1)
 	defaultReturn := new(Flowmilestone)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7902,6 +9035,17 @@ func (a ArchitectApi) PutFlowsMilestone(milestoneId string, body Flowmilestone) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7949,7 +9093,7 @@ func (a ArchitectApi) PutFlowsOutcome(flowOutcomeId string, body Flowoutcome) (*
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/outcomes/{flowOutcomeId}"
-	path = strings.Replace(path, "{flowOutcomeId}", fmt.Sprintf("%v", flowOutcomeId), -1)
+	path = strings.Replace(path, "{flowOutcomeId}", url.PathEscape(fmt.Sprintf("%v", flowOutcomeId)), -1)
 	defaultReturn := new(Operation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7978,6 +9122,17 @@ func (a ArchitectApi) PutFlowsOutcome(flowOutcomeId string, body Flowoutcome) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

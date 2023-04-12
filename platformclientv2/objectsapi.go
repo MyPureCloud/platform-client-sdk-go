@@ -36,7 +36,7 @@ func (a ObjectsApi) DeleteAuthorizationDivision(divisionId string, force bool) (
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -66,6 +66,17 @@ func (a ObjectsApi) DeleteAuthorizationDivision(divisionId string, force bool) (
 	
 	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -102,7 +113,7 @@ func (a ObjectsApi) GetAuthorizationDivision(divisionId string, objectCount bool
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	defaultReturn := new(Authzdivision)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -133,6 +144,17 @@ func (a ObjectsApi) GetAuthorizationDivision(divisionId string, objectCount bool
 	
 	queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -219,6 +241,17 @@ func (a ObjectsApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sort
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -286,6 +319,17 @@ func (a ObjectsApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIRespons
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -351,6 +395,17 @@ func (a ObjectsApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, error)
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -394,8 +449,8 @@ func (a ObjectsApi) PostAuthorizationDivisionObject(divisionId string, objectTyp
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}/objects/{objectType}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
-	path = strings.Replace(path, "{objectType}", fmt.Sprintf("%v", objectType), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
+	path = strings.Replace(path, "{objectType}", url.PathEscape(fmt.Sprintf("%v", objectType)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -433,6 +488,17 @@ func (a ObjectsApi) PostAuthorizationDivisionObject(divisionId string, objectTyp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -472,7 +538,7 @@ func (a ObjectsApi) PostAuthorizationDivisionRestore(divisionId string, body Aut
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}/restore"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	defaultReturn := new(Authzdivision)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -506,6 +572,17 @@ func (a ObjectsApi) PostAuthorizationDivisionRestore(divisionId string, body Aut
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -580,6 +657,17 @@ func (a ObjectsApi) PostAuthorizationDivisions(body Authzdivision) (*Authzdivisi
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -624,7 +712,7 @@ func (a ObjectsApi) PutAuthorizationDivision(divisionId string, body Authzdivisi
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}"
-	path = strings.Replace(path, "{divisionId}", fmt.Sprintf("%v", divisionId), -1)
+	path = strings.Replace(path, "{divisionId}", url.PathEscape(fmt.Sprintf("%v", divisionId)), -1)
 	defaultReturn := new(Authzdivision)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -658,6 +746,17 @@ func (a ObjectsApi) PutAuthorizationDivision(divisionId string, body Authzdivisi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

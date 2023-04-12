@@ -36,7 +36,7 @@ func (a ProcessAutomationApi) DeleteProcessautomationTrigger(triggerId string) (
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/processautomation/triggers/{triggerId}"
-	path = strings.Replace(path, "{triggerId}", fmt.Sprintf("%v", triggerId), -1)
+	path = strings.Replace(path, "{triggerId}", url.PathEscape(fmt.Sprintf("%v", triggerId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a ProcessAutomationApi) DeleteProcessautomationTrigger(triggerId string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a ProcessAutomationApi) GetProcessautomationTrigger(triggerId string) (*Tr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/processautomation/triggers/{triggerId}"
-	path = strings.Replace(path, "{triggerId}", fmt.Sprintf("%v", triggerId), -1)
+	path = strings.Replace(path, "{triggerId}", url.PathEscape(fmt.Sprintf("%v", triggerId)), -1)
 	defaultReturn := new(Trigger)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -129,6 +140,17 @@ func (a ProcessAutomationApi) GetProcessautomationTrigger(triggerId string) (*Tr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -207,6 +229,17 @@ func (a ProcessAutomationApi) GetProcessautomationTriggers(before string, after 
 	queryParams["hasDelayBy"] = a.Configuration.APIClient.ParameterToString(hasDelayBy, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -278,6 +311,17 @@ func (a ProcessAutomationApi) GetProcessautomationTriggersTopics(before string, 
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -319,7 +363,7 @@ func (a ProcessAutomationApi) PostProcessautomationTriggerTest(triggerId string,
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/processautomation/triggers/{triggerId}/test"
-	path = strings.Replace(path, "{triggerId}", fmt.Sprintf("%v", triggerId), -1)
+	path = strings.Replace(path, "{triggerId}", url.PathEscape(fmt.Sprintf("%v", triggerId)), -1)
 	defaultReturn := new(Testmoderesults)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -348,6 +392,17 @@ func (a ProcessAutomationApi) PostProcessautomationTriggerTest(triggerId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -422,6 +477,17 @@ func (a ProcessAutomationApi) PostProcessautomationTriggers(body Createtriggerre
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -466,7 +532,7 @@ func (a ProcessAutomationApi) PostProcessautomationTriggersTopicTest(topicName s
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/processautomation/triggers/topics/{topicName}/test"
-	path = strings.Replace(path, "{topicName}", fmt.Sprintf("%v", topicName), -1)
+	path = strings.Replace(path, "{topicName}", url.PathEscape(fmt.Sprintf("%v", topicName)), -1)
 	defaultReturn := new(Testmodeeventresults)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -495,6 +561,17 @@ func (a ProcessAutomationApi) PostProcessautomationTriggersTopicTest(topicName s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -540,7 +617,7 @@ func (a ProcessAutomationApi) PutProcessautomationTrigger(triggerId string, body
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/processautomation/triggers/{triggerId}"
-	path = strings.Replace(path, "{triggerId}", fmt.Sprintf("%v", triggerId), -1)
+	path = strings.Replace(path, "{triggerId}", url.PathEscape(fmt.Sprintf("%v", triggerId)), -1)
 	defaultReturn := new(Trigger)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -574,6 +651,17 @@ func (a ProcessAutomationApi) PutProcessautomationTrigger(triggerId string, body
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

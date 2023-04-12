@@ -36,7 +36,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdge(edgeId string) (
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdge(edgeId string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,8 +111,8 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeLogicalinterface(
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{interfaceId}", fmt.Sprintf("%v", interfaceId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{interfaceId}", url.PathEscape(fmt.Sprintf("%v", interfaceId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -134,6 +145,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeLogicalinterface(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -170,7 +192,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeSoftwareupdate(ed
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/softwareupdate"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -198,6 +220,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgeSoftwareupdate(ed
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -234,7 +267,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesCertificateautho
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}"
-	path = strings.Replace(path, "{certificateId}", fmt.Sprintf("%v", certificateId), -1)
+	path = strings.Replace(path, "{certificateId}", url.PathEscape(fmt.Sprintf("%v", certificateId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -262,6 +295,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesCertificateautho
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -298,7 +342,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesDidpool(didPoolI
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/didpools/{didPoolId}"
-	path = strings.Replace(path, "{didPoolId}", fmt.Sprintf("%v", didPoolId), -1)
+	path = strings.Replace(path, "{didPoolId}", url.PathEscape(fmt.Sprintf("%v", didPoolId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -326,6 +370,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesDidpool(didPoolI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -362,7 +417,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesEdgegroup(edgeGr
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}"
-	path = strings.Replace(path, "{edgeGroupId}", fmt.Sprintf("%v", edgeGroupId), -1)
+	path = strings.Replace(path, "{edgeGroupId}", url.PathEscape(fmt.Sprintf("%v", edgeGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -390,6 +445,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesEdgegroup(edgeGr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -426,7 +492,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesExtensionpool(ex
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}"
-	path = strings.Replace(path, "{extensionPoolId}", fmt.Sprintf("%v", extensionPoolId), -1)
+	path = strings.Replace(path, "{extensionPoolId}", url.PathEscape(fmt.Sprintf("%v", extensionPoolId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -454,6 +520,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesExtensionpool(ex
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -492,7 +569,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesOutboundroute(ou
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}"
-	path = strings.Replace(path, "{outboundRouteId}", fmt.Sprintf("%v", outboundRouteId), -1)
+	path = strings.Replace(path, "{outboundRouteId}", url.PathEscape(fmt.Sprintf("%v", outboundRouteId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -520,6 +597,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesOutboundroute(ou
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -556,7 +644,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhone(phoneId st
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phones/{phoneId}"
-	path = strings.Replace(path, "{phoneId}", fmt.Sprintf("%v", phoneId), -1)
+	path = strings.Replace(path, "{phoneId}", url.PathEscape(fmt.Sprintf("%v", phoneId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -584,6 +672,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhone(phoneId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -620,7 +719,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhonebasesetting
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}"
-	path = strings.Replace(path, "{phoneBaseId}", fmt.Sprintf("%v", phoneBaseId), -1)
+	path = strings.Replace(path, "{phoneBaseId}", url.PathEscape(fmt.Sprintf("%v", phoneBaseId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -648,6 +747,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesPhonebasesetting
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -684,7 +794,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSite(siteId stri
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -712,6 +822,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSite(siteId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -748,8 +869,8 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSiteOutboundrout
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId}"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
-	path = strings.Replace(path, "{outboundRouteId}", fmt.Sprintf("%v", outboundRouteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
+	path = strings.Replace(path, "{outboundRouteId}", url.PathEscape(fmt.Sprintf("%v", outboundRouteId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -782,6 +903,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesSiteOutboundrout
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -818,7 +950,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesTrunkbasesetting
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}"
-	path = strings.Replace(path, "{trunkBaseSettingsId}", fmt.Sprintf("%v", trunkBaseSettingsId), -1)
+	path = strings.Replace(path, "{trunkBaseSettingsId}", url.PathEscape(fmt.Sprintf("%v", trunkBaseSettingsId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -846,6 +978,17 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesTrunkbasesetting
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -910,6 +1053,17 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize in
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -951,7 +1105,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/configuration/schemas/edges/vnext/{schemaCategory}"
-	path = strings.Replace(path, "{schemaCategory}", fmt.Sprintf("%v", schemaCategory), -1)
+	path = strings.Replace(path, "{schemaCategory}", url.PathEscape(fmt.Sprintf("%v", schemaCategory)), -1)
 	defaultReturn := new(Schemareferenceentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -984,6 +1138,17 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1026,8 +1191,8 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}"
-	path = strings.Replace(path, "{schemaCategory}", fmt.Sprintf("%v", schemaCategory), -1)
-	path = strings.Replace(path, "{schemaType}", fmt.Sprintf("%v", schemaType), -1)
+	path = strings.Replace(path, "{schemaCategory}", url.PathEscape(fmt.Sprintf("%v", schemaCategory)), -1)
+	path = strings.Replace(path, "{schemaType}", url.PathEscape(fmt.Sprintf("%v", schemaType)), -1)
 	defaultReturn := new(Schemareferenceentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1065,6 +1230,17 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1107,9 +1283,9 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}"
-	path = strings.Replace(path, "{schemaCategory}", fmt.Sprintf("%v", schemaCategory), -1)
-	path = strings.Replace(path, "{schemaType}", fmt.Sprintf("%v", schemaType), -1)
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
+	path = strings.Replace(path, "{schemaCategory}", url.PathEscape(fmt.Sprintf("%v", schemaCategory)), -1)
+	path = strings.Replace(path, "{schemaType}", url.PathEscape(fmt.Sprintf("%v", schemaType)), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
 	defaultReturn := new(Organization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1148,6 +1324,17 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1190,11 +1377,11 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}/{schemaId}/{extensionType}/{metadataId}"
-	path = strings.Replace(path, "{schemaCategory}", fmt.Sprintf("%v", schemaCategory), -1)
-	path = strings.Replace(path, "{schemaType}", fmt.Sprintf("%v", schemaType), -1)
-	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
-	path = strings.Replace(path, "{extensionType}", fmt.Sprintf("%v", extensionType), -1)
-	path = strings.Replace(path, "{metadataId}", fmt.Sprintf("%v", metadataId), -1)
+	path = strings.Replace(path, "{schemaCategory}", url.PathEscape(fmt.Sprintf("%v", schemaCategory)), -1)
+	path = strings.Replace(path, "{schemaType}", url.PathEscape(fmt.Sprintf("%v", schemaType)), -1)
+	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
+	path = strings.Replace(path, "{extensionType}", url.PathEscape(fmt.Sprintf("%v", extensionType)), -1)
+	path = strings.Replace(path, "{metadataId}", url.PathEscape(fmt.Sprintf("%v", metadataId)), -1)
 	defaultReturn := new(Organization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1246,6 +1433,17 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1287,7 +1485,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdge(edgeId string, expa
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edge)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1318,6 +1516,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdge(edgeId string, expa
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1360,7 +1569,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticNslookup(e
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/nslookup"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnosticresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1389,6 +1598,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticNslookup(e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1431,7 +1651,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticPing(edgeI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/ping"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnosticresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1460,6 +1680,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticPing(edgeI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1502,7 +1733,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticRoute(edge
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/route"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnosticresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1531,6 +1762,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticRoute(edge
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1573,7 +1815,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticTracepath(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/tracepath"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnosticresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1602,6 +1844,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeDiagnosticTracepath(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1644,8 +1897,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLine(edgeId string, 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{lineId}", fmt.Sprintf("%v", lineId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{lineId}", url.PathEscape(fmt.Sprintf("%v", lineId)), -1)
 	defaultReturn := new(Edgeline)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1679,6 +1932,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLine(edgeId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1721,7 +1985,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string,
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/lines"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgelineentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1754,6 +2018,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string,
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1796,8 +2071,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterface(edg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{interfaceId}", fmt.Sprintf("%v", interfaceId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{interfaceId}", url.PathEscape(fmt.Sprintf("%v", interfaceId)), -1)
 	defaultReturn := new(Domainlogicalinterface)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1833,6 +2108,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterface(edg
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1877,7 +2163,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterfaces(ed
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Logicalinterfaceentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1908,6 +2194,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterfaces(ed
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1950,8 +2247,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogsJob(edgeId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	defaultReturn := new(Edgelogsjob)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1985,6 +2282,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogsJob(edgeId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2027,7 +2335,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeMetrics(edgeId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/metrics"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgemetrics)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2056,6 +2364,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeMetrics(edgeId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2100,8 +2419,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterface(ed
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/physicalinterfaces/{interfaceId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{interfaceId}", fmt.Sprintf("%v", interfaceId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{interfaceId}", url.PathEscape(fmt.Sprintf("%v", interfaceId)), -1)
 	defaultReturn := new(Domainphysicalinterface)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2135,6 +2454,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterface(ed
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2177,7 +2507,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterfaces(e
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/physicalinterfaces"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Physicalinterfaceentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2206,6 +2536,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgePhysicalinterfaces(e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2248,7 +2589,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSetuppackage(edgeId 
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/setuppackage"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Vmpairinginfo)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2277,6 +2618,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSetuppackage(edgeId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2319,7 +2671,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareupdate(edgeI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/softwareupdate"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Domainedgesoftwareupdatedto)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2348,6 +2700,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareupdate(edgeI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2390,7 +2753,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareversions(edg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/softwareversions"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Domainedgesoftwareversiondtoentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2419,6 +2782,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareversions(edg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2463,7 +2837,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/trunks"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Trunkentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2504,6 +2878,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 	
 	queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2586,6 +2971,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, page
 	queryParams["showCloudMedia"] = a.Configuration.APIClient.ParameterToString(showCloudMedia, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2650,6 +3046,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesAvailablelanguages(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2716,6 +3123,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2757,7 +3175,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}"
-	path = strings.Replace(path, "{certificateId}", fmt.Sprintf("%v", certificateId), -1)
+	path = strings.Replace(path, "{certificateId}", url.PathEscape(fmt.Sprintf("%v", certificateId)), -1)
 	defaultReturn := new(Domaincertificateauthority)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2786,6 +3204,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesCertificateauthorit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2828,7 +3257,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDid(didId string) (
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/dids/{didId}"
-	path = strings.Replace(path, "{didId}", fmt.Sprintf("%v", didId), -1)
+	path = strings.Replace(path, "{didId}", url.PathEscape(fmt.Sprintf("%v", didId)), -1)
 	defaultReturn := new(Did)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2857,6 +3286,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDid(didId string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2899,7 +3339,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpool(didPoolId s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/didpools/{didPoolId}"
-	path = strings.Replace(path, "{didPoolId}", fmt.Sprintf("%v", didPoolId), -1)
+	path = strings.Replace(path, "{didPoolId}", url.PathEscape(fmt.Sprintf("%v", didPoolId)), -1)
 	defaultReturn := new(Didpool)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2928,6 +3368,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpool(didPoolId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3001,6 +3452,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize i
 	
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3084,6 +3546,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpoolsDids(varTyp
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3165,6 +3638,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDids(pageSize int, 
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3206,7 +3690,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroup(edgeGroup
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}"
-	path = strings.Replace(path, "{edgeGroupId}", fmt.Sprintf("%v", edgeGroupId), -1)
+	path = strings.Replace(path, "{edgeGroupId}", url.PathEscape(fmt.Sprintf("%v", edgeGroupId)), -1)
 	defaultReturn := new(Edgegroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3237,6 +3721,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroup(edgeGroup
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3279,8 +3774,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroupEdgetrunkb
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/edgegroups/{edgegroupId}/edgetrunkbases/{edgetrunkbaseId}"
-	path = strings.Replace(path, "{edgegroupId}", fmt.Sprintf("%v", edgegroupId), -1)
-	path = strings.Replace(path, "{edgetrunkbaseId}", fmt.Sprintf("%v", edgetrunkbaseId), -1)
+	path = strings.Replace(path, "{edgegroupId}", url.PathEscape(fmt.Sprintf("%v", edgegroupId)), -1)
+	path = strings.Replace(path, "{edgetrunkbaseId}", url.PathEscape(fmt.Sprintf("%v", edgetrunkbaseId)), -1)
 	defaultReturn := new(Edgetrunkbase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3314,6 +3809,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroupEdgetrunkb
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3390,6 +3896,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroups(pageSize
 	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3457,6 +3974,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgeversionreport()
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3522,6 +4050,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExpired() (*Expired
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3563,7 +4102,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtension(extension
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensions/{extensionId}"
-	path = strings.Replace(path, "{extensionId}", fmt.Sprintf("%v", extensionId), -1)
+	path = strings.Replace(path, "{extensionId}", url.PathEscape(fmt.Sprintf("%v", extensionId)), -1)
 	defaultReturn := new(Extension)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3592,6 +4131,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtension(extension
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3634,7 +4184,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(exten
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}"
-	path = strings.Replace(path, "{extensionPoolId}", fmt.Sprintf("%v", extensionPoolId), -1)
+	path = strings.Replace(path, "{extensionPoolId}", url.PathEscape(fmt.Sprintf("%v", extensionPoolId)), -1)
 	defaultReturn := new(Extensionpool)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3663,6 +4213,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(exten
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3736,6 +4297,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 	
 	queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3812,6 +4384,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensions(pageSize
 	queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -3853,7 +4436,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLine(lineId string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/lines/{lineId}"
-	path = strings.Replace(path, "{lineId}", fmt.Sprintf("%v", lineId), -1)
+	path = strings.Replace(path, "{lineId}", url.PathEscape(fmt.Sprintf("%v", lineId)), -1)
 	defaultReturn := new(Line)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3882,6 +4465,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLine(lineId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3924,7 +4518,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/linebasesettings/{lineBaseId}"
-	path = strings.Replace(path, "{lineBaseId}", fmt.Sprintf("%v", lineBaseId), -1)
+	path = strings.Replace(path, "{lineBaseId}", url.PathEscape(fmt.Sprintf("%v", lineBaseId)), -1)
 	defaultReturn := new(Linebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3953,6 +4547,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4029,6 +4634,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pa
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4104,6 +4720,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLines(pageSize int,
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4175,6 +4802,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinesTemplate(lineB
 	
 	queryParams["lineBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(lineBaseSettingsId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4252,6 +4890,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLogicalinterfaces(e
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4324,6 +4973,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesMetrics(edgeIds str
 	queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4367,7 +5027,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outbo
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}"
-	path = strings.Replace(path, "{outboundRouteId}", fmt.Sprintf("%v", outboundRouteId), -1)
+	path = strings.Replace(path, "{outboundRouteId}", url.PathEscape(fmt.Sprintf("%v", outboundRouteId)), -1)
 	defaultReturn := new(Outboundroute)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4396,6 +5056,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outbo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4474,6 +5145,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroutes(page
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4515,7 +5197,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhone(phoneId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phones/{phoneId}"
-	path = strings.Replace(path, "{phoneId}", fmt.Sprintf("%v", phoneId), -1)
+	path = strings.Replace(path, "{phoneId}", url.PathEscape(fmt.Sprintf("%v", phoneId)), -1)
 	defaultReturn := new(Phone)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4544,6 +5226,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhone(phoneId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4586,7 +5279,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesetting(ph
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}"
-	path = strings.Replace(path, "{phoneBaseId}", fmt.Sprintf("%v", phoneBaseId), -1)
+	path = strings.Replace(path, "{phoneBaseId}", url.PathEscape(fmt.Sprintf("%v", phoneBaseId)), -1)
 	defaultReturn := new(Phonebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4615,6 +5308,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesetting(ph
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4693,6 +5397,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(p
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -4761,6 +5476,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsAv
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4833,6 +5559,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 	
 	queryParams["phoneMetabaseId"] = a.Configuration.APIClient.ParameterToString(phoneMetabaseId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4933,6 +5670,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber i
 	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5004,6 +5752,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonesTemplate(phon
 	
 	queryParams["phoneBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(phoneBaseSettingsId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5079,6 +5838,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhysicalinterfaces(
 	queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5120,7 +5890,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSite(siteId string)
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	defaultReturn := new(Site)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5149,6 +5919,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSite(siteId string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5191,8 +5972,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplan(site
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/numberplans/{numberPlanId}"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
-	path = strings.Replace(path, "{numberPlanId}", fmt.Sprintf("%v", numberPlanId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
+	path = strings.Replace(path, "{numberPlanId}", url.PathEscape(fmt.Sprintf("%v", numberPlanId)), -1)
 	defaultReturn := new(Numberplan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5226,6 +6007,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplan(site
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5268,7 +6060,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplans(sit
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/numberplans"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	defaultReturn := make([]Numberplan, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5297,6 +6089,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplans(sit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5339,7 +6142,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplansClas
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/numberplans/classifications"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	defaultReturn := make([]string, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5370,6 +6173,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplansClas
 	
 	queryParams["classification"] = a.Configuration.APIClient.ParameterToString(classification, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5412,8 +6226,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroute(s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId}"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
-	path = strings.Replace(path, "{outboundRouteId}", fmt.Sprintf("%v", outboundRouteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
+	path = strings.Replace(path, "{outboundRouteId}", url.PathEscape(fmt.Sprintf("%v", outboundRouteId)), -1)
 	defaultReturn := new(Outboundroutebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5447,6 +6261,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroute(s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5489,7 +6314,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	defaultReturn := new(Outboundroutebaseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5528,6 +6353,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(
 	
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5608,6 +6444,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int,
 	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5677,6 +6524,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTimezones(pageSize 
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -5718,7 +6576,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunk(trunkId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunks/{trunkId}"
-	path = strings.Replace(path, "{trunkId}", fmt.Sprintf("%v", trunkId), -1)
+	path = strings.Replace(path, "{trunkId}", url.PathEscape(fmt.Sprintf("%v", trunkId)), -1)
 	defaultReturn := new(Trunk)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5747,6 +6605,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunk(trunkId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5789,7 +6658,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkMetrics(trunkI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunks/{trunkId}/metrics"
-	path = strings.Replace(path, "{trunkId}", fmt.Sprintf("%v", trunkId), -1)
+	path = strings.Replace(path, "{trunkId}", url.PathEscape(fmt.Sprintf("%v", trunkId)), -1)
 	defaultReturn := new(Trunkmetrics)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5818,6 +6687,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkMetrics(trunkI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5862,7 +6742,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesetting(tr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}"
-	path = strings.Replace(path, "{trunkBaseSettingsId}", fmt.Sprintf("%v", trunkBaseSettingsId), -1)
+	path = strings.Replace(path, "{trunkBaseSettingsId}", url.PathEscape(fmt.Sprintf("%v", trunkBaseSettingsId)), -1)
 	defaultReturn := new(Trunkbase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -5893,6 +6773,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesetting(tr
 	
 	queryParams["ignoreHidden"] = a.Configuration.APIClient.ParameterToString(ignoreHidden, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -5979,6 +6870,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettings(p
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6049,6 +6951,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsAv
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6121,6 +7034,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsTe
 	
 	queryParams["trunkMetabaseId"] = a.Configuration.APIClient.ParameterToString(trunkMetabaseId, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6203,6 +7127,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunks(pageNumber i
 	queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6275,6 +7210,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunksMetrics(trunk
 	queryParams["trunkIds"] = a.Configuration.APIClient.ParameterToString(trunkIds, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6342,6 +7288,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkswithrecording
 	queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -6383,7 +7340,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticNslookup(
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/nslookup"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnostic)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6417,6 +7374,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticNslookup(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6462,7 +7430,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticPing(edge
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/ping"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnostic)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6496,6 +7464,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticPing(edge
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6541,7 +7520,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticRoute(edg
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/route"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnostic)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6575,6 +7554,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticRoute(edg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6620,7 +7610,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticTracepath
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/diagnostic/tracepath"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgenetworkdiagnostic)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6654,6 +7644,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeDiagnosticTracepath
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6701,7 +7702,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogicalinterfaces(e
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Domainlogicalinterface)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6735,6 +7736,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogicalinterfaces(e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6780,8 +7792,8 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobUpload(edgeI
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logs/jobs/{jobId}/upload"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6819,6 +7831,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobUpload(edgeI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6858,7 +7881,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobs(edgeId str
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logs/jobs"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edgelogsjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6892,6 +7915,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeLogsJobs(edgeId str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -6937,7 +7971,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeReboot(edgeId strin
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/reboot"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(string)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -6966,6 +8000,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeReboot(edgeId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7011,7 +8056,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeSoftwareupdate(edge
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/softwareupdate"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Domainedgesoftwareupdatedto)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7045,6 +8090,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeSoftwareupdate(edge
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7090,7 +8146,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeStatuscode(edgeId s
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/statuscode"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(string)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7119,6 +8175,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeStatuscode(edgeId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7164,7 +8231,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeUnpair(edgeId strin
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/unpair"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(string)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -7193,6 +8260,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgeUnpair(edgeId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7263,6 +8341,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdges(body Edge) (*Edge
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7337,6 +8426,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesAddressvalidation(
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7409,6 +8509,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesCertificateauthori
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7483,6 +8594,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesDidpools(body Didp
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7556,6 +8678,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesEdgegroups(body Ed
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7628,6 +8761,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesExtensionpools(bod
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7704,6 +8848,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesOutboundroutes(bod
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7748,7 +8903,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhoneReboot(phoneI
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phones/{phoneId}/reboot"
-	path = strings.Replace(path, "{phoneId}", fmt.Sprintf("%v", phoneId), -1)
+	path = strings.Replace(path, "{phoneId}", url.PathEscape(fmt.Sprintf("%v", phoneId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7776,6 +8931,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhoneReboot(phoneI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7840,6 +9006,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonebasesettings(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -7914,6 +9091,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhones(body Phone)
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -7986,6 +9174,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesPhonesReboot(body 
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8024,7 +9223,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteOutboundroutes
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	defaultReturn := new(Outboundroutebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8058,6 +9257,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSiteOutboundroutes
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8132,6 +9342,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesSites(body Site) (
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8205,6 +9426,17 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesTrunkbasesettings(
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -8249,7 +9481,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdge(edgeId string, body
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
 	defaultReturn := new(Edge)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8283,6 +9515,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdge(edgeId string, body
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8328,8 +9571,8 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLine(edgeId string, 
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/lines/{lineId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{lineId}", fmt.Sprintf("%v", lineId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{lineId}", url.PathEscape(fmt.Sprintf("%v", lineId)), -1)
 	defaultReturn := new(Edgeline)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8368,6 +9611,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLine(edgeId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8413,8 +9667,8 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLogicalinterface(edg
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/logicalinterfaces/{interfaceId}"
-	path = strings.Replace(path, "{edgeId}", fmt.Sprintf("%v", edgeId), -1)
-	path = strings.Replace(path, "{interfaceId}", fmt.Sprintf("%v", interfaceId), -1)
+	path = strings.Replace(path, "{edgeId}", url.PathEscape(fmt.Sprintf("%v", edgeId)), -1)
+	path = strings.Replace(path, "{interfaceId}", url.PathEscape(fmt.Sprintf("%v", interfaceId)), -1)
 	defaultReturn := new(Domainlogicalinterface)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8453,6 +9707,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgeLogicalinterface(edg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8498,7 +9763,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesCertificateauthorit
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/certificateauthorities/{certificateId}"
-	path = strings.Replace(path, "{certificateId}", fmt.Sprintf("%v", certificateId), -1)
+	path = strings.Replace(path, "{certificateId}", url.PathEscape(fmt.Sprintf("%v", certificateId)), -1)
 	defaultReturn := new(Domaincertificateauthority)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8532,6 +9797,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesCertificateauthorit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8577,7 +9853,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDid(didId string, b
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/dids/{didId}"
-	path = strings.Replace(path, "{didId}", fmt.Sprintf("%v", didId), -1)
+	path = strings.Replace(path, "{didId}", url.PathEscape(fmt.Sprintf("%v", didId)), -1)
 	defaultReturn := new(Did)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8611,6 +9887,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDid(didId string, b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8656,7 +9943,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDidpool(didPoolId s
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/didpools/{didPoolId}"
-	path = strings.Replace(path, "{didPoolId}", fmt.Sprintf("%v", didPoolId), -1)
+	path = strings.Replace(path, "{didPoolId}", url.PathEscape(fmt.Sprintf("%v", didPoolId)), -1)
 	defaultReturn := new(Didpool)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8690,6 +9977,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesDidpool(didPoolId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8735,7 +10033,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroup(edgeGroup
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/edgegroups/{edgeGroupId}"
-	path = strings.Replace(path, "{edgeGroupId}", fmt.Sprintf("%v", edgeGroupId), -1)
+	path = strings.Replace(path, "{edgeGroupId}", url.PathEscape(fmt.Sprintf("%v", edgeGroupId)), -1)
 	defaultReturn := new(Edgegroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8769,6 +10067,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroup(edgeGroup
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8814,8 +10123,8 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroupEdgetrunkb
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/edgegroups/{edgegroupId}/edgetrunkbases/{edgetrunkbaseId}"
-	path = strings.Replace(path, "{edgegroupId}", fmt.Sprintf("%v", edgegroupId), -1)
-	path = strings.Replace(path, "{edgetrunkbaseId}", fmt.Sprintf("%v", edgetrunkbaseId), -1)
+	path = strings.Replace(path, "{edgegroupId}", url.PathEscape(fmt.Sprintf("%v", edgegroupId)), -1)
+	path = strings.Replace(path, "{edgetrunkbaseId}", url.PathEscape(fmt.Sprintf("%v", edgetrunkbaseId)), -1)
 	defaultReturn := new(Edgetrunkbase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8854,6 +10163,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesEdgegroupEdgetrunkb
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8899,7 +10219,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtension(extension
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensions/{extensionId}"
-	path = strings.Replace(path, "{extensionId}", fmt.Sprintf("%v", extensionId), -1)
+	path = strings.Replace(path, "{extensionId}", url.PathEscape(fmt.Sprintf("%v", extensionId)), -1)
 	defaultReturn := new(Extension)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -8933,6 +10253,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtension(extension
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -8978,7 +10309,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtensionpool(exten
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensionpools/{extensionPoolId}"
-	path = strings.Replace(path, "{extensionPoolId}", fmt.Sprintf("%v", extensionPoolId), -1)
+	path = strings.Replace(path, "{extensionPoolId}", url.PathEscape(fmt.Sprintf("%v", extensionPoolId)), -1)
 	defaultReturn := new(Extensionpool)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9012,6 +10343,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtensionpool(exten
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9059,7 +10401,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesOutboundroute(outbo
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/outboundroutes/{outboundRouteId}"
-	path = strings.Replace(path, "{outboundRouteId}", fmt.Sprintf("%v", outboundRouteId), -1)
+	path = strings.Replace(path, "{outboundRouteId}", url.PathEscape(fmt.Sprintf("%v", outboundRouteId)), -1)
 	defaultReturn := new(Outboundroute)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9093,6 +10435,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesOutboundroute(outbo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9138,7 +10491,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhone(phoneId strin
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phones/{phoneId}"
-	path = strings.Replace(path, "{phoneId}", fmt.Sprintf("%v", phoneId), -1)
+	path = strings.Replace(path, "{phoneId}", url.PathEscape(fmt.Sprintf("%v", phoneId)), -1)
 	defaultReturn := new(Phone)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9172,6 +10525,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhone(phoneId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9217,7 +10581,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhonebasesetting(ph
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phonebasesettings/{phoneBaseId}"
-	path = strings.Replace(path, "{phoneBaseId}", fmt.Sprintf("%v", phoneBaseId), -1)
+	path = strings.Replace(path, "{phoneBaseId}", url.PathEscape(fmt.Sprintf("%v", phoneBaseId)), -1)
 	defaultReturn := new(Phonebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9251,6 +10615,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesPhonebasesetting(ph
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9296,7 +10671,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSite(siteId string,
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	defaultReturn := new(Site)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9330,6 +10705,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSite(siteId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9375,7 +10761,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteNumberplans(sit
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/numberplans"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
 	defaultReturn := make([]Numberplan, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9409,6 +10795,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteNumberplans(sit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9454,8 +10851,8 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteOutboundroute(s
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId}"
-	path = strings.Replace(path, "{siteId}", fmt.Sprintf("%v", siteId), -1)
-	path = strings.Replace(path, "{outboundRouteId}", fmt.Sprintf("%v", outboundRouteId), -1)
+	path = strings.Replace(path, "{siteId}", url.PathEscape(fmt.Sprintf("%v", siteId)), -1)
+	path = strings.Replace(path, "{outboundRouteId}", url.PathEscape(fmt.Sprintf("%v", outboundRouteId)), -1)
 	defaultReturn := new(Outboundroutebase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9494,6 +10891,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesSiteOutboundroute(s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -9539,7 +10947,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesTrunkbasesetting(tr
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunkbasesettings/{trunkBaseSettingsId}"
-	path = strings.Replace(path, "{trunkBaseSettingsId}", fmt.Sprintf("%v", trunkBaseSettingsId), -1)
+	path = strings.Replace(path, "{trunkBaseSettingsId}", url.PathEscape(fmt.Sprintf("%v", trunkBaseSettingsId)), -1)
 	defaultReturn := new(Trunkbase)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -9573,6 +10981,17 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesTrunkbasesetting(tr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

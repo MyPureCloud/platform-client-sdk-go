@@ -36,7 +36,7 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustee(trusteeOrgId
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustee(trusteeOrgId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,8 +111,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeCloneduser(tr
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/clonedusers/{trusteeUserId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -134,6 +145,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeCloneduser(tr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -170,8 +192,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeGroup(trustee
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeGroupId}", fmt.Sprintf("%v", trusteeGroupId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeGroupId}", url.PathEscape(fmt.Sprintf("%v", trusteeGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -204,6 +226,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeGroup(trustee
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -240,8 +273,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeGroupRoles(tr
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}/roles"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeGroupId}", fmt.Sprintf("%v", trusteeGroupId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeGroupId}", url.PathEscape(fmt.Sprintf("%v", trusteeGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -274,6 +307,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeGroupRoles(tr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -310,8 +354,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUser(trusteeO
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -344,6 +388,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUser(trusteeO
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -380,8 +435,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUserRoles(tru
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roles"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -414,6 +469,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUserRoles(tru
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -450,7 +516,7 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustor(trustorOrgId
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -478,6 +544,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustor(trustorOrgId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -514,8 +591,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorCloneduser(tr
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers/{trusteeUserId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -548,6 +625,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorCloneduser(tr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -584,8 +672,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorGroup(trustor
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/groups/{trustorGroupId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trustorGroupId}", fmt.Sprintf("%v", trustorGroupId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trustorGroupId}", url.PathEscape(fmt.Sprintf("%v", trustorGroupId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -618,6 +706,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorGroup(trustor
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -654,8 +753,8 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorUser(trustorO
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/users/{trusteeUserId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -688,6 +787,17 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorUser(trustorO
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -724,7 +834,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationPairing(pairingId strin
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/pairings/{pairingId}"
-	path = strings.Replace(path, "{pairingId}", fmt.Sprintf("%v", pairingId), -1)
+	path = strings.Replace(path, "{pairingId}", url.PathEscape(fmt.Sprintf("%v", pairingId)), -1)
 	defaultReturn := new(Trustrequest)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -753,6 +863,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationPairing(pairingId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -795,7 +916,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustee(trusteeOrgId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	defaultReturn := new(Trustee)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -824,6 +945,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustee(trusteeOrgId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -868,7 +1000,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeClonedusers(trus
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/clonedusers"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	defaultReturn := new(Cloneduserentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -897,6 +1029,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeClonedusers(trus
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -939,8 +1082,8 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeGroup(trusteeOrg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeGroupId}", fmt.Sprintf("%v", trusteeGroupId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeGroupId}", url.PathEscape(fmt.Sprintf("%v", trusteeGroupId)), -1)
 	defaultReturn := new(Trustgroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -974,6 +1117,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeGroup(trusteeOrg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1016,8 +1170,8 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeGroupRoles(trust
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}/roles"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeGroupId}", fmt.Sprintf("%v", trusteeGroupId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeGroupId}", url.PathEscape(fmt.Sprintf("%v", trusteeGroupId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1051,6 +1205,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeGroupRoles(trust
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1093,7 +1258,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeGroups(trusteeOr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	defaultReturn := new(Trustgroupentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1126,6 +1291,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeGroups(trusteeOr
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1168,8 +1344,8 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUser(trusteeOrgI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Trustuser)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1203,6 +1379,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUser(trusteeOrgI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1245,8 +1432,8 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUserRoles(truste
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roles"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1280,6 +1467,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUserRoles(truste
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1322,7 +1520,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	defaultReturn := new(Trustuserentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1355,6 +1553,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrg
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1425,6 +1634,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustees(pageSize int, 
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1490,6 +1710,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteesDefault() (*Tru
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -1531,7 +1762,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustor(trustorOrgId st
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
 	defaultReturn := new(Trustor)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1560,6 +1791,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustor(trustorOrgId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1602,8 +1844,8 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorCloneduser(trust
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers/{trusteeUserId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Cloneduser)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1637,6 +1879,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorCloneduser(trust
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1679,7 +1932,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorClonedusers(trus
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
 	defaultReturn := new(Cloneduserentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1708,6 +1961,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorClonedusers(trus
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1750,8 +2014,8 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorGroup(trustorOrg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/groups/{trustorGroupId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trustorGroupId}", fmt.Sprintf("%v", trustorGroupId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trustorGroupId}", url.PathEscape(fmt.Sprintf("%v", trustorGroupId)), -1)
 	defaultReturn := new(Trustgroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1785,6 +2049,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorGroup(trustorOrg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1827,7 +2102,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorGroups(trustorOr
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/groups"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
 	defaultReturn := new(Trustgroupentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1860,6 +2135,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorGroups(trustorOr
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1902,8 +2188,8 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUser(trustorOrgI
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/users/{trusteeUserId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Trustuser)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -1937,6 +2223,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUser(trustorOrgI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1979,7 +2276,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrg
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/users"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
 	defaultReturn := new(Trustuserentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2012,6 +2309,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrg
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2081,6 +2389,17 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustors(pageSize int, 
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2152,6 +2471,17 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationPairings(body Trustreq
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2196,7 +2526,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeGroups(trusteeO
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	defaultReturn := new(Trustgroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2230,6 +2560,17 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeGroups(trusteeO
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2275,7 +2616,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeUsers(trusteeOr
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	defaultReturn := new(Trustuser)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2309,6 +2650,17 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteeUsers(trusteeOr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2382,6 +2734,17 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustees(body Trustcre
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2464,6 +2827,17 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Tr
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2535,6 +2909,17 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesDefault(assign
 	
 	queryParams["autoExpire"] = a.Configuration.APIClient.ParameterToString(autoExpire, "")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2614,6 +2999,17 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Tru
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -2658,7 +3054,7 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustee(trusteeOrgId st
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
 	defaultReturn := new(Trustee)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2692,6 +3088,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustee(trusteeOrgId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2737,8 +3144,8 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeGroupRoledivisio
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}/roledivisions"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeGroupId}", fmt.Sprintf("%v", trusteeGroupId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeGroupId}", url.PathEscape(fmt.Sprintf("%v", trusteeGroupId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2777,6 +3184,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeGroupRoledivisio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2822,8 +3240,8 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeGroupRoles(trust
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/groups/{trusteeGroupId}/roles"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeGroupId}", fmt.Sprintf("%v", trusteeGroupId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeGroupId}", url.PathEscape(fmt.Sprintf("%v", trusteeGroupId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2862,6 +3280,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeGroupRoles(trust
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2907,8 +3336,8 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoledivision
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roledivisions"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -2947,6 +3376,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoledivision
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2992,8 +3432,8 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoles(truste
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users/{trusteeUserId}/roles"
-	path = strings.Replace(path, "{trusteeOrgId}", fmt.Sprintf("%v", trusteeOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trusteeOrgId}", url.PathEscape(fmt.Sprintf("%v", trusteeOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Userauthorization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3032,6 +3472,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrusteeUserRoles(truste
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3077,8 +3528,8 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorCloneduser(trust
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/clonedusers/{trusteeUserId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Cloneduser)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3112,6 +3563,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorCloneduser(trust
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3154,8 +3616,8 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorGroup(trustorOrg
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/groups/{trustorGroupId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trustorGroupId}", fmt.Sprintf("%v", trustorGroupId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trustorGroupId}", url.PathEscape(fmt.Sprintf("%v", trustorGroupId)), -1)
 	defaultReturn := new(Trustgroup)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3189,6 +3651,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorGroup(trustorOrg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -3231,8 +3704,8 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorUser(trustorOrgI
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/users/{trusteeUserId}"
-	path = strings.Replace(path, "{trustorOrgId}", fmt.Sprintf("%v", trustorOrgId), -1)
-	path = strings.Replace(path, "{trusteeUserId}", fmt.Sprintf("%v", trusteeUserId), -1)
+	path = strings.Replace(path, "{trustorOrgId}", url.PathEscape(fmt.Sprintf("%v", trustorOrgId)), -1)
+	path = strings.Replace(path, "{trusteeUserId}", url.PathEscape(fmt.Sprintf("%v", trusteeUserId)), -1)
 	defaultReturn := new(Trustuser)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3266,6 +3739,17 @@ func (a OrganizationAuthorizationApi) PutOrgauthorizationTrustorUser(trustorOrgI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

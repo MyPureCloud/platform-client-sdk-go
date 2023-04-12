@@ -36,7 +36,7 @@ func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIRe
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/alerting/interactionstats/alerts/{alertId}"
-	path = strings.Replace(path, "{alertId}", fmt.Sprintf("%v", alertId), -1)
+	path = strings.Replace(path, "{alertId}", url.PathEscape(fmt.Sprintf("%v", alertId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -64,6 +64,17 @@ func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIRe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -100,7 +111,7 @@ func (a AlertingApi) DeleteAlertingInteractionstatsRule(ruleId string) (*APIResp
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/alerting/interactionstats/rules/{ruleId}"
-	path = strings.Replace(path, "{ruleId}", fmt.Sprintf("%v", ruleId), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -128,6 +139,17 @@ func (a AlertingApi) DeleteAlertingInteractionstatsRule(ruleId string) (*APIResp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -188,6 +210,17 @@ func (a AlertingApi) GetAlertingAlertsActive() (*Activealertcount, *APIResponse,
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -229,7 +262,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []s
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/alerting/interactionstats/alerts/{alertId}"
-	path = strings.Replace(path, "{alertId}", fmt.Sprintf("%v", alertId), -1)
+	path = strings.Replace(path, "{alertId}", url.PathEscape(fmt.Sprintf("%v", alertId)), -1)
 	defaultReturn := new(Interactionstatsalert)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -260,6 +293,17 @@ func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []s
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -328,6 +372,17 @@ func (a AlertingApi) GetAlertingInteractionstatsAlerts(expand []string) (*Intera
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -393,6 +448,17 @@ func (a AlertingApi) GetAlertingInteractionstatsAlertsUnread() (*Unreadmetric, *
 	}
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -434,7 +500,7 @@ func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []str
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/alerting/interactionstats/rules/{ruleId}"
-	path = strings.Replace(path, "{ruleId}", fmt.Sprintf("%v", ruleId), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
 	defaultReturn := new(Interactionstatsrule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -465,6 +531,17 @@ func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []str
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -532,6 +609,17 @@ func (a AlertingApi) GetAlertingInteractionstatsRules(expand []string) (*Interac
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -605,6 +693,17 @@ func (a AlertingApi) PostAlertingInteractionstatsRules(body Interactionstatsrule
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
@@ -649,7 +748,7 @@ func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unrea
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/alerting/interactionstats/alerts/{alertId}"
-	path = strings.Replace(path, "{alertId}", fmt.Sprintf("%v", alertId), -1)
+	path = strings.Replace(path, "{alertId}", url.PathEscape(fmt.Sprintf("%v", alertId)), -1)
 	defaultReturn := new(Unreadstatus)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -685,6 +784,17 @@ func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unrea
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -730,7 +840,7 @@ func (a AlertingApi) PutAlertingInteractionstatsRule(ruleId string, body Interac
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/alerting/interactionstats/rules/{ruleId}"
-	path = strings.Replace(path, "{ruleId}", fmt.Sprintf("%v", ruleId), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
 	defaultReturn := new(Interactionstatsrule)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -766,6 +876,17 @@ func (a AlertingApi) PutAlertingInteractionstatsRule(ruleId string, body Interac
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
