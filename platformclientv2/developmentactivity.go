@@ -33,6 +33,12 @@ type Developmentactivity struct {
 	// IsLatest - True if this is the latest version of assignment assigned to the user
 	IsLatest *bool `json:"isLatest,omitempty"`
 
+	// IsModuleArchived - True if the associated module is archived
+	IsModuleArchived *bool `json:"isModuleArchived,omitempty"`
+
+	// ArchivalMode - Module archive type
+	ArchivalMode *string `json:"archivalMode,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -159,6 +165,10 @@ func (o Developmentactivity) MarshalJSON() ([]byte, error) {
 		
 		IsLatest *bool `json:"isLatest,omitempty"`
 		
+		IsModuleArchived *bool `json:"isModuleArchived,omitempty"`
+		
+		ArchivalMode *string `json:"archivalMode,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -189,6 +199,10 @@ func (o Developmentactivity) MarshalJSON() ([]byte, error) {
 		IsPassed: o.IsPassed,
 		
 		IsLatest: o.IsLatest,
+		
+		IsModuleArchived: o.IsModuleArchived,
+		
+		ArchivalMode: o.ArchivalMode,
 		
 		SelfUri: o.SelfUri,
 		
@@ -246,6 +260,14 @@ func (o *Developmentactivity) UnmarshalJSON(b []byte) error {
     
 	if IsLatest, ok := DevelopmentactivityMap["isLatest"].(bool); ok {
 		o.IsLatest = &IsLatest
+	}
+    
+	if IsModuleArchived, ok := DevelopmentactivityMap["isModuleArchived"].(bool); ok {
+		o.IsModuleArchived = &IsModuleArchived
+	}
+    
+	if ArchivalMode, ok := DevelopmentactivityMap["archivalMode"].(string); ok {
+		o.ArchivalMode = &ArchivalMode
 	}
     
 	if SelfUri, ok := DevelopmentactivityMap["selfUri"].(string); ok {

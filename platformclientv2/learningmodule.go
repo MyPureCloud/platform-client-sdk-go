@@ -69,6 +69,9 @@ type Learningmodule struct {
 	// SummaryData - The learning module summary data
 	SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 
+	// ReassignSummaryData - The learning module reassign summary data
+	ReassignSummaryData *Learningmodulereassignsummary `json:"reassignSummaryData,omitempty"`
+
 	// CoverArt - The cover art for the learning module
 	CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
 
@@ -193,6 +196,8 @@ func (o Learningmodule) MarshalJSON() ([]byte, error) {
 		
 		SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 		
+		ReassignSummaryData *Learningmodulereassignsummary `json:"reassignSummaryData,omitempty"`
+		
 		CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
 		
 		ArchivalMode *string `json:"archivalMode,omitempty"`
@@ -235,6 +240,8 @@ func (o Learningmodule) MarshalJSON() ([]byte, error) {
 		AssessmentForm: o.AssessmentForm,
 		
 		SummaryData: o.SummaryData,
+		
+		ReassignSummaryData: o.ReassignSummaryData,
 		
 		CoverArt: o.CoverArt,
 		
@@ -334,6 +341,11 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if SummaryData, ok := LearningmoduleMap["summaryData"].(map[string]interface{}); ok {
 		SummaryDataString, _ := json.Marshal(SummaryData)
 		json.Unmarshal(SummaryDataString, &o.SummaryData)
+	}
+	
+	if ReassignSummaryData, ok := LearningmoduleMap["reassignSummaryData"].(map[string]interface{}); ok {
+		ReassignSummaryDataString, _ := json.Marshal(ReassignSummaryData)
+		json.Unmarshal(ReassignSummaryDataString, &o.ReassignSummaryData)
 	}
 	
 	if CoverArt, ok := LearningmoduleMap["coverArt"].(map[string]interface{}); ok {

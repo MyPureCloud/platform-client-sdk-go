@@ -31246,49 +31246,6 @@
     "return": "Edgenetworkdiagnosticresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeId string // Edge Id\n// Get networking-related information from an Edge for a target IP or host.\ndata, response, err := apiInstance.GetTelephonyProvidersEdgeDiagnosticTracepath(edgeId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgeDiagnosticTracepath: %v\\n\", err)\n}"
   },
-  "gettelephonyprovidersedgeline": {
-    "operationId": "gettelephonyprovidersedgeline",
-    "functionName": "GetTelephonyProvidersEdgeLine",
-    "signature": "GetTelephonyProvidersEdgeLine(edgeId, lineId)",
-    "parameters": [
-      {
-        "name": "edgeId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "lineId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Edgeline",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeId string // Edge ID\nvar lineId string // Line ID\n// Get line\ndata, response, err := apiInstance.GetTelephonyProvidersEdgeLine(edgeId, lineId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgeLine: %v\\n\", err)\n}"
-  },
-  "gettelephonyprovidersedgelines": {
-    "operationId": "gettelephonyprovidersedgelines",
-    "functionName": "GetTelephonyProvidersEdgeLines",
-    "signature": "GetTelephonyProvidersEdgeLines(edgeId, pageSize, pageNumber)",
-    "parameters": [
-      {
-        "name": "edgeId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "pageNumber",
-        "type": "int",
-        "required": "false"
-      }
-    ],
-    "return": "Edgelineentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeId string // Edge ID\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Get the list of lines.\ndata, response, err := apiInstance.GetTelephonyProvidersEdgeLines(edgeId, pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgeLines: %v\\n\", err)\n}"
-  },
   "gettelephonyprovidersedgelogicalinterface": {
     "operationId": "gettelephonyprovidersedgelogicalinterface",
     "functionName": "GetTelephonyProvidersEdgeLogicalinterface",
@@ -31977,7 +31934,7 @@
       }
     ],
     "return": "Lineentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar name string // Name\nvar sortBy string // Value by which to sort\nvar expand []string // Fields to expand in the response, comma-separated\n// Get a list of Lines\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesLines(pageSize, pageNumber, name, sortBy, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesLines: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar name string // Name\nvar sortBy string // Value by which to sort\nvar expand []string // Fields to expand in the response, comma-separated. The edgeGroup value is deprecated.\n// Get a list of Lines\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesLines(pageSize, pageNumber, name, sortBy, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesLines: %v\\n\", err)\n}"
   },
   "gettelephonyprovidersedgeslinestemplate": {
     "operationId": "gettelephonyprovidersedgeslinestemplate",
@@ -33125,30 +33082,6 @@
     "return": "Edge",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeId string // Edge ID\nvar body platformclientv2.Edge // Edge\n// Update a edge.\ndata, response, err := apiInstance.PutTelephonyProvidersEdge(edgeId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdge: %v\\n\", err)\n}"
   },
-  "puttelephonyprovidersedgeline": {
-    "operationId": "puttelephonyprovidersedgeline",
-    "functionName": "PutTelephonyProvidersEdgeLine",
-    "signature": "PutTelephonyProvidersEdgeLine(edgeId, lineId, body)",
-    "parameters": [
-      {
-        "name": "edgeId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "lineId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Edgeline",
-        "required": "true"
-      }
-    ],
-    "return": "Edgeline",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeId string // Edge ID\nvar lineId string // Line ID\nvar body platformclientv2.Edgeline // Line\n// Update a line.\ndata, response, err := apiInstance.PutTelephonyProvidersEdgeLine(edgeId, lineId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgeLine: %v\\n\", err)\n}"
-  },
   "puttelephonyprovidersedgelogicalinterface": {
     "operationId": "puttelephonyprovidersedgelogicalinterface",
     "functionName": "PutTelephonyProvidersEdgeLogicalinterface",
@@ -34159,7 +34092,7 @@
   "getusersdevelopmentactivities": {
     "operationId": "getusersdevelopmentactivities",
     "functionName": "GetUsersDevelopmentActivities",
-    "signature": "GetUsersDevelopmentActivities(userId, moduleId, interval, completionInterval, overdue, pageSize, pageNumber, sortOrder, types, statuses, relationship)",
+    "signature": "GetUsersDevelopmentActivities(userId, moduleId, interval, completionInterval, overdue, pass, pageSize, pageNumber, sortOrder, types, statuses, relationship)",
     "parameters": [
       {
         "name": "userId",
@@ -34187,6 +34120,11 @@
         "required": "false"
       },
       {
+        "name": "pass",
+        "type": "string",
+        "required": "false"
+      },
+      {
         "name": "pageSize",
         "type": "int",
         "required": "false"
@@ -34218,12 +34156,12 @@
       }
     ],
     "return": "Developmentactivitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId []string // Specifies the list of user IDs to be queried, up to 100 user IDs. It searches for any relationship for the userId.\nvar moduleId string // Specifies the ID of the learning module.\nvar interval string // Specifies the dateDue range to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if non-overdue, overdue, or all activities are returned. If not specified, all activities are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Specifies result set sort order sorted by the date due; if not specified, default sort order is descending (Desc)\nvar types []string // Specifies the activity types.\nvar statuses []string // Specifies the activity statuses to filter by\nvar relationship []string // Specifies how the current user relation should be interpreted, and filters the activities returned to only the activities that have the specified relationship. If a value besides Attendee is specified, it will only return Coaching Appointments. If not specified, no filtering is applied.\n// Get list of Development Activities\ndata, response, err := apiInstance.GetUsersDevelopmentActivities(userId, moduleId, interval, completionInterval, overdue, pageSize, pageNumber, sortOrder, types, statuses, relationship)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUsersDevelopmentActivities: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId []string // Specifies the list of user IDs to be queried, up to 100 user IDs. It searches for any relationship for the userId.\nvar moduleId string // Specifies the ID of the learning module.\nvar interval string // Specifies the dateDue range to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if non-overdue, overdue, or all activities are returned. If not specified, all activities are returned\nvar pass string // Specifies if only the failed (pass is \\\"False\\\") or passed (pass is \\\"True\\\") activities are returned. If pass is \\\"Any\\\" or if the pass parameter is not supplied, all activities are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Specifies result set sort order sorted by the date due; if not specified, default sort order is descending (Desc)\nvar types []string // Specifies the activity types.\nvar statuses []string // Specifies the activity statuses to filter by\nvar relationship []string // Specifies how the current user relation should be interpreted, and filters the activities returned to only the activities that have the specified relationship. If a value besides Attendee is specified, it will only return Coaching Appointments. If not specified, no filtering is applied.\n// Get list of Development Activities\ndata, response, err := apiInstance.GetUsersDevelopmentActivities(userId, moduleId, interval, completionInterval, overdue, pass, pageSize, pageNumber, sortOrder, types, statuses, relationship)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUsersDevelopmentActivities: %v\\n\", err)\n}"
   },
   "getusersdevelopmentactivitiesme": {
     "operationId": "getusersdevelopmentactivitiesme",
     "functionName": "GetUsersDevelopmentActivitiesMe",
-    "signature": "GetUsersDevelopmentActivitiesMe(moduleId, interval, completionInterval, overdue, pageSize, pageNumber, sortOrder, types, statuses, relationship)",
+    "signature": "GetUsersDevelopmentActivitiesMe(moduleId, interval, completionInterval, overdue, pass, pageSize, pageNumber, sortOrder, types, statuses, relationship)",
     "parameters": [
       {
         "name": "moduleId",
@@ -34246,6 +34184,11 @@
         "required": "false"
       },
       {
+        "name": "pass",
+        "type": "string",
+        "required": "false"
+      },
+      {
         "name": "pageSize",
         "type": "int",
         "required": "false"
@@ -34277,7 +34220,7 @@
       }
     ],
     "return": "Developmentactivitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar moduleId string // Specifies the ID of the learning module.\nvar interval string // Specifies the dateDue range to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if non-overdue, overdue, or all activities are returned. If not specified, all activities are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Specifies result set sort order sorted by the date due; if not specified, default sort order is descending (Desc)\nvar types []string // Specifies the activity types.\nvar statuses []string // Specifies the activity statuses to filter by\nvar relationship []string // Specifies how the current user relation should be interpreted, and filters the activities returned to only the activities that have the specified relationship. If a value besides Attendee is specified, it will only return Coaching Appointments. If not specified, no filtering is applied.\n// Get list of Development Activities for current user\ndata, response, err := apiInstance.GetUsersDevelopmentActivitiesMe(moduleId, interval, completionInterval, overdue, pageSize, pageNumber, sortOrder, types, statuses, relationship)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUsersDevelopmentActivitiesMe: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar moduleId string // Specifies the ID of the learning module.\nvar interval string // Specifies the dateDue range to be queried. Milliseconds will be truncated. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar completionInterval string // Specifies the range of completion dates to be used for filtering. A maximum of 1 year can be specified in the range. End date is not inclusive. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss\nvar overdue string // Specifies if non-overdue, overdue, or all activities are returned. If not specified, all activities are returned\nvar pass string // Specifies if only the failed (pass is \\\"False\\\") or passed (pass is \\\"True\\\") activities are returned. If pass is \\\"Any\\\" or if the pass parameter is not supplied, all activities are returned\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Specifies result set sort order sorted by the date due; if not specified, default sort order is descending (Desc)\nvar types []string // Specifies the activity types.\nvar statuses []string // Specifies the activity statuses to filter by\nvar relationship []string // Specifies how the current user relation should be interpreted, and filters the activities returned to only the activities that have the specified relationship. If a value besides Attendee is specified, it will only return Coaching Appointments. If not specified, no filtering is applied.\n// Get list of Development Activities for current user\ndata, response, err := apiInstance.GetUsersDevelopmentActivitiesMe(moduleId, interval, completionInterval, overdue, pass, pageSize, pageNumber, sortOrder, types, statuses, relationship)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUsersDevelopmentActivitiesMe: %v\\n\", err)\n}"
   },
   "getusersdevelopmentactivity": {
     "operationId": "getusersdevelopmentactivity",

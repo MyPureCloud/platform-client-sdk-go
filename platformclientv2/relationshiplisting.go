@@ -26,6 +26,9 @@ type Relationshiplisting struct {
 	// PartialResults
 	PartialResults *bool `json:"partialResults,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Relationshiplisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,13 +118,13 @@ func (o Relationshiplisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults *bool `json:"partialResults,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,13 +141,13 @@ func (o Relationshiplisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults: o.PartialResults,
 		
+		FirstUri: o.FirstUri,
+		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -187,6 +187,10 @@ func (o *Relationshiplisting) UnmarshalJSON(b []byte) error {
 		o.PartialResults = &PartialResults
 	}
     
+	if FirstUri, ok := RelationshiplistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if NextUri, ok := RelationshiplistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -197,10 +201,6 @@ func (o *Relationshiplisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := RelationshiplistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := RelationshiplistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := RelationshiplistingMap["selfUri"].(string); ok {

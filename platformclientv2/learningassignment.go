@@ -45,6 +45,9 @@ type Learningassignment struct {
 	// IsPassed - True if the assessment was passed
 	IsPassed *bool `json:"isPassed,omitempty"`
 
+	// IsLatest - True if the assignment is based on latest module
+	IsLatest *bool `json:"isLatest,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -176,6 +179,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		
 		IsPassed *bool `json:"isPassed,omitempty"`
 		
+		IsLatest *bool `json:"isLatest,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		State *string `json:"state,omitempty"`
@@ -212,6 +217,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		IsManual: o.IsManual,
 		
 		IsPassed: o.IsPassed,
+		
+		IsLatest: o.IsLatest,
 		
 		SelfUri: o.SelfUri,
 		
@@ -285,6 +292,10 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
     
 	if IsPassed, ok := LearningassignmentMap["isPassed"].(bool); ok {
 		o.IsPassed = &IsPassed
+	}
+    
+	if IsLatest, ok := LearningassignmentMap["isLatest"].(bool); ok {
+		o.IsLatest = &IsLatest
 	}
     
 	if SelfUri, ok := LearningassignmentMap["selfUri"].(string); ok {

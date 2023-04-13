@@ -3305,7 +3305,7 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 // Get list of Development Activities
 //
 // Either moduleId or userId is required. Results are filtered based on the applicable permissions.
-func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string, interval string, completionInterval string, overdue string, pass string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/development/activities"
@@ -3341,6 +3341,8 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
 	
 	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
+	
+	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
@@ -3405,7 +3407,7 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 // Get list of Development Activities for current user
 //
 // Results are filtered based on the applicable permissions.
-func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval string, completionInterval string, overdue string, pass string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/development/activities/me"
@@ -3439,6 +3441,8 @@ func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval stri
 	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
 	
 	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
+	
+	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	

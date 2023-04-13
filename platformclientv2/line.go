@@ -51,7 +51,7 @@ type Line struct {
 	// Properties
 	Properties *map[string]interface{} `json:"properties,omitempty"`
 
-	// EdgeGroup
+	// EdgeGroup - The edge group associated with the line. (Deprecated)
 	EdgeGroup *Domainentityref `json:"edgeGroup,omitempty"`
 
 	// Template

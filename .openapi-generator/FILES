@@ -1005,8 +1005,6 @@ docs/GetTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticPing-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticRoute-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticTracepath-example.txt
-docs/GetTelephonyProvidersEdgeLine-example.txt
-docs/GetTelephonyProvidersEdgeLines-example.txt
 docs/GetTelephonyProvidersEdgeLogicalinterface-example.txt
 docs/GetTelephonyProvidersEdgeLogicalinterfaces-example.txt
 docs/GetTelephonyProvidersEdgeLogsJob-example.txt
@@ -2045,7 +2043,6 @@ docs/PutSpeechandtextanalyticsProgramTranscriptionengines-example.txt
 docs/PutSpeechandtextanalyticsSettings-example.txt
 docs/PutSpeechandtextanalyticsTopic-example.txt
 docs/PutTelephonyProvidersEdge-example.txt
-docs/PutTelephonyProvidersEdgeLine-example.txt
 docs/PutTelephonyProvidersEdgeLogicalinterface-example.txt
 docs/PutTelephonyProvidersEdgesCertificateauthority-example.txt
 docs/PutTelephonyProvidersEdgesDid-example.txt
@@ -3309,8 +3306,6 @@ platformclientv2/edgeentitylisting.go
 platformclientv2/edgegroup.go
 platformclientv2/edgegroupentitylisting.go
 platformclientv2/edgeinterface.go
-platformclientv2/edgeline.go
-platformclientv2/edgelineentitylisting.go
 platformclientv2/edgelogicalinterfaceschangetopicdomainlogicalinterfacechange.go
 platformclientv2/edgelogicalinterfaceschangetopicerrorinfo.go
 platformclientv2/edgelogsjob.go

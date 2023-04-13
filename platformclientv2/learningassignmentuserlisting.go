@@ -26,6 +26,9 @@ type Learningassignmentuserlisting struct {
 	// UnfilteredTotal - The total number of users
 	UnfilteredTotal *int `json:"unfilteredTotal,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Learningassignmentuserlisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,13 +118,13 @@ func (o Learningassignmentuserlisting) MarshalJSON() ([]byte, error) {
 		
 		UnfilteredTotal *int `json:"unfilteredTotal,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,13 +141,13 @@ func (o Learningassignmentuserlisting) MarshalJSON() ([]byte, error) {
 		
 		UnfilteredTotal: o.UnfilteredTotal,
 		
+		FirstUri: o.FirstUri,
+		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -188,6 +188,10 @@ func (o *Learningassignmentuserlisting) UnmarshalJSON(b []byte) error {
 		o.UnfilteredTotal = &UnfilteredTotalInt
 	}
 	
+	if FirstUri, ok := LearningassignmentuserlistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if NextUri, ok := LearningassignmentuserlistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -198,10 +202,6 @@ func (o *Learningassignmentuserlisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := LearningassignmentuserlistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := LearningassignmentuserlistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := LearningassignmentuserlistingMap["selfUri"].(string); ok {
