@@ -66,6 +66,9 @@ type Analyticssession struct {
 	// Cc - Carbon copy email address(es)
 	Cc *[]string `json:"cc,omitempty"`
 
+	// Cleared - Flag that indicates that the conversation has been cleared by the customer
+	Cleared *bool `json:"cleared,omitempty"`
+
 	// CoachedParticipantId - The participantId being coached (if someone (e.g. an agent) is being coached, this would correspond to one of the other participantIds present in the conversation)
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
@@ -228,11 +231,11 @@ type Analyticssession struct {
 	// WaitingInteractionCounts - Number of waiting interactions for each predictive routing attempt
 	WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 
-	// AgentGroups - Conditional group routing agent groups
-	AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
-
 	// ProposedAgents - Proposed agents
 	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
+
+	// AgentGroups - Conditional group routing agent groups
+	AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
 
 	// MediaEndpointStats - MediaEndpointStats associated with this session
 	MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
@@ -362,6 +365,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		Cc *[]string `json:"cc,omitempty"`
 		
+		Cleared *bool `json:"cleared,omitempty"`
+		
 		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 		
 		CobrowseRole *string `json:"cobrowseRole,omitempty"`
@@ -470,9 +475,9 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 		
-		AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
-		
 		ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
+		
+		AgentGroups *[]Analyticsagentgroup `json:"agentGroups,omitempty"`
 		
 		MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
 		
@@ -518,6 +523,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		CallbackUserName: o.CallbackUserName,
 		
 		Cc: o.Cc,
+		
+		Cleared: o.Cleared,
 		
 		CoachedParticipantId: o.CoachedParticipantId,
 		
@@ -627,9 +634,9 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		WaitingInteractionCounts: o.WaitingInteractionCounts,
 		
-		AgentGroups: o.AgentGroups,
-		
 		ProposedAgents: o.ProposedAgents,
+		
+		AgentGroups: o.AgentGroups,
 		
 		MediaEndpointStats: o.MediaEndpointStats,
 		
@@ -727,6 +734,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CcString, &o.Cc)
 	}
 	
+	if Cleared, ok := AnalyticssessionMap["cleared"].(bool); ok {
+		o.Cleared = &Cleared
+	}
+    
 	if CoachedParticipantId, ok := AnalyticssessionMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
@@ -954,14 +965,14 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(WaitingInteractionCountsString, &o.WaitingInteractionCounts)
 	}
 	
-	if AgentGroups, ok := AnalyticssessionMap["agentGroups"].([]interface{}); ok {
-		AgentGroupsString, _ := json.Marshal(AgentGroups)
-		json.Unmarshal(AgentGroupsString, &o.AgentGroups)
-	}
-	
 	if ProposedAgents, ok := AnalyticssessionMap["proposedAgents"].([]interface{}); ok {
 		ProposedAgentsString, _ := json.Marshal(ProposedAgents)
 		json.Unmarshal(ProposedAgentsString, &o.ProposedAgents)
+	}
+	
+	if AgentGroups, ok := AnalyticssessionMap["agentGroups"].([]interface{}); ok {
+		AgentGroupsString, _ := json.Marshal(AgentGroups)
+		json.Unmarshal(AgentGroupsString, &o.AgentGroups)
 	}
 	
 	if MediaEndpointStats, ok := AnalyticssessionMap["mediaEndpointStats"].([]interface{}); ok {

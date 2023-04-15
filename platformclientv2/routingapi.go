@@ -5602,7 +5602,7 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string, expand string) (*
 // GetRoutingSmsPhonenumbers invokes GET /api/v2/routing/sms/phonenumbers
 //
 // Get a list of provisioned phone numbers.
-func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType []string, phoneNumberStatus []string, countryCode []string, pageSize int, pageNumber int, sortBy string, sortOrder string, language string) (*Smsphonenumberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType []string, phoneNumberStatus []string, countryCode []string, pageSize int, pageNumber int, sortBy string, sortOrder string, language string, integrationId string) (*Smsphonenumberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers"
@@ -5646,6 +5646,8 @@ func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberTyp
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
+	
+	queryParams["integrationId"] = a.Configuration.APIClient.ParameterToString(integrationId, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -354,11 +354,6 @@ docs/GetCoachingAppointments-example.txt
 docs/GetCoachingAppointmentsMe-example.txt
 docs/GetCoachingNotification-example.txt
 docs/GetCoachingNotifications-example.txt
-docs/GetConfigurationSchemasEdgesVnext-example.txt
-docs/GetConfigurationSchemasEdgesVnextSchemaCategory-example.txt
-docs/GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType-example.txt
-docs/GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId-example.txt
-docs/GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId-example.txt
 docs/GetContentmanagementDocument-example.txt
 docs/GetContentmanagementDocumentAudits-example.txt
 docs/GetContentmanagementDocumentContent-example.txt
@@ -2045,11 +2040,9 @@ docs/PutSpeechandtextanalyticsTopic-example.txt
 docs/PutTelephonyProvidersEdge-example.txt
 docs/PutTelephonyProvidersEdgeLogicalinterface-example.txt
 docs/PutTelephonyProvidersEdgesCertificateauthority-example.txt
-docs/PutTelephonyProvidersEdgesDid-example.txt
 docs/PutTelephonyProvidersEdgesDidpool-example.txt
 docs/PutTelephonyProvidersEdgesEdgegroup-example.txt
 docs/PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase-example.txt
-docs/PutTelephonyProvidersEdgesExtension-example.txt
 docs/PutTelephonyProvidersEdgesExtensionpool-example.txt
 docs/PutTelephonyProvidersEdgesOutboundroute-example.txt
 docs/PutTelephonyProvidersEdgesPhone-example.txt
@@ -3285,7 +3278,6 @@ platformclientv2/domainphysicalinterface.go
 platformclientv2/domainresourceconditionnode.go
 platformclientv2/domainresourceconditionvalue.go
 platformclientv2/domainrole.go
-platformclientv2/domainschemareference.go
 platformclientv2/donotsendactionsettings.go
 platformclientv2/downloadresponse.go
 platformclientv2/downloadsapi.go
@@ -4725,6 +4717,7 @@ platformclientv2/restorepresencesettings.go
 platformclientv2/resultcounters.go
 platformclientv2/retentionduration.go
 platformclientv2/reversewhitepageslookupresult.go
+platformclientv2/reviewassessmentresults.go
 platformclientv2/ring.go
 platformclientv2/roledivision.go
 platformclientv2/roledivisiongrants.go
@@ -4772,10 +4765,7 @@ platformclientv2/schedulingsettingsresponse.go
 platformclientv2/schedulingstatusresponse.go
 platformclientv2/schedulingtestingoptionsrequest.go
 platformclientv2/schema.go
-platformclientv2/schemacategory.go
-platformclientv2/schemacategoryentitylisting.go
 platformclientv2/schemaquantitylimits.go
-platformclientv2/schemareferenceentitylisting.go
 platformclientv2/scimapi.go
 platformclientv2/scimconfigresourcetype.go
 platformclientv2/scimconfigresourcetypeschemaextension.go

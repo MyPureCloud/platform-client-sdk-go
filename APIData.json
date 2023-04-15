@@ -27580,7 +27580,7 @@
   "getroutingsmsphonenumbers": {
     "operationId": "getroutingsmsphonenumbers",
     "functionName": "GetRoutingSmsPhonenumbers",
-    "signature": "GetRoutingSmsPhonenumbers(phoneNumber, phoneNumberType, phoneNumberStatus, countryCode, pageSize, pageNumber, sortBy, sortOrder, language)",
+    "signature": "GetRoutingSmsPhonenumbers(phoneNumber, phoneNumberType, phoneNumberStatus, countryCode, pageSize, pageNumber, sortBy, sortOrder, language, integrationId)",
     "parameters": [
       {
         "name": "phoneNumber",
@@ -27626,10 +27626,15 @@
         "name": "language",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "integrationId",
+        "type": "string",
+        "required": "false"
       }
     ],
     "return": "Smsphonenumberentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar phoneNumber string // Filter on phone number address. Allowable characters are the digits '0-9' and the wild card character '\\\\*'. If just digits are present, a contains search is done on the address pattern. For example, '317' could be matched anywhere in the address. An '\\\\*' will match multiple digits. For example, to match a specific area code within the US a pattern like '1317*' could be used.\nvar phoneNumberType []string // Filter on phone number type\nvar phoneNumberStatus []string // Filter on phone number status\nvar countryCode []string // Filter on country code\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Optional field to sort results\nvar sortOrder string // Sort order\nvar language string // A language tag (which is sometimes referred to as a \\\"locale identifier\\\") to use to localize country field and sort operations\n// Get a list of provisioned phone numbers.\ndata, response, err := apiInstance.GetRoutingSmsPhonenumbers(phoneNumber, phoneNumberType, phoneNumberStatus, countryCode, pageSize, pageNumber, sortBy, sortOrder, language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingSmsPhonenumbers: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar phoneNumber string // Filter on phone number address. Allowable characters are the digits '0-9' and the wild card character '\\\\*'. If just digits are present, a contains search is done on the address pattern. For example, '317' could be matched anywhere in the address. An '\\\\*' will match multiple digits. For example, to match a specific area code within the US a pattern like '1317*' could be used.\nvar phoneNumberType []string // Filter on phone number type\nvar phoneNumberStatus []string // Filter on phone number status\nvar countryCode []string // Filter on country code\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Optional field to sort results\nvar sortOrder string // Sort order\nvar language string // A language tag (which is sometimes referred to as a \\\"locale identifier\\\") to use to localize country field and sort operations\nvar integrationId string // Filter on the Genesys Cloud integration id to which the phone number belongs to\n// Get a list of provisioned phone numbers.\ndata, response, err := apiInstance.GetRoutingSmsPhonenumbers(phoneNumber, phoneNumberType, phoneNumberStatus, countryCode, pageSize, pageNumber, sortBy, sortOrder, language, integrationId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingSmsPhonenumbers: %v\\n\", err)\n}"
   },
   "getroutinguserutilization": {
     "operationId": "getroutinguserutilization",
@@ -31036,141 +31041,6 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar trunkBaseSettingsId string // Trunk Base ID\n// Delete a Trunk Base Settings object by ID\nresponse, err := apiInstance.DeleteTelephonyProvidersEdgesTrunkbasesetting(trunkBaseSettingsId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteTelephonyProvidersEdgesTrunkbasesetting: %v\\n\", err)\n}"
   },
-  "getconfigurationschemasedgesvnext": {
-    "operationId": "getconfigurationschemasedgesvnext",
-    "functionName": "GetConfigurationSchemasEdgesVnext",
-    "signature": "GetConfigurationSchemasEdgesVnext(pageSize, pageNumber)",
-    "parameters": [
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "pageNumber",
-        "type": "int",
-        "required": "false"
-      }
-    ],
-    "return": "Schemacategoryentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Lists available schema categories (Deprecated)\ndata, response, err := apiInstance.GetConfigurationSchemasEdgesVnext(pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetConfigurationSchemasEdgesVnext: %v\\n\", err)\n}"
-  },
-  "getconfigurationschemasedgesvnextschemacategory": {
-    "operationId": "getconfigurationschemasedgesvnextschemacategory",
-    "functionName": "GetConfigurationSchemasEdgesVnextSchemaCategory",
-    "signature": "GetConfigurationSchemasEdgesVnextSchemaCategory(schemaCategory, pageSize, pageNumber)",
-    "parameters": [
-      {
-        "name": "schemaCategory",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "pageNumber",
-        "type": "int",
-        "required": "false"
-      }
-    ],
-    "return": "Schemareferenceentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar schemaCategory string // Schema category\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// List schemas of a specific category (Deprecated)\ndata, response, err := apiInstance.GetConfigurationSchemasEdgesVnextSchemaCategory(schemaCategory, pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetConfigurationSchemasEdgesVnextSchemaCategory: %v\\n\", err)\n}"
-  },
-  "getconfigurationschemasedgesvnextschemacategoryschematype": {
-    "operationId": "getconfigurationschemasedgesvnextschemacategoryschematype",
-    "functionName": "GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType",
-    "signature": "GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType(schemaCategory, schemaType, pageSize, pageNumber)",
-    "parameters": [
-      {
-        "name": "schemaCategory",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "schemaType",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "pageNumber",
-        "type": "int",
-        "required": "false"
-      }
-    ],
-    "return": "Schemareferenceentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar schemaCategory string // Schema category\nvar schemaType string // Schema type\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// List schemas of a specific category (Deprecated)\ndata, response, err := apiInstance.GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType(schemaCategory, schemaType, pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType: %v\\n\", err)\n}"
-  },
-  "getconfigurationschemasedgesvnextschemacategoryschematypeschemaid": {
-    "operationId": "getconfigurationschemasedgesvnextschemacategoryschematypeschemaid",
-    "functionName": "GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId",
-    "signature": "GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId(schemaCategory, schemaType, schemaId)",
-    "parameters": [
-      {
-        "name": "schemaCategory",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "schemaType",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "schemaId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Organization",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar schemaCategory string // Schema category\nvar schemaType string // Schema type\nvar schemaId string // Schema ID\n// Get a json schema (Deprecated)\ndata, response, err := apiInstance.GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId(schemaCategory, schemaType, schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaId: %v\\n\", err)\n}"
-  },
-  "getconfigurationschemasedgesvnextschemacategoryschematypeschemaidextensiontypemetadataid": {
-    "operationId": "getconfigurationschemasedgesvnextschemacategoryschematypeschemaidextensiontypemetadataid",
-    "functionName": "GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId",
-    "signature": "GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId(schemaCategory, schemaType, schemaId, extensionType, metadataId, varType)",
-    "parameters": [
-      {
-        "name": "schemaCategory",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "schemaType",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "schemaId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "extensionType",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "metadataId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "varType",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Organization",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar schemaCategory string // Schema category\nvar schemaType string // Schema type\nvar schemaId string // Schema ID\nvar extensionType string // extension\nvar metadataId string // Metadata ID\nvar varType string // Type\n// Get metadata for a schema (Deprecated)\ndata, response, err := apiInstance.GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId(schemaCategory, schemaType, schemaId, extensionType, metadataId, varType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetConfigurationSchemasEdgesVnextSchemaCategorySchemaTypeSchemaIdExtensionTypeMetadataId: %v\\n\", err)\n}"
-  },
   "gettelephonyprovidersedge": {
     "operationId": "gettelephonyprovidersedge",
     "functionName": "GetTelephonyProvidersEdge",
@@ -33125,25 +32995,6 @@
     "return": "Domaincertificateauthority",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar certificateId string // Certificate ID\nvar body platformclientv2.Domaincertificateauthority // Certificate authority\n// Update a certificate authority.\ndata, response, err := apiInstance.PutTelephonyProvidersEdgesCertificateauthority(certificateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesCertificateauthority: %v\\n\", err)\n}"
   },
-  "puttelephonyprovidersedgesdid": {
-    "operationId": "puttelephonyprovidersedgesdid",
-    "functionName": "PutTelephonyProvidersEdgesDid",
-    "signature": "PutTelephonyProvidersEdgesDid(didId, body)",
-    "parameters": [
-      {
-        "name": "didId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Did",
-        "required": "true"
-      }
-    ],
-    "return": "Did",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar didId string // DID ID\nvar body platformclientv2.Did // DID\n// Update a DID by ID.\ndata, response, err := apiInstance.PutTelephonyProvidersEdgesDid(didId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesDid: %v\\n\", err)\n}"
-  },
   "puttelephonyprovidersedgesdidpool": {
     "operationId": "puttelephonyprovidersedgesdidpool",
     "functionName": "PutTelephonyProvidersEdgesDidpool",
@@ -33205,25 +33056,6 @@
     ],
     "return": "Edgetrunkbase",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgegroupId string // Edge Group ID\nvar edgetrunkbaseId string // Edge Trunk Base ID\nvar body platformclientv2.Edgetrunkbase // EdgeTrunkBase\n// Update the edge trunk base associated with the edge group\ndata, response, err := apiInstance.PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase(edgegroupId, edgetrunkbaseId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase: %v\\n\", err)\n}"
-  },
-  "puttelephonyprovidersedgesextension": {
-    "operationId": "puttelephonyprovidersedgesextension",
-    "functionName": "PutTelephonyProvidersEdgesExtension",
-    "signature": "PutTelephonyProvidersEdgesExtension(extensionId, body)",
-    "parameters": [
-      {
-        "name": "extensionId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Extension",
-        "required": "true"
-      }
-    ],
-    "return": "Extension",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar extensionId string // Extension ID\nvar body platformclientv2.Extension // Extension\n// Update an extension by ID.\ndata, response, err := apiInstance.PutTelephonyProvidersEdgesExtension(extensionId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesExtension: %v\\n\", err)\n}"
   },
   "puttelephonyprovidersedgesextensionpool": {
     "operationId": "puttelephonyprovidersedgesextensionpool",

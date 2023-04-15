@@ -23,9 +23,6 @@ type Digitalrulesetentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -34,6 +31,9 @@ type Digitalrulesetentitylisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,13 +113,13 @@ func (o Digitalrulesetentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,13 +134,13 @@ func (o Digitalrulesetentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		FirstUri: o.FirstUri,
-		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,10 +176,6 @@ func (o *Digitalrulesetentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := DigitalrulesetentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if NextUri, ok := DigitalrulesetentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -190,6 +186,10 @@ func (o *Digitalrulesetentitylisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := DigitalrulesetentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := DigitalrulesetentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := DigitalrulesetentitylistingMap["selfUri"].(string); ok {
