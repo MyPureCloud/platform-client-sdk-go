@@ -75,6 +75,9 @@ type Evaluation struct {
 	// Assigned - Set to false to unassign the evaluation. This cannot be set to false when assignee is also set.
 	Assigned *bool `json:"assigned,omitempty"`
 
+	// DateAssigneeChanged - Date when the assignee was last changed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateAssigneeChanged *time.Time `json:"dateAssigneeChanged,omitempty"`
+
 	// ResourceId - Only used for email evaluations. Will be null for all other evaluations.
 	ResourceId *string `json:"resourceId,omitempty"`
 
@@ -129,7 +132,7 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","ConversationDate","ConversationEndDate", }
+		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -202,6 +205,14 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		ConversationEndDate = nil
 	}
 	
+	DateAssigneeChanged := new(string)
+	if o.DateAssigneeChanged != nil {
+		
+		*DateAssigneeChanged = timeutil.Strftime(o.DateAssigneeChanged, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateAssigneeChanged = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -244,6 +255,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		NeverRelease *bool `json:"neverRelease,omitempty"`
 		
 		Assigned *bool `json:"assigned,omitempty"`
+		
+		DateAssigneeChanged *string `json:"dateAssigneeChanged,omitempty"`
 		
 		ResourceId *string `json:"resourceId,omitempty"`
 		
@@ -303,6 +316,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		NeverRelease: o.NeverRelease,
 		
 		Assigned: o.Assigned,
+		
+		DateAssigneeChanged: DateAssigneeChanged,
 		
 		ResourceId: o.ResourceId,
 		
@@ -428,6 +443,11 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 		o.Assigned = &Assigned
 	}
     
+	if dateAssigneeChangedString, ok := EvaluationMap["dateAssigneeChanged"].(string); ok {
+		DateAssigneeChanged, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateAssigneeChangedString)
+		o.DateAssigneeChanged = &DateAssigneeChanged
+	}
+	
 	if ResourceId, ok := EvaluationMap["resourceId"].(string); ok {
 		o.ResourceId = &ResourceId
 	}

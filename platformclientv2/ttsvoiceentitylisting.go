@@ -23,6 +23,9 @@ type Ttsvoiceentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -31,9 +34,6 @@ type Ttsvoiceentitylisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,13 +113,13 @@ func (o Ttsvoiceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,13 +134,13 @@ func (o Ttsvoiceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		FirstUri: o.FirstUri,
+		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,6 +176,10 @@ func (o *Ttsvoiceentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if FirstUri, ok := TtsvoiceentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if NextUri, ok := TtsvoiceentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -186,10 +190,6 @@ func (o *Ttsvoiceentitylisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := TtsvoiceentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := TtsvoiceentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := TtsvoiceentitylistingMap["selfUri"].(string); ok {

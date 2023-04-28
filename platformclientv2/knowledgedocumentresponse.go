@@ -33,6 +33,9 @@ type Knowledgedocumentresponse struct {
 	// DateModified - Document last modification date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
+	// DateImported - Document import date-time, or null if was not imported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateImported *time.Time `json:"dateImported,omitempty"`
+
 	// LastPublishedVersionNumber - The last published version number of the document.
 	LastPublishedVersionNumber *int `json:"lastPublishedVersionNumber,omitempty"`
 
@@ -93,7 +96,7 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateModified","DatePublished", }
+		dateTimeFields := []string{ "DateCreated","DateModified","DateImported","DatePublished", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -142,6 +145,14 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		DateModified = nil
 	}
 	
+	DateImported := new(string)
+	if o.DateImported != nil {
+		
+		*DateImported = timeutil.Strftime(o.DateImported, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateImported = nil
+	}
+	
 	DatePublished := new(string)
 	if o.DatePublished != nil {
 		
@@ -164,6 +175,8 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
+		
+		DateImported *string `json:"dateImported,omitempty"`
 		
 		LastPublishedVersionNumber *int `json:"lastPublishedVersionNumber,omitempty"`
 		
@@ -199,6 +212,8 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
+		
+		DateImported: DateImported,
 		
 		LastPublishedVersionNumber: o.LastPublishedVersionNumber,
 		
@@ -259,6 +274,11 @@ func (o *Knowledgedocumentresponse) UnmarshalJSON(b []byte) error {
 	if dateModifiedString, ok := KnowledgedocumentresponseMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
+	}
+	
+	if dateImportedString, ok := KnowledgedocumentresponseMap["dateImported"].(string); ok {
+		DateImported, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateImportedString)
+		o.DateImported = &DateImported
 	}
 	
 	if LastPublishedVersionNumber, ok := KnowledgedocumentresponseMap["lastPublishedVersionNumber"].(float64); ok {

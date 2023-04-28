@@ -18,7 +18,7 @@ type Writabledialercontact struct {
 	ContactListId *string `json:"contactListId,omitempty"`
 
 	// Data - An ordered map of the contact's columns and corresponding values.
-	Data *map[string]interface{} `json:"data,omitempty"`
+	Data *map[string]string `json:"data,omitempty"`
 
 	// LatestSmsEvaluations - A map of SMS records for the contact phone columns.
 	LatestSmsEvaluations *map[string]Messageevaluation `json:"latestSmsEvaluations,omitempty"`
@@ -103,7 +103,7 @@ func (o Writabledialercontact) MarshalJSON() ([]byte, error) {
 		
 		ContactListId *string `json:"contactListId,omitempty"`
 		
-		Data *map[string]interface{} `json:"data,omitempty"`
+		Data *map[string]string `json:"data,omitempty"`
 		
 		LatestSmsEvaluations *map[string]Messageevaluation `json:"latestSmsEvaluations,omitempty"`
 		

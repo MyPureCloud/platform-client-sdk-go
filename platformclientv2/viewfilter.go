@@ -479,6 +479,21 @@ type Viewfilter struct {
 	// EvaluationStatuses - The evaluation statuses that are used to filter the view
 	EvaluationStatuses *[]string `json:"evaluationStatuses,omitempty"`
 
+	// WorkbinIds - The list of Workbin IDs
+	WorkbinIds *[]string `json:"workbinIds,omitempty"`
+
+	// WorktypeIds - The list of Worktype IDs
+	WorktypeIds *[]string `json:"worktypeIds,omitempty"`
+
+	// WorkitemIds - The list of Workitem IDs
+	WorkitemIds *[]string `json:"workitemIds,omitempty"`
+
+	// WorkitemAssigneeIds - The list of Workitem Assignee IDs
+	WorkitemAssigneeIds *[]string `json:"workitemAssigneeIds,omitempty"`
+
+	// WorkitemStatuses - The list of Workitem Statuses IDs
+	WorkitemStatuses *[]string `json:"workitemStatuses,omitempty"`
+
 	// IsAnalyzedForSensitiveData - Filter to indicate the transcript has been analyzed for sensitive data.
 	IsAnalyzedForSensitiveData *bool `json:"isAnalyzedForSensitiveData,omitempty"`
 
@@ -867,6 +882,16 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		EvaluationStatuses *[]string `json:"evaluationStatuses,omitempty"`
 		
+		WorkbinIds *[]string `json:"workbinIds,omitempty"`
+		
+		WorktypeIds *[]string `json:"worktypeIds,omitempty"`
+		
+		WorkitemIds *[]string `json:"workitemIds,omitempty"`
+		
+		WorkitemAssigneeIds *[]string `json:"workitemAssigneeIds,omitempty"`
+		
+		WorkitemStatuses *[]string `json:"workitemStatuses,omitempty"`
+		
 		IsAnalyzedForSensitiveData *bool `json:"isAnalyzedForSensitiveData,omitempty"`
 		
 		HasSensitiveData *bool `json:"hasSensitiveData,omitempty"`
@@ -1187,6 +1212,16 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		EvaluationFormContextIds: o.EvaluationFormContextIds,
 		
 		EvaluationStatuses: o.EvaluationStatuses,
+		
+		WorkbinIds: o.WorkbinIds,
+		
+		WorktypeIds: o.WorktypeIds,
+		
+		WorkitemIds: o.WorkitemIds,
+		
+		WorkitemAssigneeIds: o.WorkitemAssigneeIds,
+		
+		WorkitemStatuses: o.WorkitemStatuses,
 		
 		IsAnalyzedForSensitiveData: o.IsAnalyzedForSensitiveData,
 		
@@ -1952,6 +1987,31 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if EvaluationStatuses, ok := ViewfilterMap["evaluationStatuses"].([]interface{}); ok {
 		EvaluationStatusesString, _ := json.Marshal(EvaluationStatuses)
 		json.Unmarshal(EvaluationStatusesString, &o.EvaluationStatuses)
+	}
+	
+	if WorkbinIds, ok := ViewfilterMap["workbinIds"].([]interface{}); ok {
+		WorkbinIdsString, _ := json.Marshal(WorkbinIds)
+		json.Unmarshal(WorkbinIdsString, &o.WorkbinIds)
+	}
+	
+	if WorktypeIds, ok := ViewfilterMap["worktypeIds"].([]interface{}); ok {
+		WorktypeIdsString, _ := json.Marshal(WorktypeIds)
+		json.Unmarshal(WorktypeIdsString, &o.WorktypeIds)
+	}
+	
+	if WorkitemIds, ok := ViewfilterMap["workitemIds"].([]interface{}); ok {
+		WorkitemIdsString, _ := json.Marshal(WorkitemIds)
+		json.Unmarshal(WorkitemIdsString, &o.WorkitemIds)
+	}
+	
+	if WorkitemAssigneeIds, ok := ViewfilterMap["workitemAssigneeIds"].([]interface{}); ok {
+		WorkitemAssigneeIdsString, _ := json.Marshal(WorkitemAssigneeIds)
+		json.Unmarshal(WorkitemAssigneeIdsString, &o.WorkitemAssigneeIds)
+	}
+	
+	if WorkitemStatuses, ok := ViewfilterMap["workitemStatuses"].([]interface{}); ok {
+		WorkitemStatusesString, _ := json.Marshal(WorkitemStatuses)
+		json.Unmarshal(WorkitemStatusesString, &o.WorkitemStatuses)
 	}
 	
 	if IsAnalyzedForSensitiveData, ok := ViewfilterMap["isAnalyzedForSensitiveData"].(bool); ok {

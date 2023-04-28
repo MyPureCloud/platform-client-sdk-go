@@ -51,6 +51,9 @@ type Conversation struct {
 	// RecentTransfers - The list of the most recent 20 transfer commands applied to this conversation.
 	RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
 
+	// SecurePause - True when the recording of this conversation is in secure pause status.
+	SecurePause *bool `json:"securePause,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -160,6 +163,8 @@ func (o Conversation) MarshalJSON() ([]byte, error) {
 		
 		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
 		
+		SecurePause *bool `json:"securePause,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -188,6 +193,8 @@ func (o Conversation) MarshalJSON() ([]byte, error) {
 		Divisions: o.Divisions,
 		
 		RecentTransfers: o.RecentTransfers,
+		
+		SecurePause: o.SecurePause,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -260,6 +267,10 @@ func (o *Conversation) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
 	}
 	
+	if SecurePause, ok := ConversationMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
+	}
+    
 	if SelfUri, ok := ConversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

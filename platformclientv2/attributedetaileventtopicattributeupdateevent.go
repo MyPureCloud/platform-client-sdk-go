@@ -22,6 +22,12 @@ type Attributedetaileventtopicattributeupdateevent struct {
 
 	// Attributes
 	Attributes *map[string]string `json:"attributes,omitempty"`
+
+	// ConversationExternalContactIds
+	ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+
+	// ConversationExternalOrganizationIds
+	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +100,10 @@ func (o Attributedetaileventtopicattributeupdateevent) MarshalJSON() ([]byte, er
 		ParticipantId *string `json:"participantId,omitempty"`
 		
 		Attributes *map[string]string `json:"attributes,omitempty"`
+		
+		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+		
+		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -103,6 +113,10 @@ func (o Attributedetaileventtopicattributeupdateevent) MarshalJSON() ([]byte, er
 		ParticipantId: o.ParticipantId,
 		
 		Attributes: o.Attributes,
+		
+		ConversationExternalContactIds: o.ConversationExternalContactIds,
+		
+		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +144,16 @@ func (o *Attributedetaileventtopicattributeupdateevent) UnmarshalJSON(b []byte) 
 	if Attributes, ok := AttributedetaileventtopicattributeupdateeventMap["attributes"].(map[string]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if ConversationExternalContactIds, ok := AttributedetaileventtopicattributeupdateeventMap["conversationExternalContactIds"].([]interface{}); ok {
+		ConversationExternalContactIdsString, _ := json.Marshal(ConversationExternalContactIds)
+		json.Unmarshal(ConversationExternalContactIdsString, &o.ConversationExternalContactIds)
+	}
+	
+	if ConversationExternalOrganizationIds, ok := AttributedetaileventtopicattributeupdateeventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
+		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
+		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
 

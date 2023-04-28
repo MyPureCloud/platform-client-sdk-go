@@ -37,9 +37,6 @@ type Knowledgedocumentguestsearchrequest struct {
 
 	// IncludeDraftDocuments - Indicates whether the search results would also include draft documents.
 	IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
-
-	// App - The app where the session is started.
-	App *Knowledgeguestsessionapp `json:"app,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -122,8 +119,6 @@ func (o Knowledgedocumentguestsearchrequest) MarshalJSON() ([]byte, error) {
 		SessionId *string `json:"sessionId,omitempty"`
 		
 		IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
-		
-		App *Knowledgeguestsessionapp `json:"app,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -143,8 +138,6 @@ func (o Knowledgedocumentguestsearchrequest) MarshalJSON() ([]byte, error) {
 		SessionId: o.SessionId,
 		
 		IncludeDraftDocuments: o.IncludeDraftDocuments,
-		
-		App: o.App,
 		Alias:    (Alias)(o),
 	})
 }
@@ -196,11 +189,6 @@ func (o *Knowledgedocumentguestsearchrequest) UnmarshalJSON(b []byte) error {
 		o.IncludeDraftDocuments = &IncludeDraftDocuments
 	}
     
-	if App, ok := KnowledgedocumentguestsearchrequestMap["app"].(map[string]interface{}); ok {
-		AppString, _ := json.Marshal(App)
-		json.Unmarshal(AppString, &o.App)
-	}
-	
 
 	return nil
 }

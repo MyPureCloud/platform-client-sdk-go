@@ -3374,7 +3374,7 @@ func (a RoutingApi) GetRoutingPredictors(before string, after string, limit stri
 // GetRoutingPredictorsKeyperformanceindicators invokes GET /api/v2/routing/predictors/keyperformanceindicators
 //
 // Get a list of Key Performance Indicators
-func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators(kpiGroup string) ([]Keyperformanceindicator, *APIResponse, error) {
+func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators(kpiGroup string, expand []string) ([]Keyperformanceindicator, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors/keyperformanceindicators"
@@ -3402,6 +3402,8 @@ func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators(kpiGroup string
 	}
 	
 	queryParams["kpiGroup"] = a.Configuration.APIClient.ParameterToString(kpiGroup, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

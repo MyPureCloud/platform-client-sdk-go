@@ -67,6 +67,12 @@ type Flowenddetaileventtopicflowendevent struct {
 
 	// ConnectedDurationMs
 	ConnectedDurationMs *int `json:"connectedDurationMs,omitempty"`
+
+	// ConversationExternalContactIds
+	ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+
+	// ConversationExternalOrganizationIds
+	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -169,6 +175,10 @@ func (o Flowenddetaileventtopicflowendevent) MarshalJSON() ([]byte, error) {
 		FlowVersion *string `json:"flowVersion,omitempty"`
 		
 		ConnectedDurationMs *int `json:"connectedDurationMs,omitempty"`
+		
+		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+		
+		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -208,6 +218,10 @@ func (o Flowenddetaileventtopicflowendevent) MarshalJSON() ([]byte, error) {
 		FlowVersion: o.FlowVersion,
 		
 		ConnectedDurationMs: o.ConnectedDurationMs,
+		
+		ConversationExternalContactIds: o.ConversationExternalContactIds,
+		
+		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -295,6 +309,16 @@ func (o *Flowenddetaileventtopicflowendevent) UnmarshalJSON(b []byte) error {
 	if ConnectedDurationMs, ok := FlowenddetaileventtopicflowendeventMap["connectedDurationMs"].(float64); ok {
 		ConnectedDurationMsInt := int(ConnectedDurationMs)
 		o.ConnectedDurationMs = &ConnectedDurationMsInt
+	}
+	
+	if ConversationExternalContactIds, ok := FlowenddetaileventtopicflowendeventMap["conversationExternalContactIds"].([]interface{}); ok {
+		ConversationExternalContactIdsString, _ := json.Marshal(ConversationExternalContactIds)
+		json.Unmarshal(ConversationExternalContactIdsString, &o.ConversationExternalContactIds)
+	}
+	
+	if ConversationExternalOrganizationIds, ok := FlowenddetaileventtopicflowendeventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
+		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
+		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
 

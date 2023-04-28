@@ -85,6 +85,12 @@ type Userenddetaileventtopicuserendevent struct {
 
 	// DialingDurationMs
 	DialingDurationMs *int `json:"dialingDurationMs,omitempty"`
+
+	// ConversationExternalContactIds
+	ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+
+	// ConversationExternalOrganizationIds
+	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -199,6 +205,10 @@ func (o Userenddetaileventtopicuserendevent) MarshalJSON() ([]byte, error) {
 		ContactingDurationMs *int `json:"contactingDurationMs,omitempty"`
 		
 		DialingDurationMs *int `json:"dialingDurationMs,omitempty"`
+		
+		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+		
+		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -250,6 +260,10 @@ func (o Userenddetaileventtopicuserendevent) MarshalJSON() ([]byte, error) {
 		ContactingDurationMs: o.ContactingDurationMs,
 		
 		DialingDurationMs: o.DialingDurationMs,
+		
+		ConversationExternalContactIds: o.ConversationExternalContactIds,
+		
+		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -367,6 +381,16 @@ func (o *Userenddetaileventtopicuserendevent) UnmarshalJSON(b []byte) error {
 	if DialingDurationMs, ok := UserenddetaileventtopicuserendeventMap["dialingDurationMs"].(float64); ok {
 		DialingDurationMsInt := int(DialingDurationMs)
 		o.DialingDurationMs = &DialingDurationMsInt
+	}
+	
+	if ConversationExternalContactIds, ok := UserenddetaileventtopicuserendeventMap["conversationExternalContactIds"].([]interface{}); ok {
+		ConversationExternalContactIdsString, _ := json.Marshal(ConversationExternalContactIds)
+		json.Unmarshal(ConversationExternalContactIdsString, &o.ConversationExternalContactIds)
+	}
+	
+	if ConversationExternalOrganizationIds, ok := UserenddetaileventtopicuserendeventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
+		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
+		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
 

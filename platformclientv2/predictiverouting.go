@@ -13,6 +13,9 @@ type Predictiverouting struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// RespectSkills - A switch used to determine if agent skills will be considered.
 	RespectSkills *bool `json:"respectSkills,omitempty"`
+
+	// EnableConversationScoreBiasing - A switch used to determine if conversations are weighted by conversation score when the system attempts to assign an agent a new conversation.
+	EnableConversationScoreBiasing *bool `json:"enableConversationScoreBiasing,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Predictiverouting) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		RespectSkills *bool `json:"respectSkills,omitempty"`
+		
+		EnableConversationScoreBiasing *bool `json:"enableConversationScoreBiasing,omitempty"`
 		Alias
 	}{ 
 		RespectSkills: o.RespectSkills,
+		
+		EnableConversationScoreBiasing: o.EnableConversationScoreBiasing,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Predictiverouting) UnmarshalJSON(b []byte) error {
 	
 	if RespectSkills, ok := PredictiveroutingMap["respectSkills"].(bool); ok {
 		o.RespectSkills = &RespectSkills
+	}
+    
+	if EnableConversationScoreBiasing, ok := PredictiveroutingMap["enableConversationScoreBiasing"].(bool); ok {
+		o.EnableConversationScoreBiasing = &EnableConversationScoreBiasing
 	}
     
 

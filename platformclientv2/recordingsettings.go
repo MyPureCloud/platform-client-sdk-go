@@ -16,6 +16,9 @@ type Recordingsettings struct {
 
 	// MaxConfigurableScreenRecordingStreams - Upper limit that maxSimultaneousStreams can be configured
 	MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
+
+	// RegionalRecordingStorageEnabled - Store call recordings in the region where they are intended to be recorded, otherwise in the organization's home region
+	RegionalRecordingStorageEnabled *bool `json:"regionalRecordingStorageEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Recordingsettings) MarshalJSON() ([]byte, error) {
 		MaxSimultaneousStreams *int `json:"maxSimultaneousStreams,omitempty"`
 		
 		MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
+		
+		RegionalRecordingStorageEnabled *bool `json:"regionalRecordingStorageEnabled,omitempty"`
 		Alias
 	}{ 
 		MaxSimultaneousStreams: o.MaxSimultaneousStreams,
 		
 		MaxConfigurableScreenRecordingStreams: o.MaxConfigurableScreenRecordingStreams,
+		
+		RegionalRecordingStorageEnabled: o.RegionalRecordingStorageEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -110,6 +117,10 @@ func (o *Recordingsettings) UnmarshalJSON(b []byte) error {
 		o.MaxConfigurableScreenRecordingStreams = &MaxConfigurableScreenRecordingStreamsInt
 	}
 	
+	if RegionalRecordingStorageEnabled, ok := RecordingsettingsMap["regionalRecordingStorageEnabled"].(bool); ok {
+		o.RegionalRecordingStorageEnabled = &RegionalRecordingStorageEnabled
+	}
+    
 
 	return nil
 }

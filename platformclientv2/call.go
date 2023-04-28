@@ -39,6 +39,9 @@ type Call struct {
 	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
+	// SecurePause - True when the recording of this call is in secure pause status.
+	SecurePause *bool `json:"securePause,omitempty"`
+
 	// RecordingId - A globally unique identifier for the recording associated with this call.
 	RecordingId *string `json:"recordingId,omitempty"`
 
@@ -216,6 +219,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		
 		Held *bool `json:"held,omitempty"`
 		
+		SecurePause *bool `json:"securePause,omitempty"`
+		
 		RecordingId *string `json:"recordingId,omitempty"`
 		
 		Segments *[]Segment `json:"segments,omitempty"`
@@ -276,6 +281,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		Confined: o.Confined,
 		
 		Held: o.Held,
+		
+		SecurePause: o.SecurePause,
 		
 		RecordingId: o.RecordingId,
 		
@@ -363,6 +370,10 @@ func (o *Call) UnmarshalJSON(b []byte) error {
     
 	if Held, ok := CallMap["held"].(bool); ok {
 		o.Held = &Held
+	}
+    
+	if SecurePause, ok := CallMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
 	}
     
 	if RecordingId, ok := CallMap["recordingId"].(string); ok {

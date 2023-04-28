@@ -19,6 +19,9 @@ type Workitemseventsnotificationwrapup struct {
 
 	// Op
 	Op *string `json:"op,omitempty"`
+
+	// Action
+	Action *string `json:"action,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Workitemseventsnotificationwrapup) MarshalJSON() ([]byte, error) {
 		UserId *string `json:"userId,omitempty"`
 		
 		Op *string `json:"op,omitempty"`
+		
+		Action *string `json:"action,omitempty"`
 		Alias
 	}{ 
 		Code: o.Code,
@@ -96,6 +101,8 @@ func (o Workitemseventsnotificationwrapup) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		Op: o.Op,
+		
+		Action: o.Action,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Workitemseventsnotificationwrapup) UnmarshalJSON(b []byte) error {
     
 	if Op, ok := WorkitemseventsnotificationwrapupMap["op"].(string); ok {
 		o.Op = &Op
+	}
+    
+	if Action, ok := WorkitemseventsnotificationwrapupMap["action"].(string); ok {
+		o.Action = &Action
 	}
     
 

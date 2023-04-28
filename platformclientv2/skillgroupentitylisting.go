@@ -12,7 +12,7 @@ type Skillgroupentitylisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Skillgroup `json:"entities,omitempty"`
+	Entities *[]Skillgroupdefinition `json:"entities,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -87,7 +87,7 @@ func (o Skillgroupentitylisting) MarshalJSON() ([]byte, error) {
 	type Alias Skillgroupentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Skillgroup `json:"entities,omitempty"`
+		Entities *[]Skillgroupdefinition `json:"entities,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		

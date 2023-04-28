@@ -21,16 +21,16 @@ type Wrapupcode struct {
 	// Division - The division to which this entity belongs.
 	Division *Starrabledivision `json:"division,omitempty"`
 
-	// DateCreated - Date when the assistant wrap-up code was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateCreated - Date when the wrap-up code was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// DateModified - Date when the wrapup-code was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateModified - Date when the wrap-up code was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// CreatedBy - The wrap-up code name.
+	// CreatedBy - The ID of the user that created the wrap-up code.
 	CreatedBy *string `json:"createdBy,omitempty"`
 
-	// ModifiedBy
+	// ModifiedBy - The ID of the user that modified the wrap-up code.
 	ModifiedBy *string `json:"modifiedBy,omitempty"`
 
 	// SelfUri - The URI for this object

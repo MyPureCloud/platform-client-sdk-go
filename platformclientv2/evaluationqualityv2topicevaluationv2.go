@@ -86,6 +86,24 @@ type Evaluationqualityv2topicevaluationv2 struct {
 
 	// PreviousAssigneeUserId
 	PreviousAssigneeUserId *string `json:"previousAssigneeUserId,omitempty"`
+
+	// EvaluationContextId
+	EvaluationContextId *string `json:"evaluationContextId,omitempty"`
+
+	// DisputeCount
+	DisputeCount *int `json:"disputeCount,omitempty"`
+
+	// Version
+	Version *int `json:"version,omitempty"`
+
+	// PreviousStatus
+	PreviousStatus *string `json:"previousStatus,omitempty"`
+
+	// DeclinedReview
+	DeclinedReview *bool `json:"declinedReview,omitempty"`
+
+	// RetractedEvaluation
+	RetractedEvaluation *Evaluationqualityv2topicevaluationreference `json:"retractedEvaluation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -240,6 +258,18 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		AssigneeUserId *string `json:"assigneeUserId,omitempty"`
 		
 		PreviousAssigneeUserId *string `json:"previousAssigneeUserId,omitempty"`
+		
+		EvaluationContextId *string `json:"evaluationContextId,omitempty"`
+		
+		DisputeCount *int `json:"disputeCount,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		PreviousStatus *string `json:"previousStatus,omitempty"`
+		
+		DeclinedReview *bool `json:"declinedReview,omitempty"`
+		
+		RetractedEvaluation *Evaluationqualityv2topicevaluationreference `json:"retractedEvaluation,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -291,6 +321,18 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		AssigneeUserId: o.AssigneeUserId,
 		
 		PreviousAssigneeUserId: o.PreviousAssigneeUserId,
+		
+		EvaluationContextId: o.EvaluationContextId,
+		
+		DisputeCount: o.DisputeCount,
+		
+		Version: o.Version,
+		
+		PreviousStatus: o.PreviousStatus,
+		
+		DeclinedReview: o.DeclinedReview,
+		
+		RetractedEvaluation: o.RetractedEvaluation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -414,6 +456,33 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 		o.PreviousAssigneeUserId = &PreviousAssigneeUserId
 	}
     
+	if EvaluationContextId, ok := Evaluationqualityv2topicevaluationv2Map["evaluationContextId"].(string); ok {
+		o.EvaluationContextId = &EvaluationContextId
+	}
+    
+	if DisputeCount, ok := Evaluationqualityv2topicevaluationv2Map["disputeCount"].(float64); ok {
+		DisputeCountInt := int(DisputeCount)
+		o.DisputeCount = &DisputeCountInt
+	}
+	
+	if Version, ok := Evaluationqualityv2topicevaluationv2Map["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if PreviousStatus, ok := Evaluationqualityv2topicevaluationv2Map["previousStatus"].(string); ok {
+		o.PreviousStatus = &PreviousStatus
+	}
+    
+	if DeclinedReview, ok := Evaluationqualityv2topicevaluationv2Map["declinedReview"].(bool); ok {
+		o.DeclinedReview = &DeclinedReview
+	}
+    
+	if RetractedEvaluation, ok := Evaluationqualityv2topicevaluationv2Map["retractedEvaluation"].(map[string]interface{}); ok {
+		RetractedEvaluationString, _ := json.Marshal(RetractedEvaluation)
+		json.Unmarshal(RetractedEvaluationString, &o.RetractedEvaluation)
+	}
+	
 
 	return nil
 }

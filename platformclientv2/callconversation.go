@@ -32,6 +32,9 @@ type Callconversation struct {
 	// MaxParticipants - If this is a conference conversation, then this field indicates the maximum number of participants allowed to participant in the conference.
 	MaxParticipants *int `json:"maxParticipants,omitempty"`
 
+	// SecurePause - True when the recording of this conversation is in secure pause status.
+	SecurePause *bool `json:"securePause,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -113,6 +116,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		
 		MaxParticipants *int `json:"maxParticipants,omitempty"`
 		
+		SecurePause *bool `json:"securePause,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -129,6 +134,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		RecordingState: o.RecordingState,
 		
 		MaxParticipants: o.MaxParticipants,
+		
+		SecurePause: o.SecurePause,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -174,6 +181,10 @@ func (o *Callconversation) UnmarshalJSON(b []byte) error {
 		o.MaxParticipants = &MaxParticipantsInt
 	}
 	
+	if SecurePause, ok := CallconversationMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
+	}
+    
 	if SelfUri, ok := CallconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

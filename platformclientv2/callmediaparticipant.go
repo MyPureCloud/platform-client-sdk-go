@@ -158,6 +158,9 @@ type Callmediaparticipant struct {
 
 	// BargedTime - The timestamp when this participant was connected to the barge conference in the provider clock. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	BargedTime *time.Time `json:"bargedTime,omitempty"`
+
+	// SecurePause - True when the recording of this call is in secure pause status.
+	SecurePause *bool `json:"securePause,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -376,6 +379,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		UuiData *string `json:"uuiData,omitempty"`
 		
 		BargedTime *string `json:"bargedTime,omitempty"`
+		
+		SecurePause *bool `json:"securePause,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -475,6 +480,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		UuiData: o.UuiData,
 		
 		BargedTime: BargedTime,
+		
+		SecurePause: o.SecurePause,
 		Alias:    (Alias)(o),
 	})
 }
@@ -705,6 +712,10 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 		o.BargedTime = &BargedTime
 	}
 	
+	if SecurePause, ok := CallmediaparticipantMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
+	}
+    
 
 	return nil
 }

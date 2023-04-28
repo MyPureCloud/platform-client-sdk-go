@@ -134,6 +134,9 @@ type Queueconversationmessageeventtopicmessagemediaparticipant struct {
 
 	// ByoSmsIntegrationId
 	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
+
+	// MonitoredParticipantId
+	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -328,6 +331,8 @@ func (o Queueconversationmessageeventtopicmessagemediaparticipant) MarshalJSON()
 		RecipientType *string `json:"recipientType,omitempty"`
 		
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
+		
+		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -411,6 +416,8 @@ func (o Queueconversationmessageeventtopicmessagemediaparticipant) MarshalJSON()
 		RecipientType: o.RecipientType,
 		
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
+		
+		MonitoredParticipantId: o.MonitoredParticipantId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -605,6 +612,10 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
     
 	if ByoSmsIntegrationId, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["byoSmsIntegrationId"].(string); ok {
 		o.ByoSmsIntegrationId = &ByoSmsIntegrationId
+	}
+    
+	if MonitoredParticipantId, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["monitoredParticipantId"].(string); ok {
+		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
     
 

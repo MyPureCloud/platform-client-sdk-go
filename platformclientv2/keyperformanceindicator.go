@@ -48,6 +48,9 @@ type Keyperformanceindicator struct {
 	// KpiGroup - The group the Key Performance Indicator belongs to.
 	KpiGroup *string `json:"kpiGroup,omitempty"`
 
+	// Queues - Queue IDs on which KPI specification is used.
+	Queues *[]string `json:"queues,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -155,6 +158,8 @@ func (o Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 		
 		KpiGroup *string `json:"kpiGroup,omitempty"`
 		
+		Queues *[]string `json:"queues,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -181,6 +186,8 @@ func (o Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		KpiGroup: o.KpiGroup,
+		
+		Queues: o.Queues,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -246,6 +253,11 @@ func (o *Keyperformanceindicator) UnmarshalJSON(b []byte) error {
 		o.KpiGroup = &KpiGroup
 	}
     
+	if Queues, ok := KeyperformanceindicatorMap["queues"].([]interface{}); ok {
+		QueuesString, _ := json.Marshal(Queues)
+		json.Unmarshal(QueuesString, &o.Queues)
+	}
+	
 	if SelfUri, ok := KeyperformanceindicatorMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

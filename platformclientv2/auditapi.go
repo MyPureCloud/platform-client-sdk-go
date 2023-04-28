@@ -354,6 +354,8 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 // PostAuditsQuery invokes POST /api/v2/audits/query
 //
 // Create audit query execution
+//
+// Use /api/v2/audits/query/servicemapping endpoint for a list of valid values
 func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutionstatusresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -438,6 +440,8 @@ func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutions
 // PostAuditsQueryRealtime invokes POST /api/v2/audits/query/realtime
 //
 // This endpoint will only retrieve 14 days worth of audits for certain services. Please use /query to get a full list and older audits.
+//
+// Use /api/v2/audits/query/realtime/servicemapping endpoint for a list of valid values
 func (a AuditApi) PostAuditsQueryRealtime(body Auditrealtimequeryrequest, expand []string) (*Auditrealtimequeryresultsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -73,6 +73,9 @@ type Externalcontactscontactchangedtopiccontact struct {
 
 	// FacebookId
 	FacebookId *Externalcontactscontactchangedtopicfacebookid `json:"facebookId,omitempty"`
+
+	// InstagramId
+	InstagramId *Externalcontactscontactchangedtopicinstagramid `json:"instagramId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -179,6 +182,8 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		WhatsAppId *Externalcontactscontactchangedtopicwhatsappid `json:"whatsAppId,omitempty"`
 		
 		FacebookId *Externalcontactscontactchangedtopicfacebookid `json:"facebookId,omitempty"`
+		
+		InstagramId *Externalcontactscontactchangedtopicinstagramid `json:"instagramId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -222,6 +227,8 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		WhatsAppId: o.WhatsAppId,
 		
 		FacebookId: o.FacebookId,
+		
+		InstagramId: o.InstagramId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -324,6 +331,11 @@ func (o *Externalcontactscontactchangedtopiccontact) UnmarshalJSON(b []byte) err
 	if FacebookId, ok := ExternalcontactscontactchangedtopiccontactMap["facebookId"].(map[string]interface{}); ok {
 		FacebookIdString, _ := json.Marshal(FacebookId)
 		json.Unmarshal(FacebookIdString, &o.FacebookId)
+	}
+	
+	if InstagramId, ok := ExternalcontactscontactchangedtopiccontactMap["instagramId"].(map[string]interface{}); ok {
+		InstagramIdString, _ := json.Marshal(InstagramId)
+		json.Unmarshal(InstagramIdString, &o.InstagramId)
 	}
 	
 

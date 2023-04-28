@@ -64,6 +64,12 @@ type Acdstartdetaileventtopicacdstartevent struct {
 
 	// DivisionId
 	DivisionId *string `json:"divisionId,omitempty"`
+
+	// ConversationExternalContactIds
+	ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+
+	// ConversationExternalOrganizationIds
+	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -164,6 +170,10 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		QueueId *string `json:"queueId,omitempty"`
 		
 		DivisionId *string `json:"divisionId,omitempty"`
+		
+		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+		
+		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -201,6 +211,10 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		QueueId: o.QueueId,
 		
 		DivisionId: o.DivisionId,
+		
+		ConversationExternalContactIds: o.ConversationExternalContactIds,
+		
+		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -287,6 +301,16 @@ func (o *Acdstartdetaileventtopicacdstartevent) UnmarshalJSON(b []byte) error {
 		o.DivisionId = &DivisionId
 	}
     
+	if ConversationExternalContactIds, ok := AcdstartdetaileventtopicacdstarteventMap["conversationExternalContactIds"].([]interface{}); ok {
+		ConversationExternalContactIdsString, _ := json.Marshal(ConversationExternalContactIds)
+		json.Unmarshal(ConversationExternalContactIdsString, &o.ConversationExternalContactIds)
+	}
+	
+	if ConversationExternalOrganizationIds, ok := AcdstartdetaileventtopicacdstarteventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
+		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
+		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
+	}
+	
 
 	return nil
 }

@@ -21,7 +21,7 @@ type Dialercontact struct {
 	ContactListId *string `json:"contactListId,omitempty"`
 
 	// Data - An ordered map of the contact's columns and corresponding values.
-	Data *map[string]interface{} `json:"data,omitempty"`
+	Data *map[string]string `json:"data,omitempty"`
 
 	// CallRecords - A map of call records for the contact phone columns.
 	CallRecords *map[string]Callrecord `json:"callRecords,omitempty"`
@@ -120,7 +120,7 @@ func (o Dialercontact) MarshalJSON() ([]byte, error) {
 		
 		ContactListId *string `json:"contactListId,omitempty"`
 		
-		Data *map[string]interface{} `json:"data,omitempty"`
+		Data *map[string]string `json:"data,omitempty"`
 		
 		CallRecords *map[string]Callrecord `json:"callRecords,omitempty"`
 		

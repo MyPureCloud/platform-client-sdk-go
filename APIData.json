@@ -11108,6 +11108,353 @@
     "return": "Externalmetricdefinitionlisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Get a list of External Metric Definitions of an organization, sorted by name in ascending order\ndata, response, err := apiInstance.GetEmployeeperformanceExternalmetricsDefinitions(pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetEmployeeperformanceExternalmetricsDefinitions: %v\\n\", err)\n}"
   },
+  "getgamificationinsights": {
+    "operationId": "getgamificationinsights",
+    "functionName": "GetGamificationInsights",
+    "signature": "GetGamificationInsights(filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday, pageSize, pageNumber, sortKey, sortMetricId, sortOrder, userIds)",
+    "parameters": [
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "sortKey",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "sortMetricId",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "sortOrder",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "userIds",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Insightssummary",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar comparativePeriodStartWorkday time.Time // The start work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodStartWorkday time.Time // The start work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortKey string // Sort key\nvar sortMetricId string // Sort Metric Id\nvar sortOrder string // Sort order\nvar userIds string // A list of up to 100 comma-separated user Ids\n// Get insights summary\ndata, response, err := apiInstance.GetGamificationInsights(filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday, pageSize, pageNumber, sortKey, sortMetricId, sortOrder, userIds)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsights: %v\\n\", err)\n}"
+  },
+  "getgamificationinsightsdetails": {
+    "operationId": "getgamificationinsightsdetails",
+    "functionName": "GetGamificationInsightsDetails",
+    "signature": "GetGamificationInsightsDetails(filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday)",
+    "parameters": [
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      }
+    ],
+    "return": "Insightsdetails",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar comparativePeriodStartWorkday time.Time // The start work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodStartWorkday time.Time // The start work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get insights details for the current user\ndata, response, err := apiInstance.GetGamificationInsightsDetails(filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsightsDetails: %v\\n\", err)\n}"
+  },
+  "getgamificationinsightsgroupstrends": {
+    "operationId": "getgamificationinsightsgroupstrends",
+    "functionName": "GetGamificationInsightsGroupsTrends",
+    "signature": "GetGamificationInsightsGroupsTrends(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+    "parameters": [
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      }
+    ],
+    "return": "Insightstrend",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar comparativePeriodStartWorkday time.Time // The start work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar comparativePeriodEndWorkday time.Time // The end work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodStartWorkday time.Time // The start work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodEndWorkday time.Time // The end work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get insights overall trend for the current user\ndata, response, err := apiInstance.GetGamificationInsightsGroupsTrends(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsightsGroupsTrends: %v\\n\", err)\n}"
+  },
+  "getgamificationinsightsgroupstrendsall": {
+    "operationId": "getgamificationinsightsgroupstrendsall",
+    "functionName": "GetGamificationInsightsGroupsTrendsAll",
+    "signature": "GetGamificationInsightsGroupsTrendsAll(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+    "parameters": [
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      }
+    ],
+    "return": "Insightstrend",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar comparativePeriodStartWorkday time.Time // The start work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar comparativePeriodEndWorkday time.Time // The end work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodStartWorkday time.Time // The start work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodEndWorkday time.Time // The end work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get insights overall trend\ndata, response, err := apiInstance.GetGamificationInsightsGroupsTrendsAll(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsightsGroupsTrendsAll: %v\\n\", err)\n}"
+  },
+  "getgamificationinsightsmembers": {
+    "operationId": "getgamificationinsightsmembers",
+    "functionName": "GetGamificationInsightsMembers",
+    "signature": "GetGamificationInsightsMembers(filterType, filterId, granularity, startWorkday)",
+    "parameters": [
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "startWorkday",
+        "type": "time.Time",
+        "required": "true"
+      }
+    ],
+    "return": "Insightsagents",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar startWorkday time.Time // The start work day. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Query users in a profile during a period of time\ndata, response, err := apiInstance.GetGamificationInsightsMembers(filterType, filterId, granularity, startWorkday)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsightsMembers: %v\\n\", err)\n}"
+  },
+  "getgamificationinsightstrends": {
+    "operationId": "getgamificationinsightstrends",
+    "functionName": "GetGamificationInsightsTrends",
+    "signature": "GetGamificationInsightsTrends(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+    "parameters": [
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      }
+    ],
+    "return": "Userinsightstrend",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar comparativePeriodStartWorkday time.Time // The start work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar comparativePeriodEndWorkday time.Time // The end work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodStartWorkday time.Time // The start work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodEndWorkday time.Time // The end work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get insights user trend for the current user\ndata, response, err := apiInstance.GetGamificationInsightsTrends(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsightsTrends: %v\\n\", err)\n}"
+  },
+  "getgamificationinsightsuserdetails": {
+    "operationId": "getgamificationinsightsuserdetails",
+    "functionName": "GetGamificationInsightsUserDetails",
+    "signature": "GetGamificationInsightsUserDetails(userId, filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      }
+    ],
+    "return": "Insightsdetails",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar userId string // The ID of a user.\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar comparativePeriodStartWorkday time.Time // The start work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodStartWorkday time.Time // The start work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get insights details for the user\ndata, response, err := apiInstance.GetGamificationInsightsUserDetails(userId, filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsightsUserDetails: %v\\n\", err)\n}"
+  },
+  "getgamificationinsightsusertrends": {
+    "operationId": "getgamificationinsightsusertrends",
+    "functionName": "GetGamificationInsightsUserTrends",
+    "signature": "GetGamificationInsightsUserTrends(userId, filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "filterId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "granularity",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "comparativePeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodStartWorkday",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "primaryPeriodEndWorkday",
+        "type": "time.Time",
+        "required": "true"
+      }
+    ],
+    "return": "Userinsightstrend",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar userId string // The ID of a user.\nvar filterType string // Filter type for the query request.\nvar filterId string // ID for the filter type.\nvar granularity string // Granularity\nvar comparativePeriodStartWorkday time.Time // The start work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar comparativePeriodEndWorkday time.Time // The end work day of comparative period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodStartWorkday time.Time // The start work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar primaryPeriodEndWorkday time.Time // The end work day of primary period. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get insights user trend for the user\ndata, response, err := apiInstance.GetGamificationInsightsUserTrends(userId, filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationInsightsUserTrends: %v\\n\", err)\n}"
+  },
   "getgamificationleaderboard": {
     "operationId": "getgamificationleaderboard",
     "functionName": "GetGamificationLeaderboard",
@@ -12068,6 +12415,39 @@
     ],
     "return": "Performanceprofile",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar body platformclientv2.Createperformanceprofile // performanceProfile\nvar copyMetrics bool // Flag to copy metrics. If set to false, there will be no metrics associated with the new profile. If set to true or is absent (the default behavior), all metrics from the default profile will be copied over into the new profile.\n// Create a new custom performance profile\ndata, response, err := apiInstance.PostGamificationProfiles(body, copyMetrics)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostGamificationProfiles: %v\\n\", err)\n}"
+  },
+  "postgamificationprofilesuserquery": {
+    "operationId": "postgamificationprofilesuserquery",
+    "functionName": "PostGamificationProfilesUserQuery",
+    "signature": "PostGamificationProfilesUserQuery(userId, body)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Userprofilesindaterangerequest",
+        "required": "true"
+      }
+    ],
+    "return": "Userprofilesindaterange",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar userId string // The ID of a user.\nvar body platformclientv2.Userprofilesindaterangerequest // The date range of work day.\n// Query performance profiles in date range for a user\ndata, response, err := apiInstance.PostGamificationProfilesUserQuery(userId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostGamificationProfilesUserQuery: %v\\n\", err)\n}"
+  },
+  "postgamificationprofilesusersmequery": {
+    "operationId": "postgamificationprofilesusersmequery",
+    "functionName": "PostGamificationProfilesUsersMeQuery",
+    "signature": "PostGamificationProfilesUsersMeQuery(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Userprofilesindaterangerequest",
+        "required": "true"
+      }
+    ],
+    "return": "Userprofilesindaterange",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar body platformclientv2.Userprofilesindaterangerequest // The date range of work day.\n// Query performance profiles in date range for the current user\ndata, response, err := apiInstance.PostGamificationProfilesUsersMeQuery(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostGamificationProfilesUsersMeQuery: %v\\n\", err)\n}"
   },
   "putgamificationprofile": {
     "operationId": "putgamificationprofile",
@@ -26912,16 +27292,21 @@
   "getroutingpredictorskeyperformanceindicators": {
     "operationId": "getroutingpredictorskeyperformanceindicators",
     "functionName": "GetRoutingPredictorsKeyperformanceindicators",
-    "signature": "GetRoutingPredictorsKeyperformanceindicators(kpiGroup)",
+    "signature": "GetRoutingPredictorsKeyperformanceindicators(kpiGroup, expand)",
     "parameters": [
       {
         "name": "kpiGroup",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
       }
     ],
     "return": "[]Keyperformanceindicator",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar kpiGroup string // The Group of Key Performance Indicators to return\n// Get a list of Key Performance Indicators\ndata, response, err := apiInstance.GetRoutingPredictorsKeyperformanceindicators(kpiGroup)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingPredictorsKeyperformanceindicators: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar kpiGroup string // The Group of Key Performance Indicators to return\nvar expand []string // Parameter to request additional data to return in KPI payload\n// Get a list of Key Performance Indicators\ndata, response, err := apiInstance.GetRoutingPredictorsKeyperformanceindicators(kpiGroup, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingPredictorsKeyperformanceindicators: %v\\n\", err)\n}"
   },
   "getroutingqueue": {
     "operationId": "getroutingqueue",
@@ -30958,19 +31343,6 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar extensionPoolId string // Extension pool ID\n// Delete an extension pool by ID\nresponse, err := apiInstance.DeleteTelephonyProvidersEdgesExtensionpool(extensionPoolId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteTelephonyProvidersEdgesExtensionpool: %v\\n\", err)\n}"
   },
-  "deletetelephonyprovidersedgesoutboundroute": {
-    "operationId": "deletetelephonyprovidersedgesoutboundroute",
-    "functionName": "DeleteTelephonyProvidersEdgesOutboundroute",
-    "signature": "DeleteTelephonyProvidersEdgesOutboundroute(outboundRouteId)",
-    "parameters": [
-      {
-        "name": "outboundRouteId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar outboundRouteId string // Outbound route ID\n// Delete Outbound Route\nresponse, err := apiInstance.DeleteTelephonyProvidersEdgesOutboundroute(outboundRouteId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteTelephonyProvidersEdgesOutboundroute: %v\\n\", err)\n}"
-  },
   "deletetelephonyprovidersedgesphone": {
     "operationId": "deletetelephonyprovidersedgesphone",
     "functionName": "DeleteTelephonyProvidersEdgesPhone",
@@ -32818,20 +33190,6 @@
     "return": "Extensionpool",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar body platformclientv2.Extensionpool // ExtensionPool\n// Create a new extension pool\ndata, response, err := apiInstance.PostTelephonyProvidersEdgesExtensionpools(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTelephonyProvidersEdgesExtensionpools: %v\\n\", err)\n}"
   },
-  "posttelephonyprovidersedgesoutboundroutes": {
-    "operationId": "posttelephonyprovidersedgesoutboundroutes",
-    "functionName": "PostTelephonyProvidersEdgesOutboundroutes",
-    "signature": "PostTelephonyProvidersEdgesOutboundroutes(body)",
-    "parameters": [
-      {
-        "name": "body",
-        "type": "Outboundroute",
-        "required": "true"
-      }
-    ],
-    "return": "Outboundroute",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar body platformclientv2.Outboundroute // OutboundRoute\n// Create outbound rule\ndata, response, err := apiInstance.PostTelephonyProvidersEdgesOutboundroutes(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTelephonyProvidersEdgesOutboundroutes: %v\\n\", err)\n}"
-  },
   "posttelephonyprovidersedgesphonereboot": {
     "operationId": "posttelephonyprovidersedgesphonereboot",
     "functionName": "PostTelephonyProvidersEdgesPhoneReboot",
@@ -33075,25 +33433,6 @@
     ],
     "return": "Extensionpool",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar extensionPoolId string // Extension pool ID\nvar body platformclientv2.Extensionpool // ExtensionPool\n// Update an extension pool by ID\ndata, response, err := apiInstance.PutTelephonyProvidersEdgesExtensionpool(extensionPoolId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesExtensionpool: %v\\n\", err)\n}"
-  },
-  "puttelephonyprovidersedgesoutboundroute": {
-    "operationId": "puttelephonyprovidersedgesoutboundroute",
-    "functionName": "PutTelephonyProvidersEdgesOutboundroute",
-    "signature": "PutTelephonyProvidersEdgesOutboundroute(outboundRouteId, body)",
-    "parameters": [
-      {
-        "name": "outboundRouteId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Outboundroute",
-        "required": "true"
-      }
-    ],
-    "return": "Outboundroute",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar outboundRouteId string // Outbound route ID\nvar body platformclientv2.Outboundroute // OutboundRoute\n// Update outbound route\ndata, response, err := apiInstance.PutTelephonyProvidersEdgesOutboundroute(outboundRouteId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesOutboundroute: %v\\n\", err)\n}"
   },
   "puttelephonyprovidersedgesphone": {
     "operationId": "puttelephonyprovidersedgesphone",
@@ -37381,7 +37720,7 @@
       }
     ],
     "return": "Wfmhistoricaladherenceresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar body platformclientv2.Wfmhistoricaladherencequeryforusers // body\n// Request a historical adherence report for users across management units\ndata, response, err := apiInstance.PostWorkforcemanagementAdherenceHistorical(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAdherenceHistorical: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar body platformclientv2.Wfmhistoricaladherencequeryforusers // body\n// Deprecated. Use bulk routes instead (/adherence/historical/bulk)\ndata, response, err := apiInstance.PostWorkforcemanagementAdherenceHistorical(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAdherenceHistorical: %v\\n\", err)\n}"
   },
   "postworkforcemanagementadherencehistoricalbulk": {
     "operationId": "postworkforcemanagementadherencehistoricalbulk",

@@ -73,6 +73,12 @@ type Acwdetaileventtopicaftercallworkevent struct {
 
 	// WrapupDurationMs
 	WrapupDurationMs *int `json:"wrapupDurationMs,omitempty"`
+
+	// ConversationExternalContactIds
+	ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+
+	// ConversationExternalOrganizationIds
+	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -179,6 +185,10 @@ func (o Acwdetaileventtopicaftercallworkevent) MarshalJSON() ([]byte, error) {
 		WrapupNotes *string `json:"wrapupNotes,omitempty"`
 		
 		WrapupDurationMs *int `json:"wrapupDurationMs,omitempty"`
+		
+		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+		
+		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -222,6 +232,10 @@ func (o Acwdetaileventtopicaftercallworkevent) MarshalJSON() ([]byte, error) {
 		WrapupNotes: o.WrapupNotes,
 		
 		WrapupDurationMs: o.WrapupDurationMs,
+		
+		ConversationExternalContactIds: o.ConversationExternalContactIds,
+		
+		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -319,6 +333,16 @@ func (o *Acwdetaileventtopicaftercallworkevent) UnmarshalJSON(b []byte) error {
 	if WrapupDurationMs, ok := AcwdetaileventtopicaftercallworkeventMap["wrapupDurationMs"].(float64); ok {
 		WrapupDurationMsInt := int(WrapupDurationMs)
 		o.WrapupDurationMs = &WrapupDurationMsInt
+	}
+	
+	if ConversationExternalContactIds, ok := AcwdetaileventtopicaftercallworkeventMap["conversationExternalContactIds"].([]interface{}); ok {
+		ConversationExternalContactIdsString, _ := json.Marshal(ConversationExternalContactIds)
+		json.Unmarshal(ConversationExternalContactIdsString, &o.ConversationExternalContactIds)
+	}
+	
+	if ConversationExternalOrganizationIds, ok := AcwdetaileventtopicaftercallworkeventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
+		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
+		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
 

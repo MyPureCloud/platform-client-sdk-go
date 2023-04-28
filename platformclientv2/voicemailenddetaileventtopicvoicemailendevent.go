@@ -52,6 +52,12 @@ type Voicemailenddetaileventtopicvoicemailendevent struct {
 
 	// VoicemailDurationMs
 	VoicemailDurationMs *int `json:"voicemailDurationMs,omitempty"`
+
+	// ConversationExternalContactIds
+	ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+
+	// ConversationExternalOrganizationIds
+	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -144,6 +150,10 @@ func (o Voicemailenddetaileventtopicvoicemailendevent) MarshalJSON() ([]byte, er
 		DivisionId *string `json:"divisionId,omitempty"`
 		
 		VoicemailDurationMs *int `json:"voicemailDurationMs,omitempty"`
+		
+		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
+		
+		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -173,6 +183,10 @@ func (o Voicemailenddetaileventtopicvoicemailendevent) MarshalJSON() ([]byte, er
 		DivisionId: o.DivisionId,
 		
 		VoicemailDurationMs: o.VoicemailDurationMs,
+		
+		ConversationExternalContactIds: o.ConversationExternalContactIds,
+		
+		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -240,6 +254,16 @@ func (o *Voicemailenddetaileventtopicvoicemailendevent) UnmarshalJSON(b []byte) 
 	if VoicemailDurationMs, ok := VoicemailenddetaileventtopicvoicemailendeventMap["voicemailDurationMs"].(float64); ok {
 		VoicemailDurationMsInt := int(VoicemailDurationMs)
 		o.VoicemailDurationMs = &VoicemailDurationMsInt
+	}
+	
+	if ConversationExternalContactIds, ok := VoicemailenddetaileventtopicvoicemailendeventMap["conversationExternalContactIds"].([]interface{}); ok {
+		ConversationExternalContactIdsString, _ := json.Marshal(ConversationExternalContactIds)
+		json.Unmarshal(ConversationExternalContactIdsString, &o.ConversationExternalContactIds)
+	}
+	
+	if ConversationExternalOrganizationIds, ok := VoicemailenddetaileventtopicvoicemailendeventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
+		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
+		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
 

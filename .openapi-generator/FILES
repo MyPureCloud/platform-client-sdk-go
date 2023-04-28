@@ -200,7 +200,6 @@ docs/DeleteTelephonyProvidersEdgesCertificateauthority-example.txt
 docs/DeleteTelephonyProvidersEdgesDidpool-example.txt
 docs/DeleteTelephonyProvidersEdgesEdgegroup-example.txt
 docs/DeleteTelephonyProvidersEdgesExtensionpool-example.txt
-docs/DeleteTelephonyProvidersEdgesOutboundroute-example.txt
 docs/DeleteTelephonyProvidersEdgesPhone-example.txt
 docs/DeleteTelephonyProvidersEdgesPhonebasesetting-example.txt
 docs/DeleteTelephonyProvidersEdgesSite-example.txt
@@ -519,6 +518,14 @@ docs/GetFlowsMilestonesDivisionviews-example.txt
 docs/GetFlowsOutcome-example.txt
 docs/GetFlowsOutcomes-example.txt
 docs/GetFlowsOutcomesDivisionviews-example.txt
+docs/GetGamificationInsights-example.txt
+docs/GetGamificationInsightsDetails-example.txt
+docs/GetGamificationInsightsGroupsTrends-example.txt
+docs/GetGamificationInsightsGroupsTrendsAll-example.txt
+docs/GetGamificationInsightsMembers-example.txt
+docs/GetGamificationInsightsTrends-example.txt
+docs/GetGamificationInsightsUserDetails-example.txt
+docs/GetGamificationInsightsUserTrends-example.txt
 docs/GetGamificationLeaderboard-example.txt
 docs/GetGamificationLeaderboardAll-example.txt
 docs/GetGamificationLeaderboardAllBestpoints-example.txt
@@ -1569,6 +1576,8 @@ docs/PostGamificationProfileMembersValidate-example.txt
 docs/PostGamificationProfileMetricLink-example.txt
 docs/PostGamificationProfileMetrics-example.txt
 docs/PostGamificationProfiles-example.txt
+docs/PostGamificationProfilesUserQuery-example.txt
+docs/PostGamificationProfilesUsersMeQuery-example.txt
 docs/PostGdprRequests-example.txt
 docs/PostGreetings-example.txt
 docs/PostGroupGreetings-example.txt
@@ -1774,7 +1783,6 @@ docs/PostTelephonyProvidersEdgesCertificateauthorities-example.txt
 docs/PostTelephonyProvidersEdgesDidpools-example.txt
 docs/PostTelephonyProvidersEdgesEdgegroups-example.txt
 docs/PostTelephonyProvidersEdgesExtensionpools-example.txt
-docs/PostTelephonyProvidersEdgesOutboundroutes-example.txt
 docs/PostTelephonyProvidersEdgesPhoneReboot-example.txt
 docs/PostTelephonyProvidersEdgesPhonebasesettings-example.txt
 docs/PostTelephonyProvidersEdgesPhones-example.txt
@@ -2044,7 +2052,6 @@ docs/PutTelephonyProvidersEdgesDidpool-example.txt
 docs/PutTelephonyProvidersEdgesEdgegroup-example.txt
 docs/PutTelephonyProvidersEdgesEdgegroupEdgetrunkbase-example.txt
 docs/PutTelephonyProvidersEdgesExtensionpool-example.txt
-docs/PutTelephonyProvidersEdgesOutboundroute-example.txt
 docs/PutTelephonyProvidersEdgesPhone-example.txt
 docs/PutTelephonyProvidersEdgesPhonebasesetting-example.txt
 docs/PutTelephonyProvidersEdgesSite-example.txt
@@ -3387,6 +3394,7 @@ platformclientv2/evaluationformandscoringset.go
 platformclientv2/evaluationformentitylisting.go
 platformclientv2/evaluationformresponse.go
 platformclientv2/evaluationqualityv2topiccalibration.go
+platformclientv2/evaluationqualityv2topicevaluationreference.go
 platformclientv2/evaluationqualityv2topicevaluationscoringset.go
 platformclientv2/evaluationqualityv2topicevaluationsource.go
 platformclientv2/evaluationqualityv2topicevaluationv2.go
@@ -3431,6 +3439,8 @@ platformclientv2/externalcontactscontactchangedtopiccontact.go
 platformclientv2/externalcontactscontactchangedtopiccontactaddress.go
 platformclientv2/externalcontactscontactchangedtopicfacebookid.go
 platformclientv2/externalcontactscontactchangedtopicfacebookscopedid.go
+platformclientv2/externalcontactscontactchangedtopicinstagramid.go
+platformclientv2/externalcontactscontactchangedtopicinstagramscopedid.go
 platformclientv2/externalcontactscontactchangedtopiclineid.go
 platformclientv2/externalcontactscontactchangedtopiclineuserid.go
 platformclientv2/externalcontactscontactchangedtopicphonenumber.go
@@ -3440,6 +3450,8 @@ platformclientv2/externalcontactsunresolvedcontactchangedtopiccontact.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopiccontactaddress.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicfacebookid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicfacebookscopedid.go
+platformclientv2/externalcontactsunresolvedcontactchangedtopicinstagramid.go
+platformclientv2/externalcontactsunresolvedcontactchangedtopicinstagramscopedid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopiclineid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopiclineuserid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicphonenumber.go
@@ -3654,6 +3666,23 @@ platformclientv2/infrastructureascodejob.go
 platformclientv2/initialconfiguration.go
 platformclientv2/initiatescreenrecording.go
 platformclientv2/initiatingaction.go
+platformclientv2/insightsagentitem.go
+platformclientv2/insightsagents.go
+platformclientv2/insightsdetails.go
+platformclientv2/insightsdetailsmetricitem.go
+platformclientv2/insightsdetailsmetricperiodpoints.go
+platformclientv2/insightsdetailsoverallitem.go
+platformclientv2/insightsdetailsoverallperiodpoints.go
+platformclientv2/insightssummary.go
+platformclientv2/insightssummarymetricitem.go
+platformclientv2/insightssummarymetricperiodpoints.go
+platformclientv2/insightssummaryoverallitem.go
+platformclientv2/insightssummaryoverallperiodpoints.go
+platformclientv2/insightssummaryuseritem.go
+platformclientv2/insightstrend.go
+platformclientv2/insightstrendmetricitem.go
+platformclientv2/insightstrends.go
+platformclientv2/insightstrendtotalitem.go
 platformclientv2/instagramid.go
 platformclientv2/instagramscopedid.go
 platformclientv2/integration.go
@@ -4325,6 +4354,7 @@ platformclientv2/presenceeventuserpresence.go
 platformclientv2/presencesettings.go
 platformclientv2/processautomationapi.go
 platformclientv2/processscheduleupdateuploadrequest.go
+platformclientv2/profilewithdaterange.go
 platformclientv2/program.go
 platformclientv2/programjob.go
 platformclientv2/programjobrequest.go
@@ -4358,6 +4388,7 @@ platformclientv2/qualityauditlogmessage.go
 platformclientv2/qualityauditqueryexecutionresultsresponse.go
 platformclientv2/qualityauditqueryexecutionstatusresponse.go
 platformclientv2/qualityauditqueryfilter.go
+platformclientv2/qualityevaluationscoreitem.go
 platformclientv2/queryadherenceexplanationsresponse.go
 platformclientv2/querydivision.go
 platformclientv2/queryfacetinfo.go
@@ -4896,6 +4927,7 @@ platformclientv2/siteentitylisting.go
 platformclientv2/skillentitylisting.go
 platformclientv2/skillgroup.go
 platformclientv2/skillgroupcondition.go
+platformclientv2/skillgroupdefinition.go
 platformclientv2/skillgroupentitylisting.go
 platformclientv2/skillgrouplanguagecondition.go
 platformclientv2/skillgroupmemberdivisionlist.go
@@ -5124,6 +5156,7 @@ platformclientv2/transferdestination.go
 platformclientv2/transferinitiator.go
 platformclientv2/transferrequest.go
 platformclientv2/transferresponse.go
+platformclientv2/trenddata.go
 platformclientv2/trigger.go
 platformclientv2/triggerentitylisting.go
 platformclientv2/triggertarget.go
@@ -5264,6 +5297,7 @@ platformclientv2/usergreetingeventgreeting.go
 platformclientv2/usergreetingeventgreetingaudiofile.go
 platformclientv2/usergreetingeventgreetingowner.go
 platformclientv2/userimage.go
+platformclientv2/userinsightstrend.go
 platformclientv2/userlanguageentitylisting.go
 platformclientv2/userlicenses.go
 platformclientv2/userlicensesentitylisting.go
@@ -5281,6 +5315,8 @@ platformclientv2/userpresenceevent.go
 platformclientv2/userprimarysource.go
 platformclientv2/userprofile.go
 platformclientv2/userprofileentitylisting.go
+platformclientv2/userprofilesindaterange.go
+platformclientv2/userprofilesindaterangerequest.go
 platformclientv2/userqueue.go
 platformclientv2/userqueueentitylisting.go
 platformclientv2/userrecording.go
@@ -5399,6 +5435,8 @@ platformclientv2/valuewrapperplanningperiodsettings.go
 platformclientv2/valuewrapperstring.go
 platformclientv2/verificationresult.go
 platformclientv2/video.go
+platformclientv2/videoconferenceupdatetopicparticipantinfo.go
+platformclientv2/videoconferenceupdatetopicvideoconference.go
 platformclientv2/viewfilter.go
 platformclientv2/visibilitycondition.go
 platformclientv2/vmpairinginfo.go
@@ -5646,6 +5684,7 @@ platformclientv2/widgetdeploymententitylisting.go
 platformclientv2/widgetsapi.go
 platformclientv2/workdaymetric.go
 platformclientv2/workdaymetriclisting.go
+platformclientv2/workdayperiod.go
 platformclientv2/workdaypointstrend.go
 platformclientv2/workdaypointstrenditem.go
 platformclientv2/workdayvaluesmetricitem.go

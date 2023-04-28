@@ -8487,7 +8487,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceExplanationsQuer
 
 // PostWorkforcemanagementAdherenceHistorical invokes POST /api/v2/workforcemanagement/adherence/historical
 //
-// Request a historical adherence report for users across management units
+// Deprecated. Use bulk routes instead (/adherence/historical/bulk)
 func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceHistorical(body Wfmhistoricaladherencequeryforusers) (*Wfmhistoricaladherenceresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
