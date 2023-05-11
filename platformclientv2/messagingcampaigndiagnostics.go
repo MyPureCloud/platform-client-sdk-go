@@ -7,16 +7,16 @@ import (
 	"strings"
 )
 
-// Stationsettings - Organization settings for stations
-type Stationsettings struct { 
+// Messagingcampaigndiagnostics
+type Messagingcampaigndiagnostics struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// FreeSeatingConfiguration - Configuration options for free-seating
-	FreeSeatingConfiguration *Freeseatingconfiguration `json:"freeSeatingConfiguration,omitempty"`
+	// TimeZoneRescheduledContactsCount - Current number of time zone rescheduled messages on the campaign
+	TimeZoneRescheduledContactsCount *int `json:"timeZoneRescheduledContactsCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Stationsettings) SetField(field string, fieldValue interface{}) {
+func (o *Messagingcampaigndiagnostics) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +37,7 @@ func (o *Stationsettings) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Stationsettings) MarshalJSON() ([]byte, error) {
+func (o Messagingcampaigndiagnostics) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,27 +75,27 @@ func (o Stationsettings) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Stationsettings
+	type Alias Messagingcampaigndiagnostics
 	
 	return json.Marshal(&struct { 
-		FreeSeatingConfiguration *Freeseatingconfiguration `json:"freeSeatingConfiguration,omitempty"`
+		TimeZoneRescheduledContactsCount *int `json:"timeZoneRescheduledContactsCount,omitempty"`
 		Alias
 	}{ 
-		FreeSeatingConfiguration: o.FreeSeatingConfiguration,
+		TimeZoneRescheduledContactsCount: o.TimeZoneRescheduledContactsCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Stationsettings) UnmarshalJSON(b []byte) error {
-	var StationsettingsMap map[string]interface{}
-	err := json.Unmarshal(b, &StationsettingsMap)
+func (o *Messagingcampaigndiagnostics) UnmarshalJSON(b []byte) error {
+	var MessagingcampaigndiagnosticsMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagingcampaigndiagnosticsMap)
 	if err != nil {
 		return err
 	}
 	
-	if FreeSeatingConfiguration, ok := StationsettingsMap["freeSeatingConfiguration"].(map[string]interface{}); ok {
-		FreeSeatingConfigurationString, _ := json.Marshal(FreeSeatingConfiguration)
-		json.Unmarshal(FreeSeatingConfigurationString, &o.FreeSeatingConfiguration)
+	if TimeZoneRescheduledContactsCount, ok := MessagingcampaigndiagnosticsMap["timeZoneRescheduledContactsCount"].(float64); ok {
+		TimeZoneRescheduledContactsCountInt := int(TimeZoneRescheduledContactsCount)
+		o.TimeZoneRescheduledContactsCount = &TimeZoneRescheduledContactsCountInt
 	}
 	
 
@@ -103,7 +103,7 @@ func (o *Stationsettings) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Stationsettings) String() string {
+func (o *Messagingcampaigndiagnostics) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

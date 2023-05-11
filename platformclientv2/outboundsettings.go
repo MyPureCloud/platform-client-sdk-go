@@ -45,6 +45,9 @@ type Outboundsettings struct {
 	// AutomaticTimeZoneMapping - The settings for automatic time zone mapping. Note that changing these settings will change them for both voice and messaging campaigns.
 	AutomaticTimeZoneMapping *Automatictimezonemappingsettings `json:"automaticTimeZoneMapping,omitempty"`
 
+	// RescheduleTimeZoneSkippedContacts - Whether or not to reschedule time-zone blocked contacts
+	RescheduleTimeZoneSkippedContacts *bool `json:"rescheduleTimeZoneSkippedContacts,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -150,6 +153,8 @@ func (o Outboundsettings) MarshalJSON() ([]byte, error) {
 		
 		AutomaticTimeZoneMapping *Automatictimezonemappingsettings `json:"automaticTimeZoneMapping,omitempty"`
 		
+		RescheduleTimeZoneSkippedContacts *bool `json:"rescheduleTimeZoneSkippedContacts,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -174,6 +179,8 @@ func (o Outboundsettings) MarshalJSON() ([]byte, error) {
 		ComplianceAbandonRateDenominator: o.ComplianceAbandonRateDenominator,
 		
 		AutomaticTimeZoneMapping: o.AutomaticTimeZoneMapping,
+		
+		RescheduleTimeZoneSkippedContacts: o.RescheduleTimeZoneSkippedContacts,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -237,6 +244,10 @@ func (o *Outboundsettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AutomaticTimeZoneMappingString, &o.AutomaticTimeZoneMapping)
 	}
 	
+	if RescheduleTimeZoneSkippedContacts, ok := OutboundsettingsMap["rescheduleTimeZoneSkippedContacts"].(bool); ok {
+		o.RescheduleTimeZoneSkippedContacts = &RescheduleTimeZoneSkippedContacts
+	}
+    
 	if SelfUri, ok := OutboundsettingsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

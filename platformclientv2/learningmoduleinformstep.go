@@ -28,6 +28,12 @@ type Learningmoduleinformstep struct {
 
 	// Order - The order of inform step in a learning module
 	Order *int `json:"order,omitempty"`
+
+	// DisplayName - The display name for the inform step
+	DisplayName *string `json:"displayName,omitempty"`
+
+	// Description - The description for the inform step
+	Description *string `json:"description,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +110,10 @@ func (o Learningmoduleinformstep) MarshalJSON() ([]byte, error) {
 		ContentType *string `json:"contentType,omitempty"`
 		
 		Order *int `json:"order,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -117,6 +127,10 @@ func (o Learningmoduleinformstep) MarshalJSON() ([]byte, error) {
 		ContentType: o.ContentType,
 		
 		Order: o.Order,
+		
+		DisplayName: o.DisplayName,
+		
+		Description: o.Description,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +167,14 @@ func (o *Learningmoduleinformstep) UnmarshalJSON(b []byte) error {
 		o.Order = &OrderInt
 	}
 	
+	if DisplayName, ok := LearningmoduleinformstepMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+    
+	if Description, ok := LearningmoduleinformstepMap["description"].(string); ok {
+		o.Description = &Description
+	}
+    
 
 	return nil
 }

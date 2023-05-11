@@ -29,6 +29,9 @@ type Conversationappsettings struct {
 	// ConversationDisconnect - The conversation disconnect settings for the messenger app
 	ConversationDisconnect *Conversationdisconnectsettings `json:"conversationDisconnect,omitempty"`
 
+	// ConversationClear - The conversation clear settings for the messenger app
+	ConversationClear *Conversationclearsettings `json:"conversationClear,omitempty"`
+
 	// Humanize - The humanize conversations settings for the messenger app
 	Humanize *Humanize `json:"humanize,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 		
 		ConversationDisconnect *Conversationdisconnectsettings `json:"conversationDisconnect,omitempty"`
 		
+		ConversationClear *Conversationclearsettings `json:"conversationClear,omitempty"`
+		
 		Humanize *Humanize `json:"humanize,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 		Markdown: o.Markdown,
 		
 		ConversationDisconnect: o.ConversationDisconnect,
+		
+		ConversationClear: o.ConversationClear,
 		
 		Humanize: o.Humanize,
 		Alias:    (Alias)(o),
@@ -160,6 +167,11 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	if ConversationDisconnect, ok := ConversationappsettingsMap["conversationDisconnect"].(map[string]interface{}); ok {
 		ConversationDisconnectString, _ := json.Marshal(ConversationDisconnect)
 		json.Unmarshal(ConversationDisconnectString, &o.ConversationDisconnect)
+	}
+	
+	if ConversationClear, ok := ConversationappsettingsMap["conversationClear"].(map[string]interface{}); ok {
+		ConversationClearString, _ := json.Marshal(ConversationClear)
+		json.Unmarshal(ConversationClearString, &o.ConversationClear)
 	}
 	
 	if Humanize, ok := ConversationappsettingsMap["humanize"].(map[string]interface{}); ok {

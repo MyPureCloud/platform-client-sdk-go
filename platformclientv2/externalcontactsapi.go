@@ -4835,6 +4835,8 @@ func (a ExternalContactsApi) PostExternalcontactsIdentifierlookup(identifier Con
 // PostExternalcontactsMergeContacts invokes POST /api/v2/externalcontacts/merge/contacts
 //
 // Merge two contacts into a new contact record
+//
+// Two curated contacts cannot be merged. Refer to the Contact Merging article on the Developer Center for details
 func (a ExternalContactsApi) PostExternalcontactsMergeContacts(body Mergerequest) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

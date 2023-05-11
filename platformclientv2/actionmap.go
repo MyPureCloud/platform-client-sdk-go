@@ -33,6 +33,9 @@ type Actionmap struct {
 	// TriggerWithOutcomeProbabilityConditions - Probability conditions for outcomes that must be satisfied to trigger the action map.
 	TriggerWithOutcomeProbabilityConditions *[]Outcomeprobabilitycondition `json:"triggerWithOutcomeProbabilityConditions,omitempty"`
 
+	// TriggerWithOutcomePercentileConditions - Percentile conditions for outcomes that must be satisfied to trigger the action map.
+	TriggerWithOutcomePercentileConditions *[]Outcomepercentilecondition `json:"triggerWithOutcomePercentileConditions,omitempty"`
+
 	// PageUrlConditions - URL conditions that a page must match for web actions to be displayable.
 	PageUrlConditions *[]Urlcondition `json:"pageUrlConditions,omitempty"`
 
@@ -176,6 +179,8 @@ func (o Actionmap) MarshalJSON() ([]byte, error) {
 		
 		TriggerWithOutcomeProbabilityConditions *[]Outcomeprobabilitycondition `json:"triggerWithOutcomeProbabilityConditions,omitempty"`
 		
+		TriggerWithOutcomePercentileConditions *[]Outcomepercentilecondition `json:"triggerWithOutcomePercentileConditions,omitempty"`
+		
 		PageUrlConditions *[]Urlcondition `json:"pageUrlConditions,omitempty"`
 		
 		Activation *Activation `json:"activation,omitempty"`
@@ -212,6 +217,8 @@ func (o Actionmap) MarshalJSON() ([]byte, error) {
 		TriggerWithEventConditions: o.TriggerWithEventConditions,
 		
 		TriggerWithOutcomeProbabilityConditions: o.TriggerWithOutcomeProbabilityConditions,
+		
+		TriggerWithOutcomePercentileConditions: o.TriggerWithOutcomePercentileConditions,
 		
 		PageUrlConditions: o.PageUrlConditions,
 		
@@ -275,6 +282,11 @@ func (o *Actionmap) UnmarshalJSON(b []byte) error {
 	if TriggerWithOutcomeProbabilityConditions, ok := ActionmapMap["triggerWithOutcomeProbabilityConditions"].([]interface{}); ok {
 		TriggerWithOutcomeProbabilityConditionsString, _ := json.Marshal(TriggerWithOutcomeProbabilityConditions)
 		json.Unmarshal(TriggerWithOutcomeProbabilityConditionsString, &o.TriggerWithOutcomeProbabilityConditions)
+	}
+	
+	if TriggerWithOutcomePercentileConditions, ok := ActionmapMap["triggerWithOutcomePercentileConditions"].([]interface{}); ok {
+		TriggerWithOutcomePercentileConditionsString, _ := json.Marshal(TriggerWithOutcomePercentileConditions)
+		json.Unmarshal(TriggerWithOutcomePercentileConditionsString, &o.TriggerWithOutcomePercentileConditions)
 	}
 	
 	if PageUrlConditions, ok := ActionmapMap["pageUrlConditions"].([]interface{}); ok {

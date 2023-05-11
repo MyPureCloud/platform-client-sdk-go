@@ -21,7 +21,7 @@ type Session struct {
 	// CustomerIdType - Type of source customer identifier (e.g. cookie, email, phone).
 	CustomerIdType *string `json:"customerIdType,omitempty"`
 
-	// VarType - Session types indicate the type or category of sessions (e.g. web, ticket, delivery, atm).
+	// VarType - Session types indicate the type or category of sessions (e.g. web, app).
 	VarType *string `json:"type,omitempty"`
 
 	// ExternalId - Unique identifier in the external system where the events for the session originate from.

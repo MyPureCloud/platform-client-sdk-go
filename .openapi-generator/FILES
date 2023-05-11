@@ -9,6 +9,7 @@ docs/ArchitectApi.json
 docs/AuditApi.json
 docs/AuthorizationApi.json
 docs/BillingApi.json
+docs/CarrierServicesApi.json
 docs/ChatApi.json
 docs/CoachingApi.json
 docs/ContentManagementApi.json
@@ -343,6 +344,7 @@ docs/GetAuthorizationSubjectsMe-example.txt
 docs/GetAuthorizationSubjectsRolecounts-example.txt
 docs/GetBillingReportsBillableusage-example.txt
 docs/GetBillingTrusteebillingoverviewTrustorOrgId-example.txt
+docs/GetCarrierservicesIntegrationsEmergencylocationsMe-example.txt
 docs/GetChatSettings-example.txt
 docs/GetChatsSettings-example.txt
 docs/GetCoachingAppointment-example.txt
@@ -592,6 +594,8 @@ docs/GetIdentityprovidersPing-example.txt
 docs/GetIdentityprovidersPurecloud-example.txt
 docs/GetIdentityprovidersPureengage-example.txt
 docs/GetIdentityprovidersSalesforce-example.txt
+docs/GetInfrastructureascodeAccelerator-example.txt
+docs/GetInfrastructureascodeAccelerators-example.txt
 docs/GetInfrastructureascodeJob-example.txt
 docs/GetInfrastructureascodeJobs-example.txt
 docs/GetIntegration-example.txt
@@ -807,6 +811,7 @@ docs/GetOutboundDnclistsDivisionviews-example.txt
 docs/GetOutboundEvent-example.txt
 docs/GetOutboundEvents-example.txt
 docs/GetOutboundMessagingcampaign-example.txt
+docs/GetOutboundMessagingcampaignDiagnostics-example.txt
 docs/GetOutboundMessagingcampaignProgress-example.txt
 docs/GetOutboundMessagingcampaigns-example.txt
 docs/GetOutboundMessagingcampaignsDivisionview-example.txt
@@ -996,7 +1001,6 @@ docs/GetSpeechandtextanalyticsTopicsGeneral-example.txt
 docs/GetSpeechandtextanalyticsTopicsPublishjob-example.txt
 docs/GetStation-example.txt
 docs/GetStations-example.txt
-docs/GetStationsSettings-example.txt
 docs/GetSystempresences-example.txt
 docs/GetTeam-example.txt
 docs/GetTeamMembers-example.txt
@@ -1273,6 +1277,7 @@ docs/PatchConversationsCobrowsesessionParticipant-example.txt
 docs/PatchConversationsCobrowsesessionParticipantAttributes-example.txt
 docs/PatchConversationsCobrowsesessionParticipantCommunication-example.txt
 docs/PatchConversationsEmail-example.txt
+docs/PatchConversationsEmailMessagesDraft-example.txt
 docs/PatchConversationsEmailParticipant-example.txt
 docs/PatchConversationsEmailParticipantAttributes-example.txt
 docs/PatchConversationsEmailParticipantCommunication-example.txt
@@ -1340,7 +1345,6 @@ docs/PatchScimUser-example.txt
 docs/PatchScimV2Group-example.txt
 docs/PatchScimV2User-example.txt
 docs/PatchSpeechandtextanalyticsSettings-example.txt
-docs/PatchStationsSettings-example.txt
 docs/PatchTeam-example.txt
 docs/PatchUser-example.txt
 docs/PatchUserCallforwarding-example.txt
@@ -1445,6 +1449,7 @@ docs/PostAuthorizationSubjectBulkreplace-example.txt
 docs/PostAuthorizationSubjectBulkreplace-example.txt
 docs/PostAuthorizationSubjectDivisionRole-example.txt
 docs/PostAuthorizationSubjectDivisionRole-example.txt
+docs/PostCarrierservicesIntegrationsEmergencylocationsMe-example.txt
 docs/PostCertificateDetails-example.txt
 docs/PostCoachingAppointmentAnnotations-example.txt
 docs/PostCoachingAppointmentConversations-example.txt
@@ -2112,7 +2117,10 @@ docs/WorkforceManagementApi.json
 go.mod
 go.sum
 platformclientv2/acceleratorinput.go
+platformclientv2/acceleratorlist.go
+platformclientv2/acceleratormetadata.go
 platformclientv2/acceleratorparameter.go
+platformclientv2/acceleratorspecification.go
 platformclientv2/acdenddetaileventtopicacdendevent.go
 platformclientv2/acdstartdetaileventtopicacdstartevent.go
 platformclientv2/achievedoutcome.go
@@ -2586,6 +2594,7 @@ platformclientv2/campaignstats.go
 platformclientv2/campaigntimeslot.go
 platformclientv2/card.go
 platformclientv2/cardaction.go
+platformclientv2/carrierservicesapi.go
 platformclientv2/category.go
 platformclientv2/categoryentitylisting.go
 platformclientv2/categorylisting.go
@@ -2801,6 +2810,7 @@ platformclientv2/conversationchateventtopicjourneycustomersession.go
 platformclientv2/conversationchateventtopicscoredagent.go
 platformclientv2/conversationchateventtopicurireference.go
 platformclientv2/conversationchateventtopicwrapup.go
+platformclientv2/conversationclearsettings.go
 platformclientv2/conversationcobrowseeventtopiccobrowseconversation.go
 platformclientv2/conversationcobrowseeventtopiccobrowsemediaparticipant.go
 platformclientv2/conversationcobrowseeventtopicconversationroutingdata.go
@@ -3291,6 +3301,7 @@ platformclientv2/downloadsapi.go
 platformclientv2/draft.go
 platformclientv2/draftintents.go
 platformclientv2/draftlisting.go
+platformclientv2/draftmanipulationrequest.go
 platformclientv2/draftrequest.go
 platformclientv2/drafttopicrequest.go
 platformclientv2/drafttopics.go
@@ -3358,6 +3369,7 @@ platformclientv2/embeddedintegration.go
 platformclientv2/emergencycallflow.go
 platformclientv2/emergencygroup.go
 platformclientv2/emergencygrouplisting.go
+platformclientv2/emergencylocation.go
 platformclientv2/employerinfo.go
 platformclientv2/empty.go
 platformclientv2/encryptionkey.go
@@ -3555,7 +3567,6 @@ platformclientv2/forecastservicelevelresponse.go
 platformclientv2/forecastsourcedaypointer.go
 platformclientv2/format.go
 platformclientv2/formstracktrigger.go
-platformclientv2/freeseatingconfiguration.go
 platformclientv2/fromemailaddress.go
 platformclientv2/fulldaytimeoffmarker.go
 platformclientv2/gamificationapi.go
@@ -3635,6 +3646,7 @@ platformclientv2/historicalshrinkageaggregateresponse.go
 platformclientv2/historicalshrinkageresult.go
 platformclientv2/historicalshrinkageresultlisting.go
 platformclientv2/historyentry.go
+platformclientv2/historyheaderstranslation.go
 platformclientv2/historylisting.go
 platformclientv2/holdupdatedevent.go
 platformclientv2/homerrecord.go
@@ -4071,6 +4083,7 @@ platformclientv2/messagestickerattachment.go
 platformclientv2/messagetypingeventrequest.go
 platformclientv2/messagingapi.go
 platformclientv2/messagingcampaign.go
+platformclientv2/messagingcampaigndiagnostics.go
 platformclientv2/messagingcampaigndivisionview.go
 platformclientv2/messagingcampaigndivisionviewentitylisting.go
 platformclientv2/messagingcampaignentitylisting.go
@@ -4091,6 +4104,12 @@ platformclientv2/messengersettings.go
 platformclientv2/messengerstyles.go
 platformclientv2/metabase.go
 platformclientv2/metadata.go
+platformclientv2/metadatadocumentation.go
+platformclientv2/metadatapresentation.go
+platformclientv2/metadataproperty.go
+platformclientv2/metadataresultentity.go
+platformclientv2/metadataresults.go
+platformclientv2/metadataschema.go
 platformclientv2/meteredassignmentbyagent.go
 platformclientv2/meteredevaluationassignment.go
 platformclientv2/metric.go
@@ -4230,6 +4249,7 @@ platformclientv2/outcomeachievement.go
 platformclientv2/outcomeconfig.go
 platformclientv2/outcomeeventscore.go
 platformclientv2/outcomelisting.go
+platformclientv2/outcomepercentilecondition.go
 platformclientv2/outcomepredictor.go
 platformclientv2/outcomepredictorlisting.go
 platformclientv2/outcomepredictorrequest.go
@@ -4978,7 +4998,6 @@ platformclientv2/stateventwrapupcodetopicstatsnotification.go
 platformclientv2/station.go
 platformclientv2/stationentitylisting.go
 platformclientv2/stationsapi.go
-platformclientv2/stationsettings.go
 platformclientv2/statisticalresponse.go
 platformclientv2/statisticalsummary.go
 platformclientv2/statuschange.go
@@ -5156,6 +5175,7 @@ platformclientv2/transferdestination.go
 platformclientv2/transferinitiator.go
 platformclientv2/transferrequest.go
 platformclientv2/transferresponse.go
+platformclientv2/transferresponsemodifiedby.go
 platformclientv2/trenddata.go
 platformclientv2/trigger.go
 platformclientv2/triggerentitylisting.go

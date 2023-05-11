@@ -96,6 +96,9 @@ type Reportingexportjobresponse struct {
 	// EmailErrorDescription - The optional error message in case the export fail to email
 	EmailErrorDescription *string `json:"emailErrorDescription,omitempty"`
 
+	// IncludeDurationFormatInHeader - Indicates whether to include selected duration format to the column headers
+	IncludeDurationFormatInHeader *bool `json:"includeDurationFormatInHeader,omitempty"`
+
 	// Enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
@@ -238,6 +241,8 @@ func (o Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		EmailErrorDescription *string `json:"emailErrorDescription,omitempty"`
 		
+		IncludeDurationFormatInHeader *bool `json:"includeDurationFormatInHeader,omitempty"`
+		
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -298,6 +303,8 @@ func (o Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 		EmailStatuses: o.EmailStatuses,
 		
 		EmailErrorDescription: o.EmailErrorDescription,
+		
+		IncludeDurationFormatInHeader: o.IncludeDurationFormatInHeader,
 		
 		Enabled: o.Enabled,
 		
@@ -429,6 +436,10 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
 	
 	if EmailErrorDescription, ok := ReportingexportjobresponseMap["emailErrorDescription"].(string); ok {
 		o.EmailErrorDescription = &EmailErrorDescription
+	}
+    
+	if IncludeDurationFormatInHeader, ok := ReportingexportjobresponseMap["includeDurationFormatInHeader"].(bool); ok {
+		o.IncludeDurationFormatInHeader = &IncludeDurationFormatInHeader
 	}
     
 	if Enabled, ok := ReportingexportjobresponseMap["enabled"].(bool); ok {

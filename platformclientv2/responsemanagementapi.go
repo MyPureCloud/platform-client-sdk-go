@@ -261,7 +261,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponseasset(responseAss
 // GetResponsemanagementLibraries invokes GET /api/v2/responsemanagement/libraries
 //
 // Gets a list of existing response libraries.
-func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int, pageSize int, messagingTemplateFilter string) (*Libraryentitylisting, *APIResponse, error) {
+func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int, pageSize int, messagingTemplateFilter string, libraryPrefix string) (*Libraryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/libraries"
@@ -293,6 +293,8 @@ func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int, pa
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["messagingTemplateFilter"] = a.Configuration.APIClient.ParameterToString(messagingTemplateFilter, "")
+	
+	queryParams["libraryPrefix"] = a.Configuration.APIClient.ParameterToString(libraryPrefix, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

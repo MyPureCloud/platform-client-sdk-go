@@ -12,6 +12,9 @@ import (
 type Analyticsconversation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// ConferenceStart - The start time of a conference call. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ConferenceStart *time.Time `json:"conferenceStart,omitempty"`
+
 	// ConversationEnd - The end time of a conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationEnd *time.Time `json:"conversationEnd,omitempty"`
 
@@ -90,7 +93,7 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ConversationEnd","ConversationStart", }
+		dateTimeFields := []string{ "ConferenceStart","ConversationEnd","ConversationStart", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -123,6 +126,14 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsconversation
 	
+	ConferenceStart := new(string)
+	if o.ConferenceStart != nil {
+		
+		*ConferenceStart = timeutil.Strftime(o.ConferenceStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConferenceStart = nil
+	}
+	
 	ConversationEnd := new(string)
 	if o.ConversationEnd != nil {
 		
@@ -140,6 +151,8 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		ConferenceStart *string `json:"conferenceStart,omitempty"`
+		
 		ConversationEnd *string `json:"conversationEnd,omitempty"`
 		
 		ConversationId *string `json:"conversationId,omitempty"`
@@ -173,6 +186,8 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		Participants *[]Analyticsparticipant `json:"participants,omitempty"`
 		Alias
 	}{ 
+		ConferenceStart: ConferenceStart,
+		
 		ConversationEnd: ConversationEnd,
 		
 		ConversationId: o.ConversationId,
@@ -213,6 +228,11 @@ func (o *Analyticsconversation) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &AnalyticsconversationMap)
 	if err != nil {
 		return err
+	}
+	
+	if conferenceStartString, ok := AnalyticsconversationMap["conferenceStart"].(string); ok {
+		ConferenceStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", conferenceStartString)
+		o.ConferenceStart = &ConferenceStart
 	}
 	
 	if conversationEndString, ok := AnalyticsconversationMap["conversationEnd"].(string); ok {

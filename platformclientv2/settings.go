@@ -16,6 +16,9 @@ type Settings struct {
 
 	// IncludeNonAgentConversationSummary - Display communication summary
 	IncludeNonAgentConversationSummary *bool `json:"includeNonAgentConversationSummary,omitempty"`
+
+	// AllowCallbackQueueSelection - Allow Callback Queue Selection
+	AllowCallbackQueueSelection *bool `json:"allowCallbackQueueSelection,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Settings) MarshalJSON() ([]byte, error) {
 		CommunicationBasedACW *bool `json:"communicationBasedACW,omitempty"`
 		
 		IncludeNonAgentConversationSummary *bool `json:"includeNonAgentConversationSummary,omitempty"`
+		
+		AllowCallbackQueueSelection *bool `json:"allowCallbackQueueSelection,omitempty"`
 		Alias
 	}{ 
 		CommunicationBasedACW: o.CommunicationBasedACW,
 		
 		IncludeNonAgentConversationSummary: o.IncludeNonAgentConversationSummary,
+		
+		AllowCallbackQueueSelection: o.AllowCallbackQueueSelection,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Settings) UnmarshalJSON(b []byte) error {
     
 	if IncludeNonAgentConversationSummary, ok := SettingsMap["includeNonAgentConversationSummary"].(bool); ok {
 		o.IncludeNonAgentConversationSummary = &IncludeNonAgentConversationSummary
+	}
+    
+	if AllowCallbackQueueSelection, ok := SettingsMap["allowCallbackQueueSelection"].(bool); ok {
+		o.AllowCallbackQueueSelection = &AllowCallbackQueueSelection
 	}
     
 

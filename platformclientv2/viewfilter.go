@@ -505,6 +505,9 @@ type Viewfilter struct {
 
 	// UserState - The user supplied state value in the view
 	UserState *string `json:"userState,omitempty"`
+
+	// IsClearedByCustomer - Filter to indicate if the customer cleared the conversation.
+	IsClearedByCustomer *bool `json:"isClearedByCustomer,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -899,6 +902,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SubPath *string `json:"subPath,omitempty"`
 		
 		UserState *string `json:"userState,omitempty"`
+		
+		IsClearedByCustomer *bool `json:"isClearedByCustomer,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1230,6 +1235,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SubPath: o.SubPath,
 		
 		UserState: o.UserState,
+		
+		IsClearedByCustomer: o.IsClearedByCustomer,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2028,6 +2035,10 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
     
 	if UserState, ok := ViewfilterMap["userState"].(string); ok {
 		o.UserState = &UserState
+	}
+    
+	if IsClearedByCustomer, ok := ViewfilterMap["isClearedByCustomer"].(bool); ok {
+		o.IsClearedByCustomer = &IsClearedByCustomer
 	}
     
 

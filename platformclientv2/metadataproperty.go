@@ -7,19 +7,28 @@ import (
 	"strings"
 )
 
-// Freeseatingconfiguration
-type Freeseatingconfiguration struct { 
+// Metadataproperty - Data property required as input for installing an accelerator
+type Metadataproperty struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// FreeSeatingState - The FreeSeatingState for FreeSeatingConfiguration. Can be ON, OFF, or PARTIAL. ON meaning disassociate the user after the ttl expires, OFF meaning never disassociate the user, and PARTIAL meaning only disassociate when a user explicitly clicks log out.
-	FreeSeatingState *string `json:"freeSeatingState,omitempty"`
+	// VarType - the data type of the input property
+	VarType *string `json:"type,omitempty"`
 
-	// TtlMinutes - The amount of time in minutes until an offline user is disassociated from their station
-	TtlMinutes *int `json:"ttlMinutes,omitempty"`
+	// Description - brief description of the input property
+	Description *string `json:"description,omitempty"`
+
+	// Help - optional URL with addition information about the input property
+	Help *string `json:"help,omitempty"`
+
+	// VarDefault - optional default value of the input property
+	VarDefault *string `json:"default,omitempty"`
+
+	// Enum - set of possible values if the input property is an enumeration
+	Enum *[]string `json:"enum,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Freeseatingconfiguration) SetField(field string, fieldValue interface{}) {
+func (o *Metadataproperty) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +49,7 @@ func (o *Freeseatingconfiguration) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Freeseatingconfiguration) MarshalJSON() ([]byte, error) {
+func (o Metadataproperty) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,35 +87,59 @@ func (o Freeseatingconfiguration) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Freeseatingconfiguration
+	type Alias Metadataproperty
 	
 	return json.Marshal(&struct { 
-		FreeSeatingState *string `json:"freeSeatingState,omitempty"`
+		VarType *string `json:"type,omitempty"`
 		
-		TtlMinutes *int `json:"ttlMinutes,omitempty"`
+		Description *string `json:"description,omitempty"`
+		
+		Help *string `json:"help,omitempty"`
+		
+		VarDefault *string `json:"default,omitempty"`
+		
+		Enum *[]string `json:"enum,omitempty"`
 		Alias
 	}{ 
-		FreeSeatingState: o.FreeSeatingState,
+		VarType: o.VarType,
 		
-		TtlMinutes: o.TtlMinutes,
+		Description: o.Description,
+		
+		Help: o.Help,
+		
+		VarDefault: o.VarDefault,
+		
+		Enum: o.Enum,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Freeseatingconfiguration) UnmarshalJSON(b []byte) error {
-	var FreeseatingconfigurationMap map[string]interface{}
-	err := json.Unmarshal(b, &FreeseatingconfigurationMap)
+func (o *Metadataproperty) UnmarshalJSON(b []byte) error {
+	var MetadatapropertyMap map[string]interface{}
+	err := json.Unmarshal(b, &MetadatapropertyMap)
 	if err != nil {
 		return err
 	}
 	
-	if FreeSeatingState, ok := FreeseatingconfigurationMap["freeSeatingState"].(string); ok {
-		o.FreeSeatingState = &FreeSeatingState
+	if VarType, ok := MetadatapropertyMap["type"].(string); ok {
+		o.VarType = &VarType
 	}
     
-	if TtlMinutes, ok := FreeseatingconfigurationMap["ttlMinutes"].(float64); ok {
-		TtlMinutesInt := int(TtlMinutes)
-		o.TtlMinutes = &TtlMinutesInt
+	if Description, ok := MetadatapropertyMap["description"].(string); ok {
+		o.Description = &Description
+	}
+    
+	if Help, ok := MetadatapropertyMap["help"].(string); ok {
+		o.Help = &Help
+	}
+    
+	if VarDefault, ok := MetadatapropertyMap["default"].(string); ok {
+		o.VarDefault = &VarDefault
+	}
+    
+	if Enum, ok := MetadatapropertyMap["enum"].([]interface{}); ok {
+		EnumString, _ := json.Marshal(Enum)
+		json.Unmarshal(EnumString, &o.Enum)
 	}
 	
 
@@ -114,7 +147,7 @@ func (o *Freeseatingconfiguration) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Freeseatingconfiguration) String() string {
+func (o *Metadataproperty) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

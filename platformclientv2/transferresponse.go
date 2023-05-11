@@ -24,6 +24,9 @@ type Transferresponse struct {
 	// Initiator - The initiator of the command.
 	Initiator *Transferinitiator `json:"initiator,omitempty"`
 
+	// ModifiedBy - The user or entity that modified the command.
+	ModifiedBy *Transferresponsemodifiedby `json:"modifiedBy,omitempty"`
+
 	// Destination - The destination of the command.
 	Destination *Transferdestination `json:"destination,omitempty"`
 
@@ -110,6 +113,8 @@ func (o Transferresponse) MarshalJSON() ([]byte, error) {
 		
 		Initiator *Transferinitiator `json:"initiator,omitempty"`
 		
+		ModifiedBy *Transferresponsemodifiedby `json:"modifiedBy,omitempty"`
+		
 		Destination *Transferdestination `json:"destination,omitempty"`
 		
 		TransferType *string `json:"transferType,omitempty"`
@@ -122,6 +127,8 @@ func (o Transferresponse) MarshalJSON() ([]byte, error) {
 		DateIssued: DateIssued,
 		
 		Initiator: o.Initiator,
+		
+		ModifiedBy: o.ModifiedBy,
 		
 		Destination: o.Destination,
 		
@@ -153,6 +160,11 @@ func (o *Transferresponse) UnmarshalJSON(b []byte) error {
 	if Initiator, ok := TransferresponseMap["initiator"].(map[string]interface{}); ok {
 		InitiatorString, _ := json.Marshal(Initiator)
 		json.Unmarshal(InitiatorString, &o.Initiator)
+	}
+	
+	if ModifiedBy, ok := TransferresponseMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
 	if Destination, ok := TransferresponseMap["destination"].(map[string]interface{}); ok {

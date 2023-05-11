@@ -18,6 +18,9 @@ type Infrastructureascodejob struct {
 	// DryRun - dryRun
 	DryRun *bool `json:"dryRun,omitempty"`
 
+	// AcceleratorId - acceleratorId
+	AcceleratorId *string `json:"acceleratorId,omitempty"`
+
 	// DateSubmitted - dateSubmitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateSubmitted *time.Time `json:"dateSubmitted,omitempty"`
 
@@ -112,6 +115,8 @@ func (o Infrastructureascodejob) MarshalJSON() ([]byte, error) {
 		
 		DryRun *bool `json:"dryRun,omitempty"`
 		
+		AcceleratorId *string `json:"acceleratorId,omitempty"`
+		
 		DateSubmitted *string `json:"dateSubmitted,omitempty"`
 		
 		SubmittedBy *Userreference `json:"submittedBy,omitempty"`
@@ -128,6 +133,8 @@ func (o Infrastructureascodejob) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		DryRun: o.DryRun,
+		
+		AcceleratorId: o.AcceleratorId,
 		
 		DateSubmitted: DateSubmitted,
 		
@@ -157,6 +164,10 @@ func (o *Infrastructureascodejob) UnmarshalJSON(b []byte) error {
     
 	if DryRun, ok := InfrastructureascodejobMap["dryRun"].(bool); ok {
 		o.DryRun = &DryRun
+	}
+    
+	if AcceleratorId, ok := InfrastructureascodejobMap["acceleratorId"].(string); ok {
+		o.AcceleratorId = &AcceleratorId
 	}
     
 	if dateSubmittedString, ok := InfrastructureascodejobMap["dateSubmitted"].(string); ok {

@@ -25,6 +25,9 @@ type Campaigndiagnostics struct {
 
 	// ScheduledInteractionsCount - Current number of scheduled interactions on the campaign
 	ScheduledInteractionsCount *int `json:"scheduledInteractionsCount,omitempty"`
+
+	// TimeZoneRescheduledCallsCount - Current number of time zone rescheduled calls on the campaign
+	TimeZoneRescheduledCallsCount *int `json:"timeZoneRescheduledCallsCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 		OutstandingInteractionsCount *int `json:"outstandingInteractionsCount,omitempty"`
 		
 		ScheduledInteractionsCount *int `json:"scheduledInteractionsCount,omitempty"`
+		
+		TimeZoneRescheduledCallsCount *int `json:"timeZoneRescheduledCallsCount,omitempty"`
 		Alias
 	}{ 
 		CallableContacts: o.CallableContacts,
@@ -110,6 +115,8 @@ func (o Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 		OutstandingInteractionsCount: o.OutstandingInteractionsCount,
 		
 		ScheduledInteractionsCount: o.ScheduledInteractionsCount,
+		
+		TimeZoneRescheduledCallsCount: o.TimeZoneRescheduledCallsCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -144,6 +151,11 @@ func (o *Campaigndiagnostics) UnmarshalJSON(b []byte) error {
 	if ScheduledInteractionsCount, ok := CampaigndiagnosticsMap["scheduledInteractionsCount"].(float64); ok {
 		ScheduledInteractionsCountInt := int(ScheduledInteractionsCount)
 		o.ScheduledInteractionsCount = &ScheduledInteractionsCountInt
+	}
+	
+	if TimeZoneRescheduledCallsCount, ok := CampaigndiagnosticsMap["timeZoneRescheduledCallsCount"].(float64); ok {
+		TimeZoneRescheduledCallsCountInt := int(TimeZoneRescheduledCallsCount)
+		o.TimeZoneRescheduledCallsCount = &TimeZoneRescheduledCallsCountInt
 	}
 	
 
