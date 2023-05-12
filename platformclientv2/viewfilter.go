@@ -508,6 +508,12 @@ type Viewfilter struct {
 
 	// IsClearedByCustomer - Filter to indicate if the customer cleared the conversation.
 	IsClearedByCustomer *bool `json:"isClearedByCustomer,omitempty"`
+
+	// EvaluationAssigneeIds - The evaluation assignee ids that are used to filter the view.
+	EvaluationAssigneeIds *[]string `json:"evaluationAssigneeIds,omitempty"`
+
+	// EvaluationAssigned - Filter to indicate that the user has no assigned evaluation.
+	EvaluationAssigned *bool `json:"evaluationAssigned,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -904,6 +910,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		UserState *string `json:"userState,omitempty"`
 		
 		IsClearedByCustomer *bool `json:"isClearedByCustomer,omitempty"`
+		
+		EvaluationAssigneeIds *[]string `json:"evaluationAssigneeIds,omitempty"`
+		
+		EvaluationAssigned *bool `json:"evaluationAssigned,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1237,6 +1247,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		UserState: o.UserState,
 		
 		IsClearedByCustomer: o.IsClearedByCustomer,
+		
+		EvaluationAssigneeIds: o.EvaluationAssigneeIds,
+		
+		EvaluationAssigned: o.EvaluationAssigned,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2039,6 +2053,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
     
 	if IsClearedByCustomer, ok := ViewfilterMap["isClearedByCustomer"].(bool); ok {
 		o.IsClearedByCustomer = &IsClearedByCustomer
+	}
+    
+	if EvaluationAssigneeIds, ok := ViewfilterMap["evaluationAssigneeIds"].([]interface{}); ok {
+		EvaluationAssigneeIdsString, _ := json.Marshal(EvaluationAssigneeIds)
+		json.Unmarshal(EvaluationAssigneeIdsString, &o.EvaluationAssigneeIds)
+	}
+	
+	if EvaluationAssigned, ok := ViewfilterMap["evaluationAssigned"].(bool); ok {
+		o.EvaluationAssigned = &EvaluationAssigned
 	}
     
 

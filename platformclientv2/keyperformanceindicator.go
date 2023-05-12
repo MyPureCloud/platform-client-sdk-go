@@ -21,6 +21,9 @@ type Keyperformanceindicator struct {
 	// OptimizationType - The optimization type of the Key Performance Indicator.
 	OptimizationType *string `json:"optimizationType,omitempty"`
 
+	// ProblemType - The problem type of the Key Performance Indicator.
+	ProblemType *string `json:"problemType,omitempty"`
+
 	// DateCreated - DateTime indicating when the Key Performance Indicator was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -140,6 +143,8 @@ func (o Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 		
 		OptimizationType *string `json:"optimizationType,omitempty"`
 		
+		ProblemType *string `json:"problemType,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -168,6 +173,8 @@ func (o Keyperformanceindicator) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		OptimizationType: o.OptimizationType,
+		
+		ProblemType: o.ProblemType,
 		
 		DateCreated: DateCreated,
 		
@@ -211,6 +218,10 @@ func (o *Keyperformanceindicator) UnmarshalJSON(b []byte) error {
     
 	if OptimizationType, ok := KeyperformanceindicatorMap["optimizationType"].(string); ok {
 		o.OptimizationType = &OptimizationType
+	}
+    
+	if ProblemType, ok := KeyperformanceindicatorMap["problemType"].(string); ok {
+		o.ProblemType = &ProblemType
 	}
     
 	if dateCreatedString, ok := KeyperformanceindicatorMap["dateCreated"].(string); ok {

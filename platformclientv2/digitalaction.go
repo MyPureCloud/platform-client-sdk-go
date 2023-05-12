@@ -28,6 +28,9 @@ type Digitalaction struct {
 
 	// SetContentTemplateActionSettings - The settings for a 'Set content template' action.
 	SetContentTemplateActionSettings *Setcontenttemplateactionsettings `json:"setContentTemplateActionSettings,omitempty"`
+
+	// SetSmsPhoneNumberActionSettings - The settings for a 'set sms phone number' action.
+	SetSmsPhoneNumberActionSettings *Setsmsphonenumberactionsettings `json:"setSmsPhoneNumberActionSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Digitalaction) MarshalJSON() ([]byte, error) {
 		MarkContactAddressUncontactableActionSettings *interface{} `json:"markContactAddressUncontactableActionSettings,omitempty"`
 		
 		SetContentTemplateActionSettings *Setcontenttemplateactionsettings `json:"setContentTemplateActionSettings,omitempty"`
+		
+		SetSmsPhoneNumberActionSettings *Setsmsphonenumberactionsettings `json:"setSmsPhoneNumberActionSettings,omitempty"`
 		Alias
 	}{ 
 		UpdateContactColumnActionSettings: o.UpdateContactColumnActionSettings,
@@ -117,6 +122,8 @@ func (o Digitalaction) MarshalJSON() ([]byte, error) {
 		MarkContactAddressUncontactableActionSettings: o.MarkContactAddressUncontactableActionSettings,
 		
 		SetContentTemplateActionSettings: o.SetContentTemplateActionSettings,
+		
+		SetSmsPhoneNumberActionSettings: o.SetSmsPhoneNumberActionSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -156,6 +163,11 @@ func (o *Digitalaction) UnmarshalJSON(b []byte) error {
 	if SetContentTemplateActionSettings, ok := DigitalactionMap["setContentTemplateActionSettings"].(map[string]interface{}); ok {
 		SetContentTemplateActionSettingsString, _ := json.Marshal(SetContentTemplateActionSettings)
 		json.Unmarshal(SetContentTemplateActionSettingsString, &o.SetContentTemplateActionSettings)
+	}
+	
+	if SetSmsPhoneNumberActionSettings, ok := DigitalactionMap["setSmsPhoneNumberActionSettings"].(map[string]interface{}); ok {
+		SetSmsPhoneNumberActionSettingsString, _ := json.Marshal(SetSmsPhoneNumberActionSettings)
+		json.Unmarshal(SetSmsPhoneNumberActionSettingsString, &o.SetSmsPhoneNumberActionSettings)
 	}
 	
 

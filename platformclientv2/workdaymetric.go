@@ -20,6 +20,9 @@ type Workdaymetric struct {
 	// Points - Gamification points earned for this metric
 	Points *int `json:"points,omitempty"`
 
+	// MaxPoints - The maximum Gamification points a user may earn for this metric
+	MaxPoints *int `json:"maxPoints,omitempty"`
+
 	// Value - Value of this metric
 	Value *float64 `json:"value,omitempty"`
 
@@ -96,6 +99,8 @@ func (o Workdaymetric) MarshalJSON() ([]byte, error) {
 		
 		Points *int `json:"points,omitempty"`
 		
+		MaxPoints *int `json:"maxPoints,omitempty"`
+		
 		Value *float64 `json:"value,omitempty"`
 		
 		PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
@@ -106,6 +111,8 @@ func (o Workdaymetric) MarshalJSON() ([]byte, error) {
 		Objective: o.Objective,
 		
 		Points: o.Points,
+		
+		MaxPoints: o.MaxPoints,
 		
 		Value: o.Value,
 		
@@ -134,6 +141,11 @@ func (o *Workdaymetric) UnmarshalJSON(b []byte) error {
 	if Points, ok := WorkdaymetricMap["points"].(float64); ok {
 		PointsInt := int(Points)
 		o.Points = &PointsInt
+	}
+	
+	if MaxPoints, ok := WorkdaymetricMap["maxPoints"].(float64); ok {
+		MaxPointsInt := int(MaxPoints)
+		o.MaxPoints = &MaxPointsInt
 	}
 	
 	if Value, ok := WorkdaymetricMap["value"].(float64); ok {

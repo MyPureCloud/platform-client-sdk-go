@@ -33,7 +33,7 @@ type Qualityevaluationscoreitem struct {
 	// EvaluationScore - The quality score of evaluation as a percentage
 	EvaluationScore *float64 `json:"evaluationScore,omitempty"`
 
-	// MaxPoints - Gamification max points for this metric
+	// MaxPoints - The maximum Gamification points a user may earn for this metric
 	MaxPoints *int `json:"maxPoints,omitempty"`
 
 	// MediaTypes - A list of media types for the metric
