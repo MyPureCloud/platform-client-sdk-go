@@ -32,6 +32,8 @@ func NewOrganizationApiWithConfig(config *Configuration) *OrganizationApi {
 // GetFieldconfig invokes GET /api/v2/fieldconfig
 //
 // Fetch field config for an entity type
+//
+// Deprecated: GetFieldconfig is deprecated
 func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -833,6 +835,8 @@ func (a OrganizationApi) GetOrganizationsMe() (*Organization, *APIResponse, erro
 // GetOrganizationsWhitelist invokes GET /api/v2/organizations/whitelist
 //
 // Use PUT /api/v2/organizations/embeddedintegration instead
+//
+// Deprecated: GetOrganizationsWhitelist is deprecated
 func (a OrganizationApi) GetOrganizationsWhitelist() (*Orgwhitelistsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1246,6 +1250,8 @@ func (a OrganizationApi) PutOrganizationsMe(body Organization) (*Organization, *
 // PutOrganizationsWhitelist invokes PUT /api/v2/organizations/whitelist
 //
 // Use PUT /api/v2/organizations/embeddedintegration instead
+//
+// Deprecated: PutOrganizationsWhitelist is deprecated
 func (a OrganizationApi) PutOrganizationsWhitelist(body Orgwhitelistsettings) (*Orgwhitelistsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

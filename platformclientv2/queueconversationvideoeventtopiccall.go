@@ -36,6 +36,9 @@ type Queueconversationvideoeventtopiccall struct {
 	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
+	// SecurePause - True when the recording of this call is in secure pause status.
+	SecurePause *bool `json:"securePause,omitempty"`
+
 	// ErrorInfo
 	ErrorInfo *Queueconversationvideoeventtopicerrordetails `json:"errorInfo,omitempty"`
 
@@ -208,6 +211,8 @@ func (o Queueconversationvideoeventtopiccall) MarshalJSON() ([]byte, error) {
 		
 		Held *bool `json:"held,omitempty"`
 		
+		SecurePause *bool `json:"securePause,omitempty"`
+		
 		ErrorInfo *Queueconversationvideoeventtopicerrordetails `json:"errorInfo,omitempty"`
 		
 		DisconnectType *string `json:"disconnectType,omitempty"`
@@ -264,6 +269,8 @@ func (o Queueconversationvideoeventtopiccall) MarshalJSON() ([]byte, error) {
 		Confined: o.Confined,
 		
 		Held: o.Held,
+		
+		SecurePause: o.SecurePause,
 		
 		ErrorInfo: o.ErrorInfo,
 		
@@ -345,6 +352,10 @@ func (o *Queueconversationvideoeventtopiccall) UnmarshalJSON(b []byte) error {
     
 	if Held, ok := QueueconversationvideoeventtopiccallMap["held"].(bool); ok {
 		o.Held = &Held
+	}
+    
+	if SecurePause, ok := QueueconversationvideoeventtopiccallMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
 	}
     
 	if ErrorInfo, ok := QueueconversationvideoeventtopiccallMap["errorInfo"].(map[string]interface{}); ok {

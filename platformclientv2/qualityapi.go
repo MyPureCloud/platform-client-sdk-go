@@ -212,6 +212,8 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 // DeleteQualityForm invokes DELETE /api/v2/quality/forms/{formId}
 //
 // Delete an evaluation form.
+//
+// Deprecated: DeleteQualityForm is deprecated
 func (a QualityApi) DeleteQualityForm(formId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1282,6 +1284,8 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, s
 // GetQualityForm invokes GET /api/v2/quality/forms/{formId}
 //
 // Get an evaluation form
+//
+// Deprecated: GetQualityForm is deprecated
 func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1364,6 +1368,8 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 // GetQualityFormVersions invokes GET /api/v2/quality/forms/{formId}/versions
 //
 // Gets all the revisions for a specific evaluation.
+//
+// Deprecated: GetQualityFormVersions is deprecated
 func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumber int) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1450,6 +1456,8 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 // GetQualityForms invokes GET /api/v2/quality/forms
 //
 // Get the list of evaluation forms
+//
+// Deprecated: GetQualityForms is deprecated
 func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2315,6 +2323,8 @@ func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, publi
 // GetQualityPublishedform invokes GET /api/v2/quality/publishedforms/{formId}
 //
 // Get the published evaluation forms.
+//
+// Deprecated: GetQualityPublishedform is deprecated
 func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2397,6 +2407,8 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 // GetQualityPublishedforms invokes GET /api/v2/quality/publishedforms
 //
 // Get the published evaluation forms.
+//
+// Deprecated: GetQualityPublishedforms is deprecated
 func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3661,6 +3673,8 @@ func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscorings
 // PostQualityForms invokes POST /api/v2/quality/forms
 //
 // Create an evaluation form.
+//
+// Deprecated: PostQualityForms is deprecated
 func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3913,6 +3927,8 @@ func (a QualityApi) PostQualityFormsSurveys(body Surveyform) (*Surveyform, *APIR
 // PostQualityPublishedforms invokes POST /api/v2/quality/publishedforms
 //
 // Publish an evaluation form.
+//
+// Deprecated: PostQualityPublishedforms is deprecated
 func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4439,6 +4455,8 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 // PutQualityForm invokes PUT /api/v2/quality/forms/{formId}
 //
 // Update an evaluation form.
+//
+// Deprecated: PutQualityForm is deprecated
 func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluationform, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

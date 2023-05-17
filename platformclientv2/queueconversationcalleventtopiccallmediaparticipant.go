@@ -132,6 +132,9 @@ type Queueconversationcalleventtopiccallmediaparticipant struct {
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
+	// SecurePause
+	SecurePause *bool `json:"securePause,omitempty"`
+
 	// Group
 	Group *Queueconversationcalleventtopicurireference `json:"group,omitempty"`
 
@@ -362,6 +365,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
+		SecurePause *bool `json:"securePause,omitempty"`
+		
 		Group *Queueconversationcalleventtopicurireference `json:"group,omitempty"`
 		
 		Ani *string `json:"ani,omitempty"`
@@ -462,6 +467,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		Recording: o.Recording,
 		
 		RecordingState: o.RecordingState,
+		
+		SecurePause: o.SecurePause,
 		
 		Group: o.Group,
 		
@@ -671,6 +678,10 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
     
 	if RecordingState, ok := QueueconversationcalleventtopiccallmediaparticipantMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
+	}
+    
+	if SecurePause, ok := QueueconversationcalleventtopiccallmediaparticipantMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
 	}
     
 	if Group, ok := QueueconversationcalleventtopiccallmediaparticipantMap["group"].(map[string]interface{}); ok {

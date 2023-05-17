@@ -909,6 +909,8 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabilityr
 // Returns which divisions the current user has the given permission in.
 //
 // This route is deprecated, use authorization/divisionspermitted/paged/me instead.
+//
+// Deprecated: GetAuthorizationDivisionspermittedMe is deprecated
 func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name string) ([]Authzdivision, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1083,6 +1085,8 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 // Returns which divisions the specified user has the given permission in.
 //
 // This route is deprecated, use authorization/divisionspermitted/paged/me instead.
+//
+// Deprecated: GetAuthorizationDivisionspermittedPagedSubjectId is deprecated
 func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1334,6 +1338,8 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 // GetFieldconfig invokes GET /api/v2/fieldconfig
 //
 // Fetch field config for an entity type
+//
+// Deprecated: GetFieldconfig is deprecated
 func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1419,6 +1425,8 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 // Get a user profile listing
 //
 // This api is deprecated. User /api/v2/users
+//
+// Deprecated: GetProfilesUsers is deprecated
 func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, jid []string, sortOrder string, expand []string, integrationPresenceSource string) (*Userprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1929,6 +1937,8 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 // GetUserFavorites invokes GET /api/v2/users/{userId}/favorites
 //
 // Deprecated; will be revived with new contract
+//
+// Deprecated: GetUserFavorites is deprecated
 func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2191,6 +2201,8 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 // Get user profile
 //
 // This api has been deprecated. Use api/v2/users instead
+//
+// Deprecated: GetUserProfile is deprecated
 func (a UsersApi) GetUserProfile(userId string, expand []string, integrationPresenceSource string) (*Userprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

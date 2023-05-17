@@ -4312,6 +4312,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesMetrics(edgeIds str
 // Get outbound route
 //
 // This route is deprecated, use /telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId} instead.
+//
+// Deprecated: GetTelephonyProvidersEdgesOutboundroute is deprecated
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outboundRouteId string) (*Outboundroute, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

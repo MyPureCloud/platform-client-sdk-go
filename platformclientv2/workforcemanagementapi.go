@@ -4475,6 +4475,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 // GetWorkforcemanagementManagementunitActivitycodes invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/activitycodes
 //
 // Get activity codes
+//
+// Deprecated: GetWorkforcemanagementManagementunitActivitycodes is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycodes(managementUnitId string) (*Activitycodecontainer, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5687,6 +5689,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(manage
 // GetWorkforcemanagementManagementunitWeekSchedule invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}
 //
 // Deprecated.  Use the equivalent business unit resource instead. Get a week schedule
+//
+// Deprecated: GetWorkforcemanagementManagementunitWeekSchedule is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule(managementUnitId string, weekId string, scheduleId string, expand string, forceDownloadService bool) (*Weekscheduleresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5785,6 +5789,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 // GetWorkforcemanagementManagementunitWeekSchedules invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules
 //
 // Deprecated.  Use the equivalent business unit resource instead. Get the list of schedules in a week in management unit
+//
+// Deprecated: GetWorkforcemanagementManagementunitWeekSchedules is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedules(managementUnitId string, weekId string, includeOnlyPublished bool, earliestWeekDate string, latestWeekDate string) (*Weekschedulelistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -11392,6 +11398,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitMove(manage
 // PostWorkforcemanagementManagementunitSchedulesSearch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/schedules/search
 //
 // Query published schedules for given given time range for set of users
+//
+// Deprecated: PostWorkforcemanagementManagementunitSchedulesSearch is deprecated
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSearch(managementUnitId string, body Userlistschedulerequestbody) (*Userschedulecontainer, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13269,6 +13277,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementNotificationsUpdate(body 
 // PostWorkforcemanagementSchedules invokes POST /api/v2/workforcemanagement/schedules
 //
 // Get published schedule for the current user
+//
+// Deprecated: PostWorkforcemanagementSchedules is deprecated
 func (a WorkforceManagementApi) PostWorkforcemanagementSchedules(body Currentuserschedulerequestbody) (*Userschedulecontainer, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

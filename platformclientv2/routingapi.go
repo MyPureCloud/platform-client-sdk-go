@@ -646,6 +646,8 @@ func (a RoutingApi) DeleteRoutingQueueMember(queueId string, memberId string) (*
 // DeleteRoutingQueueUser invokes DELETE /api/v2/routing/queues/{queueId}/users/{memberId}
 //
 // DEPRECATED: use DELETE /routing/queues/{queueId}/members/{memberId}.  Delete queue member.
+//
+// Deprecated: DeleteRoutingQueueUser is deprecated
 func (a RoutingApi) DeleteRoutingQueueUser(queueId string, memberId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -3984,6 +3986,8 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageS
 // GetRoutingQueueUsers invokes GET /api/v2/routing/queues/{queueId}/users
 //
 // DEPRECATED: use GET /routing/queues/{queueId}/members.  Get the members of this queue.
+//
+// Deprecated: GetRoutingQueueUsers is deprecated
 func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSize int, sortOrder string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylistingv1, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6920,6 +6924,8 @@ func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember)
 // PatchRoutingQueueUser invokes PATCH /api/v2/routing/queues/{queueId}/users/{memberId}
 //
 // DEPRECATED: use PATCH /routing/queues/{queueId}/members/{memberId}.  Update the ring number OR joined status for a User in a Queue.
+//
+// Deprecated: PatchRoutingQueueUser is deprecated
 func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body Queuemember) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7009,6 +7015,8 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 // PatchRoutingQueueUsers invokes PATCH /api/v2/routing/queues/{queueId}/users
 //
 // DEPRECATED: use PATCH /routing/queues/{queueId}/members.  Join or unjoin a set of users for a queue.
+//
+// Deprecated: PatchRoutingQueueUsers is deprecated
 func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (*Queuememberentitylistingv1, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -8649,6 +8657,8 @@ func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentit
 // PostRoutingQueueUsers invokes POST /api/v2/routing/queues/{queueId}/users
 //
 // DEPRECATED: use POST /routing/queues/{queueId}/members.  Bulk add or delete up to 100 queue members.
+//
+// Deprecated: PostRoutingQueueUsers is deprecated
 func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity, delete bool) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

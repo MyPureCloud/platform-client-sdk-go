@@ -7674,6 +7674,8 @@ func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId str
 // Schedule a Callback for a Dialer Campaign (Deprecated)
 //
 // This endpoint is deprecated and may have unexpected results. Please use \&quot;/conversations/{conversationId}/participants/{participantId}/callbacks instead.\&quot;
+//
+// Deprecated: PostOutboundCampaignCallbackSchedule is deprecated
 func (a OutboundApi) PostOutboundCampaignCallbackSchedule(campaignId string, body Contactcallbackrequest) (*Contactcallbackrequest, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

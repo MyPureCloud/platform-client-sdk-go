@@ -41,6 +41,9 @@ type Workitemsusereventsnotificationworkitem struct {
 	// DateExpires
 	DateExpires *string `json:"dateExpires,omitempty"`
 
+	// DateAssignmentStateChanged
+	DateAssignmentStateChanged *string `json:"dateAssignmentStateChanged,omitempty"`
+
 	// DurationSeconds
 	DurationSeconds *int `json:"durationSeconds,omitempty"`
 
@@ -185,6 +188,8 @@ func (o Workitemsusereventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		
 		DateExpires *string `json:"dateExpires,omitempty"`
 		
+		DateAssignmentStateChanged *string `json:"dateAssignmentStateChanged,omitempty"`
+		
 		DurationSeconds *int `json:"durationSeconds,omitempty"`
 		
 		Ttl *int `json:"ttl,omitempty"`
@@ -245,6 +250,8 @@ func (o Workitemsusereventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		DateDue: o.DateDue,
 		
 		DateExpires: o.DateExpires,
+		
+		DateAssignmentStateChanged: o.DateAssignmentStateChanged,
 		
 		DurationSeconds: o.DurationSeconds,
 		
@@ -335,6 +342,10 @@ func (o *Workitemsusereventsnotificationworkitem) UnmarshalJSON(b []byte) error 
     
 	if DateExpires, ok := WorkitemsusereventsnotificationworkitemMap["dateExpires"].(string); ok {
 		o.DateExpires = &DateExpires
+	}
+    
+	if DateAssignmentStateChanged, ok := WorkitemsusereventsnotificationworkitemMap["dateAssignmentStateChanged"].(string); ok {
+		o.DateAssignmentStateChanged = &DateAssignmentStateChanged
 	}
     
 	if DurationSeconds, ok := WorkitemsusereventsnotificationworkitemMap["durationSeconds"].(float64); ok {

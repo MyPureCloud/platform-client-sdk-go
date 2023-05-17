@@ -31,6 +31,9 @@ type Queueconversationvideoeventtopicconversation struct {
 
 	// ExternalTag
 	ExternalTag *string `json:"externalTag,omitempty"`
+
+	// SecurePause
+	SecurePause *bool `json:"securePause,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		Address *string `json:"address,omitempty"`
 		
 		ExternalTag *string `json:"externalTag,omitempty"`
+		
+		SecurePause *bool `json:"securePause,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -124,6 +129,8 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		Address: o.Address,
 		
 		ExternalTag: o.ExternalTag,
+		
+		SecurePause: o.SecurePause,
 		Alias:    (Alias)(o),
 	})
 }
@@ -164,6 +171,10 @@ func (o *Queueconversationvideoeventtopicconversation) UnmarshalJSON(b []byte) e
     
 	if ExternalTag, ok := QueueconversationvideoeventtopicconversationMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
+	}
+    
+	if SecurePause, ok := QueueconversationvideoeventtopicconversationMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
 	}
     
 

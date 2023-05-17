@@ -766,6 +766,8 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 // GetContentmanagementDocuments invokes GET /api/v2/contentmanagement/documents
 //
 // Get a list of documents.
+//
+// Deprecated: GetContentmanagementDocuments is deprecated
 func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, name string, expand []string, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Documententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -26,6 +26,9 @@ type Queueconversationcalleventtopiccallconversation struct {
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
+	// SecurePause
+	SecurePause *bool `json:"securePause,omitempty"`
+
 	// MaxParticipants
 	MaxParticipants *int `json:"maxParticipants,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
+		SecurePause *bool `json:"securePause,omitempty"`
+		
 		MaxParticipants *int `json:"maxParticipants,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		OtherMediaUris: o.OtherMediaUris,
 		
 		RecordingState: o.RecordingState,
+		
+		SecurePause: o.SecurePause,
 		
 		MaxParticipants: o.MaxParticipants,
 		Alias:    (Alias)(o),
@@ -148,6 +155,10 @@ func (o *Queueconversationcalleventtopiccallconversation) UnmarshalJSON(b []byte
 	
 	if RecordingState, ok := QueueconversationcalleventtopiccallconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
+	}
+    
+	if SecurePause, ok := QueueconversationcalleventtopiccallconversationMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
 	}
     
 	if MaxParticipants, ok := QueueconversationcalleventtopiccallconversationMap["maxParticipants"].(float64); ok {

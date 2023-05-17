@@ -196,6 +196,8 @@ func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*interface{},
 // GetFieldconfig invokes GET /api/v2/fieldconfig
 //
 // Fetch field config for an entity type
+//
+// Deprecated: GetFieldconfig is deprecated
 func (a GroupsApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -535,6 +537,8 @@ func (a GroupsApi) GetGroupMembers(groupId string, pageSize int, pageNumber int,
 // Get group profile
 //
 // This api is deprecated. Use /api/v2/groups instead
+//
+// Deprecated: GetGroupProfile is deprecated
 func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -792,6 +796,8 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 // Get group profile listing
 //
 // This api is deprecated. Use /api/v2/groups instead.
+//
+// Deprecated: GetProfilesGroups is deprecated
 func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string) (*Groupprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

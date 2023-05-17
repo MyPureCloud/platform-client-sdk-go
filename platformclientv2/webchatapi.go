@@ -32,6 +32,8 @@ func NewWebChatApiWithConfig(config *Configuration) *WebChatApi {
 // DeleteWebchatDeployment invokes DELETE /api/v2/webchat/deployments/{deploymentId}
 //
 // Delete a WebChat deployment
+//
+// Deprecated: DeleteWebchatDeployment is deprecated
 func (a WebChatApi) DeleteWebchatDeployment(deploymentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -256,6 +258,8 @@ func (a WebChatApi) DeleteWebchatSettings() (*APIResponse, error) {
 // GetWebchatDeployment invokes GET /api/v2/webchat/deployments/{deploymentId}
 //
 // Get a WebChat deployment
+//
+// Deprecated: GetWebchatDeployment is deprecated
 func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeployment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -338,6 +342,8 @@ func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeploymen
 // GetWebchatDeployments invokes GET /api/v2/webchat/deployments
 //
 // List WebChat deployments
+//
+// Deprecated: GetWebchatDeployments is deprecated
 func (a WebChatApi) GetWebchatDeployments() (*Webchatdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1103,6 +1109,8 @@ func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId str
 // PostWebchatDeployments invokes POST /api/v2/webchat/deployments
 //
 // Create WebChat deployment
+//
+// Deprecated: PostWebchatDeployments is deprecated
 func (a WebChatApi) PostWebchatDeployments(body Webchatdeployment) (*Webchatdeployment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1450,6 +1458,8 @@ func (a WebChatApi) PostWebchatGuestConversations(body Createwebchatconversation
 // PutWebchatDeployment invokes PUT /api/v2/webchat/deployments/{deploymentId}
 //
 // Update a WebChat deployment
+//
+// Deprecated: PutWebchatDeployment is deprecated
 func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeployment) (*Webchatdeployment, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

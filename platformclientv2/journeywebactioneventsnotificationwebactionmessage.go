@@ -49,6 +49,9 @@ type Journeywebactioneventsnotificationwebactionmessage struct {
 
 	// VisitReferrer
 	VisitReferrer *Journeywebactioneventsnotificationreferrer `json:"visitReferrer,omitempty"`
+
+	// TimeToDisposition
+	TimeToDisposition *int `json:"timeToDisposition,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -139,6 +142,8 @@ func (o Journeywebactioneventsnotificationwebactionmessage) MarshalJSON() ([]byt
 		MktCampaign *Journeywebactioneventsnotificationmktcampaign `json:"mktCampaign,omitempty"`
 		
 		VisitReferrer *Journeywebactioneventsnotificationreferrer `json:"visitReferrer,omitempty"`
+		
+		TimeToDisposition *int `json:"timeToDisposition,omitempty"`
 		Alias
 	}{ 
 		Action: o.Action,
@@ -166,6 +171,8 @@ func (o Journeywebactioneventsnotificationwebactionmessage) MarshalJSON() ([]byt
 		MktCampaign: o.MktCampaign,
 		
 		VisitReferrer: o.VisitReferrer,
+		
+		TimeToDisposition: o.TimeToDisposition,
 		Alias:    (Alias)(o),
 	})
 }
@@ -235,6 +242,11 @@ func (o *Journeywebactioneventsnotificationwebactionmessage) UnmarshalJSON(b []b
 	if VisitReferrer, ok := JourneywebactioneventsnotificationwebactionmessageMap["visitReferrer"].(map[string]interface{}); ok {
 		VisitReferrerString, _ := json.Marshal(VisitReferrer)
 		json.Unmarshal(VisitReferrerString, &o.VisitReferrer)
+	}
+	
+	if TimeToDisposition, ok := JourneywebactioneventsnotificationwebactionmessageMap["timeToDisposition"].(float64); ok {
+		TimeToDispositionInt := int(TimeToDisposition)
+		o.TimeToDisposition = &TimeToDispositionInt
 	}
 	
 

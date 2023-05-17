@@ -132,6 +132,9 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
+	// SecurePause
+	SecurePause *bool `json:"securePause,omitempty"`
+
 	// Group
 	Group *Conversationcalleventtopicurireference `json:"group,omitempty"`
 
@@ -362,6 +365,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
+		SecurePause *bool `json:"securePause,omitempty"`
+		
 		Group *Conversationcalleventtopicurireference `json:"group,omitempty"`
 		
 		Ani *string `json:"ani,omitempty"`
@@ -462,6 +467,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		Recording: o.Recording,
 		
 		RecordingState: o.RecordingState,
+		
+		SecurePause: o.SecurePause,
 		
 		Group: o.Group,
 		
@@ -671,6 +678,10 @@ func (o *Conversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []byte)
     
 	if RecordingState, ok := ConversationcalleventtopiccallmediaparticipantMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
+	}
+    
+	if SecurePause, ok := ConversationcalleventtopiccallmediaparticipantMap["securePause"].(bool); ok {
+		o.SecurePause = &SecurePause
 	}
     
 	if Group, ok := ConversationcalleventtopiccallmediaparticipantMap["group"].(map[string]interface{}); ok {

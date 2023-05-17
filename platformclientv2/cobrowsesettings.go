@@ -19,6 +19,12 @@ type Cobrowsesettings struct {
 
 	// MaskSelectors - Mask patterns that will apply to pages being shared
 	MaskSelectors *[]string `json:"maskSelectors,omitempty"`
+
+	// Channels - Cobrowse channels for web messenger
+	Channels *[]string `json:"channels,omitempty"`
+
+	// ReadonlySelectors - Readonly patterns that will apply to pages being shared
+	ReadonlySelectors *[]string `json:"readonlySelectors,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		AllowAgentControl *bool `json:"allowAgentControl,omitempty"`
 		
 		MaskSelectors *[]string `json:"maskSelectors,omitempty"`
+		
+		Channels *[]string `json:"channels,omitempty"`
+		
+		ReadonlySelectors *[]string `json:"readonlySelectors,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -96,6 +106,10 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		AllowAgentControl: o.AllowAgentControl,
 		
 		MaskSelectors: o.MaskSelectors,
+		
+		Channels: o.Channels,
+		
+		ReadonlySelectors: o.ReadonlySelectors,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +132,16 @@ func (o *Cobrowsesettings) UnmarshalJSON(b []byte) error {
 	if MaskSelectors, ok := CobrowsesettingsMap["maskSelectors"].([]interface{}); ok {
 		MaskSelectorsString, _ := json.Marshal(MaskSelectors)
 		json.Unmarshal(MaskSelectorsString, &o.MaskSelectors)
+	}
+	
+	if Channels, ok := CobrowsesettingsMap["channels"].([]interface{}); ok {
+		ChannelsString, _ := json.Marshal(Channels)
+		json.Unmarshal(ChannelsString, &o.Channels)
+	}
+	
+	if ReadonlySelectors, ok := CobrowsesettingsMap["readonlySelectors"].([]interface{}); ok {
+		ReadonlySelectorsString, _ := json.Marshal(ReadonlySelectors)
+		json.Unmarshal(ReadonlySelectorsString, &o.ReadonlySelectors)
 	}
 	
 

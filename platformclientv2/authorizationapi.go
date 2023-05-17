@@ -695,6 +695,8 @@ func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, 
 // Returns which divisions the current user has the given permission in.
 //
 // This route is deprecated, use authorization/divisionspermitted/paged/me instead.
+//
+// Deprecated: GetAuthorizationDivisionspermittedMe is deprecated
 func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string, name string) ([]Authzdivision, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -869,6 +871,8 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission s
 // Returns which divisions the specified user has the given permission in.
 //
 // This route is deprecated, use authorization/divisionspermitted/paged/me instead.
+//
+// Deprecated: GetAuthorizationDivisionspermittedPagedSubjectId is deprecated
 func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

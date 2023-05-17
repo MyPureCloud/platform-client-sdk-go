@@ -11,6 +11,9 @@ import (
 type Conversationappsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Enabled - The toggle to enable or disable conversations
+	Enabled *bool `json:"enabled,omitempty"`
+
 	// ShowAgentTypingIndicator - The toggle to enable or disable typing indicator for messenger
 	ShowAgentTypingIndicator *bool `json:"showAgentTypingIndicator,omitempty"`
 
@@ -99,6 +102,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 	type Alias Conversationappsettings
 	
 	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		
 		ShowAgentTypingIndicator *bool `json:"showAgentTypingIndicator,omitempty"`
 		
 		ShowUserTypingIndicator *bool `json:"showUserTypingIndicator,omitempty"`
@@ -116,6 +121,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 		Humanize *Humanize `json:"humanize,omitempty"`
 		Alias
 	}{ 
+		Enabled: o.Enabled,
+		
 		ShowAgentTypingIndicator: o.ShowAgentTypingIndicator,
 		
 		ShowUserTypingIndicator: o.ShowUserTypingIndicator,
@@ -142,6 +149,10 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Enabled, ok := ConversationappsettingsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+    
 	if ShowAgentTypingIndicator, ok := ConversationappsettingsMap["showAgentTypingIndicator"].(bool); ok {
 		o.ShowAgentTypingIndicator = &ShowAgentTypingIndicator
 	}

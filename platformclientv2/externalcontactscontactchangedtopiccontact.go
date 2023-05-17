@@ -14,6 +14,9 @@ type Externalcontactscontactchangedtopiccontact struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// ExternalOrganization
+	ExternalOrganization *Externalcontactscontactchangedtopicexternalorganization `json:"externalOrganization,omitempty"`
+
 	// VarType
 	VarType *string `json:"type,omitempty"`
 
@@ -76,6 +79,12 @@ type Externalcontactscontactchangedtopiccontact struct {
 
 	// InstagramId
 	InstagramId *Externalcontactscontactchangedtopicinstagramid `json:"instagramId,omitempty"`
+
+	// Schema
+	Schema *Externalcontactscontactchangedtopicdataschema `json:"schema,omitempty"`
+
+	// CustomFields
+	CustomFields *map[string]interface{} `json:"customFields,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -143,6 +152,8 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		ExternalOrganization *Externalcontactscontactchangedtopicexternalorganization `json:"externalOrganization,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		FirstName *string `json:"firstName,omitempty"`
@@ -184,9 +195,15 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		FacebookId *Externalcontactscontactchangedtopicfacebookid `json:"facebookId,omitempty"`
 		
 		InstagramId *Externalcontactscontactchangedtopicinstagramid `json:"instagramId,omitempty"`
+		
+		Schema *Externalcontactscontactchangedtopicdataschema `json:"schema,omitempty"`
+		
+		CustomFields *map[string]interface{} `json:"customFields,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		ExternalOrganization: o.ExternalOrganization,
 		
 		VarType: o.VarType,
 		
@@ -229,6 +246,10 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		FacebookId: o.FacebookId,
 		
 		InstagramId: o.InstagramId,
+		
+		Schema: o.Schema,
+		
+		CustomFields: o.CustomFields,
 		Alias:    (Alias)(o),
 	})
 }
@@ -244,6 +265,11 @@ func (o *Externalcontactscontactchangedtopiccontact) UnmarshalJSON(b []byte) err
 		o.Id = &Id
 	}
     
+	if ExternalOrganization, ok := ExternalcontactscontactchangedtopiccontactMap["externalOrganization"].(map[string]interface{}); ok {
+		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
+		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)
+	}
+	
 	if VarType, ok := ExternalcontactscontactchangedtopiccontactMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
@@ -336,6 +362,16 @@ func (o *Externalcontactscontactchangedtopiccontact) UnmarshalJSON(b []byte) err
 	if InstagramId, ok := ExternalcontactscontactchangedtopiccontactMap["instagramId"].(map[string]interface{}); ok {
 		InstagramIdString, _ := json.Marshal(InstagramId)
 		json.Unmarshal(InstagramIdString, &o.InstagramId)
+	}
+	
+	if Schema, ok := ExternalcontactscontactchangedtopiccontactMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if CustomFields, ok := ExternalcontactscontactchangedtopiccontactMap["customFields"].(map[string]interface{}); ok {
+		CustomFieldsString, _ := json.Marshal(CustomFields)
+		json.Unmarshal(CustomFieldsString, &o.CustomFields)
 	}
 	
 

@@ -34,6 +34,8 @@ func NewChatApiWithConfig(config *Configuration) *ChatApi {
 // Get Chat Settings.
 //
 // This route is deprecated, please use /chats/settings instead
+//
+// Deprecated: GetChatSettings is deprecated
 func (a ChatApi) GetChatSettings() (*Chatsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -188,6 +190,8 @@ func (a ChatApi) GetChatsSettings() (*Chatsettings, *APIResponse, error) {
 // Patch Chat Settings.
 //
 // This route is deprecated, please use /chats/settings instead
+//
+// Deprecated: PatchChatSettings is deprecated
 func (a ChatApi) PatchChatSettings(body Chatsettings) (*Chatsettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -358,6 +362,8 @@ func (a ChatApi) PatchChatsSettings(body Chatsettings) (*Chatsettings, *APIRespo
 // Update Chat Settings.
 //
 // This route is deprecated, please use /chats/settings instead
+//
+// Deprecated: PutChatSettings is deprecated
 func (a ChatApi) PutChatSettings(body Chatsettings) (*Chatsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

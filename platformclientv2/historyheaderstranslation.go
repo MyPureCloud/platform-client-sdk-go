@@ -34,6 +34,9 @@ type Historyheaderstranslation struct {
 
 	// Language - The code of the expected language
 	Language *string `json:"language,omitempty"`
+
+	// TimeZone - Timezone used by the agent, used to format the sent email date and time. If not defined, will default to UTC. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London
+	TimeZone *string `json:"timeZone,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Historyheaderstranslation) MarshalJSON() ([]byte, error) {
 		Sent *string `json:"sent,omitempty"`
 		
 		Language *string `json:"language,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -131,6 +136,8 @@ func (o Historyheaderstranslation) MarshalJSON() ([]byte, error) {
 		Sent: o.Sent,
 		
 		Language: o.Language,
+		
+		TimeZone: o.TimeZone,
 		Alias:    (Alias)(o),
 	})
 }
@@ -172,6 +179,10 @@ func (o *Historyheaderstranslation) UnmarshalJSON(b []byte) error {
     
 	if Language, ok := HistoryheaderstranslationMap["language"].(string); ok {
 		o.Language = &Language
+	}
+    
+	if TimeZone, ok := HistoryheaderstranslationMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
 	}
     
 

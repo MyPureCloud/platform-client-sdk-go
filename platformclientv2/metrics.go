@@ -63,6 +63,9 @@ type Metrics struct {
 	// Precision - Precision of linked external metric
 	Precision *int `json:"precision,omitempty"`
 
+	// TimeDisplayUnit - The time unit in which the metric should be displayed -- this parameter is ignored when displaying non-time values
+	TimeDisplayUnit *string `json:"timeDisplayUnit,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -179,6 +182,8 @@ func (o Metrics) MarshalJSON() ([]byte, error) {
 		
 		Precision *int `json:"precision,omitempty"`
 		
+		TimeDisplayUnit *string `json:"timeDisplayUnit,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -215,6 +220,8 @@ func (o Metrics) MarshalJSON() ([]byte, error) {
 		UnitDefinition: o.UnitDefinition,
 		
 		Precision: o.Precision,
+		
+		TimeDisplayUnit: o.TimeDisplayUnit,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -303,6 +310,10 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 		o.Precision = &PrecisionInt
 	}
 	
+	if TimeDisplayUnit, ok := MetricsMap["timeDisplayUnit"].(string); ok {
+		o.TimeDisplayUnit = &TimeDisplayUnit
+	}
+    
 	if SelfUri, ok := MetricsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

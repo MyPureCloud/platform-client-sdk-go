@@ -34,6 +34,8 @@ func NewLanguagesApiWithConfig(config *Configuration) *LanguagesApi {
 // Delete Language (Deprecated)
 //
 // This endpoint is deprecated. Please see the Routing API (DELETE /api/v2/routing/languages/{languageId})
+//
+// Deprecated: DeleteLanguage is deprecated
 func (a LanguagesApi) DeleteLanguage(languageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,6 +113,8 @@ func (a LanguagesApi) DeleteLanguage(languageId string) (*APIResponse, error) {
 // Get Language (Deprecated)
 //
 // This endpoint is deprecated. Please see the Routing API (GET /api/v2/routing/languages/{languageId})
+//
+// Deprecated: GetLanguage is deprecated
 func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -195,6 +199,8 @@ func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, e
 // Get the list of supported languages. (Deprecated)
 //
 // This endpoint is deprecated. Please see the Routing API (GET /api/v2/routing/languages)
+//
+// Deprecated: GetLanguages is deprecated
 func (a LanguagesApi) GetLanguages(pageSize int, pageNumber int, sortOrder string, name string) (*Languageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -605,6 +611,8 @@ func (a LanguagesApi) GetLanguagesTranslationsUser(userId string) (*map[string]i
 // Create Language (Deprecated)
 //
 // This endpoint is deprecated. Please see the Routing API. (POST /api/v2/routing/languages
+//
+// Deprecated: PostLanguages is deprecated
 func (a LanguagesApi) PostLanguages(body Language) (*Language, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

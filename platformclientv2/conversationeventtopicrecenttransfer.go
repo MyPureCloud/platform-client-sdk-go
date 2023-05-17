@@ -24,6 +24,9 @@ type Conversationeventtopicrecenttransfer struct {
 	// Initiator
 	Initiator *Conversationeventtopicinitiator `json:"initiator,omitempty"`
 
+	// ModifiedBy
+	ModifiedBy *Conversationeventtopicmodifiedby `json:"modifiedBy,omitempty"`
+
 	// Destination
 	Destination *Conversationeventtopicdestination `json:"destination,omitempty"`
 
@@ -110,6 +113,8 @@ func (o Conversationeventtopicrecenttransfer) MarshalJSON() ([]byte, error) {
 		
 		Initiator *Conversationeventtopicinitiator `json:"initiator,omitempty"`
 		
+		ModifiedBy *Conversationeventtopicmodifiedby `json:"modifiedBy,omitempty"`
+		
 		Destination *Conversationeventtopicdestination `json:"destination,omitempty"`
 		
 		TransferType *string `json:"transferType,omitempty"`
@@ -122,6 +127,8 @@ func (o Conversationeventtopicrecenttransfer) MarshalJSON() ([]byte, error) {
 		DateIssued: DateIssued,
 		
 		Initiator: o.Initiator,
+		
+		ModifiedBy: o.ModifiedBy,
 		
 		Destination: o.Destination,
 		
@@ -153,6 +160,11 @@ func (o *Conversationeventtopicrecenttransfer) UnmarshalJSON(b []byte) error {
 	if Initiator, ok := ConversationeventtopicrecenttransferMap["initiator"].(map[string]interface{}); ok {
 		InitiatorString, _ := json.Marshal(Initiator)
 		json.Unmarshal(InitiatorString, &o.Initiator)
+	}
+	
+	if ModifiedBy, ok := ConversationeventtopicrecenttransferMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
 	if Destination, ok := ConversationeventtopicrecenttransferMap["destination"].(map[string]interface{}); ok {
