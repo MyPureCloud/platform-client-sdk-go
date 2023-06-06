@@ -19,6 +19,9 @@ type Documenttext struct {
 
 	// Hyperlink - The URL of the page that the hyperlink goes to.
 	Hyperlink *string `json:"hyperlink,omitempty"`
+
+	// Properties - The properties for the text.
+	Properties *Documenttextproperties `json:"properties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Documenttext) MarshalJSON() ([]byte, error) {
 		Marks *[]string `json:"marks,omitempty"`
 		
 		Hyperlink *string `json:"hyperlink,omitempty"`
+		
+		Properties *Documenttextproperties `json:"properties,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,
@@ -96,6 +101,8 @@ func (o Documenttext) MarshalJSON() ([]byte, error) {
 		Marks: o.Marks,
 		
 		Hyperlink: o.Hyperlink,
+		
+		Properties: o.Properties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,11 @@ func (o *Documenttext) UnmarshalJSON(b []byte) error {
 		o.Hyperlink = &Hyperlink
 	}
     
+	if Properties, ok := DocumenttextMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
 
 	return nil
 }

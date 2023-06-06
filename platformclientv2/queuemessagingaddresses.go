@@ -13,6 +13,9 @@ type Queuemessagingaddresses struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// SmsAddress
 	SmsAddress *Domainentityref `json:"smsAddress,omitempty"`
+
+	// OpenMessagingRecipient
+	OpenMessagingRecipient *Domainentityref `json:"openMessagingRecipient,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Queuemessagingaddresses) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		SmsAddress *Domainentityref `json:"smsAddress,omitempty"`
+		
+		OpenMessagingRecipient *Domainentityref `json:"openMessagingRecipient,omitempty"`
 		Alias
 	}{ 
 		SmsAddress: o.SmsAddress,
+		
+		OpenMessagingRecipient: o.OpenMessagingRecipient,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Queuemessagingaddresses) UnmarshalJSON(b []byte) error {
 	if SmsAddress, ok := QueuemessagingaddressesMap["smsAddress"].(map[string]interface{}); ok {
 		SmsAddressString, _ := json.Marshal(SmsAddress)
 		json.Unmarshal(SmsAddressString, &o.SmsAddress)
+	}
+	
+	if OpenMessagingRecipient, ok := QueuemessagingaddressesMap["openMessagingRecipient"].(map[string]interface{}); ok {
+		OpenMessagingRecipientString, _ := json.Marshal(OpenMessagingRecipient)
+		json.Unmarshal(OpenMessagingRecipientString, &o.OpenMessagingRecipient)
 	}
 	
 

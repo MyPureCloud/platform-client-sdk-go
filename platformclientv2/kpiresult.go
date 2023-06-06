@@ -25,6 +25,9 @@ type Kpiresult struct {
 
 	// MediaType - Media type used for the KPI
 	MediaType *string `json:"mediaType,omitempty"`
+
+	// PercentageBenefit - The percentage benefit for this media type for the duration of the comparison period
+	PercentageBenefit *float64 `json:"percentageBenefit,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Kpiresult) MarshalJSON() ([]byte, error) {
 		InteractionCountOff *int `json:"interactionCountOff,omitempty"`
 		
 		MediaType *string `json:"mediaType,omitempty"`
+		
+		PercentageBenefit *float64 `json:"percentageBenefit,omitempty"`
 		Alias
 	}{ 
 		KpiTotalOn: o.KpiTotalOn,
@@ -110,6 +115,8 @@ func (o Kpiresult) MarshalJSON() ([]byte, error) {
 		InteractionCountOff: o.InteractionCountOff,
 		
 		MediaType: o.MediaType,
+		
+		PercentageBenefit: o.PercentageBenefit,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,10 @@ func (o *Kpiresult) UnmarshalJSON(b []byte) error {
 	
 	if MediaType, ok := KpiresultMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if PercentageBenefit, ok := KpiresultMap["percentageBenefit"].(float64); ok {
+		o.PercentageBenefit = &PercentageBenefit
 	}
     
 

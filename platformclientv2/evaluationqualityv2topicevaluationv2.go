@@ -104,6 +104,15 @@ type Evaluationqualityv2topicevaluationv2 struct {
 
 	// RetractedEvaluation
 	RetractedEvaluation *Evaluationqualityv2topicevaluationreference `json:"retractedEvaluation,omitempty"`
+
+	// RescoreCount
+	RescoreCount *int `json:"rescoreCount,omitempty"`
+
+	// EvaluatorCommentHasUpdated
+	EvaluatorCommentHasUpdated *bool `json:"evaluatorCommentHasUpdated,omitempty"`
+
+	// AgentCommentHasUpdated
+	AgentCommentHasUpdated *bool `json:"agentCommentHasUpdated,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -270,6 +279,12 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		DeclinedReview *bool `json:"declinedReview,omitempty"`
 		
 		RetractedEvaluation *Evaluationqualityv2topicevaluationreference `json:"retractedEvaluation,omitempty"`
+		
+		RescoreCount *int `json:"rescoreCount,omitempty"`
+		
+		EvaluatorCommentHasUpdated *bool `json:"evaluatorCommentHasUpdated,omitempty"`
+		
+		AgentCommentHasUpdated *bool `json:"agentCommentHasUpdated,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -333,6 +348,12 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		DeclinedReview: o.DeclinedReview,
 		
 		RetractedEvaluation: o.RetractedEvaluation,
+		
+		RescoreCount: o.RescoreCount,
+		
+		EvaluatorCommentHasUpdated: o.EvaluatorCommentHasUpdated,
+		
+		AgentCommentHasUpdated: o.AgentCommentHasUpdated,
 		Alias:    (Alias)(o),
 	})
 }
@@ -483,6 +504,19 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RetractedEvaluationString, &o.RetractedEvaluation)
 	}
 	
+	if RescoreCount, ok := Evaluationqualityv2topicevaluationv2Map["rescoreCount"].(float64); ok {
+		RescoreCountInt := int(RescoreCount)
+		o.RescoreCount = &RescoreCountInt
+	}
+	
+	if EvaluatorCommentHasUpdated, ok := Evaluationqualityv2topicevaluationv2Map["evaluatorCommentHasUpdated"].(bool); ok {
+		o.EvaluatorCommentHasUpdated = &EvaluatorCommentHasUpdated
+	}
+    
+	if AgentCommentHasUpdated, ok := Evaluationqualityv2topicevaluationv2Map["agentCommentHasUpdated"].(bool); ok {
+		o.AgentCommentHasUpdated = &AgentCommentHasUpdated
+	}
+    
 
 	return nil
 }

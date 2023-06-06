@@ -13,6 +13,9 @@ type Documentbodyvideo struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Url - The URL for the video.
 	Url *string `json:"url,omitempty"`
+
+	// Properties - The properties for the video.
+	Properties *Documentbodyvideoproperties `json:"properties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Documentbodyvideo) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
+		
+		Properties *Documentbodyvideoproperties `json:"properties,omitempty"`
 		Alias
 	}{ 
 		Url: o.Url,
+		
+		Properties: o.Properties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +104,11 @@ func (o *Documentbodyvideo) UnmarshalJSON(b []byte) error {
 		o.Url = &Url
 	}
     
+	if Properties, ok := DocumentbodyvideoMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
 
 	return nil
 }

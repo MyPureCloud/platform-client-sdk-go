@@ -16,6 +16,9 @@ type Documentbodyimage struct {
 
 	// Hyperlink - The URL of the page that the hyperlink goes to.
 	Hyperlink *string `json:"hyperlink,omitempty"`
+
+	// Properties - The properties for the image.
+	Properties *Documentbodyimageproperties `json:"properties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Documentbodyimage) MarshalJSON() ([]byte, error) {
 		Url *string `json:"url,omitempty"`
 		
 		Hyperlink *string `json:"hyperlink,omitempty"`
+		
+		Properties *Documentbodyimageproperties `json:"properties,omitempty"`
 		Alias
 	}{ 
 		Url: o.Url,
 		
 		Hyperlink: o.Hyperlink,
+		
+		Properties: o.Properties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Documentbodyimage) UnmarshalJSON(b []byte) error {
 		o.Hyperlink = &Hyperlink
 	}
     
+	if Properties, ok := DocumentbodyimageMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
 
 	return nil
 }

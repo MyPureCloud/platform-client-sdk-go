@@ -104,6 +104,9 @@ type Call struct {
 
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+	// Disposition - Call resolution data for Dialer bulk make calls commands.
+	Disposition *Disposition `json:"disposition,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -262,6 +265,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+		
+		Disposition *Disposition `json:"disposition,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -325,6 +330,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
+		
+		Disposition: o.Disposition,
 		Alias:    (Alias)(o),
 	})
 }
@@ -472,6 +479,11 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 		o.AgentAssistantId = &AgentAssistantId
 	}
     
+	if Disposition, ok := CallMap["disposition"].(map[string]interface{}); ok {
+		DispositionString, _ := json.Marshal(Disposition)
+		json.Unmarshal(DispositionString, &o.Disposition)
+	}
+	
 
 	return nil
 }

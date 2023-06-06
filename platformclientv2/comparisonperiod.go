@@ -24,6 +24,9 @@ type Comparisonperiod struct {
 	// DateEnded - End date of the comparison period. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateEnded *time.Time `json:"dateEnded,omitempty"`
 
+	// PercentageBenefit - The percentage benefit on this queue for the duration of the comparison period
+	PercentageBenefit *float64 `json:"percentageBenefit,omitempty"`
+
 	// KpiResults - KPI results for each metric
 	KpiResults *[]Kpiresult `json:"kpiResults,omitempty"`
 
@@ -118,6 +121,8 @@ func (o Comparisonperiod) MarshalJSON() ([]byte, error) {
 		
 		DateEnded *string `json:"dateEnded,omitempty"`
 		
+		PercentageBenefit *float64 `json:"percentageBenefit,omitempty"`
+		
 		KpiResults *[]Kpiresult `json:"kpiResults,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -130,6 +135,8 @@ func (o Comparisonperiod) MarshalJSON() ([]byte, error) {
 		DateStarted: DateStarted,
 		
 		DateEnded: DateEnded,
+		
+		PercentageBenefit: o.PercentageBenefit,
 		
 		KpiResults: o.KpiResults,
 		
@@ -163,6 +170,10 @@ func (o *Comparisonperiod) UnmarshalJSON(b []byte) error {
 		o.DateEnded = &DateEnded
 	}
 	
+	if PercentageBenefit, ok := ComparisonperiodMap["percentageBenefit"].(float64); ok {
+		o.PercentageBenefit = &PercentageBenefit
+	}
+    
 	if KpiResults, ok := ComparisonperiodMap["kpiResults"].([]interface{}); ok {
 		KpiResultsString, _ := json.Marshal(KpiResults)
 		json.Unmarshal(KpiResultsString, &o.KpiResults)

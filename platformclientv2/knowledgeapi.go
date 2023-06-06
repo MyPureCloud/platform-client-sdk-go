@@ -620,6 +620,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLabel(knowledgeBaseId string, 
 // DeleteKnowledgeKnowledgebaseLanguageCategory invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}
 //
 // Delete category
+//
+// Deprecated: DeleteKnowledgeKnowledgebaseLanguageCategory is deprecated
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId string, knowledgeBaseId string, languageCode string) (*Knowledgecategory, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -714,6 +716,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageCategory(categoryId st
 // DeleteKnowledgeKnowledgebaseLanguageDocument invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}
 //
 // Delete document
+//
+// Deprecated: DeleteKnowledgeKnowledgebaseLanguageDocument is deprecated
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId string, knowledgeBaseId string, languageCode string) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -808,6 +812,8 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId st
 // DeleteKnowledgeKnowledgebaseLanguageDocumentsImport invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
 //
 // Delete import operation
+//
+// Deprecated: DeleteKnowledgeKnowledgebaseLanguageDocumentsImport is deprecated
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -2558,6 +2564,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLabels(knowledgeBaseId string, be
 // GetKnowledgeKnowledgebaseLanguageCategories invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories
 //
 // Get categories
+//
+// Deprecated: GetKnowledgeKnowledgebaseLanguageCategories is deprecated
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, name string) (*Categorylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2656,6 +2664,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 // GetKnowledgeKnowledgebaseLanguageCategory invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}
 //
 // Get category
+//
+// Deprecated: GetKnowledgeKnowledgebaseLanguageCategory is deprecated
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId string, knowledgeBaseId string, languageCode string) (*Knowledgeextendedcategory, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2750,6 +2760,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategory(categoryId strin
 // GetKnowledgeKnowledgebaseLanguageDocument invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}
 //
 // Get document
+//
+// Deprecated: GetKnowledgeKnowledgebaseLanguageDocument is deprecated
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId string, knowledgeBaseId string, languageCode string) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2844,6 +2856,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 // GetKnowledgeKnowledgebaseLanguageDocuments invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents
 //
 // Get documents
+//
+// Deprecated: GetKnowledgeKnowledgebaseLanguageDocuments is deprecated
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, categories string, title string, sortBy string, sortOrder string, documentIds []string) (*Documentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2950,6 +2964,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 // GetKnowledgeKnowledgebaseLanguageDocumentsImport invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
 //
 // Get import operation report
+//
+// Deprecated: GetKnowledgeKnowledgebaseLanguageDocumentsImport is deprecated
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string) (*Knowledgeimport, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3044,6 +3060,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledge
 // GetKnowledgeKnowledgebaseLanguageTraining invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings/{trainingId}
 //
 // Get training detail
+//
+// Deprecated: GetKnowledgeKnowledgebaseLanguageTraining is deprecated
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId string, languageCode string, trainingId string) (*Knowledgetraining, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3138,6 +3156,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId 
 // GetKnowledgeKnowledgebaseLanguageTrainings invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings
 //
 // Get all trainings information for a knowledgebase
+//
+// Deprecated: GetKnowledgeKnowledgebaseLanguageTrainings is deprecated
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, knowledgeDocumentsState string) (*Traininglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4344,6 +4364,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLabel(knowledgeBaseId string, l
 // PatchKnowledgeKnowledgebaseLanguageCategory invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories/{categoryId}
 //
 // Update category
+//
+// Deprecated: PatchKnowledgeKnowledgebaseLanguageCategory is deprecated
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId string, knowledgeBaseId string, languageCode string, body Knowledgecategoryrequest) (*Knowledgeextendedcategory, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4446,6 +4468,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageCategory(categoryId str
 // PatchKnowledgeKnowledgebaseLanguageDocument invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/{documentId}
 //
 // Update document
+//
+// Deprecated: PatchKnowledgeKnowledgebaseLanguageDocument is deprecated
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId string, knowledgeBaseId string, languageCode string, body Knowledgedocumentrequest) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4548,6 +4572,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocument(documentId str
 // PatchKnowledgeKnowledgebaseLanguageDocuments invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents
 //
 // Update documents collection
+//
+// Deprecated: PatchKnowledgeKnowledgebaseLanguageDocuments is deprecated
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, body []Knowledgedocumentbulkrequest) (*Documentlisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -4644,6 +4670,8 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBase
 // PatchKnowledgeKnowledgebaseLanguageDocumentsImport invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
 //
 // Start import operation
+//
+// Deprecated: PatchKnowledgeKnowledgebaseLanguageDocumentsImport is deprecated
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string, body Importstatusrequest) (*Knowledgeimport, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5987,6 +6015,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLabels(knowledgeBaseId string, b
 // PostKnowledgeKnowledgebaseLanguageCategories invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories
 //
 // Create new category
+//
+// Deprecated: PostKnowledgeKnowledgebaseLanguageCategories is deprecated
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseId string, languageCode string, body Knowledgecategoryrequest) (*Knowledgeextendedcategory, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6083,6 +6113,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBase
 // PostKnowledgeKnowledgebaseLanguageDocuments invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents
 //
 // Create document
+//
+// Deprecated: PostKnowledgeKnowledgebaseLanguageDocuments is deprecated
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, body Knowledgedocumentrequest) (*Knowledgedocument, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6179,6 +6211,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseI
 // PostKnowledgeKnowledgebaseLanguageDocumentsImports invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports
 //
 // Create import operation
+//
+// Deprecated: PostKnowledgeKnowledgebaseLanguageDocumentsImports is deprecated
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowledgeBaseId string, languageCode string, body Knowledgeimport) (*Knowledgeimport, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6275,6 +6309,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowled
 // PostKnowledgeKnowledgebaseLanguageTrainingPromote invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings/{trainingId}/promote
 //
 // Promote trained documents from draft state to active.
+//
+// Deprecated: PostKnowledgeKnowledgebaseLanguageTrainingPromote is deprecated
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledgeBaseId string, languageCode string, trainingId string) (*Knowledgetraining, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6369,6 +6405,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainingPromote(knowledg
 // PostKnowledgeKnowledgebaseLanguageTrainings invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings
 //
 // Trigger training
+//
+// Deprecated: PostKnowledgeKnowledgebaseLanguageTrainings is deprecated
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId string, languageCode string) (*Knowledgetraining, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6457,6 +6495,8 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseI
 // PostKnowledgeKnowledgebaseSearch invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/search
 //
 // Search Documents
+//
+// Deprecated: PostKnowledgeKnowledgebaseSearch is deprecated
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, body Knowledgesearchrequest) (*Knowledgesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

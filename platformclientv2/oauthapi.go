@@ -857,7 +857,7 @@ func (a OAuthApi) PostOauthClientSecret(clientId string) (*Oauthclient, *APIResp
 // Query for OAuth client API usage
 //
 // After calling this method, you will then need to poll for the query results based on the returned execution Id
-func (a OAuthApi) PostOauthClientUsageQuery(clientId string, body Apiusagequery) (*Usageexecutionresult, *APIResponse, error) {
+func (a OAuthApi) PostOauthClientUsageQuery(clientId string, body Apiusageclientquery) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/clients/{clientId}/usage/query"

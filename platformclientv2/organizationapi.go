@@ -114,9 +114,89 @@ func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIRespo
 	return successPayload, response, err
 }
 
+// GetOrganizationsAuthenticationSettings invokes GET /api/v2/organizations/authentication/settings
+//
+// Gets the organization's settings
+func (a OrganizationApi) GetOrganizationsAuthenticationSettings() (*Orgauthsettings, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/organizations/authentication/settings"
+	defaultReturn := new(Orgauthsettings)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Orgauthsettings
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Orgauthsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetOrganizationsEmbeddedintegration invokes GET /api/v2/organizations/embeddedintegration
 //
 // Get the list of domains that will be allowed to embed PureCloud applications
+//
+// This route is deprecated, please use /api/v2/organizations/authentication/settings instead
+//
+// Deprecated: GetOrganizationsEmbeddedintegration is deprecated
 func (a OrganizationApi) GetOrganizationsEmbeddedintegration() (*Embeddedintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -193,6 +273,10 @@ func (a OrganizationApi) GetOrganizationsEmbeddedintegration() (*Embeddedintegra
 // GetOrganizationsIpaddressauthentication invokes GET /api/v2/organizations/ipaddressauthentication
 //
 // Get organization IP address whitelist settings
+//
+// This route is deprecated, please use /api/v2/organizations/authentication/settings instead
+//
+// Deprecated: GetOrganizationsIpaddressauthentication is deprecated
 func (a OrganizationApi) GetOrganizationsIpaddressauthentication() (*Ipaddressauthentication, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -834,7 +918,7 @@ func (a OrganizationApi) GetOrganizationsMe() (*Organization, *APIResponse, erro
 
 // GetOrganizationsWhitelist invokes GET /api/v2/organizations/whitelist
 //
-// Use PUT /api/v2/organizations/embeddedintegration instead
+// This route is deprecated, please use /api/v2/organizations/authentication/settings instead
 //
 // Deprecated: GetOrganizationsWhitelist is deprecated
 func (a OrganizationApi) GetOrganizationsWhitelist() (*Orgwhitelistsettings, *APIResponse, error) {
@@ -902,6 +986,90 @@ func (a OrganizationApi) GetOrganizationsWhitelist() (*Orgwhitelistsettings, *AP
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Orgwhitelistsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchOrganizationsAuthenticationSettings invokes PATCH /api/v2/organizations/authentication/settings
+//
+// Update the organization's settings
+func (a OrganizationApi) PatchOrganizationsAuthenticationSettings(body Orgauthsettings) (*Orgauthsettings, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/organizations/authentication/settings"
+	defaultReturn := new(Orgauthsettings)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OrganizationApi->PatchOrganizationsAuthenticationSettings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Orgauthsettings
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Orgauthsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1003,6 +1171,10 @@ func (a OrganizationApi) PatchOrganizationsFeature(featureName string, enabled F
 // PutOrganizationsEmbeddedintegration invokes PUT /api/v2/organizations/embeddedintegration
 //
 // Update the list of domains that will be allowed to embed PureCloud applications
+//
+// This route is deprecated, please use /api/v2/organizations/authentication/settings instead
+//
+// Deprecated: PutOrganizationsEmbeddedintegration is deprecated
 func (a OrganizationApi) PutOrganizationsEmbeddedintegration(body Embeddedintegration) (*Embeddedintegration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1087,6 +1259,10 @@ func (a OrganizationApi) PutOrganizationsEmbeddedintegration(body Embeddedintegr
 // PutOrganizationsIpaddressauthentication invokes PUT /api/v2/organizations/ipaddressauthentication
 //
 // Update organization IP address whitelist settings
+//
+// This route is deprecated, please use /api/v2/organizations/authentication/settings instead
+//
+// Deprecated: PutOrganizationsIpaddressauthentication is deprecated
 func (a OrganizationApi) PutOrganizationsIpaddressauthentication(body Ipaddressauthentication) (*Ipaddressauthentication, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1249,7 +1425,7 @@ func (a OrganizationApi) PutOrganizationsMe(body Organization) (*Organization, *
 
 // PutOrganizationsWhitelist invokes PUT /api/v2/organizations/whitelist
 //
-// Use PUT /api/v2/organizations/embeddedintegration instead
+// This route is deprecated, please use /api/v2/organizations/authentication/settings instead
 //
 // Deprecated: PutOrganizationsWhitelist is deprecated
 func (a OrganizationApi) PutOrganizationsWhitelist(body Orgwhitelistsettings) (*Orgwhitelistsettings, *APIResponse, error) {

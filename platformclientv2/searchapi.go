@@ -1114,6 +1114,8 @@ func (a SearchApi) PostGroupsSearch(body Groupsearchrequest) (*Groupssearchrespo
 // PostKnowledgeKnowledgebaseSearch invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/search
 //
 // Search Documents
+//
+// Deprecated: PostKnowledgeKnowledgebaseSearch is deprecated
 func (a SearchApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, body Knowledgesearchrequest) (*Knowledgesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

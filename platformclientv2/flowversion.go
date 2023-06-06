@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -62,6 +63,12 @@ type Flowversion struct {
 	// OutputSchema
 	OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
 
+	// DatePublished - The date this version became the published version of the flow. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DatePublished *time.Time `json:"datePublished,omitempty"`
+
+	// DatePublishedEnd - The date this version was no longer the published version of the flow. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DatePublishedEnd *time.Time `json:"datePublishedEnd,omitempty"`
+
 	// NluInfo - Information about the natural language understanding configuration for the flow version
 	NluInfo *Nluinfo `json:"nluInfo,omitempty"`
 
@@ -104,7 +111,7 @@ func (o Flowversion) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DatePublished","DatePublishedEnd", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -136,6 +143,22 @@ func (o Flowversion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowversion
+	
+	DatePublished := new(string)
+	if o.DatePublished != nil {
+		
+		*DatePublished = timeutil.Strftime(o.DatePublished, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DatePublished = nil
+	}
+	
+	DatePublishedEnd := new(string)
+	if o.DatePublishedEnd != nil {
+		
+		*DatePublishedEnd = timeutil.Strftime(o.DatePublishedEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DatePublishedEnd = nil
+	}
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
@@ -171,6 +194,10 @@ func (o Flowversion) MarshalJSON() ([]byte, error) {
 		InputSchema *Jsonschemadocument `json:"inputSchema,omitempty"`
 		
 		OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
+		
+		DatePublished *string `json:"datePublished,omitempty"`
+		
+		DatePublishedEnd *string `json:"datePublishedEnd,omitempty"`
 		
 		NluInfo *Nluinfo `json:"nluInfo,omitempty"`
 		
@@ -214,6 +241,10 @@ func (o Flowversion) MarshalJSON() ([]byte, error) {
 		InputSchema: o.InputSchema,
 		
 		OutputSchema: o.OutputSchema,
+		
+		DatePublished: DatePublished,
+		
+		DatePublishedEnd: DatePublishedEnd,
 		
 		NluInfo: o.NluInfo,
 		
@@ -306,6 +337,16 @@ func (o *Flowversion) UnmarshalJSON(b []byte) error {
 	if OutputSchema, ok := FlowversionMap["outputSchema"].(map[string]interface{}); ok {
 		OutputSchemaString, _ := json.Marshal(OutputSchema)
 		json.Unmarshal(OutputSchemaString, &o.OutputSchema)
+	}
+	
+	if datePublishedString, ok := FlowversionMap["datePublished"].(string); ok {
+		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
+		o.DatePublished = &DatePublished
+	}
+	
+	if datePublishedEndString, ok := FlowversionMap["datePublishedEnd"].(string); ok {
+		DatePublishedEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedEndString)
+		o.DatePublishedEnd = &DatePublishedEnd
 	}
 	
 	if NluInfo, ok := FlowversionMap["nluInfo"].(map[string]interface{}); ok {

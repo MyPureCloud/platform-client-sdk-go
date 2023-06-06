@@ -19,6 +19,12 @@ type Settings struct {
 
 	// AllowCallbackQueueSelection - Allow Callback Queue Selection
 	AllowCallbackQueueSelection *bool `json:"allowCallbackQueueSelection,omitempty"`
+
+	// CompleteAcwWhenAgentTransitionsOffline - Complete ACW When Agent Transitions Offline
+	CompleteAcwWhenAgentTransitionsOffline *bool `json:"completeAcwWhenAgentTransitionsOffline,omitempty"`
+
+	// TotalActiveCallback - Exclude the 'interacting' duration from the handle calculations of callbacks
+	TotalActiveCallback *bool `json:"totalActiveCallback,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Settings) MarshalJSON() ([]byte, error) {
 		IncludeNonAgentConversationSummary *bool `json:"includeNonAgentConversationSummary,omitempty"`
 		
 		AllowCallbackQueueSelection *bool `json:"allowCallbackQueueSelection,omitempty"`
+		
+		CompleteAcwWhenAgentTransitionsOffline *bool `json:"completeAcwWhenAgentTransitionsOffline,omitempty"`
+		
+		TotalActiveCallback *bool `json:"totalActiveCallback,omitempty"`
 		Alias
 	}{ 
 		CommunicationBasedACW: o.CommunicationBasedACW,
@@ -96,6 +106,10 @@ func (o Settings) MarshalJSON() ([]byte, error) {
 		IncludeNonAgentConversationSummary: o.IncludeNonAgentConversationSummary,
 		
 		AllowCallbackQueueSelection: o.AllowCallbackQueueSelection,
+		
+		CompleteAcwWhenAgentTransitionsOffline: o.CompleteAcwWhenAgentTransitionsOffline,
+		
+		TotalActiveCallback: o.TotalActiveCallback,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +131,14 @@ func (o *Settings) UnmarshalJSON(b []byte) error {
     
 	if AllowCallbackQueueSelection, ok := SettingsMap["allowCallbackQueueSelection"].(bool); ok {
 		o.AllowCallbackQueueSelection = &AllowCallbackQueueSelection
+	}
+    
+	if CompleteAcwWhenAgentTransitionsOffline, ok := SettingsMap["completeAcwWhenAgentTransitionsOffline"].(bool); ok {
+		o.CompleteAcwWhenAgentTransitionsOffline = &CompleteAcwWhenAgentTransitionsOffline
+	}
+    
+	if TotalActiveCallback, ok := SettingsMap["totalActiveCallback"].(bool); ok {
+		o.TotalActiveCallback = &TotalActiveCallback
 	}
     
 

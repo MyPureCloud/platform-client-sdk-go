@@ -13,6 +13,9 @@ type Documentbodylist struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Blocks - The list of items for an OrderedList or an UnorderedList.
 	Blocks *[]Documentbodylistblock `json:"blocks,omitempty"`
+
+	// Properties - Properties for the UnorderedList or OrderedList.
+	Properties *Documentbodylistblockproperties `json:"properties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Documentbodylist) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Blocks *[]Documentbodylistblock `json:"blocks,omitempty"`
+		
+		Properties *Documentbodylistblockproperties `json:"properties,omitempty"`
 		Alias
 	}{ 
 		Blocks: o.Blocks,
+		
+		Properties: o.Properties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Documentbodylist) UnmarshalJSON(b []byte) error {
 	if Blocks, ok := DocumentbodylistMap["blocks"].([]interface{}); ok {
 		BlocksString, _ := json.Marshal(Blocks)
 		json.Unmarshal(BlocksString, &o.Blocks)
+	}
+	
+	if Properties, ok := DocumentbodylistMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
 	}
 	
 

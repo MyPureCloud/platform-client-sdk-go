@@ -67,6 +67,9 @@ type Reportingexportjobrequest struct {
 
 	// IncludeDurationFormatInHeader - Indicates whether to include selected duration format to the column headers
 	IncludeDurationFormatInHeader *bool `json:"includeDurationFormatInHeader,omitempty"`
+
+	// DurationFormat - Indicates the duration format for the exports
+	DurationFormat *string `json:"durationFormat,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -169,6 +172,8 @@ func (o Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 		RecipientEmails *[]string `json:"recipientEmails,omitempty"`
 		
 		IncludeDurationFormatInHeader *bool `json:"includeDurationFormatInHeader,omitempty"`
+		
+		DurationFormat *string `json:"durationFormat,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -208,6 +213,8 @@ func (o Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 		RecipientEmails: o.RecipientEmails,
 		
 		IncludeDurationFormatInHeader: o.IncludeDurationFormatInHeader,
+		
+		DurationFormat: o.DurationFormat,
 		Alias:    (Alias)(o),
 	})
 }
@@ -296,6 +303,10 @@ func (o *Reportingexportjobrequest) UnmarshalJSON(b []byte) error {
 	
 	if IncludeDurationFormatInHeader, ok := ReportingexportjobrequestMap["includeDurationFormatInHeader"].(bool); ok {
 		o.IncludeDurationFormatInHeader = &IncludeDurationFormatInHeader
+	}
+    
+	if DurationFormat, ok := ReportingexportjobrequestMap["durationFormat"].(string); ok {
+		o.DurationFormat = &DurationFormat
 	}
     
 

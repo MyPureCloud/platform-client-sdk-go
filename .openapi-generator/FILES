@@ -739,6 +739,7 @@ docs/GetOauthClientUsageSummary-example.txt
 docs/GetOauthClients-example.txt
 docs/GetOauthScope-example.txt
 docs/GetOauthScopes-example.txt
+docs/GetOrganizationsAuthenticationSettings-example.txt
 docs/GetOrganizationsEmbeddedintegration-example.txt
 docs/GetOrganizationsIpaddressauthentication-example.txt
 docs/GetOrganizationsLimitsChangerequest-example.txt
@@ -998,6 +999,7 @@ docs/GetSpeechandtextanalyticsTopic-example.txt
 docs/GetSpeechandtextanalyticsTopics-example.txt
 docs/GetSpeechandtextanalyticsTopicsDialects-example.txt
 docs/GetSpeechandtextanalyticsTopicsGeneral-example.txt
+docs/GetSpeechandtextanalyticsTopicsGeneralStatus-example.txt
 docs/GetSpeechandtextanalyticsTopicsPublishjob-example.txt
 docs/GetStation-example.txt
 docs/GetStations-example.txt
@@ -1079,6 +1081,7 @@ docs/GetTextbotsBotsSearch-example.txt
 docs/GetTimezones-example.txt
 docs/GetTokensMe-example.txt
 docs/GetUsageQueryExecutionIdResults-example.txt
+docs/GetUsageSimplesearchExecutionIdResults-example.txt
 docs/GetUser-example.txt
 docs/GetUserAdjacents-example.txt
 docs/GetUserCallforwarding-example.txt
@@ -1321,6 +1324,7 @@ docs/PatchLearningAssignment-example.txt
 docs/PatchLearningAssignmentReschedule-example.txt
 docs/PatchLocation-example.txt
 docs/PatchMessagingSupportedcontentSupportedContentId-example.txt
+docs/PatchOrganizationsAuthenticationSettings-example.txt
 docs/PatchOrganizationsFeature-example.txt
 docs/PatchOutboundDnclistCustomexclusioncolumns-example.txt
 docs/PatchOutboundDnclistEmailaddresses-example.txt
@@ -1804,6 +1808,7 @@ docs/PostUploadsPublicassetsImages-example.txt
 docs/PostUploadsRecordings-example.txt
 docs/PostUploadsWorkforcemanagementHistoricaldataCsv-example.txt
 docs/PostUsageQuery-example.txt
+docs/PostUsageSimplesearch-example.txt
 docs/PostUserExternalid-example.txt
 docs/PostUserGreetings-example.txt
 docs/PostUserInvite-example.txt
@@ -2193,6 +2198,7 @@ platformclientv2/adhocrecordingtopicrecordingdatav2.go
 platformclientv2/adhocrecordingtopicuserdata.go
 platformclientv2/adhocrecordingtopicworkspacedata.go
 platformclientv2/adjacents.go
+platformclientv2/adjustablelivespeakerdetection.go
 platformclientv2/admintimeoffrequestpatch.go
 platformclientv2/aftercallwork.go
 platformclientv2/aftercallworkupdate.go
@@ -2258,9 +2264,11 @@ platformclientv2/annotation.go
 platformclientv2/answeroption.go
 platformclientv2/apiclient.go
 platformclientv2/apiresponse.go
-platformclientv2/apiusagequery.go
+platformclientv2/apiusageclientquery.go
+platformclientv2/apiusageorganizationquery.go
 platformclientv2/apiusagequeryresult.go
 platformclientv2/apiusagerow.go
+platformclientv2/apiusagesimplesearch.go
 platformclientv2/appendtodncactionsettings.go
 platformclientv2/approvalnamespace.go
 platformclientv2/architectapi.go
@@ -3221,6 +3229,8 @@ platformclientv2/directroutingmediasettings.go
 platformclientv2/disallowedentitylearningassignmentitem.go
 platformclientv2/disallowedentitylearningassignmentreference.go
 platformclientv2/disconnectreason.go
+platformclientv2/disposition.go
+platformclientv2/dispositionparameters.go
 platformclientv2/division.go
 platformclientv2/divisionreference.go
 platformclientv2/divspermittedentitylisting.go
@@ -3249,14 +3259,20 @@ platformclientv2/documentauditentitylisting.go
 platformclientv2/documentbody.go
 platformclientv2/documentbodyblock.go
 platformclientv2/documentbodyimage.go
+platformclientv2/documentbodyimageproperties.go
 platformclientv2/documentbodylist.go
 platformclientv2/documentbodylistblock.go
+platformclientv2/documentbodylistblockproperties.go
+platformclientv2/documentbodylistitemproperties.go
 platformclientv2/documentbodyparagraph.go
+platformclientv2/documentbodyparagraphproperties.go
 platformclientv2/documentbodyvideo.go
+platformclientv2/documentbodyvideoproperties.go
 platformclientv2/documentcategoryinput.go
 platformclientv2/documentcontentblock.go
 platformclientv2/documententitylisting.go
 platformclientv2/documentfaq.go
+platformclientv2/documentlistcontentblock.go
 platformclientv2/documentlisting.go
 platformclientv2/documentquery.go
 platformclientv2/documentqueryclause.go
@@ -3264,6 +3280,7 @@ platformclientv2/documentqueryinterval.go
 platformclientv2/documentquerypredicate.go
 platformclientv2/documentreference.go
 platformclientv2/documenttext.go
+platformclientv2/documenttextproperties.go
 platformclientv2/documentthumbnail.go
 platformclientv2/documentupdate.go
 platformclientv2/documentupload.go
@@ -4224,6 +4241,7 @@ platformclientv2/organizationpresencedefinition.go
 platformclientv2/organizationpresenceentitylisting.go
 platformclientv2/organizationproductentitylisting.go
 platformclientv2/organizationroleentitylisting.go
+platformclientv2/orgauthsettings.go
 platformclientv2/orgoauthclient.go
 platformclientv2/orguser.go
 platformclientv2/orgwhitelistsettings.go
@@ -4282,6 +4300,7 @@ platformclientv2/participant.go
 platformclientv2/participantattributes.go
 platformclientv2/participantbasic.go
 platformclientv2/participantmetrics.go
+platformclientv2/passwordrequirements.go
 platformclientv2/patchaction.go
 platformclientv2/patchactionmap.go
 platformclientv2/patchactionmapschedulegroups.go
@@ -5259,6 +5278,8 @@ platformclientv2/unansweredphrase.go
 platformclientv2/unansweredphrasegroup.go
 platformclientv2/unansweredphrasegrouppatchrequestbody.go
 platformclientv2/unansweredphrasegroupupdateresponse.go
+platformclientv2/unifiedgeneraltopic.go
+platformclientv2/unifiedgeneraltopicentitylisting.go
 platformclientv2/unpublishedprogramsentitylisting.go
 platformclientv2/unreadmetric.go
 platformclientv2/unreadstatus.go

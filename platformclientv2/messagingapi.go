@@ -32,6 +32,10 @@ func NewMessagingApiWithConfig(config *Configuration) *MessagingApi {
 // DeleteMessagingSupportedcontentSupportedContentId invokes DELETE /api/v2/messaging/supportedcontent/{supportedContentId}
 //
 // Delete a supported content profile
+//
+// Deprecated - use DELETE /api/v2/conversations/messaging/supportedcontent/{supportedContentId} as replacement
+//
+// Deprecated: DeleteMessagingSupportedcontentSupportedContentId is deprecated
 func (a MessagingApi) DeleteMessagingSupportedcontentSupportedContentId(supportedContentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -107,6 +111,10 @@ func (a MessagingApi) DeleteMessagingSupportedcontentSupportedContentId(supporte
 // GetMessagingSupportedcontent invokes GET /api/v2/messaging/supportedcontent
 //
 // Get a list of Supported Content profiles
+//
+// Deprecated - use GET /api/v2/conversations/messaging/supportedcontent as replacement
+//
+// Deprecated: GetMessagingSupportedcontent is deprecated
 func (a MessagingApi) GetMessagingSupportedcontent(pageSize int, pageNumber int) (*Supportedcontentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -187,6 +195,10 @@ func (a MessagingApi) GetMessagingSupportedcontent(pageSize int, pageNumber int)
 // GetMessagingSupportedcontentSupportedContentId invokes GET /api/v2/messaging/supportedcontent/{supportedContentId}
 //
 // Get a supported content profile
+//
+// Deprecated - use GET /api/v2/conversations/messaging/supportedcontent/{supportedContentId} as replacement
+//
+// Deprecated: GetMessagingSupportedcontentSupportedContentId is deprecated
 func (a MessagingApi) GetMessagingSupportedcontentSupportedContentId(supportedContentId string) (*Supportedcontent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -269,6 +281,10 @@ func (a MessagingApi) GetMessagingSupportedcontentSupportedContentId(supportedCo
 // PatchMessagingSupportedcontentSupportedContentId invokes PATCH /api/v2/messaging/supportedcontent/{supportedContentId}
 //
 // Update a supported content profile
+//
+// Deprecated - use PATCH /api/v2/conversations/messaging/supportedcontent/{supportedContentId} as replacement
+//
+// Deprecated: PatchMessagingSupportedcontentSupportedContentId is deprecated
 func (a MessagingApi) PatchMessagingSupportedcontentSupportedContentId(supportedContentId string, body Supportedcontent) (*Supportedcontent, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -359,6 +375,10 @@ func (a MessagingApi) PatchMessagingSupportedcontentSupportedContentId(supported
 // PostMessagingSupportedcontent invokes POST /api/v2/messaging/supportedcontent
 //
 // Create a Supported Content profile
+//
+// Deprecated - use POST /api/v2/conversations/messaging/supportedcontent as replacement
+//
+// Deprecated: PostMessagingSupportedcontent is deprecated
 func (a MessagingApi) PostMessagingSupportedcontent(body Supportedcontent) (*Supportedcontent, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

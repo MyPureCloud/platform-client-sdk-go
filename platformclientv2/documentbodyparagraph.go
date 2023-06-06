@@ -13,6 +13,9 @@ type Documentbodyparagraph struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Blocks - The list of blocks for the paragraph.
 	Blocks *[]Documentcontentblock `json:"blocks,omitempty"`
+
+	// Properties - The properties for the paragraph.
+	Properties *Documentbodyparagraphproperties `json:"properties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Documentbodyparagraph) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Blocks *[]Documentcontentblock `json:"blocks,omitempty"`
+		
+		Properties *Documentbodyparagraphproperties `json:"properties,omitempty"`
 		Alias
 	}{ 
 		Blocks: o.Blocks,
+		
+		Properties: o.Properties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Documentbodyparagraph) UnmarshalJSON(b []byte) error {
 	if Blocks, ok := DocumentbodyparagraphMap["blocks"].([]interface{}); ok {
 		BlocksString, _ := json.Marshal(Blocks)
 		json.Unmarshal(BlocksString, &o.Blocks)
+	}
+	
+	if Properties, ok := DocumentbodyparagraphMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
 	}
 	
 
