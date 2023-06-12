@@ -1,15 +1,17 @@
 package platformclientv2
+
 import (
-	"time"
-	"github.com/leekchan/timeutil"
-	"reflect"
 	"encoding/json"
+	"reflect"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/leekchan/timeutil"
 )
 
 // Queuerequest
-type Queuerequest struct { 
+type Queuerequest struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -53,6 +55,9 @@ type Queuerequest struct {
 
 	// Bullseye - The bullseye settings for the queue.
 	Bullseye *Bullseye `json:"bullseye,omitempty"`
+
+	//Conditionalgrouprouting - The conditionalgrouprouting settings for the queue.
+	Conditionalgrouprouting *Conditionalgrouprouting `json:"conditionalGroupRouting,omitempty"`
 
 	// AcwSettings - The ACW settings for the queue.
 	AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
@@ -144,9 +149,9 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateModified", }
-		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateTimeFields := []string{"DateCreated", "DateModified"}
+		localDateTimeFields := []string{}
+		dateFields := []string{}
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -155,7 +160,7 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 			fieldValue := val.FieldByName(fieldName).Interface()
 
 			// Apply value formatting overrides
-			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil() {
 				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
 			} else if contains(dateTimeFields, fieldName) {
 				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
@@ -174,163 +179,167 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 	}
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
-	_  = timeutil.Timedelta{}
+	_ = timeutil.Timedelta{}
 	type Alias Queuerequest
-	
+
 	DateCreated := new(string)
 	if o.DateCreated != nil {
-		
+
 		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
-	
+
 	DateModified := new(string)
 	if o.DateModified != nil {
-		
+
 		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
-	
-	return json.Marshal(&struct { 
+
+	return json.Marshal(&struct {
 		Id *string `json:"id,omitempty"`
-		
+
 		Name *string `json:"name,omitempty"`
-		
+
 		Division *Writabledivision `json:"division,omitempty"`
-		
+
 		Description *string `json:"description,omitempty"`
-		
+
 		DateCreated *string `json:"dateCreated,omitempty"`
-		
+
 		DateModified *string `json:"dateModified,omitempty"`
-		
+
 		ModifiedBy *string `json:"modifiedBy,omitempty"`
-		
+
 		CreatedBy *string `json:"createdBy,omitempty"`
-		
+
 		MemberCount *int `json:"memberCount,omitempty"`
-		
+
 		UserMemberCount *int `json:"userMemberCount,omitempty"`
-		
+
 		JoinedMemberCount *int `json:"joinedMemberCount,omitempty"`
-		
+
 		MediaSettings *Queuemediasettings `json:"mediaSettings,omitempty"`
-		
+
 		RoutingRules *[]Routingrule `json:"routingRules,omitempty"`
-		
+
 		Bullseye *Bullseye `json:"bullseye,omitempty"`
-		
+
+		Conditionalgrouprouting *Conditionalgrouprouting `json:"conditionalGroupRouting,omitempty"`
+
 		AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
-		
+
 		SkillEvaluationMethod *string `json:"skillEvaluationMethod,omitempty"`
-		
+
 		MemberGroups *[]Membergroup `json:"memberGroups,omitempty"`
-		
+
 		QueueFlow *Domainentityref `json:"queueFlow,omitempty"`
-		
+
 		EmailInQueueFlow *Domainentityref `json:"emailInQueueFlow,omitempty"`
-		
+
 		MessageInQueueFlow *Domainentityref `json:"messageInQueueFlow,omitempty"`
-		
+
 		WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
-		
+
 		OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
-		
+
 		AutoAnswerOnly *bool `json:"autoAnswerOnly,omitempty"`
-		
+
 		EnableTranscription *bool `json:"enableTranscription,omitempty"`
-		
+
 		EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
-		
+
 		AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
-		
+
 		DirectRouting *Directrouting `json:"directRouting,omitempty"`
-		
+
 		CallingPartyName *string `json:"callingPartyName,omitempty"`
-		
+
 		CallingPartyNumber *string `json:"callingPartyNumber,omitempty"`
-		
+
 		DefaultScripts *map[string]Script `json:"defaultScripts,omitempty"`
-		
+
 		OutboundMessagingAddresses *Queuemessagingaddresses `json:"outboundMessagingAddresses,omitempty"`
-		
+
 		OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
-		
+
 		PeerId *string `json:"peerId,omitempty"`
-		
+
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
-	}{ 
+	}{
 		Id: o.Id,
-		
+
 		Name: o.Name,
-		
+
 		Division: o.Division,
-		
+
 		Description: o.Description,
-		
+
 		DateCreated: DateCreated,
-		
+
 		DateModified: DateModified,
-		
+
 		ModifiedBy: o.ModifiedBy,
-		
+
 		CreatedBy: o.CreatedBy,
-		
+
 		MemberCount: o.MemberCount,
-		
+
 		UserMemberCount: o.UserMemberCount,
-		
+
 		JoinedMemberCount: o.JoinedMemberCount,
-		
+
 		MediaSettings: o.MediaSettings,
-		
+
 		RoutingRules: o.RoutingRules,
-		
+
 		Bullseye: o.Bullseye,
-		
+
+		Conditionalgrouprouting: o.Conditionalgrouprouting,
+
 		AcwSettings: o.AcwSettings,
-		
+
 		SkillEvaluationMethod: o.SkillEvaluationMethod,
-		
+
 		MemberGroups: o.MemberGroups,
-		
+
 		QueueFlow: o.QueueFlow,
-		
+
 		EmailInQueueFlow: o.EmailInQueueFlow,
-		
+
 		MessageInQueueFlow: o.MessageInQueueFlow,
-		
+
 		WhisperPrompt: o.WhisperPrompt,
-		
+
 		OnHoldPrompt: o.OnHoldPrompt,
-		
+
 		AutoAnswerOnly: o.AutoAnswerOnly,
-		
+
 		EnableTranscription: o.EnableTranscription,
-		
+
 		EnableManualAssignment: o.EnableManualAssignment,
-		
+
 		AgentOwnedRouting: o.AgentOwnedRouting,
-		
+
 		DirectRouting: o.DirectRouting,
-		
+
 		CallingPartyName: o.CallingPartyName,
-		
+
 		CallingPartyNumber: o.CallingPartyNumber,
-		
+
 		DefaultScripts: o.DefaultScripts,
-		
+
 		OutboundMessagingAddresses: o.OutboundMessagingAddresses,
-		
+
 		OutboundEmailAddress: o.OutboundEmailAddress,
-		
+
 		PeerId: o.PeerId,
-		
+
 		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+		Alias:   (Alias)(o),
 	})
 }
 
@@ -340,164 +349,168 @@ func (o *Queuerequest) UnmarshalJSON(b []byte) error {
 	if err != nil {
 		return err
 	}
-	
+
 	if Id, ok := QueuerequestMap["id"].(string); ok {
 		o.Id = &Id
 	}
-    
+
 	if Name, ok := QueuerequestMap["name"].(string); ok {
 		o.Name = &Name
 	}
-    
+
 	if Division, ok := QueuerequestMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
 	}
-	
+
 	if Description, ok := QueuerequestMap["description"].(string); ok {
 		o.Description = &Description
 	}
-    
+
 	if dateCreatedString, ok := QueuerequestMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
-	
+
 	if dateModifiedString, ok := QueuerequestMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
 	}
-	
+
 	if ModifiedBy, ok := QueuerequestMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
-    
+
 	if CreatedBy, ok := QueuerequestMap["createdBy"].(string); ok {
 		o.CreatedBy = &CreatedBy
 	}
-    
+
 	if MemberCount, ok := QueuerequestMap["memberCount"].(float64); ok {
 		MemberCountInt := int(MemberCount)
 		o.MemberCount = &MemberCountInt
 	}
-	
+
 	if UserMemberCount, ok := QueuerequestMap["userMemberCount"].(float64); ok {
 		UserMemberCountInt := int(UserMemberCount)
 		o.UserMemberCount = &UserMemberCountInt
 	}
-	
+
 	if JoinedMemberCount, ok := QueuerequestMap["joinedMemberCount"].(float64); ok {
 		JoinedMemberCountInt := int(JoinedMemberCount)
 		o.JoinedMemberCount = &JoinedMemberCountInt
 	}
-	
+
 	if MediaSettings, ok := QueuerequestMap["mediaSettings"].(map[string]interface{}); ok {
 		MediaSettingsString, _ := json.Marshal(MediaSettings)
 		json.Unmarshal(MediaSettingsString, &o.MediaSettings)
 	}
-	
+
 	if RoutingRules, ok := QueuerequestMap["routingRules"].([]interface{}); ok {
 		RoutingRulesString, _ := json.Marshal(RoutingRules)
 		json.Unmarshal(RoutingRulesString, &o.RoutingRules)
 	}
-	
+
 	if Bullseye, ok := QueuerequestMap["bullseye"].(map[string]interface{}); ok {
 		BullseyeString, _ := json.Marshal(Bullseye)
 		json.Unmarshal(BullseyeString, &o.Bullseye)
 	}
-	
+
+	if Conditionalgrouprouting, ok := QueuerequestMap["conditionalGroupRouting"].(map[string]interface{}); ok {
+		ConditionalgrouproutingString, _ := json.Marshal(Conditionalgrouprouting)
+		json.Unmarshal(ConditionalgrouproutingString, &o.Conditionalgrouprouting)
+	}
+
 	if AcwSettings, ok := QueuerequestMap["acwSettings"].(map[string]interface{}); ok {
 		AcwSettingsString, _ := json.Marshal(AcwSettings)
 		json.Unmarshal(AcwSettingsString, &o.AcwSettings)
 	}
-	
+
 	if SkillEvaluationMethod, ok := QueuerequestMap["skillEvaluationMethod"].(string); ok {
 		o.SkillEvaluationMethod = &SkillEvaluationMethod
 	}
-    
+
 	if MemberGroups, ok := QueuerequestMap["memberGroups"].([]interface{}); ok {
 		MemberGroupsString, _ := json.Marshal(MemberGroups)
 		json.Unmarshal(MemberGroupsString, &o.MemberGroups)
 	}
-	
+
 	if QueueFlow, ok := QueuerequestMap["queueFlow"].(map[string]interface{}); ok {
 		QueueFlowString, _ := json.Marshal(QueueFlow)
 		json.Unmarshal(QueueFlowString, &o.QueueFlow)
 	}
-	
+
 	if EmailInQueueFlow, ok := QueuerequestMap["emailInQueueFlow"].(map[string]interface{}); ok {
 		EmailInQueueFlowString, _ := json.Marshal(EmailInQueueFlow)
 		json.Unmarshal(EmailInQueueFlowString, &o.EmailInQueueFlow)
 	}
-	
+
 	if MessageInQueueFlow, ok := QueuerequestMap["messageInQueueFlow"].(map[string]interface{}); ok {
 		MessageInQueueFlowString, _ := json.Marshal(MessageInQueueFlow)
 		json.Unmarshal(MessageInQueueFlowString, &o.MessageInQueueFlow)
 	}
-	
+
 	if WhisperPrompt, ok := QueuerequestMap["whisperPrompt"].(map[string]interface{}); ok {
 		WhisperPromptString, _ := json.Marshal(WhisperPrompt)
 		json.Unmarshal(WhisperPromptString, &o.WhisperPrompt)
 	}
-	
+
 	if OnHoldPrompt, ok := QueuerequestMap["onHoldPrompt"].(map[string]interface{}); ok {
 		OnHoldPromptString, _ := json.Marshal(OnHoldPrompt)
 		json.Unmarshal(OnHoldPromptString, &o.OnHoldPrompt)
 	}
-	
+
 	if AutoAnswerOnly, ok := QueuerequestMap["autoAnswerOnly"].(bool); ok {
 		o.AutoAnswerOnly = &AutoAnswerOnly
 	}
-    
+
 	if EnableTranscription, ok := QueuerequestMap["enableTranscription"].(bool); ok {
 		o.EnableTranscription = &EnableTranscription
 	}
-    
+
 	if EnableManualAssignment, ok := QueuerequestMap["enableManualAssignment"].(bool); ok {
 		o.EnableManualAssignment = &EnableManualAssignment
 	}
-    
+
 	if AgentOwnedRouting, ok := QueuerequestMap["agentOwnedRouting"].(map[string]interface{}); ok {
 		AgentOwnedRoutingString, _ := json.Marshal(AgentOwnedRouting)
 		json.Unmarshal(AgentOwnedRoutingString, &o.AgentOwnedRouting)
 	}
-	
+
 	if DirectRouting, ok := QueuerequestMap["directRouting"].(map[string]interface{}); ok {
 		DirectRoutingString, _ := json.Marshal(DirectRouting)
 		json.Unmarshal(DirectRoutingString, &o.DirectRouting)
 	}
-	
+
 	if CallingPartyName, ok := QueuerequestMap["callingPartyName"].(string); ok {
 		o.CallingPartyName = &CallingPartyName
 	}
-    
+
 	if CallingPartyNumber, ok := QueuerequestMap["callingPartyNumber"].(string); ok {
 		o.CallingPartyNumber = &CallingPartyNumber
 	}
-    
+
 	if DefaultScripts, ok := QueuerequestMap["defaultScripts"].(map[string]interface{}); ok {
 		DefaultScriptsString, _ := json.Marshal(DefaultScripts)
 		json.Unmarshal(DefaultScriptsString, &o.DefaultScripts)
 	}
-	
+
 	if OutboundMessagingAddresses, ok := QueuerequestMap["outboundMessagingAddresses"].(map[string]interface{}); ok {
 		OutboundMessagingAddressesString, _ := json.Marshal(OutboundMessagingAddresses)
 		json.Unmarshal(OutboundMessagingAddressesString, &o.OutboundMessagingAddresses)
 	}
-	
+
 	if OutboundEmailAddress, ok := QueuerequestMap["outboundEmailAddress"].(map[string]interface{}); ok {
 		OutboundEmailAddressString, _ := json.Marshal(OutboundEmailAddress)
 		json.Unmarshal(OutboundEmailAddressString, &o.OutboundEmailAddress)
 	}
-	
+
 	if PeerId, ok := QueuerequestMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
 	}
-    
+
 	if SelfUri, ok := QueuerequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
-    
 
 	return nil
 }
