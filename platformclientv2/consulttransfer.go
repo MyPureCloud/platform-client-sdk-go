@@ -14,6 +14,9 @@ type Consulttransfer struct {
 	// SpeakTo - Determines to whom the initiating participant is speaking. Defaults to DESTINATION
 	SpeakTo *string `json:"speakTo,omitempty"`
 
+	// ConsultingUserId - The user ID of the person who wants to talk before completing the transfer. Could be the same of the context user ID
+	ConsultingUserId *string `json:"consultingUserId,omitempty"`
+
 	// Destination - Destination phone number and name.
 	Destination *Destination `json:"destination,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Consulttransfer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		SpeakTo *string `json:"speakTo,omitempty"`
 		
+		ConsultingUserId *string `json:"consultingUserId,omitempty"`
+		
 		Destination *Destination `json:"destination,omitempty"`
 		Alias
 	}{ 
 		SpeakTo: o.SpeakTo,
+		
+		ConsultingUserId: o.ConsultingUserId,
 		
 		Destination: o.Destination,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Consulttransfer) UnmarshalJSON(b []byte) error {
 	
 	if SpeakTo, ok := ConsulttransferMap["speakTo"].(string); ok {
 		o.SpeakTo = &SpeakTo
+	}
+    
+	if ConsultingUserId, ok := ConsulttransferMap["consultingUserId"].(string); ok {
+		o.ConsultingUserId = &ConsultingUserId
 	}
     
 	if Destination, ok := ConsulttransferMap["destination"].(map[string]interface{}); ok {

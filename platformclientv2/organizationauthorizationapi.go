@@ -513,7 +513,7 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrusteeUserRoles(tru
 //
 // Delete Bulk Org Trustees
 //
-// Preview Endpoint
+// Preview: DeleteOrgauthorizationTrustees is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustees(id []string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -909,7 +909,7 @@ func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustorUser(trustorO
 //
 // Delete Bulk Org Trustors
 //
-// Preview Endpoint
+// Preview: DeleteOrgauthorizationTrustors is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a OrganizationAuthorizationApi) DeleteOrgauthorizationTrustors(id []string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables

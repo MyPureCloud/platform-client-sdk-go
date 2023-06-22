@@ -11,11 +11,14 @@ import (
 type Limit struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Key - The limit key
+	// Key
 	Key *string `json:"key,omitempty"`
 
-	// Value - The limit value
-	Value *float64 `json:"value,omitempty"`
+	// Namespace
+	Namespace *string `json:"namespace,omitempty"`
+
+	// Value
+	Value *int `json:"value,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,10 +86,14 @@ func (o Limit) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Key *string `json:"key,omitempty"`
 		
-		Value *float64 `json:"value,omitempty"`
+		Namespace *string `json:"namespace,omitempty"`
+		
+		Value *int `json:"value,omitempty"`
 		Alias
 	}{ 
 		Key: o.Key,
+		
+		Namespace: o.Namespace,
 		
 		Value: o.Value,
 		Alias:    (Alias)(o),
@@ -104,10 +111,15 @@ func (o *Limit) UnmarshalJSON(b []byte) error {
 		o.Key = &Key
 	}
     
-	if Value, ok := LimitMap["value"].(float64); ok {
-		o.Value = &Value
+	if Namespace, ok := LimitMap["namespace"].(string); ok {
+		o.Namespace = &Namespace
 	}
     
+	if Value, ok := LimitMap["value"].(float64); ok {
+		ValueInt := int(Value)
+		o.Value = &ValueInt
+	}
+	
 
 	return nil
 }

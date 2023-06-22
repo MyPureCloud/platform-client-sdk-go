@@ -29,6 +29,9 @@ type Knowledgedocumentreq struct {
 	// LabelIds - The ids of labels associated with the document.
 	LabelIds *[]string `json:"labelIds,omitempty"`
 
+	// ExternalId - The external id associated with the document.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Knowledgedocumentreq) MarshalJSON() ([]byte, error) {
 		
 		LabelIds *[]string `json:"labelIds,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Knowledgedocumentreq) MarshalJSON() ([]byte, error) {
 		CategoryId: o.CategoryId,
 		
 		LabelIds: o.LabelIds,
+		
+		ExternalId: o.ExternalId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -161,6 +168,10 @@ func (o *Knowledgedocumentreq) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(LabelIdsString, &o.LabelIds)
 	}
 	
+	if ExternalId, ok := KnowledgedocumentreqMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 	if SelfUri, ok := KnowledgedocumentreqMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -33,7 +33,7 @@ func NewPresenceApiWithConfig(config *Configuration) *PresenceApi {
 //
 // Delete a Presence Definition
 //
-// Preview Endpoint
+// Preview: DeletePresenceDefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) DeletePresenceDefinition(definitionId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -260,7 +260,7 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 //
 // Get a Presence Definition
 //
-// Preview Endpoint
+// Preview: GetPresenceDefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) GetPresenceDefinition(definitionId string) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -344,7 +344,7 @@ func (a PresenceApi) GetPresenceDefinition(definitionId string) (*Organizationpr
 //
 // Get a list of Presence Definitions
 //
-// Preview Endpoint
+// Preview: GetPresenceDefinitions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) GetPresenceDefinitions(deactivated string, divisionId []string) (*Organizationpresencedefinitionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1158,6 +1158,168 @@ func (a PresenceApi) GetUserPresencesPurecloud(userId string) (*Userpresence, *A
 	return successPayload, response, err
 }
 
+// GetUsersPresenceBulk invokes GET /api/v2/users/presences/{sourceId}/bulk
+//
+// Get bulk user presences for a single presence source
+func (a PresenceApi) GetUsersPresenceBulk(sourceId string, id []string) ([]Ucuserpresence, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/users/presences/{sourceId}/bulk"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	defaultReturn := make([]Ucuserpresence, 0)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling PresenceApi->GetUsersPresenceBulk")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload []Ucuserpresence
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "[]Ucuserpresence" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetUsersPresencesPurecloudBulk invokes GET /api/v2/users/presences/purecloud/bulk
+//
+// Get bulk user presences for a Genesys Cloud (PURECLOUD) presence source
+func (a PresenceApi) GetUsersPresencesPurecloudBulk(id []string) ([]Ucuserpresence, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/users/presences/purecloud/bulk"
+	defaultReturn := make([]Ucuserpresence, 0)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload []Ucuserpresence
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "[]Ucuserpresence" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchUserPresence invokes PATCH /api/v2/users/{userId}/presences/{sourceId}
 //
 // Patch a user's Presence
@@ -1352,7 +1514,7 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 //
 // Create a Presence Definition
 //
-// Preview Endpoint
+// Preview: PostPresenceDefinitions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) PostPresenceDefinitions(body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1606,7 +1768,7 @@ func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organi
 //
 // Update a Presence Definition
 //
-// Preview Endpoint
+// Preview: PutPresenceDefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) PutPresenceDefinition(definitionId string, body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

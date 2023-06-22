@@ -41,6 +41,9 @@ type Knowledgeimportjoberror struct {
 	// Errors
 	Errors *[]Errorbody `json:"errors,omitempty"`
 
+	// Limit
+	Limit *Limit `json:"limit,omitempty"`
+
 	// DocumentIndex - Index of the faulty document.
 	DocumentIndex *int `json:"documentIndex,omitempty"`
 }
@@ -128,6 +131,8 @@ func (o Knowledgeimportjoberror) MarshalJSON() ([]byte, error) {
 		
 		Errors *[]Errorbody `json:"errors,omitempty"`
 		
+		Limit *Limit `json:"limit,omitempty"`
+		
 		DocumentIndex *int `json:"documentIndex,omitempty"`
 		Alias
 	}{ 
@@ -150,6 +155,8 @@ func (o Knowledgeimportjoberror) MarshalJSON() ([]byte, error) {
 		Details: o.Details,
 		
 		Errors: o.Errors,
+		
+		Limit: o.Limit,
 		
 		DocumentIndex: o.DocumentIndex,
 		Alias:    (Alias)(o),
@@ -205,6 +212,11 @@ func (o *Knowledgeimportjoberror) UnmarshalJSON(b []byte) error {
 	if Errors, ok := KnowledgeimportjoberrorMap["errors"].([]interface{}); ok {
 		ErrorsString, _ := json.Marshal(Errors)
 		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if Limit, ok := KnowledgeimportjoberrorMap["limit"].(map[string]interface{}); ok {
+		LimitString, _ := json.Marshal(Limit)
+		json.Unmarshal(LimitString, &o.Limit)
 	}
 	
 	if DocumentIndex, ok := KnowledgeimportjoberrorMap["documentIndex"].(float64); ok {

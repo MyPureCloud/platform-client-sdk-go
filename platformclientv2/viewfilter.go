@@ -514,6 +514,12 @@ type Viewfilter struct {
 
 	// EvaluationAssigned - Filter to indicate that the user has no assigned evaluation.
 	EvaluationAssigned *bool `json:"evaluationAssigned,omitempty"`
+
+	// AssistantIds - The assistant ids that are used to filter the view.
+	AssistantIds *[]string `json:"assistantIds,omitempty"`
+
+	// KnowledgeBaseIds - The knowledge base ids that are used to filter the view.
+	KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -914,6 +920,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		EvaluationAssigneeIds *[]string `json:"evaluationAssigneeIds,omitempty"`
 		
 		EvaluationAssigned *bool `json:"evaluationAssigned,omitempty"`
+		
+		AssistantIds *[]string `json:"assistantIds,omitempty"`
+		
+		KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1251,6 +1261,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		EvaluationAssigneeIds: o.EvaluationAssigneeIds,
 		
 		EvaluationAssigned: o.EvaluationAssigned,
+		
+		AssistantIds: o.AssistantIds,
+		
+		KnowledgeBaseIds: o.KnowledgeBaseIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2064,6 +2078,16 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.EvaluationAssigned = &EvaluationAssigned
 	}
     
+	if AssistantIds, ok := ViewfilterMap["assistantIds"].([]interface{}); ok {
+		AssistantIdsString, _ := json.Marshal(AssistantIds)
+		json.Unmarshal(AssistantIdsString, &o.AssistantIds)
+	}
+	
+	if KnowledgeBaseIds, ok := ViewfilterMap["knowledgeBaseIds"].([]interface{}); ok {
+		KnowledgeBaseIdsString, _ := json.Marshal(KnowledgeBaseIds)
+		json.Unmarshal(KnowledgeBaseIdsString, &o.KnowledgeBaseIds)
+	}
+	
 
 	return nil
 }

@@ -538,7 +538,7 @@ func (a TeamsApi) PatchTeam(teamId string, body Team) (*Team, *APIResponse, erro
 //
 // Query for team activity observations
 //
-// Preview Endpoint
+// Preview: PostAnalyticsTeamsActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TeamsApi) PostAnalyticsTeamsActivityQuery(body Teamactivityquery, pageSize int, pageNumber int) (*Teamactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

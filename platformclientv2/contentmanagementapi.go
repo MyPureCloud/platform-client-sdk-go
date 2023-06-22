@@ -586,6 +586,10 @@ func (a ContentManagementApi) GetContentmanagementDocument(documentId string, ex
 // GetContentmanagementDocumentAudits invokes GET /api/v2/contentmanagement/documents/{documentId}/audits
 //
 // Get a list of audits for a document.
+//
+// This api is deprecated, use https://developer.genesys.cloud/platform/audit/ instead.
+//
+// Deprecated: GetContentmanagementDocumentAudits is deprecated
 func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId string, pageSize int, pageNumber int, transactionFilter string, level string, sortBy string, sortOrder string) (*Documentauditentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2234,6 +2238,10 @@ func (a ContentManagementApi) GetContentmanagementWorkspaces(pageSize int, pageN
 // PostContentmanagementAuditquery invokes POST /api/v2/contentmanagement/auditquery
 //
 // Query audits
+//
+// This api is deprecated, use https://developer.genesys.cloud/platform/audit/ instead.
+//
+// Deprecated: PostContentmanagementAuditquery is deprecated
 func (a ContentManagementApi) PostContentmanagementAuditquery(body Contentqueryrequest) (*Queryresults, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

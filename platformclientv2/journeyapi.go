@@ -410,7 +410,7 @@ func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error)
 //
 // Get status for async query for journey aggregates
 //
-// Preview Endpoint
+// Preview: GetAnalyticsJourneysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -494,7 +494,7 @@ func (a JourneyApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncquery
 //
 // Fetch a page of results for an async aggregates query
 //
-// Preview Endpoint
+// Preview: GetAnalyticsJourneysAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetAnalyticsJourneysAggregatesJobResults(jobId string, cursor string) (*Journeyasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1248,100 +1248,6 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 	return successPayload, response, err
 }
 
-// GetJourneyCustomerCustomerIdSessions invokes GET /api/v2/journey/customers/{customerIdType}/{customerId}/sessions
-//
-// Retrieve all sessions for a given customer.
-//
-// Preview Endpoint
-func (a JourneyApi) GetJourneyCustomerCustomerIdSessions(customerIdType string, customerId string, pageSize string, after string) (*Sessionlisting, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/journey/customers/{customerIdType}/{customerId}/sessions"
-	path = strings.Replace(path, "{customerIdType}", url.PathEscape(fmt.Sprintf("%v", customerIdType)), -1)
-	path = strings.Replace(path, "{customerId}", url.PathEscape(fmt.Sprintf("%v", customerId)), -1)
-	defaultReturn := new(Sessionlisting)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'customerIdType' is set
-	if &customerIdType == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'customerIdType' when calling JourneyApi->GetJourneyCustomerCustomerIdSessions")
-	}
-	// verify the required parameter 'customerId' is set
-	if &customerId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'customerId' when calling JourneyApi->GetJourneyCustomerCustomerIdSessions")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Sessionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Sessionlisting" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
 // GetJourneyOutcome invokes GET /api/v2/journey/outcomes/{outcomeId}
 //
 // Retrieve a single outcome.
@@ -1516,7 +1422,7 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 //
 // Get job status.
 //
-// Preview Endpoint
+// Preview: GetJourneyOutcomesAttributionsJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyOutcomesAttributionsJob(jobId string) (*Outcomeattributionjobstateresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1600,7 +1506,7 @@ func (a JourneyApi) GetJourneyOutcomesAttributionsJob(jobId string) (*Outcomeatt
 //
 // Get outcome attribution entities from completed job.
 //
-// Preview Endpoint
+// Preview: GetJourneyOutcomesAttributionsJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyOutcomesAttributionsJobResults(jobId string) (*Outcomeattributionresponselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2096,7 +2002,7 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 //
 // Retrieve all events for a given session.
 //
-// Preview Endpoint
+// Preview: GetJourneySessionEvents is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneySessionEvents(sessionId string, pageSize string, after string) (*Eventlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2266,7 +2172,7 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 //
 // Retrieve segment assignments by session ID.
 //
-// Preview Endpoint
+// Preview: GetJourneySessionSegments is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneySessionSegments(sessionId string, pageSize string, after string, segmentScope string, assignmentState string) (*Segmentassignmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2783,7 +2689,7 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 //
 // Query for journey aggregates asynchronously
 //
-// Preview Endpoint
+// Preview: PostAnalyticsJourneysAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostAnalyticsJourneysAggregatesJobs(body Journeyasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3274,7 +3180,7 @@ func (a JourneyApi) PostJourneyOutcomes(body Outcome) (*Outcome, *APIResponse, e
 //
 // Create Outcome Attributions
 //
-// Preview Endpoint
+// Preview: PostJourneyOutcomesAttributionsJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyOutcomesAttributionsJobs(body Outcomeattributionlisting) (*Outcomeattributionasyncresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

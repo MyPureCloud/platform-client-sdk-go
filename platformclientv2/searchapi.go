@@ -873,7 +873,7 @@ func (a SearchApi) PostConversationsParticipantsAttributesSearch(body Conversati
 //
 // Search all documents
 //
-// Preview Endpoint
+// Preview: PostDocumentationAllSearch is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SearchApi) PostDocumentationAllSearch(body Documentationv2searchrequest) (*Jsonnodesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1791,7 +1791,7 @@ func (a SearchApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse
 //
 // Search users as conversation targets
 //
-// Preview Endpoint
+// Preview: PostUsersSearchConversationTarget is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SearchApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1877,7 +1877,7 @@ func (a SearchApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*U
 //
 // Search manage queue member
 //
-// Preview Endpoint
+// Preview: PostUsersSearchQueuemembersManage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SearchApi) PostUsersSearchQueuemembersManage(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -16,6 +16,9 @@ type Queuemessagingaddresses struct {
 
 	// OpenMessagingRecipient
 	OpenMessagingRecipient *Domainentityref `json:"openMessagingRecipient,omitempty"`
+
+	// WhatsAppRecipient
+	WhatsAppRecipient *Domainentityref `json:"whatsAppRecipient,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Queuemessagingaddresses) MarshalJSON() ([]byte, error) {
 		SmsAddress *Domainentityref `json:"smsAddress,omitempty"`
 		
 		OpenMessagingRecipient *Domainentityref `json:"openMessagingRecipient,omitempty"`
+		
+		WhatsAppRecipient *Domainentityref `json:"whatsAppRecipient,omitempty"`
 		Alias
 	}{ 
 		SmsAddress: o.SmsAddress,
 		
 		OpenMessagingRecipient: o.OpenMessagingRecipient,
+		
+		WhatsAppRecipient: o.WhatsAppRecipient,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Queuemessagingaddresses) UnmarshalJSON(b []byte) error {
 	if OpenMessagingRecipient, ok := QueuemessagingaddressesMap["openMessagingRecipient"].(map[string]interface{}); ok {
 		OpenMessagingRecipientString, _ := json.Marshal(OpenMessagingRecipient)
 		json.Unmarshal(OpenMessagingRecipientString, &o.OpenMessagingRecipient)
+	}
+	
+	if WhatsAppRecipient, ok := QueuemessagingaddressesMap["whatsAppRecipient"].(map[string]interface{}); ok {
+		WhatsAppRecipientString, _ := json.Marshal(WhatsAppRecipient)
+		json.Unmarshal(WhatsAppRecipientString, &o.WhatsAppRecipient)
 	}
 	
 

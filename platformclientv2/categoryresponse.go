@@ -18,13 +18,16 @@ type Categoryresponse struct {
 	// Name - The name of the category.
 	Name *string `json:"name,omitempty"`
 
-	// Description - The description for the category.
+	// Description
 	Description *string `json:"description,omitempty"`
 
-	// DateCreated - The creation date-time for the category. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// ExternalId
+	ExternalId *string `json:"externalId,omitempty"`
+
+	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// DateModified - The last modification date-time for the category. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateModified - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 	// ParentCategory - The reference to category to which this category belongs to.
@@ -125,6 +128,8 @@ func (o Categoryresponse) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -143,6 +148,8 @@ func (o Categoryresponse) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Description: o.Description,
+		
+		ExternalId: o.ExternalId,
 		
 		DateCreated: DateCreated,
 		
@@ -176,6 +183,10 @@ func (o *Categoryresponse) UnmarshalJSON(b []byte) error {
     
 	if Description, ok := CategoryresponseMap["description"].(string); ok {
 		o.Description = &Description
+	}
+    
+	if ExternalId, ok := CategoryresponseMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
 	}
     
 	if dateCreatedString, ok := CategoryresponseMap["dateCreated"].(string); ok {

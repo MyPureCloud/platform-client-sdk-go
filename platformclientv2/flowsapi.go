@@ -33,7 +33,7 @@ func NewFlowsApiWithConfig(config *Configuration) *FlowsApi {
 //
 // Get status for async query for Flow aggregates
 //
-// Preview Endpoint
+// Preview: GetAnalyticsFlowsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -117,7 +117,7 @@ func (a FlowsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerystatu
 //
 // Fetch a page of results for an async aggregates query
 //
-// Preview Endpoint
+// Preview: GetAnalyticsFlowsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor string) (*Flowasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -203,7 +203,7 @@ func (a FlowsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor str
 //
 // Query for flow activity observations
 //
-// Preview Endpoint
+// Preview: PostAnalyticsFlowsActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pageSize int, pageNumber int) (*Flowactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -293,7 +293,7 @@ func (a FlowsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pageSi
 //
 // Query for flow aggregates asynchronously
 //
-// Preview Endpoint
+// Preview: PostAnalyticsFlowsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) PostAnalyticsFlowsAggregatesJobs(body Flowasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

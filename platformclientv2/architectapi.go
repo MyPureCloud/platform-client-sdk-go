@@ -5177,7 +5177,7 @@ func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexe
 //
 // Returns a JobResult object that contains an ID that can be used to check status and/or download links when the process (job) is complete.
 //
-// Preview Endpoint
+// Preview: GetFlowsInstance is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsInstance(instanceId string, expand string) (*Getflowexecutiondatajobresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5263,7 +5263,7 @@ func (a ArchitectApi) GetFlowsInstance(instanceId string, expand string) (*Getfl
 //
 // Get the status and/or results of an asynchronous flow execution data retrieval job
 //
-// Preview Endpoint
+// Preview: GetFlowsInstancesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsInstancesJob(jobId string) (*Getflowexecutiondatajobresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5349,7 +5349,7 @@ func (a ArchitectApi) GetFlowsInstancesJob(jobId string) (*Getflowexecutiondataj
 //
 // Returns the queryable parameters that can be used to build a query for execution data.
 //
-// Preview Endpoint
+// Preview: GetFlowsInstancesQuerycapabilities is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsInstancesQuerycapabilities(expand string) (*Flowsquerycriteriaresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8104,7 +8104,7 @@ func (a ArchitectApi) PostFlowsExecutions(flowLaunchRequest Flowexecutionlaunchr
 //
 // Returns a JobResult object that contains an ID that can be used to check status and/or download links when the process (job) is complete.
 //
-// Preview Endpoint
+// Preview: PostFlowsInstancesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostFlowsInstancesJobs(body Executiondatarequest, expand string) (*Getflowexecutiondatajobresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8194,7 +8194,7 @@ func (a ArchitectApi) PostFlowsInstancesJobs(body Executiondatarequest, expand s
 //
 // Returns a list of matching flow histories up to 200 max.
 //
-// Preview Endpoint
+// Preview: PostFlowsInstancesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostFlowsInstancesQuery(body Criteriaquery, indexOnly bool) (*Flowresultentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

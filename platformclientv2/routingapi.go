@@ -1324,7 +1324,7 @@ func (a RoutingApi) DeleteRoutingUtilization() (*APIResponse, error) {
 //
 // Delete an utilization tag
 //
-// Preview Endpoint
+// Preview: DeleteRoutingUtilizationTag is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) DeleteRoutingUtilizationTag(tagId string, forceDelete bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -5942,7 +5942,7 @@ func (a RoutingApi) GetRoutingUtilization() (*Utilization, *APIResponse, error) 
 //
 // Get details about this utilization tag
 //
-// Preview Endpoint
+// Preview: GetRoutingUtilizationTag is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingUtilizationTag(tagId string) (*Utilizationtag, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6026,7 +6026,7 @@ func (a RoutingApi) GetRoutingUtilizationTag(tagId string) (*Utilizationtag, *AP
 //
 // Get list of agent ids associated with a utilization tag
 //
-// Preview Endpoint
+// Preview: GetRoutingUtilizationTagAgents is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingUtilizationTagAgents(tagId string) ([]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6110,7 +6110,7 @@ func (a RoutingApi) GetRoutingUtilizationTagAgents(tagId string) ([]interface{},
 //
 // Get list of utilization tags
 //
-// Preview Endpoint
+// Preview: GetRoutingUtilizationTags is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingUtilizationTags(pageSize int, pageNumber int, sortOrder string, name string) (*Utilizationtagentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8156,7 +8156,7 @@ func (a RoutingApi) PostAnalyticsQueuesObservationsQuery(body Queueobservationqu
 //
 // Query for user activity observations
 //
-// Preview Endpoint
+// Preview: PostAnalyticsRoutingActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PostAnalyticsRoutingActivityQuery(body Routingactivityquery, pageSize int, pageNumber int) (*Routingactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9756,7 +9756,7 @@ func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision) (*S
 //
 // Imports a phone number for SMS
 //
-// Preview Endpoint
+// Preview: PostRoutingSmsPhonenumbersImport is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PostRoutingSmsPhonenumbersImport(body Smsphonenumberimport) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9842,7 +9842,7 @@ func (a RoutingApi) PostRoutingSmsPhonenumbersImport(body Smsphonenumberimport) 
 //
 // Create an utilization tag
 //
-// Preview Endpoint
+// Preview: PostRoutingUtilizationTags is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PostRoutingUtilizationTags(body Createutilizationtagrequest) (*Utilizationtag, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

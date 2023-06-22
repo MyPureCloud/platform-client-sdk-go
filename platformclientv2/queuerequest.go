@@ -51,6 +51,9 @@ type Queuerequest struct {
 	// RoutingRules - The routing rules for the queue, used for Preferred Agent Routing.
 	RoutingRules *[]Routingrule `json:"routingRules,omitempty"`
 
+	// ConditionalGroupRouting - The Conditional Group Routing settings for the queue.
+	ConditionalGroupRouting *Conditionalgrouprouting `json:"conditionalGroupRouting,omitempty"`
+
 	// Bullseye - The bullseye settings for the queue.
 	Bullseye *Bullseye `json:"bullseye,omitempty"`
 
@@ -220,6 +223,8 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		
 		RoutingRules *[]Routingrule `json:"routingRules,omitempty"`
 		
+		ConditionalGroupRouting *Conditionalgrouprouting `json:"conditionalGroupRouting,omitempty"`
+		
 		Bullseye *Bullseye `json:"bullseye,omitempty"`
 		
 		AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
@@ -288,6 +293,8 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		MediaSettings: o.MediaSettings,
 		
 		RoutingRules: o.RoutingRules,
+		
+		ConditionalGroupRouting: o.ConditionalGroupRouting,
 		
 		Bullseye: o.Bullseye,
 		
@@ -399,6 +406,11 @@ func (o *Queuerequest) UnmarshalJSON(b []byte) error {
 	if RoutingRules, ok := QueuerequestMap["routingRules"].([]interface{}); ok {
 		RoutingRulesString, _ := json.Marshal(RoutingRules)
 		json.Unmarshal(RoutingRulesString, &o.RoutingRules)
+	}
+	
+	if ConditionalGroupRouting, ok := QueuerequestMap["conditionalGroupRouting"].(map[string]interface{}); ok {
+		ConditionalGroupRoutingString, _ := json.Marshal(ConditionalGroupRouting)
+		json.Unmarshal(ConditionalGroupRoutingString, &o.ConditionalGroupRouting)
 	}
 	
 	if Bullseye, ok := QueuerequestMap["bullseye"].(map[string]interface{}); ok {

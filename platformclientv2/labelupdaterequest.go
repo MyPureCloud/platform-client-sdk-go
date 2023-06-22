@@ -20,6 +20,9 @@ type Labelupdaterequest struct {
 	// Color - The color for the label.
 	Color *string `json:"color,omitempty"`
 
+	// ExternalId - The external id associated with the label.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Labelupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		Color *string `json:"color,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Labelupdaterequest) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Color: o.Color,
+		
+		ExternalId: o.ExternalId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -124,6 +131,10 @@ func (o *Labelupdaterequest) UnmarshalJSON(b []byte) error {
     
 	if Color, ok := LabelupdaterequestMap["color"].(string); ok {
 		o.Color = &Color
+	}
+    
+	if ExternalId, ok := LabelupdaterequestMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
 	}
     
 	if SelfUri, ok := LabelupdaterequestMap["selfUri"].(string); ok {

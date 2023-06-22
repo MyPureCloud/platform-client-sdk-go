@@ -664,7 +664,7 @@ func (a UsersApi) DeleteUserStationDefaultstation(userId string) (*APIResponse, 
 //
 // Get status for async query for user aggregates
 //
-// Preview Endpoint
+// Preview: GetAnalyticsUsersAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -748,7 +748,7 @@ func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatu
 //
 // Fetch a page of results for an async aggregates query
 //
-// Preview Endpoint
+// Preview: GetAnalyticsUsersAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetAnalyticsUsersAggregatesJobResults(jobId string, cursor string) (*Userasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4774,7 +4774,7 @@ func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResp
 //
 // Query for user activity observations
 //
-// Preview Endpoint
+// Preview: PostAnalyticsUsersActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSize int, pageNumber int) (*Useractivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4864,7 +4864,7 @@ func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSi
 //
 // Query for user aggregates asynchronously
 //
-// Preview Endpoint
+// Preview: PostAnalyticsUsersAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostAnalyticsUsersAggregatesJobs(body Userasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6395,7 +6395,7 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 //
 // Search users as conversation targets
 //
-// Preview Endpoint
+// Preview: PostUsersSearchConversationTarget is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6481,7 +6481,7 @@ func (a UsersApi) PostUsersSearchConversationTarget(body Usersearchrequest) (*Us
 //
 // Search manage queue member
 //
-// Preview Endpoint
+// Preview: PostUsersSearchQueuemembersManage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostUsersSearchQueuemembersManage(body Usersearchrequest) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

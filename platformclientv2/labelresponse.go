@@ -30,6 +30,9 @@ type Labelresponse struct {
 	// DocumentCount - Number of documents assigned to this label.
 	DocumentCount *int `json:"documentCount,omitempty"`
 
+	// ExternalId - The external id associated with the label.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -125,6 +128,8 @@ func (o Labelresponse) MarshalJSON() ([]byte, error) {
 		
 		DocumentCount *int `json:"documentCount,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -139,6 +144,8 @@ func (o Labelresponse) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		DocumentCount: o.DocumentCount,
+		
+		ExternalId: o.ExternalId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -179,6 +186,10 @@ func (o *Labelresponse) UnmarshalJSON(b []byte) error {
 		o.DocumentCount = &DocumentCountInt
 	}
 	
+	if ExternalId, ok := LabelresponseMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 	if SelfUri, ok := LabelresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

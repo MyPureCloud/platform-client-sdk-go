@@ -33,7 +33,7 @@ func NewTaskManagementApiWithConfig(config *Configuration) *TaskManagementApi {
 //
 // Delete a workbin
 //
-// Preview Endpoint
+// Preview: DeleteTaskmanagementWorkbin is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) DeleteTaskmanagementWorkbin(workbinId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -110,7 +110,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorkbin(workbinId string) (*APIRe
 //
 // Delete a workitem
 //
-// Preview Endpoint
+// Preview: DeleteTaskmanagementWorkitem is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) DeleteTaskmanagementWorkitem(workitemId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -187,7 +187,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorkitem(workitemId string) (*API
 //
 // Delete a schema
 //
-// Preview Endpoint
+// Preview: DeleteTaskmanagementWorkitemsSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) DeleteTaskmanagementWorkitemsSchema(schemaId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -264,7 +264,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorkitemsSchema(schemaId string) 
 //
 // Delete a worktype
 //
-// Preview Endpoint
+// Preview: DeleteTaskmanagementWorktype is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) DeleteTaskmanagementWorktype(worktypeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -341,7 +341,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorktype(worktypeId string) (*API
 //
 // Delete a status
 //
-// Preview Endpoint
+// Preview: DeleteTaskmanagementWorktypeStatus is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) DeleteTaskmanagementWorktypeStatus(worktypeId string, statusId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -424,7 +424,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorktypeStatus(worktypeId string,
 //
 // Get a workbin
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkbin is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkbin(workbinId string) (*Workbin, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -508,7 +508,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbin(workbinId string) (*Workbin,
 //
 // Get a listing of a workbin's attribute change history
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkbinHistory is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkbinHistory(workbinId string, after string, pageSize int, sortOrder string) (*Workbinchangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -598,7 +598,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinHistory(workbinId string, aft
 //
 // Get a version of a workbin
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkbinVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkbinVersion(workbinId string, entityVersion int) (*Workbinversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -688,7 +688,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinVersion(workbinId string, ent
 //
 // Get all versions of a workbin
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkbinVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkbinVersions(workbinId string, after string, pageSize int, sortOrder string) (*Workbinversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -778,8 +778,8 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinVersions(workbinId string, af
 //
 // Get a workitem
 //
-// Preview Endpoint
-func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string) (*Workitem, *APIResponse, error) {
+// Preview: GetTaskmanagementWorkitem is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string, expands string) (*Workitem, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/taskmanagement/workitems/{workitemId}"
@@ -811,6 +811,8 @@ func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string) (*Workit
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expands"] = a.Configuration.APIClient.ParameterToString(expands, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -862,7 +864,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string) (*Workit
 //
 // Get a listing of a workitem's attribute change history
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemHistory is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemHistory(workitemId string, after string, pageSize int, sortOrder string) (*Workitemchangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -952,7 +954,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemHistory(workitemId string, a
 //
 // Get all wrapup codes added for the given user for a workitem.
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemUserWrapups is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemUserWrapups(workitemId string, userId string, expands string, after string, pageSize int, sortOrder string) (*Workitemwrapup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1050,7 +1052,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemUserWrapups(workitemId strin
 //
 // Get a version of a workitem
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemVersion(workitemId string, entityVersion int) (*Workitemversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1140,7 +1142,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemVersion(workitemId string, e
 //
 // Get all versions of a workitem
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemVersions(workitemId string, after string, pageSize int, sortOrder string) (*Workitemversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1230,7 +1232,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemVersions(workitemId string, 
 //
 // Get all wrapup codes added for all users for a workitem.
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemWrapups is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemWrapups(workitemId string, expands string, after string, pageSize int, sortOrder string) (*Workitemwrapupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1322,7 +1324,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemWrapups(workitemId string, e
 //
 // Get a schema
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemsSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemsSchema(schemaId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1406,7 +1408,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchema(schemaId string) (*D
 //
 // Get a specific version of a schema
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemsSchemaVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemaVersion(schemaId string, versionId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1496,7 +1498,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemaVersion(schemaId stri
 //
 // Get all versions of a schema
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemsSchemaVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemaVersions(schemaId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1580,7 +1582,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemaVersions(schemaId str
 //
 // Get a list of schemas.
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorkitemsSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemas() (*Dataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1658,7 +1660,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemas() (*Dataschemalisti
 //
 // Get a worktype
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorktype is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktype(worktypeId string, expands []string) (*Worktype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1744,7 +1746,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktype(worktypeId string, expands 
 //
 // Get a listing of a worktype's attribute change history
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorktypeHistory is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktypeHistory(worktypeId string, after string, pageSize int, sortOrder string) (*Worktypechangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1834,7 +1836,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeHistory(worktypeId string, a
 //
 // Get a status
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorktypeStatus is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktypeStatus(worktypeId string, statusId string) (*Workitemstatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1924,7 +1926,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeStatus(worktypeId string, st
 //
 // Get a version of a worktype
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorktypeVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktypeVersion(worktypeId string, entityVersion int) (*Worktypeversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2014,7 +2016,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeVersion(worktypeId string, e
 //
 // Get all versions of a worktype
 //
-// Preview Endpoint
+// Preview: GetTaskmanagementWorktypeVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktypeVersions(worktypeId string, after string, pageSize int, sortOrder string) (*Worktypeversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2104,7 +2106,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeVersions(worktypeId string, 
 //
 // Update the attributes of a workbin
 //
-// Preview Endpoint
+// Preview: PatchTaskmanagementWorkbin is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PatchTaskmanagementWorkbin(workbinId string, body Workbinupdate) (*Workbin, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2196,7 +2198,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkbin(workbinId string, body Wor
 //
 // Update the attributes of a workitem
 //
-// Preview Endpoint
+// Preview: PatchTaskmanagementWorkitem is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PatchTaskmanagementWorkitem(workitemId string, body Workitemupdate) (*Workitem, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2288,7 +2290,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitem(workitemId string, body W
 //
 // Attempts to manually assign a specified workitem to a specified user.  Ignores bullseye ring, PAR score, skills, and languages.
 //
-// Preview Endpoint
+// Preview: PatchTaskmanagementWorkitemAssignment is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PatchTaskmanagementWorkitemAssignment(workitemId string, body Workitemmanualassign) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2373,7 +2375,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemAssignment(workitemId stri
 //
 // Add/Remove a wrapup code for a given user in a workitem.
 //
-// Preview Endpoint
+// Preview: PatchTaskmanagementWorkitemUserWrapups is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PatchTaskmanagementWorkitemUserWrapups(workitemId string, userId string, body Workitemwrapupupdate) (*Workitemwrapup, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2471,7 +2473,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemUserWrapups(workitemId str
 //
 // Add/Remove a wrapup code for the current user in a workitem.
 //
-// Preview Endpoint
+// Preview: PatchTaskmanagementWorkitemUsersMeWrapups is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PatchTaskmanagementWorkitemUsersMeWrapups(workitemId string, body Workitemwrapupupdate) (*Workitemwrapup, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2563,7 +2565,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemUsersMeWrapups(workitemId 
 //
 // Update the attributes of a worktype
 //
-// Preview Endpoint
+// Preview: PatchTaskmanagementWorktype is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PatchTaskmanagementWorktype(worktypeId string, body Worktypeupdate) (*Worktype, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2650,7 +2652,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorktype(worktypeId string, body W
 //
 // Update the attributes of a status
 //
-// Preview Endpoint
+// Preview: PatchTaskmanagementWorktypeStatus is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PatchTaskmanagementWorktypeStatus(worktypeId string, statusId string, body Workitemstatusupdate) (*Workitemstatus, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2743,7 +2745,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorktypeStatus(worktypeId string, 
 //
 // Create a workbin
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkbins is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkbins(body Workbincreate) (*Workbin, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2824,7 +2826,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkbins(body Workbincreate) (*Work
 //
 // Query for workbins
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkbinsQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkbinsQuery(body Workbinqueryrequest) (*Workbinqueryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2910,7 +2912,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkbinsQuery(body Workbinqueryrequ
 //
 // Cancel the assignment process for a workitem that is currently queued for assignment through ACD.
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkitemAcdCancel is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkitemAcdCancel(workitemId string) (*Workitem, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2994,7 +2996,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemAcdCancel(workitemId string
 //
 // Disconnect the assignee of the workitem
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkitemDisconnect is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkitemDisconnect(workitemId string) (*Workitem, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3078,7 +3080,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemDisconnect(workitemId strin
 //
 // Terminate a workitem
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkitemTerminate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkitemTerminate(workitemId string, body Workitemterminate) (*Workitem, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3165,7 +3167,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemTerminate(workitemId string
 //
 // Create a workitem
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkitems is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkitems(body Workitemcreate) (*Workitem, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3253,7 +3255,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitems(body Workitemcreate) (*Wo
 //
 // This query requires at least one EQ filter on the workbinId, assigneeId or typeId attributes.
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkitemsQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkitemsQuery(body Workitemquerypostrequest) (*Workitempostqueryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3339,7 +3341,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemsQuery(body Workitemquerypo
 //
 // Create a schema
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorkitemsSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorkitemsSchemas(body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3425,7 +3427,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemsSchemas(body Dataschema) (
 //
 // Add a status to a worktype
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorktypeStatuses is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorktypeStatuses(worktypeId string, body Workitemstatuscreate) (*Workitemstatus, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3512,7 +3514,7 @@ func (a TaskManagementApi) PostTaskmanagementWorktypeStatuses(worktypeId string,
 //
 // Create a worktype
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorktypes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorktypes(body Worktypecreate) (*Worktype, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3593,7 +3595,7 @@ func (a TaskManagementApi) PostTaskmanagementWorktypes(body Worktypecreate) (*Wo
 //
 // Query for worktypes
 //
-// Preview Endpoint
+// Preview: PostTaskmanagementWorktypesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PostTaskmanagementWorktypesQuery(body Worktypequeryrequest) (*Worktypequeryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3679,7 +3681,7 @@ func (a TaskManagementApi) PostTaskmanagementWorktypesQuery(body Worktypequeryre
 //
 // Update a schema
 //
-// Preview Endpoint
+// Preview: PutTaskmanagementWorkitemsSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) PutTaskmanagementWorkitemsSchema(schemaId string, body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

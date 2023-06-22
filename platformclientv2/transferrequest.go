@@ -11,6 +11,9 @@ import (
 type Transferrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// TransferType
+	TransferType *string `json:"transferType,omitempty"`
+
 	// UserId - The user ID of the transfer target.
 	UserId *string `json:"userId,omitempty"`
 
@@ -25,9 +28,6 @@ type Transferrequest struct {
 
 	// Voicemail - If true, transfer to the voicemail inbox of the participant that is being replaced.
 	Voicemail *bool `json:"voicemail,omitempty"`
-
-	// TransferType - The type of transfer to perform.
-	TransferType *string `json:"transferType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,6 +93,8 @@ func (o Transferrequest) MarshalJSON() ([]byte, error) {
 	type Alias Transferrequest
 	
 	return json.Marshal(&struct { 
+		TransferType *string `json:"transferType,omitempty"`
+		
 		UserId *string `json:"userId,omitempty"`
 		
 		Address *string `json:"address,omitempty"`
@@ -102,10 +104,10 @@ func (o Transferrequest) MarshalJSON() ([]byte, error) {
 		QueueId *string `json:"queueId,omitempty"`
 		
 		Voicemail *bool `json:"voicemail,omitempty"`
-		
-		TransferType *string `json:"transferType,omitempty"`
 		Alias
 	}{ 
+		TransferType: o.TransferType,
+		
 		UserId: o.UserId,
 		
 		Address: o.Address,
@@ -115,8 +117,6 @@ func (o Transferrequest) MarshalJSON() ([]byte, error) {
 		QueueId: o.QueueId,
 		
 		Voicemail: o.Voicemail,
-		
-		TransferType: o.TransferType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +128,10 @@ func (o *Transferrequest) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if TransferType, ok := TransferrequestMap["transferType"].(string); ok {
+		o.TransferType = &TransferType
+	}
+    
 	if UserId, ok := TransferrequestMap["userId"].(string); ok {
 		o.UserId = &UserId
 	}
@@ -146,10 +150,6 @@ func (o *Transferrequest) UnmarshalJSON(b []byte) error {
     
 	if Voicemail, ok := TransferrequestMap["voicemail"].(bool); ok {
 		o.Voicemail = &Voicemail
-	}
-    
-	if TransferType, ok := TransferrequestMap["transferType"].(string); ok {
-		o.TransferType = &TransferType
 	}
     
 

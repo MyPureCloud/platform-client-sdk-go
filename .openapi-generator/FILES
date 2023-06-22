@@ -50,6 +50,7 @@ docs/DeleteConversationRecordingAnnotation-example.txt
 docs/DeleteConversationsCallParticipantConsult-example.txt
 docs/DeleteConversationsEmailMessagesDraftAttachment-example.txt
 docs/DeleteConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
+docs/DeleteConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsOpenIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
@@ -481,6 +482,8 @@ docs/GetConversationsMessagingFacebookApp-example.txt
 docs/GetConversationsMessagingIntegrations-example.txt
 docs/GetConversationsMessagingIntegrationsFacebook-example.txt
 docs/GetConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
+docs/GetConversationsMessagingIntegrationsInstagram-example.txt
+docs/GetConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsLine-example.txt
 docs/GetConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsOpen-example.txt
@@ -700,7 +703,6 @@ docs/GetJourneyActiontarget-example.txt
 docs/GetJourneyActiontargets-example.txt
 docs/GetJourneyActiontemplate-example.txt
 docs/GetJourneyActiontemplates-example.txt
-docs/GetJourneyCustomerCustomerIdSessions-example.txt
 docs/GetJourneyOutcome-example.txt
 docs/GetJourneyOutcomes-example.txt
 docs/GetJourneyOutcomesAttributionsJob-example.txt
@@ -1209,6 +1211,8 @@ docs/GetUsersDevelopmentActivities-example.txt
 docs/GetUsersDevelopmentActivitiesMe-example.txt
 docs/GetUsersDevelopmentActivity-example.txt
 docs/GetUsersMe-example.txt
+docs/GetUsersPresenceBulk-example.txt
+docs/GetUsersPresencesPurecloudBulk-example.txt
 docs/GetUsersSearch-example.txt
 docs/GetUsersSearch-example.txt
 docs/GetVoicemailGroupMailbox-example.txt
@@ -1378,6 +1382,7 @@ docs/PatchConversationsMessageParticipant-example.txt
 docs/PatchConversationsMessageParticipantAttributes-example.txt
 docs/PatchConversationsMessageParticipantCommunication-example.txt
 docs/PatchConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
+docs/PatchConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsOpenIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
@@ -1601,12 +1606,18 @@ docs/PostConversationDisconnect-example.txt
 docs/PostConversationParticipantCallbacks-example.txt
 docs/PostConversationParticipantDigits-example.txt
 docs/PostConversationParticipantReplace-example.txt
+docs/PostConversationParticipantReplaceAgent-example.txt
+docs/PostConversationParticipantReplaceExternal-example.txt
+docs/PostConversationParticipantReplaceQueue-example.txt
 docs/PostConversationParticipantSecureivrsessions-example.txt
 docs/PostConversationRecordingAnnotations-example.txt
 docs/PostConversationsCall-example.txt
 docs/PostConversationsCallParticipantCoach-example.txt
 docs/PostConversationsCallParticipantCommunicationWrapup-example.txt
 docs/PostConversationsCallParticipantConsult-example.txt
+docs/PostConversationsCallParticipantConsultAgent-example.txt
+docs/PostConversationsCallParticipantConsultExternal-example.txt
+docs/PostConversationsCallParticipantConsultQueue-example.txt
 docs/PostConversationsCallParticipantMonitor-example.txt
 docs/PostConversationsCallParticipantReplace-example.txt
 docs/PostConversationsCallParticipants-example.txt
@@ -1644,6 +1655,7 @@ docs/PostConversationsMessages-example.txt
 docs/PostConversationsMessagesAgentless-example.txt
 docs/PostConversationsMessagesInboundOpen-example.txt
 docs/PostConversationsMessagingIntegrationsFacebook-example.txt
+docs/PostConversationsMessagingIntegrationsInstagram-example.txt
 docs/PostConversationsMessagingIntegrationsLine-example.txt
 docs/PostConversationsMessagingIntegrationsOpen-example.txt
 docs/PostConversationsMessagingIntegrationsTwitter-example.txt
@@ -2137,6 +2149,7 @@ docs/PutIntegrationsBotconnectorIntegrationIdBots-example.txt
 docs/PutIntegrationsCredential-example.txt
 docs/PutIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchSettings-example.txt
 docs/PutIntegrationsSpeechTtsSettings-example.txt
+docs/PutIntegrationsUnifiedcommunicationThirdpartypresences-example.txt
 docs/PutLanguageunderstandingDomainVersion-example.txt
 docs/PutLearningModule-example.txt
 docs/PutLearningModuleRule-example.txt
@@ -2627,7 +2640,7 @@ platformclientv2/bucreateblankschedulerequest.go
 platformclientv2/bucurrentagentschedulesearchresponse.go
 platformclientv2/buforecastgenerationplanninggroupresult.go
 platformclientv2/buforecastgenerationresult.go
-platformclientv2/buforecastmodification.go
+platformclientv2/buforecastmodificationresponse.go
 platformclientv2/buforecastresult.go
 platformclientv2/buforecastresultresponse.go
 platformclientv2/buforecasttimeseriesresult.go
@@ -2779,12 +2792,13 @@ platformclientv2/card.go
 platformclientv2/cardaction.go
 platformclientv2/carrierservicesapi.go
 platformclientv2/category.go
+platformclientv2/categorycreaterequest.go
 platformclientv2/categoryentitylisting.go
 platformclientv2/categorylisting.go
 platformclientv2/categoryreference.go
-platformclientv2/categoryrequest.go
 platformclientv2/categoryresponse.go
 platformclientv2/categoryresponselisting.go
+platformclientv2/categoryupdaterequest.go
 platformclientv2/certificate.go
 platformclientv2/certificateauthorityentitylisting.go
 platformclientv2/certificatedetails.go
@@ -2866,6 +2880,9 @@ platformclientv2/constraintconflictmessage.go
 platformclientv2/consulttransfer.go
 platformclientv2/consulttransferevent.go
 platformclientv2/consulttransferresponse.go
+platformclientv2/consulttransfertoagent.go
+platformclientv2/consulttransfertoexternal.go
+platformclientv2/consulttransfertoqueue.go
 platformclientv2/consulttransferupdate.go
 platformclientv2/consumedresourcesentitylisting.go
 platformclientv2/consumingresourcesentitylisting.go
@@ -3882,9 +3899,9 @@ platformclientv2/groupssearchresponse.go
 platformclientv2/groupupdate.go
 platformclientv2/gsuite.go
 platformclientv2/guestcategoryreference.go
-platformclientv2/guestcategoryresponse.go
 platformclientv2/guestcategoryresponselisting.go
 platformclientv2/guestmemberinfo.go
+platformclientv2/guestresponsecategory.go
 platformclientv2/headcountforecast.go
 platformclientv2/headcountinterval.go
 platformclientv2/helplink.go
@@ -3953,6 +3970,10 @@ platformclientv2/insightstrendmetricitem.go
 platformclientv2/insightstrends.go
 platformclientv2/insightstrendtotalitem.go
 platformclientv2/instagramid.go
+platformclientv2/instagramintegration.go
+platformclientv2/instagramintegrationentitylisting.go
+platformclientv2/instagramintegrationrequest.go
+platformclientv2/instagramintegrationupdaterequest.go
 platformclientv2/instagramscopedid.go
 platformclientv2/integration.go
 platformclientv2/integrationaction.go
@@ -5528,6 +5549,9 @@ platformclientv2/transferinitiator.go
 platformclientv2/transferrequest.go
 platformclientv2/transferresponse.go
 platformclientv2/transferresponsemodifiedby.go
+platformclientv2/transfertoagentrequest.go
+platformclientv2/transfertoexternalrequest.go
+platformclientv2/transfertoqueuerequest.go
 platformclientv2/trenddata.go
 platformclientv2/trigger.go
 platformclientv2/triggerentitylisting.go
@@ -5591,6 +5615,8 @@ platformclientv2/uci10n.go
 platformclientv2/ucicon.go
 platformclientv2/ucintegration.go
 platformclientv2/ucintegrationlisting.go
+platformclientv2/ucthirdpartypresence.go
+platformclientv2/ucuserpresence.go
 platformclientv2/unansweredgroup.go
 platformclientv2/unansweredgroups.go
 platformclientv2/unansweredgroupsuggesteddocument.go

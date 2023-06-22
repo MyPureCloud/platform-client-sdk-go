@@ -36,6 +36,9 @@ type Sendagentlessoutboundmessageresponse struct {
 	// UseExistingActiveConversation - Use an existing active conversation to send the agentless outbound message. Set this parameter to 'true' to use active conversation. Default value: false
 	UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
 
+	// Message - Sent agentless outbound message in normalized format
+	Message *Messagedata `json:"message,omitempty"`
+
 	// Timestamp - The time when the message was sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
@@ -133,6 +136,8 @@ func (o Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		
 		UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
 		
+		Message *Messagedata `json:"message,omitempty"`
+		
 		Timestamp *string `json:"timestamp,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -155,6 +160,8 @@ func (o Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		MessagingTemplate: o.MessagingTemplate,
 		
 		UseExistingActiveConversation: o.UseExistingActiveConversation,
+		
+		Message: o.Message,
 		
 		Timestamp: Timestamp,
 		
@@ -205,6 +212,11 @@ func (o *Sendagentlessoutboundmessageresponse) UnmarshalJSON(b []byte) error {
 		o.UseExistingActiveConversation = &UseExistingActiveConversation
 	}
     
+	if Message, ok := SendagentlessoutboundmessageresponseMap["message"].(map[string]interface{}); ok {
+		MessageString, _ := json.Marshal(Message)
+		json.Unmarshal(MessageString, &o.Message)
+	}
+	
 	if timestampString, ok := SendagentlessoutboundmessageresponseMap["timestamp"].(string); ok {
 		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
 		o.Timestamp = &Timestamp

@@ -108,7 +108,7 @@ func (a GroupsApi) DeleteGroup(groupId string) (*APIResponse, error) {
 //
 // Remove dynamic group definition
 //
-// Preview Endpoint
+// Preview: DeleteGroupDynamicsettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a GroupsApi) DeleteGroupDynamicsettings(groupId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -441,7 +441,7 @@ func (a GroupsApi) GetGroup(groupId string) (*Group, *APIResponse, error) {
 //
 // Get dynamic group definition
 //
-// Preview Endpoint
+// Preview: GetGroupDynamicsettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a GroupsApi) GetGroupDynamicsettings(groupId string) (*Dynamicgroupdefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1222,7 +1222,7 @@ func (a GroupsApi) PostGroups(body Groupcreate) (*Group, *APIResponse, error) {
 //
 // Deprecated: PostGroupsDynamicsettingsPreview is deprecated
 //
-// Preview Endpoint
+// Preview: PostGroupsDynamicsettingsPreview is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a GroupsApi) PostGroupsDynamicsettingsPreview(body Dynamicgroupquery) (*Dynamicgroupquerypreview, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1477,7 +1477,7 @@ func (a GroupsApi) PutGroup(groupId string, body Groupupdate) (*Group, *APIRespo
 //
 // Create / Update dynamic group definition
 //
-// Preview Endpoint
+// Preview: PutGroupDynamicsettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a GroupsApi) PutGroupDynamicsettings(groupId string, body Dynamicgroupquery) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

@@ -13,6 +13,9 @@ type Consulttransferupdate struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// SpeakTo - Determines to whom the initiating participant is speaking.
 	SpeakTo *string `json:"speakTo,omitempty"`
+
+	// ConsultingUserId - The user ID of the person who wants to talk before completing the transfer. Could be the same of the context user ID
+	ConsultingUserId *string `json:"consultingUserId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Consulttransferupdate) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		SpeakTo *string `json:"speakTo,omitempty"`
+		
+		ConsultingUserId *string `json:"consultingUserId,omitempty"`
 		Alias
 	}{ 
 		SpeakTo: o.SpeakTo,
+		
+		ConsultingUserId: o.ConsultingUserId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Consulttransferupdate) UnmarshalJSON(b []byte) error {
 	
 	if SpeakTo, ok := ConsulttransferupdateMap["speakTo"].(string); ok {
 		o.SpeakTo = &SpeakTo
+	}
+    
+	if ConsultingUserId, ok := ConsulttransferupdateMap["consultingUserId"].(string); ok {
+		o.ConsultingUserId = &ConsultingUserId
 	}
     
 

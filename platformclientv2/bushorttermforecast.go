@@ -43,7 +43,7 @@ type Bushorttermforecast struct {
 	SourceDays *[]Forecastsourcedaypointer `json:"sourceDays,omitempty"`
 
 	// Modifications - Any manual modifications applied to this forecast
-	Modifications *[]Buforecastmodification `json:"modifications,omitempty"`
+	Modifications *[]Buforecastmodificationresponse `json:"modifications,omitempty"`
 
 	// GenerationResults - Generation result metadata
 	GenerationResults *Buforecastgenerationresult `json:"generationResults,omitempty"`
@@ -159,7 +159,7 @@ func (o Bushorttermforecast) MarshalJSON() ([]byte, error) {
 		
 		SourceDays *[]Forecastsourcedaypointer `json:"sourceDays,omitempty"`
 		
-		Modifications *[]Buforecastmodification `json:"modifications,omitempty"`
+		Modifications *[]Buforecastmodificationresponse `json:"modifications,omitempty"`
 		
 		GenerationResults *Buforecastgenerationresult `json:"generationResults,omitempty"`
 		
