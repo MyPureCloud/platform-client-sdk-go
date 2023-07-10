@@ -4387,12 +4387,12 @@ func (a ConversationsApi) GetConversationsEmailMessage(conversationId string, me
 // GetConversationsEmailMessages invokes GET /api/v2/conversations/emails/{conversationId}/messages
 //
 // Get conversation messages
-func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (*Emailmessagelisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (*Emailmessagepreviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/emails/{conversationId}/messages"
 	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
-	defaultReturn := new(Emailmessagelisting)
+	defaultReturn := new(Emailmessagepreviewlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4450,14 +4450,14 @@ func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Emailmessagelisting
+	var successPayload *Emailmessagepreviewlisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Emailmessagelisting" == "string" {
+		if "Emailmessagepreviewlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

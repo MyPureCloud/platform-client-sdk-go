@@ -16,6 +16,9 @@ type Supportcenterherostyle struct {
 
 	// TextColor - Text color for hero section, in hexadecimal format, eg #ffffff
 	TextColor *string `json:"textColor,omitempty"`
+
+	// Image - Background image for hero section
+	Image *Supportcenterimage `json:"image,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Supportcenterherostyle) MarshalJSON() ([]byte, error) {
 		BackgroundColor *string `json:"backgroundColor,omitempty"`
 		
 		TextColor *string `json:"textColor,omitempty"`
+		
+		Image *Supportcenterimage `json:"image,omitempty"`
 		Alias
 	}{ 
 		BackgroundColor: o.BackgroundColor,
 		
 		TextColor: o.TextColor,
+		
+		Image: o.Image,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Supportcenterherostyle) UnmarshalJSON(b []byte) error {
 		o.TextColor = &TextColor
 	}
     
+	if Image, ok := SupportcenterherostyleMap["image"].(map[string]interface{}); ok {
+		ImageString, _ := json.Marshal(Image)
+		json.Unmarshal(ImageString, &o.Image)
+	}
+	
 
 	return nil
 }

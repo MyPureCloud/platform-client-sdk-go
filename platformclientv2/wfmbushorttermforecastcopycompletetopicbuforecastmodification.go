@@ -32,11 +32,17 @@ type Wfmbushorttermforecastcopycompletetopicbuforecastmodification struct {
 	// Values
 	Values *[]Wfmbushorttermforecastcopycompletetopicmodificationintervaloffsetvalue `json:"values,omitempty"`
 
+	// SecondaryValues
+	SecondaryValues *[]Wfmbushorttermforecastcopycompletetopicmodificationintervaloffsetvalue `json:"secondaryValues,omitempty"`
+
 	// Enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// Granularity
 	Granularity *string `json:"granularity,omitempty"`
+
+	// SecondaryGranularity
+	SecondaryGranularity *string `json:"secondaryGranularity,omitempty"`
 
 	// DisplayGranularity
 	DisplayGranularity *string `json:"displayGranularity,omitempty"`
@@ -122,9 +128,13 @@ func (o Wfmbushorttermforecastcopycompletetopicbuforecastmodification) MarshalJS
 		
 		Values *[]Wfmbushorttermforecastcopycompletetopicmodificationintervaloffsetvalue `json:"values,omitempty"`
 		
+		SecondaryValues *[]Wfmbushorttermforecastcopycompletetopicmodificationintervaloffsetvalue `json:"secondaryValues,omitempty"`
+		
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		Granularity *string `json:"granularity,omitempty"`
+		
+		SecondaryGranularity *string `json:"secondaryGranularity,omitempty"`
 		
 		DisplayGranularity *string `json:"displayGranularity,omitempty"`
 		
@@ -145,9 +155,13 @@ func (o Wfmbushorttermforecastcopycompletetopicbuforecastmodification) MarshalJS
 		
 		Values: o.Values,
 		
+		SecondaryValues: o.SecondaryValues,
+		
 		Enabled: o.Enabled,
 		
 		Granularity: o.Granularity,
+		
+		SecondaryGranularity: o.SecondaryGranularity,
 		
 		DisplayGranularity: o.DisplayGranularity,
 		
@@ -195,12 +209,21 @@ func (o *Wfmbushorttermforecastcopycompletetopicbuforecastmodification) Unmarsha
 		json.Unmarshal(ValuesString, &o.Values)
 	}
 	
+	if SecondaryValues, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["secondaryValues"].([]interface{}); ok {
+		SecondaryValuesString, _ := json.Marshal(SecondaryValues)
+		json.Unmarshal(SecondaryValuesString, &o.SecondaryValues)
+	}
+	
 	if Enabled, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
     
 	if Granularity, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
+	}
+    
+	if SecondaryGranularity, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["secondaryGranularity"].(string); ok {
+		o.SecondaryGranularity = &SecondaryGranularity
 	}
     
 	if DisplayGranularity, ok := WfmbushorttermforecastcopycompletetopicbuforecastmodificationMap["displayGranularity"].(string); ok {

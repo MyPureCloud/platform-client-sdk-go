@@ -26,7 +26,7 @@ type Scimv2group struct {
 	// Members - The list of members in the group.
 	Members *[]Scimv2memberreference `json:"members,omitempty"`
 
-	// Meta - The metadata of the SCIM resource.
+	// Meta - The metadata of the SCIM resource. Metadata is defined as immutable per SCIM RFC.
 	Meta *Scimmetadata `json:"meta,omitempty"`
 }
 

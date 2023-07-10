@@ -38,7 +38,7 @@ type Scimserviceproviderconfig struct {
 	// AuthenticationSchemes - The list of supported authentication schemes.
 	AuthenticationSchemes *[]Scimserviceproviderconfigauthenticationscheme `json:"authenticationSchemes,omitempty"`
 
-	// Meta - The metadata of the SCIM resource.
+	// Meta - The metadata of the SCIM resource. Metadata is defined as immutable per SCIM RFC.
 	Meta *Scimmetadata `json:"meta,omitempty"`
 }
 

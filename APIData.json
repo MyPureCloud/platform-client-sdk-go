@@ -7419,7 +7419,7 @@
         "required": "true"
       }
     ],
-    "return": "Emailmessagelisting",
+    "return": "Emailmessagepreviewlisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversationId\n// Get conversation messages\ndata, response, err := apiInstance.GetConversationsEmailMessages(conversationId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetConversationsEmailMessages: %v\\n\", err)\n}"
   },
   "getconversationsemailmessagesdraft": {
@@ -32161,6 +32161,25 @@
     "return": "Exportscriptresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar scriptId string // Script ID\nvar body platformclientv2.Exportscriptrequest // \n// Export a script via download service.\ndata, response, err := apiInstance.PostScriptExport(scriptId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostScriptExport: %v\\n\", err)\n}"
   },
+  "postscriptspublished": {
+    "operationId": "postscriptspublished",
+    "functionName": "PostScriptsPublished",
+    "signature": "PostScriptsPublished(scriptDataVersion, body)",
+    "parameters": [
+      {
+        "name": "scriptDataVersion",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "body",
+        "type": "Publishscriptrequestdata",
+        "required": "false"
+      }
+    ],
+    "return": "Script",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar scriptDataVersion string // Advanced usage - controls the data version of the script\nvar body platformclientv2.Publishscriptrequestdata // body\n// Publish a script.\ndata, response, err := apiInstance.PostScriptsPublished(scriptDataVersion, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostScriptsPublished: %v\\n\", err)\n}"
+  },
   "getdocumentationgknsearch": {
     "operationId": "getdocumentationgknsearch",
     "functionName": "GetDocumentationGknSearch",
@@ -35149,6 +35168,39 @@
     ],
     "return": "Logicalinterfaceentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeIds string // Comma separated list of Edge Id's\nvar expand []string // Field to expand in the response\n// Get edge logical interfaces.\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesLogicalinterfaces(edgeIds, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesLogicalinterfaces: %v\\n\", err)\n}"
+  },
+  "gettelephonyprovidersedgesmediastatisticsconversation": {
+    "operationId": "gettelephonyprovidersedgesmediastatisticsconversation",
+    "functionName": "GetTelephonyProvidersEdgesMediastatisticsConversation",
+    "signature": "GetTelephonyProvidersEdgesMediastatisticsConversation(conversationId)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Mediastatisticslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar conversationId string // Identifier of the conversation\n// Get media endpoint statistics events.\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesMediastatisticsConversation(conversationId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesMediastatisticsConversation: %v\\n\", err)\n}"
+  },
+  "gettelephonyprovidersedgesmediastatisticsconversationcommunication": {
+    "operationId": "gettelephonyprovidersedgesmediastatisticsconversationcommunication",
+    "functionName": "GetTelephonyProvidersEdgesMediastatisticsConversationCommunication",
+    "signature": "GetTelephonyProvidersEdgesMediastatisticsConversationCommunication(conversationId, communicationId)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "communicationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Mediastatistics",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar conversationId string // Identifier of the conversation\nvar communicationId string // Identifier of the media session\n// Get media endpoint statistics event.\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesMediastatisticsConversationCommunication(conversationId, communicationId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesMediastatisticsConversationCommunication: %v\\n\", err)\n}"
   },
   "gettelephonyprovidersedgesmetrics": {
     "operationId": "gettelephonyprovidersedgesmetrics",

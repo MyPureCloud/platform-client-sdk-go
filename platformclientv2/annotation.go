@@ -44,6 +44,15 @@ type Annotation struct {
 	// Description - Text of annotation. Maximum character limit is 500.
 	Description *string `json:"description,omitempty"`
 
+	// Reason - Reason for a pause annotation. Valid values: Hold,SecurePause,FlowOrQueue
+	Reason *string `json:"reason,omitempty"`
+
+	// Annotations - List of annotations
+	Annotations *[]Annotation `json:"annotations,omitempty"`
+
+	// RealtimeLocation - Offset of annotation (milliseconds) from start of the recording before removing the cumulative duration of all pauses before this annotation
+	RealtimeLocation *int `json:"realtimeLocation,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -133,6 +142,12 @@ func (o Annotation) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		Reason *string `json:"reason,omitempty"`
+		
+		Annotations *[]Annotation `json:"annotations,omitempty"`
+		
+		RealtimeLocation *int `json:"realtimeLocation,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -157,6 +172,12 @@ func (o Annotation) MarshalJSON() ([]byte, error) {
 		User: o.User,
 		
 		Description: o.Description,
+		
+		Reason: o.Reason,
+		
+		Annotations: o.Annotations,
+		
+		RealtimeLocation: o.RealtimeLocation,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -221,6 +242,20 @@ func (o *Annotation) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
+	if Reason, ok := AnnotationMap["reason"].(string); ok {
+		o.Reason = &Reason
+	}
+    
+	if Annotations, ok := AnnotationMap["annotations"].([]interface{}); ok {
+		AnnotationsString, _ := json.Marshal(Annotations)
+		json.Unmarshal(AnnotationsString, &o.Annotations)
+	}
+	
+	if RealtimeLocation, ok := AnnotationMap["realtimeLocation"].(float64); ok {
+		RealtimeLocationInt := int(RealtimeLocation)
+		o.RealtimeLocation = &RealtimeLocationInt
+	}
+	
 	if SelfUri, ok := AnnotationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

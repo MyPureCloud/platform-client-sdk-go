@@ -113,6 +113,9 @@ type Evaluationqualityv2topicevaluationv2 struct {
 
 	// AgentCommentHasUpdated
 	AgentCommentHasUpdated *bool `json:"agentCommentHasUpdated,omitempty"`
+
+	// PreviousRescoreCount
+	PreviousRescoreCount *int `json:"previousRescoreCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -285,6 +288,8 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		EvaluatorCommentHasUpdated *bool `json:"evaluatorCommentHasUpdated,omitempty"`
 		
 		AgentCommentHasUpdated *bool `json:"agentCommentHasUpdated,omitempty"`
+		
+		PreviousRescoreCount *int `json:"previousRescoreCount,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -354,6 +359,8 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		EvaluatorCommentHasUpdated: o.EvaluatorCommentHasUpdated,
 		
 		AgentCommentHasUpdated: o.AgentCommentHasUpdated,
+		
+		PreviousRescoreCount: o.PreviousRescoreCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -517,6 +524,11 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 		o.AgentCommentHasUpdated = &AgentCommentHasUpdated
 	}
     
+	if PreviousRescoreCount, ok := Evaluationqualityv2topicevaluationv2Map["previousRescoreCount"].(float64); ok {
+		PreviousRescoreCountInt := int(PreviousRescoreCount)
+		o.PreviousRescoreCount = &PreviousRescoreCountInt
+	}
+	
 
 	return nil
 }

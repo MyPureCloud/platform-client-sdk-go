@@ -38,7 +38,7 @@ type Scimv2createuser struct {
 	// ExternalId - The external ID of the user. Set by the provisioning client. \"caseExact\" is set to \"true\". \"mutability\" is set to \"readWrite\".
 	ExternalId *string `json:"externalId,omitempty"`
 
-	// Groups - The list of groups that the user is a member of.
+	// Groups - The list of groups that the user is a member of. This list is immutable per SCIM RFC and may only be updated using the GROUPS resource endpoint.
 	Groups *[]Scimv2groupreference `json:"groups,omitempty"`
 
 	// Roles - The list of roles assigned to the user.

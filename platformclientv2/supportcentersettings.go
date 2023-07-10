@@ -27,7 +27,7 @@ type Supportcentersettings struct {
 	Screens *[]Supportcenterscreen `json:"screens,omitempty"`
 
 	// EnabledCategories - Enabled article categories for support center
-	EnabledCategories *[]Addressableentityref `json:"enabledCategories,omitempty"`
+	EnabledCategories *[]Supportcentercategory `json:"enabledCategories,omitempty"`
 
 	// StyleSetting - Style attributes for support center
 	StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
@@ -109,7 +109,7 @@ func (o Supportcentersettings) MarshalJSON() ([]byte, error) {
 		
 		Screens *[]Supportcenterscreen `json:"screens,omitempty"`
 		
-		EnabledCategories *[]Addressableentityref `json:"enabledCategories,omitempty"`
+		EnabledCategories *[]Supportcentercategory `json:"enabledCategories,omitempty"`
 		
 		StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
 		

@@ -102,6 +102,9 @@ type Reportingexportjobresponse struct {
 	// DurationFormat - Indicates the duration format for the exports
 	DurationFormat *string `json:"durationFormat,omitempty"`
 
+	// ExportAllowedToRerun - Indicates whether the export run is allowed to rerun
+	ExportAllowedToRerun *bool `json:"exportAllowedToRerun,omitempty"`
+
 	// Enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
@@ -248,6 +251,8 @@ func (o Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		DurationFormat *string `json:"durationFormat,omitempty"`
 		
+		ExportAllowedToRerun *bool `json:"exportAllowedToRerun,omitempty"`
+		
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -312,6 +317,8 @@ func (o Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 		IncludeDurationFormatInHeader: o.IncludeDurationFormatInHeader,
 		
 		DurationFormat: o.DurationFormat,
+		
+		ExportAllowedToRerun: o.ExportAllowedToRerun,
 		
 		Enabled: o.Enabled,
 		
@@ -451,6 +458,10 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
     
 	if DurationFormat, ok := ReportingexportjobresponseMap["durationFormat"].(string); ok {
 		o.DurationFormat = &DurationFormat
+	}
+    
+	if ExportAllowedToRerun, ok := ReportingexportjobresponseMap["exportAllowedToRerun"].(bool); ok {
+		o.ExportAllowedToRerun = &ExportAllowedToRerun
 	}
     
 	if Enabled, ok := ReportingexportjobresponseMap["enabled"].(bool); ok {

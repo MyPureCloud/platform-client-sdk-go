@@ -11,7 +11,7 @@ import (
 type Documentbodyblock struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - The type of the block for the body. This determines which body block object (paragraph, list, video or image) would have a value.
+	// VarType - The type of the block for the body. This determines which body block object (paragraph, list, video, image or table) would have a value.
 	VarType *string `json:"type,omitempty"`
 
 	// Paragraph - Paragraph. It must contain a value if the type of the block is Paragraph.
@@ -25,6 +25,9 @@ type Documentbodyblock struct {
 
 	// List - List. It must contain a value if the type of the block is UnorderedList or OrderedList.
 	List *Documentbodylist `json:"list,omitempty"`
+
+	// Table - Table. It must contain a value if type of the block is Table.
+	Table *Documentbodytable `json:"table,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Documentbodyblock) MarshalJSON() ([]byte, error) {
 		Video *Documentbodyvideo `json:"video,omitempty"`
 		
 		List *Documentbodylist `json:"list,omitempty"`
+		
+		Table *Documentbodytable `json:"table,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -110,6 +115,8 @@ func (o Documentbodyblock) MarshalJSON() ([]byte, error) {
 		Video: o.Video,
 		
 		List: o.List,
+		
+		Table: o.Table,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,11 @@ func (o *Documentbodyblock) UnmarshalJSON(b []byte) error {
 	if List, ok := DocumentbodyblockMap["list"].(map[string]interface{}); ok {
 		ListString, _ := json.Marshal(List)
 		json.Unmarshal(ListString, &o.List)
+	}
+	
+	if Table, ok := DocumentbodyblockMap["table"].(map[string]interface{}); ok {
+		TableString, _ := json.Marshal(Table)
+		json.Unmarshal(TableString, &o.Table)
 	}
 	
 
