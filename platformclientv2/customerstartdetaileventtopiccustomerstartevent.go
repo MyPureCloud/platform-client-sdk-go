@@ -70,6 +70,9 @@ type Customerstartdetaileventtopiccustomerstartevent struct {
 
 	// ConversationExternalOrganizationIds
 	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+
+	// JourneyContext
+	JourneyContext *Customerstartdetaileventtopicjourneycontext `json:"journeyContext,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -174,6 +177,8 @@ func (o Customerstartdetaileventtopiccustomerstartevent) MarshalJSON() ([]byte, 
 		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 		
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+		
+		JourneyContext *Customerstartdetaileventtopicjourneycontext `json:"journeyContext,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -215,6 +220,8 @@ func (o Customerstartdetaileventtopiccustomerstartevent) MarshalJSON() ([]byte, 
 		ConversationExternalContactIds: o.ConversationExternalContactIds,
 		
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
+		
+		JourneyContext: o.JourneyContext,
 		Alias:    (Alias)(o),
 	})
 }
@@ -309,6 +316,11 @@ func (o *Customerstartdetaileventtopiccustomerstartevent) UnmarshalJSON(b []byte
 	if ConversationExternalOrganizationIds, ok := CustomerstartdetaileventtopiccustomerstarteventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
 		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
 		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
+	}
+	
+	if JourneyContext, ok := CustomerstartdetaileventtopiccustomerstarteventMap["journeyContext"].(map[string]interface{}); ok {
+		JourneyContextString, _ := json.Marshal(JourneyContext)
+		json.Unmarshal(JourneyContextString, &o.JourneyContext)
 	}
 	
 

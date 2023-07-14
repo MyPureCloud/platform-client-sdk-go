@@ -3292,6 +3292,7 @@ platformclientv2/cursors.go
 platformclientv2/customerenddetaileventtopiccustomerendevent.go
 platformclientv2/customerinteractioncenter.go
 platformclientv2/customerstartdetaileventtopiccustomerstartevent.go
+platformclientv2/customerstartdetaileventtopicjourneycontext.go
 platformclientv2/customeventattribute.go
 platformclientv2/customeventattributelist.go
 platformclientv2/customi18nlabels.go
