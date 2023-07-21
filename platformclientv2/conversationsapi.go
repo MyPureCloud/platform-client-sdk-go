@@ -893,6 +893,152 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsWhatsappIntegr
 	return successPayload, response, err
 }
 
+// DeleteConversationsMessagingSetting invokes DELETE /api/v2/conversations/messaging/settings/{messageSettingId}
+//
+// Delete a messaging setting
+func (a ConversationsApi) DeleteConversationsMessagingSetting(messageSettingId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings/{messageSettingId}"
+	path = strings.Replace(path, "{messageSettingId}", url.PathEscape(fmt.Sprintf("%v", messageSettingId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messageSettingId' is set
+	if &messageSettingId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'messageSettingId' when calling ConversationsApi->DeleteConversationsMessagingSetting")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// DeleteConversationsMessagingSettingsDefault invokes DELETE /api/v2/conversations/messaging/settings/default
+//
+// Delete the organization's default setting, a global default will be applied to integrations without settings
+//
+// When an integration is created a settings ID may be assigned to it. If the settings ID is not supplied, the default settings will be assigned to it.
+func (a ConversationsApi) DeleteConversationsMessagingSettingsDefault() (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings/default"
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteConversationsMessagingSupportedcontentSupportedContentId invokes DELETE /api/v2/conversations/messaging/supportedcontent/{supportedContentId}
 //
 // Delete a supported content profile
@@ -7026,6 +7172,246 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrati
 	return successPayload, response, err
 }
 
+// GetConversationsMessagingSetting invokes GET /api/v2/conversations/messaging/settings/{messageSettingId}
+//
+// Get a messaging setting
+func (a ConversationsApi) GetConversationsMessagingSetting(messageSettingId string) (*Messagingsetting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings/{messageSettingId}"
+	path = strings.Replace(path, "{messageSettingId}", url.PathEscape(fmt.Sprintf("%v", messageSettingId)), -1)
+	defaultReturn := new(Messagingsetting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messageSettingId' is set
+	if &messageSettingId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'messageSettingId' when calling ConversationsApi->GetConversationsMessagingSetting")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingsetting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Messagingsetting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetConversationsMessagingSettings invokes GET /api/v2/conversations/messaging/settings
+//
+// Get a list of messaging settings
+func (a ConversationsApi) GetConversationsMessagingSettings(pageSize int, pageNumber int) (*Messagingconfiglisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings"
+	defaultReturn := new(Messagingconfiglisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingconfiglisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Messagingconfiglisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetConversationsMessagingSettingsDefault invokes GET /api/v2/conversations/messaging/settings/default
+//
+// Get the organization's default settings that will be used as the default when creating an integration.
+//
+// When an integration is created a settings ID may be assigned to it. If the settings ID is not supplied, the default settings will be assigned to it.
+func (a ConversationsApi) GetConversationsMessagingSettingsDefault() (*Messagingsetting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings/default"
+	defaultReturn := new(Messagingsetting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingsetting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Messagingsetting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetConversationsMessagingSticker invokes GET /api/v2/conversations/messaging/stickers/{messengerType}
 //
 // Get a list of Messaging Stickers
@@ -11173,6 +11559,96 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsWhatsappIntegra
 	return successPayload, response, err
 }
 
+// PatchConversationsMessagingSetting invokes PATCH /api/v2/conversations/messaging/settings/{messageSettingId}
+//
+// Update a messaging setting
+func (a ConversationsApi) PatchConversationsMessagingSetting(messageSettingId string, body Messagingsettingpatchrequest) (*Messagingsetting, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings/{messageSettingId}"
+	path = strings.Replace(path, "{messageSettingId}", url.PathEscape(fmt.Sprintf("%v", messageSettingId)), -1)
+	defaultReturn := new(Messagingsetting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messageSettingId' is set
+	if &messageSettingId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'messageSettingId' when calling ConversationsApi->PatchConversationsMessagingSetting")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessagingSetting")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Messagingsetting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Messagingsetting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchConversationsMessagingSupportedcontentSupportedContentId invokes PATCH /api/v2/conversations/messaging/supportedcontent/{supportedContentId}
 //
 // Update a supported content profile
@@ -11948,6 +12424,83 @@ func (a ConversationsApi) PostConversationAssign(conversationId string, body Con
 	return successPayload, response, err
 }
 
+// PostConversationBarge invokes POST /api/v2/conversations/{conversationId}/barge
+//
+// Barge a conversation creating a barged in conference of connected participants.
+//
+// Preview: PostConversationBarge is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) PostConversationBarge(conversationId string) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/barge"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationBarge")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PostConversationCobrowse invokes POST /api/v2/conversations/{conversationId}/cobrowse
 //
 // Creates a cobrowse session. Requires \"conversation:cobrowse:add\" (for web messaging) or \"conversation:cobrowsevoice:add\" permission.
@@ -12283,8 +12836,6 @@ func (a ConversationsApi) PostConversationParticipantDigits(conversationId strin
 // PostConversationParticipantReplace invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// Deprecated: PostConversationParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -12374,6 +12925,8 @@ func (a ConversationsApi) PostConversationParticipantReplace(conversationId stri
 // PostConversationParticipantReplaceAgent invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/agent
 //
 // Replace this participant with the specified agent
+//
+// Preview: PostConversationParticipantReplaceAgent is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantReplaceAgent(conversationId string, participantId string, body Transfertoagentrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -12463,6 +13016,8 @@ func (a ConversationsApi) PostConversationParticipantReplaceAgent(conversationId
 // PostConversationParticipantReplaceExternal invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/external
 //
 // Replace this participant with the an external contact
+//
+// Preview: PostConversationParticipantReplaceExternal is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantReplaceExternal(conversationId string, participantId string, body Transfertoexternalrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -12552,6 +13107,8 @@ func (a ConversationsApi) PostConversationParticipantReplaceExternal(conversatio
 // PostConversationParticipantReplaceQueue invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/queue
 //
 // Replace this participant with the specified queue
+//
+// Preview: PostConversationParticipantReplaceQueue is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantReplaceQueue(conversationId string, participantId string, body Transfertoqueuerequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -12819,6 +13376,89 @@ func (a ConversationsApi) PostConversationsCall(conversationId string, body Call
 	return successPayload, response, err
 }
 
+// PostConversationsCallParticipantBarge invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/barge
+//
+// Barge a given participant's call creating a barged in conference of connected participants.
+//
+// Preview: PostConversationsCallParticipantBarge is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) PostConversationsCallParticipantBarge(conversationId string, participantId string) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/barge"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationsCallParticipantBarge")
+	}
+	// verify the required parameter 'participantId' is set
+	if &participantId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationsCallParticipantBarge")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PostConversationsCallParticipantCoach invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/coach
 //
 // Listen in on the conversation from the point of view of a given participant while speaking to just the given participant.
@@ -12993,8 +13633,6 @@ func (a ConversationsApi) PostConversationsCallParticipantCommunicationWrapup(co
 // PostConversationsCallParticipantConsult invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult
 //
 // Initiate and update consult transfer
-//
-// Deprecated: PostConversationsCallParticipantConsult is deprecated
 func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId string, participantId string, body Consulttransfer) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13091,6 +13729,8 @@ func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId
 // PostConversationsCallParticipantConsultAgent invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/agent
 //
 // Initiate a consult transfer to an agent
+//
+// Preview: PostConversationsCallParticipantConsultAgent is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantConsultAgent(conversationId string, participantId string, body Consulttransfertoagent) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13187,6 +13827,8 @@ func (a ConversationsApi) PostConversationsCallParticipantConsultAgent(conversat
 // PostConversationsCallParticipantConsultExternal invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/external
 //
 // Initiate a consult transfer to an external contact
+//
+// Preview: PostConversationsCallParticipantConsultExternal is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantConsultExternal(conversationId string, participantId string, body Consulttransfertoexternal) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13283,6 +13925,8 @@ func (a ConversationsApi) PostConversationsCallParticipantConsultExternal(conver
 // PostConversationsCallParticipantConsultQueue invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/queue
 //
 // Initiate a consult transfer to a queue
+//
+// Preview: PostConversationsCallParticipantConsultQueue is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantConsultQueue(conversationId string, participantId string, body Consulttransfertoqueue) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13460,8 +14104,6 @@ func (a ConversationsApi) PostConversationsCallParticipantMonitor(conversationId
 // PostConversationsCallParticipantReplace invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// Deprecated: PostConversationsCallParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsCallParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13731,8 +14373,6 @@ func (a ConversationsApi) PostConversationsCallbackParticipantCommunicationWrapu
 // PostConversationsCallbackParticipantReplace invokes POST /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// Deprecated: PostConversationsCallbackParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsCallbackParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -14425,8 +15065,6 @@ func (a ConversationsApi) PostConversationsChatParticipantCommunicationWrapup(co
 // PostConversationsChatParticipantReplace invokes POST /api/v2/conversations/chats/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// Deprecated: PostConversationsChatParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsChatParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -14690,8 +15328,6 @@ func (a ConversationsApi) PostConversationsCobrowsesessionParticipantCommunicati
 // PostConversationsCobrowsesessionParticipantReplace invokes POST /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// Deprecated: PostConversationsCobrowsesessionParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsCobrowsesessionParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -15136,8 +15772,6 @@ func (a ConversationsApi) PostConversationsEmailParticipantCommunicationWrapup(c
 // PostConversationsEmailParticipantReplace invokes POST /api/v2/conversations/emails/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// Deprecated: PostConversationsEmailParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsEmailParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -16192,8 +16826,6 @@ func (a ConversationsApi) PostConversationsMessageParticipantMonitor(conversatio
 // PostConversationsMessageParticipantReplace invokes POST /api/v2/conversations/messages/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
-//
-// Deprecated: PostConversationsMessageParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsMessageParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -17038,6 +17670,90 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsWhatsapp(body Wh
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Whatsappintegration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostConversationsMessagingSettings invokes POST /api/v2/conversations/messaging/settings
+//
+// Create a messaging setting
+func (a ConversationsApi) PostConversationsMessagingSettings(body Messagingsettingrequest) (*Messagingsetting, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings"
+	defaultReturn := new(Messagingsetting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessagingSettings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Messagingsetting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Messagingsetting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -18649,6 +19365,92 @@ func (a ConversationsApi) PutConversationsMessagingIntegrationsLineIntegrationId
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Lineintegration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutConversationsMessagingSettingsDefault invokes PUT /api/v2/conversations/messaging/settings/default
+//
+// Set the organization's default setting that may be applied to to integrations without settings
+//
+// When an integration is created a settings ID may be assigned to it. If the settings ID is not supplied, the default settings will be assigned to it.
+func (a ConversationsApi) PutConversationsMessagingSettingsDefault(body Messagingsettingdefaultrequest) (*Messagingsetting, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/settings/default"
+	defaultReturn := new(Messagingsetting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationsMessagingSettingsDefault")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Messagingsetting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Messagingsetting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -13,6 +14,12 @@ type Unansweredphrasegrouppatchrequestbody struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// PhraseAssociations - List of phrases and documents to be linked
 	PhraseAssociations *[]Phraseassociations `json:"phraseAssociations,omitempty"`
+
+	// DateStart - The start date to be used for filtering phrases. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	DateStart *time.Time `json:"dateStart,omitempty"`
+
+	// DateEnd - The end date to be used for filtering phrases. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	DateEnd *time.Time `json:"dateEnd,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -46,7 +53,7 @@ func (o Unansweredphrasegrouppatchrequestbody) MarshalJSON() ([]byte, error) {
 		// Known field names that require type overrides
 		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateFields := []string{ "DateStart","DateEnd", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -77,11 +84,33 @@ func (o Unansweredphrasegrouppatchrequestbody) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Unansweredphrasegrouppatchrequestbody
 	
+	DateStart := new(string)
+	if o.DateStart != nil {
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%d")
+	} else {
+		DateStart = nil
+	}
+	
+	DateEnd := new(string)
+	if o.DateEnd != nil {
+		*DateEnd = timeutil.Strftime(o.DateEnd, "%Y-%m-%d")
+	} else {
+		DateEnd = nil
+	}
+	
 	return json.Marshal(&struct { 
 		PhraseAssociations *[]Phraseassociations `json:"phraseAssociations,omitempty"`
+		
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		DateEnd *string `json:"dateEnd,omitempty"`
 		Alias
 	}{ 
 		PhraseAssociations: o.PhraseAssociations,
+		
+		DateStart: DateStart,
+		
+		DateEnd: DateEnd,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +125,16 @@ func (o *Unansweredphrasegrouppatchrequestbody) UnmarshalJSON(b []byte) error {
 	if PhraseAssociations, ok := UnansweredphrasegrouppatchrequestbodyMap["phraseAssociations"].([]interface{}); ok {
 		PhraseAssociationsString, _ := json.Marshal(PhraseAssociations)
 		json.Unmarshal(PhraseAssociationsString, &o.PhraseAssociations)
+	}
+	
+	if dateStartString, ok := UnansweredphrasegrouppatchrequestbodyMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if dateEndString, ok := UnansweredphrasegrouppatchrequestbodyMap["dateEnd"].(string); ok {
+		DateEnd, _ := time.Parse("2006-01-02", dateEndString)
+		o.DateEnd = &DateEnd
 	}
 	
 

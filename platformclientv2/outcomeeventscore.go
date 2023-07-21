@@ -20,11 +20,17 @@ type Outcomeeventscore struct {
 	// Probability - Represents the likelihood of a customer reaching or achieving a given outcome.
 	Probability *float32 `json:"probability,omitempty"`
 
-	// Percentile - Represents the predicted probability's percentile score when compared with all other generated probabilities for a given outcome.
+	// Percentile - (Deprecated: use the 'quantile' field instead) Represents the predicted probability's percentile score when compared with all other generated probabilities for a given outcome.
 	Percentile *int `json:"percentile,omitempty"`
 
-	// SessionMaxPercentile - Represents the maximum likelihood percentile score reached for a given outcome by the current session.
+	// SessionMaxPercentile - (Deprecated: use the 'quantile' field instead) Represents the maximum likelihood percentile score reached for a given outcome by the current session.
 	SessionMaxPercentile *int `json:"sessionMaxPercentile,omitempty"`
+
+	// Quantile - Represents the quantity of sessions that have a maximum probability less than the predicted probability.
+	Quantile *float32 `json:"quantile,omitempty"`
+
+	// SessionMaxQuantile - Represents the quantity of sessions that have a maximum probability less than the predicted session max probability.
+	SessionMaxQuantile *float32 `json:"sessionMaxQuantile,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +105,10 @@ func (o Outcomeeventscore) MarshalJSON() ([]byte, error) {
 		Percentile *int `json:"percentile,omitempty"`
 		
 		SessionMaxPercentile *int `json:"sessionMaxPercentile,omitempty"`
+		
+		Quantile *float32 `json:"quantile,omitempty"`
+		
+		SessionMaxQuantile *float32 `json:"sessionMaxQuantile,omitempty"`
 		Alias
 	}{ 
 		Outcome: o.Outcome,
@@ -110,6 +120,10 @@ func (o Outcomeeventscore) MarshalJSON() ([]byte, error) {
 		Percentile: o.Percentile,
 		
 		SessionMaxPercentile: o.SessionMaxPercentile,
+		
+		Quantile: o.Quantile,
+		
+		SessionMaxQuantile: o.SessionMaxQuantile,
 		Alias:    (Alias)(o),
 	})
 }
@@ -144,6 +158,16 @@ func (o *Outcomeeventscore) UnmarshalJSON(b []byte) error {
 	if SessionMaxPercentile, ok := OutcomeeventscoreMap["sessionMaxPercentile"].(float64); ok {
 		SessionMaxPercentileInt := int(SessionMaxPercentile)
 		o.SessionMaxPercentile = &SessionMaxPercentileInt
+	}
+	
+	if Quantile, ok := OutcomeeventscoreMap["quantile"].(float64); ok {
+		QuantileFloat32 := float32(Quantile)
+		o.Quantile = &QuantileFloat32
+	}
+	
+	if SessionMaxQuantile, ok := OutcomeeventscoreMap["sessionMaxQuantile"].(float64); ok {
+		SessionMaxQuantileFloat32 := float32(SessionMaxQuantile)
+		o.SessionMaxQuantile = &SessionMaxQuantileFloat32
 	}
 	
 

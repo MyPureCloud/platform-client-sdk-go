@@ -22,6 +22,9 @@ type Documentlistcontentblock struct {
 
 	// List - List. It must contain a value if the type of the block is UnorderedList or OrderedList.
 	List *Documentbodylist `json:"list,omitempty"`
+
+	// Video - Video. It must contain a value if the type of the block is Video.
+	Video *Documentbodyvideo `json:"video,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Documentlistcontentblock) MarshalJSON() ([]byte, error) {
 		Image *Documentbodyimage `json:"image,omitempty"`
 		
 		List *Documentbodylist `json:"list,omitempty"`
+		
+		Video *Documentbodyvideo `json:"video,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -103,6 +108,8 @@ func (o Documentlistcontentblock) MarshalJSON() ([]byte, error) {
 		Image: o.Image,
 		
 		List: o.List,
+		
+		Video: o.Video,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +138,11 @@ func (o *Documentlistcontentblock) UnmarshalJSON(b []byte) error {
 	if List, ok := DocumentlistcontentblockMap["list"].(map[string]interface{}); ok {
 		ListString, _ := json.Marshal(List)
 		json.Unmarshal(ListString, &o.List)
+	}
+	
+	if Video, ok := DocumentlistcontentblockMap["video"].(map[string]interface{}); ok {
+		VideoString, _ := json.Marshal(Video)
+		json.Unmarshal(VideoString, &o.Video)
 	}
 	
 

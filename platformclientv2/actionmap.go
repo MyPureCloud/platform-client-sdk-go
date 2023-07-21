@@ -33,8 +33,11 @@ type Actionmap struct {
 	// TriggerWithOutcomeProbabilityConditions - Probability conditions for outcomes that must be satisfied to trigger the action map.
 	TriggerWithOutcomeProbabilityConditions *[]Outcomeprobabilitycondition `json:"triggerWithOutcomeProbabilityConditions,omitempty"`
 
-	// TriggerWithOutcomePercentileConditions - Percentile conditions for outcomes that must be satisfied to trigger the action map.
+	// TriggerWithOutcomePercentileConditions - (deprecated - use triggerWithOutcomeQuantileConditions instead) Percentile conditions for outcomes that must be satisfied to trigger the action map.
 	TriggerWithOutcomePercentileConditions *[]Outcomepercentilecondition `json:"triggerWithOutcomePercentileConditions,omitempty"`
+
+	// TriggerWithOutcomeQuantileConditions - Quantile conditions for outcomes that must be satisfied to trigger the action map.
+	TriggerWithOutcomeQuantileConditions *[]Outcomequantilecondition `json:"triggerWithOutcomeQuantileConditions,omitempty"`
 
 	// PageUrlConditions - URL conditions that a page must match for web actions to be displayable.
 	PageUrlConditions *[]Urlcondition `json:"pageUrlConditions,omitempty"`
@@ -181,6 +184,8 @@ func (o Actionmap) MarshalJSON() ([]byte, error) {
 		
 		TriggerWithOutcomePercentileConditions *[]Outcomepercentilecondition `json:"triggerWithOutcomePercentileConditions,omitempty"`
 		
+		TriggerWithOutcomeQuantileConditions *[]Outcomequantilecondition `json:"triggerWithOutcomeQuantileConditions,omitempty"`
+		
 		PageUrlConditions *[]Urlcondition `json:"pageUrlConditions,omitempty"`
 		
 		Activation *Activation `json:"activation,omitempty"`
@@ -219,6 +224,8 @@ func (o Actionmap) MarshalJSON() ([]byte, error) {
 		TriggerWithOutcomeProbabilityConditions: o.TriggerWithOutcomeProbabilityConditions,
 		
 		TriggerWithOutcomePercentileConditions: o.TriggerWithOutcomePercentileConditions,
+		
+		TriggerWithOutcomeQuantileConditions: o.TriggerWithOutcomeQuantileConditions,
 		
 		PageUrlConditions: o.PageUrlConditions,
 		
@@ -287,6 +294,11 @@ func (o *Actionmap) UnmarshalJSON(b []byte) error {
 	if TriggerWithOutcomePercentileConditions, ok := ActionmapMap["triggerWithOutcomePercentileConditions"].([]interface{}); ok {
 		TriggerWithOutcomePercentileConditionsString, _ := json.Marshal(TriggerWithOutcomePercentileConditions)
 		json.Unmarshal(TriggerWithOutcomePercentileConditionsString, &o.TriggerWithOutcomePercentileConditions)
+	}
+	
+	if TriggerWithOutcomeQuantileConditions, ok := ActionmapMap["triggerWithOutcomeQuantileConditions"].([]interface{}); ok {
+		TriggerWithOutcomeQuantileConditionsString, _ := json.Marshal(TriggerWithOutcomeQuantileConditions)
+		json.Unmarshal(TriggerWithOutcomeQuantileConditionsString, &o.TriggerWithOutcomeQuantileConditions)
 	}
 	
 	if PageUrlConditions, ok := ActionmapMap["pageUrlConditions"].([]interface{}); ok {

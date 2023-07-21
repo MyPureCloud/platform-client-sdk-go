@@ -19,6 +19,9 @@ type Documentcontentblock struct {
 
 	// Image - Image. It must contain a value if the type of the block is Image.
 	Image *Documentbodyimage `json:"image,omitempty"`
+
+	// Video - Video. It must contain a value if the type of the block is Video.
+	Video *Documentbodyvideo `json:"video,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Documentcontentblock) MarshalJSON() ([]byte, error) {
 		Text *Documenttext `json:"text,omitempty"`
 		
 		Image *Documentbodyimage `json:"image,omitempty"`
+		
+		Video *Documentbodyvideo `json:"video,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -96,6 +101,8 @@ func (o Documentcontentblock) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		Image: o.Image,
+		
+		Video: o.Video,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +126,11 @@ func (o *Documentcontentblock) UnmarshalJSON(b []byte) error {
 	if Image, ok := DocumentcontentblockMap["image"].(map[string]interface{}); ok {
 		ImageString, _ := json.Marshal(Image)
 		json.Unmarshal(ImageString, &o.Image)
+	}
+	
+	if Video, ok := DocumentcontentblockMap["video"].(map[string]interface{}); ok {
+		VideoString, _ := json.Marshal(Video)
+		json.Unmarshal(VideoString, &o.Video)
 	}
 	
 

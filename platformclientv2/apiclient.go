@@ -118,8 +118,14 @@ func (c *APIClient) CallAPI(path string, method string,
 	// Set post body
 	if postBody != nil {
 		request.Header.Set("Content-Type", "application/json")
-		j, _ := json.Marshal(postBody)
-		request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
+		// Check if postBody is of type *string
+		if body, ok := postBody.(*string); ok {
+			j := []byte(*body)
+			request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
+		} else {
+			j, _ := json.Marshal(postBody)
+			request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
+		}
 	}
 
 	// Set provided headers

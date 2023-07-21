@@ -12,7 +12,7 @@ type Messageconversationentitylisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Emailconversation `json:"entities,omitempty"`
+	Entities *[]Messageconversation `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -105,7 +105,7 @@ func (o Messageconversationentitylisting) MarshalJSON() ([]byte, error) {
 	type Alias Messageconversationentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Emailconversation `json:"entities,omitempty"`
+		Entities *[]Messageconversation `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		

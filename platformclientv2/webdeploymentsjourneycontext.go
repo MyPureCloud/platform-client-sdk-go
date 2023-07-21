@@ -11,6 +11,9 @@ import (
 type Webdeploymentsjourneycontext struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// JourneyAction - A subset of the Journey System's action data relevant to a part of a conversation (for external linkage and internal usage/context)
+	JourneyAction *Journeyaction `json:"journeyAction,omitempty"`
+
 	// Customer - Journey customer information. Used for linking the authenticated customer with the journey. 
 	Customer *Journeycustomer `json:"customer,omitempty"`
 
@@ -81,11 +84,15 @@ func (o Webdeploymentsjourneycontext) MarshalJSON() ([]byte, error) {
 	type Alias Webdeploymentsjourneycontext
 	
 	return json.Marshal(&struct { 
+		JourneyAction *Journeyaction `json:"journeyAction,omitempty"`
+		
 		Customer *Journeycustomer `json:"customer,omitempty"`
 		
 		CustomerSession *Journeycustomersession `json:"customerSession,omitempty"`
 		Alias
 	}{ 
+		JourneyAction: o.JourneyAction,
+		
 		Customer: o.Customer,
 		
 		CustomerSession: o.CustomerSession,
@@ -98,6 +105,11 @@ func (o *Webdeploymentsjourneycontext) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &WebdeploymentsjourneycontextMap)
 	if err != nil {
 		return err
+	}
+	
+	if JourneyAction, ok := WebdeploymentsjourneycontextMap["journeyAction"].(map[string]interface{}); ok {
+		JourneyActionString, _ := json.Marshal(JourneyAction)
+		json.Unmarshal(JourneyActionString, &o.JourneyAction)
 	}
 	
 	if Customer, ok := WebdeploymentsjourneycontextMap["customer"].(map[string]interface{}); ok {

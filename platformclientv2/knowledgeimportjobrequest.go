@@ -19,6 +19,9 @@ type Knowledgeimportjobrequest struct {
 
 	// Settings - Additional optional settings
 	Settings *Knowledgeimportjobsettings `json:"settings,omitempty"`
+
+	// SkipConfirmationStep - If enabled pre-validation step will be skipped.
+	SkipConfirmationStep *bool `json:"skipConfirmationStep,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Knowledgeimportjobrequest) MarshalJSON() ([]byte, error) {
 		FileType *string `json:"fileType,omitempty"`
 		
 		Settings *Knowledgeimportjobsettings `json:"settings,omitempty"`
+		
+		SkipConfirmationStep *bool `json:"skipConfirmationStep,omitempty"`
 		Alias
 	}{ 
 		UploadKey: o.UploadKey,
@@ -96,6 +101,8 @@ func (o Knowledgeimportjobrequest) MarshalJSON() ([]byte, error) {
 		FileType: o.FileType,
 		
 		Settings: o.Settings,
+		
+		SkipConfirmationStep: o.SkipConfirmationStep,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,10 @@ func (o *Knowledgeimportjobrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SettingsString, &o.Settings)
 	}
 	
+	if SkipConfirmationStep, ok := KnowledgeimportjobrequestMap["skipConfirmationStep"].(bool); ok {
+		o.SkipConfirmationStep = &SkipConfirmationStep
+	}
+    
 
 	return nil
 }

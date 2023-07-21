@@ -6,7 +6,8 @@ import (
 	"errors"
 	"net/url"
 	"encoding/json"
-	)
+	"time"
+)
 
 // KnowledgeApi provides functions for API endpoints
 type KnowledgeApi struct {
@@ -3362,7 +3363,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 // GetKnowledgeKnowledgebaseUnansweredGroup invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups/{groupId}
 //
 // Get knowledge base unanswered group for a particular groupId
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroup(knowledgeBaseId string, groupId string, app string) (*Unansweredgroup, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroup(knowledgeBaseId string, groupId string, app string, dateStart time.Time, dateEnd time.Time) (*Unansweredgroup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups/{groupId}"
@@ -3402,6 +3403,10 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroup(knowledgeBaseId s
 	}
 	
 	queryParams["app"] = a.Configuration.APIClient.ParameterToString(app, "")
+	
+	queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, "")
+	
+	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3452,7 +3457,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroup(knowledgeBaseId s
 // GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups/{groupId}/phrasegroups/{phraseGroupId}
 //
 // Get knowledge base unanswered phrase group for a particular phraseGroupId
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(knowledgeBaseId string, groupId string, phraseGroupId string, app string) (*Unansweredphrasegroup, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(knowledgeBaseId string, groupId string, phraseGroupId string, app string, dateStart time.Time, dateEnd time.Time) (*Unansweredphrasegroup, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups/{groupId}/phrasegroups/{phraseGroupId}"
@@ -3498,6 +3503,10 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(knowle
 	}
 	
 	queryParams["app"] = a.Configuration.APIClient.ParameterToString(app, "")
+	
+	queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, "")
+	
+	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3548,7 +3557,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup(knowle
 // GetKnowledgeKnowledgebaseUnansweredGroups invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups
 //
 // Get knowledge base unanswered groups
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroups(knowledgeBaseId string, app string) (*Unansweredgroups, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroups(knowledgeBaseId string, app string, dateStart time.Time, dateEnd time.Time) (*Unansweredgroups, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/unanswered/groups"
@@ -3582,6 +3591,10 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroups(knowledgeBaseId 
 	}
 	
 	queryParams["app"] = a.Configuration.APIClient.ParameterToString(app, "")
+	
+	queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, "")
+	
+	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -16,6 +16,12 @@ type Supportcentermodulesetting struct {
 
 	// Enabled - Whether or not support center screen module is enabled
 	Enabled *bool `json:"enabled,omitempty"`
+
+	// CompactCategoryModuleTemplate - Compact category module template
+	CompactCategoryModuleTemplate *Supportcentercompactcategorymoduletemplate `json:"compactCategoryModuleTemplate,omitempty"`
+
+	// DetailedCategoryModuleTemplate - Detailed category module template
+	DetailedCategoryModuleTemplate *Supportcenterdetailedcategorymoduletemplate `json:"detailedCategoryModuleTemplate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Supportcentermodulesetting) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		CompactCategoryModuleTemplate *Supportcentercompactcategorymoduletemplate `json:"compactCategoryModuleTemplate,omitempty"`
+		
+		DetailedCategoryModuleTemplate *Supportcenterdetailedcategorymoduletemplate `json:"detailedCategoryModuleTemplate,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
 		
 		Enabled: o.Enabled,
+		
+		CompactCategoryModuleTemplate: o.CompactCategoryModuleTemplate,
+		
+		DetailedCategoryModuleTemplate: o.DetailedCategoryModuleTemplate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +122,16 @@ func (o *Supportcentermodulesetting) UnmarshalJSON(b []byte) error {
 		o.Enabled = &Enabled
 	}
     
+	if CompactCategoryModuleTemplate, ok := SupportcentermodulesettingMap["compactCategoryModuleTemplate"].(map[string]interface{}); ok {
+		CompactCategoryModuleTemplateString, _ := json.Marshal(CompactCategoryModuleTemplate)
+		json.Unmarshal(CompactCategoryModuleTemplateString, &o.CompactCategoryModuleTemplate)
+	}
+	
+	if DetailedCategoryModuleTemplate, ok := SupportcentermodulesettingMap["detailedCategoryModuleTemplate"].(map[string]interface{}); ok {
+		DetailedCategoryModuleTemplateString, _ := json.Marshal(DetailedCategoryModuleTemplate)
+		json.Unmarshal(DetailedCategoryModuleTemplateString, &o.DetailedCategoryModuleTemplate)
+	}
+	
 
 	return nil
 }

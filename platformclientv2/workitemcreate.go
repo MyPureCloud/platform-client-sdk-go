@@ -27,7 +27,7 @@ type Workitemcreate struct {
 	// DurationSeconds - The estimated duration in seconds to complete the Workitem. Maximum of 365 days.
 	DurationSeconds *int `json:"durationSeconds,omitempty"`
 
-	// Ttl - A timestamp specifying the time to live for the Workitem. Can not be greater than 365 days from the current time.
+	// Ttl - The epoch timestamp in seconds specifying the time to live for the Workitem. Can not be greater than 365 days from the current time.
 	Ttl *int `json:"ttl,omitempty"`
 
 	// StatusId - The ID of the Status of the Workitem.

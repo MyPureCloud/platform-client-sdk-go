@@ -114,6 +114,9 @@ type Createqueuerequest struct {
 	// PeerId - The ID of an associated external queue.
 	PeerId *string `json:"peerId,omitempty"`
 
+	// SuppressInQueueCallRecording - Indicates whether recording in-queue calls is suppressed for this queue.
+	SuppressInQueueCallRecording *bool `json:"suppressInQueueCallRecording,omitempty"`
+
 	// SourceQueueId - The id of an existing queue to copy the settings (does not include GPR settings) from when creating a new queue.
 	SourceQueueId *string `json:"sourceQueueId,omitempty"`
 
@@ -268,6 +271,8 @@ func (o Createqueuerequest) MarshalJSON() ([]byte, error) {
 		
 		PeerId *string `json:"peerId,omitempty"`
 		
+		SuppressInQueueCallRecording *bool `json:"suppressInQueueCallRecording,omitempty"`
+		
 		SourceQueueId *string `json:"sourceQueueId,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -340,6 +345,8 @@ func (o Createqueuerequest) MarshalJSON() ([]byte, error) {
 		OutboundEmailAddress: o.OutboundEmailAddress,
 		
 		PeerId: o.PeerId,
+		
+		SuppressInQueueCallRecording: o.SuppressInQueueCallRecording,
 		
 		SourceQueueId: o.SourceQueueId,
 		
@@ -511,6 +518,10 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	
 	if PeerId, ok := CreatequeuerequestMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
+	}
+    
+	if SuppressInQueueCallRecording, ok := CreatequeuerequestMap["suppressInQueueCallRecording"].(bool); ok {
+		o.SuppressInQueueCallRecording = &SuppressInQueueCallRecording
 	}
     
 	if SourceQueueId, ok := CreatequeuerequestMap["sourceQueueId"].(string); ok {

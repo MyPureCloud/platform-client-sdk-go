@@ -17,6 +17,9 @@ type Documentbodytablecaptionitem struct {
 	// Text - Text. It must contain a value if the type of the block is Text.
 	Text *Documenttext `json:"text,omitempty"`
 
+	// Paragraph - Paragraph. It must contain a value if the type of the block is Paragraph.
+	Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
+
 	// Image - Image. It must contain a value if the type of the block is Image.
 	Image *Documentbodyimage `json:"image,omitempty"`
 
@@ -94,6 +97,8 @@ func (o Documentbodytablecaptionitem) MarshalJSON() ([]byte, error) {
 		
 		Text *Documenttext `json:"text,omitempty"`
 		
+		Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
+		
 		Image *Documentbodyimage `json:"image,omitempty"`
 		
 		Video *Documentbodyvideo `json:"video,omitempty"`
@@ -104,6 +109,8 @@ func (o Documentbodytablecaptionitem) MarshalJSON() ([]byte, error) {
 		VarType: o.VarType,
 		
 		Text: o.Text,
+		
+		Paragraph: o.Paragraph,
 		
 		Image: o.Image,
 		
@@ -128,6 +135,11 @@ func (o *Documentbodytablecaptionitem) UnmarshalJSON(b []byte) error {
 	if Text, ok := DocumentbodytablecaptionitemMap["text"].(map[string]interface{}); ok {
 		TextString, _ := json.Marshal(Text)
 		json.Unmarshal(TextString, &o.Text)
+	}
+	
+	if Paragraph, ok := DocumentbodytablecaptionitemMap["paragraph"].(map[string]interface{}); ok {
+		ParagraphString, _ := json.Marshal(Paragraph)
+		json.Unmarshal(ParagraphString, &o.Paragraph)
 	}
 	
 	if Image, ok := DocumentbodytablecaptionitemMap["image"].(map[string]interface{}); ok {

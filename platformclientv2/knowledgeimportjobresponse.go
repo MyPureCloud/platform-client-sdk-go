@@ -39,6 +39,9 @@ type Knowledgeimportjobresponse struct {
 	// DateModified - Last modified date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
+	// SkipConfirmationStep - If enabled pre-validation step will be skipped.
+	SkipConfirmationStep *bool `json:"skipConfirmationStep,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -140,6 +143,8 @@ func (o Knowledgeimportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
+		SkipConfirmationStep *bool `json:"skipConfirmationStep,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -160,6 +165,8 @@ func (o Knowledgeimportjobresponse) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
+		
+		SkipConfirmationStep: o.SkipConfirmationStep,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -214,6 +221,10 @@ func (o *Knowledgeimportjobresponse) UnmarshalJSON(b []byte) error {
 		o.DateModified = &DateModified
 	}
 	
+	if SkipConfirmationStep, ok := KnowledgeimportjobresponseMap["skipConfirmationStep"].(bool); ok {
+		o.SkipConfirmationStep = &SkipConfirmationStep
+	}
+    
 	if SelfUri, ok := KnowledgeimportjobresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

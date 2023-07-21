@@ -189,7 +189,7 @@ func (a LicenseApi) GetLicenseDefinitions() ([]Licensedefinition, *APIResponse, 
 
 // GetLicenseToggle invokes GET /api/v2/license/toggles/{featureName}
 //
-// Get PureCloud license feature toggle value.
+// Deprecated - no alternative required. This operation will always return 'true' for requested toggles
 func (a LicenseApi) GetLicenseToggle(featureName string) (*Licenseorgtoggle, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -593,7 +593,7 @@ func (a LicenseApi) PostLicenseOrganization(body Licensebatchassignmentrequest) 
 
 // PostLicenseToggle invokes POST /api/v2/license/toggles/{featureName}
 //
-// Switch PureCloud license feature toggle value.
+// Deprecated. No alternative required - this endpoint has no effect
 func (a LicenseApi) PostLicenseToggle(featureName string) (*Licenseorgtoggle, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

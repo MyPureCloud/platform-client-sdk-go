@@ -114,6 +114,9 @@ type Queue struct {
 	// PeerId - The ID of an associated external queue.
 	PeerId *string `json:"peerId,omitempty"`
 
+	// SuppressInQueueCallRecording - Indicates whether recording in-queue calls is suppressed for this queue.
+	SuppressInQueueCallRecording *bool `json:"suppressInQueueCallRecording,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -265,6 +268,8 @@ func (o Queue) MarshalJSON() ([]byte, error) {
 		
 		PeerId *string `json:"peerId,omitempty"`
 		
+		SuppressInQueueCallRecording *bool `json:"suppressInQueueCallRecording,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -335,6 +340,8 @@ func (o Queue) MarshalJSON() ([]byte, error) {
 		OutboundEmailAddress: o.OutboundEmailAddress,
 		
 		PeerId: o.PeerId,
+		
+		SuppressInQueueCallRecording: o.SuppressInQueueCallRecording,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -504,6 +511,10 @@ func (o *Queue) UnmarshalJSON(b []byte) error {
 	
 	if PeerId, ok := QueueMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
+	}
+    
+	if SuppressInQueueCallRecording, ok := QueueMap["suppressInQueueCallRecording"].(bool); ok {
+		o.SuppressInQueueCallRecording = &SuppressInQueueCallRecording
 	}
     
 	if SelfUri, ok := QueueMap["selfUri"].(string); ok {

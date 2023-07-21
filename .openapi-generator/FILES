@@ -15,8 +15,10 @@ docs/CoachingApi.json
 docs/ContentManagementApi.json
 docs/ConversationsApi.json
 docs/DataExtensionsApi.json
+docs/DeleteAlertingAlert-example.txt
 docs/DeleteAlertingInteractionstatsAlert-example.txt
 docs/DeleteAlertingInteractionstatsRule-example.txt
+docs/DeleteAlertingRule-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
 docs/DeleteAnalyticsReportingSchedule-example.txt
@@ -55,6 +57,8 @@ docs/DeleteConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsOpenIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
+docs/DeleteConversationsMessagingSetting-example.txt
+docs/DeleteConversationsMessagingSettingsDefault-example.txt
 docs/DeleteConversationsMessagingSupportedcontentSupportedContentId-example.txt
 docs/DeleteEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/DeleteExternalcontactsContact-example.txt
@@ -113,6 +117,8 @@ docs/DeleteLanguageunderstandingMinerDraft-example.txt
 docs/DeleteLearningAssignment-example.txt
 docs/DeleteLearningModule-example.txt
 docs/DeleteLocation-example.txt
+docs/DeleteMessagingSetting-example.txt
+docs/DeleteMessagingSettingsDefault-example.txt
 docs/DeleteMessagingSupportedcontentSupportedContentId-example.txt
 docs/DeleteMobiledevice-example.txt
 docs/DeleteNotificationsChannelSubscriptions-example.txt
@@ -251,6 +257,7 @@ docs/DeleteWorkforcemanagementManagementunitTimeoffplan-example.txt
 docs/DeleteWorkforcemanagementManagementunitWorkplan-example.txt
 docs/DeleteWorkforcemanagementManagementunitWorkplanrotation-example.txt
 docs/DownloadsApi.json
+docs/EmailsApi.json
 docs/EventsApi.json
 docs/ExternalContactsApi.json
 docs/FaxApi.json
@@ -258,12 +265,14 @@ docs/FlowsApi.json
 docs/GamificationApi.json
 docs/GeneralDataProtectionRegulationApi.json
 docs/GeolocationApi.json
+docs/GetAlertingAlert-example.txt
 docs/GetAlertingAlertsActive-example.txt
 docs/GetAlertingInteractionstatsAlert-example.txt
 docs/GetAlertingInteractionstatsAlerts-example.txt
 docs/GetAlertingInteractionstatsAlertsUnread-example.txt
 docs/GetAlertingInteractionstatsRule-example.txt
 docs/GetAlertingInteractionstatsRules-example.txt
+docs/GetAlertingRule-example.txt
 docs/GetAnalyticsActionsAggregatesJob-example.txt
 docs/GetAnalyticsActionsAggregatesJobResults-example.txt
 docs/GetAnalyticsBotflowReportingturns-example.txt
@@ -492,6 +501,9 @@ docs/GetConversationsMessagingIntegrationsTwitter-example.txt
 docs/GetConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsWhatsapp-example.txt
 docs/GetConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
+docs/GetConversationsMessagingSetting-example.txt
+docs/GetConversationsMessagingSettings-example.txt
+docs/GetConversationsMessagingSettingsDefault-example.txt
 docs/GetConversationsMessagingSticker-example.txt
 docs/GetConversationsMessagingSupportedcontent-example.txt
 docs/GetConversationsMessagingSupportedcontentDefault-example.txt
@@ -509,6 +521,8 @@ docs/GetDate-example.txt
 docs/GetDocumentationGknSearch-example.txt
 docs/GetDocumentationSearch-example.txt
 docs/GetDownload-example.txt
+docs/GetEmailsSettings-example.txt
+docs/GetEmailsSettings-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinitions-example.txt
 docs/GetExternalcontactsContact-example.txt
@@ -787,6 +801,9 @@ docs/GetLocationSublocations-example.txt
 docs/GetLocations-example.txt
 docs/GetLocationsSearch-example.txt
 docs/GetLocationsSearch-example.txt
+docs/GetMessagingSetting-example.txt
+docs/GetMessagingSettings-example.txt
+docs/GetMessagingSettingsDefault-example.txt
 docs/GetMessagingSupportedcontent-example.txt
 docs/GetMessagingSupportedcontentSupportedContentId-example.txt
 docs/GetMobiledevice-example.txt
@@ -1053,6 +1070,7 @@ docs/GetSearchSuggest-example.txt
 docs/GetSearchSuggest-example.txt
 docs/GetSpeechandtextanalyticsConversation-example.txt
 docs/GetSpeechandtextanalyticsConversationCommunicationTranscripturl-example.txt
+docs/GetSpeechandtextanalyticsConversationCommunicationTranscripturls-example.txt
 docs/GetSpeechandtextanalyticsProgram-example.txt
 docs/GetSpeechandtextanalyticsProgramMappings-example.txt
 docs/GetSpeechandtextanalyticsProgramTranscriptionengines-example.txt
@@ -1343,6 +1361,9 @@ docs/ObjectsApi.json
 docs/OrganizationApi.json
 docs/OrganizationAuthorizationApi.json
 docs/OutboundApi.json
+docs/PatchAlertingAlert-example.txt
+docs/PatchAlertingAlertsBulk-example.txt
+docs/PatchAlertingRulesBulk-example.txt
 docs/PatchAnalyticsReportingSettings-example.txt
 docs/PatchAuthorizationRole-example.txt
 docs/PatchAuthorizationSettings-example.txt
@@ -1388,8 +1409,11 @@ docs/PatchConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsOpenIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
+docs/PatchConversationsMessagingSetting-example.txt
 docs/PatchConversationsMessagingSupportedcontentSupportedContentId-example.txt
 docs/PatchConversationsSettings-example.txt
+docs/PatchEmailsSettings-example.txt
+docs/PatchEmailsSettings-example.txt
 docs/PatchEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/PatchExternalcontactsContactIdentifiers-example.txt
 docs/PatchGeolocationsSettings-example.txt
@@ -1419,6 +1443,7 @@ docs/PatchLanguageunderstandingMinerDraft-example.txt
 docs/PatchLearningAssignment-example.txt
 docs/PatchLearningAssignmentReschedule-example.txt
 docs/PatchLocation-example.txt
+docs/PatchMessagingSetting-example.txt
 docs/PatchMessagingSupportedcontentSupportedContentId-example.txt
 docs/PatchOrganizationsAuthenticationSettings-example.txt
 docs/PatchOrganizationsFeature-example.txt
@@ -1489,7 +1514,11 @@ docs/PatchWorkforcemanagementManagementunitWeekShifttrade-example.txt
 docs/PatchWorkforcemanagementManagementunitWorkplan-example.txt
 docs/PatchWorkforcemanagementManagementunitWorkplanrotation-example.txt
 docs/PatchWorkforcemanagementTimeoffrequest-example.txt
+docs/PostAlertingAlertsQuery-example.txt
 docs/PostAlertingInteractionstatsRules-example.txt
+docs/PostAlertingRules-example.txt
+docs/PostAlertingRulesBulkRemove-example.txt
+docs/PostAlertingRulesQuery-example.txt
 docs/PostAnalyticsActionsAggregatesJobs-example.txt
 docs/PostAnalyticsActionsAggregatesQuery-example.txt
 docs/PostAnalyticsBotsAggregatesJobs-example.txt
@@ -1603,6 +1632,7 @@ docs/PostContentmanagementWorkspaceTagvalues-example.txt
 docs/PostContentmanagementWorkspaceTagvaluesQuery-example.txt
 docs/PostContentmanagementWorkspaces-example.txt
 docs/PostConversationAssign-example.txt
+docs/PostConversationBarge-example.txt
 docs/PostConversationCobrowse-example.txt
 docs/PostConversationDisconnect-example.txt
 docs/PostConversationParticipantCallbacks-example.txt
@@ -1614,6 +1644,7 @@ docs/PostConversationParticipantReplaceQueue-example.txt
 docs/PostConversationParticipantSecureivrsessions-example.txt
 docs/PostConversationRecordingAnnotations-example.txt
 docs/PostConversationsCall-example.txt
+docs/PostConversationsCallParticipantBarge-example.txt
 docs/PostConversationsCallParticipantCoach-example.txt
 docs/PostConversationsCallParticipantCommunicationWrapup-example.txt
 docs/PostConversationsCallParticipantConsult-example.txt
@@ -1662,6 +1693,7 @@ docs/PostConversationsMessagingIntegrationsLine-example.txt
 docs/PostConversationsMessagingIntegrationsOpen-example.txt
 docs/PostConversationsMessagingIntegrationsTwitter-example.txt
 docs/PostConversationsMessagingIntegrationsWhatsapp-example.txt
+docs/PostConversationsMessagingSettings-example.txt
 docs/PostConversationsMessagingSupportedcontent-example.txt
 docs/PostConversationsParticipantsAttributesSearch-example.txt
 docs/PostConversationsParticipantsAttributesSearch-example.txt
@@ -1815,6 +1847,7 @@ docs/PostLicenseUsers-example.txt
 docs/PostLocations-example.txt
 docs/PostLocationsSearch-example.txt
 docs/PostLocationsSearch-example.txt
+docs/PostMessagingSettings-example.txt
 docs/PostMessagingSupportedcontent-example.txt
 docs/PostMobiledevices-example.txt
 docs/PostNotificationsChannelSubscriptions-example.txt
@@ -2071,8 +2104,10 @@ docs/PostWorkforcemanagementTimeofflimitsAvailableQuery-example.txt
 docs/PostWorkforcemanagementTimeoffrequests-example.txt
 docs/PresenceApi.json
 docs/ProcessAutomationApi.json
+docs/PutAlertingAlert-example.txt
 docs/PutAlertingInteractionstatsAlert-example.txt
 docs/PutAlertingInteractionstatsRule-example.txt
+docs/PutAlertingRule-example.txt
 docs/PutAnalyticsDataretentionSettings-example.txt
 docs/PutAnalyticsReportingSchedule-example.txt
 docs/PutArchitectEmergencygroup-example.txt
@@ -2108,6 +2143,7 @@ docs/PutConversationsEmailRecordingstate-example.txt
 docs/PutConversationsKeyconfiguration-example.txt
 docs/PutConversationsMessageRecordingstate-example.txt
 docs/PutConversationsMessagingIntegrationsLineIntegrationId-example.txt
+docs/PutConversationsMessagingSettingsDefault-example.txt
 docs/PutConversationsMessagingSupportedcontentDefault-example.txt
 docs/PutConversationsMessagingThreadingtimeline-example.txt
 docs/PutConversationsScreenshareRecordingstate-example.txt
@@ -2156,6 +2192,7 @@ docs/PutIntegrationsUnifiedcommunicationThirdpartypresences-example.txt
 docs/PutLanguageunderstandingDomainVersion-example.txt
 docs/PutLearningModule-example.txt
 docs/PutLearningModuleRule-example.txt
+docs/PutMessagingSettingsDefault-example.txt
 docs/PutMobiledevice-example.txt
 docs/PutNotificationsChannelSubscriptions-example.txt
 docs/PutOauthClient-example.txt
@@ -2280,6 +2317,7 @@ docs/RoutingApi.json
 docs/SCIMApi.json
 docs/ScriptsApi.json
 docs/SearchApi.json
+docs/SettingsApi.json
 docs/SpeechTextAnalyticsApi.json
 docs/StationsApi.json
 docs/SuggestApi.json
@@ -2411,6 +2449,11 @@ platformclientv2/aggregationrange.go
 platformclientv2/aggregationresult.go
 platformclientv2/aggregationresultentry.go
 platformclientv2/alertingapi.go
+platformclientv2/alertingunreadstatus.go
+platformclientv2/alertlisting.go
+platformclientv2/alertnotification.go
+platformclientv2/alertrequest.go
+platformclientv2/alertruleproperties.go
 platformclientv2/alltimepoints.go
 platformclientv2/amazonlexrequest.go
 platformclientv2/analyticsagentgroup.go
@@ -2858,10 +2901,19 @@ platformclientv2/columndatatypespecification.go
 platformclientv2/columnstatus.go
 platformclientv2/commandstatus.go
 platformclientv2/commandstatusentitylisting.go
+platformclientv2/commonalert.go
+platformclientv2/commonalertbulkupdaterequest.go
 platformclientv2/commoncampaign.go
 platformclientv2/commoncampaigndivisionview.go
 platformclientv2/commoncampaigndivisionviewentitylisting.go
 platformclientv2/commoncampaignentitylisting.go
+platformclientv2/commonrule.go
+platformclientv2/commonrulebulkdeleterequest.go
+platformclientv2/commonrulebulkupdatenotificationsrequest.go
+platformclientv2/commonruleconditions.go
+platformclientv2/commonrulecontainer.go
+platformclientv2/commonrulepredicate.go
+platformclientv2/commonrulepredicateentity.go
 platformclientv2/communicationansweredevent.go
 platformclientv2/communicationdispositionappliedevent.go
 platformclientv2/communicationendedevent.go
@@ -3614,6 +3666,8 @@ platformclientv2/emailmessagepreview.go
 platformclientv2/emailmessagepreviewlisting.go
 platformclientv2/emailmessagereply.go
 platformclientv2/emailoutbounddomainresult.go
+platformclientv2/emailsapi.go
+platformclientv2/emailsettings.go
 platformclientv2/emailsetup.go
 platformclientv2/emailssettings.go
 platformclientv2/embeddedintegration.go
@@ -3876,11 +3930,13 @@ platformclientv2/geolocation.go
 platformclientv2/geolocationapi.go
 platformclientv2/geolocationeventgeolocation.go
 platformclientv2/geolocationsettings.go
+platformclientv2/getalertquery.go
 platformclientv2/getflowexecutiondatajobresult.go
 platformclientv2/getmetricdefinitionsresponse.go
 platformclientv2/getmetricresponse.go
 platformclientv2/getmetricsresponse.go
 platformclientv2/getprofilesresponse.go
+platformclientv2/getrulesquery.go
 platformclientv2/gettemplatesresponse.go
 platformclientv2/gkndocumentationresult.go
 platformclientv2/gkndocumentationsearchcriteria.go
@@ -4207,6 +4263,7 @@ platformclientv2/labelcreaterequest.go
 platformclientv2/labellisting.go
 platformclientv2/labelresponse.go
 platformclientv2/labelupdaterequest.go
+platformclientv2/labelutilization.go
 platformclientv2/language.go
 platformclientv2/languageentitylisting.go
 platformclientv2/languageoverride.go
@@ -4402,10 +4459,15 @@ platformclientv2/messagingcampaigndivisionviewentitylisting.go
 platformclientv2/messagingcampaignentitylisting.go
 platformclientv2/messagingcampaignschedule.go
 platformclientv2/messagingcampaignscheduleentitylisting.go
+platformclientv2/messagingconfiglisting.go
 platformclientv2/messagingintegration.go
 platformclientv2/messagingintegrationentitylisting.go
 platformclientv2/messagingrecipient.go
+platformclientv2/messagingsetting.go
+platformclientv2/messagingsettingdefaultrequest.go
+platformclientv2/messagingsettingpatchrequest.go
 platformclientv2/messagingsettingreference.go
+platformclientv2/messagingsettingrequest.go
 platformclientv2/messagingsettingrequestreference.go
 platformclientv2/messagingsticker.go
 platformclientv2/messagingstickerentitylisting.go
@@ -4441,9 +4503,11 @@ platformclientv2/minlength.go
 platformclientv2/mobiledevicesapi.go
 platformclientv2/modelingprocessingerror.go
 platformclientv2/modelingstatusresponse.go
+platformclientv2/modifiableruleproperties.go
 platformclientv2/movemanagementunitrequest.go
 platformclientv2/movemanagementunitresponse.go
 platformclientv2/murescheduleresultwrapper.go
+platformclientv2/mutesnoozefields.go
 platformclientv2/namedentity.go
 platformclientv2/namedentityannotation.go
 platformclientv2/namedentitydefinition.go
@@ -4590,6 +4654,7 @@ platformclientv2/outcomepredictor.go
 platformclientv2/outcomepredictorlisting.go
 platformclientv2/outcomepredictorrequest.go
 platformclientv2/outcomeprobabilitycondition.go
+platformclientv2/outcomequantilecondition.go
 platformclientv2/outcomeref.go
 platformclientv2/outcomerefrequest.go
 platformclientv2/outcomescoresresult.go
@@ -5248,6 +5313,7 @@ platformclientv2/segmentdetailqueryfilter.go
 platformclientv2/segmentdetailquerypredicate.go
 platformclientv2/segmentestimatecount.go
 platformclientv2/segmentlisting.go
+platformclientv2/segmenturl.go
 platformclientv2/selectedanswer.go
 platformclientv2/selectedcolumns.go
 platformclientv2/selectoreventtrigger.go
@@ -5274,6 +5340,7 @@ platformclientv2/setsmsphonenumberactionsettings.go
 platformclientv2/settimeofflimitvaluesrequest.go
 platformclientv2/settingdirection.go
 platformclientv2/settings.go
+platformclientv2/settingsapi.go
 platformclientv2/setuuidatarequest.go
 platformclientv2/setwrapperdayofweek.go
 platformclientv2/setwrapperroutepathrequest.go
@@ -5381,7 +5448,10 @@ platformclientv2/suggestapi.go
 platformclientv2/suggestsearchcriteria.go
 platformclientv2/suggestsearchrequest.go
 platformclientv2/supportcentercategory.go
+platformclientv2/supportcentercompactcategorymoduletemplate.go
 platformclientv2/supportcentercustommessage.go
+platformclientv2/supportcenterdetailedcategorymodulesidebar.go
+platformclientv2/supportcenterdetailedcategorymoduletemplate.go
 platformclientv2/supportcenterfeedbacksettings.go
 platformclientv2/supportcenterglobalstyle.go
 platformclientv2/supportcenterherostyle.go
@@ -5567,6 +5637,7 @@ platformclientv2/transcriptsearchrequest.go
 platformclientv2/transcripttopic.go
 platformclientv2/transcripttopics.go
 platformclientv2/transcripturl.go
+platformclientv2/transcripturls.go
 platformclientv2/transferdestination.go
 platformclientv2/transferinitiator.go
 platformclientv2/transferrequest.go
@@ -5650,6 +5721,7 @@ platformclientv2/unansweredphrasegroupupdateresponse.go
 platformclientv2/unifiedgeneraltopic.go
 platformclientv2/unifiedgeneraltopicentitylisting.go
 platformclientv2/unpublishedprogramsentitylisting.go
+platformclientv2/unreadfields.go
 platformclientv2/unreadmetric.go
 platformclientv2/unreadstatus.go
 platformclientv2/updateactioninput.go

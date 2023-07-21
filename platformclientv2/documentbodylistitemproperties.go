@@ -28,6 +28,12 @@ type Documentbodylistitemproperties struct {
 
 	// TextColor - The text color for the list item. The valid values in hex color code representation. For example black color - #000000
 	TextColor *string `json:"textColor,omitempty"`
+
+	// UnorderedType - The type of icon for the unordered list.
+	UnorderedType *string `json:"unorderedType,omitempty"`
+
+	// OrderedType - The type of icon for the ordered list.
+	OrderedType *string `json:"orderedType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +110,10 @@ func (o Documentbodylistitemproperties) MarshalJSON() ([]byte, error) {
 		FontType *string `json:"fontType,omitempty"`
 		
 		TextColor *string `json:"textColor,omitempty"`
+		
+		UnorderedType *string `json:"unorderedType,omitempty"`
+		
+		OrderedType *string `json:"orderedType,omitempty"`
 		Alias
 	}{ 
 		BackgroundColor: o.BackgroundColor,
@@ -117,6 +127,10 @@ func (o Documentbodylistitemproperties) MarshalJSON() ([]byte, error) {
 		FontType: o.FontType,
 		
 		TextColor: o.TextColor,
+		
+		UnorderedType: o.UnorderedType,
+		
+		OrderedType: o.OrderedType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -151,6 +165,14 @@ func (o *Documentbodylistitemproperties) UnmarshalJSON(b []byte) error {
     
 	if TextColor, ok := DocumentbodylistitempropertiesMap["textColor"].(string); ok {
 		o.TextColor = &TextColor
+	}
+    
+	if UnorderedType, ok := DocumentbodylistitempropertiesMap["unorderedType"].(string); ok {
+		o.UnorderedType = &UnorderedType
+	}
+    
+	if OrderedType, ok := DocumentbodylistitempropertiesMap["orderedType"].(string); ok {
+		o.OrderedType = &OrderedType
 	}
     
 

@@ -520,6 +520,9 @@ type Viewfilter struct {
 
 	// KnowledgeBaseIds - The knowledge base ids that are used to filter the view.
 	KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
+
+	// IsParked - Filter to indicate if the interactions are parked.
+	IsParked *bool `json:"isParked,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -924,6 +927,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		AssistantIds *[]string `json:"assistantIds,omitempty"`
 		
 		KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
+		
+		IsParked *bool `json:"isParked,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1265,6 +1270,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		AssistantIds: o.AssistantIds,
 		
 		KnowledgeBaseIds: o.KnowledgeBaseIds,
+		
+		IsParked: o.IsParked,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2088,6 +2095,10 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(KnowledgeBaseIdsString, &o.KnowledgeBaseIds)
 	}
 	
+	if IsParked, ok := ViewfilterMap["isParked"].(bool); ok {
+		o.IsParked = &IsParked
+	}
+    
 
 	return nil
 }

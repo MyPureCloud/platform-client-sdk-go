@@ -16,6 +16,9 @@ type Speechtextanalyticssettingsresponse struct {
 
 	// ExpectedDialects - Setting to choose expected dialects
 	ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
+
+	// TextAnalyticsEnabled - Setting to enable/disable text analytics
+	TextAnalyticsEnabled *bool `json:"textAnalyticsEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Speechtextanalyticssettingsresponse) MarshalJSON() ([]byte, error) {
 		DefaultProgram *Addressableentityref `json:"defaultProgram,omitempty"`
 		
 		ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
+		
+		TextAnalyticsEnabled *bool `json:"textAnalyticsEnabled,omitempty"`
 		Alias
 	}{ 
 		DefaultProgram: o.DefaultProgram,
 		
 		ExpectedDialects: o.ExpectedDialects,
+		
+		TextAnalyticsEnabled: o.TextAnalyticsEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -110,6 +117,10 @@ func (o *Speechtextanalyticssettingsresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExpectedDialectsString, &o.ExpectedDialects)
 	}
 	
+	if TextAnalyticsEnabled, ok := SpeechtextanalyticssettingsresponseMap["textAnalyticsEnabled"].(bool); ok {
+		o.TextAnalyticsEnabled = &TextAnalyticsEnabled
+	}
+    
 
 	return nil
 }

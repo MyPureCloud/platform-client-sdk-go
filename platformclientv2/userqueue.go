@@ -111,6 +111,9 @@ type Userqueue struct {
 	// PeerId - The ID of an associated external queue.
 	PeerId *string `json:"peerId,omitempty"`
 
+	// SuppressInQueueCallRecording - Indicates whether recording in-queue calls is suppressed for this queue.
+	SuppressInQueueCallRecording *bool `json:"suppressInQueueCallRecording,omitempty"`
+
 	// Joined
 	Joined *bool `json:"joined,omitempty"`
 
@@ -263,6 +266,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		
 		PeerId *string `json:"peerId,omitempty"`
 		
+		SuppressInQueueCallRecording *bool `json:"suppressInQueueCallRecording,omitempty"`
+		
 		Joined *bool `json:"joined,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -333,6 +338,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		OutboundEmailAddress: o.OutboundEmailAddress,
 		
 		PeerId: o.PeerId,
+		
+		SuppressInQueueCallRecording: o.SuppressInQueueCallRecording,
 		
 		Joined: o.Joined,
 		
@@ -500,6 +507,10 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	
 	if PeerId, ok := UserqueueMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
+	}
+    
+	if SuppressInQueueCallRecording, ok := UserqueueMap["suppressInQueueCallRecording"].(bool); ok {
+		o.SuppressInQueueCallRecording = &SuppressInQueueCallRecording
 	}
     
 	if Joined, ok := UserqueueMap["joined"].(bool); ok {
