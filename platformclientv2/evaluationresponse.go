@@ -45,6 +45,9 @@ type Evaluationresponse struct {
 	// Assignee
 	Assignee *User `json:"assignee,omitempty"`
 
+	// AssigneeApplicable - Indicates whether an assignee is applicable for the evaluation. Set to false when assignee is not applicable.
+	AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+
 	// ReleaseDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReleaseDate *time.Time `json:"releaseDate,omitempty"`
 
@@ -236,6 +239,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		Assignee *User `json:"assignee,omitempty"`
 		
+		AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+		
 		ReleaseDate *string `json:"releaseDate,omitempty"`
 		
 		AssignedDate *string `json:"assignedDate,omitempty"`
@@ -296,6 +301,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		AgentHasRead: o.AgentHasRead,
 		
 		Assignee: o.Assignee,
+		
+		AssigneeApplicable: o.AssigneeApplicable,
 		
 		ReleaseDate: ReleaseDate,
 		
@@ -396,6 +403,10 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AssigneeString, &o.Assignee)
 	}
 	
+	if AssigneeApplicable, ok := EvaluationresponseMap["assigneeApplicable"].(bool); ok {
+		o.AssigneeApplicable = &AssigneeApplicable
+	}
+    
 	if releaseDateString, ok := EvaluationresponseMap["releaseDate"].(string); ok {
 		ReleaseDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", releaseDateString)
 		o.ReleaseDate = &ReleaseDate

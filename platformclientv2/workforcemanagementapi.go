@@ -4474,7 +4474,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 
 // GetWorkforcemanagementManagementunitActivitycodes invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/activitycodes
 //
-// Get activity codes
+// Deprecated: Instead use /api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes. Get the list of activity codes
 //
 // Deprecated: GetWorkforcemanagementManagementunitActivitycodes is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitActivitycodes(managementUnitId string) (*Activitycodecontainer, *APIResponse, error) {

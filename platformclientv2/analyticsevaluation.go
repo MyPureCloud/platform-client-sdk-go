@@ -15,6 +15,9 @@ type Analyticsevaluation struct {
 	// AssigneeId - UserId of the assignee
 	AssigneeId *string `json:"assigneeId,omitempty"`
 
+	// AssigneeApplicable - Indicates whether an assignee is applicable for the evaluation. Set to false when assignee is not applicable
+	AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+
 	// CalibrationId - The calibration ID used for the purpose of training evaluators
 	CalibrationId *string `json:"calibrationId,omitempty"`
 
@@ -134,6 +137,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		AssigneeId *string `json:"assigneeId,omitempty"`
 		
+		AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+		
 		CalibrationId *string `json:"calibrationId,omitempty"`
 		
 		ContextId *string `json:"contextId,omitempty"`
@@ -166,6 +171,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		AssigneeId: o.AssigneeId,
+		
+		AssigneeApplicable: o.AssigneeApplicable,
 		
 		CalibrationId: o.CalibrationId,
 		
@@ -209,6 +216,10 @@ func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
 	
 	if AssigneeId, ok := AnalyticsevaluationMap["assigneeId"].(string); ok {
 		o.AssigneeId = &AssigneeId
+	}
+    
+	if AssigneeApplicable, ok := AnalyticsevaluationMap["assigneeApplicable"].(bool); ok {
+		o.AssigneeApplicable = &AssigneeApplicable
 	}
     
 	if CalibrationId, ok := AnalyticsevaluationMap["calibrationId"].(string); ok {

@@ -494,11 +494,17 @@ type Viewfilter struct {
 	// WorkitemStatuses - The list of Workitem Statuses IDs
 	WorkitemStatuses *[]string `json:"workitemStatuses,omitempty"`
 
-	// IsAnalyzedForSensitiveData - Filter to indicate the transcript has been analyzed for sensitive data.
+	// IsAnalyzedForSensitiveData - Deprecated - Use hasPciData or hasPiiData instead.
 	IsAnalyzedForSensitiveData *bool `json:"isAnalyzedForSensitiveData,omitempty"`
 
-	// HasSensitiveData - Filter to indicate the transcript contains sensitive data.
+	// HasSensitiveData - Deprecated. Use hasPciData or hasPiiData instead.
 	HasSensitiveData *bool `json:"hasSensitiveData,omitempty"`
+
+	// HasPciData - Filter to indicate the transcript contains Pci data.
+	HasPciData *bool `json:"hasPciData,omitempty"`
+
+	// HasPiiData - Filter to indicate the transcript contains Pii data.
+	HasPiiData *bool `json:"hasPiiData,omitempty"`
 
 	// SubPath - Filter for Sub Path
 	SubPath *string `json:"subPath,omitempty"`
@@ -914,6 +920,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		HasSensitiveData *bool `json:"hasSensitiveData,omitempty"`
 		
+		HasPciData *bool `json:"hasPciData,omitempty"`
+		
+		HasPiiData *bool `json:"hasPiiData,omitempty"`
+		
 		SubPath *string `json:"subPath,omitempty"`
 		
 		UserState *string `json:"userState,omitempty"`
@@ -1256,6 +1266,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		IsAnalyzedForSensitiveData: o.IsAnalyzedForSensitiveData,
 		
 		HasSensitiveData: o.HasSensitiveData,
+		
+		HasPciData: o.HasPciData,
+		
+		HasPiiData: o.HasPiiData,
 		
 		SubPath: o.SubPath,
 		
@@ -2062,6 +2076,14 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
     
 	if HasSensitiveData, ok := ViewfilterMap["hasSensitiveData"].(bool); ok {
 		o.HasSensitiveData = &HasSensitiveData
+	}
+    
+	if HasPciData, ok := ViewfilterMap["hasPciData"].(bool); ok {
+		o.HasPciData = &HasPciData
+	}
+    
+	if HasPiiData, ok := ViewfilterMap["hasPiiData"].(bool); ok {
+		o.HasPiiData = &HasPiiData
 	}
     
 	if SubPath, ok := ViewfilterMap["subPath"].(string); ok {

@@ -47,6 +47,12 @@ type Recordingmessagingmessage struct {
 
 	// Story - Ephemeral story content.
 	Story *Recordingcontentstory `json:"story,omitempty"`
+
+	// Cards - List of cards offered for this message
+	Cards *[]Card `json:"cards,omitempty"`
+
+	// ContentType - Indicates the content type for this message
+	ContentType *string `json:"contentType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -143,6 +149,10 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		ButtonResponse *Buttonresponse `json:"buttonResponse,omitempty"`
 		
 		Story *Recordingcontentstory `json:"story,omitempty"`
+		
+		Cards *[]Card `json:"cards,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -168,6 +178,10 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		ButtonResponse: o.ButtonResponse,
 		
 		Story: o.Story,
+		
+		Cards: o.Cards,
+		
+		ContentType: o.ContentType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -235,6 +249,15 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(StoryString, &o.Story)
 	}
 	
+	if Cards, ok := RecordingmessagingmessageMap["cards"].([]interface{}); ok {
+		CardsString, _ := json.Marshal(Cards)
+		json.Unmarshal(CardsString, &o.Cards)
+	}
+	
+	if ContentType, ok := RecordingmessagingmessageMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+    
 
 	return nil
 }

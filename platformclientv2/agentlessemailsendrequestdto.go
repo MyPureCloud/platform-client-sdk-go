@@ -20,7 +20,7 @@ type Agentlessemailsendrequestdto struct {
 	// FromAddress - The sender of the message.
 	FromAddress *Emailaddress `json:"fromAddress,omitempty"`
 
-	// ToAddresses - The recipient of the message. So far, only one recipient is allowed. This is a list, only for future usage.
+	// ToAddresses - The recipient of the message. We currently support one recipient only.
 	ToAddresses *[]Emailaddress `json:"toAddresses,omitempty"`
 
 	// ReplyToAddress - The address to use for reply.
