@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -47,6 +48,9 @@ type Dialercontact struct {
 	// ConfigurationOverrides - the priority property within ConfigurationOverides indicates whether or not the contact to be placed in front of the queue or at the end of the queue
 	ConfigurationOverrides *Configurationoverrides `json:"configurationOverrides,omitempty"`
 
+	// DateCreated - Timestamp for when the contact was added. Contacts added prior to 2023 September 1 may be missing this value. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -80,7 +84,7 @@ func (o Dialercontact) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateCreated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -113,6 +117,14 @@ func (o Dialercontact) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Dialercontact
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -137,6 +149,8 @@ func (o Dialercontact) MarshalJSON() ([]byte, error) {
 		ContactColumnTimeZones *map[string]Contactcolumntimezone `json:"contactColumnTimeZones,omitempty"`
 		
 		ConfigurationOverrides *Configurationoverrides `json:"configurationOverrides,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -164,6 +178,8 @@ func (o Dialercontact) MarshalJSON() ([]byte, error) {
 		ContactColumnTimeZones: o.ContactColumnTimeZones,
 		
 		ConfigurationOverrides: o.ConfigurationOverrides,
+		
+		DateCreated: DateCreated,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -231,6 +247,11 @@ func (o *Dialercontact) UnmarshalJSON(b []byte) error {
 	if ConfigurationOverrides, ok := DialercontactMap["configurationOverrides"].(map[string]interface{}); ok {
 		ConfigurationOverridesString, _ := json.Marshal(ConfigurationOverrides)
 		json.Unmarshal(ConfigurationOverridesString, &o.ConfigurationOverrides)
+	}
+	
+	if dateCreatedString, ok := DialercontactMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
 	}
 	
 	if SelfUri, ok := DialercontactMap["selfUri"].(string); ok {

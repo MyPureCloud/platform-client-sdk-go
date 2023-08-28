@@ -22,6 +22,9 @@ type Gamificationscorecardchangetopicperformancemetric struct {
 
 	// PunctualityEvents
 	PunctualityEvents *[]Gamificationscorecardchangetopicpunctualityevent `json:"punctualityEvents,omitempty"`
+
+	// EvaluationDetails
+	EvaluationDetails *[]Gamificationscorecardchangetopicevaluationdetail `json:"evaluationDetails,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Gamificationscorecardchangetopicperformancemetric) MarshalJSON() ([]byte
 		Value *float32 `json:"value,omitempty"`
 		
 		PunctualityEvents *[]Gamificationscorecardchangetopicpunctualityevent `json:"punctualityEvents,omitempty"`
+		
+		EvaluationDetails *[]Gamificationscorecardchangetopicevaluationdetail `json:"evaluationDetails,omitempty"`
 		Alias
 	}{ 
 		Metric: o.Metric,
@@ -103,6 +108,8 @@ func (o Gamificationscorecardchangetopicperformancemetric) MarshalJSON() ([]byte
 		Value: o.Value,
 		
 		PunctualityEvents: o.PunctualityEvents,
+		
+		EvaluationDetails: o.EvaluationDetails,
 		Alias:    (Alias)(o),
 	})
 }
@@ -132,6 +139,11 @@ func (o *Gamificationscorecardchangetopicperformancemetric) UnmarshalJSON(b []by
 	if PunctualityEvents, ok := GamificationscorecardchangetopicperformancemetricMap["punctualityEvents"].([]interface{}); ok {
 		PunctualityEventsString, _ := json.Marshal(PunctualityEvents)
 		json.Unmarshal(PunctualityEventsString, &o.PunctualityEvents)
+	}
+	
+	if EvaluationDetails, ok := GamificationscorecardchangetopicperformancemetricMap["evaluationDetails"].([]interface{}); ok {
+		EvaluationDetailsString, _ := json.Marshal(EvaluationDetails)
+		json.Unmarshal(EvaluationDetailsString, &o.EvaluationDetails)
 	}
 	
 

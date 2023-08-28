@@ -122,6 +122,15 @@ type Journeysessioneventsnotificationsessionevent struct {
 
 	// Authenticated
 	Authenticated *bool `json:"authenticated,omitempty"`
+
+	// App
+	App *Journeysessioneventsnotificationapp `json:"app,omitempty"`
+
+	// SdkLibrary
+	SdkLibrary *Journeysessioneventsnotificationsdklibrary `json:"sdkLibrary,omitempty"`
+
+	// NetworkConnectivity
+	NetworkConnectivity *Journeysessioneventsnotificationnetworkconnectivity `json:"networkConnectivity,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -292,6 +301,12 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		LastAcdOutcome *string `json:"lastAcdOutcome,omitempty"`
 		
 		Authenticated *bool `json:"authenticated,omitempty"`
+		
+		App *Journeysessioneventsnotificationapp `json:"app,omitempty"`
+		
+		SdkLibrary *Journeysessioneventsnotificationsdklibrary `json:"sdkLibrary,omitempty"`
+		
+		NetworkConnectivity *Journeysessioneventsnotificationnetworkconnectivity `json:"networkConnectivity,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -367,6 +382,12 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		LastAcdOutcome: o.LastAcdOutcome,
 		
 		Authenticated: o.Authenticated,
+		
+		App: o.App,
+		
+		SdkLibrary: o.SdkLibrary,
+		
+		NetworkConnectivity: o.NetworkConnectivity,
 		Alias:    (Alias)(o),
 	})
 }
@@ -550,6 +571,21 @@ func (o *Journeysessioneventsnotificationsessionevent) UnmarshalJSON(b []byte) e
 		o.Authenticated = &Authenticated
 	}
     
+	if App, ok := JourneysessioneventsnotificationsessioneventMap["app"].(map[string]interface{}); ok {
+		AppString, _ := json.Marshal(App)
+		json.Unmarshal(AppString, &o.App)
+	}
+	
+	if SdkLibrary, ok := JourneysessioneventsnotificationsessioneventMap["sdkLibrary"].(map[string]interface{}); ok {
+		SdkLibraryString, _ := json.Marshal(SdkLibrary)
+		json.Unmarshal(SdkLibraryString, &o.SdkLibrary)
+	}
+	
+	if NetworkConnectivity, ok := JourneysessioneventsnotificationsessioneventMap["networkConnectivity"].(map[string]interface{}); ok {
+		NetworkConnectivityString, _ := json.Marshal(NetworkConnectivity)
+		json.Unmarshal(NetworkConnectivityString, &o.NetworkConnectivity)
+	}
+	
 
 	return nil
 }

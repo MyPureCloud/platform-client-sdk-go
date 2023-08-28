@@ -48,6 +48,9 @@ type Event struct {
 	// WebEvent - Event that tracks user interactions with content in a browser such as pageviews, downloads, mobile ad clicks, etc.
 	WebEvent *Webevent `json:"webEvent,omitempty"`
 
+	// AppEvent - Event that tracks user interactions with content in an application such as screen views, searches, etc.
+	AppEvent *Appevent `json:"appEvent,omitempty"`
+
 	// CreatedDate - Timestamp indicating when the event actually took place. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 }
@@ -147,6 +150,8 @@ func (o Event) MarshalJSON() ([]byte, error) {
 		
 		WebEvent *Webevent `json:"webEvent,omitempty"`
 		
+		AppEvent *Appevent `json:"appEvent,omitempty"`
+		
 		CreatedDate *string `json:"createdDate,omitempty"`
 		Alias
 	}{ 
@@ -173,6 +178,8 @@ func (o Event) MarshalJSON() ([]byte, error) {
 		WebActionEvent: o.WebActionEvent,
 		
 		WebEvent: o.WebEvent,
+		
+		AppEvent: o.AppEvent,
 		
 		CreatedDate: CreatedDate,
 		Alias:    (Alias)(o),
@@ -239,6 +246,11 @@ func (o *Event) UnmarshalJSON(b []byte) error {
 	if WebEvent, ok := EventMap["webEvent"].(map[string]interface{}); ok {
 		WebEventString, _ := json.Marshal(WebEvent)
 		json.Unmarshal(WebEventString, &o.WebEvent)
+	}
+	
+	if AppEvent, ok := EventMap["appEvent"].(map[string]interface{}); ok {
+		AppEventString, _ := json.Marshal(AppEvent)
+		json.Unmarshal(AppEventString, &o.AppEvent)
 	}
 	
 	if createdDateString, ok := EventMap["createdDate"].(string); ok {

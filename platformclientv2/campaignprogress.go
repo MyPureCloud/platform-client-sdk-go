@@ -28,6 +28,9 @@ type Campaignprogress struct {
 
 	// Percentage - Percentage of contacts processed during the campaign
 	Percentage *int `json:"percentage,omitempty"`
+
+	// NumberOfContactsSkipped - Number of contacts skipped during the campaign
+	NumberOfContactsSkipped *map[string]int `json:"numberOfContactsSkipped,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Campaignprogress) MarshalJSON() ([]byte, error) {
 		TotalNumberOfContacts *int `json:"totalNumberOfContacts,omitempty"`
 		
 		Percentage *int `json:"percentage,omitempty"`
+		
+		NumberOfContactsSkipped *map[string]int `json:"numberOfContactsSkipped,omitempty"`
 		Alias
 	}{ 
 		Campaign: o.Campaign,
@@ -117,6 +122,8 @@ func (o Campaignprogress) MarshalJSON() ([]byte, error) {
 		TotalNumberOfContacts: o.TotalNumberOfContacts,
 		
 		Percentage: o.Percentage,
+		
+		NumberOfContactsSkipped: o.NumberOfContactsSkipped,
 		Alias:    (Alias)(o),
 	})
 }
@@ -156,6 +163,11 @@ func (o *Campaignprogress) UnmarshalJSON(b []byte) error {
 	if Percentage, ok := CampaignprogressMap["percentage"].(float64); ok {
 		PercentageInt := int(Percentage)
 		o.Percentage = &PercentageInt
+	}
+	
+	if NumberOfContactsSkipped, ok := CampaignprogressMap["numberOfContactsSkipped"].(map[string]interface{}); ok {
+		NumberOfContactsSkippedString, _ := json.Marshal(NumberOfContactsSkipped)
+		json.Unmarshal(NumberOfContactsSkippedString, &o.NumberOfContactsSkipped)
 	}
 	
 

@@ -87,6 +87,9 @@ type Evaluationqualityv2topicevaluationv2 struct {
 	// PreviousAssigneeUserId
 	PreviousAssigneeUserId *string `json:"previousAssigneeUserId,omitempty"`
 
+	// AssigneeApplicable
+	AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+
 	// EvaluationContextId
 	EvaluationContextId *string `json:"evaluationContextId,omitempty"`
 
@@ -116,6 +119,9 @@ type Evaluationqualityv2topicevaluationv2 struct {
 
 	// PreviousRescoreCount
 	PreviousRescoreCount *int `json:"previousRescoreCount,omitempty"`
+
+	// PreviousEvaluatorUserId
+	PreviousEvaluatorUserId *string `json:"previousEvaluatorUserId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -271,6 +277,8 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		
 		PreviousAssigneeUserId *string `json:"previousAssigneeUserId,omitempty"`
 		
+		AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+		
 		EvaluationContextId *string `json:"evaluationContextId,omitempty"`
 		
 		DisputeCount *int `json:"disputeCount,omitempty"`
@@ -290,6 +298,8 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		AgentCommentHasUpdated *bool `json:"agentCommentHasUpdated,omitempty"`
 		
 		PreviousRescoreCount *int `json:"previousRescoreCount,omitempty"`
+		
+		PreviousEvaluatorUserId *string `json:"previousEvaluatorUserId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -342,6 +352,8 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		
 		PreviousAssigneeUserId: o.PreviousAssigneeUserId,
 		
+		AssigneeApplicable: o.AssigneeApplicable,
+		
 		EvaluationContextId: o.EvaluationContextId,
 		
 		DisputeCount: o.DisputeCount,
@@ -361,6 +373,8 @@ func (o Evaluationqualityv2topicevaluationv2) MarshalJSON() ([]byte, error) {
 		AgentCommentHasUpdated: o.AgentCommentHasUpdated,
 		
 		PreviousRescoreCount: o.PreviousRescoreCount,
+		
+		PreviousEvaluatorUserId: o.PreviousEvaluatorUserId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -484,6 +498,10 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 		o.PreviousAssigneeUserId = &PreviousAssigneeUserId
 	}
     
+	if AssigneeApplicable, ok := Evaluationqualityv2topicevaluationv2Map["assigneeApplicable"].(bool); ok {
+		o.AssigneeApplicable = &AssigneeApplicable
+	}
+    
 	if EvaluationContextId, ok := Evaluationqualityv2topicevaluationv2Map["evaluationContextId"].(string); ok {
 		o.EvaluationContextId = &EvaluationContextId
 	}
@@ -529,6 +547,10 @@ func (o *Evaluationqualityv2topicevaluationv2) UnmarshalJSON(b []byte) error {
 		o.PreviousRescoreCount = &PreviousRescoreCountInt
 	}
 	
+	if PreviousEvaluatorUserId, ok := Evaluationqualityv2topicevaluationv2Map["previousEvaluatorUserId"].(string); ok {
+		o.PreviousEvaluatorUserId = &PreviousEvaluatorUserId
+	}
+    
 
 	return nil
 }

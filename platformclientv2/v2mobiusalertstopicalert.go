@@ -56,6 +56,9 @@ type V2mobiusalertstopicalert struct {
 
 	// Action
 	Action *string `json:"action,omitempty"`
+
+	// AlertSummary
+	AlertSummary *V2mobiusalertstopicalertsummary `json:"alertSummary,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -182,6 +185,8 @@ func (o V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
 		DateSnoozedUntil *string `json:"dateSnoozedUntil,omitempty"`
 		
 		Action *string `json:"action,omitempty"`
+		
+		AlertSummary *V2mobiusalertstopicalertsummary `json:"alertSummary,omitempty"`
 		Alias
 	}{ 
 		Rule: o.Rule,
@@ -213,6 +218,8 @@ func (o V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
 		DateSnoozedUntil: DateSnoozedUntil,
 		
 		Action: o.Action,
+		
+		AlertSummary: o.AlertSummary,
 		Alias:    (Alias)(o),
 	})
 }
@@ -294,6 +301,11 @@ func (o *V2mobiusalertstopicalert) UnmarshalJSON(b []byte) error {
 		o.Action = &Action
 	}
     
+	if AlertSummary, ok := V2mobiusalertstopicalertMap["alertSummary"].(map[string]interface{}); ok {
+		AlertSummaryString, _ := json.Marshal(AlertSummary)
+		json.Unmarshal(AlertSummaryString, &o.AlertSummary)
+	}
+	
 
 	return nil
 }

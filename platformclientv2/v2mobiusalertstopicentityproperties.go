@@ -22,6 +22,9 @@ type V2mobiusalertstopicentityproperties struct {
 
 	// QueueDisplayName
 	QueueDisplayName *string `json:"queueDisplayName,omitempty"`
+
+	// TeamDisplayName
+	TeamDisplayName *string `json:"teamDisplayName,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o V2mobiusalertstopicentityproperties) MarshalJSON() ([]byte, error) {
 		GroupDisplayName *string `json:"groupDisplayName,omitempty"`
 		
 		QueueDisplayName *string `json:"queueDisplayName,omitempty"`
+		
+		TeamDisplayName *string `json:"teamDisplayName,omitempty"`
 		Alias
 	}{ 
 		EntityType: o.EntityType,
@@ -103,6 +108,8 @@ func (o V2mobiusalertstopicentityproperties) MarshalJSON() ([]byte, error) {
 		GroupDisplayName: o.GroupDisplayName,
 		
 		QueueDisplayName: o.QueueDisplayName,
+		
+		TeamDisplayName: o.TeamDisplayName,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *V2mobiusalertstopicentityproperties) UnmarshalJSON(b []byte) error {
     
 	if QueueDisplayName, ok := V2mobiusalertstopicentitypropertiesMap["queueDisplayName"].(string); ok {
 		o.QueueDisplayName = &QueueDisplayName
+	}
+    
+	if TeamDisplayName, ok := V2mobiusalertstopicentitypropertiesMap["teamDisplayName"].(string); ok {
+		o.TeamDisplayName = &TeamDisplayName
 	}
     
 

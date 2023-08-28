@@ -17,13 +17,13 @@ type Apiusagesimplesearch struct {
 	// Metrics - Behaves like a SQL SELECT clause. Enables retrieving only named metrics. If omitted, all metrics that are available will be returned (like SELECT *).
 	Metrics *[]string `json:"metrics,omitempty"`
 
-	// OauthClientNames - Behaves like a SQL WHERE with multiple AND operators. Specifies a list of OAuth client names to be queried.
+	// OauthClientNames - Behaves like a SQL WHERE with multiple IN operators. Specifies a list of OAuth client names to be queried.
 	OauthClientNames *[]string `json:"oauthClientNames,omitempty"`
 
-	// HttpMethods - Behaves like a SQL WHERE with multiple AND operators. Specifies a list of HTTP methods to be queried.
+	// HttpMethods - Behaves like a SQL WHERE with multiple IN operators. Specifies a list of HTTP methods to be queried.
 	HttpMethods *[]string `json:"httpMethods,omitempty"`
 
-	// TemplateUris - Behaves like a SQL WHERE with multiple AND operators. Specifies a list of Template Uris to be queried.
+	// TemplateUris - Behaves like a SQL WHERE with multiple IN operators. Specifies a list of Template Uris to be queried.
 	TemplateUris *[]string `json:"templateUris,omitempty"`
 }
 

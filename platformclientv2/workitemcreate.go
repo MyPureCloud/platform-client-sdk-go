@@ -45,7 +45,7 @@ type Workitemcreate struct {
 	// TypeId - The ID of the Worktype of the Workitem.
 	TypeId *string `json:"typeId,omitempty"`
 
-	// CustomFields - Custom fields defined in the schema referenced by the Workitems Worktype.
+	// CustomFields - Custom fields defined in the schema referenced by the worktype of the workitem.
 	CustomFields *map[string]interface{} `json:"customFields,omitempty"`
 
 	// QueueId - The ID of the Workitems queue. Must be a valid UUID.

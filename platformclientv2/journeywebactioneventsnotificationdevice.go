@@ -23,6 +23,9 @@ type Journeywebactioneventsnotificationdevice struct {
 	// ScreenWidth
 	ScreenWidth *int `json:"screenWidth,omitempty"`
 
+	// ScreenDensity
+	ScreenDensity *int `json:"screenDensity,omitempty"`
+
 	// Fingerprint
 	Fingerprint *string `json:"fingerprint,omitempty"`
 
@@ -34,6 +37,9 @@ type Journeywebactioneventsnotificationdevice struct {
 
 	// Category
 	Category *string `json:"category,omitempty"`
+
+	// Manufacturer
+	Manufacturer *string `json:"manufacturer,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -107,6 +113,8 @@ func (o Journeywebactioneventsnotificationdevice) MarshalJSON() ([]byte, error) 
 		
 		ScreenWidth *int `json:"screenWidth,omitempty"`
 		
+		ScreenDensity *int `json:"screenDensity,omitempty"`
+		
 		Fingerprint *string `json:"fingerprint,omitempty"`
 		
 		OsFamily *string `json:"osFamily,omitempty"`
@@ -114,6 +122,8 @@ func (o Journeywebactioneventsnotificationdevice) MarshalJSON() ([]byte, error) 
 		OsVersion *string `json:"osVersion,omitempty"`
 		
 		Category *string `json:"category,omitempty"`
+		
+		Manufacturer *string `json:"manufacturer,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -124,6 +134,8 @@ func (o Journeywebactioneventsnotificationdevice) MarshalJSON() ([]byte, error) 
 		
 		ScreenWidth: o.ScreenWidth,
 		
+		ScreenDensity: o.ScreenDensity,
+		
 		Fingerprint: o.Fingerprint,
 		
 		OsFamily: o.OsFamily,
@@ -131,6 +143,8 @@ func (o Journeywebactioneventsnotificationdevice) MarshalJSON() ([]byte, error) 
 		OsVersion: o.OsVersion,
 		
 		Category: o.Category,
+		
+		Manufacturer: o.Manufacturer,
 		Alias:    (Alias)(o),
 	})
 }
@@ -160,6 +174,11 @@ func (o *Journeywebactioneventsnotificationdevice) UnmarshalJSON(b []byte) error
 		o.ScreenWidth = &ScreenWidthInt
 	}
 	
+	if ScreenDensity, ok := JourneywebactioneventsnotificationdeviceMap["screenDensity"].(float64); ok {
+		ScreenDensityInt := int(ScreenDensity)
+		o.ScreenDensity = &ScreenDensityInt
+	}
+	
 	if Fingerprint, ok := JourneywebactioneventsnotificationdeviceMap["fingerprint"].(string); ok {
 		o.Fingerprint = &Fingerprint
 	}
@@ -174,6 +193,10 @@ func (o *Journeywebactioneventsnotificationdevice) UnmarshalJSON(b []byte) error
     
 	if Category, ok := JourneywebactioneventsnotificationdeviceMap["category"].(string); ok {
 		o.Category = &Category
+	}
+    
+	if Manufacturer, ok := JourneywebactioneventsnotificationdeviceMap["manufacturer"].(string); ok {
+		o.Manufacturer = &Manufacturer
 	}
     
 

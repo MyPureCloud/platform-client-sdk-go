@@ -51,7 +51,7 @@ type Workitemupdate struct {
 	// AssignmentOperation - Set this value to AgentAssignmentAlerting and supply an 'assigneeId' to assign the workitem to an agent and alert the agent of the assignment. Set this value to QueueAssignmentAlerting and supply a 'queueId' to route the workitem to an agent who is a member of the queue and alert the agent.
 	AssignmentOperation *string `json:"assignmentOperation,omitempty"`
 
-	// CustomFields - Custom fields defined in the schema referenced by the Workitem. If set to {}, the existing keys and values will be removed.
+	// CustomFields - Custom fields defined in the schema referenced by the worktype of the workitem. If set to {}, the existing keys and values will be removed.
 	CustomFields *map[string]interface{} `json:"customFields,omitempty"`
 
 	// QueueId - The ID of the Workitems queue. Must be a valid UUID.

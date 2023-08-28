@@ -428,7 +428,7 @@ func (a AnalyticsApi) GetAnalyticsActionsAggregatesJobResults(jobId string, curs
 //
 // Get Reporting Turns.
 //
-// Returns the reporting turns grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list.
+// Returns the reporting turns grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list. For pagination, clients should keep sending requests using the value of &#39;nextUri&#39; in the response, until it&#39;s no longer present, only then have all items have been returned. Note: resources returned by this endpoint do not persist indefinitely, as they auto delete after a predefined period.
 func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after string, pageSize string, actionId string, sessionId string, language string, askActionResults string) (*Reportingturnsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -8818,30 +8818,31 @@ func (a ConversationsApi) PatchConversationsCallParticipant(conversationId strin
 // PatchConversationsCallParticipantAttributes invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-func (a ConversationsApi) PatchConversationsCallParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
+func (a ConversationsApi) PatchConversationsCallParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/attributes"
 	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	defaultReturn := new(Participantattributes)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallParticipantAttributes")
 	}
 
 	headerParams := make(map[string]string)
@@ -8894,14 +8895,20 @@ func (a ConversationsApi) PatchConversationsCallParticipantAttributes(conversati
 	// body params
 	postBody = &body
 
-
+	var successPayload *Participantattributes
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Participantattributes" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // PatchConversationsCallParticipantCommunication invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}
@@ -9284,30 +9291,31 @@ func (a ConversationsApi) PatchConversationsCallbackParticipant(conversationId s
 // PatchConversationsCallbackParticipantAttributes invokes PATCH /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-func (a ConversationsApi) PatchConversationsCallbackParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
+func (a ConversationsApi) PatchConversationsCallbackParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/attributes"
 	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	defaultReturn := new(Participantattributes)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallbackParticipantAttributes")
 	}
 
 	headerParams := make(map[string]string)
@@ -9360,14 +9368,20 @@ func (a ConversationsApi) PatchConversationsCallbackParticipantAttributes(conver
 	// body params
 	postBody = &body
 
-
+	var successPayload *Participantattributes
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Participantattributes" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // PatchConversationsCallbackParticipantCommunication invokes PATCH /api/v2/conversations/callbacks/{conversationId}/participants/{participantId}/communications/{communicationId}
@@ -9738,30 +9752,31 @@ func (a ConversationsApi) PatchConversationsChatParticipant(conversationId strin
 // PatchConversationsChatParticipantAttributes invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
+func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/chats/{conversationId}/participants/{participantId}/attributes"
 	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	defaultReturn := new(Participantattributes)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsChatParticipantAttributes")
 	}
 
 	headerParams := make(map[string]string)
@@ -9814,14 +9829,20 @@ func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversati
 	// body params
 	postBody = &body
 
-
+	var successPayload *Participantattributes
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Participantattributes" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // PatchConversationsChatParticipantCommunication invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}
@@ -10103,25 +10124,26 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipant(conversat
 // PatchConversationsCobrowsesessionParticipantAttributes invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
+func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/attributes"
 	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	defaultReturn := new(Participantattributes)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCobrowsesessionParticipantAttributes")
 	}
 
 	headerParams := make(map[string]string)
@@ -10174,14 +10196,20 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes
 	// body params
 	postBody = &body
 
-
+	var successPayload *Participantattributes
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Participantattributes" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // PatchConversationsCobrowsesessionParticipantCommunication invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}
@@ -10557,30 +10585,31 @@ func (a ConversationsApi) PatchConversationsEmailParticipant(conversationId stri
 // PatchConversationsEmailParticipantAttributes invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-func (a ConversationsApi) PatchConversationsEmailParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
+func (a ConversationsApi) PatchConversationsEmailParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/emails/{conversationId}/participants/{participantId}/attributes"
 	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	defaultReturn := new(Participantattributes)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsEmailParticipantAttributes")
 	}
 
 	headerParams := make(map[string]string)
@@ -10633,14 +10662,20 @@ func (a ConversationsApi) PatchConversationsEmailParticipantAttributes(conversat
 	// body params
 	postBody = &body
 
-
+	var successPayload *Participantattributes
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Participantattributes" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // PatchConversationsEmailParticipantCommunication invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}
@@ -10922,25 +10957,26 @@ func (a ConversationsApi) PatchConversationsMessageParticipant(conversationId st
 // PatchConversationsMessageParticipantAttributes invokes PATCH /api/v2/conversations/messages/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
-func (a ConversationsApi) PatchConversationsMessageParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*APIResponse, error) {
+func (a ConversationsApi) PatchConversationsMessageParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/participants/{participantId}/attributes"
 	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
 	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	defaultReturn := new(Participantattributes)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsMessageParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsMessageParticipantAttributes")
 	}
 	// verify the required parameter 'participantId' is set
 	if &participantId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsMessageParticipantAttributes")
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsMessageParticipantAttributes")
 	}
 
 	headerParams := make(map[string]string)
@@ -10993,14 +11029,20 @@ func (a ConversationsApi) PatchConversationsMessageParticipantAttributes(convers
 	// body params
 	postBody = &body
 
-
+	var successPayload *Participantattributes
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Participantattributes" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // PatchConversationsMessageParticipantCommunication invokes PATCH /api/v2/conversations/messages/{conversationId}/participants/{participantId}/communications/{communicationId}

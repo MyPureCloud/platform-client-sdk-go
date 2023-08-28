@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -37,6 +38,9 @@ type V2mobiusrulestopicrule struct {
 
 	// Action
 	Action *string `json:"action,omitempty"`
+
+	// DateCreated
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -68,7 +72,7 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateCreated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -101,6 +105,14 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias V2mobiusrulestopicrule
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -119,6 +131,8 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 		InAlarm *bool `json:"inAlarm,omitempty"`
 		
 		Action *string `json:"action,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -138,6 +152,8 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 		InAlarm: o.InAlarm,
 		
 		Action: o.Action,
+		
+		DateCreated: DateCreated,
 		Alias:    (Alias)(o),
 	})
 }
@@ -189,6 +205,11 @@ func (o *V2mobiusrulestopicrule) UnmarshalJSON(b []byte) error {
 		o.Action = &Action
 	}
     
+	if dateCreatedString, ok := V2mobiusrulestopicruleMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
 
 	return nil
 }

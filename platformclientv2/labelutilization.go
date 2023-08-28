@@ -14,8 +14,8 @@ type Labelutilization struct {
 	// MaximumCapacity - Defines the maximum number of interactions with this label that an agent can handle at one time.
 	MaximumCapacity *int `json:"maximumCapacity,omitempty"`
 
-	// InterruptingLabels - Defines the list of other labels that can interrupt an interaction with this label.
-	InterruptingLabels *[]string `json:"interruptingLabels,omitempty"`
+	// InterruptingLabelIds - Defines other labels that can interrupt an interaction with this label.
+	InterruptingLabelIds *[]string `json:"interruptingLabelIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,12 +83,12 @@ func (o Labelutilization) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		MaximumCapacity *int `json:"maximumCapacity,omitempty"`
 		
-		InterruptingLabels *[]string `json:"interruptingLabels,omitempty"`
+		InterruptingLabelIds *[]string `json:"interruptingLabelIds,omitempty"`
 		Alias
 	}{ 
 		MaximumCapacity: o.MaximumCapacity,
 		
-		InterruptingLabels: o.InterruptingLabels,
+		InterruptingLabelIds: o.InterruptingLabelIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -105,9 +105,9 @@ func (o *Labelutilization) UnmarshalJSON(b []byte) error {
 		o.MaximumCapacity = &MaximumCapacityInt
 	}
 	
-	if InterruptingLabels, ok := LabelutilizationMap["interruptingLabels"].([]interface{}); ok {
-		InterruptingLabelsString, _ := json.Marshal(InterruptingLabels)
-		json.Unmarshal(InterruptingLabelsString, &o.InterruptingLabels)
+	if InterruptingLabelIds, ok := LabelutilizationMap["interruptingLabelIds"].([]interface{}); ok {
+		InterruptingLabelIdsString, _ := json.Marshal(InterruptingLabelIds)
+		json.Unmarshal(InterruptingLabelIdsString, &o.InterruptingLabelIds)
 	}
 	
 

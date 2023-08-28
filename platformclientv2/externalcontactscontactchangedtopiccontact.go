@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -85,6 +86,12 @@ type Externalcontactscontactchangedtopiccontact struct {
 
 	// CustomFields
 	CustomFields *map[string]interface{} `json:"customFields,omitempty"`
+
+	// CreateDate
+	CreateDate *time.Time `json:"createDate,omitempty"`
+
+	// ModifyDate
+	ModifyDate *time.Time `json:"modifyDate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -116,7 +123,7 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "CreateDate","ModifyDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -148,6 +155,22 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Externalcontactscontactchangedtopiccontact
+	
+	CreateDate := new(string)
+	if o.CreateDate != nil {
+		
+		*CreateDate = timeutil.Strftime(o.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreateDate = nil
+	}
+	
+	ModifyDate := new(string)
+	if o.ModifyDate != nil {
+		
+		*ModifyDate = timeutil.Strftime(o.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifyDate = nil
+	}
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
@@ -199,6 +222,10 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		Schema *Externalcontactscontactchangedtopicdataschema `json:"schema,omitempty"`
 		
 		CustomFields *map[string]interface{} `json:"customFields,omitempty"`
+		
+		CreateDate *string `json:"createDate,omitempty"`
+		
+		ModifyDate *string `json:"modifyDate,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -250,6 +277,10 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		Schema: o.Schema,
 		
 		CustomFields: o.CustomFields,
+		
+		CreateDate: CreateDate,
+		
+		ModifyDate: ModifyDate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -372,6 +403,16 @@ func (o *Externalcontactscontactchangedtopiccontact) UnmarshalJSON(b []byte) err
 	if CustomFields, ok := ExternalcontactscontactchangedtopiccontactMap["customFields"].(map[string]interface{}); ok {
 		CustomFieldsString, _ := json.Marshal(CustomFields)
 		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+	if createDateString, ok := ExternalcontactscontactchangedtopiccontactMap["createDate"].(string); ok {
+		CreateDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createDateString)
+		o.CreateDate = &CreateDate
+	}
+	
+	if modifyDateString, ok := ExternalcontactscontactchangedtopiccontactMap["modifyDate"].(string); ok {
+		ModifyDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifyDateString)
+		o.ModifyDate = &ModifyDate
 	}
 	
 

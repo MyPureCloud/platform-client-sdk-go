@@ -12,11 +12,11 @@ import (
 type Analyticsevaluation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// AssigneeId - UserId of the assignee
-	AssigneeId *string `json:"assigneeId,omitempty"`
-
 	// AssigneeApplicable - Indicates whether an assignee is applicable for the evaluation. Set to false when assignee is not applicable
 	AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+
+	// AssigneeId - UserId of the assignee
+	AssigneeId *string `json:"assigneeId,omitempty"`
 
 	// CalibrationId - The calibration ID used for the purpose of training evaluators
 	CalibrationId *string `json:"calibrationId,omitempty"`
@@ -135,9 +135,9 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		AssigneeId *string `json:"assigneeId,omitempty"`
-		
 		AssigneeApplicable *bool `json:"assigneeApplicable,omitempty"`
+		
+		AssigneeId *string `json:"assigneeId,omitempty"`
 		
 		CalibrationId *string `json:"calibrationId,omitempty"`
 		
@@ -170,9 +170,9 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		OTotalScore *int `json:"oTotalScore,omitempty"`
 		Alias
 	}{ 
-		AssigneeId: o.AssigneeId,
-		
 		AssigneeApplicable: o.AssigneeApplicable,
+		
+		AssigneeId: o.AssigneeId,
 		
 		CalibrationId: o.CalibrationId,
 		
@@ -214,12 +214,12 @@ func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if AssigneeId, ok := AnalyticsevaluationMap["assigneeId"].(string); ok {
-		o.AssigneeId = &AssigneeId
-	}
-    
 	if AssigneeApplicable, ok := AnalyticsevaluationMap["assigneeApplicable"].(bool); ok {
 		o.AssigneeApplicable = &AssigneeApplicable
+	}
+    
+	if AssigneeId, ok := AnalyticsevaluationMap["assigneeId"].(string); ok {
+		o.AssigneeId = &AssigneeId
 	}
     
 	if CalibrationId, ok := AnalyticsevaluationMap["calibrationId"].(string); ok {

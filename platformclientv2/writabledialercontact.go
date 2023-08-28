@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -34,6 +35,9 @@ type Writabledialercontact struct {
 
 	// ContactableStatus - A map of media types (Voice, SMS and Email) to ContactableStatus, which indicates if the contact can be contacted using the specified media type.
 	ContactableStatus *map[string]Contactablestatus `json:"contactableStatus,omitempty"`
+
+	// DateCreated - Timestamp for when the contact was added. Contacts added prior to 2023 September 1 may be missing this value. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -65,7 +69,7 @@ func (o Writabledialercontact) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateCreated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -98,6 +102,14 @@ func (o Writabledialercontact) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Writabledialercontact
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -114,6 +126,8 @@ func (o Writabledialercontact) MarshalJSON() ([]byte, error) {
 		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
 		
 		ContactableStatus *map[string]Contactablestatus `json:"contactableStatus,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -131,6 +145,8 @@ func (o Writabledialercontact) MarshalJSON() ([]byte, error) {
 		PhoneNumberStatus: o.PhoneNumberStatus,
 		
 		ContactableStatus: o.ContactableStatus,
+		
+		DateCreated: DateCreated,
 		Alias:    (Alias)(o),
 	})
 }
@@ -177,6 +193,11 @@ func (o *Writabledialercontact) UnmarshalJSON(b []byte) error {
 	if ContactableStatus, ok := WritabledialercontactMap["contactableStatus"].(map[string]interface{}); ok {
 		ContactableStatusString, _ := json.Marshal(ContactableStatus)
 		json.Unmarshal(ContactableStatusString, &o.ContactableStatus)
+	}
+	
+	if dateCreatedString, ok := WritabledialercontactMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
 	}
 	
 

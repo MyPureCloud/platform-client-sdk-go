@@ -5166,7 +5166,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 
 // GetTelephonyProvidersEdgesPhones invokes GET /api/v2/telephony/providers/edges/phones
 //
-// Get a list of Phone Instances
+// Get a list of Phone Instances. A maximum of 10,000 results is returned when filtering the results or sorting by a field other than the ID. Sorting by only the ID has no result limit. Each filter supports a wildcard, *, as a value to search for partial values.
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber int, pageSize int, sortBy string, sortOrder string, siteId string, webRtcUserId string, phoneBaseSettingsId string, linesLoggedInUserId string, linesDefaultForUserId string, phoneHardwareId string, linesId string, linesName string, name string, statusOperationalStatus string, secondaryStatusOperationalStatus string, expand []string, fields []string) (*Phoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

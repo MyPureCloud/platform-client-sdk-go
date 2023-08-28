@@ -243,6 +243,12 @@ type Flowmetricstopicflowmetricrecord struct {
 	// RoutingRing - Routing ring for bullseye or preferred agent routing
 	RoutingRing *int `json:"routingRing,omitempty"`
 
+	// RoutingRule - Routing rule for preferred, conditional and predictive routing type
+	RoutingRule *string `json:"routingRule,omitempty"`
+
+	// RoutingRuleType - Routing rule type
+	RoutingRuleType *string `json:"routingRuleType,omitempty"`
+
 	// SelectedAgentId - Selected agent ID
 	SelectedAgentId *string `json:"selectedAgentId,omitempty"`
 
@@ -523,6 +529,10 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		
 		RoutingRing *int `json:"routingRing,omitempty"`
 		
+		RoutingRule *string `json:"routingRule,omitempty"`
+		
+		RoutingRuleType *string `json:"routingRuleType,omitempty"`
+		
 		SelectedAgentId *string `json:"selectedAgentId,omitempty"`
 		
 		SelectedAgentRank *int `json:"selectedAgentRank,omitempty"`
@@ -713,6 +723,10 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		RoutingPriority: o.RoutingPriority,
 		
 		RoutingRing: o.RoutingRing,
+		
+		RoutingRule: o.RoutingRule,
+		
+		RoutingRuleType: o.RoutingRuleType,
 		
 		SelectedAgentId: o.SelectedAgentId,
 		
@@ -1084,6 +1098,14 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 		o.RoutingRing = &RoutingRingInt
 	}
 	
+	if RoutingRule, ok := FlowmetricstopicflowmetricrecordMap["routingRule"].(string); ok {
+		o.RoutingRule = &RoutingRule
+	}
+    
+	if RoutingRuleType, ok := FlowmetricstopicflowmetricrecordMap["routingRuleType"].(string); ok {
+		o.RoutingRuleType = &RoutingRuleType
+	}
+    
 	if SelectedAgentId, ok := FlowmetricstopicflowmetricrecordMap["selectedAgentId"].(string); ok {
 		o.SelectedAgentId = &SelectedAgentId
 	}

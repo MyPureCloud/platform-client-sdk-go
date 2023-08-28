@@ -69,6 +69,15 @@ type Session struct {
 	// Referrer - Identifies the page URL that originally generated the request for the current page being viewed.
 	Referrer *Referrer `json:"referrer,omitempty"`
 
+	// App - Application that the customer is interacting with (for app sessions).
+	App *Journeyapp `json:"app,omitempty"`
+
+	// SdkLibrary - SDK library used to generate the events for the session (for app and web sessions).
+	SdkLibrary *Sdklibrary `json:"sdkLibrary,omitempty"`
+
+	// NetworkConnectivity - Information relating to the device's network connectivity (for app sessions).
+	NetworkConnectivity *Networkconnectivity `json:"networkConnectivity,omitempty"`
+
 	// SearchTerms - Search terms associated with the session.
 	SearchTerms *[]string `json:"searchTerms,omitempty"`
 
@@ -272,6 +281,12 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		
 		Referrer *Referrer `json:"referrer,omitempty"`
 		
+		App *Journeyapp `json:"app,omitempty"`
+		
+		SdkLibrary *Sdklibrary `json:"sdkLibrary,omitempty"`
+		
+		NetworkConnectivity *Networkconnectivity `json:"networkConnectivity,omitempty"`
+		
 		SearchTerms *[]string `json:"searchTerms,omitempty"`
 		
 		UserAgentString *string `json:"userAgentString,omitempty"`
@@ -356,6 +371,12 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		MktCampaign: o.MktCampaign,
 		
 		Referrer: o.Referrer,
+		
+		App: o.App,
+		
+		SdkLibrary: o.SdkLibrary,
+		
+		NetworkConnectivity: o.NetworkConnectivity,
 		
 		SearchTerms: o.SearchTerms,
 		
@@ -497,6 +518,21 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	if Referrer, ok := SessionMap["referrer"].(map[string]interface{}); ok {
 		ReferrerString, _ := json.Marshal(Referrer)
 		json.Unmarshal(ReferrerString, &o.Referrer)
+	}
+	
+	if App, ok := SessionMap["app"].(map[string]interface{}); ok {
+		AppString, _ := json.Marshal(App)
+		json.Unmarshal(AppString, &o.App)
+	}
+	
+	if SdkLibrary, ok := SessionMap["sdkLibrary"].(map[string]interface{}); ok {
+		SdkLibraryString, _ := json.Marshal(SdkLibrary)
+		json.Unmarshal(SdkLibraryString, &o.SdkLibrary)
+	}
+	
+	if NetworkConnectivity, ok := SessionMap["networkConnectivity"].(map[string]interface{}); ok {
+		NetworkConnectivityString, _ := json.Marshal(NetworkConnectivity)
+		json.Unmarshal(NetworkConnectivityString, &o.NetworkConnectivity)
 	}
 	
 	if SearchTerms, ok := SessionMap["searchTerms"].([]interface{}); ok {
