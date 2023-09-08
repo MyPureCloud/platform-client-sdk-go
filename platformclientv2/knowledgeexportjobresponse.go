@@ -33,6 +33,9 @@ type Knowledgeexportjobresponse struct {
 	// KnowledgeBase - Knowledge base which document export belongs to.
 	KnowledgeBase *Knowledgebase `json:"knowledgeBase,omitempty"`
 
+	// CreatedBy - The user who created the operation
+	CreatedBy *Userreference `json:"createdBy,omitempty"`
+
 	// DateCreated - The timestamp of when the export began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -139,6 +142,8 @@ func (o Knowledgeexportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		KnowledgeBase *Knowledgebase `json:"knowledgeBase,omitempty"`
 		
+		CreatedBy *Userreference `json:"createdBy,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -161,6 +166,8 @@ func (o Knowledgeexportjobresponse) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		KnowledgeBase: o.KnowledgeBase,
+		
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
@@ -209,6 +216,11 @@ func (o *Knowledgeexportjobresponse) UnmarshalJSON(b []byte) error {
 	if KnowledgeBase, ok := KnowledgeexportjobresponseMap["knowledgeBase"].(map[string]interface{}); ok {
 		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
+	}
+	
+	if CreatedBy, ok := KnowledgeexportjobresponseMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
 	}
 	
 	if dateCreatedString, ok := KnowledgeexportjobresponseMap["dateCreated"].(string); ok {

@@ -29,6 +29,9 @@ type Servicegoaltemplate struct {
 	// Metadata - Version metadata for the service goal template
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+	// ImpactOverride - Settings controlling max percent increase and decrease of service goals for this service goal template
+	ImpactOverride *Servicegoaltemplateimpactoverride `json:"impactOverride,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Servicegoaltemplate) MarshalJSON() ([]byte, error) {
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		
+		ImpactOverride *Servicegoaltemplateimpactoverride `json:"impactOverride,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Servicegoaltemplate) MarshalJSON() ([]byte, error) {
 		AbandonRate: o.AbandonRate,
 		
 		Metadata: o.Metadata,
+		
+		ImpactOverride: o.ImpactOverride,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -161,6 +168,11 @@ func (o *Servicegoaltemplate) UnmarshalJSON(b []byte) error {
 	if Metadata, ok := ServicegoaltemplateMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if ImpactOverride, ok := ServicegoaltemplateMap["impactOverride"].(map[string]interface{}); ok {
+		ImpactOverrideString, _ := json.Marshal(ImpactOverride)
+		json.Unmarshal(ImpactOverrideString, &o.ImpactOverride)
 	}
 	
 	if SelfUri, ok := ServicegoaltemplateMap["selfUri"].(string); ok {

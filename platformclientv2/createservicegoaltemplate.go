@@ -22,6 +22,9 @@ type Createservicegoaltemplate struct {
 
 	// AbandonRate - Abandon rate targets for this service goal template
 	AbandonRate *Buabandonrate `json:"abandonRate,omitempty"`
+
+	// ImpactOverride - Settings controlling max percent increase and decrease of service goals for this service goal template
+	ImpactOverride *Servicegoaltemplateimpactoverride `json:"impactOverride,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Createservicegoaltemplate) MarshalJSON() ([]byte, error) {
 		AverageSpeedOfAnswer *Buaveragespeedofanswer `json:"averageSpeedOfAnswer,omitempty"`
 		
 		AbandonRate *Buabandonrate `json:"abandonRate,omitempty"`
+		
+		ImpactOverride *Servicegoaltemplateimpactoverride `json:"impactOverride,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -103,6 +108,8 @@ func (o Createservicegoaltemplate) MarshalJSON() ([]byte, error) {
 		AverageSpeedOfAnswer: o.AverageSpeedOfAnswer,
 		
 		AbandonRate: o.AbandonRate,
+		
+		ImpactOverride: o.ImpactOverride,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +138,11 @@ func (o *Createservicegoaltemplate) UnmarshalJSON(b []byte) error {
 	if AbandonRate, ok := CreateservicegoaltemplateMap["abandonRate"].(map[string]interface{}); ok {
 		AbandonRateString, _ := json.Marshal(AbandonRate)
 		json.Unmarshal(AbandonRateString, &o.AbandonRate)
+	}
+	
+	if ImpactOverride, ok := CreateservicegoaltemplateMap["impactOverride"].(map[string]interface{}); ok {
+		ImpactOverrideString, _ := json.Marshal(ImpactOverride)
+		json.Unmarshal(ImpactOverrideString, &o.ImpactOverride)
 	}
 	
 

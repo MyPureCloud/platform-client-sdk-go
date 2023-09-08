@@ -45,6 +45,12 @@ type Timeoffrequest struct {
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
+	// DurationMinutes - Daily durations for each day of this time off request in minutes
+	DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+
+	// PayableMinutes - Payable minutes for each day of this time off request
+	PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+
 	// Notes - Notes about the time off request
 	Notes *string `json:"notes,omitempty"`
 
@@ -59,6 +65,9 @@ type Timeoffrequest struct {
 
 	// ReviewedDate - The timestamp when this request was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReviewedDate *time.Time `json:"reviewedDate,omitempty"`
+
+	// SyncVersion - The sync version of this time off request for which the scheduled activity is associated
+	SyncVersion *int `json:"syncVersion,omitempty"`
 
 	// Metadata - The version metadata of the time off request
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
@@ -168,6 +177,10 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 		
+		DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+		
+		PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+		
 		Notes *string `json:"notes,omitempty"`
 		
 		SubmittedBy *Userreference `json:"submittedBy,omitempty"`
@@ -177,6 +190,8 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 		ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 		
 		ReviewedDate *string `json:"reviewedDate,omitempty"`
+		
+		SyncVersion *int `json:"syncVersion,omitempty"`
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		
@@ -205,6 +220,10 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 		
 		DailyDurationMinutes: o.DailyDurationMinutes,
 		
+		DurationMinutes: o.DurationMinutes,
+		
+		PayableMinutes: o.PayableMinutes,
+		
 		Notes: o.Notes,
 		
 		SubmittedBy: o.SubmittedBy,
@@ -214,6 +233,8 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 		ReviewedBy: o.ReviewedBy,
 		
 		ReviewedDate: ReviewedDate,
+		
+		SyncVersion: o.SyncVersion,
 		
 		Metadata: o.Metadata,
 		
@@ -277,6 +298,16 @@ func (o *Timeoffrequest) UnmarshalJSON(b []byte) error {
 		o.DailyDurationMinutes = &DailyDurationMinutesInt
 	}
 	
+	if DurationMinutes, ok := TimeoffrequestMap["durationMinutes"].([]interface{}); ok {
+		DurationMinutesString, _ := json.Marshal(DurationMinutes)
+		json.Unmarshal(DurationMinutesString, &o.DurationMinutes)
+	}
+	
+	if PayableMinutes, ok := TimeoffrequestMap["payableMinutes"].([]interface{}); ok {
+		PayableMinutesString, _ := json.Marshal(PayableMinutes)
+		json.Unmarshal(PayableMinutesString, &o.PayableMinutes)
+	}
+	
 	if Notes, ok := TimeoffrequestMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
@@ -299,6 +330,11 @@ func (o *Timeoffrequest) UnmarshalJSON(b []byte) error {
 	if reviewedDateString, ok := TimeoffrequestMap["reviewedDate"].(string); ok {
 		ReviewedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", reviewedDateString)
 		o.ReviewedDate = &ReviewedDate
+	}
+	
+	if SyncVersion, ok := TimeoffrequestMap["syncVersion"].(float64); ok {
+		SyncVersionInt := int(SyncVersion)
+		o.SyncVersion = &SyncVersionInt
 	}
 	
 	if Metadata, ok := TimeoffrequestMap["metadata"].(map[string]interface{}); ok {

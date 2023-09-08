@@ -3035,7 +3035,7 @@ func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, 
 // GetRoutingMessageRecipients invokes GET /api/v2/routing/message/recipients
 //
 // Get recipients
-func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize int, pageNumber int) (*Recipientlisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, name string, pageSize int, pageNumber int) (*Recipientlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/message/recipients"
@@ -3063,6 +3063,8 @@ func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize i
 	}
 	
 	queryParams["messengerType"] = a.Configuration.APIClient.ParameterToString(messengerType, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
@@ -9419,11 +9421,11 @@ func (a RoutingApi) PostRoutingSkillgroupMembersDivisions(skillGroupId string, b
 // PostRoutingSkillgroups invokes POST /api/v2/routing/skillgroups
 //
 // Create a skill group
-func (a RoutingApi) PostRoutingSkillgroups(body Skillgroup) (*Skillgroup, *APIResponse, error) {
+func (a RoutingApi) PostRoutingSkillgroups(body Skillgroupwithmemberdivisions) (*Skillgroupwithmemberdivisions, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skillgroups"
-	defaultReturn := new(Skillgroup)
+	defaultReturn := new(Skillgroupwithmemberdivisions)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -9484,14 +9486,14 @@ func (a RoutingApi) PostRoutingSkillgroups(body Skillgroup) (*Skillgroup, *APIRe
 	// body params
 	postBody = &body
 
-	var successPayload *Skillgroup
+	var successPayload *Skillgroupwithmemberdivisions
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Skillgroup" == "string" {
+		if "Skillgroupwithmemberdivisions" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -10369,7 +10371,7 @@ func (a RoutingApi) PutRoutingEmailOutboundDomainActivation(domainId string) (*E
 // PutRoutingMessageRecipient invokes PUT /api/v2/routing/message/recipients/{recipientId}
 //
 // Update a recipient
-func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipient) (*Recipient, *APIResponse, error) {
+func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipientrequest) (*Recipient, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/message/recipients/{recipientId}"

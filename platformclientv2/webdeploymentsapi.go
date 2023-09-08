@@ -667,7 +667,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished boo
 // GetWebdeploymentsDeployment invokes GET /api/v2/webdeployments/deployments/{deploymentId}
 //
 // Get a deployment
-func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*Webdeployment, *APIResponse, error) {
+func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string, expand []string) (*Webdeployment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}"
@@ -699,6 +699,8 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string) (*We
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -832,7 +834,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentCobrowseSessionId(deployme
 // GetWebdeploymentsDeploymentConfigurations invokes GET /api/v2/webdeployments/deployments/{deploymentId}/configurations
 //
 // Get active configuration for a given deployment
-func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentId string, varType string) (*Webdeploymentactiveconfigurationondeployment, *APIResponse, error) {
+func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentId string, varType string, expand []string) (*Webdeploymentactiveconfigurationondeployment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments/{deploymentId}/configurations"
@@ -866,6 +868,8 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentI
 	}
 	
 	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

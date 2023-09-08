@@ -23,6 +23,9 @@ type Shifttradeactivitypreviewresponse struct {
 
 	// CountsAsPaidTime - Whether this activity counts as paid time
 	CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+
+	// PayableMinutes - Payable minutes for this activity
+	PayableMinutes *int `json:"payableMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -103,6 +106,8 @@ func (o Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
 		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		PayableMinutes *int `json:"payableMinutes,omitempty"`
 		Alias
 	}{ 
 		StartDate: StartDate,
@@ -112,6 +117,8 @@ func (o Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
 		ActivityCodeId: o.ActivityCodeId,
 		
 		CountsAsPaidTime: o.CountsAsPaidTime,
+		
+		PayableMinutes: o.PayableMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -141,6 +148,11 @@ func (o *Shifttradeactivitypreviewresponse) UnmarshalJSON(b []byte) error {
 		o.CountsAsPaidTime = &CountsAsPaidTime
 	}
     
+	if PayableMinutes, ok := ShifttradeactivitypreviewresponseMap["payableMinutes"].(float64); ok {
+		PayableMinutesInt := int(PayableMinutes)
+		o.PayableMinutes = &PayableMinutesInt
+	}
+	
 
 	return nil
 }

@@ -27,8 +27,14 @@ type Bufulldaytimeoffmarker struct {
 	// Paid - Whether the time off marker is paid
 	Paid *bool `json:"paid,omitempty"`
 
+	// PayableMinutes - Payable minutes for the time off marker
+	PayableMinutes *int `json:"payableMinutes,omitempty"`
+
 	// TimeOffRequestId - The ID of the time off request
 	TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+
+	// TimeOffRequestSyncVersion - The sync version of the full day time off request for which the scheduled activity is associated
+	TimeOffRequestSyncVersion *int `json:"timeOffRequestSyncVersion,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -111,7 +117,11 @@ func (o Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 		
 		Paid *bool `json:"paid,omitempty"`
 		
+		PayableMinutes *int `json:"payableMinutes,omitempty"`
+		
 		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+		
+		TimeOffRequestSyncVersion *int `json:"timeOffRequestSyncVersion,omitempty"`
 		Alias
 	}{ 
 		BusinessUnitDate: BusinessUnitDate,
@@ -124,7 +134,11 @@ func (o Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 		
 		Paid: o.Paid,
 		
+		PayableMinutes: o.PayableMinutes,
+		
 		TimeOffRequestId: o.TimeOffRequestId,
+		
+		TimeOffRequestSyncVersion: o.TimeOffRequestSyncVersion,
 		Alias:    (Alias)(o),
 	})
 }
@@ -158,10 +172,20 @@ func (o *Bufulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
 		o.Paid = &Paid
 	}
     
+	if PayableMinutes, ok := BufulldaytimeoffmarkerMap["payableMinutes"].(float64); ok {
+		PayableMinutesInt := int(PayableMinutes)
+		o.PayableMinutes = &PayableMinutesInt
+	}
+	
 	if TimeOffRequestId, ok := BufulldaytimeoffmarkerMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
     
+	if TimeOffRequestSyncVersion, ok := BufulldaytimeoffmarkerMap["timeOffRequestSyncVersion"].(float64); ok {
+		TimeOffRequestSyncVersionInt := int(TimeOffRequestSyncVersion)
+		o.TimeOffRequestSyncVersion = &TimeOffRequestSyncVersionInt
+	}
+	
 
 	return nil
 }

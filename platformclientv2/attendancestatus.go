@@ -17,6 +17,9 @@ type Attendancestatus struct {
 
 	// AttendanceStatusType - the attendance status
 	AttendanceStatusType *string `json:"attendanceStatusType,omitempty"`
+
+	// HasEvaluation - the quality evaluation score status
+	HasEvaluation *string `json:"hasEvaluation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,11 +95,15 @@ func (o Attendancestatus) MarshalJSON() ([]byte, error) {
 		DateWorkday *string `json:"dateWorkday,omitempty"`
 		
 		AttendanceStatusType *string `json:"attendanceStatusType,omitempty"`
+		
+		HasEvaluation *string `json:"hasEvaluation,omitempty"`
 		Alias
 	}{ 
 		DateWorkday: DateWorkday,
 		
 		AttendanceStatusType: o.AttendanceStatusType,
+		
+		HasEvaluation: o.HasEvaluation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -115,6 +122,10 @@ func (o *Attendancestatus) UnmarshalJSON(b []byte) error {
 	
 	if AttendanceStatusType, ok := AttendancestatusMap["attendanceStatusType"].(string); ok {
 		o.AttendanceStatusType = &AttendanceStatusType
+	}
+    
+	if HasEvaluation, ok := AttendancestatusMap["hasEvaluation"].(string); ok {
+		o.HasEvaluation = &HasEvaluation
 	}
     
 

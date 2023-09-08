@@ -176,7 +176,7 @@ func (a TokensApi) DeleteTokensMe() (*APIResponse, error) {
 // GetTokensMe invokes GET /api/v2/tokens/me
 //
 // Fetch information about the current token
-func (a TokensApi) GetTokensMe() (*Tokeninfo, *APIResponse, error) {
+func (a TokensApi) GetTokensMe(preserveIdleTTL bool) (*Tokeninfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/tokens/me"
@@ -202,6 +202,8 @@ func (a TokensApi) GetTokensMe() (*Tokeninfo, *APIResponse, error) {
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["preserveIdleTTL"] = a.Configuration.APIClient.ParameterToString(preserveIdleTTL, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

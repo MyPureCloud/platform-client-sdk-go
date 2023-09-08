@@ -27,6 +27,9 @@ type Webdeployment struct {
 	// AllowedDomains - The list of domains that are approved to use this deployment; the list will be added to CORS headers for ease of web use.
 	AllowedDomains *[]string `json:"allowedDomains,omitempty"`
 
+	// SupportedContent - The supported content profile for a deployment
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
 	// Snippet - Javascript snippet used to load the config
 	Snippet *string `json:"snippet,omitempty"`
 
@@ -141,6 +144,8 @@ func (o Webdeployment) MarshalJSON() ([]byte, error) {
 		
 		AllowedDomains *[]string `json:"allowedDomains,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		Snippet *string `json:"snippet,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -167,6 +172,8 @@ func (o Webdeployment) MarshalJSON() ([]byte, error) {
 		AllowAllDomains: o.AllowAllDomains,
 		
 		AllowedDomains: o.AllowedDomains,
+		
+		SupportedContent: o.SupportedContent,
 		
 		Snippet: o.Snippet,
 		
@@ -213,6 +220,11 @@ func (o *Webdeployment) UnmarshalJSON(b []byte) error {
 	if AllowedDomains, ok := WebdeploymentMap["allowedDomains"].([]interface{}); ok {
 		AllowedDomainsString, _ := json.Marshal(AllowedDomains)
 		json.Unmarshal(AllowedDomainsString, &o.AllowedDomains)
+	}
+	
+	if SupportedContent, ok := WebdeploymentMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if Snippet, ok := WebdeploymentMap["snippet"].(string); ok {

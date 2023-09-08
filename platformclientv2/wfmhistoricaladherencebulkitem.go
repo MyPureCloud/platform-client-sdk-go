@@ -26,6 +26,9 @@ type Wfmhistoricaladherencebulkitem struct {
 
 	// IncludeExceptions - Whether user exceptions should be returned as part of the results. Defaults to false if not specified.
 	IncludeExceptions *bool `json:"includeExceptions,omitempty"`
+
+	// IncludeActuals - Whether user actual activities should be returned as part of the results. Defaults to false if not specified.
+	IncludeActuals *bool `json:"includeActuals,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -116,6 +119,8 @@ func (o Wfmhistoricaladherencebulkitem) MarshalJSON() ([]byte, error) {
 		UserIds *[]string `json:"userIds,omitempty"`
 		
 		IncludeExceptions *bool `json:"includeExceptions,omitempty"`
+		
+		IncludeActuals *bool `json:"includeActuals,omitempty"`
 		Alias
 	}{ 
 		ManagementUnitId: o.ManagementUnitId,
@@ -127,6 +132,8 @@ func (o Wfmhistoricaladherencebulkitem) MarshalJSON() ([]byte, error) {
 		UserIds: o.UserIds,
 		
 		IncludeExceptions: o.IncludeExceptions,
+		
+		IncludeActuals: o.IncludeActuals,
 		Alias:    (Alias)(o),
 	})
 }
@@ -159,6 +166,10 @@ func (o *Wfmhistoricaladherencebulkitem) UnmarshalJSON(b []byte) error {
 	
 	if IncludeExceptions, ok := WfmhistoricaladherencebulkitemMap["includeExceptions"].(bool); ok {
 		o.IncludeExceptions = &IncludeExceptions
+	}
+    
+	if IncludeActuals, ok := WfmhistoricaladherencebulkitemMap["includeActuals"].(bool); ok {
+		o.IncludeActuals = &IncludeActuals
 	}
     
 

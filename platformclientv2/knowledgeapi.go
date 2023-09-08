@@ -2503,7 +2503,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseExportJob(knowledgeBaseId string,
 // GetKnowledgeKnowledgebaseImportJob invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/import/jobs/{importJobId}
 //
 // Get import job report
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseImportJob(knowledgeBaseId string, importJobId string) (*Knowledgeimportjobresponse, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseImportJob(knowledgeBaseId string, importJobId string, expand []string) (*Knowledgeimportjobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/import/jobs/{importJobId}"
@@ -2541,6 +2541,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseImportJob(knowledgeBaseId string,
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -4027,7 +4029,7 @@ func (a KnowledgeApi) PatchKnowledgeGuestSessionDocumentsSearchSearchId(sessionI
 // PatchKnowledgeKnowledgebase invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}
 //
 // Update knowledge base
-func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body Knowledgebase) (*Knowledgebase, *APIResponse, error) {
+func (a KnowledgeApi) PatchKnowledgeKnowledgebase(knowledgeBaseId string, body Knowledgebaseupdaterequest) (*Knowledgebase, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}"
@@ -7548,7 +7550,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, b
 // PostKnowledgeKnowledgebases invokes POST /api/v2/knowledge/knowledgebases
 //
 // Create new knowledge base
-func (a KnowledgeApi) PostKnowledgeKnowledgebases(body Knowledgebase) (*Knowledgebase, *APIResponse, error) {
+func (a KnowledgeApi) PostKnowledgeKnowledgebases(body Knowledgebasecreaterequest) (*Knowledgebase, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases"

@@ -26,6 +26,12 @@ type Createagenttimeoffrequest struct {
 
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
+
+	// DurationMinutes - Daily durations for each day of this time off request in minutes
+	DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+
+	// PayableMinutes - Payable minutes for each day of this time off request
+	PayableMinutes *[]int `json:"payableMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -100,6 +106,10 @@ func (o Createagenttimeoffrequest) MarshalJSON() ([]byte, error) {
 		PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
 		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
+		
+		DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+		
+		PayableMinutes *[]int `json:"payableMinutes,omitempty"`
 		Alias
 	}{ 
 		ActivityCodeId: o.ActivityCodeId,
@@ -111,6 +121,10 @@ func (o Createagenttimeoffrequest) MarshalJSON() ([]byte, error) {
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
 		DailyDurationMinutes: o.DailyDurationMinutes,
+		
+		DurationMinutes: o.DurationMinutes,
+		
+		PayableMinutes: o.PayableMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +157,16 @@ func (o *Createagenttimeoffrequest) UnmarshalJSON(b []byte) error {
 	if DailyDurationMinutes, ok := CreateagenttimeoffrequestMap["dailyDurationMinutes"].(float64); ok {
 		DailyDurationMinutesInt := int(DailyDurationMinutes)
 		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+	if DurationMinutes, ok := CreateagenttimeoffrequestMap["durationMinutes"].([]interface{}); ok {
+		DurationMinutesString, _ := json.Marshal(DurationMinutes)
+		json.Unmarshal(DurationMinutesString, &o.DurationMinutes)
+	}
+	
+	if PayableMinutes, ok := CreateagenttimeoffrequestMap["payableMinutes"].([]interface{}); ok {
+		PayableMinutesString, _ := json.Marshal(PayableMinutes)
+		json.Unmarshal(PayableMinutesString, &o.PayableMinutes)
 	}
 	
 

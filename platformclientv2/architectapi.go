@@ -2452,6 +2452,98 @@ func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int, pageSize int, 
 	return successPayload, response, err
 }
 
+// GetArchitectEmergencygroupsDivisionviews invokes GET /api/v2/architect/emergencygroups/divisionviews
+//
+// Get a pageable list of basic emergency group objects filterable by query parameters.
+//
+// This returns emergency groups consisting of name and division. If one or more IDs are specified, the search will fetch flow outcomes that match the given ID(s) and not use any additional supplied query parameters in the search.
+func (a ArchitectApi) GetArchitectEmergencygroupsDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Emergencygroupdivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/architect/emergencygroups/divisionviews"
+	defaultReturn := new(Emergencygroupdivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Emergencygroupdivisionviewentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Emergencygroupdivisionviewentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetArchitectGrammar invokes GET /api/v2/architect/grammars/{grammarId}
 //
 // Get a grammar
@@ -2892,6 +2984,96 @@ func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy stri
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Ivrentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetArchitectIvrsDivisionviews invokes GET /api/v2/architect/ivrs/divisionviews
+//
+// Get a pageable list of basic ivr configuration information objects filterable by query parameters.
+func (a ArchitectApi) GetArchitectIvrsDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Ivrdivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/architect/ivrs/divisionviews"
+	defaultReturn := new(Ivrdivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Ivrdivisionviewentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Ivrdivisionviewentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -3602,6 +3784,96 @@ func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int, pageSize int, s
 	return successPayload, response, err
 }
 
+// GetArchitectSchedulegroupsDivisionviews invokes GET /api/v2/architect/schedulegroups/divisionviews
+//
+// Get a pageable list of basic schedule group configuration information objects filterable by query parameters.
+func (a ArchitectApi) GetArchitectSchedulegroupsDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Schedulegroupdivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/architect/schedulegroups/divisionviews"
+	defaultReturn := new(Schedulegroupdivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Schedulegroupdivisionviewentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Schedulegroupdivisionviewentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetArchitectSchedules invokes GET /api/v2/architect/schedules
 //
 // Get a list of schedules.
@@ -3682,6 +3954,96 @@ func (a ArchitectApi) GetArchitectSchedules(pageNumber int, pageSize int, sortBy
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Scheduleentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetArchitectSchedulesDivisionviews invokes GET /api/v2/architect/schedules/divisionviews
+//
+// Get a pageable list of basic schedule configuration information objects filterable by query parameters.
+func (a ArchitectApi) GetArchitectSchedulesDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Scheduledivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/architect/schedules/divisionviews"
+	defaultReturn := new(Scheduledivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Scheduledivisionviewentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Scheduledivisionviewentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -20,6 +20,9 @@ type Trenddata struct {
 
 	// PercentOfGoal - Percent of goal
 	PercentOfGoal *float64 `json:"percentOfGoal,omitempty"`
+
+	// AverageValue - Average metric value
+	AverageValue *float64 `json:"averageValue,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Trenddata) MarshalJSON() ([]byte, error) {
 		DateEndWorkday *string `json:"dateEndWorkday,omitempty"`
 		
 		PercentOfGoal *float64 `json:"percentOfGoal,omitempty"`
+		
+		AverageValue *float64 `json:"averageValue,omitempty"`
 		Alias
 	}{ 
 		DateStartWorkday: DateStartWorkday,
@@ -111,6 +116,8 @@ func (o Trenddata) MarshalJSON() ([]byte, error) {
 		DateEndWorkday: DateEndWorkday,
 		
 		PercentOfGoal: o.PercentOfGoal,
+		
+		AverageValue: o.AverageValue,
 		Alias:    (Alias)(o),
 	})
 }
@@ -134,6 +141,10 @@ func (o *Trenddata) UnmarshalJSON(b []byte) error {
 	
 	if PercentOfGoal, ok := TrenddataMap["percentOfGoal"].(float64); ok {
 		o.PercentOfGoal = &PercentOfGoal
+	}
+    
+	if AverageValue, ok := TrenddataMap["averageValue"].(float64); ok {
+		o.AverageValue = &AverageValue
 	}
     
 

@@ -33,6 +33,12 @@ type Createadmintimeoffrequest struct {
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
+	// DurationMinutes - Daily durations for each day of this time off request in minutes
+	DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+
+	// PayableMinutes - Payable minutes for each day of this time off request
+	PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+
 	// Paid - Whether this is a paid time off request
 	Paid *bool `json:"paid,omitempty"`
 }
@@ -114,6 +120,10 @@ func (o Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 		
+		DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+		
+		PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+		
 		Paid *bool `json:"paid,omitempty"`
 		Alias
 	}{ 
@@ -130,6 +140,10 @@ func (o Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
 		DailyDurationMinutes: o.DailyDurationMinutes,
+		
+		DurationMinutes: o.DurationMinutes,
+		
+		PayableMinutes: o.PayableMinutes,
 		
 		Paid: o.Paid,
 		Alias:    (Alias)(o),
@@ -173,6 +187,16 @@ func (o *Createadmintimeoffrequest) UnmarshalJSON(b []byte) error {
 	if DailyDurationMinutes, ok := CreateadmintimeoffrequestMap["dailyDurationMinutes"].(float64); ok {
 		DailyDurationMinutesInt := int(DailyDurationMinutes)
 		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+	if DurationMinutes, ok := CreateadmintimeoffrequestMap["durationMinutes"].([]interface{}); ok {
+		DurationMinutesString, _ := json.Marshal(DurationMinutes)
+		json.Unmarshal(DurationMinutesString, &o.DurationMinutes)
+	}
+	
+	if PayableMinutes, ok := CreateadmintimeoffrequestMap["payableMinutes"].([]interface{}); ok {
+		PayableMinutesString, _ := json.Marshal(PayableMinutes)
+		json.Unmarshal(PayableMinutesString, &o.PayableMinutes)
 	}
 	
 	if Paid, ok := CreateadmintimeoffrequestMap["paid"].(bool); ok {

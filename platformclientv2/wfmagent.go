@@ -35,7 +35,7 @@ type Wfmagent struct {
 	// Skills - The list of skills this agent is capable of handling
 	Skills *[]Routingskillreference `json:"skills,omitempty"`
 
-	// Schedulable - Whether the agent has the permission to be included in schedule generation
+	// Schedulable - Whether the agent can be included in schedule generation
 	Schedulable *bool `json:"schedulable,omitempty"`
 
 	// Metadata - Metadata for this agent

@@ -13,6 +13,12 @@ type Buschedulingsettingsresponse struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// MessageSeverities - Schedule generation message severity configuration
 	MessageSeverities *[]Schedulermessagetypeseverity `json:"messageSeverities,omitempty"`
+
+	// SyncTimeOffProperties - Synchronize set of time off properties from scheduled activities to time off requests when the schedule is published.
+	SyncTimeOffProperties *[]string `json:"syncTimeOffProperties,omitempty"`
+
+	// ServiceGoalImpact - Configures the max percent increase and decrease of service goals for this business unit
+	ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Buschedulingsettingsresponse) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		MessageSeverities *[]Schedulermessagetypeseverity `json:"messageSeverities,omitempty"`
+		
+		SyncTimeOffProperties *[]string `json:"syncTimeOffProperties,omitempty"`
+		
+		ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
 		Alias
 	}{ 
 		MessageSeverities: o.MessageSeverities,
+		
+		SyncTimeOffProperties: o.SyncTimeOffProperties,
+		
+		ServiceGoalImpact: o.ServiceGoalImpact,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +110,16 @@ func (o *Buschedulingsettingsresponse) UnmarshalJSON(b []byte) error {
 	if MessageSeverities, ok := BuschedulingsettingsresponseMap["messageSeverities"].([]interface{}); ok {
 		MessageSeveritiesString, _ := json.Marshal(MessageSeverities)
 		json.Unmarshal(MessageSeveritiesString, &o.MessageSeverities)
+	}
+	
+	if SyncTimeOffProperties, ok := BuschedulingsettingsresponseMap["syncTimeOffProperties"].([]interface{}); ok {
+		SyncTimeOffPropertiesString, _ := json.Marshal(SyncTimeOffProperties)
+		json.Unmarshal(SyncTimeOffPropertiesString, &o.SyncTimeOffProperties)
+	}
+	
+	if ServiceGoalImpact, ok := BuschedulingsettingsresponseMap["serviceGoalImpact"].(map[string]interface{}); ok {
+		ServiceGoalImpactString, _ := json.Marshal(ServiceGoalImpact)
+		json.Unmarshal(ServiceGoalImpactString, &o.ServiceGoalImpact)
 	}
 	
 

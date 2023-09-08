@@ -13,6 +13,9 @@ type Forecastplanninggroupsresponse struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
 	Entities *[]Forecastplanninggroupresponse `json:"entities,omitempty"`
+
+	// BusinessUnitServiceGoalImpact - A snapshot of a business unit’s service goal impact settings taken at forecast generation time.
+	BusinessUnitServiceGoalImpact *Wfmservicegoalimpactsettings `json:"businessUnitServiceGoalImpact,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Forecastplanninggroupsresponse) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Entities *[]Forecastplanninggroupresponse `json:"entities,omitempty"`
+		
+		BusinessUnitServiceGoalImpact *Wfmservicegoalimpactsettings `json:"businessUnitServiceGoalImpact,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
+		
+		BusinessUnitServiceGoalImpact: o.BusinessUnitServiceGoalImpact,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Forecastplanninggroupsresponse) UnmarshalJSON(b []byte) error {
 	if Entities, ok := ForecastplanninggroupsresponseMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if BusinessUnitServiceGoalImpact, ok := ForecastplanninggroupsresponseMap["businessUnitServiceGoalImpact"].(map[string]interface{}); ok {
+		BusinessUnitServiceGoalImpactString, _ := json.Marshal(BusinessUnitServiceGoalImpact)
+		json.Unmarshal(BusinessUnitServiceGoalImpactString, &o.BusinessUnitServiceGoalImpact)
 	}
 	
 

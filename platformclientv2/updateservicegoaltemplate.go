@@ -25,6 +25,9 @@ type Updateservicegoaltemplate struct {
 
 	// Metadata - Version metadata for the service goal template
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+
+	// ImpactOverride - Settings controlling max percent increase and decrease of service goals for this service goal template
+	ImpactOverride *Servicegoaltemplateimpactoverride `json:"impactOverride,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Updateservicegoaltemplate) MarshalJSON() ([]byte, error) {
 		AbandonRate *Buabandonrate `json:"abandonRate,omitempty"`
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		ImpactOverride *Servicegoaltemplateimpactoverride `json:"impactOverride,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -110,6 +115,8 @@ func (o Updateservicegoaltemplate) MarshalJSON() ([]byte, error) {
 		AbandonRate: o.AbandonRate,
 		
 		Metadata: o.Metadata,
+		
+		ImpactOverride: o.ImpactOverride,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,11 @@ func (o *Updateservicegoaltemplate) UnmarshalJSON(b []byte) error {
 	if Metadata, ok := UpdateservicegoaltemplateMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if ImpactOverride, ok := UpdateservicegoaltemplateMap["impactOverride"].(map[string]interface{}); ok {
+		ImpactOverrideString, _ := json.Marshal(ImpactOverride)
+		json.Unmarshal(ImpactOverrideString, &o.ImpactOverride)
 	}
 	
 

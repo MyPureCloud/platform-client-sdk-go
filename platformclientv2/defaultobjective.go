@@ -34,6 +34,9 @@ type Defaultobjective struct {
 
 	// TopicIdsFilterType - A filter type for topic Ids. It's only used for objectives with topicIds. Default filter behavior is \"or\".
 	TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
+
+	// EvaluationFormContextIds - The ids of associated evaluation form context, for Quality Evaluation Score metrics
+	EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Defaultobjective) MarshalJSON() ([]byte, error) {
 		Topics *[]Addressableentityref `json:"topics,omitempty"`
 		
 		TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
+		
+		EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -131,6 +136,8 @@ func (o Defaultobjective) MarshalJSON() ([]byte, error) {
 		Topics: o.Topics,
 		
 		TopicIdsFilterType: o.TopicIdsFilterType,
+		
+		EvaluationFormContextIds: o.EvaluationFormContextIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -178,6 +185,11 @@ func (o *Defaultobjective) UnmarshalJSON(b []byte) error {
 		o.TopicIdsFilterType = &TopicIdsFilterType
 	}
     
+	if EvaluationFormContextIds, ok := DefaultobjectiveMap["evaluationFormContextIds"].([]interface{}); ok {
+		EvaluationFormContextIdsString, _ := json.Marshal(EvaluationFormContextIds)
+		json.Unmarshal(EvaluationFormContextIdsString, &o.EvaluationFormContextIds)
+	}
+	
 
 	return nil
 }

@@ -11,7 +11,7 @@ import (
 type Wfmforecastmodificationintervaloffsetvalue struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// IntervalIndex - The number of 15 minute intervals past referenceStartDate to which to apply this modification
+	// IntervalIndex - The number of intervals past referenceStartDate to which to apply this modification
 	IntervalIndex *int `json:"intervalIndex,omitempty"`
 
 	// Value - The value to set for the given interval

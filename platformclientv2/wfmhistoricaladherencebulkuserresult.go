@@ -26,6 +26,9 @@ type Wfmhistoricaladherencebulkuserresult struct {
 	// ExceptionInfo - List of adherence exceptions for this user
 	ExceptionInfo *[]Historicaladherenceexceptioninfo `json:"exceptionInfo,omitempty"`
 
+	// Actuals - List of adherence actuals for this user
+	Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
+
 	// DayMetrics - Adherence and conformance metrics for days in query range
 	DayMetrics *[]Wfmhistoricaladherencebulkuserdaymetrics `json:"dayMetrics,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Wfmhistoricaladherencebulkuserresult) MarshalJSON() ([]byte, error) {
 		
 		ExceptionInfo *[]Historicaladherenceexceptioninfo `json:"exceptionInfo,omitempty"`
 		
+		Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
+		
 		DayMetrics *[]Wfmhistoricaladherencebulkuserdaymetrics `json:"dayMetrics,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Wfmhistoricaladherencebulkuserresult) MarshalJSON() ([]byte, error) {
 		Impact: o.Impact,
 		
 		ExceptionInfo: o.ExceptionInfo,
+		
+		Actuals: o.Actuals,
 		
 		DayMetrics: o.DayMetrics,
 		Alias:    (Alias)(o),
@@ -147,6 +154,11 @@ func (o *Wfmhistoricaladherencebulkuserresult) UnmarshalJSON(b []byte) error {
 	if ExceptionInfo, ok := WfmhistoricaladherencebulkuserresultMap["exceptionInfo"].([]interface{}); ok {
 		ExceptionInfoString, _ := json.Marshal(ExceptionInfo)
 		json.Unmarshal(ExceptionInfoString, &o.ExceptionInfo)
+	}
+	
+	if Actuals, ok := WfmhistoricaladherencebulkuserresultMap["actuals"].([]interface{}); ok {
+		ActualsString, _ := json.Marshal(Actuals)
+		json.Unmarshal(ActualsString, &o.Actuals)
 	}
 	
 	if DayMetrics, ok := WfmhistoricaladherencebulkuserresultMap["dayMetrics"].([]interface{}); ok {

@@ -30,6 +30,12 @@ type Admintimeoffrequestpatch struct {
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
+	// DurationMinutes - Daily durations for each day of this time off request in minutes
+	DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+
+	// PayableMinutes - Payable minutes for each day of this time off request
+	PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+
 	// Metadata - Version metadata for the time off request
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
@@ -109,6 +115,10 @@ func (o Admintimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 		
+		DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+		
+		PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
@@ -123,6 +133,10 @@ func (o Admintimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
 		DailyDurationMinutes: o.DailyDurationMinutes,
+		
+		DurationMinutes: o.DurationMinutes,
+		
+		PayableMinutes: o.PayableMinutes,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -161,6 +175,16 @@ func (o *Admintimeoffrequestpatch) UnmarshalJSON(b []byte) error {
 	if DailyDurationMinutes, ok := AdmintimeoffrequestpatchMap["dailyDurationMinutes"].(float64); ok {
 		DailyDurationMinutesInt := int(DailyDurationMinutes)
 		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+	if DurationMinutes, ok := AdmintimeoffrequestpatchMap["durationMinutes"].([]interface{}); ok {
+		DurationMinutesString, _ := json.Marshal(DurationMinutes)
+		json.Unmarshal(DurationMinutesString, &o.DurationMinutes)
+	}
+	
+	if PayableMinutes, ok := AdmintimeoffrequestpatchMap["payableMinutes"].([]interface{}); ok {
+		PayableMinutesString, _ := json.Marshal(PayableMinutes)
+		json.Unmarshal(PayableMinutesString, &o.PayableMinutes)
 	}
 	
 	if Metadata, ok := AdmintimeoffrequestpatchMap["metadata"].(map[string]interface{}); ok {

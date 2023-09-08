@@ -28,6 +28,9 @@ type Workdaymetric struct {
 
 	// PunctualityEvents - List of schedule activity events for punctuality metrics
 	PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
+
+	// EvaluationDetails - List of evaluations for quality evaluation score metrics
+	EvaluationDetails *[]Qualityevaluationscoreitem `json:"evaluationDetails,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Workdaymetric) MarshalJSON() ([]byte, error) {
 		Value *float64 `json:"value,omitempty"`
 		
 		PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
+		
+		EvaluationDetails *[]Qualityevaluationscoreitem `json:"evaluationDetails,omitempty"`
 		Alias
 	}{ 
 		Metric: o.Metric,
@@ -117,6 +122,8 @@ func (o Workdaymetric) MarshalJSON() ([]byte, error) {
 		Value: o.Value,
 		
 		PunctualityEvents: o.PunctualityEvents,
+		
+		EvaluationDetails: o.EvaluationDetails,
 		Alias:    (Alias)(o),
 	})
 }
@@ -155,6 +162,11 @@ func (o *Workdaymetric) UnmarshalJSON(b []byte) error {
 	if PunctualityEvents, ok := WorkdaymetricMap["punctualityEvents"].([]interface{}); ok {
 		PunctualityEventsString, _ := json.Marshal(PunctualityEvents)
 		json.Unmarshal(PunctualityEventsString, &o.PunctualityEvents)
+	}
+	
+	if EvaluationDetails, ok := WorkdaymetricMap["evaluationDetails"].([]interface{}); ok {
+		EvaluationDetailsString, _ := json.Marshal(EvaluationDetails)
+		json.Unmarshal(EvaluationDetailsString, &o.EvaluationDetails)
 	}
 	
 

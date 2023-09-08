@@ -27,8 +27,14 @@ type Buagentscheduleactivity struct {
 	// Paid - Whether this activity is paid
 	Paid *bool `json:"paid,omitempty"`
 
+	// PayableMinutes - Payable minutes for this activity
+	PayableMinutes *int `json:"payableMinutes,omitempty"`
+
 	// TimeOffRequestId - The ID of the time off request associated with this activity, if applicable
 	TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+
+	// TimeOffRequestSyncVersion - The sync version of the partial day time off request for which the scheduled activity is associated, if applicable
+	TimeOffRequestSyncVersion *int `json:"timeOffRequestSyncVersion,omitempty"`
 
 	// ExternalActivityId - The ID of the external activity associated with this activity, if applicable
 	ExternalActivityId *string `json:"externalActivityId,omitempty"`
@@ -118,7 +124,11 @@ func (o Buagentscheduleactivity) MarshalJSON() ([]byte, error) {
 		
 		Paid *bool `json:"paid,omitempty"`
 		
+		PayableMinutes *int `json:"payableMinutes,omitempty"`
+		
 		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+		
+		TimeOffRequestSyncVersion *int `json:"timeOffRequestSyncVersion,omitempty"`
 		
 		ExternalActivityId *string `json:"externalActivityId,omitempty"`
 		
@@ -135,7 +145,11 @@ func (o Buagentscheduleactivity) MarshalJSON() ([]byte, error) {
 		
 		Paid: o.Paid,
 		
+		PayableMinutes: o.PayableMinutes,
+		
 		TimeOffRequestId: o.TimeOffRequestId,
+		
+		TimeOffRequestSyncVersion: o.TimeOffRequestSyncVersion,
 		
 		ExternalActivityId: o.ExternalActivityId,
 		
@@ -173,10 +187,20 @@ func (o *Buagentscheduleactivity) UnmarshalJSON(b []byte) error {
 		o.Paid = &Paid
 	}
     
+	if PayableMinutes, ok := BuagentscheduleactivityMap["payableMinutes"].(float64); ok {
+		PayableMinutesInt := int(PayableMinutes)
+		o.PayableMinutes = &PayableMinutesInt
+	}
+	
 	if TimeOffRequestId, ok := BuagentscheduleactivityMap["timeOffRequestId"].(string); ok {
 		o.TimeOffRequestId = &TimeOffRequestId
 	}
     
+	if TimeOffRequestSyncVersion, ok := BuagentscheduleactivityMap["timeOffRequestSyncVersion"].(float64); ok {
+		TimeOffRequestSyncVersionInt := int(TimeOffRequestSyncVersion)
+		o.TimeOffRequestSyncVersion = &TimeOffRequestSyncVersionInt
+	}
+	
 	if ExternalActivityId, ok := BuagentscheduleactivityMap["externalActivityId"].(string); ok {
 		o.ExternalActivityId = &ExternalActivityId
 	}

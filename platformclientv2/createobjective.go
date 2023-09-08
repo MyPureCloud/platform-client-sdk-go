@@ -36,6 +36,9 @@ type Createobjective struct {
 	// TopicIdsFilterType - A filter type for topic Ids. It's only used for objectives with topicIds. Default filter behavior is \"or\".
 	TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
 
+	// EvaluationFormContextIds - The ids of associated evaluation form context, for Quality Evaluation Score metrics
+	EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
+
 	// DateStart - start date of the objective. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	DateStart *time.Time `json:"dateStart,omitempty"`
 }
@@ -126,6 +129,8 @@ func (o Createobjective) MarshalJSON() ([]byte, error) {
 		
 		TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
 		
+		EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
+		
 		DateStart *string `json:"dateStart,omitempty"`
 		Alias
 	}{ 
@@ -144,6 +149,8 @@ func (o Createobjective) MarshalJSON() ([]byte, error) {
 		QueueIds: o.QueueIds,
 		
 		TopicIdsFilterType: o.TopicIdsFilterType,
+		
+		EvaluationFormContextIds: o.EvaluationFormContextIds,
 		
 		DateStart: DateStart,
 		Alias:    (Alias)(o),
@@ -193,6 +200,11 @@ func (o *Createobjective) UnmarshalJSON(b []byte) error {
 		o.TopicIdsFilterType = &TopicIdsFilterType
 	}
     
+	if EvaluationFormContextIds, ok := CreateobjectiveMap["evaluationFormContextIds"].([]interface{}); ok {
+		EvaluationFormContextIdsString, _ := json.Marshal(EvaluationFormContextIds)
+		json.Unmarshal(EvaluationFormContextIdsString, &o.EvaluationFormContextIds)
+	}
+	
 	if dateStartString, ok := CreateobjectiveMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02", dateStartString)
 		o.DateStart = &DateStart

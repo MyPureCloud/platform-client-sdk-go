@@ -57,6 +57,9 @@ type Queuerequest struct {
 	// Bullseye - The bullseye settings for the queue.
 	Bullseye *Bullseye `json:"bullseye,omitempty"`
 
+	// ScoringMethod - The Scoring Method for the queue
+	ScoringMethod *string `json:"scoringMethod,omitempty"`
+
 	// AcwSettings - The ACW settings for the queue.
 	AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
 
@@ -230,6 +233,8 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		
 		Bullseye *Bullseye `json:"bullseye,omitempty"`
 		
+		ScoringMethod *string `json:"scoringMethod,omitempty"`
+		
 		AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
 		
 		SkillEvaluationMethod *string `json:"skillEvaluationMethod,omitempty"`
@@ -302,6 +307,8 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		ConditionalGroupRouting: o.ConditionalGroupRouting,
 		
 		Bullseye: o.Bullseye,
+		
+		ScoringMethod: o.ScoringMethod,
 		
 		AcwSettings: o.AcwSettings,
 		
@@ -425,6 +432,10 @@ func (o *Queuerequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(BullseyeString, &o.Bullseye)
 	}
 	
+	if ScoringMethod, ok := QueuerequestMap["scoringMethod"].(string); ok {
+		o.ScoringMethod = &ScoringMethod
+	}
+    
 	if AcwSettings, ok := QueuerequestMap["acwSettings"].(map[string]interface{}); ok {
 		AcwSettingsString, _ := json.Marshal(AcwSettings)
 		json.Unmarshal(AcwSettingsString, &o.AcwSettings)

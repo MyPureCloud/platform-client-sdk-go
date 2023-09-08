@@ -15,6 +15,12 @@ type Knowledgeimportjobresponse struct {
 	// Id - Id of the import job
 	Id *string `json:"id,omitempty"`
 
+	// DownloadURL - The URL of the location at which the caller can download the imported file.
+	DownloadURL *string `json:"downloadURL,omitempty"`
+
+	// FailedEntitiesURL - The URL of the location at which the caller can download the entities in json format that failed during the import.
+	FailedEntitiesURL *string `json:"failedEntitiesURL,omitempty"`
+
 	// UploadKey - Upload key
 	UploadKey *string `json:"uploadKey,omitempty"`
 
@@ -32,6 +38,9 @@ type Knowledgeimportjobresponse struct {
 
 	// KnowledgeBase - Knowledge base which document import does belong to
 	KnowledgeBase *Knowledgebase `json:"knowledgeBase,omitempty"`
+
+	// CreatedBy - The user who created the operation
+	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
 	// DateCreated - Created date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
@@ -127,6 +136,10 @@ func (o Knowledgeimportjobresponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		DownloadURL *string `json:"downloadURL,omitempty"`
+		
+		FailedEntitiesURL *string `json:"failedEntitiesURL,omitempty"`
+		
 		UploadKey *string `json:"uploadKey,omitempty"`
 		
 		FileType *string `json:"fileType,omitempty"`
@@ -139,6 +152,8 @@ func (o Knowledgeimportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		KnowledgeBase *Knowledgebase `json:"knowledgeBase,omitempty"`
 		
+		CreatedBy *Userreference `json:"createdBy,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -149,6 +164,10 @@ func (o Knowledgeimportjobresponse) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		DownloadURL: o.DownloadURL,
+		
+		FailedEntitiesURL: o.FailedEntitiesURL,
 		
 		UploadKey: o.UploadKey,
 		
@@ -161,6 +180,8 @@ func (o Knowledgeimportjobresponse) MarshalJSON() ([]byte, error) {
 		Report: o.Report,
 		
 		KnowledgeBase: o.KnowledgeBase,
+		
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
@@ -182,6 +203,14 @@ func (o *Knowledgeimportjobresponse) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := KnowledgeimportjobresponseMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if DownloadURL, ok := KnowledgeimportjobresponseMap["downloadURL"].(string); ok {
+		o.DownloadURL = &DownloadURL
+	}
+    
+	if FailedEntitiesURL, ok := KnowledgeimportjobresponseMap["failedEntitiesURL"].(string); ok {
+		o.FailedEntitiesURL = &FailedEntitiesURL
 	}
     
 	if UploadKey, ok := KnowledgeimportjobresponseMap["uploadKey"].(string); ok {
@@ -209,6 +238,11 @@ func (o *Knowledgeimportjobresponse) UnmarshalJSON(b []byte) error {
 	if KnowledgeBase, ok := KnowledgeimportjobresponseMap["knowledgeBase"].(map[string]interface{}); ok {
 		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
+	}
+	
+	if CreatedBy, ok := KnowledgeimportjobresponseMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
 	}
 	
 	if dateCreatedString, ok := KnowledgeimportjobresponseMap["dateCreated"].(string); ok {

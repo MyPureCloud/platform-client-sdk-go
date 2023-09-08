@@ -26,6 +26,12 @@ type Grammarlanguage struct {
 	// DtmfFileUrl - The URL to the DTMF mode file associated with this grammar language
 	DtmfFileUrl *string `json:"dtmfFileUrl,omitempty"`
 
+	// VoiceFileMetadata - Additional information about the associated voice file
+	VoiceFileMetadata *Grammarlanguagefilemetadata `json:"voiceFileMetadata,omitempty"`
+
+	// DtmfFileMetadata - Additional information about the associated dtmf file
+	DtmfFileMetadata *Grammarlanguagefilemetadata `json:"dtmfFileMetadata,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -103,6 +109,10 @@ func (o Grammarlanguage) MarshalJSON() ([]byte, error) {
 		
 		DtmfFileUrl *string `json:"dtmfFileUrl,omitempty"`
 		
+		VoiceFileMetadata *Grammarlanguagefilemetadata `json:"voiceFileMetadata,omitempty"`
+		
+		DtmfFileMetadata *Grammarlanguagefilemetadata `json:"dtmfFileMetadata,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +125,10 @@ func (o Grammarlanguage) MarshalJSON() ([]byte, error) {
 		VoiceFileUrl: o.VoiceFileUrl,
 		
 		DtmfFileUrl: o.DtmfFileUrl,
+		
+		VoiceFileMetadata: o.VoiceFileMetadata,
+		
+		DtmfFileMetadata: o.DtmfFileMetadata,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -148,6 +162,16 @@ func (o *Grammarlanguage) UnmarshalJSON(b []byte) error {
 		o.DtmfFileUrl = &DtmfFileUrl
 	}
     
+	if VoiceFileMetadata, ok := GrammarlanguageMap["voiceFileMetadata"].(map[string]interface{}); ok {
+		VoiceFileMetadataString, _ := json.Marshal(VoiceFileMetadata)
+		json.Unmarshal(VoiceFileMetadataString, &o.VoiceFileMetadata)
+	}
+	
+	if DtmfFileMetadata, ok := GrammarlanguageMap["dtmfFileMetadata"].(map[string]interface{}); ok {
+		DtmfFileMetadataString, _ := json.Marshal(DtmfFileMetadata)
+		json.Unmarshal(DtmfFileMetadataString, &o.DtmfFileMetadata)
+	}
+	
 	if SelfUri, ok := GrammarlanguageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
