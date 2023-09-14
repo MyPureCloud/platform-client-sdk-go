@@ -4946,6 +4946,304 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 	return successPayload, response, err
 }
 
+// GetFlowVersionHealth invokes GET /api/v2/flows/{flowId}/versions/{versionId}/health
+//
+// Get overall health scores for all intents present in the NLU domain version associated with the bot flow version.
+func (a ArchitectApi) GetFlowVersionHealth(flowId string, versionId string, language string) (*Flowhealth, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions/{versionId}/health"
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
+	defaultReturn := new(Flowhealth)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'flowId' is set
+	if &flowId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowVersionHealth")
+	}
+	// verify the required parameter 'versionId' is set
+	if &versionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling ArchitectApi->GetFlowVersionHealth")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowhealth
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Flowhealth" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetFlowVersionIntentHealth invokes GET /api/v2/flows/{flowId}/versions/{versionId}/intents/{intentId}/health
+//
+// Get health scores and other health metrics for a specific intent. This includes the health metrics for each utterance in an intent.
+func (a ArchitectApi) GetFlowVersionIntentHealth(flowId string, versionId string, intentId string, language string) (*Flowhealthintent, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions/{versionId}/intents/{intentId}/health"
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
+	path = strings.Replace(path, "{intentId}", url.PathEscape(fmt.Sprintf("%v", intentId)), -1)
+	defaultReturn := new(Flowhealthintent)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'flowId' is set
+	if &flowId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowVersionIntentHealth")
+	}
+	// verify the required parameter 'versionId' is set
+	if &versionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling ArchitectApi->GetFlowVersionIntentHealth")
+	}
+	// verify the required parameter 'intentId' is set
+	if &intentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'intentId' when calling ArchitectApi->GetFlowVersionIntentHealth")
+	}
+	// verify the required parameter 'language' is set
+	if &language == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'language' when calling ArchitectApi->GetFlowVersionIntentHealth")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowhealthintent
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Flowhealthintent" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetFlowVersionIntentUtteranceHealth invokes GET /api/v2/flows/{flowId}/versions/{versionId}/intents/{intentId}/utterances/{utteranceId}/health
+//
+// Get health metrics associated with a specific utterance of an intent.
+func (a ArchitectApi) GetFlowVersionIntentUtteranceHealth(flowId string, versionId string, intentId string, utteranceId string, language string) (*Flowhealthutterance, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions/{versionId}/intents/{intentId}/utterances/{utteranceId}/health"
+	path = strings.Replace(path, "{flowId}", url.PathEscape(fmt.Sprintf("%v", flowId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
+	path = strings.Replace(path, "{intentId}", url.PathEscape(fmt.Sprintf("%v", intentId)), -1)
+	path = strings.Replace(path, "{utteranceId}", url.PathEscape(fmt.Sprintf("%v", utteranceId)), -1)
+	defaultReturn := new(Flowhealthutterance)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'flowId' is set
+	if &flowId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'flowId' when calling ArchitectApi->GetFlowVersionIntentUtteranceHealth")
+	}
+	// verify the required parameter 'versionId' is set
+	if &versionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling ArchitectApi->GetFlowVersionIntentUtteranceHealth")
+	}
+	// verify the required parameter 'intentId' is set
+	if &intentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'intentId' when calling ArchitectApi->GetFlowVersionIntentUtteranceHealth")
+	}
+	// verify the required parameter 'utteranceId' is set
+	if &utteranceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'utteranceId' when calling ArchitectApi->GetFlowVersionIntentUtteranceHealth")
+	}
+	// verify the required parameter 'language' is set
+	if &language == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'language' when calling ArchitectApi->GetFlowVersionIntentUtteranceHealth")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowhealthutterance
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Flowhealthutterance" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetFlowVersions invokes GET /api/v2/flows/{flowId}/versions
 //
 // Get flow version list

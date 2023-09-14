@@ -63,6 +63,9 @@ type Contactlist struct {
 	// ColumnDataTypeSpecifications - The settings of the columns selected for dynamic queueing
 	ColumnDataTypeSpecifications *[]Columndatatypespecification `json:"columnDataTypeSpecifications,omitempty"`
 
+	// TrimWhitespace - Whether to trim white space when importing a contactlist csv file, default value = true
+	TrimWhitespace *bool `json:"trimWhitespace,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -180,6 +183,8 @@ func (o Contactlist) MarshalJSON() ([]byte, error) {
 		
 		ColumnDataTypeSpecifications *[]Columndatatypespecification `json:"columnDataTypeSpecifications,omitempty"`
 		
+		TrimWhitespace *bool `json:"trimWhitespace,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -216,6 +221,8 @@ func (o Contactlist) MarshalJSON() ([]byte, error) {
 		ZipCodeColumnName: o.ZipCodeColumnName,
 		
 		ColumnDataTypeSpecifications: o.ColumnDataTypeSpecifications,
+		
+		TrimWhitespace: o.TrimWhitespace,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -309,6 +316,10 @@ func (o *Contactlist) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ColumnDataTypeSpecificationsString, &o.ColumnDataTypeSpecifications)
 	}
 	
+	if TrimWhitespace, ok := ContactlistMap["trimWhitespace"].(bool); ok {
+		o.TrimWhitespace = &TrimWhitespace
+	}
+    
 	if SelfUri, ok := ContactlistMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -3320,6 +3320,93 @@
     "return": "interface{}",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowId string // Flow ID\nvar versionId string // Version ID\nvar deleted string // Deleted flows\n// Create flow version configuration\ndata, response, err := apiInstance.GetFlowVersionConfiguration(flowId, versionId, deleted)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowVersionConfiguration: %v\\n\", err)\n}"
   },
+  "getflowversionhealth": {
+    "operationId": "getflowversionhealth",
+    "functionName": "GetFlowVersionHealth",
+    "signature": "GetFlowVersionHealth(flowId, versionId, language)",
+    "parameters": [
+      {
+        "name": "flowId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "versionId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "language",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Flowhealth",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowId string // Flow ID.\nvar versionId string // Version ID.\nvar language string // Language to filter for\n// Get overall health scores for all intents present in the NLU domain version associated with the bot flow version.\ndata, response, err := apiInstance.GetFlowVersionHealth(flowId, versionId, language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowVersionHealth: %v\\n\", err)\n}"
+  },
+  "getflowversionintenthealth": {
+    "operationId": "getflowversionintenthealth",
+    "functionName": "GetFlowVersionIntentHealth",
+    "signature": "GetFlowVersionIntentHealth(flowId, versionId, intentId, language)",
+    "parameters": [
+      {
+        "name": "flowId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "versionId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "intentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "language",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Flowhealthintent",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowId string // Flow ID.\nvar versionId string // Version ID.\nvar intentId string // Intent ID.\nvar language string // Language to filter for\n// Get health scores and other health metrics for a specific intent. This includes the health metrics for each utterance in an intent.\ndata, response, err := apiInstance.GetFlowVersionIntentHealth(flowId, versionId, intentId, language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowVersionIntentHealth: %v\\n\", err)\n}"
+  },
+  "getflowversionintentutterancehealth": {
+    "operationId": "getflowversionintentutterancehealth",
+    "functionName": "GetFlowVersionIntentUtteranceHealth",
+    "signature": "GetFlowVersionIntentUtteranceHealth(flowId, versionId, intentId, utteranceId, language)",
+    "parameters": [
+      {
+        "name": "flowId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "versionId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "intentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "utteranceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "language",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Flowhealthutterance",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowId string // Flow ID.\nvar versionId string // Version ID.\nvar intentId string // Intent ID.\nvar utteranceId string // Utterance ID.\nvar language string // Language to filter for\n// Get health metrics associated with a specific utterance of an intent.\ndata, response, err := apiInstance.GetFlowVersionIntentUtteranceHealth(flowId, versionId, intentId, utteranceId, language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowVersionIntentUtteranceHealth: %v\\n\", err)\n}"
+  },
   "getflowversions": {
     "operationId": "getflowversions",
     "functionName": "GetFlowVersions",
@@ -21646,16 +21733,21 @@
   "postlearningmodulepublish": {
     "operationId": "postlearningmodulepublish",
     "functionName": "PostLearningModulePublish",
-    "signature": "PostLearningModulePublish(moduleId)",
+    "signature": "PostLearningModulePublish(moduleId, body)",
     "parameters": [
       {
         "name": "moduleId",
         "type": "string",
         "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Learningmodulepublishrequest",
+        "required": "false"
       }
     ],
     "return": "Learningmodulepublishresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // The ID of the learning module\n// Publish a Learning module\ndata, response, err := apiInstance.PostLearningModulePublish(moduleId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostLearningModulePublish: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // The ID of the learning module\nvar body platformclientv2.Learningmodulepublishrequest // The request body\n// Publish a Learning module\ndata, response, err := apiInstance.PostLearningModulePublish(moduleId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostLearningModulePublish: %v\\n\", err)\n}"
   },
   "postlearningmodules": {
     "operationId": "postlearningmodules",

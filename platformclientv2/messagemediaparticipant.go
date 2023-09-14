@@ -137,6 +137,9 @@ type Messagemediaparticipant struct {
 
 	// MonitoredParticipantId - The ID of the participant being monitored when performing a message monitor.
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
+
+	// MonitoredParticipant - The participant being monitored when performing a message monitor.
+	MonitoredParticipant *Addressableentityref `json:"monitoredParticipant,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -333,6 +336,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		Authenticated *bool `json:"authenticated,omitempty"`
 		
 		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
+		
+		MonitoredParticipant *Addressableentityref `json:"monitoredParticipant,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -418,6 +423,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		Authenticated: o.Authenticated,
 		
 		MonitoredParticipantId: o.MonitoredParticipantId,
+		
+		MonitoredParticipant: o.MonitoredParticipant,
 		Alias:    (Alias)(o),
 	})
 }
@@ -620,6 +627,11 @@ func (o *Messagemediaparticipant) UnmarshalJSON(b []byte) error {
 		o.MonitoredParticipantId = &MonitoredParticipantId
 	}
     
+	if MonitoredParticipant, ok := MessagemediaparticipantMap["monitoredParticipant"].(map[string]interface{}); ok {
+		MonitoredParticipantString, _ := json.Marshal(MonitoredParticipant)
+		json.Unmarshal(MonitoredParticipantString, &o.MonitoredParticipant)
+	}
+	
 
 	return nil
 }

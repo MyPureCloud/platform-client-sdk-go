@@ -16,6 +16,9 @@ type Analyticsreportingsettings struct {
 
 	// QueueAgentAccessObfuscation - Indication of whether or not to obfuscate export data from the Queue Agent Details view based on User ACL
 	QueueAgentAccessObfuscation *bool `json:"queueAgentAccessObfuscation,omitempty"`
+
+	// MyInteractionsPiiMaskingEnabled - Indicates whether PII data is masked in My Interaction export and the Analytics/Reporting UI
+	MyInteractionsPiiMaskingEnabled *bool `json:"myInteractionsPiiMaskingEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Analyticsreportingsettings) MarshalJSON() ([]byte, error) {
 		PiiMaskingEnabled *bool `json:"piiMaskingEnabled,omitempty"`
 		
 		QueueAgentAccessObfuscation *bool `json:"queueAgentAccessObfuscation,omitempty"`
+		
+		MyInteractionsPiiMaskingEnabled *bool `json:"myInteractionsPiiMaskingEnabled,omitempty"`
 		Alias
 	}{ 
 		PiiMaskingEnabled: o.PiiMaskingEnabled,
 		
 		QueueAgentAccessObfuscation: o.QueueAgentAccessObfuscation,
+		
+		MyInteractionsPiiMaskingEnabled: o.MyInteractionsPiiMaskingEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Analyticsreportingsettings) UnmarshalJSON(b []byte) error {
     
 	if QueueAgentAccessObfuscation, ok := AnalyticsreportingsettingsMap["queueAgentAccessObfuscation"].(bool); ok {
 		o.QueueAgentAccessObfuscation = &QueueAgentAccessObfuscation
+	}
+    
+	if MyInteractionsPiiMaskingEnabled, ok := AnalyticsreportingsettingsMap["myInteractionsPiiMaskingEnabled"].(bool); ok {
+		o.MyInteractionsPiiMaskingEnabled = &MyInteractionsPiiMaskingEnabled
 	}
     
 

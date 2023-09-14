@@ -21,7 +21,7 @@ type Buupdateagentscheduleuploadschema struct {
 	WorkPlanIdsPerWeek *Listwrapperstring `json:"workPlanIdsPerWeek,omitempty"`
 
 	// Shifts - The shift definitions for this agent schedule
-	Shifts *[]Buagentscheduleshift `json:"shifts,omitempty"`
+	Shifts *[]Buupdateagentscheduleshift `json:"shifts,omitempty"`
 
 	// FullDayTimeOffMarkers - Any full day time off markers that apply to this agent schedule
 	FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
@@ -102,7 +102,7 @@ func (o Buupdateagentscheduleuploadschema) MarshalJSON() ([]byte, error) {
 		
 		WorkPlanIdsPerWeek *Listwrapperstring `json:"workPlanIdsPerWeek,omitempty"`
 		
-		Shifts *[]Buagentscheduleshift `json:"shifts,omitempty"`
+		Shifts *[]Buupdateagentscheduleshift `json:"shifts,omitempty"`
 		
 		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
 		

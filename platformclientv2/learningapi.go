@@ -1934,7 +1934,7 @@ func (a LearningApi) PostLearningModuleJobs(moduleId string, body Learningmodule
 // PostLearningModulePublish invokes POST /api/v2/learning/modules/{moduleId}/publish
 //
 // Publish a Learning module
-func (a LearningApi) PostLearningModulePublish(moduleId string) (*Learningmodulepublishresponse, *APIResponse, error) {
+func (a LearningApi) PostLearningModulePublish(moduleId string, body Learningmodulepublishrequest) (*Learningmodulepublishresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/publish"
@@ -1997,6 +1997,9 @@ func (a LearningApi) PostLearningModulePublish(moduleId string) (*Learningmodule
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	postBody = &body
+
 	var successPayload *Learningmodulepublishresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {

@@ -580,6 +580,9 @@ docs/GetFlowHistoryHistoryId-example.txt
 docs/GetFlowLatestconfiguration-example.txt
 docs/GetFlowVersion-example.txt
 docs/GetFlowVersionConfiguration-example.txt
+docs/GetFlowVersionHealth-example.txt
+docs/GetFlowVersionIntentHealth-example.txt
+docs/GetFlowVersionIntentUtteranceHealth-example.txt
 docs/GetFlowVersions-example.txt
 docs/GetFlows-example.txt
 docs/GetFlowsDatatable-example.txt
@@ -2828,6 +2831,7 @@ platformclientv2/businessunitresponse.go
 platformclientv2/businessunitsettingsresponse.go
 platformclientv2/buttoncomponent.go
 platformclientv2/buttonresponse.go
+platformclientv2/buupdateagentscheduleshift.go
 platformclientv2/buupdateagentscheduleuploadschema.go
 platformclientv2/cachedmediaitem.go
 platformclientv2/cachedmediaitementitylisting.go
@@ -2982,6 +2986,11 @@ platformclientv2/conditionalgrouprouting.go
 platformclientv2/conditionalgrouproutingrule.go
 platformclientv2/configuration.go
 platformclientv2/configurationoverrides.go
+platformclientv2/confusiondetails.go
+platformclientv2/confusioninfo.go
+platformclientv2/confusionintentdetails.go
+platformclientv2/confusionintentinfo.go
+platformclientv2/confusionutterance.go
 platformclientv2/connectededge.go
 platformclientv2/connectedqueue.go
 platformclientv2/connecteduser.go
@@ -3931,6 +3940,14 @@ platformclientv2/flowentitylisting.go
 platformclientv2/flowexecutiondataqueryresult.go
 platformclientv2/flowexecutionlaunchrequest.go
 platformclientv2/flowexecutionlaunchresponse.go
+platformclientv2/flowhealth.go
+platformclientv2/flowhealtherrorinfo.go
+platformclientv2/flowhealthintent.go
+platformclientv2/flowhealthintentinfo.go
+platformclientv2/flowhealthintentutterance.go
+platformclientv2/flowhealthintentversioninfo.go
+platformclientv2/flowhealthutterance.go
+platformclientv2/flowhealthversioninfo.go
 platformclientv2/flowmetricstopicflowmetricrecord.go
 platformclientv2/flowmetricstopicflowoutcome.go
 platformclientv2/flowmetricstopicflowproposedagent.go
@@ -4044,6 +4061,7 @@ platformclientv2/guestmemberinfo.go
 platformclientv2/guestresponsecategory.go
 platformclientv2/headcountforecast.go
 platformclientv2/headcountinterval.go
+platformclientv2/healthinfo.go
 platformclientv2/helplink.go
 platformclientv2/helpsettings.go
 platformclientv2/historicaladherenceactuals.go
@@ -4431,6 +4449,7 @@ platformclientv2/learningmoduleinformstep.go
 platformclientv2/learningmoduleinformsteprequest.go
 platformclientv2/learningmodulejobrequest.go
 platformclientv2/learningmodulejobresponse.go
+platformclientv2/learningmodulepublishrequest.go
 platformclientv2/learningmodulepublishresponse.go
 platformclientv2/learningmodulereassignsummary.go
 platformclientv2/learningmodulerequest.go
@@ -4482,6 +4501,9 @@ platformclientv2/listwrappersecondarypresence.go
 platformclientv2/listwrappershiftstartvariance.go
 platformclientv2/listwrapperstring.go
 platformclientv2/localdaterange.go
+platformclientv2/localeflowversioninfo.go
+platformclientv2/localehealth.go
+platformclientv2/localeinfo.go
 platformclientv2/localencryptionconfiguration.go
 platformclientv2/localencryptionkeyrequest.go
 platformclientv2/localizedlabels.go
@@ -4789,6 +4811,7 @@ platformclientv2/outcomequantilecondition.go
 platformclientv2/outcomeref.go
 platformclientv2/outcomerefrequest.go
 platformclientv2/outcomescoresresult.go
+platformclientv2/outlierinfo.go
 platformclientv2/outofoffice.go
 platformclientv2/outofofficeeventoutofoffice.go
 platformclientv2/outofofficeeventuser.go
