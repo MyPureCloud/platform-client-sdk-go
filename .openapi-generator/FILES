@@ -42,6 +42,10 @@ docs/DeleteAuthorizationDivision-example.txt
 docs/DeleteAuthorizationRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
+docs/DeleteChatsRoomMessage-example.txt
+docs/DeleteChatsRoomParticipant-example.txt
+docs/DeleteChatsRoomPinnedmessage-example.txt
+docs/DeleteChatsUserMessage-example.txt
 docs/DeleteCoachingAppointment-example.txt
 docs/DeleteCoachingAppointmentAnnotation-example.txt
 docs/DeleteContentmanagementDocument-example.txt
@@ -414,7 +418,14 @@ docs/GetBillingReportsBillableusage-example.txt
 docs/GetBillingTrusteebillingoverviewTrustorOrgId-example.txt
 docs/GetCarrierservicesIntegrationsEmergencylocationsMe-example.txt
 docs/GetChatSettings-example.txt
+docs/GetChatsMessage-example.txt
+docs/GetChatsRoom-example.txt
+docs/GetChatsRoomMessage-example.txt
+docs/GetChatsRoomMessages-example.txt
 docs/GetChatsSettings-example.txt
+docs/GetChatsThreadMessages-example.txt
+docs/GetChatsUserMessage-example.txt
+docs/GetChatsUserMessages-example.txt
 docs/GetCoachingAppointment-example.txt
 docs/GetCoachingAppointmentAnnotation-example.txt
 docs/GetCoachingAppointmentAnnotations-example.txt
@@ -1393,7 +1404,10 @@ docs/PatchArchitectGrammar-example.txt
 docs/PatchAuthorizationRole-example.txt
 docs/PatchAuthorizationSettings-example.txt
 docs/PatchChatSettings-example.txt
+docs/PatchChatsRoom-example.txt
+docs/PatchChatsRoomMessage-example.txt
 docs/PatchChatsSettings-example.txt
+docs/PatchChatsUserMessage-example.txt
 docs/PatchCoachingAppointment-example.txt
 docs/PatchCoachingAppointmentAnnotation-example.txt
 docs/PatchCoachingAppointmentStatus-example.txt
@@ -1647,6 +1661,11 @@ docs/PostAuthorizationSubjectDivisionRole-example.txt
 docs/PostAuthorizationSubjectDivisionRole-example.txt
 docs/PostCarrierservicesIntegrationsEmergencylocationsMe-example.txt
 docs/PostCertificateDetails-example.txt
+docs/PostChatsRoomMessages-example.txt
+docs/PostChatsRoomParticipant-example.txt
+docs/PostChatsRoomPinnedmessages-example.txt
+docs/PostChatsRooms-example.txt
+docs/PostChatsUserMessages-example.txt
 docs/PostCoachingAppointmentAnnotations-example.txt
 docs/PostCoachingAppointmentConversations-example.txt
 docs/PostCoachingAppointments-example.txt
@@ -2506,6 +2525,8 @@ platformclientv2/alertlisting.go
 platformclientv2/alertnotification.go
 platformclientv2/alertrequest.go
 platformclientv2/alertruleproperties.go
+platformclientv2/alertsummary.go
+platformclientv2/alertsummaryentity.go
 platformclientv2/alltimepoints.go
 platformclientv2/amazonlexrequest.go
 platformclientv2/analyticsagentgroup.go
@@ -2891,6 +2912,7 @@ platformclientv2/campaignruleparameters.go
 platformclientv2/campaignschedule.go
 platformclientv2/campaignsequence.go
 platformclientv2/campaignsequenceentitylisting.go
+platformclientv2/campaignskillstatistics.go
 platformclientv2/campaignstats.go
 platformclientv2/campaigntimeslot.go
 platformclientv2/card.go
@@ -2924,7 +2946,10 @@ platformclientv2/chatmediaparticipant.go
 platformclientv2/chatmediapolicy.go
 platformclientv2/chatmediapolicyconditions.go
 platformclientv2/chatmessage.go
+platformclientv2/chatmessageentitylisting.go
+platformclientv2/chatmessageresponse.go
 platformclientv2/chatmessageuser.go
+platformclientv2/chatsendmessageresponse.go
 platformclientv2/chatsettings.go
 platformclientv2/check.go
 platformclientv2/clientapp.go
@@ -3361,6 +3386,8 @@ platformclientv2/createpredictorrequest.go
 platformclientv2/createqueuerequest.go
 platformclientv2/createresponseassetrequest.go
 platformclientv2/createresponseassetresponse.go
+platformclientv2/createroomrequest.go
+platformclientv2/createroomresponse.go
 platformclientv2/createsecuresession.go
 platformclientv2/createservicegoaltemplate.go
 platformclientv2/createsharerequest.go
@@ -4889,6 +4916,7 @@ platformclientv2/phraseassociations.go
 platformclientv2/physicalinterfaceentitylisting.go
 platformclientv2/pinconfiguration.go
 platformclientv2/pingidentity.go
+platformclientv2/pinnedmessagerequest.go
 platformclientv2/planninggroup.go
 platformclientv2/planninggrouplist.go
 platformclientv2/planninggroupreference.go
@@ -5346,6 +5374,8 @@ platformclientv2/ring.go
 platformclientv2/roledivision.go
 platformclientv2/roledivisiongrants.go
 platformclientv2/roledivisionpair.go
+platformclientv2/room.go
+platformclientv2/roomupdaterequest.go
 platformclientv2/routepathrequest.go
 platformclientv2/routepathresponse.go
 platformclientv2/routingactivitydata.go
@@ -5481,6 +5511,7 @@ platformclientv2/selectedcolumns.go
 platformclientv2/selectoreventtrigger.go
 platformclientv2/sendagentlessoutboundmessagerequest.go
 platformclientv2/sendagentlessoutboundmessageresponse.go
+platformclientv2/sendmessagebody.go
 platformclientv2/sentimentfeedback.go
 platformclientv2/sentimentfeedbackentitylisting.go
 platformclientv2/sequenceschedule.go
@@ -6117,6 +6148,7 @@ platformclientv2/video.go
 platformclientv2/videoconferencedetails.go
 platformclientv2/videoconferenceupdatetopicparticipantinfo.go
 platformclientv2/videoconferenceupdatetopicvideoconference.go
+platformclientv2/videometadata.go
 platformclientv2/viewfilter.go
 platformclientv2/visibilitycondition.go
 platformclientv2/vmpairinginfo.go

@@ -20,6 +20,12 @@ type Mediasettings struct {
 	// ServiceLevel
 	ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
 
+	// AutoAnswerAlertToneSeconds
+	AutoAnswerAlertToneSeconds *float64 `json:"autoAnswerAlertToneSeconds,omitempty"`
+
+	// ManualAnswerAlertToneSeconds
+	ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
+
 	// SubTypeSettings - Map of media subtype to media subtype specific settings.
 	SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
 }
@@ -93,6 +99,10 @@ func (o Mediasettings) MarshalJSON() ([]byte, error) {
 		
 		ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
 		
+		AutoAnswerAlertToneSeconds *float64 `json:"autoAnswerAlertToneSeconds,omitempty"`
+		
+		ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
+		
 		SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +111,10 @@ func (o Mediasettings) MarshalJSON() ([]byte, error) {
 		AlertingTimeoutSeconds: o.AlertingTimeoutSeconds,
 		
 		ServiceLevel: o.ServiceLevel,
+		
+		AutoAnswerAlertToneSeconds: o.AutoAnswerAlertToneSeconds,
+		
+		ManualAnswerAlertToneSeconds: o.ManualAnswerAlertToneSeconds,
 		
 		SubTypeSettings: o.SubTypeSettings,
 		Alias:    (Alias)(o),
@@ -128,6 +142,14 @@ func (o *Mediasettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
 	}
 	
+	if AutoAnswerAlertToneSeconds, ok := MediasettingsMap["autoAnswerAlertToneSeconds"].(float64); ok {
+		o.AutoAnswerAlertToneSeconds = &AutoAnswerAlertToneSeconds
+	}
+    
+	if ManualAnswerAlertToneSeconds, ok := MediasettingsMap["manualAnswerAlertToneSeconds"].(float64); ok {
+		o.ManualAnswerAlertToneSeconds = &ManualAnswerAlertToneSeconds
+	}
+    
 	if SubTypeSettings, ok := MediasettingsMap["subTypeSettings"].(map[string]interface{}); ok {
 		SubTypeSettingsString, _ := json.Marshal(SubTypeSettings)
 		json.Unmarshal(SubTypeSettingsString, &o.SubTypeSettings)

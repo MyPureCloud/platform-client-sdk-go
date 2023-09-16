@@ -60,6 +60,9 @@ type Commonalert struct {
 	// ConversationId - The id of the conversation instance that caused the alert to trigger.
 	ConversationId *string `json:"conversationId,omitempty"`
 
+	// AlertSummary - Summary of the alert status of the entities defined in the conditions.  Is set when rule has instance-based or team member based rule predicates
+	AlertSummary *Alertsummary `json:"alertSummary,omitempty"`
+
 	// RuleUri
 	RuleUri *string `json:"ruleUri,omitempty"`
 
@@ -194,6 +197,8 @@ func (o Commonalert) MarshalJSON() ([]byte, error) {
 		
 		ConversationId *string `json:"conversationId,omitempty"`
 		
+		AlertSummary *Alertsummary `json:"alertSummary,omitempty"`
+		
 		RuleUri *string `json:"ruleUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -230,6 +235,8 @@ func (o Commonalert) MarshalJSON() ([]byte, error) {
 		Conditions: o.Conditions,
 		
 		ConversationId: o.ConversationId,
+		
+		AlertSummary: o.AlertSummary,
 		
 		RuleUri: o.RuleUri,
 		
@@ -318,6 +325,11 @@ func (o *Commonalert) UnmarshalJSON(b []byte) error {
 		o.ConversationId = &ConversationId
 	}
     
+	if AlertSummary, ok := CommonalertMap["alertSummary"].(map[string]interface{}); ok {
+		AlertSummaryString, _ := json.Marshal(AlertSummary)
+		json.Unmarshal(AlertSummaryString, &o.AlertSummary)
+	}
+	
 	if RuleUri, ok := CommonalertMap["ruleUri"].(string); ok {
 		o.RuleUri = &RuleUri
 	}

@@ -27,7 +27,7 @@ type Contactlistfilter struct {
 	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
 
-	// ContactList - The contact list the filter is based on.
+	// ContactList - The contact list the filter is based on. Required if sourceType is ContactList
 	ContactList *Domainentityref `json:"contactList,omitempty"`
 
 	// Clauses - Groups of conditions to filter the contacts by.

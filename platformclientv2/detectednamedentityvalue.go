@@ -16,6 +16,9 @@ type Detectednamedentityvalue struct {
 
 	// Resolved - The resolved value of the detected named entity.
 	Resolved *string `json:"resolved,omitempty"`
+
+	// Unit - The unit of the detected amount of money entity, e.g. EUR, USD.
+	Unit *string `json:"unit,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Detectednamedentityvalue) MarshalJSON() ([]byte, error) {
 		Raw *string `json:"raw,omitempty"`
 		
 		Resolved *string `json:"resolved,omitempty"`
+		
+		Unit *string `json:"unit,omitempty"`
 		Alias
 	}{ 
 		Raw: o.Raw,
 		
 		Resolved: o.Resolved,
+		
+		Unit: o.Unit,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Detectednamedentityvalue) UnmarshalJSON(b []byte) error {
     
 	if Resolved, ok := DetectednamedentityvalueMap["resolved"].(string); ok {
 		o.Resolved = &Resolved
+	}
+    
+	if Unit, ok := DetectednamedentityvalueMap["unit"].(string); ok {
+		o.Unit = &Unit
 	}
     
 

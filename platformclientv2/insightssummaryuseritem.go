@@ -19,6 +19,9 @@ type Insightssummaryuseritem struct {
 
 	// OverallData - Overall insights data of the user
 	OverallData *Insightssummaryoverallitem `json:"overallData,omitempty"`
+
+	// Ranking - Ranking of the user
+	Ranking *int `json:"ranking,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Insightssummaryuseritem) MarshalJSON() ([]byte, error) {
 		MetricData *[]Insightssummarymetricitem `json:"metricData,omitempty"`
 		
 		OverallData *Insightssummaryoverallitem `json:"overallData,omitempty"`
+		
+		Ranking *int `json:"ranking,omitempty"`
 		Alias
 	}{ 
 		User: o.User,
@@ -96,6 +101,8 @@ func (o Insightssummaryuseritem) MarshalJSON() ([]byte, error) {
 		MetricData: o.MetricData,
 		
 		OverallData: o.OverallData,
+		
+		Ranking: o.Ranking,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,11 @@ func (o *Insightssummaryuseritem) UnmarshalJSON(b []byte) error {
 	if OverallData, ok := InsightssummaryuseritemMap["overallData"].(map[string]interface{}); ok {
 		OverallDataString, _ := json.Marshal(OverallData)
 		json.Unmarshal(OverallDataString, &o.OverallData)
+	}
+	
+	if Ranking, ok := InsightssummaryuseritemMap["ranking"].(float64); ok {
+		RankingInt := int(Ranking)
+		o.Ranking = &RankingInt
 	}
 	
 

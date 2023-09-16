@@ -5968,6 +5968,78 @@
     "return": "Emergencylocation",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewCarrierServicesApiWithConfig(config)\n\nvar body platformclientv2.Emergencylocation // \n// Set current location for the logged in user\ndata, response, err := apiInstance.PostCarrierservicesIntegrationsEmergencylocationsMe(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostCarrierservicesIntegrationsEmergencylocationsMe: %v\\n\", err)\n}"
   },
+  "deletechatsroommessage": {
+    "operationId": "deletechatsroommessage",
+    "functionName": "DeleteChatsRoomMessage",
+    "signature": "DeleteChatsRoomMessage(roomJid, messageId)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "messageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomId\nvar messageId string // messageId\n// Delete a message in a room\nresponse, err := apiInstance.DeleteChatsRoomMessage(roomJid, messageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteChatsRoomMessage: %v\\n\", err)\n}"
+  },
+  "deletechatsroomparticipant": {
+    "operationId": "deletechatsroomparticipant",
+    "functionName": "DeleteChatsRoomParticipant",
+    "signature": "DeleteChatsRoomParticipant(roomJid, userId)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\nvar userId string // userId\n// Remove a user from a room.\nresponse, err := apiInstance.DeleteChatsRoomParticipant(roomJid, userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteChatsRoomParticipant: %v\\n\", err)\n}"
+  },
+  "deletechatsroompinnedmessage": {
+    "operationId": "deletechatsroompinnedmessage",
+    "functionName": "DeleteChatsRoomPinnedmessage",
+    "signature": "DeleteChatsRoomPinnedmessage(roomJid, pinnedMessageId)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pinnedMessageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\nvar pinnedMessageId string // pinnedMessageId\n// Remove a pinned message from a room\nresponse, err := apiInstance.DeleteChatsRoomPinnedmessage(roomJid, pinnedMessageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteChatsRoomPinnedmessage: %v\\n\", err)\n}"
+  },
+  "deletechatsusermessage": {
+    "operationId": "deletechatsusermessage",
+    "functionName": "DeleteChatsUserMessage",
+    "signature": "DeleteChatsUserMessage(userId, messageId)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "messageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar userId string // userId\nvar messageId string // messageId\n// Delete a message to a user\nresponse, err := apiInstance.DeleteChatsUserMessage(userId, messageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteChatsUserMessage: %v\\n\", err)\n}"
+  },
   "getchatsettings": {
     "operationId": "getchatsettings",
     "functionName": "GetChatSettings",
@@ -5975,12 +6047,255 @@
     "return": "Chatsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\n// Get Chat Settings.\ndata, response, err := apiInstance.GetChatSettings()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatSettings: %v\\n\", err)\n}"
   },
+  "getchatsmessage": {
+    "operationId": "getchatsmessage",
+    "functionName": "GetChatsMessage",
+    "signature": "GetChatsMessage(messageId)",
+    "parameters": [
+      {
+        "name": "messageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Chatmessageresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar messageId string // messageId\n// Get a message\ndata, response, err := apiInstance.GetChatsMessage(messageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsMessage: %v\\n\", err)\n}"
+  },
+  "getchatsroom": {
+    "operationId": "getchatsroom",
+    "functionName": "GetChatsRoom",
+    "signature": "GetChatsRoom(roomJid)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Room",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\n// Get a room\ndata, response, err := apiInstance.GetChatsRoom(roomJid)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsRoom: %v\\n\", err)\n}"
+  },
+  "getchatsroommessage": {
+    "operationId": "getchatsroommessage",
+    "functionName": "GetChatsRoomMessage",
+    "signature": "GetChatsRoomMessage(roomJid, messageIds)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "messageIds",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Chatmessageentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\nvar messageIds string // messageIds, comma separated\n// Get messages by id(s) from a room\ndata, response, err := apiInstance.GetChatsRoomMessage(roomJid, messageIds)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsRoomMessage: %v\\n\", err)\n}"
+  },
+  "getchatsroommessages": {
+    "operationId": "getchatsroommessages",
+    "functionName": "GetChatsRoomMessages",
+    "signature": "GetChatsRoomMessages(roomJid, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "sortBy",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "nextPage",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "previousPage",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "limit",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Chatmessageentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar limit string // The maximum number of messages to retrieve\nvar before string // The cutoff date for messages to retrieve\nvar after string // The beginning date for messages to retrieve\n// Get a room's message history\ndata, response, err := apiInstance.GetChatsRoomMessages(roomJid, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsRoomMessages: %v\\n\", err)\n}"
+  },
   "getchatssettings": {
     "operationId": "getchatssettings",
     "functionName": "GetChatsSettings",
     "signature": "GetChatsSettings()",
     "return": "Chatsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\n// Get Chat Settings.\ndata, response, err := apiInstance.GetChatsSettings()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsSettings: %v\\n\", err)\n}"
+  },
+  "getchatsthreadmessages": {
+    "operationId": "getchatsthreadmessages",
+    "functionName": "GetChatsThreadMessages",
+    "signature": "GetChatsThreadMessages(threadId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)",
+    "parameters": [
+      {
+        "name": "threadId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "sortBy",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "nextPage",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "previousPage",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "limit",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Chatmessageentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar threadId string // threadId\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar limit string // The maximum number of messages to retrieve\nvar before string // The cutoff date for messages to retrieve\nvar after string // The beginning date for messages to retrieve\n// Get history by thread\ndata, response, err := apiInstance.GetChatsThreadMessages(threadId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsThreadMessages: %v\\n\", err)\n}"
+  },
+  "getchatsusermessage": {
+    "operationId": "getchatsusermessage",
+    "functionName": "GetChatsUserMessage",
+    "signature": "GetChatsUserMessage(userId, messageIds)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "messageIds",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Chatmessageentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar userId string // userId\nvar messageIds string // messageIds, comma separated\n// Get messages by id(s) from a 1on1\ndata, response, err := apiInstance.GetChatsUserMessage(userId, messageIds)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsUserMessage: %v\\n\", err)\n}"
+  },
+  "getchatsusermessages": {
+    "operationId": "getchatsusermessages",
+    "functionName": "GetChatsUserMessages",
+    "signature": "GetChatsUserMessages(userId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "sortBy",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "nextPage",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "previousPage",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "limit",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Chatmessageresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar userId string // userId\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar limit string // The maximum number of messages to retrieve\nvar before string // The cutoff date for messages to retrieve\nvar after string // The beginning date for messages to retrieve\n// Get 1on1 History between a user\ndata, response, err := apiInstance.GetChatsUserMessages(userId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetChatsUserMessages: %v\\n\", err)\n}"
   },
   "patchchatsettings": {
     "operationId": "patchchatsettings",
@@ -5996,6 +6311,48 @@
     "return": "Chatsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar body platformclientv2.Chatsettings // Chat\n// Patch Chat Settings.\ndata, response, err := apiInstance.PatchChatSettings(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchChatSettings: %v\\n\", err)\n}"
   },
+  "patchchatsroom": {
+    "operationId": "patchchatsroom",
+    "functionName": "PatchChatsRoom",
+    "signature": "PatchChatsRoom(roomJid, body)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Roomupdaterequest",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\nvar body platformclientv2.Roomupdaterequest // Room properties\n// Set properties for a room\nresponse, err := apiInstance.PatchChatsRoom(roomJid, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchChatsRoom: %v\\n\", err)\n}"
+  },
+  "patchchatsroommessage": {
+    "operationId": "patchchatsroommessage",
+    "functionName": "PatchChatsRoomMessage",
+    "signature": "PatchChatsRoomMessage(roomJid, messageId, body)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "messageId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Sendmessagebody",
+        "required": "true"
+      }
+    ],
+    "return": "Chatsendmessageresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomId\nvar messageId string // messageId\nvar body platformclientv2.Sendmessagebody // messageBody\n// Edit a message in a room\ndata, response, err := apiInstance.PatchChatsRoomMessage(roomJid, messageId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchChatsRoomMessage: %v\\n\", err)\n}"
+  },
   "patchchatssettings": {
     "operationId": "patchchatssettings",
     "functionName": "PatchChatsSettings",
@@ -6009,6 +6366,118 @@
     ],
     "return": "Chatsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar body platformclientv2.Chatsettings // Chat\n// Patch Chat Settings.\ndata, response, err := apiInstance.PatchChatsSettings(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchChatsSettings: %v\\n\", err)\n}"
+  },
+  "patchchatsusermessage": {
+    "operationId": "patchchatsusermessage",
+    "functionName": "PatchChatsUserMessage",
+    "signature": "PatchChatsUserMessage(userId, messageId, body)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "messageId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Sendmessagebody",
+        "required": "true"
+      }
+    ],
+    "return": "Chatsendmessageresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar userId string // userId\nvar messageId string // messageId\nvar body platformclientv2.Sendmessagebody // message body\n// Edit a message to a user\ndata, response, err := apiInstance.PatchChatsUserMessage(userId, messageId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchChatsUserMessage: %v\\n\", err)\n}"
+  },
+  "postchatsroommessages": {
+    "operationId": "postchatsroommessages",
+    "functionName": "PostChatsRoomMessages",
+    "signature": "PostChatsRoomMessages(roomJid, body)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Sendmessagebody",
+        "required": "true"
+      }
+    ],
+    "return": "Chatsendmessageresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomId\nvar body platformclientv2.Sendmessagebody // messageBody\n// Send a message to a room\ndata, response, err := apiInstance.PostChatsRoomMessages(roomJid, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostChatsRoomMessages: %v\\n\", err)\n}"
+  },
+  "postchatsroomparticipant": {
+    "operationId": "postchatsroomparticipant",
+    "functionName": "PostChatsRoomParticipant",
+    "signature": "PostChatsRoomParticipant(roomJid, userId)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\nvar userId string // userId\n// Join a room\nresponse, err := apiInstance.PostChatsRoomParticipant(roomJid, userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostChatsRoomParticipant: %v\\n\", err)\n}"
+  },
+  "postchatsroompinnedmessages": {
+    "operationId": "postchatsroompinnedmessages",
+    "functionName": "PostChatsRoomPinnedmessages",
+    "signature": "PostChatsRoomPinnedmessages(roomJid, body)",
+    "parameters": [
+      {
+        "name": "roomJid",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Pinnedmessagerequest",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar roomJid string // roomJid\nvar body platformclientv2.Pinnedmessagerequest // Pinned Message Ids\n// Add pinned messages for a room, up to a maximum of 5 pinned messages\nresponse, err := apiInstance.PostChatsRoomPinnedmessages(roomJid, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostChatsRoomPinnedmessages: %v\\n\", err)\n}"
+  },
+  "postchatsrooms": {
+    "operationId": "postchatsrooms",
+    "functionName": "PostChatsRooms",
+    "signature": "PostChatsRooms(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Createroomrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Createroomresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar body platformclientv2.Createroomrequest // Room properties\n// Create an adhoc room\ndata, response, err := apiInstance.PostChatsRooms(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostChatsRooms: %v\\n\", err)\n}"
+  },
+  "postchatsusermessages": {
+    "operationId": "postchatsusermessages",
+    "functionName": "PostChatsUserMessages",
+    "signature": "PostChatsUserMessages(userId, body)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Sendmessagebody",
+        "required": "true"
+      }
+    ],
+    "return": "Chatsendmessageresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar userId string // userId\nvar body platformclientv2.Sendmessagebody // message body\n// Send a message to a user\ndata, response, err := apiInstance.PostChatsUserMessages(userId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostChatsUserMessages: %v\\n\", err)\n}"
   },
   "putchatsettings": {
     "operationId": "putchatsettings",
@@ -31439,7 +31908,7 @@
   "getroutingwrapupcodes": {
     "operationId": "getroutingwrapupcodes",
     "functionName": "GetRoutingWrapupcodes",
-    "signature": "GetRoutingWrapupcodes(pageSize, pageNumber, sortBy, sortOrder, id, name, divisionId)",
+    "signature": "GetRoutingWrapupcodes(pageSize, pageNumber, sortBy, sortOrder, name, id, divisionId)",
     "parameters": [
       {
         "name": "pageSize",
@@ -31462,13 +31931,13 @@
         "required": "false"
       },
       {
-        "name": "id",
-        "type": "[]string",
+        "name": "name",
+        "type": "string",
         "required": "false"
       },
       {
-        "name": "name",
-        "type": "string",
+        "name": "id",
+        "type": "[]string",
         "required": "false"
       },
       {
@@ -31478,7 +31947,7 @@
       }
     ],
     "return": "Wrapupcodeentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Sort by\nvar sortOrder string // Sort order\nvar id []string // Filter by wrapup code ID(s)\nvar name string // Wrapup code's name ('Sort by' param is ignored unless this field is provided)\nvar divisionId []string // Filter by division ID(s)\n// Get list of wrapup codes.\ndata, response, err := apiInstance.GetRoutingWrapupcodes(pageSize, pageNumber, sortBy, sortOrder, id, name, divisionId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingWrapupcodes: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Sort by\nvar sortOrder string // Sort order\nvar name string // Wrapup code's name ('Sort by' param is ignored unless this field is provided)\nvar id []string // Filter by wrapup code ID(s)\nvar divisionId []string // Filter by division ID(s)\n// Get list of wrapup codes.\ndata, response, err := apiInstance.GetRoutingWrapupcodes(pageSize, pageNumber, sortBy, sortOrder, name, id, divisionId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingWrapupcodes: %v\\n\", err)\n}"
   },
   "getuserqueues": {
     "operationId": "getuserqueues",
