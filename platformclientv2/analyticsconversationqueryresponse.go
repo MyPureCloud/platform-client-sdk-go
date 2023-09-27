@@ -11,11 +11,11 @@ import (
 type Analyticsconversationqueryresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Aggregations
-	Aggregations *[]Aggregationresult `json:"aggregations,omitempty"`
-
 	// Conversations
 	Conversations *[]Analyticsconversationwithoutattributes `json:"conversations,omitempty"`
+
+	// Aggregations
+	Aggregations *[]Aggregationresult `json:"aggregations,omitempty"`
 
 	// TotalHits
 	TotalHits *int `json:"totalHits,omitempty"`
@@ -84,16 +84,16 @@ func (o Analyticsconversationqueryresponse) MarshalJSON() ([]byte, error) {
 	type Alias Analyticsconversationqueryresponse
 	
 	return json.Marshal(&struct { 
-		Aggregations *[]Aggregationresult `json:"aggregations,omitempty"`
-		
 		Conversations *[]Analyticsconversationwithoutattributes `json:"conversations,omitempty"`
+		
+		Aggregations *[]Aggregationresult `json:"aggregations,omitempty"`
 		
 		TotalHits *int `json:"totalHits,omitempty"`
 		Alias
 	}{ 
-		Aggregations: o.Aggregations,
-		
 		Conversations: o.Conversations,
+		
+		Aggregations: o.Aggregations,
 		
 		TotalHits: o.TotalHits,
 		Alias:    (Alias)(o),
@@ -107,14 +107,14 @@ func (o *Analyticsconversationqueryresponse) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Aggregations, ok := AnalyticsconversationqueryresponseMap["aggregations"].([]interface{}); ok {
-		AggregationsString, _ := json.Marshal(Aggregations)
-		json.Unmarshal(AggregationsString, &o.Aggregations)
-	}
-	
 	if Conversations, ok := AnalyticsconversationqueryresponseMap["conversations"].([]interface{}); ok {
 		ConversationsString, _ := json.Marshal(Conversations)
 		json.Unmarshal(ConversationsString, &o.Conversations)
+	}
+	
+	if Aggregations, ok := AnalyticsconversationqueryresponseMap["aggregations"].([]interface{}); ok {
+		AggregationsString, _ := json.Marshal(Aggregations)
+		json.Unmarshal(AggregationsString, &o.Aggregations)
 	}
 	
 	if TotalHits, ok := AnalyticsconversationqueryresponseMap["totalHits"].(float64); ok {

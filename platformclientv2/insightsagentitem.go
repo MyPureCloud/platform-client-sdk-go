@@ -17,6 +17,9 @@ type Insightsagentitem struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
+	// Manager - This user's manager.
+	Manager *Domainentityref `json:"manager,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Insightsagentitem) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Manager *Domainentityref `json:"manager,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Manager: o.Manager,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -115,6 +122,11 @@ func (o *Insightsagentitem) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if Manager, ok := InsightsagentitemMap["manager"].(map[string]interface{}); ok {
+		ManagerString, _ := json.Marshal(Manager)
+		json.Unmarshal(ManagerString, &o.Manager)
+	}
+	
 	if SelfUri, ok := InsightsagentitemMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

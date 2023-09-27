@@ -12,14 +12,14 @@ import (
 type Analyticsconversationasyncqueryresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Conversations
+	Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
+
 	// Cursor - Optional cursor to indicate where to resume the results
 	Cursor *string `json:"cursor,omitempty"`
 
 	// DataAvailabilityDate - Data available up to at least this datetime. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DataAvailabilityDate *time.Time `json:"dataAvailabilityDate,omitempty"`
-
-	// Conversations
-	Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,18 +93,18 @@ func (o Analyticsconversationasyncqueryresponse) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
+		
 		Cursor *string `json:"cursor,omitempty"`
 		
 		DataAvailabilityDate *string `json:"dataAvailabilityDate,omitempty"`
-		
-		Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
 		Alias
 	}{ 
+		Conversations: o.Conversations,
+		
 		Cursor: o.Cursor,
 		
 		DataAvailabilityDate: DataAvailabilityDate,
-		
-		Conversations: o.Conversations,
 		Alias:    (Alias)(o),
 	})
 }
@@ -116,6 +116,11 @@ func (o *Analyticsconversationasyncqueryresponse) UnmarshalJSON(b []byte) error 
 		return err
 	}
 	
+	if Conversations, ok := AnalyticsconversationasyncqueryresponseMap["conversations"].([]interface{}); ok {
+		ConversationsString, _ := json.Marshal(Conversations)
+		json.Unmarshal(ConversationsString, &o.Conversations)
+	}
+	
 	if Cursor, ok := AnalyticsconversationasyncqueryresponseMap["cursor"].(string); ok {
 		o.Cursor = &Cursor
 	}
@@ -123,11 +128,6 @@ func (o *Analyticsconversationasyncqueryresponse) UnmarshalJSON(b []byte) error 
 	if dataAvailabilityDateString, ok := AnalyticsconversationasyncqueryresponseMap["dataAvailabilityDate"].(string); ok {
 		DataAvailabilityDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", dataAvailabilityDateString)
 		o.DataAvailabilityDate = &DataAvailabilityDate
-	}
-	
-	if Conversations, ok := AnalyticsconversationasyncqueryresponseMap["conversations"].([]interface{}); ok {
-		ConversationsString, _ := json.Marshal(Conversations)
-		json.Unmarshal(ConversationsString, &o.Conversations)
 	}
 	
 

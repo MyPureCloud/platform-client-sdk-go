@@ -14,7 +14,7 @@ type Grammarlanguage struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// GrammarId
+	// GrammarId - The ID of the grammar associated with this grammar language
 	GrammarId *string `json:"grammarId,omitempty"`
 
 	// Language

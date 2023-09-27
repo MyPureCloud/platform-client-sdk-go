@@ -27,6 +27,9 @@ type Room struct {
 	// Description - Room's description
 	Description *string `json:"description,omitempty"`
 
+	// Subject - Room's subject
+	Subject *string `json:"subject,omitempty"`
+
 	// ParticipantLimit - Room's size limit
 	ParticipantLimit *int `json:"participantLimit,omitempty"`
 
@@ -121,6 +124,8 @@ func (o Room) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		Subject *string `json:"subject,omitempty"`
+		
 		ParticipantLimit *int `json:"participantLimit,omitempty"`
 		
 		Owners *[]Userreference `json:"owners,omitempty"`
@@ -139,6 +144,8 @@ func (o Room) MarshalJSON() ([]byte, error) {
 		RoomType: o.RoomType,
 		
 		Description: o.Description,
+		
+		Subject: o.Subject,
 		
 		ParticipantLimit: o.ParticipantLimit,
 		
@@ -177,6 +184,10 @@ func (o *Room) UnmarshalJSON(b []byte) error {
     
 	if Description, ok := RoomMap["description"].(string); ok {
 		o.Description = &Description
+	}
+    
+	if Subject, ok := RoomMap["subject"].(string); ok {
+		o.Subject = &Subject
 	}
     
 	if ParticipantLimit, ok := RoomMap["participantLimit"].(float64); ok {

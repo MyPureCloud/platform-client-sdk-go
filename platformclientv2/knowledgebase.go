@@ -21,7 +21,7 @@ type Knowledgebase struct {
 	// Description - Knowledge base description
 	Description *string `json:"description,omitempty"`
 
-	// CoreLanguage - Core language for knowledge base in which initial content must be created, language codes [en-US, en-UK, en-AU, de-DE] are supported currently, however the new DX knowledge will support all these language codes
+	// CoreLanguage - Core language for knowledge base in which initial content must be created, language codes [en-US, en-UK, en-AU, de-DE] are supported currently. However, the new DX knowledge will support all these language codes, along with 'early preview' language codes [ca-ES, tr-TR, sv-SE, fi-FI, nb-NO, da-DK] which might have a lower accuracy.
 	CoreLanguage *string `json:"coreLanguage,omitempty"`
 
 	// DateCreated - Knowledge base creation date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

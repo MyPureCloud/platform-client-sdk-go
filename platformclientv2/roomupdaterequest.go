@@ -13,6 +13,15 @@ type Roomupdaterequest struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Description - Room's description
 	Description *string `json:"description,omitempty"`
+
+	// Subject - Room's subject
+	Subject *string `json:"subject,omitempty"`
+
+	// PinnedMessageIds - Room's pinned messages
+	PinnedMessageIds *[]string `json:"pinnedMessageIds,omitempty"`
+
+	// OwnerIds - Room's owners
+	OwnerIds *[]string `json:"ownerIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +88,21 @@ func (o Roomupdaterequest) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Description *string `json:"description,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
+		
+		PinnedMessageIds *[]string `json:"pinnedMessageIds,omitempty"`
+		
+		OwnerIds *[]string `json:"ownerIds,omitempty"`
 		Alias
 	}{ 
 		Description: o.Description,
+		
+		Subject: o.Subject,
+		
+		PinnedMessageIds: o.PinnedMessageIds,
+		
+		OwnerIds: o.OwnerIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +118,20 @@ func (o *Roomupdaterequest) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
+	if Subject, ok := RoomupdaterequestMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+    
+	if PinnedMessageIds, ok := RoomupdaterequestMap["pinnedMessageIds"].([]interface{}); ok {
+		PinnedMessageIdsString, _ := json.Marshal(PinnedMessageIds)
+		json.Unmarshal(PinnedMessageIdsString, &o.PinnedMessageIds)
+	}
+	
+	if OwnerIds, ok := RoomupdaterequestMap["ownerIds"].([]interface{}); ok {
+		OwnerIdsString, _ := json.Marshal(OwnerIds)
+		json.Unmarshal(OwnerIdsString, &o.OwnerIds)
+	}
+	
 
 	return nil
 }

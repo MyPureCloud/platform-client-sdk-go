@@ -1401,6 +1401,7 @@ docs/PatchAlertingAlertsBulk-example.txt
 docs/PatchAlertingRulesBulk-example.txt
 docs/PatchAnalyticsReportingSettings-example.txt
 docs/PatchArchitectGrammar-example.txt
+docs/PatchArchitectGrammarLanguage-example.txt
 docs/PatchAuthorizationRole-example.txt
 docs/PatchAuthorizationSettings-example.txt
 docs/PatchChatSettings-example.txt
@@ -4059,6 +4060,7 @@ platformclientv2/grammar.go
 platformclientv2/grammarfileuploadrequest.go
 platformclientv2/grammarlanguage.go
 platformclientv2/grammarlanguagefilemetadata.go
+platformclientv2/grammarlanguageupdate.go
 platformclientv2/grammarlisting.go
 platformclientv2/greeting.go
 platformclientv2/greetingaudiofile.go
@@ -6066,6 +6068,7 @@ platformclientv2/usertokenstopicurireference.go
 platformclientv2/usertransferevent.go
 platformclientv2/utilitiesapi.go
 platformclientv2/utilization.go
+platformclientv2/utilizationlabel.go
 platformclientv2/utilizationtag.go
 platformclientv2/utilizationtagentitylisting.go
 platformclientv2/utterance.go

@@ -13,6 +13,9 @@ type Createroomrequest struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Description - Room's description
 	Description *string `json:"description,omitempty"`
+
+	// Subject - Room's subject
+	Subject *string `json:"subject,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Createroomrequest) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Description *string `json:"description,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
 		Alias
 	}{ 
 		Description: o.Description,
+		
+		Subject: o.Subject,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Createroomrequest) UnmarshalJSON(b []byte) error {
 	
 	if Description, ok := CreateroomrequestMap["description"].(string); ok {
 		o.Description = &Description
+	}
+    
+	if Subject, ok := CreateroomrequestMap["subject"].(string); ok {
+		o.Subject = &Subject
 	}
     
 

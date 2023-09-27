@@ -4178,6 +4178,30 @@
     "return": "Grammar",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar grammarId string // grammar ID\nvar body platformclientv2.Grammar // \n// Updates a grammar\ndata, response, err := apiInstance.PatchArchitectGrammar(grammarId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchArchitectGrammar: %v\\n\", err)\n}"
   },
+  "patcharchitectgrammarlanguage": {
+    "operationId": "patcharchitectgrammarlanguage",
+    "functionName": "PatchArchitectGrammarLanguage",
+    "signature": "PatchArchitectGrammarLanguage(grammarId, languageCode, body)",
+    "parameters": [
+      {
+        "name": "grammarId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "languageCode",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Grammarlanguageupdate",
+        "required": "false"
+      }
+    ],
+    "return": "Grammarlanguage",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar grammarId string // Grammar ID\nvar languageCode string // Language\nvar body platformclientv2.Grammarlanguageupdate // \n// Updates a grammar language\ndata, response, err := apiInstance.PatchArchitectGrammarLanguage(grammarId, languageCode, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchArchitectGrammarLanguage: %v\\n\", err)\n}"
+  },
   "postarchitectdependencytrackingbuild": {
     "operationId": "postarchitectdependencytrackingbuild",
     "functionName": "PostArchitectDependencytrackingBuild",

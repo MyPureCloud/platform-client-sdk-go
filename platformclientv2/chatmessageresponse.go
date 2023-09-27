@@ -44,6 +44,12 @@ type Chatmessageresponse struct {
 
 	// Thread - The id for a thread this message corresponds to
 	Thread *Entity `json:"thread,omitempty"`
+
+	// User - The user who sent the message
+	User *Addressableentityref `json:"user,omitempty"`
+
+	// ToUser - The receiving user of the message
+	ToUser *Addressableentityref `json:"toUser,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -146,6 +152,10 @@ func (o Chatmessageresponse) MarshalJSON() ([]byte, error) {
 		FileUri *string `json:"fileUri,omitempty"`
 		
 		Thread *Entity `json:"thread,omitempty"`
+		
+		User *Addressableentityref `json:"user,omitempty"`
+		
+		ToUser *Addressableentityref `json:"toUser,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -169,6 +179,10 @@ func (o Chatmessageresponse) MarshalJSON() ([]byte, error) {
 		FileUri: o.FileUri,
 		
 		Thread: o.Thread,
+		
+		User: o.User,
+		
+		ToUser: o.ToUser,
 		Alias:    (Alias)(o),
 	})
 }
@@ -226,6 +240,16 @@ func (o *Chatmessageresponse) UnmarshalJSON(b []byte) error {
 	if Thread, ok := ChatmessageresponseMap["thread"].(map[string]interface{}); ok {
 		ThreadString, _ := json.Marshal(Thread)
 		json.Unmarshal(ThreadString, &o.Thread)
+	}
+	
+	if User, ok := ChatmessageresponseMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if ToUser, ok := ChatmessageresponseMap["toUser"].(map[string]interface{}); ok {
+		ToUserString, _ := json.Marshal(ToUser)
+		json.Unmarshal(ToUserString, &o.ToUser)
 	}
 	
 
