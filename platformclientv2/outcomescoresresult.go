@@ -13,7 +13,7 @@ type Outcomescoresresult struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// OutcomeScores - List of scored outcomes in the session.
-	OutcomeScores *[]Outcomeeventscore `json:"outcomeScores,omitempty"`
+	OutcomeScores *[]Outcomescore `json:"outcomeScores,omitempty"`
 
 	// ModifiedDate - Timestamp indicating the last time that the event was scored. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
@@ -90,7 +90,7 @@ func (o Outcomescoresresult) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		OutcomeScores *[]Outcomeeventscore `json:"outcomeScores,omitempty"`
+		OutcomeScores *[]Outcomescore `json:"outcomeScores,omitempty"`
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		Alias

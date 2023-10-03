@@ -17,6 +17,9 @@ type Metadataproperty struct {
 	// Description - brief description of the input property
 	Description *string `json:"description,omitempty"`
 
+	// Sensitive - whether the property's value should be hidden from display
+	Sensitive *string `json:"sensitive,omitempty"`
+
 	// Help - optional URL with addition information about the input property
 	Help *string `json:"help,omitempty"`
 
@@ -94,6 +97,8 @@ func (o Metadataproperty) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		Sensitive *string `json:"sensitive,omitempty"`
+		
 		Help *string `json:"help,omitempty"`
 		
 		VarDefault *string `json:"default,omitempty"`
@@ -104,6 +109,8 @@ func (o Metadataproperty) MarshalJSON() ([]byte, error) {
 		VarType: o.VarType,
 		
 		Description: o.Description,
+		
+		Sensitive: o.Sensitive,
 		
 		Help: o.Help,
 		
@@ -127,6 +134,10 @@ func (o *Metadataproperty) UnmarshalJSON(b []byte) error {
     
 	if Description, ok := MetadatapropertyMap["description"].(string); ok {
 		o.Description = &Description
+	}
+    
+	if Sensitive, ok := MetadatapropertyMap["sensitive"].(string); ok {
+		o.Sensitive = &Sensitive
 	}
     
 	if Help, ok := MetadatapropertyMap["help"].(string); ok {

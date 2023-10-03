@@ -24,6 +24,9 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	// RecordId - Record identifier
 	RecordId *string `json:"recordId,omitempty"`
 
+	// ActiveRouting - Active routing method
+	ActiveRouting *string `json:"activeRouting,omitempty"`
+
 	// ActiveSkillIds - ID(s) of Skill(s) that are active on the conversation
 	ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
 
@@ -338,6 +341,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		
 		RecordId *string `json:"recordId,omitempty"`
 		
+		ActiveRouting *string `json:"activeRouting,omitempty"`
+		
 		ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
 		
 		AddressFrom *string `json:"addressFrom,omitempty"`
@@ -502,6 +507,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		Value: o.Value,
 		
 		RecordId: o.RecordId,
+		
+		ActiveRouting: o.ActiveRouting,
 		
 		ActiveSkillIds: o.ActiveSkillIds,
 		
@@ -685,6 +692,10 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	
 	if RecordId, ok := ConversationmetricstopicconversationmetricrecordMap["recordId"].(string); ok {
 		o.RecordId = &RecordId
+	}
+    
+	if ActiveRouting, ok := ConversationmetricstopicconversationmetricrecordMap["activeRouting"].(string); ok {
+		o.ActiveRouting = &ActiveRouting
 	}
     
 	if ActiveSkillIds, ok := ConversationmetricstopicconversationmetricrecordMap["activeSkillIds"].([]interface{}); ok {

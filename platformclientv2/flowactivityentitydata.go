@@ -18,6 +18,9 @@ type Flowactivityentitydata struct {
 	// Metric - Activity metric
 	Metric *string `json:"metric,omitempty"`
 
+	// ActiveRouting - Active routing method
+	ActiveRouting *string `json:"activeRouting,omitempty"`
+
 	// AddressFrom - The address that initiated an action
 	AddressFrom *string `json:"addressFrom,omitempty"`
 
@@ -160,6 +163,8 @@ func (o Flowactivityentitydata) MarshalJSON() ([]byte, error) {
 		
 		Metric *string `json:"metric,omitempty"`
 		
+		ActiveRouting *string `json:"activeRouting,omitempty"`
+		
 		AddressFrom *string `json:"addressFrom,omitempty"`
 		
 		AddressTo *string `json:"addressTo,omitempty"`
@@ -208,6 +213,8 @@ func (o Flowactivityentitydata) MarshalJSON() ([]byte, error) {
 		ActivityDate: ActivityDate,
 		
 		Metric: o.Metric,
+		
+		ActiveRouting: o.ActiveRouting,
 		
 		AddressFrom: o.AddressFrom,
 		
@@ -270,6 +277,10 @@ func (o *Flowactivityentitydata) UnmarshalJSON(b []byte) error {
 	
 	if Metric, ok := FlowactivityentitydataMap["metric"].(string); ok {
 		o.Metric = &Metric
+	}
+    
+	if ActiveRouting, ok := FlowactivityentitydataMap["activeRouting"].(string); ok {
+		o.ActiveRouting = &ActiveRouting
 	}
     
 	if AddressFrom, ok := FlowactivityentitydataMap["addressFrom"].(string); ok {

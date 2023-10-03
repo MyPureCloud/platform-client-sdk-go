@@ -26,6 +26,12 @@ type Dnclistimportstatusimportstatus struct {
 	// FailureReason - if the import has failed, the reason for the failure
 	FailureReason *string `json:"failureReason,omitempty"`
 
+	// TargetContactListIds - The ids for target contact lists
+	TargetContactListIds *[]string `json:"targetContactListIds,omitempty"`
+
+	// ListNamePrefix - The prefix used for target contact list names
+	ListNamePrefix *string `json:"listNamePrefix,omitempty"`
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 }
@@ -103,6 +109,10 @@ func (o Dnclistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		
 		FailureReason *string `json:"failureReason,omitempty"`
 		
+		TargetContactListIds *[]string `json:"targetContactListIds,omitempty"`
+		
+		ListNamePrefix *string `json:"listNamePrefix,omitempty"`
+		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +125,10 @@ func (o Dnclistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		PercentageComplete: o.PercentageComplete,
 		
 		FailureReason: o.FailureReason,
+		
+		TargetContactListIds: o.TargetContactListIds,
+		
+		ListNamePrefix: o.ListNamePrefix,
 		
 		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (Alias)(o),
@@ -149,6 +163,15 @@ func (o *Dnclistimportstatusimportstatus) UnmarshalJSON(b []byte) error {
 	
 	if FailureReason, ok := DnclistimportstatusimportstatusMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
+	}
+    
+	if TargetContactListIds, ok := DnclistimportstatusimportstatusMap["targetContactListIds"].([]interface{}); ok {
+		TargetContactListIdsString, _ := json.Marshal(TargetContactListIds)
+		json.Unmarshal(TargetContactListIdsString, &o.TargetContactListIds)
+	}
+	
+	if ListNamePrefix, ok := DnclistimportstatusimportstatusMap["listNamePrefix"].(string); ok {
+		o.ListNamePrefix = &ListNamePrefix
 	}
     
 	if AdditionalProperties, ok := DnclistimportstatusimportstatusMap["additionalProperties"].(map[string]interface{}); ok {

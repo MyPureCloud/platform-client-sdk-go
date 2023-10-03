@@ -24,6 +24,9 @@ type Flowmetricstopicflowmetricrecord struct {
 	// RecordId - Record identifier
 	RecordId *string `json:"recordId,omitempty"`
 
+	// ActiveRouting - Active routing method
+	ActiveRouting *string `json:"activeRouting,omitempty"`
+
 	// ActiveSkillIds - ID(s) of Skill(s) that are active on the conversation
 	ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
 
@@ -383,6 +386,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		
 		RecordId *string `json:"recordId,omitempty"`
 		
+		ActiveRouting *string `json:"activeRouting,omitempty"`
+		
 		ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
 		
 		AddressFrom *string `json:"addressFrom,omitempty"`
@@ -577,6 +582,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		Value: o.Value,
 		
 		RecordId: o.RecordId,
+		
+		ActiveRouting: o.ActiveRouting,
 		
 		ActiveSkillIds: o.ActiveSkillIds,
 		
@@ -790,6 +797,10 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 	
 	if RecordId, ok := FlowmetricstopicflowmetricrecordMap["recordId"].(string); ok {
 		o.RecordId = &RecordId
+	}
+    
+	if ActiveRouting, ok := FlowmetricstopicflowmetricrecordMap["activeRouting"].(string); ok {
+		o.ActiveRouting = &ActiveRouting
 	}
     
 	if ActiveSkillIds, ok := FlowmetricstopicflowmetricrecordMap["activeSkillIds"].([]interface{}); ok {

@@ -32,11 +32,11 @@ type Userprofileentitylisting struct {
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -119,9 +119,9 @@ func (o Userprofileentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -140,9 +140,9 @@ func (o Userprofileentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PreviousUri: o.PreviousUri,
 		
-		SelfUri: o.SelfUri,
-		
 		LastUri: o.LastUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,12 +188,12 @@ func (o *Userprofileentitylisting) UnmarshalJSON(b []byte) error {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if SelfUri, ok := UserprofileentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if LastUri, ok := UserprofileentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if SelfUri, ok := UserprofileentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := UserprofileentitylistingMap["pageCount"].(float64); ok {

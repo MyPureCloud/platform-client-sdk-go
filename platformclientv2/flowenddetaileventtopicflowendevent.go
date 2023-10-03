@@ -73,6 +73,12 @@ type Flowenddetaileventtopicflowendevent struct {
 
 	// ConversationExternalOrganizationIds
 	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+
+	// ExitReason
+	ExitReason *string `json:"exitReason,omitempty"`
+
+	// TransferType
+	TransferType *string `json:"transferType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -179,6 +185,10 @@ func (o Flowenddetaileventtopicflowendevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 		
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+		
+		ExitReason *string `json:"exitReason,omitempty"`
+		
+		TransferType *string `json:"transferType,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -222,6 +232,10 @@ func (o Flowenddetaileventtopicflowendevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds: o.ConversationExternalContactIds,
 		
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
+		
+		ExitReason: o.ExitReason,
+		
+		TransferType: o.TransferType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -321,6 +335,14 @@ func (o *Flowenddetaileventtopicflowendevent) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
+	if ExitReason, ok := FlowenddetaileventtopicflowendeventMap["exitReason"].(string); ok {
+		o.ExitReason = &ExitReason
+	}
+    
+	if TransferType, ok := FlowenddetaileventtopicflowendeventMap["transferType"].(string); ok {
+		o.TransferType = &TransferType
+	}
+    
 
 	return nil
 }

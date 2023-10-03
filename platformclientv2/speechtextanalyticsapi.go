@@ -29,6 +29,81 @@ func NewSpeechTextAnalyticsApiWithConfig(config *Configuration) *SpeechTextAnaly
 	}
 }
 
+// DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId invokes DELETE /api/v2/speechandtextanalytics/dictionaryfeedback/{dictionaryFeedbackId}
+//
+// Delete a Speech & Text Analytics DictionaryFeedback by Id
+func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/dictionaryfeedback/{dictionaryFeedbackId}"
+	path = strings.Replace(path, "{dictionaryFeedbackId}", url.PathEscape(fmt.Sprintf("%v", dictionaryFeedbackId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'dictionaryFeedbackId' is set
+	if &dictionaryFeedbackId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'dictionaryFeedbackId' when calling SpeechTextAnalyticsApi->DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteSpeechandtextanalyticsProgram invokes DELETE /api/v2/speechandtextanalytics/programs/{programId}
 //
 // Delete a Speech & Text Analytics program by id
@@ -575,6 +650,170 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Transcripturls" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetSpeechandtextanalyticsDictionaryfeedback invokes GET /api/v2/speechandtextanalytics/dictionaryfeedback
+//
+// Get the list of Speech & Text Analytics dictionary feedbacks
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDictionaryfeedback(dialect string, nextPage string, pageSize int) (*Dictionaryfeedbackentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/dictionaryfeedback"
+	defaultReturn := new(Dictionaryfeedbackentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["dialect"] = a.Configuration.APIClient.ParameterToString(dialect, "")
+	
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Dictionaryfeedbackentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Dictionaryfeedbackentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId invokes GET /api/v2/speechandtextanalytics/dictionaryfeedback/{dictionaryFeedbackId}
+//
+// Get a Speech & Text Analytics dictionary feedback by id
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId string) (*Dictionaryfeedback, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/dictionaryfeedback/{dictionaryFeedbackId}"
+	path = strings.Replace(path, "{dictionaryFeedbackId}", url.PathEscape(fmt.Sprintf("%v", dictionaryFeedbackId)), -1)
+	defaultReturn := new(Dictionaryfeedback)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'dictionaryFeedbackId' is set
+	if &dictionaryFeedbackId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'dictionaryFeedbackId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Dictionaryfeedback
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Dictionaryfeedback" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2111,6 +2350,90 @@ func (a SpeechTextAnalyticsApi) PatchSpeechandtextanalyticsSettings(body Speecht
 	return successPayload, response, err
 }
 
+// PostSpeechandtextanalyticsDictionaryfeedback invokes POST /api/v2/speechandtextanalytics/dictionaryfeedback
+//
+// Create a Speech & Text Analytics DictionaryFeedback
+func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsDictionaryfeedback(body Dictionaryfeedback) (*Dictionaryfeedback, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/dictionaryfeedback"
+	defaultReturn := new(Dictionaryfeedback)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PostSpeechandtextanalyticsDictionaryfeedback")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Dictionaryfeedback
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Dictionaryfeedback" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostSpeechandtextanalyticsPrograms invokes POST /api/v2/speechandtextanalytics/programs
 //
 // Create new Speech & Text Analytics program
@@ -2691,6 +3014,91 @@ func (a SpeechTextAnalyticsApi) PostSpeechandtextanalyticsTranscriptsSearch(body
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Jsonsearchresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId invokes PUT /api/v2/speechandtextanalytics/dictionaryfeedback/{dictionaryFeedbackId}
+//
+// Update existing Speech & Text Analytics dictionary feedback by id
+func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId string, body Dictionaryfeedback) (*Dictionaryfeedback, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/dictionaryfeedback/{dictionaryFeedbackId}"
+	path = strings.Replace(path, "{dictionaryFeedbackId}", url.PathEscape(fmt.Sprintf("%v", dictionaryFeedbackId)), -1)
+	defaultReturn := new(Dictionaryfeedback)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'dictionaryFeedbackId' is set
+	if &dictionaryFeedbackId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'dictionaryFeedbackId' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Dictionaryfeedback
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Dictionaryfeedback" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

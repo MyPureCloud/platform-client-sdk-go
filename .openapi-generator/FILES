@@ -208,6 +208,7 @@ docs/DeleteRoutingUtilizationTag-example.txt
 docs/DeleteRoutingWrapupcode-example.txt
 docs/DeleteScimUser-example.txt
 docs/DeleteScimV2User-example.txt
+docs/DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId-example.txt
 docs/DeleteSpeechandtextanalyticsProgram-example.txt
 docs/DeleteSpeechandtextanalyticsSentimentfeedback-example.txt
 docs/DeleteSpeechandtextanalyticsSentimentfeedbackSentimentFeedbackId-example.txt
@@ -1103,6 +1104,8 @@ docs/GetSearchSuggest-example.txt
 docs/GetSpeechandtextanalyticsConversation-example.txt
 docs/GetSpeechandtextanalyticsConversationCommunicationTranscripturl-example.txt
 docs/GetSpeechandtextanalyticsConversationCommunicationTranscripturls-example.txt
+docs/GetSpeechandtextanalyticsDictionaryfeedback-example.txt
+docs/GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId-example.txt
 docs/GetSpeechandtextanalyticsProgram-example.txt
 docs/GetSpeechandtextanalyticsProgramMappings-example.txt
 docs/GetSpeechandtextanalyticsProgramTranscriptionengines-example.txt
@@ -2011,6 +2014,7 @@ docs/PostSearch-example.txt
 docs/PostSearch-example.txt
 docs/PostSearchSuggest-example.txt
 docs/PostSearchSuggest-example.txt
+docs/PostSpeechandtextanalyticsDictionaryfeedback-example.txt
 docs/PostSpeechandtextanalyticsPrograms-example.txt
 docs/PostSpeechandtextanalyticsProgramsGeneralJobs-example.txt
 docs/PostSpeechandtextanalyticsProgramsPublishjobs-example.txt
@@ -2331,6 +2335,7 @@ docs/PutScimGroup-example.txt
 docs/PutScimUser-example.txt
 docs/PutScimV2Group-example.txt
 docs/PutScimV2User-example.txt
+docs/PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId-example.txt
 docs/PutSpeechandtextanalyticsProgram-example.txt
 docs/PutSpeechandtextanalyticsProgramMappings-example.txt
 docs/PutSpeechandtextanalyticsProgramTranscriptionengines-example.txt
@@ -3565,6 +3570,9 @@ platformclientv2/dialogflowagentsummaryentitylisting.go
 platformclientv2/dialogflowintent.go
 platformclientv2/dialogflowparameter.go
 platformclientv2/dialogflowproject.go
+platformclientv2/dictionaryfeedback.go
+platformclientv2/dictionaryfeedbackentitylisting.go
+platformclientv2/dictionaryfeedbackexamplephrase.go
 platformclientv2/did.go
 platformclientv2/didentitylisting.go
 platformclientv2/didnumber.go
@@ -4522,6 +4530,7 @@ platformclientv2/lineintegrationentitylisting.go
 platformclientv2/lineintegrationrequest.go
 platformclientv2/linestatus.go
 platformclientv2/lineuserid.go
+platformclientv2/listeddictionaryfeedback.go
 platformclientv2/listedprogram.go
 platformclientv2/listedtopic.go
 platformclientv2/listitemcomponent.go
@@ -4829,7 +4838,6 @@ platformclientv2/outcomeattributionrequest.go
 platformclientv2/outcomeattributionresponselisting.go
 platformclientv2/outcomeattributionresultsresponse.go
 platformclientv2/outcomeconfig.go
-platformclientv2/outcomeeventscore.go
 platformclientv2/outcomelisting.go
 platformclientv2/outcomepercentilecondition.go
 platformclientv2/outcomepredictor.go
@@ -4839,6 +4847,7 @@ platformclientv2/outcomeprobabilitycondition.go
 platformclientv2/outcomequantilecondition.go
 platformclientv2/outcomeref.go
 platformclientv2/outcomerefrequest.go
+platformclientv2/outcomescore.go
 platformclientv2/outcomescoresresult.go
 platformclientv2/outlierinfo.go
 platformclientv2/outofoffice.go
@@ -6151,7 +6160,6 @@ platformclientv2/video.go
 platformclientv2/videoconferencedetails.go
 platformclientv2/videoconferenceupdatetopicparticipantinfo.go
 platformclientv2/videoconferenceupdatetopicvideoconference.go
-platformclientv2/videometadata.go
 platformclientv2/viewfilter.go
 platformclientv2/visibilitycondition.go
 platformclientv2/vmpairinginfo.go

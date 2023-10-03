@@ -34342,6 +34342,19 @@
     "return": "Voicemailssearchresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewVoicemailApiWithConfig(config)\n\nvar body platformclientv2.Voicemailsearchrequest // Search request options\n// Search voicemails\ndata, response, err := apiInstance.PostVoicemailSearch(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostVoicemailSearch: %v\\n\", err)\n}"
   },
+  "deletespeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid": {
+    "operationId": "deletespeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid",
+    "functionName": "DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId",
+    "signature": "DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId)",
+    "parameters": [
+      {
+        "name": "dictionaryFeedbackId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar dictionaryFeedbackId string // The Id of the Dictionary Feedback\n// Delete a Speech & Text Analytics DictionaryFeedback by Id\nresponse, err := apiInstance.DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId: %v\\n\", err)\n}"
+  },
   "deletespeechandtextanalyticsprogram": {
     "operationId": "deletespeechandtextanalyticsprogram",
     "functionName": "DeleteSpeechandtextanalyticsProgram",
@@ -34443,6 +34456,44 @@
     ],
     "return": "Transcripturls",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar conversationId string // Conversation ID\nvar communicationId string // Communication ID\n// Get the list of pre-signed S3 URL for the transcripts of a specific communication of a conversation\ndata, response, err := apiInstance.GetSpeechandtextanalyticsConversationCommunicationTranscripturls(conversationId, communicationId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsConversationCommunicationTranscripturls: %v\\n\", err)\n}"
+  },
+  "getspeechandtextanalyticsdictionaryfeedback": {
+    "operationId": "getspeechandtextanalyticsdictionaryfeedback",
+    "functionName": "GetSpeechandtextanalyticsDictionaryfeedback",
+    "signature": "GetSpeechandtextanalyticsDictionaryfeedback(dialect, nextPage, pageSize)",
+    "parameters": [
+      {
+        "name": "dialect",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "nextPage",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Dictionaryfeedbackentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar dialect string // The key for filter the listing by dialect, dialect format is {language}-{country} where language follows ISO 639-1 standard and country follows ISO 3166-1 alpha 2 standard\nvar nextPage string // The key for listing the next page\nvar pageSize int // The page size for the listing\n// Get the list of Speech & Text Analytics dictionary feedbacks\ndata, response, err := apiInstance.GetSpeechandtextanalyticsDictionaryfeedback(dialect, nextPage, pageSize)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsDictionaryfeedback: %v\\n\", err)\n}"
+  },
+  "getspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid": {
+    "operationId": "getspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid",
+    "functionName": "GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId",
+    "signature": "GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId)",
+    "parameters": [
+      {
+        "name": "dictionaryFeedbackId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Dictionaryfeedback",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar dictionaryFeedbackId string // The Id of the Dictionary Feedback\n// Get a Speech & Text Analytics dictionary feedback by id\ndata, response, err := apiInstance.GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId: %v\\n\", err)\n}"
   },
   "getspeechandtextanalyticsprogram": {
     "operationId": "getspeechandtextanalyticsprogram",
@@ -34732,6 +34783,20 @@
     "return": "Speechtextanalyticssettingsresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Speechtextanalyticssettingsrequest // Speech And Text Analytics Settings\n// Patch Speech And Text Analytics Settings\ndata, response, err := apiInstance.PatchSpeechandtextanalyticsSettings(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSpeechandtextanalyticsSettings: %v\\n\", err)\n}"
   },
+  "postspeechandtextanalyticsdictionaryfeedback": {
+    "operationId": "postspeechandtextanalyticsdictionaryfeedback",
+    "functionName": "PostSpeechandtextanalyticsDictionaryfeedback",
+    "signature": "PostSpeechandtextanalyticsDictionaryfeedback(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Dictionaryfeedback",
+        "required": "true"
+      }
+    ],
+    "return": "Dictionaryfeedback",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Dictionaryfeedback // The DictionaryFeedback to create\n// Create a Speech & Text Analytics DictionaryFeedback\ndata, response, err := apiInstance.PostSpeechandtextanalyticsDictionaryfeedback(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostSpeechandtextanalyticsDictionaryfeedback: %v\\n\", err)\n}"
+  },
   "postspeechandtextanalyticsprograms": {
     "operationId": "postspeechandtextanalyticsprograms",
     "functionName": "PostSpeechandtextanalyticsPrograms",
@@ -34815,6 +34880,25 @@
     ],
     "return": "Topicjob",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Topicjobrequest // The publish topics job to create\n// Create new Speech & Text Analytics publish topics job\ndata, response, err := apiInstance.PostSpeechandtextanalyticsTopicsPublishjobs(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostSpeechandtextanalyticsTopicsPublishjobs: %v\\n\", err)\n}"
+  },
+  "putspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid": {
+    "operationId": "putspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid",
+    "functionName": "PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId",
+    "signature": "PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId, body)",
+    "parameters": [
+      {
+        "name": "dictionaryFeedbackId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Dictionaryfeedback",
+        "required": "false"
+      }
+    ],
+    "return": "Dictionaryfeedback",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar dictionaryFeedbackId string // The Id of the Dictionary Feedback\nvar body platformclientv2.Dictionaryfeedback // \n// Update existing Speech & Text Analytics dictionary feedback by id\ndata, response, err := apiInstance.PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId(dictionaryFeedbackId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId: %v\\n\", err)\n}"
   },
   "putspeechandtextanalyticsprogram": {
     "operationId": "putspeechandtextanalyticsprogram",

@@ -28,6 +28,9 @@ type Externalcontactsunresolvedcontactchangedtopicphonenumber struct {
 
 	// CountryCode
 	CountryCode *string `json:"countryCode,omitempty"`
+
+	// NormalizationCountryCode
+	NormalizationCountryCode *string `json:"normalizationCountryCode,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Externalcontactsunresolvedcontactchangedtopicphonenumber) MarshalJSON() 
 		E164 *string `json:"e164,omitempty"`
 		
 		CountryCode *string `json:"countryCode,omitempty"`
+		
+		NormalizationCountryCode *string `json:"normalizationCountryCode,omitempty"`
 		Alias
 	}{ 
 		Display: o.Display,
@@ -117,6 +122,8 @@ func (o Externalcontactsunresolvedcontactchangedtopicphonenumber) MarshalJSON() 
 		E164: o.E164,
 		
 		CountryCode: o.CountryCode,
+		
+		NormalizationCountryCode: o.NormalizationCountryCode,
 		Alias:    (Alias)(o),
 	})
 }
@@ -151,6 +158,10 @@ func (o *Externalcontactsunresolvedcontactchangedtopicphonenumber) UnmarshalJSON
     
 	if CountryCode, ok := ExternalcontactsunresolvedcontactchangedtopicphonenumberMap["countryCode"].(string); ok {
 		o.CountryCode = &CountryCode
+	}
+    
+	if NormalizationCountryCode, ok := ExternalcontactsunresolvedcontactchangedtopicphonenumberMap["normalizationCountryCode"].(string); ok {
+		o.NormalizationCountryCode = &NormalizationCountryCode
 	}
     
 

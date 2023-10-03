@@ -18,6 +18,9 @@ type Conversationactivityentitydata struct {
 	// Metric - Activity metric
 	Metric *string `json:"metric,omitempty"`
 
+	// ActiveRouting - Active routing method
+	ActiveRouting *string `json:"activeRouting,omitempty"`
+
 	// AddressFrom - The address that initiated an action
 	AddressFrom *string `json:"addressFrom,omitempty"`
 
@@ -154,6 +157,8 @@ func (o Conversationactivityentitydata) MarshalJSON() ([]byte, error) {
 		
 		Metric *string `json:"metric,omitempty"`
 		
+		ActiveRouting *string `json:"activeRouting,omitempty"`
+		
 		AddressFrom *string `json:"addressFrom,omitempty"`
 		
 		AddressTo *string `json:"addressTo,omitempty"`
@@ -198,6 +203,8 @@ func (o Conversationactivityentitydata) MarshalJSON() ([]byte, error) {
 		ActivityDate: ActivityDate,
 		
 		Metric: o.Metric,
+		
+		ActiveRouting: o.ActiveRouting,
 		
 		AddressFrom: o.AddressFrom,
 		
@@ -256,6 +263,10 @@ func (o *Conversationactivityentitydata) UnmarshalJSON(b []byte) error {
 	
 	if Metric, ok := ConversationactivityentitydataMap["metric"].(string); ok {
 		o.Metric = &Metric
+	}
+    
+	if ActiveRouting, ok := ConversationactivityentitydataMap["activeRouting"].(string); ok {
+		o.ActiveRouting = &ActiveRouting
 	}
     
 	if AddressFrom, ok := ConversationactivityentitydataMap["addressFrom"].(string); ok {
