@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewGamificationApiWithConfig(config)
+
+var body platformclientv2.Createperformanceprofile // performanceProfile
+var copyMetrics bool // Flag to copy metrics. If set to false, there will be no metrics associated with the new profile. If set to true or is absent (the default behavior), all metrics from the default profile will be copied over into the new profile.
+// Create a new custom performance profile
+data, response, err := apiInstance.PostGamificationProfiles(body, copyMetrics)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling PostGamificationProfiles: %v\n", err)
+}

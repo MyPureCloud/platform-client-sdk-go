@@ -1,0 +1,314 @@
+{
+    "DELETE /api/v2/webchat/deployments/{deploymentId}": {
+        "operationId": "deletewebchatdeployment",
+        "functionName": "DeleteWebchatDeployment",
+        "signature": "DeleteWebchatDeployment(deploymentId)",
+        "parameters": [
+            {
+                "name": "deploymentId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}": {
+        "operationId": "deletewebchatguestconversationmember",
+        "functionName": "DeleteWebchatGuestConversationMember",
+        "signature": "DeleteWebchatGuestConversationMember(conversationId, memberId)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "memberId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/webchat/settings": {
+        "operationId": "deletewebchatsettings",
+        "functionName": "DeleteWebchatSettings",
+        "signature": "DeleteWebchatSettings()"
+        
+    },
+    "GET /api/v2/webchat/deployments/{deploymentId}": {
+        "operationId": "getwebchatdeployment",
+        "functionName": "GetWebchatDeployment",
+        "signature": "GetWebchatDeployment(deploymentId)",
+        "parameters": [
+            {
+                "name": "deploymentId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatdeployment"
+    },
+    "GET /api/v2/webchat/deployments": {
+        "operationId": "getwebchatdeployments",
+        "functionName": "GetWebchatDeployments",
+        "signature": "GetWebchatDeployments()",
+        
+        "return": "Webchatdeploymententitylisting"
+    },
+    "GET /api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}": {
+        "operationId": "getwebchatguestconversationmediarequest",
+        "functionName": "GetWebchatGuestConversationMediarequest",
+        "signature": "GetWebchatGuestConversationMediarequest(conversationId, mediaRequestId)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "mediaRequestId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatguestmediarequest"
+    },
+    "GET /api/v2/webchat/guest/conversations/{conversationId}/mediarequests": {
+        "operationId": "getwebchatguestconversationmediarequests",
+        "functionName": "GetWebchatGuestConversationMediarequests",
+        "signature": "GetWebchatGuestConversationMediarequests(conversationId)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatguestmediarequestentitylist"
+    },
+    "GET /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}": {
+        "operationId": "getwebchatguestconversationmember",
+        "functionName": "GetWebchatGuestConversationMember",
+        "signature": "GetWebchatGuestConversationMember(conversationId, memberId)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "memberId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatmemberinfo"
+    },
+    "GET /api/v2/webchat/guest/conversations/{conversationId}/members": {
+        "operationId": "getwebchatguestconversationmembers",
+        "functionName": "GetWebchatGuestConversationMembers",
+        "signature": "GetWebchatGuestConversationMembers(conversationId, pageSize, pageNumber, excludeDisconnectedMembers)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "excludeDisconnectedMembers",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Webchatmemberinfoentitylist"
+    },
+    "GET /api/v2/webchat/guest/conversations/{conversationId}/messages/{messageId}": {
+        "operationId": "getwebchatguestconversationmessage",
+        "functionName": "GetWebchatGuestConversationMessage",
+        "signature": "GetWebchatGuestConversationMessage(conversationId, messageId)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatmessage"
+    },
+    "GET /api/v2/webchat/guest/conversations/{conversationId}/messages": {
+        "operationId": "getwebchatguestconversationmessages",
+        "functionName": "GetWebchatGuestConversationMessages",
+        "signature": "GetWebchatGuestConversationMessages(conversationId, after, before, sortOrder, maxResults)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "before",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "maxResults",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Webchatmessageentitylist"
+    },
+    "GET /api/v2/webchat/settings": {
+        "operationId": "getwebchatsettings",
+        "functionName": "GetWebchatSettings",
+        "signature": "GetWebchatSettings()",
+        
+        "return": "Webchatsettings"
+    },
+    "PATCH /api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}": {
+        "operationId": "patchwebchatguestconversationmediarequest",
+        "functionName": "PatchWebchatGuestConversationMediarequest",
+        "signature": "PatchWebchatGuestConversationMediarequest(conversationId, mediaRequestId, body)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "mediaRequestId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Webchatguestmediarequest",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatguestmediarequest"
+    },
+    "POST /api/v2/webchat/deployments": {
+        "operationId": "postwebchatdeployments",
+        "functionName": "PostWebchatDeployments",
+        "signature": "PostWebchatDeployments(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Webchatdeployment",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatdeployment"
+    },
+    "POST /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}/messages": {
+        "operationId": "postwebchatguestconversationmembermessages",
+        "functionName": "PostWebchatGuestConversationMemberMessages",
+        "signature": "PostWebchatGuestConversationMemberMessages(conversationId, memberId, body)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "memberId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Createwebchatmessagerequest",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatmessage"
+    },
+    "POST /api/v2/webchat/guest/conversations/{conversationId}/members/{memberId}/typing": {
+        "operationId": "postwebchatguestconversationmembertyping",
+        "functionName": "PostWebchatGuestConversationMemberTyping",
+        "signature": "PostWebchatGuestConversationMemberTyping(conversationId, memberId)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "memberId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Webchattyping"
+    },
+    "POST /api/v2/webchat/guest/conversations": {
+        "operationId": "postwebchatguestconversations",
+        "functionName": "PostWebchatGuestConversations",
+        "signature": "PostWebchatGuestConversations(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Createwebchatconversationrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Createwebchatconversationresponse"
+    },
+    "PUT /api/v2/webchat/deployments/{deploymentId}": {
+        "operationId": "putwebchatdeployment",
+        "functionName": "PutWebchatDeployment",
+        "signature": "PutWebchatDeployment(deploymentId, body)",
+        "parameters": [
+            {
+                "name": "deploymentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Webchatdeployment",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatdeployment"
+    },
+    "PUT /api/v2/webchat/settings": {
+        "operationId": "putwebchatsettings",
+        "functionName": "PutWebchatSettings",
+        "signature": "PutWebchatSettings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Webchatsettings",
+                "required": "true"
+            }
+        ],
+        "return": "Webchatsettings"
+    }
+    
+}

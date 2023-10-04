@@ -1,0 +1,23 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)
+
+var pageSize int // The total page size requested
+var pageNumber int // The page number requested
+var nextPage string // next page token
+var previousPage string // Previous page token
+var sortBy string // Root level field name to sort on.
+var sortOrder string // Direction to sort 'sortBy' field.
+var category string // Filter by category name.
+var name string // Filter by partial or complete action name.
+var ids string // Filter by action Id. Can be a comma separated list to request multiple actions.  Limit of 50 Ids.
+var secure string // Filter based on 'secure' configuration option. True will only return actions marked as secure. False will return only non-secure actions. Do not use filter if you want all Actions.
+var includeAuthActions string // Whether or not to include authentication actions in the response. These actions are not directly executable. Some integrations create them and will run them as needed to refresh authentication information for other actions.
+// Retrieves all actions associated with filters passed in via query param.
+data, response, err := apiInstance.GetIntegrationsActions(pageSize, pageNumber, nextPage, previousPage, sortBy, sortOrder, category, name, ids, secure, includeAuthActions)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetIntegrationsActions: %v\n", err)
+}

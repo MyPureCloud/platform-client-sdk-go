@@ -1,0 +1,785 @@
+{
+    "DELETE /api/v2/taskmanagement/workbins/{workbinId}": {
+        "operationId": "deletetaskmanagementworkbin",
+        "functionName": "DeleteTaskmanagementWorkbin",
+        "signature": "DeleteTaskmanagementWorkbin(workbinId)",
+        "parameters": [
+            {
+                "name": "workbinId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/taskmanagement/workitems/{workitemId}": {
+        "operationId": "deletetaskmanagementworkitem",
+        "functionName": "DeleteTaskmanagementWorkitem",
+        "signature": "DeleteTaskmanagementWorkitem(workitemId)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/taskmanagement/workitems/schemas/{schemaId}": {
+        "operationId": "deletetaskmanagementworkitemsschema",
+        "functionName": "DeleteTaskmanagementWorkitemsSchema",
+        "signature": "DeleteTaskmanagementWorkitemsSchema(schemaId)",
+        "parameters": [
+            {
+                "name": "schemaId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/taskmanagement/worktypes/{worktypeId}": {
+        "operationId": "deletetaskmanagementworktype",
+        "functionName": "DeleteTaskmanagementWorktype",
+        "signature": "DeleteTaskmanagementWorktype(worktypeId)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/taskmanagement/worktypes/{worktypeId}/statuses/{statusId}": {
+        "operationId": "deletetaskmanagementworktypestatus",
+        "functionName": "DeleteTaskmanagementWorktypeStatus",
+        "signature": "DeleteTaskmanagementWorktypeStatus(worktypeId, statusId)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "statusId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/taskmanagement/workbins/{workbinId}": {
+        "operationId": "gettaskmanagementworkbin",
+        "functionName": "GetTaskmanagementWorkbin",
+        "signature": "GetTaskmanagementWorkbin(workbinId)",
+        "parameters": [
+            {
+                "name": "workbinId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Workbin"
+    },
+    "GET /api/v2/taskmanagement/workbins/{workbinId}/history": {
+        "operationId": "gettaskmanagementworkbinhistory",
+        "functionName": "GetTaskmanagementWorkbinHistory",
+        "signature": "GetTaskmanagementWorkbinHistory(workbinId, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "workbinId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workbinchangelisting"
+    },
+    "GET /api/v2/taskmanagement/workbins/{workbinId}/versions/{entityVersion}": {
+        "operationId": "gettaskmanagementworkbinversion",
+        "functionName": "GetTaskmanagementWorkbinVersion",
+        "signature": "GetTaskmanagementWorkbinVersion(workbinId, entityVersion)",
+        "parameters": [
+            {
+                "name": "workbinId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "entityVersion",
+                "type": "int",
+                "required": "true"
+            }
+        ],
+        "return": "Workbinversion"
+    },
+    "GET /api/v2/taskmanagement/workbins/{workbinId}/versions": {
+        "operationId": "gettaskmanagementworkbinversions",
+        "functionName": "GetTaskmanagementWorkbinVersions",
+        "signature": "GetTaskmanagementWorkbinVersions(workbinId, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "workbinId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workbinversionlisting"
+    },
+    "GET /api/v2/taskmanagement/workitems/{workitemId}": {
+        "operationId": "gettaskmanagementworkitem",
+        "functionName": "GetTaskmanagementWorkitem",
+        "signature": "GetTaskmanagementWorkitem(workitemId, expands)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expands",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workitem"
+    },
+    "GET /api/v2/taskmanagement/workitems/{workitemId}/history": {
+        "operationId": "gettaskmanagementworkitemhistory",
+        "functionName": "GetTaskmanagementWorkitemHistory",
+        "signature": "GetTaskmanagementWorkitemHistory(workitemId, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workitemchangelisting"
+    },
+    "GET /api/v2/taskmanagement/workitems/{workitemId}/users/{userId}/wrapups": {
+        "operationId": "gettaskmanagementworkitemuserwrapups",
+        "functionName": "GetTaskmanagementWorkitemUserWrapups",
+        "signature": "GetTaskmanagementWorkitemUserWrapups(workitemId, userId, expands, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expands",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workitemwrapup"
+    },
+    "GET /api/v2/taskmanagement/workitems/{workitemId}/versions/{entityVersion}": {
+        "operationId": "gettaskmanagementworkitemversion",
+        "functionName": "GetTaskmanagementWorkitemVersion",
+        "signature": "GetTaskmanagementWorkitemVersion(workitemId, entityVersion)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "entityVersion",
+                "type": "int",
+                "required": "true"
+            }
+        ],
+        "return": "Workitemversion"
+    },
+    "GET /api/v2/taskmanagement/workitems/{workitemId}/versions": {
+        "operationId": "gettaskmanagementworkitemversions",
+        "functionName": "GetTaskmanagementWorkitemVersions",
+        "signature": "GetTaskmanagementWorkitemVersions(workitemId, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workitemversionlisting"
+    },
+    "GET /api/v2/taskmanagement/workitems/{workitemId}/wrapups": {
+        "operationId": "gettaskmanagementworkitemwrapups",
+        "functionName": "GetTaskmanagementWorkitemWrapups",
+        "signature": "GetTaskmanagementWorkitemWrapups(workitemId, expands, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expands",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workitemwrapupentitylisting"
+    },
+    "GET /api/v2/taskmanagement/workitems/schemas/{schemaId}": {
+        "operationId": "gettaskmanagementworkitemsschema",
+        "functionName": "GetTaskmanagementWorkitemsSchema",
+        "signature": "GetTaskmanagementWorkitemsSchema(schemaId)",
+        "parameters": [
+            {
+                "name": "schemaId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Dataschema"
+    },
+    "GET /api/v2/taskmanagement/workitems/schemas/{schemaId}/versions/{versionId}": {
+        "operationId": "gettaskmanagementworkitemsschemaversion",
+        "functionName": "GetTaskmanagementWorkitemsSchemaVersion",
+        "signature": "GetTaskmanagementWorkitemsSchemaVersion(schemaId, versionId)",
+        "parameters": [
+            {
+                "name": "schemaId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "versionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Dataschema"
+    },
+    "GET /api/v2/taskmanagement/workitems/schemas/{schemaId}/versions": {
+        "operationId": "gettaskmanagementworkitemsschemaversions",
+        "functionName": "GetTaskmanagementWorkitemsSchemaVersions",
+        "signature": "GetTaskmanagementWorkitemsSchemaVersions(schemaId)",
+        "parameters": [
+            {
+                "name": "schemaId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Dataschema"
+    },
+    "GET /api/v2/taskmanagement/workitems/schemas": {
+        "operationId": "gettaskmanagementworkitemsschemas",
+        "functionName": "GetTaskmanagementWorkitemsSchemas",
+        "signature": "GetTaskmanagementWorkitemsSchemas()",
+        
+        "return": "Dataschemalisting"
+    },
+    "GET /api/v2/taskmanagement/worktypes/{worktypeId}": {
+        "operationId": "gettaskmanagementworktype",
+        "functionName": "GetTaskmanagementWorktype",
+        "signature": "GetTaskmanagementWorktype(worktypeId, expands)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expands",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Worktype"
+    },
+    "GET /api/v2/taskmanagement/worktypes/{worktypeId}/history": {
+        "operationId": "gettaskmanagementworktypehistory",
+        "functionName": "GetTaskmanagementWorktypeHistory",
+        "signature": "GetTaskmanagementWorktypeHistory(worktypeId, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Worktypechangelisting"
+    },
+    "GET /api/v2/taskmanagement/worktypes/{worktypeId}/statuses/{statusId}": {
+        "operationId": "gettaskmanagementworktypestatus",
+        "functionName": "GetTaskmanagementWorktypeStatus",
+        "signature": "GetTaskmanagementWorktypeStatus(worktypeId, statusId)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "statusId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Workitemstatus"
+    },
+    "GET /api/v2/taskmanagement/worktypes/{worktypeId}/versions/{entityVersion}": {
+        "operationId": "gettaskmanagementworktypeversion",
+        "functionName": "GetTaskmanagementWorktypeVersion",
+        "signature": "GetTaskmanagementWorktypeVersion(worktypeId, entityVersion)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "entityVersion",
+                "type": "int",
+                "required": "true"
+            }
+        ],
+        "return": "Worktypeversion"
+    },
+    "GET /api/v2/taskmanagement/worktypes/{worktypeId}/versions": {
+        "operationId": "gettaskmanagementworktypeversions",
+        "functionName": "GetTaskmanagementWorktypeVersions",
+        "signature": "GetTaskmanagementWorktypeVersions(worktypeId, after, pageSize, sortOrder)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Worktypeversionlisting"
+    },
+    "PATCH /api/v2/taskmanagement/workbins/{workbinId}": {
+        "operationId": "patchtaskmanagementworkbin",
+        "functionName": "PatchTaskmanagementWorkbin",
+        "signature": "PatchTaskmanagementWorkbin(workbinId, body)",
+        "parameters": [
+            {
+                "name": "workbinId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workbinupdate",
+                "required": "true"
+            }
+        ],
+        "return": "Workbin"
+    },
+    "PATCH /api/v2/taskmanagement/workitems/{workitemId}": {
+        "operationId": "patchtaskmanagementworkitem",
+        "functionName": "PatchTaskmanagementWorkitem",
+        "signature": "PatchTaskmanagementWorkitem(workitemId, body)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workitemupdate",
+                "required": "true"
+            }
+        ],
+        "return": "Workitem"
+    },
+    "PATCH /api/v2/taskmanagement/workitems/{workitemId}/assignment": {
+        "operationId": "patchtaskmanagementworkitemassignment",
+        "functionName": "PatchTaskmanagementWorkitemAssignment",
+        "signature": "PatchTaskmanagementWorkitemAssignment(workitemId, body)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workitemmanualassign",
+                "required": "true"
+            }
+        ]
+    },
+    "PATCH /api/v2/taskmanagement/workitems/{workitemId}/users/{userId}/wrapups": {
+        "operationId": "patchtaskmanagementworkitemuserwrapups",
+        "functionName": "PatchTaskmanagementWorkitemUserWrapups",
+        "signature": "PatchTaskmanagementWorkitemUserWrapups(workitemId, userId, body)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workitemwrapupupdate",
+                "required": "true"
+            }
+        ],
+        "return": "Workitemwrapup"
+    },
+    "PATCH /api/v2/taskmanagement/workitems/{workitemId}/users/me/wrapups": {
+        "operationId": "patchtaskmanagementworkitemusersmewrapups",
+        "functionName": "PatchTaskmanagementWorkitemUsersMeWrapups",
+        "signature": "PatchTaskmanagementWorkitemUsersMeWrapups(workitemId, body)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workitemwrapupupdate",
+                "required": "true"
+            }
+        ],
+        "return": "Workitemwrapup"
+    },
+    "PATCH /api/v2/taskmanagement/worktypes/{worktypeId}": {
+        "operationId": "patchtaskmanagementworktype",
+        "functionName": "PatchTaskmanagementWorktype",
+        "signature": "PatchTaskmanagementWorktype(worktypeId, body)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Worktypeupdate",
+                "required": "false"
+            }
+        ],
+        "return": "Worktype"
+    },
+    "PATCH /api/v2/taskmanagement/worktypes/{worktypeId}/statuses/{statusId}": {
+        "operationId": "patchtaskmanagementworktypestatus",
+        "functionName": "PatchTaskmanagementWorktypeStatus",
+        "signature": "PatchTaskmanagementWorktypeStatus(worktypeId, statusId, body)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "statusId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workitemstatusupdate",
+                "required": "false"
+            }
+        ],
+        "return": "Workitemstatus"
+    },
+    "POST /api/v2/taskmanagement/workbins": {
+        "operationId": "posttaskmanagementworkbins",
+        "functionName": "PostTaskmanagementWorkbins",
+        "signature": "PostTaskmanagementWorkbins(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Workbincreate",
+                "required": "false"
+            }
+        ],
+        "return": "Workbin"
+    },
+    "POST /api/v2/taskmanagement/workbins/query": {
+        "operationId": "posttaskmanagementworkbinsquery",
+        "functionName": "PostTaskmanagementWorkbinsQuery",
+        "signature": "PostTaskmanagementWorkbinsQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Workbinqueryrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Workbinqueryentitylisting"
+    },
+    "POST /api/v2/taskmanagement/workitems/{workitemId}/acd/cancel": {
+        "operationId": "posttaskmanagementworkitemacdcancel",
+        "functionName": "PostTaskmanagementWorkitemAcdCancel",
+        "signature": "PostTaskmanagementWorkitemAcdCancel(workitemId)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Workitem"
+    },
+    "POST /api/v2/taskmanagement/workitems/{workitemId}/disconnect": {
+        "operationId": "posttaskmanagementworkitemdisconnect",
+        "functionName": "PostTaskmanagementWorkitemDisconnect",
+        "signature": "PostTaskmanagementWorkitemDisconnect(workitemId)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Workitem"
+    },
+    "POST /api/v2/taskmanagement/workitems/{workitemId}/terminate": {
+        "operationId": "posttaskmanagementworkitemterminate",
+        "functionName": "PostTaskmanagementWorkitemTerminate",
+        "signature": "PostTaskmanagementWorkitemTerminate(workitemId, body)",
+        "parameters": [
+            {
+                "name": "workitemId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workitemterminate",
+                "required": "false"
+            }
+        ],
+        "return": "Workitem"
+    },
+    "POST /api/v2/taskmanagement/workitems": {
+        "operationId": "posttaskmanagementworkitems",
+        "functionName": "PostTaskmanagementWorkitems",
+        "signature": "PostTaskmanagementWorkitems(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Workitemcreate",
+                "required": "true"
+            }
+        ],
+        "return": "Workitem"
+    },
+    "POST /api/v2/taskmanagement/workitems/query": {
+        "operationId": "posttaskmanagementworkitemsquery",
+        "functionName": "PostTaskmanagementWorkitemsQuery",
+        "signature": "PostTaskmanagementWorkitemsQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Workitemquerypostrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Workitempostqueryentitylisting"
+    },
+    "POST /api/v2/taskmanagement/workitems/schemas": {
+        "operationId": "posttaskmanagementworkitemsschemas",
+        "functionName": "PostTaskmanagementWorkitemsSchemas",
+        "signature": "PostTaskmanagementWorkitemsSchemas(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Dataschema",
+                "required": "true"
+            }
+        ],
+        "return": "Dataschema"
+    },
+    "POST /api/v2/taskmanagement/worktypes/{worktypeId}/statuses": {
+        "operationId": "posttaskmanagementworktypestatuses",
+        "functionName": "PostTaskmanagementWorktypeStatuses",
+        "signature": "PostTaskmanagementWorktypeStatuses(worktypeId, body)",
+        "parameters": [
+            {
+                "name": "worktypeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workitemstatuscreate",
+                "required": "false"
+            }
+        ],
+        "return": "Workitemstatus"
+    },
+    "POST /api/v2/taskmanagement/worktypes": {
+        "operationId": "posttaskmanagementworktypes",
+        "functionName": "PostTaskmanagementWorktypes",
+        "signature": "PostTaskmanagementWorktypes(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Worktypecreate",
+                "required": "false"
+            }
+        ],
+        "return": "Worktype"
+    },
+    "POST /api/v2/taskmanagement/worktypes/query": {
+        "operationId": "posttaskmanagementworktypesquery",
+        "functionName": "PostTaskmanagementWorktypesQuery",
+        "signature": "PostTaskmanagementWorktypesQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Worktypequeryrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Worktypequeryentitylisting"
+    },
+    "PUT /api/v2/taskmanagement/workitems/schemas/{schemaId}": {
+        "operationId": "puttaskmanagementworkitemsschema",
+        "functionName": "PutTaskmanagementWorkitemsSchema",
+        "signature": "PutTaskmanagementWorkitemsSchema(schemaId, body)",
+        "parameters": [
+            {
+                "name": "schemaId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Dataschema",
+                "required": "true"
+            }
+        ],
+        "return": "Dataschema"
+    }
+    
+}

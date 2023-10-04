@@ -1,0 +1,23 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewRecordingApiWithConfig(config)
+
+var pageSize int // The total page size requested
+var pageNumber int // The page number requested
+var sortBy string // variable name requested to sort by
+var expand []string // variable name requested by expand list
+var nextPage string // next page token
+var previousPage string // Previous page token
+var name string // the policy name - used for filtering results in searches.
+var enabled bool // checks to see if policy is enabled - use enabled = true or enabled = false
+var summary bool // provides a less verbose response of policy lists.
+var hasErrors bool // provides a way to fetch all policies with errors or policies that do not have errors
+var deleteDaysThreshold int // provides a way to fetch all policies with any actions having deleteDays exceeding the provided value
+// Gets media retention policy list with query options to filter on name and enabled.
+data, response, err := apiInstance.GetRecordingCrossplatformMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors, deleteDaysThreshold)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetRecordingCrossplatformMediaretentionpolicies: %v\n", err)
+}

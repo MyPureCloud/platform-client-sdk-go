@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)
+
+var minerId string // Miner ID
+var topicId string // The ID of the topic to be retrieved.
+var phraseId string // The ID of the phrase to be retrieved.
+// Retrieves utterances related to a phrase in a topic.
+data, response, err := apiInstance.GetLanguageunderstandingMinerTopicPhrase(minerId, topicId, phraseId)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetLanguageunderstandingMinerTopicPhrase: %v\n", err)
+}

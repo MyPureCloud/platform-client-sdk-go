@@ -1,0 +1,13 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewTokensApiWithConfig(config)
+
+var preserveIdleTTL bool // preserveIdleTTL indicates whether the idle token timeout should be reset or preserved. If preserveIdleTTL is true, then TTL value is not reset. If unset or false, the value is reset.
+// Fetch information about the current token
+data, response, err := apiInstance.GetTokensMe(preserveIdleTTL)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetTokensMe: %v\n", err)
+}

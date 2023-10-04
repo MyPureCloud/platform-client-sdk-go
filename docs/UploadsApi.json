@@ -1,0 +1,86 @@
+{
+    "POST /api/v2/knowledge/documentuploads": {
+        "operationId": "postknowledgedocumentuploads",
+        "functionName": "PostKnowledgeDocumentuploads",
+        "signature": "PostKnowledgeDocumentuploads(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Uploadurlrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    },
+    "POST /api/v2/languageunderstanding/miners/{minerId}/uploads": {
+        "operationId": "postlanguageunderstandingmineruploads",
+        "functionName": "PostLanguageunderstandingMinerUploads",
+        "signature": "PostLanguageunderstandingMinerUploads(minerId, body)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "interface{}",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    },
+    "POST /api/v2/uploads/learning/coverart": {
+        "operationId": "postuploadslearningcoverart",
+        "functionName": "PostUploadsLearningCoverart",
+        "signature": "PostUploadsLearningCoverart(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Learningcoverartuploadurlrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    },
+    "POST /api/v2/uploads/publicassets/images": {
+        "operationId": "postuploadspublicassetsimages",
+        "functionName": "PostUploadsPublicassetsImages",
+        "signature": "PostUploadsPublicassetsImages(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Uploadurlrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    },
+    "POST /api/v2/uploads/recordings": {
+        "operationId": "postuploadsrecordings",
+        "functionName": "PostUploadsRecordings",
+        "signature": "PostUploadsRecordings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Uploadurlrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    },
+    "POST /api/v2/uploads/workforcemanagement/historicaldata/csv": {
+        "operationId": "postuploadsworkforcemanagementhistoricaldatacsv",
+        "functionName": "PostUploadsWorkforcemanagementHistoricaldataCsv",
+        "signature": "PostUploadsWorkforcemanagementHistoricaldataCsv(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Uploadurlrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    }
+    
+}

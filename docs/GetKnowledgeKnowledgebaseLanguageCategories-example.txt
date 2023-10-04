@@ -1,0 +1,19 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)
+
+var knowledgeBaseId string // Knowledge base ID
+var languageCode string // Language code, format: iso2-LOCALE
+var before string // The cursor that points to the start of the set of entities that has been returned.
+var after string // The cursor that points to the end of the set of entities that has been returned.
+var limit string // Number of entities to return. Maximum of 200. Deprecated in favour of pageSize
+var pageSize string // Number of entities to return. Maximum of 200.
+var name string // Filter to return the categories that starts with the given category name.
+// Get categories
+data, response, err := apiInstance.GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseId, languageCode, before, after, limit, pageSize, name)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetKnowledgeKnowledgebaseLanguageCategories: %v\n", err)
+}

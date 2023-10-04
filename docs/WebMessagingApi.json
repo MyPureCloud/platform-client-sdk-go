@@ -1,0 +1,21 @@
+{
+    "GET /api/v2/webmessaging/messages": {
+        "operationId": "getwebmessagingmessages",
+        "functionName": "GetWebmessagingMessages",
+        "signature": "GetWebmessagingMessages(pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Webmessagingmessageentitylist"
+    }
+    
+}

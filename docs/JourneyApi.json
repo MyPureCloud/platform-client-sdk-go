@@ -1,0 +1,761 @@
+{
+    "DELETE /api/v2/journey/actionmaps/{actionMapId}": {
+        "operationId": "deletejourneyactionmap",
+        "functionName": "DeleteJourneyActionmap",
+        "signature": "DeleteJourneyActionmap(actionMapId)",
+        "parameters": [
+            {
+                "name": "actionMapId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/journey/actiontemplates/{actionTemplateId}": {
+        "operationId": "deletejourneyactiontemplate",
+        "functionName": "DeleteJourneyActiontemplate",
+        "signature": "DeleteJourneyActiontemplate(actionTemplateId, hardDelete)",
+        "parameters": [
+            {
+                "name": "actionTemplateId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "hardDelete",
+                "type": "bool",
+                "required": "false"
+            }
+        ]
+    },
+    "DELETE /api/v2/journey/outcomes/{outcomeId}": {
+        "operationId": "deletejourneyoutcome",
+        "functionName": "DeleteJourneyOutcome",
+        "signature": "DeleteJourneyOutcome(outcomeId)",
+        "parameters": [
+            {
+                "name": "outcomeId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/journey/outcomes/predictors/{predictorId}": {
+        "operationId": "deletejourneyoutcomespredictor",
+        "functionName": "DeleteJourneyOutcomesPredictor",
+        "signature": "DeleteJourneyOutcomesPredictor(predictorId)",
+        "parameters": [
+            {
+                "name": "predictorId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/journey/segments/{segmentId}": {
+        "operationId": "deletejourneysegment",
+        "functionName": "DeleteJourneySegment",
+        "signature": "DeleteJourneySegment(segmentId)",
+        "parameters": [
+            {
+                "name": "segmentId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/analytics/journeys/aggregates/jobs/{jobId}": {
+        "operationId": "getanalyticsjourneysaggregatesjob",
+        "functionName": "GetAnalyticsJourneysAggregatesJob",
+        "signature": "GetAnalyticsJourneysAggregatesJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncquerystatus"
+    },
+    "GET /api/v2/analytics/journeys/aggregates/jobs/{jobId}/results": {
+        "operationId": "getanalyticsjourneysaggregatesjobresults",
+        "functionName": "GetAnalyticsJourneysAggregatesJobResults",
+        "signature": "GetAnalyticsJourneysAggregatesJobResults(jobId, cursor)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "cursor",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Journeyasyncaggregatequeryresponse"
+    },
+    "GET /api/v2/externalcontacts/contacts/{contactId}/journey/sessions": {
+        "operationId": "getexternalcontactscontactjourneysessions",
+        "functionName": "GetExternalcontactsContactJourneySessions",
+        "signature": "GetExternalcontactsContactJourneySessions(contactId, pageSize, after, includeMerged)",
+        "parameters": [
+            {
+                "name": "contactId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "includeMerged",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Sessionlisting"
+    },
+    "GET /api/v2/journey/actionmaps/{actionMapId}": {
+        "operationId": "getjourneyactionmap",
+        "functionName": "GetJourneyActionmap",
+        "signature": "GetJourneyActionmap(actionMapId)",
+        "parameters": [
+            {
+                "name": "actionMapId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Actionmap"
+    },
+    "GET /api/v2/journey/actionmaps": {
+        "operationId": "getjourneyactionmaps",
+        "functionName": "GetJourneyActionmaps",
+        "signature": "GetJourneyActionmaps(pageNumber, pageSize, sortBy, filterField, filterValue, actionMapIds, queryFields, queryValue)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "filterField",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "filterValue",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "actionMapIds",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "queryFields",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "queryValue",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Actionmaplisting"
+    },
+    "GET /api/v2/journey/actionmaps/estimates/jobs/{jobId}": {
+        "operationId": "getjourneyactionmapsestimatesjob",
+        "functionName": "GetJourneyActionmapsEstimatesJob",
+        "signature": "GetJourneyActionmapsEstimatesJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "string"
+    },
+    "GET /api/v2/journey/actionmaps/estimates/jobs/{jobId}/results": {
+        "operationId": "getjourneyactionmapsestimatesjobresults",
+        "functionName": "GetJourneyActionmapsEstimatesJobResults",
+        "signature": "GetJourneyActionmapsEstimatesJobResults(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Actionmapestimateresult"
+    },
+    "GET /api/v2/journey/actiontargets/{actionTargetId}": {
+        "operationId": "getjourneyactiontarget",
+        "functionName": "GetJourneyActiontarget",
+        "signature": "GetJourneyActiontarget(actionTargetId)",
+        "parameters": [
+            {
+                "name": "actionTargetId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Actiontarget"
+    },
+    "GET /api/v2/journey/actiontargets": {
+        "operationId": "getjourneyactiontargets",
+        "functionName": "GetJourneyActiontargets",
+        "signature": "GetJourneyActiontargets(pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Actiontargetlisting"
+    },
+    "GET /api/v2/journey/actiontemplates/{actionTemplateId}": {
+        "operationId": "getjourneyactiontemplate",
+        "functionName": "GetJourneyActiontemplate",
+        "signature": "GetJourneyActiontemplate(actionTemplateId)",
+        "parameters": [
+            {
+                "name": "actionTemplateId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Actiontemplate"
+    },
+    "GET /api/v2/journey/actiontemplates": {
+        "operationId": "getjourneyactiontemplates",
+        "functionName": "GetJourneyActiontemplates",
+        "signature": "GetJourneyActiontemplates(pageNumber, pageSize, sortBy, mediaType, state, queryFields, queryValue)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "mediaType",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "state",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "queryFields",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "queryValue",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Actiontemplatelisting"
+    },
+    "GET /api/v2/journey/outcomes/{outcomeId}": {
+        "operationId": "getjourneyoutcome",
+        "functionName": "GetJourneyOutcome",
+        "signature": "GetJourneyOutcome(outcomeId)",
+        "parameters": [
+            {
+                "name": "outcomeId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Outcome"
+    },
+    "GET /api/v2/journey/outcomes": {
+        "operationId": "getjourneyoutcomes",
+        "functionName": "GetJourneyOutcomes",
+        "signature": "GetJourneyOutcomes(pageNumber, pageSize, sortBy, outcomeIds, queryFields, queryValue)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "outcomeIds",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "queryFields",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "queryValue",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Outcomelisting"
+    },
+    "GET /api/v2/journey/outcomes/attributions/jobs/{jobId}": {
+        "operationId": "getjourneyoutcomesattributionsjob",
+        "functionName": "GetJourneyOutcomesAttributionsJob",
+        "signature": "GetJourneyOutcomesAttributionsJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Outcomeattributionjobstateresponse"
+    },
+    "GET /api/v2/journey/outcomes/attributions/jobs/{jobId}/results": {
+        "operationId": "getjourneyoutcomesattributionsjobresults",
+        "functionName": "GetJourneyOutcomesAttributionsJobResults",
+        "signature": "GetJourneyOutcomesAttributionsJobResults(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Outcomeattributionresponselisting"
+    },
+    "GET /api/v2/journey/outcomes/predictors/{predictorId}": {
+        "operationId": "getjourneyoutcomespredictor",
+        "functionName": "GetJourneyOutcomesPredictor",
+        "signature": "GetJourneyOutcomesPredictor(predictorId)",
+        "parameters": [
+            {
+                "name": "predictorId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Outcomepredictor"
+    },
+    "GET /api/v2/journey/outcomes/predictors": {
+        "operationId": "getjourneyoutcomespredictors",
+        "functionName": "GetJourneyOutcomesPredictors",
+        "signature": "GetJourneyOutcomesPredictors()",
+        
+        "return": "Outcomepredictorlisting"
+    },
+    "GET /api/v2/journey/segments/{segmentId}": {
+        "operationId": "getjourneysegment",
+        "functionName": "GetJourneySegment",
+        "signature": "GetJourneySegment(segmentId)",
+        "parameters": [
+            {
+                "name": "segmentId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Journeysegment"
+    },
+    "GET /api/v2/journey/segments": {
+        "operationId": "getjourneysegments",
+        "functionName": "GetJourneySegments",
+        "signature": "GetJourneySegments(sortBy, pageSize, pageNumber, isActive, segmentIds, queryFields, queryValue)",
+        "parameters": [
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "isActive",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "segmentIds",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "queryFields",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "queryValue",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Segmentlisting"
+    },
+    "GET /api/v2/journey/sessions/{sessionId}": {
+        "operationId": "getjourneysession",
+        "functionName": "GetJourneySession",
+        "signature": "GetJourneySession(sessionId)",
+        "parameters": [
+            {
+                "name": "sessionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Session"
+    },
+    "GET /api/v2/journey/sessions/{sessionId}/events": {
+        "operationId": "getjourneysessionevents",
+        "functionName": "GetJourneySessionEvents",
+        "signature": "GetJourneySessionEvents(sessionId, pageSize, after)",
+        "parameters": [
+            {
+                "name": "sessionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Eventlisting"
+    },
+    "GET /api/v2/journey/sessions/{sessionId}/outcomescores": {
+        "operationId": "getjourneysessionoutcomescores",
+        "functionName": "GetJourneySessionOutcomescores",
+        "signature": "GetJourneySessionOutcomescores(sessionId)",
+        "parameters": [
+            {
+                "name": "sessionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Outcomescoresresult"
+    },
+    "GET /api/v2/journey/sessions/{sessionId}/segments": {
+        "operationId": "getjourneysessionsegments",
+        "functionName": "GetJourneySessionSegments",
+        "signature": "GetJourneySessionSegments(sessionId, pageSize, after, segmentScope, assignmentState)",
+        "parameters": [
+            {
+                "name": "sessionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "segmentScope",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "assignmentState",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Segmentassignmentlisting"
+    },
+    "PATCH /api/v2/journey/actionmaps/{actionMapId}": {
+        "operationId": "patchjourneyactionmap",
+        "functionName": "PatchJourneyActionmap",
+        "signature": "PatchJourneyActionmap(actionMapId, body)",
+        "parameters": [
+            {
+                "name": "actionMapId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Patchactionmap",
+                "required": "false"
+            }
+        ],
+        "return": "Actionmap"
+    },
+    "PATCH /api/v2/journey/actiontargets/{actionTargetId}": {
+        "operationId": "patchjourneyactiontarget",
+        "functionName": "PatchJourneyActiontarget",
+        "signature": "PatchJourneyActiontarget(actionTargetId, body)",
+        "parameters": [
+            {
+                "name": "actionTargetId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Patchactiontarget",
+                "required": "false"
+            }
+        ],
+        "return": "Actiontarget"
+    },
+    "PATCH /api/v2/journey/actiontemplates/{actionTemplateId}": {
+        "operationId": "patchjourneyactiontemplate",
+        "functionName": "PatchJourneyActiontemplate",
+        "signature": "PatchJourneyActiontemplate(actionTemplateId, body)",
+        "parameters": [
+            {
+                "name": "actionTemplateId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Patchactiontemplate",
+                "required": "false"
+            }
+        ],
+        "return": "Actiontemplate"
+    },
+    "PATCH /api/v2/journey/outcomes/{outcomeId}": {
+        "operationId": "patchjourneyoutcome",
+        "functionName": "PatchJourneyOutcome",
+        "signature": "PatchJourneyOutcome(outcomeId, body)",
+        "parameters": [
+            {
+                "name": "outcomeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Patchoutcome",
+                "required": "false"
+            }
+        ],
+        "return": "Outcome"
+    },
+    "PATCH /api/v2/journey/segments/{segmentId}": {
+        "operationId": "patchjourneysegment",
+        "functionName": "PatchJourneySegment",
+        "signature": "PatchJourneySegment(segmentId, body)",
+        "parameters": [
+            {
+                "name": "segmentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Patchsegment",
+                "required": "false"
+            }
+        ],
+        "return": "Journeysegment"
+    },
+    "POST /api/v2/analytics/journeys/aggregates/jobs": {
+        "operationId": "postanalyticsjourneysaggregatesjobs",
+        "functionName": "PostAnalyticsJourneysAggregatesJobs",
+        "signature": "PostAnalyticsJourneysAggregatesJobs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Journeyasyncaggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncqueryresponse"
+    },
+    "POST /api/v2/analytics/journeys/aggregates/query": {
+        "operationId": "postanalyticsjourneysaggregatesquery",
+        "functionName": "PostAnalyticsJourneysAggregatesQuery",
+        "signature": "PostAnalyticsJourneysAggregatesQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Journeyaggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Journeyaggregatequeryresponse"
+    },
+    "POST /api/v2/journey/actionmaps": {
+        "operationId": "postjourneyactionmaps",
+        "functionName": "PostJourneyActionmaps",
+        "signature": "PostJourneyActionmaps(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Actionmap",
+                "required": "false"
+            }
+        ],
+        "return": "Actionmap"
+    },
+    "POST /api/v2/journey/actionmaps/estimates/jobs": {
+        "operationId": "postjourneyactionmapsestimatesjobs",
+        "functionName": "PostJourneyActionmapsEstimatesJobs",
+        "signature": "PostJourneyActionmapsEstimatesJobs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Actionmapestimaterequest",
+                "required": "true"
+            }
+        ],
+        "return": "Estimatejobasyncresponse"
+    },
+    "POST /api/v2/journey/actiontemplates": {
+        "operationId": "postjourneyactiontemplates",
+        "functionName": "PostJourneyActiontemplates",
+        "signature": "PostJourneyActiontemplates(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Actiontemplate",
+                "required": "false"
+            }
+        ],
+        "return": "Actiontemplate"
+    },
+    "POST /api/v2/journey/deployments/{deploymentId}/appevents": {
+        "operationId": "postjourneydeploymentappevents",
+        "functionName": "PostJourneyDeploymentAppevents",
+        "signature": "PostJourneyDeploymentAppevents(deploymentId, body)",
+        "parameters": [
+            {
+                "name": "deploymentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Appeventrequest",
+                "required": "false"
+            }
+        ],
+        "return": "Appeventresponse"
+    },
+    "POST /api/v2/journey/outcomes": {
+        "operationId": "postjourneyoutcomes",
+        "functionName": "PostJourneyOutcomes",
+        "signature": "PostJourneyOutcomes(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Outcome",
+                "required": "false"
+            }
+        ],
+        "return": "Outcome"
+    },
+    "POST /api/v2/journey/outcomes/attributions/jobs": {
+        "operationId": "postjourneyoutcomesattributionsjobs",
+        "functionName": "PostJourneyOutcomesAttributionsJobs",
+        "signature": "PostJourneyOutcomesAttributionsJobs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Outcomeattributionlisting",
+                "required": "false"
+            }
+        ],
+        "return": "Outcomeattributionasyncresponse"
+    },
+    "POST /api/v2/journey/outcomes/predictors": {
+        "operationId": "postjourneyoutcomespredictors",
+        "functionName": "PostJourneyOutcomesPredictors",
+        "signature": "PostJourneyOutcomesPredictors(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Outcomepredictorrequest",
+                "required": "false"
+            }
+        ],
+        "return": "Outcomepredictor"
+    },
+    "POST /api/v2/journey/segments": {
+        "operationId": "postjourneysegments",
+        "functionName": "PostJourneySegments",
+        "signature": "PostJourneySegments(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Journeysegment",
+                "required": "false"
+            }
+        ],
+        "return": "Journeysegment"
+    }
+    
+}

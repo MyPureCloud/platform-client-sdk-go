@@ -1,0 +1,17 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewGroupsApiWithConfig(config)
+
+var pageSize int // Page size
+var pageNumber int // Page number
+var id []string // id
+var jabberId []string // A list of jabberIds to fetch by bulk (cannot be used with the \"id\" parameter)
+var sortOrder string // Ascending or descending sort order
+// Get a group list
+data, response, err := apiInstance.GetGroups(pageSize, pageNumber, id, jabberId, sortOrder)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetGroups: %v\n", err)
+}

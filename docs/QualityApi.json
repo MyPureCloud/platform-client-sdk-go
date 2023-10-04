@@ -1,0 +1,1353 @@
+{
+    "DELETE /api/v2/quality/calibrations/{calibrationId}": {
+        "operationId": "deletequalitycalibration",
+        "functionName": "DeleteQualityCalibration",
+        "signature": "DeleteQualityCalibration(calibrationId, calibratorId)",
+        "parameters": [
+            {
+                "name": "calibrationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "calibratorId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Calibration"
+    },
+    "DELETE /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}": {
+        "operationId": "deletequalityconversationevaluation",
+        "functionName": "DeleteQualityConversationEvaluation",
+        "signature": "DeleteQualityConversationEvaluation(conversationId, evaluationId, expand)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "evaluationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationresponse"
+    },
+    "DELETE /api/v2/quality/forms/{formId}": {
+        "operationId": "deletequalityform",
+        "functionName": "DeleteQualityForm",
+        "signature": "DeleteQualityForm(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/quality/forms/evaluations/{formId}": {
+        "operationId": "deletequalityformsevaluation",
+        "functionName": "DeleteQualityFormsEvaluation",
+        "signature": "DeleteQualityFormsEvaluation(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/quality/forms/surveys/{formId}": {
+        "operationId": "deletequalityformssurvey",
+        "functionName": "DeleteQualityFormsSurvey",
+        "signature": "DeleteQualityFormsSurvey(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/analytics/evaluations/aggregates/jobs/{jobId}": {
+        "operationId": "getanalyticsevaluationsaggregatesjob",
+        "functionName": "GetAnalyticsEvaluationsAggregatesJob",
+        "signature": "GetAnalyticsEvaluationsAggregatesJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncquerystatus"
+    },
+    "GET /api/v2/analytics/evaluations/aggregates/jobs/{jobId}/results": {
+        "operationId": "getanalyticsevaluationsaggregatesjobresults",
+        "functionName": "GetAnalyticsEvaluationsAggregatesJobResults",
+        "signature": "GetAnalyticsEvaluationsAggregatesJobResults(jobId, cursor)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "cursor",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationasyncaggregatequeryresponse"
+    },
+    "GET /api/v2/analytics/surveys/aggregates/jobs/{jobId}": {
+        "operationId": "getanalyticssurveysaggregatesjob",
+        "functionName": "GetAnalyticsSurveysAggregatesJob",
+        "signature": "GetAnalyticsSurveysAggregatesJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncquerystatus"
+    },
+    "GET /api/v2/analytics/surveys/aggregates/jobs/{jobId}/results": {
+        "operationId": "getanalyticssurveysaggregatesjobresults",
+        "functionName": "GetAnalyticsSurveysAggregatesJobResults",
+        "signature": "GetAnalyticsSurveysAggregatesJobResults(jobId, cursor)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "cursor",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Surveyasyncaggregatequeryresponse"
+    },
+    "GET /api/v2/quality/agents/activity": {
+        "operationId": "getqualityagentsactivity",
+        "functionName": "GetQualityAgentsActivity",
+        "signature": "GetQualityAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group, formContextId)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "startTime",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "endTime",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "agentUserId",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "evaluatorUserId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "group",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "formContextId",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Agentactivityentitylisting"
+    },
+    "GET /api/v2/quality/calibrations/{calibrationId}": {
+        "operationId": "getqualitycalibration",
+        "functionName": "GetQualityCalibration",
+        "signature": "GetQualityCalibration(calibrationId, calibratorId, conversationId)",
+        "parameters": [
+            {
+                "name": "calibrationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "calibratorId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Calibration"
+    },
+    "GET /api/v2/quality/calibrations": {
+        "operationId": "getqualitycalibrations",
+        "functionName": "GetQualityCalibrations",
+        "signature": "GetQualityCalibrations(calibratorId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, startTime, endTime)",
+        "parameters": [
+            {
+                "name": "calibratorId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "startTime",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "endTime",
+                "type": "time.Time",
+                "required": "false"
+            }
+        ],
+        "return": "Calibrationentitylisting"
+    },
+    "GET /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}": {
+        "operationId": "getqualityconversationevaluation",
+        "functionName": "GetQualityConversationEvaluation",
+        "signature": "GetQualityConversationEvaluation(conversationId, evaluationId, expand)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "evaluationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationresponse"
+    },
+    "GET /api/v2/quality/conversations/{conversationId}/surveys": {
+        "operationId": "getqualityconversationsurveys",
+        "functionName": "GetQualityConversationSurveys",
+        "signature": "GetQualityConversationSurveys(conversationId)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "[]Survey"
+    },
+    "GET /api/v2/quality/conversations/audits/query/{transactionId}": {
+        "operationId": "getqualityconversationsauditsquerytransactionid",
+        "functionName": "GetQualityConversationsAuditsQueryTransactionId",
+        "signature": "GetQualityConversationsAuditsQueryTransactionId(transactionId)",
+        "parameters": [
+            {
+                "name": "transactionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Qualityauditqueryexecutionstatusresponse"
+    },
+    "GET /api/v2/quality/conversations/audits/query/{transactionId}/results": {
+        "operationId": "getqualityconversationsauditsquerytransactionidresults",
+        "functionName": "GetQualityConversationsAuditsQueryTransactionIdResults",
+        "signature": "GetQualityConversationsAuditsQueryTransactionIdResults(transactionId, cursor, pageSize, expand)",
+        "parameters": [
+            {
+                "name": "transactionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "cursor",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Qualityauditqueryexecutionresultsresponse"
+    },
+    "GET /api/v2/quality/evaluations/query": {
+        "operationId": "getqualityevaluationsquery",
+        "functionName": "GetQualityEvaluationsQuery",
+        "signature": "GetQualityEvaluationsQuery(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, agentUserId, evaluatorUserId, assigneeUserId, queueId, startTime, endTime, formContextId, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum, sortOrder)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "agentUserId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "evaluatorUserId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "assigneeUserId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "queueId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "startTime",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "endTime",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "formContextId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "evaluationState",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "isReleased",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "agentHasRead",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "expandAnswerTotalScores",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "maximum",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationentitylisting"
+    },
+    "GET /api/v2/quality/evaluators/activity": {
+        "operationId": "getqualityevaluatorsactivity",
+        "functionName": "GetQualityEvaluatorsActivity",
+        "signature": "GetQualityEvaluatorsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, name, permission, group)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "startTime",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "endTime",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "permission",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "group",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluatoractivityentitylisting"
+    },
+    "GET /api/v2/quality/forms/{formId}": {
+        "operationId": "getqualityform",
+        "functionName": "GetQualityForm",
+        "signature": "GetQualityForm(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "GET /api/v2/quality/forms/{formId}/versions": {
+        "operationId": "getqualityformversions",
+        "functionName": "GetQualityFormVersions",
+        "signature": "GetQualityFormVersions(formId, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationformentitylisting"
+    },
+    "GET /api/v2/quality/forms": {
+        "operationId": "getqualityforms",
+        "functionName": "GetQualityForms",
+        "signature": "GetQualityForms(pageSize, pageNumber, sortBy, nextPage, previousPage, expand, name, sortOrder)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationformentitylisting"
+    },
+    "GET /api/v2/quality/forms/evaluations/{formId}": {
+        "operationId": "getqualityformsevaluation",
+        "functionName": "GetQualityFormsEvaluation",
+        "signature": "GetQualityFormsEvaluation(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "GET /api/v2/quality/forms/evaluations/{formId}/versions": {
+        "operationId": "getqualityformsevaluationversions",
+        "functionName": "GetQualityFormsEvaluationVersions",
+        "signature": "GetQualityFormsEvaluationVersions(formId, pageSize, pageNumber, sortOrder)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationformentitylisting"
+    },
+    "GET /api/v2/quality/forms/evaluations": {
+        "operationId": "getqualityformsevaluations",
+        "functionName": "GetQualityFormsEvaluations",
+        "signature": "GetQualityFormsEvaluations(pageSize, pageNumber, sortBy, nextPage, previousPage, expand, name, sortOrder)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationformentitylisting"
+    },
+    "GET /api/v2/quality/forms/evaluations/bulk/contexts": {
+        "operationId": "getqualityformsevaluationsbulkcontexts",
+        "functionName": "GetQualityFormsEvaluationsBulkContexts",
+        "signature": "GetQualityFormsEvaluationsBulkContexts(contextId)",
+        "parameters": [
+            {
+                "name": "contextId",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "[]Evaluationform"
+    },
+    "GET /api/v2/quality/forms/surveys/{formId}": {
+        "operationId": "getqualityformssurvey",
+        "functionName": "GetQualityFormsSurvey",
+        "signature": "GetQualityFormsSurvey(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyform"
+    },
+    "GET /api/v2/quality/forms/surveys/{formId}/versions": {
+        "operationId": "getqualityformssurveyversions",
+        "functionName": "GetQualityFormsSurveyVersions",
+        "signature": "GetQualityFormsSurveyVersions(formId, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Surveyformentitylisting"
+    },
+    "GET /api/v2/quality/forms/surveys": {
+        "operationId": "getqualityformssurveys",
+        "functionName": "GetQualityFormsSurveys",
+        "signature": "GetQualityFormsSurveys(pageSize, pageNumber, sortBy, nextPage, previousPage, expand, name, sortOrder)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Surveyformentitylisting"
+    },
+    "GET /api/v2/quality/forms/surveys/bulk": {
+        "operationId": "getqualityformssurveysbulk",
+        "functionName": "GetQualityFormsSurveysBulk",
+        "signature": "GetQualityFormsSurveysBulk(id)",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyformentitylisting"
+    },
+    "GET /api/v2/quality/forms/surveys/bulk/contexts": {
+        "operationId": "getqualityformssurveysbulkcontexts",
+        "functionName": "GetQualityFormsSurveysBulkContexts",
+        "signature": "GetQualityFormsSurveysBulkContexts(contextId, published)",
+        "parameters": [
+            {
+                "name": "contextId",
+                "type": "[]string",
+                "required": "true"
+            },
+            {
+                "name": "published",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "[]Surveyform"
+    },
+    "GET /api/v2/quality/publishedforms/{formId}": {
+        "operationId": "getqualitypublishedform",
+        "functionName": "GetQualityPublishedform",
+        "signature": "GetQualityPublishedform(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "GET /api/v2/quality/publishedforms": {
+        "operationId": "getqualitypublishedforms",
+        "functionName": "GetQualityPublishedforms",
+        "signature": "GetQualityPublishedforms(pageSize, pageNumber, name, onlyLatestPerContext)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "onlyLatestPerContext",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationformentitylisting"
+    },
+    "GET /api/v2/quality/publishedforms/evaluations/{formId}": {
+        "operationId": "getqualitypublishedformsevaluation",
+        "functionName": "GetQualityPublishedformsEvaluation",
+        "signature": "GetQualityPublishedformsEvaluation(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "GET /api/v2/quality/publishedforms/evaluations": {
+        "operationId": "getqualitypublishedformsevaluations",
+        "functionName": "GetQualityPublishedformsEvaluations",
+        "signature": "GetQualityPublishedformsEvaluations(pageSize, pageNumber, name, onlyLatestPerContext)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "onlyLatestPerContext",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationformentitylisting"
+    },
+    "GET /api/v2/quality/publishedforms/surveys/{formId}": {
+        "operationId": "getqualitypublishedformssurvey",
+        "functionName": "GetQualityPublishedformsSurvey",
+        "signature": "GetQualityPublishedformsSurvey(formId)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyform"
+    },
+    "GET /api/v2/quality/publishedforms/surveys": {
+        "operationId": "getqualitypublishedformssurveys",
+        "functionName": "GetQualityPublishedformsSurveys",
+        "signature": "GetQualityPublishedformsSurveys(pageSize, pageNumber, name, onlyLatestEnabledPerContext)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "onlyLatestEnabledPerContext",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Surveyformentitylisting"
+    },
+    "GET /api/v2/quality/surveys/{surveyId}": {
+        "operationId": "getqualitysurvey",
+        "functionName": "GetQualitySurvey",
+        "signature": "GetQualitySurvey(surveyId)",
+        "parameters": [
+            {
+                "name": "surveyId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Survey"
+    },
+    "GET /api/v2/quality/surveys/scorable": {
+        "operationId": "getqualitysurveysscorable",
+        "functionName": "GetQualitySurveysScorable",
+        "signature": "GetQualitySurveysScorable(customerSurveyUrl)",
+        "parameters": [
+            {
+                "name": "customerSurveyUrl",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Scorablesurvey"
+    },
+    "PATCH /api/v2/quality/forms/surveys/{formId}": {
+        "operationId": "patchqualityformssurvey",
+        "functionName": "PatchQualityFormsSurvey",
+        "signature": "PatchQualityFormsSurvey(formId, body)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Surveyform",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyform"
+    },
+    "POST /api/v2/analytics/evaluations/aggregates/jobs": {
+        "operationId": "postanalyticsevaluationsaggregatesjobs",
+        "functionName": "PostAnalyticsEvaluationsAggregatesJobs",
+        "signature": "PostAnalyticsEvaluationsAggregatesJobs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Evaluationasyncaggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncqueryresponse"
+    },
+    "POST /api/v2/analytics/evaluations/aggregates/query": {
+        "operationId": "postanalyticsevaluationsaggregatesquery",
+        "functionName": "PostAnalyticsEvaluationsAggregatesQuery",
+        "signature": "PostAnalyticsEvaluationsAggregatesQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Evaluationaggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationaggregatequeryresponse"
+    },
+    "POST /api/v2/analytics/surveys/aggregates/jobs": {
+        "operationId": "postanalyticssurveysaggregatesjobs",
+        "functionName": "PostAnalyticsSurveysAggregatesJobs",
+        "signature": "PostAnalyticsSurveysAggregatesJobs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Surveyasyncaggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncqueryresponse"
+    },
+    "POST /api/v2/analytics/surveys/aggregates/query": {
+        "operationId": "postanalyticssurveysaggregatesquery",
+        "functionName": "PostAnalyticsSurveysAggregatesQuery",
+        "signature": "PostAnalyticsSurveysAggregatesQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Surveyaggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyaggregatequeryresponse"
+    },
+    "POST /api/v2/quality/calibrations": {
+        "operationId": "postqualitycalibrations",
+        "functionName": "PostQualityCalibrations",
+        "signature": "PostQualityCalibrations(body, expand)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Calibrationcreate",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Calibration"
+    },
+    "POST /api/v2/quality/conversations/{conversationId}/evaluations": {
+        "operationId": "postqualityconversationevaluations",
+        "functionName": "PostQualityConversationEvaluations",
+        "signature": "PostQualityConversationEvaluations(conversationId, body, expand)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Evaluation",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluation"
+    },
+    "POST /api/v2/quality/conversations/audits/query": {
+        "operationId": "postqualityconversationsauditsquery",
+        "functionName": "PostQualityConversationsAuditsQuery",
+        "signature": "PostQualityConversationsAuditsQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Qmauditqueryrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Qualityauditqueryexecutionstatusresponse"
+    },
+    "POST /api/v2/quality/evaluations/aggregates/query/me": {
+        "operationId": "postqualityevaluationsaggregatesqueryme",
+        "functionName": "PostQualityEvaluationsAggregatesQueryMe",
+        "signature": "PostQualityEvaluationsAggregatesQueryMe(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Evaluationaggregationqueryme",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationaggregatequeryresponse"
+    },
+    "POST /api/v2/quality/evaluations/scoring": {
+        "operationId": "postqualityevaluationsscoring",
+        "functionName": "PostQualityEvaluationsScoring",
+        "signature": "PostQualityEvaluationsScoring(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Evaluationformandscoringset",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationscoringset"
+    },
+    "POST /api/v2/quality/forms": {
+        "operationId": "postqualityforms",
+        "functionName": "PostQualityForms",
+        "signature": "PostQualityForms(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Evaluationform",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "POST /api/v2/quality/forms/evaluations": {
+        "operationId": "postqualityformsevaluations",
+        "functionName": "PostQualityFormsEvaluations",
+        "signature": "PostQualityFormsEvaluations(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Evaluationform",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "POST /api/v2/quality/forms/surveys": {
+        "operationId": "postqualityformssurveys",
+        "functionName": "PostQualityFormsSurveys",
+        "signature": "PostQualityFormsSurveys(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Surveyform",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyform"
+    },
+    "POST /api/v2/quality/publishedforms": {
+        "operationId": "postqualitypublishedforms",
+        "functionName": "PostQualityPublishedforms",
+        "signature": "PostQualityPublishedforms(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Publishform",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "POST /api/v2/quality/publishedforms/evaluations": {
+        "operationId": "postqualitypublishedformsevaluations",
+        "functionName": "PostQualityPublishedformsEvaluations",
+        "signature": "PostQualityPublishedformsEvaluations(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Publishform",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "POST /api/v2/quality/publishedforms/surveys": {
+        "operationId": "postqualitypublishedformssurveys",
+        "functionName": "PostQualityPublishedformsSurveys",
+        "signature": "PostQualityPublishedformsSurveys(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Publishform",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyform"
+    },
+    "POST /api/v2/quality/surveys/scoring": {
+        "operationId": "postqualitysurveysscoring",
+        "functionName": "PostQualitySurveysScoring",
+        "signature": "PostQualitySurveysScoring(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Surveyformandscoringset",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyscoringset"
+    },
+    "PUT /api/v2/quality/calibrations/{calibrationId}": {
+        "operationId": "putqualitycalibration",
+        "functionName": "PutQualityCalibration",
+        "signature": "PutQualityCalibration(calibrationId, body)",
+        "parameters": [
+            {
+                "name": "calibrationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Calibration",
+                "required": "true"
+            }
+        ],
+        "return": "Calibration"
+    },
+    "PUT /api/v2/quality/conversations/{conversationId}/evaluations/{evaluationId}": {
+        "operationId": "putqualityconversationevaluation",
+        "functionName": "PutQualityConversationEvaluation",
+        "signature": "PutQualityConversationEvaluation(conversationId, evaluationId, body, expand)",
+        "parameters": [
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "evaluationId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Evaluation",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Evaluationresponse"
+    },
+    "PUT /api/v2/quality/forms/{formId}": {
+        "operationId": "putqualityform",
+        "functionName": "PutQualityForm",
+        "signature": "PutQualityForm(formId, body)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Evaluationform",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "PUT /api/v2/quality/forms/evaluations/{formId}": {
+        "operationId": "putqualityformsevaluation",
+        "functionName": "PutQualityFormsEvaluation",
+        "signature": "PutQualityFormsEvaluation(formId, body)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Evaluationform",
+                "required": "true"
+            }
+        ],
+        "return": "Evaluationform"
+    },
+    "PUT /api/v2/quality/forms/surveys/{formId}": {
+        "operationId": "putqualityformssurvey",
+        "functionName": "PutQualityFormsSurvey",
+        "signature": "PutQualityFormsSurvey(formId, body)",
+        "parameters": [
+            {
+                "name": "formId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Surveyform",
+                "required": "true"
+            }
+        ],
+        "return": "Surveyform"
+    },
+    "PUT /api/v2/quality/surveys/scorable": {
+        "operationId": "putqualitysurveysscorable",
+        "functionName": "PutQualitySurveysScorable",
+        "signature": "PutQualitySurveysScorable(customerSurveyUrl, body)",
+        "parameters": [
+            {
+                "name": "customerSurveyUrl",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Scorablesurvey",
+                "required": "true"
+            }
+        ],
+        "return": "Scorablesurvey"
+    }
+    
+}

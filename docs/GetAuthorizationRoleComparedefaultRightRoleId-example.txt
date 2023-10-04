@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewAuthorizationApiWithConfig(config)
+
+var leftRoleId string // Left Role ID
+var rightRoleId string // Right Role id
+// Get an org role to default role comparison
+data, response, err := apiInstance.GetAuthorizationRoleComparedefaultRightRoleId(leftRoleId, rightRoleId)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetAuthorizationRoleComparedefaultRightRoleId: %v\n", err)
+}

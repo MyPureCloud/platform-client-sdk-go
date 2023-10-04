@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewObjectsApiWithConfig(config)
+
+var divisionId string // Division ID
+var objectCount bool // Get count of objects in this division, grouped by type
+// Returns an authorization division.
+data, response, err := apiInstance.GetAuthorizationDivision(divisionId, objectCount)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetAuthorizationDivision: %v\n", err)
+}

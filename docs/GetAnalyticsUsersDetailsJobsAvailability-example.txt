@@ -1,0 +1,12 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewUsersApiWithConfig(config)
+
+// Lookup the datalake availability date and time
+data, response, err := apiInstance.GetAnalyticsUsersDetailsJobsAvailability()
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetAnalyticsUsersDetailsJobsAvailability: %v\n", err)
+}

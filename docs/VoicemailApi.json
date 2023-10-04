@@ -1,0 +1,366 @@
+{
+    "DELETE /api/v2/voicemail/messages/{messageId}": {
+        "operationId": "deletevoicemailmessage",
+        "functionName": "DeleteVoicemailMessage",
+        "signature": "DeleteVoicemailMessage(messageId)",
+        "parameters": [
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/voicemail/messages": {
+        "operationId": "deletevoicemailmessages",
+        "functionName": "DeleteVoicemailMessages",
+        "signature": "DeleteVoicemailMessages()"
+        
+    },
+    "GET /api/v2/voicemail/groups/{groupId}/mailbox": {
+        "operationId": "getvoicemailgroupmailbox",
+        "functionName": "GetVoicemailGroupMailbox",
+        "signature": "GetVoicemailGroupMailbox(groupId)",
+        "parameters": [
+            {
+                "name": "groupId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailmailboxinfo"
+    },
+    "GET /api/v2/voicemail/groups/{groupId}/messages": {
+        "operationId": "getvoicemailgroupmessages",
+        "functionName": "GetVoicemailGroupMessages",
+        "signature": "GetVoicemailGroupMessages(groupId, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "groupId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailmessageentitylisting"
+    },
+    "GET /api/v2/voicemail/groups/{groupId}/policy": {
+        "operationId": "getvoicemailgrouppolicy",
+        "functionName": "GetVoicemailGroupPolicy",
+        "signature": "GetVoicemailGroupPolicy(groupId)",
+        "parameters": [
+            {
+                "name": "groupId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailgrouppolicy"
+    },
+    "GET /api/v2/voicemail/mailbox": {
+        "operationId": "getvoicemailmailbox",
+        "functionName": "GetVoicemailMailbox",
+        "signature": "GetVoicemailMailbox()",
+        
+        "return": "Voicemailmailboxinfo"
+    },
+    "GET /api/v2/voicemail/me/mailbox": {
+        "operationId": "getvoicemailmemailbox",
+        "functionName": "GetVoicemailMeMailbox",
+        "signature": "GetVoicemailMeMailbox()",
+        
+        "return": "Voicemailmailboxinfo"
+    },
+    "GET /api/v2/voicemail/me/messages": {
+        "operationId": "getvoicemailmemessages",
+        "functionName": "GetVoicemailMeMessages",
+        "signature": "GetVoicemailMeMessages(pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailmessageentitylisting"
+    },
+    "GET /api/v2/voicemail/me/policy": {
+        "operationId": "getvoicemailmepolicy",
+        "functionName": "GetVoicemailMePolicy",
+        "signature": "GetVoicemailMePolicy()",
+        
+        "return": "Voicemailuserpolicy"
+    },
+    "GET /api/v2/voicemail/messages/{messageId}": {
+        "operationId": "getvoicemailmessage",
+        "functionName": "GetVoicemailMessage",
+        "signature": "GetVoicemailMessage(messageId, expand)",
+        "parameters": [
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailmessage"
+    },
+    "GET /api/v2/voicemail/messages/{messageId}/media": {
+        "operationId": "getvoicemailmessagemedia",
+        "functionName": "GetVoicemailMessageMedia",
+        "signature": "GetVoicemailMessageMedia(messageId, formatId)",
+        "parameters": [
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "formatId",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailmediainfo"
+    },
+    "GET /api/v2/voicemail/messages": {
+        "operationId": "getvoicemailmessages",
+        "functionName": "GetVoicemailMessages",
+        "signature": "GetVoicemailMessages(ids, expand)",
+        "parameters": [
+            {
+                "name": "ids",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailmessageentitylisting"
+    },
+    "GET /api/v2/voicemail/policy": {
+        "operationId": "getvoicemailpolicy",
+        "functionName": "GetVoicemailPolicy",
+        "signature": "GetVoicemailPolicy()",
+        
+        "return": "Voicemailorganizationpolicy"
+    },
+    "GET /api/v2/voicemail/queues/{queueId}/messages": {
+        "operationId": "getvoicemailqueuemessages",
+        "functionName": "GetVoicemailQueueMessages",
+        "signature": "GetVoicemailQueueMessages(queueId, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "queueId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailmessageentitylisting"
+    },
+    "GET /api/v2/voicemail/search": {
+        "operationId": "getvoicemailsearch",
+        "functionName": "GetVoicemailSearch",
+        "signature": "GetVoicemailSearch(q64, expand)",
+        "parameters": [
+            {
+                "name": "q64",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailssearchresponse"
+    },
+    "GET /api/v2/voicemail/userpolicies/{userId}": {
+        "operationId": "getvoicemailuserpolicy",
+        "functionName": "GetVoicemailUserpolicy",
+        "signature": "GetVoicemailUserpolicy(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailuserpolicy"
+    },
+    "PATCH /api/v2/voicemail/groups/{groupId}/policy": {
+        "operationId": "patchvoicemailgrouppolicy",
+        "functionName": "PatchVoicemailGroupPolicy",
+        "signature": "PatchVoicemailGroupPolicy(groupId, body)",
+        "parameters": [
+            {
+                "name": "groupId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Voicemailgrouppolicy",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailgrouppolicy"
+    },
+    "PATCH /api/v2/voicemail/me/policy": {
+        "operationId": "patchvoicemailmepolicy",
+        "functionName": "PatchVoicemailMePolicy",
+        "signature": "PatchVoicemailMePolicy(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Voicemailuserpolicy",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailuserpolicy"
+    },
+    "PATCH /api/v2/voicemail/messages/{messageId}": {
+        "operationId": "patchvoicemailmessage",
+        "functionName": "PatchVoicemailMessage",
+        "signature": "PatchVoicemailMessage(messageId, body)",
+        "parameters": [
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Voicemailmessage",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailmessage"
+    },
+    "PATCH /api/v2/voicemail/userpolicies/{userId}": {
+        "operationId": "patchvoicemailuserpolicy",
+        "functionName": "PatchVoicemailUserpolicy",
+        "signature": "PatchVoicemailUserpolicy(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Voicemailuserpolicy",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailuserpolicy"
+    },
+    "POST /api/v2/voicemail/messages": {
+        "operationId": "postvoicemailmessages",
+        "functionName": "PostVoicemailMessages",
+        "signature": "PostVoicemailMessages(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Copyvoicemailmessage",
+                "required": "false"
+            }
+        ],
+        "return": "Voicemailmessage"
+    },
+    "POST /api/v2/voicemail/search": {
+        "operationId": "postvoicemailsearch",
+        "functionName": "PostVoicemailSearch",
+        "signature": "PostVoicemailSearch(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Voicemailsearchrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailssearchresponse"
+    },
+    "PUT /api/v2/voicemail/messages/{messageId}": {
+        "operationId": "putvoicemailmessage",
+        "functionName": "PutVoicemailMessage",
+        "signature": "PutVoicemailMessage(messageId, body)",
+        "parameters": [
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Voicemailmessage",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailmessage"
+    },
+    "PUT /api/v2/voicemail/policy": {
+        "operationId": "putvoicemailpolicy",
+        "functionName": "PutVoicemailPolicy",
+        "signature": "PutVoicemailPolicy(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Voicemailorganizationpolicy",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailorganizationpolicy"
+    },
+    "PUT /api/v2/voicemail/userpolicies/{userId}": {
+        "operationId": "putvoicemailuserpolicy",
+        "functionName": "PutVoicemailUserpolicy",
+        "signature": "PutVoicemailUserpolicy(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Voicemailuserpolicy",
+                "required": "true"
+            }
+        ],
+        "return": "Voicemailuserpolicy"
+    }
+    
+}

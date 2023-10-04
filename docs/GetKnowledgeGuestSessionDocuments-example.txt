@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)
+
+var sessionId string // Knowledge guest session ID.
+var categoryId []string // If specified, retrieves documents associated with category ids, comma separated values expected.
+var pageSize int // Number of entities to return. Maximum of 200.
+// Get documents.
+data, response, err := apiInstance.GetKnowledgeGuestSessionDocuments(sessionId, categoryId, pageSize)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetKnowledgeGuestSessionDocuments: %v\n", err)
+}

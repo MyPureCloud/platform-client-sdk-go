@@ -1,0 +1,1390 @@
+{
+    "DELETE /api/v2/employeeperformance/externalmetrics/definitions/{metricId}": {
+        "operationId": "deleteemployeeperformanceexternalmetricsdefinition",
+        "functionName": "DeleteEmployeeperformanceExternalmetricsDefinition",
+        "signature": "DeleteEmployeeperformanceExternalmetricsDefinition(metricId)",
+        "parameters": [
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/employeeperformance/externalmetrics/definitions/{metricId}": {
+        "operationId": "getemployeeperformanceexternalmetricsdefinition",
+        "functionName": "GetEmployeeperformanceExternalmetricsDefinition",
+        "signature": "GetEmployeeperformanceExternalmetricsDefinition(metricId)",
+        "parameters": [
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Externalmetricdefinition"
+    },
+    "GET /api/v2/employeeperformance/externalmetrics/definitions": {
+        "operationId": "getemployeeperformanceexternalmetricsdefinitions",
+        "functionName": "GetEmployeeperformanceExternalmetricsDefinitions",
+        "signature": "GetEmployeeperformanceExternalmetricsDefinitions(pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Externalmetricdefinitionlisting"
+    },
+    "GET /api/v2/gamification/insights": {
+        "operationId": "getgamificationinsights",
+        "functionName": "GetGamificationInsights",
+        "signature": "GetGamificationInsights(filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday, pageSize, pageNumber, sortKey, sortMetricId, sortOrder, userIds)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortKey",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortMetricId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "userIds",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Insightssummary"
+    },
+    "GET /api/v2/gamification/insights/details": {
+        "operationId": "getgamificationinsightsdetails",
+        "functionName": "GetGamificationInsightsDetails",
+        "signature": "GetGamificationInsightsDetails(filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Insightsdetails"
+    },
+    "GET /api/v2/gamification/insights/groups/trends": {
+        "operationId": "getgamificationinsightsgroupstrends",
+        "functionName": "GetGamificationInsightsGroupsTrends",
+        "signature": "GetGamificationInsightsGroupsTrends(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Insightstrend"
+    },
+    "GET /api/v2/gamification/insights/groups/trends/all": {
+        "operationId": "getgamificationinsightsgroupstrendsall",
+        "functionName": "GetGamificationInsightsGroupsTrendsAll",
+        "signature": "GetGamificationInsightsGroupsTrendsAll(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Insightstrend"
+    },
+    "GET /api/v2/gamification/insights/members": {
+        "operationId": "getgamificationinsightsmembers",
+        "functionName": "GetGamificationInsightsMembers",
+        "signature": "GetGamificationInsightsMembers(filterType, filterId, granularity, startWorkday)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Insightsagents"
+    },
+    "GET /api/v2/gamification/insights/trends": {
+        "operationId": "getgamificationinsightstrends",
+        "functionName": "GetGamificationInsightsTrends",
+        "signature": "GetGamificationInsightsTrends(filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Userinsightstrend"
+    },
+    "GET /api/v2/gamification/insights/users/{userId}/details": {
+        "operationId": "getgamificationinsightsuserdetails",
+        "functionName": "GetGamificationInsightsUserDetails",
+        "signature": "GetGamificationInsightsUserDetails(userId, filterType, filterId, granularity, comparativePeriodStartWorkday, primaryPeriodStartWorkday)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Insightsdetails"
+    },
+    "GET /api/v2/gamification/insights/users/{userId}/trends": {
+        "operationId": "getgamificationinsightsusertrends",
+        "functionName": "GetGamificationInsightsUserTrends",
+        "signature": "GetGamificationInsightsUserTrends(userId, filterType, filterId, granularity, comparativePeriodStartWorkday, comparativePeriodEndWorkday, primaryPeriodStartWorkday, primaryPeriodEndWorkday)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "granularity",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "comparativePeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodStartWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "primaryPeriodEndWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Userinsightstrend"
+    },
+    "GET /api/v2/gamification/leaderboard": {
+        "operationId": "getgamificationleaderboard",
+        "functionName": "GetGamificationLeaderboard",
+        "signature": "GetGamificationLeaderboard(startWorkday, endWorkday, metricId)",
+        "parameters": [
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Leaderboard"
+    },
+    "GET /api/v2/gamification/leaderboard/all": {
+        "operationId": "getgamificationleaderboardall",
+        "functionName": "GetGamificationLeaderboardAll",
+        "signature": "GetGamificationLeaderboardAll(filterType, filterId, startWorkday, endWorkday, metricId)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Leaderboard"
+    },
+    "GET /api/v2/gamification/leaderboard/all/bestpoints": {
+        "operationId": "getgamificationleaderboardallbestpoints",
+        "functionName": "GetGamificationLeaderboardAllBestpoints",
+        "signature": "GetGamificationLeaderboardAllBestpoints(filterType, filterId)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Overallbestpoints"
+    },
+    "GET /api/v2/gamification/leaderboard/bestpoints": {
+        "operationId": "getgamificationleaderboardbestpoints",
+        "functionName": "GetGamificationLeaderboardBestpoints",
+        "signature": "GetGamificationLeaderboardBestpoints()",
+        
+        "return": "Overallbestpoints"
+    },
+    "GET /api/v2/gamification/metricdefinitions/{metricDefinitionId}": {
+        "operationId": "getgamificationmetricdefinition",
+        "functionName": "GetGamificationMetricdefinition",
+        "signature": "GetGamificationMetricdefinition(metricDefinitionId)",
+        "parameters": [
+            {
+                "name": "metricDefinitionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Metricdefinition"
+    },
+    "GET /api/v2/gamification/metricdefinitions": {
+        "operationId": "getgamificationmetricdefinitions",
+        "functionName": "GetGamificationMetricdefinitions",
+        "signature": "GetGamificationMetricdefinitions()",
+        
+        "return": "Getmetricdefinitionsresponse"
+    },
+    "GET /api/v2/gamification/profiles/{profileId}": {
+        "operationId": "getgamificationprofile",
+        "functionName": "GetGamificationProfile",
+        "signature": "GetGamificationProfile(profileId)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Performanceprofile"
+    },
+    "GET /api/v2/gamification/profiles/{profileId}/members": {
+        "operationId": "getgamificationprofilemembers",
+        "functionName": "GetGamificationProfileMembers",
+        "signature": "GetGamificationProfileMembers(profileId)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Memberlisting"
+    },
+    "GET /api/v2/gamification/profiles/{profileId}/metrics/{metricId}": {
+        "operationId": "getgamificationprofilemetric",
+        "functionName": "GetGamificationProfileMetric",
+        "signature": "GetGamificationProfileMetric(profileId, metricId, workday)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "false"
+            }
+        ],
+        "return": "Metric"
+    },
+    "GET /api/v2/gamification/profiles/{profileId}/metrics": {
+        "operationId": "getgamificationprofilemetrics",
+        "functionName": "GetGamificationProfileMetrics",
+        "signature": "GetGamificationProfileMetrics(profileId, expand, workday, metricIds)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "metricIds",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Getmetricresponse"
+    },
+    "GET /api/v2/gamification/profiles/{profileId}/metrics/objectivedetails": {
+        "operationId": "getgamificationprofilemetricsobjectivedetails",
+        "functionName": "GetGamificationProfileMetricsObjectivedetails",
+        "signature": "GetGamificationProfileMetricsObjectivedetails(profileId, workday)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "false"
+            }
+        ],
+        "return": "Getmetricsresponse"
+    },
+    "GET /api/v2/gamification/profiles": {
+        "operationId": "getgamificationprofiles",
+        "functionName": "GetGamificationProfiles",
+        "signature": "GetGamificationProfiles()",
+        
+        "return": "Getprofilesresponse"
+    },
+    "GET /api/v2/gamification/profiles/users/{userId}": {
+        "operationId": "getgamificationprofilesuser",
+        "functionName": "GetGamificationProfilesUser",
+        "signature": "GetGamificationProfilesUser(userId, workday)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "false"
+            }
+        ],
+        "return": "Performanceprofile"
+    },
+    "GET /api/v2/gamification/profiles/users/me": {
+        "operationId": "getgamificationprofilesusersme",
+        "functionName": "GetGamificationProfilesUsersMe",
+        "signature": "GetGamificationProfilesUsersMe(workday)",
+        "parameters": [
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "false"
+            }
+        ],
+        "return": "Performanceprofile"
+    },
+    "GET /api/v2/gamification/scorecards": {
+        "operationId": "getgamificationscorecards",
+        "functionName": "GetGamificationScorecards",
+        "signature": "GetGamificationScorecards(workday, expand)",
+        "parameters": [
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Workdaymetriclisting"
+    },
+    "GET /api/v2/gamification/scorecards/attendance": {
+        "operationId": "getgamificationscorecardsattendance",
+        "functionName": "GetGamificationScorecardsAttendance",
+        "signature": "GetGamificationScorecardsAttendance(startWorkday, endWorkday)",
+        "parameters": [
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Attendancestatuslisting"
+    },
+    "GET /api/v2/gamification/scorecards/bestpoints": {
+        "operationId": "getgamificationscorecardsbestpoints",
+        "functionName": "GetGamificationScorecardsBestpoints",
+        "signature": "GetGamificationScorecardsBestpoints()",
+        
+        "return": "Userbestpoints"
+    },
+    "GET /api/v2/gamification/scorecards/points/alltime": {
+        "operationId": "getgamificationscorecardspointsalltime",
+        "functionName": "GetGamificationScorecardsPointsAlltime",
+        "signature": "GetGamificationScorecardsPointsAlltime(endWorkday)",
+        "parameters": [
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Alltimepoints"
+    },
+    "GET /api/v2/gamification/scorecards/points/average": {
+        "operationId": "getgamificationscorecardspointsaverage",
+        "functionName": "GetGamificationScorecardsPointsAverage",
+        "signature": "GetGamificationScorecardsPointsAverage(workday)",
+        "parameters": [
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Singleworkdayaveragepoints"
+    },
+    "GET /api/v2/gamification/scorecards/points/trends": {
+        "operationId": "getgamificationscorecardspointstrends",
+        "functionName": "GetGamificationScorecardsPointsTrends",
+        "signature": "GetGamificationScorecardsPointsTrends(startWorkday, endWorkday, dayOfWeek)",
+        "parameters": [
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "dayOfWeek",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workdaypointstrend"
+    },
+    "GET /api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/{userId}/values/trends": {
+        "operationId": "getgamificationscorecardsprofilemetricuservaluestrends",
+        "functionName": "GetGamificationScorecardsProfileMetricUserValuesTrends",
+        "signature": "GetGamificationScorecardsProfileMetricUserValuesTrends(profileId, metricId, userId, startWorkday, endWorkday, referenceWorkday, timeZone)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "referenceWorkday",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Metricvaluetrendaverage"
+    },
+    "GET /api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/users/values/trends": {
+        "operationId": "getgamificationscorecardsprofilemetricusersvaluestrends",
+        "functionName": "GetGamificationScorecardsProfileMetricUsersValuesTrends",
+        "signature": "GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, startWorkday, endWorkday, filterId, referenceWorkday, timeZone)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "referenceWorkday",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Metricvaluetrendaverage"
+    },
+    "GET /api/v2/gamification/scorecards/profiles/{profileId}/metrics/{metricId}/values/trends": {
+        "operationId": "getgamificationscorecardsprofilemetricvaluestrends",
+        "functionName": "GetGamificationScorecardsProfileMetricValuesTrends",
+        "signature": "GetGamificationScorecardsProfileMetricValuesTrends(profileId, metricId, startWorkday, endWorkday, filterType, referenceWorkday, timeZone)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "referenceWorkday",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Metricvaluetrendaverage"
+    },
+    "GET /api/v2/gamification/scorecards/users/{userId}": {
+        "operationId": "getgamificationscorecardsuser",
+        "functionName": "GetGamificationScorecardsUser",
+        "signature": "GetGamificationScorecardsUser(userId, workday, expand)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Workdaymetriclisting"
+    },
+    "GET /api/v2/gamification/scorecards/users/{userId}/attendance": {
+        "operationId": "getgamificationscorecardsuserattendance",
+        "functionName": "GetGamificationScorecardsUserAttendance",
+        "signature": "GetGamificationScorecardsUserAttendance(userId, startWorkday, endWorkday)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Attendancestatuslisting"
+    },
+    "GET /api/v2/gamification/scorecards/users/{userId}/bestpoints": {
+        "operationId": "getgamificationscorecardsuserbestpoints",
+        "functionName": "GetGamificationScorecardsUserBestpoints",
+        "signature": "GetGamificationScorecardsUserBestpoints(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Userbestpoints"
+    },
+    "GET /api/v2/gamification/scorecards/users/{userId}/points/alltime": {
+        "operationId": "getgamificationscorecardsuserpointsalltime",
+        "functionName": "GetGamificationScorecardsUserPointsAlltime",
+        "signature": "GetGamificationScorecardsUserPointsAlltime(userId, endWorkday)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Alltimepoints"
+    },
+    "GET /api/v2/gamification/scorecards/users/{userId}/points/trends": {
+        "operationId": "getgamificationscorecardsuserpointstrends",
+        "functionName": "GetGamificationScorecardsUserPointsTrends",
+        "signature": "GetGamificationScorecardsUserPointsTrends(userId, startWorkday, endWorkday, dayOfWeek)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "dayOfWeek",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workdaypointstrend"
+    },
+    "GET /api/v2/gamification/scorecards/users/{userId}/values/trends": {
+        "operationId": "getgamificationscorecardsuservaluestrends",
+        "functionName": "GetGamificationScorecardsUserValuesTrends",
+        "signature": "GetGamificationScorecardsUserValuesTrends(userId, startWorkday, endWorkday, timeZone)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workdayvaluestrend"
+    },
+    "GET /api/v2/gamification/scorecards/users/points/average": {
+        "operationId": "getgamificationscorecardsuserspointsaverage",
+        "functionName": "GetGamificationScorecardsUsersPointsAverage",
+        "signature": "GetGamificationScorecardsUsersPointsAverage(filterType, filterId, workday)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "true"
+            }
+        ],
+        "return": "Singleworkdayaveragepoints"
+    },
+    "GET /api/v2/gamification/scorecards/users/values/average": {
+        "operationId": "getgamificationscorecardsusersvaluesaverage",
+        "functionName": "GetGamificationScorecardsUsersValuesAverage",
+        "signature": "GetGamificationScorecardsUsersValuesAverage(filterType, filterId, workday, timeZone)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Singleworkdayaveragevalues"
+    },
+    "GET /api/v2/gamification/scorecards/users/values/trends": {
+        "operationId": "getgamificationscorecardsusersvaluestrends",
+        "functionName": "GetGamificationScorecardsUsersValuesTrends",
+        "signature": "GetGamificationScorecardsUsersValuesTrends(filterType, filterId, startWorkday, endWorkday, timeZone)",
+        "parameters": [
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "filterId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workdayvaluestrend"
+    },
+    "GET /api/v2/gamification/scorecards/values/average": {
+        "operationId": "getgamificationscorecardsvaluesaverage",
+        "functionName": "GetGamificationScorecardsValuesAverage",
+        "signature": "GetGamificationScorecardsValuesAverage(workday, timeZone)",
+        "parameters": [
+            {
+                "name": "workday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Singleworkdayaveragevalues"
+    },
+    "GET /api/v2/gamification/scorecards/values/trends": {
+        "operationId": "getgamificationscorecardsvaluestrends",
+        "functionName": "GetGamificationScorecardsValuesTrends",
+        "signature": "GetGamificationScorecardsValuesTrends(startWorkday, endWorkday, filterType, referenceWorkday, timeZone)",
+        "parameters": [
+            {
+                "name": "startWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "endWorkday",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "filterType",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "referenceWorkday",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "timeZone",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Workdayvaluestrend"
+    },
+    "GET /api/v2/gamification/status": {
+        "operationId": "getgamificationstatus",
+        "functionName": "GetGamificationStatus",
+        "signature": "GetGamificationStatus()",
+        
+        "return": "Gamificationstatus"
+    },
+    "GET /api/v2/gamification/templates/{templateId}": {
+        "operationId": "getgamificationtemplate",
+        "functionName": "GetGamificationTemplate",
+        "signature": "GetGamificationTemplate(templateId)",
+        "parameters": [
+            {
+                "name": "templateId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Objectivetemplate"
+    },
+    "GET /api/v2/gamification/templates": {
+        "operationId": "getgamificationtemplates",
+        "functionName": "GetGamificationTemplates",
+        "signature": "GetGamificationTemplates()",
+        
+        "return": "Gettemplatesresponse"
+    },
+    "PATCH /api/v2/employeeperformance/externalmetrics/definitions/{metricId}": {
+        "operationId": "patchemployeeperformanceexternalmetricsdefinition",
+        "functionName": "PatchEmployeeperformanceExternalmetricsDefinition",
+        "signature": "PatchEmployeeperformanceExternalmetricsDefinition(metricId, body)",
+        "parameters": [
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Externalmetricdefinitionupdaterequest",
+                "required": "true"
+            }
+        ],
+        "return": "Externalmetricdefinition"
+    },
+    "POST /api/v2/employeeperformance/externalmetrics/data": {
+        "operationId": "postemployeeperformanceexternalmetricsdata",
+        "functionName": "PostEmployeeperformanceExternalmetricsData",
+        "signature": "PostEmployeeperformanceExternalmetricsData(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Externalmetricdatawriterequest",
+                "required": "false"
+            }
+        ],
+        "return": "Externalmetricdatawriteresponse"
+    },
+    "POST /api/v2/employeeperformance/externalmetrics/definitions": {
+        "operationId": "postemployeeperformanceexternalmetricsdefinitions",
+        "functionName": "PostEmployeeperformanceExternalmetricsDefinitions",
+        "signature": "PostEmployeeperformanceExternalmetricsDefinitions(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Externalmetricdefinitioncreaterequest",
+                "required": "false"
+            }
+        ],
+        "return": "Externalmetricdefinition"
+    },
+    "POST /api/v2/gamification/profiles/{profileId}/activate": {
+        "operationId": "postgamificationprofileactivate",
+        "functionName": "PostGamificationProfileActivate",
+        "signature": "PostGamificationProfileActivate(profileId)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Performanceprofile"
+    },
+    "POST /api/v2/gamification/profiles/{profileId}/deactivate": {
+        "operationId": "postgamificationprofiledeactivate",
+        "functionName": "PostGamificationProfileDeactivate",
+        "signature": "PostGamificationProfileDeactivate(profileId)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Performanceprofile"
+    },
+    "POST /api/v2/gamification/profiles/{profileId}/members": {
+        "operationId": "postgamificationprofilemembers",
+        "functionName": "PostGamificationProfileMembers",
+        "signature": "PostGamificationProfileMembers(profileId, body)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Assignusers",
+                "required": "true"
+            }
+        ],
+        "return": "Assignment"
+    },
+    "POST /api/v2/gamification/profiles/{profileId}/members/validate": {
+        "operationId": "postgamificationprofilemembersvalidate",
+        "functionName": "PostGamificationProfileMembersValidate",
+        "signature": "PostGamificationProfileMembersValidate(profileId, body)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Validateassignusers",
+                "required": "true"
+            }
+        ],
+        "return": "Assignmentvalidation"
+    },
+    "POST /api/v2/gamification/profiles/{sourceProfileId}/metrics/{sourceMetricId}/link": {
+        "operationId": "postgamificationprofilemetriclink",
+        "functionName": "PostGamificationProfileMetricLink",
+        "signature": "PostGamificationProfileMetricLink(sourceProfileId, sourceMetricId, body)",
+        "parameters": [
+            {
+                "name": "sourceProfileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "sourceMetricId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Targetperformanceprofile",
+                "required": "true"
+            }
+        ],
+        "return": "Metric"
+    },
+    "POST /api/v2/gamification/profiles/{profileId}/metrics": {
+        "operationId": "postgamificationprofilemetrics",
+        "functionName": "PostGamificationProfileMetrics",
+        "signature": "PostGamificationProfileMetrics(profileId, body)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Createmetric",
+                "required": "true"
+            }
+        ],
+        "return": "Metric"
+    },
+    "POST /api/v2/gamification/profiles": {
+        "operationId": "postgamificationprofiles",
+        "functionName": "PostGamificationProfiles",
+        "signature": "PostGamificationProfiles(body, copyMetrics)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Createperformanceprofile",
+                "required": "true"
+            },
+            {
+                "name": "copyMetrics",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Performanceprofile"
+    },
+    "POST /api/v2/gamification/profiles/users/{userId}/query": {
+        "operationId": "postgamificationprofilesuserquery",
+        "functionName": "PostGamificationProfilesUserQuery",
+        "signature": "PostGamificationProfilesUserQuery(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userprofilesindaterangerequest",
+                "required": "true"
+            }
+        ],
+        "return": "Userprofilesindaterange"
+    },
+    "POST /api/v2/gamification/profiles/users/me/query": {
+        "operationId": "postgamificationprofilesusersmequery",
+        "functionName": "PostGamificationProfilesUsersMeQuery",
+        "signature": "PostGamificationProfilesUsersMeQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Userprofilesindaterangerequest",
+                "required": "true"
+            }
+        ],
+        "return": "Userprofilesindaterange"
+    },
+    "PUT /api/v2/gamification/profiles/{profileId}": {
+        "operationId": "putgamificationprofile",
+        "functionName": "PutGamificationProfile",
+        "signature": "PutGamificationProfile(profileId, body)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Performanceprofile",
+                "required": "false"
+            }
+        ],
+        "return": "Performanceprofile"
+    },
+    "PUT /api/v2/gamification/profiles/{profileId}/metrics/{metricId}": {
+        "operationId": "putgamificationprofilemetric",
+        "functionName": "PutGamificationProfileMetric",
+        "signature": "PutGamificationProfileMetric(profileId, metricId, body)",
+        "parameters": [
+            {
+                "name": "profileId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "metricId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Createmetric",
+                "required": "true"
+            }
+        ],
+        "return": "Metric"
+    },
+    "PUT /api/v2/gamification/status": {
+        "operationId": "putgamificationstatus",
+        "functionName": "PutGamificationStatus",
+        "signature": "PutGamificationStatus(status)",
+        "parameters": [
+            {
+                "name": "status",
+                "type": "Gamificationstatus",
+                "required": "true"
+            }
+        ],
+        "return": "Gamificationstatus"
+    }
+    
+}

@@ -1,0 +1,829 @@
+{
+    "DELETE /api/v2/contentmanagement/documents/{documentId}": {
+        "operationId": "deletecontentmanagementdocument",
+        "functionName": "DeleteContentmanagementDocument",
+        "signature": "DeleteContentmanagementDocument(documentId, override)",
+        "parameters": [
+            {
+                "name": "documentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "override",
+                "type": "bool",
+                "required": "false"
+            }
+        ]
+    },
+    "DELETE /api/v2/contentmanagement/shares/{shareId}": {
+        "operationId": "deletecontentmanagementshare",
+        "functionName": "DeleteContentmanagementShare",
+        "signature": "DeleteContentmanagementShare(shareId)",
+        "parameters": [
+            {
+                "name": "shareId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/contentmanagement/status/{statusId}": {
+        "operationId": "deletecontentmanagementstatusstatusid",
+        "functionName": "DeleteContentmanagementStatusStatusId",
+        "signature": "DeleteContentmanagementStatusStatusId(statusId)",
+        "parameters": [
+            {
+                "name": "statusId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/contentmanagement/workspaces/{workspaceId}": {
+        "operationId": "deletecontentmanagementworkspace",
+        "functionName": "DeleteContentmanagementWorkspace",
+        "signature": "DeleteContentmanagementWorkspace(workspaceId, moveChildrenToWorkspaceId)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "moveChildrenToWorkspaceId",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "DELETE /api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}": {
+        "operationId": "deletecontentmanagementworkspacemember",
+        "functionName": "DeleteContentmanagementWorkspaceMember",
+        "signature": "DeleteContentmanagementWorkspaceMember(workspaceId, memberId)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "memberId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}": {
+        "operationId": "deletecontentmanagementworkspacetagvalue",
+        "functionName": "DeleteContentmanagementWorkspaceTagvalue",
+        "signature": "DeleteContentmanagementWorkspaceTagvalue(workspaceId, tagId)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "tagId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/contentmanagement/documents/{documentId}": {
+        "operationId": "getcontentmanagementdocument",
+        "functionName": "GetContentmanagementDocument",
+        "signature": "GetContentmanagementDocument(documentId, expand)",
+        "parameters": [
+            {
+                "name": "documentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Document"
+    },
+    "GET /api/v2/contentmanagement/documents/{documentId}/audits": {
+        "operationId": "getcontentmanagementdocumentaudits",
+        "functionName": "GetContentmanagementDocumentAudits",
+        "signature": "GetContentmanagementDocumentAudits(documentId, pageSize, pageNumber, transactionFilter, level, sortBy, sortOrder)",
+        "parameters": [
+            {
+                "name": "documentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "transactionFilter",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "level",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Documentauditentitylisting"
+    },
+    "GET /api/v2/contentmanagement/documents/{documentId}/content": {
+        "operationId": "getcontentmanagementdocumentcontent",
+        "functionName": "GetContentmanagementDocumentContent",
+        "signature": "GetContentmanagementDocumentContent(documentId, disposition, contentType)",
+        "parameters": [
+            {
+                "name": "documentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "disposition",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "contentType",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Downloadresponse"
+    },
+    "GET /api/v2/contentmanagement/documents": {
+        "operationId": "getcontentmanagementdocuments",
+        "functionName": "GetContentmanagementDocuments",
+        "signature": "GetContentmanagementDocuments(workspaceId, name, expand, pageSize, pageNumber, sortBy, sortOrder)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Documententitylisting"
+    },
+    "GET /api/v2/contentmanagement/query": {
+        "operationId": "getcontentmanagementquery",
+        "functionName": "GetContentmanagementQuery",
+        "signature": "GetContentmanagementQuery(queryPhrase, pageSize, pageNumber, sortBy, sortOrder, expand)",
+        "parameters": [
+            {
+                "name": "queryPhrase",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Queryresults"
+    },
+    "GET /api/v2/contentmanagement/securityprofiles/{securityProfileId}": {
+        "operationId": "getcontentmanagementsecurityprofile",
+        "functionName": "GetContentmanagementSecurityprofile",
+        "signature": "GetContentmanagementSecurityprofile(securityProfileId)",
+        "parameters": [
+            {
+                "name": "securityProfileId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Securityprofile"
+    },
+    "GET /api/v2/contentmanagement/securityprofiles": {
+        "operationId": "getcontentmanagementsecurityprofiles",
+        "functionName": "GetContentmanagementSecurityprofiles",
+        "signature": "GetContentmanagementSecurityprofiles()",
+        
+        "return": "Securityprofileentitylisting"
+    },
+    "GET /api/v2/contentmanagement/shares/{shareId}": {
+        "operationId": "getcontentmanagementshare",
+        "functionName": "GetContentmanagementShare",
+        "signature": "GetContentmanagementShare(shareId, expand)",
+        "parameters": [
+            {
+                "name": "shareId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Share"
+    },
+    "GET /api/v2/contentmanagement/shared/{sharedId}": {
+        "operationId": "getcontentmanagementsharedsharedid",
+        "functionName": "GetContentmanagementSharedSharedId",
+        "signature": "GetContentmanagementSharedSharedId(sharedId, redirect, disposition, contentType, expand)",
+        "parameters": [
+            {
+                "name": "sharedId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "redirect",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "disposition",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "contentType",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Sharedresponse"
+    },
+    "GET /api/v2/contentmanagement/shares": {
+        "operationId": "getcontentmanagementshares",
+        "functionName": "GetContentmanagementShares",
+        "signature": "GetContentmanagementShares(entityId, expand, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "entityId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Shareentitylisting"
+    },
+    "GET /api/v2/contentmanagement/status": {
+        "operationId": "getcontentmanagementstatus",
+        "functionName": "GetContentmanagementStatus",
+        "signature": "GetContentmanagementStatus(pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Commandstatusentitylisting"
+    },
+    "GET /api/v2/contentmanagement/status/{statusId}": {
+        "operationId": "getcontentmanagementstatusstatusid",
+        "functionName": "GetContentmanagementStatusStatusId",
+        "signature": "GetContentmanagementStatusStatusId(statusId)",
+        "parameters": [
+            {
+                "name": "statusId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Commandstatus"
+    },
+    "GET /api/v2/contentmanagement/usage": {
+        "operationId": "getcontentmanagementusage",
+        "functionName": "GetContentmanagementUsage",
+        "signature": "GetContentmanagementUsage()",
+        
+        "return": "Usage"
+    },
+    "GET /api/v2/contentmanagement/workspaces/{workspaceId}": {
+        "operationId": "getcontentmanagementworkspace",
+        "functionName": "GetContentmanagementWorkspace",
+        "signature": "GetContentmanagementWorkspace(workspaceId, expand)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Workspace"
+    },
+    "GET /api/v2/contentmanagement/workspaces/{workspaceId}/documents": {
+        "operationId": "getcontentmanagementworkspacedocuments",
+        "functionName": "GetContentmanagementWorkspaceDocuments",
+        "signature": "GetContentmanagementWorkspaceDocuments(workspaceId, expand, pageSize, pageNumber, sortBy, sortOrder)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Documententitylisting"
+    },
+    "GET /api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}": {
+        "operationId": "getcontentmanagementworkspacemember",
+        "functionName": "GetContentmanagementWorkspaceMember",
+        "signature": "GetContentmanagementWorkspaceMember(workspaceId, memberId, expand)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "memberId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Workspacemember"
+    },
+    "GET /api/v2/contentmanagement/workspaces/{workspaceId}/members": {
+        "operationId": "getcontentmanagementworkspacemembers",
+        "functionName": "GetContentmanagementWorkspaceMembers",
+        "signature": "GetContentmanagementWorkspaceMembers(workspaceId, pageSize, pageNumber, expand)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Workspacememberentitylisting"
+    },
+    "GET /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}": {
+        "operationId": "getcontentmanagementworkspacetagvalue",
+        "functionName": "GetContentmanagementWorkspaceTagvalue",
+        "signature": "GetContentmanagementWorkspaceTagvalue(workspaceId, tagId, expand)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "tagId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Tagvalue"
+    },
+    "GET /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues": {
+        "operationId": "getcontentmanagementworkspacetagvalues",
+        "functionName": "GetContentmanagementWorkspaceTagvalues",
+        "signature": "GetContentmanagementWorkspaceTagvalues(workspaceId, value, pageSize, pageNumber, expand)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "value",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Tagvalueentitylisting"
+    },
+    "GET /api/v2/contentmanagement/workspaces": {
+        "operationId": "getcontentmanagementworkspaces",
+        "functionName": "GetContentmanagementWorkspaces",
+        "signature": "GetContentmanagementWorkspaces(pageSize, pageNumber, access, expand)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "access",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Workspaceentitylisting"
+    },
+    "POST /api/v2/contentmanagement/auditquery": {
+        "operationId": "postcontentmanagementauditquery",
+        "functionName": "PostContentmanagementAuditquery",
+        "signature": "PostContentmanagementAuditquery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Contentqueryrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Queryresults"
+    },
+    "POST /api/v2/contentmanagement/documents/{documentId}": {
+        "operationId": "postcontentmanagementdocument",
+        "functionName": "PostContentmanagementDocument",
+        "signature": "PostContentmanagementDocument(documentId, body, expand, override)",
+        "parameters": [
+            {
+                "name": "documentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Documentupdate",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "override",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Document"
+    },
+    "POST /api/v2/contentmanagement/documents/{documentId}/content": {
+        "operationId": "postcontentmanagementdocumentcontent",
+        "functionName": "PostContentmanagementDocumentContent",
+        "signature": "PostContentmanagementDocumentContent(documentId, body, override)",
+        "parameters": [
+            {
+                "name": "documentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Replacerequest",
+                "required": "true"
+            },
+            {
+                "name": "override",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Replaceresponse"
+    },
+    "POST /api/v2/contentmanagement/documents": {
+        "operationId": "postcontentmanagementdocuments",
+        "functionName": "PostContentmanagementDocuments",
+        "signature": "PostContentmanagementDocuments(body, copySource, moveSource, override)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Documentupload",
+                "required": "true"
+            },
+            {
+                "name": "copySource",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "moveSource",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "override",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Document"
+    },
+    "POST /api/v2/contentmanagement/query": {
+        "operationId": "postcontentmanagementquery",
+        "functionName": "PostContentmanagementQuery",
+        "signature": "PostContentmanagementQuery(body, expand)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Queryrequest",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Queryresults"
+    },
+    "POST /api/v2/contentmanagement/shares": {
+        "operationId": "postcontentmanagementshares",
+        "functionName": "PostContentmanagementShares",
+        "signature": "PostContentmanagementShares(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Createsharerequest",
+                "required": "true"
+            }
+        ],
+        "return": "Createshareresponse"
+    },
+    "POST /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues": {
+        "operationId": "postcontentmanagementworkspacetagvalues",
+        "functionName": "PostContentmanagementWorkspaceTagvalues",
+        "signature": "PostContentmanagementWorkspaceTagvalues(workspaceId, body)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Tagvalue",
+                "required": "true"
+            }
+        ],
+        "return": "Tagvalue"
+    },
+    "POST /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/query": {
+        "operationId": "postcontentmanagementworkspacetagvaluesquery",
+        "functionName": "PostContentmanagementWorkspaceTagvaluesQuery",
+        "signature": "PostContentmanagementWorkspaceTagvaluesQuery(workspaceId, body, expand)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Tagqueryrequest",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Tagvalueentitylisting"
+    },
+    "POST /api/v2/contentmanagement/workspaces": {
+        "operationId": "postcontentmanagementworkspaces",
+        "functionName": "PostContentmanagementWorkspaces",
+        "signature": "PostContentmanagementWorkspaces(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Workspacecreate",
+                "required": "true"
+            }
+        ],
+        "return": "Workspace"
+    },
+    "PUT /api/v2/contentmanagement/workspaces/{workspaceId}": {
+        "operationId": "putcontentmanagementworkspace",
+        "functionName": "PutContentmanagementWorkspace",
+        "signature": "PutContentmanagementWorkspace(workspaceId, body)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workspace",
+                "required": "true"
+            }
+        ],
+        "return": "Workspace"
+    },
+    "PUT /api/v2/contentmanagement/workspaces/{workspaceId}/members/{memberId}": {
+        "operationId": "putcontentmanagementworkspacemember",
+        "functionName": "PutContentmanagementWorkspaceMember",
+        "signature": "PutContentmanagementWorkspaceMember(workspaceId, memberId, body)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "memberId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Workspacemember",
+                "required": "true"
+            }
+        ],
+        "return": "Workspacemember"
+    },
+    "PUT /api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues/{tagId}": {
+        "operationId": "putcontentmanagementworkspacetagvalue",
+        "functionName": "PutContentmanagementWorkspaceTagvalue",
+        "signature": "PutContentmanagementWorkspaceTagvalue(workspaceId, tagId, body)",
+        "parameters": [
+            {
+                "name": "workspaceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "tagId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Tagvalue",
+                "required": "true"
+            }
+        ],
+        "return": "Tagvalue"
+    }
+    
+}

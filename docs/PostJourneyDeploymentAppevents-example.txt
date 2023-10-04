@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewJourneyApiWithConfig(config)
+
+var deploymentId string // The ID of the deployment sending the app event.
+var body platformclientv2.Appeventrequest // 
+// Send a journey app event, used for tracking customer activity on an application.
+data, response, err := apiInstance.PostJourneyDeploymentAppevents(deploymentId, body)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling PostJourneyDeploymentAppevents: %v\n", err)
+}

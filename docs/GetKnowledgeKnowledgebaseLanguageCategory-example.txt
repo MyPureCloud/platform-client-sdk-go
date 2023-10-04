@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)
+
+var categoryId string // Category ID
+var knowledgeBaseId string // Knowledge base ID
+var languageCode string // Language code, format: iso2-LOCALE
+// Get category
+data, response, err := apiInstance.GetKnowledgeKnowledgebaseLanguageCategory(categoryId, knowledgeBaseId, languageCode)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetKnowledgeKnowledgebaseLanguageCategory: %v\n", err)
+}

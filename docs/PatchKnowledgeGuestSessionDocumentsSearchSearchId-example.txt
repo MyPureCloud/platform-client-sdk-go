@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)
+
+var sessionId string // Knowledge guest session ID.
+var searchId string // Search Result ID
+var body platformclientv2.Searchupdaterequest // 
+// Update search result.
+response, err := apiInstance.PatchKnowledgeGuestSessionDocumentsSearchSearchId(sessionId, searchId, body)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PatchKnowledgeGuestSessionDocumentsSearchSearchId: %v\n", err)
+}

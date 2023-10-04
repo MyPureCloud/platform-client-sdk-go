@@ -1,0 +1,519 @@
+{
+    "DELETE /api/v2/chats/rooms/{roomJid}/messages/{messageId}": {
+        "operationId": "deletechatsroommessage",
+        "functionName": "DeleteChatsRoomMessage",
+        "signature": "DeleteChatsRoomMessage(roomJid, messageId)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/chats/rooms/{roomJid}/participants/{userId}": {
+        "operationId": "deletechatsroomparticipant",
+        "functionName": "DeleteChatsRoomParticipant",
+        "signature": "DeleteChatsRoomParticipant(roomJid, userId)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/chats/rooms/{roomJid}/pinnedmessages/{pinnedMessageId}": {
+        "operationId": "deletechatsroompinnedmessage",
+        "functionName": "DeleteChatsRoomPinnedmessage",
+        "signature": "DeleteChatsRoomPinnedmessage(roomJid, pinnedMessageId)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pinnedMessageId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/chats/users/{userId}/messages/{messageId}": {
+        "operationId": "deletechatsusermessage",
+        "functionName": "DeleteChatsUserMessage",
+        "signature": "DeleteChatsUserMessage(userId, messageId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/chat/settings": {
+        "operationId": "getchatsettings",
+        "functionName": "GetChatSettings",
+        "signature": "GetChatSettings()",
+        
+        "return": "Chatsettings"
+    },
+    "GET /api/v2/chats/messages/{messageId}": {
+        "operationId": "getchatsmessage",
+        "functionName": "GetChatsMessage",
+        "signature": "GetChatsMessage(messageId)",
+        "parameters": [
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Chatmessageresponse"
+    },
+    "GET /api/v2/chats/rooms/{roomJid}": {
+        "operationId": "getchatsroom",
+        "functionName": "GetChatsRoom",
+        "signature": "GetChatsRoom(roomJid)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Room"
+    },
+    "GET /api/v2/chats/rooms/{roomJid}/messages/{messageIds}": {
+        "operationId": "getchatsroommessage",
+        "functionName": "GetChatsRoomMessage",
+        "signature": "GetChatsRoomMessage(roomJid, messageIds)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "messageIds",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Chatmessageentitylisting"
+    },
+    "GET /api/v2/chats/rooms/{roomJid}/messages": {
+        "operationId": "getchatsroommessages",
+        "functionName": "GetChatsRoomMessages",
+        "signature": "GetChatsRoomMessages(roomJid, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "limit",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "before",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Chatmessageentitylisting"
+    },
+    "GET /api/v2/chats/settings": {
+        "operationId": "getchatssettings",
+        "functionName": "GetChatsSettings",
+        "signature": "GetChatsSettings()",
+        
+        "return": "Chatsettings"
+    },
+    "GET /api/v2/chats/threads/{threadId}/messages": {
+        "operationId": "getchatsthreadmessages",
+        "functionName": "GetChatsThreadMessages",
+        "signature": "GetChatsThreadMessages(threadId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)",
+        "parameters": [
+            {
+                "name": "threadId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "limit",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "before",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Chatmessageentitylisting"
+    },
+    "GET /api/v2/chats/users/{userId}/messages/{messageIds}": {
+        "operationId": "getchatsusermessage",
+        "functionName": "GetChatsUserMessage",
+        "signature": "GetChatsUserMessage(userId, messageIds)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "messageIds",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Chatmessageentitylisting"
+    },
+    "GET /api/v2/chats/users/{userId}/messages": {
+        "operationId": "getchatsusermessages",
+        "functionName": "GetChatsUserMessages",
+        "signature": "GetChatsUserMessages(userId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage, limit, before, after)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "limit",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "before",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Chatmessageresponse"
+    },
+    "PATCH /api/v2/chat/settings": {
+        "operationId": "patchchatsettings",
+        "functionName": "PatchChatSettings",
+        "signature": "PatchChatSettings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Chatsettings",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsettings"
+    },
+    "PATCH /api/v2/chats/rooms/{roomJid}": {
+        "operationId": "patchchatsroom",
+        "functionName": "PatchChatsRoom",
+        "signature": "PatchChatsRoom(roomJid, body)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Roomupdaterequest",
+                "required": "true"
+            }
+        ]
+    },
+    "PATCH /api/v2/chats/rooms/{roomJid}/messages/{messageId}": {
+        "operationId": "patchchatsroommessage",
+        "functionName": "PatchChatsRoomMessage",
+        "signature": "PatchChatsRoomMessage(roomJid, messageId, body)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Sendmessagebody",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsendmessageresponse"
+    },
+    "PATCH /api/v2/chats/settings": {
+        "operationId": "patchchatssettings",
+        "functionName": "PatchChatsSettings",
+        "signature": "PatchChatsSettings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Chatsettings",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsettings"
+    },
+    "PATCH /api/v2/chats/users/{userId}/messages/{messageId}": {
+        "operationId": "patchchatsusermessage",
+        "functionName": "PatchChatsUserMessage",
+        "signature": "PatchChatsUserMessage(userId, messageId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "messageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Sendmessagebody",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsendmessageresponse"
+    },
+    "POST /api/v2/chats/rooms/{roomJid}/messages": {
+        "operationId": "postchatsroommessages",
+        "functionName": "PostChatsRoomMessages",
+        "signature": "PostChatsRoomMessages(roomJid, body)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Sendmessagebody",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsendmessageresponse"
+    },
+    "POST /api/v2/chats/rooms/{roomJid}/participants/{userId}": {
+        "operationId": "postchatsroomparticipant",
+        "functionName": "PostChatsRoomParticipant",
+        "signature": "PostChatsRoomParticipant(roomJid, userId)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "POST /api/v2/chats/rooms/{roomJid}/pinnedmessages": {
+        "operationId": "postchatsroompinnedmessages",
+        "functionName": "PostChatsRoomPinnedmessages",
+        "signature": "PostChatsRoomPinnedmessages(roomJid, body)",
+        "parameters": [
+            {
+                "name": "roomJid",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Pinnedmessagerequest",
+                "required": "true"
+            }
+        ]
+    },
+    "POST /api/v2/chats/rooms": {
+        "operationId": "postchatsrooms",
+        "functionName": "PostChatsRooms",
+        "signature": "PostChatsRooms(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Createroomrequest",
+                "required": "false"
+            }
+        ],
+        "return": "Createroomresponse"
+    },
+    "POST /api/v2/chats/users/{userId}/messages": {
+        "operationId": "postchatsusermessages",
+        "functionName": "PostChatsUserMessages",
+        "signature": "PostChatsUserMessages(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Sendmessagebody",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsendmessageresponse"
+    },
+    "PUT /api/v2/chat/settings": {
+        "operationId": "putchatsettings",
+        "functionName": "PutChatSettings",
+        "signature": "PutChatSettings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Chatsettings",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsettings"
+    },
+    "PUT /api/v2/chats/settings": {
+        "operationId": "putchatssettings",
+        "functionName": "PutChatsSettings",
+        "signature": "PutChatsSettings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Chatsettings",
+                "required": "true"
+            }
+        ],
+        "return": "Chatsettings"
+    }
+    
+}

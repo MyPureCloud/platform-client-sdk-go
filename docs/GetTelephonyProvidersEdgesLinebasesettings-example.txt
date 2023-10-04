@@ -1,0 +1,17 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)
+
+var pageNumber int // Page number
+var pageSize int // Page size
+var sortBy string // Value by which to sort
+var sortOrder string // Sort order
+var expand []string // Fields to expand in the response, comma-separated
+// Get a listing of line base settings objects
+data, response, err := apiInstance.GetTelephonyProvidersEdgesLinebasesettings(pageNumber, pageSize, sortBy, sortOrder, expand)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetTelephonyProvidersEdgesLinebasesettings: %v\n", err)
+}

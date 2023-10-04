@@ -1,0 +1,29 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)
+
+var pageNumber int // Page number
+var pageSize int // Page size
+var sortBy string // The field to sort by
+var sortOrder string // Sort order
+var siteId string // Filter by site.id
+var webRtcUserId string // Filter by webRtcUser.id
+var phoneBaseSettingsId string // Filter by phoneBaseSettings.id
+var linesLoggedInUserId string // Filter by lines.loggedInUser.id
+var linesDefaultForUserId string // Filter by lines.defaultForUser.id
+var phoneHardwareId string // Filter by phone_hardwareId
+var linesId string // Filter by lines.id
+var linesName string // Filter by lines.name
+var name string // Name of the Phone to filter by, comma-separated
+var statusOperationalStatus string // The primary status to filter by
+var secondaryStatusOperationalStatus string // The secondary status to filter by
+var expand []string // Fields to expand in the response, comma-separated
+var fields []string // Fields and properties to get, comma-separated
+// Get a list of Phone Instances. A maximum of 10,000 results is returned when filtering the results or sorting by a field other than the ID. Sorting by only the ID has no result limit. Each filter supports a wildcard, *, as a value to search for partial values.
+data, response, err := apiInstance.GetTelephonyProvidersEdgesPhones(pageNumber, pageSize, sortBy, sortOrder, siteId, webRtcUserId, phoneBaseSettingsId, linesLoggedInUserId, linesDefaultForUserId, phoneHardwareId, linesId, linesName, name, statusOperationalStatus, secondaryStatusOperationalStatus, expand, fields)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetTelephonyProvidersEdgesPhones: %v\n", err)
+}

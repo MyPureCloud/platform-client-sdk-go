@@ -1,0 +1,32 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewQualityApiWithConfig(config)
+
+var pageSize int // The total page size requested
+var pageNumber int // The page number requested
+var sortBy string // NOTE: Does not work when querying evaluations
+var expand []string // variable name requested by expand list
+var nextPage string // NOTE: Does not work when querying evaluations
+var previousPage string // Previous page token
+var conversationId string // conversationId specified
+var agentUserId string // user id of the agent
+var evaluatorUserId string // evaluator user id
+var assigneeUserId string // assignee user id
+var queueId string // queue id
+var startTime string // start time of the evaluation query
+var endTime string // end time of the evaluation query
+var formContextId string // shared id between form versions
+var evaluationState []string // 
+var isReleased bool // the evaluation has been released
+var agentHasRead bool // agent has the evaluation
+var expandAnswerTotalScores bool // get the total scores for evaluations
+var maximum int // the maximum number of results to return
+var sortOrder string // NOTE: Does not work when conversationId is supplied.
+// Queries Evaluations and returns a paged list
+data, response, err := apiInstance.GetQualityEvaluationsQuery(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, conversationId, agentUserId, evaluatorUserId, assigneeUserId, queueId, startTime, endTime, formContextId, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum, sortOrder)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetQualityEvaluationsQuery: %v\n", err)
+}

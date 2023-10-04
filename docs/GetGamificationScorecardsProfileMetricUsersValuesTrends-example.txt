@@ -1,0 +1,20 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewGamificationApiWithConfig(config)
+
+var profileId string // performanceProfileId
+var metricId string // metricId
+var filterType string // Filter type for the query request.
+var startWorkday time.Time // Start workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+var endWorkday time.Time // End workday of querying workdays range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+var filterId string // ID for the filter type. Only required when filterType is Division.
+var referenceWorkday time.Time // Reference workday for the trend. Used to determine the associated metric definition. If not set, then the value of endWorkday is used. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+var timeZone string // Timezone for the workday. Defaults to UTC
+// Average performance values trends by metric of a division or a performance profile
+data, response, err := apiInstance.GetGamificationScorecardsProfileMetricUsersValuesTrends(profileId, metricId, filterType, startWorkday, endWorkday, filterId, referenceWorkday, timeZone)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetGamificationScorecardsProfileMetricUsersValuesTrends: %v\n", err)
+}

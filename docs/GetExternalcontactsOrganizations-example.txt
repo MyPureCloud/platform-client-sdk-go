@@ -1,0 +1,19 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)
+
+var pageSize int // Page size (limited to fetching first 1,000 records; pageNumber * pageSize must be <= 1,000)
+var pageNumber int // Page number (limited to fetching first 1,000 records; pageNumber * pageSize must be <= 1,000)
+var q string // Search query
+var trustorId []string // Search for external organizations by trustorIds (limit 25). If supplied, the 'q' parameters is ignored. Items are returned in the order requested
+var sortOrder string // Sort order
+var expand []string // which fields, if any, to expand
+var includeTrustors bool // (true or false) whether or not to include trustor information embedded in the externalOrganization
+// Search for external organizations
+data, response, err := apiInstance.GetExternalcontactsOrganizations(pageSize, pageNumber, q, trustorId, sortOrder, expand, includeTrustors)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetExternalcontactsOrganizations: %v\n", err)
+}

@@ -1,0 +1,835 @@
+{
+    "DELETE /api/v2/authorization/divisions/{divisionId}": {
+        "operationId": "deleteauthorizationdivision",
+        "functionName": "DeleteAuthorizationDivision",
+        "signature": "DeleteAuthorizationDivision(divisionId, force)",
+        "parameters": [
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "force",
+                "type": "bool",
+                "required": "false"
+            }
+        ]
+    },
+    "DELETE /api/v2/authorization/roles/{roleId}": {
+        "operationId": "deleteauthorizationrole",
+        "functionName": "DeleteAuthorizationRole",
+        "signature": "DeleteAuthorizationRole(roleId)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}": {
+        "operationId": "deleteauthorizationsubjectdivisionrole",
+        "functionName": "DeleteAuthorizationSubjectDivisionRole",
+        "signature": "DeleteAuthorizationSubjectDivisionRole(subjectId, divisionId, roleId)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/authorization/divisions/{divisionId}": {
+        "operationId": "getauthorizationdivision",
+        "functionName": "GetAuthorizationDivision",
+        "signature": "GetAuthorizationDivision(divisionId, objectCount)",
+        "parameters": [
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "objectCount",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Authzdivision"
+    },
+    "GET /api/v2/authorization/divisions/{divisionId}/grants": {
+        "operationId": "getauthorizationdivisiongrants",
+        "functionName": "GetAuthorizationDivisionGrants",
+        "signature": "GetAuthorizationDivisionGrants(divisionId, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Authzdivisiongrantentitylisting"
+    },
+    "GET /api/v2/authorization/divisions": {
+        "operationId": "getauthorizationdivisions",
+        "functionName": "GetAuthorizationDivisions",
+        "signature": "GetAuthorizationDivisions(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, objectCount, id, name)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "objectCount",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Authzdivisionentitylisting"
+    },
+    "GET /api/v2/authorization/divisions/home": {
+        "operationId": "getauthorizationdivisionshome",
+        "functionName": "GetAuthorizationDivisionsHome",
+        "signature": "GetAuthorizationDivisionsHome()",
+        
+        "return": "Authzdivision"
+    },
+    "GET /api/v2/authorization/divisions/limit": {
+        "operationId": "getauthorizationdivisionslimit",
+        "functionName": "GetAuthorizationDivisionsLimit",
+        "signature": "GetAuthorizationDivisionsLimit()",
+        
+        "return": "int"
+    },
+    "GET /api/v2/authorization/divisionspermitted/me": {
+        "operationId": "getauthorizationdivisionspermittedme",
+        "functionName": "GetAuthorizationDivisionspermittedMe",
+        "signature": "GetAuthorizationDivisionspermittedMe(permission, name)",
+        "parameters": [
+            {
+                "name": "permission",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "[]Authzdivision"
+    },
+    "GET /api/v2/authorization/divisionspermitted/paged/me": {
+        "operationId": "getauthorizationdivisionspermittedpagedme",
+        "functionName": "GetAuthorizationDivisionspermittedPagedMe",
+        "signature": "GetAuthorizationDivisionspermittedPagedMe(permission, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "permission",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Divspermittedentitylisting"
+    },
+    "GET /api/v2/authorization/divisionspermitted/paged/{subjectId}": {
+        "operationId": "getauthorizationdivisionspermittedpagedsubjectid",
+        "functionName": "GetAuthorizationDivisionspermittedPagedSubjectId",
+        "signature": "GetAuthorizationDivisionspermittedPagedSubjectId(subjectId, permission, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "permission",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Divspermittedentitylisting"
+    },
+    "GET /api/v2/authorization/permissions": {
+        "operationId": "getauthorizationpermissions",
+        "functionName": "GetAuthorizationPermissions",
+        "signature": "GetAuthorizationPermissions(pageSize, pageNumber, queryType, query)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "queryType",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "query",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Permissioncollectionentitylisting"
+    },
+    "GET /api/v2/authorization/products": {
+        "operationId": "getauthorizationproducts",
+        "functionName": "GetAuthorizationProducts",
+        "signature": "GetAuthorizationProducts()",
+        
+        "return": "Organizationproductentitylisting"
+    },
+    "GET /api/v2/authorization/roles/{roleId}": {
+        "operationId": "getauthorizationrole",
+        "functionName": "GetAuthorizationRole",
+        "signature": "GetAuthorizationRole(roleId, userCount, expand)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "userCount",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Domainorganizationrole"
+    },
+    "GET /api/v2/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}": {
+        "operationId": "getauthorizationrolecomparedefaultrightroleid",
+        "functionName": "GetAuthorizationRoleComparedefaultRightRoleId",
+        "signature": "GetAuthorizationRoleComparedefaultRightRoleId(leftRoleId, rightRoleId)",
+        "parameters": [
+            {
+                "name": "leftRoleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "rightRoleId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Domainorgroledifference"
+    },
+    "GET /api/v2/authorization/roles/{roleId}/subjectgrants": {
+        "operationId": "getauthorizationrolesubjectgrants",
+        "functionName": "GetAuthorizationRoleSubjectgrants",
+        "signature": "GetAuthorizationRoleSubjectgrants(roleId, pageSize, pageNumber, sortBy, expand, nextPage, previousPage)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Subjectdivisiongrantsentitylisting"
+    },
+    "GET /api/v2/authorization/roles/{roleId}/users": {
+        "operationId": "getauthorizationroleusers",
+        "functionName": "GetAuthorizationRoleUsers",
+        "signature": "GetAuthorizationRoleUsers(roleId, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Userentitylisting"
+    },
+    "GET /api/v2/authorization/roles": {
+        "operationId": "getauthorizationroles",
+        "functionName": "GetAuthorizationRoles",
+        "signature": "GetAuthorizationRoles(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, permission, defaultRoleId, userCount, id)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "nextPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "previousPage",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "permission",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "defaultRoleId",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "userCount",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Organizationroleentitylisting"
+    },
+    "GET /api/v2/authorization/settings": {
+        "operationId": "getauthorizationsettings",
+        "functionName": "GetAuthorizationSettings",
+        "signature": "GetAuthorizationSettings()",
+        
+        "return": "Authorizationsettings"
+    },
+    "GET /api/v2/authorization/subjects/{subjectId}": {
+        "operationId": "getauthorizationsubject",
+        "functionName": "GetAuthorizationSubject",
+        "signature": "GetAuthorizationSubject(subjectId)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Authzsubject"
+    },
+    "GET /api/v2/authorization/subjects/me": {
+        "operationId": "getauthorizationsubjectsme",
+        "functionName": "GetAuthorizationSubjectsMe",
+        "signature": "GetAuthorizationSubjectsMe()",
+        
+        "return": "Authzsubject"
+    },
+    "GET /api/v2/authorization/subjects/rolecounts": {
+        "operationId": "getauthorizationsubjectsrolecounts",
+        "functionName": "GetAuthorizationSubjectsRolecounts",
+        "signature": "GetAuthorizationSubjectsRolecounts(id)",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "map[string]interface{}"
+    },
+    "GET /api/v2/users/{subjectId}/roles": {
+        "operationId": "getuserroles",
+        "functionName": "GetUserRoles",
+        "signature": "GetUserRoles(subjectId)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Userauthorization"
+    },
+    "PATCH /api/v2/authorization/roles/{roleId}": {
+        "operationId": "patchauthorizationrole",
+        "functionName": "PatchAuthorizationRole",
+        "signature": "PatchAuthorizationRole(roleId, body)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Domainorganizationrole",
+                "required": "true"
+            }
+        ],
+        "return": "Domainorganizationrole"
+    },
+    "PATCH /api/v2/authorization/settings": {
+        "operationId": "patchauthorizationsettings",
+        "functionName": "PatchAuthorizationSettings",
+        "signature": "PatchAuthorizationSettings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Authorizationsettings",
+                "required": "true"
+            }
+        ],
+        "return": "Authorizationsettings"
+    },
+    "POST /api/v2/authorization/divisions/{divisionId}/objects/{objectType}": {
+        "operationId": "postauthorizationdivisionobject",
+        "functionName": "PostAuthorizationDivisionObject",
+        "signature": "PostAuthorizationDivisionObject(divisionId, objectType, body)",
+        "parameters": [
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "objectType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "true"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/divisions/{divisionId}/restore": {
+        "operationId": "postauthorizationdivisionrestore",
+        "functionName": "PostAuthorizationDivisionRestore",
+        "signature": "PostAuthorizationDivisionRestore(divisionId, body)",
+        "parameters": [
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Authzdivision",
+                "required": "true"
+            }
+        ],
+        "return": "Authzdivision"
+    },
+    "POST /api/v2/authorization/divisions": {
+        "operationId": "postauthorizationdivisions",
+        "functionName": "PostAuthorizationDivisions",
+        "signature": "PostAuthorizationDivisions(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Authzdivision",
+                "required": "true"
+            }
+        ],
+        "return": "Authzdivision"
+    },
+    "POST /api/v2/authorization/roles/{roleId}": {
+        "operationId": "postauthorizationrole",
+        "functionName": "PostAuthorizationRole",
+        "signature": "PostAuthorizationRole(roleId, body, subjectType)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Subjectdivisions",
+                "required": "true"
+            },
+            {
+                "name": "subjectType",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/roles/{leftRoleId}/comparedefault/{rightRoleId}": {
+        "operationId": "postauthorizationrolecomparedefaultrightroleid",
+        "functionName": "PostAuthorizationRoleComparedefaultRightRoleId",
+        "signature": "PostAuthorizationRoleComparedefaultRightRoleId(leftRoleId, rightRoleId, body)",
+        "parameters": [
+            {
+                "name": "leftRoleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "rightRoleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Domainorganizationrole",
+                "required": "true"
+            }
+        ],
+        "return": "Domainorgroledifference"
+    },
+    "POST /api/v2/authorization/roles": {
+        "operationId": "postauthorizationroles",
+        "functionName": "PostAuthorizationRoles",
+        "signature": "PostAuthorizationRoles(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Domainorganizationrolecreate",
+                "required": "true"
+            }
+        ],
+        "return": "Domainorganizationrole"
+    },
+    "POST /api/v2/authorization/roles/default": {
+        "operationId": "postauthorizationrolesdefault",
+        "functionName": "PostAuthorizationRolesDefault",
+        "signature": "PostAuthorizationRolesDefault(force)",
+        "parameters": [
+            {
+                "name": "force",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Organizationroleentitylisting"
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/bulkadd": {
+        "operationId": "postauthorizationsubjectbulkadd",
+        "functionName": "PostAuthorizationSubjectBulkadd",
+        "signature": "PostAuthorizationSubjectBulkadd(subjectId, body, subjectType)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Roledivisiongrants",
+                "required": "true"
+            },
+            {
+                "name": "subjectType",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/bulkremove": {
+        "operationId": "postauthorizationsubjectbulkremove",
+        "functionName": "PostAuthorizationSubjectBulkremove",
+        "signature": "PostAuthorizationSubjectBulkremove(subjectId, body)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Roledivisiongrants",
+                "required": "true"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/bulkreplace": {
+        "operationId": "postauthorizationsubjectbulkreplace",
+        "functionName": "PostAuthorizationSubjectBulkreplace",
+        "signature": "PostAuthorizationSubjectBulkreplace(subjectId, body, subjectType)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Roledivisiongrants",
+                "required": "true"
+            },
+            {
+                "name": "subjectType",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}": {
+        "operationId": "postauthorizationsubjectdivisionrole",
+        "functionName": "PostAuthorizationSubjectDivisionRole",
+        "signature": "PostAuthorizationSubjectDivisionRole(subjectId, divisionId, roleId, subjectType)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "subjectType",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "PUT /api/v2/authorization/divisions/{divisionId}": {
+        "operationId": "putauthorizationdivision",
+        "functionName": "PutAuthorizationDivision",
+        "signature": "PutAuthorizationDivision(divisionId, body)",
+        "parameters": [
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Authzdivision",
+                "required": "true"
+            }
+        ],
+        "return": "Authzdivision"
+    },
+    "PUT /api/v2/authorization/roles/{roleId}": {
+        "operationId": "putauthorizationrole",
+        "functionName": "PutAuthorizationRole",
+        "signature": "PutAuthorizationRole(roleId, body)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Domainorganizationroleupdate",
+                "required": "true"
+            }
+        ],
+        "return": "Domainorganizationrole"
+    },
+    "PUT /api/v2/authorization/roles/{roleId}/users/add": {
+        "operationId": "putauthorizationroleusersadd",
+        "functionName": "PutAuthorizationRoleUsersAdd",
+        "signature": "PutAuthorizationRoleUsersAdd(roleId, body)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "[]string"
+    },
+    "PUT /api/v2/authorization/roles/{roleId}/users/remove": {
+        "operationId": "putauthorizationroleusersremove",
+        "functionName": "PutAuthorizationRoleUsersRemove",
+        "signature": "PutAuthorizationRoleUsersRemove(roleId, body)",
+        "parameters": [
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "[]string"
+    },
+    "PUT /api/v2/authorization/roles/default": {
+        "operationId": "putauthorizationrolesdefault",
+        "functionName": "PutAuthorizationRolesDefault",
+        "signature": "PutAuthorizationRolesDefault(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "[]Domainorganizationrole",
+                "required": "true"
+            }
+        ],
+        "return": "Organizationroleentitylisting"
+    },
+    "PUT /api/v2/users/{subjectId}/roles": {
+        "operationId": "putuserroles",
+        "functionName": "PutUserRoles",
+        "signature": "PutUserRoles(subjectId, body)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "Userauthorization"
+    }
+    
+}

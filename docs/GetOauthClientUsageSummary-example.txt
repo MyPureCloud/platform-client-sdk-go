@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewUsageApiWithConfig(config)
+
+var clientId string // Client ID
+var days string // Previous number of days to query
+// Get a summary of OAuth client API usage
+data, response, err := apiInstance.GetOauthClientUsageSummary(clientId, days)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetOauthClientUsageSummary: %v\n", err)
+}

@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewConversationsApiWithConfig(config)
+
+var conversationId string // conversation ID
+var participantId string // participant ID
+// Set flagged reason on conversation participant to indicate bad conversation quality.
+response, err := apiInstance.PutConversationParticipantFlaggedreason(conversationId, participantId)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PutConversationParticipantFlaggedreason: %v\n", err)
+}

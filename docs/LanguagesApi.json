@@ -1,0 +1,115 @@
+{
+    "DELETE /api/v2/languages/{languageId}": {
+        "operationId": "deletelanguage",
+        "functionName": "DeleteLanguage",
+        "signature": "DeleteLanguage(languageId)",
+        "parameters": [
+            {
+                "name": "languageId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/languages/{languageId}": {
+        "operationId": "getlanguage",
+        "functionName": "GetLanguage",
+        "signature": "GetLanguage(languageId)",
+        "parameters": [
+            {
+                "name": "languageId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Language"
+    },
+    "GET /api/v2/languages": {
+        "operationId": "getlanguages",
+        "functionName": "GetLanguages",
+        "signature": "GetLanguages(pageSize, pageNumber, sortOrder, name)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Languageentitylisting"
+    },
+    "GET /api/v2/languages/translations": {
+        "operationId": "getlanguagestranslations",
+        "functionName": "GetLanguagesTranslations",
+        "signature": "GetLanguagesTranslations()",
+        
+        "return": "Availabletranslations"
+    },
+    "GET /api/v2/languages/translations/builtin": {
+        "operationId": "getlanguagestranslationsbuiltin",
+        "functionName": "GetLanguagesTranslationsBuiltin",
+        "signature": "GetLanguagesTranslationsBuiltin(language)",
+        "parameters": [
+            {
+                "name": "language",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "map[string]interface{}"
+    },
+    "GET /api/v2/languages/translations/organization": {
+        "operationId": "getlanguagestranslationsorganization",
+        "functionName": "GetLanguagesTranslationsOrganization",
+        "signature": "GetLanguagesTranslationsOrganization(language)",
+        "parameters": [
+            {
+                "name": "language",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "map[string]interface{}"
+    },
+    "GET /api/v2/languages/translations/users/{userId}": {
+        "operationId": "getlanguagestranslationsuser",
+        "functionName": "GetLanguagesTranslationsUser",
+        "signature": "GetLanguagesTranslationsUser(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "map[string]interface{}"
+    },
+    "POST /api/v2/languages": {
+        "operationId": "postlanguages",
+        "functionName": "PostLanguages",
+        "signature": "PostLanguages(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Language",
+                "required": "true"
+            }
+        ],
+        "return": "Language"
+    }
+    
+}

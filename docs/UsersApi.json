@@ -1,0 +1,1709 @@
+{
+    "DELETE /api/v2/analytics/users/details/jobs/{jobId}": {
+        "operationId": "deleteanalyticsusersdetailsjob",
+        "functionName": "DeleteAnalyticsUsersDetailsJob",
+        "signature": "DeleteAnalyticsUsersDetailsJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}": {
+        "operationId": "deleteauthorizationsubjectdivisionrole",
+        "functionName": "DeleteAuthorizationSubjectDivisionRole",
+        "signature": "DeleteAuthorizationSubjectDivisionRole(subjectId, divisionId, roleId)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/routing/users/{userId}/utilization": {
+        "operationId": "deleteroutinguserutilization",
+        "functionName": "DeleteRoutingUserUtilization",
+        "signature": "DeleteRoutingUserUtilization(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/users/{userId}": {
+        "operationId": "deleteuser",
+        "functionName": "DeleteUser",
+        "signature": "DeleteUser(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "interface{}"
+    },
+    "DELETE /api/v2/users/{userId}/routinglanguages/{languageId}": {
+        "operationId": "deleteuserroutinglanguage",
+        "functionName": "DeleteUserRoutinglanguage",
+        "signature": "DeleteUserRoutinglanguage(userId, languageId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/users/{userId}/routingskills/{skillId}": {
+        "operationId": "deleteuserroutingskill",
+        "functionName": "DeleteUserRoutingskill",
+        "signature": "DeleteUserRoutingskill(userId, skillId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "skillId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/users/{userId}/station/associatedstation": {
+        "operationId": "deleteuserstationassociatedstation",
+        "functionName": "DeleteUserStationAssociatedstation",
+        "signature": "DeleteUserStationAssociatedstation(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/users/{userId}/station/defaultstation": {
+        "operationId": "deleteuserstationdefaultstation",
+        "functionName": "DeleteUserStationDefaultstation",
+        "signature": "DeleteUserStationDefaultstation(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/analytics/users/aggregates/jobs/{jobId}": {
+        "operationId": "getanalyticsusersaggregatesjob",
+        "functionName": "GetAnalyticsUsersAggregatesJob",
+        "signature": "GetAnalyticsUsersAggregatesJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncquerystatus"
+    },
+    "GET /api/v2/analytics/users/aggregates/jobs/{jobId}/results": {
+        "operationId": "getanalyticsusersaggregatesjobresults",
+        "functionName": "GetAnalyticsUsersAggregatesJobResults",
+        "signature": "GetAnalyticsUsersAggregatesJobResults(jobId, cursor)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "cursor",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userasyncaggregatequeryresponse"
+    },
+    "GET /api/v2/analytics/users/details/jobs/{jobId}": {
+        "operationId": "getanalyticsusersdetailsjob",
+        "functionName": "GetAnalyticsUsersDetailsJob",
+        "signature": "GetAnalyticsUsersDetailsJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncquerystatus"
+    },
+    "GET /api/v2/analytics/users/details/jobs/{jobId}/results": {
+        "operationId": "getanalyticsusersdetailsjobresults",
+        "functionName": "GetAnalyticsUsersDetailsJobResults",
+        "signature": "GetAnalyticsUsersDetailsJobResults(jobId, cursor, pageSize)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "cursor",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Analyticsuserdetailsasyncqueryresponse"
+    },
+    "GET /api/v2/analytics/users/details/jobs/availability": {
+        "operationId": "getanalyticsusersdetailsjobsavailability",
+        "functionName": "GetAnalyticsUsersDetailsJobsAvailability",
+        "signature": "GetAnalyticsUsersDetailsJobsAvailability()",
+        
+        "return": "Dataavailabilityresponse"
+    },
+    "GET /api/v2/authorization/divisionspermitted/me": {
+        "operationId": "getauthorizationdivisionspermittedme",
+        "functionName": "GetAuthorizationDivisionspermittedMe",
+        "signature": "GetAuthorizationDivisionspermittedMe(permission, name)",
+        "parameters": [
+            {
+                "name": "permission",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "[]Authzdivision"
+    },
+    "GET /api/v2/authorization/divisionspermitted/paged/me": {
+        "operationId": "getauthorizationdivisionspermittedpagedme",
+        "functionName": "GetAuthorizationDivisionspermittedPagedMe",
+        "signature": "GetAuthorizationDivisionspermittedPagedMe(permission, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "permission",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Divspermittedentitylisting"
+    },
+    "GET /api/v2/authorization/divisionspermitted/paged/{subjectId}": {
+        "operationId": "getauthorizationdivisionspermittedpagedsubjectid",
+        "functionName": "GetAuthorizationDivisionspermittedPagedSubjectId",
+        "signature": "GetAuthorizationDivisionspermittedPagedSubjectId(subjectId, permission, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "permission",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Divspermittedentitylisting"
+    },
+    "GET /api/v2/authorization/subjects/{subjectId}": {
+        "operationId": "getauthorizationsubject",
+        "functionName": "GetAuthorizationSubject",
+        "signature": "GetAuthorizationSubject(subjectId)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Authzsubject"
+    },
+    "GET /api/v2/authorization/subjects/me": {
+        "operationId": "getauthorizationsubjectsme",
+        "functionName": "GetAuthorizationSubjectsMe",
+        "signature": "GetAuthorizationSubjectsMe()",
+        
+        "return": "Authzsubject"
+    },
+    "GET /api/v2/fieldconfig": {
+        "operationId": "getfieldconfig",
+        "functionName": "GetFieldconfig",
+        "signature": "GetFieldconfig(varType)",
+        "parameters": [
+            {
+                "name": "varType",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Fieldconfig"
+    },
+    "GET /api/v2/profiles/users": {
+        "operationId": "getprofilesusers",
+        "functionName": "GetProfilesUsers",
+        "signature": "GetProfilesUsers(pageSize, pageNumber, id, jid, sortOrder, expand, integrationPresenceSource)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "jid",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "integrationPresenceSource",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userprofileentitylisting"
+    },
+    "GET /api/v2/routing/users/{userId}/utilization": {
+        "operationId": "getroutinguserutilization",
+        "functionName": "GetRoutingUserUtilization",
+        "signature": "GetRoutingUserUtilization(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Agentmaxutilization"
+    },
+    "GET /api/v2/users/{userId}": {
+        "operationId": "getuser",
+        "functionName": "GetUser",
+        "signature": "GetUser(userId, expand, integrationPresenceSource, state)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "integrationPresenceSource",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "state",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "User"
+    },
+    "GET /api/v2/users/{userId}/adjacents": {
+        "operationId": "getuseradjacents",
+        "functionName": "GetUserAdjacents",
+        "signature": "GetUserAdjacents(userId, expand)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Adjacents"
+    },
+    "GET /api/v2/users/{userId}/callforwarding": {
+        "operationId": "getusercallforwarding",
+        "functionName": "GetUserCallforwarding",
+        "signature": "GetUserCallforwarding(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Callforwarding"
+    },
+    "GET /api/v2/users/{userId}/directreports": {
+        "operationId": "getuserdirectreports",
+        "functionName": "GetUserDirectreports",
+        "signature": "GetUserDirectreports(userId, expand)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "[]User"
+    },
+    "GET /api/v2/users/{userId}/favorites": {
+        "operationId": "getuserfavorites",
+        "functionName": "GetUserFavorites",
+        "signature": "GetUserFavorites(userId, pageSize, pageNumber, sortOrder, expand)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Userentitylisting"
+    },
+    "GET /api/v2/users/{userId}/geolocations/{clientId}": {
+        "operationId": "getusergeolocation",
+        "functionName": "GetUserGeolocation",
+        "signature": "GetUserGeolocation(userId, clientId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "clientId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Geolocation"
+    },
+    "GET /api/v2/users/{userId}/outofoffice": {
+        "operationId": "getuseroutofoffice",
+        "functionName": "GetUserOutofoffice",
+        "signature": "GetUserOutofoffice(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Outofoffice"
+    },
+    "GET /api/v2/users/{userId}/profile": {
+        "operationId": "getuserprofile",
+        "functionName": "GetUserProfile",
+        "signature": "GetUserProfile(userId, expand, integrationPresenceSource)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "integrationPresenceSource",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userprofile"
+    },
+    "GET /api/v2/users/{userId}/profileskills": {
+        "operationId": "getuserprofileskills",
+        "functionName": "GetUserProfileskills",
+        "signature": "GetUserProfileskills(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "[]string"
+    },
+    "GET /api/v2/users/{userId}/queues": {
+        "operationId": "getuserqueues",
+        "functionName": "GetUserQueues",
+        "signature": "GetUserQueues(userId, pageSize, pageNumber, joined, divisionId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "joined",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Userqueueentitylisting"
+    },
+    "GET /api/v2/users/{subjectId}/roles": {
+        "operationId": "getuserroles",
+        "functionName": "GetUserRoles",
+        "signature": "GetUserRoles(subjectId)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Userauthorization"
+    },
+    "GET /api/v2/users/{userId}/routinglanguages": {
+        "operationId": "getuserroutinglanguages",
+        "functionName": "GetUserRoutinglanguages",
+        "signature": "GetUserRoutinglanguages(userId, pageSize, pageNumber, sortOrder)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userlanguageentitylisting"
+    },
+    "GET /api/v2/users/{userId}/routingskills": {
+        "operationId": "getuserroutingskills",
+        "functionName": "GetUserRoutingskills",
+        "signature": "GetUserRoutingskills(userId, pageSize, pageNumber, sortOrder)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userskillentitylisting"
+    },
+    "GET /api/v2/users/{userId}/routingstatus": {
+        "operationId": "getuserroutingstatus",
+        "functionName": "GetUserRoutingstatus",
+        "signature": "GetUserRoutingstatus(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Routingstatus"
+    },
+    "GET /api/v2/users/{userId}/skillgroups": {
+        "operationId": "getuserskillgroups",
+        "functionName": "GetUserSkillgroups",
+        "signature": "GetUserSkillgroups(userId, pageSize, after, before)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "before",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userskillgroupentitylisting"
+    },
+    "GET /api/v2/users/{userId}/state": {
+        "operationId": "getuserstate",
+        "functionName": "GetUserState",
+        "signature": "GetUserState(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Userstate"
+    },
+    "GET /api/v2/users/{userId}/station": {
+        "operationId": "getuserstation",
+        "functionName": "GetUserStation",
+        "signature": "GetUserStation(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Userstations"
+    },
+    "GET /api/v2/users/{userId}/superiors": {
+        "operationId": "getusersuperiors",
+        "functionName": "GetUserSuperiors",
+        "signature": "GetUserSuperiors(userId, expand)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "[]User"
+    },
+    "GET /api/v2/users/{userId}/trustors": {
+        "operationId": "getusertrustors",
+        "functionName": "GetUserTrustors",
+        "signature": "GetUserTrustors(userId, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Trustorentitylisting"
+    },
+    "GET /api/v2/users": {
+        "operationId": "getusers",
+        "functionName": "GetUsers",
+        "signature": "GetUsers(pageSize, pageNumber, id, jabberId, sortOrder, expand, integrationPresenceSource, state)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "jabberId",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "integrationPresenceSource",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "state",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userentitylisting"
+    },
+    "GET /api/v2/users/development/activities": {
+        "operationId": "getusersdevelopmentactivities",
+        "functionName": "GetUsersDevelopmentActivities",
+        "signature": "GetUsersDevelopmentActivities(userId, moduleId, interval, completionInterval, overdue, pass, pageSize, pageNumber, sortOrder, types, statuses, relationship)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "moduleId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "interval",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "completionInterval",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "overdue",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pass",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "types",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "statuses",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "relationship",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Developmentactivitylisting"
+    },
+    "GET /api/v2/users/development/activities/me": {
+        "operationId": "getusersdevelopmentactivitiesme",
+        "functionName": "GetUsersDevelopmentActivitiesMe",
+        "signature": "GetUsersDevelopmentActivitiesMe(moduleId, interval, completionInterval, overdue, pass, pageSize, pageNumber, sortOrder, types, statuses, relationship)",
+        "parameters": [
+            {
+                "name": "moduleId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "interval",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "completionInterval",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "overdue",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pass",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "types",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "statuses",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "relationship",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Developmentactivitylisting"
+    },
+    "GET /api/v2/users/development/activities/{activityId}": {
+        "operationId": "getusersdevelopmentactivity",
+        "functionName": "GetUsersDevelopmentActivity",
+        "signature": "GetUsersDevelopmentActivity(activityId, varType)",
+        "parameters": [
+            {
+                "name": "activityId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "varType",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Developmentactivity"
+    },
+    "GET /api/v2/users/me": {
+        "operationId": "getusersme",
+        "functionName": "GetUsersMe",
+        "signature": "GetUsersMe(expand, integrationPresenceSource)",
+        "parameters": [
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "integrationPresenceSource",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userme"
+    },
+    "GET /api/v2/users/search": {
+        "operationId": "getuserssearch",
+        "functionName": "GetUsersSearch",
+        "signature": "GetUsersSearch(q64, expand, integrationPresenceSource)",
+        "parameters": [
+            {
+                "name": "q64",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "integrationPresenceSource",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Userssearchresponse"
+    },
+    "PATCH /api/v2/users/{userId}": {
+        "operationId": "patchuser",
+        "functionName": "PatchUser",
+        "signature": "PatchUser(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Updateuser",
+                "required": "true"
+            }
+        ],
+        "return": "User"
+    },
+    "PATCH /api/v2/users/{userId}/callforwarding": {
+        "operationId": "patchusercallforwarding",
+        "functionName": "PatchUserCallforwarding",
+        "signature": "PatchUserCallforwarding(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Callforwarding",
+                "required": "true"
+            }
+        ],
+        "return": "Callforwarding"
+    },
+    "PATCH /api/v2/users/{userId}/geolocations/{clientId}": {
+        "operationId": "patchusergeolocation",
+        "functionName": "PatchUserGeolocation",
+        "signature": "PatchUserGeolocation(userId, clientId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "clientId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Geolocation",
+                "required": "true"
+            }
+        ],
+        "return": "Geolocation"
+    },
+    "PATCH /api/v2/users/{userId}/queues/{queueId}": {
+        "operationId": "patchuserqueue",
+        "functionName": "PatchUserQueue",
+        "signature": "PatchUserQueue(queueId, userId, body)",
+        "parameters": [
+            {
+                "name": "queueId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userqueue",
+                "required": "true"
+            }
+        ],
+        "return": "Userqueue"
+    },
+    "PATCH /api/v2/users/{userId}/queues": {
+        "operationId": "patchuserqueues",
+        "functionName": "PatchUserQueues",
+        "signature": "PatchUserQueues(userId, body, divisionId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]Userqueue",
+                "required": "true"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Userqueueentitylisting"
+    },
+    "PATCH /api/v2/users/{userId}/routinglanguages/{languageId}": {
+        "operationId": "patchuserroutinglanguage",
+        "functionName": "PatchUserRoutinglanguage",
+        "signature": "PatchUserRoutinglanguage(userId, languageId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userroutinglanguage",
+                "required": "true"
+            }
+        ],
+        "return": "Userroutinglanguage"
+    },
+    "PATCH /api/v2/users/{userId}/routinglanguages/bulk": {
+        "operationId": "patchuserroutinglanguagesbulk",
+        "functionName": "PatchUserRoutinglanguagesBulk",
+        "signature": "PatchUserRoutinglanguagesBulk(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]Userroutinglanguagepost",
+                "required": "true"
+            }
+        ],
+        "return": "Userlanguageentitylisting"
+    },
+    "PATCH /api/v2/users/{userId}/routingskills/bulk": {
+        "operationId": "patchuserroutingskillsbulk",
+        "functionName": "PatchUserRoutingskillsBulk",
+        "signature": "PatchUserRoutingskillsBulk(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]Userroutingskillpost",
+                "required": "true"
+            }
+        ],
+        "return": "Userskillentitylisting"
+    },
+    "PATCH /api/v2/users/bulk": {
+        "operationId": "patchusersbulk",
+        "functionName": "PatchUsersBulk",
+        "signature": "PatchUsersBulk(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "[]Patchuser",
+                "required": "true"
+            }
+        ],
+        "return": "Userentitylisting"
+    },
+    "POST /api/v2/analytics/users/activity/query": {
+        "operationId": "postanalyticsusersactivityquery",
+        "functionName": "PostAnalyticsUsersActivityQuery",
+        "signature": "PostAnalyticsUsersActivityQuery(body, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Useractivityquery",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Useractivityresponse"
+    },
+    "POST /api/v2/analytics/users/aggregates/jobs": {
+        "operationId": "postanalyticsusersaggregatesjobs",
+        "functionName": "PostAnalyticsUsersAggregatesJobs",
+        "signature": "PostAnalyticsUsersAggregatesJobs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Userasyncaggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncqueryresponse"
+    },
+    "POST /api/v2/analytics/users/aggregates/query": {
+        "operationId": "postanalyticsusersaggregatesquery",
+        "functionName": "PostAnalyticsUsersAggregatesQuery",
+        "signature": "PostAnalyticsUsersAggregatesQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Useraggregationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Useraggregatequeryresponse"
+    },
+    "POST /api/v2/analytics/users/details/jobs": {
+        "operationId": "postanalyticsusersdetailsjobs",
+        "functionName": "PostAnalyticsUsersDetailsJobs",
+        "signature": "PostAnalyticsUsersDetailsJobs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Asyncuserdetailsquery",
+                "required": "true"
+            }
+        ],
+        "return": "Asyncqueryresponse"
+    },
+    "POST /api/v2/analytics/users/details/query": {
+        "operationId": "postanalyticsusersdetailsquery",
+        "functionName": "PostAnalyticsUsersDetailsQuery",
+        "signature": "PostAnalyticsUsersDetailsQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Userdetailsquery",
+                "required": "true"
+            }
+        ],
+        "return": "Analyticsuserdetailsqueryresponse"
+    },
+    "POST /api/v2/analytics/users/observations/query": {
+        "operationId": "postanalyticsusersobservationsquery",
+        "functionName": "PostAnalyticsUsersObservationsQuery",
+        "signature": "PostAnalyticsUsersObservationsQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Userobservationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Userobservationqueryresponse"
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/bulkadd": {
+        "operationId": "postauthorizationsubjectbulkadd",
+        "functionName": "PostAuthorizationSubjectBulkadd",
+        "signature": "PostAuthorizationSubjectBulkadd(subjectId, body, subjectType)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Roledivisiongrants",
+                "required": "true"
+            },
+            {
+                "name": "subjectType",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/bulkremove": {
+        "operationId": "postauthorizationsubjectbulkremove",
+        "functionName": "PostAuthorizationSubjectBulkremove",
+        "signature": "PostAuthorizationSubjectBulkremove(subjectId, body)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Roledivisiongrants",
+                "required": "true"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/bulkreplace": {
+        "operationId": "postauthorizationsubjectbulkreplace",
+        "functionName": "PostAuthorizationSubjectBulkreplace",
+        "signature": "PostAuthorizationSubjectBulkreplace(subjectId, body, subjectType)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Roledivisiongrants",
+                "required": "true"
+            },
+            {
+                "name": "subjectType",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "POST /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}": {
+        "operationId": "postauthorizationsubjectdivisionrole",
+        "functionName": "PostAuthorizationSubjectDivisionRole",
+        "signature": "PostAuthorizationSubjectDivisionRole(subjectId, divisionId, roleId, subjectType)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "divisionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "roleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "subjectType",
+                "type": "string",
+                "required": "false"
+            }
+        ]
+    },
+    "POST /api/v2/users/{userId}/externalid": {
+        "operationId": "postuserexternalid",
+        "functionName": "PostUserExternalid",
+        "signature": "PostUserExternalid(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userexternalidentifier",
+                "required": "true"
+            }
+        ],
+        "return": "[]Userexternalidentifier"
+    },
+    "POST /api/v2/users/{userId}/invite": {
+        "operationId": "postuserinvite",
+        "functionName": "PostUserInvite",
+        "signature": "PostUserInvite(userId, force)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "force",
+                "type": "bool",
+                "required": "false"
+            }
+        ]
+    },
+    "POST /api/v2/users/{userId}/password": {
+        "operationId": "postuserpassword",
+        "functionName": "PostUserPassword",
+        "signature": "PostUserPassword(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Changepasswordrequest",
+                "required": "true"
+            }
+        ]
+    },
+    "POST /api/v2/users/{userId}/routinglanguages": {
+        "operationId": "postuserroutinglanguages",
+        "functionName": "PostUserRoutinglanguages",
+        "signature": "PostUserRoutinglanguages(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userroutinglanguagepost",
+                "required": "true"
+            }
+        ],
+        "return": "Userroutinglanguage"
+    },
+    "POST /api/v2/users/{userId}/routingskills": {
+        "operationId": "postuserroutingskills",
+        "functionName": "PostUserRoutingskills",
+        "signature": "PostUserRoutingskills(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userroutingskillpost",
+                "required": "true"
+            }
+        ],
+        "return": "Userroutingskill"
+    },
+    "POST /api/v2/users": {
+        "operationId": "postusers",
+        "functionName": "PostUsers",
+        "signature": "PostUsers(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Createuser",
+                "required": "true"
+            }
+        ],
+        "return": "User"
+    },
+    "POST /api/v2/users/development/activities/aggregates/query": {
+        "operationId": "postusersdevelopmentactivitiesaggregatesquery",
+        "functionName": "PostUsersDevelopmentActivitiesAggregatesQuery",
+        "signature": "PostUsersDevelopmentActivitiesAggregatesQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Developmentactivityaggregateparam",
+                "required": "true"
+            }
+        ],
+        "return": "Developmentactivityaggregateresponse"
+    },
+    "POST /api/v2/users/me/password": {
+        "operationId": "postusersmepassword",
+        "functionName": "PostUsersMePassword",
+        "signature": "PostUsersMePassword(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Changemypasswordrequest",
+                "required": "true"
+            }
+        ]
+    },
+    "POST /api/v2/users/search": {
+        "operationId": "postuserssearch",
+        "functionName": "PostUsersSearch",
+        "signature": "PostUsersSearch(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Usersearchrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Userssearchresponse"
+    },
+    "POST /api/v2/users/search/conversation/target": {
+        "operationId": "postuserssearchconversationtarget",
+        "functionName": "PostUsersSearchConversationTarget",
+        "signature": "PostUsersSearchConversationTarget(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Usersearchrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Userssearchresponse"
+    },
+    "POST /api/v2/users/search/queuemembers/manage": {
+        "operationId": "postuserssearchqueuemembersmanage",
+        "functionName": "PostUsersSearchQueuemembersManage",
+        "signature": "PostUsersSearchQueuemembersManage(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Usersearchrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Userssearchresponse"
+    },
+    "POST /api/v2/users/search/teams/assign": {
+        "operationId": "postuserssearchteamsassign",
+        "functionName": "PostUsersSearchTeamsAssign",
+        "signature": "PostUsersSearchTeamsAssign(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Usersearchrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Userssearchresponse"
+    },
+    "PUT /api/v2/routing/users/{userId}/utilization": {
+        "operationId": "putroutinguserutilization",
+        "functionName": "PutRoutingUserUtilization",
+        "signature": "PutRoutingUserUtilization(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Utilization",
+                "required": "true"
+            }
+        ],
+        "return": "Agentmaxutilization"
+    },
+    "PUT /api/v2/users/{userId}/callforwarding": {
+        "operationId": "putusercallforwarding",
+        "functionName": "PutUserCallforwarding",
+        "signature": "PutUserCallforwarding(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Callforwarding",
+                "required": "true"
+            }
+        ],
+        "return": "Callforwarding"
+    },
+    "PUT /api/v2/users/{userId}/outofoffice": {
+        "operationId": "putuseroutofoffice",
+        "functionName": "PutUserOutofoffice",
+        "signature": "PutUserOutofoffice(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Outofoffice",
+                "required": "true"
+            }
+        ],
+        "return": "Outofoffice"
+    },
+    "PUT /api/v2/users/{userId}/profileskills": {
+        "operationId": "putuserprofileskills",
+        "functionName": "PutUserProfileskills",
+        "signature": "PutUserProfileskills(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "[]string"
+    },
+    "PUT /api/v2/users/{subjectId}/roles": {
+        "operationId": "putuserroles",
+        "functionName": "PutUserRoles",
+        "signature": "PutUserRoles(subjectId, body)",
+        "parameters": [
+            {
+                "name": "subjectId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "Userauthorization"
+    },
+    "PUT /api/v2/users/{userId}/routingskills/{skillId}": {
+        "operationId": "putuserroutingskill",
+        "functionName": "PutUserRoutingskill",
+        "signature": "PutUserRoutingskill(userId, skillId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "skillId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userroutingskill",
+                "required": "true"
+            }
+        ],
+        "return": "Userroutingskill"
+    },
+    "PUT /api/v2/users/{userId}/routingskills/bulk": {
+        "operationId": "putuserroutingskillsbulk",
+        "functionName": "PutUserRoutingskillsBulk",
+        "signature": "PutUserRoutingskillsBulk(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "[]Userroutingskillpost",
+                "required": "true"
+            }
+        ],
+        "return": "Userskillentitylisting"
+    },
+    "PUT /api/v2/users/{userId}/routingstatus": {
+        "operationId": "putuserroutingstatus",
+        "functionName": "PutUserRoutingstatus",
+        "signature": "PutUserRoutingstatus(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Routingstatus",
+                "required": "true"
+            }
+        ],
+        "return": "Routingstatus"
+    },
+    "PUT /api/v2/users/{userId}/state": {
+        "operationId": "putuserstate",
+        "functionName": "PutUserState",
+        "signature": "PutUserState(userId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Userstate",
+                "required": "true"
+            }
+        ],
+        "return": "Userstate"
+    },
+    "PUT /api/v2/users/{userId}/station/associatedstation/{stationId}": {
+        "operationId": "putuserstationassociatedstationstationid",
+        "functionName": "PutUserStationAssociatedstationStationId",
+        "signature": "PutUserStationAssociatedstationStationId(userId, stationId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "stationId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "PUT /api/v2/users/{userId}/station/defaultstation/{stationId}": {
+        "operationId": "putuserstationdefaultstationstationid",
+        "functionName": "PutUserStationDefaultstationStationId",
+        "signature": "PutUserStationDefaultstationStationId(userId, stationId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "stationId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    }
+    
+}

@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewTaskManagementApiWithConfig(config)
+
+var workitemId string // The ID of the Workitem.
+var body platformclientv2.Workitemwrapupupdate // Request body to add/remove the wrapup code for workitem
+// Add/Remove a wrapup code for the current user in a workitem.
+data, response, err := apiInstance.PatchTaskmanagementWorkitemUsersMeWrapups(workitemId, body)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling PatchTaskmanagementWorkitemUsersMeWrapups: %v\n", err)
+}

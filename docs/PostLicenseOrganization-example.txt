@@ -1,0 +1,13 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewLicenseApiWithConfig(config)
+
+var body platformclientv2.Licensebatchassignmentrequest // The license assignments to update.
+// Update the organization's license assignments in a batch.
+data, response, err := apiInstance.PostLicenseOrganization(body)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling PostLicenseOrganization: %v\n", err)
+}

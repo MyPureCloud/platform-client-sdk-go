@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)
+
+var limit int // The number of organizations per page; must be between 10 and 200, default is 100)
+var cursor string // Indicates where to resume query results (not required for first page), each page returns a new cursor with a 24h TTL
+// Scan for external organizations using paging
+data, response, err := apiInstance.GetExternalcontactsScanOrganizations(limit, cursor)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetExternalcontactsScanOrganizations: %v\n", err)
+}

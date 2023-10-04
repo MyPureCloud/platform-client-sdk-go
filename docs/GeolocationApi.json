@@ -1,0 +1,64 @@
+{
+    "GET /api/v2/geolocations/settings": {
+        "operationId": "getgeolocationssettings",
+        "functionName": "GetGeolocationsSettings",
+        "signature": "GetGeolocationsSettings()",
+        
+        "return": "Geolocationsettings"
+    },
+    "GET /api/v2/users/{userId}/geolocations/{clientId}": {
+        "operationId": "getusergeolocation",
+        "functionName": "GetUserGeolocation",
+        "signature": "GetUserGeolocation(userId, clientId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "clientId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Geolocation"
+    },
+    "PATCH /api/v2/geolocations/settings": {
+        "operationId": "patchgeolocationssettings",
+        "functionName": "PatchGeolocationsSettings",
+        "signature": "PatchGeolocationsSettings(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Geolocationsettings",
+                "required": "true"
+            }
+        ],
+        "return": "Geolocationsettings"
+    },
+    "PATCH /api/v2/users/{userId}/geolocations/{clientId}": {
+        "operationId": "patchusergeolocation",
+        "functionName": "PatchUserGeolocation",
+        "signature": "PatchUserGeolocation(userId, clientId, body)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "clientId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Geolocation",
+                "required": "true"
+            }
+        ],
+        "return": "Geolocation"
+    }
+    
+}

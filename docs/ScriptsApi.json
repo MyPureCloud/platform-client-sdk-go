@@ -1,0 +1,415 @@
+{
+    "GET /api/v2/scripts/{scriptId}": {
+        "operationId": "getscript",
+        "functionName": "GetScript",
+        "signature": "GetScript(scriptId)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Script"
+    },
+    "GET /api/v2/scripts/{scriptId}/pages/{pageId}": {
+        "operationId": "getscriptpage",
+        "functionName": "GetScriptPage",
+        "signature": "GetScriptPage(scriptId, pageId, scriptDataVersion)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Page"
+    },
+    "GET /api/v2/scripts/{scriptId}/pages": {
+        "operationId": "getscriptpages",
+        "functionName": "GetScriptPages",
+        "signature": "GetScriptPages(scriptId, scriptDataVersion)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "[]Page"
+    },
+    "GET /api/v2/scripts": {
+        "operationId": "getscripts",
+        "functionName": "GetScripts",
+        "signature": "GetScripts(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion, divisionIds)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "feature",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionIds",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Scriptentitylisting"
+    },
+    "GET /api/v2/scripts/divisionviews": {
+        "operationId": "getscriptsdivisionviews",
+        "functionName": "GetScriptsDivisionviews",
+        "signature": "GetScriptsDivisionviews(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion, divisionIds)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "feature",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionIds",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Scriptentitylisting"
+    },
+    "GET /api/v2/scripts/published": {
+        "operationId": "getscriptspublished",
+        "functionName": "GetScriptsPublished",
+        "signature": "GetScriptsPublished(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion, divisionIds)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "feature",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionIds",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Scriptentitylisting"
+    },
+    "GET /api/v2/scripts/published/divisionviews": {
+        "operationId": "getscriptspublisheddivisionviews",
+        "functionName": "GetScriptsPublishedDivisionviews",
+        "signature": "GetScriptsPublishedDivisionviews(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion, divisionIds)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "feature",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionIds",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Scriptentitylisting"
+    },
+    "GET /api/v2/scripts/published/{scriptId}": {
+        "operationId": "getscriptspublishedscriptid",
+        "functionName": "GetScriptsPublishedScriptId",
+        "signature": "GetScriptsPublishedScriptId(scriptId, scriptDataVersion)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Script"
+    },
+    "GET /api/v2/scripts/published/{scriptId}/pages/{pageId}": {
+        "operationId": "getscriptspublishedscriptidpage",
+        "functionName": "GetScriptsPublishedScriptIdPage",
+        "signature": "GetScriptsPublishedScriptIdPage(scriptId, pageId, scriptDataVersion)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Page"
+    },
+    "GET /api/v2/scripts/published/{scriptId}/pages": {
+        "operationId": "getscriptspublishedscriptidpages",
+        "functionName": "GetScriptsPublishedScriptIdPages",
+        "signature": "GetScriptsPublishedScriptIdPages(scriptId, scriptDataVersion)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "[]Page"
+    },
+    "GET /api/v2/scripts/published/{scriptId}/variables": {
+        "operationId": "getscriptspublishedscriptidvariables",
+        "functionName": "GetScriptsPublishedScriptIdVariables",
+        "signature": "GetScriptsPublishedScriptIdVariables(scriptId, input, output, varType, scriptDataVersion)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "input",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "output",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "varType",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "interface{}"
+    },
+    "GET /api/v2/scripts/uploads/{uploadId}/status": {
+        "operationId": "getscriptsuploadstatus",
+        "functionName": "GetScriptsUploadStatus",
+        "signature": "GetScriptsUploadStatus(uploadId, longPoll)",
+        "parameters": [
+            {
+                "name": "uploadId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "longPoll",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Importscriptstatusresponse"
+    },
+    "POST /api/v2/scripts/{scriptId}/export": {
+        "operationId": "postscriptexport",
+        "functionName": "PostScriptExport",
+        "signature": "PostScriptExport(scriptId, body)",
+        "parameters": [
+            {
+                "name": "scriptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Exportscriptrequest",
+                "required": "false"
+            }
+        ],
+        "return": "Exportscriptresponse"
+    },
+    "POST /api/v2/scripts/published": {
+        "operationId": "postscriptspublished",
+        "functionName": "PostScriptsPublished",
+        "signature": "PostScriptsPublished(scriptDataVersion, body)",
+        "parameters": [
+            {
+                "name": "scriptDataVersion",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "body",
+                "type": "Publishscriptrequestdata",
+                "required": "false"
+            }
+        ],
+        "return": "Script"
+    }
+    
+}

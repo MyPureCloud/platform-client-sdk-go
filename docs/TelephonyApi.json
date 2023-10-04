@@ -1,0 +1,74 @@
+{
+    "GET /api/v2/telephony/mediaregions": {
+        "operationId": "gettelephonymediaregions",
+        "functionName": "GetTelephonyMediaregions",
+        "signature": "GetTelephonyMediaregions()",
+        
+        "return": "Mediaregions"
+    },
+    "GET /api/v2/telephony/siptraces": {
+        "operationId": "gettelephonysiptraces",
+        "functionName": "GetTelephonySiptraces",
+        "signature": "GetTelephonySiptraces(dateStart, dateEnd, callId, toUser, fromUser, conversationId)",
+        "parameters": [
+            {
+                "name": "dateStart",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "dateEnd",
+                "type": "time.Time",
+                "required": "true"
+            },
+            {
+                "name": "callId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "toUser",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "fromUser",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "conversationId",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Sipsearchresult"
+    },
+    "GET /api/v2/telephony/siptraces/download/{downloadId}": {
+        "operationId": "gettelephonysiptracesdownloaddownloadid",
+        "functionName": "GetTelephonySiptracesDownloadDownloadId",
+        "signature": "GetTelephonySiptracesDownloadDownloadId(downloadId)",
+        "parameters": [
+            {
+                "name": "downloadId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Signedurlresponse"
+    },
+    "POST /api/v2/telephony/siptraces/download": {
+        "operationId": "posttelephonysiptracesdownload",
+        "functionName": "PostTelephonySiptracesDownload",
+        "signature": "PostTelephonySiptracesDownload(sIPSearchPublicRequest)",
+        "parameters": [
+            {
+                "name": "sIPSearchPublicRequest",
+                "type": "Sipsearchpublicrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Sipdownloadresponse"
+    }
+    
+}

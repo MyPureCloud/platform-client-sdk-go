@@ -1,0 +1,16 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewContentManagementApiWithConfig(config)
+
+var entityId string // Filters the shares returned to only the entity specified by the value of this parameter.
+var expand []string // Which fields, if any, to expand.
+var pageSize int // Page size
+var pageNumber int // Page number
+// Gets a list of shares.  You must specify at least one filter (e.g. entityId).
+data, response, err := apiInstance.GetContentmanagementShares(entityId, expand, pageSize, pageNumber)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetContentmanagementShares: %v\n", err)
+}

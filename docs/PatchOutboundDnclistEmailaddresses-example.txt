@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewOutboundApiWithConfig(config)
+
+var dncListId string // DncList ID
+var body platformclientv2.Dncpatchemailsrequest // DNC Emails
+// Add emails to or Delete emails from a DNC list.
+response, err := apiInstance.PatchOutboundDnclistEmailaddresses(dncListId, body)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PatchOutboundDnclistEmailaddresses: %v\n", err)
+}

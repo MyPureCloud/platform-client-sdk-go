@@ -1,0 +1,119 @@
+{
+    "GET /api/v2/license/definitions/{licenseId}": {
+        "operationId": "getlicensedefinition",
+        "functionName": "GetLicenseDefinition",
+        "signature": "GetLicenseDefinition(licenseId)",
+        "parameters": [
+            {
+                "name": "licenseId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Licensedefinition"
+    },
+    "GET /api/v2/license/definitions": {
+        "operationId": "getlicensedefinitions",
+        "functionName": "GetLicenseDefinitions",
+        "signature": "GetLicenseDefinitions()",
+        
+        "return": "[]Licensedefinition"
+    },
+    "GET /api/v2/license/toggles/{featureName}": {
+        "operationId": "getlicensetoggle",
+        "functionName": "GetLicenseToggle",
+        "signature": "GetLicenseToggle(featureName)",
+        "parameters": [
+            {
+                "name": "featureName",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Licenseorgtoggle"
+    },
+    "GET /api/v2/license/users/{userId}": {
+        "operationId": "getlicenseuser",
+        "functionName": "GetLicenseUser",
+        "signature": "GetLicenseUser(userId)",
+        "parameters": [
+            {
+                "name": "userId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Licenseuser"
+    },
+    "GET /api/v2/license/users": {
+        "operationId": "getlicenseusers",
+        "functionName": "GetLicenseUsers",
+        "signature": "GetLicenseUsers(pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Userlicensesentitylisting"
+    },
+    "POST /api/v2/license/infer": {
+        "operationId": "postlicenseinfer",
+        "functionName": "PostLicenseInfer",
+        "signature": "PostLicenseInfer(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "[]string"
+    },
+    "POST /api/v2/license/organization": {
+        "operationId": "postlicenseorganization",
+        "functionName": "PostLicenseOrganization",
+        "signature": "PostLicenseOrganization(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Licensebatchassignmentrequest",
+                "required": "false"
+            }
+        ],
+        "return": "[]Licenseupdatestatus"
+    },
+    "POST /api/v2/license/toggles/{featureName}": {
+        "operationId": "postlicensetoggle",
+        "functionName": "PostLicenseToggle",
+        "signature": "PostLicenseToggle(featureName)",
+        "parameters": [
+            {
+                "name": "featureName",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Licenseorgtoggle"
+    },
+    "POST /api/v2/license/users": {
+        "operationId": "postlicenseusers",
+        "functionName": "PostLicenseUsers",
+        "signature": "PostLicenseUsers(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "map[string]interface{}"
+    }
+    
+}

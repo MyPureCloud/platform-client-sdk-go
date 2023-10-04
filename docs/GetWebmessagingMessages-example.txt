@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewWebMessagingApiWithConfig(config)
+
+var pageSize int // Page size
+var pageNumber int // Page number
+// Get the messages for a web messaging session.
+data, response, err := apiInstance.GetWebmessagingMessages(pageSize, pageNumber)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetWebmessagingMessages: %v\n", err)
+}

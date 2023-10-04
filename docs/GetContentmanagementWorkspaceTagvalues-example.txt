@@ -1,0 +1,17 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewContentManagementApiWithConfig(config)
+
+var workspaceId string // Workspace ID
+var value string // filter the list of tags returned
+var pageSize int // Page size
+var pageNumber int // Page number
+var expand []string // Which fields, if any, to expand.
+// Get a list of workspace tags
+data, response, err := apiInstance.GetContentmanagementWorkspaceTagvalues(workspaceId, value, pageSize, pageNumber, expand)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetContentmanagementWorkspaceTagvalues: %v\n", err)
+}

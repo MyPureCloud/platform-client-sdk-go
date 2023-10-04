@@ -1,0 +1,667 @@
+{
+    "DELETE /api/v2/languageunderstanding/domains/{domainId}": {
+        "operationId": "deletelanguageunderstandingdomain",
+        "functionName": "DeleteLanguageunderstandingDomain",
+        "signature": "DeleteLanguageunderstandingDomain(domainId)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/languageunderstanding/domains/{domainId}/feedback/{feedbackId}": {
+        "operationId": "deletelanguageunderstandingdomainfeedbackfeedbackid",
+        "functionName": "DeleteLanguageunderstandingDomainFeedbackFeedbackId",
+        "signature": "DeleteLanguageunderstandingDomainFeedbackFeedbackId(domainId, feedbackId)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "feedbackId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}": {
+        "operationId": "deletelanguageunderstandingdomainversion",
+        "functionName": "DeleteLanguageunderstandingDomainVersion",
+        "signature": "DeleteLanguageunderstandingDomainVersion(domainId, domainVersionId)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "domainVersionId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/languageunderstanding/miners/{minerId}": {
+        "operationId": "deletelanguageunderstandingminer",
+        "functionName": "DeleteLanguageunderstandingMiner",
+        "signature": "DeleteLanguageunderstandingMiner(minerId)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}": {
+        "operationId": "deletelanguageunderstandingminerdraft",
+        "functionName": "DeleteLanguageunderstandingMinerDraft",
+        "signature": "DeleteLanguageunderstandingMinerDraft(minerId, draftId)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "draftId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/languageunderstanding/domains/{domainId}": {
+        "operationId": "getlanguageunderstandingdomain",
+        "functionName": "GetLanguageunderstandingDomain",
+        "signature": "GetLanguageunderstandingDomain(domainId)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Nludomain"
+    },
+    "GET /api/v2/languageunderstanding/domains/{domainId}/feedback": {
+        "operationId": "getlanguageunderstandingdomainfeedback",
+        "functionName": "GetLanguageunderstandingDomainFeedback",
+        "signature": "GetLanguageunderstandingDomainFeedback(domainId, intentName, assessment, dateStart, dateEnd, includeDeleted, language, pageNumber, pageSize, enableCursorPagination, includeTrainingUtterances, after, fields)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "intentName",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "assessment",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "dateStart",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "dateEnd",
+                "type": "time.Time",
+                "required": "false"
+            },
+            {
+                "name": "includeDeleted",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "language",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "enableCursorPagination",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "includeTrainingUtterances",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "fields",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Nlufeedbacklisting"
+    },
+    "GET /api/v2/languageunderstanding/domains/{domainId}/feedback/{feedbackId}": {
+        "operationId": "getlanguageunderstandingdomainfeedbackfeedbackid",
+        "functionName": "GetLanguageunderstandingDomainFeedbackFeedbackId",
+        "signature": "GetLanguageunderstandingDomainFeedbackFeedbackId(domainId, feedbackId, fields)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "feedbackId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "fields",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Nlufeedbackresponse"
+    },
+    "GET /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}": {
+        "operationId": "getlanguageunderstandingdomainversion",
+        "functionName": "GetLanguageunderstandingDomainVersion",
+        "signature": "GetLanguageunderstandingDomainVersion(domainId, domainVersionId, includeUtterances)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "domainVersionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "includeUtterances",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Nludomainversion"
+    },
+    "GET /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/report": {
+        "operationId": "getlanguageunderstandingdomainversionreport",
+        "functionName": "GetLanguageunderstandingDomainVersionReport",
+        "signature": "GetLanguageunderstandingDomainVersionReport(domainId, domainVersionId)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "domainVersionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Nludomainversionqualityreport"
+    },
+    "GET /api/v2/languageunderstanding/domains/{domainId}/versions": {
+        "operationId": "getlanguageunderstandingdomainversions",
+        "functionName": "GetLanguageunderstandingDomainVersions",
+        "signature": "GetLanguageunderstandingDomainVersions(domainId, includeUtterances, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "includeUtterances",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Nludomainversionlisting"
+    },
+    "GET /api/v2/languageunderstanding/domains": {
+        "operationId": "getlanguageunderstandingdomains",
+        "functionName": "GetLanguageunderstandingDomains",
+        "signature": "GetLanguageunderstandingDomains(pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Nludomainlisting"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}": {
+        "operationId": "getlanguageunderstandingminer",
+        "functionName": "GetLanguageunderstandingMiner",
+        "signature": "GetLanguageunderstandingMiner(minerId)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Miner"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}": {
+        "operationId": "getlanguageunderstandingminerdraft",
+        "functionName": "GetLanguageunderstandingMinerDraft",
+        "signature": "GetLanguageunderstandingMinerDraft(minerId, draftId, draftIntentId, draftTopicId)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "draftId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "draftIntentId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "draftTopicId",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Draft"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}/drafts": {
+        "operationId": "getlanguageunderstandingminerdrafts",
+        "functionName": "GetLanguageunderstandingMinerDrafts",
+        "signature": "GetLanguageunderstandingMinerDrafts(minerId)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Draftlisting"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}/intents/{intentId}": {
+        "operationId": "getlanguageunderstandingminerintent",
+        "functionName": "GetLanguageunderstandingMinerIntent",
+        "signature": "GetLanguageunderstandingMinerIntent(minerId, intentId, expand)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "intentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Minerintent"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}/intents": {
+        "operationId": "getlanguageunderstandingminerintents",
+        "functionName": "GetLanguageunderstandingMinerIntents",
+        "signature": "GetLanguageunderstandingMinerIntents(minerId, expand)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Minedintentslisting"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}": {
+        "operationId": "getlanguageunderstandingminertopic",
+        "functionName": "GetLanguageunderstandingMinerTopic",
+        "signature": "GetLanguageunderstandingMinerTopic(minerId, topicId, expand)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "topicId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Minertopic"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}/topics/{topicId}/phrases/{phraseId}": {
+        "operationId": "getlanguageunderstandingminertopicphrase",
+        "functionName": "GetLanguageunderstandingMinerTopicPhrase",
+        "signature": "GetLanguageunderstandingMinerTopicPhrase(minerId, topicId, phraseId)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "topicId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "phraseId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Minertopicphrase"
+    },
+    "GET /api/v2/languageunderstanding/miners/{minerId}/topics": {
+        "operationId": "getlanguageunderstandingminertopics",
+        "functionName": "GetLanguageunderstandingMinerTopics",
+        "signature": "GetLanguageunderstandingMinerTopics(minerId)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Minertopicslisting"
+    },
+    "GET /api/v2/languageunderstanding/miners": {
+        "operationId": "getlanguageunderstandingminers",
+        "functionName": "GetLanguageunderstandingMiners",
+        "signature": "GetLanguageunderstandingMiners(minerType)",
+        "parameters": [
+            {
+                "name": "minerType",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Minerlisting"
+    },
+    "PATCH /api/v2/languageunderstanding/domains/{domainId}": {
+        "operationId": "patchlanguageunderstandingdomain",
+        "functionName": "PatchLanguageunderstandingDomain",
+        "signature": "PatchLanguageunderstandingDomain(domainId, body)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Nludomain",
+                "required": "true"
+            }
+        ],
+        "return": "Nludomain"
+    },
+    "PATCH /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}": {
+        "operationId": "patchlanguageunderstandingminerdraft",
+        "functionName": "PatchLanguageunderstandingMinerDraft",
+        "signature": "PatchLanguageunderstandingMinerDraft(minerId, draftId, body)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "draftId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Draftrequest",
+                "required": "false"
+            }
+        ],
+        "return": "Draft"
+    },
+    "POST /api/v2/languageunderstanding/domains/{domainId}/feedback": {
+        "operationId": "postlanguageunderstandingdomainfeedback",
+        "functionName": "PostLanguageunderstandingDomainFeedback",
+        "signature": "PostLanguageunderstandingDomainFeedback(domainId, body)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Nlufeedbackrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Nlufeedbackresponse"
+    },
+    "POST /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/detect": {
+        "operationId": "postlanguageunderstandingdomainversiondetect",
+        "functionName": "PostLanguageunderstandingDomainVersionDetect",
+        "signature": "PostLanguageunderstandingDomainVersionDetect(domainId, domainVersionId, body)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "domainVersionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Nludetectionrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Nludetectionresponse"
+    },
+    "POST /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/publish": {
+        "operationId": "postlanguageunderstandingdomainversionpublish",
+        "functionName": "PostLanguageunderstandingDomainVersionPublish",
+        "signature": "PostLanguageunderstandingDomainVersionPublish(domainId, domainVersionId)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "domainVersionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Nludomainversion"
+    },
+    "POST /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}/train": {
+        "operationId": "postlanguageunderstandingdomainversiontrain",
+        "functionName": "PostLanguageunderstandingDomainVersionTrain",
+        "signature": "PostLanguageunderstandingDomainVersionTrain(domainId, domainVersionId)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "domainVersionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Nludomainversiontrainingresponse"
+    },
+    "POST /api/v2/languageunderstanding/domains/{domainId}/versions": {
+        "operationId": "postlanguageunderstandingdomainversions",
+        "functionName": "PostLanguageunderstandingDomainVersions",
+        "signature": "PostLanguageunderstandingDomainVersions(domainId, body, includeUtterances)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Nludomainversion",
+                "required": "true"
+            },
+            {
+                "name": "includeUtterances",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Nludomainversion"
+    },
+    "POST /api/v2/languageunderstanding/domains": {
+        "operationId": "postlanguageunderstandingdomains",
+        "functionName": "PostLanguageunderstandingDomains",
+        "signature": "PostLanguageunderstandingDomains(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Nludomain",
+                "required": "true"
+            }
+        ],
+        "return": "Nludomain"
+    },
+    "POST /api/v2/languageunderstanding/miners/{minerId}/drafts": {
+        "operationId": "postlanguageunderstandingminerdrafts",
+        "functionName": "PostLanguageunderstandingMinerDrafts",
+        "signature": "PostLanguageunderstandingMinerDrafts(minerId, body)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Draft",
+                "required": "true"
+            }
+        ],
+        "return": "Draft"
+    },
+    "POST /api/v2/languageunderstanding/miners/{minerId}/execute": {
+        "operationId": "postlanguageunderstandingminerexecute",
+        "functionName": "PostLanguageunderstandingMinerExecute",
+        "signature": "PostLanguageunderstandingMinerExecute(minerId, body)",
+        "parameters": [
+            {
+                "name": "minerId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Minerexecuterequest",
+                "required": "false"
+            }
+        ],
+        "return": "Miner"
+    },
+    "POST /api/v2/languageunderstanding/miners": {
+        "operationId": "postlanguageunderstandingminers",
+        "functionName": "PostLanguageunderstandingMiners",
+        "signature": "PostLanguageunderstandingMiners(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Miner",
+                "required": "true"
+            }
+        ],
+        "return": "Miner"
+    },
+    "PUT /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}": {
+        "operationId": "putlanguageunderstandingdomainversion",
+        "functionName": "PutLanguageunderstandingDomainVersion",
+        "signature": "PutLanguageunderstandingDomainVersion(domainId, domainVersionId, body)",
+        "parameters": [
+            {
+                "name": "domainId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "domainVersionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Nludomainversion",
+                "required": "true"
+            }
+        ],
+        "return": "Nludomainversion"
+    }
+    
+}

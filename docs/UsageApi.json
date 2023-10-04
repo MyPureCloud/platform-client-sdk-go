@@ -1,0 +1,109 @@
+{
+    "GET /api/v2/oauth/clients/{clientId}/usage/query/results/{executionId}": {
+        "operationId": "getoauthclientusagequeryresult",
+        "functionName": "GetOauthClientUsageQueryResult",
+        "signature": "GetOauthClientUsageQueryResult(executionId, clientId)",
+        "parameters": [
+            {
+                "name": "executionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "clientId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Apiusagequeryresult"
+    },
+    "GET /api/v2/oauth/clients/{clientId}/usage/summary": {
+        "operationId": "getoauthclientusagesummary",
+        "functionName": "GetOauthClientUsageSummary",
+        "signature": "GetOauthClientUsageSummary(clientId, days)",
+        "parameters": [
+            {
+                "name": "clientId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "days",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Usageexecutionresult"
+    },
+    "GET /api/v2/usage/query/{executionId}/results": {
+        "operationId": "getusagequeryexecutionidresults",
+        "functionName": "GetUsageQueryExecutionIdResults",
+        "signature": "GetUsageQueryExecutionIdResults(executionId)",
+        "parameters": [
+            {
+                "name": "executionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Apiusagequeryresult"
+    },
+    "GET /api/v2/usage/simplesearch/{executionId}/results": {
+        "operationId": "getusagesimplesearchexecutionidresults",
+        "functionName": "GetUsageSimplesearchExecutionIdResults",
+        "signature": "GetUsageSimplesearchExecutionIdResults(executionId)",
+        "parameters": [
+            {
+                "name": "executionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Apiusagequeryresult"
+    },
+    "POST /api/v2/oauth/clients/{clientId}/usage/query": {
+        "operationId": "postoauthclientusagequery",
+        "functionName": "PostOauthClientUsageQuery",
+        "signature": "PostOauthClientUsageQuery(clientId, body)",
+        "parameters": [
+            {
+                "name": "clientId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Apiusageclientquery",
+                "required": "true"
+            }
+        ],
+        "return": "Usageexecutionresult"
+    },
+    "POST /api/v2/usage/query": {
+        "operationId": "postusagequery",
+        "functionName": "PostUsageQuery",
+        "signature": "PostUsageQuery(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Apiusageorganizationquery",
+                "required": "true"
+            }
+        ],
+        "return": "Usageexecutionresult"
+    },
+    "POST /api/v2/usage/simplesearch": {
+        "operationId": "postusagesimplesearch",
+        "functionName": "PostUsageSimplesearch",
+        "signature": "PostUsageSimplesearch(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Apiusagesimplesearch",
+                "required": "true"
+            }
+        ],
+        "return": "Usageexecutionresult"
+    }
+    
+}

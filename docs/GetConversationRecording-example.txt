@@ -1,0 +1,22 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewRecordingApiWithConfig(config)
+
+var conversationId string // Conversation ID
+var recordingId string // Recording ID
+var formatId string // The desired media format. Valid values:WAV,WEBM,WAV_ULAW,OGG_VORBIS,OGG_OPUS,MP3,NONE
+var emailFormatId string // The desired media format when downloading an email recording. Valid values:EML,NONE
+var chatFormatId string // The desired media format when downloading a chat recording. Valid values:ZIP,NONE 
+var messageFormatId string // The desired media format when downloading a message recording. Valid values:ZIP,NONE
+var download bool // requesting a download format of the recording. Valid values:true,false
+var fileName string // the name of the downloaded fileName
+var locale string // The locale for the requested file when downloading, as an ISO 639-1 code
+var mediaFormats []string // All acceptable media formats. Overrides formatId. Valid values:WAV,WEBM,WAV_ULAW,OGG_VORBIS,OGG_OPUS,MP3
+// Gets a specific recording.
+data, response, err := apiInstance.GetConversationRecording(conversationId, recordingId, formatId, emailFormatId, chatFormatId, messageFormatId, download, fileName, locale, mediaFormats)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetConversationRecording: %v\n", err)
+}

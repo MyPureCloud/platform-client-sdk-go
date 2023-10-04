@@ -1,0 +1,18 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewOutboundApiWithConfig(config)
+
+var body platformclientv2.Dialerauditrequest // AuditSearch
+var pageSize int // Page size
+var pageNumber int // Page number
+var sortBy string // Sort by
+var sortOrder string // Sort order
+var facetsOnly bool // Facets only
+// Retrieves audits for dialer.
+data, response, err := apiInstance.PostOutboundAudits(body, pageSize, pageNumber, sortBy, sortOrder, facetsOnly)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling PostOutboundAudits: %v\n", err)
+}

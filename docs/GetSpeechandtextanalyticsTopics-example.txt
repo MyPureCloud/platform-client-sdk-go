@@ -1,0 +1,19 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)
+
+var nextPage string // The key for listing the next page
+var pageSize int // The page size for the listing
+var state string // Topic state. Defaults to latest
+var name string // Case insensitive partial name to filter by
+var ids []string // Comma separated Topic IDs to filter by. Cannot be used with other filters. Maximum of 50 IDs allowed.
+var sortBy string // Sort results by. Defaults to name
+var sortOrder string // Sort order. Defaults to asc
+// Get the list of Speech & Text Analytics topics
+data, response, err := apiInstance.GetSpeechandtextanalyticsTopics(nextPage, pageSize, state, name, ids, sortBy, sortOrder)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetSpeechandtextanalyticsTopics: %v\n", err)
+}

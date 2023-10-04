@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewAuthorizationApiWithConfig(config)
+
+var roleId string // Role ID
+var userCount bool // Fetch the count of users who have this role granted in at least one division
+var expand []string // Which fields, if any, to expand. \"unusedPermissions\" returns the permissions not used for the role
+// Get a single organization role.
+data, response, err := apiInstance.GetAuthorizationRole(roleId, userCount, expand)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetAuthorizationRole: %v\n", err)
+}

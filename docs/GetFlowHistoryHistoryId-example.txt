@@ -1,0 +1,19 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)
+
+apiInstance := platformclientv2.NewArchitectApiWithConfig(config)
+
+var flowId string // Flow ID
+var historyId string // History request ID
+var pageNumber int // Page number
+var pageSize int // Page size
+var sortOrder string // Sort order
+var sortBy string // Sort by
+var action []string // Flow actions to include (omit to include all)
+// Get generated flow history
+data, response, err := apiInstance.GetFlowHistoryHistoryId(flowId, historyId, pageNumber, pageSize, sortOrder, sortBy, action)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+if err != nil {
+	fmt.Printf("Error calling GetFlowHistoryHistoryId: %v\n", err)
+}

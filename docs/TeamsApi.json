@@ -1,0 +1,196 @@
+{
+    "DELETE /api/v2/teams/{teamId}": {
+        "operationId": "deleteteam",
+        "functionName": "DeleteTeam",
+        "signature": "DeleteTeam(teamId)",
+        "parameters": [
+            {
+                "name": "teamId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/teams/{teamId}/members": {
+        "operationId": "deleteteammembers",
+        "functionName": "DeleteTeamMembers",
+        "signature": "DeleteTeamMembers(teamId, id)",
+        "parameters": [
+            {
+                "name": "teamId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "id",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "GET /api/v2/teams/{teamId}": {
+        "operationId": "getteam",
+        "functionName": "GetTeam",
+        "signature": "GetTeam(teamId)",
+        "parameters": [
+            {
+                "name": "teamId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Team"
+    },
+    "GET /api/v2/teams/{teamId}/members": {
+        "operationId": "getteammembers",
+        "functionName": "GetTeamMembers",
+        "signature": "GetTeamMembers(teamId, pageSize, before, after, expand)",
+        "parameters": [
+            {
+                "name": "teamId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "before",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Teammemberentitylisting"
+    },
+    "GET /api/v2/teams": {
+        "operationId": "getteams",
+        "functionName": "GetTeams",
+        "signature": "GetTeams(pageSize, name, after, before, expand)",
+        "parameters": [
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "after",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "before",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Teamentitylisting"
+    },
+    "PATCH /api/v2/teams/{teamId}": {
+        "operationId": "patchteam",
+        "functionName": "PatchTeam",
+        "signature": "PatchTeam(teamId, body)",
+        "parameters": [
+            {
+                "name": "teamId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Team",
+                "required": "true"
+            }
+        ],
+        "return": "Team"
+    },
+    "POST /api/v2/analytics/teams/activity/query": {
+        "operationId": "postanalyticsteamsactivityquery",
+        "functionName": "PostAnalyticsTeamsActivityQuery",
+        "signature": "PostAnalyticsTeamsActivityQuery(body, pageSize, pageNumber)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Teamactivityquery",
+                "required": "true"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Teamactivityresponse"
+    },
+    "POST /api/v2/teams/{teamId}/members": {
+        "operationId": "postteammembers",
+        "functionName": "PostTeamMembers",
+        "signature": "PostTeamMembers(teamId, body)",
+        "parameters": [
+            {
+                "name": "teamId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Teammembers",
+                "required": "true"
+            }
+        ],
+        "return": "Teammemberaddlistingresponse"
+    },
+    "POST /api/v2/teams": {
+        "operationId": "postteams",
+        "functionName": "PostTeams",
+        "signature": "PostTeams(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Team",
+                "required": "true"
+            }
+        ],
+        "return": "Team"
+    },
+    "POST /api/v2/teams/search": {
+        "operationId": "postteamssearch",
+        "functionName": "PostTeamsSearch",
+        "signature": "PostTeamsSearch(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Teamsearchrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Teamssearchresponse"
+    }
+    
+}

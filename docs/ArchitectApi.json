@@ -1,0 +1,3025 @@
+{
+    "DELETE /api/v2/architect/emergencygroups/{emergencyGroupId}": {
+        "operationId": "deletearchitectemergencygroup",
+        "functionName": "DeleteArchitectEmergencygroup",
+        "signature": "DeleteArchitectEmergencygroup(emergencyGroupId)",
+        "parameters": [
+            {
+                "name": "emergencyGroupId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/grammars/{grammarId}": {
+        "operationId": "deletearchitectgrammar",
+        "functionName": "DeleteArchitectGrammar",
+        "signature": "DeleteArchitectGrammar(grammarId)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "interface{}"
+    },
+    "DELETE /api/v2/architect/grammars/{grammarId}/languages/{languageCode}": {
+        "operationId": "deletearchitectgrammarlanguage",
+        "functionName": "DeleteArchitectGrammarLanguage",
+        "signature": "DeleteArchitectGrammarLanguage(grammarId, languageCode)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/dtmf": {
+        "operationId": "deletearchitectgrammarlanguagefilesdtmf",
+        "functionName": "DeleteArchitectGrammarLanguageFilesDtmf",
+        "signature": "DeleteArchitectGrammarLanguageFilesDtmf(grammarId, languageCode)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/voice": {
+        "operationId": "deletearchitectgrammarlanguagefilesvoice",
+        "functionName": "DeleteArchitectGrammarLanguageFilesVoice",
+        "signature": "DeleteArchitectGrammarLanguageFilesVoice(grammarId, languageCode)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/ivrs/{ivrId}": {
+        "operationId": "deletearchitectivr",
+        "functionName": "DeleteArchitectIvr",
+        "signature": "DeleteArchitectIvr(ivrId)",
+        "parameters": [
+            {
+                "name": "ivrId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/prompts/{promptId}": {
+        "operationId": "deletearchitectprompt",
+        "functionName": "DeleteArchitectPrompt",
+        "signature": "DeleteArchitectPrompt(promptId, allResources)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "allResources",
+                "type": "bool",
+                "required": "false"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/prompts/{promptId}/resources/{languageCode}": {
+        "operationId": "deletearchitectpromptresource",
+        "functionName": "DeleteArchitectPromptResource",
+        "signature": "DeleteArchitectPromptResource(promptId, languageCode)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/prompts/{promptId}/resources/{languageCode}/audio": {
+        "operationId": "deletearchitectpromptresourceaudio",
+        "functionName": "DeleteArchitectPromptResourceAudio",
+        "signature": "DeleteArchitectPromptResourceAudio(promptId, languageCode)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/prompts": {
+        "operationId": "deletearchitectprompts",
+        "functionName": "DeleteArchitectPrompts",
+        "signature": "DeleteArchitectPrompts(id)",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "Operation"
+    },
+    "DELETE /api/v2/architect/schedules/{scheduleId}": {
+        "operationId": "deletearchitectschedule",
+        "functionName": "DeleteArchitectSchedule",
+        "signature": "DeleteArchitectSchedule(scheduleId)",
+        "parameters": [
+            {
+                "name": "scheduleId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/schedulegroups/{scheduleGroupId}": {
+        "operationId": "deletearchitectschedulegroup",
+        "functionName": "DeleteArchitectSchedulegroup",
+        "signature": "DeleteArchitectSchedulegroup(scheduleGroupId)",
+        "parameters": [
+            {
+                "name": "scheduleGroupId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}": {
+        "operationId": "deletearchitectsystempromptresource",
+        "functionName": "DeleteArchitectSystempromptResource",
+        "signature": "DeleteArchitectSystempromptResource(promptId, languageCode)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/flows/{flowId}": {
+        "operationId": "deleteflow",
+        "functionName": "DeleteFlow",
+        "signature": "DeleteFlow(flowId)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/flows": {
+        "operationId": "deleteflows",
+        "functionName": "DeleteFlows",
+        "signature": "DeleteFlows(id)",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "true"
+            }
+        ],
+        "return": "Operation"
+    },
+    "DELETE /api/v2/flows/datatables/{datatableId}": {
+        "operationId": "deleteflowsdatatable",
+        "functionName": "DeleteFlowsDatatable",
+        "signature": "DeleteFlowsDatatable(datatableId, force)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "force",
+                "type": "bool",
+                "required": "false"
+            }
+        ]
+    },
+    "DELETE /api/v2/flows/datatables/{datatableId}/rows/{rowId}": {
+        "operationId": "deleteflowsdatatablerow",
+        "functionName": "DeleteFlowsDatatableRow",
+        "signature": "DeleteFlowsDatatableRow(datatableId, rowId)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "rowId",
+                "type": "string",
+                "required": "true"
+            }
+        ]
+    },
+    "DELETE /api/v2/flows/milestones/{milestoneId}": {
+        "operationId": "deleteflowsmilestone",
+        "functionName": "DeleteFlowsMilestone",
+        "signature": "DeleteFlowsMilestone(milestoneId)",
+        "parameters": [
+            {
+                "name": "milestoneId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "interface{}"
+    },
+    "GET /api/v2/architect/dependencytracking": {
+        "operationId": "getarchitectdependencytracking",
+        "functionName": "GetArchitectDependencytracking",
+        "signature": "GetArchitectDependencytracking(name, pageNumber, pageSize, objectType, consumedResources, consumingResources, consumedResourceType, consumingResourceType)",
+        "parameters": [
+            {
+                "name": "name",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "objectType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "consumedResources",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "consumingResources",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "consumedResourceType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "consumingResourceType",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Dependencyobjectentitylisting"
+    },
+    "GET /api/v2/architect/dependencytracking/build": {
+        "operationId": "getarchitectdependencytrackingbuild",
+        "functionName": "GetArchitectDependencytrackingBuild",
+        "signature": "GetArchitectDependencytrackingBuild()",
+        
+        "return": "Dependencystatus"
+    },
+    "GET /api/v2/architect/dependencytracking/consumedresources": {
+        "operationId": "getarchitectdependencytrackingconsumedresources",
+        "functionName": "GetArchitectDependencytrackingConsumedresources",
+        "signature": "GetArchitectDependencytrackingConsumedresources(id, version, objectType, resourceType, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "version",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "objectType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "resourceType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Consumedresourcesentitylisting"
+    },
+    "GET /api/v2/architect/dependencytracking/consumingresources": {
+        "operationId": "getarchitectdependencytrackingconsumingresources",
+        "functionName": "GetArchitectDependencytrackingConsumingresources",
+        "signature": "GetArchitectDependencytrackingConsumingresources(id, objectType, resourceType, version, pageNumber, pageSize, flowFilter)",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "objectType",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "resourceType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "version",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "flowFilter",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Consumingresourcesentitylisting"
+    },
+    "GET /api/v2/architect/dependencytracking/deletedresourceconsumers": {
+        "operationId": "getarchitectdependencytrackingdeletedresourceconsumers",
+        "functionName": "GetArchitectDependencytrackingDeletedresourceconsumers",
+        "signature": "GetArchitectDependencytrackingDeletedresourceconsumers(name, objectType, flowFilter, consumedResources, consumedResourceType, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "objectType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "flowFilter",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "consumedResources",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "consumedResourceType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Dependencyobjectentitylisting"
+    },
+    "GET /api/v2/architect/dependencytracking/object": {
+        "operationId": "getarchitectdependencytrackingobject",
+        "functionName": "GetArchitectDependencytrackingObject",
+        "signature": "GetArchitectDependencytrackingObject(id, version, objectType, consumedResources, consumingResources, consumedResourceType, consumingResourceType, consumedResourceRequest)",
+        "parameters": [
+            {
+                "name": "id",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "version",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "objectType",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "consumedResources",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "consumingResources",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "consumedResourceType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "consumingResourceType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "consumedResourceRequest",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Dependencyobject"
+    },
+    "GET /api/v2/architect/dependencytracking/types/{typeId}": {
+        "operationId": "getarchitectdependencytrackingtype",
+        "functionName": "GetArchitectDependencytrackingType",
+        "signature": "GetArchitectDependencytrackingType(typeId)",
+        "parameters": [
+            {
+                "name": "typeId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Dependencytype"
+    },
+    "GET /api/v2/architect/dependencytracking/types": {
+        "operationId": "getarchitectdependencytrackingtypes",
+        "functionName": "GetArchitectDependencytrackingTypes",
+        "signature": "GetArchitectDependencytrackingTypes(pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Dependencytypeentitylisting"
+    },
+    "GET /api/v2/architect/dependencytracking/updatedresourceconsumers": {
+        "operationId": "getarchitectdependencytrackingupdatedresourceconsumers",
+        "functionName": "GetArchitectDependencytrackingUpdatedresourceconsumers",
+        "signature": "GetArchitectDependencytrackingUpdatedresourceconsumers(name, objectType, consumedResources, consumedResourceType, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "objectType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "consumedResources",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "consumedResourceType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Dependencyobjectentitylisting"
+    },
+    "GET /api/v2/architect/emergencygroups/{emergencyGroupId}": {
+        "operationId": "getarchitectemergencygroup",
+        "functionName": "GetArchitectEmergencygroup",
+        "signature": "GetArchitectEmergencygroup(emergencyGroupId)",
+        "parameters": [
+            {
+                "name": "emergencyGroupId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Emergencygroup"
+    },
+    "GET /api/v2/architect/emergencygroups": {
+        "operationId": "getarchitectemergencygroups",
+        "functionName": "GetArchitectEmergencygroups",
+        "signature": "GetArchitectEmergencygroups(pageNumber, pageSize, sortBy, sortOrder, name)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Emergencygrouplisting"
+    },
+    "GET /api/v2/architect/emergencygroups/divisionviews": {
+        "operationId": "getarchitectemergencygroupsdivisionviews",
+        "functionName": "GetArchitectEmergencygroupsDivisionviews",
+        "signature": "GetArchitectEmergencygroupsDivisionviews(pageNumber, pageSize, sortBy, sortOrder, id, name, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Emergencygroupdivisionviewentitylisting"
+    },
+    "GET /api/v2/architect/grammars/{grammarId}": {
+        "operationId": "getarchitectgrammar",
+        "functionName": "GetArchitectGrammar",
+        "signature": "GetArchitectGrammar(grammarId, includeFileUrls)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "includeFileUrls",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Grammar"
+    },
+    "GET /api/v2/architect/grammars/{grammarId}/languages/{languageCode}": {
+        "operationId": "getarchitectgrammarlanguage",
+        "functionName": "GetArchitectGrammarLanguage",
+        "signature": "GetArchitectGrammarLanguage(grammarId, languageCode)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Grammarlanguage"
+    },
+    "GET /api/v2/architect/grammars": {
+        "operationId": "getarchitectgrammars",
+        "functionName": "GetArchitectGrammars",
+        "signature": "GetArchitectGrammars(pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, includeFileUrls)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "description",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nameOrDescription",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "includeFileUrls",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Grammarlisting"
+    },
+    "GET /api/v2/architect/ivrs/{ivrId}": {
+        "operationId": "getarchitectivr",
+        "functionName": "GetArchitectIvr",
+        "signature": "GetArchitectIvr(ivrId)",
+        "parameters": [
+            {
+                "name": "ivrId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Ivr"
+    },
+    "GET /api/v2/architect/ivrs": {
+        "operationId": "getarchitectivrs",
+        "functionName": "GetArchitectIvrs",
+        "signature": "GetArchitectIvrs(pageNumber, pageSize, sortBy, sortOrder, name, dnis, scheduleGroup)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "dnis",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "scheduleGroup",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Ivrentitylisting"
+    },
+    "GET /api/v2/architect/ivrs/divisionviews": {
+        "operationId": "getarchitectivrsdivisionviews",
+        "functionName": "GetArchitectIvrsDivisionviews",
+        "signature": "GetArchitectIvrsDivisionviews(pageNumber, pageSize, sortBy, sortOrder, id, name, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Ivrdivisionviewentitylisting"
+    },
+    "GET /api/v2/architect/prompts/{promptId}": {
+        "operationId": "getarchitectprompt",
+        "functionName": "GetArchitectPrompt",
+        "signature": "GetArchitectPrompt(promptId)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Prompt"
+    },
+    "GET /api/v2/architect/prompts/{promptId}/history/{historyId}": {
+        "operationId": "getarchitectprompthistoryhistoryid",
+        "functionName": "GetArchitectPromptHistoryHistoryId",
+        "signature": "GetArchitectPromptHistoryHistoryId(promptId, historyId, pageNumber, pageSize, sortOrder, sortBy, action)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "historyId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "action",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Historylisting"
+    },
+    "GET /api/v2/architect/prompts/{promptId}/resources/{languageCode}": {
+        "operationId": "getarchitectpromptresource",
+        "functionName": "GetArchitectPromptResource",
+        "signature": "GetArchitectPromptResource(promptId, languageCode)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Promptasset"
+    },
+    "GET /api/v2/architect/prompts/{promptId}/resources": {
+        "operationId": "getarchitectpromptresources",
+        "functionName": "GetArchitectPromptResources",
+        "signature": "GetArchitectPromptResources(promptId, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Promptassetentitylisting"
+    },
+    "GET /api/v2/architect/prompts": {
+        "operationId": "getarchitectprompts",
+        "functionName": "GetArchitectPrompts",
+        "signature": "GetArchitectPrompts(pageNumber, pageSize, name, description, nameOrDescription, sortBy, sortOrder)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "description",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nameOrDescription",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Promptentitylisting"
+    },
+    "GET /api/v2/architect/schedules/{scheduleId}": {
+        "operationId": "getarchitectschedule",
+        "functionName": "GetArchitectSchedule",
+        "signature": "GetArchitectSchedule(scheduleId)",
+        "parameters": [
+            {
+                "name": "scheduleId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Schedule"
+    },
+    "GET /api/v2/architect/schedulegroups/{scheduleGroupId}": {
+        "operationId": "getarchitectschedulegroup",
+        "functionName": "GetArchitectSchedulegroup",
+        "signature": "GetArchitectSchedulegroup(scheduleGroupId)",
+        "parameters": [
+            {
+                "name": "scheduleGroupId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Schedulegroup"
+    },
+    "GET /api/v2/architect/schedulegroups": {
+        "operationId": "getarchitectschedulegroups",
+        "functionName": "GetArchitectSchedulegroups",
+        "signature": "GetArchitectSchedulegroups(pageNumber, pageSize, sortBy, sortOrder, name, scheduleIds, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "scheduleIds",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Schedulegroupentitylisting"
+    },
+    "GET /api/v2/architect/schedulegroups/divisionviews": {
+        "operationId": "getarchitectschedulegroupsdivisionviews",
+        "functionName": "GetArchitectSchedulegroupsDivisionviews",
+        "signature": "GetArchitectSchedulegroupsDivisionviews(pageNumber, pageSize, sortBy, sortOrder, id, name, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Schedulegroupdivisionviewentitylisting"
+    },
+    "GET /api/v2/architect/schedules": {
+        "operationId": "getarchitectschedules",
+        "functionName": "GetArchitectSchedules",
+        "signature": "GetArchitectSchedules(pageNumber, pageSize, sortBy, sortOrder, name, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Scheduleentitylisting"
+    },
+    "GET /api/v2/architect/schedules/divisionviews": {
+        "operationId": "getarchitectschedulesdivisionviews",
+        "functionName": "GetArchitectSchedulesDivisionviews",
+        "signature": "GetArchitectSchedulesDivisionviews(pageNumber, pageSize, sortBy, sortOrder, id, name, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Scheduledivisionviewentitylisting"
+    },
+    "GET /api/v2/architect/systemprompts/{promptId}": {
+        "operationId": "getarchitectsystemprompt",
+        "functionName": "GetArchitectSystemprompt",
+        "signature": "GetArchitectSystemprompt(promptId)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Systemprompt"
+    },
+    "GET /api/v2/architect/systemprompts/{promptId}/history/{historyId}": {
+        "operationId": "getarchitectsystemprompthistoryhistoryid",
+        "functionName": "GetArchitectSystempromptHistoryHistoryId",
+        "signature": "GetArchitectSystempromptHistoryHistoryId(promptId, historyId, pageNumber, pageSize, sortOrder, sortBy, action)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "historyId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "action",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Historylisting"
+    },
+    "GET /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}": {
+        "operationId": "getarchitectsystempromptresource",
+        "functionName": "GetArchitectSystempromptResource",
+        "signature": "GetArchitectSystempromptResource(promptId, languageCode)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Systempromptasset"
+    },
+    "GET /api/v2/architect/systemprompts/{promptId}/resources": {
+        "operationId": "getarchitectsystempromptresources",
+        "functionName": "GetArchitectSystempromptResources",
+        "signature": "GetArchitectSystempromptResources(promptId, pageNumber, pageSize, sortBy, sortOrder)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Systempromptassetentitylisting"
+    },
+    "GET /api/v2/architect/systemprompts": {
+        "operationId": "getarchitectsystemprompts",
+        "functionName": "GetArchitectSystemprompts",
+        "signature": "GetArchitectSystemprompts(pageNumber, pageSize, sortBy, sortOrder, name, description, nameOrDescription)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "description",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nameOrDescription",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Systempromptentitylisting"
+    },
+    "GET /api/v2/flows/{flowId}": {
+        "operationId": "getflow",
+        "functionName": "GetFlow",
+        "signature": "GetFlow(flowId, deleted)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "deleted",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Flow"
+    },
+    "GET /api/v2/flows/{flowId}/history/{historyId}": {
+        "operationId": "getflowhistoryhistoryid",
+        "functionName": "GetFlowHistoryHistoryId",
+        "signature": "GetFlowHistoryHistoryId(flowId, historyId, pageNumber, pageSize, sortOrder, sortBy, action)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "historyId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "action",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Historylisting"
+    },
+    "GET /api/v2/flows/{flowId}/latestconfiguration": {
+        "operationId": "getflowlatestconfiguration",
+        "functionName": "GetFlowLatestconfiguration",
+        "signature": "GetFlowLatestconfiguration(flowId, deleted)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "deleted",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "interface{}"
+    },
+    "GET /api/v2/flows/{flowId}/versions/{versionId}": {
+        "operationId": "getflowversion",
+        "functionName": "GetFlowVersion",
+        "signature": "GetFlowVersion(flowId, versionId, deleted)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "versionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "deleted",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowversion"
+    },
+    "GET /api/v2/flows/{flowId}/versions/{versionId}/configuration": {
+        "operationId": "getflowversionconfiguration",
+        "functionName": "GetFlowVersionConfiguration",
+        "signature": "GetFlowVersionConfiguration(flowId, versionId, deleted)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "versionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "deleted",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "interface{}"
+    },
+    "GET /api/v2/flows/{flowId}/versions/{versionId}/health": {
+        "operationId": "getflowversionhealth",
+        "functionName": "GetFlowVersionHealth",
+        "signature": "GetFlowVersionHealth(flowId, versionId, language)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "versionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "language",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowhealth"
+    },
+    "GET /api/v2/flows/{flowId}/versions/{versionId}/intents/{intentId}/health": {
+        "operationId": "getflowversionintenthealth",
+        "functionName": "GetFlowVersionIntentHealth",
+        "signature": "GetFlowVersionIntentHealth(flowId, versionId, intentId, language)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "versionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "intentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "language",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flowhealthintent"
+    },
+    "GET /api/v2/flows/{flowId}/versions/{versionId}/intents/{intentId}/utterances/{utteranceId}/health": {
+        "operationId": "getflowversionintentutterancehealth",
+        "functionName": "GetFlowVersionIntentUtteranceHealth",
+        "signature": "GetFlowVersionIntentUtteranceHealth(flowId, versionId, intentId, utteranceId, language)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "versionId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "intentId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "utteranceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "language",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flowhealthutterance"
+    },
+    "GET /api/v2/flows/{flowId}/versions": {
+        "operationId": "getflowversions",
+        "functionName": "GetFlowVersions",
+        "signature": "GetFlowVersions(flowId, pageNumber, pageSize, deleted)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "deleted",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Flowversionentitylisting"
+    },
+    "GET /api/v2/flows": {
+        "operationId": "getflows",
+        "functionName": "GetFlows",
+        "signature": "GetFlows(varType, pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, publishVersionId, editableBy, lockedBy, lockedByClientId, secure, deleted, includeSchemas, publishedAfter, publishedBefore, divisionId)",
+        "parameters": [
+            {
+                "name": "varType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "description",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nameOrDescription",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "publishVersionId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "editableBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "lockedBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "lockedByClientId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "secure",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "deleted",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "includeSchemas",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "publishedAfter",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "publishedBefore",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowentitylisting"
+    },
+    "GET /api/v2/flows/datatables/{datatableId}": {
+        "operationId": "getflowsdatatable",
+        "functionName": "GetFlowsDatatable",
+        "signature": "GetFlowsDatatable(datatableId, expand)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Datatable"
+    },
+    "GET /api/v2/flows/datatables/{datatableId}/export/jobs/{exportJobId}": {
+        "operationId": "getflowsdatatableexportjob",
+        "functionName": "GetFlowsDatatableExportJob",
+        "signature": "GetFlowsDatatableExportJob(datatableId, exportJobId)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "exportJobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Datatableexportjob"
+    },
+    "GET /api/v2/flows/datatables/{datatableId}/import/jobs/{importJobId}": {
+        "operationId": "getflowsdatatableimportjob",
+        "functionName": "GetFlowsDatatableImportJob",
+        "signature": "GetFlowsDatatableImportJob(datatableId, importJobId)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "importJobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Datatableimportjob"
+    },
+    "GET /api/v2/flows/datatables/{datatableId}/import/jobs": {
+        "operationId": "getflowsdatatableimportjobs",
+        "functionName": "GetFlowsDatatableImportJobs",
+        "signature": "GetFlowsDatatableImportJobs(datatableId, pageNumber, pageSize)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            }
+        ],
+        "return": "Datatableimportentitylisting"
+    },
+    "GET /api/v2/flows/datatables/{datatableId}/rows/{rowId}": {
+        "operationId": "getflowsdatatablerow",
+        "functionName": "GetFlowsDatatableRow",
+        "signature": "GetFlowsDatatableRow(datatableId, rowId, showbrief)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "rowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "showbrief",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "map[string]interface{}"
+    },
+    "GET /api/v2/flows/datatables/{datatableId}/rows": {
+        "operationId": "getflowsdatatablerows",
+        "functionName": "GetFlowsDatatableRows",
+        "signature": "GetFlowsDatatableRows(datatableId, pageNumber, pageSize, showbrief, sortOrder)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "showbrief",
+                "type": "bool",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Datatablerowentitylisting"
+    },
+    "GET /api/v2/flows/datatables": {
+        "operationId": "getflowsdatatables",
+        "functionName": "GetFlowsDatatables",
+        "signature": "GetFlowsDatatables(expand, pageNumber, pageSize, sortBy, sortOrder, divisionId, name)",
+        "parameters": [
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Datatablesdomainentitylisting"
+    },
+    "GET /api/v2/flows/datatables/divisionviews/{datatableId}": {
+        "operationId": "getflowsdatatablesdivisionview",
+        "functionName": "GetFlowsDatatablesDivisionview",
+        "signature": "GetFlowsDatatablesDivisionview(datatableId, expand)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Datatable"
+    },
+    "GET /api/v2/flows/datatables/divisionviews": {
+        "operationId": "getflowsdatatablesdivisionviews",
+        "functionName": "GetFlowsDatatablesDivisionviews",
+        "signature": "GetFlowsDatatablesDivisionviews(expand, pageNumber, pageSize, sortBy, sortOrder, divisionId, name)",
+        "parameters": [
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Datatablesdomainentitylisting"
+    },
+    "GET /api/v2/flows/divisionviews": {
+        "operationId": "getflowsdivisionviews",
+        "functionName": "GetFlowsDivisionviews",
+        "signature": "GetFlowsDivisionviews(varType, pageNumber, pageSize, sortBy, sortOrder, id, name, publishVersionId, publishedAfter, publishedBefore, divisionId, includeSchemas)",
+        "parameters": [
+            {
+                "name": "varType",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "publishVersionId",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "publishedAfter",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "publishedBefore",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "includeSchemas",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Flowdivisionviewentitylisting"
+    },
+    "GET /api/v2/flows/executions/{flowExecutionId}": {
+        "operationId": "getflowsexecution",
+        "functionName": "GetFlowsExecution",
+        "signature": "GetFlowsExecution(flowExecutionId)",
+        "parameters": [
+            {
+                "name": "flowExecutionId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flowruntimeexecution"
+    },
+    "GET /api/v2/flows/instances/{instanceId}": {
+        "operationId": "getflowsinstance",
+        "functionName": "GetFlowsInstance",
+        "signature": "GetFlowsInstance(instanceId, expand)",
+        "parameters": [
+            {
+                "name": "instanceId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Getflowexecutiondatajobresult"
+    },
+    "GET /api/v2/flows/instances/jobs/{jobId}": {
+        "operationId": "getflowsinstancesjob",
+        "functionName": "GetFlowsInstancesJob",
+        "signature": "GetFlowsInstancesJob(jobId)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Getflowexecutiondatajobresult"
+    },
+    "GET /api/v2/flows/instances/querycapabilities": {
+        "operationId": "getflowsinstancesquerycapabilities",
+        "functionName": "GetFlowsInstancesQuerycapabilities",
+        "signature": "GetFlowsInstancesQuerycapabilities(expand)",
+        "parameters": [
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowsquerycriteriaresponse"
+    },
+    "GET /api/v2/flows/jobs/{jobId}": {
+        "operationId": "getflowsjob",
+        "functionName": "GetFlowsJob",
+        "signature": "GetFlowsJob(jobId, expand)",
+        "parameters": [
+            {
+                "name": "jobId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Architectjobstateresponse"
+    },
+    "GET /api/v2/flows/milestones/{milestoneId}": {
+        "operationId": "getflowsmilestone",
+        "functionName": "GetFlowsMilestone",
+        "signature": "GetFlowsMilestone(milestoneId)",
+        "parameters": [
+            {
+                "name": "milestoneId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flowmilestone"
+    },
+    "GET /api/v2/flows/milestones": {
+        "operationId": "getflowsmilestones",
+        "functionName": "GetFlowsMilestones",
+        "signature": "GetFlowsMilestones(pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "description",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nameOrDescription",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowmilestonelisting"
+    },
+    "GET /api/v2/flows/milestones/divisionviews": {
+        "operationId": "getflowsmilestonesdivisionviews",
+        "functionName": "GetFlowsMilestonesDivisionviews",
+        "signature": "GetFlowsMilestonesDivisionviews(pageNumber, pageSize, sortBy, sortOrder, id, name, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowmilestonedivisionviewentitylisting"
+    },
+    "GET /api/v2/flows/outcomes/{flowOutcomeId}": {
+        "operationId": "getflowsoutcome",
+        "functionName": "GetFlowsOutcome",
+        "signature": "GetFlowsOutcome(flowOutcomeId)",
+        "parameters": [
+            {
+                "name": "flowOutcomeId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flowoutcome"
+    },
+    "GET /api/v2/flows/outcomes": {
+        "operationId": "getflowsoutcomes",
+        "functionName": "GetFlowsOutcomes",
+        "signature": "GetFlowsOutcomes(pageNumber, pageSize, sortBy, sortOrder, id, name, description, nameOrDescription, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "description",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "nameOrDescription",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowoutcomelisting"
+    },
+    "GET /api/v2/flows/outcomes/divisionviews": {
+        "operationId": "getflowsoutcomesdivisionviews",
+        "functionName": "GetFlowsOutcomesDivisionviews",
+        "signature": "GetFlowsOutcomesDivisionviews(pageNumber, pageSize, sortBy, sortOrder, id, name, divisionId)",
+        "parameters": [
+            {
+                "name": "pageNumber",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "pageSize",
+                "type": "int",
+                "required": "false"
+            },
+            {
+                "name": "sortBy",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "sortOrder",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "id",
+                "type": "[]string",
+                "required": "false"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "required": "false"
+            },
+            {
+                "name": "divisionId",
+                "type": "[]string",
+                "required": "false"
+            }
+        ],
+        "return": "Flowoutcomedivisionviewentitylisting"
+    },
+    "PATCH /api/v2/architect/grammars/{grammarId}": {
+        "operationId": "patcharchitectgrammar",
+        "functionName": "PatchArchitectGrammar",
+        "signature": "PatchArchitectGrammar(grammarId, body)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Grammar",
+                "required": "false"
+            }
+        ],
+        "return": "Grammar"
+    },
+    "PATCH /api/v2/architect/grammars/{grammarId}/languages/{languageCode}": {
+        "operationId": "patcharchitectgrammarlanguage",
+        "functionName": "PatchArchitectGrammarLanguage",
+        "signature": "PatchArchitectGrammarLanguage(grammarId, languageCode, body)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Grammarlanguageupdate",
+                "required": "false"
+            }
+        ],
+        "return": "Grammarlanguage"
+    },
+    "POST /api/v2/architect/dependencytracking/build": {
+        "operationId": "postarchitectdependencytrackingbuild",
+        "functionName": "PostArchitectDependencytrackingBuild",
+        "signature": "PostArchitectDependencytrackingBuild()"
+        
+    },
+    "POST /api/v2/architect/emergencygroups": {
+        "operationId": "postarchitectemergencygroups",
+        "functionName": "PostArchitectEmergencygroups",
+        "signature": "PostArchitectEmergencygroups(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Emergencygroup",
+                "required": "true"
+            }
+        ],
+        "return": "Emergencygroup"
+    },
+    "POST /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/dtmf": {
+        "operationId": "postarchitectgrammarlanguagefilesdtmf",
+        "functionName": "PostArchitectGrammarLanguageFilesDtmf",
+        "signature": "PostArchitectGrammarLanguageFilesDtmf(grammarId, languageCode, body)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Grammarfileuploadrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    },
+    "POST /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/voice": {
+        "operationId": "postarchitectgrammarlanguagefilesvoice",
+        "functionName": "PostArchitectGrammarLanguageFilesVoice",
+        "signature": "PostArchitectGrammarLanguageFilesVoice(grammarId, languageCode, body)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Grammarfileuploadrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Uploadurlresponse"
+    },
+    "POST /api/v2/architect/grammars/{grammarId}/languages": {
+        "operationId": "postarchitectgrammarlanguages",
+        "functionName": "PostArchitectGrammarLanguages",
+        "signature": "PostArchitectGrammarLanguages(grammarId, body)",
+        "parameters": [
+            {
+                "name": "grammarId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Grammarlanguage",
+                "required": "true"
+            }
+        ],
+        "return": "Grammarlanguage"
+    },
+    "POST /api/v2/architect/grammars": {
+        "operationId": "postarchitectgrammars",
+        "functionName": "PostArchitectGrammars",
+        "signature": "PostArchitectGrammars(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Grammar",
+                "required": "true"
+            }
+        ],
+        "return": "Grammar"
+    },
+    "POST /api/v2/architect/ivrs": {
+        "operationId": "postarchitectivrs",
+        "functionName": "PostArchitectIvrs",
+        "signature": "PostArchitectIvrs(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Ivr",
+                "required": "true"
+            }
+        ],
+        "return": "Ivr"
+    },
+    "POST /api/v2/architect/prompts/{promptId}/history": {
+        "operationId": "postarchitectprompthistory",
+        "functionName": "PostArchitectPromptHistory",
+        "signature": "PostArchitectPromptHistory(promptId)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Operation"
+    },
+    "POST /api/v2/architect/prompts/{promptId}/resources": {
+        "operationId": "postarchitectpromptresources",
+        "functionName": "PostArchitectPromptResources",
+        "signature": "PostArchitectPromptResources(promptId, body)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Promptassetcreate",
+                "required": "true"
+            }
+        ],
+        "return": "Promptasset"
+    },
+    "POST /api/v2/architect/prompts": {
+        "operationId": "postarchitectprompts",
+        "functionName": "PostArchitectPrompts",
+        "signature": "PostArchitectPrompts(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Prompt",
+                "required": "true"
+            }
+        ],
+        "return": "Prompt"
+    },
+    "POST /api/v2/architect/schedulegroups": {
+        "operationId": "postarchitectschedulegroups",
+        "functionName": "PostArchitectSchedulegroups",
+        "signature": "PostArchitectSchedulegroups(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Schedulegroup",
+                "required": "true"
+            }
+        ],
+        "return": "Schedulegroup"
+    },
+    "POST /api/v2/architect/schedules": {
+        "operationId": "postarchitectschedules",
+        "functionName": "PostArchitectSchedules",
+        "signature": "PostArchitectSchedules(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Schedule",
+                "required": "true"
+            }
+        ],
+        "return": "Schedule"
+    },
+    "POST /api/v2/architect/systemprompts/{promptId}/history": {
+        "operationId": "postarchitectsystemprompthistory",
+        "functionName": "PostArchitectSystempromptHistory",
+        "signature": "PostArchitectSystempromptHistory(promptId)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Operation"
+    },
+    "POST /api/v2/architect/systemprompts/{promptId}/resources": {
+        "operationId": "postarchitectsystempromptresources",
+        "functionName": "PostArchitectSystempromptResources",
+        "signature": "PostArchitectSystempromptResources(promptId, body)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Systempromptasset",
+                "required": "true"
+            }
+        ],
+        "return": "Systempromptasset"
+    },
+    "POST /api/v2/flows/{flowId}/history": {
+        "operationId": "postflowhistory",
+        "functionName": "PostFlowHistory",
+        "signature": "PostFlowHistory(flowId)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Operation"
+    },
+    "POST /api/v2/flows/{flowId}/versions": {
+        "operationId": "postflowversions",
+        "functionName": "PostFlowVersions",
+        "signature": "PostFlowVersions(flowId, body)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "interface{}",
+                "required": "true"
+            }
+        ],
+        "return": "Flowversion"
+    },
+    "POST /api/v2/flows": {
+        "operationId": "postflows",
+        "functionName": "PostFlows",
+        "signature": "PostFlows(body, language)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Flow",
+                "required": "true"
+            },
+            {
+                "name": "language",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Flow"
+    },
+    "POST /api/v2/flows/actions/checkin": {
+        "operationId": "postflowsactionscheckin",
+        "functionName": "PostFlowsActionsCheckin",
+        "signature": "PostFlowsActionsCheckin(flow)",
+        "parameters": [
+            {
+                "name": "flow",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Operation"
+    },
+    "POST /api/v2/flows/actions/checkout": {
+        "operationId": "postflowsactionscheckout",
+        "functionName": "PostFlowsActionsCheckout",
+        "signature": "PostFlowsActionsCheckout(flow)",
+        "parameters": [
+            {
+                "name": "flow",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flow"
+    },
+    "POST /api/v2/flows/actions/deactivate": {
+        "operationId": "postflowsactionsdeactivate",
+        "functionName": "PostFlowsActionsDeactivate",
+        "signature": "PostFlowsActionsDeactivate(flow)",
+        "parameters": [
+            {
+                "name": "flow",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flow"
+    },
+    "POST /api/v2/flows/actions/publish": {
+        "operationId": "postflowsactionspublish",
+        "functionName": "PostFlowsActionsPublish",
+        "signature": "PostFlowsActionsPublish(flow, version)",
+        "parameters": [
+            {
+                "name": "flow",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "version",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Operation"
+    },
+    "POST /api/v2/flows/actions/revert": {
+        "operationId": "postflowsactionsrevert",
+        "functionName": "PostFlowsActionsRevert",
+        "signature": "PostFlowsActionsRevert(flow)",
+        "parameters": [
+            {
+                "name": "flow",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flow"
+    },
+    "POST /api/v2/flows/actions/unlock": {
+        "operationId": "postflowsactionsunlock",
+        "functionName": "PostFlowsActionsUnlock",
+        "signature": "PostFlowsActionsUnlock(flow)",
+        "parameters": [
+            {
+                "name": "flow",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Flow"
+    },
+    "POST /api/v2/flows/datatables/{datatableId}/export/jobs": {
+        "operationId": "postflowsdatatableexportjobs",
+        "functionName": "PostFlowsDatatableExportJobs",
+        "signature": "PostFlowsDatatableExportJobs(datatableId)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            }
+        ],
+        "return": "Datatableexportjob"
+    },
+    "POST /api/v2/flows/datatables/{datatableId}/import/jobs": {
+        "operationId": "postflowsdatatableimportjobs",
+        "functionName": "PostFlowsDatatableImportJobs",
+        "signature": "PostFlowsDatatableImportJobs(datatableId, body)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Datatableimportjob",
+                "required": "true"
+            }
+        ],
+        "return": "Datatableimportjob"
+    },
+    "POST /api/v2/flows/datatables/{datatableId}/rows": {
+        "operationId": "postflowsdatatablerows",
+        "functionName": "PostFlowsDatatableRows",
+        "signature": "PostFlowsDatatableRows(datatableId, dataTableRow)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "dataTableRow",
+                "type": "map[string]interface{}",
+                "required": "true"
+            }
+        ],
+        "return": "map[string]interface{}"
+    },
+    "POST /api/v2/flows/datatables": {
+        "operationId": "postflowsdatatables",
+        "functionName": "PostFlowsDatatables",
+        "signature": "PostFlowsDatatables(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Datatable",
+                "required": "true"
+            }
+        ],
+        "return": "Datatable"
+    },
+    "POST /api/v2/flows/executions": {
+        "operationId": "postflowsexecutions",
+        "functionName": "PostFlowsExecutions",
+        "signature": "PostFlowsExecutions(flowLaunchRequest)",
+        "parameters": [
+            {
+                "name": "flowLaunchRequest",
+                "type": "Flowexecutionlaunchrequest",
+                "required": "true"
+            }
+        ],
+        "return": "Flowexecutionlaunchresponse"
+    },
+    "POST /api/v2/flows/instances/jobs": {
+        "operationId": "postflowsinstancesjobs",
+        "functionName": "PostFlowsInstancesJobs",
+        "signature": "PostFlowsInstancesJobs(body, expand)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Executiondatarequest",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Getflowexecutiondatajobresult"
+    },
+    "POST /api/v2/flows/instances/query": {
+        "operationId": "postflowsinstancesquery",
+        "functionName": "PostFlowsInstancesQuery",
+        "signature": "PostFlowsInstancesQuery(body, indexOnly)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Criteriaquery",
+                "required": "true"
+            },
+            {
+                "name": "indexOnly",
+                "type": "bool",
+                "required": "false"
+            }
+        ],
+        "return": "Flowresultentitylisting"
+    },
+    "POST /api/v2/flows/jobs": {
+        "operationId": "postflowsjobs",
+        "functionName": "PostFlowsJobs",
+        "signature": "PostFlowsJobs()",
+        
+        "return": "Registerarchitectjobresponse"
+    },
+    "POST /api/v2/flows/milestones": {
+        "operationId": "postflowsmilestones",
+        "functionName": "PostFlowsMilestones",
+        "signature": "PostFlowsMilestones(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Flowmilestone",
+                "required": "false"
+            }
+        ],
+        "return": "Flowmilestone"
+    },
+    "POST /api/v2/flows/outcomes": {
+        "operationId": "postflowsoutcomes",
+        "functionName": "PostFlowsOutcomes",
+        "signature": "PostFlowsOutcomes(body)",
+        "parameters": [
+            {
+                "name": "body",
+                "type": "Flowoutcome",
+                "required": "false"
+            }
+        ],
+        "return": "Flowoutcome"
+    },
+    "PUT /api/v2/architect/emergencygroups/{emergencyGroupId}": {
+        "operationId": "putarchitectemergencygroup",
+        "functionName": "PutArchitectEmergencygroup",
+        "signature": "PutArchitectEmergencygroup(emergencyGroupId, body)",
+        "parameters": [
+            {
+                "name": "emergencyGroupId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Emergencygroup",
+                "required": "true"
+            }
+        ],
+        "return": "Emergencygroup"
+    },
+    "PUT /api/v2/architect/ivrs/{ivrId}": {
+        "operationId": "putarchitectivr",
+        "functionName": "PutArchitectIvr",
+        "signature": "PutArchitectIvr(ivrId, body)",
+        "parameters": [
+            {
+                "name": "ivrId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Ivr",
+                "required": "true"
+            }
+        ],
+        "return": "Ivr"
+    },
+    "PUT /api/v2/architect/prompts/{promptId}": {
+        "operationId": "putarchitectprompt",
+        "functionName": "PutArchitectPrompt",
+        "signature": "PutArchitectPrompt(promptId, body)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Prompt",
+                "required": "true"
+            }
+        ],
+        "return": "Prompt"
+    },
+    "PUT /api/v2/architect/prompts/{promptId}/resources/{languageCode}": {
+        "operationId": "putarchitectpromptresource",
+        "functionName": "PutArchitectPromptResource",
+        "signature": "PutArchitectPromptResource(promptId, languageCode, body)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Promptasset",
+                "required": "true"
+            }
+        ],
+        "return": "Promptasset"
+    },
+    "PUT /api/v2/architect/schedules/{scheduleId}": {
+        "operationId": "putarchitectschedule",
+        "functionName": "PutArchitectSchedule",
+        "signature": "PutArchitectSchedule(scheduleId, body)",
+        "parameters": [
+            {
+                "name": "scheduleId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Schedule",
+                "required": "true"
+            }
+        ],
+        "return": "Schedule"
+    },
+    "PUT /api/v2/architect/schedulegroups/{scheduleGroupId}": {
+        "operationId": "putarchitectschedulegroup",
+        "functionName": "PutArchitectSchedulegroup",
+        "signature": "PutArchitectSchedulegroup(scheduleGroupId, body)",
+        "parameters": [
+            {
+                "name": "scheduleGroupId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Schedulegroup",
+                "required": "true"
+            }
+        ],
+        "return": "Schedulegroup"
+    },
+    "PUT /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}": {
+        "operationId": "putarchitectsystempromptresource",
+        "functionName": "PutArchitectSystempromptResource",
+        "signature": "PutArchitectSystempromptResource(promptId, languageCode, body)",
+        "parameters": [
+            {
+                "name": "promptId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "languageCode",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Systempromptasset",
+                "required": "true"
+            }
+        ],
+        "return": "Systempromptasset"
+    },
+    "PUT /api/v2/flows/{flowId}": {
+        "operationId": "putflow",
+        "functionName": "PutFlow",
+        "signature": "PutFlow(flowId, body)",
+        "parameters": [
+            {
+                "name": "flowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Flow",
+                "required": "true"
+            }
+        ],
+        "return": "Flow"
+    },
+    "PUT /api/v2/flows/datatables/{datatableId}": {
+        "operationId": "putflowsdatatable",
+        "functionName": "PutFlowsDatatable",
+        "signature": "PutFlowsDatatable(datatableId, body, expand)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Datatable",
+                "required": "true"
+            },
+            {
+                "name": "expand",
+                "type": "string",
+                "required": "false"
+            }
+        ],
+        "return": "Datatable"
+    },
+    "PUT /api/v2/flows/datatables/{datatableId}/rows/{rowId}": {
+        "operationId": "putflowsdatatablerow",
+        "functionName": "PutFlowsDatatableRow",
+        "signature": "PutFlowsDatatableRow(datatableId, rowId, body)",
+        "parameters": [
+            {
+                "name": "datatableId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "rowId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "interface{}",
+                "required": "false"
+            }
+        ],
+        "return": "map[string]interface{}"
+    },
+    "PUT /api/v2/flows/milestones/{milestoneId}": {
+        "operationId": "putflowsmilestone",
+        "functionName": "PutFlowsMilestone",
+        "signature": "PutFlowsMilestone(milestoneId, body)",
+        "parameters": [
+            {
+                "name": "milestoneId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Flowmilestone",
+                "required": "false"
+            }
+        ],
+        "return": "Flowmilestone"
+    },
+    "PUT /api/v2/flows/outcomes/{flowOutcomeId}": {
+        "operationId": "putflowsoutcome",
+        "functionName": "PutFlowsOutcome",
+        "signature": "PutFlowsOutcome(flowOutcomeId, body)",
+        "parameters": [
+            {
+                "name": "flowOutcomeId",
+                "type": "string",
+                "required": "true"
+            },
+            {
+                "name": "body",
+                "type": "Flowoutcome",
+                "required": "false"
+            }
+        ],
+        "return": "Operation"
+    }
+    
+}
