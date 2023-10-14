@@ -19,6 +19,9 @@ type Speechtextanalyticssettingsrequest struct {
 
 	// TextAnalyticsEnabled - Setting to enable/disable text analytics
 	TextAnalyticsEnabled *bool `json:"textAnalyticsEnabled,omitempty"`
+
+	// AgentEmpathyEnabled - Setting to enable/disable Agent Empathy setting
+	AgentEmpathyEnabled *bool `json:"agentEmpathyEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Speechtextanalyticssettingsrequest) MarshalJSON() ([]byte, error) {
 		ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
 		
 		TextAnalyticsEnabled *bool `json:"textAnalyticsEnabled,omitempty"`
+		
+		AgentEmpathyEnabled *bool `json:"agentEmpathyEnabled,omitempty"`
 		Alias
 	}{ 
 		DefaultProgramId: o.DefaultProgramId,
@@ -96,6 +101,8 @@ func (o Speechtextanalyticssettingsrequest) MarshalJSON() ([]byte, error) {
 		ExpectedDialects: o.ExpectedDialects,
 		
 		TextAnalyticsEnabled: o.TextAnalyticsEnabled,
+		
+		AgentEmpathyEnabled: o.AgentEmpathyEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +125,10 @@ func (o *Speechtextanalyticssettingsrequest) UnmarshalJSON(b []byte) error {
 	
 	if TextAnalyticsEnabled, ok := SpeechtextanalyticssettingsrequestMap["textAnalyticsEnabled"].(bool); ok {
 		o.TextAnalyticsEnabled = &TextAnalyticsEnabled
+	}
+    
+	if AgentEmpathyEnabled, ok := SpeechtextanalyticssettingsrequestMap["agentEmpathyEnabled"].(bool); ok {
+		o.AgentEmpathyEnabled = &AgentEmpathyEnabled
 	}
     
 

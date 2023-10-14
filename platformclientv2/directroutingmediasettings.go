@@ -11,11 +11,8 @@ import (
 type Directroutingmediasettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - Toggle that enables Direct Routing for this media type.
-	Enabled *bool `json:"enabled,omitempty"`
-
-	// InboundFlow - The Direct Routing inbound flow id for this media type.
-	InboundFlow *Addressableentityref `json:"inboundFlow,omitempty"`
+	// UseAgentAddressOutbound - Toggle that enables using an agent's Direct Routing address outbound on behalf of queue for this media type.
+	UseAgentAddressOutbound *bool `json:"useAgentAddressOutbound,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -81,14 +78,10 @@ func (o Directroutingmediasettings) MarshalJSON() ([]byte, error) {
 	type Alias Directroutingmediasettings
 	
 	return json.Marshal(&struct { 
-		Enabled *bool `json:"enabled,omitempty"`
-		
-		InboundFlow *Addressableentityref `json:"inboundFlow,omitempty"`
+		UseAgentAddressOutbound *bool `json:"useAgentAddressOutbound,omitempty"`
 		Alias
 	}{ 
-		Enabled: o.Enabled,
-		
-		InboundFlow: o.InboundFlow,
+		UseAgentAddressOutbound: o.UseAgentAddressOutbound,
 		Alias:    (Alias)(o),
 	})
 }
@@ -100,15 +93,10 @@ func (o *Directroutingmediasettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Enabled, ok := DirectroutingmediasettingsMap["enabled"].(bool); ok {
-		o.Enabled = &Enabled
+	if UseAgentAddressOutbound, ok := DirectroutingmediasettingsMap["useAgentAddressOutbound"].(bool); ok {
+		o.UseAgentAddressOutbound = &UseAgentAddressOutbound
 	}
     
-	if InboundFlow, ok := DirectroutingmediasettingsMap["inboundFlow"].(map[string]interface{}); ok {
-		InboundFlowString, _ := json.Marshal(InboundFlow)
-		json.Unmarshal(InboundFlowString, &o.InboundFlow)
-	}
-	
 
 	return nil
 }

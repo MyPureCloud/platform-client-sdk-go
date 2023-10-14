@@ -12,7 +12,7 @@ type Mediaendpointstatistics struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Trunk - Trunk information utilized when creating the media endpoint
-	Trunk *Namedentity `json:"trunk,omitempty"`
+	Trunk *Mediastatisticstrunkinfo `json:"trunk,omitempty"`
 
 	// Station - Station information associated with media endpoint
 	Station *Namedentity `json:"station,omitempty"`
@@ -90,7 +90,7 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 	type Alias Mediaendpointstatistics
 	
 	return json.Marshal(&struct { 
-		Trunk *Namedentity `json:"trunk,omitempty"`
+		Trunk *Mediastatisticstrunkinfo `json:"trunk,omitempty"`
 		
 		Station *Namedentity `json:"station,omitempty"`
 		

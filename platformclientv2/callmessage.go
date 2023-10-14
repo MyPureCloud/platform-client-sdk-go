@@ -7,25 +7,25 @@ import (
 	"strings"
 )
 
-// Speechtextanalyticssettingsresponse
-type Speechtextanalyticssettingsresponse struct { 
+// Callmessage
+type Callmessage struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// DefaultProgram - Setting to choose name for the default program for topic detection
-	DefaultProgram *Addressableentityref `json:"defaultProgram,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// ExpectedDialects - Setting to choose expected dialects
-	ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty"`
 
-	// TextAnalyticsEnabled - Setting to enable/disable text analytics
-	TextAnalyticsEnabled *bool `json:"textAnalyticsEnabled,omitempty"`
+	// Message - raw SIP message
+	Message *string `json:"message,omitempty"`
 
-	// AgentEmpathyEnabled - Setting to enable/disable Agent Empathy setting
-	AgentEmpathyEnabled *bool `json:"agentEmpathyEnabled,omitempty"`
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Speechtextanalyticssettingsresponse) SetField(field string, fieldValue interface{}) {
+func (o *Callmessage) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +46,7 @@ func (o *Speechtextanalyticssettingsresponse) SetField(field string, fieldValue 
 	o.SetFieldNames[field] = true
 }
 
-func (o Speechtextanalyticssettingsresponse) MarshalJSON() ([]byte, error) {
+func (o Callmessage) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,52 +84,50 @@ func (o Speechtextanalyticssettingsresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Speechtextanalyticssettingsresponse
+	type Alias Callmessage
 	
 	return json.Marshal(&struct { 
-		DefaultProgram *Addressableentityref `json:"defaultProgram,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
+		Name *string `json:"name,omitempty"`
 		
-		TextAnalyticsEnabled *bool `json:"textAnalyticsEnabled,omitempty"`
+		Message *string `json:"message,omitempty"`
 		
-		AgentEmpathyEnabled *bool `json:"agentEmpathyEnabled,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		DefaultProgram: o.DefaultProgram,
+		Id: o.Id,
 		
-		ExpectedDialects: o.ExpectedDialects,
+		Name: o.Name,
 		
-		TextAnalyticsEnabled: o.TextAnalyticsEnabled,
+		Message: o.Message,
 		
-		AgentEmpathyEnabled: o.AgentEmpathyEnabled,
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Speechtextanalyticssettingsresponse) UnmarshalJSON(b []byte) error {
-	var SpeechtextanalyticssettingsresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &SpeechtextanalyticssettingsresponseMap)
+func (o *Callmessage) UnmarshalJSON(b []byte) error {
+	var CallmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &CallmessageMap)
 	if err != nil {
 		return err
 	}
 	
-	if DefaultProgram, ok := SpeechtextanalyticssettingsresponseMap["defaultProgram"].(map[string]interface{}); ok {
-		DefaultProgramString, _ := json.Marshal(DefaultProgram)
-		json.Unmarshal(DefaultProgramString, &o.DefaultProgram)
-	}
-	
-	if ExpectedDialects, ok := SpeechtextanalyticssettingsresponseMap["expectedDialects"].([]interface{}); ok {
-		ExpectedDialectsString, _ := json.Marshal(ExpectedDialects)
-		json.Unmarshal(ExpectedDialectsString, &o.ExpectedDialects)
-	}
-	
-	if TextAnalyticsEnabled, ok := SpeechtextanalyticssettingsresponseMap["textAnalyticsEnabled"].(bool); ok {
-		o.TextAnalyticsEnabled = &TextAnalyticsEnabled
+	if Id, ok := CallmessageMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if AgentEmpathyEnabled, ok := SpeechtextanalyticssettingsresponseMap["agentEmpathyEnabled"].(bool); ok {
-		o.AgentEmpathyEnabled = &AgentEmpathyEnabled
+	if Name, ok := CallmessageMap["name"].(string); ok {
+		o.Name = &Name
+	}
+    
+	if Message, ok := CallmessageMap["message"].(string); ok {
+		o.Message = &Message
+	}
+    
+	if SelfUri, ok := CallmessageMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 
@@ -137,7 +135,7 @@ func (o *Speechtextanalyticssettingsresponse) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Speechtextanalyticssettingsresponse) String() string {
+func (o *Callmessage) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

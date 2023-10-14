@@ -1898,6 +1898,11 @@ func (a ChatApi) PostChatsRooms(body Createroomrequest) (*Createroomresponse, *A
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ChatApi->PostChatsRooms")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)

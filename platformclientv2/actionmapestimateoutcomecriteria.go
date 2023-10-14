@@ -19,6 +19,12 @@ type Actionmapestimateoutcomecriteria struct {
 
 	// Probability - Additional probability condition, where if set, the action map will trigger if the current outcome probability is lower or equal to the value.
 	Probability *float32 `json:"probability,omitempty"`
+
+	// Quantile - Represents the quantity of sessions that have a maximum probability less than the predicted probability.
+	Quantile *float32 `json:"quantile,omitempty"`
+
+	// MaxQuantile - Represents the quantity of sessions that have a maximum probability less than the predicted session max probability.
+	MaxQuantile *float32 `json:"maxQuantile,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Actionmapestimateoutcomecriteria) MarshalJSON() ([]byte, error) {
 		MaxProbability *float32 `json:"maxProbability,omitempty"`
 		
 		Probability *float32 `json:"probability,omitempty"`
+		
+		Quantile *float32 `json:"quantile,omitempty"`
+		
+		MaxQuantile *float32 `json:"maxQuantile,omitempty"`
 		Alias
 	}{ 
 		OutcomeId: o.OutcomeId,
@@ -96,6 +106,10 @@ func (o Actionmapestimateoutcomecriteria) MarshalJSON() ([]byte, error) {
 		MaxProbability: o.MaxProbability,
 		
 		Probability: o.Probability,
+		
+		Quantile: o.Quantile,
+		
+		MaxQuantile: o.MaxQuantile,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +133,16 @@ func (o *Actionmapestimateoutcomecriteria) UnmarshalJSON(b []byte) error {
 	if Probability, ok := ActionmapestimateoutcomecriteriaMap["probability"].(float64); ok {
 		ProbabilityFloat32 := float32(Probability)
 		o.Probability = &ProbabilityFloat32
+	}
+	
+	if Quantile, ok := ActionmapestimateoutcomecriteriaMap["quantile"].(float64); ok {
+		QuantileFloat32 := float32(Quantile)
+		o.Quantile = &QuantileFloat32
+	}
+	
+	if MaxQuantile, ok := ActionmapestimateoutcomecriteriaMap["maxQuantile"].(float64); ok {
+		MaxQuantileFloat32 := float32(MaxQuantile)
+		o.MaxQuantile = &MaxQuantileFloat32
 	}
 	
 

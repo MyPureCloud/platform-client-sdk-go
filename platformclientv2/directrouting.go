@@ -12,7 +12,7 @@ type Directrouting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// CallMediaSettings - Direct Routing Settings specific to Call media.
-	CallMediaSettings *Directroutingcallmediasettings `json:"callMediaSettings,omitempty"`
+	CallMediaSettings *Directroutingmediasettings `json:"callMediaSettings,omitempty"`
 
 	// EmailMediaSettings - Direct Routing Settings specific to Email media.
 	EmailMediaSettings *Directroutingmediasettings `json:"emailMediaSettings,omitempty"`
@@ -93,7 +93,7 @@ func (o Directrouting) MarshalJSON() ([]byte, error) {
 	type Alias Directrouting
 	
 	return json.Marshal(&struct { 
-		CallMediaSettings *Directroutingcallmediasettings `json:"callMediaSettings,omitempty"`
+		CallMediaSettings *Directroutingmediasettings `json:"callMediaSettings,omitempty"`
 		
 		EmailMediaSettings *Directroutingmediasettings `json:"emailMediaSettings,omitempty"`
 		

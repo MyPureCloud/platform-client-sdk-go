@@ -6478,7 +6478,7 @@
       {
         "name": "body",
         "type": "Createroomrequest",
-        "required": "false"
+        "required": "true"
       }
     ],
     "return": "Createroomresponse",
@@ -36061,6 +36061,39 @@
     "signature": "GetTelephonyMediaregions()",
     "return": "Mediaregions",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyApiWithConfig(config)\n\n// Retrieve the list of AWS regions media can stream through.\ndata, response, err := apiInstance.GetTelephonyMediaregions()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyMediaregions: %v\\n\", err)\n}"
+  },
+  "gettelephonysipmessagesconversation": {
+    "operationId": "gettelephonysipmessagesconversation",
+    "functionName": "GetTelephonySipmessagesConversation",
+    "signature": "GetTelephonySipmessagesConversation(conversationId)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Callmessage",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyApiWithConfig(config)\n\nvar conversationId string // Conversation id\n// Get a SIP message.\ndata, response, err := apiInstance.GetTelephonySipmessagesConversation(conversationId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonySipmessagesConversation: %v\\n\", err)\n}"
+  },
+  "gettelephonysipmessagesconversationheaders": {
+    "operationId": "gettelephonysipmessagesconversationheaders",
+    "functionName": "GetTelephonySipmessagesConversationHeaders",
+    "signature": "GetTelephonySipmessagesConversationHeaders(conversationId, keys)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "keys",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Callheader",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyApiWithConfig(config)\n\nvar conversationId string // Conversation id\nvar keys []string // comma-separated list of header identifiers to query. e.g. ruri,to,from\n// Get SIP headers.\ndata, response, err := apiInstance.GetTelephonySipmessagesConversationHeaders(conversationId, keys)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonySipmessagesConversationHeaders: %v\\n\", err)\n}"
   },
   "gettelephonysiptraces": {
     "operationId": "gettelephonysiptraces",

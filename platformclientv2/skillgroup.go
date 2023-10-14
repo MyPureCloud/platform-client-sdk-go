@@ -33,6 +33,9 @@ type Skillgroup struct {
 	// DateCreated - Created date/time of the skill group. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// Status - Group's filling status
+	Status *string `json:"status,omitempty"`
+
 	// SkillConditions - Conditions for this group
 	SkillConditions *[]Skillgroupcondition `json:"skillConditions,omitempty"`
 
@@ -133,6 +136,8 @@ func (o Skillgroup) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
 		SkillConditions *[]Skillgroupcondition `json:"skillConditions,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -151,6 +156,8 @@ func (o Skillgroup) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		DateCreated: DateCreated,
+		
+		Status: o.Status,
 		
 		SkillConditions: o.SkillConditions,
 		
@@ -198,6 +205,10 @@ func (o *Skillgroup) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
+	if Status, ok := SkillgroupMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
 	if SkillConditions, ok := SkillgroupMap["skillConditions"].([]interface{}); ok {
 		SkillConditionsString, _ := json.Marshal(SkillConditions)
 		json.Unmarshal(SkillConditionsString, &o.SkillConditions)

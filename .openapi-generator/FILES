@@ -1220,6 +1220,8 @@ docs/GetTelephonyProvidersEdgesTrunkbasesettingsTemplate-example.txt
 docs/GetTelephonyProvidersEdgesTrunks-example.txt
 docs/GetTelephonyProvidersEdgesTrunksMetrics-example.txt
 docs/GetTelephonyProvidersEdgesTrunkswithrecording-example.txt
+docs/GetTelephonySipmessagesConversation-example.txt
+docs/GetTelephonySipmessagesConversationHeaders-example.txt
 docs/GetTelephonySiptraces-example.txt
 docs/GetTelephonySiptracesDownloadDownloadId-example.txt
 docs/GetTextbotsBotsSearch-example.txt
@@ -2890,12 +2892,14 @@ platformclientv2/callforwardingeventcall.go
 platformclientv2/callforwardingeventcallforwarding.go
 platformclientv2/callforwardingeventtarget.go
 platformclientv2/callforwardingeventuser.go
+platformclientv2/callheader.go
 platformclientv2/callhistoryconversation.go
 platformclientv2/callhistoryconversationentitylisting.go
 platformclientv2/callhistoryparticipant.go
 platformclientv2/callmediaparticipant.go
 platformclientv2/callmediapolicy.go
 platformclientv2/callmediapolicyconditions.go
+platformclientv2/callmessage.go
 platformclientv2/callrecord.go
 platformclientv2/callroute.go
 platformclientv2/calltarget.go
@@ -3589,7 +3593,6 @@ platformclientv2/digitlength.go
 platformclientv2/digits.go
 platformclientv2/directoryuserdeviceslisting.go
 platformclientv2/directrouting.go
-platformclientv2/directroutingcallmediasettings.go
 platformclientv2/directroutingmediasettings.go
 platformclientv2/disallowedentitylearningassignmentitem.go
 platformclientv2/disallowedentitylearningassignmentreference.go
@@ -4595,6 +4598,7 @@ platformclientv2/mediartpstatistics.go
 platformclientv2/mediasettings.go
 platformclientv2/mediastatistics.go
 platformclientv2/mediastatisticslisting.go
+platformclientv2/mediastatisticstrunkinfo.go
 platformclientv2/mediasummary.go
 platformclientv2/mediasummarydetail.go
 platformclientv2/mediatranscription.go

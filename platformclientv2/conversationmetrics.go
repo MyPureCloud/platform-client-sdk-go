@@ -23,6 +23,9 @@ type Conversationmetrics struct {
 	// SentimentTrendClass - The Sentiment Trend Class
 	SentimentTrendClass *string `json:"sentimentTrendClass,omitempty"`
 
+	// EmpathyScores - The Empathy Scores
+	EmpathyScores *[]Empathyscore `json:"empathyScores,omitempty"`
+
 	// ParticipantMetrics - The Participant Metrics
 	ParticipantMetrics *Participantmetrics `json:"participantMetrics,omitempty"`
 }
@@ -98,6 +101,8 @@ func (o Conversationmetrics) MarshalJSON() ([]byte, error) {
 		
 		SentimentTrendClass *string `json:"sentimentTrendClass,omitempty"`
 		
+		EmpathyScores *[]Empathyscore `json:"empathyScores,omitempty"`
+		
 		ParticipantMetrics *Participantmetrics `json:"participantMetrics,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Conversationmetrics) MarshalJSON() ([]byte, error) {
 		SentimentTrend: o.SentimentTrend,
 		
 		SentimentTrendClass: o.SentimentTrendClass,
+		
+		EmpathyScores: o.EmpathyScores,
 		
 		ParticipantMetrics: o.ParticipantMetrics,
 		Alias:    (Alias)(o),
@@ -138,6 +145,11 @@ func (o *Conversationmetrics) UnmarshalJSON(b []byte) error {
 		o.SentimentTrendClass = &SentimentTrendClass
 	}
     
+	if EmpathyScores, ok := ConversationmetricsMap["empathyScores"].([]interface{}); ok {
+		EmpathyScoresString, _ := json.Marshal(EmpathyScores)
+		json.Unmarshal(EmpathyScoresString, &o.EmpathyScores)
+	}
+	
 	if ParticipantMetrics, ok := ConversationmetricsMap["participantMetrics"].(map[string]interface{}); ok {
 		ParticipantMetricsString, _ := json.Marshal(ParticipantMetrics)
 		json.Unmarshal(ParticipantMetricsString, &o.ParticipantMetrics)
