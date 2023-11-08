@@ -1336,6 +1336,104 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 	return successPayload, response, err
 }
 
+// GetJourneyDeploymentCustomerPing invokes GET /api/v2/journey/deployments/{deploymentId}/customers/{customerCookieId}/ping
+//
+// Send a ping.
+func (a JourneyApi) GetJourneyDeploymentCustomerPing(deploymentId string, customerCookieId string, sessionId string, dl string, dt string, appNamespace string, sinceLastBeaconMilliseconds int) (*Deploymentping, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/journey/deployments/{deploymentId}/customers/{customerCookieId}/ping"
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
+	path = strings.Replace(path, "{customerCookieId}", url.PathEscape(fmt.Sprintf("%v", customerCookieId)), -1)
+	defaultReturn := new(Deploymentping)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'deploymentId' is set
+	if &deploymentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'deploymentId' when calling JourneyApi->GetJourneyDeploymentCustomerPing")
+	}
+	// verify the required parameter 'customerCookieId' is set
+	if &customerCookieId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'customerCookieId' when calling JourneyApi->GetJourneyDeploymentCustomerPing")
+	}
+	// verify the required parameter 'sessionId' is set
+	if &sessionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sessionId' when calling JourneyApi->GetJourneyDeploymentCustomerPing")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["dl"] = a.Configuration.APIClient.ParameterToString(dl, "")
+	
+	queryParams["dt"] = a.Configuration.APIClient.ParameterToString(dt, "")
+	
+	queryParams["appNamespace"] = a.Configuration.APIClient.ParameterToString(appNamespace, "")
+	
+	queryParams["sessionId"] = a.Configuration.APIClient.ParameterToString(sessionId, "")
+	
+	queryParams["sinceLastBeaconMilliseconds"] = a.Configuration.APIClient.ParameterToString(sinceLastBeaconMilliseconds, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Deploymentping
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Deploymentping" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetJourneyOutcome invokes GET /api/v2/journey/outcomes/{outcomeId}
 //
 // Retrieve a single outcome.
@@ -3185,11 +3283,87 @@ func (a JourneyApi) PostJourneyActiontemplates(body Actiontemplate) (*Actiontemp
 	return successPayload, response, err
 }
 
+// PostJourneyDeploymentActionevent invokes POST /api/v2/journey/deployments/{deploymentId}/actionevent
+//
+// Sends an action event, which is used for changing the state of actions that have been offered to the user.
+func (a JourneyApi) PostJourneyDeploymentActionevent(deploymentId string, body Actioneventrequest) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/journey/deployments/{deploymentId}/actionevent"
+	path = strings.Replace(path, "{deploymentId}", url.PathEscape(fmt.Sprintf("%v", deploymentId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'deploymentId' is set
+	if &deploymentId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'deploymentId' when calling JourneyApi->PostJourneyDeploymentActionevent")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling JourneyApi->PostJourneyDeploymentActionevent")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PostJourneyDeploymentAppevents invokes POST /api/v2/journey/deployments/{deploymentId}/appevents
 //
 // Send a journey app event, used for tracking customer activity on an application.
-//
-// Preview: PostJourneyDeploymentAppevents is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyDeploymentAppevents(deploymentId string, body Appeventrequest) (*Appeventresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

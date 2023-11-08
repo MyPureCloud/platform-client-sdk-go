@@ -14,7 +14,7 @@ type Agentlessemailsendrequestdto struct {
 	// SenderType - The direction of the message.
 	SenderType *string `json:"senderType,omitempty"`
 
-	// ConversationId - The identifier of the conversation.
+	// ConversationId - The identifier of the conversation. This must be an email interaction.
 	ConversationId *string `json:"conversationId,omitempty"`
 
 	// FromAddress - The sender of the message.

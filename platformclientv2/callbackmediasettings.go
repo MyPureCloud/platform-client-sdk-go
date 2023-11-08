@@ -14,16 +14,16 @@ type Callbackmediasettings struct {
 	// EnableAutoAnswer - Indicates if auto-answer is enabled for the given media type or subtype (default is false).  Subtype settings take precedence over media type settings.
 	EnableAutoAnswer *bool `json:"enableAutoAnswer,omitempty"`
 
-	// AlertingTimeoutSeconds
+	// AlertingTimeoutSeconds - The alerting timeout for the media type, in seconds
 	AlertingTimeoutSeconds *int `json:"alertingTimeoutSeconds,omitempty"`
 
-	// ServiceLevel
+	// ServiceLevel - The targeted service level for the media type
 	ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
 
-	// AutoAnswerAlertToneSeconds
+	// AutoAnswerAlertToneSeconds - How long to play the alerting tone for an auto-answer interaction
 	AutoAnswerAlertToneSeconds *float64 `json:"autoAnswerAlertToneSeconds,omitempty"`
 
-	// ManualAnswerAlertToneSeconds
+	// ManualAnswerAlertToneSeconds - How long to play the alerting tone for a manual-answer interaction
 	ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
 
 	// SubTypeSettings - Map of media subtype to media subtype specific settings.

@@ -11,7 +11,7 @@ import (
 type Domainorganizationrolecreate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - role id
 	Id *string `json:"id,omitempty"`
 
 	// Name - The role name

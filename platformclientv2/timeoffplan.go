@@ -29,6 +29,9 @@ type Timeoffplan struct {
 	// DaysBeforeStartToExpireFromWaitlist - The number of days before the time off request start date for when the request will be expired from the waitlist.
 	DaysBeforeStartToExpireFromWaitlist *int `json:"daysBeforeStartToExpireFromWaitlist,omitempty"`
 
+	// HrisTimeOffType - Time off type, if this time off plan is associated with the integration.
+	HrisTimeOffType *Hristimeofftype `json:"hrisTimeOffType,omitempty"`
+
 	// Active - Whether this time off plan is currently being used by agents.
 	Active *bool `json:"active,omitempty"`
 
@@ -114,6 +117,8 @@ func (o Timeoffplan) MarshalJSON() ([]byte, error) {
 		
 		DaysBeforeStartToExpireFromWaitlist *int `json:"daysBeforeStartToExpireFromWaitlist,omitempty"`
 		
+		HrisTimeOffType *Hristimeofftype `json:"hrisTimeOffType,omitempty"`
+		
 		Active *bool `json:"active,omitempty"`
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
@@ -132,6 +137,8 @@ func (o Timeoffplan) MarshalJSON() ([]byte, error) {
 		AutoApprovalRule: o.AutoApprovalRule,
 		
 		DaysBeforeStartToExpireFromWaitlist: o.DaysBeforeStartToExpireFromWaitlist,
+		
+		HrisTimeOffType: o.HrisTimeOffType,
 		
 		Active: o.Active,
 		
@@ -174,6 +181,11 @@ func (o *Timeoffplan) UnmarshalJSON(b []byte) error {
 	if DaysBeforeStartToExpireFromWaitlist, ok := TimeoffplanMap["daysBeforeStartToExpireFromWaitlist"].(float64); ok {
 		DaysBeforeStartToExpireFromWaitlistInt := int(DaysBeforeStartToExpireFromWaitlist)
 		o.DaysBeforeStartToExpireFromWaitlist = &DaysBeforeStartToExpireFromWaitlistInt
+	}
+	
+	if HrisTimeOffType, ok := TimeoffplanMap["hrisTimeOffType"].(map[string]interface{}); ok {
+		HrisTimeOffTypeString, _ := json.Marshal(HrisTimeOffType)
+		json.Unmarshal(HrisTimeOffTypeString, &o.HrisTimeOffType)
 	}
 	
 	if Active, ok := TimeoffplanMap["active"].(bool); ok {

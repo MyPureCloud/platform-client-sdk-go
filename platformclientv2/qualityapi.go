@@ -2064,6 +2064,8 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 // GetQualityFormsEvaluations invokes GET /api/v2/quality/forms/evaluations
 //
 // Get the list of evaluation forms
+//
+// By default, \&quot;published\&quot; field is always returned as false for all evaluation forms. If you set \&quot;expand&#x3D;publishHistory\&quot;, then you will be able to get published versions for each corresponding evaluation form. In addition, \&quot;questionGroups\&quot;, the detailed information about evaluation form, is not returned by default. We will enhance this field in the future release.
 func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

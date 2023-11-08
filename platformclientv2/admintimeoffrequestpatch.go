@@ -18,10 +18,13 @@ type Admintimeoffrequestpatch struct {
 	// ActivityCodeId - The ID of the activity code associated with this time off request. Activity code must be of the TimeOff category
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`
 
+	// Paid - Whether this is a paid time off request
+	Paid *bool `json:"paid,omitempty"`
+
 	// Notes - Notes about the time off request
 	Notes *string `json:"notes,omitempty"`
 
-	// FullDayManagementUnitDates - A set of dates in yyyy-MM-dd format.  Should be interpreted in the management unit's configured time zone.
+	// FullDayManagementUnitDates - A set of dates in yyyy-MM-dd format. Should be interpreted in the management unit's configured time zone.
 	FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 
 	// PartialDayStartDateTimes - A set of start date-times in ISO-8601 format for partial day requests.
@@ -107,6 +110,8 @@ func (o Admintimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 		
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
+		Paid *bool `json:"paid,omitempty"`
+		
 		Notes *string `json:"notes,omitempty"`
 		
 		FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
@@ -125,6 +130,8 @@ func (o Admintimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		ActivityCodeId: o.ActivityCodeId,
+		
+		Paid: o.Paid,
 		
 		Notes: o.Notes,
 		
@@ -156,6 +163,10 @@ func (o *Admintimeoffrequestpatch) UnmarshalJSON(b []byte) error {
     
 	if ActivityCodeId, ok := AdmintimeoffrequestpatchMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
+	}
+    
+	if Paid, ok := AdmintimeoffrequestpatchMap["paid"].(bool); ok {
+		o.Paid = &Paid
 	}
     
 	if Notes, ok := AdmintimeoffrequestpatchMap["notes"].(string); ok {

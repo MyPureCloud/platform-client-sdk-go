@@ -33,9 +33,6 @@ type Appeventrequest struct {
 	// ReferrerUrl - The referrer URL of the first event in the app session.
 	ReferrerUrl *string `json:"referrerUrl,omitempty"`
 
-	// Session - Contains information about the app session the event belongs to. A session is expected to end once the application is closed or a customer has been idle for more than 30 minutes. Each session is tied to a single customer and a customer can be linked to multiple unique sessions.
-	Session *Appeventrequestsession `json:"session,omitempty"`
-
 	// SearchQuery - Represents the keywords in a customer search query.
 	SearchQuery *string `json:"searchQuery,omitempty"`
 
@@ -48,7 +45,7 @@ type Appeventrequest struct {
 	// CustomerCookieId - Cookie ID of the customer associated with the app event. This is expected to be set per application install or device and can be used to identify a single customer across multiple sessions. This identifier, along with others passed as traits, is used for identity resolution.
 	CustomerCookieId *string `json:"customerCookieId,omitempty"`
 
-	// CreatedDate - Timestamp indicating when the event actually took place. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// CreatedDate - UTC timestamp indicating when the event actually took place, events older than an hour will be rejected. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 }
 
@@ -137,8 +134,6 @@ func (o Appeventrequest) MarshalJSON() ([]byte, error) {
 		
 		ReferrerUrl *string `json:"referrerUrl,omitempty"`
 		
-		Session *Appeventrequestsession `json:"session,omitempty"`
-		
 		SearchQuery *string `json:"searchQuery,omitempty"`
 		
 		Attributes *map[string]Customeventattribute `json:"attributes,omitempty"`
@@ -163,8 +158,6 @@ func (o Appeventrequest) MarshalJSON() ([]byte, error) {
 		NetworkConnectivity: o.NetworkConnectivity,
 		
 		ReferrerUrl: o.ReferrerUrl,
-		
-		Session: o.Session,
 		
 		SearchQuery: o.SearchQuery,
 		
@@ -218,11 +211,6 @@ func (o *Appeventrequest) UnmarshalJSON(b []byte) error {
 		o.ReferrerUrl = &ReferrerUrl
 	}
     
-	if Session, ok := AppeventrequestMap["session"].(map[string]interface{}); ok {
-		SessionString, _ := json.Marshal(Session)
-		json.Unmarshal(SessionString, &o.Session)
-	}
-	
 	if SearchQuery, ok := AppeventrequestMap["searchQuery"].(string); ok {
 		o.SearchQuery = &SearchQuery
 	}

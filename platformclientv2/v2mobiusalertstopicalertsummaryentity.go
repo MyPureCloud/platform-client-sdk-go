@@ -14,17 +14,17 @@ type V2mobiusalertstopicalertsummaryentity struct {
 	// EntityType
 	EntityType *string `json:"entityType,omitempty"`
 
-	// UserDisplayName
-	UserDisplayName *string `json:"userDisplayName,omitempty"`
+	// User
+	User *V2mobiusalertstopicaddressableentityref `json:"user,omitempty"`
 
-	// GroupDisplayName
-	GroupDisplayName *string `json:"groupDisplayName,omitempty"`
+	// Group
+	Group *V2mobiusalertstopicaddressableentityref `json:"group,omitempty"`
 
-	// QueueDisplayName
-	QueueDisplayName *string `json:"queueDisplayName,omitempty"`
+	// Queue
+	Queue *V2mobiusalertstopicaddressableentityref `json:"queue,omitempty"`
 
-	// TeamDisplayName
-	TeamDisplayName *string `json:"teamDisplayName,omitempty"`
+	// Team
+	Team *V2mobiusalertstopicaddressableentityref `json:"team,omitempty"`
 
 	// Alerting
 	Alerting *bool `json:"alerting,omitempty"`
@@ -95,26 +95,26 @@ func (o V2mobiusalertstopicalertsummaryentity) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		EntityType *string `json:"entityType,omitempty"`
 		
-		UserDisplayName *string `json:"userDisplayName,omitempty"`
+		User *V2mobiusalertstopicaddressableentityref `json:"user,omitempty"`
 		
-		GroupDisplayName *string `json:"groupDisplayName,omitempty"`
+		Group *V2mobiusalertstopicaddressableentityref `json:"group,omitempty"`
 		
-		QueueDisplayName *string `json:"queueDisplayName,omitempty"`
+		Queue *V2mobiusalertstopicaddressableentityref `json:"queue,omitempty"`
 		
-		TeamDisplayName *string `json:"teamDisplayName,omitempty"`
+		Team *V2mobiusalertstopicaddressableentityref `json:"team,omitempty"`
 		
 		Alerting *bool `json:"alerting,omitempty"`
 		Alias
 	}{ 
 		EntityType: o.EntityType,
 		
-		UserDisplayName: o.UserDisplayName,
+		User: o.User,
 		
-		GroupDisplayName: o.GroupDisplayName,
+		Group: o.Group,
 		
-		QueueDisplayName: o.QueueDisplayName,
+		Queue: o.Queue,
 		
-		TeamDisplayName: o.TeamDisplayName,
+		Team: o.Team,
 		
 		Alerting: o.Alerting,
 		Alias:    (Alias)(o),
@@ -132,22 +132,26 @@ func (o *V2mobiusalertstopicalertsummaryentity) UnmarshalJSON(b []byte) error {
 		o.EntityType = &EntityType
 	}
     
-	if UserDisplayName, ok := V2mobiusalertstopicalertsummaryentityMap["userDisplayName"].(string); ok {
-		o.UserDisplayName = &UserDisplayName
+	if User, ok := V2mobiusalertstopicalertsummaryentityMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
 	}
-    
-	if GroupDisplayName, ok := V2mobiusalertstopicalertsummaryentityMap["groupDisplayName"].(string); ok {
-		o.GroupDisplayName = &GroupDisplayName
+	
+	if Group, ok := V2mobiusalertstopicalertsummaryentityMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
 	}
-    
-	if QueueDisplayName, ok := V2mobiusalertstopicalertsummaryentityMap["queueDisplayName"].(string); ok {
-		o.QueueDisplayName = &QueueDisplayName
+	
+	if Queue, ok := V2mobiusalertstopicalertsummaryentityMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
 	}
-    
-	if TeamDisplayName, ok := V2mobiusalertstopicalertsummaryentityMap["teamDisplayName"].(string); ok {
-		o.TeamDisplayName = &TeamDisplayName
+	
+	if Team, ok := V2mobiusalertstopicalertsummaryentityMap["team"].(map[string]interface{}); ok {
+		TeamString, _ := json.Marshal(Team)
+		json.Unmarshal(TeamString, &o.Team)
 	}
-    
+	
 	if Alerting, ok := V2mobiusalertstopicalertsummaryentityMap["alerting"].(bool); ok {
 		o.Alerting = &Alerting
 	}

@@ -13,6 +13,9 @@ type Searchshifttradesresponse struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Trades - The shift trades that match the search criteria
 	Trades *[]Searchshifttraderesponse `json:"trades,omitempty"`
+
+	// DownloadUrl - URL from which to fetch results for requests with a large result set. If populated, the downloaded data will conform to the same schema as would normally be returned, excepting downloaded data will never itself contain a downloadUrl
+	DownloadUrl *string `json:"downloadUrl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Searchshifttradesresponse) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Trades *[]Searchshifttraderesponse `json:"trades,omitempty"`
+		
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		Alias
 	}{ 
 		Trades: o.Trades,
+		
+		DownloadUrl: o.DownloadUrl,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +105,10 @@ func (o *Searchshifttradesresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(TradesString, &o.Trades)
 	}
 	
+	if DownloadUrl, ok := SearchshifttradesresponseMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+    
 
 	return nil
 }

@@ -261,7 +261,7 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 // Get a Presence Definition
 //
 // Preview: GetPresenceDefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a PresenceApi) GetPresenceDefinition(definitionId string) (*Organizationpresencedefinition, *APIResponse, error) {
+func (a PresenceApi) GetPresenceDefinition(definitionId string, localeCode string) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/definitions/{definitionId}"
@@ -293,6 +293,8 @@ func (a PresenceApi) GetPresenceDefinition(definitionId string) (*Organizationpr
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -345,7 +347,7 @@ func (a PresenceApi) GetPresenceDefinition(definitionId string) (*Organizationpr
 // Get a list of Presence Definitions
 //
 // Preview: GetPresenceDefinitions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a PresenceApi) GetPresenceDefinitions(deactivated string, divisionId []string) (*Organizationpresencedefinitionentitylisting, *APIResponse, error) {
+func (a PresenceApi) GetPresenceDefinitions(deactivated string, divisionId []string, localeCode string) (*Organizationpresencedefinitionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/definitions"
@@ -375,6 +377,8 @@ func (a PresenceApi) GetPresenceDefinitions(deactivated string, divisionId []str
 	queryParams["deactivated"] = a.Configuration.APIClient.ParameterToString(deactivated, "")
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+	queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2213,7 +2217,7 @@ func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationp
 // PutUsersPresencesBulk invokes PUT /api/v2/users/presences/bulk
 //
 // Update bulk user Presences
-func (a PresenceApi) PutUsersPresencesBulk(body []Userpresence) ([]Userpresence, *APIResponse, error) {
+func (a PresenceApi) PutUsersPresencesBulk(body []Mutableuserpresence) ([]Userpresence, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/presences/bulk"
