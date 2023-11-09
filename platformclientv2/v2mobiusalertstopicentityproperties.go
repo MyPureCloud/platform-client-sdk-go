@@ -14,17 +14,17 @@ type V2mobiusalertstopicentityproperties struct {
 	// EntityType
 	EntityType *string `json:"entityType,omitempty"`
 
-	// UserDisplayName
-	UserDisplayName *string `json:"userDisplayName,omitempty"`
+	// User
+	User *V2mobiusalertstopicaddressableentityref `json:"user,omitempty"`
 
-	// GroupDisplayName
-	GroupDisplayName *string `json:"groupDisplayName,omitempty"`
+	// Group
+	Group *V2mobiusalertstopicaddressableentityref `json:"group,omitempty"`
 
-	// QueueDisplayName
-	QueueDisplayName *string `json:"queueDisplayName,omitempty"`
+	// Queue
+	Queue *V2mobiusalertstopicaddressableentityref `json:"queue,omitempty"`
 
-	// TeamDisplayName
-	TeamDisplayName *string `json:"teamDisplayName,omitempty"`
+	// Team
+	Team *V2mobiusalertstopicaddressableentityref `json:"team,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,24 +92,24 @@ func (o V2mobiusalertstopicentityproperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		EntityType *string `json:"entityType,omitempty"`
 		
-		UserDisplayName *string `json:"userDisplayName,omitempty"`
+		User *V2mobiusalertstopicaddressableentityref `json:"user,omitempty"`
 		
-		GroupDisplayName *string `json:"groupDisplayName,omitempty"`
+		Group *V2mobiusalertstopicaddressableentityref `json:"group,omitempty"`
 		
-		QueueDisplayName *string `json:"queueDisplayName,omitempty"`
+		Queue *V2mobiusalertstopicaddressableentityref `json:"queue,omitempty"`
 		
-		TeamDisplayName *string `json:"teamDisplayName,omitempty"`
+		Team *V2mobiusalertstopicaddressableentityref `json:"team,omitempty"`
 		Alias
 	}{ 
 		EntityType: o.EntityType,
 		
-		UserDisplayName: o.UserDisplayName,
+		User: o.User,
 		
-		GroupDisplayName: o.GroupDisplayName,
+		Group: o.Group,
 		
-		QueueDisplayName: o.QueueDisplayName,
+		Queue: o.Queue,
 		
-		TeamDisplayName: o.TeamDisplayName,
+		Team: o.Team,
 		Alias:    (Alias)(o),
 	})
 }
@@ -125,22 +125,26 @@ func (o *V2mobiusalertstopicentityproperties) UnmarshalJSON(b []byte) error {
 		o.EntityType = &EntityType
 	}
     
-	if UserDisplayName, ok := V2mobiusalertstopicentitypropertiesMap["userDisplayName"].(string); ok {
-		o.UserDisplayName = &UserDisplayName
+	if User, ok := V2mobiusalertstopicentitypropertiesMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
 	}
-    
-	if GroupDisplayName, ok := V2mobiusalertstopicentitypropertiesMap["groupDisplayName"].(string); ok {
-		o.GroupDisplayName = &GroupDisplayName
+	
+	if Group, ok := V2mobiusalertstopicentitypropertiesMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
 	}
-    
-	if QueueDisplayName, ok := V2mobiusalertstopicentitypropertiesMap["queueDisplayName"].(string); ok {
-		o.QueueDisplayName = &QueueDisplayName
+	
+	if Queue, ok := V2mobiusalertstopicentitypropertiesMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
 	}
-    
-	if TeamDisplayName, ok := V2mobiusalertstopicentitypropertiesMap["teamDisplayName"].(string); ok {
-		o.TeamDisplayName = &TeamDisplayName
+	
+	if Team, ok := V2mobiusalertstopicentitypropertiesMap["team"].(map[string]interface{}); ok {
+		TeamString, _ := json.Marshal(Team)
+		json.Unmarshal(TeamString, &o.Team)
 	}
-    
+	
 
 	return nil
 }

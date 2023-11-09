@@ -13,6 +13,9 @@ type Servicegoaltemplatelist struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
 	Entities *[]Servicegoaltemplate `json:"entities,omitempty"`
+
+	// Metadata - Version metadata for the service goal templates
+	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Servicegoaltemplatelist) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Entities *[]Servicegoaltemplate `json:"entities,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
+		
+		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Servicegoaltemplatelist) UnmarshalJSON(b []byte) error {
 	if Entities, ok := ServicegoaltemplatelistMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if Metadata, ok := ServicegoaltemplatelistMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
 

@@ -63,7 +63,7 @@ type Appeventresponse struct {
 	// Traits - Traits are attributes intrinsic to the customer that may be sent in selected events (e.g. email, name, phone).
 	Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 
-	// CreatedDate - Timestamp indicating when the event actually took place. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// CreatedDate - UTC timestamp indicating when the event actually took place. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 
 	// ExternalContact - The external contact associated with this app event.

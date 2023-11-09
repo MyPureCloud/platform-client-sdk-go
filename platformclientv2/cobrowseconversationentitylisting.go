@@ -32,11 +32,11 @@ type Cobrowseconversationentitylisting struct {
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -119,9 +119,9 @@ func (o Cobrowseconversationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -140,9 +140,9 @@ func (o Cobrowseconversationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PreviousUri: o.PreviousUri,
 		
-		LastUri: o.LastUri,
-		
 		SelfUri: o.SelfUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,12 +188,12 @@ func (o *Cobrowseconversationentitylisting) UnmarshalJSON(b []byte) error {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if LastUri, ok := CobrowseconversationentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if SelfUri, ok := CobrowseconversationentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if LastUri, ok := CobrowseconversationentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := CobrowseconversationentitylistingMap["pageCount"].(float64); ok {

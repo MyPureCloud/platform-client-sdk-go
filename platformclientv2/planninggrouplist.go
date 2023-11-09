@@ -13,6 +13,9 @@ type Planninggrouplist struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
 	Entities *[]Planninggroup `json:"entities,omitempty"`
+
+	// Metadata - Version metadata for the planning groups
+	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Planninggrouplist) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Entities *[]Planninggroup `json:"entities,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
+		
+		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Planninggrouplist) UnmarshalJSON(b []byte) error {
 	if Entities, ok := PlanninggrouplistMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if Metadata, ok := PlanninggrouplistMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
 

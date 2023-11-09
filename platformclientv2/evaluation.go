@@ -57,6 +57,9 @@ type Evaluation struct {
 	// ChangedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ChangedDate *time.Time `json:"changedDate,omitempty"`
 
+	// RevisionCreatedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	RevisionCreatedDate *time.Time `json:"revisionCreatedDate,omitempty"`
+
 	// Queue
 	Queue *Queue `json:"queue,omitempty"`
 
@@ -135,7 +138,7 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
+		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","RevisionCreatedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -192,6 +195,14 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		ChangedDate = nil
 	}
 	
+	RevisionCreatedDate := new(string)
+	if o.RevisionCreatedDate != nil {
+		
+		*RevisionCreatedDate = timeutil.Strftime(o.RevisionCreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RevisionCreatedDate = nil
+	}
+	
 	ConversationDate := new(string)
 	if o.ConversationDate != nil {
 		
@@ -246,6 +257,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		AssignedDate *string `json:"assignedDate,omitempty"`
 		
 		ChangedDate *string `json:"changedDate,omitempty"`
+		
+		RevisionCreatedDate *string `json:"revisionCreatedDate,omitempty"`
 		
 		Queue *Queue `json:"queue,omitempty"`
 		
@@ -309,6 +322,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		AssignedDate: AssignedDate,
 		
 		ChangedDate: ChangedDate,
+		
+		RevisionCreatedDate: RevisionCreatedDate,
 		
 		Queue: o.Queue,
 		
@@ -420,6 +435,11 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if changedDateString, ok := EvaluationMap["changedDate"].(string); ok {
 		ChangedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", changedDateString)
 		o.ChangedDate = &ChangedDate
+	}
+	
+	if revisionCreatedDateString, ok := EvaluationMap["revisionCreatedDate"].(string); ok {
+		RevisionCreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", revisionCreatedDateString)
+		o.RevisionCreatedDate = &RevisionCreatedDate
 	}
 	
 	if Queue, ok := EvaluationMap["queue"].(map[string]interface{}); ok {

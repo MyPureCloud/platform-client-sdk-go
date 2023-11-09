@@ -2004,7 +2004,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycode(b
 // GetWorkforcemanagementBusinessunitActivitycodes invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes
 //
 // Get activity codes
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(businessUnitId string) (*Businessunitactivitycodelisting, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(businessUnitId string, forceDownloadService bool) (*Businessunitactivitycodelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activitycodes"
@@ -2036,6 +2036,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -6047,7 +6049,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 // GetWorkforcemanagementManagementunitWeekShifttrades invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades
 //
 // Gets all the shift trades for a given week
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId string, weekDateId time.Time, evaluateMatches bool) (*Weekshifttradelistresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId string, weekDateId time.Time, evaluateMatches bool, forceDownloadService bool) (*Weekshifttradelistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades"
@@ -6087,6 +6089,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 	}
 	
 	queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, "")
+	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -12584,7 +12588,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 // Fetches time off requests matching the conditions specified in the request body
 //
 // Request body requires one of the following: User ID is specified, statuses &#x3D;&#x3D; [Pending] or date range to be specified and less than or equal to 33 days.  All other fields are filters
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId string, body Timeoffrequestquerybody) (*Timeoffrequestlisting, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId string, forceDownloadService bool, body Timeoffrequestquerybody) (*Timeoffrequestlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests/query"
@@ -12616,6 +12620,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -13233,7 +13239,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 // PostWorkforcemanagementManagementunitWeekShifttradesSearch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/search
 //
 // Searches for potential shift trade matches for the current agent
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttradesSearch(managementUnitId string, weekDateId time.Time, body Searchshifttradesrequest) (*Searchshifttradesresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttradesSearch(managementUnitId string, weekDateId time.Time, body Searchshifttradesrequest, forceDownloadService bool) (*Searchshifttradesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/search"
@@ -13276,6 +13282,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

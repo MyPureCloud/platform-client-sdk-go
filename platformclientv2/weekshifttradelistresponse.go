@@ -13,6 +13,9 @@ type Weekshifttradelistresponse struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
 	Entities *[]Weekshifttraderesponse `json:"entities,omitempty"`
+
+	// DownloadUrl - URL from which to fetch results for requests with a large result set. If populated, the downloaded data will conform to the same schema as would normally be returned, excepting downloaded data will never itself contain a downloadUrl
+	DownloadUrl *string `json:"downloadUrl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Weekshifttradelistresponse) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Entities *[]Weekshifttraderesponse `json:"entities,omitempty"`
+		
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
+		
+		DownloadUrl: o.DownloadUrl,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +105,10 @@ func (o *Weekshifttradelistresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
+	if DownloadUrl, ok := WeekshifttradelistresponseMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+    
 
 	return nil
 }

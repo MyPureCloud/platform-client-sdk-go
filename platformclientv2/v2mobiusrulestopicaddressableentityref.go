@@ -7,22 +7,16 @@ import (
 	"strings"
 )
 
-// Appeventrequestsession
-type Appeventrequestsession struct { 
+// V2mobiusrulestopicaddressableentityref
+type V2mobiusrulestopicaddressableentityref struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - ID of the app session.
+	// Id - The ID of the resource
 	Id *string `json:"id,omitempty"`
-
-	// EventCount - The count of all events recorded during this session. This should be incremented for each event in the session, regardless of event name.
-	EventCount *int `json:"eventCount,omitempty"`
-
-	// ScreenviewCount - The count of all screen view events recorded during this session. This should be incremented for each screen_viewed event in the session.
-	ScreenviewCount *int `json:"screenviewCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Appeventrequestsession) SetField(field string, fieldValue interface{}) {
+func (o *V2mobiusrulestopicaddressableentityref) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +37,7 @@ func (o *Appeventrequestsession) SetField(field string, fieldValue interface{}) 
 	o.SetFieldNames[field] = true
 }
 
-func (o Appeventrequestsession) MarshalJSON() ([]byte, error) {
+func (o V2mobiusrulestopicaddressableentityref) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,52 +75,34 @@ func (o Appeventrequestsession) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Appeventrequestsession
+	type Alias V2mobiusrulestopicaddressableentityref
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
-		
-		EventCount *int `json:"eventCount,omitempty"`
-		
-		ScreenviewCount *int `json:"screenviewCount,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		EventCount: o.EventCount,
-		
-		ScreenviewCount: o.ScreenviewCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Appeventrequestsession) UnmarshalJSON(b []byte) error {
-	var AppeventrequestsessionMap map[string]interface{}
-	err := json.Unmarshal(b, &AppeventrequestsessionMap)
+func (o *V2mobiusrulestopicaddressableentityref) UnmarshalJSON(b []byte) error {
+	var V2mobiusrulestopicaddressableentityrefMap map[string]interface{}
+	err := json.Unmarshal(b, &V2mobiusrulestopicaddressableentityrefMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := AppeventrequestsessionMap["id"].(string); ok {
+	if Id, ok := V2mobiusrulestopicaddressableentityrefMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if EventCount, ok := AppeventrequestsessionMap["eventCount"].(float64); ok {
-		EventCountInt := int(EventCount)
-		o.EventCount = &EventCountInt
-	}
-	
-	if ScreenviewCount, ok := AppeventrequestsessionMap["screenviewCount"].(float64); ok {
-		ScreenviewCountInt := int(ScreenviewCount)
-		o.ScreenviewCount = &ScreenviewCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Appeventrequestsession) String() string {
+func (o *V2mobiusrulestopicaddressableentityref) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

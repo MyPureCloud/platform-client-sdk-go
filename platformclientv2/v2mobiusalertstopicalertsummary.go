@@ -14,8 +14,8 @@ type V2mobiusalertstopicalertsummary struct {
 	// Entities
 	Entities *[]V2mobiusalertstopicalertsummaryentity `json:"entities,omitempty"`
 
-	// ConversationId
-	ConversationId *string `json:"conversationId,omitempty"`
+	// Conversation
+	Conversation *V2mobiusalertstopicaddressableentityref `json:"conversation,omitempty"`
 
 	// MetricType
 	MetricType *string `json:"metricType,omitempty"`
@@ -92,7 +92,7 @@ func (o V2mobiusalertstopicalertsummary) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Entities *[]V2mobiusalertstopicalertsummaryentity `json:"entities,omitempty"`
 		
-		ConversationId *string `json:"conversationId,omitempty"`
+		Conversation *V2mobiusalertstopicaddressableentityref `json:"conversation,omitempty"`
 		
 		MetricType *string `json:"metricType,omitempty"`
 		
@@ -103,7 +103,7 @@ func (o V2mobiusalertstopicalertsummary) MarshalJSON() ([]byte, error) {
 	}{ 
 		Entities: o.Entities,
 		
-		ConversationId: o.ConversationId,
+		Conversation: o.Conversation,
 		
 		MetricType: o.MetricType,
 		
@@ -126,9 +126,9 @@ func (o *V2mobiusalertstopicalertsummary) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if ConversationId, ok := V2mobiusalertstopicalertsummaryMap["conversationId"].(map[string]interface{}); ok {
-		ConversationIdString, _ := json.Marshal(ConversationId)
-		json.Unmarshal(ConversationIdString, &o.ConversationId)
+	if Conversation, ok := V2mobiusalertstopicalertsummaryMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
 	}
 	
 	if MetricType, ok := V2mobiusalertstopicalertsummaryMap["metricType"].(string); ok {

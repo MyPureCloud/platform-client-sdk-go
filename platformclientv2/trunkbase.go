@@ -60,6 +60,12 @@ type Trunkbase struct {
 	// Managed - Is this trunk being managed remotely. This property is synchronized with the managed property of the Edge Group to which it is assigned.
 	Managed *bool `json:"managed,omitempty"`
 
+	// Site - Used to determine the media regions for inbound and outbound calls through a trunk. Also determines the dial plan to use for calls that came in on a trunk and have to be sent out on it as well.
+	Site *Domainentityref `json:"site,omitempty"`
+
+	// InboundSite - Allows a customer to set the site to which inbound calls will be routed
+	InboundSite *Domainentityref `json:"inboundSite,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -175,6 +181,10 @@ func (o Trunkbase) MarshalJSON() ([]byte, error) {
 		
 		Managed *bool `json:"managed,omitempty"`
 		
+		Site *Domainentityref `json:"site,omitempty"`
+		
+		InboundSite *Domainentityref `json:"inboundSite,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -209,6 +219,10 @@ func (o Trunkbase) MarshalJSON() ([]byte, error) {
 		TrunkType: o.TrunkType,
 		
 		Managed: o.Managed,
+		
+		Site: o.Site,
+		
+		InboundSite: o.InboundSite,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -292,6 +306,16 @@ func (o *Trunkbase) UnmarshalJSON(b []byte) error {
 		o.Managed = &Managed
 	}
     
+	if Site, ok := TrunkbaseMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if InboundSite, ok := TrunkbaseMap["inboundSite"].(map[string]interface{}); ok {
+		InboundSiteString, _ := json.Marshal(InboundSite)
+		json.Unmarshal(InboundSiteString, &o.InboundSite)
+	}
+	
 	if SelfUri, ok := TrunkbaseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

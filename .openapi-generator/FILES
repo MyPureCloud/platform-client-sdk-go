@@ -242,6 +242,7 @@ docs/DeleteUserRoutingskill-example.txt
 docs/DeleteUserRoutingskill-example.txt
 docs/DeleteUserStationAssociatedstation-example.txt
 docs/DeleteUserStationDefaultstation-example.txt
+docs/DeleteUserVerifier-example.txt
 docs/DeleteUserrecording-example.txt
 docs/DeleteVoicemailMessage-example.txt
 docs/DeleteVoicemailMessages-example.txt
@@ -418,7 +419,6 @@ docs/GetAuthorizationSubjectsRolecounts-example.txt
 docs/GetBillingReportsBillableusage-example.txt
 docs/GetBillingTrusteebillingoverviewTrustorOrgId-example.txt
 docs/GetCarrierservicesIntegrationsEmergencylocationsMe-example.txt
-docs/GetChatSettings-example.txt
 docs/GetChatsMessage-example.txt
 docs/GetChatsRoom-example.txt
 docs/GetChatsRoomMessage-example.txt
@@ -748,6 +748,7 @@ docs/GetJourneyActiontarget-example.txt
 docs/GetJourneyActiontargets-example.txt
 docs/GetJourneyActiontemplate-example.txt
 docs/GetJourneyActiontemplates-example.txt
+docs/GetJourneyDeploymentCustomerPing-example.txt
 docs/GetJourneyOutcome-example.txt
 docs/GetJourneyOutcomes-example.txt
 docs/GetJourneyOutcomesAttributionsJob-example.txt
@@ -1209,6 +1210,7 @@ docs/GetTelephonyProvidersEdgesSiteNumberplans-example.txt
 docs/GetTelephonyProvidersEdgesSiteNumberplansClassifications-example.txt
 docs/GetTelephonyProvidersEdgesSiteOutboundroute-example.txt
 docs/GetTelephonyProvidersEdgesSiteOutboundroutes-example.txt
+docs/GetTelephonyProvidersEdgesSiteSiteconnections-example.txt
 docs/GetTelephonyProvidersEdgesSites-example.txt
 docs/GetTelephonyProvidersEdgesTimezones-example.txt
 docs/GetTelephonyProvidersEdgesTrunk-example.txt
@@ -1228,6 +1230,8 @@ docs/GetTextbotsBotsSearch-example.txt
 docs/GetTimezones-example.txt
 docs/GetTokensMe-example.txt
 docs/GetTokensTimeout-example.txt
+docs/GetUsageEventsDefinition-example.txt
+docs/GetUsageEventsDefinitions-example.txt
 docs/GetUsageQueryExecutionIdResults-example.txt
 docs/GetUsageSimplesearchExecutionIdResults-example.txt
 docs/GetUser-example.txt
@@ -1259,6 +1263,7 @@ docs/GetUserState-example.txt
 docs/GetUserStation-example.txt
 docs/GetUserSuperiors-example.txt
 docs/GetUserTrustors-example.txt
+docs/GetUserVerifiers-example.txt
 docs/GetUserrecording-example.txt
 docs/GetUserrecordingMedia-example.txt
 docs/GetUserrecordings-example.txt
@@ -1398,6 +1403,7 @@ docs/MobileDevicesApi.json
 docs/NotificationsApi.json
 docs/OAuthApi.json
 docs/ObjectsApi.json
+docs/OperationalEventsApi.json
 docs/OrganizationApi.json
 docs/OrganizationAuthorizationApi.json
 docs/OutboundApi.json
@@ -1409,7 +1415,6 @@ docs/PatchArchitectGrammar-example.txt
 docs/PatchArchitectGrammarLanguage-example.txt
 docs/PatchAuthorizationRole-example.txt
 docs/PatchAuthorizationSettings-example.txt
-docs/PatchChatSettings-example.txt
 docs/PatchChatsRoom-example.txt
 docs/PatchChatsRoomMessage-example.txt
 docs/PatchChatsSettings-example.txt
@@ -1453,6 +1458,7 @@ docs/PatchConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsOpenIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
+docs/PatchConversationsMessagingIntegrationsWhatsappEmbeddedsignupIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
 docs/PatchConversationsMessagingSetting-example.txt
 docs/PatchConversationsMessagingSupportedcontentSupportedContentId-example.txt
@@ -1523,6 +1529,7 @@ docs/PatchTaskmanagementWorkitemUsersMeWrapups-example.txt
 docs/PatchTaskmanagementWorktype-example.txt
 docs/PatchTaskmanagementWorktypeStatus-example.txt
 docs/PatchTeam-example.txt
+docs/PatchTelephonyProvidersEdgesSiteSiteconnections-example.txt
 docs/PatchUser-example.txt
 docs/PatchUserCallforwarding-example.txt
 docs/PatchUserGeolocation-example.txt
@@ -1751,6 +1758,7 @@ docs/PostConversationsMessagingIntegrationsLine-example.txt
 docs/PostConversationsMessagingIntegrationsOpen-example.txt
 docs/PostConversationsMessagingIntegrationsTwitter-example.txt
 docs/PostConversationsMessagingIntegrationsWhatsapp-example.txt
+docs/PostConversationsMessagingIntegrationsWhatsappEmbeddedsignup-example.txt
 docs/PostConversationsMessagingSettings-example.txt
 docs/PostConversationsMessagingSupportedcontent-example.txt
 docs/PostConversationsParticipantsAttributesSearch-example.txt
@@ -1846,6 +1854,7 @@ docs/PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchValidate-example.t
 docs/PostJourneyActionmaps-example.txt
 docs/PostJourneyActionmapsEstimatesJobs-example.txt
 docs/PostJourneyActiontemplates-example.txt
+docs/PostJourneyDeploymentActionevent-example.txt
 docs/PostJourneyDeploymentAppevents-example.txt
 docs/PostJourneyOutcomes-example.txt
 docs/PostJourneyOutcomesAttributionsJobs-example.txt
@@ -2195,7 +2204,6 @@ docs/PutAuthorizationRole-example.txt
 docs/PutAuthorizationRoleUsersAdd-example.txt
 docs/PutAuthorizationRoleUsersRemove-example.txt
 docs/PutAuthorizationRolesDefault-example.txt
-docs/PutChatSettings-example.txt
 docs/PutChatsSettings-example.txt
 docs/PutContentmanagementWorkspace-example.txt
 docs/PutContentmanagementWorkspaceMember-example.txt
@@ -2356,6 +2364,7 @@ docs/PutTelephonyProvidersEdgesPhonebasesetting-example.txt
 docs/PutTelephonyProvidersEdgesSite-example.txt
 docs/PutTelephonyProvidersEdgesSiteNumberplans-example.txt
 docs/PutTelephonyProvidersEdgesSiteOutboundroute-example.txt
+docs/PutTelephonyProvidersEdgesSiteSiteconnections-example.txt
 docs/PutTelephonyProvidersEdgesTrunkbasesetting-example.txt
 docs/PutTokensTimeout-example.txt
 docs/PutUserCallforwarding-example.txt
@@ -2372,6 +2381,7 @@ docs/PutUserRoutingstatus-example.txt
 docs/PutUserState-example.txt
 docs/PutUserStationAssociatedstationStationId-example.txt
 docs/PutUserStationDefaultstationStationId-example.txt
+docs/PutUserVerifier-example.txt
 docs/PutUserrecording-example.txt
 docs/PutUsersPresencesBulk-example.txt
 docs/PutVoicemailMessage-example.txt
@@ -2438,6 +2448,7 @@ platformclientv2/actioncontract.go
 platformclientv2/actioncontractinput.go
 platformclientv2/actionentitylisting.go
 platformclientv2/actioneventactionmap.go
+platformclientv2/actioneventrequest.go
 platformclientv2/actioninput.go
 platformclientv2/actionmap.go
 platformclientv2/actionmapaction.go
@@ -2578,7 +2589,6 @@ platformclientv2/apiusagesimplesearch.go
 platformclientv2/appendtodncactionsettings.go
 platformclientv2/appevent.go
 platformclientv2/appeventrequest.go
-platformclientv2/appeventrequestsession.go
 platformclientv2/appeventresponse.go
 platformclientv2/appeventresponsesession.go
 platformclientv2/approvalnamespace.go
@@ -3476,6 +3486,8 @@ platformclientv2/dependencyobjectentitylisting.go
 platformclientv2/dependencystatus.go
 platformclientv2/dependencytype.go
 platformclientv2/dependencytypeentitylisting.go
+platformclientv2/deploymentping.go
+platformclientv2/deploymentwebaction.go
 platformclientv2/destination.go
 platformclientv2/detail.go
 platformclientv2/detecteddialogact.go
@@ -3594,6 +3606,7 @@ platformclientv2/digits.go
 platformclientv2/directoryuserdeviceslisting.go
 platformclientv2/directrouting.go
 platformclientv2/directroutingmediasettings.go
+platformclientv2/disablesiteconnectionsrequest.go
 platformclientv2/disallowedentitylearningassignmentitem.go
 platformclientv2/disallowedentitylearningassignmentreference.go
 platformclientv2/disconnectreason.go
@@ -3848,6 +3861,8 @@ platformclientv2/evaluatoractivityentitylisting.go
 platformclientv2/event.go
 platformclientv2/eventaction.go
 platformclientv2/eventcondition.go
+platformclientv2/eventdefinition.go
+platformclientv2/eventdefinitionlisting.go
 platformclientv2/eventerror.go
 platformclientv2/eventlisting.go
 platformclientv2/eventlog.go
@@ -4002,6 +4017,8 @@ platformclientv2/flowobservationqueryfilter.go
 platformclientv2/flowobservationquerypredicate.go
 platformclientv2/flowobservationqueryresponse.go
 platformclientv2/flowoutcome.go
+platformclientv2/flowoutcomedetaileventtopicflowmilestone.go
+platformclientv2/flowoutcomedetaileventtopicflowoutcomeevent.go
 platformclientv2/flowoutcomedivisionview.go
 platformclientv2/flowoutcomedivisionviewentitylisting.go
 platformclientv2/flowoutcomelisting.go
@@ -4689,6 +4706,7 @@ platformclientv2/moveagentsresponse.go
 platformclientv2/movemanagementunitrequest.go
 platformclientv2/movemanagementunitresponse.go
 platformclientv2/murescheduleresultwrapper.go
+platformclientv2/mutableuserpresence.go
 platformclientv2/mutesnoozefields.go
 platformclientv2/namedentity.go
 platformclientv2/namedentityannotation.go
@@ -4764,6 +4782,7 @@ platformclientv2/observationvalue.go
 platformclientv2/okta.go
 platformclientv2/onelogin.go
 platformclientv2/openactionfields.go
+platformclientv2/openactionproperties.go
 platformclientv2/opencontentattachment.go
 platformclientv2/openevent.go
 platformclientv2/openeventnormalizedmessage.go
@@ -4789,6 +4808,7 @@ platformclientv2/openreceiptnormalizedmessage.go
 platformclientv2/operation.go
 platformclientv2/operationaleventnotificationtopicevententity.go
 platformclientv2/operationaleventnotificationtopicoperationaleventnotification.go
+platformclientv2/operationaleventsapi.go
 platformclientv2/optinsettings.go
 platformclientv2/organization.go
 platformclientv2/organizationapi.go
@@ -5585,6 +5605,7 @@ platformclientv2/sipsearchpublicrequest.go
 platformclientv2/sipsearchresult.go
 platformclientv2/site.go
 platformclientv2/siteconnection.go
+platformclientv2/siteconnections.go
 platformclientv2/siteentitylisting.go
 platformclientv2/skillentitylisting.go
 platformclientv2/skillgroup.go
@@ -5958,6 +5979,7 @@ platformclientv2/updatetimeofflimitrequest.go
 platformclientv2/updatetimeoffplanrequest.go
 platformclientv2/updatetriggerrequest.go
 platformclientv2/updateuser.go
+platformclientv2/updateverifierrequest.go
 platformclientv2/updateworkplanrotationagentrequest.go
 platformclientv2/updateworkplanrotationrequest.go
 platformclientv2/uploadsapi.go
@@ -6135,6 +6157,7 @@ platformclientv2/v2conversationmessagetypingeventforworkflowtopicconversationnot
 platformclientv2/v2conversationmessagetypingeventforworkflowtopicconversationreason.go
 platformclientv2/v2conversationmessagetypingeventforworkflowtopicconversationrecipientadditionalidentifier.go
 platformclientv2/v2conversationmessagetypingeventforworkflowtopicmessagedata.go
+platformclientv2/v2mobiusalertstopicaddressableentityref.go
 platformclientv2/v2mobiusalertstopicalert.go
 platformclientv2/v2mobiusalertstopicalertnotification.go
 platformclientv2/v2mobiusalertstopicalertruleproperties.go
@@ -6143,6 +6166,7 @@ platformclientv2/v2mobiusalertstopicalertsummaryentity.go
 platformclientv2/v2mobiusalertstopiccondition.go
 platformclientv2/v2mobiusalertstopicconditionrulepredicate.go
 platformclientv2/v2mobiusalertstopicentityproperties.go
+platformclientv2/v2mobiusrulestopicaddressableentityref.go
 platformclientv2/v2mobiusrulestopicalertnotification.go
 platformclientv2/v2mobiusrulestopiccondition.go
 platformclientv2/v2mobiusrulestopicconditionrulepredicate.go
@@ -6160,6 +6184,8 @@ platformclientv2/valuewrapperhristimeofftype.go
 platformclientv2/valuewrapperplanningperiodsettings.go
 platformclientv2/valuewrapperstring.go
 platformclientv2/verificationresult.go
+platformclientv2/verifier.go
+platformclientv2/verifierentitylisting.go
 platformclientv2/video.go
 platformclientv2/videoconferencedetails.go
 platformclientv2/videoconferenceupdatetopicparticipantinfo.go
@@ -6233,6 +6259,7 @@ platformclientv2/webmessaginggeneric.go
 platformclientv2/webmessagingmessage.go
 platformclientv2/webmessagingmessageentitylist.go
 platformclientv2/webmessagingofferfields.go
+platformclientv2/webmessagingofferproperties.go
 platformclientv2/webmessagingquickreply.go
 platformclientv2/webmessagingrecipient.go
 platformclientv2/weekschedule.go
@@ -6397,6 +6424,8 @@ platformclientv2/wfmversionedentitymetadata.go
 platformclientv2/whatsappavailablephonenumberdetails.go
 platformclientv2/whatsappavailablephonenumberdetailslisting.go
 platformclientv2/whatsappdefinition.go
+platformclientv2/whatsappembeddedsignupintegrationactivationrequest.go
+platformclientv2/whatsappembeddedsignupintegrationrequest.go
 platformclientv2/whatsappid.go
 platformclientv2/whatsappintegration.go
 platformclientv2/whatsappintegrationentitylisting.go
