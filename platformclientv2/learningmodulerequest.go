@@ -31,6 +31,15 @@ type Learningmodulerequest struct {
 
 	// CoverArt - The cover art for the learning module
 	CoverArt *Learningmodulecoverartrequest `json:"coverArt,omitempty"`
+
+	// LengthInMinutes - The recommended time in minutes to complete the module
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+
+	// ExcludedFromCatalog - If true, learning module is excluded when retrieving modules for manual assignment
+	ExcludedFromCatalog *bool `json:"excludedFromCatalog,omitempty"`
+
+	// ExternalId - The external ID of the learning module. Maximum length: 50 characters.
+	ExternalId *string `json:"externalId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +118,12 @@ func (o Learningmodulerequest) MarshalJSON() ([]byte, error) {
 		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
 		
 		CoverArt *Learningmodulecoverartrequest `json:"coverArt,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		ExcludedFromCatalog *bool `json:"excludedFromCatalog,omitempty"`
+		
+		ExternalId *string `json:"externalId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -124,6 +139,12 @@ func (o Learningmodulerequest) MarshalJSON() ([]byte, error) {
 		AssessmentForm: o.AssessmentForm,
 		
 		CoverArt: o.CoverArt,
+		
+		LengthInMinutes: o.LengthInMinutes,
+		
+		ExcludedFromCatalog: o.ExcludedFromCatalog,
+		
+		ExternalId: o.ExternalId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -167,6 +188,19 @@ func (o *Learningmodulerequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CoverArtString, &o.CoverArt)
 	}
 	
+	if LengthInMinutes, ok := LearningmodulerequestMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if ExcludedFromCatalog, ok := LearningmodulerequestMap["excludedFromCatalog"].(bool); ok {
+		o.ExcludedFromCatalog = &ExcludedFromCatalog
+	}
+    
+	if ExternalId, ok := LearningmodulerequestMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 
 	return nil
 }

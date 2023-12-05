@@ -17,7 +17,7 @@ type Triggertarget struct {
 	// Id - The ID of the entity to target
 	Id *string `json:"id,omitempty"`
 
-	// WorkflowTargetSettings - Optional config for the target. Until the feature gets enabled will always operate in TopLevelPrimitives mode.
+	// WorkflowTargetSettings - Optional config for the target.
 	WorkflowTargetSettings *Workflowtargetsettings `json:"workflowTargetSettings,omitempty"`
 }
 

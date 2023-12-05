@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -19,6 +20,30 @@ type Operationaleventnotificationtopicoperationaleventnotification struct {
 
 	// EntityName
 	EntityName *string `json:"entityName,omitempty"`
+
+	// PreviousValue
+	PreviousValue *string `json:"previousValue,omitempty"`
+
+	// CurrentValue
+	CurrentValue *string `json:"currentValue,omitempty"`
+
+	// ErrorCode
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+	// Version
+	Version *string `json:"version,omitempty"`
+
+	// ParentEntity
+	ParentEntity *string `json:"parentEntity,omitempty"`
+
+	// EntityType
+	EntityType *string `json:"entityType,omitempty"`
+
+	// ConversationId
+	ConversationId *string `json:"conversationId,omitempty"`
+
+	// Timestamp
+	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -50,7 +75,7 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "Timestamp", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -83,12 +108,36 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 	_  = timeutil.Timedelta{}
 	type Alias Operationaleventnotificationtopicoperationaleventnotification
 	
+	Timestamp := new(string)
+	if o.Timestamp != nil {
+		
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Timestamp = nil
+	}
+	
 	return json.Marshal(&struct { 
 		EventEntity *Operationaleventnotificationtopicevententity `json:"eventEntity,omitempty"`
 		
 		EntityId *string `json:"entityId,omitempty"`
 		
 		EntityName *string `json:"entityName,omitempty"`
+		
+		PreviousValue *string `json:"previousValue,omitempty"`
+		
+		CurrentValue *string `json:"currentValue,omitempty"`
+		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
+		Version *string `json:"version,omitempty"`
+		
+		ParentEntity *string `json:"parentEntity,omitempty"`
+		
+		EntityType *string `json:"entityType,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		Timestamp *string `json:"timestamp,omitempty"`
 		Alias
 	}{ 
 		EventEntity: o.EventEntity,
@@ -96,6 +145,22 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		EntityId: o.EntityId,
 		
 		EntityName: o.EntityName,
+		
+		PreviousValue: o.PreviousValue,
+		
+		CurrentValue: o.CurrentValue,
+		
+		ErrorCode: o.ErrorCode,
+		
+		Version: o.Version,
+		
+		ParentEntity: o.ParentEntity,
+		
+		EntityType: o.EntityType,
+		
+		ConversationId: o.ConversationId,
+		
+		Timestamp: Timestamp,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +185,39 @@ func (o *Operationaleventnotificationtopicoperationaleventnotification) Unmarsha
 		o.EntityName = &EntityName
 	}
     
+	if PreviousValue, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["previousValue"].(string); ok {
+		o.PreviousValue = &PreviousValue
+	}
+    
+	if CurrentValue, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["currentValue"].(string); ok {
+		o.CurrentValue = &CurrentValue
+	}
+    
+	if ErrorCode, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+    
+	if Version, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["version"].(string); ok {
+		o.Version = &Version
+	}
+    
+	if ParentEntity, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["parentEntity"].(string); ok {
+		o.ParentEntity = &ParentEntity
+	}
+    
+	if EntityType, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+    
+	if ConversationId, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+    
+	if timestampString, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
 
 	return nil
 }

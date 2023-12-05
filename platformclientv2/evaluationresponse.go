@@ -93,6 +93,9 @@ type Evaluationresponse struct {
 	// Redacted - Is only true when the user making the request does not have sufficient permissions to see evaluation
 	Redacted *bool `json:"redacted,omitempty"`
 
+	// AgentTeam - Team of the evaluation agent
+	AgentTeam *Team `json:"agentTeam,omitempty"`
+
 	// IsScoringIndex
 	IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
 
@@ -282,6 +285,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		Redacted *bool `json:"redacted,omitempty"`
 		
+		AgentTeam *Team `json:"agentTeam,omitempty"`
+		
 		IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
 		
 		AuthorizedActions *[]string `json:"authorizedActions,omitempty"`
@@ -346,6 +351,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		ResourceType: o.ResourceType,
 		
 		Redacted: o.Redacted,
+		
+		AgentTeam: o.AgentTeam,
 		
 		IsScoringIndex: o.IsScoringIndex,
 		
@@ -491,6 +498,11 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 		o.Redacted = &Redacted
 	}
     
+	if AgentTeam, ok := EvaluationresponseMap["agentTeam"].(map[string]interface{}); ok {
+		AgentTeamString, _ := json.Marshal(AgentTeam)
+		json.Unmarshal(AgentTeamString, &o.AgentTeam)
+	}
+	
 	if IsScoringIndex, ok := EvaluationresponseMap["isScoringIndex"].(bool); ok {
 		o.IsScoringIndex = &IsScoringIndex
 	}

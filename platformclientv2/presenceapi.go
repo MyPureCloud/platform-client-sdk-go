@@ -32,8 +32,6 @@ func NewPresenceApiWithConfig(config *Configuration) *PresenceApi {
 // DeletePresenceDefinition invokes DELETE /api/v2/presence/definitions/{definitionId}
 //
 // Delete a Presence Definition
-//
-// Preview: DeletePresenceDefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) DeletePresenceDefinition(definitionId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -259,8 +257,6 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 // GetPresenceDefinition invokes GET /api/v2/presence/definitions/{definitionId}
 //
 // Get a Presence Definition
-//
-// Preview: GetPresenceDefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) GetPresenceDefinition(definitionId string, localeCode string) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -345,8 +341,6 @@ func (a PresenceApi) GetPresenceDefinition(definitionId string, localeCode strin
 // GetPresenceDefinitions invokes GET /api/v2/presence/definitions
 //
 // Get a list of Presence Definitions
-//
-// Preview: GetPresenceDefinitions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) GetPresenceDefinitions(deactivated string, divisionId []string, localeCode string) (*Organizationpresencedefinitionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1517,8 +1511,6 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 // PostPresenceDefinitions invokes POST /api/v2/presence/definitions
 //
 // Create a Presence Definition
-//
-// Preview: PostPresenceDefinitions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) PostPresenceDefinitions(body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1771,8 +1763,6 @@ func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organi
 // PutPresenceDefinition invokes PUT /api/v2/presence/definitions/{definitionId}
 //
 // Update a Presence Definition
-//
-// Preview: PutPresenceDefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a PresenceApi) PutPresenceDefinition(definitionId string, body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

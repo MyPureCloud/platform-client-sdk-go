@@ -18,6 +18,9 @@ type Assignedlearningmodule struct {
 	// Name - The name of learning module
 	Name *string `json:"name,omitempty"`
 
+	// ExcludedFromCatalog - If true, learning module is excluded when retrieving modules for manual assignment
+	ExcludedFromCatalog *bool `json:"excludedFromCatalog,omitempty"`
+
 	// CreatedBy - The user who created learning module
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
@@ -77,6 +80,9 @@ type Assignedlearningmodule struct {
 
 	// CoverArt - The cover art for the learning module
 	CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
+
+	// LengthInMinutes - The recommended time in minutes to complete the module
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 	// ArchivalMode - The mode of archival for learning module
 	ArchivalMode *string `json:"archivalMode,omitempty"`
@@ -165,6 +171,8 @@ func (o Assignedlearningmodule) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		ExcludedFromCatalog *bool `json:"excludedFromCatalog,omitempty"`
+		
 		CreatedBy *Userreference `json:"createdBy,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -205,12 +213,16 @@ func (o Assignedlearningmodule) MarshalJSON() ([]byte, error) {
 		
 		CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
 		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
 		ArchivalMode *string `json:"archivalMode,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		ExcludedFromCatalog: o.ExcludedFromCatalog,
 		
 		CreatedBy: o.CreatedBy,
 		
@@ -252,6 +264,8 @@ func (o Assignedlearningmodule) MarshalJSON() ([]byte, error) {
 		
 		CoverArt: o.CoverArt,
 		
+		LengthInMinutes: o.LengthInMinutes,
+		
 		ArchivalMode: o.ArchivalMode,
 		Alias:    (Alias)(o),
 	})
@@ -270,6 +284,10 @@ func (o *Assignedlearningmodule) UnmarshalJSON(b []byte) error {
     
 	if Name, ok := AssignedlearningmoduleMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if ExcludedFromCatalog, ok := AssignedlearningmoduleMap["excludedFromCatalog"].(bool); ok {
+		o.ExcludedFromCatalog = &ExcludedFromCatalog
 	}
     
 	if CreatedBy, ok := AssignedlearningmoduleMap["createdBy"].(map[string]interface{}); ok {
@@ -363,6 +381,11 @@ func (o *Assignedlearningmodule) UnmarshalJSON(b []byte) error {
 	if CoverArt, ok := AssignedlearningmoduleMap["coverArt"].(map[string]interface{}); ok {
 		CoverArtString, _ := json.Marshal(CoverArt)
 		json.Unmarshal(CoverArtString, &o.CoverArt)
+	}
+	
+	if LengthInMinutes, ok := AssignedlearningmoduleMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
 	}
 	
 	if ArchivalMode, ok := AssignedlearningmoduleMap["archivalMode"].(string); ok {

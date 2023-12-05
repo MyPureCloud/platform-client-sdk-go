@@ -107,6 +107,10 @@ func (a AlertingApi) DeleteAlertingAlert(alertId string) (*APIResponse, error) {
 // DeleteAlertingInteractionstatsAlert invokes DELETE /api/v2/alerting/interactionstats/alerts/{alertId}
 //
 // Delete an interaction stats alert
+//
+// Apps should migrate to use DELETE /api/v2/alerting/alerts/{alertId}.
+//
+// Deprecated: DeleteAlertingInteractionstatsAlert is deprecated
 func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -181,7 +185,11 @@ func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIRe
 
 // DeleteAlertingInteractionstatsRule invokes DELETE /api/v2/alerting/interactionstats/rules/{ruleId}
 //
-// Delete an interaction stats rule.
+// Delete an interaction stats rule
+//
+// Apps should migrate to use DELETE /api/v2/alerting/rules/{ruleId}.
+//
+// Deprecated: DeleteAlertingInteractionstatsRule is deprecated
 func (a AlertingApi) DeleteAlertingInteractionstatsRule(ruleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -413,7 +421,11 @@ func (a AlertingApi) GetAlertingAlert(alertId string) (*Commonalert, *APIRespons
 
 // GetAlertingAlertsActive invokes GET /api/v2/alerting/alerts/active
 //
-// Gets active alert count for a user.
+// Gets active alert count for a user
+//
+// Apps should migrate to use POST /api/v2/alerting/alerts/query with the queryType set to &#39;Count&#39; and alertStatus to &#39;Active&#39; in the request body.
+//
+// Deprecated: GetAlertingAlertsActive is deprecated
 func (a AlertingApi) GetAlertingAlertsActive() (*Activealertcount, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -490,6 +502,10 @@ func (a AlertingApi) GetAlertingAlertsActive() (*Activealertcount, *APIResponse,
 // GetAlertingInteractionstatsAlert invokes GET /api/v2/alerting/interactionstats/alerts/{alertId}
 //
 // Get an interaction stats alert
+//
+// Apps should migrate to use GET /api/v2/alerting/alerts/{alertId}.
+//
+// Deprecated: GetAlertingInteractionstatsAlert is deprecated
 func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []string) (*Interactionstatsalert, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -573,7 +589,11 @@ func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []s
 
 // GetAlertingInteractionstatsAlerts invokes GET /api/v2/alerting/interactionstats/alerts
 //
-// Get interaction stats alert list.
+// Get interaction stats alert list
+//
+// Apps should migrate to use POST /api/v2/alerting/alerts/query.
+//
+// Deprecated: GetAlertingInteractionstatsAlerts is deprecated
 func (a AlertingApi) GetAlertingInteractionstatsAlerts(expand []string) (*Interactionstatsalertcontainer, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -651,7 +671,11 @@ func (a AlertingApi) GetAlertingInteractionstatsAlerts(expand []string) (*Intera
 
 // GetAlertingInteractionstatsAlertsUnread invokes GET /api/v2/alerting/interactionstats/alerts/unread
 //
-// Gets user unread count of interaction stats alerts.
+// Gets user unread count of interaction stats alerts
+//
+// Apps should migrate to use POST /api/v2/alerting/alerts/query with the queryType set to &#39;Count&#39; and viewStatus to &#39;Unread&#39; in the request body.
+//
+// Deprecated: GetAlertingInteractionstatsAlertsUnread is deprecated
 func (a AlertingApi) GetAlertingInteractionstatsAlertsUnread() (*Unreadmetric, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -727,7 +751,11 @@ func (a AlertingApi) GetAlertingInteractionstatsAlertsUnread() (*Unreadmetric, *
 
 // GetAlertingInteractionstatsRule invokes GET /api/v2/alerting/interactionstats/rules/{ruleId}
 //
-// Get an interaction stats rule.
+// Get an interaction stats rule
+//
+// Apps should migrate to use GET /api/v2/alerting/rules/{ruleId}.
+//
+// Deprecated: GetAlertingInteractionstatsRule is deprecated
 func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []string) (*Interactionstatsrule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -811,7 +839,11 @@ func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []str
 
 // GetAlertingInteractionstatsRules invokes GET /api/v2/alerting/interactionstats/rules
 //
-// Get an interaction stats rule list.
+// Get an interaction stats rule list
+//
+// Apps should migrate to use POST /api/v2/alerting/rules/query.
+//
+// Deprecated: GetAlertingInteractionstatsRules is deprecated
 func (a AlertingApi) GetAlertingInteractionstatsRules(expand []string) (*Interactionstatsrulecontainer, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1305,7 +1337,11 @@ func (a AlertingApi) PostAlertingAlertsQuery(body Getalertquery) (*Alertlisting,
 
 // PostAlertingInteractionstatsRules invokes POST /api/v2/alerting/interactionstats/rules
 //
-// Create an interaction stats rule.
+// Create an interaction stats rule
+//
+// Apps should migrate to use POST /api/v2/alerting/rules.
+//
+// Deprecated: PostAlertingInteractionstatsRules is deprecated
 func (a AlertingApi) PostAlertingInteractionstatsRules(body Interactionstatsrule, expand []string) (*Interactionstatsrule, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1724,6 +1760,10 @@ func (a AlertingApi) PutAlertingAlert(alertId string, body Alertingunreadstatus)
 // PutAlertingInteractionstatsAlert invokes PUT /api/v2/alerting/interactionstats/alerts/{alertId}
 //
 // Update an interaction stats alert read status
+//
+// Apps should migrate to use PUT /api/v2/alerting/alerts/{alertId}.
+//
+// Deprecated: PutAlertingInteractionstatsAlert is deprecated
 func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unreadstatus, expand []string) (*Unreadstatus, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -1816,6 +1856,10 @@ func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unrea
 // PutAlertingInteractionstatsRule invokes PUT /api/v2/alerting/interactionstats/rules/{ruleId}
 //
 // Update an interaction stats rule
+//
+// Apps should migrate to use PUT /api/v2/alerting/rules/{ruleId}.
+//
+// Deprecated: PutAlertingInteractionstatsRule is deprecated
 func (a AlertingApi) PutAlertingInteractionstatsRule(ruleId string, body Interactionstatsrule, expand []string) (*Interactionstatsrule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

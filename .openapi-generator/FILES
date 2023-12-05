@@ -287,6 +287,7 @@ docs/GetAlertingRule-example.txt
 docs/GetAnalyticsActionsAggregatesJob-example.txt
 docs/GetAnalyticsActionsAggregatesJobResults-example.txt
 docs/GetAnalyticsBotflowReportingturns-example.txt
+docs/GetAnalyticsBotflowSessions-example.txt
 docs/GetAnalyticsBotsAggregatesJob-example.txt
 docs/GetAnalyticsBotsAggregatesJobResults-example.txt
 docs/GetAnalyticsConversationDetails-example.txt
@@ -1493,6 +1494,7 @@ docs/PatchLanguageunderstandingDomain-example.txt
 docs/PatchLanguageunderstandingMinerDraft-example.txt
 docs/PatchLearningAssignment-example.txt
 docs/PatchLearningAssignmentReschedule-example.txt
+docs/PatchLearningModuleUserAssignments-example.txt
 docs/PatchLocation-example.txt
 docs/PatchMessagingSetting-example.txt
 docs/PatchMessagingSupportedcontentSupportedContentId-example.txt
@@ -2742,11 +2744,13 @@ platformclientv2/botaggregationquery.go
 platformclientv2/botaggregationview.go
 platformclientv2/botasyncaggregatequeryresponse.go
 platformclientv2/botasyncaggregationquery.go
+platformclientv2/botchannel.go
 platformclientv2/botconnectorbot.go
 platformclientv2/botconnectorbotsummaryentitylisting.go
 platformclientv2/botconnectorbotversion.go
 platformclientv2/botconnectorbotversionsummaryentitylisting.go
 platformclientv2/botexecutionconfiguration.go
+platformclientv2/botflowsession.go
 platformclientv2/botintent.go
 platformclientv2/botlist.go
 platformclientv2/botmessengerprofile.go
@@ -4479,6 +4483,7 @@ platformclientv2/learningassignmentbulkaddresponse.go
 platformclientv2/learningassignmentbulkremoveresponse.go
 platformclientv2/learningassignmentcreate.go
 platformclientv2/learningassignmententity.go
+platformclientv2/learningassignmentexternalupdate.go
 platformclientv2/learningassignmentitem.go
 platformclientv2/learningassignmentreassign.go
 platformclientv2/learningassignmentreference.go
@@ -5562,6 +5567,7 @@ platformclientv2/sessionenddetails.go
 platformclientv2/sessionlastevent.go
 platformclientv2/sessionlisting.go
 platformclientv2/sessionsegmentassignment.go
+platformclientv2/sessionsresponse.go
 platformclientv2/setcontenttemplateactionsettings.go
 platformclientv2/setrecordingstate.go
 platformclientv2/setsmsphonenumberactionsettings.go
@@ -6469,6 +6475,7 @@ platformclientv2/workitemmanualassign.go
 platformclientv2/workitempostqueryentitylisting.go
 platformclientv2/workitemquerypostrequest.go
 platformclientv2/workitemquerysort.go
+platformclientv2/workitemqueuereference.go
 platformclientv2/workitemreference.go
 platformclientv2/workitemsattributechangeboolean.go
 platformclientv2/workitemsattributechangeinstant.go

@@ -20,6 +20,9 @@ type Learningassignmentcreate struct {
 
 	// RecommendedCompletionDate - The recommended completion date of assignment. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	RecommendedCompletionDate *time.Time `json:"recommendedCompletionDate,omitempty"`
+
+	// LengthInMinutes - The length in minutes of assignment
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -98,6 +101,8 @@ func (o Learningassignmentcreate) MarshalJSON() ([]byte, error) {
 		UserId *string `json:"userId,omitempty"`
 		
 		RecommendedCompletionDate *string `json:"recommendedCompletionDate,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 		Alias
 	}{ 
 		ModuleId: o.ModuleId,
@@ -105,6 +110,8 @@ func (o Learningassignmentcreate) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		RecommendedCompletionDate: RecommendedCompletionDate,
+		
+		LengthInMinutes: o.LengthInMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -127,6 +134,11 @@ func (o *Learningassignmentcreate) UnmarshalJSON(b []byte) error {
 	if recommendedCompletionDateString, ok := LearningassignmentcreateMap["recommendedCompletionDate"].(string); ok {
 		RecommendedCompletionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", recommendedCompletionDateString)
 		o.RecommendedCompletionDate = &RecommendedCompletionDate
+	}
+	
+	if LengthInMinutes, ok := LearningassignmentcreateMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
 	}
 	
 

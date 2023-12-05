@@ -87,6 +87,9 @@ type Userqueue struct {
 	// EnableTranscription - Indicates whether voice transcription is enabled for this queue.
 	EnableTranscription *bool `json:"enableTranscription,omitempty"`
 
+	// EnableAudioMonitoring - Indicates whether audio monitoring is enabled for this queue.
+	EnableAudioMonitoring *bool `json:"enableAudioMonitoring,omitempty"`
+
 	// EnableManualAssignment - Indicates whether manual assignment is enabled for this queue.
 	EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
 
@@ -253,6 +256,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		
 		EnableTranscription *bool `json:"enableTranscription,omitempty"`
 		
+		EnableAudioMonitoring *bool `json:"enableAudioMonitoring,omitempty"`
+		
 		EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
 		
 		AgentOwnedRouting *Agentownedrouting `json:"agentOwnedRouting,omitempty"`
@@ -327,6 +332,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		OnHoldPrompt: o.OnHoldPrompt,
 		
 		EnableTranscription: o.EnableTranscription,
+		
+		EnableAudioMonitoring: o.EnableAudioMonitoring,
 		
 		EnableManualAssignment: o.EnableManualAssignment,
 		
@@ -477,6 +484,10 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	
 	if EnableTranscription, ok := UserqueueMap["enableTranscription"].(bool); ok {
 		o.EnableTranscription = &EnableTranscription
+	}
+    
+	if EnableAudioMonitoring, ok := UserqueueMap["enableAudioMonitoring"].(bool); ok {
+		o.EnableAudioMonitoring = &EnableAudioMonitoring
 	}
     
 	if EnableManualAssignment, ok := UserqueueMap["enableManualAssignment"].(bool); ok {

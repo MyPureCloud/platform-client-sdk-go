@@ -17,7 +17,7 @@ type Knowledgebasecreaterequest struct {
 	// Description - Knowledge base description
 	Description *string `json:"description,omitempty"`
 
-	// CoreLanguage - Core language for knowledge base in which initial content must be created, language codes [en-US, en-UK, en-AU, de-DE] are supported currently. However, the new DX knowledge will support all these language codes, along with 'early preview' language codes [ca-ES, tr-TR, sv-SE, fi-FI, nb-NO, da-DK, ja-JP] which might have a lower accuracy.
+	// CoreLanguage - Core language for knowledge base in which initial content must be created, language codes [en-US, en-UK, en-AU, de-DE] are supported currently. However, the new DX knowledge will support all these language codes, along with 'early preview' language codes [ca-ES, tr-TR, sv-SE, fi-FI, nb-NO, da-DK, ja-JP, ar-AE] which might have a lower accuracy.
 	CoreLanguage *string `json:"coreLanguage,omitempty"`
 }
 

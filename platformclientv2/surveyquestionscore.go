@@ -20,8 +20,11 @@ type Surveyquestionscore struct {
 	// Score - Unweighted score of the question
 	Score *int `json:"score,omitempty"`
 
-	// MarkedNA
+	// MarkedNA - True when the evaluation is submitted with a question that does not have an answer. Only allowed when naEnabled is true or if set by the system
 	MarkedNA *bool `json:"markedNA,omitempty"`
+
+	// SystemMarkedNA - If markedNA is true, systemMarkedNA indicates whether it was marked by a user or by the system due to visibility conditions. Always false if markedNA is false.
+	SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
 
 	// AssistedAnswerId - AnswerId found with evaluation assistance conditions
 	AssistedAnswerId *string `json:"assistedAnswerId,omitempty"`
@@ -107,6 +110,8 @@ func (o Surveyquestionscore) MarshalJSON() ([]byte, error) {
 		
 		MarkedNA *bool `json:"markedNA,omitempty"`
 		
+		SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
+		
 		AssistedAnswerId *string `json:"assistedAnswerId,omitempty"`
 		
 		NpsScore *int `json:"npsScore,omitempty"`
@@ -123,6 +128,8 @@ func (o Surveyquestionscore) MarshalJSON() ([]byte, error) {
 		Score: o.Score,
 		
 		MarkedNA: o.MarkedNA,
+		
+		SystemMarkedNA: o.SystemMarkedNA,
 		
 		AssistedAnswerId: o.AssistedAnswerId,
 		
@@ -157,6 +164,10 @@ func (o *Surveyquestionscore) UnmarshalJSON(b []byte) error {
 	
 	if MarkedNA, ok := SurveyquestionscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
+	}
+    
+	if SystemMarkedNA, ok := SurveyquestionscoreMap["systemMarkedNA"].(bool); ok {
+		o.SystemMarkedNA = &SystemMarkedNA
 	}
     
 	if AssistedAnswerId, ok := SurveyquestionscoreMap["assistedAnswerId"].(string); ok {

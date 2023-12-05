@@ -29,6 +29,9 @@ type Callmediapolicyconditions struct {
 	// TimeAllowed
 	TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
 
+	// Teams - Teams to match conversations against
+	Teams *[]Team `json:"teams,omitempty"`
+
 	// Directions
 	Directions *[]string `json:"directions,omitempty"`
 
@@ -111,6 +114,8 @@ func (o Callmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		
 		TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
 		
+		Teams *[]Team `json:"teams,omitempty"`
+		
 		Directions *[]string `json:"directions,omitempty"`
 		
 		Duration *Durationcondition `json:"duration,omitempty"`
@@ -127,6 +132,8 @@ func (o Callmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		Languages: o.Languages,
 		
 		TimeAllowed: o.TimeAllowed,
+		
+		Teams: o.Teams,
 		
 		Directions: o.Directions,
 		
@@ -170,6 +177,11 @@ func (o *Callmediapolicyconditions) UnmarshalJSON(b []byte) error {
 	if TimeAllowed, ok := CallmediapolicyconditionsMap["timeAllowed"].(map[string]interface{}); ok {
 		TimeAllowedString, _ := json.Marshal(TimeAllowed)
 		json.Unmarshal(TimeAllowedString, &o.TimeAllowed)
+	}
+	
+	if Teams, ok := CallmediapolicyconditionsMap["teams"].([]interface{}); ok {
+		TeamsString, _ := json.Marshal(Teams)
+		json.Unmarshal(TeamsString, &o.Teams)
 	}
 	
 	if Directions, ok := CallmediapolicyconditionsMap["directions"].([]interface{}); ok {

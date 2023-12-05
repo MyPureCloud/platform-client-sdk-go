@@ -1339,7 +1339,7 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 // GetJourneyDeploymentCustomerPing invokes GET /api/v2/journey/deployments/{deploymentId}/customers/{customerCookieId}/ping
 //
 // Send a ping.
-func (a JourneyApi) GetJourneyDeploymentCustomerPing(deploymentId string, customerCookieId string, sessionId string, dl string, dt string, appNamespace string, sinceLastBeaconMilliseconds int) (*Deploymentping, *APIResponse, error) {
+func (a JourneyApi) GetJourneyDeploymentCustomerPing(deploymentId string, customerCookieId string, dl string, dt string, appNamespace string, sessionId string, sinceLastBeaconMilliseconds int) (*Deploymentping, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/deployments/{deploymentId}/customers/{customerCookieId}/ping"
@@ -1359,11 +1359,6 @@ func (a JourneyApi) GetJourneyDeploymentCustomerPing(deploymentId string, custom
 	if &customerCookieId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'customerCookieId' when calling JourneyApi->GetJourneyDeploymentCustomerPing")
-	}
-	// verify the required parameter 'sessionId' is set
-	if &sessionId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'sessionId' when calling JourneyApi->GetJourneyDeploymentCustomerPing")
 	}
 
 	headerParams := make(map[string]string)

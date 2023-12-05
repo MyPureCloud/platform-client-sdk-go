@@ -17,7 +17,7 @@ type Supportcentercategory struct {
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// Image
+	// Image - Image attributes for a featured category
 	Image *Supportcenterimage `json:"image,omitempty"`
 }
 

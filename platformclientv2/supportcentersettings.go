@@ -7,29 +7,29 @@ import (
 	"strings"
 )
 
-// Supportcentersettings - Settings concerning support center
+// Supportcentersettings - Settings concerning knowledge portal (previously support center)
 type Supportcentersettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - Whether or not support center is enabled
+	// Enabled - Whether or not knowledge portal (previously support center) is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// KnowledgeBase - The knowledge base for support center
+	// KnowledgeBase - The knowledge base for knowledge portal (previously support center)
 	KnowledgeBase *Addressableentityref `json:"knowledgeBase,omitempty"`
 
-	// CustomMessages - Customizable display texts for support center
+	// CustomMessages - Customizable display texts for knowledge portal (previously support center)
 	CustomMessages *[]Supportcentercustommessage `json:"customMessages,omitempty"`
 
-	// RouterType - Router type for support center
+	// RouterType - Router type for knowledge portal (previously support center)
 	RouterType *string `json:"routerType,omitempty"`
 
-	// Screens - Available screens for the support center with its modules
+	// Screens - Available screens for the knowledge portal (previously support center) with its modules
 	Screens *[]Supportcenterscreen `json:"screens,omitempty"`
 
-	// EnabledCategories - Enabled article categories for support center
+	// EnabledCategories - Featured categories for knowledge portal (previously support center) home screen
 	EnabledCategories *[]Supportcentercategory `json:"enabledCategories,omitempty"`
 
-	// StyleSetting - Style attributes for support center
+	// StyleSetting - Style attributes for knowledge portal (previously support center)
 	StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
 
 	// Feedback - Customer feedback settings

@@ -4802,7 +4802,7 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 
 // PostIntegrationsActions invokes POST /api/v2/integrations/actions
 //
-// Create a new Action
+// Create a new Action. Not supported for 'Function Integration' actions. Function integrations must be created as drafts to allow managing of uploading required ZIP function package before they may be used as a published action.
 func (a IntegrationsApi) PostIntegrationsActions(body Postactioninput) (*Action, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

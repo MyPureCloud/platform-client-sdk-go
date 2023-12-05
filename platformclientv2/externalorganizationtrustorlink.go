@@ -12,6 +12,9 @@ import (
 type Externalorganizationtrustorlink struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
 	// ExternalOrganizationId - The id of a PureCloud External Organization entity in the External Contacts system that will be used to represent the trustor org
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
@@ -23,6 +26,9 @@ type Externalorganizationtrustorlink struct {
 
 	// ExternalOrganizationUri - The URI for the External Organization that is linked to the trustor org
 	ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -96,6 +102,8 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 		
 		TrustorOrgId *string `json:"trustorOrgId,omitempty"`
@@ -103,8 +111,12 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		ExternalOrganizationId: o.ExternalOrganizationId,
 		
 		TrustorOrgId: o.TrustorOrgId,
@@ -112,6 +124,8 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		ExternalOrganizationUri: o.ExternalOrganizationUri,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -123,6 +137,10 @@ func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ExternalorganizationtrustorlinkMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if ExternalOrganizationId, ok := ExternalorganizationtrustorlinkMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
@@ -138,6 +156,10 @@ func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
 	
 	if ExternalOrganizationUri, ok := ExternalorganizationtrustorlinkMap["externalOrganizationUri"].(string); ok {
 		o.ExternalOrganizationUri = &ExternalOrganizationUri
+	}
+    
+	if SelfUri, ok := ExternalorganizationtrustorlinkMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 

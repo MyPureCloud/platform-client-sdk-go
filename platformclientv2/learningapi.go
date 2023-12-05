@@ -826,7 +826,7 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 // GetLearningModules invokes GET /api/v2/learning/modules
 //
 // Get all learning modules of an organization
-func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, isPublished string, statuses []string) (*Learningmodulesdomainentitylisting, *APIResponse, error) {
+func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, isPublished string, statuses []string, externalIds []string) (*Learningmodulesdomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules"
@@ -872,6 +872,8 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 	queryParams["isPublished"] = a.Configuration.APIClient.ParameterToString(isPublished, "")
 	
 	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
+	
+	queryParams["externalIds"] = a.Configuration.APIClient.ParameterToString(externalIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1198,6 +1200,104 @@ func (a LearningApi) PatchLearningAssignmentReschedule(assignmentId string, body
 	if &assignmentId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'assignmentId' when calling LearningApi->PatchLearningAssignmentReschedule")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Learningassignment
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Learningassignment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchLearningModuleUserAssignments invokes PATCH /api/v2/learning/modules/{moduleId}/users/{userId}/assignments
+//
+// Update an external assignment for a specific user
+//
+// Preview: PatchLearningModuleUserAssignments is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a LearningApi) PatchLearningModuleUserAssignments(moduleId string, userId string, body Learningassignmentexternalupdate) (*Learningassignment, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/users/{userId}/assignments"
+	path = strings.Replace(path, "{moduleId}", url.PathEscape(fmt.Sprintf("%v", moduleId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	defaultReturn := new(Learningassignment)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'moduleId' is set
+	if &moduleId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'moduleId' when calling LearningApi->PatchLearningModuleUserAssignments")
+	}
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling LearningApi->PatchLearningModuleUserAssignments")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PatchLearningModuleUserAssignments")
 	}
 
 	headerParams := make(map[string]string)

@@ -20,8 +20,11 @@ type Surveyquestiongroupscore struct {
 	// MaxTotalScore - Maximum possible score of all questions in the group
 	MaxTotalScore *float32 `json:"maxTotalScore,omitempty"`
 
-	// MarkedNA
+	// MarkedNA - True when the evaluation is submitted with a question group that does not have any answers. Only allowed when naEnabled is true or if set by the system
 	MarkedNA *bool `json:"markedNA,omitempty"`
+
+	// SystemMarkedNA - If markedNA is true, systemMarkedNA indicates whether it was marked by a user or by the system due to visibility conditions. Always false if markedNA is false.
+	SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
 
 	// QuestionScores
 	QuestionScores *[]Surveyquestionscore `json:"questionScores,omitempty"`
@@ -98,6 +101,8 @@ func (o Surveyquestiongroupscore) MarshalJSON() ([]byte, error) {
 		
 		MarkedNA *bool `json:"markedNA,omitempty"`
 		
+		SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
+		
 		QuestionScores *[]Surveyquestionscore `json:"questionScores,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Surveyquestiongroupscore) MarshalJSON() ([]byte, error) {
 		MaxTotalScore: o.MaxTotalScore,
 		
 		MarkedNA: o.MarkedNA,
+		
+		SystemMarkedNA: o.SystemMarkedNA,
 		
 		QuestionScores: o.QuestionScores,
 		Alias:    (Alias)(o),
@@ -137,6 +144,10 @@ func (o *Surveyquestiongroupscore) UnmarshalJSON(b []byte) error {
 	
 	if MarkedNA, ok := SurveyquestiongroupscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
+	}
+    
+	if SystemMarkedNA, ok := SurveyquestiongroupscoreMap["systemMarkedNA"].(bool); ok {
+		o.SystemMarkedNA = &SystemMarkedNA
 	}
     
 	if QuestionScores, ok := SurveyquestiongroupscoreMap["questionScores"].([]interface{}); ok {

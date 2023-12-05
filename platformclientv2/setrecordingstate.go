@@ -11,7 +11,7 @@ import (
 type Setrecordingstate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// RecordingState - The value of the recordingState to set.
+	// RecordingState - On update, 'paused' initiates a secure pause, 'active' resumes any paused recordings.
 	RecordingState *string `json:"recordingState,omitempty"`
 }
 

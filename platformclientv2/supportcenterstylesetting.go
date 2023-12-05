@@ -11,10 +11,10 @@ import (
 type Supportcenterstylesetting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// HeroStyle - Support center hero customizations
+	// HeroStyle - Knowledge portal (previously support center) hero customizations
 	HeroStyle *Supportcenterherostyle `json:"heroStyle,omitempty"`
 
-	// GlobalStyle - Support center global customizations
+	// GlobalStyle - Knowledge portal (previously support center) global customizations
 	GlobalStyle *Supportcenterglobalstyle `json:"globalStyle,omitempty"`
 }
 

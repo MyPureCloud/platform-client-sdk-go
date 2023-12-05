@@ -14,7 +14,7 @@ type Supportcentermodulesetting struct {
 	// VarType - Screen module type
 	VarType *string `json:"type,omitempty"`
 
-	// Enabled - Whether or not support center screen module is enabled
+	// Enabled - Whether or not knowledge portal (previously support center) screen module is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// CompactCategoryModuleTemplate - Compact category module template

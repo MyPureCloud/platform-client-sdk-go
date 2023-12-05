@@ -11,7 +11,7 @@ import (
 type Supportcenterimage struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Source
+	// Source - Source URLs for image
 	Source *Supportcenterimagesource `json:"source,omitempty"`
 }
 

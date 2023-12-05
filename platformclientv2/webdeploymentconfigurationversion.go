@@ -42,7 +42,7 @@ type Webdeploymentconfigurationversion struct {
 	// Position - The settings for position
 	Position *Positionsettings `json:"position,omitempty"`
 
-	// SupportCenter - The settings for support center
+	// SupportCenter - The settings for knowledge portal (previously support center)
 	SupportCenter *Supportcentersettings `json:"supportCenter,omitempty"`
 
 	// Cobrowse - The settings for cobrowse

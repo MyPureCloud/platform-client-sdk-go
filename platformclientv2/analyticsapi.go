@@ -428,7 +428,7 @@ func (a AnalyticsApi) GetAnalyticsActionsAggregatesJobResults(jobId string, curs
 //
 // Get Reporting Turns.
 //
-// Returns the reporting turns grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list. For pagination, clients should keep sending requests using the value of &#39;nextUri&#39; in the response, until it&#39;s no longer present, only then have all items have been returned. Note: resources returned by this endpoint do not persist indefinitely, as they auto delete after a predefined period.
+// Returns the reporting turns grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list. For pagination, clients should keep sending requests using the value of &#39;nextUri&#39; in the response, until it&#39;s no longer present, only then have all items have been returned. Note: resources returned by this endpoint are not persisted indefinitely, as they are deleted after approximately, but not before, 10 days.
 func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after string, pageSize string, interval string, actionId string, sessionId string, language string, askActionResults string) (*Reportingturnsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -514,6 +514,100 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Reportingturnsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetAnalyticsBotflowSessions invokes GET /api/v2/analytics/botflows/{botFlowId}/sessions
+//
+// Get Bot Flow Sessions.
+//
+// Returns the bot flow sessions in reverse chronological order from the date they were created. For pagination, clients should keep sending requests using the value of &#39;nextUri&#39; in the response, until it&#39;s no longer present, only then have all items have been returned. Note: resources returned by this endpoint are not persisted indefinitely, as they are deleted after approximately, but not before, 10 days.
+func (a AnalyticsApi) GetAnalyticsBotflowSessions(botFlowId string, after string, pageSize string, interval string, botResultCategories string, endLanguage string) (*Sessionsresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/analytics/botflows/{botFlowId}/sessions"
+	path = strings.Replace(path, "{botFlowId}", url.PathEscape(fmt.Sprintf("%v", botFlowId)), -1)
+	defaultReturn := new(Sessionsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'botFlowId' is set
+	if &botFlowId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'botFlowId' when calling AnalyticsApi->GetAnalyticsBotflowSessions")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
+	
+	queryParams["botResultCategories"] = a.Configuration.APIClient.ParameterToString(botResultCategories, "")
+	
+	queryParams["endLanguage"] = a.Configuration.APIClient.ParameterToString(endLanguage, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Sessionsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Sessionsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -6145,6 +6239,10 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 // PostAnalyticsReportingScheduleRunreport invokes POST /api/v2/analytics/reporting/schedules/{scheduleId}/runreport
 //
 // Place a scheduled report immediately into the reporting queue
+//
+// This route is deprecated, please use POST:api/v2/analytics/reporting/exports/{exportId}/execute instead
+//
+// Deprecated: PostAnalyticsReportingScheduleRunreport is deprecated
 func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string) (*Runnowresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6228,7 +6326,9 @@ func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string)
 //
 // Create a scheduled report job
 //
-// Create a scheduled report job.
+// This route is deprecated, please use POST:api/v2/analytics/reporting/exports instead
+//
+// Deprecated: PostAnalyticsReportingSchedules is deprecated
 func (a AnalyticsApi) PostAnalyticsReportingSchedules(body Reportschedule) (*Reportschedule, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7687,6 +7787,10 @@ func (a AnalyticsApi) PutAnalyticsDataretentionSettings(body Updateanalyticsdata
 // PutAnalyticsReportingSchedule invokes PUT /api/v2/analytics/reporting/schedules/{scheduleId}
 //
 // Update a scheduled report job.
+//
+// This route is deprecated, please use PATCH:api/v2/analytics/reporting/exports/{exportId}/schedule instead
+//
+// Deprecated: PutAnalyticsReportingSchedule is deprecated
 func (a AnalyticsApi) PutAnalyticsReportingSchedule(scheduleId string, body Reportschedule) (*Reportschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

@@ -61,7 +61,7 @@ type Worktype struct {
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 	// DefaultQueue - The default queue for Workitems created from the Worktype.
-	DefaultQueue *Queuereference `json:"defaultQueue,omitempty"`
+	DefaultQueue *Workitemqueuereference `json:"defaultQueue,omitempty"`
 
 	// DefaultSkills - The default skills for Workitems created from the Worktype.
 	DefaultSkills *[]Routingskillreference `json:"defaultSkills,omitempty"`
@@ -187,7 +187,7 @@ func (o Worktype) MarshalJSON() ([]byte, error) {
 		
 		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
-		DefaultQueue *Queuereference `json:"defaultQueue,omitempty"`
+		DefaultQueue *Workitemqueuereference `json:"defaultQueue,omitempty"`
 		
 		DefaultSkills *[]Routingskillreference `json:"defaultSkills,omitempty"`
 		

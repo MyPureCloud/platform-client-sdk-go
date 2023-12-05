@@ -42,6 +42,9 @@ type Survey struct {
 	// SurveyErrorDetails - Additional information about what happened when the survey is in Error status.
 	SurveyErrorDetails *Surveyerrordetails `json:"surveyErrorDetails,omitempty"`
 
+	// AgentTeam - The team that the agent belongs to
+	AgentTeam *Team `json:"agentTeam,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -137,6 +140,8 @@ func (o Survey) MarshalJSON() ([]byte, error) {
 		
 		SurveyErrorDetails *Surveyerrordetails `json:"surveyErrorDetails,omitempty"`
 		
+		AgentTeam *Team `json:"agentTeam,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -159,6 +164,8 @@ func (o Survey) MarshalJSON() ([]byte, error) {
 		CompletedDate: CompletedDate,
 		
 		SurveyErrorDetails: o.SurveyErrorDetails,
+		
+		AgentTeam: o.AgentTeam,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -217,6 +224,11 @@ func (o *Survey) UnmarshalJSON(b []byte) error {
 	if SurveyErrorDetails, ok := SurveyMap["surveyErrorDetails"].(map[string]interface{}); ok {
 		SurveyErrorDetailsString, _ := json.Marshal(SurveyErrorDetails)
 		json.Unmarshal(SurveyErrorDetailsString, &o.SurveyErrorDetails)
+	}
+	
+	if AgentTeam, ok := SurveyMap["agentTeam"].(map[string]interface{}); ok {
+		AgentTeamString, _ := json.Marshal(AgentTeam)
+		json.Unmarshal(AgentTeamString, &o.AgentTeam)
 	}
 	
 	if SelfUri, ok := SurveyMap["selfUri"].(string); ok {

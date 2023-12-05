@@ -11,7 +11,7 @@ import (
 type Requestconfig struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// RequestUrlTemplate - URL that may include placeholders for requests to 3rd party service
+	// RequestUrlTemplate - URL that may include placeholders for requests to 3rd party service. This value is read only for Function Integrations and will be set when a draft is created.
 	RequestUrlTemplate *string `json:"requestUrlTemplate,omitempty"`
 
 	// RequestTemplate - Velocity template to define request body sent to 3rd party service.

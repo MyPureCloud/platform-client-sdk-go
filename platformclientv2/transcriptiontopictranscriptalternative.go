@@ -25,6 +25,12 @@ type Transcriptiontopictranscriptalternative struct {
 
 	// Words
 	Words *[]Transcriptiontopictranscriptword `json:"words,omitempty"`
+
+	// DecoratedTranscript
+	DecoratedTranscript *string `json:"decoratedTranscript,omitempty"`
+
+	// DecoratedWords
+	DecoratedWords *[]Transcriptiontopictranscriptword `json:"decoratedWords,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +105,10 @@ func (o Transcriptiontopictranscriptalternative) MarshalJSON() ([]byte, error) {
 		Transcript *string `json:"transcript,omitempty"`
 		
 		Words *[]Transcriptiontopictranscriptword `json:"words,omitempty"`
+		
+		DecoratedTranscript *string `json:"decoratedTranscript,omitempty"`
+		
+		DecoratedWords *[]Transcriptiontopictranscriptword `json:"decoratedWords,omitempty"`
 		Alias
 	}{ 
 		Confidence: o.Confidence,
@@ -110,6 +120,10 @@ func (o Transcriptiontopictranscriptalternative) MarshalJSON() ([]byte, error) {
 		Transcript: o.Transcript,
 		
 		Words: o.Words,
+		
+		DecoratedTranscript: o.DecoratedTranscript,
+		
+		DecoratedWords: o.DecoratedWords,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +157,15 @@ func (o *Transcriptiontopictranscriptalternative) UnmarshalJSON(b []byte) error 
 	if Words, ok := TranscriptiontopictranscriptalternativeMap["words"].([]interface{}); ok {
 		WordsString, _ := json.Marshal(Words)
 		json.Unmarshal(WordsString, &o.Words)
+	}
+	
+	if DecoratedTranscript, ok := TranscriptiontopictranscriptalternativeMap["decoratedTranscript"].(string); ok {
+		o.DecoratedTranscript = &DecoratedTranscript
+	}
+    
+	if DecoratedWords, ok := TranscriptiontopictranscriptalternativeMap["decoratedWords"].([]interface{}); ok {
+		DecoratedWordsString, _ := json.Marshal(DecoratedWords)
+		json.Unmarshal(DecoratedWordsString, &o.DecoratedWords)
 	}
 	
 

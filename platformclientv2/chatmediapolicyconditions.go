@@ -29,6 +29,9 @@ type Chatmediapolicyconditions struct {
 	// TimeAllowed
 	TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
 
+	// Teams - Teams to match conversations against
+	Teams *[]Team `json:"teams,omitempty"`
+
 	// Duration
 	Duration *Durationcondition `json:"duration,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Chatmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		
 		TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
 		
+		Teams *[]Team `json:"teams,omitempty"`
+		
 		Duration *Durationcondition `json:"duration,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Chatmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		Languages: o.Languages,
 		
 		TimeAllowed: o.TimeAllowed,
+		
+		Teams: o.Teams,
 		
 		Duration: o.Duration,
 		Alias:    (Alias)(o),
@@ -163,6 +170,11 @@ func (o *Chatmediapolicyconditions) UnmarshalJSON(b []byte) error {
 	if TimeAllowed, ok := ChatmediapolicyconditionsMap["timeAllowed"].(map[string]interface{}); ok {
 		TimeAllowedString, _ := json.Marshal(TimeAllowed)
 		json.Unmarshal(TimeAllowedString, &o.TimeAllowed)
+	}
+	
+	if Teams, ok := ChatmediapolicyconditionsMap["teams"].([]interface{}); ok {
+		TeamsString, _ := json.Marshal(Teams)
+		json.Unmarshal(TeamsString, &o.Teams)
 	}
 	
 	if Duration, ok := ChatmediapolicyconditionsMap["duration"].(map[string]interface{}); ok {

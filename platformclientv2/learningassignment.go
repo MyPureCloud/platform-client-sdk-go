@@ -68,6 +68,9 @@ type Learningassignment struct {
 
 	// AssessmentForm - The assessment form associated with this assignment
 	AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
+
+	// LengthInMinutes - The length in minutes of the assignment
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -194,6 +197,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		User *Userreference `json:"user,omitempty"`
 		
 		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -233,6 +238,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		User: o.User,
 		
 		AssessmentForm: o.AssessmentForm,
+		
+		LengthInMinutes: o.LengthInMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -329,6 +336,11 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
 	if AssessmentForm, ok := LearningassignmentMap["assessmentForm"].(map[string]interface{}); ok {
 		AssessmentFormString, _ := json.Marshal(AssessmentForm)
 		json.Unmarshal(AssessmentFormString, &o.AssessmentForm)
+	}
+	
+	if LengthInMinutes, ok := LearningassignmentMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
 	}
 	
 
