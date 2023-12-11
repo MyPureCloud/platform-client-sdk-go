@@ -19,6 +19,9 @@ type Executiondataentity struct {
 
 	// Failed - If the retrieval failed (not found, no permission, etc;), this will be set true.
 	Failed *bool `json:"failed,omitempty"`
+
+	// StatusCode - This will contain the http status code for the failure
+	StatusCode *string `json:"statusCode,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Executiondataentity) MarshalJSON() ([]byte, error) {
 		DownloadUri *string `json:"downloadUri,omitempty"`
 		
 		Failed *bool `json:"failed,omitempty"`
+		
+		StatusCode *string `json:"statusCode,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -96,6 +101,8 @@ func (o Executiondataentity) MarshalJSON() ([]byte, error) {
 		DownloadUri: o.DownloadUri,
 		
 		Failed: o.Failed,
+		
+		StatusCode: o.StatusCode,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Executiondataentity) UnmarshalJSON(b []byte) error {
     
 	if Failed, ok := ExecutiondataentityMap["failed"].(bool); ok {
 		o.Failed = &Failed
+	}
+    
+	if StatusCode, ok := ExecutiondataentityMap["statusCode"].(string); ok {
+		o.StatusCode = &StatusCode
 	}
     
 

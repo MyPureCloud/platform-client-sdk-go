@@ -1768,12 +1768,12 @@ func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, ji
 // GetRoutingUserUtilization invokes GET /api/v2/routing/users/{userId}/utilization
 //
 // Get the user's max utilization settings.  If not configured, the organization-wide default is returned.
-func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization, *APIResponse, error) {
+func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilizationresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/users/{userId}/utilization"
 	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
-	defaultReturn := new(Agentmaxutilization)
+	defaultReturn := new(Agentmaxutilizationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1831,14 +1831,14 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Agentmaxutilization
+	var successPayload *Agentmaxutilizationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Agentmaxutilization" == "string" {
+		if "Agentmaxutilizationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -6813,12 +6813,12 @@ func (a UsersApi) PostUsersSearchTeamsAssign(body Usersearchrequest) (*Userssear
 // PutRoutingUserUtilization invokes PUT /api/v2/routing/users/{userId}/utilization
 //
 // Update the user's max utilization settings.  Include only those media types requiring custom configuration.
-func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*Agentmaxutilization, *APIResponse, error) {
+func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilizationrequest) (*Agentmaxutilizationresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/users/{userId}/utilization"
 	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
-	defaultReturn := new(Agentmaxutilization)
+	defaultReturn := new(Agentmaxutilizationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6884,14 +6884,14 @@ func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*A
 	// body params
 	postBody = &body
 
-	var successPayload *Agentmaxutilization
+	var successPayload *Agentmaxutilizationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Agentmaxutilization" == "string" {
+		if "Agentmaxutilizationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

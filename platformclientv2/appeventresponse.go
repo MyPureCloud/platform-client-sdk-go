@@ -33,9 +33,6 @@ type Appeventresponse struct {
 	// Device - Customer's device.
 	Device *Device `json:"device,omitempty"`
 
-	// IpAddress - Customer's IP address. May be null if the business configures the tracker to not collect IP addresses.
-	IpAddress *string `json:"ipAddress,omitempty"`
-
 	// IpOrganization - Customer's IP-based organization or ISP name.
 	IpOrganization *string `json:"ipOrganization,omitempty"`
 
@@ -65,9 +62,6 @@ type Appeventresponse struct {
 
 	// CreatedDate - UTC timestamp indicating when the event actually took place. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
-
-	// ExternalContact - The external contact associated with this app event.
-	ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -155,8 +149,6 @@ func (o Appeventresponse) MarshalJSON() ([]byte, error) {
 		
 		Device *Device `json:"device,omitempty"`
 		
-		IpAddress *string `json:"ipAddress,omitempty"`
-		
 		IpOrganization *string `json:"ipOrganization,omitempty"`
 		
 		Geolocation *Journeygeolocation `json:"geolocation,omitempty"`
@@ -176,8 +168,6 @@ func (o Appeventresponse) MarshalJSON() ([]byte, error) {
 		Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 		
 		CreatedDate *string `json:"createdDate,omitempty"`
-		
-		ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -193,8 +183,6 @@ func (o Appeventresponse) MarshalJSON() ([]byte, error) {
 		App: o.App,
 		
 		Device: o.Device,
-		
-		IpAddress: o.IpAddress,
 		
 		IpOrganization: o.IpOrganization,
 		
@@ -215,8 +203,6 @@ func (o Appeventresponse) MarshalJSON() ([]byte, error) {
 		Traits: o.Traits,
 		
 		CreatedDate: CreatedDate,
-		
-		ExternalContact: o.ExternalContact,
 		Alias:    (Alias)(o),
 	})
 }
@@ -258,10 +244,6 @@ func (o *Appeventresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DeviceString, &o.Device)
 	}
 	
-	if IpAddress, ok := AppeventresponseMap["ipAddress"].(string); ok {
-		o.IpAddress = &IpAddress
-	}
-    
 	if IpOrganization, ok := AppeventresponseMap["ipOrganization"].(string); ok {
 		o.IpOrganization = &IpOrganization
 	}
@@ -308,11 +290,6 @@ func (o *Appeventresponse) UnmarshalJSON(b []byte) error {
 	if createdDateString, ok := AppeventresponseMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate
-	}
-	
-	if ExternalContact, ok := AppeventresponseMap["externalContact"].(map[string]interface{}); ok {
-		ExternalContactString, _ := json.Marshal(ExternalContact)
-		json.Unmarshal(ExternalContactString, &o.ExternalContact)
 	}
 	
 

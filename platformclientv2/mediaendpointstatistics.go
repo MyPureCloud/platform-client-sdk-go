@@ -25,6 +25,9 @@ type Mediaendpointstatistics struct {
 
 	// Rtp - Statistics of sent and received RTP. Reference: https://www.rfc-editor.org/rfc/rfc3550
 	Rtp *Mediartpstatistics `json:"rtp,omitempty"`
+
+	// ReconnectAttemptCount - Media reconnect attempt count
+	ReconnectAttemptCount *int `json:"reconnectAttemptCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 		Ice *Mediaicestatistics `json:"ice,omitempty"`
 		
 		Rtp *Mediartpstatistics `json:"rtp,omitempty"`
+		
+		ReconnectAttemptCount *int `json:"reconnectAttemptCount,omitempty"`
 		Alias
 	}{ 
 		Trunk: o.Trunk,
@@ -110,6 +115,8 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 		Ice: o.Ice,
 		
 		Rtp: o.Rtp,
+		
+		ReconnectAttemptCount: o.ReconnectAttemptCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -144,6 +151,11 @@ func (o *Mediaendpointstatistics) UnmarshalJSON(b []byte) error {
 	if Rtp, ok := MediaendpointstatisticsMap["rtp"].(map[string]interface{}); ok {
 		RtpString, _ := json.Marshal(Rtp)
 		json.Unmarshal(RtpString, &o.Rtp)
+	}
+	
+	if ReconnectAttemptCount, ok := MediaendpointstatisticsMap["reconnectAttemptCount"].(float64); ok {
+		ReconnectAttemptCountInt := int(ReconnectAttemptCount)
+		o.ReconnectAttemptCount = &ReconnectAttemptCountInt
 	}
 	
 

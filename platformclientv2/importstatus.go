@@ -25,6 +25,12 @@ type Importstatus struct {
 
 	// FailureReason - if the import has failed, the reason for the failure
 	FailureReason *string `json:"failureReason,omitempty"`
+
+	// TargetContactListIds - The contact list Ids for target contact lists.
+	TargetContactListIds *[]string `json:"targetContactListIds,omitempty"`
+
+	// ListNamePrefix - The prefix for the contact list name
+	ListNamePrefix *string `json:"listNamePrefix,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +105,10 @@ func (o Importstatus) MarshalJSON() ([]byte, error) {
 		PercentComplete *int `json:"percentComplete,omitempty"`
 		
 		FailureReason *string `json:"failureReason,omitempty"`
+		
+		TargetContactListIds *[]string `json:"targetContactListIds,omitempty"`
+		
+		ListNamePrefix *string `json:"listNamePrefix,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -110,6 +120,10 @@ func (o Importstatus) MarshalJSON() ([]byte, error) {
 		PercentComplete: o.PercentComplete,
 		
 		FailureReason: o.FailureReason,
+		
+		TargetContactListIds: o.TargetContactListIds,
+		
+		ListNamePrefix: o.ListNamePrefix,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,6 +156,15 @@ func (o *Importstatus) UnmarshalJSON(b []byte) error {
 	
 	if FailureReason, ok := ImportstatusMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
+	}
+    
+	if TargetContactListIds, ok := ImportstatusMap["targetContactListIds"].([]interface{}); ok {
+		TargetContactListIdsString, _ := json.Marshal(TargetContactListIds)
+		json.Unmarshal(TargetContactListIdsString, &o.TargetContactListIds)
+	}
+	
+	if ListNamePrefix, ok := ImportstatusMap["listNamePrefix"].(string); ok {
+		o.ListNamePrefix = &ListNamePrefix
 	}
     
 

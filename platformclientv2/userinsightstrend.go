@@ -26,14 +26,14 @@ type Userinsightstrend struct {
 	// PrimaryPeriod - The primary period work day date range
 	PrimaryPeriod *Workdayperiod `json:"primaryPeriod,omitempty"`
 
-	// Entities - The list of insights trend for each metric
-	Entities *[]Insightstrendmetricitem `json:"entities,omitempty"`
-
-	// Total - The insights trend in total
-	Total *Insightstrendtotalitem `json:"total,omitempty"`
-
 	// User - The query user
 	User *Userreference `json:"user,omitempty"`
+
+	// Entities - The list of insights trend for each metric
+	Entities *[]Userinsightstrendmetricitem `json:"entities,omitempty"`
+
+	// Total - The insights trend in total
+	Total *Userinsightstrendtotalitem `json:"total,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,11 +109,11 @@ func (o Userinsightstrend) MarshalJSON() ([]byte, error) {
 		
 		PrimaryPeriod *Workdayperiod `json:"primaryPeriod,omitempty"`
 		
-		Entities *[]Insightstrendmetricitem `json:"entities,omitempty"`
-		
-		Total *Insightstrendtotalitem `json:"total,omitempty"`
-		
 		User *Userreference `json:"user,omitempty"`
+		
+		Entities *[]Userinsightstrendmetricitem `json:"entities,omitempty"`
+		
+		Total *Userinsightstrendtotalitem `json:"total,omitempty"`
 		Alias
 	}{ 
 		PerformanceProfile: o.PerformanceProfile,
@@ -126,11 +126,11 @@ func (o Userinsightstrend) MarshalJSON() ([]byte, error) {
 		
 		PrimaryPeriod: o.PrimaryPeriod,
 		
+		User: o.User,
+		
 		Entities: o.Entities,
 		
 		Total: o.Total,
-		
-		User: o.User,
 		Alias:    (Alias)(o),
 	})
 }
@@ -166,6 +166,11 @@ func (o *Userinsightstrend) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PrimaryPeriodString, &o.PrimaryPeriod)
 	}
 	
+	if User, ok := UserinsightstrendMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
 	if Entities, ok := UserinsightstrendMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
@@ -174,11 +179,6 @@ func (o *Userinsightstrend) UnmarshalJSON(b []byte) error {
 	if Total, ok := UserinsightstrendMap["total"].(map[string]interface{}); ok {
 		TotalString, _ := json.Marshal(Total)
 		json.Unmarshal(TotalString, &o.Total)
-	}
-	
-	if User, ok := UserinsightstrendMap["user"].(map[string]interface{}); ok {
-		UserString, _ := json.Marshal(User)
-		json.Unmarshal(UserString, &o.User)
 	}
 	
 

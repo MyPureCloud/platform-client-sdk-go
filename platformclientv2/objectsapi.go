@@ -549,11 +549,6 @@ func (a ObjectsApi) PostAuthorizationDivisionRestore(divisionId string, body Aut
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'divisionId' when calling ObjectsApi->PostAuthorizationDivisionRestore")
 	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ObjectsApi->PostAuthorizationDivisionRestore")
-	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)

@@ -30,6 +30,12 @@ type Contactlistfilter struct {
 	// ContactList - The contact list the filter is based on. Required if sourceType is ContactList
 	ContactList *Domainentityref `json:"contactList,omitempty"`
 
+	// ContactListTemplate - The contact list template the filter is based on. Required if sourceType is ContactListTemplate
+	ContactListTemplate *Domainentityref `json:"contactListTemplate,omitempty"`
+
+	// SourceType - The source type the filter is based on.
+	SourceType *string `json:"sourceType,omitempty"`
+
 	// Clauses - Groups of conditions to filter the contacts by.
 	Clauses *[]Contactlistfilterclause `json:"clauses,omitempty"`
 
@@ -131,6 +137,10 @@ func (o Contactlistfilter) MarshalJSON() ([]byte, error) {
 		
 		ContactList *Domainentityref `json:"contactList,omitempty"`
 		
+		ContactListTemplate *Domainentityref `json:"contactListTemplate,omitempty"`
+		
+		SourceType *string `json:"sourceType,omitempty"`
+		
 		Clauses *[]Contactlistfilterclause `json:"clauses,omitempty"`
 		
 		FilterType *string `json:"filterType,omitempty"`
@@ -149,6 +159,10 @@ func (o Contactlistfilter) MarshalJSON() ([]byte, error) {
 		Version: o.Version,
 		
 		ContactList: o.ContactList,
+		
+		ContactListTemplate: o.ContactListTemplate,
+		
+		SourceType: o.SourceType,
 		
 		Clauses: o.Clauses,
 		
@@ -194,6 +208,15 @@ func (o *Contactlistfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ContactListString, &o.ContactList)
 	}
 	
+	if ContactListTemplate, ok := ContactlistfilterMap["contactListTemplate"].(map[string]interface{}); ok {
+		ContactListTemplateString, _ := json.Marshal(ContactListTemplate)
+		json.Unmarshal(ContactListTemplateString, &o.ContactListTemplate)
+	}
+	
+	if SourceType, ok := ContactlistfilterMap["sourceType"].(string); ok {
+		o.SourceType = &SourceType
+	}
+    
 	if Clauses, ok := ContactlistfilterMap["clauses"].([]interface{}); ok {
 		ClausesString, _ := json.Marshal(Clauses)
 		json.Unmarshal(ClausesString, &o.Clauses)
