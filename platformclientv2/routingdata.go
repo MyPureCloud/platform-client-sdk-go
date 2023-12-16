@@ -17,6 +17,9 @@ type Routingdata struct {
 	// LanguageId - The identifier of a language to be considered in routing
 	LanguageId *string `json:"languageId,omitempty"`
 
+	// Label - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
+	Label *string `json:"label,omitempty"`
+
 	// Priority - The priority for routing
 	Priority *int `json:"priority,omitempty"`
 
@@ -100,6 +103,8 @@ func (o Routingdata) MarshalJSON() ([]byte, error) {
 		
 		LanguageId *string `json:"languageId,omitempty"`
 		
+		Label *string `json:"label,omitempty"`
+		
 		Priority *int `json:"priority,omitempty"`
 		
 		SkillIds *[]string `json:"skillIds,omitempty"`
@@ -114,6 +119,8 @@ func (o Routingdata) MarshalJSON() ([]byte, error) {
 		QueueId: o.QueueId,
 		
 		LanguageId: o.LanguageId,
+		
+		Label: o.Label,
 		
 		Priority: o.Priority,
 		
@@ -141,6 +148,10 @@ func (o *Routingdata) UnmarshalJSON(b []byte) error {
     
 	if LanguageId, ok := RoutingdataMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
+	}
+    
+	if Label, ok := RoutingdataMap["label"].(string); ok {
+		o.Label = &Label
 	}
     
 	if Priority, ok := RoutingdataMap["priority"].(float64); ok {

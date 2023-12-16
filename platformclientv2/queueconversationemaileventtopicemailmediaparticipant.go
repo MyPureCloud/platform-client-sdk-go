@@ -120,6 +120,9 @@ type Queueconversationemaileventtopicemailmediaparticipant struct {
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
+	// QueueMediaSettings
+	QueueMediaSettings *Queueconversationemaileventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// Subject
 	Subject *string `json:"subject,omitempty"`
 
@@ -322,6 +325,8 @@ func (o Queueconversationemaileventtopicemailmediaparticipant) MarshalJSON() ([]
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
+		QueueMediaSettings *Queueconversationemaileventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		Subject *string `json:"subject,omitempty"`
 		
 		MessagesSent *int `json:"messagesSent,omitempty"`
@@ -406,6 +411,8 @@ func (o Queueconversationemaileventtopicemailmediaparticipant) MarshalJSON() ([]
 		EndAcwTime: EndAcwTime,
 		
 		MediaRoles: o.MediaRoles,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		Subject: o.Subject,
 		
@@ -591,6 +598,11 @@ func (o *Queueconversationemaileventtopicemailmediaparticipant) UnmarshalJSON(b 
 	if MediaRoles, ok := QueueconversationemaileventtopicemailmediaparticipantMap["mediaRoles"].([]interface{}); ok {
 		MediaRolesString, _ := json.Marshal(MediaRoles)
 		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
+	if QueueMediaSettings, ok := QueueconversationemaileventtopicemailmediaparticipantMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
 	if Subject, ok := QueueconversationemaileventtopicemailmediaparticipantMap["subject"].(string); ok {

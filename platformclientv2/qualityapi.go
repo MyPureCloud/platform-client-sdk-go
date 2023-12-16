@@ -1636,12 +1636,12 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, s
 // Get an evaluation form
 //
 // Deprecated: GetQualityForm is deprecated
-func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) GetQualityForm(formId string) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1699,14 +1699,14 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1720,12 +1720,12 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 // Gets all the revisions for a specific evaluation.
 //
 // Deprecated: GetQualityFormVersions is deprecated
-func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumber int) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumber int) (*Evaluationformresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}/versions"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationformentitylisting)
+	defaultReturn := new(Evaluationformresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1787,14 +1787,14 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationformentitylisting
+	var successPayload *Evaluationformresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationformentitylisting" == "string" {
+		if "Evaluationformresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1808,11 +1808,11 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 // Get the list of evaluation forms
 //
 // Deprecated: GetQualityForms is deprecated
-func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms"
-	defaultReturn := new(Evaluationformentitylisting)
+	defaultReturn := new(Evaluationformresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1881,14 +1881,14 @@ func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string,
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationformentitylisting
+	var successPayload *Evaluationformresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationformentitylisting" == "string" {
+		if "Evaluationformresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1900,12 +1900,12 @@ func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string,
 // GetQualityFormsEvaluation invokes GET /api/v2/quality/forms/evaluations/{formId}
 //
 // Get an evaluation form
-func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1963,14 +1963,14 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1982,12 +1982,12 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 // GetQualityFormsEvaluationVersions invokes GET /api/v2/quality/forms/evaluations/{formId}/versions
 //
 // Gets all the revisions for a specific evaluation.
-func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize int, pageNumber int, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize int, pageNumber int, sortOrder string) (*Evaluationformresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}/versions"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationformentitylisting)
+	defaultReturn := new(Evaluationformresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2051,14 +2051,14 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationformentitylisting
+	var successPayload *Evaluationformresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationformentitylisting" == "string" {
+		if "Evaluationformresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2072,11 +2072,11 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 // Get the list of evaluation forms
 //
 // By default, \&quot;published\&quot; field is always returned as false for all evaluation forms. If you set \&quot;expand&#x3D;publishHistory\&quot;, then you will be able to get published versions for each corresponding evaluation form. In addition, \&quot;questionGroups\&quot;, the detailed information about evaluation form, is not returned by default. We will enhance this field in the future release.
-func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations"
-	defaultReturn := new(Evaluationformentitylisting)
+	defaultReturn := new(Evaluationformresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2145,14 +2145,14 @@ func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sor
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationformentitylisting
+	var successPayload *Evaluationformresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationformentitylisting" == "string" {
+		if "Evaluationformresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2164,11 +2164,11 @@ func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sor
 // GetQualityFormsEvaluationsBulkContexts invokes GET /api/v2/quality/forms/evaluations/bulk/contexts
 //
 // Retrieve a list of the latest published evaluation form versions by context ids
-func (a QualityApi) GetQualityFormsEvaluationsBulkContexts(contextId []string) ([]Evaluationform, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsEvaluationsBulkContexts(contextId []string) ([]Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/bulk/contexts"
-	defaultReturn := make([]Evaluationform, 0)
+	defaultReturn := make([]Evaluationformresponse, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2228,14 +2228,14 @@ func (a QualityApi) GetQualityFormsEvaluationsBulkContexts(contextId []string) (
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload []Evaluationform
+	var successPayload []Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "[]Evaluationform" == "string" {
+		if "[]Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2677,12 +2677,12 @@ func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, publi
 // Get the published evaluation forms.
 //
 // Deprecated: GetQualityPublishedform is deprecated
-func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/{formId}"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2740,14 +2740,14 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2761,11 +2761,11 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 // Get the published evaluation forms.
 //
 // Deprecated: GetQualityPublishedforms is deprecated
-func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms"
-	defaultReturn := new(Evaluationformentitylisting)
+	defaultReturn := new(Evaluationformresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2826,14 +2826,14 @@ func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name 
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationformentitylisting
+	var successPayload *Evaluationformresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationformentitylisting" == "string" {
+		if "Evaluationformresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2845,12 +2845,12 @@ func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name 
 // GetQualityPublishedformsEvaluation invokes GET /api/v2/quality/publishedforms/evaluations/{formId}
 //
 // Get the most recent published version of an evaluation form.
-func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/evaluations/{formId}"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2908,14 +2908,14 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2927,11 +2927,11 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 // GetQualityPublishedformsEvaluations invokes GET /api/v2/quality/publishedforms/evaluations
 //
 // Get the published evaluation forms.
-func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/evaluations"
-	defaultReturn := new(Evaluationformentitylisting)
+	defaultReturn := new(Evaluationformresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2992,14 +2992,14 @@ func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Evaluationformentitylisting
+	var successPayload *Evaluationformresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationformentitylisting" == "string" {
+		if "Evaluationformresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4199,11 +4199,11 @@ func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscorings
 // Create an evaluation form.
 //
 // Deprecated: PostQualityForms is deprecated
-func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms"
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4264,14 +4264,14 @@ func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *API
 	// body params
 	postBody = &body
 
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4283,11 +4283,11 @@ func (a QualityApi) PostQualityForms(body Evaluationform) (*Evaluationform, *API
 // PostQualityFormsEvaluations invokes POST /api/v2/quality/forms/evaluations
 //
 // Create an evaluation form.
-func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations"
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4348,14 +4348,14 @@ func (a QualityApi) PostQualityFormsEvaluations(body Evaluationform) (*Evaluatio
 	// body params
 	postBody = &body
 
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4453,11 +4453,11 @@ func (a QualityApi) PostQualityFormsSurveys(body Surveyform) (*Surveyform, *APIR
 // Publish an evaluation form.
 //
 // Deprecated: PostQualityPublishedforms is deprecated
-func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms"
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4518,14 +4518,14 @@ func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform
 	// body params
 	postBody = &body
 
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4537,11 +4537,11 @@ func (a QualityApi) PostQualityPublishedforms(body Publishform) (*Evaluationform
 // PostQualityPublishedformsEvaluations invokes POST /api/v2/quality/publishedforms/evaluations
 //
 // Publish an evaluation form.
-func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/evaluations"
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4602,14 +4602,14 @@ func (a QualityApi) PostQualityPublishedformsEvaluations(body Publishform) (*Eva
 	// body params
 	postBody = &body
 
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4981,12 +4981,12 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 // Update an evaluation form.
 //
 // Deprecated: PutQualityForm is deprecated
-func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5052,14 +5052,14 @@ func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluat
 	// body params
 	postBody = &body
 
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5071,12 +5071,12 @@ func (a QualityApi) PutQualityForm(formId string, body Evaluationform) (*Evaluat
 // PutQualityFormsEvaluation invokes PUT /api/v2/quality/forms/evaluations/{formId}
 //
 // Update an evaluation form.
-func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform) (*Evaluationform, *APIResponse, error) {
+func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform) (*Evaluationformresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Evaluationform)
+	defaultReturn := new(Evaluationformresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5142,14 +5142,14 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 	// body params
 	postBody = &body
 
-	var successPayload *Evaluationform
+	var successPayload *Evaluationformresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Evaluationform" == "string" {
+		if "Evaluationformresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -68,6 +68,9 @@ type Queueconversationvideoeventtopiccobrowse struct {
 
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
+	// QueueMediaSettings - Represents the queue setting for this media.
+	QueueMediaSettings *Queueconversationvideoeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -194,6 +197,8 @@ func (o Queueconversationvideoeventtopiccobrowse) MarshalJSON() ([]byte, error) 
 		AfterCallWork *Queueconversationvideoeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		QueueMediaSettings *Queueconversationvideoeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -233,6 +238,8 @@ func (o Queueconversationvideoeventtopiccobrowse) MarshalJSON() ([]byte, error) 
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -327,6 +334,11 @@ func (o *Queueconversationvideoeventtopiccobrowse) UnmarshalJSON(b []byte) error
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
     
+	if QueueMediaSettings, ok := QueueconversationvideoeventtopiccobrowseMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
 
 	return nil
 }

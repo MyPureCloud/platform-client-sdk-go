@@ -50,6 +50,9 @@ type Chatmessageresponse struct {
 
 	// ToUser - The receiving user of the message
 	ToUser *Addressableentityref `json:"toUser,omitempty"`
+
+	// Reactions - The emoji reactions to this message
+	Reactions *[]Chatreaction `json:"reactions,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -156,6 +159,8 @@ func (o Chatmessageresponse) MarshalJSON() ([]byte, error) {
 		User *Addressableentityref `json:"user,omitempty"`
 		
 		ToUser *Addressableentityref `json:"toUser,omitempty"`
+		
+		Reactions *[]Chatreaction `json:"reactions,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -183,6 +188,8 @@ func (o Chatmessageresponse) MarshalJSON() ([]byte, error) {
 		User: o.User,
 		
 		ToUser: o.ToUser,
+		
+		Reactions: o.Reactions,
 		Alias:    (Alias)(o),
 	})
 }
@@ -250,6 +257,11 @@ func (o *Chatmessageresponse) UnmarshalJSON(b []byte) error {
 	if ToUser, ok := ChatmessageresponseMap["toUser"].(map[string]interface{}); ok {
 		ToUserString, _ := json.Marshal(ToUser)
 		json.Unmarshal(ToUserString, &o.ToUser)
+	}
+	
+	if Reactions, ok := ChatmessageresponseMap["reactions"].([]interface{}); ok {
+		ReactionsString, _ := json.Marshal(Reactions)
+		json.Unmarshal(ReactionsString, &o.Reactions)
 	}
 	
 

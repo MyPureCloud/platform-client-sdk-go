@@ -120,6 +120,9 @@ type Conversationcallbackeventtopiccallbackmediaparticipant struct {
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
+	// QueueMediaSettings
+	QueueMediaSettings *Conversationcallbackeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// OutboundPreview
 	OutboundPreview *Conversationcallbackeventtopicdialerpreview `json:"outboundPreview,omitempty"`
 
@@ -339,6 +342,8 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
+		QueueMediaSettings *Conversationcallbackeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		OutboundPreview *Conversationcallbackeventtopicdialerpreview `json:"outboundPreview,omitempty"`
 		
 		Voicemail *Conversationcallbackeventtopicvoicemail `json:"voicemail,omitempty"`
@@ -429,6 +434,8 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		EndAcwTime: EndAcwTime,
 		
 		MediaRoles: o.MediaRoles,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		OutboundPreview: o.OutboundPreview,
 		
@@ -620,6 +627,11 @@ func (o *Conversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJSON(b
 	if MediaRoles, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["mediaRoles"].([]interface{}); ok {
 		MediaRolesString, _ := json.Marshal(MediaRoles)
 		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
+	if QueueMediaSettings, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
 	if OutboundPreview, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["outboundPreview"].(map[string]interface{}); ok {

@@ -95,6 +95,9 @@ type Callback struct {
 
 	// CallerIdName - The name displayed to recipients of the phone call.
 	CallerIdName *string `json:"callerIdName,omitempty"`
+
+	// QueueMediaSettings - Represents the queue settings for this media type.
+	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -255,6 +258,8 @@ func (o Callback) MarshalJSON() ([]byte, error) {
 		CallerId *string `json:"callerId,omitempty"`
 		
 		CallerIdName *string `json:"callerIdName,omitempty"`
+		
+		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -312,6 +317,8 @@ func (o Callback) MarshalJSON() ([]byte, error) {
 		CallerId: o.CallerId,
 		
 		CallerIdName: o.CallerIdName,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -447,6 +454,11 @@ func (o *Callback) UnmarshalJSON(b []byte) error {
 		o.CallerIdName = &CallerIdName
 	}
     
+	if QueueMediaSettings, ok := CallbackMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
 
 	return nil
 }

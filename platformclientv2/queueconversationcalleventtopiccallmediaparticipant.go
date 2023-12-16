@@ -120,6 +120,9 @@ type Queueconversationcalleventtopiccallmediaparticipant struct {
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
+	// QueueMediaSettings
+	QueueMediaSettings *Queueconversationcalleventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// Muted
 	Muted *bool `json:"muted,omitempty"`
 
@@ -357,6 +360,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
+		QueueMediaSettings *Queueconversationcalleventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		Muted *bool `json:"muted,omitempty"`
 		
 		Confined *bool `json:"confined,omitempty"`
@@ -459,6 +464,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		EndAcwTime: EndAcwTime,
 		
 		MediaRoles: o.MediaRoles,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		Muted: o.Muted,
 		
@@ -662,6 +669,11 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if MediaRoles, ok := QueueconversationcalleventtopiccallmediaparticipantMap["mediaRoles"].([]interface{}); ok {
 		MediaRolesString, _ := json.Marshal(MediaRoles)
 		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
+	if QueueMediaSettings, ok := QueueconversationcalleventtopiccallmediaparticipantMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
 	if Muted, ok := QueueconversationcalleventtopiccallmediaparticipantMap["muted"].(bool); ok {

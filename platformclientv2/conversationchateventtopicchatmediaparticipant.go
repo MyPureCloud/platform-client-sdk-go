@@ -120,6 +120,9 @@ type Conversationchateventtopicchatmediaparticipant struct {
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
+	// QueueMediaSettings
+	QueueMediaSettings *Conversationchateventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// RoomId
 	RoomId *string `json:"roomId,omitempty"`
 
@@ -310,6 +313,8 @@ func (o Conversationchateventtopicchatmediaparticipant) MarshalJSON() ([]byte, e
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
+		QueueMediaSettings *Conversationchateventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		RoomId *string `json:"roomId,omitempty"`
 		
 		AvatarImageUrl *string `json:"avatarImageUrl,omitempty"`
@@ -386,6 +391,8 @@ func (o Conversationchateventtopicchatmediaparticipant) MarshalJSON() ([]byte, e
 		EndAcwTime: EndAcwTime,
 		
 		MediaRoles: o.MediaRoles,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		RoomId: o.RoomId,
 		
@@ -563,6 +570,11 @@ func (o *Conversationchateventtopicchatmediaparticipant) UnmarshalJSON(b []byte)
 	if MediaRoles, ok := ConversationchateventtopicchatmediaparticipantMap["mediaRoles"].([]interface{}); ok {
 		MediaRolesString, _ := json.Marshal(MediaRoles)
 		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
+	if QueueMediaSettings, ok := ConversationchateventtopicchatmediaparticipantMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
 	if RoomId, ok := ConversationchateventtopicchatmediaparticipantMap["roomId"].(string); ok {

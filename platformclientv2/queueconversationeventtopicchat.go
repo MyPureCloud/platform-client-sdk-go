@@ -62,6 +62,9 @@ type Queueconversationeventtopicchat struct {
 
 	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
+	// QueueMediaSettings - Represents the queue setting for this media.
+	QueueMediaSettings *Queueconversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -184,6 +187,8 @@ func (o Queueconversationeventtopicchat) MarshalJSON() ([]byte, error) {
 		AfterCallWork *Queueconversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		QueueMediaSettings *Queueconversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -219,6 +224,8 @@ func (o Queueconversationeventtopicchat) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -304,6 +311,11 @@ func (o *Queueconversationeventtopicchat) UnmarshalJSON(b []byte) error {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
 	}
     
+	if QueueMediaSettings, ok := QueueconversationeventtopicchatMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
 
 	return nil
 }

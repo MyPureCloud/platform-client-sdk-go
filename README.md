@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 118.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 119.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -22,7 +22,7 @@ Some macOS users encounter the error "argument list too long" when building or i
 Retrieve the package from https://github.com/MyPureCloud/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/mypurecloud/platform-client-sdk-go/v118/platformclientv2
+go get github.com/mypurecloud/platform-client-sdk-go/v119/platformclientv2
 ```
 
 ## Using the SDK
@@ -31,7 +31,7 @@ go get github.com/mypurecloud/platform-client-sdk-go/v118/platformclientv2
 
 ```go
 import (
-	"github.com/mypurecloud/platform-client-sdk-go/v118/platformclientv2"
+	"github.com/mypurecloud/platform-client-sdk-go/v119/platformclientv2"
 )
 ```
 
@@ -270,6 +270,28 @@ authData, err := config.RefreshAuthorizationCodeGrant(clientId, clientSecret, au
 if err != nil {
     panic(err)
 }
+```
+
+#### PKCE Grant
+
+* The app is authenticating as a human, the [PKCE Grant](https://developer.genesys.cloud/authorization/platform-auth/use-pkce)
+* The app is served via a web server
+* There is server-side code that will be making API requests
+
+Use the `AuthorizePKCEGrant` function on the client to make a request to Genesys Cloud to exchange the client id, code verifier and authorization code for an access token. If no error was returned, the configuration instance is now authorized and can begin making API requests. 
+
+```go
+authData, err := config.AuthorizePKCEGrant(clientId, codeVerifier, authCode, redirectUri)
+if err != nil {
+    panic(err)
+}
+```
+
+The SDK provides methods to generate a PKCE Code Verifier and to compute PKCE Code Challenge.
+
+```go
+codeVerifier, err := config.GeneratePKCECodeVerifier(128)
+codeChallenge, err := config.ComputePKCECodeChallenge(codeVerifier)
 ```
 
 ### Making Requests

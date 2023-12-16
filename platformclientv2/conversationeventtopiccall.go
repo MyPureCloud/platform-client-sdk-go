@@ -98,6 +98,9 @@ type Conversationeventtopiccall struct {
 
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+	// QueueMediaSettings
+	QueueMediaSettings *Conversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -252,6 +255,8 @@ func (o Conversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+		
+		QueueMediaSettings *Conversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -311,6 +316,8 @@ func (o Conversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -449,6 +456,11 @@ func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
 		o.AgentAssistantId = &AgentAssistantId
 	}
     
+	if QueueMediaSettings, ok := ConversationeventtopiccallMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
 
 	return nil
 }

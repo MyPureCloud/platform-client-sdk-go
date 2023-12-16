@@ -1,6 +1,8 @@
 package platformclientv2
 
 import (
+	"crypto/rand"
+	"math/big"
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/hex"
@@ -59,6 +61,9 @@ const (
 	EUWest2      = "https://api.euw2.pure.cloud"
 	APSouth1     = "https://api.aps1.pure.cloud"
 	USEast2     = "https://api.use2.us-gov-pure.cloud"
+	me_central_1 = "https://api.mec1.pure.cloud"
+    ap_northeast_3 = "https://api.apne3.pure.cloud"
+    eu_central_2 = "https://api.euc2.pure.cloud"
 )
 
 // RetryConfiguration has settings to configure the SDK retry logic
@@ -407,7 +412,7 @@ func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret
 	formParams := url.Values{}
 	formParams["grant_type"] = []string{"client_credentials"}
 	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
-	if err != nil {
+	if err != nil && response == nil {
 		return err
 	}
 
@@ -417,7 +422,7 @@ func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret
 		if err != nil {
 			return err
 		}
-		return fmt.Errorf("Auth Error: %v (%v - %v)", authErrorResponse.Description, authErrorResponse.Error, authErrorResponse.ErrorDescription)
+		return fmt.Errorf("Auth Error: %v - %v (%v)", response.StatusCode, authErrorResponse.Error, authErrorResponse.ErrorDescription)
 	}
 
 	var authResponse *AuthResponse
@@ -448,7 +453,7 @@ func (c *Configuration) AuthorizeCodeGrant(clientID string, clientSecret string,
 	formParams["code"] = []string{authCode}
 	formParams["redirect_uri"] = []string{redirectUri}
 	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
-	if err != nil {
+	if err != nil && response == nil {
 		return nil, err
 	}
 
@@ -458,7 +463,7 @@ func (c *Configuration) AuthorizeCodeGrant(clientID string, clientSecret string,
 		if err != nil {
 			return nil, err
 		}
-		return nil, fmt.Errorf("Auth Error: %v (%v - %v)", authErrorResponse.Description, authErrorResponse.Error, authErrorResponse.ErrorDescription)
+		return  nil, fmt.Errorf("Auth Error: %v - %v (%v)", response.StatusCode, authErrorResponse.Error, authErrorResponse.ErrorDescription)
 	}
 
 	var authResponse *AuthResponse
@@ -490,7 +495,7 @@ func (c *Configuration) RefreshAuthorizationCodeGrant(clientID string, clientSec
 	formParams["grant_type"] = []string{"refresh_token"}
 	formParams["refresh_token"] = []string{refreshToken}
 	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
-	if err != nil {
+	if err != nil && response == nil {
 		return nil, err
 	}
 
@@ -500,7 +505,7 @@ func (c *Configuration) RefreshAuthorizationCodeGrant(clientID string, clientSec
 		if err != nil {
 			return nil, err
 		}
-		return nil, fmt.Errorf("Auth Error: %v (%v - %v)", authErrorResponse.Description, authErrorResponse.Error, authErrorResponse.ErrorDescription)
+		return  nil, fmt.Errorf("Auth Error: %v - %v (%v)", response.StatusCode, authErrorResponse.Error, authErrorResponse.ErrorDescription)
 	}
 
 	var authResponse *AuthResponse
@@ -515,6 +520,80 @@ func (c *Configuration) RefreshAuthorizationCodeGrant(clientID string, clientSec
 	c.RefreshToken = authResponse.RefreshToken
 	if c.RefreshToken == "" {
 		return nil, fmt.Errorf("Auth Error: No refresh token found")
+	}
+
+	return authResponse, nil
+}
+
+// Generate a random string used as PKCE Code Verifier.
+func (c *Configuration) GeneratePKCECodeVerifier(n int) (string, error) {
+	if n < 43 || n > 128 {
+		return "", fmt.Errorf("Error: PKCE Code Verifier (length) must be between 43 and 128 characters")
+	}
+	const unreservedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-._~"
+	ret := make([]byte, n)
+	for i := 0; i < n; i++ {
+		num, err := rand.Int(rand.Reader, big.NewInt(int64(len(unreservedCharacters))))
+		if err != nil {
+			return "", err
+		}
+		ret[i] = unreservedCharacters[num.Int64()]
+	}
+	
+	return string(ret), nil
+}
+
+// Compute Base64Url PKCE Code Challenge from Code Verifier.
+func (c *Configuration) ComputePKCECodeChallenge(codeVerifier string) (string, error) {
+	if len(codeVerifier) < 43 || len(codeVerifier) > 128 {
+		return "", fmt.Errorf("Error: PKCE Code Verifier (length) must be between 43 and 128 characters")
+	}
+	h := sha256.New()
+	h.Write([]byte(codeVerifier))
+	codeVerifierHash := h.Sum(nil)
+	codeChallenge := base64.StdEncoding.EncodeToString([]byte(codeVerifierHash))
+	codeChallenge = strings.Replace(codeChallenge, "+", "-", -1) // 62nd char of encoding
+	codeChallenge = strings.Replace(codeChallenge, "/", "_", -1) // 63rd char of encoding
+	codeChallenge = (strings.Split(codeChallenge, "="))[0]
+	return codeChallenge, nil
+}
+
+// AuthorizePKCEGrant authorizes this Configuration instance using a pkce grant.
+// The access and refresh tokens will be set automatically and API instances using this configuration object can now make authorized requests.
+func (c *Configuration) AuthorizePKCEGrant(clientID string, codeVerifier string, authCode string, redirectUri string) (*AuthResponse, error) {
+	c.ClientID = clientID
+	authHostRegex := regexp.MustCompile(`(?i)\/\/api\.`)
+	authHost := authHostRegex.ReplaceAllString(c.BasePath, "//login.")
+	headerParams := make(map[string]string)
+	headerParams["Content-Type"] = "application/x-www-form-urlencoded"
+	formParams := url.Values{}
+	formParams["grant_type"] = []string{"authorization_code"}
+	formParams["code"] = []string{authCode}
+	formParams["code_verifier"] = []string{codeVerifier}
+	formParams["client_id"] = []string{clientID}
+	formParams["redirect_uri"] = []string{redirectUri}
+	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
+	if err != nil && response == nil {
+		return nil, err
+	}
+
+	if response.StatusCode != http.StatusOK {
+		var authErrorResponse *AuthErrorResponse
+		err = json.Unmarshal([]byte(response.RawBody), &authErrorResponse)
+		if err != nil {
+			return nil, err
+		}
+		return  nil, fmt.Errorf("Auth Error: %v - %v (%v)", response.StatusCode, authErrorResponse.Error, authErrorResponse.ErrorDescription)
+	}
+
+	var authResponse *AuthResponse
+	err = json.Unmarshal([]byte(response.RawBody), &authResponse)
+	if err != nil {
+		return nil, err
+	}
+	c.AccessToken = authResponse.AccessToken
+	if c.AccessToken == "" {
+		return nil, fmt.Errorf("Auth Error: No access token found")
 	}
 
 	return authResponse, nil

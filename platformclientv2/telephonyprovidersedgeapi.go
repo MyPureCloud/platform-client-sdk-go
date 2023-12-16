@@ -2307,7 +2307,9 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, page
 
 // GetTelephonyProvidersEdgesAvailablelanguages invokes GET /api/v2/telephony/providers/edges/availablelanguages
 //
-// Get the list of available languages.
+// Get the list of available languages. For never released keyword spotting feature. Deprecated, do not use.
+//
+// Deprecated: GetTelephonyProvidersEdgesAvailablelanguages is deprecated
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesAvailablelanguages() (*Availablelanguagelist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

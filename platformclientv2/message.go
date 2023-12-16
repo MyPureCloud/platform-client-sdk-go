@@ -98,6 +98,9 @@ type Message struct {
 
 	// ByoSmsIntegrationId - The internal id representing the customer supplied sms integration message.
 	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
+
+	// QueueMediaSettings - Represents the queue settings for this media type.
+	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -252,6 +255,8 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
+		
+		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -311,6 +316,8 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		AgentAssistantId: o.AgentAssistantId,
 		
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -450,6 +457,11 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 		o.ByoSmsIntegrationId = &ByoSmsIntegrationId
 	}
     
+	if QueueMediaSettings, ok := MessageMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
 
 	return nil
 }

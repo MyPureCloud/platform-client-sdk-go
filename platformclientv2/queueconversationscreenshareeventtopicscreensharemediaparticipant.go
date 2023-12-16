@@ -120,6 +120,9 @@ type Queueconversationscreenshareeventtopicscreensharemediaparticipant struct {
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
+	// QueueMediaSettings
+	QueueMediaSettings *Queueconversationscreenshareeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// Context
 	Context *string `json:"context,omitempty"`
 
@@ -313,6 +316,8 @@ func (o Queueconversationscreenshareeventtopicscreensharemediaparticipant) Marsh
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
+		QueueMediaSettings *Queueconversationscreenshareeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		Context *string `json:"context,omitempty"`
 		
 		PeerCount *int `json:"peerCount,omitempty"`
@@ -391,6 +396,8 @@ func (o Queueconversationscreenshareeventtopicscreensharemediaparticipant) Marsh
 		EndAcwTime: EndAcwTime,
 		
 		MediaRoles: o.MediaRoles,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		Context: o.Context,
 		
@@ -570,6 +577,11 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 	if MediaRoles, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["mediaRoles"].([]interface{}); ok {
 		MediaRolesString, _ := json.Marshal(MediaRoles)
 		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
+	if QueueMediaSettings, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
 	if Context, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["context"].(string); ok {

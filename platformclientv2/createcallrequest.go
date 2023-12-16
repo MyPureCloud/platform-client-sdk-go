@@ -49,6 +49,9 @@ type Createcallrequest struct {
 
 	// ExternalContactId - The external contact with which to associate the call.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
+
+	// Label - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
+	Label *string `json:"label,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -139,6 +142,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		UuiData *string `json:"uuiData,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		Label *string `json:"label,omitempty"`
 		Alias
 	}{ 
 		PhoneNumber: o.PhoneNumber,
@@ -166,6 +171,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		UuiData: o.UuiData,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		Label: o.Label,
 		Alias:    (Alias)(o),
 	})
 }
@@ -231,6 +238,10 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
     
 	if ExternalContactId, ok := CreatecallrequestMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if Label, ok := CreatecallrequestMap["label"].(string); ok {
+		o.Label = &Label
 	}
     
 

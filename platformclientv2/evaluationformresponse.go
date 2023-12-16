@@ -30,8 +30,8 @@ type Evaluationformresponse struct {
 	// QuestionGroups - A list of question groups
 	QuestionGroups *[]Evaluationquestiongroup `json:"questionGroups,omitempty"`
 
-	// PublishedVersions
-	PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
+	// WeightMode - Mode for evaluation form weight
+	WeightMode *string `json:"weightMode,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -120,7 +120,7 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		
 		QuestionGroups *[]Evaluationquestiongroup `json:"questionGroups,omitempty"`
 		
-		PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
+		WeightMode *string `json:"weightMode,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -137,7 +137,7 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		
 		QuestionGroups: o.QuestionGroups,
 		
-		PublishedVersions: o.PublishedVersions,
+		WeightMode: o.WeightMode,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -177,11 +177,10 @@ func (o *Evaluationformresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(QuestionGroupsString, &o.QuestionGroups)
 	}
 	
-	if PublishedVersions, ok := EvaluationformresponseMap["publishedVersions"].(map[string]interface{}); ok {
-		PublishedVersionsString, _ := json.Marshal(PublishedVersions)
-		json.Unmarshal(PublishedVersionsString, &o.PublishedVersions)
+	if WeightMode, ok := EvaluationformresponseMap["weightMode"].(string); ok {
+		o.WeightMode = &WeightMode
 	}
-	
+    
 	if SelfUri, ok := EvaluationformresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

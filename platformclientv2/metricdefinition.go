@@ -38,6 +38,9 @@ type Metricdefinition struct {
 	// MediaTypeFilteringAllowed - Flag to indicate if this metricDefinition allows filter based on media types
 	MediaTypeFilteringAllowed *bool `json:"mediaTypeFilteringAllowed,omitempty"`
 
+	// InitialDirectionFilteringAllowed - Flag to indicate if this metricDefinition allows filter based on initial direction
+	InitialDirectionFilteringAllowed *bool `json:"initialDirectionFilteringAllowed,omitempty"`
+
 	// QueueFilteringAllowed - Flag to indicate if this metricDefinition allows filter based on queues
 	QueueFilteringAllowed *bool `json:"queueFilteringAllowed,omitempty"`
 
@@ -126,6 +129,8 @@ func (o Metricdefinition) MarshalJSON() ([]byte, error) {
 		
 		MediaTypeFilteringAllowed *bool `json:"mediaTypeFilteringAllowed,omitempty"`
 		
+		InitialDirectionFilteringAllowed *bool `json:"initialDirectionFilteringAllowed,omitempty"`
+		
 		QueueFilteringAllowed *bool `json:"queueFilteringAllowed,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -148,6 +153,8 @@ func (o Metricdefinition) MarshalJSON() ([]byte, error) {
 		LockTemplateId: o.LockTemplateId,
 		
 		MediaTypeFilteringAllowed: o.MediaTypeFilteringAllowed,
+		
+		InitialDirectionFilteringAllowed: o.InitialDirectionFilteringAllowed,
 		
 		QueueFilteringAllowed: o.QueueFilteringAllowed,
 		
@@ -200,6 +207,10 @@ func (o *Metricdefinition) UnmarshalJSON(b []byte) error {
     
 	if MediaTypeFilteringAllowed, ok := MetricdefinitionMap["mediaTypeFilteringAllowed"].(bool); ok {
 		o.MediaTypeFilteringAllowed = &MediaTypeFilteringAllowed
+	}
+    
+	if InitialDirectionFilteringAllowed, ok := MetricdefinitionMap["initialDirectionFilteringAllowed"].(bool); ok {
+		o.InitialDirectionFilteringAllowed = &InitialDirectionFilteringAllowed
 	}
     
 	if QueueFilteringAllowed, ok := MetricdefinitionMap["queueFilteringAllowed"].(bool); ok {

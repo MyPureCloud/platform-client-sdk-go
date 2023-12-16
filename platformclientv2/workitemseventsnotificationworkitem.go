@@ -103,6 +103,9 @@ type Workitemseventsnotificationworkitem struct {
 
 	// Wrapup
 	Wrapup *Workitemseventsnotificationwrapup `json:"wrapup,omitempty"`
+
+	// Sessions
+	Sessions *[]Workitemseventsnotificationsession `json:"sessions,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -229,6 +232,8 @@ func (o Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		CustomFields *map[string]Workitemseventsnotificationcustomattribute `json:"customFields,omitempty"`
 		
 		Wrapup *Workitemseventsnotificationwrapup `json:"wrapup,omitempty"`
+		
+		Sessions *[]Workitemseventsnotificationsession `json:"sessions,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -292,6 +297,8 @@ func (o Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		CustomFields: o.CustomFields,
 		
 		Wrapup: o.Wrapup,
+		
+		Sessions: o.Sessions,
 		Alias:    (Alias)(o),
 	})
 }
@@ -432,6 +439,11 @@ func (o *Workitemseventsnotificationworkitem) UnmarshalJSON(b []byte) error {
 	if Wrapup, ok := WorkitemseventsnotificationworkitemMap["wrapup"].(map[string]interface{}); ok {
 		WrapupString, _ := json.Marshal(Wrapup)
 		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if Sessions, ok := WorkitemseventsnotificationworkitemMap["sessions"].([]interface{}); ok {
+		SessionsString, _ := json.Marshal(Sessions)
+		json.Unmarshal(SessionsString, &o.Sessions)
 	}
 	
 

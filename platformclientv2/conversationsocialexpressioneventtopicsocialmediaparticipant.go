@@ -120,6 +120,9 @@ type Conversationsocialexpressioneventtopicsocialmediaparticipant struct {
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
+	// QueueMediaSettings
+	QueueMediaSettings *Conversationsocialexpressioneventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// SocialMediaId
 	SocialMediaId *string `json:"socialMediaId,omitempty"`
 
@@ -316,6 +319,8 @@ func (o Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJSO
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
+		QueueMediaSettings *Conversationsocialexpressioneventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		SocialMediaId *string `json:"socialMediaId,omitempty"`
 		
 		SocialMediaHub *string `json:"socialMediaHub,omitempty"`
@@ -396,6 +401,8 @@ func (o Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJSO
 		EndAcwTime: EndAcwTime,
 		
 		MediaRoles: o.MediaRoles,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		SocialMediaId: o.SocialMediaId,
 		
@@ -577,6 +584,11 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if MediaRoles, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["mediaRoles"].([]interface{}); ok {
 		MediaRolesString, _ := json.Marshal(MediaRoles)
 		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
+	if QueueMediaSettings, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
 	if SocialMediaId, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["socialMediaId"].(string); ok {

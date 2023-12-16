@@ -120,6 +120,9 @@ type Queueconversationcobrowseeventtopiccobrowsemediaparticipant struct {
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
+	// QueueMediaSettings
+	QueueMediaSettings *Queueconversationcobrowseeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// CobrowseSessionId
 	CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
 
@@ -327,6 +330,8 @@ func (o Queueconversationcobrowseeventtopiccobrowsemediaparticipant) MarshalJSON
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
+		QueueMediaSettings *Queueconversationcobrowseeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
 		
 		CobrowseRole *string `json:"cobrowseRole,omitempty"`
@@ -409,6 +414,8 @@ func (o Queueconversationcobrowseeventtopiccobrowsemediaparticipant) MarshalJSON
 		EndAcwTime: EndAcwTime,
 		
 		MediaRoles: o.MediaRoles,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		CobrowseSessionId: o.CobrowseSessionId,
 		
@@ -592,6 +599,11 @@ func (o *Queueconversationcobrowseeventtopiccobrowsemediaparticipant) UnmarshalJ
 	if MediaRoles, ok := QueueconversationcobrowseeventtopiccobrowsemediaparticipantMap["mediaRoles"].([]interface{}); ok {
 		MediaRolesString, _ := json.Marshal(MediaRoles)
 		json.Unmarshal(MediaRolesString, &o.MediaRoles)
+	}
+	
+	if QueueMediaSettings, ok := QueueconversationcobrowseeventtopiccobrowsemediaparticipantMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
 	if CobrowseSessionId, ok := QueueconversationcobrowseeventtopiccobrowsemediaparticipantMap["cobrowseSessionId"].(string); ok {

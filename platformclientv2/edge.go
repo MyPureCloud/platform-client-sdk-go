@@ -120,6 +120,9 @@ type Edge struct {
 	// EdgeDeploymentType
 	EdgeDeploymentType *string `json:"edgeDeploymentType,omitempty"`
 
+	// CertType - The type of certificate used to communicate with edge-proxy.
+	CertType *string `json:"certType,omitempty"`
+
 	// CallDrainingState - The current state of the Edge's call draining process before it can be safely rebooted or updated.
 	CallDrainingState *string `json:"callDrainingState,omitempty"`
 
@@ -290,6 +293,8 @@ func (o Edge) MarshalJSON() ([]byte, error) {
 		
 		EdgeDeploymentType *string `json:"edgeDeploymentType,omitempty"`
 		
+		CertType *string `json:"certType,omitempty"`
+		
 		CallDrainingState *string `json:"callDrainingState,omitempty"`
 		
 		ConversationCount *int `json:"conversationCount,omitempty"`
@@ -374,6 +379,8 @@ func (o Edge) MarshalJSON() ([]byte, error) {
 		Managed: o.Managed,
 		
 		EdgeDeploymentType: o.EdgeDeploymentType,
+		
+		CertType: o.CertType,
 		
 		CallDrainingState: o.CallDrainingState,
 		
@@ -547,6 +554,10 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
     
 	if EdgeDeploymentType, ok := EdgeMap["edgeDeploymentType"].(string); ok {
 		o.EdgeDeploymentType = &EdgeDeploymentType
+	}
+    
+	if CertType, ok := EdgeMap["certType"].(string); ok {
+		o.CertType = &CertType
 	}
     
 	if CallDrainingState, ok := EdgeMap["callDrainingState"].(string); ok {

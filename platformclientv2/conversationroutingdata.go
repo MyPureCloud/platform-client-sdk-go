@@ -25,6 +25,9 @@ type Conversationroutingdata struct {
 
 	// ScoredAgents - A collection of agents and their assigned scores for this conversation (0 - 100, higher being better), for use in routing to preferred agents
 	ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
+
+	// Label - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
+	Label *string `json:"label,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Conversationroutingdata) MarshalJSON() ([]byte, error) {
 		Skills *[]Addressableentityref `json:"skills,omitempty"`
 		
 		ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
+		
+		Label *string `json:"label,omitempty"`
 		Alias
 	}{ 
 		Queue: o.Queue,
@@ -110,6 +115,8 @@ func (o Conversationroutingdata) MarshalJSON() ([]byte, error) {
 		Skills: o.Skills,
 		
 		ScoredAgents: o.ScoredAgents,
+		
+		Label: o.Label,
 		Alias:    (Alias)(o),
 	})
 }
@@ -146,6 +153,10 @@ func (o *Conversationroutingdata) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
 	}
 	
+	if Label, ok := ConversationroutingdataMap["label"].(string); ok {
+		o.Label = &Label
+	}
+    
 
 	return nil
 }

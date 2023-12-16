@@ -57,9 +57,6 @@ type Evaluationresponse struct {
 	// ChangedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ChangedDate *time.Time `json:"changedDate,omitempty"`
 
-	// RevisionCreatedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	RevisionCreatedDate *time.Time `json:"revisionCreatedDate,omitempty"`
-
 	// Queue
 	Queue *Queue `json:"queue,omitempty"`
 
@@ -92,9 +89,6 @@ type Evaluationresponse struct {
 
 	// Redacted - Is only true when the user making the request does not have sufficient permissions to see evaluation
 	Redacted *bool `json:"redacted,omitempty"`
-
-	// AgentTeam - Team of the evaluation agent
-	AgentTeam *Team `json:"agentTeam,omitempty"`
 
 	// IsScoringIndex
 	IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
@@ -141,7 +135,7 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","RevisionCreatedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
+		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -196,14 +190,6 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		*ChangedDate = timeutil.Strftime(o.ChangedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ChangedDate = nil
-	}
-	
-	RevisionCreatedDate := new(string)
-	if o.RevisionCreatedDate != nil {
-		
-		*RevisionCreatedDate = timeutil.Strftime(o.RevisionCreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		RevisionCreatedDate = nil
 	}
 	
 	ConversationDate := new(string)
@@ -261,8 +247,6 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		ChangedDate *string `json:"changedDate,omitempty"`
 		
-		RevisionCreatedDate *string `json:"revisionCreatedDate,omitempty"`
-		
 		Queue *Queue `json:"queue,omitempty"`
 		
 		MediaType *[]string `json:"mediaType,omitempty"`
@@ -284,8 +268,6 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		ResourceType *string `json:"resourceType,omitempty"`
 		
 		Redacted *bool `json:"redacted,omitempty"`
-		
-		AgentTeam *Team `json:"agentTeam,omitempty"`
 		
 		IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
 		
@@ -328,8 +310,6 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		ChangedDate: ChangedDate,
 		
-		RevisionCreatedDate: RevisionCreatedDate,
-		
 		Queue: o.Queue,
 		
 		MediaType: o.MediaType,
@@ -351,8 +331,6 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		ResourceType: o.ResourceType,
 		
 		Redacted: o.Redacted,
-		
-		AgentTeam: o.AgentTeam,
 		
 		IsScoringIndex: o.IsScoringIndex,
 		
@@ -444,11 +422,6 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 		o.ChangedDate = &ChangedDate
 	}
 	
-	if revisionCreatedDateString, ok := EvaluationresponseMap["revisionCreatedDate"].(string); ok {
-		RevisionCreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", revisionCreatedDateString)
-		o.RevisionCreatedDate = &RevisionCreatedDate
-	}
-	
 	if Queue, ok := EvaluationresponseMap["queue"].(map[string]interface{}); ok {
 		QueueString, _ := json.Marshal(Queue)
 		json.Unmarshal(QueueString, &o.Queue)
@@ -498,11 +471,6 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 		o.Redacted = &Redacted
 	}
     
-	if AgentTeam, ok := EvaluationresponseMap["agentTeam"].(map[string]interface{}); ok {
-		AgentTeamString, _ := json.Marshal(AgentTeam)
-		json.Unmarshal(AgentTeamString, &o.AgentTeam)
-	}
-	
 	if IsScoringIndex, ok := EvaluationresponseMap["isScoringIndex"].(bool); ok {
 		o.IsScoringIndex = &IsScoringIndex
 	}

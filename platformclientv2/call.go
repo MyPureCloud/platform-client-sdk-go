@@ -105,6 +105,9 @@ type Call struct {
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
+	// QueueMediaSettings - Represents the queue settings for this media type.
+	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
 	// Disposition - Call resolution data for Dialer bulk make calls commands.
 	Disposition *Disposition `json:"disposition,omitempty"`
 }
@@ -266,6 +269,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		
+		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
 		Disposition *Disposition `json:"disposition,omitempty"`
 		Alias
 	}{ 
@@ -330,6 +335,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
+		
+		QueueMediaSettings: o.QueueMediaSettings,
 		
 		Disposition: o.Disposition,
 		Alias:    (Alias)(o),
@@ -479,6 +486,11 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 		o.AgentAssistantId = &AgentAssistantId
 	}
     
+	if QueueMediaSettings, ok := CallMap["queueMediaSettings"].(map[string]interface{}); ok {
+		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
+		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
 	if Disposition, ok := CallMap["disposition"].(map[string]interface{}); ok {
 		DispositionString, _ := json.Marshal(Disposition)
 		json.Unmarshal(DispositionString, &o.Disposition)
