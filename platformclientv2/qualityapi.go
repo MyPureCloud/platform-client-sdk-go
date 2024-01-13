@@ -4880,7 +4880,7 @@ func (a QualityApi) PutQualityCalibration(calibrationId string, body Calibration
 //
 // Update an evaluation
 //
-// The quality:evaluation:edit permission allows modification of most fields, while the quality:evaluation:editScore permission allows an evaluator to change just the question scores, and the quality:evaluation:editAgentSignoff permission allows an agent to change the agent comments and sign off on the evaluation.
+// The quality:evaluation:edit permission allows modification of most fields, while the quality:evaluation:editScore permission allows an evaluator to change just the question scores, and the quality:evaluation:editAgentSignoff permission allows an agent to change the agent comments and sign off on the evaluation. authorizedActions is not returned for this PUT request, and is only returned for GET requests to this endpoint.
 func (a QualityApi) PutQualityConversationEvaluation(conversationId string, evaluationId string, body Evaluation, expand string) (*Evaluationresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

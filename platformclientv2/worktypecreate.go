@@ -41,7 +41,7 @@ type Worktypecreate struct {
 	// Description - The description of the Worktype. Maximum length of 4096 characters.
 	Description *string `json:"description,omitempty"`
 
-	// DivisionId - The ID of the division the Worktype belongs to. Defaults to home division ID. The Worktype must be in the same division as its default Workbin.
+	// DivisionId - The ID of the division the Worktype belongs to. Defaults to the default Workbin division ID. The Worktype must be in the same division as its default Workbin.
 	DivisionId *string `json:"divisionId,omitempty"`
 
 	// DisableDefaultStatusCreation - Set to true to disable default status creation. Default statuses are created with the Worktype by default

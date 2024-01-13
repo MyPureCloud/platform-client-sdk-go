@@ -3639,8 +3639,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 // Get a pageable list of basic extension pool objects filterable by query parameters.
 //
 // This returns extension pools consisting of name and division. If one or more IDs are specified, the search will fetch flow outcomes that match the given ID(s) and not use any additional supplied query parameters in the search.
-//
-// Preview: GetTelephonyProvidersEdgesExtensionpoolsDivisionviews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpoolsDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Extensionpooldivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6045,7 +6043,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteSiteconnections
 // GetTelephonyProvidersEdgesSites invokes GET /api/v2/telephony/providers/edges/sites
 //
 // Get the list of Sites.
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, locationId string, managed bool) (*Siteentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, locationId string, managed bool, expand []string) (*Siteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites"
@@ -6085,6 +6083,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int,
 	queryParams["locationId"] = a.Configuration.APIClient.ParameterToString(locationId, "")
 	
 	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

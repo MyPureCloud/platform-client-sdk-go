@@ -32,8 +32,8 @@ type Workitemstatus struct {
 	// StatusTransitionDelaySeconds - Delay in seconds for auto status transition
 	StatusTransitionDelaySeconds *int `json:"statusTransitionDelaySeconds,omitempty"`
 
-	// StatusTransitionTime - Time in HH:MM:SS format at which auto status transition will occur after statusTransitionDelaySeconds delay. To set Time, the statusTransitionDelaySeconds must be equal to or greater than 86400 i.e. a day
-	StatusTransitionTime *Localtime `json:"statusTransitionTime,omitempty"`
+	// StatusTransitionTime - Time is represented as an ISO-8601 string without a timezone. For example: HH:mm:ss.SSS
+	StatusTransitionTime *string `json:"statusTransitionTime,omitempty"`
 
 	// Worktype - The Worktype containing the Status.
 	Worktype *Worktypereference `json:"worktype,omitempty"`
@@ -119,7 +119,7 @@ func (o Workitemstatus) MarshalJSON() ([]byte, error) {
 		
 		StatusTransitionDelaySeconds *int `json:"statusTransitionDelaySeconds,omitempty"`
 		
-		StatusTransitionTime *Localtime `json:"statusTransitionTime,omitempty"`
+		StatusTransitionTime *string `json:"statusTransitionTime,omitempty"`
 		
 		Worktype *Worktypereference `json:"worktype,omitempty"`
 		
@@ -187,11 +187,10 @@ func (o *Workitemstatus) UnmarshalJSON(b []byte) error {
 		o.StatusTransitionDelaySeconds = &StatusTransitionDelaySecondsInt
 	}
 	
-	if StatusTransitionTime, ok := WorkitemstatusMap["statusTransitionTime"].(map[string]interface{}); ok {
-		StatusTransitionTimeString, _ := json.Marshal(StatusTransitionTime)
-		json.Unmarshal(StatusTransitionTimeString, &o.StatusTransitionTime)
+	if StatusTransitionTime, ok := WorkitemstatusMap["statusTransitionTime"].(string); ok {
+		o.StatusTransitionTime = &StatusTransitionTime
 	}
-	
+    
 	if Worktype, ok := WorkitemstatusMap["worktype"].(map[string]interface{}); ok {
 		WorktypeString, _ := json.Marshal(Worktype)
 		json.Unmarshal(WorktypeString, &o.Worktype)

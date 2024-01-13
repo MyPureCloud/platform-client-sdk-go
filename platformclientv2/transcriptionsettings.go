@@ -22,6 +22,12 @@ type Transcriptionsettings struct {
 
 	// ContentSearchEnabled - Setting to enable/disable content search
 	ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+
+	// PciDssRedactionEnabled - Setting to enable/disable PCI DSS Redaction
+	PciDssRedactionEnabled *bool `json:"pciDssRedactionEnabled,omitempty"`
+
+	// PiiRedactionEnabled - Setting to enable/disable PII Redaction
+	PiiRedactionEnabled *bool `json:"piiRedactionEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +100,10 @@ func (o Transcriptionsettings) MarshalJSON() ([]byte, error) {
 		LowLatencyTranscriptionEnabled *bool `json:"lowLatencyTranscriptionEnabled,omitempty"`
 		
 		ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+		
+		PciDssRedactionEnabled *bool `json:"pciDssRedactionEnabled,omitempty"`
+		
+		PiiRedactionEnabled *bool `json:"piiRedactionEnabled,omitempty"`
 		Alias
 	}{ 
 		Transcription: o.Transcription,
@@ -103,6 +113,10 @@ func (o Transcriptionsettings) MarshalJSON() ([]byte, error) {
 		LowLatencyTranscriptionEnabled: o.LowLatencyTranscriptionEnabled,
 		
 		ContentSearchEnabled: o.ContentSearchEnabled,
+		
+		PciDssRedactionEnabled: o.PciDssRedactionEnabled,
+		
+		PiiRedactionEnabled: o.PiiRedactionEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -129,6 +143,14 @@ func (o *Transcriptionsettings) UnmarshalJSON(b []byte) error {
     
 	if ContentSearchEnabled, ok := TranscriptionsettingsMap["contentSearchEnabled"].(bool); ok {
 		o.ContentSearchEnabled = &ContentSearchEnabled
+	}
+    
+	if PciDssRedactionEnabled, ok := TranscriptionsettingsMap["pciDssRedactionEnabled"].(bool); ok {
+		o.PciDssRedactionEnabled = &PciDssRedactionEnabled
+	}
+    
+	if PiiRedactionEnabled, ok := TranscriptionsettingsMap["piiRedactionEnabled"].(bool); ok {
+		o.PiiRedactionEnabled = &PiiRedactionEnabled
 	}
     
 

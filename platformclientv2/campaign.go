@@ -51,7 +51,7 @@ type Campaign struct {
 	// PhoneColumns - The ContactPhoneNumberColumns on the ContactList that this Campaign should dial.
 	PhoneColumns *[]Phonecolumn `json:"phoneColumns,omitempty"`
 
-	// AbandonRate - The targeted abandon rate percentage. Required for progressive, power, and predictive campaigns.
+	// AbandonRate - The targeted compliance abandon rate percentage. Required for power and predictive campaigns.
 	AbandonRate *float64 `json:"abandonRate,omitempty"`
 
 	// DncLists - DncLists for this Campaign to check before placing a call.

@@ -14,6 +14,9 @@ type Patchuser struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// PreferredName - Preferred full name of agent
+	PreferredName *string `json:"preferredName,omitempty"`
+
 	// AcdAutoAnswer - The value that denotes if acdAutoAnswer is set on the user
 	AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Patchuser) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		PreferredName *string `json:"preferredName,omitempty"`
+		
 		AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		PreferredName: o.PreferredName,
 		
 		AcdAutoAnswer: o.AcdAutoAnswer,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Patchuser) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := PatchuserMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if PreferredName, ok := PatchuserMap["preferredName"].(string); ok {
+		o.PreferredName = &PreferredName
 	}
     
 	if AcdAutoAnswer, ok := PatchuserMap["acdAutoAnswer"].(bool); ok {

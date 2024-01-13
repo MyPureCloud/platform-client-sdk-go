@@ -29,6 +29,9 @@ type Assessmentquestionscore struct {
 	// MarkedNA - True if this question was marked as NA
 	MarkedNA *bool `json:"markedNA,omitempty"`
 
+	// SystemMarkedNA - If markedNA is true, systemMarkedNA indicates whether it was marked by a user or by the system due to visibility conditions. Always false if markedNA is false.
+	SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
+
 	// FreeTextAnswer - Answer for free text answer type
 	FreeTextAnswer *string `json:"freeTextAnswer,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Assessmentquestionscore) MarshalJSON() ([]byte, error) {
 		
 		MarkedNA *bool `json:"markedNA,omitempty"`
 		
+		SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
+		
 		FreeTextAnswer *string `json:"freeTextAnswer,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Assessmentquestionscore) MarshalJSON() ([]byte, error) {
 		Score: o.Score,
 		
 		MarkedNA: o.MarkedNA,
+		
+		SystemMarkedNA: o.SystemMarkedNA,
 		
 		FreeTextAnswer: o.FreeTextAnswer,
 		Alias:    (Alias)(o),
@@ -158,6 +165,10 @@ func (o *Assessmentquestionscore) UnmarshalJSON(b []byte) error {
 	
 	if MarkedNA, ok := AssessmentquestionscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
+	}
+    
+	if SystemMarkedNA, ok := AssessmentquestionscoreMap["systemMarkedNA"].(bool); ok {
+		o.SystemMarkedNA = &SystemMarkedNA
 	}
     
 	if FreeTextAnswer, ok := AssessmentquestionscoreMap["freeTextAnswer"].(string); ok {

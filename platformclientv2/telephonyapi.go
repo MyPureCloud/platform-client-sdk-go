@@ -111,8 +111,6 @@ func (a TelephonyApi) GetTelephonyMediaregions() (*Mediaregions, *APIResponse, e
 // Get a SIP message.
 //
 // Get the raw form of the SIP message
-//
-// Preview: GetTelephonySipmessagesConversation is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TelephonyApi) GetTelephonySipmessagesConversation(conversationId string) (*Callmessage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -197,8 +195,6 @@ func (a TelephonyApi) GetTelephonySipmessagesConversation(conversationId string)
 // Get SIP headers.
 //
 // Get parsed SIP headers. Returns specific headers if key query parameters are added.
-//
-// Preview: GetTelephonySipmessagesConversationHeaders is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TelephonyApi) GetTelephonySipmessagesConversationHeaders(conversationId string, keys []string) (*Callheader, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

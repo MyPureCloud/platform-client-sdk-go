@@ -29,8 +29,8 @@ type Workitemstatuscreate struct {
 	// StatusTransitionDelaySeconds - Delay in seconds for auto status transition. Required if defaultDestinationStatusId is provided.
 	StatusTransitionDelaySeconds *int `json:"statusTransitionDelaySeconds,omitempty"`
 
-	// StatusTransitionTime - Time in HH:MM:SS format at which auto status transition will occur after statusTransitionDelaySeconds delay. To set Time, the statusTransitionDelaySeconds must be equal to or greater than 86400 i.e. a day
-	StatusTransitionTime *Localtime `json:"statusTransitionTime,omitempty"`
+	// StatusTransitionTime - Time is represented as an ISO-8601 string without a timezone. For example: HH:mm:ss.SSS
+	StatusTransitionTime *string `json:"statusTransitionTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -108,7 +108,7 @@ func (o Workitemstatuscreate) MarshalJSON() ([]byte, error) {
 		
 		StatusTransitionDelaySeconds *int `json:"statusTransitionDelaySeconds,omitempty"`
 		
-		StatusTransitionTime *Localtime `json:"statusTransitionTime,omitempty"`
+		StatusTransitionTime *string `json:"statusTransitionTime,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -161,11 +161,10 @@ func (o *Workitemstatuscreate) UnmarshalJSON(b []byte) error {
 		o.StatusTransitionDelaySeconds = &StatusTransitionDelaySecondsInt
 	}
 	
-	if StatusTransitionTime, ok := WorkitemstatuscreateMap["statusTransitionTime"].(map[string]interface{}); ok {
-		StatusTransitionTimeString, _ := json.Marshal(StatusTransitionTime)
-		json.Unmarshal(StatusTransitionTimeString, &o.StatusTransitionTime)
+	if StatusTransitionTime, ok := WorkitemstatuscreateMap["statusTransitionTime"].(string); ok {
+		o.StatusTransitionTime = &StatusTransitionTime
 	}
-	
+    
 
 	return nil
 }

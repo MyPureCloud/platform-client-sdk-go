@@ -69,6 +69,7 @@ docs/DeleteConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
 docs/DeleteConversationsMessagingSetting-example.txt
 docs/DeleteConversationsMessagingSettingsDefault-example.txt
 docs/DeleteConversationsMessagingSupportedcontentSupportedContentId-example.txt
+docs/DeleteDiagnosticsLogcaptureBrowserUser-example.txt
 docs/DeleteEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/DeleteExternalcontactsContact-example.txt
 docs/DeleteExternalcontactsContactNote-example.txt
@@ -435,6 +436,7 @@ docs/GetChatsSettings-example.txt
 docs/GetChatsThreadMessages-example.txt
 docs/GetChatsUserMessage-example.txt
 docs/GetChatsUserMessages-example.txt
+docs/GetChatsUserSettings-example.txt
 docs/GetCoachingAppointment-example.txt
 docs/GetCoachingAppointmentAnnotation-example.txt
 docs/GetCoachingAppointmentAnnotations-example.txt
@@ -444,7 +446,6 @@ docs/GetCoachingAppointmentsMe-example.txt
 docs/GetCoachingNotification-example.txt
 docs/GetCoachingNotifications-example.txt
 docs/GetContentmanagementDocument-example.txt
-docs/GetContentmanagementDocumentAudits-example.txt
 docs/GetContentmanagementDocumentContent-example.txt
 docs/GetContentmanagementDocuments-example.txt
 docs/GetContentmanagementQuery-example.txt
@@ -554,6 +555,8 @@ docs/GetDataextensionsCoretypes-example.txt
 docs/GetDataextensionsLimits-example.txt
 docs/GetDate-example.txt
 docs/GetDiagnosticsLogcaptureBrowserEntriesDownloadJob-example.txt
+docs/GetDiagnosticsLogcaptureBrowserUser-example.txt
+docs/GetDiagnosticsLogcaptureBrowserUsers-example.txt
 docs/GetDocumentationGknSearch-example.txt
 docs/GetDocumentationSearch-example.txt
 docs/GetDownload-example.txt
@@ -718,6 +721,7 @@ docs/GetIntegrationsActionSchema-example.txt
 docs/GetIntegrationsActionTemplate-example.txt
 docs/GetIntegrationsActions-example.txt
 docs/GetIntegrationsActionsCategories-example.txt
+docs/GetIntegrationsActionsCertificates-example.txt
 docs/GetIntegrationsActionsDrafts-example.txt
 docs/GetIntegrationsBotconnectorIntegrationIdBot-example.txt
 docs/GetIntegrationsBotconnectorIntegrationIdBotVersions-example.txt
@@ -1085,6 +1089,8 @@ docs/GetRoutingUtilizationTagAgents-example.txt
 docs/GetRoutingUtilizationTags-example.txt
 docs/GetRoutingWrapupcode-example.txt
 docs/GetRoutingWrapupcodes-example.txt
+docs/GetRoutingWrapupcodesDivisionview-example.txt
+docs/GetRoutingWrapupcodesDivisionviews-example.txt
 docs/GetScimGroup-example.txt
 docs/GetScimGroups-example.txt
 docs/GetScimResourcetype-example.txt
@@ -1440,6 +1446,7 @@ docs/PatchChatsRoom-example.txt
 docs/PatchChatsRoomMessage-example.txt
 docs/PatchChatsSettings-example.txt
 docs/PatchChatsUserMessage-example.txt
+docs/PatchChatsUserSettings-example.txt
 docs/PatchCoachingAppointment-example.txt
 docs/PatchCoachingAppointmentAnnotation-example.txt
 docs/PatchCoachingAppointmentStatus-example.txt
@@ -1537,6 +1544,7 @@ docs/PatchRoutingQueueMembers-example.txt
 docs/PatchRoutingQueueUser-example.txt
 docs/PatchRoutingQueueUsers-example.txt
 docs/PatchRoutingSettingsContactcenter-example.txt
+docs/PatchRoutingSettingsTranscription-example.txt
 docs/PatchRoutingSkillgroup-example.txt
 docs/PatchScimGroup-example.txt
 docs/PatchScimUser-example.txt
@@ -1709,7 +1717,6 @@ docs/PostCoachingAppointmentConversations-example.txt
 docs/PostCoachingAppointments-example.txt
 docs/PostCoachingAppointmentsAggregatesQuery-example.txt
 docs/PostCoachingScheduleslotsQuery-example.txt
-docs/PostContentmanagementAuditquery-example.txt
 docs/PostContentmanagementDocument-example.txt
 docs/PostContentmanagementDocumentContent-example.txt
 docs/PostContentmanagementDocuments-example.txt
@@ -1793,6 +1800,8 @@ docs/PostConversationsSocialParticipantCommunicationWrapup-example.txt
 docs/PostConversationsVideoParticipantCommunicationWrapup-example.txt
 docs/PostConversationsVideosMeetings-example.txt
 docs/PostDiagnosticsLogcaptureBrowserEntriesDownloadJobs-example.txt
+docs/PostDiagnosticsLogcaptureBrowserEntriesQuery-example.txt
+docs/PostDiagnosticsLogcaptureBrowserUser-example.txt
 docs/PostDocumentationAllSearch-example.txt
 docs/PostDocumentationGknSearch-example.txt
 docs/PostDocumentationSearch-example.txt
@@ -2479,6 +2488,8 @@ platformclientv2/actionaggregationquery.go
 platformclientv2/actionaggregationview.go
 platformclientv2/actionasyncaggregatequeryresponse.go
 platformclientv2/actionasyncaggregationquery.go
+platformclientv2/actioncertificate.go
+platformclientv2/actioncertificatelisting.go
 platformclientv2/actionconfig.go
 platformclientv2/actioncontract.go
 platformclientv2/actioncontractinput.go
@@ -2518,6 +2529,7 @@ platformclientv2/additionallanguagesintent.go
 platformclientv2/additionallanguagessynonyms.go
 platformclientv2/additionalmessage.go
 platformclientv2/address.go
+platformclientv2/addressableentity.go
 platformclientv2/addressableentityref.go
 platformclientv2/addressablelicensedefinition.go
 platformclientv2/addshifttraderequest.go
@@ -2703,9 +2715,7 @@ platformclientv2/atzmtimeslotwithtimezone.go
 platformclientv2/audiostate.go
 platformclientv2/audioupdatedevent.go
 platformclientv2/auditapi.go
-platformclientv2/auditchange.go
 platformclientv2/auditentity.go
-platformclientv2/auditentityreference.go
 platformclientv2/auditfacet.go
 platformclientv2/auditfilter.go
 platformclientv2/auditlogmessage.go
@@ -3013,6 +3023,7 @@ platformclientv2/chatmessageuser.go
 platformclientv2/chatreaction.go
 platformclientv2/chatsendmessageresponse.go
 platformclientv2/chatsettings.go
+platformclientv2/chatusersettings.go
 platformclientv2/check.go
 platformclientv2/clientapp.go
 platformclientv2/clientappconfigurationinfo.go
@@ -3125,12 +3136,10 @@ platformclientv2/contactphonenumbercolumn.go
 platformclientv2/contactsort.go
 platformclientv2/contentactions.go
 platformclientv2/contentattachment.go
-platformclientv2/contentattributefilteritem.go
 platformclientv2/contentbuttonresponse.go
 platformclientv2/contentcard.go
 platformclientv2/contentcardaction.go
 platformclientv2/contentcarousel.go
-platformclientv2/contentfacetfilteritem.go
 platformclientv2/contentfilteritem.go
 platformclientv2/contentgeneric.go
 platformclientv2/contentlist.go
@@ -3150,12 +3159,10 @@ platformclientv2/contentofferstyleproperties.go
 platformclientv2/contentofferstylingconfiguration.go
 platformclientv2/contentpositionproperties.go
 platformclientv2/contentpostback.go
-platformclientv2/contentqueryrequest.go
 platformclientv2/contentquickreply.go
 platformclientv2/contentquickreplyv2.go
 platformclientv2/contentreaction.go
 platformclientv2/contentsetting.go
-platformclientv2/contentsortitem.go
 platformclientv2/contentstory.go
 platformclientv2/contenttext.go
 platformclientv2/context.go
@@ -3694,8 +3701,6 @@ platformclientv2/documentationv2searchaggregation.go
 platformclientv2/documentationv2searchcriteria.go
 platformclientv2/documentationv2searchrequest.go
 platformclientv2/documentattribute.go
-platformclientv2/documentaudit.go
-platformclientv2/documentauditentitylisting.go
 platformclientv2/documentbody.go
 platformclientv2/documentbodyblock.go
 platformclientv2/documentbodyimage.go
@@ -4226,6 +4231,8 @@ platformclientv2/importstatus.go
 platformclientv2/importstatusrequest.go
 platformclientv2/importtemplate.go
 platformclientv2/importtemplateentitylisting.go
+platformclientv2/importtemplateimportstatusimportstatus.go
+platformclientv2/importtemplateimportstatusobject.go
 platformclientv2/inbounddomain.go
 platformclientv2/inbounddomainentitylisting.go
 platformclientv2/inbounddomainpatchrequest.go
@@ -4634,7 +4641,6 @@ platformclientv2/localeinfo.go
 platformclientv2/localencryptionconfiguration.go
 platformclientv2/localencryptionkeyrequest.go
 platformclientv2/localizedlabels.go
-platformclientv2/localtime.go
 platformclientv2/location.go
 platformclientv2/locationaddress.go
 platformclientv2/locationaddressverificationdetails.go
@@ -4652,7 +4658,9 @@ platformclientv2/lockinfo.go
 platformclientv2/logcaptureapi.go
 platformclientv2/logcapturedownloadexecutionresponse.go
 platformclientv2/logcapturequeryrequest.go
+platformclientv2/logcapturequeryresponse.go
 platformclientv2/logcaptureuserconfiguration.go
+platformclientv2/logentry.go
 platformclientv2/logger.go
 platformclientv2/logicalinterfaceentitylisting.go
 platformclientv2/longtermforecastplanninggroupdata.go
@@ -4769,6 +4777,8 @@ platformclientv2/minertopicphrase.go
 platformclientv2/minertopicslisting.go
 platformclientv2/minlength.go
 platformclientv2/mobiledevicesapi.go
+platformclientv2/mobilenotificationsettings.go
+platformclientv2/mobilesettings.go
 platformclientv2/modelingprocessingerror.go
 platformclientv2/modelingstatusresponse.go
 platformclientv2/modifiableruleproperties.go
@@ -4955,6 +4965,7 @@ platformclientv2/overallbestpointsitem.go
 platformclientv2/page.go
 platformclientv2/pagednamespacelisting.go
 platformclientv2/pagelessdomainentitylistingevaluationversion.go
+platformclientv2/pagelessentitylisting.go
 platformclientv2/pagingspec.go
 platformclientv2/parameter.go
 platformclientv2/parsedcertificate.go

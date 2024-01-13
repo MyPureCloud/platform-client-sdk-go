@@ -445,7 +445,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 // Retrieve a list of all divisions defined for the organization
 //
 // Request specific divisions by id using a query param \&quot;id\&quot;, e.g.  ?id&#x3D;5f777167-63be-4c24-ad41-374155d9e28b&amp;id&#x3D;72e9fb25-c484-488d-9312-7acba82435b3
-func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, id []string, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions"
@@ -485,8 +485,6 @@ func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
 	queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, "")
-	
-	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	

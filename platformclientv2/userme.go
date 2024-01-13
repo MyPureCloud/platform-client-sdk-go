@@ -63,6 +63,9 @@ type Userme struct {
 	// EmployerInfo
 	EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
 
+	// PreferredName - Preferred full name of the agent
+	PreferredName *string `json:"preferredName,omitempty"`
+
 	// RoutingStatus - ACD routing status
 	RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
 
@@ -274,6 +277,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		
 		EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
 		
+		PreferredName *string `json:"preferredName,omitempty"`
+		
 		RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
 		
 		Presence *Userpresence `json:"presence,omitempty"`
@@ -378,6 +383,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		Biography: o.Biography,
 		
 		EmployerInfo: o.EmployerInfo,
+		
+		PreferredName: o.PreferredName,
 		
 		RoutingStatus: o.RoutingStatus,
 		
@@ -537,6 +544,10 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EmployerInfoString, &o.EmployerInfo)
 	}
 	
+	if PreferredName, ok := UsermeMap["preferredName"].(string); ok {
+		o.PreferredName = &PreferredName
+	}
+    
 	if RoutingStatus, ok := UsermeMap["routingStatus"].(map[string]interface{}); ok {
 		RoutingStatusString, _ := json.Marshal(RoutingStatus)
 		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)

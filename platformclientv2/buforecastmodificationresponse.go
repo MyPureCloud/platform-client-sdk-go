@@ -32,11 +32,17 @@ type Buforecastmodificationresponse struct {
 	// Values - The list of modification values. Only applicable for grid-type modifications
 	Values *[]Wfmforecastmodificationintervaloffsetvalue `json:"values,omitempty"`
 
+	// SecondaryValues - The list of modification secondary values. Only applicable for multi granularity modifications
+	SecondaryValues *[]Wfmforecastmodificationintervaloffsetvalue `json:"secondaryValues,omitempty"`
+
 	// DisplayGranularity - The client side display granularity of the modification, expressed in the ISO-8601 duration format. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
 	DisplayGranularity *string `json:"displayGranularity,omitempty"`
 
 	// Granularity - The actual granularity of the modification as stored behind the scenes, expressed in the ISO-8601 duration format. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
 	Granularity *string `json:"granularity,omitempty"`
+
+	// SecondaryGranularity - The granularity of the 'secondaryValues' modification as stored behind the scenes, expressed in the ISO-8601 duration format. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
+	SecondaryGranularity *string `json:"secondaryGranularity,omitempty"`
 
 	// Enabled - Whether the modification is enabled for the forecast
 	Enabled *bool `json:"enabled,omitempty"`
@@ -122,9 +128,13 @@ func (o Buforecastmodificationresponse) MarshalJSON() ([]byte, error) {
 		
 		Values *[]Wfmforecastmodificationintervaloffsetvalue `json:"values,omitempty"`
 		
+		SecondaryValues *[]Wfmforecastmodificationintervaloffsetvalue `json:"secondaryValues,omitempty"`
+		
 		DisplayGranularity *string `json:"displayGranularity,omitempty"`
 		
 		Granularity *string `json:"granularity,omitempty"`
+		
+		SecondaryGranularity *string `json:"secondaryGranularity,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		
@@ -145,9 +155,13 @@ func (o Buforecastmodificationresponse) MarshalJSON() ([]byte, error) {
 		
 		Values: o.Values,
 		
+		SecondaryValues: o.SecondaryValues,
+		
 		DisplayGranularity: o.DisplayGranularity,
 		
 		Granularity: o.Granularity,
+		
+		SecondaryGranularity: o.SecondaryGranularity,
 		
 		Enabled: o.Enabled,
 		
@@ -194,12 +208,21 @@ func (o *Buforecastmodificationresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ValuesString, &o.Values)
 	}
 	
+	if SecondaryValues, ok := BuforecastmodificationresponseMap["secondaryValues"].([]interface{}); ok {
+		SecondaryValuesString, _ := json.Marshal(SecondaryValues)
+		json.Unmarshal(SecondaryValuesString, &o.SecondaryValues)
+	}
+	
 	if DisplayGranularity, ok := BuforecastmodificationresponseMap["displayGranularity"].(string); ok {
 		o.DisplayGranularity = &DisplayGranularity
 	}
     
 	if Granularity, ok := BuforecastmodificationresponseMap["granularity"].(string); ok {
 		o.Granularity = &Granularity
+	}
+    
+	if SecondaryGranularity, ok := BuforecastmodificationresponseMap["secondaryGranularity"].(string); ok {
+		o.SecondaryGranularity = &SecondaryGranularity
 	}
     
 	if Enabled, ok := BuforecastmodificationresponseMap["enabled"].(bool); ok {

@@ -63,6 +63,9 @@ type Orguser struct {
 	// EmployerInfo
 	EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
 
+	// PreferredName - Preferred full name of the agent
+	PreferredName *string `json:"preferredName,omitempty"`
+
 	// RoutingStatus - ACD routing status
 	RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
 
@@ -226,6 +229,8 @@ func (o Orguser) MarshalJSON() ([]byte, error) {
 		
 		EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
 		
+		PreferredName *string `json:"preferredName,omitempty"`
+		
 		RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
 		
 		Presence *Userpresence `json:"presence,omitempty"`
@@ -298,6 +303,8 @@ func (o Orguser) MarshalJSON() ([]byte, error) {
 		Biography: o.Biography,
 		
 		EmployerInfo: o.EmployerInfo,
+		
+		PreferredName: o.PreferredName,
 		
 		RoutingStatus: o.RoutingStatus,
 		
@@ -425,6 +432,10 @@ func (o *Orguser) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EmployerInfoString, &o.EmployerInfo)
 	}
 	
+	if PreferredName, ok := OrguserMap["preferredName"].(string); ok {
+		o.PreferredName = &PreferredName
+	}
+    
 	if RoutingStatus, ok := OrguserMap["routingStatus"].(map[string]interface{}); ok {
 		RoutingStatusString, _ := json.Marshal(RoutingStatus)
 		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)

@@ -23,6 +23,9 @@ type Assessmentquestiongroupscore struct {
 	// MarkedNA - True if this question group is marked NA
 	MarkedNA *bool `json:"markedNA,omitempty"`
 
+	// SystemMarkedNA - If markedNA is true, systemMarkedNA indicates whether it was marked by a user or by the system due to visibility conditions. Always false if markedNA is false.
+	SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
+
 	// TotalCriticalScore - The total score for the critical questions
 	TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
 
@@ -128,6 +131,8 @@ func (o Assessmentquestiongroupscore) MarshalJSON() ([]byte, error) {
 		
 		MarkedNA *bool `json:"markedNA,omitempty"`
 		
+		SystemMarkedNA *bool `json:"systemMarkedNA,omitempty"`
+		
 		TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
 		
 		MaxTotalCriticalScore *float32 `json:"maxTotalCriticalScore,omitempty"`
@@ -158,6 +163,8 @@ func (o Assessmentquestiongroupscore) MarshalJSON() ([]byte, error) {
 		MaxTotalScore: o.MaxTotalScore,
 		
 		MarkedNA: o.MarkedNA,
+		
+		SystemMarkedNA: o.SystemMarkedNA,
 		
 		TotalCriticalScore: o.TotalCriticalScore,
 		
@@ -207,6 +214,10 @@ func (o *Assessmentquestiongroupscore) UnmarshalJSON(b []byte) error {
 	
 	if MarkedNA, ok := AssessmentquestiongroupscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
+	}
+    
+	if SystemMarkedNA, ok := AssessmentquestiongroupscoreMap["systemMarkedNA"].(bool); ok {
+		o.SystemMarkedNA = &SystemMarkedNA
 	}
     
 	if TotalCriticalScore, ok := AssessmentquestiongroupscoreMap["totalCriticalScore"].(float64); ok {

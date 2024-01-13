@@ -38,6 +38,9 @@ type Updateuser struct {
 	// Username
 	Username *string `json:"username,omitempty"`
 
+	// PreferredName - Preferred full name of agent
+	PreferredName *string `json:"preferredName,omitempty"`
+
 	// Manager
 	Manager *string `json:"manager,omitempty"`
 
@@ -156,6 +159,8 @@ func (o Updateuser) MarshalJSON() ([]byte, error) {
 		
 		Username *string `json:"username,omitempty"`
 		
+		PreferredName *string `json:"preferredName,omitempty"`
+		
 		Manager *string `json:"manager,omitempty"`
 		
 		Images *[]Userimage `json:"images,omitempty"`
@@ -198,6 +203,8 @@ func (o Updateuser) MarshalJSON() ([]byte, error) {
 		Title: o.Title,
 		
 		Username: o.Username,
+		
+		PreferredName: o.PreferredName,
 		
 		Manager: o.Manager,
 		
@@ -270,6 +277,10 @@ func (o *Updateuser) UnmarshalJSON(b []byte) error {
     
 	if Username, ok := UpdateuserMap["username"].(string); ok {
 		o.Username = &Username
+	}
+    
+	if PreferredName, ok := UpdateuserMap["preferredName"].(string); ok {
+		o.PreferredName = &PreferredName
 	}
     
 	if Manager, ok := UpdateuserMap["manager"].(string); ok {

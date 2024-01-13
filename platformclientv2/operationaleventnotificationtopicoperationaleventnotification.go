@@ -1,6 +1,5 @@
 package platformclientv2
 import (
-	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -43,7 +42,7 @@ type Operationaleventnotificationtopicoperationaleventnotification struct {
 	ConversationId *string `json:"conversationId,omitempty"`
 
 	// Timestamp
-	Timestamp *time.Time `json:"timestamp,omitempty"`
+	Timestamp *int `json:"timestamp,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -75,7 +74,7 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "Timestamp", }
+		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -108,14 +107,6 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 	_  = timeutil.Timedelta{}
 	type Alias Operationaleventnotificationtopicoperationaleventnotification
 	
-	Timestamp := new(string)
-	if o.Timestamp != nil {
-		
-		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		Timestamp = nil
-	}
-	
 	return json.Marshal(&struct { 
 		EventEntity *Operationaleventnotificationtopicevententity `json:"eventEntity,omitempty"`
 		
@@ -137,7 +128,7 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		
 		ConversationId *string `json:"conversationId,omitempty"`
 		
-		Timestamp *string `json:"timestamp,omitempty"`
+		Timestamp *int `json:"timestamp,omitempty"`
 		Alias
 	}{ 
 		EventEntity: o.EventEntity,
@@ -160,7 +151,7 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		
 		ConversationId: o.ConversationId,
 		
-		Timestamp: Timestamp,
+		Timestamp: o.Timestamp,
 		Alias:    (Alias)(o),
 	})
 }
@@ -213,9 +204,9 @@ func (o *Operationaleventnotificationtopicoperationaleventnotification) Unmarsha
 		o.ConversationId = &ConversationId
 	}
     
-	if timestampString, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["timestamp"].(string); ok {
-		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
-		o.Timestamp = &Timestamp
+	if Timestamp, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["timestamp"].(float64); ok {
+		TimestampInt := int(Timestamp)
+		o.Timestamp = &TimestampInt
 	}
 	
 
