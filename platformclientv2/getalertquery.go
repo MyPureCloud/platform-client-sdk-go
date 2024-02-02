@@ -17,8 +17,8 @@ type Getalertquery struct {
 	// QueryType - The type of query being performed.
 	QueryType *string `json:"queryType,omitempty"`
 
-	// ActiveStatus - The status of the alerts the query will return.
-	ActiveStatus *string `json:"activeStatus,omitempty"`
+	// AlertStatus - The status of the alerts the query will return.
+	AlertStatus *string `json:"alertStatus,omitempty"`
 
 	// ViewedStatus - The view status of the alerts the query will return.
 	ViewedStatus *string `json:"viewedStatus,omitempty"`
@@ -103,7 +103,7 @@ func (o Getalertquery) MarshalJSON() ([]byte, error) {
 		
 		QueryType *string `json:"queryType,omitempty"`
 		
-		ActiveStatus *string `json:"activeStatus,omitempty"`
+		AlertStatus *string `json:"alertStatus,omitempty"`
 		
 		ViewedStatus *string `json:"viewedStatus,omitempty"`
 		
@@ -120,7 +120,7 @@ func (o Getalertquery) MarshalJSON() ([]byte, error) {
 		
 		QueryType: o.QueryType,
 		
-		ActiveStatus: o.ActiveStatus,
+		AlertStatus: o.AlertStatus,
 		
 		ViewedStatus: o.ViewedStatus,
 		
@@ -150,8 +150,8 @@ func (o *Getalertquery) UnmarshalJSON(b []byte) error {
 		o.QueryType = &QueryType
 	}
     
-	if ActiveStatus, ok := GetalertqueryMap["activeStatus"].(string); ok {
-		o.ActiveStatus = &ActiveStatus
+	if AlertStatus, ok := GetalertqueryMap["alertStatus"].(string); ok {
+		o.AlertStatus = &AlertStatus
 	}
     
 	if ViewedStatus, ok := GetalertqueryMap["viewedStatus"].(string); ok {

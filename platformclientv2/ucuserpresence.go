@@ -21,8 +21,11 @@ type Ucuserpresence struct {
 	// UserId - User ID of the associated Genesys Cloud user.
 	UserId *string `json:"userId,omitempty"`
 
-	// Source - Represents the source where the Presence was set. Some examples are: PURECLOUD, MICROSOFTTEAMS, ZOOMPHONE, etc.
+	// Source - Deprecated - The sourceID field should be used as a replacement.
 	Source *string `json:"source,omitempty"`
+
+	// SourceId - The registered source ID from where the presence was set
+	SourceId *string `json:"sourceId,omitempty"`
 
 	// PresenceDefinition
 	PresenceDefinition *Presencedefinition `json:"presenceDefinition,omitempty"`
@@ -116,6 +119,8 @@ func (o Ucuserpresence) MarshalJSON() ([]byte, error) {
 		
 		Source *string `json:"source,omitempty"`
 		
+		SourceId *string `json:"sourceId,omitempty"`
+		
 		PresenceDefinition *Presencedefinition `json:"presenceDefinition,omitempty"`
 		
 		Message *string `json:"message,omitempty"`
@@ -132,6 +137,8 @@ func (o Ucuserpresence) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		Source: o.Source,
+		
+		SourceId: o.SourceId,
 		
 		PresenceDefinition: o.PresenceDefinition,
 		
@@ -165,6 +172,10 @@ func (o *Ucuserpresence) UnmarshalJSON(b []byte) error {
     
 	if Source, ok := UcuserpresenceMap["source"].(string); ok {
 		o.Source = &Source
+	}
+    
+	if SourceId, ok := UcuserpresenceMap["sourceId"].(string); ok {
+		o.SourceId = &SourceId
 	}
     
 	if PresenceDefinition, ok := UcuserpresenceMap["presenceDefinition"].(map[string]interface{}); ok {

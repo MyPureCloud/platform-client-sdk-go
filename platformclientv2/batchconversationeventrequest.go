@@ -11,58 +11,58 @@ import (
 type Batchconversationeventrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// EndTransferEvents - EndTransfer events for this batch
+	// EndTransferEvents - Voice - EndTransfer events for this batch
 	EndTransferEvents *[]Endtransferevent `json:"endTransferEvents,omitempty"`
 
-	// PhoneTransferEvents - PhoneTransfer events for this batch
+	// PhoneTransferEvents - Voice - PhoneTransfer events for this batch
 	PhoneTransferEvents *[]Phonetransferevent `json:"phoneTransferEvents,omitempty"`
 
-	// ProgressTransferEvents - ProgressTransfer events for this batch
+	// ProgressTransferEvents - Voice - ProgressTransfer events for this batch
 	ProgressTransferEvents *[]Progresstransferevent `json:"progressTransferEvents,omitempty"`
 
-	// RoutingTransferEvents - RoutingTransfer events for this batch
+	// RoutingTransferEvents - Voice - RoutingTransfer events for this batch
 	RoutingTransferEvents *[]Routingtransferevent `json:"routingTransferEvents,omitempty"`
 
-	// UserTransferEvents - UserTransfer events for this batch
+	// UserTransferEvents - Voice - UserTransfer events for this batch
 	UserTransferEvents *[]Usertransferevent `json:"userTransferEvents,omitempty"`
 
-	// CommunicationAnsweredEvents - CommunicationAnswered events for this batch
+	// CommunicationAnsweredEvents - Voice - CommunicationAnswered events for this batch
 	CommunicationAnsweredEvents *[]Communicationansweredevent `json:"communicationAnsweredEvents,omitempty"`
 
-	// CommunicationDispositionAppliedEvents - CommunicationDispositionApplied events for this batch
+	// CommunicationDispositionAppliedEvents - Voice - CommunicationDispositionApplied events for this batch
 	CommunicationDispositionAppliedEvents *[]Communicationdispositionappliedevent `json:"communicationDispositionAppliedEvents,omitempty"`
 
-	// HoldUpdatedEvents - HoldUpdated events for this batch
+	// HoldUpdatedEvents - Voice - HoldUpdated events for this batch
 	HoldUpdatedEvents *[]Holdupdatedevent `json:"holdUpdatedEvents,omitempty"`
 
-	// ExternalEstablishedEvents - ExternalEstablished events for this batch
+	// ExternalEstablishedEvents - Voice - ExternalEstablished events for this batch
 	ExternalEstablishedEvents *[]Externalestablishedevent `json:"externalEstablishedEvents,omitempty"`
 
-	// IvrEstablishedEvents - IvrEstablished events for this batch
+	// IvrEstablishedEvents - Voice - IvrEstablished events for this batch
 	IvrEstablishedEvents *[]Ivrestablishedevent `json:"ivrEstablishedEvents,omitempty"`
 
-	// PhoneEstablishedEvents - PhoneEstablished events for this batch
+	// PhoneEstablishedEvents - Voice - PhoneEstablished events for this batch
 	PhoneEstablishedEvents *[]Phoneestablishedevent `json:"phoneEstablishedEvents,omitempty"`
 
-	// RoutingEstablishedEvents - RoutingEstablished events for this batch
+	// RoutingEstablishedEvents - Voice - RoutingEstablished events for this batch
 	RoutingEstablishedEvents *[]Routingestablishedevent `json:"routingEstablishedEvents,omitempty"`
 
-	// UserEstablishedEvents - UserEstablished events for this batch
+	// UserEstablishedEvents - Voice - UserEstablished events for this batch
 	UserEstablishedEvents *[]Userestablishedevent `json:"userEstablishedEvents,omitempty"`
 
-	// AudioUpdatedEvents - AudioUpdated events for this batch
+	// AudioUpdatedEvents - Voice - AudioUpdated events for this batch
 	AudioUpdatedEvents *[]Audioupdatedevent `json:"audioUpdatedEvents,omitempty"`
 
-	// CommunicationEndedEvents - CommunicationEnded events for this batch
+	// CommunicationEndedEvents - Voice - CommunicationEnded events for this batch
 	CommunicationEndedEvents *[]Communicationendedevent `json:"communicationEndedEvents,omitempty"`
 
-	// ConsultTransferEvents - ConsultTransfer events for this batch
+	// ConsultTransferEvents - Voice - ConsultTransfer events for this batch
 	ConsultTransferEvents *[]Consulttransferevent `json:"consultTransferEvents,omitempty"`
 
-	// ProgressConsultTransferEvents - ProgressConsultTransfer events for this batch
+	// ProgressConsultTransferEvents - Voice - ProgressConsultTransfer events for this batch
 	ProgressConsultTransferEvents *[]Progressconsulttransferevent `json:"progressConsultTransferEvents,omitempty"`
 
-	// EndConsultTransferEvents - EndConsultTransfer events for this batch
+	// EndConsultTransferEvents - Voice - EndConsultTransfer events for this batch
 	EndConsultTransferEvents *[]Endconsulttransferevent `json:"endConsultTransferEvents,omitempty"`
 }
 

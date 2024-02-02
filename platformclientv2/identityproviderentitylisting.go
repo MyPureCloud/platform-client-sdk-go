@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-// Oauthproviderentitylisting
-type Oauthproviderentitylisting struct { 
+// Identityproviderentitylisting
+type Identityproviderentitylisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Oauthprovider `json:"entities,omitempty"`
+	Entities *[]Identityprovider `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -43,7 +43,7 @@ type Oauthproviderentitylisting struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Oauthproviderentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Identityproviderentitylisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +64,7 @@ func (o *Oauthproviderentitylisting) SetField(field string, fieldValue interface
 	o.SetFieldNames[field] = true
 }
 
-func (o Oauthproviderentitylisting) MarshalJSON() ([]byte, error) {
+func (o Identityproviderentitylisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,10 +102,10 @@ func (o Oauthproviderentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Oauthproviderentitylisting
+	type Alias Identityproviderentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Oauthprovider `json:"entities,omitempty"`
+		Entities *[]Identityprovider `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -149,54 +149,54 @@ func (o Oauthproviderentitylisting) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Oauthproviderentitylisting) UnmarshalJSON(b []byte) error {
-	var OauthproviderentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &OauthproviderentitylistingMap)
+func (o *Identityproviderentitylisting) UnmarshalJSON(b []byte) error {
+	var IdentityproviderentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &IdentityproviderentitylistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := OauthproviderentitylistingMap["entities"].([]interface{}); ok {
+	if Entities, ok := IdentityproviderentitylistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if PageSize, ok := OauthproviderentitylistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := IdentityproviderentitylistingMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := OauthproviderentitylistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := IdentityproviderentitylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := OauthproviderentitylistingMap["total"].(float64); ok {
+	if Total, ok := IdentityproviderentitylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := OauthproviderentitylistingMap["firstUri"].(string); ok {
+	if FirstUri, ok := IdentityproviderentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if NextUri, ok := OauthproviderentitylistingMap["nextUri"].(string); ok {
+	if NextUri, ok := IdentityproviderentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if PreviousUri, ok := OauthproviderentitylistingMap["previousUri"].(string); ok {
+	if PreviousUri, ok := IdentityproviderentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if LastUri, ok := OauthproviderentitylistingMap["lastUri"].(string); ok {
+	if LastUri, ok := IdentityproviderentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
-	if SelfUri, ok := OauthproviderentitylistingMap["selfUri"].(string); ok {
+	if SelfUri, ok := IdentityproviderentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := OauthproviderentitylistingMap["pageCount"].(float64); ok {
+	if PageCount, ok := IdentityproviderentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
 	}
@@ -206,7 +206,7 @@ func (o *Oauthproviderentitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Oauthproviderentitylisting) String() string {
+func (o *Identityproviderentitylisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -3085,7 +3085,7 @@ func (a ArchitectApi) GetArchitectIvrsDivisionviews(pageNumber int, pageSize int
 // GetArchitectPrompt invokes GET /api/v2/architect/prompts/{promptId}
 //
 // Get specified user prompt
-func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectPrompt(promptId string, includeMediaUris bool, includeResources bool, language []string) (*Prompt, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}"
@@ -3117,6 +3117,12 @@ func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeMediaUris"] = a.Configuration.APIClient.ParameterToString(includeMediaUris, "")
+	
+	queryParams["includeResources"] = a.Configuration.APIClient.ParameterToString(includeResources, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3443,7 +3449,7 @@ func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber in
 // Get a pageable list of user prompts
 //
 // The returned list is pageable, and query parameters can be used for filtering.  Multiple names can be specified, in which case all matching prompts will be returned, and no other filters will be evaluated.
-func (a ArchitectApi) GetArchitectPrompts(pageNumber int, pageSize int, name []string, description string, nameOrDescription string, sortBy string, sortOrder string) (*Promptentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectPrompts(pageNumber int, pageSize int, name []string, description string, nameOrDescription string, sortBy string, sortOrder string, includeMediaUris bool, includeResources bool, language []string) (*Promptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts"
@@ -3483,6 +3489,12 @@ func (a ArchitectApi) GetArchitectPrompts(pageNumber int, pageSize int, name []s
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["includeMediaUris"] = a.Configuration.APIClient.ParameterToString(includeMediaUris, "")
+	
+	queryParams["includeResources"] = a.Configuration.APIClient.ParameterToString(includeResources, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -4055,7 +4067,7 @@ func (a ArchitectApi) GetArchitectSchedulesDivisionviews(pageNumber int, pageSiz
 // GetArchitectSystemprompt invokes GET /api/v2/architect/systemprompts/{promptId}
 //
 // Get a system prompt
-func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSystemprompt(promptId string, includeMediaUris bool, includeResources bool, language []string) (*Systemprompt, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}"
@@ -4087,6 +4099,12 @@ func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, 
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeMediaUris"] = a.Configuration.APIClient.ParameterToString(includeMediaUris, "")
+	
+	queryParams["includeResources"] = a.Configuration.APIClient.ParameterToString(includeResources, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -4413,7 +4431,7 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 // GetArchitectSystemprompts invokes GET /api/v2/architect/systemprompts
 //
 // Get System Prompts
-func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, description string, nameOrDescription string) (*Systempromptentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, description string, nameOrDescription string, includeMediaUris bool, includeResources bool, language []string) (*Systempromptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts"
@@ -4453,6 +4471,12 @@ func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, so
 	queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, "")
 	
 	queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, "")
+	
+	queryParams["includeMediaUris"] = a.Configuration.APIClient.ParameterToString(includeMediaUris, "")
+	
+	queryParams["includeResources"] = a.Configuration.APIClient.ParameterToString(includeResources, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

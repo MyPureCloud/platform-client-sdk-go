@@ -7,25 +7,19 @@ import (
 	"strings"
 )
 
-// Oauthprovider
-type Oauthprovider struct { 
+// Workitemutilizationlabelreference
+type Workitemutilizationlabelreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// Disabled
-	Disabled *bool `json:"disabled,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Oauthprovider) SetField(field string, fieldValue interface{}) {
+func (o *Workitemutilizationlabelreference) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +40,7 @@ func (o *Oauthprovider) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Oauthprovider) MarshalJSON() ([]byte, error) {
+func (o Workitemutilizationlabelreference) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,49 +78,33 @@ func (o Oauthprovider) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Oauthprovider
+	type Alias Workitemutilizationlabelreference
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		Disabled *bool `json:"disabled,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
-		Name: o.Name,
-		
-		Disabled: o.Disabled,
-		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Oauthprovider) UnmarshalJSON(b []byte) error {
-	var OauthproviderMap map[string]interface{}
-	err := json.Unmarshal(b, &OauthproviderMap)
+func (o *Workitemutilizationlabelreference) UnmarshalJSON(b []byte) error {
+	var WorkitemutilizationlabelreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkitemutilizationlabelreferenceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := OauthproviderMap["id"].(string); ok {
+	if Id, ok := WorkitemutilizationlabelreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := OauthproviderMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if Disabled, ok := OauthproviderMap["disabled"].(bool); ok {
-		o.Disabled = &Disabled
-	}
-    
-	if SelfUri, ok := OauthproviderMap["selfUri"].(string); ok {
+	if SelfUri, ok := WorkitemutilizationlabelreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -135,7 +113,7 @@ func (o *Oauthprovider) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Oauthprovider) String() string {
+func (o *Workitemutilizationlabelreference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

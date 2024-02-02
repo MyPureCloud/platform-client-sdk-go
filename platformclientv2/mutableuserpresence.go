@@ -18,8 +18,11 @@ type Mutableuserpresence struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
-	// Source - Represents the source where the Presence was set. Some examples are: PURECLOUD, LYNC, OUTLOOK, etc.
+	// Source - Deprecated - The sourceID field should be used as a replacement.
 	Source *string `json:"source,omitempty"`
+
+	// SourceId - Represents the ID of a registered source
+	SourceId *string `json:"sourceId,omitempty"`
 
 	// Primary - A boolean used to tell whether or not to set this presence source as the primary on a PATCH
 	Primary *bool `json:"primary,omitempty"`
@@ -114,6 +117,8 @@ func (o Mutableuserpresence) MarshalJSON() ([]byte, error) {
 		
 		Source *string `json:"source,omitempty"`
 		
+		SourceId *string `json:"sourceId,omitempty"`
+		
 		Primary *bool `json:"primary,omitempty"`
 		
 		PresenceDefinition *Presencedefinition `json:"presenceDefinition,omitempty"`
@@ -130,6 +135,8 @@ func (o Mutableuserpresence) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Source: o.Source,
+		
+		SourceId: o.SourceId,
 		
 		Primary: o.Primary,
 		
@@ -161,6 +168,10 @@ func (o *Mutableuserpresence) UnmarshalJSON(b []byte) error {
     
 	if Source, ok := MutableuserpresenceMap["source"].(string); ok {
 		o.Source = &Source
+	}
+    
+	if SourceId, ok := MutableuserpresenceMap["sourceId"].(string); ok {
+		o.SourceId = &SourceId
 	}
     
 	if Primary, ok := MutableuserpresenceMap["primary"].(bool); ok {

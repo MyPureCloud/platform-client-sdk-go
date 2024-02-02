@@ -59,6 +59,9 @@ type V2mobiusalertstopicalert struct {
 
 	// AlertSummary
 	AlertSummary *V2mobiusalertstopicalertsummary `json:"alertSummary,omitempty"`
+
+	// SendExitingAlarmNotification
+	SendExitingAlarmNotification *bool `json:"sendExitingAlarmNotification,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -187,6 +190,8 @@ func (o V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
 		Action *string `json:"action,omitempty"`
 		
 		AlertSummary *V2mobiusalertstopicalertsummary `json:"alertSummary,omitempty"`
+		
+		SendExitingAlarmNotification *bool `json:"sendExitingAlarmNotification,omitempty"`
 		Alias
 	}{ 
 		Rule: o.Rule,
@@ -220,6 +225,8 @@ func (o V2mobiusalertstopicalert) MarshalJSON() ([]byte, error) {
 		Action: o.Action,
 		
 		AlertSummary: o.AlertSummary,
+		
+		SendExitingAlarmNotification: o.SendExitingAlarmNotification,
 		Alias:    (Alias)(o),
 	})
 }
@@ -306,6 +313,10 @@ func (o *V2mobiusalertstopicalert) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AlertSummaryString, &o.AlertSummary)
 	}
 	
+	if SendExitingAlarmNotification, ok := V2mobiusalertstopicalertMap["sendExitingAlarmNotification"].(bool); ok {
+		o.SendExitingAlarmNotification = &SendExitingAlarmNotification
+	}
+    
 
 	return nil
 }

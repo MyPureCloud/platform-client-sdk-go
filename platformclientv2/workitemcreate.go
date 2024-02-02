@@ -63,6 +63,9 @@ type Workitemcreate struct {
 	// LanguageId - The ID of language of the Workitem. Must be a valid UUID.
 	LanguageId *string `json:"languageId,omitempty"`
 
+	// UtilizationLabelId - The ID of utilization label of the Workitem. Must be a valid UUID.
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
 	// ExternalContactId - The ID of the external contact of the Workitem. Must be a valid UUID.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
@@ -189,6 +192,8 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		
 		LanguageId *string `json:"languageId,omitempty"`
 		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
 		ExternalTag *string `json:"externalTag,omitempty"`
@@ -231,6 +236,8 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		ScoredAgents: o.ScoredAgents,
 		
 		LanguageId: o.LanguageId,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		ExternalContactId: o.ExternalContactId,
 		
@@ -323,6 +330,10 @@ func (o *Workitemcreate) UnmarshalJSON(b []byte) error {
 	
 	if LanguageId, ok := WorkitemcreateMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
+	}
+    
+	if UtilizationLabelId, ok := WorkitemcreateMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 	if ExternalContactId, ok := WorkitemcreateMap["externalContactId"].(string); ok {

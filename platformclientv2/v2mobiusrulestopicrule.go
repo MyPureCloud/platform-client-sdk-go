@@ -41,6 +41,9 @@ type V2mobiusrulestopicrule struct {
 
 	// DateCreated
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+	// SendExitingAlarmNotification
+	SendExitingAlarmNotification *bool `json:"sendExitingAlarmNotification,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -133,6 +136,8 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 		Action *string `json:"action,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		SendExitingAlarmNotification *bool `json:"sendExitingAlarmNotification,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -154,6 +159,8 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 		Action: o.Action,
 		
 		DateCreated: DateCreated,
+		
+		SendExitingAlarmNotification: o.SendExitingAlarmNotification,
 		Alias:    (Alias)(o),
 	})
 }
@@ -210,6 +217,10 @@ func (o *V2mobiusrulestopicrule) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
+	if SendExitingAlarmNotification, ok := V2mobiusrulestopicruleMap["sendExitingAlarmNotification"].(bool); ok {
+		o.SendExitingAlarmNotification = &SendExitingAlarmNotification
+	}
+    
 
 	return nil
 }

@@ -7,22 +7,25 @@ import (
 	"strings"
 )
 
-// Segmentassignmentsession
-type Segmentassignmentsession struct { 
+// Preprocessingrule
+type Preprocessingrule struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
+	// Find - The regular expression to which file lines are to be matched.
+	Find *string `json:"find,omitempty"`
 
-	// VarType - The type or category of session (e.g. web, app).
-	VarType *string `json:"type,omitempty"`
+	// ReplaceWith - The string to be substituted for each match.
+	ReplaceWith *string `json:"replaceWith,omitempty"`
 
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Global - Replaces all matching substrings in every line.
+	Global *bool `json:"global,omitempty"`
+
+	// IgnoreCase - Enables case-insensitive matching
+	IgnoreCase *bool `json:"ignoreCase,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Segmentassignmentsession) SetField(field string, fieldValue interface{}) {
+func (o *Preprocessingrule) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +46,7 @@ func (o *Segmentassignmentsession) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Segmentassignmentsession) MarshalJSON() ([]byte, error) {
+func (o Preprocessingrule) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,42 +84,50 @@ func (o Segmentassignmentsession) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Segmentassignmentsession
+	type Alias Preprocessingrule
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Find *string `json:"find,omitempty"`
 		
-		VarType *string `json:"type,omitempty"`
+		ReplaceWith *string `json:"replaceWith,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Global *bool `json:"global,omitempty"`
+		
+		IgnoreCase *bool `json:"ignoreCase,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Find: o.Find,
 		
-		VarType: o.VarType,
+		ReplaceWith: o.ReplaceWith,
 		
-		SelfUri: o.SelfUri,
+		Global: o.Global,
+		
+		IgnoreCase: o.IgnoreCase,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Segmentassignmentsession) UnmarshalJSON(b []byte) error {
-	var SegmentassignmentsessionMap map[string]interface{}
-	err := json.Unmarshal(b, &SegmentassignmentsessionMap)
+func (o *Preprocessingrule) UnmarshalJSON(b []byte) error {
+	var PreprocessingruleMap map[string]interface{}
+	err := json.Unmarshal(b, &PreprocessingruleMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := SegmentassignmentsessionMap["id"].(string); ok {
-		o.Id = &Id
+	if Find, ok := PreprocessingruleMap["find"].(string); ok {
+		o.Find = &Find
 	}
     
-	if VarType, ok := SegmentassignmentsessionMap["type"].(string); ok {
-		o.VarType = &VarType
+	if ReplaceWith, ok := PreprocessingruleMap["replaceWith"].(string); ok {
+		o.ReplaceWith = &ReplaceWith
 	}
     
-	if SelfUri, ok := SegmentassignmentsessionMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if Global, ok := PreprocessingruleMap["global"].(bool); ok {
+		o.Global = &Global
+	}
+    
+	if IgnoreCase, ok := PreprocessingruleMap["ignoreCase"].(bool); ok {
+		o.IgnoreCase = &IgnoreCase
 	}
     
 
@@ -124,7 +135,7 @@ func (o *Segmentassignmentsession) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Segmentassignmentsession) String() string {
+func (o *Preprocessingrule) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

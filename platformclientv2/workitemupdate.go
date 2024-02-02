@@ -75,6 +75,9 @@ type Workitemupdate struct {
 	// LanguageId - The ID of language of the Workitem. Must be a valid UUID.
 	LanguageId *string `json:"languageId,omitempty"`
 
+	// UtilizationLabelId - The ID of the utilization label of the Workitem. Must be a valid UUID.
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
 	// PreferredAgentIds - The preferred agent IDs of the Workitem. Must be valid UUIDs.
 	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
 }
@@ -208,6 +211,8 @@ func (o Workitemupdate) MarshalJSON() ([]byte, error) {
 		
 		LanguageId *string `json:"languageId,omitempty"`
 		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
 		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
 		Alias
 	}{ 
@@ -252,6 +257,8 @@ func (o Workitemupdate) MarshalJSON() ([]byte, error) {
 		SkillIds: o.SkillIds,
 		
 		LanguageId: o.LanguageId,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		PreferredAgentIds: o.PreferredAgentIds,
 		Alias:    (Alias)(o),
@@ -356,6 +363,10 @@ func (o *Workitemupdate) UnmarshalJSON(b []byte) error {
 	
 	if LanguageId, ok := WorkitemupdateMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
+	}
+    
+	if UtilizationLabelId, ok := WorkitemupdateMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 	if PreferredAgentIds, ok := WorkitemupdateMap["preferredAgentIds"].([]interface{}); ok {

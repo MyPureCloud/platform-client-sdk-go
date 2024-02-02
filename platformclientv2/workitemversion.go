@@ -30,6 +30,9 @@ type Workitemversion struct {
 	// Language - The language of the Workitem.
 	Language *Languagereference `json:"language,omitempty"`
 
+	// UtilizationLabel - The utilization label of the Workitem.
+	UtilizationLabel *Workitemutilizationlabelreference `json:"utilizationLabel,omitempty"`
+
 	// Priority - The priority of the Workitem. The valid range is between -25,000,000 and 25,000,000.
 	Priority *int `json:"priority,omitempty"`
 
@@ -252,6 +255,8 @@ func (o Workitemversion) MarshalJSON() ([]byte, error) {
 		
 		Language *Languagereference `json:"language,omitempty"`
 		
+		UtilizationLabel *Workitemutilizationlabelreference `json:"utilizationLabel,omitempty"`
+		
 		Priority *int `json:"priority,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -324,6 +329,8 @@ func (o Workitemversion) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		Language: o.Language,
+		
+		UtilizationLabel: o.UtilizationLabel,
 		
 		Priority: o.Priority,
 		
@@ -420,6 +427,11 @@ func (o *Workitemversion) UnmarshalJSON(b []byte) error {
 	if Language, ok := WorkitemversionMap["language"].(map[string]interface{}); ok {
 		LanguageString, _ := json.Marshal(Language)
 		json.Unmarshal(LanguageString, &o.Language)
+	}
+	
+	if UtilizationLabel, ok := WorkitemversionMap["utilizationLabel"].(map[string]interface{}); ok {
+		UtilizationLabelString, _ := json.Marshal(UtilizationLabel)
+		json.Unmarshal(UtilizationLabelString, &o.UtilizationLabel)
 	}
 	
 	if Priority, ok := WorkitemversionMap["priority"].(float64); ok {

@@ -38,7 +38,7 @@ type Phonestatus struct {
 	// Edge - The URI of the edge that provided this status information.
 	Edge *Domainentityref `json:"edge,omitempty"`
 
-	// SelfUri - The URI for this object
+	// SelfUri - The URI for this object. Deprecated. Do not use.
 	SelfUri *string `json:"selfUri,omitempty"`
 }
 

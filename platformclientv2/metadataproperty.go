@@ -14,6 +14,9 @@ type Metadataproperty struct {
 	// VarType - the data type of the input property
 	VarType *string `json:"type,omitempty"`
 
+	// Displayname - user-friendly name of the input property
+	Displayname *string `json:"displayname,omitempty"`
+
 	// Description - brief description of the input property
 	Description *string `json:"description,omitempty"`
 
@@ -95,6 +98,8 @@ func (o Metadataproperty) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
+		Displayname *string `json:"displayname,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		
 		Sensitive *string `json:"sensitive,omitempty"`
@@ -107,6 +112,8 @@ func (o Metadataproperty) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		VarType: o.VarType,
+		
+		Displayname: o.Displayname,
 		
 		Description: o.Description,
 		
@@ -130,6 +137,10 @@ func (o *Metadataproperty) UnmarshalJSON(b []byte) error {
 	
 	if VarType, ok := MetadatapropertyMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+    
+	if Displayname, ok := MetadatapropertyMap["displayname"].(string); ok {
+		o.Displayname = &Displayname
 	}
     
 	if Description, ok := MetadatapropertyMap["description"].(string); ok {

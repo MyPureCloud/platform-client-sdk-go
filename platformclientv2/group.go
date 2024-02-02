@@ -48,6 +48,9 @@ type Group struct {
 	// Visibility - Who can view this group
 	Visibility *string `json:"visibility,omitempty"`
 
+	// RolesEnabled - Allow roles to be assigned to this group
+	RolesEnabled *bool `json:"rolesEnabled,omitempty"`
+
 	// Owners - Owners of the group
 	Owners *[]User `json:"owners,omitempty"`
 
@@ -150,6 +153,8 @@ func (o Group) MarshalJSON() ([]byte, error) {
 		
 		Visibility *string `json:"visibility,omitempty"`
 		
+		RolesEnabled *bool `json:"rolesEnabled,omitempty"`
+		
 		Owners *[]User `json:"owners,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -178,6 +183,8 @@ func (o Group) MarshalJSON() ([]byte, error) {
 		RulesVisible: o.RulesVisible,
 		
 		Visibility: o.Visibility,
+		
+		RolesEnabled: o.RolesEnabled,
 		
 		Owners: o.Owners,
 		
@@ -244,6 +251,10 @@ func (o *Group) UnmarshalJSON(b []byte) error {
     
 	if Visibility, ok := GroupMap["visibility"].(string); ok {
 		o.Visibility = &Visibility
+	}
+    
+	if RolesEnabled, ok := GroupMap["rolesEnabled"].(bool); ok {
+		o.RolesEnabled = &RolesEnabled
 	}
     
 	if Owners, ok := GroupMap["owners"].([]interface{}); ok {

@@ -16,6 +16,9 @@ type Authenticationsettings struct {
 
 	// IntegrationId - The integration identifier which contains the auth settings required on the deployment.
 	IntegrationId *string `json:"integrationId,omitempty"`
+
+	// AllowSessionUpgrade - Allow end-users to upgrade an anonymous session to authenticated conversation.
+	AllowSessionUpgrade *bool `json:"allowSessionUpgrade,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Authenticationsettings) MarshalJSON() ([]byte, error) {
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		IntegrationId *string `json:"integrationId,omitempty"`
+		
+		AllowSessionUpgrade *bool `json:"allowSessionUpgrade,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
 		
 		IntegrationId: o.IntegrationId,
+		
+		AllowSessionUpgrade: o.AllowSessionUpgrade,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Authenticationsettings) UnmarshalJSON(b []byte) error {
     
 	if IntegrationId, ok := AuthenticationsettingsMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
+	}
+    
+	if AllowSessionUpgrade, ok := AuthenticationsettingsMap["allowSessionUpgrade"].(bool); ok {
+		o.AllowSessionUpgrade = &AllowSessionUpgrade
 	}
     
 

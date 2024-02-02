@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -7,25 +8,25 @@ import (
 	"strings"
 )
 
-// Segmentassignmentlisting
-type Segmentassignmentlisting struct { 
+// Emailcommunicationrepliedevent
+type Emailcommunicationrepliedevent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Segmentassignment `json:"entities,omitempty"`
+	// EventId - A unique (V4 UUID) eventId for this event
+	EventId *string `json:"eventId,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// EventDateTime - A Date Time representing the time this event occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	EventDateTime *time.Time `json:"eventDateTime,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// ConversationId - A unique Id (V4 UUID) identifying this conversation
+	ConversationId *string `json:"conversationId,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// CommunicationId - A unique Id (V4 UUID) identifying this communication.
+	CommunicationId *string `json:"communicationId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Segmentassignmentlisting) SetField(field string, fieldValue interface{}) {
+func (o *Emailcommunicationrepliedevent) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,14 +47,14 @@ func (o *Segmentassignmentlisting) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Segmentassignmentlisting) MarshalJSON() ([]byte, error) {
+func (o Emailcommunicationrepliedevent) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "EventDateTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -84,51 +85,59 @@ func (o Segmentassignmentlisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Segmentassignmentlisting
+	type Alias Emailcommunicationrepliedevent
+	
+	EventDateTime := new(string)
+	if o.EventDateTime != nil {
+		
+		*EventDateTime = timeutil.Strftime(o.EventDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventDateTime = nil
+	}
 	
 	return json.Marshal(&struct { 
-		Entities *[]Segmentassignment `json:"entities,omitempty"`
+		EventId *string `json:"eventId,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		EventDateTime *string `json:"eventDateTime,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		ConversationId *string `json:"conversationId,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		CommunicationId *string `json:"communicationId,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		EventId: o.EventId,
 		
-		NextUri: o.NextUri,
+		EventDateTime: EventDateTime,
 		
-		SelfUri: o.SelfUri,
+		ConversationId: o.ConversationId,
 		
-		PreviousUri: o.PreviousUri,
+		CommunicationId: o.CommunicationId,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Segmentassignmentlisting) UnmarshalJSON(b []byte) error {
-	var SegmentassignmentlistingMap map[string]interface{}
-	err := json.Unmarshal(b, &SegmentassignmentlistingMap)
+func (o *Emailcommunicationrepliedevent) UnmarshalJSON(b []byte) error {
+	var EmailcommunicationrepliedeventMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailcommunicationrepliedeventMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := SegmentassignmentlistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
+	if EventId, ok := EmailcommunicationrepliedeventMap["eventId"].(string); ok {
+		o.EventId = &EventId
+	}
+    
+	if eventDateTimeString, ok := EmailcommunicationrepliedeventMap["eventDateTime"].(string); ok {
+		EventDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventDateTimeString)
+		o.EventDateTime = &EventDateTime
 	}
 	
-	if NextUri, ok := SegmentassignmentlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if ConversationId, ok := EmailcommunicationrepliedeventMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
 	}
     
-	if SelfUri, ok := SegmentassignmentlistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if PreviousUri, ok := SegmentassignmentlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if CommunicationId, ok := EmailcommunicationrepliedeventMap["communicationId"].(string); ok {
+		o.CommunicationId = &CommunicationId
 	}
     
 
@@ -136,7 +145,7 @@ func (o *Segmentassignmentlisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Segmentassignmentlisting) String() string {
+func (o *Emailcommunicationrepliedevent) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

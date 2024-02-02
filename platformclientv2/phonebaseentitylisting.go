@@ -23,6 +23,9 @@ type Phonebaseentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// TotalNumberOfEntities - The total organization-wide number of entities.
+	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -113,6 +116,8 @@ func (o Phonebaseentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
@@ -133,6 +138,8 @@ func (o Phonebaseentitylisting) MarshalJSON() ([]byte, error) {
 		PageNumber: o.PageNumber,
 		
 		Total: o.Total,
+		
+		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
 		FirstUri: o.FirstUri,
 		
@@ -174,6 +181,11 @@ func (o *Phonebaseentitylisting) UnmarshalJSON(b []byte) error {
 	if Total, ok := PhonebaseentitylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
+	}
+	
+	if TotalNumberOfEntities, ok := PhonebaseentitylistingMap["totalNumberOfEntities"].(float64); ok {
+		TotalNumberOfEntitiesInt := int(TotalNumberOfEntities)
+		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
 	if FirstUri, ok := PhonebaseentitylistingMap["firstUri"].(string); ok {

@@ -20,7 +20,7 @@ type Directrouting struct {
 	// MessageMediaSettings - Direct Routing Settings specific to Message media.
 	MessageMediaSettings *Directroutingmediasettings `json:"messageMediaSettings,omitempty"`
 
-	// BackupQueueId - ID of queue to be used as the default backup if an agent does not have their Backup Settings configured.
+	// BackupQueueId - ID of another queue to be used as the default backup if an agent does not have their Backup Settings configured. If not set, the current queue will be used as backup, but with Direct Routing criteria removed from the conversation.
 	BackupQueueId *string `json:"backupQueueId,omitempty"`
 
 	// WaitForAgent - Flag indicating if Direct Routing interactions should wait for Direct Routing agent or go immediately to selected backup.

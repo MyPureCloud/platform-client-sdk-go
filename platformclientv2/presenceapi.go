@@ -181,7 +181,9 @@ func (a PresenceApi) DeletePresenceSource(sourceId string) (*APIResponse, error)
 
 // DeletePresencedefinition invokes DELETE /api/v2/presencedefinitions/{presenceId}
 //
-// Delete a Presence Definition
+// Delete a Presence Definition. Apps should migrate to use DELETE /api/v2/presence/definitions/{definitionId} instead
+//
+// Deprecated: DeletePresencedefinition is deprecated
 func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -740,7 +742,9 @@ func (a PresenceApi) GetPresenceUserPrimarysource(userId string) (*Userprimaryso
 
 // GetPresencedefinition invokes GET /api/v2/presencedefinitions/{presenceId}
 //
-// Get a Presence Definition
+// Get a Presence Definition. Apps should migrate to use GET /api/v2/presence/definitions/{definitionId} instead
+//
+// Deprecated: GetPresencedefinition is deprecated
 func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string) (*Organizationpresence, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -824,7 +828,9 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 
 // GetPresencedefinitions invokes GET /api/v2/presencedefinitions
 //
-// Get an Organization's list of Presence Definitions
+// Get an Organization's list of Presence Definitions. Apps should migrate to use GET /api/v2/presence/definitions instead
+//
+// Deprecated: GetPresencedefinitions is deprecated
 func (a PresenceApi) GetPresencedefinitions(pageNumber int, pageSize int, deleted string, localeCode string) (*Organizationpresenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1678,7 +1684,9 @@ func (a PresenceApi) PostPresenceSources(body Source) (*Source, *APIResponse, er
 
 // PostPresencedefinitions invokes POST /api/v2/presencedefinitions
 //
-// Create a Presence Definition
+// Create a Presence Definition. Apps should migrate to use POST /api/v2/presence/definitions instead
+//
+// Deprecated: PostPresencedefinitions is deprecated
 func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organizationpresence, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2116,7 +2124,9 @@ func (a PresenceApi) PutPresenceUserPrimarysource(userId string, body Userprimar
 
 // PutPresencedefinition invokes PUT /api/v2/presencedefinitions/{presenceId}
 //
-// Update a Presence Definition
+// Update a Presence Definition. Apps should migrate to use PUT /api/v2/presence/definitions/{definitionId} instead)
+//
+// Deprecated: PutPresencedefinition is deprecated
 func (a PresenceApi) PutPresencedefinition(presenceId string, body Organizationpresence) (*Organizationpresence, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

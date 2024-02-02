@@ -624,7 +624,7 @@ func (a ChatApi) GetChatsRoomMessage(roomJid string, messageIds string) (*Chatme
 // Get a room's message history
 //
 // Preview: GetChatsRoomMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a ChatApi) GetChatsRoomMessages(roomJid string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
+func (a ChatApi) GetChatsRoomMessages(roomJid string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/messages"
@@ -656,18 +656,6 @@ func (a ChatApi) GetChatsRoomMessages(roomJid string, pageSize int, pageNumber i
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
-	
-	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
 	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
@@ -802,7 +790,7 @@ func (a ChatApi) GetChatsSettings() (*Chatsettings, *APIResponse, error) {
 // Get history by thread
 //
 // Preview: GetChatsThreadMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a ChatApi) GetChatsThreadMessages(threadId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
+func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/threads/{threadId}/messages"
@@ -834,18 +822,6 @@ func (a ChatApi) GetChatsThreadMessages(threadId string, pageSize int, pageNumbe
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
-	
-	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
 	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
@@ -994,7 +970,7 @@ func (a ChatApi) GetChatsUserMessage(userId string, messageIds string) (*Chatmes
 // Get 1on1 History between a user
 //
 // Preview: GetChatsUserMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a ChatApi) GetChatsUserMessages(userId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, limit string, before string, after string) (*Chatmessageresponse, *APIResponse, error) {
+func (a ChatApi) GetChatsUserMessages(userId string, limit string, before string, after string) (*Chatmessageresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/users/{userId}/messages"
@@ -1026,18 +1002,6 @@ func (a ChatApi) GetChatsUserMessages(userId string, pageSize int, pageNumber in
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
-	
-	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
 	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	

@@ -7,25 +7,16 @@ import (
 	"strings"
 )
 
-// Segmentassignmentsegment
-type Segmentassignmentsegment struct { 
+// Wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit
+type Wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id
 	Id *string `json:"id,omitempty"`
-
-	// Scope - The target entity that a segment applies to.
-	Scope *string `json:"scope,omitempty"`
-
-	// Version - The version of the segment.
-	Version *int `json:"version,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Segmentassignmentsegment) SetField(field string, fieldValue interface{}) {
+func (o *Wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +37,7 @@ func (o *Segmentassignmentsegment) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Segmentassignmentsegment) MarshalJSON() ([]byte, error) {
+func (o Wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,51 +75,26 @@ func (o Segmentassignmentsegment) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Segmentassignmentsegment
+	type Alias Wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
-		
-		Scope *string `json:"scope,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Scope: o.Scope,
-		
-		Version: o.Version,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Segmentassignmentsegment) UnmarshalJSON(b []byte) error {
-	var SegmentassignmentsegmentMap map[string]interface{}
-	err := json.Unmarshal(b, &SegmentassignmentsegmentMap)
+func (o *Wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit) UnmarshalJSON(b []byte) error {
+	var WfmagentadherenceexplanationchangedbusinessunittopicmanagementunitMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmagentadherenceexplanationchangedbusinessunittopicmanagementunitMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := SegmentassignmentsegmentMap["id"].(string); ok {
+	if Id, ok := WfmagentadherenceexplanationchangedbusinessunittopicmanagementunitMap["id"].(string); ok {
 		o.Id = &Id
-	}
-    
-	if Scope, ok := SegmentassignmentsegmentMap["scope"].(string); ok {
-		o.Scope = &Scope
-	}
-    
-	if Version, ok := SegmentassignmentsegmentMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
-	}
-	
-	if SelfUri, ok := SegmentassignmentsegmentMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 
@@ -136,7 +102,7 @@ func (o *Segmentassignmentsegment) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Segmentassignmentsegment) String() string {
+func (o *Wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

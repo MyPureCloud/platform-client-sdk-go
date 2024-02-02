@@ -48,6 +48,9 @@ type Trustgroup struct {
 	// Visibility - Who can view this group
 	Visibility *string `json:"visibility,omitempty"`
 
+	// RolesEnabled - Allow roles to be assigned to this group
+	RolesEnabled *bool `json:"rolesEnabled,omitempty"`
+
 	// Owners - Owners of the group
 	Owners *[]User `json:"owners,omitempty"`
 
@@ -161,6 +164,8 @@ func (o Trustgroup) MarshalJSON() ([]byte, error) {
 		
 		Visibility *string `json:"visibility,omitempty"`
 		
+		RolesEnabled *bool `json:"rolesEnabled,omitempty"`
+		
 		Owners *[]User `json:"owners,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -191,6 +196,8 @@ func (o Trustgroup) MarshalJSON() ([]byte, error) {
 		RulesVisible: o.RulesVisible,
 		
 		Visibility: o.Visibility,
+		
+		RolesEnabled: o.RolesEnabled,
 		
 		Owners: o.Owners,
 		
@@ -259,6 +266,10 @@ func (o *Trustgroup) UnmarshalJSON(b []byte) error {
     
 	if Visibility, ok := TrustgroupMap["visibility"].(string); ok {
 		o.Visibility = &Visibility
+	}
+    
+	if RolesEnabled, ok := TrustgroupMap["rolesEnabled"].(bool); ok {
+		o.RolesEnabled = &RolesEnabled
 	}
     
 	if Owners, ok := TrustgroupMap["owners"].([]interface{}); ok {

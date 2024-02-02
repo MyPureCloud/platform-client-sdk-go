@@ -29,6 +29,81 @@ func NewIdentityProviderApiWithConfig(config *Configuration) *IdentityProviderAp
 	}
 }
 
+// DeleteIdentityprovider invokes DELETE /api/v2/identityproviders/{providerId}
+//
+// Delete Identity Provider
+func (a IdentityProviderApi) DeleteIdentityprovider(providerId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/identityproviders/{providerId}"
+	path = strings.Replace(path, "{providerId}", url.PathEscape(fmt.Sprintf("%v", providerId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'providerId' is set
+	if &providerId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'providerId' when calling IdentityProviderApi->DeleteIdentityprovider")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteIdentityprovidersAdfs invokes DELETE /api/v2/identityproviders/adfs
 //
 // Delete ADFS Identity Provider
@@ -865,14 +940,96 @@ func (a IdentityProviderApi) DeleteIdentityprovidersSalesforce() (*interface{}, 
 	return successPayload, response, err
 }
 
+// GetIdentityprovider invokes GET /api/v2/identityproviders/{providerId}
+//
+// Get Identity Provider
+func (a IdentityProviderApi) GetIdentityprovider(providerId string) (*Customprovider, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/identityproviders/{providerId}"
+	path = strings.Replace(path, "{providerId}", url.PathEscape(fmt.Sprintf("%v", providerId)), -1)
+	defaultReturn := new(Customprovider)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'providerId' is set
+	if &providerId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'providerId' when calling IdentityProviderApi->GetIdentityprovider")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Customprovider
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Customprovider" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetIdentityproviders invokes GET /api/v2/identityproviders
 //
 // The list of identity providers
-func (a IdentityProviderApi) GetIdentityproviders() (*Oauthproviderentitylisting, *APIResponse, error) {
+func (a IdentityProviderApi) GetIdentityproviders() (*Identityproviderentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders"
-	defaultReturn := new(Oauthproviderentitylisting)
+	defaultReturn := new(Identityproviderentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -925,14 +1082,14 @@ func (a IdentityProviderApi) GetIdentityproviders() (*Oauthproviderentitylisting
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Oauthproviderentitylisting
+	var successPayload *Identityproviderentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthproviderentitylisting" == "string" {
+		if "Identityproviderentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1777,14 +1934,188 @@ func (a IdentityProviderApi) GetIdentityprovidersSalesforce() (*Salesforce, *API
 	return successPayload, response, err
 }
 
+// PostIdentityproviders invokes POST /api/v2/identityproviders
+//
+// Create Identity Provider
+func (a IdentityProviderApi) PostIdentityproviders(body Customprovider) (*Customprovider, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/identityproviders"
+	defaultReturn := new(Customprovider)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PostIdentityproviders")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Customprovider
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Customprovider" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutIdentityprovider invokes PUT /api/v2/identityproviders/{providerId}
+//
+// Update Identity Provider
+func (a IdentityProviderApi) PutIdentityprovider(providerId string, body Customprovider) (*Customprovider, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/identityproviders/{providerId}"
+	path = strings.Replace(path, "{providerId}", url.PathEscape(fmt.Sprintf("%v", providerId)), -1)
+	defaultReturn := new(Customprovider)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'providerId' is set
+	if &providerId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'providerId' when calling IdentityProviderApi->PutIdentityprovider")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling IdentityProviderApi->PutIdentityprovider")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Customprovider
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Customprovider" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PutIdentityprovidersAdfs invokes PUT /api/v2/identityproviders/adfs
 //
 // Update/Create ADFS Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/adfs"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1845,14 +2176,14 @@ func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Oauthprovider
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1864,11 +2195,11 @@ func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Oauthprovider
 // PutIdentityprovidersCic invokes PUT /api/v2/identityproviders/cic
 //
 // Update/Create Customer Interaction Center (CIC) Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncenter) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncenter) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/cic"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1929,14 +2260,14 @@ func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncen
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1948,11 +2279,11 @@ func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncen
 // PutIdentityprovidersGeneric invokes PUT /api/v2/identityproviders/generic
 //
 // Update/Create Generic SAML Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/generic"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2013,14 +2344,14 @@ func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Oau
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2032,11 +2363,11 @@ func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Oau
 // PutIdentityprovidersGsuite invokes PUT /api/v2/identityproviders/gsuite
 //
 // Update/Create G Suite Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/gsuite"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2097,14 +2428,14 @@ func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Oauthprov
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2200,11 +2531,11 @@ func (a IdentityProviderApi) PutIdentityprovidersIdentitynow(body Identitynow) (
 // PutIdentityprovidersOkta invokes PUT /api/v2/identityproviders/okta
 //
 // Update/Create Okta Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/okta"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2265,14 +2596,14 @@ func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Oauthprovider
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2284,11 +2615,11 @@ func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Oauthprovider
 // PutIdentityprovidersOnelogin invokes PUT /api/v2/identityproviders/onelogin
 //
 // Update/Create OneLogin Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/onelogin"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2349,14 +2680,14 @@ func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Oauth
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2368,11 +2699,11 @@ func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Oauth
 // PutIdentityprovidersPing invokes PUT /api/v2/identityproviders/ping
 //
 // Update/Create Ping Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/ping"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2433,14 +2764,14 @@ func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Oauth
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2452,11 +2783,11 @@ func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Oauth
 // PutIdentityprovidersPurecloud invokes PUT /api/v2/identityproviders/purecloud
 //
 // Update/Create PureCloud Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/purecloud"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2517,14 +2848,14 @@ func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Oau
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2536,11 +2867,11 @@ func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Oau
 // PutIdentityprovidersPureengage invokes PUT /api/v2/identityproviders/pureengage
 //
 // Update/Create PureEngage Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/pureengage"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2601,14 +2932,14 @@ func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*O
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2620,11 +2951,11 @@ func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*O
 // PutIdentityprovidersSalesforce invokes PUT /api/v2/identityproviders/salesforce
 //
 // Update/Create Salesforce Identity Provider
-func (a IdentityProviderApi) PutIdentityprovidersSalesforce(body Salesforce) (*Oauthprovider, *APIResponse, error) {
+func (a IdentityProviderApi) PutIdentityprovidersSalesforce(body Salesforce) (*Identityprovider, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/identityproviders/salesforce"
-	defaultReturn := new(Oauthprovider)
+	defaultReturn := new(Identityprovider)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2685,14 +3016,14 @@ func (a IdentityProviderApi) PutIdentityprovidersSalesforce(body Salesforce) (*O
 	// body params
 	postBody = &body
 
-	var successPayload *Oauthprovider
+	var successPayload *Identityprovider
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Oauthprovider" == "string" {
+		if "Identityprovider" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

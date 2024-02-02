@@ -20,6 +20,9 @@ type Workitemdelta struct {
 	// LanguageId
 	LanguageId *Workitemsattributechangestring `json:"languageId,omitempty"`
 
+	// UtilizationLabelId
+	UtilizationLabelId *Workitemsattributechangestring `json:"utilizationLabelId,omitempty"`
+
 	// Priority
 	Priority *Workitemsattributechangeinteger `json:"priority,omitempty"`
 
@@ -156,6 +159,8 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		
 		LanguageId *Workitemsattributechangestring `json:"languageId,omitempty"`
 		
+		UtilizationLabelId *Workitemsattributechangestring `json:"utilizationLabelId,omitempty"`
+		
 		Priority *Workitemsattributechangeinteger `json:"priority,omitempty"`
 		
 		SkillIds *Workitemsattributechangelist `json:"skillIds,omitempty"`
@@ -206,6 +211,8 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		LanguageId: o.LanguageId,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		Priority: o.Priority,
 		
@@ -274,6 +281,11 @@ func (o *Workitemdelta) UnmarshalJSON(b []byte) error {
 	if LanguageId, ok := WorkitemdeltaMap["languageId"].(map[string]interface{}); ok {
 		LanguageIdString, _ := json.Marshal(LanguageId)
 		json.Unmarshal(LanguageIdString, &o.LanguageId)
+	}
+	
+	if UtilizationLabelId, ok := WorkitemdeltaMap["utilizationLabelId"].(map[string]interface{}); ok {
+		UtilizationLabelIdString, _ := json.Marshal(UtilizationLabelId)
+		json.Unmarshal(UtilizationLabelIdString, &o.UtilizationLabelId)
 	}
 	
 	if Priority, ok := WorkitemdeltaMap["priority"].(map[string]interface{}); ok {
