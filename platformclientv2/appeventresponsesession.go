@@ -12,7 +12,7 @@ import (
 type Appeventresponsesession struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - ID of the app session.
 	Id *string `json:"id,omitempty"`
 
 	// DurationInSeconds - Indicates how long the customer has been in the app within this session.

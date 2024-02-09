@@ -28,6 +28,15 @@ type Callbackmediasettings struct {
 
 	// SubTypeSettings - Map of media subtype to media subtype specific settings.
 	SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
+
+	// EnableAutoDialAndEnd - Flag to enable Auto-Dial and Auto-End automation for callbacks on this queue.
+	EnableAutoDialAndEnd *bool `json:"enableAutoDialAndEnd,omitempty"`
+
+	// AutoDialDelaySeconds - Time in seconds after agent connects to callback before outgoing call is auto-dialed. Allowable values in range 0 - 1200 seconds. Defaults to 300 seconds.
+	AutoDialDelaySeconds *int `json:"autoDialDelaySeconds,omitempty"`
+
+	// AutoEndDelaySeconds - Time in seconds after agent disconnects from the outgoing call before the encasing callback is auto-ended. Allowable values in range 0 - 1200 seconds. Defaults to 300 seconds.
+	AutoEndDelaySeconds *int `json:"autoEndDelaySeconds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +113,12 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
 		
 		SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
+		
+		EnableAutoDialAndEnd *bool `json:"enableAutoDialAndEnd,omitempty"`
+		
+		AutoDialDelaySeconds *int `json:"autoDialDelaySeconds,omitempty"`
+		
+		AutoEndDelaySeconds *int `json:"autoEndDelaySeconds,omitempty"`
 		Alias
 	}{ 
 		EnableAutoAnswer: o.EnableAutoAnswer,
@@ -117,6 +132,12 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		ManualAnswerAlertToneSeconds: o.ManualAnswerAlertToneSeconds,
 		
 		SubTypeSettings: o.SubTypeSettings,
+		
+		EnableAutoDialAndEnd: o.EnableAutoDialAndEnd,
+		
+		AutoDialDelaySeconds: o.AutoDialDelaySeconds,
+		
+		AutoEndDelaySeconds: o.AutoEndDelaySeconds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +174,20 @@ func (o *Callbackmediasettings) UnmarshalJSON(b []byte) error {
 	if SubTypeSettings, ok := CallbackmediasettingsMap["subTypeSettings"].(map[string]interface{}); ok {
 		SubTypeSettingsString, _ := json.Marshal(SubTypeSettings)
 		json.Unmarshal(SubTypeSettingsString, &o.SubTypeSettings)
+	}
+	
+	if EnableAutoDialAndEnd, ok := CallbackmediasettingsMap["enableAutoDialAndEnd"].(bool); ok {
+		o.EnableAutoDialAndEnd = &EnableAutoDialAndEnd
+	}
+    
+	if AutoDialDelaySeconds, ok := CallbackmediasettingsMap["autoDialDelaySeconds"].(float64); ok {
+		AutoDialDelaySecondsInt := int(AutoDialDelaySeconds)
+		o.AutoDialDelaySeconds = &AutoDialDelaySecondsInt
+	}
+	
+	if AutoEndDelaySeconds, ok := CallbackmediasettingsMap["autoEndDelaySeconds"].(float64); ok {
+		AutoEndDelaySecondsInt := int(AutoEndDelaySeconds)
+		o.AutoEndDelaySeconds = &AutoEndDelaySecondsInt
 	}
 	
 

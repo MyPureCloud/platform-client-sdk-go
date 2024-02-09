@@ -23,18 +23,6 @@ type Whatsappintegrationupdaterequest struct {
 	// MessagingSetting - Defines the message settings to be applied for this integration
 	MessagingSetting *Messagingsettingrequestreference `json:"messagingSetting,omitempty"`
 
-	// Action - The action used to activate and then confirm a WhatsApp Integration.
-	Action *string `json:"action,omitempty"`
-
-	// AuthenticationMethod - The authentication method used to confirm a WhatsApp Integration activation. If action is set to Activate, then authenticationMethod is a required field. 
-	AuthenticationMethod *string `json:"authenticationMethod,omitempty"`
-
-	// ConfirmationCode - The confirmation code sent by Whatsapp to you during the activation step. If action is set to Confirm, then confirmationCode is a required field.
-	ConfirmationCode *string `json:"confirmationCode,omitempty"`
-
-	// PhoneNumber - Phone number to associate with the WhatsApp integration
-	PhoneNumber *string `json:"phoneNumber,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -110,14 +98,6 @@ func (o Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		MessagingSetting *Messagingsettingrequestreference `json:"messagingSetting,omitempty"`
 		
-		Action *string `json:"action,omitempty"`
-		
-		AuthenticationMethod *string `json:"authenticationMethod,omitempty"`
-		
-		ConfirmationCode *string `json:"confirmationCode,omitempty"`
-		
-		PhoneNumber *string `json:"phoneNumber,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -128,14 +108,6 @@ func (o Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		SupportedContent: o.SupportedContent,
 		
 		MessagingSetting: o.MessagingSetting,
-		
-		Action: o.Action,
-		
-		AuthenticationMethod: o.AuthenticationMethod,
-		
-		ConfirmationCode: o.ConfirmationCode,
-		
-		PhoneNumber: o.PhoneNumber,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -167,22 +139,6 @@ func (o *Whatsappintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
-	if Action, ok := WhatsappintegrationupdaterequestMap["action"].(string); ok {
-		o.Action = &Action
-	}
-    
-	if AuthenticationMethod, ok := WhatsappintegrationupdaterequestMap["authenticationMethod"].(string); ok {
-		o.AuthenticationMethod = &AuthenticationMethod
-	}
-    
-	if ConfirmationCode, ok := WhatsappintegrationupdaterequestMap["confirmationCode"].(string); ok {
-		o.ConfirmationCode = &ConfirmationCode
-	}
-    
-	if PhoneNumber, ok := WhatsappintegrationupdaterequestMap["phoneNumber"].(string); ok {
-		o.PhoneNumber = &PhoneNumber
-	}
-    
 	if SelfUri, ok := WhatsappintegrationupdaterequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

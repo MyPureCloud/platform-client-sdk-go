@@ -11,7 +11,7 @@ import (
 type Actioneventactionmap struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
+	// Id - The ID of the action map.
 	Id *string `json:"id,omitempty"`
 
 	// SelfUri

@@ -12,7 +12,7 @@ import (
 type Sessionlastevent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the last event.
 	Id *string `json:"id,omitempty"`
 
 	// EventName - The name of the event.

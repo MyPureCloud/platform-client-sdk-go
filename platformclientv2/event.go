@@ -36,9 +36,6 @@ type Event struct {
 	// OutcomeAchievedEvent - Event where a customer has achieved a specific outcome or goal.
 	OutcomeAchievedEvent *Outcomeachievedevent `json:"outcomeAchievedEvent,omitempty"`
 
-	// SegmentAssignedEvent - Event that represents a segment being assigned (deprecated).
-	SegmentAssignedEvent *Segmentassignedevent `json:"segmentAssignedEvent,omitempty"`
-
 	// SegmentAssignmentEvent - Event that represents a segment being assigned.
 	SegmentAssignmentEvent *Segmentassignmentevent `json:"segmentAssignmentEvent,omitempty"`
 
@@ -142,8 +139,6 @@ func (o Event) MarshalJSON() ([]byte, error) {
 		
 		OutcomeAchievedEvent *Outcomeachievedevent `json:"outcomeAchievedEvent,omitempty"`
 		
-		SegmentAssignedEvent *Segmentassignedevent `json:"segmentAssignedEvent,omitempty"`
-		
 		SegmentAssignmentEvent *Segmentassignmentevent `json:"segmentAssignmentEvent,omitempty"`
 		
 		WebActionEvent *Webactionevent `json:"webActionEvent,omitempty"`
@@ -170,8 +165,6 @@ func (o Event) MarshalJSON() ([]byte, error) {
 		GenericActionEvent: o.GenericActionEvent,
 		
 		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
-		
-		SegmentAssignedEvent: o.SegmentAssignedEvent,
 		
 		SegmentAssignmentEvent: o.SegmentAssignmentEvent,
 		
@@ -226,11 +219,6 @@ func (o *Event) UnmarshalJSON(b []byte) error {
 	if OutcomeAchievedEvent, ok := EventMap["outcomeAchievedEvent"].(map[string]interface{}); ok {
 		OutcomeAchievedEventString, _ := json.Marshal(OutcomeAchievedEvent)
 		json.Unmarshal(OutcomeAchievedEventString, &o.OutcomeAchievedEvent)
-	}
-	
-	if SegmentAssignedEvent, ok := EventMap["segmentAssignedEvent"].(map[string]interface{}); ok {
-		SegmentAssignedEventString, _ := json.Marshal(SegmentAssignedEvent)
-		json.Unmarshal(SegmentAssignedEventString, &o.SegmentAssignedEvent)
 	}
 	
 	if SegmentAssignmentEvent, ok := EventMap["segmentAssignmentEvent"].(map[string]interface{}); ok {

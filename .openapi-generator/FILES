@@ -810,9 +810,12 @@ docs/GetKnowledgeKnowledgebaseLanguageTraining-example.txt
 docs/GetKnowledgeKnowledgebaseLanguageTrainings-example.txt
 docs/GetKnowledgeKnowledgebaseOperations-example.txt
 docs/GetKnowledgeKnowledgebaseOperationsUsersQuery-example.txt
+docs/GetKnowledgeKnowledgebaseParseJob-example.txt
 docs/GetKnowledgeKnowledgebaseUnansweredGroup-example.txt
 docs/GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup-example.txt
 docs/GetKnowledgeKnowledgebaseUnansweredGroups-example.txt
+docs/GetKnowledgeKnowledgebaseUploadsUrlsJob-example.txt
+docs/GetKnowledgeKnowledgebaseUploadsUrlsJob-example.txt
 docs/GetKnowledgeKnowledgebases-example.txt
 docs/GetLanguage-example.txt
 docs/GetLanguages-example.txt
@@ -1525,6 +1528,7 @@ docs/PatchKnowledgeKnowledgebaseLanguageCategory-example.txt
 docs/PatchKnowledgeKnowledgebaseLanguageDocument-example.txt
 docs/PatchKnowledgeKnowledgebaseLanguageDocuments-example.txt
 docs/PatchKnowledgeKnowledgebaseLanguageDocumentsImport-example.txt
+docs/PatchKnowledgeKnowledgebaseParseJob-example.txt
 docs/PatchKnowledgeKnowledgebaseUnansweredGroupPhrasegroup-example.txt
 docs/PatchLanguageunderstandingDomain-example.txt
 docs/PatchLanguageunderstandingMinerDraft-example.txt
@@ -1652,6 +1656,7 @@ docs/PostAnalyticsKnowledgeAggregatesJobs-example.txt
 docs/PostAnalyticsKnowledgeAggregatesQuery-example.txt
 docs/PostAnalyticsQueuesObservationsQuery-example.txt
 docs/PostAnalyticsQueuesObservationsQuery-example.txt
+docs/PostAnalyticsRatelimitsAggregatesQuery-example.txt
 docs/PostAnalyticsReportingExports-example.txt
 docs/PostAnalyticsReportingScheduleRunreport-example.txt
 docs/PostAnalyticsReportingSchedules-example.txt
@@ -1934,8 +1939,12 @@ docs/PostKnowledgeKnowledgebaseLanguageDocuments-example.txt
 docs/PostKnowledgeKnowledgebaseLanguageDocumentsImports-example.txt
 docs/PostKnowledgeKnowledgebaseLanguageTrainingPromote-example.txt
 docs/PostKnowledgeKnowledgebaseLanguageTrainings-example.txt
+docs/PostKnowledgeKnowledgebaseParseJobImport-example.txt
+docs/PostKnowledgeKnowledgebaseParseJobs-example.txt
 docs/PostKnowledgeKnowledgebaseSearch-example.txt
 docs/PostKnowledgeKnowledgebaseSearch-example.txt
+docs/PostKnowledgeKnowledgebaseUploadsUrlsJobs-example.txt
+docs/PostKnowledgeKnowledgebaseUploadsUrlsJobs-example.txt
 docs/PostKnowledgeKnowledgebases-example.txt
 docs/PostLanguages-example.txt
 docs/PostLanguageunderstandingDomainFeedback-example.txt
@@ -1997,6 +2006,7 @@ docs/PostOutboundContactlistContacts-example.txt
 docs/PostOutboundContactlistContactsBulk-example.txt
 docs/PostOutboundContactlistExport-example.txt
 docs/PostOutboundContactlistfilters-example.txt
+docs/PostOutboundContactlistfiltersBulkRetrieve-example.txt
 docs/PostOutboundContactlistfiltersPreview-example.txt
 docs/PostOutboundContactlists-example.txt
 docs/PostOutboundContactlisttemplates-example.txt
@@ -3144,6 +3154,7 @@ platformclientv2/contactlistdownloadreadyexporturi.go
 platformclientv2/contactlistdownloadreadyobject.go
 platformclientv2/contactlistentitylisting.go
 platformclientv2/contactlistfilter.go
+platformclientv2/contactlistfilterbulkretrievebody.go
 platformclientv2/contactlistfilterclause.go
 platformclientv2/contactlistfilterentitylisting.go
 platformclientv2/contactlistfilterpredicate.go
@@ -3500,6 +3511,8 @@ platformclientv2/createshareresponse.go
 platformclientv2/createtimeofflimitrequest.go
 platformclientv2/createtimeoffplanrequest.go
 platformclientv2/createtriggerrequest.go
+platformclientv2/createuploadsourceurljobrequest.go
+platformclientv2/createuploadsourceurljobresponse.go
 platformclientv2/createuser.go
 platformclientv2/createutilizationlabelrequest.go
 platformclientv2/createutilizationtagrequest.go
@@ -3856,6 +3869,7 @@ platformclientv2/emailaddress.go
 platformclientv2/emailattachment.go
 platformclientv2/emailbegintransmittingevent.go
 platformclientv2/emailcampaignschedule.go
+platformclientv2/emailcampaignscheduleentitylisting.go
 platformclientv2/emailcolumn.go
 platformclientv2/emailcommunicationansweredevent.go
 platformclientv2/emailcommunicationdispositionappliedevent.go
@@ -4196,6 +4210,7 @@ platformclientv2/getmetricsresponse.go
 platformclientv2/getprofilesresponse.go
 platformclientv2/getrulesquery.go
 platformclientv2/gettemplatesresponse.go
+platformclientv2/getuploadsourceurljobstatusresponse.go
 platformclientv2/gkndocumentationresult.go
 platformclientv2/gkndocumentationsearchcriteria.go
 platformclientv2/gkndocumentationsearchrequest.go
@@ -4405,6 +4420,7 @@ platformclientv2/journeyoutcomeeventsnotificationsession.go
 platformclientv2/journeypage.go
 platformclientv2/journeypattern.go
 platformclientv2/journeysegment.go
+platformclientv2/journeysegmentrequest.go
 platformclientv2/journeysessioneventsnotificationapp.go
 platformclientv2/journeysessioneventsnotificationbrowser.go
 platformclientv2/journeysessioneventsnotificationconnectedqueue.go
@@ -4561,6 +4577,12 @@ platformclientv2/knowledgeimportjobrequest.go
 platformclientv2/knowledgeimportjobresponse.go
 platformclientv2/knowledgeimportjobsettings.go
 platformclientv2/knowledgeimportjobstatistics.go
+platformclientv2/knowledgeparseimportresult.go
+platformclientv2/knowledgeparsejobrequest.go
+platformclientv2/knowledgeparsejobrequestimport.go
+platformclientv2/knowledgeparsejobrequestpatch.go
+platformclientv2/knowledgeparsejobresponse.go
+platformclientv2/knowledgeparserecord.go
 platformclientv2/knowledgesearchclientapplication.go
 platformclientv2/knowledgesearchdocument.go
 platformclientv2/knowledgesearchrequest.go
@@ -5004,6 +5026,7 @@ platformclientv2/outcomeprobabilitycondition.go
 platformclientv2/outcomequantilecondition.go
 platformclientv2/outcomeref.go
 platformclientv2/outcomerefrequest.go
+platformclientv2/outcomerequest.go
 platformclientv2/outcomescore.go
 platformclientv2/outcomescoresresult.go
 platformclientv2/outlierinfo.go
@@ -5032,6 +5055,7 @@ platformclientv2/patchactionproperties.go
 platformclientv2/patchactionsurvey.go
 platformclientv2/patchactiontarget.go
 platformclientv2/patchactiontemplate.go
+platformclientv2/patchassociatedvaluefield.go
 platformclientv2/patchbureschedulingoptionsmanagementunitrequest.go
 platformclientv2/patchbureschedulingoptionsrequest.go
 platformclientv2/patchbuschedulerunrequest.go
@@ -5043,10 +5067,16 @@ platformclientv2/patchcontentoffer.go
 platformclientv2/patchcontentofferstyleproperties.go
 platformclientv2/patchcontentofferstylingconfiguration.go
 platformclientv2/patchcontentpositionproperties.go
+platformclientv2/patchcontext.go
+platformclientv2/patchcontextpattern.go
+platformclientv2/patchcriteria.go
 platformclientv2/patchctabuttonstyleproperties.go
+platformclientv2/patchentitytypecriteria.go
 platformclientv2/patchexternalsegment.go
 platformclientv2/patchintegrationaction.go
 platformclientv2/patchintegrationactionfields.go
+platformclientv2/patchjourney.go
+platformclientv2/patchjourneypattern.go
 platformclientv2/patchoutcome.go
 platformclientv2/patchpredictorrequest.go
 platformclientv2/patchsegment.go
@@ -5451,6 +5481,13 @@ platformclientv2/queueusereventtopicqueuemember.go
 platformclientv2/queueusereventtopicuserreference.go
 platformclientv2/queueutilizationdiagnostic.go
 platformclientv2/quickreply.go
+platformclientv2/ratelimitaggregatedatacontainer.go
+platformclientv2/ratelimitaggregatequeryclause.go
+platformclientv2/ratelimitaggregatequeryfilter.go
+platformclientv2/ratelimitaggregatequerypredicate.go
+platformclientv2/ratelimitaggregatequeryresponse.go
+platformclientv2/ratelimitaggregationquery.go
+platformclientv2/ratelimitaggregationview.go
 platformclientv2/reaction.go
 platformclientv2/realtimeadherenceexplanation.go
 platformclientv2/recallentry.go
@@ -5519,6 +5556,14 @@ platformclientv2/reportrunentryentitydomainlisting.go
 platformclientv2/reportschedule.go
 platformclientv2/reportscheduleentitylisting.go
 platformclientv2/requestconfig.go
+platformclientv2/requestcontext.go
+platformclientv2/requestcontextpattern.go
+platformclientv2/requestcriteria.go
+platformclientv2/requestdevice.go
+platformclientv2/requestentitytypecriteria.go
+platformclientv2/requestexternalsegment.go
+platformclientv2/requestjourney.go
+platformclientv2/requestjourneypattern.go
 platformclientv2/requestmapping.go
 platformclientv2/requestscoredagent.go
 platformclientv2/reschedulingmanagementunitresponse.go
@@ -5685,8 +5730,6 @@ platformclientv2/securesessionentitylisting.go
 platformclientv2/securityprofile.go
 platformclientv2/securityprofileentitylisting.go
 platformclientv2/segment.go
-platformclientv2/segmentassignedevent.go
-platformclientv2/segmentassignedeventsegment.go
 platformclientv2/segmentassignmentevent.go
 platformclientv2/segmentdetailqueryclause.go
 platformclientv2/segmentdetailqueryfilter.go

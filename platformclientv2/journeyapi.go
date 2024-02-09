@@ -3347,7 +3347,7 @@ func (a JourneyApi) PostJourneyDeploymentAppevents(deploymentId string, body App
 // PostJourneyOutcomes invokes POST /api/v2/journey/outcomes
 //
 // Create an outcome.
-func (a JourneyApi) PostJourneyOutcomes(body Outcome) (*Outcome, *APIResponse, error) {
+func (a JourneyApi) PostJourneyOutcomes(body Outcomerequest) (*Outcome, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/outcomes"
@@ -3586,7 +3586,7 @@ func (a JourneyApi) PostJourneyOutcomesPredictors(body Outcomepredictorrequest) 
 // PostJourneySegments invokes POST /api/v2/journey/segments
 //
 // Create a segment.
-func (a JourneyApi) PostJourneySegments(body Journeysegment) (*Journeysegment, *APIResponse, error) {
+func (a JourneyApi) PostJourneySegments(body Journeysegmentrequest) (*Journeysegment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/segments"

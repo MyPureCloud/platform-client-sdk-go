@@ -7,28 +7,16 @@ import (
 	"strings"
 )
 
-// Segmentassignedeventsegment
-type Segmentassignedeventsegment struct { 
+// Requestcontextpattern
+type Requestcontextpattern struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
-	Id *string `json:"id,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// DisplayName - The display name of the segment.
-	DisplayName *string `json:"displayName,omitempty"`
-
-	// Version - The version of the segment.
-	Version *int `json:"version,omitempty"`
-
-	// Scope - The target entity that a segment applies to.
-	Scope *string `json:"scope,omitempty"`
+	// Criteria - A list of one or more criteria to satisfy.
+	Criteria *[]Requestentitytypecriteria `json:"criteria,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Segmentassignedeventsegment) SetField(field string, fieldValue interface{}) {
+func (o *Requestcontextpattern) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +37,7 @@ func (o *Segmentassignedeventsegment) SetField(field string, fieldValue interfac
 	o.SetFieldNames[field] = true
 }
 
-func (o Segmentassignedeventsegment) MarshalJSON() ([]byte, error) {
+func (o Requestcontextpattern) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,67 +75,35 @@ func (o Segmentassignedeventsegment) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Segmentassignedeventsegment
+	type Alias Requestcontextpattern
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		DisplayName *string `json:"displayName,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
-		Scope *string `json:"scope,omitempty"`
+		Criteria *[]Requestentitytypecriteria `json:"criteria,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
-		SelfUri: o.SelfUri,
-		
-		DisplayName: o.DisplayName,
-		
-		Version: o.Version,
-		
-		Scope: o.Scope,
+		Criteria: o.Criteria,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Segmentassignedeventsegment) UnmarshalJSON(b []byte) error {
-	var SegmentassignedeventsegmentMap map[string]interface{}
-	err := json.Unmarshal(b, &SegmentassignedeventsegmentMap)
+func (o *Requestcontextpattern) UnmarshalJSON(b []byte) error {
+	var RequestcontextpatternMap map[string]interface{}
+	err := json.Unmarshal(b, &RequestcontextpatternMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := SegmentassignedeventsegmentMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if SelfUri, ok := SegmentassignedeventsegmentMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if DisplayName, ok := SegmentassignedeventsegmentMap["displayName"].(string); ok {
-		o.DisplayName = &DisplayName
-	}
-    
-	if Version, ok := SegmentassignedeventsegmentMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
+	if Criteria, ok := RequestcontextpatternMap["criteria"].([]interface{}); ok {
+		CriteriaString, _ := json.Marshal(Criteria)
+		json.Unmarshal(CriteriaString, &o.Criteria)
 	}
 	
-	if Scope, ok := SegmentassignedeventsegmentMap["scope"].(string); ok {
-		o.Scope = &Scope
-	}
-    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Segmentassignedeventsegment) String() string {
+func (o *Requestcontextpattern) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

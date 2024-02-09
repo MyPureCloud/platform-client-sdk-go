@@ -11926,9 +11926,7 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsWhatsappEmbedde
 
 // PatchConversationsMessagingIntegrationsWhatsappIntegrationId invokes PATCH /api/v2/conversations/messaging/integrations/whatsapp/{integrationId}
 //
-// Update or activate a WhatsApp messaging integration
-//
-// The following steps are required in order to fully activate a WhatsApp Integration: Initially, you will need to get an activation code by sending: an action set to Activate, and an authenticationMethod choosing from Sms or Voice. Finally, once you have been informed of an activation code on selected authenticationMethod, you will need to confirm the code by sending: an action set to Confirm, and the confirmationCode you have received from Whatsapp.
+// Update a WhatsApp messaging integration
 func (a ConversationsApi) PatchConversationsMessagingIntegrationsWhatsappIntegrationId(integrationId string, body Whatsappintegrationupdaterequest) (*Whatsappintegration, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -13382,8 +13380,6 @@ func (a ConversationsApi) PostConversationParticipantReplace(conversationId stri
 // PostConversationParticipantReplaceAgent invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/agent
 //
 // Replace this participant with the specified agent
-//
-// Preview: PostConversationParticipantReplaceAgent is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantReplaceAgent(conversationId string, participantId string, body Transfertoagentrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13473,8 +13469,6 @@ func (a ConversationsApi) PostConversationParticipantReplaceAgent(conversationId
 // PostConversationParticipantReplaceExternal invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/external
 //
 // Replace this participant with the an external contact
-//
-// Preview: PostConversationParticipantReplaceExternal is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantReplaceExternal(conversationId string, participantId string, body Transfertoexternalrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13564,8 +13558,6 @@ func (a ConversationsApi) PostConversationParticipantReplaceExternal(conversatio
 // PostConversationParticipantReplaceQueue invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/queue
 //
 // Replace this participant with the specified queue
-//
-// Preview: PostConversationParticipantReplaceQueue is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantReplaceQueue(conversationId string, participantId string, body Transfertoqueuerequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -14270,8 +14262,6 @@ func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId
 // PostConversationsCallParticipantConsultAgent invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/agent
 //
 // Initiate a consult transfer to an agent
-//
-// Preview: PostConversationsCallParticipantConsultAgent is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantConsultAgent(conversationId string, participantId string, body Consulttransfertoagent) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -14368,8 +14358,6 @@ func (a ConversationsApi) PostConversationsCallParticipantConsultAgent(conversat
 // PostConversationsCallParticipantConsultExternal invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/external
 //
 // Initiate a consult transfer to an external contact
-//
-// Preview: PostConversationsCallParticipantConsultExternal is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantConsultExternal(conversationId string, participantId string, body Consulttransfertoexternal) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -14466,8 +14454,6 @@ func (a ConversationsApi) PostConversationsCallParticipantConsultExternal(conver
 // PostConversationsCallParticipantConsultQueue invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/queue
 //
 // Initiate a consult transfer to a queue
-//
-// Preview: PostConversationsCallParticipantConsultQueue is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantConsultQueue(conversationId string, participantId string, body Consulttransfertoqueue) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -17560,8 +17546,6 @@ func (a ConversationsApi) PostConversationsMessageParticipantCommunicationWrapup
 // PostConversationsMessageParticipantMonitor invokes POST /api/v2/conversations/messages/{conversationId}/participants/{participantId}/monitor
 //
 // Listen in on the conversation from the point of view of a given participant.
-//
-// Preview: PostConversationsMessageParticipantMonitor is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsMessageParticipantMonitor(conversationId string, participantId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

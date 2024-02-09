@@ -22,7 +22,7 @@ type Appeventrequest struct {
 	App *Journeyapp `json:"app,omitempty"`
 
 	// Device - Customer's device.
-	Device *Device `json:"device,omitempty"`
+	Device *Requestdevice `json:"device,omitempty"`
 
 	// SdkLibrary - SDK library used to generate the event.
 	SdkLibrary *Sdklibrary `json:"sdkLibrary,omitempty"`
@@ -126,7 +126,7 @@ func (o Appeventrequest) MarshalJSON() ([]byte, error) {
 		
 		App *Journeyapp `json:"app,omitempty"`
 		
-		Device *Device `json:"device,omitempty"`
+		Device *Requestdevice `json:"device,omitempty"`
 		
 		SdkLibrary *Sdklibrary `json:"sdkLibrary,omitempty"`
 		

@@ -45,6 +45,9 @@ type Importtemplate struct {
 	// CustomListNameFormatValue - Custom value for the list name format, at least %N is required. Any character other than the specified tokens will be used as is. Available tokens: %N: ListNamePrefix; %P: Part number; %F: Filter name; %C: Column value; YYYY: year; MM: month; DD: day; hh: hour; mm: minute; ss: second.
 	CustomListNameFormatValue *string `json:"customListNameFormatValue,omitempty"`
 
+	// ImportStatus - The status of the import process.
+	ImportStatus *Importstatus `json:"importStatus,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -150,6 +153,8 @@ func (o Importtemplate) MarshalJSON() ([]byte, error) {
 		
 		CustomListNameFormatValue *string `json:"customListNameFormatValue,omitempty"`
 		
+		ImportStatus *Importstatus `json:"importStatus,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -174,6 +179,8 @@ func (o Importtemplate) MarshalJSON() ([]byte, error) {
 		ListNameFormat: o.ListNameFormat,
 		
 		CustomListNameFormatValue: o.CustomListNameFormatValue,
+		
+		ImportStatus: o.ImportStatus,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -237,6 +244,11 @@ func (o *Importtemplate) UnmarshalJSON(b []byte) error {
 		o.CustomListNameFormatValue = &CustomListNameFormatValue
 	}
     
+	if ImportStatus, ok := ImporttemplateMap["importStatus"].(map[string]interface{}); ok {
+		ImportStatusString, _ := json.Marshal(ImportStatus)
+		json.Unmarshal(ImportStatusString, &o.ImportStatus)
+	}
+	
 	if SelfUri, ok := ImporttemplateMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

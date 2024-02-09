@@ -12,7 +12,7 @@ import (
 type Journeysegment struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the segment.
 	Id *string `json:"id,omitempty"`
 
 	// IsActive - Whether or not the segment is active.

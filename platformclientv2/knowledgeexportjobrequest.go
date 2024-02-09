@@ -16,6 +16,9 @@ type Knowledgeexportjobrequest struct {
 
 	// FileType - File type of the document
 	FileType *string `json:"fileType,omitempty"`
+
+	// JsonFileVersion - Requested version of the exported json file. Available versions are 2 and 3, default is 2
+	JsonFileVersion *int `json:"jsonFileVersion,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Knowledgeexportjobrequest) MarshalJSON() ([]byte, error) {
 		ExportFilter *Knowledgeexportjobfilter `json:"exportFilter,omitempty"`
 		
 		FileType *string `json:"fileType,omitempty"`
+		
+		JsonFileVersion *int `json:"jsonFileVersion,omitempty"`
 		Alias
 	}{ 
 		ExportFilter: o.ExportFilter,
 		
 		FileType: o.FileType,
+		
+		JsonFileVersion: o.JsonFileVersion,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,11 @@ func (o *Knowledgeexportjobrequest) UnmarshalJSON(b []byte) error {
 		o.FileType = &FileType
 	}
     
+	if JsonFileVersion, ok := KnowledgeexportjobrequestMap["jsonFileVersion"].(float64); ok {
+		JsonFileVersionInt := int(JsonFileVersion)
+		o.JsonFileVersion = &JsonFileVersionInt
+	}
+	
 
 	return nil
 }

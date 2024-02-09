@@ -6063,7 +6063,7 @@ func (a OutboundApi) GetOutboundFilespecificationtemplates(pageSize int, pageNum
 // GetOutboundImporttemplate invokes GET /api/v2/outbound/importtemplates/{importTemplateId}
 //
 // Get Import Template
-func (a OutboundApi) GetOutboundImporttemplate(importTemplateId string) (*Importtemplate, *APIResponse, error) {
+func (a OutboundApi) GetOutboundImporttemplate(importTemplateId string, includeImportStatus bool) (*Importtemplate, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/importtemplates/{importTemplateId}"
@@ -6095,6 +6095,8 @@ func (a OutboundApi) GetOutboundImporttemplate(importTemplateId string) (*Import
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -6229,7 +6231,7 @@ func (a OutboundApi) GetOutboundImporttemplateImportstatus(importTemplateId stri
 // GetOutboundImporttemplates invokes GET /api/v2/outbound/importtemplates
 //
 // Query Import Templates
-func (a OutboundApi) GetOutboundImporttemplates(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string, contactListTemplateId string) (*Importtemplateentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundImporttemplates(includeImportStatus bool, pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string, contactListTemplateId string) (*Importtemplateentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/importtemplates"
@@ -6255,6 +6257,8 @@ func (a OutboundApi) GetOutboundImporttemplates(pageSize int, pageNumber int, al
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
@@ -7251,11 +7255,11 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (
 // GetOutboundSchedulesEmailcampaigns invokes GET /api/v2/outbound/schedules/emailcampaigns
 //
 // Query for a list of email campaign schedules.
-func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Messagingcampaignscheduleentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Emailcampaignscheduleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns"
-	defaultReturn := new(Messagingcampaignscheduleentitylisting)
+	defaultReturn := new(Emailcampaignscheduleentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7308,14 +7312,14 @@ func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Messagingcampaignsch
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Messagingcampaignscheduleentitylisting
+	var successPayload *Emailcampaignscheduleentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Messagingcampaignscheduleentitylisting" == "string" {
+		if "Emailcampaignscheduleentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -9491,6 +9495,90 @@ func (a OutboundApi) PostOutboundContactlistfilters(body Contactlistfilter) (*Co
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Contactlistfilter" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostOutboundContactlistfiltersBulkRetrieve invokes POST /api/v2/outbound/contactlistfilters/bulk/retrieve
+//
+// Retrieve multiple contact list filters
+func (a OutboundApi) PostOutboundContactlistfiltersBulkRetrieve(body Contactlistfilterbulkretrievebody) (*Contactlistfilterentitylisting, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/contactlistfilters/bulk/retrieve"
+	defaultReturn := new(Contactlistfilterentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundContactlistfiltersBulkRetrieve")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Contactlistfilterentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Contactlistfilterentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

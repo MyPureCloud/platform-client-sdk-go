@@ -10042,7 +10042,7 @@ func (a ArchitectApi) PostFlowsInstancesJobs(body Executiondatarequest, expand s
 // Returns a list of matching flow histories up to 200 max.
 //
 // Preview: PostFlowsInstancesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a ArchitectApi) PostFlowsInstancesQuery(body Criteriaquery, indexOnly bool) (*Flowresultentitylisting, *APIResponse, error) {
+func (a ArchitectApi) PostFlowsInstancesQuery(body Criteriaquery, indexOnly bool, pageSize int) (*Flowresultentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/instances/query"
@@ -10075,6 +10075,8 @@ func (a ArchitectApi) PostFlowsInstancesQuery(body Criteriaquery, indexOnly bool
 	}
 	
 	queryParams["indexOnly"] = a.Configuration.APIClient.ParameterToString(indexOnly, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

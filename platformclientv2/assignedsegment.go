@@ -11,7 +11,7 @@ import (
 type Assignedsegment struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the segment assigned.
 	Id *string `json:"id,omitempty"`
 
 	// SelfUri - The URI for this object

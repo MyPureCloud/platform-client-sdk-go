@@ -1,6 +1,5 @@
 package platformclientv2
 import (
-	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -12,9 +11,6 @@ import (
 type Patchsegment struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
 	// IsActive - Whether or not the segment is active.
 	IsActive *bool `json:"isActive,omitempty"`
 
@@ -34,25 +30,16 @@ type Patchsegment struct {
 	ShouldDisplayToAgent *bool `json:"shouldDisplayToAgent,omitempty"`
 
 	// Context - The context of the segment.
-	Context *Context `json:"context,omitempty"`
+	Context *Patchcontext `json:"context,omitempty"`
 
 	// Journey - The pattern of rules defining the segment.
-	Journey *Journey `json:"journey,omitempty"`
+	Journey *Patchjourney `json:"journey,omitempty"`
 
 	// ExternalSegment - Details of an entity corresponding to this segment in an external system.
 	ExternalSegment *Patchexternalsegment `json:"externalSegment,omitempty"`
 
 	// AssignmentExpirationDays - Time, in days, from when the segment is assigned until it is automatically unassigned.
 	AssignmentExpirationDays *int `json:"assignmentExpirationDays,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// CreatedDate - Timestamp indicating when the segment was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
-
-	// ModifiedDate - Timestamp indicating when the the segment was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,7 +71,7 @@ func (o Patchsegment) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "CreatedDate","ModifiedDate", }
+		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -117,25 +104,7 @@ func (o Patchsegment) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Patchsegment
 	
-	CreatedDate := new(string)
-	if o.CreatedDate != nil {
-		
-		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		CreatedDate = nil
-	}
-	
-	ModifiedDate := new(string)
-	if o.ModifiedDate != nil {
-		
-		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		ModifiedDate = nil
-	}
-	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
 		IsActive *bool `json:"isActive,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
@@ -148,23 +117,15 @@ func (o Patchsegment) MarshalJSON() ([]byte, error) {
 		
 		ShouldDisplayToAgent *bool `json:"shouldDisplayToAgent,omitempty"`
 		
-		Context *Context `json:"context,omitempty"`
+		Context *Patchcontext `json:"context,omitempty"`
 		
-		Journey *Journey `json:"journey,omitempty"`
+		Journey *Patchjourney `json:"journey,omitempty"`
 		
 		ExternalSegment *Patchexternalsegment `json:"externalSegment,omitempty"`
 		
 		AssignmentExpirationDays *int `json:"assignmentExpirationDays,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		CreatedDate *string `json:"createdDate,omitempty"`
-		
-		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
 		IsActive: o.IsActive,
 		
 		DisplayName: o.DisplayName,
@@ -184,12 +145,6 @@ func (o Patchsegment) MarshalJSON() ([]byte, error) {
 		ExternalSegment: o.ExternalSegment,
 		
 		AssignmentExpirationDays: o.AssignmentExpirationDays,
-		
-		SelfUri: o.SelfUri,
-		
-		CreatedDate: CreatedDate,
-		
-		ModifiedDate: ModifiedDate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -201,10 +156,6 @@ func (o *Patchsegment) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := PatchsegmentMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
 	if IsActive, ok := PatchsegmentMap["isActive"].(bool); ok {
 		o.IsActive = &IsActive
 	}
@@ -248,20 +199,6 @@ func (o *Patchsegment) UnmarshalJSON(b []byte) error {
 	if AssignmentExpirationDays, ok := PatchsegmentMap["assignmentExpirationDays"].(float64); ok {
 		AssignmentExpirationDaysInt := int(AssignmentExpirationDays)
 		o.AssignmentExpirationDays = &AssignmentExpirationDaysInt
-	}
-	
-	if SelfUri, ok := PatchsegmentMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if createdDateString, ok := PatchsegmentMap["createdDate"].(string); ok {
-		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
-		o.CreatedDate = &CreatedDate
-	}
-	
-	if modifiedDateString, ok := PatchsegmentMap["modifiedDate"].(string); ok {
-		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
-		o.ModifiedDate = &ModifiedDate
 	}
 	
 
