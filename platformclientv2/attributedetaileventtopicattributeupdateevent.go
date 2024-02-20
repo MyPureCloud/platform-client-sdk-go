@@ -28,6 +28,9 @@ type Attributedetaileventtopicattributeupdateevent struct {
 
 	// ConversationExternalOrganizationIds
 	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+
+	// Communications
+	Communications *[]Attributedetaileventtopiccommunication `json:"communications,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Attributedetaileventtopicattributeupdateevent) MarshalJSON() ([]byte, er
 		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 		
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+		
+		Communications *[]Attributedetaileventtopiccommunication `json:"communications,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -117,6 +122,8 @@ func (o Attributedetaileventtopicattributeupdateevent) MarshalJSON() ([]byte, er
 		ConversationExternalContactIds: o.ConversationExternalContactIds,
 		
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
+		
+		Communications: o.Communications,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,6 +161,11 @@ func (o *Attributedetaileventtopicattributeupdateevent) UnmarshalJSON(b []byte) 
 	if ConversationExternalOrganizationIds, ok := AttributedetaileventtopicattributeupdateeventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
 		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
 		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
+	}
+	
+	if Communications, ok := AttributedetaileventtopicattributeupdateeventMap["communications"].([]interface{}); ok {
+		CommunicationsString, _ := json.Marshal(Communications)
+		json.Unmarshal(CommunicationsString, &o.Communications)
 	}
 	
 

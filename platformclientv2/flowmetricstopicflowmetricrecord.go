@@ -225,9 +225,6 @@ type Flowmetricstopicflowmetricrecord struct {
 	// RemovedSkillIds - ID(s) of Skill(s) that have been removed by bullseye routing
 	RemovedSkillIds *[]string `json:"removedSkillIds,omitempty"`
 
-	// Reoffered - Marker for an interaction that got reoffered to the same queue by an in-queue flow
-	Reoffered *bool `json:"reoffered,omitempty"`
-
 	// RequestedLanguageId - Unique identifier for the language requested for an interaction
 	RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
 
@@ -520,8 +517,6 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		
 		RemovedSkillIds *[]string `json:"removedSkillIds,omitempty"`
 		
-		Reoffered *bool `json:"reoffered,omitempty"`
-		
 		RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
 		
 		RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
@@ -716,8 +711,6 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		Remote: o.Remote,
 		
 		RemovedSkillIds: o.RemovedSkillIds,
-		
-		Reoffered: o.Reoffered,
 		
 		RequestedLanguageId: o.RequestedLanguageId,
 		
@@ -1077,10 +1070,6 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RemovedSkillIdsString, &o.RemovedSkillIds)
 	}
 	
-	if Reoffered, ok := FlowmetricstopicflowmetricrecordMap["reoffered"].(bool); ok {
-		o.Reoffered = &Reoffered
-	}
-    
 	if RequestedLanguageId, ok := FlowmetricstopicflowmetricrecordMap["requestedLanguageId"].(string); ok {
 		o.RequestedLanguageId = &RequestedLanguageId
 	}

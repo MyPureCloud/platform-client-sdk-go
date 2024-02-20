@@ -15,6 +15,9 @@ type Externalcontactsunresolvedcontactchangedtopiccontact struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// Division
+	Division *Externalcontactsunresolvedcontactchangedtopicdivision `json:"division,omitempty"`
+
 	// ExternalOrganization
 	ExternalOrganization *Externalcontactsunresolvedcontactchangedtopicexternalorganization `json:"externalOrganization,omitempty"`
 
@@ -175,6 +178,8 @@ func (o Externalcontactsunresolvedcontactchangedtopiccontact) MarshalJSON() ([]b
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Division *Externalcontactsunresolvedcontactchangedtopicdivision `json:"division,omitempty"`
+		
 		ExternalOrganization *Externalcontactsunresolvedcontactchangedtopicexternalorganization `json:"externalOrganization,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
@@ -229,6 +234,8 @@ func (o Externalcontactsunresolvedcontactchangedtopiccontact) MarshalJSON() ([]b
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Division: o.Division,
 		
 		ExternalOrganization: o.ExternalOrganization,
 		
@@ -296,6 +303,11 @@ func (o *Externalcontactsunresolvedcontactchangedtopiccontact) UnmarshalJSON(b [
 		o.Id = &Id
 	}
     
+	if Division, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if ExternalOrganization, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["externalOrganization"].(map[string]interface{}); ok {
 		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
 		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)
