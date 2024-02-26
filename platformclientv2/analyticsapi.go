@@ -6323,8 +6323,6 @@ func (a AnalyticsApi) PostAnalyticsKnowledgeAggregatesJobs(body Knowledgeasyncag
 // PostAnalyticsKnowledgeAggregatesQuery invokes POST /api/v2/analytics/knowledge/aggregates/query
 //
 // Query for knowledge aggregates
-//
-// Preview: PostAnalyticsKnowledgeAggregatesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsKnowledgeAggregatesQuery(body Knowledgeaggregationquery) (*Knowledgeaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -254,8 +254,6 @@ func (a TokensApi) GetTokensMe(preserveIdleTTL bool) (*Tokeninfo, *APIResponse, 
 // GetTokensTimeout invokes GET /api/v2/tokens/timeout
 //
 // Get the current Idle Token Timeout Value
-//
-// Preview: GetTokensTimeout is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TokensApi) GetTokensTimeout() (*Idletokentimeout, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -401,8 +399,6 @@ func (a TokensApi) HeadTokensMe() (*APIResponse, error) {
 // PutTokensTimeout invokes PUT /api/v2/tokens/timeout
 //
 // Update or Enable/Disable the Idle Token Timeout
-//
-// Preview: PutTokensTimeout is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TokensApi) PutTokensTimeout(body Idletokentimeout) (*Idletokentimeout, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

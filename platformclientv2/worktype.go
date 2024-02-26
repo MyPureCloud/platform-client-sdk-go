@@ -72,6 +72,9 @@ type Worktype struct {
 	// Schema - The schema defining the custom attributes for Workitems created from the Worktype.
 	Schema *Workitemschema `json:"schema,omitempty"`
 
+	// ServiceLevelTarget - The target service level for Workitems created from the Worktype. The default value is 100.
+	ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -195,6 +198,8 @@ func (o Worktype) MarshalJSON() ([]byte, error) {
 		
 		Schema *Workitemschema `json:"schema,omitempty"`
 		
+		ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -237,6 +242,8 @@ func (o Worktype) MarshalJSON() ([]byte, error) {
 		AssignmentEnabled: o.AssignmentEnabled,
 		
 		Schema: o.Schema,
+		
+		ServiceLevelTarget: o.ServiceLevelTarget,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -344,6 +351,11 @@ func (o *Worktype) UnmarshalJSON(b []byte) error {
 	if Schema, ok := WorktypeMap["schema"].(map[string]interface{}); ok {
 		SchemaString, _ := json.Marshal(Schema)
 		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if ServiceLevelTarget, ok := WorktypeMap["serviceLevelTarget"].(float64); ok {
+		ServiceLevelTargetInt := int(ServiceLevelTarget)
+		o.ServiceLevelTarget = &ServiceLevelTargetInt
 	}
 	
 	if SelfUri, ok := WorktypeMap["selfUri"].(string); ok {

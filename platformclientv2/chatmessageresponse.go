@@ -45,6 +45,9 @@ type Chatmessageresponse struct {
 	// Thread - The id for a thread this message corresponds to
 	Thread *Entity `json:"thread,omitempty"`
 
+	// ParentThread - Parent thread id for thread replies
+	ParentThread *Entity `json:"parentThread,omitempty"`
+
 	// User - The user who sent the message
 	User *Addressableentityref `json:"user,omitempty"`
 
@@ -156,6 +159,8 @@ func (o Chatmessageresponse) MarshalJSON() ([]byte, error) {
 		
 		Thread *Entity `json:"thread,omitempty"`
 		
+		ParentThread *Entity `json:"parentThread,omitempty"`
+		
 		User *Addressableentityref `json:"user,omitempty"`
 		
 		ToUser *Addressableentityref `json:"toUser,omitempty"`
@@ -184,6 +189,8 @@ func (o Chatmessageresponse) MarshalJSON() ([]byte, error) {
 		FileUri: o.FileUri,
 		
 		Thread: o.Thread,
+		
+		ParentThread: o.ParentThread,
 		
 		User: o.User,
 		
@@ -247,6 +254,11 @@ func (o *Chatmessageresponse) UnmarshalJSON(b []byte) error {
 	if Thread, ok := ChatmessageresponseMap["thread"].(map[string]interface{}); ok {
 		ThreadString, _ := json.Marshal(Thread)
 		json.Unmarshal(ThreadString, &o.Thread)
+	}
+	
+	if ParentThread, ok := ChatmessageresponseMap["parentThread"].(map[string]interface{}); ok {
+		ParentThreadString, _ := json.Marshal(ParentThread)
+		json.Unmarshal(ParentThreadString, &o.ParentThread)
 	}
 	
 	if User, ok := ChatmessageresponseMap["user"].(map[string]interface{}); ok {

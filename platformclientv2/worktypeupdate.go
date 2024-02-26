@@ -38,6 +38,9 @@ type Worktypeupdate struct {
 	// SchemaId - The ID of the custom attribute schema for Workitems created from the Worktype. Must be a valid UUID.
 	SchemaId *string `json:"schemaId,omitempty"`
 
+	// ServiceLevelTarget - The target service level for Workitems created from the Worktype. The default value is 100.
+	ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
+
 	// Description - The description of the Worktype. Maximum length of 4096 characters.
 	Description *string `json:"description,omitempty"`
 
@@ -138,6 +141,8 @@ func (o Worktypeupdate) MarshalJSON() ([]byte, error) {
 		
 		SchemaId *string `json:"schemaId,omitempty"`
 		
+		ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		
 		DefaultStatusId *string `json:"defaultStatusId,omitempty"`
@@ -168,6 +173,8 @@ func (o Worktypeupdate) MarshalJSON() ([]byte, error) {
 		AssignmentEnabled: o.AssignmentEnabled,
 		
 		SchemaId: o.SchemaId,
+		
+		ServiceLevelTarget: o.ServiceLevelTarget,
 		
 		Description: o.Description,
 		
@@ -232,6 +239,11 @@ func (o *Worktypeupdate) UnmarshalJSON(b []byte) error {
 		o.SchemaId = &SchemaId
 	}
     
+	if ServiceLevelTarget, ok := WorktypeupdateMap["serviceLevelTarget"].(float64); ok {
+		ServiceLevelTargetInt := int(ServiceLevelTarget)
+		o.ServiceLevelTarget = &ServiceLevelTargetInt
+	}
+	
 	if Description, ok := WorktypeupdateMap["description"].(string); ok {
 		o.Description = &Description
 	}

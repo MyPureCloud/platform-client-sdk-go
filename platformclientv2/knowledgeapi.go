@@ -5737,6 +5737,85 @@ func (a KnowledgeApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uplo
 	return successPayload, response, err
 }
 
+// PostKnowledgeGuestSessionDocumentCopies invokes POST /api/v2/knowledge/guest/sessions/{sessionId}/documents/{documentId}/copies
+//
+// Indicate that the document was copied by the user.
+func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentCopies(sessionId string, documentId string, body Knowledgeguestdocumentcopy) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/{documentId}/copies"
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sessionId' is set
+	if &sessionId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'sessionId' when calling KnowledgeApi->PostKnowledgeGuestSessionDocumentCopies")
+	}
+	// verify the required parameter 'documentId' is set
+	if &documentId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'documentId' when calling KnowledgeApi->PostKnowledgeGuestSessionDocumentCopies")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PostKnowledgeGuestSessionDocumentFeedback invokes POST /api/v2/knowledge/guest/sessions/{sessionId}/documents/{documentId}/feedback
 //
 // Give feedback on a document
@@ -5821,6 +5900,158 @@ func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentFeedback(sessionId string
 		}
 	}
 	return successPayload, response, err
+}
+
+// PostKnowledgeGuestSessionDocumentViews invokes POST /api/v2/knowledge/guest/sessions/{sessionId}/documents/{documentId}/views
+//
+// Create view event for a document.
+func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentViews(sessionId string, documentId string, body Knowledgeguestdocumentview) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/{documentId}/views"
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sessionId' is set
+	if &sessionId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'sessionId' when calling KnowledgeApi->PostKnowledgeGuestSessionDocumentViews")
+	}
+	// verify the required parameter 'documentId' is set
+	if &documentId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'documentId' when calling KnowledgeApi->PostKnowledgeGuestSessionDocumentViews")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// PostKnowledgeGuestSessionDocumentsPresentations invokes POST /api/v2/knowledge/guest/sessions/{sessionId}/documents/presentations
+//
+// Indicate that documents were presented to the user.
+func (a KnowledgeApi) PostKnowledgeGuestSessionDocumentsPresentations(sessionId string, body Knowledgeguestdocumentpresentation) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/guest/sessions/{sessionId}/documents/presentations"
+	path = strings.Replace(path, "{sessionId}", url.PathEscape(fmt.Sprintf("%v", sessionId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sessionId' is set
+	if &sessionId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'sessionId' when calling KnowledgeApi->PostKnowledgeGuestSessionDocumentsPresentations")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PostKnowledgeGuestSessionDocumentsSearch invokes POST /api/v2/knowledge/guest/sessions/{sessionId}/documents/search
@@ -6152,6 +6383,90 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseCategories(knowledgeBaseId strin
 		}
 	}
 	return successPayload, response, err
+}
+
+// PostKnowledgeKnowledgebaseDocumentCopies invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/copies
+//
+// Indicate that the document was copied by the user.
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentCopies(knowledgeBaseId string, documentId string, body Knowledgedocumentcopy) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/copies"
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'knowledgeBaseId' is set
+	if &knowledgeBaseId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseDocumentCopies")
+	}
+	// verify the required parameter 'documentId' is set
+	if &documentId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'documentId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseDocumentCopies")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PostKnowledgeKnowledgebaseDocumentFeedback invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/feedback
@@ -6793,6 +7108,84 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsBulkUpdate(knowledgeBas
 		}
 	}
 	return successPayload, response, err
+}
+
+// PostKnowledgeKnowledgebaseDocumentsPresentations invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/presentations
+//
+// Indicate that documents were presented to the user.
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsPresentations(knowledgeBaseId string, body Knowledgedocumentpresentation) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/presentations"
+	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'knowledgeBaseId' is set
+	if &knowledgeBaseId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseDocumentsPresentations")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PostKnowledgeKnowledgebaseDocumentsSearch invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/search

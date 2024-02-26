@@ -72,6 +72,9 @@ type Worktypeversion struct {
 	// Schema - The schema defining the custom attributes for Workitems created from the Worktype.
 	Schema *Workitemschema `json:"schema,omitempty"`
 
+	// ServiceLevelTarget - The target service level for Workitems created from the Worktype. The default value is 100.
+	ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
+
 	// Version - Version
 	Version *int `json:"version,omitempty"`
 
@@ -198,6 +201,8 @@ func (o Worktypeversion) MarshalJSON() ([]byte, error) {
 		
 		Schema *Workitemschema `json:"schema,omitempty"`
 		
+		ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
+		
 		Version *int `json:"version,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -242,6 +247,8 @@ func (o Worktypeversion) MarshalJSON() ([]byte, error) {
 		AssignmentEnabled: o.AssignmentEnabled,
 		
 		Schema: o.Schema,
+		
+		ServiceLevelTarget: o.ServiceLevelTarget,
 		
 		Version: o.Version,
 		
@@ -351,6 +358,11 @@ func (o *Worktypeversion) UnmarshalJSON(b []byte) error {
 	if Schema, ok := WorktypeversionMap["schema"].(map[string]interface{}); ok {
 		SchemaString, _ := json.Marshal(Schema)
 		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if ServiceLevelTarget, ok := WorktypeversionMap["serviceLevelTarget"].(float64); ok {
+		ServiceLevelTargetInt := int(ServiceLevelTarget)
+		o.ServiceLevelTarget = &ServiceLevelTargetInt
 	}
 	
 	if Version, ok := WorktypeversionMap["version"].(float64); ok {

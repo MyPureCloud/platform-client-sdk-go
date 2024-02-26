@@ -24,6 +24,9 @@ type Benefitassessment struct {
 	// State - State of the benefit assessment.
 	State *string `json:"state,omitempty"`
 
+	// JobId - The unique identifier of job that created this benefit assessment.
+	JobId *string `json:"jobId,omitempty"`
+
 	// DateCreated - Creation Date of the benefit assessment. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -121,6 +124,8 @@ func (o Benefitassessment) MarshalJSON() ([]byte, error) {
 		
 		State *string `json:"state,omitempty"`
 		
+		JobId *string `json:"jobId,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -135,6 +140,8 @@ func (o Benefitassessment) MarshalJSON() ([]byte, error) {
 		KpiAssessments: o.KpiAssessments,
 		
 		State: o.State,
+		
+		JobId: o.JobId,
 		
 		DateCreated: DateCreated,
 		
@@ -168,6 +175,10 @@ func (o *Benefitassessment) UnmarshalJSON(b []byte) error {
 	
 	if State, ok := BenefitassessmentMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if JobId, ok := BenefitassessmentMap["jobId"].(string); ok {
+		o.JobId = &JobId
 	}
     
 	if dateCreatedString, ok := BenefitassessmentMap["dateCreated"].(string); ok {

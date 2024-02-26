@@ -19,6 +19,9 @@ type Buschedulingsettingsrequest struct {
 
 	// ServiceGoalImpact - Configures the max percent increase and decrease of service goals for this business unit
 	ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
+
+	// AllowWorkPlanPerMinuteGranularity - Indicates whether or not per minute granularity for scheduling will be enabled for this business unit
+	AllowWorkPlanPerMinuteGranularity *bool `json:"allowWorkPlanPerMinuteGranularity,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Buschedulingsettingsrequest) MarshalJSON() ([]byte, error) {
 		SyncTimeOffProperties *Setwrappersynctimeoffproperty `json:"syncTimeOffProperties,omitempty"`
 		
 		ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
+		
+		AllowWorkPlanPerMinuteGranularity *bool `json:"allowWorkPlanPerMinuteGranularity,omitempty"`
 		Alias
 	}{ 
 		MessageSeverities: o.MessageSeverities,
@@ -96,6 +101,8 @@ func (o Buschedulingsettingsrequest) MarshalJSON() ([]byte, error) {
 		SyncTimeOffProperties: o.SyncTimeOffProperties,
 		
 		ServiceGoalImpact: o.ServiceGoalImpact,
+		
+		AllowWorkPlanPerMinuteGranularity: o.AllowWorkPlanPerMinuteGranularity,
 		Alias:    (Alias)(o),
 	})
 }
@@ -122,6 +129,10 @@ func (o *Buschedulingsettingsrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ServiceGoalImpactString, &o.ServiceGoalImpact)
 	}
 	
+	if AllowWorkPlanPerMinuteGranularity, ok := BuschedulingsettingsrequestMap["allowWorkPlanPerMinuteGranularity"].(bool); ok {
+		o.AllowWorkPlanPerMinuteGranularity = &AllowWorkPlanPerMinuteGranularity
+	}
+    
 
 	return nil
 }
