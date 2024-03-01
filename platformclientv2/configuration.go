@@ -39,6 +39,7 @@ type Configuration struct {
 	ShouldRefreshAccessToken bool                  `json:"shouldRefreshAccessToken,omitempty"`
 	RefreshInProgress        int64                 `json:"refreshInProgress,omitempty"`
 	RefreshTokenWaitTime     int                   `json:"refreshTokenWaitTime,omitempty"`
+	AccessTokenExpiresIn     int                   `json:"accessTokenExpiresIn,omitempty"`
 	DefaultHeader            map[string]string     `json:"defaultHeader,omitempty"`
 	UserAgent                string                `json:"userAgent,omitempty"`
 	APIClient                APIClient             `json:"APIClient,omitempty"`
@@ -434,7 +435,8 @@ func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret
 	if c.AccessToken == "" {
 		return fmt.Errorf("Auth Error: No access token found")
 	}
-
+	c.AccessTokenExpiresIn = authResponse.ExpiresIn
+	
 	return nil
 }
 
