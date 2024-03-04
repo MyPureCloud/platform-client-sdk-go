@@ -33,6 +33,9 @@ type Evaluationformresponse struct {
 	// WeightMode - Mode for evaluation form weight
 	WeightMode *string `json:"weightMode,omitempty"`
 
+	// PublishedVersions - A list of the published versions of this form. Not populated by default, its availability depends on the endpoint. Use the 'expand=publishHistory' query parameter to retrieve this data where applicable (refer to the endpoint description to see if it is applicable).
+	PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -122,6 +125,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		
 		WeightMode *string `json:"weightMode,omitempty"`
 		
+		PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -138,6 +143,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		QuestionGroups: o.QuestionGroups,
 		
 		WeightMode: o.WeightMode,
+		
+		PublishedVersions: o.PublishedVersions,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -181,6 +188,11 @@ func (o *Evaluationformresponse) UnmarshalJSON(b []byte) error {
 		o.WeightMode = &WeightMode
 	}
     
+	if PublishedVersions, ok := EvaluationformresponseMap["publishedVersions"].(map[string]interface{}); ok {
+		PublishedVersionsString, _ := json.Marshal(PublishedVersions)
+		json.Unmarshal(PublishedVersionsString, &o.PublishedVersions)
+	}
+	
 	if SelfUri, ok := EvaluationformresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

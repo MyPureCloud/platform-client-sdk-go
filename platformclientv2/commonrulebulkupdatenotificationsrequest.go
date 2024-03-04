@@ -16,6 +16,12 @@ type Commonrulebulkupdatenotificationsrequest struct {
 
 	// Properties - The rule properties to be updated
 	Properties *Modifiableruleproperties `json:"properties,omitempty"`
+
+	// TypesToAdd - Collection of alerting notification types to add for all entities in the rules
+	TypesToAdd *[]string `json:"typesToAdd,omitempty"`
+
+	// TypesToRemove - Collection of alerting notification types to remove for all entities in the rules
+	TypesToRemove *[]string `json:"typesToRemove,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Commonrulebulkupdatenotificationsrequest) MarshalJSON() ([]byte, error) 
 		RuleIds *[]string `json:"ruleIds,omitempty"`
 		
 		Properties *Modifiableruleproperties `json:"properties,omitempty"`
+		
+		TypesToAdd *[]string `json:"typesToAdd,omitempty"`
+		
+		TypesToRemove *[]string `json:"typesToRemove,omitempty"`
 		Alias
 	}{ 
 		RuleIds: o.RuleIds,
 		
 		Properties: o.Properties,
+		
+		TypesToAdd: o.TypesToAdd,
+		
+		TypesToRemove: o.TypesToRemove,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +122,16 @@ func (o *Commonrulebulkupdatenotificationsrequest) UnmarshalJSON(b []byte) error
 	if Properties, ok := CommonrulebulkupdatenotificationsrequestMap["properties"].(map[string]interface{}); ok {
 		PropertiesString, _ := json.Marshal(Properties)
 		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if TypesToAdd, ok := CommonrulebulkupdatenotificationsrequestMap["typesToAdd"].([]interface{}); ok {
+		TypesToAddString, _ := json.Marshal(TypesToAdd)
+		json.Unmarshal(TypesToAddString, &o.TypesToAdd)
+	}
+	
+	if TypesToRemove, ok := CommonrulebulkupdatenotificationsrequestMap["typesToRemove"].([]interface{}); ok {
+		TypesToRemoveString, _ := json.Marshal(TypesToRemove)
+		json.Unmarshal(TypesToRemoveString, &o.TypesToRemove)
 	}
 	
 

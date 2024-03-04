@@ -9340,7 +9340,7 @@ func (a OutboundApi) PostOutboundContactlistContactsBulk(contactListId string, b
 // Initiate the export of a contact list.
 //
 // Returns 200 if received OK.
-func (a OutboundApi) PostOutboundContactlistExport(contactListId string) (*Domainentityref, *APIResponse, error) {
+func (a OutboundApi) PostOutboundContactlistExport(contactListId string, body Contactsexportrequest) (*Domainentityref, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/{contactListId}/export"
@@ -9403,6 +9403,9 @@ func (a OutboundApi) PostOutboundContactlistExport(contactListId string) (*Domai
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	postBody = &body
+
 	var successPayload *Domainentityref
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {

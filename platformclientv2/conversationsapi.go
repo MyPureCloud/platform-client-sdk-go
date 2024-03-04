@@ -661,7 +661,11 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsInstagramInteg
 
 // DeleteConversationsMessagingIntegrationsLineIntegrationId invokes DELETE /api/v2/conversations/messaging/integrations/line/{integrationId}
 //
-// Delete a LINE messenger integration
+// Delete a LINE messenger integration (Deprecated)
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-line-third-party-messaging-channel/
+//
+// Deprecated: DeleteConversationsMessagingIntegrationsLineIntegrationId is deprecated
 func (a ConversationsApi) DeleteConversationsMessagingIntegrationsLineIntegrationId(integrationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -6729,7 +6733,11 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsInstagramIntegrat
 
 // GetConversationsMessagingIntegrationsLine invokes GET /api/v2/conversations/messaging/integrations/line
 //
-// Get a list of LINE messenger Integrations
+// Get a list of LINE messenger Integrations (Deprecated)
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-line-third-party-messaging-channel/
+//
+// Deprecated: GetConversationsMessagingIntegrationsLine is deprecated
 func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int, pageNumber int, expand string, supportedContentId string, messagingSettingId string) (*Lineintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6815,7 +6823,11 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int
 
 // GetConversationsMessagingIntegrationsLineIntegrationId invokes GET /api/v2/conversations/messaging/integrations/line/{integrationId}
 //
-// Get a LINE messenger integration
+// Get a LINE messenger integration (Deprecated)
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-line-third-party-messaging-channel/
+//
+// Deprecated: GetConversationsMessagingIntegrationsLineIntegrationId is deprecated
 func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId(integrationId string, expand string) (*Lineintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -20264,7 +20276,11 @@ func (a ConversationsApi) PutConversationsMessageRecordingstate(conversationId s
 
 // PutConversationsMessagingIntegrationsLineIntegrationId invokes PUT /api/v2/conversations/messaging/integrations/line/{integrationId}
 //
-// Update a LINE messenger integration
+// Update a LINE messenger integration (Deprecated)
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-line-third-party-messaging-channel/
+//
+// Deprecated: PutConversationsMessagingIntegrationsLineIntegrationId is deprecated
 func (a ConversationsApi) PutConversationsMessagingIntegrationsLineIntegrationId(integrationId string, body Lineintegrationrequest) (*Lineintegration, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

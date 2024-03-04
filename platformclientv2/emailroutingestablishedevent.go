@@ -33,7 +33,7 @@ type Emailroutingestablishedevent struct {
 	// LanguageId - The unique identifier for the language that should be used to determine the destination for the conversation.
 	LanguageId *string `json:"languageId,omitempty"`
 
-	// Label - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level.
+	// Label - An optional label that categorizes the conversation. Max-utilization settings can be configured at a per-label level.
 	Label *string `json:"label,omitempty"`
 
 	// InitialConfiguration - Metadata about this communication.

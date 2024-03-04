@@ -111,6 +111,9 @@ type Campaign struct {
 	// DynamicContactQueueingSettings - Settings for dynamic queueing of contacts.
 	DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 
+	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on this campaign
+	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -260,6 +263,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 		
+		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -328,6 +333,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		Division: o.Division,
 		
 		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
+		
+		MaxCallsPerAgent: o.MaxCallsPerAgent,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -494,6 +501,11 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if DynamicContactQueueingSettings, ok := CampaignMap["dynamicContactQueueingSettings"].(map[string]interface{}); ok {
 		DynamicContactQueueingSettingsString, _ := json.Marshal(DynamicContactQueueingSettings)
 		json.Unmarshal(DynamicContactQueueingSettingsString, &o.DynamicContactQueueingSettings)
+	}
+	
+	if MaxCallsPerAgent, ok := CampaignMap["maxCallsPerAgent"].(float64); ok {
+		MaxCallsPerAgentInt := int(MaxCallsPerAgent)
+		o.MaxCallsPerAgent = &MaxCallsPerAgentInt
 	}
 	
 	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {

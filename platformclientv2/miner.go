@@ -43,10 +43,10 @@ type Miner struct {
 	Message *string `json:"message,omitempty"`
 
 	// ErrorInfo - Error Information
-	ErrorInfo *Errorinfo `json:"errorInfo,omitempty"`
+	ErrorInfo *Minererrorinfo `json:"errorInfo,omitempty"`
 
 	// WarningInfo - Warning Information
-	WarningInfo *Errorinfo `json:"warningInfo,omitempty"`
+	WarningInfo *Minererrorinfo `json:"warningInfo,omitempty"`
 
 	// ConversationDataUploaded - Flag to indicate whether data file to be mined was uploaded.
 	ConversationDataUploaded *bool `json:"conversationDataUploaded,omitempty"`
@@ -211,9 +211,9 @@ func (o Miner) MarshalJSON() ([]byte, error) {
 		
 		Message *string `json:"message,omitempty"`
 		
-		ErrorInfo *Errorinfo `json:"errorInfo,omitempty"`
+		ErrorInfo *Minererrorinfo `json:"errorInfo,omitempty"`
 		
-		WarningInfo *Errorinfo `json:"warningInfo,omitempty"`
+		WarningInfo *Minererrorinfo `json:"warningInfo,omitempty"`
 		
 		ConversationDataUploaded *bool `json:"conversationDataUploaded,omitempty"`
 		

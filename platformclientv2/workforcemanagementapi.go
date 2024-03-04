@@ -1501,7 +1501,11 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherenceHistoricalJob(job
 
 // GetWorkforcemanagementAdhocmodelingjob invokes GET /api/v2/workforcemanagement/adhocmodelingjobs/{jobId}
 //
-// Get status of the modeling job
+// To get status of the modeling job.
+//
+// This Endpoint is Deprecated, and not recommended to be used.
+//
+// Deprecated: GetWorkforcemanagementAdhocmodelingjob is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementAdhocmodelingjob(jobId string) (*Modelingstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

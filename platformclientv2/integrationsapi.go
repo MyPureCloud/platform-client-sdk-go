@@ -2748,6 +2748,170 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int, p
 	return successPayload, response, err
 }
 
+// GetIntegrationsSpeechDialogflowcxAgent invokes GET /api/v2/integrations/speech/dialogflowcx/agents/{agentId}
+//
+// Get details about a Dialogflow CX agent
+func (a IntegrationsApi) GetIntegrationsSpeechDialogflowcxAgent(agentId string) (*Dialogflowcxagent, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/speech/dialogflowcx/agents/{agentId}"
+	path = strings.Replace(path, "{agentId}", url.PathEscape(fmt.Sprintf("%v", agentId)), -1)
+	defaultReturn := new(Dialogflowcxagent)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'agentId' is set
+	if &agentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'agentId' when calling IntegrationsApi->GetIntegrationsSpeechDialogflowcxAgent")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Dialogflowcxagent
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Dialogflowcxagent" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetIntegrationsSpeechDialogflowcxAgents invokes GET /api/v2/integrations/speech/dialogflowcx/agents
+//
+// Get a list of Dialogflow CX agents in the customers' Google accounts
+func (a IntegrationsApi) GetIntegrationsSpeechDialogflowcxAgents(pageNumber int, pageSize int, name string) (*Dialogflowcxagentsummaryentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/speech/dialogflowcx/agents"
+	defaultReturn := new(Dialogflowcxagentsummaryentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Dialogflowcxagentsummaryentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Dialogflowcxagentsummaryentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetIntegrationsSpeechLexBotAlias invokes GET /api/v2/integrations/speech/lex/bot/alias/{aliasId}
 //
 // Get details about a Lex bot alias
@@ -3002,11 +3166,263 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int, pageSize i
 	return successPayload, response, err
 }
 
+// GetIntegrationsSpeechLexv2BotAlias invokes GET /api/v2/integrations/speech/lexv2/bot/alias/{aliasId}
+//
+// Get details about a Lex V2 bot alias
+func (a IntegrationsApi) GetIntegrationsSpeechLexv2BotAlias(aliasId string) (*Lexv2botalias, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/speech/lexv2/bot/alias/{aliasId}"
+	path = strings.Replace(path, "{aliasId}", url.PathEscape(fmt.Sprintf("%v", aliasId)), -1)
+	defaultReturn := new(Lexv2botalias)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'aliasId' is set
+	if &aliasId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'aliasId' when calling IntegrationsApi->GetIntegrationsSpeechLexv2BotAlias")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Lexv2botalias
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Lexv2botalias" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetIntegrationsSpeechLexv2BotBotIdAliases invokes GET /api/v2/integrations/speech/lexv2/bot/{botId}/aliases
+//
+// Get a list of aliases for a Lex V2 bot
+func (a IntegrationsApi) GetIntegrationsSpeechLexv2BotBotIdAliases(botId string, pageNumber int, pageSize int, status string, name string) (*Lexv2botaliasentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/speech/lexv2/bot/{botId}/aliases"
+	path = strings.Replace(path, "{botId}", url.PathEscape(fmt.Sprintf("%v", botId)), -1)
+	defaultReturn := new(Lexv2botaliasentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'botId' is set
+	if &botId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'botId' when calling IntegrationsApi->GetIntegrationsSpeechLexv2BotBotIdAliases")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["status"] = a.Configuration.APIClient.ParameterToString(status, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Lexv2botaliasentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Lexv2botaliasentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetIntegrationsSpeechLexv2Bots invokes GET /api/v2/integrations/speech/lexv2/bots
+//
+// Get a list of Lex V2 bots
+func (a IntegrationsApi) GetIntegrationsSpeechLexv2Bots(pageNumber int, pageSize int, name string) (*Lexv2botentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/speech/lexv2/bots"
+	defaultReturn := new(Lexv2botentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Lexv2botentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Lexv2botentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetIntegrationsSpeechNuanceNuanceIntegrationIdBot invokes GET /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/{botId}
 //
 // Get a Nuance bot in the specified Integration
-//
-// Preview: GetIntegrationsSpeechNuanceNuanceIntegrationIdBot is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBot(nuanceIntegrationId string, botId string, expand []string, targetChannel string) (*Nuancebot, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3099,8 +3515,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBot(nuanc
 // GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJob invokes GET /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/{botId}/jobs/{jobId}
 //
 // Get the status of an asynchronous Nuance bot GET job
-//
-// Preview: GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJob(nuanceIntegrationId string, botId string, jobId string) (*Asyncjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3195,8 +3609,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJob(nu
 // GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJobResults invokes GET /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/{botId}/jobs/{jobId}/results
 //
 // Get the result of an asynchronous Nuance bot GET job
-//
-// Preview: GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJobResults(nuanceIntegrationId string, botId string, jobId string) (*Nuancebot, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3293,8 +3705,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotJobRes
 // Get a list of Nuance bots available in the specified Integration
 //
 // If the &#39;onlyRegisteredBots&#39; param is set, the returned data will only include the Nuance bots which have configured client secrets within the Integration,  otherwise all of the Nuance bots available to the Integration&#39;s configured discovery credentials are returned.
-//
-// Preview: GetIntegrationsSpeechNuanceNuanceIntegrationIdBots is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBots(nuanceIntegrationId string, pageNumber int, pageSize int, onlyRegisteredBots bool) (*Nuancebotentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3383,8 +3793,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBots(nuan
 // GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJob invokes GET /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/jobs/{jobId}
 //
 // Get the status of an asynchronous Nuance bots GET job
-//
-// Preview: GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJob(nuanceIntegrationId string, jobId string) (*Asyncjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3473,8 +3881,6 @@ func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJob(n
 // GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobResults invokes GET /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/jobs/{jobId}/results
 //
 // Get the result of an asynchronous Nuance bots GET job
-//
-// Preview: GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobResults(nuanceIntegrationId string, jobId string) (*Nuancebotentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3552,6 +3958,170 @@ func (a IntegrationsApi) GetIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobRe
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Nuancebotentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetIntegrationsSpeechSttEngine invokes GET /api/v2/integrations/speech/stt/engines/{engineId}
+//
+// Get details about a STT engine
+func (a IntegrationsApi) GetIntegrationsSpeechSttEngine(engineId string) (*Sttengineentity, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/speech/stt/engines/{engineId}"
+	path = strings.Replace(path, "{engineId}", url.PathEscape(fmt.Sprintf("%v", engineId)), -1)
+	defaultReturn := new(Sttengineentity)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'engineId' is set
+	if &engineId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'engineId' when calling IntegrationsApi->GetIntegrationsSpeechSttEngine")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Sttengineentity
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Sttengineentity" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetIntegrationsSpeechSttEngines invokes GET /api/v2/integrations/speech/stt/engines
+//
+// Get a list of STT engines enabled for org
+func (a IntegrationsApi) GetIntegrationsSpeechSttEngines(pageNumber int, pageSize int, name string) (*Sttengineentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/speech/stt/engines"
+	defaultReturn := new(Sttengineentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Sttengineentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Sttengineentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4230,6 +4800,180 @@ func (a IntegrationsApi) GetIntegrationsTypes(pageSize int, pageNumber int, sort
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Integrationtypeentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetIntegrationsUnifiedcommunicationsClientapp invokes GET /api/v2/integrations/unifiedcommunications/clientapps/{ucIntegrationId}
+//
+// UC integration client application configuration.
+//
+// This endpoint returns basic UI configuration data for the specified Unified Communications integration client application.
+func (a IntegrationsApi) GetIntegrationsUnifiedcommunicationsClientapp(ucIntegrationId string) (*Unifiedcommunicationsintegration, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/unifiedcommunications/clientapps/{ucIntegrationId}"
+	path = strings.Replace(path, "{ucIntegrationId}", url.PathEscape(fmt.Sprintf("%v", ucIntegrationId)), -1)
+	defaultReturn := new(Unifiedcommunicationsintegration)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'ucIntegrationId' is set
+	if &ucIntegrationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'ucIntegrationId' when calling IntegrationsApi->GetIntegrationsUnifiedcommunicationsClientapp")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Unifiedcommunicationsintegration
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Unifiedcommunicationsintegration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetIntegrationsUnifiedcommunicationsClientapps invokes GET /api/v2/integrations/unifiedcommunications/clientapps
+//
+// List UC integration client application configurations.
+//
+// This endpoint returns basic UI configuration data for all Unified Communications integrations client applications enabled.
+func (a IntegrationsApi) GetIntegrationsUnifiedcommunicationsClientapps(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Unifiedcommunicationsintegrationlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/integrations/unifiedcommunications/clientapps"
+	defaultReturn := new(Unifiedcommunicationsintegrationlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
+	
+	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Unifiedcommunicationsintegrationlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Unifiedcommunicationsintegrationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5468,8 +6212,6 @@ func (a IntegrationsApi) PostIntegrationsCredentials(body Credential) (*Credenti
 // PostIntegrationsSpeechNuanceNuanceIntegrationIdBotJobs invokes POST /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/{botId}/jobs
 //
 // Get a Nuance bot in the specified Integration asynchronously
-//
-// Preview: PostIntegrationsSpeechNuanceNuanceIntegrationIdBotJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) PostIntegrationsSpeechNuanceNuanceIntegrationIdBotJobs(nuanceIntegrationId string, botId string, expand []string, body string) (*Asyncjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5563,8 +6305,6 @@ func (a IntegrationsApi) PostIntegrationsSpeechNuanceNuanceIntegrationIdBotJobs(
 // PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobs invokes POST /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/jobs
 //
 // Get a list of Nuance bots in the specified Integration asynchronously
-//
-// Preview: PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobs(nuanceIntegrationId string, pageNumber int, pageSize int, onlyRegisteredBots bool) (*Asyncjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5653,8 +6393,6 @@ func (a IntegrationsApi) PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobs
 // PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchValidate invokes POST /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/launch/validate
 //
 // Try out a single credential for a Nuance bot to know if the secret is correct
-//
-// Preview: PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchValidate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchValidate(nuanceIntegrationId string, settings Botexecutionconfiguration) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6083,8 +6821,6 @@ func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Cre
 // PutIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchSettings invokes PUT /api/v2/integrations/speech/nuance/{nuanceIntegrationId}/bots/launch/settings
 //
 // Update the Nuance bot list for the specific bots made available to Genesys Cloud in the specified Integration
-//
-// Preview: PutIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) PutIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchSettings(nuanceIntegrationId string, settings Nuancebotlaunchsettings) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

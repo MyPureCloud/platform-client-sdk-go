@@ -529,6 +529,9 @@ type Viewfilter struct {
 
 	// IsParked - Filter to indicate if the interactions are parked.
 	IsParked *bool `json:"isParked,omitempty"`
+
+	// AgentEmpathyScore - The agentEmpathyScore is used to filter the view
+	AgentEmpathyScore *Numericrange `json:"agentEmpathyScore,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -939,6 +942,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 		
 		IsParked *bool `json:"isParked,omitempty"`
+		
+		AgentEmpathyScore *Numericrange `json:"agentEmpathyScore,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1286,6 +1291,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		KnowledgeBaseIds: o.KnowledgeBaseIds,
 		
 		IsParked: o.IsParked,
+		
+		AgentEmpathyScore: o.AgentEmpathyScore,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2121,6 +2128,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.IsParked = &IsParked
 	}
     
+	if AgentEmpathyScore, ok := ViewfilterMap["agentEmpathyScore"].(map[string]interface{}); ok {
+		AgentEmpathyScoreString, _ := json.Marshal(AgentEmpathyScore)
+		json.Unmarshal(AgentEmpathyScoreString, &o.AgentEmpathyScore)
+	}
+	
 
 	return nil
 }

@@ -1805,7 +1805,7 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumb
 
 // GetQualityForms invokes GET /api/v2/quality/forms
 //
-// Get the list of evaluation forms
+// Get the list of evaluation forms. If you set \"expand=publishHistory\", then you will be able to get published versions for each corresponding evaluation form.
 //
 // Deprecated: GetQualityForms is deprecated
 func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformresponseentitylisting, *APIResponse, error) {
@@ -2071,7 +2071,7 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 //
 // Get the list of evaluation forms
 //
-// By default, \&quot;published\&quot; field is always returned as false for all evaluation forms. If you set \&quot;expand&#x3D;publishHistory\&quot;, then you will be able to get published versions for each corresponding evaluation form. In addition, \&quot;questionGroups\&quot;, the detailed information about evaluation form, is not returned by default. We will enhance this field in the future release.
+// By default, \&quot;published\&quot; field is always returned as false for all evaluation forms. If you set \&quot;expand&#x3D;publishHistory\&quot;, then you will be able to get published versions for each corresponding evaluation form. In addition, \&quot;questionGroups\&quot;, the detailed information about evaluation form, is not returned. We will enhance this field in a future release.
 func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2414,7 +2414,7 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, p
 
 // GetQualityFormsSurveys invokes GET /api/v2/quality/forms/surveys
 //
-// Get the list of survey forms
+// Get the list of survey forms. If you set \"expand=publishHistory\", then you will be able to get published versions for each corresponding survey form.
 func (a QualityApi) GetQualityFormsSurveys(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3853,7 +3853,7 @@ func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand strin
 // PostQualityConversationEvaluations invokes POST /api/v2/quality/conversations/{conversationId}/evaluations
 //
 // Create an evaluation
-func (a QualityApi) PostQualityConversationEvaluations(conversationId string, body Evaluation, expand string) (*Evaluation, *APIResponse, error) {
+func (a QualityApi) PostQualityConversationEvaluations(conversationId string, body Evaluationcreatebody, expand string) (*Evaluation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations"
