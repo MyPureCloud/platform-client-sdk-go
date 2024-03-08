@@ -12,6 +12,9 @@ import (
 type Contactidentifier struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
 	// VarType - The type of this identifier
 	VarType *string `json:"type,omitempty"`
 
@@ -20,6 +23,9 @@ type Contactidentifier struct {
 
 	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,18 +99,26 @@ func (o Contactidentifier) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		VarType: o.VarType,
 		
 		Value: o.Value,
 		
 		DateCreated: DateCreated,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -116,6 +130,10 @@ func (o *Contactidentifier) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ContactidentifierMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if VarType, ok := ContactidentifierMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
@@ -129,6 +147,10 @@ func (o *Contactidentifier) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
+	if SelfUri, ok := ContactidentifierMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }
