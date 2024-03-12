@@ -14,6 +14,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"log"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -40,6 +41,7 @@ type Configuration struct {
 	RefreshInProgress        int64                 `json:"refreshInProgress,omitempty"`
 	RefreshTokenWaitTime     int                   `json:"refreshTokenWaitTime,omitempty"`
 	AccessTokenExpiresIn     int                   `json:"accessTokenExpiresIn,omitempty"`
+    	AutomaticTokenRefresh    bool                  `json:"automaticTokenRefresh,omitempty"`
 	DefaultHeader            map[string]string     `json:"defaultHeader,omitempty"`
 	UserAgent                string                `json:"userAgent,omitempty"`
 	APIClient                APIClient             `json:"APIClient,omitempty"`
@@ -403,6 +405,10 @@ func getFileHash(filePath string) (string, error) {
 	return hex.EncodeToString(hasher.Sum(nil)), nil
 }
 
+func (c *Configuration) setAutomaticTokenRefresh(value bool) {
+    c.AutomaticTokenRefresh = value
+}
+
 // AuthorizeClientCredentials authorizes this Configuration instance using client credentials.
 // The access token will be set automatically and API instances using this configuration object can now make authorized requests.
 func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret string) error {
@@ -436,7 +442,20 @@ func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret
 		return fmt.Errorf("Auth Error: No access token found")
 	}
 	c.AccessTokenExpiresIn = authResponse.ExpiresIn
-	
+
+    if c.AutomaticTokenRefresh {
+        go func(){
+            select {
+            case <-time.After(time.Second * time.Duration(c.AccessTokenExpiresIn - 60)):
+		log.Println("Refreshing access token")
+                err := c.AuthorizeClientCredentials(clientID, clientSecret)
+                if err != nil {
+                    panic(err)
+                }
+            }
+        }()
+    }
+
 	return nil
 }
 
