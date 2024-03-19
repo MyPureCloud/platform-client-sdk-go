@@ -23,6 +23,9 @@ type Managementunitlisting struct {
 	// Total - Deprecated, paging is not supported
 	Total *int `json:"total,omitempty"`
 
+	// LastUri - Deprecated, paging is not supported
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri - Deprecated, paging is not supported
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Managementunitlisting struct {
 
 	// PreviousUri - Deprecated, paging is not supported
 	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// LastUri - Deprecated, paging is not supported
-	LastUri *string `json:"lastUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,6 +113,8 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
@@ -120,8 +122,6 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -134,6 +134,8 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
 		NextUri: o.NextUri,
@@ -141,8 +143,6 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		PageCount: o.PageCount,
 		
 		PreviousUri: o.PreviousUri,
-		
-		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -176,6 +176,10 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := ManagementunitlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -191,10 +195,6 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 	
 	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
-	}
-    
-	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {

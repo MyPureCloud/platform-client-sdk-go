@@ -23,20 +23,20 @@ type Consumedresourcesentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,15 +113,15 @@ func (o Consumedresourcesentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,15 +134,15 @@ func (o Consumedresourcesentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
+		
+		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
-		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,8 +176,16 @@ func (o *Consumedresourcesentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if LastUri, ok := ConsumedresourcesentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := ConsumedresourcesentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+    
+	if SelfUri, ok := ConsumedresourcesentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if NextUri, ok := ConsumedresourcesentitylistingMap["nextUri"].(string); ok {
@@ -186,14 +194,6 @@ func (o *Consumedresourcesentitylisting) UnmarshalJSON(b []byte) error {
     
 	if PreviousUri, ok := ConsumedresourcesentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
-	}
-    
-	if LastUri, ok := ConsumedresourcesentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := ConsumedresourcesentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := ConsumedresourcesentitylistingMap["pageCount"].(float64); ok {

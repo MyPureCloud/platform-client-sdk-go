@@ -33,11 +33,17 @@ type Analyticssurvey struct {
 	// SurveyId - ID of the survey
 	SurveyId *string `json:"surveyId,omitempty"`
 
+	// SurveyPartialResponse - Whether the survey was completed with any required questions unanswered.
+	SurveyPartialResponse *bool `json:"surveyPartialResponse,omitempty"`
+
 	// SurveyPromoterScore - Score of the survey used with NPS
 	SurveyPromoterScore *int `json:"surveyPromoterScore,omitempty"`
 
 	// SurveyStatus - The status of the survey
 	SurveyStatus *string `json:"surveyStatus,omitempty"`
+
+	// SurveyType - The type of the survey
+	SurveyType *string `json:"surveyType,omitempty"`
 
 	// UserId - ID of the agent the survey was performed against
 	UserId *string `json:"userId,omitempty"`
@@ -139,9 +145,13 @@ func (o Analyticssurvey) MarshalJSON() ([]byte, error) {
 		
 		SurveyId *string `json:"surveyId,omitempty"`
 		
+		SurveyPartialResponse *bool `json:"surveyPartialResponse,omitempty"`
+		
 		SurveyPromoterScore *int `json:"surveyPromoterScore,omitempty"`
 		
 		SurveyStatus *string `json:"surveyStatus,omitempty"`
+		
+		SurveyType *string `json:"surveyType,omitempty"`
 		
 		UserId *string `json:"userId,omitempty"`
 		
@@ -162,9 +172,13 @@ func (o Analyticssurvey) MarshalJSON() ([]byte, error) {
 		
 		SurveyId: o.SurveyId,
 		
+		SurveyPartialResponse: o.SurveyPartialResponse,
+		
 		SurveyPromoterScore: o.SurveyPromoterScore,
 		
 		SurveyStatus: o.SurveyStatus,
+		
+		SurveyType: o.SurveyType,
 		
 		UserId: o.UserId,
 		
@@ -210,6 +224,10 @@ func (o *Analyticssurvey) UnmarshalJSON(b []byte) error {
 		o.SurveyId = &SurveyId
 	}
     
+	if SurveyPartialResponse, ok := AnalyticssurveyMap["surveyPartialResponse"].(bool); ok {
+		o.SurveyPartialResponse = &SurveyPartialResponse
+	}
+    
 	if SurveyPromoterScore, ok := AnalyticssurveyMap["surveyPromoterScore"].(float64); ok {
 		SurveyPromoterScoreInt := int(SurveyPromoterScore)
 		o.SurveyPromoterScore = &SurveyPromoterScoreInt
@@ -217,6 +235,10 @@ func (o *Analyticssurvey) UnmarshalJSON(b []byte) error {
 	
 	if SurveyStatus, ok := AnalyticssurveyMap["surveyStatus"].(string); ok {
 		o.SurveyStatus = &SurveyStatus
+	}
+    
+	if SurveyType, ok := AnalyticssurveyMap["surveyType"].(string); ok {
+		o.SurveyType = &SurveyType
 	}
     
 	if UserId, ok := AnalyticssurveyMap["userId"].(string); ok {

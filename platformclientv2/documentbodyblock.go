@@ -14,9 +14,6 @@ type Documentbodyblock struct {
 	// VarType - The type of the block for the body. This determines which body block object (paragraph, list, video, image or table) would have a value.
 	VarType *string `json:"type,omitempty"`
 
-	// Paragraph - Paragraph. It must contain a value if the type of the block is Paragraph.
-	Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
-
 	// Image - Image. It must contain a value if the type of the block is Image.
 	Image *Documentbodyimage `json:"image,omitempty"`
 
@@ -28,6 +25,9 @@ type Documentbodyblock struct {
 
 	// Table - Table. It must contain a value if type of the block is Table.
 	Table *Documentbodytable `json:"table,omitempty"`
+
+	// Paragraph - Paragraph. It must contain a value if the type of the block is Paragraph.
+	Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -95,8 +95,6 @@ func (o Documentbodyblock) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
-		Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
-		
 		Image *Documentbodyimage `json:"image,omitempty"`
 		
 		Video *Documentbodyvideo `json:"video,omitempty"`
@@ -104,11 +102,11 @@ func (o Documentbodyblock) MarshalJSON() ([]byte, error) {
 		List *Documentbodylist `json:"list,omitempty"`
 		
 		Table *Documentbodytable `json:"table,omitempty"`
+		
+		Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
-		
-		Paragraph: o.Paragraph,
 		
 		Image: o.Image,
 		
@@ -117,6 +115,8 @@ func (o Documentbodyblock) MarshalJSON() ([]byte, error) {
 		List: o.List,
 		
 		Table: o.Table,
+		
+		Paragraph: o.Paragraph,
 		Alias:    (Alias)(o),
 	})
 }
@@ -132,11 +132,6 @@ func (o *Documentbodyblock) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
-	if Paragraph, ok := DocumentbodyblockMap["paragraph"].(map[string]interface{}); ok {
-		ParagraphString, _ := json.Marshal(Paragraph)
-		json.Unmarshal(ParagraphString, &o.Paragraph)
-	}
-	
 	if Image, ok := DocumentbodyblockMap["image"].(map[string]interface{}); ok {
 		ImageString, _ := json.Marshal(Image)
 		json.Unmarshal(ImageString, &o.Image)
@@ -155,6 +150,11 @@ func (o *Documentbodyblock) UnmarshalJSON(b []byte) error {
 	if Table, ok := DocumentbodyblockMap["table"].(map[string]interface{}); ok {
 		TableString, _ := json.Marshal(Table)
 		json.Unmarshal(TableString, &o.Table)
+	}
+	
+	if Paragraph, ok := DocumentbodyblockMap["paragraph"].(map[string]interface{}); ok {
+		ParagraphString, _ := json.Marshal(Paragraph)
+		json.Unmarshal(ParagraphString, &o.Paragraph)
 	}
 	
 

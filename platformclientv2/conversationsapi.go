@@ -818,6 +818,10 @@ func (a ConversationsApi) DeleteConversationsMessagingIntegrationsOpenIntegratio
 // DeleteConversationsMessagingIntegrationsTwitterIntegrationId invokes DELETE /api/v2/conversations/messaging/integrations/twitter/{integrationId}
 //
 // Delete a Twitter messaging integration
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-x-formerly-twitter-third-party-messaging-channel/
+//
+// Deprecated: DeleteConversationsMessagingIntegrationsTwitterIntegrationId is deprecated
 func (a ConversationsApi) DeleteConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -7085,7 +7089,11 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsOpenIntegrationId
 
 // GetConversationsMessagingIntegrationsTwitter invokes GET /api/v2/conversations/messaging/integrations/twitter
 //
-// Get a list of Twitter Integrations
+// Get a list of Twitter Integrations (Deprecated)
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-x-formerly-twitter-third-party-messaging-channel/
+//
+// Deprecated: GetConversationsMessagingIntegrationsTwitter is deprecated
 func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize int, pageNumber int, expand string, supportedContentId string, messagingSettingId string) (*Twitterintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7171,7 +7179,11 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize 
 
 // GetConversationsMessagingIntegrationsTwitterIntegrationId invokes GET /api/v2/conversations/messaging/integrations/twitter/{integrationId}
 //
-// Get a Twitter messaging integration
+// Get a Twitter messaging integration (Deprecated)
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-x-formerly-twitter-third-party-messaging-channel/
+//
+// Deprecated: GetConversationsMessagingIntegrationsTwitterIntegrationId is deprecated
 func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string, expand string) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -11757,6 +11769,10 @@ func (a ConversationsApi) PatchConversationsMessagingIntegrationsOpenIntegration
 // PatchConversationsMessagingIntegrationsTwitterIntegrationId invokes PATCH /api/v2/conversations/messaging/integrations/twitter/{integrationId}
 //
 // Update Twitter messaging integration
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-x-formerly-twitter-third-party-messaging-channel/
+//
+// Deprecated: PatchConversationsMessagingIntegrationsTwitterIntegrationId is deprecated
 func (a ConversationsApi) PatchConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string, body Twitterintegrationrequest) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -18328,6 +18344,10 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsOpen(body Openin
 // PostConversationsMessagingIntegrationsTwitter invokes POST /api/v2/conversations/messaging/integrations/twitter
 //
 // Create a Twitter Integration
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-x-formerly-twitter-third-party-messaging-channel/
+//
+// Deprecated: PostConversationsMessagingIntegrationsTwitter is deprecated
 func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twitterintegrationrequest) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

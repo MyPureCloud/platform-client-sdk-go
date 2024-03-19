@@ -15,9 +15,6 @@ type Knowledgedocumentversionvariation struct {
 	// Id - The globally unique identifier for the variation.
 	Id *string `json:"id,omitempty"`
 
-	// Body - The content for the variation.
-	Body *Documentbody `json:"body,omitempty"`
-
 	// DateCreated - The creation date-time for the document variation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -26,6 +23,15 @@ type Knowledgedocumentversionvariation struct {
 
 	// Contexts - The context values associated with the variation.
 	Contexts *[]Documentvariationcontext `json:"contexts,omitempty"`
+
+	// Priority - The priority of the variation.
+	Priority *int `json:"priority,omitempty"`
+
+	// Name - The name of the variation.
+	Name *string `json:"name,omitempty"`
+
+	// Body - The content for the variation.
+	Body *Documentbody `json:"body,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -115,13 +121,17 @@ func (o Knowledgedocumentversionvariation) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Body *Documentbody `json:"body,omitempty"`
-		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Contexts *[]Documentvariationcontext `json:"contexts,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Body *Documentbody `json:"body,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -130,13 +140,17 @@ func (o Knowledgedocumentversionvariation) MarshalJSON() ([]byte, error) {
 	}{ 
 		Id: o.Id,
 		
-		Body: o.Body,
-		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
 		Contexts: o.Contexts,
+		
+		Priority: o.Priority,
+		
+		Name: o.Name,
+		
+		Body: o.Body,
 		
 		SelfUri: o.SelfUri,
 		
@@ -156,11 +170,6 @@ func (o *Knowledgedocumentversionvariation) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if Body, ok := KnowledgedocumentversionvariationMap["body"].(map[string]interface{}); ok {
-		BodyString, _ := json.Marshal(Body)
-		json.Unmarshal(BodyString, &o.Body)
-	}
-	
 	if dateCreatedString, ok := KnowledgedocumentversionvariationMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -174,6 +183,20 @@ func (o *Knowledgedocumentversionvariation) UnmarshalJSON(b []byte) error {
 	if Contexts, ok := KnowledgedocumentversionvariationMap["contexts"].([]interface{}); ok {
 		ContextsString, _ := json.Marshal(Contexts)
 		json.Unmarshal(ContextsString, &o.Contexts)
+	}
+	
+	if Priority, ok := KnowledgedocumentversionvariationMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Name, ok := KnowledgedocumentversionvariationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+    
+	if Body, ok := KnowledgedocumentversionvariationMap["body"].(map[string]interface{}); ok {
+		BodyString, _ := json.Marshal(Body)
+		json.Unmarshal(BodyString, &o.Body)
 	}
 	
 	if SelfUri, ok := KnowledgedocumentversionvariationMap["selfUri"].(string); ok {

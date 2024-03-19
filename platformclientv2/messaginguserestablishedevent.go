@@ -24,7 +24,7 @@ type Messaginguserestablishedevent struct {
 	// CommunicationId - A unique Id (V4 UUID) identifying this communication.
 	CommunicationId *string `json:"communicationId,omitempty"`
 
-	// UserId - A unique Id (V4 UUID) identifying this userId this communication belongs to.
+	// UserId - A unique Id (V4 UUID) identifying the user this communication belongs to.
 	UserId *string `json:"userId,omitempty"`
 
 	// QueueId - A unique Id (V4 UUID) identifying the queue that the user is messaging on behalf of. Applies to outbound messages only.

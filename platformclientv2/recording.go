@@ -30,7 +30,7 @@ type Recording struct {
 	// EndTime - The end time of the recording. Null when there is no playable media.
 	EndTime *string `json:"endTime,omitempty"`
 
-	// Media - The type of media that the recording is. At the moment that could be audio, chat, or email.
+	// Media - The media type of the recording. This could be audio, chat, messaging, email, or screen.
 	Media *string `json:"media,omitempty"`
 
 	// Annotations - Annotations that belong to the recording.

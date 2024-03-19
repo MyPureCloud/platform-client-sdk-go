@@ -15,9 +15,6 @@ type Knowledgeguestdocumentvariation struct {
 	// Id - The globally unique identifier for the variation.
 	Id *string `json:"id,omitempty"`
 
-	// Body - The content for the variation.
-	Body *Documentbody `json:"body,omitempty"`
-
 	// DateCreated - The creation date-time for the document variation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -32,6 +29,9 @@ type Knowledgeguestdocumentvariation struct {
 
 	// Document - The reference to document to which the variation is associated.
 	Document *Addressableentityref `json:"document,omitempty"`
+
+	// Body - The content for the variation.
+	Body *Documentbody `json:"body,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,8 +118,6 @@ func (o Knowledgeguestdocumentvariation) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Body *Documentbody `json:"body,omitempty"`
-		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -130,12 +128,12 @@ func (o Knowledgeguestdocumentvariation) MarshalJSON() ([]byte, error) {
 		
 		Document *Addressableentityref `json:"document,omitempty"`
 		
+		Body *Documentbody `json:"body,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Body: o.Body,
 		
 		DateCreated: DateCreated,
 		
@@ -146,6 +144,8 @@ func (o Knowledgeguestdocumentvariation) MarshalJSON() ([]byte, error) {
 		Contexts: o.Contexts,
 		
 		Document: o.Document,
+		
+		Body: o.Body,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -163,11 +163,6 @@ func (o *Knowledgeguestdocumentvariation) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if Body, ok := KnowledgeguestdocumentvariationMap["body"].(map[string]interface{}); ok {
-		BodyString, _ := json.Marshal(Body)
-		json.Unmarshal(BodyString, &o.Body)
-	}
-	
 	if dateCreatedString, ok := KnowledgeguestdocumentvariationMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -191,6 +186,11 @@ func (o *Knowledgeguestdocumentvariation) UnmarshalJSON(b []byte) error {
 	if Document, ok := KnowledgeguestdocumentvariationMap["document"].(map[string]interface{}); ok {
 		DocumentString, _ := json.Marshal(Document)
 		json.Unmarshal(DocumentString, &o.Document)
+	}
+	
+	if Body, ok := KnowledgeguestdocumentvariationMap["body"].(map[string]interface{}); ok {
+		BodyString, _ := json.Marshal(Body)
+		json.Unmarshal(BodyString, &o.Body)
 	}
 	
 	if SelfUri, ok := KnowledgeguestdocumentvariationMap["selfUri"].(string); ok {

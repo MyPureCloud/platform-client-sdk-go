@@ -17,6 +17,9 @@ type Autostatustransitiondetail struct {
 
 	// DateOfTransition - Date at which auto status transition occurs. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateOfTransition *time.Time `json:"dateOfTransition,omitempty"`
+
+	// ErrorDetails - This property will be set if auto status transition is failed.
+	ErrorDetails *Taskmanagementerrordetails `json:"errorDetails,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,11 +96,15 @@ func (o Autostatustransitiondetail) MarshalJSON() ([]byte, error) {
 		NextStatus *Workitemstatusreference `json:"nextStatus,omitempty"`
 		
 		DateOfTransition *string `json:"dateOfTransition,omitempty"`
+		
+		ErrorDetails *Taskmanagementerrordetails `json:"errorDetails,omitempty"`
 		Alias
 	}{ 
 		NextStatus: o.NextStatus,
 		
 		DateOfTransition: DateOfTransition,
+		
+		ErrorDetails: o.ErrorDetails,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,11 @@ func (o *Autostatustransitiondetail) UnmarshalJSON(b []byte) error {
 	if dateOfTransitionString, ok := AutostatustransitiondetailMap["dateOfTransition"].(string); ok {
 		DateOfTransition, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateOfTransitionString)
 		o.DateOfTransition = &DateOfTransition
+	}
+	
+	if ErrorDetails, ok := AutostatustransitiondetailMap["errorDetails"].(map[string]interface{}); ok {
+		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
+		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
 	}
 	
 

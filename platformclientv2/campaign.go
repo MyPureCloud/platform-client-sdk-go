@@ -114,6 +114,9 @@ type Campaign struct {
 	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on this campaign
 	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
+	// CallbackAutoAnswer - The option manages the auto-answer callback calls
+	CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -265,6 +268,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 		
+		CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -335,6 +340,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
 		
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
+		
+		CallbackAutoAnswer: o.CallbackAutoAnswer,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -508,6 +515,10 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 		o.MaxCallsPerAgent = &MaxCallsPerAgentInt
 	}
 	
+	if CallbackAutoAnswer, ok := CampaignMap["callbackAutoAnswer"].(bool); ok {
+		o.CallbackAutoAnswer = &CallbackAutoAnswer
+	}
+    
 	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

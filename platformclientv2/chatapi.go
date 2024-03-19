@@ -32,8 +32,6 @@ func NewChatApiWithConfig(config *Configuration) *ChatApi {
 // DeleteChatsRoomMessage invokes DELETE /api/v2/chats/rooms/{roomJid}/messages/{messageId}
 //
 // Delete a message in a room
-//
-// Preview: DeleteChatsRoomMessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) DeleteChatsRoomMessage(roomJid string, messageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -115,8 +113,6 @@ func (a ChatApi) DeleteChatsRoomMessage(roomJid string, messageId string) (*APIR
 // DeleteChatsRoomParticipant invokes DELETE /api/v2/chats/rooms/{roomJid}/participants/{userId}
 //
 // Remove a user from a room.
-//
-// Preview: DeleteChatsRoomParticipant is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) DeleteChatsRoomParticipant(roomJid string, userId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -198,8 +194,6 @@ func (a ChatApi) DeleteChatsRoomParticipant(roomJid string, userId string) (*API
 // DeleteChatsRoomPinnedmessage invokes DELETE /api/v2/chats/rooms/{roomJid}/pinnedmessages/{pinnedMessageId}
 //
 // Remove a pinned message from a room
-//
-// Preview: DeleteChatsRoomPinnedmessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) DeleteChatsRoomPinnedmessage(roomJid string, pinnedMessageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -281,8 +275,6 @@ func (a ChatApi) DeleteChatsRoomPinnedmessage(roomJid string, pinnedMessageId st
 // DeleteChatsUserMessage invokes DELETE /api/v2/chats/users/{userId}/messages/{messageId}
 //
 // Delete a message to a user
-//
-// Preview: DeleteChatsUserMessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) DeleteChatsUserMessage(userId string, messageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -364,8 +356,6 @@ func (a ChatApi) DeleteChatsUserMessage(userId string, messageId string) (*APIRe
 // GetChatsMessage invokes GET /api/v2/chats/messages/{messageId}
 //
 // Get a message
-//
-// Preview: GetChatsMessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsMessage(messageId string) (*Chatmessageresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -448,8 +438,6 @@ func (a ChatApi) GetChatsMessage(messageId string) (*Chatmessageresponse, *APIRe
 // GetChatsRoom invokes GET /api/v2/chats/rooms/{roomJid}
 //
 // Get a room
-//
-// Preview: GetChatsRoom is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsRoom(roomJid string) (*Room, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -532,8 +520,6 @@ func (a ChatApi) GetChatsRoom(roomJid string) (*Room, *APIResponse, error) {
 // GetChatsRoomMessage invokes GET /api/v2/chats/rooms/{roomJid}/messages/{messageIds}
 //
 // Get messages by id(s) from a room
-//
-// Preview: GetChatsRoomMessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsRoomMessage(roomJid string, messageIds string) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -622,8 +608,6 @@ func (a ChatApi) GetChatsRoomMessage(roomJid string, messageIds string) (*Chatme
 // GetChatsRoomMessages invokes GET /api/v2/chats/rooms/{roomJid}/messages
 //
 // Get a room's message history
-//
-// Preview: GetChatsRoomMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsRoomMessages(roomJid string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -701,6 +685,176 @@ func (a ChatApi) GetChatsRoomMessages(roomJid string, limit string, before strin
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Chatmessageentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetChatsRoomParticipant invokes GET /api/v2/chats/rooms/{roomJid}/participants/{participantJid}
+//
+// Get a room participant
+func (a ChatApi) GetChatsRoomParticipant(roomJid string, participantJid string) (*Roomparticipant, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/participants/{participantJid}"
+	path = strings.Replace(path, "{roomJid}", url.PathEscape(fmt.Sprintf("%v", roomJid)), -1)
+	path = strings.Replace(path, "{participantJid}", url.PathEscape(fmt.Sprintf("%v", participantJid)), -1)
+	defaultReturn := new(Roomparticipant)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'roomJid' is set
+	if &roomJid == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'roomJid' when calling ChatApi->GetChatsRoomParticipant")
+	}
+	// verify the required parameter 'participantJid' is set
+	if &participantJid == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantJid' when calling ChatApi->GetChatsRoomParticipant")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Roomparticipant
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Roomparticipant" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetChatsRoomParticipants invokes GET /api/v2/chats/rooms/{roomJid}/participants
+//
+// Get room participants in a room
+func (a ChatApi) GetChatsRoomParticipants(roomJid string) (*Roomparticipantsresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/participants"
+	path = strings.Replace(path, "{roomJid}", url.PathEscape(fmt.Sprintf("%v", roomJid)), -1)
+	defaultReturn := new(Roomparticipantsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'roomJid' is set
+	if &roomJid == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'roomJid' when calling ChatApi->GetChatsRoomParticipants")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Roomparticipantsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Roomparticipantsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -788,8 +942,6 @@ func (a ChatApi) GetChatsSettings() (*Chatsettings, *APIResponse, error) {
 // GetChatsThreadMessages invokes GET /api/v2/chats/threads/{threadId}/messages
 //
 // Get history by thread
-//
-// Preview: GetChatsThreadMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -878,8 +1030,6 @@ func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before st
 // GetChatsUserMessage invokes GET /api/v2/chats/users/{userId}/messages/{messageIds}
 //
 // Get messages by id(s) from a 1on1
-//
-// Preview: GetChatsUserMessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsUserMessage(userId string, messageIds string) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -968,8 +1118,6 @@ func (a ChatApi) GetChatsUserMessage(userId string, messageIds string) (*Chatmes
 // GetChatsUserMessages invokes GET /api/v2/chats/users/{userId}/messages
 //
 // Get 1on1 History between a user
-//
-// Preview: GetChatsUserMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsUserMessages(userId string, limit string, before string, after string) (*Chatmessageresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1142,8 +1290,6 @@ func (a ChatApi) GetChatsUserSettings(userId string) (*Chatusersettings, *APIRes
 // PatchChatsRoom invokes PATCH /api/v2/chats/rooms/{roomJid}
 //
 // Set properties for a room
-//
-// Preview: PatchChatsRoom is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PatchChatsRoom(roomJid string, body Roomupdaterequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1227,8 +1373,6 @@ func (a ChatApi) PatchChatsRoom(roomJid string, body Roomupdaterequest) (*APIRes
 // PatchChatsRoomMessage invokes PATCH /api/v2/chats/rooms/{roomJid}/messages/{messageId}
 //
 // Edit a message in a room
-//
-// Preview: PatchChatsRoomMessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PatchChatsRoomMessage(roomJid string, messageId string, body Sendmessagebody) (*Chatsendmessageresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1409,8 +1553,6 @@ func (a ChatApi) PatchChatsSettings(body Chatsettings) (*Chatsettings, *APIRespo
 // PatchChatsUserMessage invokes PATCH /api/v2/chats/users/{userId}/messages/{messageId}
 //
 // Edit a message to a user
-//
-// Preview: PatchChatsUserMessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PatchChatsUserMessage(userId string, messageId string, body Sendmessagebody) (*Chatsendmessageresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1599,8 +1741,6 @@ func (a ChatApi) PatchChatsUserSettings(userId string, body Chatusersettings) (*
 // PostChatsRoomMessages invokes POST /api/v2/chats/rooms/{roomJid}/messages
 //
 // Send a message to a room
-//
-// Preview: PostChatsRoomMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PostChatsRoomMessages(roomJid string, body Sendmessagebody) (*Chatsendmessageresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1691,8 +1831,6 @@ func (a ChatApi) PostChatsRoomMessages(roomJid string, body Sendmessagebody) (*C
 // PostChatsRoomParticipant invokes POST /api/v2/chats/rooms/{roomJid}/participants/{userId}
 //
 // Join a room
-//
-// Preview: PostChatsRoomParticipant is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PostChatsRoomParticipant(roomJid string, userId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1774,8 +1912,6 @@ func (a ChatApi) PostChatsRoomParticipant(roomJid string, userId string) (*APIRe
 // PostChatsRoomPinnedmessages invokes POST /api/v2/chats/rooms/{roomJid}/pinnedmessages
 //
 // Add pinned messages for a room, up to a maximum of 5 pinned messages
-//
-// Preview: PostChatsRoomPinnedmessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PostChatsRoomPinnedmessages(roomJid string, body Pinnedmessagerequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1859,8 +1995,6 @@ func (a ChatApi) PostChatsRoomPinnedmessages(roomJid string, body Pinnedmessager
 // PostChatsRooms invokes POST /api/v2/chats/rooms
 //
 // Create an adhoc room
-//
-// Preview: PostChatsRooms is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PostChatsRooms(body Createroomrequest) (*Createroomresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1945,8 +2079,6 @@ func (a ChatApi) PostChatsRooms(body Createroomrequest) (*Createroomresponse, *A
 // PostChatsUserMessages invokes POST /api/v2/chats/users/{userId}/messages
 //
 // Send a message to a user
-//
-// Preview: PostChatsUserMessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PostChatsUserMessages(userId string, body Sendmessagebody) (*Chatsendmessageresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2032,6 +2164,89 @@ func (a ChatApi) PostChatsUserMessages(userId string, body Sendmessagebody) (*Ch
 		}
 	}
 	return successPayload, response, err
+}
+
+// PutChatsMessageReactions invokes PUT /api/v2/chats/messages/{messageId}/reactions
+//
+// Update reactions to a message
+func (a ChatApi) PutChatsMessageReactions(messageId string, body Chatreactionupdate) (*APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/chats/messages/{messageId}/reactions"
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messageId' is set
+	if &messageId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'messageId' when calling ChatApi->PutChatsMessageReactions")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling ChatApi->PutChatsMessageReactions")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PutChatsSettings invokes PUT /api/v2/chats/settings

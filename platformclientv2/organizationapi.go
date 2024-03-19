@@ -522,12 +522,12 @@ func (a OrganizationApi) GetOrganizationsLimitsChangerequests(after int, before 
 
 // GetOrganizationsLimitsDocs invokes GET /api/v2/organizations/limits/docs
 //
-// Get a link to the limit documentation
-func (a OrganizationApi) GetOrganizationsLimitsDocs() (*Urlresponse, *APIResponse, error) {
+// Get limit documentation
+func (a OrganizationApi) GetOrganizationsLimitsDocs() (*Limitdocumentation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/organizations/limits/docs"
-	defaultReturn := new(Urlresponse)
+	defaultReturn := new(Limitdocumentation)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -580,14 +580,14 @@ func (a OrganizationApi) GetOrganizationsLimitsDocs() (*Urlresponse, *APIRespons
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Urlresponse
+	var successPayload *Limitdocumentation
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Urlresponse" == "string" {
+		if "Limitdocumentation" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
