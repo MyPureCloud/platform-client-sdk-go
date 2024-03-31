@@ -55,6 +55,9 @@ type Knowledgedocumentsearchrequest struct {
 
 	// ConfidenceThreshold - The confidence threshold for the search results. If applied, the returned results will have an equal or higher confidence than the threshold. The value should be between 0 to 1.
 	ConfidenceThreshold *float32 `json:"confidenceThreshold,omitempty"`
+
+	// AnswerHighlightTopResults - The number of articles to be sent for answer-highlighting. Can range from 1-5.
+	AnswerHighlightTopResults *int `json:"answerHighlightTopResults,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -149,6 +152,8 @@ func (o Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		ConversationContext *Knowledgeconversationcontext `json:"conversationContext,omitempty"`
 		
 		ConfidenceThreshold *float32 `json:"confidenceThreshold,omitempty"`
+		
+		AnswerHighlightTopResults *int `json:"answerHighlightTopResults,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -180,6 +185,8 @@ func (o Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		ConversationContext: o.ConversationContext,
 		
 		ConfidenceThreshold: o.ConfidenceThreshold,
+		
+		AnswerHighlightTopResults: o.AnswerHighlightTopResults,
 		Alias:    (Alias)(o),
 	})
 }
@@ -258,6 +265,11 @@ func (o *Knowledgedocumentsearchrequest) UnmarshalJSON(b []byte) error {
 	if ConfidenceThreshold, ok := KnowledgedocumentsearchrequestMap["confidenceThreshold"].(float64); ok {
 		ConfidenceThresholdFloat32 := float32(ConfidenceThreshold)
 		o.ConfidenceThreshold = &ConfidenceThresholdFloat32
+	}
+	
+	if AnswerHighlightTopResults, ok := KnowledgedocumentsearchrequestMap["answerHighlightTopResults"].(float64); ok {
+		AnswerHighlightTopResultsInt := int(AnswerHighlightTopResults)
+		o.AnswerHighlightTopResults = &AnswerHighlightTopResultsInt
 	}
 	
 

@@ -2671,6 +2671,10 @@ func (a RecordingApi) GetRecordingsRetentionQuery(retentionThresholdDays int, cu
 // GetRecordingsScreensessions invokes GET /api/v2/recordings/screensessions
 //
 // Retrieves a paged listing of screen recording sessions
+//
+// Coming soon: This API is deprecated and will be replaced by /api/v2/recordings/screensessions/details
+//
+// Deprecated: GetRecordingsScreensessions is deprecated
 func (a RecordingApi) GetRecordingsScreensessions(pageSize int, pageNumber int) (*Screenrecordingsessionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

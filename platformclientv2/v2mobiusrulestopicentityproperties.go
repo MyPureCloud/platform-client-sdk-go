@@ -15,16 +15,16 @@ type V2mobiusrulestopicentityproperties struct {
 	EntityType *string `json:"entityType,omitempty"`
 
 	// User
-	User *V2mobiusrulestopicaddressableentityref `json:"user,omitempty"`
+	User *V2mobiusrulestopicalertingaddressableentityref `json:"user,omitempty"`
 
 	// Group
-	Group *V2mobiusrulestopicaddressableentityref `json:"group,omitempty"`
+	Group *V2mobiusrulestopicalertingaddressableentityref `json:"group,omitempty"`
 
 	// Queue
-	Queue *V2mobiusrulestopicaddressableentityref `json:"queue,omitempty"`
+	Queue *V2mobiusrulestopicalertingaddressableentityref `json:"queue,omitempty"`
 
 	// Team
-	Team *V2mobiusrulestopicaddressableentityref `json:"team,omitempty"`
+	Team *V2mobiusrulestopicalertingaddressableentityref `json:"team,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,13 +92,13 @@ func (o V2mobiusrulestopicentityproperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		EntityType *string `json:"entityType,omitempty"`
 		
-		User *V2mobiusrulestopicaddressableentityref `json:"user,omitempty"`
+		User *V2mobiusrulestopicalertingaddressableentityref `json:"user,omitempty"`
 		
-		Group *V2mobiusrulestopicaddressableentityref `json:"group,omitempty"`
+		Group *V2mobiusrulestopicalertingaddressableentityref `json:"group,omitempty"`
 		
-		Queue *V2mobiusrulestopicaddressableentityref `json:"queue,omitempty"`
+		Queue *V2mobiusrulestopicalertingaddressableentityref `json:"queue,omitempty"`
 		
-		Team *V2mobiusrulestopicaddressableentityref `json:"team,omitempty"`
+		Team *V2mobiusrulestopicalertingaddressableentityref `json:"team,omitempty"`
 		Alias
 	}{ 
 		EntityType: o.EntityType,

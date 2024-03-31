@@ -11,6 +11,9 @@ import (
 type V2mobiusalertstopicconditionrulepredicate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id
+	Id *string `json:"id,omitempty"`
+
 	// Entity
 	Entity *V2mobiusalertstopicentityproperties `json:"entity,omitempty"`
 
@@ -25,6 +28,12 @@ type V2mobiusalertstopicconditionrulepredicate struct {
 
 	// Value
 	Value *float32 `json:"value,omitempty"`
+
+	// Status
+	Status *string `json:"status,omitempty"`
+
+	// MediaType
+	MediaType *string `json:"mediaType,omitempty"`
 
 	// ComparisonOperator
 	ComparisonOperator *string `json:"comparisonOperator,omitempty"`
@@ -93,6 +102,8 @@ func (o V2mobiusalertstopicconditionrulepredicate) MarshalJSON() ([]byte, error)
 	type Alias V2mobiusalertstopicconditionrulepredicate
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Entity *V2mobiusalertstopicentityproperties `json:"entity,omitempty"`
 		
 		Metric *string `json:"metric,omitempty"`
@@ -103,9 +114,15 @@ func (o V2mobiusalertstopicconditionrulepredicate) MarshalJSON() ([]byte, error)
 		
 		Value *float32 `json:"value,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
 		ComparisonOperator *string `json:"comparisonOperator,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Entity: o.Entity,
 		
 		Metric: o.Metric,
@@ -115,6 +132,10 @@ func (o V2mobiusalertstopicconditionrulepredicate) MarshalJSON() ([]byte, error)
 		MetricValueType: o.MetricValueType,
 		
 		Value: o.Value,
+		
+		Status: o.Status,
+		
+		MediaType: o.MediaType,
 		
 		ComparisonOperator: o.ComparisonOperator,
 		Alias:    (Alias)(o),
@@ -126,6 +147,11 @@ func (o *V2mobiusalertstopicconditionrulepredicate) UnmarshalJSON(b []byte) erro
 	err := json.Unmarshal(b, &V2mobiusalertstopicconditionrulepredicateMap)
 	if err != nil {
 		return err
+	}
+	
+	if Id, ok := V2mobiusalertstopicconditionrulepredicateMap["id"].(map[string]interface{}); ok {
+		IdString, _ := json.Marshal(Id)
+		json.Unmarshal(IdString, &o.Id)
 	}
 	
 	if Entity, ok := V2mobiusalertstopicconditionrulepredicateMap["entity"].(map[string]interface{}); ok {
@@ -148,6 +174,14 @@ func (o *V2mobiusalertstopicconditionrulepredicate) UnmarshalJSON(b []byte) erro
 	if Value, ok := V2mobiusalertstopicconditionrulepredicateMap["value"].(float64); ok {
 		ValueFloat32 := float32(Value)
 		o.Value = &ValueFloat32
+	}
+    
+	if Status, ok := V2mobiusalertstopicconditionrulepredicateMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
+	if MediaType, ok := V2mobiusalertstopicconditionrulepredicateMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
 	}
     
 	if ComparisonOperator, ok := V2mobiusalertstopicconditionrulepredicateMap["comparisonOperator"].(string); ok {

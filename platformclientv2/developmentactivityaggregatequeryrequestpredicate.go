@@ -14,7 +14,7 @@ type Developmentactivityaggregatequeryrequestpredicate struct {
 	// Dimension - Each predicates specifies a dimension.
 	Dimension *string `json:"dimension,omitempty"`
 
-	// Value - Corresponding value for dimensions in predicates. If the dimension is type, Valid Values: Informational, AssessedContent, Assessment, Coaching
+	// Value - Corresponding value for dimensions in predicates. If the dimension is type, Valid Values: Informational, AssessedContent, Assessment, Coaching, External
 	Value *string `json:"value,omitempty"`
 }
 

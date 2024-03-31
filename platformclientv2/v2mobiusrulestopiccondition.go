@@ -11,6 +11,9 @@ import (
 type V2mobiusrulestopiccondition struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id
+	Id *string `json:"id,omitempty"`
+
 	// Conditions
 	Conditions *[]V2mobiusrulestopiccondition `json:"conditions,omitempty"`
 
@@ -84,6 +87,8 @@ func (o V2mobiusrulestopiccondition) MarshalJSON() ([]byte, error) {
 	type Alias V2mobiusrulestopiccondition
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Conditions *[]V2mobiusrulestopiccondition `json:"conditions,omitempty"`
 		
 		Predicates *[]V2mobiusrulestopicconditionrulepredicate `json:"predicates,omitempty"`
@@ -91,6 +96,8 @@ func (o V2mobiusrulestopiccondition) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Conditions: o.Conditions,
 		
 		Predicates: o.Predicates,
@@ -105,6 +112,11 @@ func (o *V2mobiusrulestopiccondition) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &V2mobiusrulestopicconditionMap)
 	if err != nil {
 		return err
+	}
+	
+	if Id, ok := V2mobiusrulestopicconditionMap["id"].(map[string]interface{}); ok {
+		IdString, _ := json.Marshal(Id)
+		json.Unmarshal(IdString, &o.Id)
 	}
 	
 	if Conditions, ok := V2mobiusrulestopicconditionMap["conditions"].([]interface{}); ok {

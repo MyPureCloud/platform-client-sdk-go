@@ -23,6 +23,9 @@ type Queueconversationcalleventtopiccallconversation struct {
 	// OtherMediaUris
 	OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 
+	// Address
+	Address *string `json:"address,omitempty"`
+
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
@@ -104,6 +107,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		
+		Address *string `json:"address,omitempty"`
+		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
 		SecurePause *bool `json:"securePause,omitempty"`
@@ -118,6 +123,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		Participants: o.Participants,
 		
 		OtherMediaUris: o.OtherMediaUris,
+		
+		Address: o.Address,
 		
 		RecordingState: o.RecordingState,
 		
@@ -153,6 +160,10 @@ func (o *Queueconversationcalleventtopiccallconversation) UnmarshalJSON(b []byte
 		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
 	}
 	
+	if Address, ok := QueueconversationcalleventtopiccallconversationMap["address"].(string); ok {
+		o.Address = &Address
+	}
+    
 	if RecordingState, ok := QueueconversationcalleventtopiccallconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}

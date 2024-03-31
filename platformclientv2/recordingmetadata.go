@@ -33,6 +33,12 @@ type Recordingmetadata struct {
 	// Media - The type of media that the recording is. At the moment that could be audio, chat, email, or message.
 	Media *string `json:"media,omitempty"`
 
+	// MediaSubtype - The recording media subtype.
+	MediaSubtype *string `json:"mediaSubtype,omitempty"`
+
+	// MediaSubject - The recording media subject.
+	MediaSubject *string `json:"mediaSubject,omitempty"`
+
 	// Annotations - Annotations that belong to the recording. Populated when recording filestate is AVAILABLE.
 	Annotations *[]Annotation `json:"annotations,omitempty"`
 
@@ -187,6 +193,10 @@ func (o Recordingmetadata) MarshalJSON() ([]byte, error) {
 		
 		Media *string `json:"media,omitempty"`
 		
+		MediaSubtype *string `json:"mediaSubtype,omitempty"`
+		
+		MediaSubject *string `json:"mediaSubject,omitempty"`
+		
 		Annotations *[]Annotation `json:"annotations,omitempty"`
 		
 		FileState *string `json:"fileState,omitempty"`
@@ -225,6 +235,10 @@ func (o Recordingmetadata) MarshalJSON() ([]byte, error) {
 		EndTime: o.EndTime,
 		
 		Media: o.Media,
+		
+		MediaSubtype: o.MediaSubtype,
+		
+		MediaSubject: o.MediaSubject,
 		
 		Annotations: o.Annotations,
 		
@@ -286,6 +300,14 @@ func (o *Recordingmetadata) UnmarshalJSON(b []byte) error {
     
 	if Media, ok := RecordingmetadataMap["media"].(string); ok {
 		o.Media = &Media
+	}
+    
+	if MediaSubtype, ok := RecordingmetadataMap["mediaSubtype"].(string); ok {
+		o.MediaSubtype = &MediaSubtype
+	}
+    
+	if MediaSubject, ok := RecordingmetadataMap["mediaSubject"].(string); ok {
+		o.MediaSubject = &MediaSubject
 	}
     
 	if Annotations, ok := RecordingmetadataMap["annotations"].([]interface{}); ok {

@@ -33,6 +33,9 @@ type Wfmusernotificationtopicwfmusernotification struct {
 	// AdherenceExplanation
 	AdherenceExplanation *Wfmusernotificationtopicadherenceexplanationnotification `json:"adherenceExplanation,omitempty"`
 
+	// AlternativeShift
+	AlternativeShift *Wfmusernotificationtopicalternativeshiftnotification `json:"alternativeShift,omitempty"`
+
 	// AgentNotification
 	AgentNotification *bool `json:"agentNotification,omitempty"`
 
@@ -128,6 +131,8 @@ func (o Wfmusernotificationtopicwfmusernotification) MarshalJSON() ([]byte, erro
 		
 		AdherenceExplanation *Wfmusernotificationtopicadherenceexplanationnotification `json:"adherenceExplanation,omitempty"`
 		
+		AlternativeShift *Wfmusernotificationtopicalternativeshiftnotification `json:"alternativeShift,omitempty"`
+		
 		AgentNotification *bool `json:"agentNotification,omitempty"`
 		
 		OtherNotificationIdsInGroup *[]string `json:"otherNotificationIdsInGroup,omitempty"`
@@ -148,6 +153,8 @@ func (o Wfmusernotificationtopicwfmusernotification) MarshalJSON() ([]byte, erro
 		TimeOffRequest: o.TimeOffRequest,
 		
 		AdherenceExplanation: o.AdherenceExplanation,
+		
+		AlternativeShift: o.AlternativeShift,
 		
 		AgentNotification: o.AgentNotification,
 		
@@ -195,6 +202,11 @@ func (o *Wfmusernotificationtopicwfmusernotification) UnmarshalJSON(b []byte) er
 	if AdherenceExplanation, ok := WfmusernotificationtopicwfmusernotificationMap["adherenceExplanation"].(map[string]interface{}); ok {
 		AdherenceExplanationString, _ := json.Marshal(AdherenceExplanation)
 		json.Unmarshal(AdherenceExplanationString, &o.AdherenceExplanation)
+	}
+	
+	if AlternativeShift, ok := WfmusernotificationtopicwfmusernotificationMap["alternativeShift"].(map[string]interface{}); ok {
+		AlternativeShiftString, _ := json.Marshal(AlternativeShift)
+		json.Unmarshal(AlternativeShiftString, &o.AlternativeShift)
 	}
 	
 	if AgentNotification, ok := WfmusernotificationtopicwfmusernotificationMap["agentNotification"].(bool); ok {

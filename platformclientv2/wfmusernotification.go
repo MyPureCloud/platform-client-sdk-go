@@ -33,6 +33,9 @@ type Wfmusernotification struct {
 	// AdherenceExplanation - An adherence explanation notification.  Only set if type == AdherenceExplanation
 	AdherenceExplanation *Adherenceexplanationnotification `json:"adherenceExplanation,omitempty"`
 
+	// AlternativeShift - An alternative shift trade notification.  Only set if type == AlternativeShift
+	AlternativeShift *Alternativeshiftnotification `json:"alternativeShift,omitempty"`
+
 	// MarkedAsRead - Whether this notification has been marked \"read\"
 	MarkedAsRead *bool `json:"markedAsRead,omitempty"`
 
@@ -128,6 +131,8 @@ func (o Wfmusernotification) MarshalJSON() ([]byte, error) {
 		
 		AdherenceExplanation *Adherenceexplanationnotification `json:"adherenceExplanation,omitempty"`
 		
+		AlternativeShift *Alternativeshiftnotification `json:"alternativeShift,omitempty"`
+		
 		MarkedAsRead *bool `json:"markedAsRead,omitempty"`
 		
 		AgentNotification *bool `json:"agentNotification,omitempty"`
@@ -148,6 +153,8 @@ func (o Wfmusernotification) MarshalJSON() ([]byte, error) {
 		TimeOffRequest: o.TimeOffRequest,
 		
 		AdherenceExplanation: o.AdherenceExplanation,
+		
+		AlternativeShift: o.AlternativeShift,
 		
 		MarkedAsRead: o.MarkedAsRead,
 		
@@ -195,6 +202,11 @@ func (o *Wfmusernotification) UnmarshalJSON(b []byte) error {
 	if AdherenceExplanation, ok := WfmusernotificationMap["adherenceExplanation"].(map[string]interface{}); ok {
 		AdherenceExplanationString, _ := json.Marshal(AdherenceExplanation)
 		json.Unmarshal(AdherenceExplanationString, &o.AdherenceExplanation)
+	}
+	
+	if AlternativeShift, ok := WfmusernotificationMap["alternativeShift"].(map[string]interface{}); ok {
+		AlternativeShiftString, _ := json.Marshal(AlternativeShift)
+		json.Unmarshal(AlternativeShiftString, &o.AlternativeShift)
 	}
 	
 	if MarkedAsRead, ok := WfmusernotificationMap["markedAsRead"].(bool); ok {

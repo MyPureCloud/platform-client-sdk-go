@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// Knowledgeguestdocument
-type Knowledgeguestdocument struct { 
+// Knowledgeguestsearchdocumentresponse
+type Knowledgeguestsearchdocumentresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -51,21 +51,24 @@ type Knowledgeguestdocument struct {
 	// DocumentVersion - The version of the document.
 	DocumentVersion *Addressableentityref `json:"documentVersion,omitempty"`
 
-	// Variations - Variations of the document.
-	Variations *[]Knowledgeguestdocumentvariation `json:"variations,omitempty"`
-
 	// SessionId - ID of the guest session.
 	SessionId *string `json:"sessionId,omitempty"`
 
 	// Category - The reference to category associated with the document.
 	Category *Guestcategoryreference `json:"category,omitempty"`
 
+	// Variations - Variations of the document.
+	Variations *[]Knowledgeguestdocumentvariationanswer `json:"variations,omitempty"`
+
+	// Answer - The answer to the query.
+	Answer *string `json:"answer,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Knowledgeguestdocument) SetField(field string, fieldValue interface{}) {
+func (o *Knowledgeguestsearchdocumentresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -86,7 +89,7 @@ func (o *Knowledgeguestdocument) SetField(field string, fieldValue interface{}) 
 	o.SetFieldNames[field] = true
 }
 
-func (o Knowledgeguestdocument) MarshalJSON() ([]byte, error) {
+func (o Knowledgeguestsearchdocumentresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -124,7 +127,7 @@ func (o Knowledgeguestdocument) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Knowledgeguestdocument
+	type Alias Knowledgeguestsearchdocumentresponse
 	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
@@ -185,11 +188,13 @@ func (o Knowledgeguestdocument) MarshalJSON() ([]byte, error) {
 		
 		DocumentVersion *Addressableentityref `json:"documentVersion,omitempty"`
 		
-		Variations *[]Knowledgeguestdocumentvariation `json:"variations,omitempty"`
-		
 		SessionId *string `json:"sessionId,omitempty"`
 		
 		Category *Guestcategoryreference `json:"category,omitempty"`
+		
+		Variations *[]Knowledgeguestdocumentvariationanswer `json:"variations,omitempty"`
+		
+		Answer *string `json:"answer,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -220,100 +225,106 @@ func (o Knowledgeguestdocument) MarshalJSON() ([]byte, error) {
 		
 		DocumentVersion: o.DocumentVersion,
 		
-		Variations: o.Variations,
-		
 		SessionId: o.SessionId,
 		
 		Category: o.Category,
+		
+		Variations: o.Variations,
+		
+		Answer: o.Answer,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Knowledgeguestdocument) UnmarshalJSON(b []byte) error {
-	var KnowledgeguestdocumentMap map[string]interface{}
-	err := json.Unmarshal(b, &KnowledgeguestdocumentMap)
+func (o *Knowledgeguestsearchdocumentresponse) UnmarshalJSON(b []byte) error {
+	var KnowledgeguestsearchdocumentresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgeguestsearchdocumentresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := KnowledgeguestdocumentMap["id"].(string); ok {
+	if Id, ok := KnowledgeguestsearchdocumentresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Title, ok := KnowledgeguestdocumentMap["title"].(string); ok {
+	if Title, ok := KnowledgeguestsearchdocumentresponseMap["title"].(string); ok {
 		o.Title = &Title
 	}
     
-	if Visible, ok := KnowledgeguestdocumentMap["visible"].(bool); ok {
+	if Visible, ok := KnowledgeguestsearchdocumentresponseMap["visible"].(bool); ok {
 		o.Visible = &Visible
 	}
     
-	if Alternatives, ok := KnowledgeguestdocumentMap["alternatives"].([]interface{}); ok {
+	if Alternatives, ok := KnowledgeguestsearchdocumentresponseMap["alternatives"].([]interface{}); ok {
 		AlternativesString, _ := json.Marshal(Alternatives)
 		json.Unmarshal(AlternativesString, &o.Alternatives)
 	}
 	
-	if State, ok := KnowledgeguestdocumentMap["state"].(string); ok {
+	if State, ok := KnowledgeguestsearchdocumentresponseMap["state"].(string); ok {
 		o.State = &State
 	}
     
-	if dateCreatedString, ok := KnowledgeguestdocumentMap["dateCreated"].(string); ok {
+	if dateCreatedString, ok := KnowledgeguestsearchdocumentresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
 	
-	if dateModifiedString, ok := KnowledgeguestdocumentMap["dateModified"].(string); ok {
+	if dateModifiedString, ok := KnowledgeguestsearchdocumentresponseMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
 	}
 	
-	if dateImportedString, ok := KnowledgeguestdocumentMap["dateImported"].(string); ok {
+	if dateImportedString, ok := KnowledgeguestsearchdocumentresponseMap["dateImported"].(string); ok {
 		DateImported, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateImportedString)
 		o.DateImported = &DateImported
 	}
 	
-	if LastPublishedVersionNumber, ok := KnowledgeguestdocumentMap["lastPublishedVersionNumber"].(float64); ok {
+	if LastPublishedVersionNumber, ok := KnowledgeguestsearchdocumentresponseMap["lastPublishedVersionNumber"].(float64); ok {
 		LastPublishedVersionNumberInt := int(LastPublishedVersionNumber)
 		o.LastPublishedVersionNumber = &LastPublishedVersionNumberInt
 	}
 	
-	if datePublishedString, ok := KnowledgeguestdocumentMap["datePublished"].(string); ok {
+	if datePublishedString, ok := KnowledgeguestsearchdocumentresponseMap["datePublished"].(string); ok {
 		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
 		o.DatePublished = &DatePublished
 	}
 	
-	if CreatedBy, ok := KnowledgeguestdocumentMap["createdBy"].(map[string]interface{}); ok {
+	if CreatedBy, ok := KnowledgeguestsearchdocumentresponseMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
 	}
 	
-	if ModifiedBy, ok := KnowledgeguestdocumentMap["modifiedBy"].(map[string]interface{}); ok {
+	if ModifiedBy, ok := KnowledgeguestsearchdocumentresponseMap["modifiedBy"].(map[string]interface{}); ok {
 		ModifiedByString, _ := json.Marshal(ModifiedBy)
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
-	if DocumentVersion, ok := KnowledgeguestdocumentMap["documentVersion"].(map[string]interface{}); ok {
+	if DocumentVersion, ok := KnowledgeguestsearchdocumentresponseMap["documentVersion"].(map[string]interface{}); ok {
 		DocumentVersionString, _ := json.Marshal(DocumentVersion)
 		json.Unmarshal(DocumentVersionString, &o.DocumentVersion)
 	}
 	
-	if Variations, ok := KnowledgeguestdocumentMap["variations"].([]interface{}); ok {
-		VariationsString, _ := json.Marshal(Variations)
-		json.Unmarshal(VariationsString, &o.Variations)
-	}
-	
-	if SessionId, ok := KnowledgeguestdocumentMap["sessionId"].(string); ok {
+	if SessionId, ok := KnowledgeguestsearchdocumentresponseMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
 	}
     
-	if Category, ok := KnowledgeguestdocumentMap["category"].(map[string]interface{}); ok {
+	if Category, ok := KnowledgeguestsearchdocumentresponseMap["category"].(map[string]interface{}); ok {
 		CategoryString, _ := json.Marshal(Category)
 		json.Unmarshal(CategoryString, &o.Category)
 	}
 	
-	if SelfUri, ok := KnowledgeguestdocumentMap["selfUri"].(string); ok {
+	if Variations, ok := KnowledgeguestsearchdocumentresponseMap["variations"].([]interface{}); ok {
+		VariationsString, _ := json.Marshal(Variations)
+		json.Unmarshal(VariationsString, &o.Variations)
+	}
+	
+	if Answer, ok := KnowledgeguestsearchdocumentresponseMap["answer"].(string); ok {
+		o.Answer = &Answer
+	}
+    
+	if SelfUri, ok := KnowledgeguestsearchdocumentresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -322,7 +333,7 @@ func (o *Knowledgeguestdocument) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Knowledgeguestdocument) String() string {
+func (o *Knowledgeguestsearchdocumentresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

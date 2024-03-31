@@ -14,8 +14,8 @@ type Contactsexportrequest struct {
 	// ContactListFilterId - Contact List Filter ID.
 	ContactListFilterId *string `json:"contactListFilterId,omitempty"`
 
-	// SearchCriteria - Criteria to filter the contacts by.
-	SearchCriteria *Contactbulksearchcriteria `json:"searchCriteria,omitempty"`
+	// Criteria - Criteria to filter the contacts by.
+	Criteria *Contactbulksearchcriteria `json:"criteria,omitempty"`
 
 	// ContactIds - Contact IDs to be exported.
 	ContactIds *[]string `json:"contactIds,omitempty"`
@@ -86,14 +86,14 @@ func (o Contactsexportrequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		ContactListFilterId *string `json:"contactListFilterId,omitempty"`
 		
-		SearchCriteria *Contactbulksearchcriteria `json:"searchCriteria,omitempty"`
+		Criteria *Contactbulksearchcriteria `json:"criteria,omitempty"`
 		
 		ContactIds *[]string `json:"contactIds,omitempty"`
 		Alias
 	}{ 
 		ContactListFilterId: o.ContactListFilterId,
 		
-		SearchCriteria: o.SearchCriteria,
+		Criteria: o.Criteria,
 		
 		ContactIds: o.ContactIds,
 		Alias:    (Alias)(o),
@@ -111,9 +111,9 @@ func (o *Contactsexportrequest) UnmarshalJSON(b []byte) error {
 		o.ContactListFilterId = &ContactListFilterId
 	}
     
-	if SearchCriteria, ok := ContactsexportrequestMap["searchCriteria"].(map[string]interface{}); ok {
-		SearchCriteriaString, _ := json.Marshal(SearchCriteria)
-		json.Unmarshal(SearchCriteriaString, &o.SearchCriteria)
+	if Criteria, ok := ContactsexportrequestMap["criteria"].(map[string]interface{}); ok {
+		CriteriaString, _ := json.Marshal(Criteria)
+		json.Unmarshal(CriteriaString, &o.Criteria)
 	}
 	
 	if ContactIds, ok := ContactsexportrequestMap["contactIds"].([]interface{}); ok {

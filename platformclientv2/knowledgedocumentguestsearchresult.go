@@ -15,7 +15,7 @@ type Knowledgedocumentguestsearchresult struct {
 	Confidence *float64 `json:"confidence,omitempty"`
 
 	// Document - Document that matched the query.
-	Document *Knowledgeguestdocument `json:"document,omitempty"`
+	Document *Knowledgeguestsearchdocumentresponse `json:"document,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Knowledgedocumentguestsearchresult) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Confidence *float64 `json:"confidence,omitempty"`
 		
-		Document *Knowledgeguestdocument `json:"document,omitempty"`
+		Document *Knowledgeguestsearchdocumentresponse `json:"document,omitempty"`
 		Alias
 	}{ 
 		Confidence: o.Confidence,

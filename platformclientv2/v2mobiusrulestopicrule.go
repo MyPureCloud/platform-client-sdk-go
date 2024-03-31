@@ -44,6 +44,9 @@ type V2mobiusrulestopicrule struct {
 
 	// SendExitingAlarmNotification
 	SendExitingAlarmNotification *bool `json:"sendExitingAlarmNotification,omitempty"`
+
+	// WaitBetweenNotificationMs
+	WaitBetweenNotificationMs *int `json:"waitBetweenNotificationMs,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -138,6 +141,8 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		SendExitingAlarmNotification *bool `json:"sendExitingAlarmNotification,omitempty"`
+		
+		WaitBetweenNotificationMs *int `json:"waitBetweenNotificationMs,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -161,6 +166,8 @@ func (o V2mobiusrulestopicrule) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		SendExitingAlarmNotification: o.SendExitingAlarmNotification,
+		
+		WaitBetweenNotificationMs: o.WaitBetweenNotificationMs,
 		Alias:    (Alias)(o),
 	})
 }
@@ -221,6 +228,11 @@ func (o *V2mobiusrulestopicrule) UnmarshalJSON(b []byte) error {
 		o.SendExitingAlarmNotification = &SendExitingAlarmNotification
 	}
     
+	if WaitBetweenNotificationMs, ok := V2mobiusrulestopicruleMap["waitBetweenNotificationMs"].(float64); ok {
+		WaitBetweenNotificationMsInt := int(WaitBetweenNotificationMs)
+		o.WaitBetweenNotificationMs = &WaitBetweenNotificationMsInt
+	}
+	
 
 	return nil
 }

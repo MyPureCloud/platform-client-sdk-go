@@ -27,7 +27,7 @@ type Knowledgesearchresponse struct {
 	PageNumber *int `json:"pageNumber,omitempty"`
 
 	// Results - Results associated to the search response
-	Results *[]Knowledgesearchdocument `json:"results,omitempty"`
+	Results *[]Knowledgesearchdocumentv1 `json:"results,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -103,7 +103,7 @@ func (o Knowledgesearchresponse) MarshalJSON() ([]byte, error) {
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
 		
-		Results *[]Knowledgesearchdocument `json:"results,omitempty"`
+		Results *[]Knowledgesearchdocumentv1 `json:"results,omitempty"`
 		Alias
 	}{ 
 		SearchId: o.SearchId,

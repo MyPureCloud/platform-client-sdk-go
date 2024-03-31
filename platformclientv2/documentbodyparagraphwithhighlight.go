@@ -7,16 +7,19 @@ import (
 	"strings"
 )
 
-// V2mobiusrulestopicaddressableentityref
-type V2mobiusrulestopicaddressableentityref struct { 
+// Documentbodyparagraphwithhighlight
+type Documentbodyparagraphwithhighlight struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The ID of the resource
-	Id *string `json:"id,omitempty"`
+	// Blocks - The list of blocks for the paragraph.
+	Blocks *[]Documentcontentblockwithhighlight `json:"blocks,omitempty"`
+
+	// Properties - The properties for the paragraph.
+	Properties *Documentbodyparagraphproperties `json:"properties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2mobiusrulestopicaddressableentityref) SetField(field string, fieldValue interface{}) {
+func (o *Documentbodyparagraphwithhighlight) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +40,7 @@ func (o *V2mobiusrulestopicaddressableentityref) SetField(field string, fieldVal
 	o.SetFieldNames[field] = true
 }
 
-func (o V2mobiusrulestopicaddressableentityref) MarshalJSON() ([]byte, error) {
+func (o Documentbodyparagraphwithhighlight) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,34 +78,44 @@ func (o V2mobiusrulestopicaddressableentityref) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2mobiusrulestopicaddressableentityref
+	type Alias Documentbodyparagraphwithhighlight
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Blocks *[]Documentcontentblockwithhighlight `json:"blocks,omitempty"`
+		
+		Properties *Documentbodyparagraphproperties `json:"properties,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Blocks: o.Blocks,
+		
+		Properties: o.Properties,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *V2mobiusrulestopicaddressableentityref) UnmarshalJSON(b []byte) error {
-	var V2mobiusrulestopicaddressableentityrefMap map[string]interface{}
-	err := json.Unmarshal(b, &V2mobiusrulestopicaddressableentityrefMap)
+func (o *Documentbodyparagraphwithhighlight) UnmarshalJSON(b []byte) error {
+	var DocumentbodyparagraphwithhighlightMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentbodyparagraphwithhighlightMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := V2mobiusrulestopicaddressableentityrefMap["id"].(string); ok {
-		o.Id = &Id
+	if Blocks, ok := DocumentbodyparagraphwithhighlightMap["blocks"].([]interface{}); ok {
+		BlocksString, _ := json.Marshal(Blocks)
+		json.Unmarshal(BlocksString, &o.Blocks)
 	}
-    
+	
+	if Properties, ok := DocumentbodyparagraphwithhighlightMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *V2mobiusrulestopicaddressableentityref) String() string {
+func (o *Documentbodyparagraphwithhighlight) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -16,6 +16,9 @@ type V2mobiusalertstopicalertnotification struct {
 
 	// NotificationTypes
 	NotificationTypes *[]string `json:"notificationTypes,omitempty"`
+
+	// Locale
+	Locale *string `json:"locale,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o V2mobiusalertstopicalertnotification) MarshalJSON() ([]byte, error) {
 		Recipient *string `json:"recipient,omitempty"`
 		
 		NotificationTypes *[]string `json:"notificationTypes,omitempty"`
+		
+		Locale *string `json:"locale,omitempty"`
 		Alias
 	}{ 
 		Recipient: o.Recipient,
 		
 		NotificationTypes: o.NotificationTypes,
+		
+		Locale: o.Locale,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,10 @@ func (o *V2mobiusalertstopicalertnotification) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(NotificationTypesString, &o.NotificationTypes)
 	}
 	
+	if Locale, ok := V2mobiusalertstopicalertnotificationMap["locale"].(string); ok {
+		o.Locale = &Locale
+	}
+    
 
 	return nil
 }

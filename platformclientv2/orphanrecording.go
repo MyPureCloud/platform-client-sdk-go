@@ -33,6 +33,12 @@ type Orphanrecording struct {
 	// MediaType
 	MediaType *string `json:"mediaType,omitempty"`
 
+	// MediaSubtype
+	MediaSubtype *string `json:"mediaSubtype,omitempty"`
+
+	// MediaSubject
+	MediaSubject *string `json:"mediaSubject,omitempty"`
+
 	// FileState
 	FileState *string `json:"fileState,omitempty"`
 
@@ -148,6 +154,10 @@ func (o Orphanrecording) MarshalJSON() ([]byte, error) {
 		
 		MediaType *string `json:"mediaType,omitempty"`
 		
+		MediaSubtype *string `json:"mediaSubtype,omitempty"`
+		
+		MediaSubject *string `json:"mediaSubject,omitempty"`
+		
 		FileState *string `json:"fileState,omitempty"`
 		
 		ProviderEndpoint *Endpoint `json:"providerEndpoint,omitempty"`
@@ -176,6 +186,10 @@ func (o Orphanrecording) MarshalJSON() ([]byte, error) {
 		MediaSizeBytes: o.MediaSizeBytes,
 		
 		MediaType: o.MediaType,
+		
+		MediaSubtype: o.MediaSubtype,
+		
+		MediaSubject: o.MediaSubject,
 		
 		FileState: o.FileState,
 		
@@ -230,6 +244,14 @@ func (o *Orphanrecording) UnmarshalJSON(b []byte) error {
 	
 	if MediaType, ok := OrphanrecordingMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if MediaSubtype, ok := OrphanrecordingMap["mediaSubtype"].(string); ok {
+		o.MediaSubtype = &MediaSubtype
+	}
+    
+	if MediaSubject, ok := OrphanrecordingMap["mediaSubject"].(string); ok {
+		o.MediaSubject = &MediaSubject
 	}
     
 	if FileState, ok := OrphanrecordingMap["fileState"].(string); ok {

@@ -25,6 +25,9 @@ type Dialerpreview struct {
 
 	// PhoneNumberColumns - The phone number columns associated with this campaign
 	PhoneNumberColumns *[]Phonenumbercolumn `json:"phoneNumberColumns,omitempty"`
+
+	// CallbackAutoAnswer - Whether or not to auto answer the callback
+	CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Dialerpreview) MarshalJSON() ([]byte, error) {
 		CampaignId *string `json:"campaignId,omitempty"`
 		
 		PhoneNumberColumns *[]Phonenumbercolumn `json:"phoneNumberColumns,omitempty"`
+		
+		CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -110,6 +115,8 @@ func (o Dialerpreview) MarshalJSON() ([]byte, error) {
 		CampaignId: o.CampaignId,
 		
 		PhoneNumberColumns: o.PhoneNumberColumns,
+		
+		CallbackAutoAnswer: o.CallbackAutoAnswer,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,6 +149,10 @@ func (o *Dialerpreview) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)
 	}
 	
+	if CallbackAutoAnswer, ok := DialerpreviewMap["callbackAutoAnswer"].(bool); ok {
+		o.CallbackAutoAnswer = &CallbackAutoAnswer
+	}
+    
 
 	return nil
 }

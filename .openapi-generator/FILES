@@ -336,6 +336,8 @@ docs/GetAnalyticsJourneysAggregatesJobResults-example.txt
 docs/GetAnalyticsJourneysAggregatesJobResults-example.txt
 docs/GetAnalyticsKnowledgeAggregatesJob-example.txt
 docs/GetAnalyticsKnowledgeAggregatesJobResults-example.txt
+docs/GetAnalyticsReportingDashboardsUser-example.txt
+docs/GetAnalyticsReportingDashboardsUsers-example.txt
 docs/GetAnalyticsReportingExports-example.txt
 docs/GetAnalyticsReportingExportsMetadata-example.txt
 docs/GetAnalyticsReportingMetadata-example.txt
@@ -347,6 +349,7 @@ docs/GetAnalyticsReportingScheduleHistoryLatest-example.txt
 docs/GetAnalyticsReportingScheduleHistoryRunId-example.txt
 docs/GetAnalyticsReportingSchedules-example.txt
 docs/GetAnalyticsReportingSettings-example.txt
+docs/GetAnalyticsReportingSettingsUserDashboards-example.txt
 docs/GetAnalyticsReportingTimeperiods-example.txt
 docs/GetAnalyticsResolutionsAggregatesJob-example.txt
 docs/GetAnalyticsResolutionsAggregatesJobResults-example.txt
@@ -534,6 +537,7 @@ docs/GetConversationsMessages-example.txt
 docs/GetConversationsMessagesCachedmedia-example.txt
 docs/GetConversationsMessagesCachedmediaCachedMediaItemId-example.txt
 docs/GetConversationsMessagingFacebookApp-example.txt
+docs/GetConversationsMessagingFacebookPermissions-example.txt
 docs/GetConversationsMessagingIntegrations-example.txt
 docs/GetConversationsMessagingIntegrationsFacebook-example.txt
 docs/GetConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
@@ -1700,9 +1704,12 @@ docs/PostAnalyticsKnowledgeAggregatesQuery-example.txt
 docs/PostAnalyticsQueuesObservationsQuery-example.txt
 docs/PostAnalyticsQueuesObservationsQuery-example.txt
 docs/PostAnalyticsRatelimitsAggregatesQuery-example.txt
+docs/PostAnalyticsReportingDashboardsUsersBulkRemove-example.txt
 docs/PostAnalyticsReportingExports-example.txt
 docs/PostAnalyticsReportingScheduleRunreport-example.txt
 docs/PostAnalyticsReportingSchedules-example.txt
+docs/PostAnalyticsReportingSettingsDashboardsBulkRemove-example.txt
+docs/PostAnalyticsReportingSettingsDashboardsQuery-example.txt
 docs/PostAnalyticsResolutionsAggregatesJobs-example.txt
 docs/PostAnalyticsRoutingActivityQuery-example.txt
 docs/PostAnalyticsRoutingActivityQuery-example.txt
@@ -2110,6 +2117,7 @@ docs/PostRecordingsDeletionprotection-example.txt
 docs/PostRecordingsScreensessionsAcknowledge-example.txt
 docs/PostRecordingsScreensessionsMetadata-example.txt
 docs/PostResponsemanagementLibraries-example.txt
+docs/PostResponsemanagementLibrariesBulk-example.txt
 docs/PostResponsemanagementResponseassetsSearch-example.txt
 docs/PostResponsemanagementResponseassetsUploads-example.txt
 docs/PostResponsemanagementResponses-example.txt
@@ -2132,6 +2140,7 @@ docs/PostRoutingSkillgroups-example.txt
 docs/PostRoutingSkills-example.txt
 docs/PostRoutingSmsAddresses-example.txt
 docs/PostRoutingSmsPhonenumbers-example.txt
+docs/PostRoutingSmsPhonenumbersAlphanumeric-example.txt
 docs/PostRoutingSmsPhonenumbersImport-example.txt
 docs/PostRoutingUtilizationLabels-example.txt
 docs/PostRoutingUtilizationTags-example.txt
@@ -2691,6 +2700,7 @@ platformclientv2/alertsummary.go
 platformclientv2/alertsummaryentity.go
 platformclientv2/alltimepoints.go
 platformclientv2/alteration.go
+platformclientv2/alternativeshiftnotification.go
 platformclientv2/amazonlexrequest.go
 platformclientv2/analyticsagentgroup.go
 platformclientv2/analyticsapi.go
@@ -3645,6 +3655,12 @@ platformclientv2/customeventattributelist.go
 platformclientv2/customi18nlabels.go
 platformclientv2/customprovider.go
 platformclientv2/dailypossibleshift.go
+platformclientv2/dashboardconfiguration.go
+platformclientv2/dashboardconfigurationbulkrequest.go
+platformclientv2/dashboardconfigurationlisting.go
+platformclientv2/dashboardconfigurationqueryrequest.go
+platformclientv2/dashboarduser.go
+platformclientv2/dashboarduserlisting.go
 platformclientv2/dataactionconditionpredicate.go
 platformclientv2/dataactionconditionsettings.go
 platformclientv2/dataactioncontactcolumnfieldmapping.go
@@ -3715,9 +3731,13 @@ platformclientv2/dialercampaignruleconfigchangecampaignrulecondition.go
 platformclientv2/dialercampaignruleconfigchangecampaignruleentities.go
 platformclientv2/dialercampaignruleconfigchangeobject.go
 platformclientv2/dialercampaignruleconfigchangeurireference.go
+platformclientv2/dialercampaignscheduleconfigchangealteration.go
 platformclientv2/dialercampaignscheduleconfigchangecampaignschedule.go
 platformclientv2/dialercampaignscheduleconfigchangeobject.go
+platformclientv2/dialercampaignscheduleconfigchangerecurrencepattern.go
+platformclientv2/dialercampaignscheduleconfigchangerecurrencerange.go
 platformclientv2/dialercampaignscheduleconfigchangescheduleinterval.go
+platformclientv2/dialercampaignscheduleconfigchangeschedulerecurrence.go
 platformclientv2/dialercampaignscheduleconfigchangeurireference.go
 platformclientv2/dialercontact.go
 platformclientv2/dialercontactid.go
@@ -3829,6 +3849,7 @@ platformclientv2/documentationv2searchrequest.go
 platformclientv2/documentattribute.go
 platformclientv2/documentbody.go
 platformclientv2/documentbodyblock.go
+platformclientv2/documentbodyblockwithhighlight.go
 platformclientv2/documentbodyimage.go
 platformclientv2/documentbodyimageproperties.go
 platformclientv2/documentbodylist.go
@@ -3837,6 +3858,7 @@ platformclientv2/documentbodylistblockproperties.go
 platformclientv2/documentbodylistitemproperties.go
 platformclientv2/documentbodyparagraph.go
 platformclientv2/documentbodyparagraphproperties.go
+platformclientv2/documentbodyparagraphwithhighlight.go
 platformclientv2/documentbodytable.go
 platformclientv2/documentbodytablecaptionblock.go
 platformclientv2/documentbodytablecaptionitem.go
@@ -3847,8 +3869,11 @@ platformclientv2/documentbodytablerowblock.go
 platformclientv2/documentbodytablerowblockproperties.go
 platformclientv2/documentbodyvideo.go
 platformclientv2/documentbodyvideoproperties.go
+platformclientv2/documentbodywithhighlight.go
 platformclientv2/documentcategoryinput.go
 platformclientv2/documentcontentblock.go
+platformclientv2/documentcontentblockwithhighlight.go
+platformclientv2/documentcontenthighlightindex.go
 platformclientv2/documententitylisting.go
 platformclientv2/documentfaq.go
 platformclientv2/documentlistcontentblock.go
@@ -3865,6 +3890,7 @@ platformclientv2/documentthumbnail.go
 platformclientv2/documentupdate.go
 platformclientv2/documentupload.go
 platformclientv2/documentvariation.go
+platformclientv2/documentvariationanswer.go
 platformclientv2/documentvariationcontext.go
 platformclientv2/documentvariationlisting.go
 platformclientv2/domaincapabilities.go
@@ -3914,6 +3940,7 @@ platformclientv2/dynamicgroupquery.go
 platformclientv2/dynamicgroupquerypreview.go
 platformclientv2/dynamicgrouproutingskillcondition.go
 platformclientv2/dynamicgroupskillcondition.go
+platformclientv2/dynamiclinebalancingsettings.go
 platformclientv2/edge.go
 platformclientv2/edgeautoupdateconfig.go
 platformclientv2/edgechangetopicedge.go
@@ -4152,6 +4179,8 @@ platformclientv2/facebookintegration.go
 platformclientv2/facebookintegrationentitylisting.go
 platformclientv2/facebookintegrationrequest.go
 platformclientv2/facebookintegrationupdaterequest.go
+platformclientv2/facebookpermission.go
+platformclientv2/facebookpermissionentitylisting.go
 platformclientv2/facebookscopedid.go
 platformclientv2/facet.go
 platformclientv2/facetentry.go
@@ -4559,6 +4588,9 @@ platformclientv2/journeysessioneventsnotificationsessionlastevent.go
 platformclientv2/journeysessioneventsnotificationuser.go
 platformclientv2/journeysurveyquestion.go
 platformclientv2/journeyview.go
+platformclientv2/journeyviewchart.go
+platformclientv2/journeyviewchartgroupbyattribute.go
+platformclientv2/journeyviewchartmetric.go
 platformclientv2/journeyviewelement.go
 platformclientv2/journeyviewelementattributes.go
 platformclientv2/journeyviewelementfilter.go
@@ -4688,19 +4720,21 @@ platformclientv2/knowledgeexportjobrequest.go
 platformclientv2/knowledgeexportjobresponse.go
 platformclientv2/knowledgeextendedcategory.go
 platformclientv2/knowledgegroupstatistics.go
-platformclientv2/knowledgeguestdocument.go
 platformclientv2/knowledgeguestdocumentcopy.go
 platformclientv2/knowledgeguestdocumentfeedback.go
 platformclientv2/knowledgeguestdocumentpresentation.go
+platformclientv2/knowledgeguestdocumentresponse.go
 platformclientv2/knowledgeguestdocumentresponselisting.go
 platformclientv2/knowledgeguestdocumentsuggestion.go
 platformclientv2/knowledgeguestdocumentsuggestionrequest.go
 platformclientv2/knowledgeguestdocumentsuggestionresult.go
 platformclientv2/knowledgeguestdocumentvariation.go
+platformclientv2/knowledgeguestdocumentvariationanswer.go
 platformclientv2/knowledgeguestdocumentvariationcontext.go
 platformclientv2/knowledgeguestdocumentversionreference.go
 platformclientv2/knowledgeguestdocumentview.go
 platformclientv2/knowledgeguestsearchclientapplication.go
+platformclientv2/knowledgeguestsearchdocumentresponse.go
 platformclientv2/knowledgeguestsession.go
 platformclientv2/knowledgeguestsessionapp.go
 platformclientv2/knowledgeguestsessioncontext.go
@@ -4718,7 +4752,8 @@ platformclientv2/knowledgeparsejobrequestpatch.go
 platformclientv2/knowledgeparsejobresponse.go
 platformclientv2/knowledgeparserecord.go
 platformclientv2/knowledgesearchclientapplication.go
-platformclientv2/knowledgesearchdocument.go
+platformclientv2/knowledgesearchdocumentresponse.go
+platformclientv2/knowledgesearchdocumentv1.go
 platformclientv2/knowledgesearchrequest.go
 platformclientv2/knowledgesearchresponse.go
 platformclientv2/knowledgetraining.go
@@ -4816,6 +4851,7 @@ platformclientv2/lexv2botentitylisting.go
 platformclientv2/lexv2intent.go
 platformclientv2/lexv2slot.go
 platformclientv2/library.go
+platformclientv2/librarybatchrequest.go
 platformclientv2/libraryentitylisting.go
 platformclientv2/licenseapi.go
 platformclientv2/licenseassignmentrequest.go
@@ -5994,6 +6030,7 @@ platformclientv2/skillstoremove.go
 platformclientv2/smsaddress.go
 platformclientv2/smsaddressentitylisting.go
 platformclientv2/smsaddressprovision.go
+platformclientv2/smsalphanumericprovision.go
 platformclientv2/smsavailablephonenumber.go
 platformclientv2/smsavailablephonenumberentitylisting.go
 platformclientv2/smsconfig.go
@@ -6565,6 +6602,7 @@ platformclientv2/v2flowexecutiondataflowidtopicprocessautomation.go
 platformclientv2/v2flowexecutiondataflowidtopicquality.go
 platformclientv2/v2mobiusalertstopicaddressableentityref.go
 platformclientv2/v2mobiusalertstopicalert.go
+platformclientv2/v2mobiusalertstopicalertingaddressableentityref.go
 platformclientv2/v2mobiusalertstopicalertnotification.go
 platformclientv2/v2mobiusalertstopicalertruleproperties.go
 platformclientv2/v2mobiusalertstopicalertsummary.go
@@ -6572,7 +6610,7 @@ platformclientv2/v2mobiusalertstopicalertsummaryentity.go
 platformclientv2/v2mobiusalertstopiccondition.go
 platformclientv2/v2mobiusalertstopicconditionrulepredicate.go
 platformclientv2/v2mobiusalertstopicentityproperties.go
-platformclientv2/v2mobiusrulestopicaddressableentityref.go
+platformclientv2/v2mobiusrulestopicalertingaddressableentityref.go
 platformclientv2/v2mobiusrulestopicalertnotification.go
 platformclientv2/v2mobiusrulestopiccondition.go
 platformclientv2/v2mobiusrulestopicconditionrulepredicate.go
@@ -6621,6 +6659,7 @@ platformclientv2/voicemailuserpolicy.go
 platformclientv2/void.go
 platformclientv2/waitlistposition.go
 platformclientv2/waitlistpositionlisting.go
+platformclientv2/warning.go
 platformclientv2/webactionevent.go
 platformclientv2/webchatapi.go
 platformclientv2/webchatconfig.go
@@ -6816,6 +6855,7 @@ platformclientv2/wfmupdateagentdetailstopicwfmupdateagentdetailscomplete.go
 platformclientv2/wfmuserentitylisting.go
 platformclientv2/wfmusernotification.go
 platformclientv2/wfmusernotificationtopicadherenceexplanationnotification.go
+platformclientv2/wfmusernotificationtopicalternativeshiftnotification.go
 platformclientv2/wfmusernotificationtopicbusinessunit.go
 platformclientv2/wfmusernotificationtopicmanagementunit.go
 platformclientv2/wfmusernotificationtopicshifttradenotification.go
@@ -6854,6 +6894,7 @@ platformclientv2/whatsappintegration.go
 platformclientv2/whatsappintegrationentitylisting.go
 platformclientv2/whatsappintegrationrequest.go
 platformclientv2/whatsappintegrationupdaterequest.go
+platformclientv2/widget.go
 platformclientv2/widgetclientconfig.go
 platformclientv2/widgetclientconfigthirdparty.go
 platformclientv2/widgetclientconfigv1.go

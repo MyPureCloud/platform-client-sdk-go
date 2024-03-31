@@ -22,6 +22,9 @@ type Conversationscreenshareeventtopicscreenshareconversation struct {
 
 	// OtherMediaUris
 	OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
+
+	// Address
+	Address *string `json:"address,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Conversationscreenshareeventtopicscreenshareconversation) MarshalJSON() 
 		Participants *[]Conversationscreenshareeventtopicscreensharemediaparticipant `json:"participants,omitempty"`
 		
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
+		
+		Address *string `json:"address,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -103,6 +108,8 @@ func (o Conversationscreenshareeventtopicscreenshareconversation) MarshalJSON() 
 		Participants: o.Participants,
 		
 		OtherMediaUris: o.OtherMediaUris,
+		
+		Address: o.Address,
 		Alias:    (Alias)(o),
 	})
 }
@@ -132,6 +139,10 @@ func (o *Conversationscreenshareeventtopicscreenshareconversation) UnmarshalJSON
 		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
 	}
 	
+	if Address, ok := ConversationscreenshareeventtopicscreenshareconversationMap["address"].(string); ok {
+		o.Address = &Address
+	}
+    
 
 	return nil
 }

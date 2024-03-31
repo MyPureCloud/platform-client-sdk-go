@@ -1271,8 +1271,6 @@ func (a LearningApi) PatchLearningAssignmentReschedule(assignmentId string, body
 // PatchLearningModuleUserAssignments invokes PATCH /api/v2/learning/modules/{moduleId}/users/{userId}/assignments
 //
 // Update an external assignment for a specific user
-//
-// Preview: PatchLearningModuleUserAssignments is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a LearningApi) PatchLearningModuleUserAssignments(moduleId string, userId string, body Learningassignmentexternalupdate) (*Learningassignment, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

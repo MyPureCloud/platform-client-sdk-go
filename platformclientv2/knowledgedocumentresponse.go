@@ -60,11 +60,11 @@ type Knowledgedocumentresponse struct {
 	// KnowledgeBase - Knowledge base to which the document belongs to.
 	KnowledgeBase *Knowledgebasereference `json:"knowledgeBase,omitempty"`
 
-	// Variations - Variations of the document.
-	Variations *[]Documentvariation `json:"variations,omitempty"`
-
 	// ExternalId - The reference to external id associated with the document.
 	ExternalId *string `json:"externalId,omitempty"`
+
+	// Variations - Variations of the document.
+	Variations *[]Documentvariation `json:"variations,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -197,9 +197,9 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		
 		KnowledgeBase *Knowledgebasereference `json:"knowledgeBase,omitempty"`
 		
-		Variations *[]Documentvariation `json:"variations,omitempty"`
-		
 		ExternalId *string `json:"externalId,omitempty"`
+		
+		Variations *[]Documentvariation `json:"variations,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -236,9 +236,9 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		
 		KnowledgeBase: o.KnowledgeBase,
 		
-		Variations: o.Variations,
-		
 		ExternalId: o.ExternalId,
+		
+		Variations: o.Variations,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -328,15 +328,15 @@ func (o *Knowledgedocumentresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
 	}
 	
+	if ExternalId, ok := KnowledgedocumentresponseMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 	if Variations, ok := KnowledgedocumentresponseMap["variations"].([]interface{}); ok {
 		VariationsString, _ := json.Marshal(Variations)
 		json.Unmarshal(VariationsString, &o.Variations)
 	}
 	
-	if ExternalId, ok := KnowledgedocumentresponseMap["externalId"].(string); ok {
-		o.ExternalId = &ExternalId
-	}
-    
 	if SelfUri, ok := KnowledgedocumentresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

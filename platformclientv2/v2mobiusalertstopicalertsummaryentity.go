@@ -15,16 +15,16 @@ type V2mobiusalertstopicalertsummaryentity struct {
 	EntityType *string `json:"entityType,omitempty"`
 
 	// User
-	User *V2mobiusalertstopicaddressableentityref `json:"user,omitempty"`
+	User *V2mobiusalertstopicalertingaddressableentityref `json:"user,omitempty"`
 
 	// Group
-	Group *V2mobiusalertstopicaddressableentityref `json:"group,omitempty"`
+	Group *V2mobiusalertstopicalertingaddressableentityref `json:"group,omitempty"`
 
 	// Queue
-	Queue *V2mobiusalertstopicaddressableentityref `json:"queue,omitempty"`
+	Queue *V2mobiusalertstopicalertingaddressableentityref `json:"queue,omitempty"`
 
 	// Team
-	Team *V2mobiusalertstopicaddressableentityref `json:"team,omitempty"`
+	Team *V2mobiusalertstopicalertingaddressableentityref `json:"team,omitempty"`
 
 	// Alerting
 	Alerting *bool `json:"alerting,omitempty"`
@@ -95,13 +95,13 @@ func (o V2mobiusalertstopicalertsummaryentity) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		EntityType *string `json:"entityType,omitempty"`
 		
-		User *V2mobiusalertstopicaddressableentityref `json:"user,omitempty"`
+		User *V2mobiusalertstopicalertingaddressableentityref `json:"user,omitempty"`
 		
-		Group *V2mobiusalertstopicaddressableentityref `json:"group,omitempty"`
+		Group *V2mobiusalertstopicalertingaddressableentityref `json:"group,omitempty"`
 		
-		Queue *V2mobiusalertstopicaddressableentityref `json:"queue,omitempty"`
+		Queue *V2mobiusalertstopicalertingaddressableentityref `json:"queue,omitempty"`
 		
-		Team *V2mobiusalertstopicaddressableentityref `json:"team,omitempty"`
+		Team *V2mobiusalertstopicalertingaddressableentityref `json:"team,omitempty"`
 		
 		Alerting *bool `json:"alerting,omitempty"`
 		Alias

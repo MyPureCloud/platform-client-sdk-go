@@ -12,7 +12,7 @@ type Knowledgeguestdocumentresponselisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Knowledgeguestdocument `json:"entities,omitempty"`
+	Entities *[]Knowledgeguestdocumentresponse `json:"entities,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -87,7 +87,7 @@ func (o Knowledgeguestdocumentresponselisting) MarshalJSON() ([]byte, error) {
 	type Alias Knowledgeguestdocumentresponselisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Knowledgeguestdocument `json:"entities,omitempty"`
+		Entities *[]Knowledgeguestdocumentresponse `json:"entities,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		

@@ -35,6 +35,9 @@ type Knowledgedocumentguestsearchrequest struct {
 	// SessionId - Session ID of the search.
 	SessionId *string `json:"sessionId,omitempty"`
 
+	// AnswerHighlightTopResults - The number of articles to be sent for answer-highlighting. Can range from 1-5.
+	AnswerHighlightTopResults *int `json:"answerHighlightTopResults,omitempty"`
+
 	// IncludeDraftDocuments - Indicates whether the search results would also include draft documents.
 	IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 }
@@ -118,6 +121,8 @@ func (o Knowledgedocumentguestsearchrequest) MarshalJSON() ([]byte, error) {
 		
 		SessionId *string `json:"sessionId,omitempty"`
 		
+		AnswerHighlightTopResults *int `json:"answerHighlightTopResults,omitempty"`
+		
 		IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 		Alias
 	}{ 
@@ -136,6 +141,8 @@ func (o Knowledgedocumentguestsearchrequest) MarshalJSON() ([]byte, error) {
 		QueryType: o.QueryType,
 		
 		SessionId: o.SessionId,
+		
+		AnswerHighlightTopResults: o.AnswerHighlightTopResults,
 		
 		IncludeDraftDocuments: o.IncludeDraftDocuments,
 		Alias:    (Alias)(o),
@@ -185,6 +192,11 @@ func (o *Knowledgedocumentguestsearchrequest) UnmarshalJSON(b []byte) error {
 		o.SessionId = &SessionId
 	}
     
+	if AnswerHighlightTopResults, ok := KnowledgedocumentguestsearchrequestMap["answerHighlightTopResults"].(float64); ok {
+		AnswerHighlightTopResultsInt := int(AnswerHighlightTopResults)
+		o.AnswerHighlightTopResults = &AnswerHighlightTopResultsInt
+	}
+	
 	if IncludeDraftDocuments, ok := KnowledgedocumentguestsearchrequestMap["includeDraftDocuments"].(bool); ok {
 		o.IncludeDraftDocuments = &IncludeDraftDocuments
 	}

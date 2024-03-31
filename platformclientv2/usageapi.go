@@ -287,7 +287,7 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 
 // GetUsageSimplesearchExecutionIdResults invokes GET /api/v2/usage/simplesearch/{executionId}/results
 //
-// Get the results of a usage search
+// Get the results of a usage search. Number of records to be returned is limited to 20,000 results.
 func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -547,9 +547,9 @@ func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutio
 
 // PostUsageSimplesearch invokes POST /api/v2/usage/simplesearch
 //
-// Search organization API Usage - 
+// Search organization API Usage
 //
-// After calling this method, you will then need to poll for the query results based on the returned execution Id
+// After calling this method, you will then need to poll for the query results based on the returned execution Id. The number of records is limited to 20,000 results
 func (a UsageApi) PostUsageSimplesearch(body Apiusagesimplesearch) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

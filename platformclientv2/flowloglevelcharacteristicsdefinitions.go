@@ -11,7 +11,10 @@ import (
 type Flowloglevelcharacteristicsdefinitions struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Characteristics
+	// LogLevels - A list of flow log levels available to the organization.
+	LogLevels *[]Flowloglevel `json:"logLevels,omitempty"`
+
+	// Characteristics - A list of characteristics that the loglevels will have that are available to the organization..
 	Characteristics *[]Flowloglevelcharacteristicsdefinition `json:"characteristics,omitempty"`
 }
 
@@ -78,9 +81,13 @@ func (o Flowloglevelcharacteristicsdefinitions) MarshalJSON() ([]byte, error) {
 	type Alias Flowloglevelcharacteristicsdefinitions
 	
 	return json.Marshal(&struct { 
+		LogLevels *[]Flowloglevel `json:"logLevels,omitempty"`
+		
 		Characteristics *[]Flowloglevelcharacteristicsdefinition `json:"characteristics,omitempty"`
 		Alias
 	}{ 
+		LogLevels: o.LogLevels,
+		
 		Characteristics: o.Characteristics,
 		Alias:    (Alias)(o),
 	})
@@ -91,6 +98,11 @@ func (o *Flowloglevelcharacteristicsdefinitions) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &FlowloglevelcharacteristicsdefinitionsMap)
 	if err != nil {
 		return err
+	}
+	
+	if LogLevels, ok := FlowloglevelcharacteristicsdefinitionsMap["logLevels"].([]interface{}); ok {
+		LogLevelsString, _ := json.Marshal(LogLevels)
+		json.Unmarshal(LogLevelsString, &o.LogLevels)
 	}
 	
 	if Characteristics, ok := FlowloglevelcharacteristicsdefinitionsMap["characteristics"].([]interface{}); ok {
