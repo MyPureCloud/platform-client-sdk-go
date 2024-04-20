@@ -12,7 +12,7 @@ type Transcriptionenginesrequest struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// TranscriptionEngines - The transcription engine setting
-	TranscriptionEngines *[]Transcriptionengines `json:"transcriptionEngines,omitempty"`
+	TranscriptionEngines *[]Programtranscriptionengine `json:"transcriptionEngines,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -78,7 +78,7 @@ func (o Transcriptionenginesrequest) MarshalJSON() ([]byte, error) {
 	type Alias Transcriptionenginesrequest
 	
 	return json.Marshal(&struct { 
-		TranscriptionEngines *[]Transcriptionengines `json:"transcriptionEngines,omitempty"`
+		TranscriptionEngines *[]Programtranscriptionengine `json:"transcriptionEngines,omitempty"`
 		Alias
 	}{ 
 		TranscriptionEngines: o.TranscriptionEngines,

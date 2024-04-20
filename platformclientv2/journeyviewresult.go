@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Journeyviewresult
+// Journeyviewresult - A journey view result
 type Journeyviewresult struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`

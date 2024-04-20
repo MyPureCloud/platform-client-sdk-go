@@ -11,7 +11,7 @@ import (
 type Listwrapperinterval struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Values
+	// Values - Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	Values *[]string `json:"values,omitempty"`
 }
 

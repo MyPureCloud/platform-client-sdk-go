@@ -11,7 +11,7 @@ import (
 type Transfertoexternalrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// TransferType
+	// TransferType - The type of transfer to perform. Attended, where the initiating agent maintains ownership of the conversation until the intended recipient accepts the transfer, or Unattended, where the initiating agent immediately disconnects. Default is Unattended.
 	TransferType *string `json:"transferType,omitempty"`
 
 	// Address - The address (like phone number) of the external contact.

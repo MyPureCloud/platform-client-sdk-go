@@ -8386,7 +8386,11 @@ func (a OutboundApi) PostOutboundAttemptlimits(body Attemptlimits) (*Attemptlimi
 
 // PostOutboundAudits invokes POST /api/v2/outbound/audits
 //
-// Retrieves audits for dialer.
+// Retrieves audits for dialer. (Deprecated)
+//
+// This endpoint is deprecated as a result of this functionality being moved to the Audit Service. Please use \&quot;/api/v2/audits/query\&quot; instead.
+//
+// Deprecated: PostOutboundAudits is deprecated
 func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, pageNumber int, sortBy string, sortOrder string, facetsOnly bool) (*Auditsearchresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

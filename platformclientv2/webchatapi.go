@@ -420,6 +420,10 @@ func (a WebChatApi) GetWebchatDeployments() (*Webchatdeploymententitylisting, *A
 // GetWebchatGuestConversationMediarequest invokes GET /api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}
 //
 // Get a media request in the conversation
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: GetWebchatGuestConversationMediarequest is deprecated
 func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId string, mediaRequestId string) (*Webchatguestmediarequest, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1014,6 +1018,10 @@ func (a WebChatApi) GetWebchatSettings() (*Webchatsettings, *APIResponse, error)
 // PatchWebchatGuestConversationMediarequest invokes PATCH /api/v2/webchat/guest/conversations/{conversationId}/mediarequests/{mediaRequestId}
 //
 // Update a media request in the conversation, setting the state to ACCEPTED/DECLINED/ERRORED
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PatchWebchatGuestConversationMediarequest is deprecated
 func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId string, mediaRequestId string, body Webchatguestmediarequest) (*Webchatguestmediarequest, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

@@ -37,6 +37,9 @@ type Defaultobjective struct {
 
 	// EvaluationFormContextIds - The ids of associated evaluation form context, for Quality Evaluation Score metrics
 	EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
+
+	// InitialDirection - The initial direction to filter on
+	InitialDirection *string `json:"initialDirection,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -119,6 +122,8 @@ func (o Defaultobjective) MarshalJSON() ([]byte, error) {
 		TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
 		
 		EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
+		
+		InitialDirection *string `json:"initialDirection,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -138,6 +143,8 @@ func (o Defaultobjective) MarshalJSON() ([]byte, error) {
 		TopicIdsFilterType: o.TopicIdsFilterType,
 		
 		EvaluationFormContextIds: o.EvaluationFormContextIds,
+		
+		InitialDirection: o.InitialDirection,
 		Alias:    (Alias)(o),
 	})
 }
@@ -190,6 +197,10 @@ func (o *Defaultobjective) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EvaluationFormContextIdsString, &o.EvaluationFormContextIds)
 	}
 	
+	if InitialDirection, ok := DefaultobjectiveMap["initialDirection"].(string); ok {
+		o.InitialDirection = &InitialDirection
+	}
+    
 
 	return nil
 }

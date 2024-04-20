@@ -11,7 +11,7 @@ import (
 type Conditionalgrouprouting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Rules - The set of rules that defines Conditional Group Routing for this queue
+	// Rules - The set of rules to be executed for each conversation
 	Rules *[]Conditionalgrouproutingrule `json:"rules,omitempty"`
 }
 

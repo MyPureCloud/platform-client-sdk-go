@@ -4096,6 +4096,10 @@ func (a ConversationsApi) GetConversationsCobrowsesession(conversationId string)
 // GetConversationsCobrowsesessionParticipantCommunicationWrapup invokes GET /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Get the wrap-up for this conversation communication. 
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: GetConversationsCobrowsesessionParticipantCommunicationWrapup is deprecated
 func (a ConversationsApi) GetConversationsCobrowsesessionParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4192,6 +4196,10 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantCommunicatio
 // GetConversationsCobrowsesessionParticipantWrapup invokes GET /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: GetConversationsCobrowsesessionParticipantWrapup is deprecated
 func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4282,6 +4290,10 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conve
 // GetConversationsCobrowsesessionParticipantWrapupcodes invokes GET /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: GetConversationsCobrowsesessionParticipantWrapupcodes is deprecated
 func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7753,7 +7765,11 @@ func (a ConversationsApi) GetConversationsMessagingSettingsDefault() (*Messaging
 
 // GetConversationsMessagingSticker invokes GET /api/v2/conversations/messaging/stickers/{messengerType}
 //
-// Get a list of Messaging Stickers
+// Get a list of Messaging Stickers (Deprecated)
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-native-line-third-party-messaging-channel/
+//
+// Deprecated: GetConversationsMessagingSticker is deprecated
 func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string, pageSize int, pageNumber int) (*Messagingstickerentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8158,6 +8174,10 @@ func (a ConversationsApi) GetConversationsMessagingThreadingtimeline() (*Convers
 // GetConversationsScreenshareParticipantCommunicationWrapup invokes GET /api/v2/conversations/screenshares/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Get the wrap-up for this conversation communication. 
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: GetConversationsScreenshareParticipantCommunicationWrapup is deprecated
 func (a ConversationsApi) GetConversationsScreenshareParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -10373,6 +10393,10 @@ func (a ConversationsApi) PatchConversationsChatParticipantCommunication(convers
 // PatchConversationsCobrowsesession invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PatchConversationsCobrowsesession is deprecated
 func (a ConversationsApi) PatchConversationsCobrowsesession(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -10463,6 +10487,10 @@ func (a ConversationsApi) PatchConversationsCobrowsesession(conversationId strin
 // PatchConversationsCobrowsesessionParticipant invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PatchConversationsCobrowsesessionParticipant is deprecated
 func (a ConversationsApi) PatchConversationsCobrowsesessionParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -10547,6 +10575,10 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipant(conversat
 // PatchConversationsCobrowsesessionParticipantAttributes invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PatchConversationsCobrowsesessionParticipantAttributes is deprecated
 func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -10638,6 +10670,10 @@ func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantAttributes
 // PatchConversationsCobrowsesessionParticipantCommunication invokes PATCH /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
 // Update conversation participant's communication by disconnecting it.
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PatchConversationsCobrowsesessionParticipantCommunication is deprecated
 func (a ConversationsApi) PatchConversationsCobrowsesessionParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -15869,6 +15905,10 @@ func (a ConversationsApi) PostConversationsChats(body Createwebchatrequest) (*Ch
 // PostConversationsCobrowsesessionParticipantCommunicationWrapup invokes POST /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PostConversationsCobrowsesessionParticipantCommunicationWrapup is deprecated
 func (a ConversationsApi) PostConversationsCobrowsesessionParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -15959,6 +15999,10 @@ func (a ConversationsApi) PostConversationsCobrowsesessionParticipantCommunicati
 // PostConversationsCobrowsesessionParticipantReplace invokes POST /api/v2/conversations/cobrowsesessions/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PostConversationsCobrowsesessionParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsCobrowsesessionParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -17993,7 +18037,9 @@ func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlesso
 //
 // Send an inbound Open Message
 //
-// Send an inbound message to an Open Messaging integration. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. This will either generate a new Conversation, or be a part of an existing conversation. See https://developer.genesys.cloud/api/digital/openmessaging/ for example usage.
+// [This API is deprecated. Instead, use 1. POST /api/v2/conversations/messages/{integrationId}/inbound/open/event, if you want to send an inbound Open Event Message 2. POST /api/v2/conversations/messages/{integrationId}/inbound/open/message, if you want to send an inbound Open Message 3. POST /api/v2/conversations/messages/{integrationId}/inbound/open/receipt, to send an inbound Open Receipt Message]  In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. This will either generate a new Conversation, or be a part of an existing conversation. See https://developer.genesys.cloud/api/digital/openmessaging/ for example usage.
+//
+// Deprecated: PostConversationsMessagesInboundOpen is deprecated
 func (a ConversationsApi) PostConversationsMessagesInboundOpen(body Opennormalizedmessage) (*Opennormalizedmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -18934,6 +18980,10 @@ func (a ConversationsApi) PostConversationsParticipantsAttributesSearch(body Con
 // PostConversationsScreenshareParticipantCommunicationWrapup invokes POST /api/v2/conversations/screenshares/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PostConversationsScreenshareParticipantCommunicationWrapup is deprecated
 func (a ConversationsApi) PostConversationsScreenshareParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -20725,6 +20775,10 @@ func (a ConversationsApi) PutConversationsMessagingThreadingtimeline(body Conver
 // PutConversationsScreenshareRecordingstate invokes PUT /api/v2/conversations/screenshares/{conversationId}/recordingstate
 //
 // Update a conversation by setting its recording state
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-legacy-co-browse-and-screenshare/
+//
+// Deprecated: PutConversationsScreenshareRecordingstate is deprecated
 func (a ConversationsApi) PutConversationsScreenshareRecordingstate(conversationId string, body Setrecordingstate) (*string, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

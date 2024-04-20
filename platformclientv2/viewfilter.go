@@ -532,6 +532,12 @@ type Viewfilter struct {
 
 	// AgentEmpathyScore - The agentEmpathyScore is used to filter the view
 	AgentEmpathyScore *Numericrange `json:"agentEmpathyScore,omitempty"`
+
+	// SurveyTypes - The surveyTypes is used to filter the view
+	SurveyTypes *[]string `json:"surveyTypes,omitempty"`
+
+	// SurveyResponseStatuses - The list of Survey Response Status
+	SurveyResponseStatuses *[]string `json:"surveyResponseStatuses,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -944,6 +950,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		IsParked *bool `json:"isParked,omitempty"`
 		
 		AgentEmpathyScore *Numericrange `json:"agentEmpathyScore,omitempty"`
+		
+		SurveyTypes *[]string `json:"surveyTypes,omitempty"`
+		
+		SurveyResponseStatuses *[]string `json:"surveyResponseStatuses,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1293,6 +1303,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		IsParked: o.IsParked,
 		
 		AgentEmpathyScore: o.AgentEmpathyScore,
+		
+		SurveyTypes: o.SurveyTypes,
+		
+		SurveyResponseStatuses: o.SurveyResponseStatuses,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2131,6 +2145,16 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if AgentEmpathyScore, ok := ViewfilterMap["agentEmpathyScore"].(map[string]interface{}); ok {
 		AgentEmpathyScoreString, _ := json.Marshal(AgentEmpathyScore)
 		json.Unmarshal(AgentEmpathyScoreString, &o.AgentEmpathyScore)
+	}
+	
+	if SurveyTypes, ok := ViewfilterMap["surveyTypes"].([]interface{}); ok {
+		SurveyTypesString, _ := json.Marshal(SurveyTypes)
+		json.Unmarshal(SurveyTypesString, &o.SurveyTypes)
+	}
+	
+	if SurveyResponseStatuses, ok := ViewfilterMap["surveyResponseStatuses"].([]interface{}); ok {
+		SurveyResponseStatusesString, _ := json.Marshal(SurveyResponseStatuses)
+		json.Unmarshal(SurveyResponseStatusesString, &o.SurveyResponseStatuses)
 	}
 	
 

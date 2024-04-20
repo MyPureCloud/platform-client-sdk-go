@@ -1666,7 +1666,7 @@ func (a AuthorizationApi) GetAuthorizationSettings() (*Authorizationsettings, *A
 // GetAuthorizationSubject invokes GET /api/v2/authorization/subjects/{subjectId}
 //
 // Returns a listing of roles and permissions for a user.
-func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationSubject(subjectId string, includeDuplicates bool) (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}"
@@ -1698,6 +1698,8 @@ func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubje
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeDuplicates"] = a.Configuration.APIClient.ParameterToString(includeDuplicates, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1748,7 +1750,7 @@ func (a AuthorizationApi) GetAuthorizationSubject(subjectId string) (*Authzsubje
 // GetAuthorizationSubjectsMe invokes GET /api/v2/authorization/subjects/me
 //
 // Returns a listing of roles and permissions for the currently authenticated user.
-func (a AuthorizationApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationSubjectsMe(includeDuplicates bool) (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/me"
@@ -1774,6 +1776,8 @@ func (a AuthorizationApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIRespo
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeDuplicates"] = a.Configuration.APIClient.ParameterToString(includeDuplicates, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -288,7 +288,7 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 // GetUsageSimplesearchExecutionIdResults invokes GET /api/v2/usage/simplesearch/{executionId}/results
 //
 // Get the results of a usage search. Number of records to be returned is limited to 20,000 results.
-func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string) (*Apiusagequeryresult, *APIResponse, error) {
+func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string, after string, pageSize int) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/usage/simplesearch/{executionId}/results"
@@ -320,6 +320,10 @@ func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string) (*A
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

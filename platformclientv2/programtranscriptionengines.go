@@ -12,17 +12,23 @@ import (
 type Programtranscriptionengines struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
 	// Program - The ID of the program
 	Program *Baseprogramentity `json:"program,omitempty"`
 
 	// TranscriptionEngines - The program transcription engine settings
-	TranscriptionEngines *[]Transcriptionengines `json:"transcriptionEngines,omitempty"`
+	TranscriptionEngines *[]Programtranscriptionengine `json:"transcriptionEngines,omitempty"`
 
 	// ModifiedBy - The user last modified the record
 	ModifiedBy *Addressableentityref `json:"modifiedBy,omitempty"`
 
 	// DateModified - The last modified date of the record. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -96,15 +102,21 @@ func (o Programtranscriptionengines) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Program *Baseprogramentity `json:"program,omitempty"`
 		
-		TranscriptionEngines *[]Transcriptionengines `json:"transcriptionEngines,omitempty"`
+		TranscriptionEngines *[]Programtranscriptionengine `json:"transcriptionEngines,omitempty"`
 		
 		ModifiedBy *Addressableentityref `json:"modifiedBy,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Program: o.Program,
 		
 		TranscriptionEngines: o.TranscriptionEngines,
@@ -112,6 +124,8 @@ func (o Programtranscriptionengines) MarshalJSON() ([]byte, error) {
 		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -123,6 +137,10 @@ func (o *Programtranscriptionengines) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ProgramtranscriptionenginesMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Program, ok := ProgramtranscriptionenginesMap["program"].(map[string]interface{}); ok {
 		ProgramString, _ := json.Marshal(Program)
 		json.Unmarshal(ProgramString, &o.Program)
@@ -143,6 +161,10 @@ func (o *Programtranscriptionengines) UnmarshalJSON(b []byte) error {
 		o.DateModified = &DateModified
 	}
 	
+	if SelfUri, ok := ProgramtranscriptionenginesMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }

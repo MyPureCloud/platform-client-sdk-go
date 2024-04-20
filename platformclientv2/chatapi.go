@@ -110,6 +110,87 @@ func (a ChatApi) DeleteChatsRoomMessage(roomJid string, messageId string) (*APIR
 	return response, err
 }
 
+// DeleteChatsRoomMessagesPin invokes DELETE /api/v2/chats/rooms/{roomJid}/messages/pins/{pinnedMessageId}
+//
+// Remove a pinned message from a room
+func (a ChatApi) DeleteChatsRoomMessagesPin(roomJid string, pinnedMessageId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/messages/pins/{pinnedMessageId}"
+	path = strings.Replace(path, "{roomJid}", url.PathEscape(fmt.Sprintf("%v", roomJid)), -1)
+	path = strings.Replace(path, "{pinnedMessageId}", url.PathEscape(fmt.Sprintf("%v", pinnedMessageId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'roomJid' is set
+	if &roomJid == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'roomJid' when calling ChatApi->DeleteChatsRoomMessagesPin")
+	}
+	// verify the required parameter 'pinnedMessageId' is set
+	if &pinnedMessageId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'pinnedMessageId' when calling ChatApi->DeleteChatsRoomMessagesPin")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteChatsRoomParticipant invokes DELETE /api/v2/chats/rooms/{roomJid}/participants/{userId}
 //
 // Remove a user from a room.
@@ -191,28 +272,28 @@ func (a ChatApi) DeleteChatsRoomParticipant(roomJid string, userId string) (*API
 	return response, err
 }
 
-// DeleteChatsRoomPinnedmessage invokes DELETE /api/v2/chats/rooms/{roomJid}/pinnedmessages/{pinnedMessageId}
+// DeleteChatsUserMessage invokes DELETE /api/v2/chats/users/{userId}/messages/{messageId}
 //
-// Remove a pinned message from a room
-func (a ChatApi) DeleteChatsRoomPinnedmessage(roomJid string, pinnedMessageId string) (*APIResponse, error) {
+// Delete a message to a user
+func (a ChatApi) DeleteChatsUserMessage(userId string, messageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/pinnedmessages/{pinnedMessageId}"
-	path = strings.Replace(path, "{roomJid}", url.PathEscape(fmt.Sprintf("%v", roomJid)), -1)
-	path = strings.Replace(path, "{pinnedMessageId}", url.PathEscape(fmt.Sprintf("%v", pinnedMessageId)), -1)
+	path := a.Configuration.BasePath + "/api/v2/chats/users/{userId}/messages/{messageId}"
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'roomJid' is set
-	if &roomJid == nil {
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'roomJid' when calling ChatApi->DeleteChatsRoomPinnedmessage")
+		return nil, errors.New("Missing required parameter 'userId' when calling ChatApi->DeleteChatsUserMessage")
 	}
-	// verify the required parameter 'pinnedMessageId' is set
-	if &pinnedMessageId == nil {
+	// verify the required parameter 'messageId' is set
+	if &messageId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'pinnedMessageId' when calling ChatApi->DeleteChatsRoomPinnedmessage")
+		return nil, errors.New("Missing required parameter 'messageId' when calling ChatApi->DeleteChatsUserMessage")
 	}
 
 	headerParams := make(map[string]string)
@@ -272,15 +353,17 @@ func (a ChatApi) DeleteChatsRoomPinnedmessage(roomJid string, pinnedMessageId st
 	return response, err
 }
 
-// DeleteChatsUserMessage invokes DELETE /api/v2/chats/users/{userId}/messages/{messageId}
+// DeleteChatsUserMessagesPin invokes DELETE /api/v2/chats/users/{userId}/messages/pins/{pinnedMessageId}
 //
-// Delete a message to a user
-func (a ChatApi) DeleteChatsUserMessage(userId string, messageId string) (*APIResponse, error) {
+// Remove a pinned message from a 1on1
+//
+// Preview: DeleteChatsUserMessagesPin is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ChatApi) DeleteChatsUserMessagesPin(userId string, pinnedMessageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/chats/users/{userId}/messages/{messageId}"
+	path := a.Configuration.BasePath + "/api/v2/chats/users/{userId}/messages/pins/{pinnedMessageId}"
 	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
-	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
+	path = strings.Replace(path, "{pinnedMessageId}", url.PathEscape(fmt.Sprintf("%v", pinnedMessageId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -288,12 +371,12 @@ func (a ChatApi) DeleteChatsUserMessage(userId string, messageId string) (*APIRe
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'userId' when calling ChatApi->DeleteChatsUserMessage")
+		return nil, errors.New("Missing required parameter 'userId' when calling ChatApi->DeleteChatsUserMessagesPin")
 	}
-	// verify the required parameter 'messageId' is set
-	if &messageId == nil {
+	// verify the required parameter 'pinnedMessageId' is set
+	if &pinnedMessageId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'messageId' when calling ChatApi->DeleteChatsUserMessage")
+		return nil, errors.New("Missing required parameter 'pinnedMessageId' when calling ChatApi->DeleteChatsUserMessagesPin")
 	}
 
 	headerParams := make(map[string]string)
@@ -1019,6 +1102,90 @@ func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before st
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Chatmessageentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetChatsUser invokes GET /api/v2/chats/users/{userId}
+//
+// Get information for a 1on1
+//
+// Preview: GetChatsUser is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ChatApi) GetChatsUser(userId string) (*Oneonone, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/chats/users/{userId}"
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	defaultReturn := new(Oneonone)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling ChatApi->GetChatsUser")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Oneonone
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Oneonone" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1828,6 +1995,89 @@ func (a ChatApi) PostChatsRoomMessages(roomJid string, body Sendmessagebody) (*C
 	return successPayload, response, err
 }
 
+// PostChatsRoomMessagesPins invokes POST /api/v2/chats/rooms/{roomJid}/messages/pins
+//
+// Add pinned messages for a room, up to a maximum of 5 pinned messages
+func (a ChatApi) PostChatsRoomMessagesPins(roomJid string, body Pinnedmessagerequest) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/messages/pins"
+	path = strings.Replace(path, "{roomJid}", url.PathEscape(fmt.Sprintf("%v", roomJid)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'roomJid' is set
+	if &roomJid == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'roomJid' when calling ChatApi->PostChatsRoomMessagesPins")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling ChatApi->PostChatsRoomMessagesPins")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PostChatsRoomParticipant invokes POST /api/v2/chats/rooms/{roomJid}/participants/{userId}
 //
 // Join a room
@@ -1899,89 +2149,6 @@ func (a ChatApi) PostChatsRoomParticipant(roomJid string, userId string) (*APIRe
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	}
-	return response, err
-}
-
-// PostChatsRoomPinnedmessages invokes POST /api/v2/chats/rooms/{roomJid}/pinnedmessages
-//
-// Add pinned messages for a room, up to a maximum of 5 pinned messages
-func (a ChatApi) PostChatsRoomPinnedmessages(roomJid string, body Pinnedmessagerequest) (*APIResponse, error) {
-	var httpMethod = "POST"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/pinnedmessages"
-	path = strings.Replace(path, "{roomJid}", url.PathEscape(fmt.Sprintf("%v", roomJid)), -1)
-	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'roomJid' is set
-	if &roomJid == nil {
-		// false
-		return nil, errors.New("Missing required parameter 'roomJid' when calling ChatApi->PostChatsRoomPinnedmessages")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// false
-		return nil, errors.New("Missing required parameter 'body' when calling ChatApi->PostChatsRoomPinnedmessages")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
 
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
@@ -2164,6 +2331,91 @@ func (a ChatApi) PostChatsUserMessages(userId string, body Sendmessagebody) (*Ch
 		}
 	}
 	return successPayload, response, err
+}
+
+// PostChatsUserMessagesPins invokes POST /api/v2/chats/users/{userId}/messages/pins
+//
+// Add pinned messages for a 1on1, up to a maximum of 5 pinned messages
+//
+// Preview: PostChatsUserMessagesPins is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ChatApi) PostChatsUserMessagesPins(userId string, body Pinnedmessagerequest) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/chats/users/{userId}/messages/pins"
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'userId' when calling ChatApi->PostChatsUserMessagesPins")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling ChatApi->PostChatsUserMessagesPins")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PutChatsMessageReactions invokes PUT /api/v2/chats/messages/{messageId}/reactions

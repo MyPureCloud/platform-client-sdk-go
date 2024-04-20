@@ -12,7 +12,7 @@ type Bulkidsrequest struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Writableentity `json:"entities,omitempty"`
+	Entities *[]Externalcontactsentity `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -78,7 +78,7 @@ func (o Bulkidsrequest) MarshalJSON() ([]byte, error) {
 	type Alias Bulkidsrequest
 	
 	return json.Marshal(&struct { 
-		Entities *[]Writableentity `json:"entities,omitempty"`
+		Entities *[]Externalcontactsentity `json:"entities,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,

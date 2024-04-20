@@ -1431,7 +1431,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId str
 // GetAuthorizationSubject invokes GET /api/v2/authorization/subjects/{subjectId}
 //
 // Returns a listing of roles and permissions for a user.
-func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *APIResponse, error) {
+func (a UsersApi) GetAuthorizationSubject(subjectId string, includeDuplicates bool) (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}"
@@ -1463,6 +1463,8 @@ func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *API
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeDuplicates"] = a.Configuration.APIClient.ParameterToString(includeDuplicates, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1513,7 +1515,7 @@ func (a UsersApi) GetAuthorizationSubject(subjectId string) (*Authzsubject, *API
 // GetAuthorizationSubjectsMe invokes GET /api/v2/authorization/subjects/me
 //
 // Returns a listing of roles and permissions for the currently authenticated user.
-func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, error) {
+func (a UsersApi) GetAuthorizationSubjectsMe(includeDuplicates bool) (*Authzsubject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/me"
@@ -1539,6 +1541,8 @@ func (a UsersApi) GetAuthorizationSubjectsMe() (*Authzsubject, *APIResponse, err
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeDuplicates"] = a.Configuration.APIClient.ParameterToString(includeDuplicates, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

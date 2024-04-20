@@ -971,6 +971,8 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 // GetQualityCalibrations invokes GET /api/v2/quality/calibrations
 //
 // Get the list of calibrations
+//
+// NOTE: The count for total and pageCount might not be accurate when querying for a large number of calibrations. nextUri, if present, will indicate that there are more calibrations to fetch.
 func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, startTime time.Time, endTime time.Time) (*Calibrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1415,7 +1417,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 //
 // Queries Evaluations and returns a paged list
 //
-// Query params must include one of conversationId, evaluatorUserId, agentUserId or assigneeUserId. When querying by agentUserId (and not conversationId or evaluatorUserId), the results are sorted by release date. Evaluations set to &#39;Never Release&#39; are omitted in this case. When querying by evaluatorUserId or conversationId (including when combined with agentUserId), the results are sorted by assigned date.
+// Query params must include one of conversationId, evaluatorUserId, agentUserId or assigneeUserId. When querying by agentUserId (and not conversationId or evaluatorUserId), the results are sorted by release date. Evaluations set to &#39;Never Release&#39; are omitted in this case. When querying by evaluatorUserId or conversationId (including when combined with agentUserId), the results are sorted by assigned date. NOTE: The count for total and pageCount might not be accurate when querying for a large number of evaluations. nextUri, if present, will indicate that there are more evaluations to fetch.
 func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, agentUserId string, agentTeamId string, evaluatorUserId string, assigneeUserId string, queueId string, startTime string, endTime string, formContextId string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -12,7 +12,7 @@ type Supporteddialectsentitylisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Transcriptionengines `json:"entities,omitempty"`
+	Entities *[]Supporteddialectstranscriptionengine `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -78,7 +78,7 @@ func (o Supporteddialectsentitylisting) MarshalJSON() ([]byte, error) {
 	type Alias Supporteddialectsentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Transcriptionengines `json:"entities,omitempty"`
+		Entities *[]Supporteddialectstranscriptionengine `json:"entities,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,

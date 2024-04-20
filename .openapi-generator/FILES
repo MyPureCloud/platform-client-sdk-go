@@ -43,9 +43,10 @@ docs/DeleteAuthorizationRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
 docs/DeleteChatsRoomMessage-example.txt
+docs/DeleteChatsRoomMessagesPin-example.txt
 docs/DeleteChatsRoomParticipant-example.txt
-docs/DeleteChatsRoomPinnedmessage-example.txt
 docs/DeleteChatsUserMessage-example.txt
+docs/DeleteChatsUserMessagesPin-example.txt
 docs/DeleteCoachingAppointment-example.txt
 docs/DeleteCoachingAppointmentAnnotation-example.txt
 docs/DeleteContentmanagementDocument-example.txt
@@ -448,6 +449,7 @@ docs/GetChatsRoomParticipant-example.txt
 docs/GetChatsRoomParticipants-example.txt
 docs/GetChatsSettings-example.txt
 docs/GetChatsThreadMessages-example.txt
+docs/GetChatsUser-example.txt
 docs/GetChatsUserMessage-example.txt
 docs/GetChatsUserMessages-example.txt
 docs/GetChatsUserSettings-example.txt
@@ -610,6 +612,7 @@ docs/GetExternalcontactsScanRelationships-example.txt
 docs/GetFaxDocument-example.txt
 docs/GetFaxDocumentContent-example.txt
 docs/GetFaxDocuments-example.txt
+docs/GetFaxSettings-example.txt
 docs/GetFaxSummary-example.txt
 docs/GetFieldconfig-example.txt
 docs/GetFieldconfig-example.txt
@@ -873,6 +876,7 @@ docs/GetLanguageunderstandingMinerTopic-example.txt
 docs/GetLanguageunderstandingMinerTopicPhrase-example.txt
 docs/GetLanguageunderstandingMinerTopics-example.txt
 docs/GetLanguageunderstandingMiners-example.txt
+docs/GetLanguageunderstandingSettings-example.txt
 docs/GetLearningAssignment-example.txt
 docs/GetLearningAssignments-example.txt
 docs/GetLearningAssignmentsMe-example.txt
@@ -1210,6 +1214,8 @@ docs/GetTaskmanagementWorkitemUserWrapups-example.txt
 docs/GetTaskmanagementWorkitemVersion-example.txt
 docs/GetTaskmanagementWorkitemVersions-example.txt
 docs/GetTaskmanagementWorkitemWrapups-example.txt
+docs/GetTaskmanagementWorkitemsQueryJob-example.txt
+docs/GetTaskmanagementWorkitemsQueryJobResults-example.txt
 docs/GetTaskmanagementWorkitemsSchema-example.txt
 docs/GetTaskmanagementWorkitemsSchemaVersion-example.txt
 docs/GetTaskmanagementWorkitemsSchemaVersions-example.txt
@@ -1240,7 +1246,6 @@ docs/GetTelephonyProvidersEdgeSoftwareupdate-example.txt
 docs/GetTelephonyProvidersEdgeSoftwareversions-example.txt
 docs/GetTelephonyProvidersEdgeTrunks-example.txt
 docs/GetTelephonyProvidersEdges-example.txt
-docs/GetTelephonyProvidersEdgesAvailablelanguages-example.txt
 docs/GetTelephonyProvidersEdgesCertificateauthorities-example.txt
 docs/GetTelephonyProvidersEdgesCertificateauthority-example.txt
 docs/GetTelephonyProvidersEdgesDid-example.txt
@@ -1772,10 +1777,11 @@ docs/PostAuthorizationSubjectDivisionRole-example.txt
 docs/PostCarrierservicesIntegrationsEmergencylocationsMe-example.txt
 docs/PostCertificateDetails-example.txt
 docs/PostChatsRoomMessages-example.txt
+docs/PostChatsRoomMessagesPins-example.txt
 docs/PostChatsRoomParticipant-example.txt
-docs/PostChatsRoomPinnedmessages-example.txt
 docs/PostChatsRooms-example.txt
 docs/PostChatsUserMessages-example.txt
+docs/PostChatsUserMessagesPins-example.txt
 docs/PostCoachingAppointmentAnnotations-example.txt
 docs/PostCoachingAppointmentConversations-example.txt
 docs/PostCoachingAppointments-example.txt
@@ -2170,6 +2176,7 @@ docs/PostTaskmanagementWorkitemDisconnect-example.txt
 docs/PostTaskmanagementWorkitemTerminate-example.txt
 docs/PostTaskmanagementWorkitems-example.txt
 docs/PostTaskmanagementWorkitemsQuery-example.txt
+docs/PostTaskmanagementWorkitemsQueryJobs-example.txt
 docs/PostTaskmanagementWorkitemsSchemas-example.txt
 docs/PostTaskmanagementWorktypeStatuses-example.txt
 docs/PostTaskmanagementWorktypes-example.txt
@@ -2376,6 +2383,7 @@ docs/PutExternalcontactsOrganizationTrustorTrustorId-example.txt
 docs/PutExternalcontactsOrganizationsSchema-example.txt
 docs/PutExternalcontactsRelationship-example.txt
 docs/PutFaxDocument-example.txt
+docs/PutFaxSettings-example.txt
 docs/PutFlow-example.txt
 docs/PutFlowInstancesSettingsLoglevels-example.txt
 docs/PutFlowsDatatable-example.txt
@@ -2685,6 +2693,7 @@ platformclientv2/agentqueryadherenceexplanationsresponse.go
 platformclientv2/agentqueuetimerequest.go
 platformclientv2/agentsintegrationslisting.go
 platformclientv2/agenttimeoffrequestpatch.go
+platformclientv2/agentvideosettings.go
 platformclientv2/aggregatemetricdata.go
 platformclientv2/aggregateviewdata.go
 platformclientv2/aggregationrange.go
@@ -2857,7 +2866,6 @@ platformclientv2/authzsubject.go
 platformclientv2/automatictimezonemappingsettings.go
 platformclientv2/autostart.go
 platformclientv2/autostatustransitiondetail.go
-platformclientv2/availablelanguagelist.go
 platformclientv2/availablemediatype.go
 platformclientv2/availablemediatypeentitylisting.go
 platformclientv2/availabletime.go
@@ -2867,6 +2875,7 @@ platformclientv2/availabletimeoffresponse.go
 platformclientv2/availabletopic.go
 platformclientv2/availabletopicentitylisting.go
 platformclientv2/availabletranslations.go
+platformclientv2/backgroundimagesettings.go
 platformclientv2/basemediasettings.go
 platformclientv2/baseprogramentity.go
 platformclientv2/basetopicentitiy.go
@@ -3090,6 +3099,7 @@ platformclientv2/campaigndivisionviewlisting.go
 platformclientv2/campaignentitylisting.go
 platformclientv2/campaigninteraction.go
 platformclientv2/campaigninteractions.go
+platformclientv2/campaignlinesutilization.go
 platformclientv2/campaignprogress.go
 platformclientv2/campaignrule.go
 platformclientv2/campaignruleaction.go
@@ -3202,6 +3212,7 @@ platformclientv2/compliance.go
 platformclientv2/complianceresponse.go
 platformclientv2/condition.go
 platformclientv2/conditionalgrouprouting.go
+platformclientv2/conditionalgrouproutingcondition.go
 platformclientv2/conditionalgrouproutingrule.go
 platformclientv2/configuration.go
 platformclientv2/configurationoverrides.go
@@ -3558,6 +3569,7 @@ platformclientv2/conversationvideoeventtopicurireference.go
 platformclientv2/conversationvideoeventtopicvideoconversation.go
 platformclientv2/conversationvideoeventtopicvideomediaparticipant.go
 platformclientv2/conversationvideoeventtopicwrapup.go
+platformclientv2/copilotscoring.go
 platformclientv2/copyattachmentsrequest.go
 platformclientv2/copybuforecastrequest.go
 platformclientv2/copyvoicemailmessage.go
@@ -4032,6 +4044,7 @@ platformclientv2/encryptionkeyentitylisting.go
 platformclientv2/endconsulttransferevent.go
 platformclientv2/endpoint.go
 platformclientv2/endtransferevent.go
+platformclientv2/engineintegration.go
 platformclientv2/entity.go
 platformclientv2/entitychange.go
 platformclientv2/entitylisting.go
@@ -4143,6 +4156,7 @@ platformclientv2/externalcontactscontactchangedtopicobject.go
 platformclientv2/externalcontactscontactchangedtopicphonenumber.go
 platformclientv2/externalcontactscontactchangedtopictwitterid.go
 platformclientv2/externalcontactscontactchangedtopicwhatsappid.go
+platformclientv2/externalcontactsentity.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopiccontact.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopiccontactaddress.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicdataschema.go
@@ -4160,6 +4174,7 @@ platformclientv2/externalcontactsunresolvedcontactchangedtopictwitterid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicwhatsappid.go
 platformclientv2/externaldatasource.go
 platformclientv2/externalestablishedevent.go
+platformclientv2/externalid.go
 platformclientv2/externalmetricdataitem.go
 platformclientv2/externalmetricdataprocesseditem.go
 platformclientv2/externalmetricdataunprocesseditem.go
@@ -4173,6 +4188,7 @@ platformclientv2/externalorganization.go
 platformclientv2/externalorganizationlisting.go
 platformclientv2/externalorganizationtrustorlink.go
 platformclientv2/externalsegment.go
+platformclientv2/externalsource.go
 platformclientv2/facebookappcredentials.go
 platformclientv2/facebookid.go
 platformclientv2/facebookintegration.go
@@ -4191,6 +4207,7 @@ platformclientv2/facetterm.go
 platformclientv2/failedobject.go
 platformclientv2/failedrecordingentitylisting.go
 platformclientv2/faxapi.go
+platformclientv2/faxconfig.go
 platformclientv2/faxdocument.go
 platformclientv2/faxdocumententitylisting.go
 platformclientv2/faxsendrequest.go
@@ -4371,6 +4388,7 @@ platformclientv2/greetingmediainfo.go
 platformclientv2/greetingowner.go
 platformclientv2/greetingsapi.go
 platformclientv2/group.go
+platformclientv2/groupbyattribute.go
 platformclientv2/groupcontact.go
 platformclientv2/groupcreate.go
 platformclientv2/groupentitylisting.go
@@ -4591,6 +4609,9 @@ platformclientv2/journeyview.go
 platformclientv2/journeyviewchart.go
 platformclientv2/journeyviewchartgroupbyattribute.go
 platformclientv2/journeyviewchartmetric.go
+platformclientv2/journeyviewchartmetricresult.go
+platformclientv2/journeyviewchartmetricresultvalue.go
+platformclientv2/journeyviewchartresult.go
 platformclientv2/journeyviewelement.go
 platformclientv2/journeyviewelementattributes.go
 platformclientv2/journeyviewelementfilter.go
@@ -4876,6 +4897,7 @@ platformclientv2/lineintegrationentitylisting.go
 platformclientv2/lineintegrationrequest.go
 platformclientv2/linestatus.go
 platformclientv2/lineuserid.go
+platformclientv2/linkconfiguration.go
 platformclientv2/listeddictionaryfeedback.go
 platformclientv2/listedprogram.go
 platformclientv2/listedtopic.go
@@ -5082,6 +5104,7 @@ platformclientv2/nlufeedbacklisting.go
 platformclientv2/nlufeedbackrequest.go
 platformclientv2/nlufeedbackresponse.go
 platformclientv2/nluinfo.go
+platformclientv2/nluorganization.go
 platformclientv2/nluqualityreportsummary.go
 platformclientv2/nluqualityreportsummarymetric.go
 platformclientv2/nluutterance.go
@@ -5128,6 +5151,7 @@ platformclientv2/observationmetricdata.go
 platformclientv2/observationvalue.go
 platformclientv2/okta.go
 platformclientv2/onelogin.go
+platformclientv2/oneonone.go
 platformclientv2/openactionfields.go
 platformclientv2/openactionproperties.go
 platformclientv2/opencontentattachment.go
@@ -5382,6 +5406,7 @@ platformclientv2/programmappingsrequest.go
 platformclientv2/programrequest.go
 platformclientv2/programsentitylisting.go
 platformclientv2/programsmappingsentitylisting.go
+platformclientv2/programtranscriptionengine.go
 platformclientv2/programtranscriptionengines.go
 platformclientv2/progressconsulttransferevent.go
 platformclientv2/progresstransferevent.go
@@ -6112,7 +6137,10 @@ platformclientv2/supportedcontent.go
 platformclientv2/supportedcontentlisting.go
 platformclientv2/supportedcontentreference.go
 platformclientv2/supporteddialectsentitylisting.go
+platformclientv2/supporteddialectstranscriptionengine.go
+platformclientv2/supportedentitytypestatus.go
 platformclientv2/supportedlanguage.go
+platformclientv2/supportedlanguagesinfodefinition.go
 platformclientv2/survey.go
 platformclientv2/surveyaggregatedatacontainer.go
 platformclientv2/surveyaggregatequeryclause.go
@@ -6276,7 +6304,6 @@ platformclientv2/transcriptasyncaggregatequeryresponse.go
 platformclientv2/transcriptasyncaggregationquery.go
 platformclientv2/transcriptconversationdetailsearchcriteria.go
 platformclientv2/transcriptconversationdetailsearchrequest.go
-platformclientv2/transcriptionengines.go
 platformclientv2/transcriptionenginesrequest.go
 platformclientv2/transcriptionsettings.go
 platformclientv2/transcriptiontopictranscriptalternative.go
@@ -6534,6 +6561,7 @@ platformclientv2/usertokenstopictokennotification.go
 platformclientv2/usertokenstopicurireference.go
 platformclientv2/usertransferevent.go
 platformclientv2/usertrenddata.go
+platformclientv2/uservideosettings.go
 platformclientv2/utilitiesapi.go
 platformclientv2/utilizationlabel.go
 platformclientv2/utilizationlabelentitylisting.go
@@ -6634,6 +6662,7 @@ platformclientv2/video.go
 platformclientv2/videoconferencedetails.go
 platformclientv2/videoconferenceupdatetopicparticipantinfo.go
 platformclientv2/videoconferenceupdatetopicvideoconference.go
+platformclientv2/videosettings.go
 platformclientv2/viewfilter.go
 platformclientv2/visibilitycondition.go
 platformclientv2/vmpairinginfo.go
@@ -6930,7 +6959,13 @@ platformclientv2/workitemcreate.go
 platformclientv2/workitemdelta.go
 platformclientv2/workitemfilter.go
 platformclientv2/workitemmanualassign.go
+platformclientv2/workitempagedentitylisting.go
 platformclientv2/workitempostqueryentitylisting.go
+platformclientv2/workitemqueryjobcreate.go
+platformclientv2/workitemqueryjoberror.go
+platformclientv2/workitemqueryjobfilter.go
+platformclientv2/workitemqueryjobresponse.go
+platformclientv2/workitemqueryjobsort.go
 platformclientv2/workitemquerypostrequest.go
 platformclientv2/workitemquerysort.go
 platformclientv2/workitemqueuereference.go

@@ -7,19 +7,28 @@ import (
 	"strings"
 )
 
-// Transcriptionengines
-type Transcriptionengines struct { 
+// Supportedlanguagesinfodefinition
+type Supportedlanguagesinfodefinition struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Engine
-	Engine *string `json:"engine,omitempty"`
+	// Language - The given supported Language
+	Language *string `json:"language,omitempty"`
 
-	// Dialects
-	Dialects *[]string `json:"dialects,omitempty"`
+	// IntentClassification - The boolean status of if intent classification is supported in this language
+	IntentClassification *bool `json:"intentClassification,omitempty"`
+
+	// Status - The language release status
+	Status *string `json:"status,omitempty"`
+
+	// SupportedEntityTypes - The supported entity types for this language
+	SupportedEntityTypes *[]string `json:"supportedEntityTypes,omitempty"`
+
+	// SupportedEntityTypeConfiguration - The configuration for the supported entity types
+	SupportedEntityTypeConfiguration *Supportedentitytypestatus `json:"supportedEntityTypeConfiguration,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Transcriptionengines) SetField(field string, fieldValue interface{}) {
+func (o *Supportedlanguagesinfodefinition) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +49,7 @@ func (o *Transcriptionengines) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Transcriptionengines) MarshalJSON() ([]byte, error) {
+func (o Supportedlanguagesinfodefinition) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,35 +87,60 @@ func (o Transcriptionengines) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Transcriptionengines
+	type Alias Supportedlanguagesinfodefinition
 	
 	return json.Marshal(&struct { 
-		Engine *string `json:"engine,omitempty"`
+		Language *string `json:"language,omitempty"`
 		
-		Dialects *[]string `json:"dialects,omitempty"`
+		IntentClassification *bool `json:"intentClassification,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		SupportedEntityTypes *[]string `json:"supportedEntityTypes,omitempty"`
+		
+		SupportedEntityTypeConfiguration *Supportedentitytypestatus `json:"supportedEntityTypeConfiguration,omitempty"`
 		Alias
 	}{ 
-		Engine: o.Engine,
+		Language: o.Language,
 		
-		Dialects: o.Dialects,
+		IntentClassification: o.IntentClassification,
+		
+		Status: o.Status,
+		
+		SupportedEntityTypes: o.SupportedEntityTypes,
+		
+		SupportedEntityTypeConfiguration: o.SupportedEntityTypeConfiguration,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Transcriptionengines) UnmarshalJSON(b []byte) error {
-	var TranscriptionenginesMap map[string]interface{}
-	err := json.Unmarshal(b, &TranscriptionenginesMap)
+func (o *Supportedlanguagesinfodefinition) UnmarshalJSON(b []byte) error {
+	var SupportedlanguagesinfodefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &SupportedlanguagesinfodefinitionMap)
 	if err != nil {
 		return err
 	}
 	
-	if Engine, ok := TranscriptionenginesMap["engine"].(string); ok {
-		o.Engine = &Engine
+	if Language, ok := SupportedlanguagesinfodefinitionMap["language"].(string); ok {
+		o.Language = &Language
 	}
     
-	if Dialects, ok := TranscriptionenginesMap["dialects"].([]interface{}); ok {
-		DialectsString, _ := json.Marshal(Dialects)
-		json.Unmarshal(DialectsString, &o.Dialects)
+	if IntentClassification, ok := SupportedlanguagesinfodefinitionMap["intentClassification"].(bool); ok {
+		o.IntentClassification = &IntentClassification
+	}
+    
+	if Status, ok := SupportedlanguagesinfodefinitionMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
+	if SupportedEntityTypes, ok := SupportedlanguagesinfodefinitionMap["supportedEntityTypes"].([]interface{}); ok {
+		SupportedEntityTypesString, _ := json.Marshal(SupportedEntityTypes)
+		json.Unmarshal(SupportedEntityTypesString, &o.SupportedEntityTypes)
+	}
+	
+	if SupportedEntityTypeConfiguration, ok := SupportedlanguagesinfodefinitionMap["supportedEntityTypeConfiguration"].(map[string]interface{}); ok {
+		SupportedEntityTypeConfigurationString, _ := json.Marshal(SupportedEntityTypeConfiguration)
+		json.Unmarshal(SupportedEntityTypeConfigurationString, &o.SupportedEntityTypeConfiguration)
 	}
 	
 
@@ -114,7 +148,7 @@ func (o *Transcriptionengines) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Transcriptionengines) String() string {
+func (o *Supportedlanguagesinfodefinition) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

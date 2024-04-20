@@ -16,6 +16,9 @@ type Apiusagequeryresult struct {
 
 	// QueryStatus - Query status
 	QueryStatus *string `json:"queryStatus,omitempty"`
+
+	// Cursors - Cursor tokens to be used for navigating paginated results
+	Cursors *Cursors `json:"cursors,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Apiusagequeryresult) MarshalJSON() ([]byte, error) {
 		Results *[]Apiusagerow `json:"results,omitempty"`
 		
 		QueryStatus *string `json:"queryStatus,omitempty"`
+		
+		Cursors *Cursors `json:"cursors,omitempty"`
 		Alias
 	}{ 
 		Results: o.Results,
 		
 		QueryStatus: o.QueryStatus,
+		
+		Cursors: o.Cursors,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,11 @@ func (o *Apiusagequeryresult) UnmarshalJSON(b []byte) error {
 		o.QueryStatus = &QueryStatus
 	}
     
+	if Cursors, ok := ApiusagequeryresultMap["cursors"].(map[string]interface{}); ok {
+		CursorsString, _ := json.Marshal(Cursors)
+		json.Unmarshal(CursorsString, &o.Cursors)
+	}
+	
 
 	return nil
 }

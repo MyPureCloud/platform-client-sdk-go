@@ -39,6 +39,9 @@ type Createobjective struct {
 	// EvaluationFormContextIds - The ids of associated evaluation form context, for Quality Evaluation Score metrics
 	EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
 
+	// InitialDirection - The initial direction to filter on
+	InitialDirection *string `json:"initialDirection,omitempty"`
+
 	// DateStart - start date of the objective. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	DateStart *time.Time `json:"dateStart,omitempty"`
 }
@@ -131,6 +134,8 @@ func (o Createobjective) MarshalJSON() ([]byte, error) {
 		
 		EvaluationFormContextIds *[]string `json:"evaluationFormContextIds,omitempty"`
 		
+		InitialDirection *string `json:"initialDirection,omitempty"`
+		
 		DateStart *string `json:"dateStart,omitempty"`
 		Alias
 	}{ 
@@ -151,6 +156,8 @@ func (o Createobjective) MarshalJSON() ([]byte, error) {
 		TopicIdsFilterType: o.TopicIdsFilterType,
 		
 		EvaluationFormContextIds: o.EvaluationFormContextIds,
+		
+		InitialDirection: o.InitialDirection,
 		
 		DateStart: DateStart,
 		Alias:    (Alias)(o),
@@ -205,6 +212,10 @@ func (o *Createobjective) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EvaluationFormContextIdsString, &o.EvaluationFormContextIds)
 	}
 	
+	if InitialDirection, ok := CreateobjectiveMap["initialDirection"].(string); ok {
+		o.InitialDirection = &InitialDirection
+	}
+    
 	if dateStartString, ok := CreateobjectiveMap["dateStart"].(string); ok {
 		DateStart, _ := time.Parse("2006-01-02", dateStartString)
 		o.DateStart = &DateStart

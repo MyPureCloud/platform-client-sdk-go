@@ -89,9 +89,6 @@ type Email struct {
 
 	// QueueMediaSettings - Represents the queue settings for this media type.
 	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
-
-	// ResumeTimestamp - Represents the timestamp when a parked conversation will resume.
-	ResumeTimestamp *int `json:"resumeTimestamp,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -240,8 +237,6 @@ func (o Email) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
-		
-		ResumeTimestamp *int `json:"resumeTimestamp,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -295,8 +290,6 @@ func (o Email) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
-		
-		ResumeTimestamp: o.ResumeTimestamp,
 		Alias:    (Alias)(o),
 	})
 }
@@ -421,11 +414,6 @@ func (o *Email) UnmarshalJSON(b []byte) error {
 	if QueueMediaSettings, ok := EmailMap["queueMediaSettings"].(map[string]interface{}); ok {
 		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
-	}
-	
-	if ResumeTimestamp, ok := EmailMap["resumeTimestamp"].(float64); ok {
-		ResumeTimestampInt := int(ResumeTimestamp)
-		o.ResumeTimestamp = &ResumeTimestampInt
 	}
 	
 

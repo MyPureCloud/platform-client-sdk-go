@@ -54,7 +54,7 @@ type Shifttraderesponse struct {
 	// OneSided - Whether this is a one-sided shift trade (e.g. the initiating user is not asking for a shift in return)
 	OneSided *bool `json:"oneSided,omitempty"`
 
-	// AcceptableIntervals
+	// AcceptableIntervals - Time frames when the initiating user is willing to accept trades.  Empty means giving up the shift. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	AcceptableIntervals *[]string `json:"acceptableIntervals,omitempty"`
 
 	// ReviewedBy - The user who reviewed this shift trade

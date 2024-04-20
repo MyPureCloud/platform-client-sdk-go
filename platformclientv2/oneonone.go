@@ -7,16 +7,16 @@ import (
 	"strings"
 )
 
-// Availablelanguagelist
-type Availablelanguagelist struct { 
+// Oneonone
+type Oneonone struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Languages
-	Languages *[]string `json:"languages,omitempty"`
+	// PinnedMessages - Room's pinned messages
+	PinnedMessages *[]Addressableentityref `json:"pinnedMessages,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Availablelanguagelist) SetField(field string, fieldValue interface{}) {
+func (o *Oneonone) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +37,7 @@ func (o *Availablelanguagelist) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Availablelanguagelist) MarshalJSON() ([]byte, error) {
+func (o Oneonone) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,27 +75,27 @@ func (o Availablelanguagelist) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Availablelanguagelist
+	type Alias Oneonone
 	
 	return json.Marshal(&struct { 
-		Languages *[]string `json:"languages,omitempty"`
+		PinnedMessages *[]Addressableentityref `json:"pinnedMessages,omitempty"`
 		Alias
 	}{ 
-		Languages: o.Languages,
+		PinnedMessages: o.PinnedMessages,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Availablelanguagelist) UnmarshalJSON(b []byte) error {
-	var AvailablelanguagelistMap map[string]interface{}
-	err := json.Unmarshal(b, &AvailablelanguagelistMap)
+func (o *Oneonone) UnmarshalJSON(b []byte) error {
+	var OneononeMap map[string]interface{}
+	err := json.Unmarshal(b, &OneononeMap)
 	if err != nil {
 		return err
 	}
 	
-	if Languages, ok := AvailablelanguagelistMap["languages"].([]interface{}); ok {
-		LanguagesString, _ := json.Marshal(Languages)
-		json.Unmarshal(LanguagesString, &o.Languages)
+	if PinnedMessages, ok := OneononeMap["pinnedMessages"].([]interface{}); ok {
+		PinnedMessagesString, _ := json.Marshal(PinnedMessages)
+		json.Unmarshal(PinnedMessagesString, &o.PinnedMessages)
 	}
 	
 
@@ -103,7 +103,7 @@ func (o *Availablelanguagelist) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Availablelanguagelist) String() string {
+func (o *Oneonone) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
