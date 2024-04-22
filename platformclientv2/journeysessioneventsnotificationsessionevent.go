@@ -131,6 +131,9 @@ type Journeysessioneventsnotificationsessionevent struct {
 
 	// NetworkConnectivity
 	NetworkConnectivity *Journeysessioneventsnotificationnetworkconnectivity `json:"networkConnectivity,omitempty"`
+
+	// DivisionIds
+	DivisionIds *[]string `json:"divisionIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -307,6 +310,8 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		SdkLibrary *Journeysessioneventsnotificationsdklibrary `json:"sdkLibrary,omitempty"`
 		
 		NetworkConnectivity *Journeysessioneventsnotificationnetworkconnectivity `json:"networkConnectivity,omitempty"`
+		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -388,6 +393,8 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		SdkLibrary: o.SdkLibrary,
 		
 		NetworkConnectivity: o.NetworkConnectivity,
+		
+		DivisionIds: o.DivisionIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -584,6 +591,11 @@ func (o *Journeysessioneventsnotificationsessionevent) UnmarshalJSON(b []byte) e
 	if NetworkConnectivity, ok := JourneysessioneventsnotificationsessioneventMap["networkConnectivity"].(map[string]interface{}); ok {
 		NetworkConnectivityString, _ := json.Marshal(NetworkConnectivity)
 		json.Unmarshal(NetworkConnectivityString, &o.NetworkConnectivity)
+	}
+	
+	if DivisionIds, ok := JourneysessioneventsnotificationsessioneventMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
 	}
 	
 

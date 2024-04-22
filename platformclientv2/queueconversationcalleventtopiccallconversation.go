@@ -26,6 +26,9 @@ type Queueconversationcalleventtopiccallconversation struct {
 	// Address
 	Address *string `json:"address,omitempty"`
 
+	// UtilizationLabelId
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
@@ -109,6 +112,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		
 		Address *string `json:"address,omitempty"`
 		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
 		SecurePause *bool `json:"securePause,omitempty"`
@@ -125,6 +130,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		OtherMediaUris: o.OtherMediaUris,
 		
 		Address: o.Address,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		RecordingState: o.RecordingState,
 		
@@ -162,6 +169,10 @@ func (o *Queueconversationcalleventtopiccallconversation) UnmarshalJSON(b []byte
 	
 	if Address, ok := QueueconversationcalleventtopiccallconversationMap["address"].(string); ok {
 		o.Address = &Address
+	}
+    
+	if UtilizationLabelId, ok := QueueconversationcalleventtopiccallconversationMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 	if RecordingState, ok := QueueconversationcalleventtopiccallconversationMap["recordingState"].(string); ok {

@@ -1,6 +1,5 @@
 package platformclientv2
 import (
-	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -13,7 +12,7 @@ type Outboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaignpr
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// EventTime
-	EventTime *time.Time `json:"eventTime,omitempty"`
+	EventTime *int `json:"eventTime,omitempty"`
 
 	// OutboundCampaignType
 	OutboundCampaignType *string `json:"outboundCampaignType,omitempty"`
@@ -72,7 +71,7 @@ func (o Outboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaig
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "EventTime", }
+		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -105,16 +104,8 @@ func (o Outboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaig
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaignprecontactsmsevent
 	
-	EventTime := new(string)
-	if o.EventTime != nil {
-		
-		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		EventTime = nil
-	}
-	
 	return json.Marshal(&struct { 
-		EventTime *string `json:"eventTime,omitempty"`
+		EventTime *int `json:"eventTime,omitempty"`
 		
 		OutboundCampaignType *string `json:"outboundCampaignType,omitempty"`
 		
@@ -135,7 +126,7 @@ func (o Outboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaig
 		IsCampaignAlwaysRunning *bool `json:"isCampaignAlwaysRunning,omitempty"`
 		Alias
 	}{ 
-		EventTime: EventTime,
+		EventTime: o.EventTime,
 		
 		OutboundCampaignType: o.OutboundCampaignType,
 		
@@ -165,9 +156,9 @@ func (o *Outboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampai
 		return err
 	}
 	
-	if eventTimeString, ok := OutboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaignprecontactsmseventMap["eventTime"].(string); ok {
-		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
-		o.EventTime = &EventTime
+	if EventTime, ok := OutboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaignprecontactsmseventMap["eventTime"].(float64); ok {
+		EventTimeInt := int(EventTime)
+		o.EventTime = &EventTimeInt
 	}
 	
 	if OutboundCampaignType, ok := OutboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaignprecontactsmseventMap["outboundCampaignType"].(string); ok {

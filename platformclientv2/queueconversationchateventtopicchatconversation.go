@@ -25,6 +25,9 @@ type Queueconversationchateventtopicchatconversation struct {
 
 	// Address
 	Address *string `json:"address,omitempty"`
+
+	// UtilizationLabelId
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Queueconversationchateventtopicchatconversation) MarshalJSON() ([]byte, 
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		
 		Address *string `json:"address,omitempty"`
+		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -110,6 +115,8 @@ func (o Queueconversationchateventtopicchatconversation) MarshalJSON() ([]byte, 
 		OtherMediaUris: o.OtherMediaUris,
 		
 		Address: o.Address,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -141,6 +148,10 @@ func (o *Queueconversationchateventtopicchatconversation) UnmarshalJSON(b []byte
 	
 	if Address, ok := QueueconversationchateventtopicchatconversationMap["address"].(string); ok {
 		o.Address = &Address
+	}
+    
+	if UtilizationLabelId, ok := QueueconversationchateventtopicchatconversationMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 

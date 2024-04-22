@@ -80,6 +80,9 @@ type Queueconversationsocialexpressioneventtopicemail struct {
 
 	// QueueMediaSettings - Represents the queue setting for this media.
 	QueueMediaSettings *Queueconversationsocialexpressioneventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
+	// ResumeTime - The time when a parked email should resume.
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -111,7 +114,7 @@ func (o Queueconversationsocialexpressioneventtopicemail) MarshalJSON() ([]byte,
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime", }
+		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime","ResumeTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -168,6 +171,14 @@ func (o Queueconversationsocialexpressioneventtopicemail) MarshalJSON() ([]byte,
 		DisconnectedTime = nil
 	}
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -214,6 +225,8 @@ func (o Queueconversationsocialexpressioneventtopicemail) MarshalJSON() ([]byte,
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		QueueMediaSettings *Queueconversationsocialexpressioneventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -261,6 +274,8 @@ func (o Queueconversationsocialexpressioneventtopicemail) MarshalJSON() ([]byte,
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
+		
+		ResumeTime: ResumeTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -371,6 +386,11 @@ func (o *Queueconversationsocialexpressioneventtopicemail) UnmarshalJSON(b []byt
 	if QueueMediaSettings, ok := QueueconversationsocialexpressioneventtopicemailMap["queueMediaSettings"].(map[string]interface{}); ok {
 		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
+	if resumeTimeString, ok := QueueconversationsocialexpressioneventtopicemailMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
 	}
 	
 

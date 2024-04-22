@@ -1,6 +1,5 @@
 package platformclientv2
 import (
-	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -13,7 +12,7 @@ type Outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaig
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// EventTime
-	EventTime *time.Time `json:"eventTime,omitempty"`
+	EventTime *int `json:"eventTime,omitempty"`
 
 	// ConversationId
 	ConversationId *string `json:"conversationId,omitempty"`
@@ -75,7 +74,7 @@ func (o Outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcamp
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "EventTime", }
+		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -108,16 +107,8 @@ func (o Outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcamp
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaignpostcontactemailevent
 	
-	EventTime := new(string)
-	if o.EventTime != nil {
-		
-		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		EventTime = nil
-	}
-	
 	return json.Marshal(&struct { 
-		EventTime *string `json:"eventTime,omitempty"`
+		EventTime *int `json:"eventTime,omitempty"`
 		
 		ConversationId *string `json:"conversationId,omitempty"`
 		
@@ -140,7 +131,7 @@ func (o Outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcamp
 		IsCampaignAlwaysRunning *bool `json:"isCampaignAlwaysRunning,omitempty"`
 		Alias
 	}{ 
-		EventTime: EventTime,
+		EventTime: o.EventTime,
 		
 		ConversationId: o.ConversationId,
 		
@@ -172,9 +163,9 @@ func (o *Outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcam
 		return err
 	}
 	
-	if eventTimeString, ok := OutboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaignpostcontactemaileventMap["eventTime"].(string); ok {
-		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
-		o.EventTime = &EventTime
+	if EventTime, ok := OutboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaignpostcontactemaileventMap["eventTime"].(float64); ok {
+		EventTimeInt := int(EventTime)
+		o.EventTime = &EventTimeInt
 	}
 	
 	if ConversationId, ok := OutboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaignpostcontactemaileventMap["conversationId"].(string); ok {

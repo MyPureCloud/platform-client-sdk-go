@@ -32,6 +32,9 @@ type Queueconversationvideoeventtopicconversation struct {
 	// ExternalTag
 	ExternalTag *string `json:"externalTag,omitempty"`
 
+	// UtilizationLabelId
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
 }
@@ -113,6 +116,8 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		
 		ExternalTag *string `json:"externalTag,omitempty"`
 		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
 		SecurePause *bool `json:"securePause,omitempty"`
 		Alias
 	}{ 
@@ -129,6 +134,8 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		Address: o.Address,
 		
 		ExternalTag: o.ExternalTag,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		SecurePause: o.SecurePause,
 		Alias:    (Alias)(o),
@@ -171,6 +178,10 @@ func (o *Queueconversationvideoeventtopicconversation) UnmarshalJSON(b []byte) e
     
 	if ExternalTag, ok := QueueconversationvideoeventtopicconversationMap["externalTag"].(string); ok {
 		o.ExternalTag = &ExternalTag
+	}
+    
+	if UtilizationLabelId, ok := QueueconversationvideoeventtopicconversationMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 	if SecurePause, ok := QueueconversationvideoeventtopicconversationMap["securePause"].(bool); ok {

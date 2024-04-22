@@ -117,6 +117,9 @@ type Conversationcallbackeventtopiccallbackmediaparticipant struct {
 	// EndAcwTime
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+	// ResumeTime
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
+
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
@@ -180,7 +183,7 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","CallbackScheduledTime", }
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ResumeTime","CallbackScheduledTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -261,6 +264,14 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		EndAcwTime = nil
 	}
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
 	CallbackScheduledTime := new(string)
 	if o.CallbackScheduledTime != nil {
 		
@@ -339,6 +350,8 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		StartAcwTime *string `json:"startAcwTime,omitempty"`
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
@@ -432,6 +445,8 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
+		
+		ResumeTime: ResumeTime,
 		
 		MediaRoles: o.MediaRoles,
 		
@@ -622,6 +637,11 @@ func (o *Conversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJSON(b
 	if endAcwTimeString, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if resumeTimeString, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
 	}
 	
 	if MediaRoles, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["mediaRoles"].([]interface{}); ok {

@@ -117,6 +117,9 @@ type Conversationsocialexpressioneventtopicsocialmediaparticipant struct {
 	// EndAcwTime
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+	// ResumeTime
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
+
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
@@ -165,7 +168,7 @@ func (o Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJSO
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime", }
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ResumeTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -246,6 +249,14 @@ func (o Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJSO
 		EndAcwTime = nil
 	}
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -316,6 +327,8 @@ func (o Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJSO
 		StartAcwTime *string `json:"startAcwTime,omitempty"`
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
@@ -399,6 +412,8 @@ func (o Conversationsocialexpressioneventtopicsocialmediaparticipant) MarshalJSO
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
+		
+		ResumeTime: ResumeTime,
 		
 		MediaRoles: o.MediaRoles,
 		
@@ -579,6 +594,11 @@ func (o *Conversationsocialexpressioneventtopicsocialmediaparticipant) Unmarshal
 	if endAcwTimeString, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if resumeTimeString, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
 	}
 	
 	if MediaRoles, ok := ConversationsocialexpressioneventtopicsocialmediaparticipantMap["mediaRoles"].([]interface{}); ok {
