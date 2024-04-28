@@ -22,6 +22,9 @@ type Knowledgeguestdocumentview struct {
 
 	// QueryType - The type of the query that surfaced the document.
 	QueryType *string `json:"queryType,omitempty"`
+
+	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.
+	SurfacingMethod *string `json:"surfacingMethod,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Knowledgeguestdocumentview) MarshalJSON() ([]byte, error) {
 		SearchId *string `json:"searchId,omitempty"`
 		
 		QueryType *string `json:"queryType,omitempty"`
+		
+		SurfacingMethod *string `json:"surfacingMethod,omitempty"`
 		Alias
 	}{ 
 		DocumentVariationId: o.DocumentVariationId,
@@ -103,6 +108,8 @@ func (o Knowledgeguestdocumentview) MarshalJSON() ([]byte, error) {
 		SearchId: o.SearchId,
 		
 		QueryType: o.QueryType,
+		
+		SurfacingMethod: o.SurfacingMethod,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *Knowledgeguestdocumentview) UnmarshalJSON(b []byte) error {
     
 	if QueryType, ok := KnowledgeguestdocumentviewMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
+	}
+    
+	if SurfacingMethod, ok := KnowledgeguestdocumentviewMap["surfacingMethod"].(string); ok {
+		o.SurfacingMethod = &SurfacingMethod
 	}
     
 

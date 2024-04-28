@@ -7,34 +7,16 @@ import (
 	"strings"
 )
 
-// Messageconversation
-type Messageconversation struct { 
+// Conversationutilizationlabelupdate
+type Conversationutilizationlabelupdate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// Participants - The list of participants involved in the conversation.
-	Participants *[]Messagemediaparticipant `json:"participants,omitempty"`
-
-	// OtherMediaUris - The list of other media channels involved in the conversation.
-	OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
-
-	// RecentTransfers - The list of the most recent 20 transfer commands applied to this conversation.
-	RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
-
-	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
+	// UtilizationLabelId - The utilization label associated with the conversation.
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Messageconversation) SetField(field string, fieldValue interface{}) {
+func (o *Conversationutilizationlabelupdate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -55,7 +37,7 @@ func (o *Messageconversation) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Messageconversation) MarshalJSON() ([]byte, error) {
+func (o Conversationutilizationlabelupdate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -93,77 +75,26 @@ func (o Messageconversation) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Messageconversation
+	type Alias Conversationutilizationlabelupdate
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		Participants *[]Messagemediaparticipant `json:"participants,omitempty"`
-		
-		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
-		
-		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
-		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		Participants: o.Participants,
-		
-		OtherMediaUris: o.OtherMediaUris,
-		
-		RecentTransfers: o.RecentTransfers,
-		
 		UtilizationLabelId: o.UtilizationLabelId,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Messageconversation) UnmarshalJSON(b []byte) error {
-	var MessageconversationMap map[string]interface{}
-	err := json.Unmarshal(b, &MessageconversationMap)
+func (o *Conversationutilizationlabelupdate) UnmarshalJSON(b []byte) error {
+	var ConversationutilizationlabelupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationutilizationlabelupdateMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := MessageconversationMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if Name, ok := MessageconversationMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if Participants, ok := MessageconversationMap["participants"].([]interface{}); ok {
-		ParticipantsString, _ := json.Marshal(Participants)
-		json.Unmarshal(ParticipantsString, &o.Participants)
-	}
-	
-	if OtherMediaUris, ok := MessageconversationMap["otherMediaUris"].([]interface{}); ok {
-		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
-		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
-	}
-	
-	if RecentTransfers, ok := MessageconversationMap["recentTransfers"].([]interface{}); ok {
-		RecentTransfersString, _ := json.Marshal(RecentTransfers)
-		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
-	}
-	
-	if UtilizationLabelId, ok := MessageconversationMap["utilizationLabelId"].(string); ok {
+	if UtilizationLabelId, ok := ConversationutilizationlabelupdateMap["utilizationLabelId"].(string); ok {
 		o.UtilizationLabelId = &UtilizationLabelId
-	}
-    
-	if SelfUri, ok := MessageconversationMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 
@@ -171,7 +102,7 @@ func (o *Messageconversation) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Messageconversation) String() string {
+func (o *Conversationutilizationlabelupdate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

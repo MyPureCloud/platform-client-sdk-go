@@ -17,14 +17,14 @@ type Programsmappingsentitylisting struct {
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,22 +94,22 @@ func (o Programsmappingsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
 		
 		PageSize: o.PageSize,
 		
-		SelfUri: o.SelfUri,
-		
 		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,10 +131,6 @@ func (o *Programsmappingsentitylisting) UnmarshalJSON(b []byte) error {
 		o.PageSize = &PageSizeInt
 	}
 	
-	if SelfUri, ok := ProgramsmappingsentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if NextUri, ok := ProgramsmappingsentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -144,6 +140,10 @@ func (o *Programsmappingsentitylisting) UnmarshalJSON(b []byte) error {
 		o.PageCount = &PageCountInt
 	}
 	
+	if SelfUri, ok := ProgramsmappingsentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }

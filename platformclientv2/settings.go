@@ -20,6 +20,9 @@ type Settings struct {
 	// AllowCallbackQueueSelection - Allow Callback Queue Selection
 	AllowCallbackQueueSelection *bool `json:"allowCallbackQueueSelection,omitempty"`
 
+	// CallbacksInheritRoutingFromInboundCall - Inherit callback routing data from inbound calls
+	CallbacksInheritRoutingFromInboundCall *bool `json:"callbacksInheritRoutingFromInboundCall,omitempty"`
+
 	// CompleteAcwWhenAgentTransitionsOffline - Complete ACW When Agent Transitions Offline
 	CompleteAcwWhenAgentTransitionsOffline *bool `json:"completeAcwWhenAgentTransitionsOffline,omitempty"`
 
@@ -96,6 +99,8 @@ func (o Settings) MarshalJSON() ([]byte, error) {
 		
 		AllowCallbackQueueSelection *bool `json:"allowCallbackQueueSelection,omitempty"`
 		
+		CallbacksInheritRoutingFromInboundCall *bool `json:"callbacksInheritRoutingFromInboundCall,omitempty"`
+		
 		CompleteAcwWhenAgentTransitionsOffline *bool `json:"completeAcwWhenAgentTransitionsOffline,omitempty"`
 		
 		TotalActiveCallback *bool `json:"totalActiveCallback,omitempty"`
@@ -106,6 +111,8 @@ func (o Settings) MarshalJSON() ([]byte, error) {
 		IncludeNonAgentConversationSummary: o.IncludeNonAgentConversationSummary,
 		
 		AllowCallbackQueueSelection: o.AllowCallbackQueueSelection,
+		
+		CallbacksInheritRoutingFromInboundCall: o.CallbacksInheritRoutingFromInboundCall,
 		
 		CompleteAcwWhenAgentTransitionsOffline: o.CompleteAcwWhenAgentTransitionsOffline,
 		
@@ -131,6 +138,10 @@ func (o *Settings) UnmarshalJSON(b []byte) error {
     
 	if AllowCallbackQueueSelection, ok := SettingsMap["allowCallbackQueueSelection"].(bool); ok {
 		o.AllowCallbackQueueSelection = &AllowCallbackQueueSelection
+	}
+    
+	if CallbacksInheritRoutingFromInboundCall, ok := SettingsMap["callbacksInheritRoutingFromInboundCall"].(bool); ok {
+		o.CallbacksInheritRoutingFromInboundCall = &CallbacksInheritRoutingFromInboundCall
 	}
     
 	if CompleteAcwWhenAgentTransitionsOffline, ok := SettingsMap["completeAcwWhenAgentTransitionsOffline"].(bool); ok {

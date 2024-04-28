@@ -4130,8 +4130,6 @@ func (a JourneyApi) PostJourneyDeploymentAppevents(deploymentId string, body App
 // PostJourneyFlowsPathsQuery invokes POST /api/v2/journey/flows/paths/query
 //
 // Query for flow paths.
-//
-// Preview: PostJourneyFlowsPathsQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyFlowsPathsQuery(body Flowpathsquery) (*Flowpaths, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

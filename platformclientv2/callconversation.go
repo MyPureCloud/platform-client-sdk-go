@@ -26,6 +26,9 @@ type Callconversation struct {
 	// RecentTransfers - The list of the most recent 20 transfer commands applied to this conversation.
 	RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
 
+	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
@@ -112,6 +115,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		
 		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
 		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
 		MaxParticipants *int `json:"maxParticipants,omitempty"`
@@ -130,6 +135,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		OtherMediaUris: o.OtherMediaUris,
 		
 		RecentTransfers: o.RecentTransfers,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		RecordingState: o.RecordingState,
 		
@@ -172,6 +179,10 @@ func (o *Callconversation) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
 	}
 	
+	if UtilizationLabelId, ok := CallconversationMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
+	}
+    
 	if RecordingState, ok := CallconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}

@@ -39,6 +39,9 @@ type Knowledgeguestdocumentfeedback struct {
 	// QueryType - The type of the query that surfaced the document on which the feedback was given.
 	QueryType *string `json:"queryType,omitempty"`
 
+	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.
+	SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+
 	// State - The state of the feedback.
 	State *string `json:"state,omitempty"`
 
@@ -138,6 +141,8 @@ func (o Knowledgeguestdocumentfeedback) MarshalJSON() ([]byte, error) {
 		
 		QueryType *string `json:"queryType,omitempty"`
 		
+		SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+		
 		State *string `json:"state,omitempty"`
 		
 		Document *Knowledgeguestdocumentversionreference `json:"document,omitempty"`
@@ -162,6 +167,8 @@ func (o Knowledgeguestdocumentfeedback) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		QueryType: o.QueryType,
+		
+		SurfacingMethod: o.SurfacingMethod,
 		
 		State: o.State,
 		
@@ -216,6 +223,10 @@ func (o *Knowledgeguestdocumentfeedback) UnmarshalJSON(b []byte) error {
 	
 	if QueryType, ok := KnowledgeguestdocumentfeedbackMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
+	}
+    
+	if SurfacingMethod, ok := KnowledgeguestdocumentfeedbackMap["surfacingMethod"].(string); ok {
+		o.SurfacingMethod = &SurfacingMethod
 	}
     
 	if State, ok := KnowledgeguestdocumentfeedbackMap["state"].(string); ok {

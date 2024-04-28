@@ -16,6 +16,9 @@ type Inbounddomainpatchrequest struct {
 
 	// CustomSMTPServer - The custom SMTP server integration to use when sending outbound emails from this domain.
 	CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
+
+	// ImapSettings - The IMAP server integration and settings to use for processing inbound emails.
+	ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Inbounddomainpatchrequest) MarshalJSON() ([]byte, error) {
 		MailFromSettings *Mailfromresult `json:"mailFromSettings,omitempty"`
 		
 		CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
+		
+		ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
 		Alias
 	}{ 
 		MailFromSettings: o.MailFromSettings,
 		
 		CustomSMTPServer: o.CustomSMTPServer,
+		
+		ImapSettings: o.ImapSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Inbounddomainpatchrequest) UnmarshalJSON(b []byte) error {
 	if CustomSMTPServer, ok := InbounddomainpatchrequestMap["customSMTPServer"].(map[string]interface{}); ok {
 		CustomSMTPServerString, _ := json.Marshal(CustomSMTPServer)
 		json.Unmarshal(CustomSMTPServerString, &o.CustomSMTPServer)
+	}
+	
+	if ImapSettings, ok := InbounddomainpatchrequestMap["imapSettings"].(map[string]interface{}); ok {
+		ImapSettingsString, _ := json.Marshal(ImapSettings)
+		json.Unmarshal(ImapSettingsString, &o.ImapSettings)
 	}
 	
 

@@ -26,6 +26,9 @@ type Emailconversation struct {
 	// RecentTransfers - The list of the most recent 20 transfer commands applied to this conversation.
 	RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
 
+	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Emailconversation) MarshalJSON() ([]byte, error) {
 		
 		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
 		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Emailconversation) MarshalJSON() ([]byte, error) {
 		OtherMediaUris: o.OtherMediaUris,
 		
 		RecentTransfers: o.RecentTransfers,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -151,6 +158,10 @@ func (o *Emailconversation) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RecentTransfersString, &o.RecentTransfers)
 	}
 	
+	if UtilizationLabelId, ok := EmailconversationMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
+	}
+    
 	if SelfUri, ok := EmailconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

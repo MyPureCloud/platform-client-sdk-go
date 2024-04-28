@@ -7,28 +7,19 @@ import (
 	"strings"
 )
 
-// Programsentitylisting
-type Programsentitylisting struct { 
+// Emailerrorinfo
+type Emailerrorinfo struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Listedprogram `json:"entities,omitempty"`
+	// Message - Error Message
+	Message *string `json:"message,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
+	// Code - Error Code
+	Code *string `json:"code,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Programsentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Emailerrorinfo) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +40,7 @@ func (o *Programsentitylisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Programsentitylisting) MarshalJSON() ([]byte, error) {
+func (o Emailerrorinfo) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,69 +78,42 @@ func (o Programsentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Programsentitylisting
+	type Alias Emailerrorinfo
 	
 	return json.Marshal(&struct { 
-		Entities *[]Listedprogram `json:"entities,omitempty"`
+		Message *string `json:"message,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
+		Code *string `json:"code,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Message: o.Message,
 		
-		PageSize: o.PageSize,
-		
-		NextUri: o.NextUri,
-		
-		SelfUri: o.SelfUri,
-		
-		PageCount: o.PageCount,
+		Code: o.Code,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Programsentitylisting) UnmarshalJSON(b []byte) error {
-	var ProgramsentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &ProgramsentitylistingMap)
+func (o *Emailerrorinfo) UnmarshalJSON(b []byte) error {
+	var EmailerrorinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailerrorinfoMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := ProgramsentitylistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := ProgramsentitylistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if NextUri, ok := ProgramsentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if Message, ok := EmailerrorinfoMap["message"].(string); ok {
+		o.Message = &Message
 	}
     
-	if SelfUri, ok := ProgramsentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if Code, ok := EmailerrorinfoMap["code"].(string); ok {
+		o.Code = &Code
 	}
     
-	if PageCount, ok := ProgramsentitylistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Programsentitylisting) String() string {
+func (o *Emailerrorinfo) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -54,6 +54,9 @@ type Conversation struct {
 	// SecurePause - True when the recording of this conversation is in secure pause status.
 	SecurePause *bool `json:"securePause,omitempty"`
 
+	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -165,6 +168,8 @@ func (o Conversation) MarshalJSON() ([]byte, error) {
 		
 		SecurePause *bool `json:"securePause,omitempty"`
 		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -195,6 +200,8 @@ func (o Conversation) MarshalJSON() ([]byte, error) {
 		RecentTransfers: o.RecentTransfers,
 		
 		SecurePause: o.SecurePause,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -269,6 +276,10 @@ func (o *Conversation) UnmarshalJSON(b []byte) error {
 	
 	if SecurePause, ok := ConversationMap["securePause"].(bool); ok {
 		o.SecurePause = &SecurePause
+	}
+    
+	if UtilizationLabelId, ok := ConversationMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 	if SelfUri, ok := ConversationMap["selfUri"].(string); ok {

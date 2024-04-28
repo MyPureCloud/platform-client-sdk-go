@@ -2755,8 +2755,6 @@ func (a RecordingApi) GetRecordingsScreensessions(pageSize int, pageNumber int) 
 // GetRecordingsScreensessionsDetails invokes GET /api/v2/recordings/screensessions/details
 //
 // Retrieves an object containing the total number of concurrent active screen recordings
-//
-// Preview: GetRecordingsScreensessionsDetails is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RecordingApi) GetRecordingsScreensessionsDetails() (*Screenrecordingactivesessions, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -10100,6 +10100,25 @@
     "return": "string",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversation ID\nvar body platformclientv2.Conversationsecureattributes // Conversation Secure Attributes\n// Update the secure attributes on a conversation.\ndata, response, err := apiInstance.PatchConversationSecureattributes(conversationId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationSecureattributes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "patchconversationutilizationlabel": {
+    "operationId": "patchconversationutilizationlabel",
+    "functionName": "PatchConversationUtilizationlabel",
+    "signature": "PatchConversationUtilizationlabel(conversationId, body)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Conversationutilizationlabelupdate",
+        "required": "true"
+      }
+    ],
+    "return": "string",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversation ID\nvar body platformclientv2.Conversationutilizationlabelupdate // Conversation Utilization Label\n// Update the utilization label on a conversation. When there is no value provided, the system default label is applied\ndata, response, err := apiInstance.PatchConversationUtilizationlabel(conversationId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationUtilizationlabel: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "patchconversationsaftercallworkconversationidparticipantcommunication": {
     "operationId": "patchconversationsaftercallworkconversationidparticipantcommunication",
     "functionName": "PatchConversationsAftercallworkConversationIdParticipantCommunication",

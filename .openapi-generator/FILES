@@ -1514,6 +1514,7 @@ docs/PatchCoachingNotification-example.txt
 docs/PatchConversationParticipant-example.txt
 docs/PatchConversationParticipantAttributes-example.txt
 docs/PatchConversationSecureattributes-example.txt
+docs/PatchConversationUtilizationlabel-example.txt
 docs/PatchConversationsAftercallworkConversationIdParticipantCommunication-example.txt
 docs/PatchConversationsCall-example.txt
 docs/PatchConversationsCallParticipant-example.txt
@@ -3555,6 +3556,7 @@ platformclientv2/conversationthreadingwindow.go
 platformclientv2/conversationthreadingwindowsetting.go
 platformclientv2/conversationuser.go
 platformclientv2/conversationuserdisposition.go
+platformclientv2/conversationutilizationlabelupdate.go
 platformclientv2/conversationvideoeventtopicconversationroutingdata.go
 platformclientv2/conversationvideoeventtopicdetail.go
 platformclientv2/conversationvideoeventtopicerrorbody.go
@@ -4008,6 +4010,7 @@ platformclientv2/emailconfig.go
 platformclientv2/emailconversation.go
 platformclientv2/emailconversationentitylisting.go
 platformclientv2/emailendtransferevent.go
+platformclientv2/emailerrorinfo.go
 platformclientv2/emailexternalestablishedevent.go
 platformclientv2/emailflowestablishedevent.go
 platformclientv2/emailholdupdatedevent.go
@@ -4444,6 +4447,7 @@ platformclientv2/identityproviderentitylisting.go
 platformclientv2/idleeventtrigger.go
 platformclientv2/idletokentimeout.go
 platformclientv2/ignoredactivitycategories.go
+platformclientv2/imapsettings.go
 platformclientv2/importerror.go
 platformclientv2/importforecastresponse.go
 platformclientv2/importforecastuploadresponse.go

@@ -59,6 +59,9 @@ type Inboundroute struct {
 	// AllowMultipleActions - Control if multiple actions are allowed on this route. When true the disconnect has to be done manually. When false a conversation will be disconnected by the system after every action
 	AllowMultipleActions *bool `json:"allowMultipleActions,omitempty"`
 
+	// ImapFolder - Imap folder routed to this route
+	ImapFolder *string `json:"imapFolder,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -158,6 +161,8 @@ func (o Inboundroute) MarshalJSON() ([]byte, error) {
 		
 		AllowMultipleActions *bool `json:"allowMultipleActions,omitempty"`
 		
+		ImapFolder *string `json:"imapFolder,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -192,6 +197,8 @@ func (o Inboundroute) MarshalJSON() ([]byte, error) {
 		HistoryInclusion: o.HistoryInclusion,
 		
 		AllowMultipleActions: o.AllowMultipleActions,
+		
+		ImapFolder: o.ImapFolder,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -276,6 +283,10 @@ func (o *Inboundroute) UnmarshalJSON(b []byte) error {
     
 	if AllowMultipleActions, ok := InboundrouteMap["allowMultipleActions"].(bool); ok {
 		o.AllowMultipleActions = &AllowMultipleActions
+	}
+    
+	if ImapFolder, ok := InboundrouteMap["imapFolder"].(string); ok {
+		o.ImapFolder = &ImapFolder
 	}
     
 	if SelfUri, ok := InboundrouteMap["selfUri"].(string); ok {

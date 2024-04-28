@@ -20,6 +20,9 @@ type Knowledgeguestdocumentpresentation struct {
 	// QueryType - The type of the query that surfaced the documents.
 	QueryType *string `json:"queryType,omitempty"`
 
+	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.
+	SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+
 	// SessionId - Knowledge session ID.
 	SessionId *string `json:"sessionId,omitempty"`
 
@@ -96,6 +99,8 @@ func (o Knowledgeguestdocumentpresentation) MarshalJSON() ([]byte, error) {
 		
 		QueryType *string `json:"queryType,omitempty"`
 		
+		SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+		
 		SessionId *string `json:"sessionId,omitempty"`
 		
 		Application *Knowledgeguestsearchclientapplication `json:"application,omitempty"`
@@ -106,6 +111,8 @@ func (o Knowledgeguestdocumentpresentation) MarshalJSON() ([]byte, error) {
 		SearchId: o.SearchId,
 		
 		QueryType: o.QueryType,
+		
+		SurfacingMethod: o.SurfacingMethod,
 		
 		SessionId: o.SessionId,
 		
@@ -132,6 +139,10 @@ func (o *Knowledgeguestdocumentpresentation) UnmarshalJSON(b []byte) error {
     
 	if QueryType, ok := KnowledgeguestdocumentpresentationMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
+	}
+    
+	if SurfacingMethod, ok := KnowledgeguestdocumentpresentationMap["surfacingMethod"].(string); ok {
+		o.SurfacingMethod = &SurfacingMethod
 	}
     
 	if SessionId, ok := KnowledgeguestdocumentpresentationMap["sessionId"].(string); ok {

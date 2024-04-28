@@ -23,6 +23,9 @@ type Knowledgedocumentview struct {
 	// QueryType - The type of the query that surfaced the document.
 	QueryType *string `json:"queryType,omitempty"`
 
+	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.
+	SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+
 	// Application - The client application from which the document was viewed.
 	Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 
@@ -104,6 +107,8 @@ func (o Knowledgedocumentview) MarshalJSON() ([]byte, error) {
 		
 		QueryType *string `json:"queryType,omitempty"`
 		
+		SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+		
 		Application *Knowledgesearchclientapplication `json:"application,omitempty"`
 		
 		SessionId *string `json:"sessionId,omitempty"`
@@ -118,6 +123,8 @@ func (o Knowledgedocumentview) MarshalJSON() ([]byte, error) {
 		SearchId: o.SearchId,
 		
 		QueryType: o.QueryType,
+		
+		SurfacingMethod: o.SurfacingMethod,
 		
 		Application: o.Application,
 		
@@ -149,6 +156,10 @@ func (o *Knowledgedocumentview) UnmarshalJSON(b []byte) error {
     
 	if QueryType, ok := KnowledgedocumentviewMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
+	}
+    
+	if SurfacingMethod, ok := KnowledgedocumentviewMap["surfacingMethod"].(string); ok {
+		o.SurfacingMethod = &SurfacingMethod
 	}
     
 	if Application, ok := KnowledgedocumentviewMap["application"].(map[string]interface{}); ok {

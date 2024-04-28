@@ -23,8 +23,8 @@ type Domainedgesoftwareversiondtoentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -35,8 +35,8 @@ type Domainedgesoftwareversiondtoentitylisting struct {
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,7 +113,7 @@ func (o Domainedgesoftwareversiondtoentitylisting) MarshalJSON() ([]byte, error)
 		
 		Total *int `json:"total,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -121,7 +121,7 @@ func (o Domainedgesoftwareversiondtoentitylisting) MarshalJSON() ([]byte, error)
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,7 +134,7 @@ func (o Domainedgesoftwareversiondtoentitylisting) MarshalJSON() ([]byte, error)
 		
 		Total: o.Total,
 		
-		PreviousUri: o.PreviousUri,
+		NextUri: o.NextUri,
 		
 		LastUri: o.LastUri,
 		
@@ -142,7 +142,7 @@ func (o Domainedgesoftwareversiondtoentitylisting) MarshalJSON() ([]byte, error)
 		
 		SelfUri: o.SelfUri,
 		
-		NextUri: o.NextUri,
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,8 +176,8 @@ func (o *Domainedgesoftwareversiondtoentitylisting) UnmarshalJSON(b []byte) erro
 		o.Total = &TotalInt
 	}
 	
-	if PreviousUri, ok := DomainedgesoftwareversiondtoentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if NextUri, ok := DomainedgesoftwareversiondtoentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if LastUri, ok := DomainedgesoftwareversiondtoentitylistingMap["lastUri"].(string); ok {
@@ -192,8 +192,8 @@ func (o *Domainedgesoftwareversiondtoentitylisting) UnmarshalJSON(b []byte) erro
 		o.SelfUri = &SelfUri
 	}
     
-	if NextUri, ok := DomainedgesoftwareversiondtoentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if PreviousUri, ok := DomainedgesoftwareversiondtoentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := DomainedgesoftwareversiondtoentitylistingMap["pageCount"].(float64); ok {

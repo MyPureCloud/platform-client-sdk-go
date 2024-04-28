@@ -14,6 +14,9 @@ type Knowledgebasereference struct {
 	// Id - The globally unique identifier for the knowledge base.
 	Id *string `json:"id,omitempty"`
 
+	// LanguageCode - Language of the knowledge base
+	LanguageCode *string `json:"languageCode,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Knowledgebasereference) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		LanguageCode *string `json:"languageCode,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		LanguageCode: o.LanguageCode,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Knowledgebasereference) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := KnowledgebasereferenceMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if LanguageCode, ok := KnowledgebasereferenceMap["languageCode"].(string); ok {
+		o.LanguageCode = &LanguageCode
 	}
     
 	if SelfUri, ok := KnowledgebasereferenceMap["selfUri"].(string); ok {

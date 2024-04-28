@@ -23,6 +23,9 @@ type Knowledgedocumentcopy struct {
 	// QueryType - The type of the query that surfaced the document.
 	QueryType *string `json:"queryType,omitempty"`
 
+	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.
+	SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+
 	// SessionId - Knowledge session ID.
 	SessionId *string `json:"sessionId,omitempty"`
 
@@ -104,6 +107,8 @@ func (o Knowledgedocumentcopy) MarshalJSON() ([]byte, error) {
 		
 		QueryType *string `json:"queryType,omitempty"`
 		
+		SurfacingMethod *string `json:"surfacingMethod,omitempty"`
+		
 		SessionId *string `json:"sessionId,omitempty"`
 		
 		ConversationContext *Knowledgeconversationcontext `json:"conversationContext,omitempty"`
@@ -118,6 +123,8 @@ func (o Knowledgedocumentcopy) MarshalJSON() ([]byte, error) {
 		SearchId: o.SearchId,
 		
 		QueryType: o.QueryType,
+		
+		SurfacingMethod: o.SurfacingMethod,
 		
 		SessionId: o.SessionId,
 		
@@ -149,6 +156,10 @@ func (o *Knowledgedocumentcopy) UnmarshalJSON(b []byte) error {
     
 	if QueryType, ok := KnowledgedocumentcopyMap["queryType"].(string); ok {
 		o.QueryType = &QueryType
+	}
+    
+	if SurfacingMethod, ok := KnowledgedocumentcopyMap["surfacingMethod"].(string); ok {
+		o.SurfacingMethod = &SurfacingMethod
 	}
     
 	if SessionId, ok := KnowledgedocumentcopyMap["sessionId"].(string); ok {
