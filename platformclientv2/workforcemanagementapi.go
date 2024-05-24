@@ -5864,7 +5864,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 // GetWorkforcemanagementManagementunitAgent invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}
 //
 // Get data for agent in the management unit
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(managementUnitId string, agentId string, excludeCapabilities bool) (*Wfmagent, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(managementUnitId string, agentId string, excludeCapabilities bool, expand []string) (*Wfmagent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}"
@@ -5904,6 +5904,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 	}
 	
 	queryParams["excludeCapabilities"] = a.Configuration.APIClient.ParameterToString(excludeCapabilities, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -7462,7 +7464,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 // Get work plans
 //
 // \&quot;expand&#x3D;details\&quot; is deprecated
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(managementUnitId string, expand []string) (*Workplanlistresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(managementUnitId string, expand []string, exclude []string) (*Workplanlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans"
@@ -7496,6 +7498,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(ma
 	}
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["exclude"] = a.Configuration.APIClient.ParameterToString(exclude, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

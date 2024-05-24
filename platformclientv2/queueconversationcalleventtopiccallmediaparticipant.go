@@ -120,6 +120,9 @@ type Queueconversationcalleventtopiccallmediaparticipant struct {
 	// ResumeTime
 	ResumeTime *time.Time `json:"resumeTime,omitempty"`
 
+	// ParkTime
+	ParkTime *time.Time `json:"parkTime,omitempty"`
+
 	// MediaRoles
 	MediaRoles *[]string `json:"mediaRoles,omitempty"`
 
@@ -201,7 +204,7 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ResumeTime","BargedTime", }
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ResumeTime","ParkTime","BargedTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -290,6 +293,14 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		ResumeTime = nil
 	}
 	
+	ParkTime := new(string)
+	if o.ParkTime != nil {
+		
+		*ParkTime = timeutil.Strftime(o.ParkTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ParkTime = nil
+	}
+	
 	BargedTime := new(string)
 	if o.BargedTime != nil {
 		
@@ -370,6 +381,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
 		
 		ResumeTime *string `json:"resumeTime,omitempty"`
+		
+		ParkTime *string `json:"parkTime,omitempty"`
 		
 		MediaRoles *[]string `json:"mediaRoles,omitempty"`
 		
@@ -477,6 +490,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		EndAcwTime: EndAcwTime,
 		
 		ResumeTime: ResumeTime,
+		
+		ParkTime: ParkTime,
 		
 		MediaRoles: o.MediaRoles,
 		
@@ -684,6 +699,11 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if resumeTimeString, ok := QueueconversationcalleventtopiccallmediaparticipantMap["resumeTime"].(string); ok {
 		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
 		o.ResumeTime = &ResumeTime
+	}
+	
+	if parkTimeString, ok := QueueconversationcalleventtopiccallmediaparticipantMap["parkTime"].(string); ok {
+		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
+		o.ParkTime = &ParkTime
 	}
 	
 	if MediaRoles, ok := QueueconversationcalleventtopiccallmediaparticipantMap["mediaRoles"].([]interface{}); ok {

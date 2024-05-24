@@ -12596,8 +12596,6 @@ func (a ConversationsApi) PostAnalyticsConversationDetailsProperties(conversatio
 // PostAnalyticsConversationsActivityQuery invokes POST /api/v2/analytics/conversations/activity/query
 //
 // Query for conversation activity observations
-//
-// Preview: PostAnalyticsConversationsActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostAnalyticsConversationsActivityQuery(body Conversationactivityquery, pageSize int, pageNumber int) (*Conversationactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

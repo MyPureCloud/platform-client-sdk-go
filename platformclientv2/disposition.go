@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -19,6 +20,12 @@ type Disposition struct {
 
 	// DispositionParameters - Contains various parameters related to call analysis.
 	DispositionParameters *Dispositionparameters `json:"dispositionParameters,omitempty"`
+
+	// DetectedSpeechStart - Absolute time when the speech started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DetectedSpeechStart *time.Time `json:"detectedSpeechStart,omitempty"`
+
+	// DetectedSpeechEnd - Absolute time when the speech ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DetectedSpeechEnd *time.Time `json:"detectedSpeechEnd,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -50,7 +57,7 @@ func (o Disposition) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DetectedSpeechStart","DetectedSpeechEnd", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -83,12 +90,32 @@ func (o Disposition) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Disposition
 	
+	DetectedSpeechStart := new(string)
+	if o.DetectedSpeechStart != nil {
+		
+		*DetectedSpeechStart = timeutil.Strftime(o.DetectedSpeechStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DetectedSpeechStart = nil
+	}
+	
+	DetectedSpeechEnd := new(string)
+	if o.DetectedSpeechEnd != nil {
+		
+		*DetectedSpeechEnd = timeutil.Strftime(o.DetectedSpeechEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DetectedSpeechEnd = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Analyzer *string `json:"analyzer,omitempty"`
 		
 		DispositionParameters *Dispositionparameters `json:"dispositionParameters,omitempty"`
+		
+		DetectedSpeechStart *string `json:"detectedSpeechStart,omitempty"`
+		
+		DetectedSpeechEnd *string `json:"detectedSpeechEnd,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -96,6 +123,10 @@ func (o Disposition) MarshalJSON() ([]byte, error) {
 		Analyzer: o.Analyzer,
 		
 		DispositionParameters: o.DispositionParameters,
+		
+		DetectedSpeechStart: DetectedSpeechStart,
+		
+		DetectedSpeechEnd: DetectedSpeechEnd,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +149,16 @@ func (o *Disposition) UnmarshalJSON(b []byte) error {
 	if DispositionParameters, ok := DispositionMap["dispositionParameters"].(map[string]interface{}); ok {
 		DispositionParametersString, _ := json.Marshal(DispositionParameters)
 		json.Unmarshal(DispositionParametersString, &o.DispositionParameters)
+	}
+	
+	if detectedSpeechStartString, ok := DispositionMap["detectedSpeechStart"].(string); ok {
+		DetectedSpeechStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", detectedSpeechStartString)
+		o.DetectedSpeechStart = &DetectedSpeechStart
+	}
+	
+	if detectedSpeechEndString, ok := DispositionMap["detectedSpeechEnd"].(string); ok {
+		DetectedSpeechEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", detectedSpeechEndString)
+		o.DetectedSpeechEnd = &DetectedSpeechEnd
 	}
 	
 

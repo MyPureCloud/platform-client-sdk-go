@@ -104,81 +104,6 @@ func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*API
 	return response, err
 }
 
-// DeleteAnalyticsReportingSchedule invokes DELETE /api/v2/analytics/reporting/schedules/{scheduleId}
-//
-// Delete a scheduled report job.
-func (a AnalyticsApi) DeleteAnalyticsReportingSchedule(scheduleId string) (*APIResponse, error) {
-	var httpMethod = "DELETE"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
-	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'scheduleId' is set
-	if &scheduleId == nil {
-		// false
-		return nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->DeleteAnalyticsReportingSchedule")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	}
-	return response, err
-}
-
 // DeleteAnalyticsUsersDetailsJob invokes DELETE /api/v2/analytics/users/details/jobs/{jobId}
 //
 // Delete/cancel an async request
@@ -424,11 +349,111 @@ func (a AnalyticsApi) GetAnalyticsActionsAggregatesJobResults(jobId string, curs
 	return successPayload, response, err
 }
 
+// GetAnalyticsBotflowDivisionsReportingturns invokes GET /api/v2/analytics/botflows/{botFlowId}/divisions/reportingturns
+//
+// Get Reporting Turns (division aware).
+//
+// Returns the reporting turns for the specified flow, filtered by the clients divisions and grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list. For pagination, clients should keep sending requests using the value of &#39;nextUri&#39; in the response, until it&#39;s no longer present, only then have all items have been returned. Note: resources returned by this endpoint are not persisted indefinitely, as they are deleted after approximately, but not before, 10 days.
+func (a AnalyticsApi) GetAnalyticsBotflowDivisionsReportingturns(botFlowId string, after string, pageSize string, interval string, actionId string, sessionId string, language string, askActionResults string) (*Reportingturnsresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/analytics/botflows/{botFlowId}/divisions/reportingturns"
+	path = strings.Replace(path, "{botFlowId}", url.PathEscape(fmt.Sprintf("%v", botFlowId)), -1)
+	defaultReturn := new(Reportingturnsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'botFlowId' is set
+	if &botFlowId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'botFlowId' when calling AnalyticsApi->GetAnalyticsBotflowDivisionsReportingturns")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
+	
+	queryParams["actionId"] = a.Configuration.APIClient.ParameterToString(actionId, "")
+	
+	queryParams["sessionId"] = a.Configuration.APIClient.ParameterToString(sessionId, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
+	
+	queryParams["askActionResults"] = a.Configuration.APIClient.ParameterToString(askActionResults, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Reportingturnsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Reportingturnsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetAnalyticsBotflowReportingturns invokes GET /api/v2/analytics/botflows/{botFlowId}/reportingturns
 //
 // Get Reporting Turns.
 //
-// Returns the reporting turns grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list. For pagination, clients should keep sending requests using the value of &#39;nextUri&#39; in the response, until it&#39;s no longer present, only then have all items have been returned. Note: resources returned by this endpoint are not persisted indefinitely, as they are deleted after approximately, but not before, 10 days.
+// Deprecated: Please use GET /analytics/botflows/{botFlowId}/divisions/reportingturns instead. Returns the reporting turns grouped by session, in reverse chronological order from the date the session was created, with the reporting turns from the most recent session appearing at the start of the list. For pagination, clients should keep sending requests using the value of &#39;nextUri&#39; in the response, until it&#39;s no longer present, only then have all items have been returned. Note: resources returned by this endpoint are not persisted indefinitely, as they are deleted after approximately, but not before, 10 days.
+//
+// Deprecated: GetAnalyticsBotflowReportingturns is deprecated
 func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after string, pageSize string, interval string, actionId string, sessionId string, language string, askActionResults string) (*Reportingturnsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2610,672 +2635,6 @@ func (a AnalyticsApi) GetAnalyticsReportingExportsMetadata() (*Reportingexportme
 	return successPayload, response, err
 }
 
-// GetAnalyticsReportingMetadata invokes GET /api/v2/analytics/reporting/metadata
-//
-// Get list of reporting metadata.
-func (a AnalyticsApi) GetAnalyticsReportingMetadata(pageNumber int, pageSize int, locale string) (*Reportmetadataentitylisting, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/metadata"
-	defaultReturn := new(Reportmetadataentitylisting)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, "")
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Reportmetadataentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportmetadataentitylisting" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingReportIdMetadata invokes GET /api/v2/analytics/reporting/{reportId}/metadata
-//
-// Get a reporting metadata.
-func (a AnalyticsApi) GetAnalyticsReportingReportIdMetadata(reportId string, locale string) (*Reportmetadata, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/{reportId}/metadata"
-	path = strings.Replace(path, "{reportId}", url.PathEscape(fmt.Sprintf("%v", reportId)), -1)
-	defaultReturn := new(Reportmetadata)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'reportId' is set
-	if &reportId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'reportId' when calling AnalyticsApi->GetAnalyticsReportingReportIdMetadata")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-	queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, "")
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Reportmetadata
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportmetadata" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingReportformats invokes GET /api/v2/analytics/reporting/reportformats
-//
-// Get a list of report formats
-//
-// Get a list of report formats.
-func (a AnalyticsApi) GetAnalyticsReportingReportformats() ([]string, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/reportformats"
-	defaultReturn := make([]string, 0)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload []string
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "[]string" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingSchedule invokes GET /api/v2/analytics/reporting/schedules/{scheduleId}
-//
-// Get a scheduled report job.
-func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reportschedule, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
-	defaultReturn := new(Reportschedule)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'scheduleId' is set
-	if &scheduleId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingSchedule")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Reportschedule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportschedule" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingScheduleHistory invokes GET /api/v2/analytics/reporting/schedules/{scheduleId}/history
-//
-// Get list of completed scheduled report jobs.
-func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pageNumber int, pageSize int) (*Reportrunentryentitydomainlisting, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/history"
-	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
-	defaultReturn := new(Reportrunentryentitydomainlisting)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'scheduleId' is set
-	if &scheduleId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistory")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Reportrunentryentitydomainlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportrunentryentitydomainlisting" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingScheduleHistoryLatest invokes GET /api/v2/analytics/reporting/schedules/{scheduleId}/history/latest
-//
-// Get most recently completed scheduled report job.
-func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryLatest(scheduleId string) (*Reportrunentry, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/history/latest"
-	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
-	defaultReturn := new(Reportrunentry)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'scheduleId' is set
-	if &scheduleId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistoryLatest")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Reportrunentry
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportrunentry" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingScheduleHistoryRunId invokes GET /api/v2/analytics/reporting/schedules/{scheduleId}/history/{runId}
-//
-// A completed scheduled report job
-//
-// A completed scheduled report job.
-func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryRunId(runId string, scheduleId string) (*Reportrunentry, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/history/{runId}"
-	path = strings.Replace(path, "{runId}", url.PathEscape(fmt.Sprintf("%v", runId)), -1)
-	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
-	defaultReturn := new(Reportrunentry)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'runId' is set
-	if &runId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'runId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistoryRunId")
-	}
-	// verify the required parameter 'scheduleId' is set
-	if &scheduleId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->GetAnalyticsReportingScheduleHistoryRunId")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Reportrunentry
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportrunentry" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingSchedules invokes GET /api/v2/analytics/reporting/schedules
-//
-// Get a list of scheduled report jobs
-//
-// Get a list of scheduled report jobs.
-func (a AnalyticsApi) GetAnalyticsReportingSchedules(pageNumber int, pageSize int) (*Reportscheduleentitylisting, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules"
-	defaultReturn := new(Reportscheduleentitylisting)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Reportscheduleentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportscheduleentitylisting" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
 // GetAnalyticsReportingSettings invokes GET /api/v2/analytics/reporting/settings
 //
 // Get AnalyticsReportingSettings for an organization
@@ -3355,7 +2714,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettin
 // GetAnalyticsReportingSettingsUserDashboards invokes GET /api/v2/analytics/reporting/settings/users/{userId}/dashboards
 //
 // Get list of dashboards for an user
-func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string, sortBy string, pageNumber int, pageSize int, publicOnly bool, favoriteOnly bool) (*Dashboardconfigurationlisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string, sortBy string, pageNumber int, pageSize int, publicOnly bool, favoriteOnly bool, name string) (*Dashboardconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/settings/users/{userId}/dashboards"
@@ -3398,6 +2757,8 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string,
 	
 	queryParams["favoriteOnly"] = a.Configuration.APIClient.ParameterToString(favoriteOnly, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
 	correctedQueryParams := make(map[string]string)
@@ -3436,82 +2797,6 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string,
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Dashboardconfigurationlisting" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetAnalyticsReportingTimeperiods invokes GET /api/v2/analytics/reporting/timeperiods
-//
-// Get a list of report time periods.
-func (a AnalyticsApi) GetAnalyticsReportingTimeperiods() ([]string, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/timeperiods"
-	defaultReturn := make([]string, 0)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload []string
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "[]string" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5131,8 +4416,6 @@ func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId 
 // PostAnalyticsConversationsActivityQuery invokes POST /api/v2/analytics/conversations/activity/query
 //
 // Query for conversation activity observations
-//
-// Preview: PostAnalyticsConversationsActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsConversationsActivityQuery(body Conversationactivityquery, pageSize int, pageNumber int) (*Conversationactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5983,8 +5266,6 @@ func (a AnalyticsApi) PostAnalyticsFlowexecutionsAggregatesQuery(body Flowexecut
 // PostAnalyticsFlowsActivityQuery invokes POST /api/v2/analytics/flows/activity/query
 //
 // Query for flow activity observations
-//
-// Preview: PostAnalyticsFlowsActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pageSize int, pageNumber int) (*Flowactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6995,180 +6276,6 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 	return successPayload, response, err
 }
 
-// PostAnalyticsReportingScheduleRunreport invokes POST /api/v2/analytics/reporting/schedules/{scheduleId}/runreport
-//
-// Place a scheduled report immediately into the reporting queue
-//
-// This route is deprecated, please use POST:api/v2/analytics/reporting/exports/{exportId}/execute instead
-//
-// Deprecated: PostAnalyticsReportingScheduleRunreport is deprecated
-func (a AnalyticsApi) PostAnalyticsReportingScheduleRunreport(scheduleId string) (*Runnowresponse, *APIResponse, error) {
-	var httpMethod = "POST"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/runreport"
-	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
-	defaultReturn := new(Runnowresponse)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'scheduleId' is set
-	if &scheduleId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->PostAnalyticsReportingScheduleRunreport")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Runnowresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Runnowresponse" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// PostAnalyticsReportingSchedules invokes POST /api/v2/analytics/reporting/schedules
-//
-// Create a scheduled report job
-//
-// This route is deprecated, please use POST:api/v2/analytics/reporting/exports instead
-//
-// Deprecated: PostAnalyticsReportingSchedules is deprecated
-func (a AnalyticsApi) PostAnalyticsReportingSchedules(body Reportschedule) (*Reportschedule, *APIResponse, error) {
-	var httpMethod = "POST"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules"
-	defaultReturn := new(Reportschedule)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PostAnalyticsReportingSchedules")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Reportschedule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportschedule" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
 // PostAnalyticsReportingSettingsDashboardsBulkRemove invokes POST /api/v2/analytics/reporting/settings/dashboards/bulk/remove
 //
 // Bulk remove dashboard configurations
@@ -7419,8 +6526,6 @@ func (a AnalyticsApi) PostAnalyticsResolutionsAggregatesJobs(body Resolutionasyn
 // PostAnalyticsRoutingActivityQuery invokes POST /api/v2/analytics/routing/activity/query
 //
 // Query for user activity observations
-//
-// Preview: PostAnalyticsRoutingActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsRoutingActivityQuery(body Routingactivityquery, pageSize int, pageNumber int) (*Routingactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7851,8 +6956,6 @@ func (a AnalyticsApi) PostAnalyticsTaskmanagementAggregatesQuery(body Taskmanage
 // PostAnalyticsTeamsActivityQuery invokes POST /api/v2/analytics/teams/activity/query
 //
 // Query for team activity observations
-//
-// Preview: PostAnalyticsTeamsActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsTeamsActivityQuery(body Teamactivityquery, pageSize int, pageNumber int) (*Teamactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8111,8 +7214,6 @@ func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesQuery(body Transcriptagg
 // PostAnalyticsUsersActivityQuery invokes POST /api/v2/analytics/users/activity/query
 //
 // Query for user activity observations
-//
-// Preview: PostAnalyticsUsersActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSize int, pageNumber int) (*Useractivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8696,100 +7797,6 @@ func (a AnalyticsApi) PutAnalyticsDataretentionSettings(body Updateanalyticsdata
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Analyticsdataretentionresponse" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// PutAnalyticsReportingSchedule invokes PUT /api/v2/analytics/reporting/schedules/{scheduleId}
-//
-// Update a scheduled report job.
-//
-// This route is deprecated, please use PATCH:api/v2/analytics/reporting/exports/{exportId}/schedule instead
-//
-// Deprecated: PutAnalyticsReportingSchedule is deprecated
-func (a AnalyticsApi) PutAnalyticsReportingSchedule(scheduleId string, body Reportschedule) (*Reportschedule, *APIResponse, error) {
-	var httpMethod = "PUT"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}"
-	path = strings.Replace(path, "{scheduleId}", url.PathEscape(fmt.Sprintf("%v", scheduleId)), -1)
-	defaultReturn := new(Reportschedule)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'scheduleId' is set
-	if &scheduleId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling AnalyticsApi->PutAnalyticsReportingSchedule")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AnalyticsApi->PutAnalyticsReportingSchedule")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Reportschedule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Reportschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

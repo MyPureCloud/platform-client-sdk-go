@@ -12,7 +12,7 @@ type V2mobiusrulestopicalertnotification struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Recipient
-	Recipient *string `json:"recipient,omitempty"`
+	Recipient *V2mobiusrulestopicalertnotificationrecipient `json:"recipient,omitempty"`
 
 	// NotificationTypes
 	NotificationTypes *[]string `json:"notificationTypes,omitempty"`
@@ -84,7 +84,7 @@ func (o V2mobiusrulestopicalertnotification) MarshalJSON() ([]byte, error) {
 	type Alias V2mobiusrulestopicalertnotification
 	
 	return json.Marshal(&struct { 
-		Recipient *string `json:"recipient,omitempty"`
+		Recipient *V2mobiusrulestopicalertnotificationrecipient `json:"recipient,omitempty"`
 		
 		NotificationTypes *[]string `json:"notificationTypes,omitempty"`
 		
@@ -107,10 +107,11 @@ func (o *V2mobiusrulestopicalertnotification) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Recipient, ok := V2mobiusrulestopicalertnotificationMap["recipient"].(string); ok {
-		o.Recipient = &Recipient
+	if Recipient, ok := V2mobiusrulestopicalertnotificationMap["recipient"].(map[string]interface{}); ok {
+		RecipientString, _ := json.Marshal(Recipient)
+		json.Unmarshal(RecipientString, &o.Recipient)
 	}
-    
+	
 	if NotificationTypes, ok := V2mobiusrulestopicalertnotificationMap["notificationTypes"].([]interface{}); ok {
 		NotificationTypesString, _ := json.Marshal(NotificationTypes)
 		json.Unmarshal(NotificationTypesString, &o.NotificationTypes)

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -7,28 +8,19 @@ import (
 	"strings"
 )
 
-// Generictemplate
-type Generictemplate struct { 
+// Occurrencedetails
+type Occurrencedetails struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Title - Text to show in the title.
-	Title *string `json:"title,omitempty"`
+	// DateOfNextOccurrence - The date of the next start or end occurrence for the recurrence as an ISO-8601 string
+	DateOfNextOccurrence *time.Time `json:"dateOfNextOccurrence,omitempty"`
 
-	// Description - Text to show in the description.
-	Description *string `json:"description,omitempty"`
-
-	// Url - URL of an image.
-	Url *string `json:"url,omitempty"`
-
-	// Components - List of button components offered with this message content.
-	Components *[]Recordingbuttoncomponent `json:"components,omitempty"`
-
-	// Actions - Actions to be taken.
-	Actions *Recordingcontentactions `json:"actions,omitempty"`
+	// NumberOfOccurrences - The number of start or end occurrences that have been processed for the recurrence.
+	NumberOfOccurrences *int `json:"numberOfOccurrences,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Generictemplate) SetField(field string, fieldValue interface{}) {
+func (o *Occurrencedetails) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,14 +41,14 @@ func (o *Generictemplate) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Generictemplate) MarshalJSON() ([]byte, error) {
+func (o Occurrencedetails) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateOfNextOccurrence", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -87,60 +79,44 @@ func (o Generictemplate) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Generictemplate
+	type Alias Occurrencedetails
+	
+	DateOfNextOccurrence := new(string)
+	if o.DateOfNextOccurrence != nil {
+		
+		*DateOfNextOccurrence = timeutil.Strftime(o.DateOfNextOccurrence, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateOfNextOccurrence = nil
+	}
 	
 	return json.Marshal(&struct { 
-		Title *string `json:"title,omitempty"`
+		DateOfNextOccurrence *string `json:"dateOfNextOccurrence,omitempty"`
 		
-		Description *string `json:"description,omitempty"`
-		
-		Url *string `json:"url,omitempty"`
-		
-		Components *[]Recordingbuttoncomponent `json:"components,omitempty"`
-		
-		Actions *Recordingcontentactions `json:"actions,omitempty"`
+		NumberOfOccurrences *int `json:"numberOfOccurrences,omitempty"`
 		Alias
 	}{ 
-		Title: o.Title,
+		DateOfNextOccurrence: DateOfNextOccurrence,
 		
-		Description: o.Description,
-		
-		Url: o.Url,
-		
-		Components: o.Components,
-		
-		Actions: o.Actions,
+		NumberOfOccurrences: o.NumberOfOccurrences,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Generictemplate) UnmarshalJSON(b []byte) error {
-	var GenerictemplateMap map[string]interface{}
-	err := json.Unmarshal(b, &GenerictemplateMap)
+func (o *Occurrencedetails) UnmarshalJSON(b []byte) error {
+	var OccurrencedetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &OccurrencedetailsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Title, ok := GenerictemplateMap["title"].(string); ok {
-		o.Title = &Title
-	}
-    
-	if Description, ok := GenerictemplateMap["description"].(string); ok {
-		o.Description = &Description
-	}
-    
-	if Url, ok := GenerictemplateMap["url"].(string); ok {
-		o.Url = &Url
-	}
-    
-	if Components, ok := GenerictemplateMap["components"].([]interface{}); ok {
-		ComponentsString, _ := json.Marshal(Components)
-		json.Unmarshal(ComponentsString, &o.Components)
+	if dateOfNextOccurrenceString, ok := OccurrencedetailsMap["dateOfNextOccurrence"].(string); ok {
+		DateOfNextOccurrence, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateOfNextOccurrenceString)
+		o.DateOfNextOccurrence = &DateOfNextOccurrence
 	}
 	
-	if Actions, ok := GenerictemplateMap["actions"].(map[string]interface{}); ok {
-		ActionsString, _ := json.Marshal(Actions)
-		json.Unmarshal(ActionsString, &o.Actions)
+	if NumberOfOccurrences, ok := OccurrencedetailsMap["numberOfOccurrences"].(float64); ok {
+		NumberOfOccurrencesInt := int(NumberOfOccurrences)
+		o.NumberOfOccurrences = &NumberOfOccurrencesInt
 	}
 	
 
@@ -148,7 +124,7 @@ func (o *Generictemplate) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Generictemplate) String() string {
+func (o *Occurrencedetails) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

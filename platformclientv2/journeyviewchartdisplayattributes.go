@@ -7,22 +7,25 @@ import (
 	"strings"
 )
 
-// Recordingcontentactions - User actions available on the content. All actions are optional and all actions are executed simultaneously.
-type Recordingcontentactions struct { 
+// Journeyviewchartdisplayattributes - Display attributes for the chart, such as type, labels and legends
+type Journeyviewchartdisplayattributes struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Url - A URL of a web page to direct the user to.
-	Url *string `json:"url,omitempty"`
+	// VarType - The type of chart to display
+	VarType *string `json:"type,omitempty"`
 
-	// UrlTarget - The target window in which to open the URL. If empty will open a blank page or tab.
-	UrlTarget *string `json:"urlTarget,omitempty"`
+	// GroupByTitle - A title for the grouped by attributes (aka the x axis)
+	GroupByTitle *string `json:"groupByTitle,omitempty"`
 
-	// Textback - Text to be sent back in reply when the item is selected.
-	Textback *string `json:"textback,omitempty"`
+	// MetricsTitle - A title for the metrics (aka the y axis)
+	MetricsTitle *string `json:"metricsTitle,omitempty"`
+
+	// ShowLegend - Whether to show a legend
+	ShowLegend *bool `json:"showLegend,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Recordingcontentactions) SetField(field string, fieldValue interface{}) {
+func (o *Journeyviewchartdisplayattributes) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +46,7 @@ func (o *Recordingcontentactions) SetField(field string, fieldValue interface{})
 	o.SetFieldNames[field] = true
 }
 
-func (o Recordingcontentactions) MarshalJSON() ([]byte, error) {
+func (o Journeyviewchartdisplayattributes) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,42 +84,50 @@ func (o Recordingcontentactions) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Recordingcontentactions
+	type Alias Journeyviewchartdisplayattributes
 	
 	return json.Marshal(&struct { 
-		Url *string `json:"url,omitempty"`
+		VarType *string `json:"type,omitempty"`
 		
-		UrlTarget *string `json:"urlTarget,omitempty"`
+		GroupByTitle *string `json:"groupByTitle,omitempty"`
 		
-		Textback *string `json:"textback,omitempty"`
+		MetricsTitle *string `json:"metricsTitle,omitempty"`
+		
+		ShowLegend *bool `json:"showLegend,omitempty"`
 		Alias
 	}{ 
-		Url: o.Url,
+		VarType: o.VarType,
 		
-		UrlTarget: o.UrlTarget,
+		GroupByTitle: o.GroupByTitle,
 		
-		Textback: o.Textback,
+		MetricsTitle: o.MetricsTitle,
+		
+		ShowLegend: o.ShowLegend,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Recordingcontentactions) UnmarshalJSON(b []byte) error {
-	var RecordingcontentactionsMap map[string]interface{}
-	err := json.Unmarshal(b, &RecordingcontentactionsMap)
+func (o *Journeyviewchartdisplayattributes) UnmarshalJSON(b []byte) error {
+	var JourneyviewchartdisplayattributesMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneyviewchartdisplayattributesMap)
 	if err != nil {
 		return err
 	}
 	
-	if Url, ok := RecordingcontentactionsMap["url"].(string); ok {
-		o.Url = &Url
+	if VarType, ok := JourneyviewchartdisplayattributesMap["type"].(string); ok {
+		o.VarType = &VarType
 	}
     
-	if UrlTarget, ok := RecordingcontentactionsMap["urlTarget"].(string); ok {
-		o.UrlTarget = &UrlTarget
+	if GroupByTitle, ok := JourneyviewchartdisplayattributesMap["groupByTitle"].(string); ok {
+		o.GroupByTitle = &GroupByTitle
 	}
     
-	if Textback, ok := RecordingcontentactionsMap["textback"].(string); ok {
-		o.Textback = &Textback
+	if MetricsTitle, ok := JourneyviewchartdisplayattributesMap["metricsTitle"].(string); ok {
+		o.MetricsTitle = &MetricsTitle
+	}
+    
+	if ShowLegend, ok := JourneyviewchartdisplayattributesMap["showLegend"].(bool); ok {
+		o.ShowLegend = &ShowLegend
 	}
     
 
@@ -124,7 +135,7 @@ func (o *Recordingcontentactions) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Recordingcontentactions) String() string {
+func (o *Journeyviewchartdisplayattributes) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -202,8 +202,6 @@ func (a FlowsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor str
 // PostAnalyticsFlowsActivityQuery invokes POST /api/v2/analytics/flows/activity/query
 //
 // Query for flow activity observations
-//
-// Preview: PostAnalyticsFlowsActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pageSize int, pageNumber int) (*Flowactivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -23,8 +23,8 @@ type Whatsappintegrationentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -35,8 +35,8 @@ type Whatsappintegrationentitylisting struct {
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,7 +113,7 @@ func (o Whatsappintegrationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -121,7 +121,7 @@ func (o Whatsappintegrationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,7 +134,7 @@ func (o Whatsappintegrationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		NextUri: o.NextUri,
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -142,7 +142,7 @@ func (o Whatsappintegrationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri: o.SelfUri,
 		
-		PreviousUri: o.PreviousUri,
+		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,8 +176,8 @@ func (o *Whatsappintegrationentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if NextUri, ok := WhatsappintegrationentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if PreviousUri, ok := WhatsappintegrationentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := WhatsappintegrationentitylistingMap["lastUri"].(string); ok {
@@ -192,8 +192,8 @@ func (o *Whatsappintegrationentitylisting) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if PreviousUri, ok := WhatsappintegrationentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if NextUri, ok := WhatsappintegrationentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if PageCount, ok := WhatsappintegrationentitylistingMap["pageCount"].(float64); ok {

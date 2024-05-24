@@ -7,25 +7,22 @@ import (
 	"strings"
 )
 
-// Parameter
-type Parameter struct { 
+// V2mobiusalertstopicalertnotificationrecipient
+type V2mobiusalertstopicalertnotificationrecipient struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name
-	Name *string `json:"name,omitempty"`
+	// UserId
+	UserId *string `json:"userId,omitempty"`
 
-	// ParameterType
-	ParameterType *string `json:"parameterType,omitempty"`
+	// DisplayName
+	DisplayName *string `json:"displayName,omitempty"`
 
-	// Domain
-	Domain *string `json:"domain,omitempty"`
-
-	// Required
-	Required *bool `json:"required,omitempty"`
+	// ContactAddress
+	ContactAddress *string `json:"contactAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Parameter) SetField(field string, fieldValue interface{}) {
+func (o *V2mobiusalertstopicalertnotificationrecipient) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +43,7 @@ func (o *Parameter) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Parameter) MarshalJSON() ([]byte, error) {
+func (o V2mobiusalertstopicalertnotificationrecipient) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,50 +81,42 @@ func (o Parameter) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Parameter
+	type Alias V2mobiusalertstopicalertnotificationrecipient
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
+		UserId *string `json:"userId,omitempty"`
 		
-		ParameterType *string `json:"parameterType,omitempty"`
+		DisplayName *string `json:"displayName,omitempty"`
 		
-		Domain *string `json:"domain,omitempty"`
-		
-		Required *bool `json:"required,omitempty"`
+		ContactAddress *string `json:"contactAddress,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
+		UserId: o.UserId,
 		
-		ParameterType: o.ParameterType,
+		DisplayName: o.DisplayName,
 		
-		Domain: o.Domain,
-		
-		Required: o.Required,
+		ContactAddress: o.ContactAddress,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Parameter) UnmarshalJSON(b []byte) error {
-	var ParameterMap map[string]interface{}
-	err := json.Unmarshal(b, &ParameterMap)
+func (o *V2mobiusalertstopicalertnotificationrecipient) UnmarshalJSON(b []byte) error {
+	var V2mobiusalertstopicalertnotificationrecipientMap map[string]interface{}
+	err := json.Unmarshal(b, &V2mobiusalertstopicalertnotificationrecipientMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := ParameterMap["name"].(string); ok {
-		o.Name = &Name
+	if UserId, ok := V2mobiusalertstopicalertnotificationrecipientMap["userId"].(string); ok {
+		o.UserId = &UserId
 	}
     
-	if ParameterType, ok := ParameterMap["parameterType"].(string); ok {
-		o.ParameterType = &ParameterType
+	if DisplayName, ok := V2mobiusalertstopicalertnotificationrecipientMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
 	}
     
-	if Domain, ok := ParameterMap["domain"].(string); ok {
-		o.Domain = &Domain
-	}
-    
-	if Required, ok := ParameterMap["required"].(bool); ok {
-		o.Required = &Required
+	if ContactAddress, ok := V2mobiusalertstopicalertnotificationrecipientMap["contactAddress"].(string); ok {
+		o.ContactAddress = &ContactAddress
 	}
     
 
@@ -135,7 +124,7 @@ func (o *Parameter) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Parameter) String() string {
+func (o *V2mobiusalertstopicalertnotificationrecipient) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

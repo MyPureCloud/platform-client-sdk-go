@@ -29,6 +29,12 @@ type Journeyviewchart struct {
 	// Metrics - A list of metrics to calculate within the chart by (aka the y axis)
 	Metrics *[]Journeyviewchartmetric `json:"metrics,omitempty"`
 
+	// DisplayAttributes - Optional display attributes for rendering the chart
+	DisplayAttributes *Journeyviewchartdisplayattributes `json:"displayAttributes,omitempty"`
+
+	// GroupByMax - A maximum on the number of values being grouped by
+	GroupByMax *int `json:"groupByMax,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -108,6 +114,10 @@ func (o Journeyviewchart) MarshalJSON() ([]byte, error) {
 		
 		Metrics *[]Journeyviewchartmetric `json:"metrics,omitempty"`
 		
+		DisplayAttributes *Journeyviewchartdisplayattributes `json:"displayAttributes,omitempty"`
+		
+		GroupByMax *int `json:"groupByMax,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +132,10 @@ func (o Journeyviewchart) MarshalJSON() ([]byte, error) {
 		GroupByAttributes: o.GroupByAttributes,
 		
 		Metrics: o.Metrics,
+		
+		DisplayAttributes: o.DisplayAttributes,
+		
+		GroupByMax: o.GroupByMax,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -160,6 +174,16 @@ func (o *Journeyviewchart) UnmarshalJSON(b []byte) error {
 	if Metrics, ok := JourneyviewchartMap["metrics"].([]interface{}); ok {
 		MetricsString, _ := json.Marshal(Metrics)
 		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if DisplayAttributes, ok := JourneyviewchartMap["displayAttributes"].(map[string]interface{}); ok {
+		DisplayAttributesString, _ := json.Marshal(DisplayAttributes)
+		json.Unmarshal(DisplayAttributesString, &o.DisplayAttributes)
+	}
+	
+	if GroupByMax, ok := JourneyviewchartMap["groupByMax"].(float64); ok {
+		GroupByMaxInt := int(GroupByMax)
+		o.GroupByMax = &GroupByMaxInt
 	}
 	
 	if SelfUri, ok := JourneyviewchartMap["selfUri"].(string); ok {

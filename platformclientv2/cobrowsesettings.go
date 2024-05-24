@@ -17,6 +17,9 @@ type Cobrowsesettings struct {
 	// AllowAgentControl - Whether the viewer should have option to request control
 	AllowAgentControl *bool `json:"allowAgentControl,omitempty"`
 
+	// AllowAgentNavigation - Whether the viewer should have option to request navigation
+	AllowAgentNavigation *bool `json:"allowAgentNavigation,omitempty"`
+
 	// MaskSelectors - Mask patterns that will apply to pages being shared
 	MaskSelectors *[]string `json:"maskSelectors,omitempty"`
 
@@ -94,6 +97,8 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		
 		AllowAgentControl *bool `json:"allowAgentControl,omitempty"`
 		
+		AllowAgentNavigation *bool `json:"allowAgentNavigation,omitempty"`
+		
 		MaskSelectors *[]string `json:"maskSelectors,omitempty"`
 		
 		Channels *[]string `json:"channels,omitempty"`
@@ -104,6 +109,8 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		Enabled: o.Enabled,
 		
 		AllowAgentControl: o.AllowAgentControl,
+		
+		AllowAgentNavigation: o.AllowAgentNavigation,
 		
 		MaskSelectors: o.MaskSelectors,
 		
@@ -127,6 +134,10 @@ func (o *Cobrowsesettings) UnmarshalJSON(b []byte) error {
     
 	if AllowAgentControl, ok := CobrowsesettingsMap["allowAgentControl"].(bool); ok {
 		o.AllowAgentControl = &AllowAgentControl
+	}
+    
+	if AllowAgentNavigation, ok := CobrowsesettingsMap["allowAgentNavigation"].(bool); ok {
+		o.AllowAgentNavigation = &AllowAgentNavigation
 	}
     
 	if MaskSelectors, ok := CobrowsesettingsMap["maskSelectors"].([]interface{}); ok {

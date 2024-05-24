@@ -84,6 +84,9 @@ type Externalcontactscontactchangedtopiccontact struct {
 	// InstagramId
 	InstagramId *Externalcontactscontactchangedtopicinstagramid `json:"instagramId,omitempty"`
 
+	// ExternalIds
+	ExternalIds *[]Externalcontactscontactchangedtopicexternalid `json:"externalIds,omitempty"`
+
 	// Schema
 	Schema *Externalcontactscontactchangedtopicdataschema `json:"schema,omitempty"`
 
@@ -224,6 +227,8 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		
 		InstagramId *Externalcontactscontactchangedtopicinstagramid `json:"instagramId,omitempty"`
 		
+		ExternalIds *[]Externalcontactscontactchangedtopicexternalid `json:"externalIds,omitempty"`
+		
 		Schema *Externalcontactscontactchangedtopicdataschema `json:"schema,omitempty"`
 		
 		CustomFields *map[string]interface{} `json:"customFields,omitempty"`
@@ -280,6 +285,8 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		FacebookId: o.FacebookId,
 		
 		InstagramId: o.InstagramId,
+		
+		ExternalIds: o.ExternalIds,
 		
 		Schema: o.Schema,
 		
@@ -405,6 +412,11 @@ func (o *Externalcontactscontactchangedtopiccontact) UnmarshalJSON(b []byte) err
 	if InstagramId, ok := ExternalcontactscontactchangedtopiccontactMap["instagramId"].(map[string]interface{}); ok {
 		InstagramIdString, _ := json.Marshal(InstagramId)
 		json.Unmarshal(InstagramIdString, &o.InstagramId)
+	}
+	
+	if ExternalIds, ok := ExternalcontactscontactchangedtopiccontactMap["externalIds"].([]interface{}); ok {
+		ExternalIdsString, _ := json.Marshal(ExternalIds)
+		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
 	}
 	
 	if Schema, ok := ExternalcontactscontactchangedtopiccontactMap["schema"].(map[string]interface{}); ok {

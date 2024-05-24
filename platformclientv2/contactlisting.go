@@ -26,20 +26,20 @@ type Contactlisting struct {
 	// PartialResults
 	PartialResults *bool `json:"partialResults,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults *bool `json:"partialResults,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults: o.PartialResults,
 		
-		NextUri: o.NextUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
-		LastUri: o.LastUri,
+		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -187,10 +187,6 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
 		o.PartialResults = &PartialResults
 	}
     
-	if NextUri, ok := ContactlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
 	if FirstUri, ok := ContactlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -199,12 +195,16 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if LastUri, ok := ContactlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
+	if NextUri, ok := ContactlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if PreviousUri, ok := ContactlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := ContactlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := ContactlistingMap["pageCount"].(float64); ok {

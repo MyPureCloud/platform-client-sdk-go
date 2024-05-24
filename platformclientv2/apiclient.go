@@ -2,12 +2,16 @@ package platformclientv2
 
 import (
 	"bytes"
+	"context"
+    "crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"reflect"
+	"regexp"
+	"strconv"
 	"strings"
 	"sync/atomic"
 	"time"
@@ -21,6 +25,19 @@ type APIClient struct {
 	configuration *Configuration
 }
 
+var (
+
+redirectsErrorRe = regexp.MustCompile(`stopped after \d+ redirects\z`)
+
+
+schemeErrorRe = regexp.MustCompile(`unsupported protocol scheme`)
+
+
+invalidHeaderErrorRe = regexp.MustCompile(`invalid header`)
+
+
+notTrustedErrorRe = regexp.MustCompile(`certificate is not trusted`)
+)
 // NewAPIClient creates a new API client
 func NewAPIClient(c *Configuration) APIClient {
 	timeout, err := time.ParseDuration("16s")
@@ -154,6 +171,9 @@ func (c *APIClient) CallAPI(path string, method string,
 		}
 	}
 
+
+		c.client.CheckRetry = DefaultRetryPolicy
+
 	if c.configuration.ProxyConfiguration != nil {
 
                 var proxyUrl *url.URL
@@ -211,6 +231,90 @@ func (c *APIClient) CallAPI(path string, method string,
 
 	return NewAPIResponse(res, body)
 }
+
+func DefaultRetryPolicy(ctx context.Context, resp *http.Response, err error) (bool, error) {
+	// do not retry on context.Canceled or context.DeadlineExceeded
+	if ctx.Err() != nil {
+		return false, ctx.Err()
+	}
+
+	// don't propagate other errors
+	shouldRetry, _ := newRetryPolicy(resp, err)
+	return shouldRetry, nil
+}
+
+
+
+func newRetryPolicy(resp *http.Response, err error) (bool, error) {
+	if err != nil {
+		if v, ok := err.(*url.Error); ok {
+			// Don't retry if the error was due to too many redirects.
+			if redirectsErrorRe.MatchString(v.Error()) {
+				return false, v
+			}
+
+			// Don't retry if the error was due to an invalid protocol scheme.
+			if schemeErrorRe.MatchString(v.Error()) {
+				return false, v
+			}
+
+			// Don't retry if the error was due to an invalid header.
+			if invalidHeaderErrorRe.MatchString(v.Error()) {
+				return false, v
+			}
+
+			// Don't retry if the error was due to TLS cert verification failure.
+			if notTrustedErrorRe.MatchString(v.Error()) {
+				return false, v
+			}
+			if isCertError(v.Err) {
+				return false, v
+			}
+		}
+
+		// The error is likely recoverable so retry.
+		return true, nil
+	}
+
+	// 429 Too Many Requests is recoverable. Sometimes the server puts
+	// a Retry-After response header to indicate when the server is
+	// available to start processing request from client.
+	if resp.StatusCode == http.StatusTooManyRequests {
+	    return verifyRetryAfterHeader(resp.Header["Retry-After"], 180), nil
+	}
+
+	// Check the response code. We retry on 500-range responses to allow
+	// the server time to recover, as 500's are typically not permanent
+	// errors and may relate to outages on the server side. This will catch
+	// invalid response codes as well, like 0 and 999.
+	if resp.StatusCode == 0 || (resp.StatusCode >= 500 && resp.StatusCode != http.StatusNotImplemented) {
+		return true, fmt.Errorf("unexpected HTTP status %s", resp.Status)
+	}
+
+	return false, nil
+}
+
+func isCertError(err error) bool {
+	_, ok := err.(*tls.CertificateVerificationError)
+	return ok
+}
+
+func verifyRetryAfterHeader(headers []string, defaultMaxRetry int64) bool {
+	if len(headers) == 0 || headers[0] == "" {
+		return true
+	}
+	header := headers[0]
+
+	if sleep, err := strconv.ParseInt(header, 10, 64); err == nil {
+		if sleep > defaultMaxRetry {
+			return  false
+		}
+		return true
+	}
+	return true
+}
+
+
 
 // ParameterToString joins a parameter in the desired format
 func (c *APIClient) ParameterToString(obj interface{}, collectionFormat string) string {

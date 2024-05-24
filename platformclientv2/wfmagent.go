@@ -26,6 +26,9 @@ type Wfmagent struct {
 	// AcceptDirectShiftTrades - Whether the agent accepts direct shift trade requests
 	AcceptDirectShiftTrades *bool `json:"acceptDirectShiftTrades,omitempty"`
 
+	// WorkPlanOverrides - The work plan overrides associated with this agent. Populate with expand=workPlanOverrides
+	WorkPlanOverrides *[]Workplanoverride `json:"workPlanOverrides,omitempty"`
+
 	// Queues - List of queues to which this agent is capable of handling
 	Queues *[]Queuereference `json:"queues,omitempty"`
 
@@ -118,6 +121,8 @@ func (o Wfmagent) MarshalJSON() ([]byte, error) {
 		
 		AcceptDirectShiftTrades *bool `json:"acceptDirectShiftTrades,omitempty"`
 		
+		WorkPlanOverrides *[]Workplanoverride `json:"workPlanOverrides,omitempty"`
+		
 		Queues *[]Queuereference `json:"queues,omitempty"`
 		
 		Languages *[]Languagereference `json:"languages,omitempty"`
@@ -140,6 +145,8 @@ func (o Wfmagent) MarshalJSON() ([]byte, error) {
 		WorkPlanRotation: o.WorkPlanRotation,
 		
 		AcceptDirectShiftTrades: o.AcceptDirectShiftTrades,
+		
+		WorkPlanOverrides: o.WorkPlanOverrides,
 		
 		Queues: o.Queues,
 		
@@ -186,6 +193,11 @@ func (o *Wfmagent) UnmarshalJSON(b []byte) error {
 		o.AcceptDirectShiftTrades = &AcceptDirectShiftTrades
 	}
     
+	if WorkPlanOverrides, ok := WfmagentMap["workPlanOverrides"].([]interface{}); ok {
+		WorkPlanOverridesString, _ := json.Marshal(WorkPlanOverrides)
+		json.Unmarshal(WorkPlanOverridesString, &o.WorkPlanOverrides)
+	}
+	
 	if Queues, ok := WfmagentMap["queues"].([]interface{}); ok {
 		QueuesString, _ := json.Marshal(Queues)
 		json.Unmarshal(QueuesString, &o.Queues)

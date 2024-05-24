@@ -31,6 +31,9 @@ type Reoccurrence struct {
 
 	// Alterations - Modifications to the original recurrence schedule (Exclusions/Inclusions)
 	Alterations *[]Alteration `json:"alterations,omitempty"`
+
+	// NextOccurrenceDetails - The next occurrence details for the next start and end occurrences for the recurrence
+	NextOccurrenceDetails *Nextoccurrencedetails `json:"nextOccurrenceDetails,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Reoccurrence) MarshalJSON() ([]byte, error) {
 		VarRange *Range `json:"range,omitempty"`
 		
 		Alterations *[]Alteration `json:"alterations,omitempty"`
+		
+		NextOccurrenceDetails *Nextoccurrencedetails `json:"nextOccurrenceDetails,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -124,6 +129,8 @@ func (o Reoccurrence) MarshalJSON() ([]byte, error) {
 		VarRange: o.VarRange,
 		
 		Alterations: o.Alterations,
+		
+		NextOccurrenceDetails: o.NextOccurrenceDetails,
 		Alias:    (Alias)(o),
 	})
 }
@@ -164,6 +171,11 @@ func (o *Reoccurrence) UnmarshalJSON(b []byte) error {
 	if Alterations, ok := ReoccurrenceMap["alterations"].([]interface{}); ok {
 		AlterationsString, _ := json.Marshal(Alterations)
 		json.Unmarshal(AlterationsString, &o.Alterations)
+	}
+	
+	if NextOccurrenceDetails, ok := ReoccurrenceMap["nextOccurrenceDetails"].(map[string]interface{}); ok {
+		NextOccurrenceDetailsString, _ := json.Marshal(NextOccurrenceDetails)
+		json.Unmarshal(NextOccurrenceDetailsString, &o.NextOccurrenceDetails)
 	}
 	
 

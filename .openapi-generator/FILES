@@ -21,7 +21,6 @@ docs/DeleteAlertingInteractionstatsRule-example.txt
 docs/DeleteAlertingRule-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
-docs/DeleteAnalyticsReportingSchedule-example.txt
 docs/DeleteAnalyticsUsersDetailsJob-example.txt
 docs/DeleteAnalyticsUsersDetailsJob-example.txt
 docs/DeleteArchitectEmergencygroup-example.txt
@@ -302,6 +301,7 @@ docs/GetAlertingInteractionstatsRules-example.txt
 docs/GetAlertingRule-example.txt
 docs/GetAnalyticsActionsAggregatesJob-example.txt
 docs/GetAnalyticsActionsAggregatesJobResults-example.txt
+docs/GetAnalyticsBotflowDivisionsReportingturns-example.txt
 docs/GetAnalyticsBotflowReportingturns-example.txt
 docs/GetAnalyticsBotflowSessions-example.txt
 docs/GetAnalyticsBotsAggregatesJob-example.txt
@@ -341,17 +341,8 @@ docs/GetAnalyticsReportingDashboardsUser-example.txt
 docs/GetAnalyticsReportingDashboardsUsers-example.txt
 docs/GetAnalyticsReportingExports-example.txt
 docs/GetAnalyticsReportingExportsMetadata-example.txt
-docs/GetAnalyticsReportingMetadata-example.txt
-docs/GetAnalyticsReportingReportIdMetadata-example.txt
-docs/GetAnalyticsReportingReportformats-example.txt
-docs/GetAnalyticsReportingSchedule-example.txt
-docs/GetAnalyticsReportingScheduleHistory-example.txt
-docs/GetAnalyticsReportingScheduleHistoryLatest-example.txt
-docs/GetAnalyticsReportingScheduleHistoryRunId-example.txt
-docs/GetAnalyticsReportingSchedules-example.txt
 docs/GetAnalyticsReportingSettings-example.txt
 docs/GetAnalyticsReportingSettingsUserDashboards-example.txt
-docs/GetAnalyticsReportingTimeperiods-example.txt
 docs/GetAnalyticsResolutionsAggregatesJob-example.txt
 docs/GetAnalyticsResolutionsAggregatesJobResults-example.txt
 docs/GetAnalyticsSurveysAggregatesJob-example.txt
@@ -453,6 +444,7 @@ docs/GetChatsUser-example.txt
 docs/GetChatsUserMessage-example.txt
 docs/GetChatsUserMessages-example.txt
 docs/GetChatsUserSettings-example.txt
+docs/GetChatsUsersMeSettings-example.txt
 docs/GetCoachingAppointment-example.txt
 docs/GetCoachingAppointmentAnnotation-example.txt
 docs/GetCoachingAppointmentAnnotations-example.txt
@@ -923,6 +915,7 @@ docs/GetOrganizationsIpaddressauthentication-example.txt
 docs/GetOrganizationsLimitsChangerequest-example.txt
 docs/GetOrganizationsLimitsChangerequests-example.txt
 docs/GetOrganizationsLimitsDocs-example.txt
+docs/GetOrganizationsLimitsDocsFreetrial-example.txt
 docs/GetOrganizationsLimitsNamespace-example.txt
 docs/GetOrganizationsLimitsNamespaceDefaults-example.txt
 docs/GetOrganizationsLimitsNamespaces-example.txt
@@ -1507,6 +1500,7 @@ docs/PatchChatsRoomMessage-example.txt
 docs/PatchChatsSettings-example.txt
 docs/PatchChatsUserMessage-example.txt
 docs/PatchChatsUserSettings-example.txt
+docs/PatchChatsUsersMeSettings-example.txt
 docs/PatchCoachingAppointment-example.txt
 docs/PatchCoachingAppointmentAnnotation-example.txt
 docs/PatchCoachingAppointmentStatus-example.txt
@@ -1712,8 +1706,6 @@ docs/PostAnalyticsQueuesObservationsQuery-example.txt
 docs/PostAnalyticsRatelimitsAggregatesQuery-example.txt
 docs/PostAnalyticsReportingDashboardsUsersBulkRemove-example.txt
 docs/PostAnalyticsReportingExports-example.txt
-docs/PostAnalyticsReportingScheduleRunreport-example.txt
-docs/PostAnalyticsReportingSchedules-example.txt
 docs/PostAnalyticsReportingSettingsDashboardsBulkRemove-example.txt
 docs/PostAnalyticsReportingSettingsDashboardsQuery-example.txt
 docs/PostAnalyticsResolutionsAggregatesJobs-example.txt
@@ -2334,7 +2326,6 @@ docs/PutAlertingInteractionstatsAlert-example.txt
 docs/PutAlertingInteractionstatsRule-example.txt
 docs/PutAlertingRule-example.txt
 docs/PutAnalyticsDataretentionSettings-example.txt
-docs/PutAnalyticsReportingSchedule-example.txt
 docs/PutArchitectEmergencygroup-example.txt
 docs/PutArchitectIvr-example.txt
 docs/PutArchitectPrompt-example.txt
@@ -2700,6 +2691,7 @@ platformclientv2/aggregateviewdata.go
 platformclientv2/aggregationrange.go
 platformclientv2/aggregationresult.go
 platformclientv2/aggregationresultentry.go
+platformclientv2/aiscoringsettings.go
 platformclientv2/alertingapi.go
 platformclientv2/alertingunreadstatus.go
 platformclientv2/alertlisting.go
@@ -3571,7 +3563,6 @@ platformclientv2/conversationvideoeventtopicurireference.go
 platformclientv2/conversationvideoeventtopicvideoconversation.go
 platformclientv2/conversationvideoeventtopicvideomediaparticipant.go
 platformclientv2/conversationvideoeventtopicwrapup.go
-platformclientv2/copilotscoring.go
 platformclientv2/copyattachmentsrequest.go
 platformclientv2/copybuforecastrequest.go
 platformclientv2/copyvoicemailmessage.go
@@ -4148,7 +4139,9 @@ platformclientv2/externalcontactscontactchangedtopiccontact.go
 platformclientv2/externalcontactscontactchangedtopiccontactaddress.go
 platformclientv2/externalcontactscontactchangedtopicdataschema.go
 platformclientv2/externalcontactscontactchangedtopicdivision.go
+platformclientv2/externalcontactscontactchangedtopicexternalid.go
 platformclientv2/externalcontactscontactchangedtopicexternalorganization.go
+platformclientv2/externalcontactscontactchangedtopicexternalsource.go
 platformclientv2/externalcontactscontactchangedtopicfacebookid.go
 platformclientv2/externalcontactscontactchangedtopicfacebookscopedid.go
 platformclientv2/externalcontactscontactchangedtopicinstagramid.go
@@ -4164,7 +4157,9 @@ platformclientv2/externalcontactsunresolvedcontactchangedtopiccontact.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopiccontactaddress.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicdataschema.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicdivision.go
+platformclientv2/externalcontactsunresolvedcontactchangedtopicexternalid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicexternalorganization.go
+platformclientv2/externalcontactsunresolvedcontactchangedtopicexternalsource.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicfacebookid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicfacebookscopedid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicinstagramid.go
@@ -4328,6 +4323,9 @@ platformclientv2/forecastservicelevelresponse.go
 platformclientv2/forecastsourcedaypointer.go
 platformclientv2/format.go
 platformclientv2/formstracktrigger.go
+platformclientv2/freetriallimit.go
+platformclientv2/freetriallimitdocs.go
+platformclientv2/freetrialnamespace.go
 platformclientv2/fromemailaddress.go
 platformclientv2/fulldaytimeoffmarker.go
 platformclientv2/function.go
@@ -4358,7 +4356,6 @@ platformclientv2/generatemeetingidrequest.go
 platformclientv2/genericactionevent.go
 platformclientv2/genericeventaction.go
 platformclientv2/genericsaml.go
-platformclientv2/generictemplate.go
 platformclientv2/genesysbotconnector.go
 platformclientv2/geolocation.go
 platformclientv2/geolocationapi.go
@@ -4611,6 +4608,7 @@ platformclientv2/journeysessioneventsnotificationuser.go
 platformclientv2/journeysurveyquestion.go
 platformclientv2/journeyview.go
 platformclientv2/journeyviewchart.go
+platformclientv2/journeyviewchartdisplayattributes.go
 platformclientv2/journeyviewchartgroupbyattribute.go
 platformclientv2/journeyviewchartmetric.go
 platformclientv2/journeyviewchartmetricresult.go
@@ -5091,6 +5089,7 @@ platformclientv2/namedentitytypeitem.go
 platformclientv2/namedentitytypemechanism.go
 platformclientv2/namespacedocs.go
 platformclientv2/networkconnectivity.go
+platformclientv2/nextoccurrencedetails.go
 platformclientv2/nluconfusionmatrixcolumn.go
 platformclientv2/nluconfusionmatrixrow.go
 platformclientv2/nludetectioncontext.go
@@ -5153,6 +5152,7 @@ platformclientv2/objectivezone.go
 platformclientv2/objectsapi.go
 platformclientv2/observationmetricdata.go
 platformclientv2/observationvalue.go
+platformclientv2/occurrencedetails.go
 platformclientv2/okta.go
 platformclientv2/onelogin.go
 platformclientv2/oneonone.go
@@ -5271,7 +5271,6 @@ platformclientv2/pagednamespacelisting.go
 platformclientv2/pagelessdomainentitylistingevaluationversion.go
 platformclientv2/pagelessentitylisting.go
 platformclientv2/pagingspec.go
-platformclientv2/parameter.go
 platformclientv2/parsedcertificate.go
 platformclientv2/participant.go
 platformclientv2/participantattributes.go
@@ -5317,6 +5316,7 @@ platformclientv2/patchtextstyleproperties.go
 platformclientv2/patchuser.go
 platformclientv2/patchwebmessagingofferfields.go
 platformclientv2/pattern.go
+platformclientv2/pausecriteria.go
 platformclientv2/performancepredictioncompleteeventtopicerrorbody.go
 platformclientv2/performancepredictioncompleteeventtopicperformancepredictioncalculationnotification.go
 platformclientv2/performancepredictionoutputs.go
@@ -5738,8 +5738,6 @@ platformclientv2/recordingannotationqueue.go
 platformclientv2/recordingapi.go
 platformclientv2/recordingarchiverestoretopicmediaresult.go
 platformclientv2/recordingarchiverestoretopicrecording.go
-platformclientv2/recordingbuttoncomponent.go
-platformclientv2/recordingcontentactions.go
 platformclientv2/recordingcontentstory.go
 platformclientv2/recordingemailmessage.go
 platformclientv2/recordingencryptionconfiguration.go
@@ -5785,12 +5783,6 @@ platformclientv2/reportingturnknowledgedocument.go
 platformclientv2/reportingturnknowledgefeedback.go
 platformclientv2/reportingturnknowledgesearch.go
 platformclientv2/reportingturnsresponse.go
-platformclientv2/reportmetadata.go
-platformclientv2/reportmetadataentitylisting.go
-platformclientv2/reportrunentry.go
-platformclientv2/reportrunentryentitydomainlisting.go
-platformclientv2/reportschedule.go
-platformclientv2/reportscheduleentitylisting.go
 platformclientv2/requestconfig.go
 platformclientv2/requestcontext.go
 platformclientv2/requestcontextpattern.go
@@ -5878,7 +5870,6 @@ platformclientv2/routingtransferevent.go
 platformclientv2/ruleset.go
 platformclientv2/rulesetdiagnostic.go
 platformclientv2/rulesetentitylisting.go
-platformclientv2/runnowresponse.go
 platformclientv2/salesforce.go
 platformclientv2/schedule.go
 platformclientv2/scheduleactivity.go
@@ -6636,6 +6627,7 @@ platformclientv2/v2mobiusalertstopicaddressableentityref.go
 platformclientv2/v2mobiusalertstopicalert.go
 platformclientv2/v2mobiusalertstopicalertingaddressableentityref.go
 platformclientv2/v2mobiusalertstopicalertnotification.go
+platformclientv2/v2mobiusalertstopicalertnotificationrecipient.go
 platformclientv2/v2mobiusalertstopicalertruleproperties.go
 platformclientv2/v2mobiusalertstopicalertsummary.go
 platformclientv2/v2mobiusalertstopicalertsummaryentity.go
@@ -6644,6 +6636,7 @@ platformclientv2/v2mobiusalertstopicconditionrulepredicate.go
 platformclientv2/v2mobiusalertstopicentityproperties.go
 platformclientv2/v2mobiusrulestopicalertingaddressableentityref.go
 platformclientv2/v2mobiusrulestopicalertnotification.go
+platformclientv2/v2mobiusrulestopicalertnotificationrecipient.go
 platformclientv2/v2mobiusrulestopiccondition.go
 platformclientv2/v2mobiusrulestopicconditionrulepredicate.go
 platformclientv2/v2mobiusrulestopicentityproperties.go
@@ -7026,6 +7019,7 @@ platformclientv2/workplanconstraintconflictmessage.go
 platformclientv2/workplanconstraintmessage.go
 platformclientv2/workplanlistitemresponse.go
 platformclientv2/workplanlistresponse.go
+platformclientv2/workplanoverride.go
 platformclientv2/workplanpatternrequest.go
 platformclientv2/workplanpatternresponse.go
 platformclientv2/workplanreference.go

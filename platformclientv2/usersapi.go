@@ -4940,8 +4940,6 @@ func (a UsersApi) PatchUsersBulk(body []Patchuser) (*Userentitylisting, *APIResp
 // PostAnalyticsUsersActivityQuery invokes POST /api/v2/analytics/users/activity/query
 //
 // Query for user activity observations
-//
-// Preview: PostAnalyticsUsersActivityQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSize int, pageNumber int) (*Useractivityresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

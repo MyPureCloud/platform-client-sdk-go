@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Copilotscoring
-type Copilotscoring struct { 
+// Externalcontactscontactchangedtopicexternalsource
+type Externalcontactscontactchangedtopicexternalsource struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - True if copilot feature is configured, false if not.
-	Enabled *bool `json:"enabled,omitempty"`
-
-	// Prompt - The prompt text that would be used by a LLM.
-	Prompt *string `json:"prompt,omitempty"`
+	// Id
+	Id *string `json:"id,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Copilotscoring) SetField(field string, fieldValue interface{}) {
+func (o *Externalcontactscontactchangedtopicexternalsource) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Copilotscoring) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Copilotscoring) MarshalJSON() ([]byte, error) {
+func (o Externalcontactscontactchangedtopicexternalsource) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +75,26 @@ func (o Copilotscoring) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Copilotscoring
+	type Alias Externalcontactscontactchangedtopicexternalsource
 	
 	return json.Marshal(&struct { 
-		Enabled *bool `json:"enabled,omitempty"`
-		
-		Prompt *string `json:"prompt,omitempty"`
+		Id *string `json:"id,omitempty"`
 		Alias
 	}{ 
-		Enabled: o.Enabled,
-		
-		Prompt: o.Prompt,
+		Id: o.Id,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Copilotscoring) UnmarshalJSON(b []byte) error {
-	var CopilotscoringMap map[string]interface{}
-	err := json.Unmarshal(b, &CopilotscoringMap)
+func (o *Externalcontactscontactchangedtopicexternalsource) UnmarshalJSON(b []byte) error {
+	var ExternalcontactscontactchangedtopicexternalsourceMap map[string]interface{}
+	err := json.Unmarshal(b, &ExternalcontactscontactchangedtopicexternalsourceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Enabled, ok := CopilotscoringMap["enabled"].(bool); ok {
-		o.Enabled = &Enabled
-	}
-    
-	if Prompt, ok := CopilotscoringMap["prompt"].(string); ok {
-		o.Prompt = &Prompt
+	if Id, ok := ExternalcontactscontactchangedtopicexternalsourceMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
 
@@ -113,7 +102,7 @@ func (o *Copilotscoring) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Copilotscoring) String() string {
+func (o *Externalcontactscontactchangedtopicexternalsource) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

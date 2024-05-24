@@ -29,6 +29,18 @@ type Voicemailmailboxinfo struct {
 
 	// ModifiedDate - The date of the most recent voicemail message. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
+
+	// NewestUnreadDate - The date of the most recent unread voicemail message. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	NewestUnreadDate *time.Time `json:"newestUnreadDate,omitempty"`
+
+	// OldestUnreadDate - The date of the most oldest unread voicemail message. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	OldestUnreadDate *time.Time `json:"oldestUnreadDate,omitempty"`
+
+	// NewestReadDate - The date of the most recent read voicemail message. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	NewestReadDate *time.Time `json:"newestReadDate,omitempty"`
+
+	// OldestReadDate - The date of the most oldest read voicemail message. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	OldestReadDate *time.Time `json:"oldestReadDate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -60,7 +72,7 @@ func (o Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "CreatedDate","ModifiedDate", }
+		dateTimeFields := []string{ "CreatedDate","ModifiedDate","NewestUnreadDate","OldestUnreadDate","NewestReadDate","OldestReadDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -109,6 +121,38 @@ func (o Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 		ModifiedDate = nil
 	}
 	
+	NewestUnreadDate := new(string)
+	if o.NewestUnreadDate != nil {
+		
+		*NewestUnreadDate = timeutil.Strftime(o.NewestUnreadDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		NewestUnreadDate = nil
+	}
+	
+	OldestUnreadDate := new(string)
+	if o.OldestUnreadDate != nil {
+		
+		*OldestUnreadDate = timeutil.Strftime(o.OldestUnreadDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		OldestUnreadDate = nil
+	}
+	
+	NewestReadDate := new(string)
+	if o.NewestReadDate != nil {
+		
+		*NewestReadDate = timeutil.Strftime(o.NewestReadDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		NewestReadDate = nil
+	}
+	
+	OldestReadDate := new(string)
+	if o.OldestReadDate != nil {
+		
+		*OldestReadDate = timeutil.Strftime(o.OldestReadDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		OldestReadDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		UsageSizeBytes *int `json:"usageSizeBytes,omitempty"`
 		
@@ -121,6 +165,14 @@ func (o Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 		CreatedDate *string `json:"createdDate,omitempty"`
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		NewestUnreadDate *string `json:"newestUnreadDate,omitempty"`
+		
+		OldestUnreadDate *string `json:"oldestUnreadDate,omitempty"`
+		
+		NewestReadDate *string `json:"newestReadDate,omitempty"`
+		
+		OldestReadDate *string `json:"oldestReadDate,omitempty"`
 		Alias
 	}{ 
 		UsageSizeBytes: o.UsageSizeBytes,
@@ -134,6 +186,14 @@ func (o Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
+		
+		NewestUnreadDate: NewestUnreadDate,
+		
+		OldestUnreadDate: OldestUnreadDate,
+		
+		NewestReadDate: NewestReadDate,
+		
+		OldestReadDate: OldestReadDate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -173,6 +233,26 @@ func (o *Voicemailmailboxinfo) UnmarshalJSON(b []byte) error {
 	if modifiedDateString, ok := VoicemailmailboxinfoMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if newestUnreadDateString, ok := VoicemailmailboxinfoMap["newestUnreadDate"].(string); ok {
+		NewestUnreadDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", newestUnreadDateString)
+		o.NewestUnreadDate = &NewestUnreadDate
+	}
+	
+	if oldestUnreadDateString, ok := VoicemailmailboxinfoMap["oldestUnreadDate"].(string); ok {
+		OldestUnreadDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", oldestUnreadDateString)
+		o.OldestUnreadDate = &OldestUnreadDate
+	}
+	
+	if newestReadDateString, ok := VoicemailmailboxinfoMap["newestReadDate"].(string); ok {
+		NewestReadDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", newestReadDateString)
+		o.NewestReadDate = &NewestReadDate
+	}
+	
+	if oldestReadDateString, ok := VoicemailmailboxinfoMap["oldestReadDate"].(string); ok {
+		OldestReadDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", oldestReadDateString)
+		o.OldestReadDate = &OldestReadDate
 	}
 	
 

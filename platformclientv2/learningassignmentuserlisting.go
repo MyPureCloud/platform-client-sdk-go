@@ -26,8 +26,8 @@ type Learningassignmentuserlisting struct {
 	// UnfilteredTotal - The total number of users
 	UnfilteredTotal *int `json:"unfilteredTotal,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -38,8 +38,8 @@ type Learningassignmentuserlisting struct {
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,7 +118,7 @@ func (o Learningassignmentuserlisting) MarshalJSON() ([]byte, error) {
 		
 		UnfilteredTotal *int `json:"unfilteredTotal,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -126,7 +126,7 @@ func (o Learningassignmentuserlisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,7 +141,7 @@ func (o Learningassignmentuserlisting) MarshalJSON() ([]byte, error) {
 		
 		UnfilteredTotal: o.UnfilteredTotal,
 		
-		NextUri: o.NextUri,
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -149,7 +149,7 @@ func (o Learningassignmentuserlisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri: o.SelfUri,
 		
-		PreviousUri: o.PreviousUri,
+		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,8 +188,8 @@ func (o *Learningassignmentuserlisting) UnmarshalJSON(b []byte) error {
 		o.UnfilteredTotal = &UnfilteredTotalInt
 	}
 	
-	if NextUri, ok := LearningassignmentuserlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if PreviousUri, ok := LearningassignmentuserlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := LearningassignmentuserlistingMap["lastUri"].(string); ok {
@@ -204,8 +204,8 @@ func (o *Learningassignmentuserlisting) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if PreviousUri, ok := LearningassignmentuserlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if NextUri, ok := LearningassignmentuserlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if PageCount, ok := LearningassignmentuserlistingMap["pageCount"].(float64); ok {

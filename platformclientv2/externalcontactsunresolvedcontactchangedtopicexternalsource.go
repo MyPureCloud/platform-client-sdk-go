@@ -7,22 +7,16 @@ import (
 	"strings"
 )
 
-// Recordingbuttoncomponent - Structured template button object.
-type Recordingbuttoncomponent struct { 
+// Externalcontactsunresolvedcontactchangedtopicexternalsource
+type Externalcontactsunresolvedcontactchangedtopicexternalsource struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Title
-	Title *string `json:"title,omitempty"`
-
-	// Actions
-	Actions *Recordingcontentactions `json:"actions,omitempty"`
-
-	// IsSelected
-	IsSelected *bool `json:"isSelected,omitempty"`
+	// Id
+	Id *string `json:"id,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Recordingbuttoncomponent) SetField(field string, fieldValue interface{}) {
+func (o *Externalcontactsunresolvedcontactchangedtopicexternalsource) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +37,7 @@ func (o *Recordingbuttoncomponent) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Recordingbuttoncomponent) MarshalJSON() ([]byte, error) {
+func (o Externalcontactsunresolvedcontactchangedtopicexternalsource) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,43 +75,26 @@ func (o Recordingbuttoncomponent) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Recordingbuttoncomponent
+	type Alias Externalcontactsunresolvedcontactchangedtopicexternalsource
 	
 	return json.Marshal(&struct { 
-		Title *string `json:"title,omitempty"`
-		
-		Actions *Recordingcontentactions `json:"actions,omitempty"`
-		
-		IsSelected *bool `json:"isSelected,omitempty"`
+		Id *string `json:"id,omitempty"`
 		Alias
 	}{ 
-		Title: o.Title,
-		
-		Actions: o.Actions,
-		
-		IsSelected: o.IsSelected,
+		Id: o.Id,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Recordingbuttoncomponent) UnmarshalJSON(b []byte) error {
-	var RecordingbuttoncomponentMap map[string]interface{}
-	err := json.Unmarshal(b, &RecordingbuttoncomponentMap)
+func (o *Externalcontactsunresolvedcontactchangedtopicexternalsource) UnmarshalJSON(b []byte) error {
+	var ExternalcontactsunresolvedcontactchangedtopicexternalsourceMap map[string]interface{}
+	err := json.Unmarshal(b, &ExternalcontactsunresolvedcontactchangedtopicexternalsourceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Title, ok := RecordingbuttoncomponentMap["title"].(string); ok {
-		o.Title = &Title
-	}
-    
-	if Actions, ok := RecordingbuttoncomponentMap["actions"].(map[string]interface{}); ok {
-		ActionsString, _ := json.Marshal(Actions)
-		json.Unmarshal(ActionsString, &o.Actions)
-	}
-	
-	if IsSelected, ok := RecordingbuttoncomponentMap["isSelected"].(bool); ok {
-		o.IsSelected = &IsSelected
+	if Id, ok := ExternalcontactsunresolvedcontactchangedtopicexternalsourceMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
 
@@ -125,7 +102,7 @@ func (o *Recordingbuttoncomponent) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Recordingbuttoncomponent) String() string {
+func (o *Externalcontactsunresolvedcontactchangedtopicexternalsource) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

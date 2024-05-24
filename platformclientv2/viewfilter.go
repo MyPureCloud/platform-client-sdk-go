@@ -538,6 +538,9 @@ type Viewfilter struct {
 
 	// SurveyResponseStatuses - The list of Survey Response Status
 	SurveyResponseStatuses *[]string `json:"surveyResponseStatuses,omitempty"`
+
+	// BotFlowTypes - The botFlowTypes is used to filter the view
+	BotFlowTypes *[]string `json:"botFlowTypes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -954,6 +957,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SurveyTypes *[]string `json:"surveyTypes,omitempty"`
 		
 		SurveyResponseStatuses *[]string `json:"surveyResponseStatuses,omitempty"`
+		
+		BotFlowTypes *[]string `json:"botFlowTypes,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1307,6 +1312,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SurveyTypes: o.SurveyTypes,
 		
 		SurveyResponseStatuses: o.SurveyResponseStatuses,
+		
+		BotFlowTypes: o.BotFlowTypes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2155,6 +2162,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if SurveyResponseStatuses, ok := ViewfilterMap["surveyResponseStatuses"].([]interface{}); ok {
 		SurveyResponseStatusesString, _ := json.Marshal(SurveyResponseStatuses)
 		json.Unmarshal(SurveyResponseStatusesString, &o.SurveyResponseStatuses)
+	}
+	
+	if BotFlowTypes, ok := ViewfilterMap["botFlowTypes"].([]interface{}); ok {
+		BotFlowTypesString, _ := json.Marshal(BotFlowTypes)
+		json.Unmarshal(BotFlowTypesString, &o.BotFlowTypes)
 	}
 	
 

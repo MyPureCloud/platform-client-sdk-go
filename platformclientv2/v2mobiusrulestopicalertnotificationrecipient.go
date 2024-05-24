@@ -7,40 +7,22 @@ import (
 	"strings"
 )
 
-// Reportmetadata
-type Reportmetadata struct { 
+// V2mobiusrulestopicalertnotificationrecipient
+type V2mobiusrulestopicalertnotificationrecipient struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
+	// UserId
+	UserId *string `json:"userId,omitempty"`
 
-	// Name
-	Name *string `json:"name,omitempty"`
+	// DisplayName
+	DisplayName *string `json:"displayName,omitempty"`
 
-	// Title
-	Title *string `json:"title,omitempty"`
-
-	// Description
-	Description *string `json:"description,omitempty"`
-
-	// Keywords
-	Keywords *[]string `json:"keywords,omitempty"`
-
-	// AvailableLocales
-	AvailableLocales *[]string `json:"availableLocales,omitempty"`
-
-	// Parameters
-	Parameters *[]Parameter `json:"parameters,omitempty"`
-
-	// ExampleUrl
-	ExampleUrl *string `json:"exampleUrl,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// ContactAddress
+	ContactAddress *string `json:"contactAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Reportmetadata) SetField(field string, fieldValue interface{}) {
+func (o *V2mobiusrulestopicalertnotificationrecipient) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -61,7 +43,7 @@ func (o *Reportmetadata) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Reportmetadata) MarshalJSON() ([]byte, error) {
+func (o V2mobiusrulestopicalertnotificationrecipient) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -99,93 +81,42 @@ func (o Reportmetadata) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Reportmetadata
+	type Alias V2mobiusrulestopicalertnotificationrecipient
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		UserId *string `json:"userId,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
+		DisplayName *string `json:"displayName,omitempty"`
 		
-		Title *string `json:"title,omitempty"`
-		
-		Description *string `json:"description,omitempty"`
-		
-		Keywords *[]string `json:"keywords,omitempty"`
-		
-		AvailableLocales *[]string `json:"availableLocales,omitempty"`
-		
-		Parameters *[]Parameter `json:"parameters,omitempty"`
-		
-		ExampleUrl *string `json:"exampleUrl,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		ContactAddress *string `json:"contactAddress,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		UserId: o.UserId,
 		
-		Name: o.Name,
+		DisplayName: o.DisplayName,
 		
-		Title: o.Title,
-		
-		Description: o.Description,
-		
-		Keywords: o.Keywords,
-		
-		AvailableLocales: o.AvailableLocales,
-		
-		Parameters: o.Parameters,
-		
-		ExampleUrl: o.ExampleUrl,
-		
-		SelfUri: o.SelfUri,
+		ContactAddress: o.ContactAddress,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Reportmetadata) UnmarshalJSON(b []byte) error {
-	var ReportmetadataMap map[string]interface{}
-	err := json.Unmarshal(b, &ReportmetadataMap)
+func (o *V2mobiusrulestopicalertnotificationrecipient) UnmarshalJSON(b []byte) error {
+	var V2mobiusrulestopicalertnotificationrecipientMap map[string]interface{}
+	err := json.Unmarshal(b, &V2mobiusrulestopicalertnotificationrecipientMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := ReportmetadataMap["id"].(string); ok {
-		o.Id = &Id
+	if UserId, ok := V2mobiusrulestopicalertnotificationrecipientMap["userId"].(string); ok {
+		o.UserId = &UserId
 	}
     
-	if Name, ok := ReportmetadataMap["name"].(string); ok {
-		o.Name = &Name
+	if DisplayName, ok := V2mobiusrulestopicalertnotificationrecipientMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
 	}
     
-	if Title, ok := ReportmetadataMap["title"].(string); ok {
-		o.Title = &Title
-	}
-    
-	if Description, ok := ReportmetadataMap["description"].(string); ok {
-		o.Description = &Description
-	}
-    
-	if Keywords, ok := ReportmetadataMap["keywords"].([]interface{}); ok {
-		KeywordsString, _ := json.Marshal(Keywords)
-		json.Unmarshal(KeywordsString, &o.Keywords)
-	}
-	
-	if AvailableLocales, ok := ReportmetadataMap["availableLocales"].([]interface{}); ok {
-		AvailableLocalesString, _ := json.Marshal(AvailableLocales)
-		json.Unmarshal(AvailableLocalesString, &o.AvailableLocales)
-	}
-	
-	if Parameters, ok := ReportmetadataMap["parameters"].([]interface{}); ok {
-		ParametersString, _ := json.Marshal(Parameters)
-		json.Unmarshal(ParametersString, &o.Parameters)
-	}
-	
-	if ExampleUrl, ok := ReportmetadataMap["exampleUrl"].(string); ok {
-		o.ExampleUrl = &ExampleUrl
-	}
-    
-	if SelfUri, ok := ReportmetadataMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if ContactAddress, ok := V2mobiusrulestopicalertnotificationrecipientMap["contactAddress"].(string); ok {
+		o.ContactAddress = &ContactAddress
 	}
     
 
@@ -193,7 +124,7 @@ func (o *Reportmetadata) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Reportmetadata) String() string {
+func (o *V2mobiusrulestopicalertnotificationrecipient) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

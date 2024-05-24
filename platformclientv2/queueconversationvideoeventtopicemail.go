@@ -83,6 +83,9 @@ type Queueconversationvideoeventtopicemail struct {
 
 	// ResumeTime - The time when a parked email should resume.
 	ResumeTime *time.Time `json:"resumeTime,omitempty"`
+
+	// ParkTime - The time when an  parked email was parked.
+	ParkTime *time.Time `json:"parkTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,7 +117,7 @@ func (o Queueconversationvideoeventtopicemail) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime","ResumeTime", }
+		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime","ResumeTime","ParkTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -179,6 +182,14 @@ func (o Queueconversationvideoeventtopicemail) MarshalJSON() ([]byte, error) {
 		ResumeTime = nil
 	}
 	
+	ParkTime := new(string)
+	if o.ParkTime != nil {
+		
+		*ParkTime = timeutil.Strftime(o.ParkTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ParkTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -227,6 +238,8 @@ func (o Queueconversationvideoeventtopicemail) MarshalJSON() ([]byte, error) {
 		QueueMediaSettings *Queueconversationvideoeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		
 		ResumeTime *string `json:"resumeTime,omitempty"`
+		
+		ParkTime *string `json:"parkTime,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -276,6 +289,8 @@ func (o Queueconversationvideoeventtopicemail) MarshalJSON() ([]byte, error) {
 		QueueMediaSettings: o.QueueMediaSettings,
 		
 		ResumeTime: ResumeTime,
+		
+		ParkTime: ParkTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -391,6 +406,11 @@ func (o *Queueconversationvideoeventtopicemail) UnmarshalJSON(b []byte) error {
 	if resumeTimeString, ok := QueueconversationvideoeventtopicemailMap["resumeTime"].(string); ok {
 		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
 		o.ResumeTime = &ResumeTime
+	}
+	
+	if parkTimeString, ok := QueueconversationvideoeventtopicemailMap["parkTime"].(string); ok {
+		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
+		o.ParkTime = &ParkTime
 	}
 	
 

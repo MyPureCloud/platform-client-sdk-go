@@ -7,22 +7,16 @@ import (
 	"strings"
 )
 
-// Runnowresponse
-type Runnowresponse struct { 
+// Freetriallimitdocs
+type Freetriallimitdocs struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Namespaces
+	Namespaces *[]Freetrialnamespace `json:"namespaces,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Runnowresponse) SetField(field string, fieldValue interface{}) {
+func (o *Freetriallimitdocs) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +37,7 @@ func (o *Runnowresponse) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Runnowresponse) MarshalJSON() ([]byte, error) {
+func (o Freetriallimitdocs) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,50 +75,35 @@ func (o Runnowresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Runnowresponse
+	type Alias Freetriallimitdocs
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Namespaces *[]Freetrialnamespace `json:"namespaces,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		SelfUri: o.SelfUri,
+		Namespaces: o.Namespaces,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Runnowresponse) UnmarshalJSON(b []byte) error {
-	var RunnowresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &RunnowresponseMap)
+func (o *Freetriallimitdocs) UnmarshalJSON(b []byte) error {
+	var FreetriallimitdocsMap map[string]interface{}
+	err := json.Unmarshal(b, &FreetriallimitdocsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := RunnowresponseMap["id"].(string); ok {
-		o.Id = &Id
+	if Namespaces, ok := FreetriallimitdocsMap["namespaces"].([]interface{}); ok {
+		NamespacesString, _ := json.Marshal(Namespaces)
+		json.Unmarshal(NamespacesString, &o.Namespaces)
 	}
-    
-	if Name, ok := RunnowresponseMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if SelfUri, ok := RunnowresponseMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Runnowresponse) String() string {
+func (o *Freetriallimitdocs) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
