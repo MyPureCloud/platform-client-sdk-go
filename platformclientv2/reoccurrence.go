@@ -14,10 +14,10 @@ type Reoccurrence struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
-	// Start - The  start date time of the initial occurrence as an ISO-8601 string in UTC time, e.g: 2023-11-21T16:30:25.000Z
+	// Start - The start date time of the initial occurrence as an ISO-8601 string in the format YYYY-MM-DDThh:mm:ss
 	Start *string `json:"start,omitempty"`
 
-	// End - The end date time of the initial occurrence as an ISO-8601 string in UTC time, e.g: 2023-12-21T16:30:25.000Z
+	// End - The end date time of the initial occurrence as an ISO-8601 string in the format YYYY-MM-DDThh:mm:ss
 	End *string `json:"end,omitempty"`
 
 	// TimeZone - The time zone of the schedule e.g.:  America/New_York

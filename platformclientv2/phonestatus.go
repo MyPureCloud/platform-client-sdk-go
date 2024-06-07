@@ -11,11 +11,8 @@ import (
 type Phonestatus struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id
 	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
 
 	// OperationalStatus - The Operational Status of this phone
 	OperationalStatus *string `json:"operationalStatus,omitempty"`
@@ -107,8 +104,6 @@ func (o Phonestatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
 		OperationalStatus *string `json:"operationalStatus,omitempty"`
 		
 		EdgesStatus *string `json:"edgesStatus,omitempty"`
@@ -127,8 +122,6 @@ func (o Phonestatus) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Name: o.Name,
 		
 		OperationalStatus: o.OperationalStatus,
 		
@@ -158,10 +151,6 @@ func (o *Phonestatus) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := PhonestatusMap["id"].(string); ok {
 		o.Id = &Id
-	}
-    
-	if Name, ok := PhonestatusMap["name"].(string); ok {
-		o.Name = &Name
 	}
     
 	if OperationalStatus, ok := PhonestatusMap["operationalStatus"].(string); ok {

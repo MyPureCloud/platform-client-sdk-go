@@ -30,9 +30,6 @@ type Event struct {
 	// EventType - The name representing the type of event.
 	EventType *string `json:"eventType,omitempty"`
 
-	// GenericActionEvent - Event triggered by generic actions.
-	GenericActionEvent *Genericactionevent `json:"genericActionEvent,omitempty"`
-
 	// OutcomeAchievedEvent - Event where a customer has achieved a specific outcome or goal.
 	OutcomeAchievedEvent *Outcomeachievedevent `json:"outcomeAchievedEvent,omitempty"`
 
@@ -135,8 +132,6 @@ func (o Event) MarshalJSON() ([]byte, error) {
 		
 		EventType *string `json:"eventType,omitempty"`
 		
-		GenericActionEvent *Genericactionevent `json:"genericActionEvent,omitempty"`
-		
 		OutcomeAchievedEvent *Outcomeachievedevent `json:"outcomeAchievedEvent,omitempty"`
 		
 		SegmentAssignmentEvent *Segmentassignmentevent `json:"segmentAssignmentEvent,omitempty"`
@@ -161,8 +156,6 @@ func (o Event) MarshalJSON() ([]byte, error) {
 		Session: o.Session,
 		
 		EventType: o.EventType,
-		
-		GenericActionEvent: o.GenericActionEvent,
 		
 		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
 		
@@ -211,11 +204,6 @@ func (o *Event) UnmarshalJSON(b []byte) error {
 		o.EventType = &EventType
 	}
     
-	if GenericActionEvent, ok := EventMap["genericActionEvent"].(map[string]interface{}); ok {
-		GenericActionEventString, _ := json.Marshal(GenericActionEvent)
-		json.Unmarshal(GenericActionEventString, &o.GenericActionEvent)
-	}
-	
 	if OutcomeAchievedEvent, ok := EventMap["outcomeAchievedEvent"].(map[string]interface{}); ok {
 		OutcomeAchievedEventString, _ := json.Marshal(OutcomeAchievedEvent)
 		json.Unmarshal(OutcomeAchievedEventString, &o.OutcomeAchievedEvent)

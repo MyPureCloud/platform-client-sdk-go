@@ -541,6 +541,12 @@ type Viewfilter struct {
 
 	// BotFlowTypes - The botFlowTypes is used to filter the view
 	BotFlowTypes *[]string `json:"botFlowTypes,omitempty"`
+
+	// IsScreenRecorded - Filter to indicate if the screen is recorded
+	IsScreenRecorded *bool `json:"isScreenRecorded,omitempty"`
+
+	// ScreenMonitorUserIds - The list of Screen Monitor User Ids
+	ScreenMonitorUserIds *[]string `json:"screenMonitorUserIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -959,6 +965,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SurveyResponseStatuses *[]string `json:"surveyResponseStatuses,omitempty"`
 		
 		BotFlowTypes *[]string `json:"botFlowTypes,omitempty"`
+		
+		IsScreenRecorded *bool `json:"isScreenRecorded,omitempty"`
+		
+		ScreenMonitorUserIds *[]string `json:"screenMonitorUserIds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1314,6 +1324,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SurveyResponseStatuses: o.SurveyResponseStatuses,
 		
 		BotFlowTypes: o.BotFlowTypes,
+		
+		IsScreenRecorded: o.IsScreenRecorded,
+		
+		ScreenMonitorUserIds: o.ScreenMonitorUserIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2167,6 +2181,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if BotFlowTypes, ok := ViewfilterMap["botFlowTypes"].([]interface{}); ok {
 		BotFlowTypesString, _ := json.Marshal(BotFlowTypes)
 		json.Unmarshal(BotFlowTypesString, &o.BotFlowTypes)
+	}
+	
+	if IsScreenRecorded, ok := ViewfilterMap["isScreenRecorded"].(bool); ok {
+		o.IsScreenRecorded = &IsScreenRecorded
+	}
+    
+	if ScreenMonitorUserIds, ok := ViewfilterMap["screenMonitorUserIds"].([]interface{}); ok {
+		ScreenMonitorUserIdsString, _ := json.Marshal(ScreenMonitorUserIds)
+		json.Unmarshal(ScreenMonitorUserIdsString, &o.ScreenMonitorUserIds)
 	}
 	
 

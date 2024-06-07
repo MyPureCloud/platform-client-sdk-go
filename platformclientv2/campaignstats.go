@@ -31,6 +31,9 @@ type Campaignstats struct {
 
 	// TimeZoneRescheduledCalls - Number of campaign calls currently timezone rescheduled
 	TimeZoneRescheduledCalls *int `json:"timeZoneRescheduledCalls,omitempty"`
+
+	// LinesUtilization - Information on the campaign's lines utilization
+	LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Campaignstats) MarshalJSON() ([]byte, error) {
 		ScheduledCalls *int `json:"scheduledCalls,omitempty"`
 		
 		TimeZoneRescheduledCalls *int `json:"timeZoneRescheduledCalls,omitempty"`
+		
+		LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
 		Alias
 	}{ 
 		ContactRate: o.ContactRate,
@@ -124,6 +129,8 @@ func (o Campaignstats) MarshalJSON() ([]byte, error) {
 		ScheduledCalls: o.ScheduledCalls,
 		
 		TimeZoneRescheduledCalls: o.TimeZoneRescheduledCalls,
+		
+		LinesUtilization: o.LinesUtilization,
 		Alias:    (Alias)(o),
 	})
 }
@@ -166,6 +173,11 @@ func (o *Campaignstats) UnmarshalJSON(b []byte) error {
 	if TimeZoneRescheduledCalls, ok := CampaignstatsMap["timeZoneRescheduledCalls"].(float64); ok {
 		TimeZoneRescheduledCallsInt := int(TimeZoneRescheduledCalls)
 		o.TimeZoneRescheduledCalls = &TimeZoneRescheduledCallsInt
+	}
+	
+	if LinesUtilization, ok := CampaignstatsMap["linesUtilization"].(map[string]interface{}); ok {
+		LinesUtilizationString, _ := json.Marshal(LinesUtilization)
+		json.Unmarshal(LinesUtilizationString, &o.LinesUtilization)
 	}
 	
 

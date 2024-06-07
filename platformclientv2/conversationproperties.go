@@ -38,6 +38,9 @@ type Conversationproperties struct {
 	// IsMonitored - Indicates filtering for monitored
 	IsMonitored *bool `json:"isMonitored,omitempty"`
 
+	// IsScreenMonitored - Indicates filtering for screenMonitored
+	IsScreenMonitored *bool `json:"isScreenMonitored,omitempty"`
+
 	// FilterWrapUpNotes - Indicates filtering for WrapUpNotes
 	FilterWrapUpNotes *bool `json:"filterWrapUpNotes,omitempty"`
 
@@ -126,6 +129,8 @@ func (o Conversationproperties) MarshalJSON() ([]byte, error) {
 		
 		IsMonitored *bool `json:"isMonitored,omitempty"`
 		
+		IsScreenMonitored *bool `json:"isScreenMonitored,omitempty"`
+		
 		FilterWrapUpNotes *bool `json:"filterWrapUpNotes,omitempty"`
 		
 		MatchAll *bool `json:"matchAll,omitempty"`
@@ -148,6 +153,8 @@ func (o Conversationproperties) MarshalJSON() ([]byte, error) {
 		IsFlagged: o.IsFlagged,
 		
 		IsMonitored: o.IsMonitored,
+		
+		IsScreenMonitored: o.IsScreenMonitored,
 		
 		FilterWrapUpNotes: o.FilterWrapUpNotes,
 		
@@ -197,6 +204,10 @@ func (o *Conversationproperties) UnmarshalJSON(b []byte) error {
     
 	if IsMonitored, ok := ConversationpropertiesMap["isMonitored"].(bool); ok {
 		o.IsMonitored = &IsMonitored
+	}
+    
+	if IsScreenMonitored, ok := ConversationpropertiesMap["isScreenMonitored"].(bool); ok {
+		o.IsScreenMonitored = &IsScreenMonitored
 	}
     
 	if FilterWrapUpNotes, ok := ConversationpropertiesMap["filterWrapUpNotes"].(bool); ok {

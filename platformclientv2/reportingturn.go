@@ -30,6 +30,9 @@ type Reportingturn struct {
 	// Knowledge - The knowledge data captured during this reporting turn.
 	Knowledge *Reportingturnknowledge `json:"knowledge,omitempty"`
 
+	// KnowledgeBaseEvents - The knowledge data captured during this reporting turn.
+	KnowledgeBaseEvents *Reportingturnknowledgeevents `json:"knowledgeBaseEvents,omitempty"`
+
 	// DateCreated - Timestamp indicating when the original turn was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -126,6 +129,8 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		
 		Knowledge *Reportingturnknowledge `json:"knowledge,omitempty"`
 		
+		KnowledgeBaseEvents *Reportingturnknowledgeevents `json:"knowledgeBaseEvents,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		AskActionResult *string `json:"askActionResult,omitempty"`
@@ -146,6 +151,8 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		Intent: o.Intent,
 		
 		Knowledge: o.Knowledge,
+		
+		KnowledgeBaseEvents: o.KnowledgeBaseEvents,
 		
 		DateCreated: DateCreated,
 		
@@ -191,6 +198,11 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 	if Knowledge, ok := ReportingturnMap["knowledge"].(map[string]interface{}); ok {
 		KnowledgeString, _ := json.Marshal(Knowledge)
 		json.Unmarshal(KnowledgeString, &o.Knowledge)
+	}
+	
+	if KnowledgeBaseEvents, ok := ReportingturnMap["knowledgeBaseEvents"].(map[string]interface{}); ok {
+		KnowledgeBaseEventsString, _ := json.Marshal(KnowledgeBaseEvents)
+		json.Unmarshal(KnowledgeBaseEventsString, &o.KnowledgeBaseEvents)
 	}
 	
 	if dateCreatedString, ok := ReportingturnMap["dateCreated"].(string); ok {

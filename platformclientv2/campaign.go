@@ -117,6 +117,9 @@ type Campaign struct {
 	// CallbackAutoAnswer - The option manages the auto-answer callback calls
 	CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
 
+	// DynamicLineBalancingSettings - Dynamic line balancing settings
+	DynamicLineBalancingSettings *Dynamiclinebalancingsettings `json:"dynamicLineBalancingSettings,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -270,6 +273,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
 		
+		DynamicLineBalancingSettings *Dynamiclinebalancingsettings `json:"dynamicLineBalancingSettings,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -342,6 +347,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
 		
 		CallbackAutoAnswer: o.CallbackAutoAnswer,
+		
+		DynamicLineBalancingSettings: o.DynamicLineBalancingSettings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -519,6 +526,11 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 		o.CallbackAutoAnswer = &CallbackAutoAnswer
 	}
     
+	if DynamicLineBalancingSettings, ok := CampaignMap["dynamicLineBalancingSettings"].(map[string]interface{}); ok {
+		DynamicLineBalancingSettingsString, _ := json.Marshal(DynamicLineBalancingSettings)
+		json.Unmarshal(DynamicLineBalancingSettingsString, &o.DynamicLineBalancingSettings)
+	}
+	
 	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

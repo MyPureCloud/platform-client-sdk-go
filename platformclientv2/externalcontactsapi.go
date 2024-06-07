@@ -1536,7 +1536,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemas() (*Dataschemali
 // GetExternalcontactsOrganization invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}
 //
 // Fetch an external organization
-func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizationId string, expand string, includeTrustors bool) (*Externalorganization, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizationId string, expand []string, includeTrustors bool) (*Externalorganization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}"
@@ -1569,7 +1569,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, "")
 	
@@ -1894,7 +1894,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 // GetExternalcontactsOrganizationRelationships invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}/relationships
 //
 // Fetch a relationship for an external organization
-func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(externalOrganizationId string, pageSize int, pageNumber int, expand string, sortOrder string) (*Relationshiplisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(externalOrganizationId string, pageSize int, pageNumber int, expand []string, sortOrder string) (*Relationshiplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/relationships"
@@ -1931,7 +1931,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
@@ -2402,7 +2402,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemas() (*Datasch
 // GetExternalcontactsRelationship invokes GET /api/v2/externalcontacts/relationships/{relationshipId}
 //
 // Fetch a relationship
-func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId string, expand string) (*Relationship, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId string, expand []string) (*Relationship, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/relationships/{relationshipId}"
@@ -2435,7 +2435,7 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

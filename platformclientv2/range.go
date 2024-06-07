@@ -14,7 +14,7 @@ type Range struct {
 	// VarType - Range type (NoEnd: without an end date. EndDate: with an end date. Numbered: with a specific number of occurrences)
 	VarType *string `json:"type,omitempty"`
 
-	// End - The end date time of the last occurrence of the range as an ISO-8601 string in UTC time, e.g: 2023-12-21T16:30:25.000Z, Required to set for EndDate range type.
+	// End - The end date time of the last occurrence of the range as an ISO-8601 string. Required for EndDate range type.
 	End *string `json:"end,omitempty"`
 
 	// NumberOfOccurrences - The number of times the schedule will be repeated, e.g: 2. Required to set for Numbered range type.

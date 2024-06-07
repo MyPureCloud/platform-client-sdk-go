@@ -62,9 +62,7 @@ docs/DeleteConversationsEmailMessagesDraftAttachment-example.txt
 docs/DeleteConversationsMessagesCachedmediaCachedMediaItemId-example.txt
 docs/DeleteConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
-docs/DeleteConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsOpenIntegrationId-example.txt
-docs/DeleteConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
 docs/DeleteConversationsMessagingSetting-example.txt
 docs/DeleteConversationsMessagingSettingsDefault-example.txt
@@ -537,12 +535,8 @@ docs/GetConversationsMessagingIntegrationsFacebook-example.txt
 docs/GetConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsInstagram-example.txt
 docs/GetConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
-docs/GetConversationsMessagingIntegrationsLine-example.txt
-docs/GetConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsOpen-example.txt
 docs/GetConversationsMessagingIntegrationsOpenIntegrationId-example.txt
-docs/GetConversationsMessagingIntegrationsTwitter-example.txt
-docs/GetConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsWhatsapp-example.txt
 docs/GetConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
 docs/GetConversationsMessagingSetting-example.txt
@@ -953,6 +947,7 @@ docs/GetOutboundCampaign-example.txt
 docs/GetOutboundCampaignAgentownedmappingpreviewResults-example.txt
 docs/GetOutboundCampaignDiagnostics-example.txt
 docs/GetOutboundCampaignInteractions-example.txt
+docs/GetOutboundCampaignLinedistribution-example.txt
 docs/GetOutboundCampaignProgress-example.txt
 docs/GetOutboundCampaignStats-example.txt
 docs/GetOutboundCampaignrule-example.txt
@@ -1540,7 +1535,6 @@ docs/PatchConversationsMessageParticipantCommunication-example.txt
 docs/PatchConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsOpenIntegrationId-example.txt
-docs/PatchConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsWhatsappEmbeddedsignupIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
 docs/PatchConversationsMessagingSetting-example.txt
@@ -1749,6 +1743,7 @@ docs/PostArchitectSystempromptHistory-example.txt
 docs/PostArchitectSystempromptResources-example.txt
 docs/PostAuditsQuery-example.txt
 docs/PostAuditsQueryRealtime-example.txt
+docs/PostAuditsQueryRealtimeRelated-example.txt
 docs/PostAuthorizationDivisionObject-example.txt
 docs/PostAuthorizationDivisionObject-example.txt
 docs/PostAuthorizationDivisionRestore-example.txt
@@ -1850,9 +1845,7 @@ docs/PostConversationsMessagesAgentless-example.txt
 docs/PostConversationsMessagesInboundOpen-example.txt
 docs/PostConversationsMessagingIntegrationsFacebook-example.txt
 docs/PostConversationsMessagingIntegrationsInstagram-example.txt
-docs/PostConversationsMessagingIntegrationsLine-example.txt
 docs/PostConversationsMessagingIntegrationsOpen-example.txt
-docs/PostConversationsMessagingIntegrationsTwitter-example.txt
 docs/PostConversationsMessagingIntegrationsWhatsapp-example.txt
 docs/PostConversationsMessagingIntegrationsWhatsappEmbeddedsignup-example.txt
 docs/PostConversationsMessagingSettings-example.txt
@@ -2064,6 +2057,9 @@ docs/PostOutboundCampaignsProgress-example.txt
 docs/PostOutboundContactlistClear-example.txt
 docs/PostOutboundContactlistContacts-example.txt
 docs/PostOutboundContactlistContactsBulk-example.txt
+docs/PostOutboundContactlistContactsBulkRemove-example.txt
+docs/PostOutboundContactlistContactsBulkUpdate-example.txt
+docs/PostOutboundContactlistContactsSearch-example.txt
 docs/PostOutboundContactlistExport-example.txt
 docs/PostOutboundContactlistfilters-example.txt
 docs/PostOutboundContactlistfiltersBulkRetrieve-example.txt
@@ -2358,7 +2354,6 @@ docs/PutConversationsEmailMessagesDraft-example.txt
 docs/PutConversationsEmailRecordingstate-example.txt
 docs/PutConversationsKeyconfiguration-example.txt
 docs/PutConversationsMessageRecordingstate-example.txt
-docs/PutConversationsMessagingIntegrationsLineIntegrationId-example.txt
 docs/PutConversationsMessagingSettingsDefault-example.txt
 docs/PutConversationsMessagingSupportedcontentDefault-example.txt
 docs/PutConversationsMessagingThreadingtimeline-example.txt
@@ -2691,6 +2686,8 @@ platformclientv2/aggregateviewdata.go
 platformclientv2/aggregationrange.go
 platformclientv2/aggregationresult.go
 platformclientv2/aggregationresultentry.go
+platformclientv2/aianswer.go
+platformclientv2/aiscoring.go
 platformclientv2/aiscoringsettings.go
 platformclientv2/alertingapi.go
 platformclientv2/alertingunreadstatus.go
@@ -2839,6 +2836,8 @@ platformclientv2/auditqueryservicemapping.go
 platformclientv2/auditquerysort.go
 platformclientv2/auditrealtimequeryrequest.go
 platformclientv2/auditrealtimequeryresultsresponse.go
+platformclientv2/auditrealtimerelatedrequest.go
+platformclientv2/auditrealtimerelatedresultsresponse.go
 platformclientv2/auditsearchresult.go
 platformclientv2/audittopicaddressableentityref.go
 platformclientv2/audittopicauditlogmessage.go
@@ -3093,6 +3092,9 @@ platformclientv2/campaignentitylisting.go
 platformclientv2/campaigninteraction.go
 platformclientv2/campaigninteractions.go
 platformclientv2/campaignlinesutilization.go
+platformclientv2/campaignoutboundlinesallocation.go
+platformclientv2/campaignoutboundlinesdistribution.go
+platformclientv2/campaignoutboundlinesreservation.go
 platformclientv2/campaignprogress.go
 platformclientv2/campaignrule.go
 platformclientv2/campaignruleaction.go
@@ -3205,7 +3207,6 @@ platformclientv2/compliance.go
 platformclientv2/complianceresponse.go
 platformclientv2/condition.go
 platformclientv2/conditionalgrouprouting.go
-platformclientv2/conditionalgrouproutingcondition.go
 platformclientv2/conditionalgrouproutingrule.go
 platformclientv2/configuration.go
 platformclientv2/configurationoverrides.go
@@ -3234,7 +3235,9 @@ platformclientv2/contactaddress.go
 platformclientv2/contactaddressableentityref.go
 platformclientv2/contactaddressconditionsettings.go
 platformclientv2/contactaddresstypeconditionsettings.go
+platformclientv2/contactbulkeditrequest.go
 platformclientv2/contactbulksearchcriteria.go
+platformclientv2/contactbulksearchparameters.go
 platformclientv2/contactcallbackrequest.go
 platformclientv2/contactcentersettings.go
 platformclientv2/contactcolumnconditionsettings.go
@@ -3257,10 +3260,13 @@ platformclientv2/contactlistfilterrange.go
 platformclientv2/contactlistimportstatusimportstatus.go
 platformclientv2/contactlistimportstatusobject.go
 platformclientv2/contactlisting.go
+platformclientv2/contactlistingrequest.go
+platformclientv2/contactlistingresponse.go
 platformclientv2/contactlisttemplate.go
 platformclientv2/contactlisttemplatebulkretrievebody.go
 platformclientv2/contactlisttemplateentitylisting.go
 platformclientv2/contactphonenumbercolumn.go
+platformclientv2/contactsbulkoperationjob.go
 platformclientv2/contactsexportrequest.go
 platformclientv2/contactsort.go
 platformclientv2/contentactions.go
@@ -4353,8 +4359,6 @@ platformclientv2/generaltopic.go
 platformclientv2/generaltopicsentitylisting.go
 platformclientv2/generatebuforecastrequest.go
 platformclientv2/generatemeetingidrequest.go
-platformclientv2/genericactionevent.go
-platformclientv2/genericeventaction.go
 platformclientv2/genericsaml.go
 platformclientv2/genesysbotconnector.go
 platformclientv2/geolocation.go
@@ -4894,9 +4898,6 @@ platformclientv2/linebase.go
 platformclientv2/linebaseentitylisting.go
 platformclientv2/lineentitylisting.go
 platformclientv2/lineid.go
-platformclientv2/lineintegration.go
-platformclientv2/lineintegrationentitylisting.go
-platformclientv2/lineintegrationrequest.go
 platformclientv2/linestatus.go
 platformclientv2/lineuserid.go
 platformclientv2/linkconfiguration.go
@@ -5780,8 +5781,11 @@ platformclientv2/reportingturnintent.go
 platformclientv2/reportingturnintentslot.go
 platformclientv2/reportingturnknowledge.go
 platformclientv2/reportingturnknowledgedocument.go
+platformclientv2/reportingturnknowledgeevents.go
 platformclientv2/reportingturnknowledgefeedback.go
+platformclientv2/reportingturnknowledgefeedbackevent.go
 platformclientv2/reportingturnknowledgesearch.go
+platformclientv2/reportingturnknowledgesearchevent.go
 platformclientv2/reportingturnsresponse.go
 platformclientv2/requestconfig.go
 platformclientv2/requestcontext.go
@@ -6376,9 +6380,6 @@ platformclientv2/ttssettings.go
 platformclientv2/ttsvoiceentity.go
 platformclientv2/ttsvoiceentitylisting.go
 platformclientv2/twitterid.go
-platformclientv2/twitterintegration.go
-platformclientv2/twitterintegrationentitylisting.go
-platformclientv2/twitterintegrationrequest.go
 platformclientv2/typingsetting.go
 platformclientv2/uci10n.go
 platformclientv2/ucicon.go
