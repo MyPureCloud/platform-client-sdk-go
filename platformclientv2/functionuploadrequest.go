@@ -11,7 +11,7 @@ import (
 type Functionuploadrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// FileName - Name of the file to upload. It must not start with a dot and not end with a forward slash. Whitespace and the following characters are not allowed: \\{^}%`]\">[~<#|
+	// FileName - Name of the file to upload.File name can only contain letters, numbers, and the following special characters: + - _ . ' ( )
 	FileName *string `json:"fileName,omitempty"`
 
 	// SignedUrlTimeoutSeconds - The number of seconds the presigned URL is valid for (from 1 to 604800 seconds). If none provided, defaults to 900 seconds

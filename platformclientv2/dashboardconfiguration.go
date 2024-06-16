@@ -48,6 +48,12 @@ type Dashboardconfiguration struct {
 	// CreatedBy - The id of user who created the dashboard
 	CreatedBy *Addressableentityref `json:"createdBy,omitempty"`
 
+	// Shared - The flag to indicate if the dashboard is shared
+	Shared *bool `json:"shared,omitempty"`
+
+	// DashboardsSharedWith - The list of users and teams the dashboard is shared with
+	DashboardsSharedWith *Dashboardssharedwith `json:"dashboardsSharedWith,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -155,6 +161,10 @@ func (o Dashboardconfiguration) MarshalJSON() ([]byte, error) {
 		
 		CreatedBy *Addressableentityref `json:"createdBy,omitempty"`
 		
+		Shared *bool `json:"shared,omitempty"`
+		
+		DashboardsSharedWith *Dashboardssharedwith `json:"dashboardsSharedWith,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -181,6 +191,10 @@ func (o Dashboardconfiguration) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		CreatedBy: o.CreatedBy,
+		
+		Shared: o.Shared,
+		
+		DashboardsSharedWith: o.DashboardsSharedWith,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -246,6 +260,15 @@ func (o *Dashboardconfiguration) UnmarshalJSON(b []byte) error {
 	if CreatedBy, ok := DashboardconfigurationMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if Shared, ok := DashboardconfigurationMap["shared"].(bool); ok {
+		o.Shared = &Shared
+	}
+    
+	if DashboardsSharedWith, ok := DashboardconfigurationMap["dashboardsSharedWith"].(map[string]interface{}); ok {
+		DashboardsSharedWithString, _ := json.Marshal(DashboardsSharedWith)
+		json.Unmarshal(DashboardsSharedWithString, &o.DashboardsSharedWith)
 	}
 	
 	if SelfUri, ok := DashboardconfigurationMap["selfUri"].(string); ok {

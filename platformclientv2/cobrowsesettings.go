@@ -28,6 +28,9 @@ type Cobrowsesettings struct {
 
 	// ReadonlySelectors - Readonly patterns that will apply to pages being shared
 	ReadonlySelectors *[]string `json:"readonlySelectors,omitempty"`
+
+	// PauseCriteria - Pause criteria that will pause cobrowse if some of them are met in the user's URL
+	PauseCriteria *[]Pausecriteria `json:"pauseCriteria,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		Channels *[]string `json:"channels,omitempty"`
 		
 		ReadonlySelectors *[]string `json:"readonlySelectors,omitempty"`
+		
+		PauseCriteria *[]Pausecriteria `json:"pauseCriteria,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -117,6 +122,8 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		Channels: o.Channels,
 		
 		ReadonlySelectors: o.ReadonlySelectors,
+		
+		PauseCriteria: o.PauseCriteria,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +160,11 @@ func (o *Cobrowsesettings) UnmarshalJSON(b []byte) error {
 	if ReadonlySelectors, ok := CobrowsesettingsMap["readonlySelectors"].([]interface{}); ok {
 		ReadonlySelectorsString, _ := json.Marshal(ReadonlySelectors)
 		json.Unmarshal(ReadonlySelectorsString, &o.ReadonlySelectors)
+	}
+	
+	if PauseCriteria, ok := CobrowsesettingsMap["pauseCriteria"].([]interface{}); ok {
+		PauseCriteriaString, _ := json.Marshal(PauseCriteria)
+		json.Unmarshal(PauseCriteriaString, &o.PauseCriteria)
 	}
 	
 

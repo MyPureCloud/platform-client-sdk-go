@@ -426,6 +426,39 @@
     "return": "Actionasyncaggregatequeryresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar jobId string // jobId\nvar cursor string // Cursor token to retrieve next page\n// Fetch a page of results for an async aggregates query\ndata, response, err := apiInstance.GetAnalyticsActionsAggregatesJobResults(jobId, cursor)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAnalyticsActionsAggregatesJobResults: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getanalyticsagentcopilotsaggregatesjob": {
+    "operationId": "getanalyticsagentcopilotsaggregatesjob",
+    "functionName": "GetAnalyticsAgentcopilotsAggregatesJob",
+    "signature": "GetAnalyticsAgentcopilotsAggregatesJob(jobId)",
+    "parameters": [
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Asyncquerystatus",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar jobId string // jobId\n// Get status for async query for agent copilot aggregates\ndata, response, err := apiInstance.GetAnalyticsAgentcopilotsAggregatesJob(jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAnalyticsAgentcopilotsAggregatesJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getanalyticsagentcopilotsaggregatesjobresults": {
+    "operationId": "getanalyticsagentcopilotsaggregatesjobresults",
+    "functionName": "GetAnalyticsAgentcopilotsAggregatesJobResults",
+    "signature": "GetAnalyticsAgentcopilotsAggregatesJobResults(jobId, cursor)",
+    "parameters": [
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "cursor",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Agentcopilotasyncaggregatequeryresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar jobId string // jobId\nvar cursor string // Cursor token to retrieve next page\n// Fetch a page of results for an async aggregates query\ndata, response, err := apiInstance.GetAnalyticsAgentcopilotsAggregatesJobResults(jobId, cursor)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAnalyticsAgentcopilotsAggregatesJobResults: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getanalyticsbotflowdivisionsreportingturns": {
     "operationId": "getanalyticsbotflowdivisionsreportingturns",
     "functionName": "GetAnalyticsBotflowDivisionsReportingturns",
@@ -955,6 +988,40 @@
     "return": "Analyticsreportingsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\n// Get AnalyticsReportingSettings for an organization\ndata, response, err := apiInstance.GetAnalyticsReportingSettings()\nif err != nil {\n\tfmt.Printf(\"Error calling GetAnalyticsReportingSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getanalyticsreportingsettingsdashboardsquery": {
+    "operationId": "getanalyticsreportingsettingsdashboardsquery",
+    "functionName": "GetAnalyticsReportingSettingsDashboardsQuery",
+    "signature": "GetAnalyticsReportingSettingsDashboardsQuery(dashboardType, dashboardAccessFilter, sortBy, pageNumber, pageSize)",
+    "parameters": [
+      {
+        "name": "dashboardType",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "dashboardAccessFilter",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sortBy",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Dashboardconfigurationlisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar dashboardType string // List dashboard of given type\nvar dashboardAccessFilter string // Filter dashboard based on the owner of dashboard\nvar sortBy string // \nvar pageNumber int // \nvar pageSize int // \n// Get list of dashboard configurations\ndata, response, err := apiInstance.GetAnalyticsReportingSettingsDashboardsQuery(dashboardType, dashboardAccessFilter, sortBy, pageNumber, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAnalyticsReportingSettingsDashboardsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getanalyticsreportingsettingsuserdashboards": {
     "operationId": "getanalyticsreportingsettingsuserdashboards",
     "functionName": "GetAnalyticsReportingSettingsUserDashboards",
@@ -1250,6 +1317,34 @@
     ],
     "return": "Actionaggregatequeryresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Actionaggregationquery // query\n// Query for action aggregates\ndata, response, err := apiInstance.PostAnalyticsActionsAggregatesQuery(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostAnalyticsActionsAggregatesQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postanalyticsagentcopilotsaggregatesjobs": {
+    "operationId": "postanalyticsagentcopilotsaggregatesjobs",
+    "functionName": "PostAnalyticsAgentcopilotsAggregatesJobs",
+    "signature": "PostAnalyticsAgentcopilotsAggregatesJobs(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Agentcopilotasyncaggregationquery",
+        "required": "true"
+      }
+    ],
+    "return": "Asyncqueryresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Agentcopilotasyncaggregationquery // query\n// Query for agent copilot aggregates asynchronously\ndata, response, err := apiInstance.PostAnalyticsAgentcopilotsAggregatesJobs(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostAnalyticsAgentcopilotsAggregatesJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postanalyticsagentcopilotsaggregatesquery": {
+    "operationId": "postanalyticsagentcopilotsaggregatesquery",
+    "functionName": "PostAnalyticsAgentcopilotsAggregatesQuery",
+    "signature": "PostAnalyticsAgentcopilotsAggregatesQuery(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Agentcopilotaggregationquery",
+        "required": "true"
+      }
+    ],
+    "return": "Agentcopilotaggregatequeryresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Agentcopilotaggregationquery // query\n// Query for agent copilot aggregates\ndata, response, err := apiInstance.PostAnalyticsAgentcopilotsAggregatesQuery(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostAnalyticsAgentcopilotsAggregatesQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postanalyticsbotsaggregatesjobs": {
     "operationId": "postanalyticsbotsaggregatesjobs",
@@ -1596,7 +1691,7 @@
       }
     ],
     "return": "Ratelimitaggregatequeryresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Ratelimitaggregationquery // query\n// Query for limits rate limit aggregates. Data populated when limits are exceeded or are close to being exceeded\ndata, response, err := apiInstance.PostAnalyticsRatelimitsAggregatesQuery(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostAnalyticsRatelimitsAggregatesQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Ratelimitaggregationquery // query\n// Query for limits rate limit aggregates. Data populated when limits are exceeded or are close to being exceeded. Not a source of truth for limits hit but a best effort estimate.\ndata, response, err := apiInstance.PostAnalyticsRatelimitsAggregatesQuery(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostAnalyticsRatelimitsAggregatesQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postanalyticsreportingdashboardsusersbulkremove": {
     "operationId": "postanalyticsreportingdashboardsusersbulkremove",
@@ -9597,30 +9692,6 @@
     "return": "Messagingsetting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\n// Get the organization's default settings that will be used as the default when creating an integration.\ndata, response, err := apiInstance.GetConversationsMessagingSettingsDefault()\nif err != nil {\n\tfmt.Printf(\"Error calling GetConversationsMessagingSettingsDefault: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
-  "getconversationsmessagingsticker": {
-    "operationId": "getconversationsmessagingsticker",
-    "functionName": "GetConversationsMessagingSticker",
-    "signature": "GetConversationsMessagingSticker(messengerType, pageSize, pageNumber)",
-    "parameters": [
-      {
-        "name": "messengerType",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "pageNumber",
-        "type": "int",
-        "required": "false"
-      }
-    ],
-    "return": "Messagingstickerentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar messengerType string // Messenger Type\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Get a list of Messaging Stickers (Deprecated)\ndata, response, err := apiInstance.GetConversationsMessagingSticker(messengerType, pageSize, pageNumber)\nif err != nil {\n\tfmt.Printf(\"Error calling GetConversationsMessagingSticker: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
-  },
   "getconversationsmessagingsupportedcontent": {
     "operationId": "getconversationsmessagingsupportedcontent",
     "functionName": "GetConversationsMessagingSupportedcontent",
@@ -11542,6 +11613,19 @@
       }
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversationId\nvar participantId string // participantId\nvar body platformclientv2.Transferrequest // Transfer request\n// Replace this participant with the specified user and/or address\nresponse, err := apiInstance.PostConversationsEmailParticipantReplace(conversationId, participantId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsEmailParticipantReplace: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "postconversationsemailreconnect": {
+    "operationId": "postconversationsemailreconnect",
+    "functionName": "PostConversationsEmailReconnect",
+    "signature": "PostConversationsEmailReconnect(conversationId)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversationId\n// Reconnect the user to the most recently disconnected customer on a fully disconnected email conversation\nresponse, err := apiInstance.PostConversationsEmailReconnect(conversationId)\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsEmailReconnect: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "postconversationsemails": {
     "operationId": "postconversationsemails",
@@ -19131,7 +19215,7 @@
     "operationId": "getjourneyviews",
     "functionName": "GetJourneyViews",
     "signature": "GetJourneyViews()",
-    "return": "Addressableentitylisting",
+    "return": "Journeyviewlisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\n// Get a list of Journey Views\ndata, response, err := apiInstance.GetJourneyViews()\nif err != nil {\n\tfmt.Printf(\"Error calling GetJourneyViews: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getjourneyviewseventdefinition": {
@@ -20640,7 +20724,7 @@
   "getknowledgeknowledgebaseoperations": {
     "operationId": "getknowledgeknowledgebaseoperations",
     "functionName": "GetKnowledgeKnowledgebaseOperations",
-    "signature": "GetKnowledgeKnowledgebaseOperations(knowledgeBaseId, before, after, pageSize, userId, varType, status, interval)",
+    "signature": "GetKnowledgeKnowledgebaseOperations(knowledgeBaseId, before, after, pageSize, userId, varType, status, interval, sourceId)",
     "parameters": [
       {
         "name": "knowledgeBaseId",
@@ -20681,10 +20765,15 @@
         "name": "interval",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "sourceId",
+        "type": "[]string",
+        "required": "false"
       }
     ],
     "return": "Operationlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar userId []string // If specified, retrieves operations associated with user ids, comma separated values expected.\nvar varType []string // If specified, retrieves operations with specified operation type, comma separated values expected.\nvar status []string // If specified, retrieves operations with specified operation status, comma separated values expected.\nvar interval string // Retrieves the operations modified in specified date and time range. If the after and before cursor parameters are within this interval, it would return valid data, otherwise it throws an error.The dates in the interval are represented in ISO-8601 format: YYYY-MM-DDThh:mm:ssZ/YYYY-MM-DDThh:mm:ssZ\n// Get operations\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseOperations(knowledgeBaseId, before, after, pageSize, userId, varType, status, interval)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseOperations: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar userId []string // If specified, retrieves operations associated with user ids, comma separated values expected.\nvar varType []string // If specified, retrieves operations with specified operation type, comma separated values expected.\nvar status []string // If specified, retrieves operations with specified operation status, comma separated values expected.\nvar interval string // Retrieves the operations modified in specified date and time range. If the after and before cursor parameters are within this interval, it would return valid data, otherwise it throws an error.The dates in the interval are represented in ISO-8601 format: YYYY-MM-DDThh:mm:ssZ/YYYY-MM-DDThh:mm:ssZ\nvar sourceId []string // If specified, retrieves operations associated with source ids, comma separated values expected.\n// Get operations\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseOperations(knowledgeBaseId, before, after, pageSize, userId, varType, status, interval, sourceId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseOperations: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getknowledgeknowledgebaseoperationsusersquery": {
     "operationId": "getknowledgeknowledgebaseoperationsusersquery",
@@ -22848,6 +22937,35 @@
     "return": "Learningassignment",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar assignmentId string // The ID of Learning Assignment\nvar expand []string // Fields to expand in response\n// Get Learning Assignment\ndata, response, err := apiInstance.GetLearningAssignment(assignmentId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningAssignment: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getlearningassignmentstep": {
+    "operationId": "getlearningassignmentstep",
+    "functionName": "GetLearningAssignmentStep",
+    "signature": "GetLearningAssignmentStep(assignmentId, stepId, shareableContentObjectId, expand)",
+    "parameters": [
+      {
+        "name": "assignmentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "stepId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "shareableContentObjectId",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Learningassignmentstep",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar assignmentId string // The ID of Learning Assignment\nvar stepId string // The ID of Learning Assignment Step\nvar shareableContentObjectId string // The ID of SCO to load\nvar expand []string // Fields to expand in response\n// Get Learning Assignment Step\ndata, response, err := apiInstance.GetLearningAssignmentStep(assignmentId, stepId, shareableContentObjectId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningAssignmentStep: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getlearningassignments": {
     "operationId": "getlearningassignments",
     "functionName": "GetLearningAssignments",
@@ -23049,6 +23167,20 @@
     "return": "Learningmodulejobresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // The ID of the learning module\nvar jobId string // The ID of the learning module job\n// Get a specific Learning Module job status\ndata, response, err := apiInstance.GetLearningModuleJob(moduleId, jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningModuleJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getlearningmodulepreview": {
+    "operationId": "getlearningmodulepreview",
+    "functionName": "GetLearningModulePreview",
+    "signature": "GetLearningModulePreview(moduleId)",
+    "parameters": [
+      {
+        "name": "moduleId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Learningmodulepreviewgetresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // The ID of the learning module\n// Get a learning module preview\ndata, response, err := apiInstance.GetLearningModulePreview(moduleId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningModulePreview: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getlearningmodulerule": {
     "operationId": "getlearningmodulerule",
     "functionName": "GetLearningModuleRule",
@@ -23209,6 +23341,20 @@
     "return": "Learningmodulecoverartresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar coverArtId string // Key identifier for the cover art\n// Get a specific Learning Module cover art using ID\ndata, response, err := apiInstance.GetLearningModulesCoverartCoverArtId(coverArtId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningModulesCoverartCoverArtId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getlearningscormscormid": {
+    "operationId": "getlearningscormscormid",
+    "functionName": "GetLearningScormScormId",
+    "signature": "GetLearningScormScormId(scormId)",
+    "parameters": [
+      {
+        "name": "scormId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Learningscormresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar scormId string // The ID of the SCORM package\n// Get Learning SCORM Result\ndata, response, err := apiInstance.GetLearningScormScormId(scormId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetLearningScormScormId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "patchlearningassignment": {
     "operationId": "patchlearningassignment",
     "functionName": "PatchLearningAssignment",
@@ -23246,6 +23392,30 @@
     ],
     "return": "Learningassignment",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar assignmentId string // The ID of Learning Assignment\nvar body platformclientv2.Learningassignmentreschedule // The Learning assignment reschedule model\n// Reschedule Learning Assignment\ndata, response, err := apiInstance.PatchLearningAssignmentReschedule(assignmentId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchLearningAssignmentReschedule: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchlearningassignmentstep": {
+    "operationId": "patchlearningassignmentstep",
+    "functionName": "PatchLearningAssignmentStep",
+    "signature": "PatchLearningAssignmentStep(assignmentId, stepId, body)",
+    "parameters": [
+      {
+        "name": "assignmentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "stepId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Learningassignmentstep",
+        "required": "false"
+      }
+    ],
+    "return": "Learningassignmentstep",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar assignmentId string // The ID of Learning Assignment\nvar stepId string // The ID of Learning Assignment Step\nvar body platformclientv2.Learningassignmentstep // The Learning Assignment Step to be updated\n// Update Learning Assignment Step\ndata, response, err := apiInstance.PatchLearningAssignmentStep(assignmentId, stepId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchLearningAssignmentStep: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchlearningmoduleuserassignments": {
     "operationId": "patchlearningmoduleuserassignments",
@@ -23459,6 +23629,20 @@
     "return": "Learningscheduleslotsqueryresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar body platformclientv2.Learningscheduleslotsqueryrequest // The slot search request\n// Get list of possible slots where a learning activity can be scheduled.\ndata, response, err := apiInstance.PostLearningScheduleslotsQuery(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostLearningScheduleslotsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "postlearningscorm": {
+    "operationId": "postlearningscorm",
+    "functionName": "PostLearningScorm",
+    "signature": "PostLearningScorm(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Learningscormuploadrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Learningscormuploadresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar body platformclientv2.Learningscormuploadrequest // The SCORM package to be uploaded\n// Create a SCORM package upload request\ndata, response, err := apiInstance.PostLearningScorm(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostLearningScorm: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "putlearningmodule": {
     "operationId": "putlearningmodule",
     "functionName": "PutLearningModule",
@@ -23477,6 +23661,25 @@
     ],
     "return": "Learningmodule",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // The ID of the learning module\nvar body platformclientv2.Learningmodulerequest // The learning module to be updated\n// Update a learning module\ndata, response, err := apiInstance.PutLearningModule(moduleId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutLearningModule: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putlearningmodulepreview": {
+    "operationId": "putlearningmodulepreview",
+    "functionName": "PutLearningModulePreview",
+    "signature": "PutLearningModulePreview(moduleId, body)",
+    "parameters": [
+      {
+        "name": "moduleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Learningmodulepreviewupdaterequest",
+        "required": "true"
+      }
+    ],
+    "return": "Learningmodulepreviewupdateresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewLearningApiWithConfig(config)\n\nvar moduleId string // The ID of the learning module\nvar body platformclientv2.Learningmodulepreviewupdaterequest // The learning module to be updated\n// Update a learning module preview\ndata, response, err := apiInstance.PutLearningModulePreview(moduleId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutLearningModulePreview: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putlearningmodulerule": {
     "operationId": "putlearningmodulerule",
@@ -36474,6 +36677,19 @@
     "return": "Executiondataglobalsettingsresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSettingsApiWithConfig(config)\n\nvar body platformclientv2.Executiondatasettingsrequest // New Execution Data Setting\n// Edit the execution history on off setting.\ndata, response, err := apiInstance.PatchSettingsExecutiondata(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSettingsExecutiondata: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "deletespeechandtextanalyticscategory": {
+    "operationId": "deletespeechandtextanalyticscategory",
+    "functionName": "DeleteSpeechandtextanalyticsCategory",
+    "signature": "DeleteSpeechandtextanalyticsCategory(categoryId)",
+    "parameters": [
+      {
+        "name": "categoryId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar categoryId string // The id of the category\n// Delete a Speech & Text Analytics category by ID\nresponse, err := apiInstance.DeleteSpeechandtextanalyticsCategory(categoryId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteSpeechandtextanalyticsCategory: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "deletespeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid": {
     "operationId": "deletespeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid",
     "functionName": "DeleteSpeechandtextanalyticsDictionaryfeedbackDictionaryFeedbackId",
@@ -36537,6 +36753,59 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar topicId string // The id of the topic\n// Delete a Speech & Text Analytics topic by id\nresponse, err := apiInstance.DeleteSpeechandtextanalyticsTopic(topicId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteSpeechandtextanalyticsTopic: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
+  "getspeechandtextanalyticscategories": {
+    "operationId": "getspeechandtextanalyticscategories",
+    "functionName": "GetSpeechandtextanalyticsCategories",
+    "signature": "GetSpeechandtextanalyticsCategories(pageSize, pageNumber, name, sortOrder, sortBy, ids)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "sortOrder",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "sortBy",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "ids",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Categoriesentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar pageSize int // The page size for the listing. The max that will be returned is 50.\nvar pageNumber int // The page number for the listing\nvar name string // The category name filter applied to the listing\nvar sortOrder string // The sort order for the listing\nvar sortBy string // The field to sort by for the listing\nvar ids []string // Comma separated Category IDs to filter by. Cannot be used with other filters. Maximum of 50 IDs allowed.\n// Get the list of Speech and Text Analytics categories\ndata, response, err := apiInstance.GetSpeechandtextanalyticsCategories(pageSize, pageNumber, name, sortOrder, sortBy, ids)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsCategories: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getspeechandtextanalyticscategory": {
+    "operationId": "getspeechandtextanalyticscategory",
+    "functionName": "GetSpeechandtextanalyticsCategory",
+    "signature": "GetSpeechandtextanalyticsCategory(categoryId)",
+    "parameters": [
+      {
+        "name": "categoryId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Stacategory",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar categoryId string // The id of the category\n// Get a Speech & Text Analytics Category by ID\ndata, response, err := apiInstance.GetSpeechandtextanalyticsCategory(categoryId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsCategory: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getspeechandtextanalyticsconversation": {
     "operationId": "getspeechandtextanalyticsconversation",
     "functionName": "GetSpeechandtextanalyticsConversation",
@@ -36550,6 +36819,30 @@
     ],
     "return": "Conversationmetrics",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar conversationId string // Conversation Id\n// Get Speech and Text Analytics for a specific conversation\ndata, response, err := apiInstance.GetSpeechandtextanalyticsConversation(conversationId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsConversation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getspeechandtextanalyticsconversationcategories": {
+    "operationId": "getspeechandtextanalyticsconversationcategories",
+    "functionName": "GetSpeechandtextanalyticsConversationCategories",
+    "signature": "GetSpeechandtextanalyticsConversationCategories(conversationId, pageSize, pageNumber)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Conversationcategoriesentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar conversationId string // The id of the conversation\nvar pageSize int // The page size for the listing. The max that will be returned is 50.\nvar pageNumber int // The page number for the listing\n// Get the list of detected Speech and Text Analytics categories of conversation\ndata, response, err := apiInstance.GetSpeechandtextanalyticsConversationCategories(conversationId, pageSize, pageNumber)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsConversationCategories: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getspeechandtextanalyticsconversationcommunicationtranscripturl": {
     "operationId": "getspeechandtextanalyticsconversationcommunicationtranscripturl",
@@ -36920,6 +37213,20 @@
     "return": "Speechtextanalyticssettingsresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Speechtextanalyticssettingsrequest // Speech And Text Analytics Settings\n// Patch Speech And Text Analytics Settings\ndata, response, err := apiInstance.PatchSpeechandtextanalyticsSettings(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSpeechandtextanalyticsSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "postspeechandtextanalyticscategories": {
+    "operationId": "postspeechandtextanalyticscategories",
+    "functionName": "PostSpeechandtextanalyticsCategories",
+    "signature": "PostSpeechandtextanalyticsCategories(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Categoryrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Stacategory",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Categoryrequest // The category to create\n// Create new Speech & Text Analytics category\ndata, response, err := apiInstance.PostSpeechandtextanalyticsCategories(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostSpeechandtextanalyticsCategories: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "postspeechandtextanalyticsdictionaryfeedback": {
     "operationId": "postspeechandtextanalyticsdictionaryfeedback",
     "functionName": "PostSpeechandtextanalyticsDictionaryfeedback",
@@ -37017,6 +37324,25 @@
     ],
     "return": "Topicjob",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar body platformclientv2.Topicjobrequest // The publish topics job to create\n// Create new Speech & Text Analytics publish topics job\ndata, response, err := apiInstance.PostSpeechandtextanalyticsTopicsPublishjobs(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostSpeechandtextanalyticsTopicsPublishjobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putspeechandtextanalyticscategory": {
+    "operationId": "putspeechandtextanalyticscategory",
+    "functionName": "PutSpeechandtextanalyticsCategory",
+    "signature": "PutSpeechandtextanalyticsCategory(categoryId, body)",
+    "parameters": [
+      {
+        "name": "categoryId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Categoryrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Stacategory",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar categoryId string // The id of the category\nvar body platformclientv2.Categoryrequest // The updated category\n// Update a Speech & Text Analytics category by ID\ndata, response, err := apiInstance.PutSpeechandtextanalyticsCategory(categoryId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutSpeechandtextanalyticsCategory: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid": {
     "operationId": "putspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid",

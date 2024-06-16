@@ -18,9 +18,6 @@ type V2conversationmessagetypingeventforworkflowtopicconversationmessagingchanne
 	// Platform
 	Platform *string `json:"platform,omitempty"`
 
-	// MessageId
-	MessageId *string `json:"messageId,omitempty"`
-
 	// To
 	To *V2conversationmessagetypingeventforworkflowtopicconversationmessagingtorecipient `json:"to,omitempty"`
 
@@ -29,15 +26,6 @@ type V2conversationmessagetypingeventforworkflowtopicconversationmessagingchanne
 
 	// Time
 	Time *time.Time `json:"time,omitempty"`
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-	// DateDeleted
-	DateDeleted *time.Time `json:"dateDeleted,omitempty"`
-
-	// Metadata
-	Metadata *V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelmetadata `json:"metadata,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -69,7 +57,7 @@ func (o V2conversationmessagetypingeventforworkflowtopicconversationmessagingcha
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "Time","DateModified","DateDeleted", }
+		dateTimeFields := []string{ "Time", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -110,59 +98,27 @@ func (o V2conversationmessagetypingeventforworkflowtopicconversationmessagingcha
 		Time = nil
 	}
 	
-	DateModified := new(string)
-	if o.DateModified != nil {
-		
-		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		DateModified = nil
-	}
-	
-	DateDeleted := new(string)
-	if o.DateDeleted != nil {
-		
-		*DateDeleted = timeutil.Strftime(o.DateDeleted, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		DateDeleted = nil
-	}
-	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Platform *string `json:"platform,omitempty"`
-		
-		MessageId *string `json:"messageId,omitempty"`
 		
 		To *V2conversationmessagetypingeventforworkflowtopicconversationmessagingtorecipient `json:"to,omitempty"`
 		
 		From *V2conversationmessagetypingeventforworkflowtopicconversationmessagingfromrecipient `json:"from,omitempty"`
 		
 		Time *string `json:"time,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		DateDeleted *string `json:"dateDeleted,omitempty"`
-		
-		Metadata *V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelmetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Platform: o.Platform,
 		
-		MessageId: o.MessageId,
-		
 		To: o.To,
 		
 		From: o.From,
 		
 		Time: Time,
-		
-		DateModified: DateModified,
-		
-		DateDeleted: DateDeleted,
-		
-		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
 	})
 }
@@ -182,10 +138,6 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationmessagingch
 		o.Platform = &Platform
 	}
     
-	if MessageId, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelMap["messageId"].(string); ok {
-		o.MessageId = &MessageId
-	}
-    
 	if To, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelMap["to"].(map[string]interface{}); ok {
 		ToString, _ := json.Marshal(To)
 		json.Unmarshal(ToString, &o.To)
@@ -199,21 +151,6 @@ func (o *V2conversationmessagetypingeventforworkflowtopicconversationmessagingch
 	if timeString, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelMap["time"].(string); ok {
 		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
 		o.Time = &Time
-	}
-	
-	if dateModifiedString, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if dateDeletedString, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelMap["dateDeleted"].(string); ok {
-		DateDeleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDeletedString)
-		o.DateDeleted = &DateDeleted
-	}
-	
-	if Metadata, ok := V2conversationmessagetypingeventforworkflowtopicconversationmessagingchannelMap["metadata"].(map[string]interface{}); ok {
-		MetadataString, _ := json.Marshal(Metadata)
-		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
 

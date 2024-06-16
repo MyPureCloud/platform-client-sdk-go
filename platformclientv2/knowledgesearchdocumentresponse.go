@@ -63,6 +63,12 @@ type Knowledgesearchdocumentresponse struct {
 	// ExternalId - The reference to external id associated with the document.
 	ExternalId *string `json:"externalId,omitempty"`
 
+	// Source - The reference to source associated with the document.
+	Source *Addressableentityref `json:"source,omitempty"`
+
+	// Readonly - Whether the document is read-only.
+	Readonly *bool `json:"readonly,omitempty"`
+
 	// Variations - Variations of the document.
 	Variations *[]Documentvariationanswer `json:"variations,omitempty"`
 
@@ -202,6 +208,10 @@ func (o Knowledgesearchdocumentresponse) MarshalJSON() ([]byte, error) {
 		
 		ExternalId *string `json:"externalId,omitempty"`
 		
+		Source *Addressableentityref `json:"source,omitempty"`
+		
+		Readonly *bool `json:"readonly,omitempty"`
+		
 		Variations *[]Documentvariationanswer `json:"variations,omitempty"`
 		
 		Answer *string `json:"answer,omitempty"`
@@ -242,6 +252,10 @@ func (o Knowledgesearchdocumentresponse) MarshalJSON() ([]byte, error) {
 		KnowledgeBase: o.KnowledgeBase,
 		
 		ExternalId: o.ExternalId,
+		
+		Source: o.Source,
+		
+		Readonly: o.Readonly,
 		
 		Variations: o.Variations,
 		
@@ -337,6 +351,15 @@ func (o *Knowledgesearchdocumentresponse) UnmarshalJSON(b []byte) error {
 	
 	if ExternalId, ok := KnowledgesearchdocumentresponseMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
+	}
+    
+	if Source, ok := KnowledgesearchdocumentresponseMap["source"].(map[string]interface{}); ok {
+		SourceString, _ := json.Marshal(Source)
+		json.Unmarshal(SourceString, &o.Source)
+	}
+	
+	if Readonly, ok := KnowledgesearchdocumentresponseMap["readonly"].(bool); ok {
+		o.Readonly = &Readonly
 	}
     
 	if Variations, ok := KnowledgesearchdocumentresponseMap["variations"].([]interface{}); ok {

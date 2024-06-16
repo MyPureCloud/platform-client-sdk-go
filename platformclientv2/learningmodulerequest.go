@@ -40,6 +40,12 @@ type Learningmodulerequest struct {
 
 	// ExternalId - The external ID of the learning module. Maximum length: 50 characters.
 	ExternalId *string `json:"externalId,omitempty"`
+
+	// EnforceContentOrder - If true, learning module content should be viewed one by one in order
+	EnforceContentOrder *bool `json:"enforceContentOrder,omitempty"`
+
+	// ReviewAssessmentResults - Allows to view Assessment results in detail
+	ReviewAssessmentResults *Reviewassessmentresults `json:"reviewAssessmentResults,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +130,10 @@ func (o Learningmodulerequest) MarshalJSON() ([]byte, error) {
 		ExcludedFromCatalog *bool `json:"excludedFromCatalog,omitempty"`
 		
 		ExternalId *string `json:"externalId,omitempty"`
+		
+		EnforceContentOrder *bool `json:"enforceContentOrder,omitempty"`
+		
+		ReviewAssessmentResults *Reviewassessmentresults `json:"reviewAssessmentResults,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -145,6 +155,10 @@ func (o Learningmodulerequest) MarshalJSON() ([]byte, error) {
 		ExcludedFromCatalog: o.ExcludedFromCatalog,
 		
 		ExternalId: o.ExternalId,
+		
+		EnforceContentOrder: o.EnforceContentOrder,
+		
+		ReviewAssessmentResults: o.ReviewAssessmentResults,
 		Alias:    (Alias)(o),
 	})
 }
@@ -201,6 +215,15 @@ func (o *Learningmodulerequest) UnmarshalJSON(b []byte) error {
 		o.ExternalId = &ExternalId
 	}
     
+	if EnforceContentOrder, ok := LearningmodulerequestMap["enforceContentOrder"].(bool); ok {
+		o.EnforceContentOrder = &EnforceContentOrder
+	}
+    
+	if ReviewAssessmentResults, ok := LearningmodulerequestMap["reviewAssessmentResults"].(map[string]interface{}); ok {
+		ReviewAssessmentResultsString, _ := json.Marshal(ReviewAssessmentResults)
+		json.Unmarshal(ReviewAssessmentResultsString, &o.ReviewAssessmentResults)
+	}
+	
 
 	return nil
 }

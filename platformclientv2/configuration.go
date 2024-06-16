@@ -53,20 +53,21 @@ type Configuration struct {
 }
 
 const (
-	USEast1      = "https://api.mypurecloud.com"
-	EUWest1      = "https://api.mypurecloud.ie"
-	APSoutheast2 = "https://api.mypurecloud.com.au"
-	APNortheast1 = "https://api.mypurecloud.jp"
-	EUCentral1   = "https://api.mypurecloud.de"
-	USWest2      = "https://api.usw2.pure.cloud"
-	CACentral1   = "https://api.cac1.pure.cloud"
-	APNortheast2 = "https://api.apne2.pure.cloud"
-	EUWest2      = "https://api.euw2.pure.cloud"
-	APSouth1     = "https://api.aps1.pure.cloud"
-	USEast2     = "https://api.use2.us-gov-pure.cloud"
-	me_central_1 = "https://api.mec1.pure.cloud"
-    ap_northeast_3 = "https://api.apne3.pure.cloud"
-    eu_central_2 = "https://api.euc2.pure.cloud"
+	us_east_1      	= "https://api.mypurecloud.com"
+	eu_west_1      	= "https://api.mypurecloud.ie"
+	ap_southeast_2 	= "https://api.mypurecloud.com.au"
+	ap_northeast_1 	= "https://api.mypurecloud.jp"
+	eu_central_1   	= "https://api.mypurecloud.de"
+	us_west_2      	= "https://api.usw2.pure.cloud"
+	ca_central_1   	= "https://api.cac1.pure.cloud"
+	ap_northeast_2 	= "https://api.apne2.pure.cloud"
+	eu_west_2      	= "https://api.euw2.pure.cloud"
+	ap_south_1     	= "https://api.aps1.pure.cloud"
+	us_east_2     	= "https://api.use2.us-gov-pure.cloud"
+	sa_east_1	 	= "https://api.sae1.pure.cloud"
+	me_central_1 	= "https://api.mec1.pure.cloud"
+    ap_northeast_3 	= "https://api.apne3.pure.cloud"
+    eu_central_2 	= "https://api.euc2.pure.cloud"
 )
 
 // RetryConfiguration has settings to configure the SDK retry logic

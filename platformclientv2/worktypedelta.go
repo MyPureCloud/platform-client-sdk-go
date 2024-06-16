@@ -59,6 +59,9 @@ type Worktypedelta struct {
 	// SchemaVersion
 	SchemaVersion *Workitemsattributechangestring `json:"schemaVersion,omitempty"`
 
+	// ServiceLevelTarget
+	ServiceLevelTarget *Workitemsattributechangeinteger `json:"serviceLevelTarget,omitempty"`
+
 	// DateModified
 	DateModified *Workitemsattributechangeinstant `json:"dateModified,omitempty"`
 
@@ -161,6 +164,8 @@ func (o Worktypedelta) MarshalJSON() ([]byte, error) {
 		
 		SchemaVersion *Workitemsattributechangestring `json:"schemaVersion,omitempty"`
 		
+		ServiceLevelTarget *Workitemsattributechangeinteger `json:"serviceLevelTarget,omitempty"`
+		
 		DateModified *Workitemsattributechangeinstant `json:"dateModified,omitempty"`
 		
 		ModifiedBy *Workitemsattributechangestring `json:"modifiedBy,omitempty"`
@@ -197,6 +202,8 @@ func (o Worktypedelta) MarshalJSON() ([]byte, error) {
 		SchemaId: o.SchemaId,
 		
 		SchemaVersion: o.SchemaVersion,
+		
+		ServiceLevelTarget: o.ServiceLevelTarget,
 		
 		DateModified: o.DateModified,
 		
@@ -290,6 +297,11 @@ func (o *Worktypedelta) UnmarshalJSON(b []byte) error {
 	if SchemaVersion, ok := WorktypedeltaMap["schemaVersion"].(map[string]interface{}); ok {
 		SchemaVersionString, _ := json.Marshal(SchemaVersion)
 		json.Unmarshal(SchemaVersionString, &o.SchemaVersion)
+	}
+	
+	if ServiceLevelTarget, ok := WorktypedeltaMap["serviceLevelTarget"].(map[string]interface{}); ok {
+		ServiceLevelTargetString, _ := json.Marshal(ServiceLevelTarget)
+		json.Unmarshal(ServiceLevelTargetString, &o.ServiceLevelTarget)
 	}
 	
 	if DateModified, ok := WorktypedeltaMap["dateModified"].(map[string]interface{}); ok {

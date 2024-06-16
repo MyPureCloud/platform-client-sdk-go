@@ -30,6 +30,18 @@ type Recordingmessagingmessage struct {
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
+	// Purpose - A well known string that specifies the purpose or type of the participant on this communication.
+	Purpose *string `json:"purpose,omitempty"`
+
+	// ParticipantId - A globally unique identifier for the participant on this communication.
+	ParticipantId *string `json:"participantId,omitempty"`
+
+	// Queue - A globally unique identifier for the queue involved in this communication.
+	Queue *Addressableentityref `json:"queue,omitempty"`
+
+	// Workflow - A globally unique identifier for the workflow involved in this communication.
+	Workflow *Addressableentityref `json:"workflow,omitempty"`
+
 	// MessageText - The content of this message.
 	MessageText *string `json:"messageText,omitempty"`
 
@@ -138,6 +150,14 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		Id *string `json:"id,omitempty"`
 		
+		Purpose *string `json:"purpose,omitempty"`
+		
+		ParticipantId *string `json:"participantId,omitempty"`
+		
+		Queue *Addressableentityref `json:"queue,omitempty"`
+		
+		Workflow *Addressableentityref `json:"workflow,omitempty"`
+		
 		MessageText *string `json:"messageText,omitempty"`
 		
 		MessageMediaAttachments *[]Messagemediaattachment `json:"messageMediaAttachments,omitempty"`
@@ -166,6 +186,14 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Timestamp: Timestamp,
 		
 		Id: o.Id,
+		
+		Purpose: o.Purpose,
+		
+		ParticipantId: o.ParticipantId,
+		
+		Queue: o.Queue,
+		
+		Workflow: o.Workflow,
 		
 		MessageText: o.MessageText,
 		
@@ -220,6 +248,24 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Purpose, ok := RecordingmessagingmessageMap["purpose"].(string); ok {
+		o.Purpose = &Purpose
+	}
+    
+	if ParticipantId, ok := RecordingmessagingmessageMap["participantId"].(string); ok {
+		o.ParticipantId = &ParticipantId
+	}
+    
+	if Queue, ok := RecordingmessagingmessageMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Workflow, ok := RecordingmessagingmessageMap["workflow"].(map[string]interface{}); ok {
+		WorkflowString, _ := json.Marshal(Workflow)
+		json.Unmarshal(WorkflowString, &o.Workflow)
+	}
+	
 	if MessageText, ok := RecordingmessagingmessageMap["messageText"].(string); ok {
 		o.MessageText = &MessageText
 	}

@@ -3571,7 +3571,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 // Get operations
 //
 // Preview: GetKnowledgeKnowledgebaseOperations is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseOperations(knowledgeBaseId string, before string, after string, pageSize string, userId []string, varType []string, status []string, interval string) (*Operationlisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseOperations(knowledgeBaseId string, before string, after string, pageSize string, userId []string, varType []string, status []string, interval string, sourceId []string) (*Operationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/operations"
@@ -3617,6 +3617,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseOperations(knowledgeBaseId string
 	queryParams["status"] = a.Configuration.APIClient.ParameterToString(status, "multi")
 	
 	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
+	
+	queryParams["sourceId"] = a.Configuration.APIClient.ParameterToString(sourceId, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

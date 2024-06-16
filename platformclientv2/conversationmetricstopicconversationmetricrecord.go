@@ -246,6 +246,9 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	// UserId - Unique identifier for the user
 	UserId *string `json:"userId,omitempty"`
 
+	// VideoPresent - Flag indicating if video is present
+	VideoPresent *bool `json:"videoPresent,omitempty"`
+
 	// WaitingInteractionCounts - Number of waiting interactions for each predictive routing attempt
 	WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 
@@ -486,6 +489,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		
 		UserId *string `json:"userId,omitempty"`
 		
+		VideoPresent *bool `json:"videoPresent,omitempty"`
+		
 		WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 		
 		WrapUpCode *string `json:"wrapUpCode,omitempty"`
@@ -650,6 +655,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		UsedRouting: o.UsedRouting,
 		
 		UserId: o.UserId,
+		
+		VideoPresent: o.VideoPresent,
 		
 		WaitingInteractionCounts: o.WaitingInteractionCounts,
 		
@@ -996,6 +1003,10 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
     
 	if UserId, ok := ConversationmetricstopicconversationmetricrecordMap["userId"].(string); ok {
 		o.UserId = &UserId
+	}
+    
+	if VideoPresent, ok := ConversationmetricstopicconversationmetricrecordMap["videoPresent"].(bool); ok {
+		o.VideoPresent = &VideoPresent
 	}
     
 	if WaitingInteractionCounts, ok := ConversationmetricstopicconversationmetricrecordMap["waitingInteractionCounts"].([]interface{}); ok {

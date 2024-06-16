@@ -19,9 +19,6 @@ type Fieldconfigs struct {
 
 	// Group
 	Group *Fieldconfig `json:"group,omitempty"`
-
-	// ExternalContact
-	ExternalContact *Fieldconfig `json:"externalContact,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,8 +89,6 @@ func (o Fieldconfigs) MarshalJSON() ([]byte, error) {
 		Person *Fieldconfig `json:"person,omitempty"`
 		
 		Group *Fieldconfig `json:"group,omitempty"`
-		
-		ExternalContact *Fieldconfig `json:"externalContact,omitempty"`
 		Alias
 	}{ 
 		Org: o.Org,
@@ -101,8 +96,6 @@ func (o Fieldconfigs) MarshalJSON() ([]byte, error) {
 		Person: o.Person,
 		
 		Group: o.Group,
-		
-		ExternalContact: o.ExternalContact,
 		Alias:    (Alias)(o),
 	})
 }
@@ -127,11 +120,6 @@ func (o *Fieldconfigs) UnmarshalJSON(b []byte) error {
 	if Group, ok := FieldconfigsMap["group"].(map[string]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)
-	}
-	
-	if ExternalContact, ok := FieldconfigsMap["externalContact"].(map[string]interface{}); ok {
-		ExternalContactString, _ := json.Marshal(ExternalContact)
-		json.Unmarshal(ExternalContactString, &o.ExternalContact)
 	}
 	
 

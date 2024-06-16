@@ -14,9 +14,6 @@ type Engineintegration struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Name - Name of the transcription engine
-	Name *string `json:"name,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -86,14 +83,10 @@ func (o Engineintegration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Name: o.Name,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -109,10 +102,6 @@ func (o *Engineintegration) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := EngineintegrationMap["id"].(string); ok {
 		o.Id = &Id
-	}
-    
-	if Name, ok := EngineintegrationMap["name"].(string); ok {
-		o.Name = &Name
 	}
     
 	if SelfUri, ok := EngineintegrationMap["selfUri"].(string); ok {

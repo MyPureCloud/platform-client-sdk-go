@@ -10,7 +10,13 @@ import (
 // Reviewassessmentresults
 type Reviewassessmentresults struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// ByAssignees - If true, learning assignment results can be seen in detail by assignees
+	ByAssignees *bool `json:"byAssignees,omitempty"`
+
+	// ByViewers - If true, learning assignment results can be seen in detail by people who are eligible to view
+	ByViewers *bool `json:"byViewers,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Reviewassessmentresults) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Reviewassessmentresults) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Reviewassessmentresults
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		ByAssignees *bool `json:"byAssignees,omitempty"`
+		
+		ByViewers *bool `json:"byViewers,omitempty"`
+		Alias
+	}{ 
+		ByAssignees: o.ByAssignees,
+		
+		ByViewers: o.ByViewers,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Reviewassessmentresults) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if ByAssignees, ok := ReviewassessmentresultsMap["byAssignees"].(bool); ok {
+		o.ByAssignees = &ByAssignees
+	}
+    
+	if ByViewers, ok := ReviewassessmentresultsMap["byViewers"].(bool); ok {
+		o.ByViewers = &ByViewers
+	}
+    
 
 	return nil
 }

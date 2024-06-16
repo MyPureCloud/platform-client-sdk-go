@@ -14,9 +14,6 @@ type V2conversationmessagetypingeventforusertopicconversationmessageevent struct
 	// EventType
 	EventType *string `json:"eventType,omitempty"`
 
-	// CoBrowse
-	CoBrowse *V2conversationmessagetypingeventforusertopicconversationeventcobrowse `json:"coBrowse,omitempty"`
-
 	// Typing
 	Typing *V2conversationmessagetypingeventforusertopicconversationeventtyping `json:"typing,omitempty"`
 }
@@ -86,14 +83,10 @@ func (o V2conversationmessagetypingeventforusertopicconversationmessageevent) Ma
 	return json.Marshal(&struct { 
 		EventType *string `json:"eventType,omitempty"`
 		
-		CoBrowse *V2conversationmessagetypingeventforusertopicconversationeventcobrowse `json:"coBrowse,omitempty"`
-		
 		Typing *V2conversationmessagetypingeventforusertopicconversationeventtyping `json:"typing,omitempty"`
 		Alias
 	}{ 
 		EventType: o.EventType,
-		
-		CoBrowse: o.CoBrowse,
 		
 		Typing: o.Typing,
 		Alias:    (Alias)(o),
@@ -111,11 +104,6 @@ func (o *V2conversationmessagetypingeventforusertopicconversationmessageevent) U
 		o.EventType = &EventType
 	}
     
-	if CoBrowse, ok := V2conversationmessagetypingeventforusertopicconversationmessageeventMap["coBrowse"].(map[string]interface{}); ok {
-		CoBrowseString, _ := json.Marshal(CoBrowse)
-		json.Unmarshal(CoBrowseString, &o.CoBrowse)
-	}
-	
 	if Typing, ok := V2conversationmessagetypingeventforusertopicconversationmessageeventMap["typing"].(map[string]interface{}); ok {
 		TypingString, _ := json.Marshal(Typing)
 		json.Unmarshal(TypingString, &o.Typing)

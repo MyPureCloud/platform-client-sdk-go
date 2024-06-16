@@ -48,6 +48,9 @@ type Knowledgeexportjobresponse struct {
 	// ErrorInformation - Any error information, or null of the processing is not in failed state.
 	ErrorInformation *Errorbody `json:"errorInformation,omitempty"`
 
+	// Source - Source of the export job.
+	Source *Knowledgeoperationsource `json:"source,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -155,6 +158,8 @@ func (o Knowledgeexportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		ErrorInformation *Errorbody `json:"errorInformation,omitempty"`
 		
+		Source *Knowledgeoperationsource `json:"source,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -181,6 +186,8 @@ func (o Knowledgeexportjobresponse) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		ErrorInformation: o.ErrorInformation,
+		
+		Source: o.Source,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -248,6 +255,11 @@ func (o *Knowledgeexportjobresponse) UnmarshalJSON(b []byte) error {
 	if ErrorInformation, ok := KnowledgeexportjobresponseMap["errorInformation"].(map[string]interface{}); ok {
 		ErrorInformationString, _ := json.Marshal(ErrorInformation)
 		json.Unmarshal(ErrorInformationString, &o.ErrorInformation)
+	}
+	
+	if Source, ok := KnowledgeexportjobresponseMap["source"].(map[string]interface{}); ok {
+		SourceString, _ := json.Marshal(Source)
+		json.Unmarshal(SourceString, &o.Source)
 	}
 	
 	if SelfUri, ok := KnowledgeexportjobresponseMap["selfUri"].(string); ok {

@@ -16,6 +16,9 @@ type Knowledgeexportjobdocumentsfilter struct {
 
 	// Entities - Retrieves the documents with the given ids. Cannot be used together with internal filter.
 	Entities *[]Entity `json:"entities,omitempty"`
+
+	// SourceId
+	SourceId *string `json:"sourceId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Knowledgeexportjobdocumentsfilter) MarshalJSON() ([]byte, error) {
 		Interval *string `json:"interval,omitempty"`
 		
 		Entities *[]Entity `json:"entities,omitempty"`
+		
+		SourceId *string `json:"sourceId,omitempty"`
 		Alias
 	}{ 
 		Interval: o.Interval,
 		
 		Entities: o.Entities,
+		
+		SourceId: o.SourceId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,10 @@ func (o *Knowledgeexportjobdocumentsfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
+	if SourceId, ok := KnowledgeexportjobdocumentsfilterMap["sourceId"].(string); ok {
+		o.SourceId = &SourceId
+	}
+    
 
 	return nil
 }

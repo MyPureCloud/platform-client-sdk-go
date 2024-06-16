@@ -36,6 +36,9 @@ type Learningassignment struct {
 	// PercentageScore - The user's percentage score for this assignment
 	PercentageScore *float32 `json:"percentageScore,omitempty"`
 
+	// AssessmentPercentageScore - The user's percentage score for this assignment's assessment
+	AssessmentPercentageScore *float32 `json:"assessmentPercentageScore,omitempty"`
+
 	// IsRule - True if this assignment was created by a Rule
 	IsRule *bool `json:"isRule,omitempty"`
 
@@ -47,6 +50,18 @@ type Learningassignment struct {
 
 	// IsLatest - True if the assignment is based on latest module
 	IsLatest *bool `json:"isLatest,omitempty"`
+
+	// AssessmentCompletionPercentage - The assessment completion percentage of assignment
+	AssessmentCompletionPercentage *float32 `json:"assessmentCompletionPercentage,omitempty"`
+
+	// CompletionPercentage - The overall completion percentage of assignment
+	CompletionPercentage *float32 `json:"completionPercentage,omitempty"`
+
+	// Steps - List of assignment steps
+	Steps *[]Learningassignmentstep `json:"steps,omitempty"`
+
+	// NextStep - The next assignment step
+	NextStep *Learningassignmentstep `json:"nextStep,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -176,6 +191,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		
 		PercentageScore *float32 `json:"percentageScore,omitempty"`
 		
+		AssessmentPercentageScore *float32 `json:"assessmentPercentageScore,omitempty"`
+		
 		IsRule *bool `json:"isRule,omitempty"`
 		
 		IsManual *bool `json:"isManual,omitempty"`
@@ -183,6 +200,14 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		IsPassed *bool `json:"isPassed,omitempty"`
 		
 		IsLatest *bool `json:"isLatest,omitempty"`
+		
+		AssessmentCompletionPercentage *float32 `json:"assessmentCompletionPercentage,omitempty"`
+		
+		CompletionPercentage *float32 `json:"completionPercentage,omitempty"`
+		
+		Steps *[]Learningassignmentstep `json:"steps,omitempty"`
+		
+		NextStep *Learningassignmentstep `json:"nextStep,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -217,6 +242,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		
 		PercentageScore: o.PercentageScore,
 		
+		AssessmentPercentageScore: o.AssessmentPercentageScore,
+		
 		IsRule: o.IsRule,
 		
 		IsManual: o.IsManual,
@@ -224,6 +251,14 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		IsPassed: o.IsPassed,
 		
 		IsLatest: o.IsLatest,
+		
+		AssessmentCompletionPercentage: o.AssessmentCompletionPercentage,
+		
+		CompletionPercentage: o.CompletionPercentage,
+		
+		Steps: o.Steps,
+		
+		NextStep: o.NextStep,
 		
 		SelfUri: o.SelfUri,
 		
@@ -289,6 +324,11 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
 		o.PercentageScore = &PercentageScoreFloat32
 	}
 	
+	if AssessmentPercentageScore, ok := LearningassignmentMap["assessmentPercentageScore"].(float64); ok {
+		AssessmentPercentageScoreFloat32 := float32(AssessmentPercentageScore)
+		o.AssessmentPercentageScore = &AssessmentPercentageScoreFloat32
+	}
+	
 	if IsRule, ok := LearningassignmentMap["isRule"].(bool); ok {
 		o.IsRule = &IsRule
 	}
@@ -305,6 +345,26 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
 		o.IsLatest = &IsLatest
 	}
     
+	if AssessmentCompletionPercentage, ok := LearningassignmentMap["assessmentCompletionPercentage"].(float64); ok {
+		AssessmentCompletionPercentageFloat32 := float32(AssessmentCompletionPercentage)
+		o.AssessmentCompletionPercentage = &AssessmentCompletionPercentageFloat32
+	}
+	
+	if CompletionPercentage, ok := LearningassignmentMap["completionPercentage"].(float64); ok {
+		CompletionPercentageFloat32 := float32(CompletionPercentage)
+		o.CompletionPercentage = &CompletionPercentageFloat32
+	}
+	
+	if Steps, ok := LearningassignmentMap["steps"].([]interface{}); ok {
+		StepsString, _ := json.Marshal(Steps)
+		json.Unmarshal(StepsString, &o.Steps)
+	}
+	
+	if NextStep, ok := LearningassignmentMap["nextStep"].(map[string]interface{}); ok {
+		NextStepString, _ := json.Marshal(NextStep)
+		json.Unmarshal(NextStepString, &o.NextStep)
+	}
+	
 	if SelfUri, ok := LearningassignmentMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

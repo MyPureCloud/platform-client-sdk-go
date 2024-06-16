@@ -542,6 +542,51 @@ type Viewfilter struct {
 	// BotFlowTypes - The botFlowTypes is used to filter the view
 	BotFlowTypes *[]string `json:"botFlowTypes,omitempty"`
 
+	// AgentTalkDurationMilliseconds - The agent talk durations in milliseconds used to filter the view
+	AgentTalkDurationMilliseconds *[]Numericrange `json:"agentTalkDurationMilliseconds,omitempty"`
+
+	// CustomerTalkDurationMilliseconds - The customer talk durations in milliseconds used to filter the view
+	CustomerTalkDurationMilliseconds *[]Numericrange `json:"customerTalkDurationMilliseconds,omitempty"`
+
+	// OvertalkDurationMilliseconds - The overtalk durations in milliseconds used to filter the view
+	OvertalkDurationMilliseconds *[]Numericrange `json:"overtalkDurationMilliseconds,omitempty"`
+
+	// SilenceDurationMilliseconds - The silence durations in milliseconds used to filter the view
+	SilenceDurationMilliseconds *[]Numericrange `json:"silenceDurationMilliseconds,omitempty"`
+
+	// AcdDurationMilliseconds - The acd durations in milliseconds used to filter the view
+	AcdDurationMilliseconds *[]Numericrange `json:"acdDurationMilliseconds,omitempty"`
+
+	// IvrDurationMilliseconds - The ivr durations in milliseconds used to filter the view
+	IvrDurationMilliseconds *[]Numericrange `json:"ivrDurationMilliseconds,omitempty"`
+
+	// OtherDurationMilliseconds - The other (hold/music) durations in milliseconds used to filter the view
+	OtherDurationMilliseconds *[]Numericrange `json:"otherDurationMilliseconds,omitempty"`
+
+	// AgentTalkPercentage - The agent talk percentage used to filter the view
+	AgentTalkPercentage *Numericrange `json:"agentTalkPercentage,omitempty"`
+
+	// CustomerTalkPercentage - The customer talk percentage used to filter the view
+	CustomerTalkPercentage *Numericrange `json:"customerTalkPercentage,omitempty"`
+
+	// OvertalkPercentage - The overtalk percentage used to filter the view
+	OvertalkPercentage *Numericrange `json:"overtalkPercentage,omitempty"`
+
+	// SilencePercentage - The silence percentage used to filter the view
+	SilencePercentage *Numericrange `json:"silencePercentage,omitempty"`
+
+	// AcdPercentage - The acd percentage used to filter the view
+	AcdPercentage *Numericrange `json:"acdPercentage,omitempty"`
+
+	// IvrPercentage - The ivr percentage used to filter the view
+	IvrPercentage *Numericrange `json:"ivrPercentage,omitempty"`
+
+	// OtherPercentage - The other (hold/music percentage used to filter the view
+	OtherPercentage *Numericrange `json:"otherPercentage,omitempty"`
+
+	// OvertalkInstances - The overtalk instance range used to filter the view
+	OvertalkInstances *Numericrange `json:"overtalkInstances,omitempty"`
+
 	// IsScreenRecorded - Filter to indicate if the screen is recorded
 	IsScreenRecorded *bool `json:"isScreenRecorded,omitempty"`
 
@@ -966,6 +1011,36 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		BotFlowTypes *[]string `json:"botFlowTypes,omitempty"`
 		
+		AgentTalkDurationMilliseconds *[]Numericrange `json:"agentTalkDurationMilliseconds,omitempty"`
+		
+		CustomerTalkDurationMilliseconds *[]Numericrange `json:"customerTalkDurationMilliseconds,omitempty"`
+		
+		OvertalkDurationMilliseconds *[]Numericrange `json:"overtalkDurationMilliseconds,omitempty"`
+		
+		SilenceDurationMilliseconds *[]Numericrange `json:"silenceDurationMilliseconds,omitempty"`
+		
+		AcdDurationMilliseconds *[]Numericrange `json:"acdDurationMilliseconds,omitempty"`
+		
+		IvrDurationMilliseconds *[]Numericrange `json:"ivrDurationMilliseconds,omitempty"`
+		
+		OtherDurationMilliseconds *[]Numericrange `json:"otherDurationMilliseconds,omitempty"`
+		
+		AgentTalkPercentage *Numericrange `json:"agentTalkPercentage,omitempty"`
+		
+		CustomerTalkPercentage *Numericrange `json:"customerTalkPercentage,omitempty"`
+		
+		OvertalkPercentage *Numericrange `json:"overtalkPercentage,omitempty"`
+		
+		SilencePercentage *Numericrange `json:"silencePercentage,omitempty"`
+		
+		AcdPercentage *Numericrange `json:"acdPercentage,omitempty"`
+		
+		IvrPercentage *Numericrange `json:"ivrPercentage,omitempty"`
+		
+		OtherPercentage *Numericrange `json:"otherPercentage,omitempty"`
+		
+		OvertalkInstances *Numericrange `json:"overtalkInstances,omitempty"`
+		
 		IsScreenRecorded *bool `json:"isScreenRecorded,omitempty"`
 		
 		ScreenMonitorUserIds *[]string `json:"screenMonitorUserIds,omitempty"`
@@ -1324,6 +1399,36 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SurveyResponseStatuses: o.SurveyResponseStatuses,
 		
 		BotFlowTypes: o.BotFlowTypes,
+		
+		AgentTalkDurationMilliseconds: o.AgentTalkDurationMilliseconds,
+		
+		CustomerTalkDurationMilliseconds: o.CustomerTalkDurationMilliseconds,
+		
+		OvertalkDurationMilliseconds: o.OvertalkDurationMilliseconds,
+		
+		SilenceDurationMilliseconds: o.SilenceDurationMilliseconds,
+		
+		AcdDurationMilliseconds: o.AcdDurationMilliseconds,
+		
+		IvrDurationMilliseconds: o.IvrDurationMilliseconds,
+		
+		OtherDurationMilliseconds: o.OtherDurationMilliseconds,
+		
+		AgentTalkPercentage: o.AgentTalkPercentage,
+		
+		CustomerTalkPercentage: o.CustomerTalkPercentage,
+		
+		OvertalkPercentage: o.OvertalkPercentage,
+		
+		SilencePercentage: o.SilencePercentage,
+		
+		AcdPercentage: o.AcdPercentage,
+		
+		IvrPercentage: o.IvrPercentage,
+		
+		OtherPercentage: o.OtherPercentage,
+		
+		OvertalkInstances: o.OvertalkInstances,
 		
 		IsScreenRecorded: o.IsScreenRecorded,
 		
@@ -2181,6 +2286,81 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if BotFlowTypes, ok := ViewfilterMap["botFlowTypes"].([]interface{}); ok {
 		BotFlowTypesString, _ := json.Marshal(BotFlowTypes)
 		json.Unmarshal(BotFlowTypesString, &o.BotFlowTypes)
+	}
+	
+	if AgentTalkDurationMilliseconds, ok := ViewfilterMap["agentTalkDurationMilliseconds"].([]interface{}); ok {
+		AgentTalkDurationMillisecondsString, _ := json.Marshal(AgentTalkDurationMilliseconds)
+		json.Unmarshal(AgentTalkDurationMillisecondsString, &o.AgentTalkDurationMilliseconds)
+	}
+	
+	if CustomerTalkDurationMilliseconds, ok := ViewfilterMap["customerTalkDurationMilliseconds"].([]interface{}); ok {
+		CustomerTalkDurationMillisecondsString, _ := json.Marshal(CustomerTalkDurationMilliseconds)
+		json.Unmarshal(CustomerTalkDurationMillisecondsString, &o.CustomerTalkDurationMilliseconds)
+	}
+	
+	if OvertalkDurationMilliseconds, ok := ViewfilterMap["overtalkDurationMilliseconds"].([]interface{}); ok {
+		OvertalkDurationMillisecondsString, _ := json.Marshal(OvertalkDurationMilliseconds)
+		json.Unmarshal(OvertalkDurationMillisecondsString, &o.OvertalkDurationMilliseconds)
+	}
+	
+	if SilenceDurationMilliseconds, ok := ViewfilterMap["silenceDurationMilliseconds"].([]interface{}); ok {
+		SilenceDurationMillisecondsString, _ := json.Marshal(SilenceDurationMilliseconds)
+		json.Unmarshal(SilenceDurationMillisecondsString, &o.SilenceDurationMilliseconds)
+	}
+	
+	if AcdDurationMilliseconds, ok := ViewfilterMap["acdDurationMilliseconds"].([]interface{}); ok {
+		AcdDurationMillisecondsString, _ := json.Marshal(AcdDurationMilliseconds)
+		json.Unmarshal(AcdDurationMillisecondsString, &o.AcdDurationMilliseconds)
+	}
+	
+	if IvrDurationMilliseconds, ok := ViewfilterMap["ivrDurationMilliseconds"].([]interface{}); ok {
+		IvrDurationMillisecondsString, _ := json.Marshal(IvrDurationMilliseconds)
+		json.Unmarshal(IvrDurationMillisecondsString, &o.IvrDurationMilliseconds)
+	}
+	
+	if OtherDurationMilliseconds, ok := ViewfilterMap["otherDurationMilliseconds"].([]interface{}); ok {
+		OtherDurationMillisecondsString, _ := json.Marshal(OtherDurationMilliseconds)
+		json.Unmarshal(OtherDurationMillisecondsString, &o.OtherDurationMilliseconds)
+	}
+	
+	if AgentTalkPercentage, ok := ViewfilterMap["agentTalkPercentage"].(map[string]interface{}); ok {
+		AgentTalkPercentageString, _ := json.Marshal(AgentTalkPercentage)
+		json.Unmarshal(AgentTalkPercentageString, &o.AgentTalkPercentage)
+	}
+	
+	if CustomerTalkPercentage, ok := ViewfilterMap["customerTalkPercentage"].(map[string]interface{}); ok {
+		CustomerTalkPercentageString, _ := json.Marshal(CustomerTalkPercentage)
+		json.Unmarshal(CustomerTalkPercentageString, &o.CustomerTalkPercentage)
+	}
+	
+	if OvertalkPercentage, ok := ViewfilterMap["overtalkPercentage"].(map[string]interface{}); ok {
+		OvertalkPercentageString, _ := json.Marshal(OvertalkPercentage)
+		json.Unmarshal(OvertalkPercentageString, &o.OvertalkPercentage)
+	}
+	
+	if SilencePercentage, ok := ViewfilterMap["silencePercentage"].(map[string]interface{}); ok {
+		SilencePercentageString, _ := json.Marshal(SilencePercentage)
+		json.Unmarshal(SilencePercentageString, &o.SilencePercentage)
+	}
+	
+	if AcdPercentage, ok := ViewfilterMap["acdPercentage"].(map[string]interface{}); ok {
+		AcdPercentageString, _ := json.Marshal(AcdPercentage)
+		json.Unmarshal(AcdPercentageString, &o.AcdPercentage)
+	}
+	
+	if IvrPercentage, ok := ViewfilterMap["ivrPercentage"].(map[string]interface{}); ok {
+		IvrPercentageString, _ := json.Marshal(IvrPercentage)
+		json.Unmarshal(IvrPercentageString, &o.IvrPercentage)
+	}
+	
+	if OtherPercentage, ok := ViewfilterMap["otherPercentage"].(map[string]interface{}); ok {
+		OtherPercentageString, _ := json.Marshal(OtherPercentage)
+		json.Unmarshal(OtherPercentageString, &o.OtherPercentage)
+	}
+	
+	if OvertalkInstances, ok := ViewfilterMap["overtalkInstances"].(map[string]interface{}); ok {
+		OvertalkInstancesString, _ := json.Marshal(OvertalkInstances)
+		json.Unmarshal(OvertalkInstancesString, &o.OvertalkInstances)
 	}
 	
 	if IsScreenRecorded, ok := ViewfilterMap["isScreenRecorded"].(bool); ok {

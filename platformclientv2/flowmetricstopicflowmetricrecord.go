@@ -288,6 +288,9 @@ type Flowmetricstopicflowmetricrecord struct {
 	// UserId - Unique identifier for the user
 	UserId *string `json:"userId,omitempty"`
 
+	// VideoPresent - Flag indicating if video is present
+	VideoPresent *bool `json:"videoPresent,omitempty"`
+
 	// WaitingInteractionCounts - Number of waiting interactions for each predictive routing attempt
 	WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 
@@ -559,6 +562,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		
 		UserId *string `json:"userId,omitempty"`
 		
+		VideoPresent *bool `json:"videoPresent,omitempty"`
+		
 		WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 		
 		WrapUpCode *string `json:"wrapUpCode,omitempty"`
@@ -753,6 +758,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		UsedRouting: o.UsedRouting,
 		
 		UserId: o.UserId,
+		
+		VideoPresent: o.VideoPresent,
 		
 		WaitingInteractionCounts: o.WaitingInteractionCounts,
 		
@@ -1157,6 +1164,10 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
     
 	if UserId, ok := FlowmetricstopicflowmetricrecordMap["userId"].(string); ok {
 		o.UserId = &UserId
+	}
+    
+	if VideoPresent, ok := FlowmetricstopicflowmetricrecordMap["videoPresent"].(bool); ok {
+		o.VideoPresent = &VideoPresent
 	}
     
 	if WaitingInteractionCounts, ok := FlowmetricstopicflowmetricrecordMap["waitingInteractionCounts"].([]interface{}); ok {

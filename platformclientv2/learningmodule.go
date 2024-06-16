@@ -45,6 +45,12 @@ type Learningmodule struct {
 	// Rule - The rule for learning module; read-only, and only populated when requested via expand param.
 	Rule *Learningmodulerule `json:"rule,omitempty"`
 
+	// EnforceContentOrder - If true, learning module content should be viewed one by one in order
+	EnforceContentOrder *bool `json:"enforceContentOrder,omitempty"`
+
+	// ReviewAssessmentResults - Allows to view Assessment results in detail
+	ReviewAssessmentResults *Reviewassessmentresults `json:"reviewAssessmentResults,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -186,6 +192,10 @@ func (o Learningmodule) MarshalJSON() ([]byte, error) {
 		
 		Rule *Learningmodulerule `json:"rule,omitempty"`
 		
+		EnforceContentOrder *bool `json:"enforceContentOrder,omitempty"`
+		
+		ReviewAssessmentResults *Reviewassessmentresults `json:"reviewAssessmentResults,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		IsArchived *bool `json:"isArchived,omitempty"`
@@ -234,6 +244,10 @@ func (o Learningmodule) MarshalJSON() ([]byte, error) {
 		Source: o.Source,
 		
 		Rule: o.Rule,
+		
+		EnforceContentOrder: o.EnforceContentOrder,
+		
+		ReviewAssessmentResults: o.ReviewAssessmentResults,
 		
 		SelfUri: o.SelfUri,
 		
@@ -319,6 +333,15 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if Rule, ok := LearningmoduleMap["rule"].(map[string]interface{}); ok {
 		RuleString, _ := json.Marshal(Rule)
 		json.Unmarshal(RuleString, &o.Rule)
+	}
+	
+	if EnforceContentOrder, ok := LearningmoduleMap["enforceContentOrder"].(bool); ok {
+		o.EnforceContentOrder = &EnforceContentOrder
+	}
+    
+	if ReviewAssessmentResults, ok := LearningmoduleMap["reviewAssessmentResults"].(map[string]interface{}); ok {
+		ReviewAssessmentResultsString, _ := json.Marshal(ReviewAssessmentResults)
+		json.Unmarshal(ReviewAssessmentResultsString, &o.ReviewAssessmentResults)
 	}
 	
 	if SelfUri, ok := LearningmoduleMap["selfUri"].(string); ok {

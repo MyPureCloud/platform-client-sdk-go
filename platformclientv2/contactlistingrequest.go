@@ -20,7 +20,7 @@ type Contactlistingrequest struct {
 	// PageNumber - Page number.
 	PageNumber *int `json:"pageNumber,omitempty"`
 
-	// PageSize - Page size. The max that will be returned is 50.
+	// PageSize - Page size. The max that will be returned is 100.
 	PageSize *int `json:"pageSize,omitempty"`
 
 	// ContactSorts - The order in which to sort contacts.

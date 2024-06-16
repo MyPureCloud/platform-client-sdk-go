@@ -17,6 +17,9 @@ type Knowledgeexportjobrequest struct {
 	// FileType - File type of the document
 	FileType *string `json:"fileType,omitempty"`
 
+	// SourceId - Knowledge integration source id.
+	SourceId *string `json:"sourceId,omitempty"`
+
 	// JsonFileVersion - Requested version of the exported json file. Available versions are 2 and 3, default is 2
 	JsonFileVersion *int `json:"jsonFileVersion,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Knowledgeexportjobrequest) MarshalJSON() ([]byte, error) {
 		
 		FileType *string `json:"fileType,omitempty"`
 		
+		SourceId *string `json:"sourceId,omitempty"`
+		
 		JsonFileVersion *int `json:"jsonFileVersion,omitempty"`
 		Alias
 	}{ 
 		ExportFilter: o.ExportFilter,
 		
 		FileType: o.FileType,
+		
+		SourceId: o.SourceId,
 		
 		JsonFileVersion: o.JsonFileVersion,
 		Alias:    (Alias)(o),
@@ -114,6 +121,10 @@ func (o *Knowledgeexportjobrequest) UnmarshalJSON(b []byte) error {
 	
 	if FileType, ok := KnowledgeexportjobrequestMap["fileType"].(string); ok {
 		o.FileType = &FileType
+	}
+    
+	if SourceId, ok := KnowledgeexportjobrequestMap["sourceId"].(string); ok {
+		o.SourceId = &SourceId
 	}
     
 	if JsonFileVersion, ok := KnowledgeexportjobrequestMap["jsonFileVersion"].(float64); ok {

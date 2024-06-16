@@ -1323,8 +1323,6 @@ func (a RoutingApi) DeleteRoutingUtilization() (*APIResponse, error) {
 // DeleteRoutingUtilizationLabel invokes DELETE /api/v2/routing/utilization/labels/{labelId}
 //
 // Delete a utilization label
-//
-// Preview: DeleteRoutingUtilizationLabel is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) DeleteRoutingUtilizationLabel(labelId string, forceDelete bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -6024,8 +6022,6 @@ func (a RoutingApi) GetRoutingUtilization() (*Utilizationresponse, *APIResponse,
 // GetRoutingUtilizationLabel invokes GET /api/v2/routing/utilization/labels/{labelId}
 //
 // Get details about this utilization label
-//
-// Preview: GetRoutingUtilizationLabel is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingUtilizationLabel(labelId string) (*Utilizationlabel, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6108,8 +6104,6 @@ func (a RoutingApi) GetRoutingUtilizationLabel(labelId string) (*Utilizationlabe
 // GetRoutingUtilizationLabelAgents invokes GET /api/v2/routing/utilization/labels/{labelId}/agents
 //
 // Get list of agent ids associated with a utilization label
-//
-// Preview: GetRoutingUtilizationLabelAgents is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingUtilizationLabelAgents(labelId string) ([]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6192,8 +6186,6 @@ func (a RoutingApi) GetRoutingUtilizationLabelAgents(labelId string) ([]interfac
 // GetRoutingUtilizationLabels invokes GET /api/v2/routing/utilization/labels
 //
 // Get list of utilization labels
-//
-// Preview: GetRoutingUtilizationLabels is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingUtilizationLabels(pageSize int, pageNumber int, sortOrder string, name string) (*Utilizationlabelentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -10516,8 +10508,6 @@ func (a RoutingApi) PostRoutingSmsPhonenumbersImport(body Smsphonenumberimport) 
 // PostRoutingUtilizationLabels invokes POST /api/v2/routing/utilization/labels
 //
 // Create a utilization label
-//
-// Preview: PostRoutingUtilizationLabels is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PostRoutingUtilizationLabels(body Createutilizationlabelrequest) (*Utilizationlabel, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11742,8 +11732,6 @@ func (a RoutingApi) PutRoutingUtilization(body Utilizationrequest) (*Utilization
 // PutRoutingUtilizationLabel invokes PUT /api/v2/routing/utilization/labels/{labelId}
 //
 // Update a utilization label
-//
-// Preview: PutRoutingUtilizationLabel is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PutRoutingUtilizationLabel(labelId string, body Updateutilizationlabelrequest) (*Utilizationlabel, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

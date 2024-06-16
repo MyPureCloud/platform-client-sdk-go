@@ -2897,11 +2897,11 @@ func (a JourneyApi) GetJourneyViewVersionJobsLatest(viewId string, journeyVersio
 // Get a list of Journey Views
 //
 // Preview: GetJourneyViews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a JourneyApi) GetJourneyViews() (*Addressableentitylisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneyViews() (*Journeyviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/views"
-	defaultReturn := new(Addressableentitylisting)
+	defaultReturn := new(Journeyviewlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2954,14 +2954,14 @@ func (a JourneyApi) GetJourneyViews() (*Addressableentitylisting, *APIResponse, 
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Addressableentitylisting
+	var successPayload *Journeyviewlisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Addressableentitylisting" == "string" {
+		if "Journeyviewlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

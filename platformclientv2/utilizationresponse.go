@@ -13,6 +13,9 @@ type Utilizationresponse struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Utilization - Map of media type to utilization settings.
 	Utilization *map[string]Mediautilization `json:"utilization,omitempty"`
+
+	// LabelUtilizations - Map of label ids to utilization settings.
+	LabelUtilizations *map[string]Labelutilizationresponse `json:"labelUtilizations,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Utilizationresponse) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Utilization *map[string]Mediautilization `json:"utilization,omitempty"`
+		
+		LabelUtilizations *map[string]Labelutilizationresponse `json:"labelUtilizations,omitempty"`
 		Alias
 	}{ 
 		Utilization: o.Utilization,
+		
+		LabelUtilizations: o.LabelUtilizations,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Utilizationresponse) UnmarshalJSON(b []byte) error {
 	if Utilization, ok := UtilizationresponseMap["utilization"].(map[string]interface{}); ok {
 		UtilizationString, _ := json.Marshal(Utilization)
 		json.Unmarshal(UtilizationString, &o.Utilization)
+	}
+	
+	if LabelUtilizations, ok := UtilizationresponseMap["labelUtilizations"].(map[string]interface{}); ok {
+		LabelUtilizationsString, _ := json.Marshal(LabelUtilizations)
+		json.Unmarshal(LabelUtilizationsString, &o.LabelUtilizations)
 	}
 	
 

@@ -30,6 +30,9 @@ type Operationresponse struct {
 	// DateModified - Operation last modification date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
+	// Source - Source of the operation.
+	Source *Knowledgeoperationsource `json:"source,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -125,6 +128,8 @@ func (o Operationresponse) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
+		Source *Knowledgeoperationsource `json:"source,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -139,6 +144,8 @@ func (o Operationresponse) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
+		
+		Source: o.Source,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -177,6 +184,11 @@ func (o *Operationresponse) UnmarshalJSON(b []byte) error {
 	if dateModifiedString, ok := OperationresponseMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
+	}
+	
+	if Source, ok := OperationresponseMap["source"].(map[string]interface{}); ok {
+		SourceString, _ := json.Marshal(Source)
+		json.Unmarshal(SourceString, &o.Source)
 	}
 	
 	if SelfUri, ok := OperationresponseMap["selfUri"].(string); ok {

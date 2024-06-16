@@ -87,6 +87,12 @@ type Analyticssession struct {
 	// DestinationAddresses - Destination address(es) of transfers or consults
 	DestinationAddresses *[]string `json:"destinationAddresses,omitempty"`
 
+	// DetectedSpeechEnd - Absolute time when the speech ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DetectedSpeechEnd *time.Time `json:"detectedSpeechEnd,omitempty"`
+
+	// DetectedSpeechStart - Absolute time when the speech started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DetectedSpeechStart *time.Time `json:"detectedSpeechStart,omitempty"`
+
 	// Direction - The direction of the communication
 	Direction *string `json:"direction,omitempty"`
 
@@ -285,7 +291,7 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "CallbackScheduledTime","DeliveryStatusChangeDate", }
+		dateTimeFields := []string{ "CallbackScheduledTime","DeliveryStatusChangeDate","DetectedSpeechEnd","DetectedSpeechStart", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -332,6 +338,22 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		*DeliveryStatusChangeDate = timeutil.Strftime(o.DeliveryStatusChangeDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DeliveryStatusChangeDate = nil
+	}
+	
+	DetectedSpeechEnd := new(string)
+	if o.DetectedSpeechEnd != nil {
+		
+		*DetectedSpeechEnd = timeutil.Strftime(o.DetectedSpeechEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DetectedSpeechEnd = nil
+	}
+	
+	DetectedSpeechStart := new(string)
+	if o.DetectedSpeechStart != nil {
+		
+		*DetectedSpeechStart = timeutil.Strftime(o.DetectedSpeechStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DetectedSpeechStart = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -384,6 +406,10 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		DeliveryStatusChangeDate *string `json:"deliveryStatusChangeDate,omitempty"`
 		
 		DestinationAddresses *[]string `json:"destinationAddresses,omitempty"`
+		
+		DetectedSpeechEnd *string `json:"detectedSpeechEnd,omitempty"`
+		
+		DetectedSpeechStart *string `json:"detectedSpeechStart,omitempty"`
 		
 		Direction *string `json:"direction,omitempty"`
 		
@@ -547,6 +573,10 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		DeliveryStatusChangeDate: DeliveryStatusChangeDate,
 		
 		DestinationAddresses: o.DestinationAddresses,
+		
+		DetectedSpeechEnd: DetectedSpeechEnd,
+		
+		DetectedSpeechStart: DetectedSpeechStart,
 		
 		Direction: o.Direction,
 		
@@ -776,6 +806,16 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if DestinationAddresses, ok := AnalyticssessionMap["destinationAddresses"].([]interface{}); ok {
 		DestinationAddressesString, _ := json.Marshal(DestinationAddresses)
 		json.Unmarshal(DestinationAddressesString, &o.DestinationAddresses)
+	}
+	
+	if detectedSpeechEndString, ok := AnalyticssessionMap["detectedSpeechEnd"].(string); ok {
+		DetectedSpeechEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", detectedSpeechEndString)
+		o.DetectedSpeechEnd = &DetectedSpeechEnd
+	}
+	
+	if detectedSpeechStartString, ok := AnalyticssessionMap["detectedSpeechStart"].(string); ok {
+		DetectedSpeechStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", detectedSpeechStartString)
+		o.DetectedSpeechStart = &DetectedSpeechStart
 	}
 	
 	if Direction, ok := AnalyticssessionMap["direction"].(string); ok {
