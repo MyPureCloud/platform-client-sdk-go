@@ -1418,7 +1418,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 // Queries Evaluations and returns a paged list
 //
 // Query params must include one of conversationId, evaluatorUserId, agentUserId or assigneeUserId. When querying by agentUserId (and not conversationId or evaluatorUserId), the results are sorted by release date. Evaluations set to &#39;Never Release&#39; are omitted in this case. When querying by evaluatorUserId or conversationId (including when combined with agentUserId), the results are sorted by assigned date. NOTE: The count for total and pageCount might not be accurate when querying for a large number of evaluations. nextUri, if present, will indicate that there are more evaluations to fetch. The evaluation entities contained in the response might only contain a subset of all the properties listed below. It is often because a given property&#39;s value has not yet been populated or is not applicable in the current state of the evaluation. It might also be because the missing property in the response was not requested by the user.
-func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, agentUserId string, agentTeamId string, evaluatorUserId string, assigneeUserId string, queueId string, startTime string, endTime string, formContextId string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, expand []string, previousPage string, conversationId string, agentUserId string, agentTeamId string, evaluatorUserId string, assigneeUserId string, queueId string, startTime string, endTime string, formContextId string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/evaluations/query"
@@ -1449,11 +1449,7 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sor
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
-	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
 	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	

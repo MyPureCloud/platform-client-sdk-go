@@ -12,7 +12,7 @@ import (
 type Room struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The jid of the room
+	// Id - The jid of the room if adhoc, the id of the group for group rooms
 	Id *string `json:"id,omitempty"`
 
 	// Name
@@ -38,6 +38,9 @@ type Room struct {
 
 	// PinnedMessages - Room's pinned messages
 	PinnedMessages *[]Addressableentityref `json:"pinnedMessages,omitempty"`
+
+	// Jid - The jid of the room
+	Jid *string `json:"jid,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -132,6 +135,8 @@ func (o Room) MarshalJSON() ([]byte, error) {
 		
 		PinnedMessages *[]Addressableentityref `json:"pinnedMessages,omitempty"`
 		
+		Jid *string `json:"jid,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -152,6 +157,8 @@ func (o Room) MarshalJSON() ([]byte, error) {
 		Owners: o.Owners,
 		
 		PinnedMessages: o.PinnedMessages,
+		
+		Jid: o.Jid,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -205,6 +212,10 @@ func (o *Room) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PinnedMessagesString, &o.PinnedMessages)
 	}
 	
+	if Jid, ok := RoomMap["jid"].(string); ok {
+		o.Jid = &Jid
+	}
+    
 	if SelfUri, ok := RoomMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

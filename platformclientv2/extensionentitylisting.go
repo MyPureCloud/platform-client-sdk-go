@@ -23,9 +23,6 @@ type Extensionentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
@@ -37,6 +34,9 @@ type Extensionentitylisting struct {
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,8 +113,6 @@ func (o Extensionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
@@ -122,6 +120,8 @@ func (o Extensionentitylisting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,8 +134,6 @@ func (o Extensionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		PreviousUri: o.PreviousUri,
-		
 		LastUri: o.LastUri,
 		
 		FirstUri: o.FirstUri,
@@ -143,6 +141,8 @@ func (o Extensionentitylisting) MarshalJSON() ([]byte, error) {
 		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,10 +176,6 @@ func (o *Extensionentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if PreviousUri, ok := ExtensionentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if LastUri, ok := ExtensionentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
@@ -194,6 +190,10 @@ func (o *Extensionentitylisting) UnmarshalJSON(b []byte) error {
     
 	if NextUri, ok := ExtensionentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := ExtensionentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := ExtensionentitylistingMap["pageCount"].(float64); ok {

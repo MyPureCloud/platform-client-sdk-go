@@ -39,6 +39,9 @@ type Flowexecutiondataqueryresult struct {
 	// FlowErrorReason - If the flow errored out this is the reason.
 	FlowErrorReason *string `json:"flowErrorReason,omitempty"`
 
+	// FlowWarningReason - If the flow had a warning, this is the reason.
+	FlowWarningReason *string `json:"flowWarningReason,omitempty"`
+
 	// FlowName - The name of the flow.
 	FlowName *string `json:"flowName,omitempty"`
 
@@ -143,6 +146,8 @@ func (o Flowexecutiondataqueryresult) MarshalJSON() ([]byte, error) {
 		
 		FlowErrorReason *string `json:"flowErrorReason,omitempty"`
 		
+		FlowWarningReason *string `json:"flowWarningReason,omitempty"`
+		
 		FlowName *string `json:"flowName,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -165,6 +170,8 @@ func (o Flowexecutiondataqueryresult) MarshalJSON() ([]byte, error) {
 		FlowType: o.FlowType,
 		
 		FlowErrorReason: o.FlowErrorReason,
+		
+		FlowWarningReason: o.FlowWarningReason,
 		
 		FlowName: o.FlowName,
 		
@@ -216,6 +223,10 @@ func (o *Flowexecutiondataqueryresult) UnmarshalJSON(b []byte) error {
     
 	if FlowErrorReason, ok := FlowexecutiondataqueryresultMap["flowErrorReason"].(string); ok {
 		o.FlowErrorReason = &FlowErrorReason
+	}
+    
+	if FlowWarningReason, ok := FlowexecutiondataqueryresultMap["flowWarningReason"].(string); ok {
+		o.FlowWarningReason = &FlowWarningReason
 	}
     
 	if FlowName, ok := FlowexecutiondataqueryresultMap["flowName"].(string); ok {

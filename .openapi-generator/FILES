@@ -806,6 +806,7 @@ docs/GetJourneyViewVersionJobsLatest-example.txt
 docs/GetJourneyViews-example.txt
 docs/GetJourneyViewsEventdefinition-example.txt
 docs/GetJourneyViewsEventdefinitions-example.txt
+docs/GetJourneyViewsJobs-example.txt
 docs/GetKnowledgeGuestSessionCategories-example.txt
 docs/GetKnowledgeGuestSessionDocument-example.txt
 docs/GetKnowledgeGuestSessionDocuments-example.txt
@@ -3110,6 +3111,7 @@ platformclientv2/callroute.go
 platformclientv2/calltarget.go
 platformclientv2/calltoaction.go
 platformclientv2/campaign.go
+platformclientv2/campaignbusinesscategorymetrics.go
 platformclientv2/campaigndiagnostics.go
 platformclientv2/campaigndivisionview.go
 platformclientv2/campaigndivisionviewlisting.go
@@ -4655,6 +4657,7 @@ platformclientv2/journeyviewelementattributes.go
 platformclientv2/journeyviewelementfilter.go
 platformclientv2/journeyviewelementfilterpredicate.go
 platformclientv2/journeyviewjob.go
+platformclientv2/journeyviewjoblisting.go
 platformclientv2/journeyviewlink.go
 platformclientv2/journeyviewlinktimeconstraint.go
 platformclientv2/journeyviewlisting.go
