@@ -63,6 +63,9 @@ type Knowledgedocumentresponse struct {
 	// ExternalId - The reference to external id associated with the document.
 	ExternalId *string `json:"externalId,omitempty"`
 
+	// ExternalUrl - The URL to external document.
+	ExternalUrl *string `json:"externalUrl,omitempty"`
+
 	// Source - The reference to source associated with the document.
 	Source *Addressableentityref `json:"source,omitempty"`
 
@@ -205,6 +208,8 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		
 		ExternalId *string `json:"externalId,omitempty"`
 		
+		ExternalUrl *string `json:"externalUrl,omitempty"`
+		
 		Source *Addressableentityref `json:"source,omitempty"`
 		
 		Readonly *bool `json:"readonly,omitempty"`
@@ -247,6 +252,8 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		KnowledgeBase: o.KnowledgeBase,
 		
 		ExternalId: o.ExternalId,
+		
+		ExternalUrl: o.ExternalUrl,
 		
 		Source: o.Source,
 		
@@ -344,6 +351,10 @@ func (o *Knowledgedocumentresponse) UnmarshalJSON(b []byte) error {
 	
 	if ExternalId, ok := KnowledgedocumentresponseMap["externalId"].(string); ok {
 		o.ExternalId = &ExternalId
+	}
+    
+	if ExternalUrl, ok := KnowledgedocumentresponseMap["externalUrl"].(string); ok {
+		o.ExternalUrl = &ExternalUrl
 	}
     
 	if Source, ok := KnowledgedocumentresponseMap["source"].(map[string]interface{}); ok {

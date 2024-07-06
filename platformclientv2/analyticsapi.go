@@ -95,7 +95,7 @@ func (a AnalyticsApi) DeleteAnalyticsConversationsDetailsJob(jobId string) (*API
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -170,7 +170,7 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -248,7 +248,7 @@ func (a AnalyticsApi) GetAnalyticsActionsAggregatesJob(jobId string) (*Asyncquer
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -334,7 +334,7 @@ func (a AnalyticsApi) GetAnalyticsActionsAggregatesJobResults(jobId string, curs
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actionasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -418,7 +418,7 @@ func (a AnalyticsApi) GetAnalyticsAgentcopilotsAggregatesJob(jobId string) (*Asy
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -504,7 +504,7 @@ func (a AnalyticsApi) GetAnalyticsAgentcopilotsAggregatesJobResults(jobId string
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Agentcopilotasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -602,7 +602,7 @@ func (a AnalyticsApi) GetAnalyticsBotflowDivisionsReportingturns(botFlowId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Reportingturnsresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -702,7 +702,7 @@ func (a AnalyticsApi) GetAnalyticsBotflowReportingturns(botFlowId string, after 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Reportingturnsresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -796,7 +796,7 @@ func (a AnalyticsApi) GetAnalyticsBotflowSessions(botFlowId string, after string
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Sessionsresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -880,7 +880,7 @@ func (a AnalyticsApi) GetAnalyticsBotsAggregatesJob(jobId string) (*Asyncqueryst
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -966,7 +966,7 @@ func (a AnalyticsApi) GetAnalyticsBotsAggregatesJobResults(jobId string, cursor 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Botasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1048,7 +1048,7 @@ func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*A
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Analyticsconversationwithoutattributes
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1132,7 +1132,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsAggregatesJob(jobId string) (*Asy
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1218,7 +1218,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsAggregatesJobResults(jobId string
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Conversationasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1296,7 +1296,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetails(id []string) (*Analyticsc
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Analyticsconversationwithoutattributesmultigetresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1378,7 +1378,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1464,7 +1464,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Analyticsconversationasyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1540,7 +1540,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*Dataa
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dataavailabilityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1616,7 +1616,7 @@ func (a AnalyticsApi) GetAnalyticsDataretentionSettings() (*Analyticsdataretenti
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Analyticsdataretentionresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1700,7 +1700,7 @@ func (a AnalyticsApi) GetAnalyticsEvaluationsAggregatesJob(jobId string) (*Async
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1786,7 +1786,7 @@ func (a AnalyticsApi) GetAnalyticsEvaluationsAggregatesJobResults(jobId string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Evaluationasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1870,7 +1870,7 @@ func (a AnalyticsApi) GetAnalyticsFlowexecutionsAggregatesJob(jobId string) (*As
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1956,7 +1956,7 @@ func (a AnalyticsApi) GetAnalyticsFlowexecutionsAggregatesJobResults(jobId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Flowexecutionasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2040,7 +2040,7 @@ func (a AnalyticsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerys
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2126,7 +2126,7 @@ func (a AnalyticsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Flowasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2210,7 +2210,7 @@ func (a AnalyticsApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncque
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2296,7 +2296,7 @@ func (a AnalyticsApi) GetAnalyticsJourneysAggregatesJobResults(jobId string, cur
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2380,7 +2380,7 @@ func (a AnalyticsApi) GetAnalyticsKnowledgeAggregatesJob(jobId string) (*Asyncqu
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2466,7 +2466,7 @@ func (a AnalyticsApi) GetAnalyticsKnowledgeAggregatesJobResults(jobId string, cu
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Knowledgeasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2548,7 +2548,7 @@ func (a AnalyticsApi) GetAnalyticsReportingDashboardsUser(userId string) (*Dashb
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dashboarduser
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2634,7 +2634,7 @@ func (a AnalyticsApi) GetAnalyticsReportingDashboardsUsers(sortBy string, pageNu
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dashboarduserlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2714,7 +2714,7 @@ func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int, pageSize int)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Reportingexportjoblisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2790,7 +2790,7 @@ func (a AnalyticsApi) GetAnalyticsReportingExportsMetadata() (*Reportingexportme
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Reportingexportmetadatajoblisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2866,7 +2866,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Analyticsreportingsettings
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2962,7 +2962,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dashboardconfigurationlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3056,7 +3056,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dashboardconfigurationlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3140,7 +3140,7 @@ func (a AnalyticsApi) GetAnalyticsResolutionsAggregatesJob(jobId string) (*Async
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3226,7 +3226,7 @@ func (a AnalyticsApi) GetAnalyticsResolutionsAggregatesJobResults(jobId string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Resolutionasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3310,7 +3310,7 @@ func (a AnalyticsApi) GetAnalyticsSurveysAggregatesJob(jobId string) (*Asyncquer
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3396,7 +3396,7 @@ func (a AnalyticsApi) GetAnalyticsSurveysAggregatesJobResults(jobId string, curs
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Surveyasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3480,7 +3480,7 @@ func (a AnalyticsApi) GetAnalyticsTaskmanagementAggregatesJob(jobId string) (*As
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3566,7 +3566,7 @@ func (a AnalyticsApi) GetAnalyticsTaskmanagementAggregatesJobResults(jobId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Taskmanagementasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3650,7 +3650,7 @@ func (a AnalyticsApi) GetAnalyticsTranscriptsAggregatesJob(jobId string) (*Async
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3736,7 +3736,7 @@ func (a AnalyticsApi) GetAnalyticsTranscriptsAggregatesJobResults(jobId string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Transcriptasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3820,7 +3820,7 @@ func (a AnalyticsApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerys
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3906,7 +3906,7 @@ func (a AnalyticsApi) GetAnalyticsUsersAggregatesJobResults(jobId string, cursor
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Userasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3988,7 +3988,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4074,7 +4074,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Analyticsuserdetailsasyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4150,7 +4150,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobsAvailability() (*Dataavailabil
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dataavailabilityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4234,7 +4234,7 @@ func (a AnalyticsApi) PatchAnalyticsReportingSettings(body Analyticsreportingset
 	postBody = &body
 
 	var successPayload *Analyticsreportingsettings
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4320,7 +4320,7 @@ func (a AnalyticsApi) PostAnalyticsActionsAggregatesJobs(body Actionasyncaggrega
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4404,7 +4404,7 @@ func (a AnalyticsApi) PostAnalyticsActionsAggregatesQuery(body Actionaggregation
 	postBody = &body
 
 	var successPayload *Actionaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4490,7 +4490,7 @@ func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesJobs(body Agentcopilot
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4576,7 +4576,7 @@ func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesQuery(body Agentcopilo
 	postBody = &body
 
 	var successPayload *Agentcopilotaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4662,7 +4662,7 @@ func (a AnalyticsApi) PostAnalyticsBotsAggregatesJobs(body Botasyncaggregationqu
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4746,7 +4746,7 @@ func (a AnalyticsApi) PostAnalyticsBotsAggregatesQuery(body Botaggregationquery)
 	postBody = &body
 
 	var successPayload *Botaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4836,7 +4836,7 @@ func (a AnalyticsApi) PostAnalyticsConversationDetailsProperties(conversationId 
 	postBody = &body
 
 	var successPayload *Propertyindexrequest
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4924,7 +4924,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsActivityQuery(body Conversationa
 	postBody = &body
 
 	var successPayload *Conversationactivityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5010,7 +5010,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsAggregatesJobs(body Conversation
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5094,7 +5094,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsAggregatesQuery(body Conversatio
 	postBody = &body
 
 	var successPayload *Conversationaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5178,7 +5178,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsJobs(body Asyncconversati
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5262,7 +5262,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsDetailsQuery(body Conversationqu
 	postBody = &body
 
 	var successPayload *Analyticsconversationqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5346,7 +5346,7 @@ func (a AnalyticsApi) PostAnalyticsConversationsTranscriptsQuery(body Transcript
 	postBody = &body
 
 	var successPayload *Analyticsconversationwithoutattributesmultigetresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5432,7 +5432,7 @@ func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesJobs(body Evaluationasyn
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5516,7 +5516,7 @@ func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationagg
 	postBody = &body
 
 	var successPayload *Evaluationaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5602,7 +5602,7 @@ func (a AnalyticsApi) PostAnalyticsFlowexecutionsAggregatesJobs(body Flowexecuti
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5686,7 +5686,7 @@ func (a AnalyticsApi) PostAnalyticsFlowexecutionsAggregatesQuery(body Flowexecut
 	postBody = &body
 
 	var successPayload *Flowexecutionaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5774,7 +5774,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pa
 	postBody = &body
 
 	var successPayload *Flowactivityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5860,7 +5860,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsAggregatesJobs(body Flowasyncaggregation
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5944,7 +5944,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquer
 	postBody = &body
 
 	var successPayload *Flowaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6028,7 +6028,7 @@ func (a AnalyticsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationqu
 	postBody = &body
 
 	var successPayload *Flowobservationqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6114,7 +6114,7 @@ func (a AnalyticsApi) PostAnalyticsJourneysAggregatesJobs(body Journeyasyncaggre
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6198,7 +6198,7 @@ func (a AnalyticsApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregati
 	postBody = &body
 
 	var successPayload *Journeyaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6284,7 +6284,7 @@ func (a AnalyticsApi) PostAnalyticsKnowledgeAggregatesJobs(body Knowledgeasyncag
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6368,7 +6368,7 @@ func (a AnalyticsApi) PostAnalyticsKnowledgeAggregatesQuery(body Knowledgeaggreg
 	postBody = &body
 
 	var successPayload *Knowledgeaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6452,7 +6452,7 @@ func (a AnalyticsApi) PostAnalyticsQueuesObservationsQuery(body Queueobservation
 	postBody = &body
 
 	var successPayload *Queueobservationqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6538,7 +6538,7 @@ func (a AnalyticsApi) PostAnalyticsRatelimitsAggregatesQuery(body Ratelimitaggre
 	postBody = &body
 
 	var successPayload *Ratelimitaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6621,7 +6621,7 @@ func (a AnalyticsApi) PostAnalyticsReportingDashboardsUsersBulkRemove(body []str
 	postBody = &body
 
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6701,7 +6701,7 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 	postBody = &body
 
 	var successPayload *Reportingexportjobresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6784,7 +6784,7 @@ func (a AnalyticsApi) PostAnalyticsReportingSettingsDashboardsBulkRemove(body Da
 	postBody = &body
 
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6862,7 +6862,7 @@ func (a AnalyticsApi) PostAnalyticsReportingSettingsDashboardsQuery(body Dashboa
 	postBody = &body
 
 	var successPayload *Dashboardconfigurationlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -6948,7 +6948,7 @@ func (a AnalyticsApi) PostAnalyticsResolutionsAggregatesJobs(body Resolutionasyn
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7036,7 +7036,7 @@ func (a AnalyticsApi) PostAnalyticsRoutingActivityQuery(body Routingactivityquer
 	postBody = &body
 
 	var successPayload *Routingactivityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7122,7 +7122,7 @@ func (a AnalyticsApi) PostAnalyticsSurveysAggregatesJobs(body Surveyasyncaggrega
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7206,7 +7206,7 @@ func (a AnalyticsApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregation
 	postBody = &body
 
 	var successPayload *Surveyaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7292,7 +7292,7 @@ func (a AnalyticsApi) PostAnalyticsTaskmanagementAggregatesJobs(body Taskmanagem
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7378,7 +7378,7 @@ func (a AnalyticsApi) PostAnalyticsTaskmanagementAggregatesQuery(body Taskmanage
 	postBody = &body
 
 	var successPayload *Taskmanagementaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7466,7 +7466,7 @@ func (a AnalyticsApi) PostAnalyticsTeamsActivityQuery(body Teamactivityquery, pa
 	postBody = &body
 
 	var successPayload *Teamactivityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7552,7 +7552,7 @@ func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesJobs(body Transcriptasyn
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7636,7 +7636,7 @@ func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesQuery(body Transcriptagg
 	postBody = &body
 
 	var successPayload *Transcriptaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7724,7 +7724,7 @@ func (a AnalyticsApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pa
 	postBody = &body
 
 	var successPayload *Useractivityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7810,7 +7810,7 @@ func (a AnalyticsApi) PostAnalyticsUsersAggregatesJobs(body Userasyncaggregation
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7894,7 +7894,7 @@ func (a AnalyticsApi) PostAnalyticsUsersAggregatesQuery(body Useraggregationquer
 	postBody = &body
 
 	var successPayload *Useraggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -7978,7 +7978,7 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsJobs(body Asyncuserdetailsquery) 
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -8062,7 +8062,7 @@ func (a AnalyticsApi) PostAnalyticsUsersDetailsQuery(body Userdetailsquery) (*An
 	postBody = &body
 
 	var successPayload *Analyticsuserdetailsqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -8146,7 +8146,7 @@ func (a AnalyticsApi) PostAnalyticsUsersObservationsQuery(body Userobservationqu
 	postBody = &body
 
 	var successPayload *Userobservationqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -8230,7 +8230,7 @@ func (a AnalyticsApi) PutAnalyticsDataretentionSettings(body Updateanalyticsdata
 	postBody = &body
 
 	var successPayload *Analyticsdataretentionresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

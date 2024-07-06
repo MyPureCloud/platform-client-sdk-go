@@ -100,7 +100,7 @@ func (a TextbotsApi) GetTextbotsBotsSearch(botType []string, botName string, bot
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Botsearchresponseentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -192,7 +192,7 @@ func (a TextbotsApi) PostTextbotsBotflowsSessionTurns(sessionId string, turnRequ
 	postBody = &turnRequest
 
 	var successPayload *Textbotflowturnresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -278,7 +278,7 @@ func (a TextbotsApi) PostTextbotsBotflowsSessions(launchRequest Textbotflowlaunc
 	postBody = &launchRequest
 
 	var successPayload *Textbotflowlaunchresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -364,7 +364,7 @@ func (a TextbotsApi) PostTextbotsBotsExecute(postTextRequest Posttextrequest) (*
 	postBody = &postTextRequest
 
 	var successPayload *Posttextresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

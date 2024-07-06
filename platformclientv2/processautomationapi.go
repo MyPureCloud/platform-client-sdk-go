@@ -95,7 +95,7 @@ func (a ProcessAutomationApi) DeleteProcessautomationTrigger(triggerId string) (
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -171,7 +171,7 @@ func (a ProcessAutomationApi) GetProcessautomationTrigger(triggerId string) (*Tr
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Trigger
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -259,7 +259,7 @@ func (a ProcessAutomationApi) GetProcessautomationTriggers(before string, after 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Triggerentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -341,7 +341,7 @@ func (a ProcessAutomationApi) GetProcessautomationTriggersTopics(before string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Topiccursorentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -426,7 +426,7 @@ func (a ProcessAutomationApi) PostProcessautomationTriggerTest(triggerId string,
 	postBody = &body
 
 	var successPayload *Testmoderesults
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -510,7 +510,7 @@ func (a ProcessAutomationApi) PostProcessautomationTriggers(body Createtriggerre
 	postBody = &body
 
 	var successPayload *Trigger
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -595,7 +595,7 @@ func (a ProcessAutomationApi) PostProcessautomationTriggersTopicTest(topicName s
 	postBody = &body
 
 	var successPayload *Testmodeeventresults
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -685,7 +685,7 @@ func (a ProcessAutomationApi) PutProcessautomationTrigger(triggerId string, body
 	postBody = &body
 
 	var successPayload *Trigger
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

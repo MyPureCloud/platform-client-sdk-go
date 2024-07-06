@@ -96,7 +96,7 @@ func (a OperationalEventsApi) GetUsageEventsDefinition(eventDefinitionId string)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Eventdefinition
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -172,7 +172,7 @@ func (a OperationalEventsApi) GetUsageEventsDefinitions() (*Eventdefinitionlisti
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Eventdefinitionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

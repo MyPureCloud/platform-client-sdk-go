@@ -95,7 +95,7 @@ func (a AlertingApi) DeleteAlertingAlert(alertId string) (*APIResponse, error) {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -174,7 +174,7 @@ func (a AlertingApi) DeleteAlertingInteractionstatsAlert(alertId string) (*APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -253,7 +253,7 @@ func (a AlertingApi) DeleteAlertingInteractionstatsRule(ruleId string) (*APIResp
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -328,7 +328,7 @@ func (a AlertingApi) DeleteAlertingRule(ruleId string) (*APIResponse, error) {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -404,7 +404,7 @@ func (a AlertingApi) GetAlertingAlert(alertId string) (*Commonalert, *APIRespons
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Commonalert
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -484,7 +484,7 @@ func (a AlertingApi) GetAlertingAlertsActive() (*Activealertcount, *APIResponse,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Activealertcount
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -572,7 +572,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlert(alertId string, expand []s
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Interactionstatsalert
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -654,7 +654,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlerts(expand []string) (*Intera
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Interactionstatsalertcontainer
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -734,7 +734,7 @@ func (a AlertingApi) GetAlertingInteractionstatsAlertsUnread() (*Unreadmetric, *
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Unreadmetric
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -822,7 +822,7 @@ func (a AlertingApi) GetAlertingInteractionstatsRule(ruleId string, expand []str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Interactionstatsrule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -904,7 +904,7 @@ func (a AlertingApi) GetAlertingInteractionstatsRules(expand []string) (*Interac
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Interactionstatsrulecontainer
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -986,7 +986,7 @@ func (a AlertingApi) GetAlertingRule(ruleId string) (*Commonrule, *APIResponse, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Commonrule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1073,7 +1073,7 @@ func (a AlertingApi) PatchAlertingAlert(alertId string, body Alertrequest) (*Com
 	postBody = &body
 
 	var successPayload *Commonalert
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1157,7 +1157,7 @@ func (a AlertingApi) PatchAlertingAlertsBulk(body Commonalertbulkupdaterequest) 
 	postBody = &body
 
 	var successPayload *Bulkresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1241,7 +1241,7 @@ func (a AlertingApi) PatchAlertingRulesBulk(body Commonrulebulkupdatenotificatio
 	postBody = &body
 
 	var successPayload *Bulkresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1320,7 +1320,7 @@ func (a AlertingApi) PostAlertingAlertsQuery(body Getalertquery) (*Alertlisting,
 	postBody = &body
 
 	var successPayload *Alertlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1410,7 +1410,7 @@ func (a AlertingApi) PostAlertingInteractionstatsRules(body Interactionstatsrule
 	postBody = &body
 
 	var successPayload *Interactionstatsrule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1494,7 +1494,7 @@ func (a AlertingApi) PostAlertingRules(body Commonrule) (*Commonrule, *APIRespon
 	postBody = &body
 
 	var successPayload *Commonrule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1578,7 +1578,7 @@ func (a AlertingApi) PostAlertingRulesBulkRemove(body Commonrulebulkdeletereques
 	postBody = &body
 
 	var successPayload *Bulkresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1657,7 +1657,7 @@ func (a AlertingApi) PostAlertingRulesQuery(body Getrulesquery) (*Commonrulecont
 	postBody = &body
 
 	var successPayload *Commonrulecontainer
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1742,7 +1742,7 @@ func (a AlertingApi) PutAlertingAlert(alertId string, body Alertingunreadstatus)
 	postBody = &body
 
 	var successPayload *Unreadstatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1838,7 +1838,7 @@ func (a AlertingApi) PutAlertingInteractionstatsAlert(alertId string, body Unrea
 	postBody = &body
 
 	var successPayload *Unreadstatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1934,7 +1934,7 @@ func (a AlertingApi) PutAlertingInteractionstatsRule(ruleId string, body Interac
 	postBody = &body
 
 	var successPayload *Interactionstatsrule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2024,7 +2024,7 @@ func (a AlertingApi) PutAlertingRule(ruleId string, body Modifiablerulepropertie
 	postBody = &body
 
 	var successPayload *Commonrule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

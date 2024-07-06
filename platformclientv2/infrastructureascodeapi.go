@@ -100,7 +100,7 @@ func (a InfrastructureAsCodeApi) GetInfrastructureascodeAccelerator(acceleratorI
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Acceleratorspecification
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -198,7 +198,7 @@ func (a InfrastructureAsCodeApi) GetInfrastructureascodeAccelerators(pageSize in
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Acceleratorlist
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -284,7 +284,7 @@ func (a InfrastructureAsCodeApi) GetInfrastructureascodeJob(jobId string, detail
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Infrastructureascodejob
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -376,7 +376,7 @@ func (a InfrastructureAsCodeApi) GetInfrastructureascodeJobs(maxResults int, inc
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Infrastructureascodejob
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -462,7 +462,7 @@ func (a InfrastructureAsCodeApi) PostInfrastructureascodeJobs(body Acceleratorin
 	postBody = &body
 
 	var successPayload *Infrastructureascodejob
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

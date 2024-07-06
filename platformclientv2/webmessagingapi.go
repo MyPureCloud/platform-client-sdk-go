@@ -89,7 +89,7 @@ func (a WebMessagingApi) GetWebmessagingMessages(pageSize int, pageNumber int) (
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webmessagingmessageentitylist
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

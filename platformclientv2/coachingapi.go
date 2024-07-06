@@ -98,7 +98,7 @@ func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*Coachinga
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingappointmentreference
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -187,7 +187,7 @@ func (a CoachingApi) DeleteCoachingAppointmentAnnotation(appointmentId string, a
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -265,7 +265,7 @@ func (a CoachingApi) GetCoachingAppointment(appointmentId string) (*Coachingappo
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingappointmentresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -355,7 +355,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotation(appointmentId string, anno
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingannotation
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -443,7 +443,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingannotationlist
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -531,7 +531,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingappointmentstatusresponselist
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -634,7 +634,7 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingappointmentresponselist
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -730,7 +730,7 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingappointmentresponselist
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -816,7 +816,7 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingnotification
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -898,7 +898,7 @@ func (a CoachingApi) GetCoachingNotifications(pageNumber int, pageSize int, expa
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Coachingnotificationlist
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -990,7 +990,7 @@ func (a CoachingApi) PatchCoachingAppointment(appointmentId string, body Updatec
 	postBody = &body
 
 	var successPayload *Coachingappointmentresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1088,7 +1088,7 @@ func (a CoachingApi) PatchCoachingAppointmentAnnotation(appointmentId string, an
 	postBody = &body
 
 	var successPayload *Coachingannotation
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1180,7 +1180,7 @@ func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body C
 	postBody = &body
 
 	var successPayload *Coachingappointmentstatusresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1272,7 +1272,7 @@ func (a CoachingApi) PatchCoachingNotification(notificationId string, body Coach
 	postBody = &body
 
 	var successPayload *Coachingnotification
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1364,7 +1364,7 @@ func (a CoachingApi) PostCoachingAppointmentAnnotations(appointmentId string, bo
 	postBody = &body
 
 	var successPayload *Coachingannotation
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1456,7 +1456,7 @@ func (a CoachingApi) PostCoachingAppointmentConversations(appointmentId string, 
 	postBody = &body
 
 	var successPayload *Addconversationresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1540,7 +1540,7 @@ func (a CoachingApi) PostCoachingAppointments(body Createcoachingappointmentrequ
 	postBody = &body
 
 	var successPayload *Coachingappointmentresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1624,7 +1624,7 @@ func (a CoachingApi) PostCoachingAppointmentsAggregatesQuery(body Coachingappoin
 	postBody = &body
 
 	var successPayload *Coachingappointmentaggregateresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1708,7 +1708,7 @@ func (a CoachingApi) PostCoachingScheduleslotsQuery(body Coachingslotsrequest) (
 	postBody = &body
 
 	var successPayload *Coachingslotsresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

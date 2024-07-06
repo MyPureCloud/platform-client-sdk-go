@@ -95,7 +95,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsConfiguration(configurationId str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -170,7 +170,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeployment(deploymentId string) (
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -247,7 +247,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsDeploymentCobrowseSessionId(deplo
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -323,7 +323,7 @@ func (a WebDeploymentsApi) DeleteWebdeploymentsTokenRevoke(xJourneySessionId str
 	headerParams["X-Journey-Session-Type"] = xJourneySessionType
 
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -405,7 +405,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersion(configurationId
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webdeploymentconfigurationversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -489,7 +489,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationI
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webdeploymentconfigurationversionentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -571,7 +571,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configura
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webdeploymentconfigurationversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -649,7 +649,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished boo
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webdeploymentconfigurationversionentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -733,7 +733,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployment(deploymentId string, expa
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webdeployment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -816,7 +816,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentCobrowseSessionId(deployme
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Cobrowsewebmessagingsession
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -902,7 +902,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentI
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webdeploymentactiveconfigurationondeployment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -980,7 +980,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Expan
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Expandablewebdeploymententitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1062,7 +1062,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurationVersionsDraftPublish(c
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Webdeploymentconfigurationversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1146,7 +1146,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsConfigurations(configurationVersion
 	postBody = &configurationVersion
 
 	var successPayload *Webdeploymentconfigurationversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1230,7 +1230,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsDeployments(deployment Webdeploymen
 	postBody = &deployment
 
 	var successPayload *Webdeployment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1309,7 +1309,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsTokenOauthcodegrantjwtexchange(body
 	postBody = &body
 
 	var successPayload *Webdeploymentsauthorizationresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1383,7 +1383,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsTokenRefresh(body Webdeploymentsref
 	postBody = &body
 
 	var successPayload *Signeddata
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1473,7 +1473,7 @@ func (a WebDeploymentsApi) PutWebdeploymentsConfigurationVersionsDraft(configura
 	postBody = &configurationVersion
 
 	var successPayload *Webdeploymentconfigurationversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1563,7 +1563,7 @@ func (a WebDeploymentsApi) PutWebdeploymentsDeployment(deploymentId string, depl
 	postBody = &deployment
 
 	var successPayload *Webdeployment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

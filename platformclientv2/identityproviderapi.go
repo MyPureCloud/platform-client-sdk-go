@@ -95,7 +95,7 @@ func (a IdentityProviderApi) DeleteIdentityprovider(providerId string) (*APIResp
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -165,7 +165,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersAdfs() (*interface{}, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -241,7 +241,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersCic() (*interface{}, *APIRes
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -317,7 +317,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGeneric() (*interface{}, *AP
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -393,7 +393,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersGsuite() (*interface{}, *API
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -469,7 +469,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersIdentitynow() (*interface{},
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -545,7 +545,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOkta() (*interface{}, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -621,7 +621,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersOnelogin() (*interface{}, *A
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -697,7 +697,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPing() (*interface{}, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -773,7 +773,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPurecloud() (*interface{}, *
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -849,7 +849,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersPureengage() (*interface{}, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -925,7 +925,7 @@ func (a IdentityProviderApi) DeleteIdentityprovidersSalesforce() (*interface{}, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1007,7 +1007,7 @@ func (a IdentityProviderApi) GetIdentityprovider(providerId string) (*Customprov
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Customprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1083,7 +1083,7 @@ func (a IdentityProviderApi) GetIdentityproviders() (*Identityproviderentitylist
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Identityproviderentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1159,7 +1159,7 @@ func (a IdentityProviderApi) GetIdentityprovidersAdfs() (*Adfs, *APIResponse, er
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Adfs
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1235,7 +1235,7 @@ func (a IdentityProviderApi) GetIdentityprovidersCic() (*Customerinteractioncent
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Customerinteractioncenter
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1311,7 +1311,7 @@ func (a IdentityProviderApi) GetIdentityprovidersGeneric() (*Genericsaml, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Genericsaml
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1387,7 +1387,7 @@ func (a IdentityProviderApi) GetIdentityprovidersGsuite() (*Gsuite, *APIResponse
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Gsuite
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1463,7 +1463,7 @@ func (a IdentityProviderApi) GetIdentityprovidersIdentitynow() (*Identitynow, *A
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Identitynow
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1539,7 +1539,7 @@ func (a IdentityProviderApi) GetIdentityprovidersOkta() (*Okta, *APIResponse, er
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Okta
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1615,7 +1615,7 @@ func (a IdentityProviderApi) GetIdentityprovidersOnelogin() (*Onelogin, *APIResp
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Onelogin
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1691,7 +1691,7 @@ func (a IdentityProviderApi) GetIdentityprovidersPing() (*Pingidentity, *APIResp
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Pingidentity
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1767,7 +1767,7 @@ func (a IdentityProviderApi) GetIdentityprovidersPurecloud() (*Purecloud, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Purecloud
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1843,7 +1843,7 @@ func (a IdentityProviderApi) GetIdentityprovidersPureengage() (*Pureengage, *API
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Pureengage
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1919,7 +1919,7 @@ func (a IdentityProviderApi) GetIdentityprovidersSalesforce() (*Salesforce, *API
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Salesforce
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2003,7 +2003,7 @@ func (a IdentityProviderApi) PostIdentityproviders(body Customprovider) (*Custom
 	postBody = &body
 
 	var successPayload *Customprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2093,7 +2093,7 @@ func (a IdentityProviderApi) PutIdentityprovider(providerId string, body Customp
 	postBody = &body
 
 	var successPayload *Customprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2177,7 +2177,7 @@ func (a IdentityProviderApi) PutIdentityprovidersAdfs(body Adfs) (*Identityprovi
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2261,7 +2261,7 @@ func (a IdentityProviderApi) PutIdentityprovidersCic(body Customerinteractioncen
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2345,7 +2345,7 @@ func (a IdentityProviderApi) PutIdentityprovidersGeneric(body Genericsaml) (*Ide
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2429,7 +2429,7 @@ func (a IdentityProviderApi) PutIdentityprovidersGsuite(body Gsuite) (*Identityp
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2513,7 +2513,7 @@ func (a IdentityProviderApi) PutIdentityprovidersIdentitynow(body Identitynow) (
 	postBody = &body
 
 	var successPayload *Identitynow
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2597,7 +2597,7 @@ func (a IdentityProviderApi) PutIdentityprovidersOkta(body Okta) (*Identityprovi
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2681,7 +2681,7 @@ func (a IdentityProviderApi) PutIdentityprovidersOnelogin(body Onelogin) (*Ident
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2765,7 +2765,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPing(body Pingidentity) (*Ident
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2849,7 +2849,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPurecloud(body Purecloud) (*Ide
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2933,7 +2933,7 @@ func (a IdentityProviderApi) PutIdentityprovidersPureengage(body Pureengage) (*I
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3017,7 +3017,7 @@ func (a IdentityProviderApi) PutIdentityprovidersSalesforce(body Salesforce) (*I
 	postBody = &body
 
 	var successPayload *Identityprovider
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

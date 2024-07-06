@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Facetinfo
-type Facetinfo struct { 
+// Celebrationstateparam
+type Celebrationstateparam struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of the field that was faceted on.
-	Name *string `json:"name,omitempty"`
-
-	// Entries - The entries resulting from this facet.
-	Entries *[]Entry `json:"entries,omitempty"`
+	// State - The state of the celebration
+	State *string `json:"state,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Facetinfo) SetField(field string, fieldValue interface{}) {
+func (o *Celebrationstateparam) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Facetinfo) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Facetinfo) MarshalJSON() ([]byte, error) {
+func (o Celebrationstateparam) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,43 +75,34 @@ func (o Facetinfo) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Facetinfo
+	type Alias Celebrationstateparam
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
-		
-		Entries *[]Entry `json:"entries,omitempty"`
+		State *string `json:"state,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
-		
-		Entries: o.Entries,
+		State: o.State,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Facetinfo) UnmarshalJSON(b []byte) error {
-	var FacetinfoMap map[string]interface{}
-	err := json.Unmarshal(b, &FacetinfoMap)
+func (o *Celebrationstateparam) UnmarshalJSON(b []byte) error {
+	var CelebrationstateparamMap map[string]interface{}
+	err := json.Unmarshal(b, &CelebrationstateparamMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := FacetinfoMap["name"].(string); ok {
-		o.Name = &Name
+	if State, ok := CelebrationstateparamMap["state"].(string); ok {
+		o.State = &State
 	}
     
-	if Entries, ok := FacetinfoMap["entries"].([]interface{}); ok {
-		EntriesString, _ := json.Marshal(Entries)
-		json.Unmarshal(EntriesString, &o.Entries)
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Facetinfo) String() string {
+func (o *Celebrationstateparam) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -98,7 +98,7 @@ func (a FlowsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerystatu
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -184,7 +184,7 @@ func (a FlowsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Flowasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -272,7 +272,7 @@ func (a FlowsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pageSi
 	postBody = &body
 
 	var successPayload *Flowactivityresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -358,7 +358,7 @@ func (a FlowsApi) PostAnalyticsFlowsAggregatesJobs(body Flowasyncaggregationquer
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -442,7 +442,7 @@ func (a FlowsApi) PostAnalyticsFlowsAggregatesQuery(body Flowaggregationquery) (
 	postBody = &body
 
 	var successPayload *Flowaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -526,7 +526,7 @@ func (a FlowsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationquery)
 	postBody = &body
 
 	var successPayload *Flowobservationqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

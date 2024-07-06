@@ -95,7 +95,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorkbin(workbinId string) (*APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -170,7 +170,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorkitem(workitemId string) (*API
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -245,7 +245,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorkitemsSchema(schemaId string) 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -320,7 +320,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorktype(worktypeId string) (*API
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -401,7 +401,7 @@ func (a TaskManagementApi) DeleteTaskmanagementWorktypeStatus(worktypeId string,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -477,7 +477,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbin(workbinId string) (*Workbin,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workbin
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -567,7 +567,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinHistory(workbinId string, aft
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workbinchangelisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -657,7 +657,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinVersion(workbinId string, ent
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workbinversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -747,7 +747,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinVersions(workbinId string, af
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workbinversionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -831,7 +831,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string, expands 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitem
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -921,7 +921,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemHistory(workitemId string, a
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemchangelisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1017,7 +1017,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemUserWrapups(workitemId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemwrapup
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1107,7 +1107,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemVersion(workitemId string, e
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1197,7 +1197,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemVersions(workitemId string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemversionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1287,7 +1287,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemWrapups(workitemId string, e
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemwrapupentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1369,7 +1369,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsQueryJob(jobId string) (*Wo
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemqueryjobresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1451,7 +1451,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsQueryJobResults(jobId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitempagedentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1533,7 +1533,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchema(schemaId string) (*D
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dataschema
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1621,7 +1621,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemaVersion(schemaId stri
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dataschema
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1703,7 +1703,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemaVersions(schemaId str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dataschema
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1779,7 +1779,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemas() (*Dataschemalisti
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Dataschemalisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1863,7 +1863,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktype(worktypeId string, expands 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Worktype
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1953,7 +1953,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeHistory(worktypeId string, a
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Worktypechangelisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2041,7 +2041,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeStatus(worktypeId string, st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemstatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2123,7 +2123,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeStatuses(worktypeId string) 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitemstatuslisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2213,7 +2213,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeVersion(worktypeId string, e
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Worktypeversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2303,7 +2303,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeVersions(worktypeId string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Worktypeversionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2393,7 +2393,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkbin(workbinId string, body Wor
 	postBody = &body
 
 	var successPayload *Workbin
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2483,7 +2483,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitem(workitemId string, body W
 	postBody = &body
 
 	var successPayload *Workitem
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2572,7 +2572,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemAssignment(workitemId stri
 	postBody = &body
 
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2662,7 +2662,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemUserWrapups(workitemId str
 	postBody = &body
 
 	var successPayload *Workitemwrapup
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2752,7 +2752,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemUsersMeWrapups(workitemId 
 	postBody = &body
 
 	var successPayload *Workitemwrapup
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2837,7 +2837,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorktype(worktypeId string, body W
 	postBody = &body
 
 	var successPayload *Worktype
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2928,7 +2928,7 @@ func (a TaskManagementApi) PatchTaskmanagementWorktypeStatus(worktypeId string, 
 	postBody = &body
 
 	var successPayload *Workitemstatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3007,7 +3007,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkbins(body Workbincreate) (*Work
 	postBody = &body
 
 	var successPayload *Workbin
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3091,7 +3091,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkbinsQuery(body Workbinqueryrequ
 	postBody = &body
 
 	var successPayload *Workbinqueryentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3173,7 +3173,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemAcdCancel(workitemId string
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitem
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3255,7 +3255,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemDisconnect(workitemId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workitem
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3340,7 +3340,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemTerminate(workitemId string
 	postBody = &body
 
 	var successPayload *Workitem
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3424,7 +3424,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitems(body Workitemcreate) (*Wo
 	postBody = &body
 
 	var successPayload *Workitem
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3512,7 +3512,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemsQuery(body Workitemquerypo
 	postBody = &body
 
 	var successPayload *Workitempostqueryentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3596,7 +3596,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemsQueryJobs(body Workitemque
 	postBody = &body
 
 	var successPayload *Workitemqueryjobresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3680,7 +3680,7 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemsSchemas(body Dataschema) (
 	postBody = &body
 
 	var successPayload *Dataschema
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3765,7 +3765,7 @@ func (a TaskManagementApi) PostTaskmanagementWorktypeStatuses(worktypeId string,
 	postBody = &body
 
 	var successPayload *Workitemstatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3844,7 +3844,7 @@ func (a TaskManagementApi) PostTaskmanagementWorktypes(body Worktypecreate) (*Wo
 	postBody = &body
 
 	var successPayload *Worktype
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3928,7 +3928,7 @@ func (a TaskManagementApi) PostTaskmanagementWorktypesQuery(body Worktypequeryre
 	postBody = &body
 
 	var successPayload *Worktypequeryentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4018,7 +4018,7 @@ func (a TaskManagementApi) PutTaskmanagementWorkitemsSchema(schemaId string, bod
 	postBody = &body
 
 	var successPayload *Dataschema
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

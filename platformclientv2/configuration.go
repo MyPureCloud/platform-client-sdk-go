@@ -85,6 +85,12 @@ type ProxyConfiguration struct {
 	Host        string   `json:"host,omitempty"`
 	Port        string   `json:"port,omitempty"`
 	Auth  		*Auth     `json:"auth,omitempty"`
+	PathParams  []*PathParams `json:"pathParams,omitempty"`
+}
+
+type PathParams struct {
+	PathName    string   `json:"pathName,omitempty"`
+	PathValue    string   `json:"pathValue,omitempty"`
 }
 
 type Auth struct {
@@ -208,6 +214,29 @@ func isJsonFile(filePath string) (bool, error) {
 	return json.Unmarshal(s, &js) == nil, nil
 }
 
+
+
+func ConvertStringToPathParams(input string) ([]*PathParams, error) {
+	pairs := strings.Split(input, ",")
+
+	var pathParams []*PathParams
+
+	for _, pair := range pairs {
+		kv := strings.SplitN(pair, ":", 2)
+		if len(kv) != 2 {
+			return nil, fmt.Errorf("invalid input string format")
+		}
+
+		param := PathParams{
+			PathName:  strings.TrimSpace(kv[0]),
+			PathValue: strings.TrimSpace(kv[1]),
+		}
+		pathParams = append(pathParams, &param)
+	}
+
+	return pathParams, nil
+}
+
 func (c *Configuration) updateConfigFromFile() error {
 	isJson, err := isJsonFile(c.ConfigFilePath)
 	if err != nil {
@@ -259,12 +288,24 @@ func (c *Configuration) updateConfigFromFile() error {
 
                         userName := getConfigString("proxy", "auth-username")
                         password := getConfigString("proxy", "auth-password")
+
+
+                        pathParamString := getConfigString("proxy", "path-params")
+
+                        if pathParamString != "" {
+                             pathParam, err := ConvertStringToPathParams(pathParamString)
+                             if err == nil {
+                               c.ProxyConfiguration.PathParams = pathParam
+                             }
+                        }
+
                         if userName != "" && password != "" {
                                 auth := Auth{}
                                 c.ProxyConfiguration.Auth = &auth
                                 c.ProxyConfiguration.Auth.UserName = userName
                                 c.ProxyConfiguration.Auth.Password = password
                         }
+
                 }
         }
 
@@ -419,7 +460,7 @@ func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret
 	headerParams["Authorization"] = "Basic " + base64.StdEncoding.EncodeToString([]byte(clientID+":"+clientSecret))
 	formParams := url.Values{}
 	formParams["grant_type"] = []string{"client_credentials"}
-	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
+	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil, "login")
 	if err != nil && response == nil {
 		return err
 	}
@@ -474,7 +515,7 @@ func (c *Configuration) AuthorizeCodeGrant(clientID string, clientSecret string,
 	formParams["grant_type"] = []string{"authorization_code"}
 	formParams["code"] = []string{authCode}
 	formParams["redirect_uri"] = []string{redirectUri}
-	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
+	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil, "login")
 	if err != nil && response == nil {
 		return nil, err
 	}
@@ -516,7 +557,7 @@ func (c *Configuration) RefreshAuthorizationCodeGrant(clientID string, clientSec
 	formParams := url.Values{}
 	formParams["grant_type"] = []string{"refresh_token"}
 	formParams["refresh_token"] = []string{refreshToken}
-	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
+	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil, "login")
 	if err != nil && response == nil {
 		return nil, err
 	}
@@ -594,7 +635,7 @@ func (c *Configuration) AuthorizePKCEGrant(clientID string, codeVerifier string,
 	formParams["code_verifier"] = []string{codeVerifier}
 	formParams["client_id"] = []string{clientID}
 	formParams["redirect_uri"] = []string{redirectUri}
-	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil)
+	response, err := c.APIClient.CallAPI(authHost+"/oauth/token", "POST", nil, headerParams, nil, formParams, "", nil, "login")
 	if err != nil && response == nil {
 		return nil, err
 	}

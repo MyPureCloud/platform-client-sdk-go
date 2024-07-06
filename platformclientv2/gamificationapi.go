@@ -96,7 +96,7 @@ func (a GamificationApi) DeleteEmployeeperformanceExternalmetricsDefinition(metr
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -172,7 +172,7 @@ func (a GamificationApi) GetEmployeeperformanceExternalmetricsDefinition(metricI
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Externalmetricdefinition
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -252,7 +252,7 @@ func (a GamificationApi) GetEmployeeperformanceExternalmetricsDefinitions(pageSi
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Externalmetricdefinitionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -375,7 +375,7 @@ func (a GamificationApi) GetGamificationInsights(filterType string, filterId str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Insightssummary
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -486,7 +486,7 @@ func (a GamificationApi) GetGamificationInsightsDetails(filterType string, filte
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Insightsdetails
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -611,7 +611,7 @@ func (a GamificationApi) GetGamificationInsightsGroupsTrends(filterType string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Insightstrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -736,7 +736,7 @@ func (a GamificationApi) GetGamificationInsightsGroupsTrendsAll(filterType strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Insightstrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -840,7 +840,7 @@ func (a GamificationApi) GetGamificationInsightsMembers(filterType string, filte
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Insightsagents
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -965,7 +965,7 @@ func (a GamificationApi) GetGamificationInsightsTrends(filterType string, filter
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Userinsightstrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1082,7 +1082,7 @@ func (a GamificationApi) GetGamificationInsightsUserDetails(userId string, filte
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Insightsdetails
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1213,7 +1213,7 @@ func (a GamificationApi) GetGamificationInsightsUserTrends(userId string, filter
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Userinsightstrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1305,7 +1305,7 @@ func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endW
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Leaderboard
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1411,7 +1411,7 @@ func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filter
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Leaderboard
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1501,7 +1501,7 @@ func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType stri
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Overallbestpoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1577,7 +1577,7 @@ func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoi
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Overallbestpoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1659,7 +1659,7 @@ func (a GamificationApi) GetGamificationMetricdefinition(metricDefinitionId stri
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Metricdefinition
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1737,7 +1737,7 @@ func (a GamificationApi) GetGamificationMetricdefinitions() (*Getmetricdefinitio
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Getmetricdefinitionsresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1819,7 +1819,7 @@ func (a GamificationApi) GetGamificationProfile(profileId string) (*Performancep
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Performanceprofile
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1901,7 +1901,7 @@ func (a GamificationApi) GetGamificationProfileMembers(profileId string) (*Membe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Memberlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1991,7 +1991,7 @@ func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Metric
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2079,7 +2079,7 @@ func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Getmetricresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2163,7 +2163,7 @@ func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Getmetricsresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2239,7 +2239,7 @@ func (a GamificationApi) GetGamificationProfiles() (*Getprofilesresponse, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Getprofilesresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2323,7 +2323,7 @@ func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Performanceprofile
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2401,7 +2401,7 @@ func (a GamificationApi) GetGamificationProfilesUsersMe(workday time.Time) (*Per
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Performanceprofile
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2486,7 +2486,7 @@ func (a GamificationApi) GetGamificationScorecards(workday time.Time, expand []s
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workdaymetriclisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2576,7 +2576,7 @@ func (a GamificationApi) GetGamificationScorecardsAttendance(startWorkday time.T
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Attendancestatuslisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2652,7 +2652,7 @@ func (a GamificationApi) GetGamificationScorecardsBestpoints() (*Userbestpoints,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Userbestpoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2735,7 +2735,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Alltimepoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2818,7 +2818,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Tim
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Singleworkdayaveragepoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2910,7 +2910,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workdaypointstrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3022,7 +3022,7 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUserValuesTrends(
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Metricvaluetrendaverage
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3137,7 +3137,7 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricUsersValuesTrends
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Metricvaluetrendaverage
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3245,7 +3245,7 @@ func (a GamificationApi) GetGamificationScorecardsProfileMetricValuesTrends(prof
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Metricvaluetrendaverage
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3336,7 +3336,7 @@ func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday ti
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workdaymetriclisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3432,7 +3432,7 @@ func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Attendancestatuslisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3514,7 +3514,7 @@ func (a GamificationApi) GetGamificationScorecardsUserBestpoints(userId string) 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Userbestpoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3603,7 +3603,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Alltimepoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3701,7 +3701,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workdaypointstrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3799,7 +3799,7 @@ func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workdayvaluestrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3896,7 +3896,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersPointsAverage(filterType 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Singleworkdayaveragepoints
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3995,7 +3995,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesAverage(filterType 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Singleworkdayaveragevalues
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4101,7 +4101,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType s
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workdayvaluestrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4186,7 +4186,7 @@ func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Tim
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Singleworkdayaveragevalues
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4282,7 +4282,7 @@ func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Workdayvaluestrend
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4358,7 +4358,7 @@ func (a GamificationApi) GetGamificationStatus() (*Gamificationstatus, *APIRespo
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Gamificationstatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4440,7 +4440,7 @@ func (a GamificationApi) GetGamificationTemplate(templateId string) (*Objectivet
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Objectivetemplate
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4516,7 +4516,7 @@ func (a GamificationApi) GetGamificationTemplates() (*Gettemplatesresponse, *API
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Gettemplatesresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4606,7 +4606,7 @@ func (a GamificationApi) PatchEmployeeperformanceExternalmetricsDefinition(metri
 	postBody = &body
 
 	var successPayload *Externalmetricdefinition
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4685,7 +4685,7 @@ func (a GamificationApi) PostEmployeeperformanceExternalmetricsData(body Externa
 	postBody = &body
 
 	var successPayload *Externalmetricdatawriteresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4764,7 +4764,7 @@ func (a GamificationApi) PostEmployeeperformanceExternalmetricsDefinitions(body 
 	postBody = &body
 
 	var successPayload *Externalmetricdefinition
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4846,7 +4846,7 @@ func (a GamificationApi) PostGamificationProfileActivate(profileId string) (*Per
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Performanceprofile
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4928,7 +4928,7 @@ func (a GamificationApi) PostGamificationProfileDeactivate(profileId string) (*P
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Performanceprofile
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5018,7 +5018,7 @@ func (a GamificationApi) PostGamificationProfileMembers(profileId string, body A
 	postBody = &body
 
 	var successPayload *Assignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5108,7 +5108,7 @@ func (a GamificationApi) PostGamificationProfileMembersValidate(profileId string
 	postBody = &body
 
 	var successPayload *Assignmentvalidation
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5204,7 +5204,7 @@ func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId strin
 	postBody = &body
 
 	var successPayload *Metric
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5294,7 +5294,7 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 	postBody = &body
 
 	var successPayload *Metric
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5380,7 +5380,7 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile,
 	postBody = &body
 
 	var successPayload *Performanceprofile
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5470,7 +5470,7 @@ func (a GamificationApi) PostGamificationProfilesUserQuery(userId string, body U
 	postBody = &body
 
 	var successPayload *Userprofilesindaterange
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5554,7 +5554,7 @@ func (a GamificationApi) PostGamificationProfilesUsersMeQuery(body Userprofilesi
 	postBody = &body
 
 	var successPayload *Userprofilesindaterange
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5639,7 +5639,7 @@ func (a GamificationApi) PutGamificationProfile(profileId string, body Performan
 	postBody = &body
 
 	var successPayload *Performanceprofile
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5735,7 +5735,7 @@ func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId
 	postBody = &body
 
 	var successPayload *Metric
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -5819,7 +5819,7 @@ func (a GamificationApi) PutGamificationStatus(status Gamificationstatus) (*Gami
 	postBody = &status
 
 	var successPayload *Gamificationstatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

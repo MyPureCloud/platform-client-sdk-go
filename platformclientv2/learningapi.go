@@ -95,7 +95,7 @@ func (a LearningApi) DeleteLearningAssignment(assignmentId string) (*APIResponse
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -172,7 +172,7 @@ func (a LearningApi) DeleteLearningModule(moduleId string) (*APIResponse, error)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -252,7 +252,7 @@ func (a LearningApi) GetLearningAssignment(assignmentId string, expand []string)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningassignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -272,7 +272,7 @@ func (a LearningApi) GetLearningAssignment(assignmentId string, expand []string)
 // Get Learning Assignment Step
 //
 // Permission not required if you are the assigned user of the learning assignment
-func (a LearningApi) GetLearningAssignmentStep(assignmentId string, stepId string, shareableContentObjectId string, expand []string) (*Learningassignmentstep, *APIResponse, error) {
+func (a LearningApi) GetLearningAssignmentStep(assignmentId string, stepId string, shareableContentObjectId string, defaultShareableContentObject string, expand []string) (*Learningassignmentstep, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/{assignmentId}/steps/{stepId}"
@@ -313,6 +313,8 @@ func (a LearningApi) GetLearningAssignmentStep(assignmentId string, stepId strin
 	
 	queryParams["shareableContentObjectId"] = a.Configuration.APIClient.ParameterToString(shareableContentObjectId, "")
 	
+	queryParams["defaultShareableContentObject"] = a.Configuration.APIClient.ParameterToString(defaultShareableContentObject, "")
+	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
@@ -346,7 +348,7 @@ func (a LearningApi) GetLearningAssignmentStep(assignmentId string, stepId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningassignmentstep
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -454,7 +456,7 @@ func (a LearningApi) GetLearningAssignments(moduleId string, interval string, co
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningassignmentsdomainentity
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -558,7 +560,7 @@ func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningassignmentsdomainentity
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -642,7 +644,7 @@ func (a LearningApi) GetLearningModule(moduleId string, expand []string) (*Learn
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningmodule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -730,7 +732,7 @@ func (a LearningApi) GetLearningModuleJob(moduleId string, jobId string) (*Learn
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningmodulejobresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -812,7 +814,7 @@ func (a LearningApi) GetLearningModulePreview(moduleId string) (*Learningmodulep
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningmodulepreviewgetresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -894,7 +896,7 @@ func (a LearningApi) GetLearningModuleRule(moduleId string) (*Learningmodulerule
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningmodulerule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -984,7 +986,7 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningmodule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1082,7 +1084,7 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningmodulesdomainentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1177,7 +1179,7 @@ func (a LearningApi) GetLearningModulesAssignments(userIds []string, pageSize in
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Assignedlearningmoduledomainentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1259,7 +1261,7 @@ func (a LearningApi) GetLearningModulesCoverartCoverArtId(coverArtId string) (*L
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningmodulecoverartresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1341,7 +1343,7 @@ func (a LearningApi) GetLearningScormScormId(scormId string) (*Learningscormresp
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningscormresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1426,7 +1428,7 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 	postBody = &body
 
 	var successPayload *Learningassignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1511,7 +1513,7 @@ func (a LearningApi) PatchLearningAssignmentReschedule(assignmentId string, body
 	postBody = &body
 
 	var successPayload *Learningassignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1604,7 +1606,7 @@ func (a LearningApi) PatchLearningAssignmentStep(assignmentId string, stepId str
 	postBody = &body
 
 	var successPayload *Learningassignmentstep
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1700,7 +1702,7 @@ func (a LearningApi) PatchLearningModuleUserAssignments(moduleId string, userId 
 	postBody = &body
 
 	var successPayload *Learningassignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1784,7 +1786,7 @@ func (a LearningApi) PostLearningAssessmentsScoring(body Learningassessmentscori
 	postBody = &body
 
 	var successPayload *Assessmentscoringset
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1868,7 +1870,7 @@ func (a LearningApi) PostLearningAssignmentReassign(assignmentId string) (*Learn
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningassignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1952,7 +1954,7 @@ func (a LearningApi) PostLearningAssignmentReset(assignmentId string) (*Learning
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Learningassignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2031,7 +2033,7 @@ func (a LearningApi) PostLearningAssignments(body Learningassignmentcreate) (*Le
 	postBody = &body
 
 	var successPayload *Learningassignment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2115,7 +2117,7 @@ func (a LearningApi) PostLearningAssignmentsAggregatesQuery(body Learningassignm
 	postBody = &body
 
 	var successPayload *Learningassignmentaggregateresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2194,7 +2196,7 @@ func (a LearningApi) PostLearningAssignmentsBulkadd(body []Learningassignmentite
 	postBody = &body
 
 	var successPayload *Learningassignmentbulkaddresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2273,7 +2275,7 @@ func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*Learning
 	postBody = &body
 
 	var successPayload *Learningassignmentbulkremoveresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2365,7 +2367,7 @@ func (a LearningApi) PostLearningModuleJobs(moduleId string, body Learningmodule
 	postBody = &body
 
 	var successPayload *Learningmodulejobresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2450,7 +2452,7 @@ func (a LearningApi) PostLearningModulePublish(moduleId string, body Learningmod
 	postBody = &body
 
 	var successPayload *Learningmodulepublishresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2536,7 +2538,7 @@ func (a LearningApi) PostLearningModules(body Learningmodulerequest) (*Learningm
 	postBody = &body
 
 	var successPayload *Learningmodule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2636,7 +2638,7 @@ func (a LearningApi) PostLearningRulesQuery(pageSize int, pageNumber int, body L
 	postBody = &body
 
 	var successPayload *Learningassignmentuserlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2720,7 +2722,7 @@ func (a LearningApi) PostLearningScheduleslotsQuery(body Learningscheduleslotsqu
 	postBody = &body
 
 	var successPayload *Learningscheduleslotsqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2799,7 +2801,7 @@ func (a LearningApi) PostLearningScorm(body Learningscormuploadrequest) (*Learni
 	postBody = &body
 
 	var successPayload *Learningscormuploadresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2891,7 +2893,7 @@ func (a LearningApi) PutLearningModule(moduleId string, body Learningmodulereque
 	postBody = &body
 
 	var successPayload *Learningmodule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2983,7 +2985,7 @@ func (a LearningApi) PutLearningModulePreview(moduleId string, body Learningmodu
 	postBody = &body
 
 	var successPayload *Learningmodulepreviewupdateresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3075,7 +3077,7 @@ func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmoduler
 	postBody = &body
 
 	var successPayload *Learningmodulerule
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

@@ -99,7 +99,7 @@ func (a LanguagesApi) DeleteLanguage(languageId string) (*APIResponse, error) {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -179,7 +179,7 @@ func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, e
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Language
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -267,7 +267,7 @@ func (a LanguagesApi) GetLanguages(pageSize int, pageNumber int, sortOrder strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Languageentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -343,7 +343,7 @@ func (a LanguagesApi) GetLanguagesTranslations() (*Availabletranslations, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Availabletranslations
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -426,7 +426,7 @@ func (a LanguagesApi) GetLanguagesTranslationsBuiltin(language string) (*map[str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *map[string]interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -509,7 +509,7 @@ func (a LanguagesApi) GetLanguagesTranslationsOrganization(language string) (*ma
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *map[string]interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -591,7 +591,7 @@ func (a LanguagesApi) GetLanguagesTranslationsUser(userId string) (*map[string]i
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *map[string]interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -679,7 +679,7 @@ func (a LanguagesApi) PostLanguages(body Language) (*Language, *APIResponse, err
 	postBody = &body
 
 	var successPayload *Language
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

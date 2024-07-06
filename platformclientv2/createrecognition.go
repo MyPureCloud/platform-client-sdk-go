@@ -7,31 +7,31 @@ import (
 	"strings"
 )
 
-// Auditsearchresult
-type Auditsearchresult struct { 
+// Createrecognition
+type Createrecognition struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// PageNumber - Which page was returned.
-	PageNumber *int `json:"pageNumber,omitempty"`
+	// RecipientId - The recipient of the recognition
+	RecipientId *string `json:"recipientId,omitempty"`
 
-	// PageSize - The number of results in a page.
-	PageSize *int `json:"pageSize,omitempty"`
+	// VarType - The type of the recognition
+	VarType *string `json:"type,omitempty"`
 
-	// Total - The total number of results.
-	Total *int `json:"total,omitempty"`
+	// Title - The title of the recognition. Max length of 100 characters (optional)
+	Title *string `json:"title,omitempty"`
 
-	// PageCount - The number of pages of results.
-	PageCount *int `json:"pageCount,omitempty"`
+	// Note - The note of the recognition. Max length of 800 characters (optional)
+	Note *string `json:"note,omitempty"`
 
-	// FacetInfo
-	FacetInfo *[]Facetinfo `json:"facetInfo,omitempty"`
+	// ContextType - The context type (optional)
+	ContextType *string `json:"contextType,omitempty"`
 
-	// AuditMessages
-	AuditMessages *[]Auditmessage `json:"auditMessages,omitempty"`
+	// ContextId - The context id (optional)
+	ContextId *string `json:"contextId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Auditsearchresult) SetField(field string, fieldValue interface{}) {
+func (o *Createrecognition) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -52,7 +52,7 @@ func (o *Auditsearchresult) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Auditsearchresult) MarshalJSON() ([]byte, error) {
+func (o Createrecognition) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -90,80 +90,74 @@ func (o Auditsearchresult) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Auditsearchresult
+	type Alias Createrecognition
 	
 	return json.Marshal(&struct { 
-		PageNumber *int `json:"pageNumber,omitempty"`
+		RecipientId *string `json:"recipientId,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
+		VarType *string `json:"type,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
+		Title *string `json:"title,omitempty"`
 		
-		PageCount *int `json:"pageCount,omitempty"`
+		Note *string `json:"note,omitempty"`
 		
-		FacetInfo *[]Facetinfo `json:"facetInfo,omitempty"`
+		ContextType *string `json:"contextType,omitempty"`
 		
-		AuditMessages *[]Auditmessage `json:"auditMessages,omitempty"`
+		ContextId *string `json:"contextId,omitempty"`
 		Alias
 	}{ 
-		PageNumber: o.PageNumber,
+		RecipientId: o.RecipientId,
 		
-		PageSize: o.PageSize,
+		VarType: o.VarType,
 		
-		Total: o.Total,
+		Title: o.Title,
 		
-		PageCount: o.PageCount,
+		Note: o.Note,
 		
-		FacetInfo: o.FacetInfo,
+		ContextType: o.ContextType,
 		
-		AuditMessages: o.AuditMessages,
+		ContextId: o.ContextId,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Auditsearchresult) UnmarshalJSON(b []byte) error {
-	var AuditsearchresultMap map[string]interface{}
-	err := json.Unmarshal(b, &AuditsearchresultMap)
+func (o *Createrecognition) UnmarshalJSON(b []byte) error {
+	var CreaterecognitionMap map[string]interface{}
+	err := json.Unmarshal(b, &CreaterecognitionMap)
 	if err != nil {
 		return err
 	}
 	
-	if PageNumber, ok := AuditsearchresultMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
+	if RecipientId, ok := CreaterecognitionMap["recipientId"].(string); ok {
+		o.RecipientId = &RecipientId
 	}
-	
-	if PageSize, ok := AuditsearchresultMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
+    
+	if VarType, ok := CreaterecognitionMap["type"].(string); ok {
+		o.VarType = &VarType
 	}
-	
-	if Total, ok := AuditsearchresultMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
+    
+	if Title, ok := CreaterecognitionMap["title"].(string); ok {
+		o.Title = &Title
 	}
-	
-	if PageCount, ok := AuditsearchresultMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
+    
+	if Note, ok := CreaterecognitionMap["note"].(string); ok {
+		o.Note = &Note
 	}
-	
-	if FacetInfo, ok := AuditsearchresultMap["facetInfo"].([]interface{}); ok {
-		FacetInfoString, _ := json.Marshal(FacetInfo)
-		json.Unmarshal(FacetInfoString, &o.FacetInfo)
+    
+	if ContextType, ok := CreaterecognitionMap["contextType"].(string); ok {
+		o.ContextType = &ContextType
 	}
-	
-	if AuditMessages, ok := AuditsearchresultMap["auditMessages"].([]interface{}); ok {
-		AuditMessagesString, _ := json.Marshal(AuditMessages)
-		json.Unmarshal(AuditMessagesString, &o.AuditMessages)
+    
+	if ContextId, ok := CreaterecognitionMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
 	}
-	
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Auditsearchresult) String() string {
+func (o *Createrecognition) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

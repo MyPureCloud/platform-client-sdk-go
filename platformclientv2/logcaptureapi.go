@@ -95,7 +95,7 @@ func (a LogCaptureApi) DeleteDiagnosticsLogcaptureBrowserUser(userId string) (*A
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -171,7 +171,7 @@ func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserEntriesDownloadJob(jobId s
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Logcapturedownloadexecutionresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -253,7 +253,7 @@ func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUser(userId string) (*Logc
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Logcaptureuserconfiguration
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -331,7 +331,7 @@ func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUsers(includeExpired bool)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Pagelessentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -410,7 +410,7 @@ func (a LogCaptureApi) PostDiagnosticsLogcaptureBrowserEntriesDownloadJobs(body 
 	postBody = &body
 
 	var successPayload *Logcapturedownloadexecutionresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -495,7 +495,7 @@ func (a LogCaptureApi) PostDiagnosticsLogcaptureBrowserEntriesQuery(before strin
 	postBody = &body
 
 	var successPayload *Logcapturequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -580,7 +580,7 @@ func (a LogCaptureApi) PostDiagnosticsLogcaptureBrowserUser(userId string, body 
 	postBody = &body
 
 	var successPayload *Logcaptureuserconfiguration
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

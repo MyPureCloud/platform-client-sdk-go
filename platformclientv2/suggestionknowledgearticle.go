@@ -7,25 +7,31 @@ import (
 	"strings"
 )
 
-// Auditfilter
-type Auditfilter struct { 
+// Suggestionknowledgearticle
+type Suggestionknowledgearticle struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of the field by which to filter.
-	Name *string `json:"name,omitempty"`
+	// Title - The article title.
+	Title *string `json:"title,omitempty"`
 
-	// VarType - The type of the filter, DATE or STRING.
-	VarType *string `json:"type,omitempty"`
+	// Snippets - Snippets of text from the article matching the query.
+	Snippets *[]string `json:"snippets,omitempty"`
 
-	// Operator - The operation that the filter performs.
-	Operator *string `json:"operator,omitempty"`
+	// Document - The article.
+	Document *Addressableentityref `json:"document,omitempty"`
 
-	// Values - The values to make the filter comparison against.
-	Values *[]string `json:"values,omitempty"`
+	// Version - The version of the article.
+	Version *Addressableentityref `json:"version,omitempty"`
+
+	// KnowledgeAnswer - The most relevant answer within the suggested article.
+	KnowledgeAnswer *Suggestionknowledgeanswer `json:"knowledgeAnswer,omitempty"`
+
+	// Variations - The variations of the article.
+	Variations *[]Addressableentityref `json:"variations,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Auditfilter) SetField(field string, fieldValue interface{}) {
+func (o *Suggestionknowledgearticle) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +52,7 @@ func (o *Auditfilter) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Auditfilter) MarshalJSON() ([]byte, error) {
+func (o Suggestionknowledgearticle) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,51 +90,71 @@ func (o Auditfilter) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Auditfilter
+	type Alias Suggestionknowledgearticle
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
+		Title *string `json:"title,omitempty"`
 		
-		VarType *string `json:"type,omitempty"`
+		Snippets *[]string `json:"snippets,omitempty"`
 		
-		Operator *string `json:"operator,omitempty"`
+		Document *Addressableentityref `json:"document,omitempty"`
 		
-		Values *[]string `json:"values,omitempty"`
+		Version *Addressableentityref `json:"version,omitempty"`
+		
+		KnowledgeAnswer *Suggestionknowledgeanswer `json:"knowledgeAnswer,omitempty"`
+		
+		Variations *[]Addressableentityref `json:"variations,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
+		Title: o.Title,
 		
-		VarType: o.VarType,
+		Snippets: o.Snippets,
 		
-		Operator: o.Operator,
+		Document: o.Document,
 		
-		Values: o.Values,
+		Version: o.Version,
+		
+		KnowledgeAnswer: o.KnowledgeAnswer,
+		
+		Variations: o.Variations,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Auditfilter) UnmarshalJSON(b []byte) error {
-	var AuditfilterMap map[string]interface{}
-	err := json.Unmarshal(b, &AuditfilterMap)
+func (o *Suggestionknowledgearticle) UnmarshalJSON(b []byte) error {
+	var SuggestionknowledgearticleMap map[string]interface{}
+	err := json.Unmarshal(b, &SuggestionknowledgearticleMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := AuditfilterMap["name"].(string); ok {
-		o.Name = &Name
+	if Title, ok := SuggestionknowledgearticleMap["title"].(string); ok {
+		o.Title = &Title
 	}
     
-	if VarType, ok := AuditfilterMap["type"].(string); ok {
-		o.VarType = &VarType
+	if Snippets, ok := SuggestionknowledgearticleMap["snippets"].([]interface{}); ok {
+		SnippetsString, _ := json.Marshal(Snippets)
+		json.Unmarshal(SnippetsString, &o.Snippets)
 	}
-    
-	if Operator, ok := AuditfilterMap["operator"].(string); ok {
-		o.Operator = &Operator
+	
+	if Document, ok := SuggestionknowledgearticleMap["document"].(map[string]interface{}); ok {
+		DocumentString, _ := json.Marshal(Document)
+		json.Unmarshal(DocumentString, &o.Document)
 	}
-    
-	if Values, ok := AuditfilterMap["values"].([]interface{}); ok {
-		ValuesString, _ := json.Marshal(Values)
-		json.Unmarshal(ValuesString, &o.Values)
+	
+	if Version, ok := SuggestionknowledgearticleMap["version"].(map[string]interface{}); ok {
+		VersionString, _ := json.Marshal(Version)
+		json.Unmarshal(VersionString, &o.Version)
+	}
+	
+	if KnowledgeAnswer, ok := SuggestionknowledgearticleMap["knowledgeAnswer"].(map[string]interface{}); ok {
+		KnowledgeAnswerString, _ := json.Marshal(KnowledgeAnswer)
+		json.Unmarshal(KnowledgeAnswerString, &o.KnowledgeAnswer)
+	}
+	
+	if Variations, ok := SuggestionknowledgearticleMap["variations"].([]interface{}); ok {
+		VariationsString, _ := json.Marshal(Variations)
+		json.Unmarshal(VariationsString, &o.Variations)
 	}
 	
 
@@ -136,7 +162,7 @@ func (o *Auditfilter) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Auditfilter) String() string {
+func (o *Suggestionknowledgearticle) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -3,6 +3,7 @@
 Makefile
 README.md
 SDKData.json
+docs/AgentUIApi.json
 docs/AlertingApi.json
 docs/AnalyticsApi.json
 docs/ArchitectApi.json
@@ -68,6 +69,7 @@ docs/DeleteConversationsMessagingSetting-example.txt
 docs/DeleteConversationsMessagingSettingsDefault-example.txt
 docs/DeleteConversationsMessagingSupportedcontentSupportedContentId-example.txt
 docs/DeleteDiagnosticsLogcaptureBrowserUser-example.txt
+docs/DeleteEmployeeengagementCelebration-example.txt
 docs/DeleteEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/DeleteExternalcontactsContact-example.txt
 docs/DeleteExternalcontactsContactNote-example.txt
@@ -255,6 +257,8 @@ docs/DeleteUserStationAssociatedstation-example.txt
 docs/DeleteUserStationDefaultstation-example.txt
 docs/DeleteUserVerifier-example.txt
 docs/DeleteUserrecording-example.txt
+docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
+docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/DeleteVoicemailMessage-example.txt
 docs/DeleteVoicemailMessages-example.txt
 docs/DeleteWebchatDeployment-example.txt
@@ -283,6 +287,7 @@ docs/DeleteWorkforcemanagementManagementunitWorkplan-example.txt
 docs/DeleteWorkforcemanagementManagementunitWorkplanrotation-example.txt
 docs/DownloadsApi.json
 docs/EmailsApi.json
+docs/EmployeeEngagementApi.json
 docs/EventsApi.json
 docs/ExternalContactsApi.json
 docs/FaxApi.json
@@ -486,6 +491,8 @@ docs/GetConversationRecordingmetadata-example.txt
 docs/GetConversationRecordingmetadataRecordingId-example.txt
 docs/GetConversationRecordings-example.txt
 docs/GetConversationSecureattributes-example.txt
+docs/GetConversationSuggestion-example.txt
+docs/GetConversationSuggestions-example.txt
 docs/GetConversations-example.txt
 docs/GetConversationsCall-example.txt
 docs/GetConversationsCallParticipantCommunicationWrapup-example.txt
@@ -568,6 +575,8 @@ docs/GetDocumentationSearch-example.txt
 docs/GetDownload-example.txt
 docs/GetEmailsSettings-example.txt
 docs/GetEmailsSettings-example.txt
+docs/GetEmployeeengagementCelebrations-example.txt
+docs/GetEmployeeengagementRecognition-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinitions-example.txt
 docs/GetExternalcontactsContact-example.txt
@@ -1344,6 +1353,8 @@ docs/GetUserrecordingMedia-example.txt
 docs/GetUserrecordings-example.txt
 docs/GetUserrecordingsSummary-example.txt
 docs/GetUsers-example.txt
+docs/GetUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
+docs/GetUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/GetUsersDevelopmentActivities-example.txt
 docs/GetUsersDevelopmentActivitiesMe-example.txt
 docs/GetUsersDevelopmentActivity-example.txt
@@ -1552,6 +1563,7 @@ docs/PatchConversationsMessagingSupportedcontentSupportedContentId-example.txt
 docs/PatchConversationsSettings-example.txt
 docs/PatchEmailsSettings-example.txt
 docs/PatchEmailsSettings-example.txt
+docs/PatchEmployeeengagementCelebration-example.txt
 docs/PatchEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/PatchExternalcontactsContactIdentifiers-example.txt
 docs/PatchFlowsInstancesSettingsExecutiondata-example.txt
@@ -1589,6 +1601,7 @@ docs/PatchMessagingSetting-example.txt
 docs/PatchMessagingSupportedcontentSupportedContentId-example.txt
 docs/PatchOrganizationsAuthenticationSettings-example.txt
 docs/PatchOrganizationsFeature-example.txt
+docs/PatchOutboundCampaign-example.txt
 docs/PatchOutboundDnclistCustomexclusioncolumns-example.txt
 docs/PatchOutboundDnclistEmailaddresses-example.txt
 docs/PatchOutboundDnclistPhonenumbers-example.txt
@@ -1639,6 +1652,8 @@ docs/PatchUserRoutinglanguagesBulk-example.txt
 docs/PatchUserRoutinglanguagesBulk-example.txt
 docs/PatchUserRoutingskillsBulk-example.txt
 docs/PatchUserRoutingskillsBulk-example.txt
+docs/PatchUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
+docs/PatchUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/PatchUsersBulk-example.txt
 docs/PatchVoicemailGroupPolicy-example.txt
 docs/PatchVoicemailMePolicy-example.txt
@@ -1808,6 +1823,8 @@ docs/PostConversationParticipantReplaceExternal-example.txt
 docs/PostConversationParticipantReplaceQueue-example.txt
 docs/PostConversationParticipantSecureivrsessions-example.txt
 docs/PostConversationRecordingAnnotations-example.txt
+docs/PostConversationSuggestionEngagement-example.txt
+docs/PostConversationSuggestionsFeedback-example.txt
 docs/PostConversationSummaryFeedback-example.txt
 docs/PostConversationsCall-example.txt
 docs/PostConversationsCallParticipantBarge-example.txt
@@ -1876,6 +1893,7 @@ docs/PostDiagnosticsLogcaptureBrowserUser-example.txt
 docs/PostDocumentationAllSearch-example.txt
 docs/PostDocumentationGknSearch-example.txt
 docs/PostDocumentationSearch-example.txt
+docs/PostEmployeeengagementRecognitions-example.txt
 docs/PostEmployeeperformanceExternalmetricsData-example.txt
 docs/PostEmployeeperformanceExternalmetricsDefinitions-example.txt
 docs/PostEventsConversations-example.txt
@@ -2061,7 +2079,6 @@ docs/PostOrgauthorizationTrusteesAudits-example.txt
 docs/PostOrgauthorizationTrusteesDefault-example.txt
 docs/PostOrgauthorizationTrustorAudits-example.txt
 docs/PostOutboundAttemptlimits-example.txt
-docs/PostOutboundAudits-example.txt
 docs/PostOutboundCallabletimesets-example.txt
 docs/PostOutboundCallanalysisresponsesets-example.txt
 docs/PostOutboundCampaignAgentownedmappingpreview-example.txt
@@ -2541,6 +2558,8 @@ docs/PutUserStationAssociatedstationStationId-example.txt
 docs/PutUserStationDefaultstationStationId-example.txt
 docs/PutUserVerifier-example.txt
 docs/PutUserrecording-example.txt
+docs/PutUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
+docs/PutUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/PutUsersPresencesBulk-example.txt
 docs/PutVoicemailMessage-example.txt
 docs/PutVoicemailPolicy-example.txt
@@ -2706,6 +2725,7 @@ platformclientv2/agentqueryadherenceexplanationsresponse.go
 platformclientv2/agentqueuetimerequest.go
 platformclientv2/agentsintegrationslisting.go
 platformclientv2/agenttimeoffrequestpatch.go
+platformclientv2/agentuiapi.go
 platformclientv2/agentvideosettings.go
 platformclientv2/aggregatemetricdata.go
 platformclientv2/aggregateviewdata.go
@@ -2805,6 +2825,7 @@ platformclientv2/architectpromptresourcenotificationpromptresourcenotification.g
 platformclientv2/architectsystempromptresourcenotificationsystempromptresourcenotification.go
 platformclientv2/archiveretention.go
 platformclientv2/arraynode.go
+platformclientv2/article.go
 platformclientv2/articlecontent.go
 platformclientv2/articlecontentbody.go
 platformclientv2/assessmentform.go
@@ -2846,11 +2867,7 @@ platformclientv2/atzmtimeslotwithtimezone.go
 platformclientv2/audiostate.go
 platformclientv2/audioupdatedevent.go
 platformclientv2/auditapi.go
-platformclientv2/auditentity.go
-platformclientv2/auditfacet.go
-platformclientv2/auditfilter.go
 platformclientv2/auditlogmessage.go
-platformclientv2/auditmessage.go
 platformclientv2/auditqueryentity.go
 platformclientv2/auditqueryexecutionresultsresponse.go
 platformclientv2/auditqueryexecutionstatusresponse.go
@@ -2864,13 +2881,11 @@ platformclientv2/auditrealtimequeryrequest.go
 platformclientv2/auditrealtimequeryresultsresponse.go
 platformclientv2/auditrealtimerelatedrequest.go
 platformclientv2/auditrealtimerelatedresultsresponse.go
-platformclientv2/auditsearchresult.go
 platformclientv2/audittopicaddressableentityref.go
 platformclientv2/audittopicauditlogmessage.go
 platformclientv2/audittopicdomainentityref.go
 platformclientv2/audittopicmessageinfo.go
 platformclientv2/audittopicpropertychange.go
-platformclientv2/audituser.go
 platformclientv2/authenticationsettings.go
 platformclientv2/authorizationapi.go
 platformclientv2/authorizationsettings.go
@@ -2881,6 +2896,8 @@ platformclientv2/authzgrant.go
 platformclientv2/authzgrantpolicy.go
 platformclientv2/authzgrantrole.go
 platformclientv2/authzsubject.go
+platformclientv2/autoanswersetting.go
+platformclientv2/autoanswersettings.go
 platformclientv2/automatictimezonemappingsettings.go
 platformclientv2/autostart.go
 platformclientv2/autostatustransitiondetail.go
@@ -3122,6 +3139,7 @@ platformclientv2/campaignlinesutilization.go
 platformclientv2/campaignoutboundlinesallocation.go
 platformclientv2/campaignoutboundlinesdistribution.go
 platformclientv2/campaignoutboundlinesreservation.go
+platformclientv2/campaignpatchrequest.go
 platformclientv2/campaignprogress.go
 platformclientv2/campaignrule.go
 platformclientv2/campaignruleaction.go
@@ -3150,10 +3168,11 @@ platformclientv2/categoryrequest.go
 platformclientv2/categoryresponse.go
 platformclientv2/categoryresponselisting.go
 platformclientv2/categoryupdaterequest.go
+platformclientv2/celebration.go
+platformclientv2/celebrationstateparam.go
 platformclientv2/certificate.go
 platformclientv2/certificateauthorityentitylisting.go
 platformclientv2/certificatedetails.go
-platformclientv2/change.go
 platformclientv2/changemypasswordrequest.go
 platformclientv2/changepasswordrequest.go
 platformclientv2/channel.go
@@ -3634,6 +3653,7 @@ platformclientv2/createperformanceprofile.go
 platformclientv2/createplanninggrouprequest.go
 platformclientv2/createpredictorrequest.go
 platformclientv2/createqueuerequest.go
+platformclientv2/createrecognition.go
 platformclientv2/createresponseassetrequest.go
 platformclientv2/createresponseassetresponse.go
 platformclientv2/createroomrequest.go
@@ -3723,6 +3743,7 @@ platformclientv2/daterangewithoptionalend.go
 platformclientv2/defaultgreetinglist.go
 platformclientv2/defaultobjective.go
 platformclientv2/deletableuserreference.go
+platformclientv2/deleteprogramresponse.go
 platformclientv2/deleteretention.go
 platformclientv2/dependency.go
 platformclientv2/dependencyobject.go
@@ -3754,7 +3775,6 @@ platformclientv2/dialeraction.go
 platformclientv2/dialerattemptlimitsconfigchangeattemptlimits.go
 platformclientv2/dialerattemptlimitsconfigchangeobject.go
 platformclientv2/dialerattemptlimitsconfigchangerecallentry.go
-platformclientv2/dialerauditrequest.go
 platformclientv2/dialercallabletimesetconfigchangecallabletime.go
 platformclientv2/dialercallabletimesetconfigchangecallabletimeset.go
 platformclientv2/dialercallabletimesetconfigchangeobject.go
@@ -3985,6 +4005,7 @@ platformclientv2/dynamicgroupquerypreview.go
 platformclientv2/dynamicgrouproutingskillcondition.go
 platformclientv2/dynamicgroupskillcondition.go
 platformclientv2/dynamiclinebalancingsettings.go
+platformclientv2/dynamiclinebalancingsettingspatchrequest.go
 platformclientv2/edge.go
 platformclientv2/edgeautoupdateconfig.go
 platformclientv2/edgechangetopicedge.go
@@ -4070,6 +4091,7 @@ platformclientv2/emergencygroupdivisionviewentitylisting.go
 platformclientv2/emergencygrouplisting.go
 platformclientv2/emergencylocation.go
 platformclientv2/empathyscore.go
+platformclientv2/employeeengagementapi.go
 platformclientv2/employerinfo.go
 platformclientv2/empty.go
 platformclientv2/encryptionkey.go
@@ -4083,7 +4105,6 @@ platformclientv2/entitychange.go
 platformclientv2/entitylisting.go
 platformclientv2/entityreference.go
 platformclientv2/entitytypecriteria.go
-platformclientv2/entry.go
 platformclientv2/errorbody.go
 platformclientv2/errordetails.go
 platformclientv2/errorinfo.go
@@ -4237,12 +4258,12 @@ platformclientv2/facebookpermissionentitylisting.go
 platformclientv2/facebookscopedid.go
 platformclientv2/facet.go
 platformclientv2/facetentry.go
-platformclientv2/facetinfo.go
 platformclientv2/facetkeyattribute.go
 platformclientv2/facetstatistics.go
 platformclientv2/facetterm.go
 platformclientv2/failedobject.go
 platformclientv2/failedrecordingentitylisting.go
+platformclientv2/faq.go
 platformclientv2/faxapi.go
 platformclientv2/faxconfig.go
 platformclientv2/faxdocument.go
@@ -4256,6 +4277,7 @@ platformclientv2/faxtopiclockdata.go
 platformclientv2/faxtopicuserdata.go
 platformclientv2/faxtopicworkspacedata.go
 platformclientv2/featurestate.go
+platformclientv2/feedback.go
 platformclientv2/feedbackaddrequest.go
 platformclientv2/fieldconfig.go
 platformclientv2/fieldconfigs.go
@@ -4399,6 +4421,7 @@ platformclientv2/geolocationapi.go
 platformclientv2/geolocationeventgeolocation.go
 platformclientv2/geolocationsettings.go
 platformclientv2/getalertquery.go
+platformclientv2/getcelebrationlisting.go
 platformclientv2/getflowexecutiondatajobresult.go
 platformclientv2/getmetricdefinitionsresponse.go
 platformclientv2/getmetricresponse.go
@@ -5092,6 +5115,7 @@ platformclientv2/messengersettings.go
 platformclientv2/messengerstyles.go
 platformclientv2/metabase.go
 platformclientv2/metadata.go
+platformclientv2/metadataattribute.go
 platformclientv2/metadatadocumentation.go
 platformclientv2/metadataitem.go
 platformclientv2/metadatapresentation.go
@@ -5784,6 +5808,8 @@ platformclientv2/recipientadditionalidentifier.go
 platformclientv2/recipientflow.go
 platformclientv2/recipientlisting.go
 platformclientv2/recipientrequest.go
+platformclientv2/recognition.go
+platformclientv2/recognitionbase.go
 platformclientv2/record.go
 platformclientv2/recording.go
 platformclientv2/recordingannotationflow.go
@@ -6034,7 +6060,6 @@ platformclientv2/sentimentfeedback.go
 platformclientv2/sentimentfeedbackentitylisting.go
 platformclientv2/sequenceschedule.go
 platformclientv2/serverdate.go
-platformclientv2/servicecontext.go
 platformclientv2/servicegoaltemplate.go
 platformclientv2/servicegoaltemplateimpactoverride.go
 platformclientv2/servicegoaltemplatelist.go
@@ -6121,6 +6146,7 @@ platformclientv2/socialhandle.go
 platformclientv2/sortitem.go
 platformclientv2/source.go
 platformclientv2/sourceconfiguration.go
+platformclientv2/sourceentity.go
 platformclientv2/sourceentitylisting.go
 platformclientv2/sourceplanninggrouprequest.go
 platformclientv2/speechtextanalyticsapi.go
@@ -6169,6 +6195,16 @@ platformclientv2/subscriberresponse.go
 platformclientv2/subscription.go
 platformclientv2/subscriptionoverviewusage.go
 platformclientv2/suggestapi.go
+platformclientv2/suggestion.go
+platformclientv2/suggestioncannedresponse.go
+platformclientv2/suggestioncontext.go
+platformclientv2/suggestionengagement.go
+platformclientv2/suggestionfeedback.go
+platformclientv2/suggestionknowledgeanswer.go
+platformclientv2/suggestionknowledgearticle.go
+platformclientv2/suggestionknowledgesearch.go
+platformclientv2/suggestionlisting.go
+platformclientv2/suggestionscript.go
 platformclientv2/suggestsearchcriteria.go
 platformclientv2/suggestsearchrequest.go
 platformclientv2/supportcentercategory.go

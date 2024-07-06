@@ -7,25 +7,22 @@ import (
 	"strings"
 )
 
-// Dialerauditrequest
-type Dialerauditrequest struct { 
+// Feedback
+type Feedback struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// QueryPhrase - The word or words to search for.
-	QueryPhrase *string `json:"queryPhrase,omitempty"`
+	// SuggestionId - Feedback suggestion id.
+	SuggestionId *string `json:"suggestionId,omitempty"`
 
-	// QueryFields - The fields in which to search for the queryPhrase.
-	QueryFields *[]string `json:"queryFields,omitempty"`
+	// UserProvided - Indicates whether the answer/item was clicked by the human agent or not.
+	UserProvided *bool `json:"userProvided,omitempty"`
 
-	// Facets - The fields to facet on.
-	Facets *[]Auditfacet `json:"facets,omitempty"`
-
-	// Filters - The fields to filter on.
-	Filters *[]Auditfilter `json:"filters,omitempty"`
+	// Relevance - Feedback relevance.
+	Relevance *string `json:"relevance,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Dialerauditrequest) SetField(field string, fieldValue interface{}) {
+func (o *Feedback) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +43,7 @@ func (o *Dialerauditrequest) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Dialerauditrequest) MarshalJSON() ([]byte, error) {
+func (o Feedback) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,61 +81,50 @@ func (o Dialerauditrequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Dialerauditrequest
+	type Alias Feedback
 	
 	return json.Marshal(&struct { 
-		QueryPhrase *string `json:"queryPhrase,omitempty"`
+		SuggestionId *string `json:"suggestionId,omitempty"`
 		
-		QueryFields *[]string `json:"queryFields,omitempty"`
+		UserProvided *bool `json:"userProvided,omitempty"`
 		
-		Facets *[]Auditfacet `json:"facets,omitempty"`
-		
-		Filters *[]Auditfilter `json:"filters,omitempty"`
+		Relevance *string `json:"relevance,omitempty"`
 		Alias
 	}{ 
-		QueryPhrase: o.QueryPhrase,
+		SuggestionId: o.SuggestionId,
 		
-		QueryFields: o.QueryFields,
+		UserProvided: o.UserProvided,
 		
-		Facets: o.Facets,
-		
-		Filters: o.Filters,
+		Relevance: o.Relevance,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Dialerauditrequest) UnmarshalJSON(b []byte) error {
-	var DialerauditrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &DialerauditrequestMap)
+func (o *Feedback) UnmarshalJSON(b []byte) error {
+	var FeedbackMap map[string]interface{}
+	err := json.Unmarshal(b, &FeedbackMap)
 	if err != nil {
 		return err
 	}
 	
-	if QueryPhrase, ok := DialerauditrequestMap["queryPhrase"].(string); ok {
-		o.QueryPhrase = &QueryPhrase
+	if SuggestionId, ok := FeedbackMap["suggestionId"].(string); ok {
+		o.SuggestionId = &SuggestionId
 	}
     
-	if QueryFields, ok := DialerauditrequestMap["queryFields"].([]interface{}); ok {
-		QueryFieldsString, _ := json.Marshal(QueryFields)
-		json.Unmarshal(QueryFieldsString, &o.QueryFields)
+	if UserProvided, ok := FeedbackMap["userProvided"].(bool); ok {
+		o.UserProvided = &UserProvided
 	}
-	
-	if Facets, ok := DialerauditrequestMap["facets"].([]interface{}); ok {
-		FacetsString, _ := json.Marshal(Facets)
-		json.Unmarshal(FacetsString, &o.Facets)
+    
+	if Relevance, ok := FeedbackMap["relevance"].(string); ok {
+		o.Relevance = &Relevance
 	}
-	
-	if Filters, ok := DialerauditrequestMap["filters"].([]interface{}); ok {
-		FiltersString, _ := json.Marshal(Filters)
-		json.Unmarshal(FiltersString, &o.Filters)
-	}
-	
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Dialerauditrequest) String() string {
+func (o *Feedback) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

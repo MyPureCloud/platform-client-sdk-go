@@ -7,25 +7,19 @@ import (
 	"strings"
 )
 
-// Change
-type Change struct { 
+// Suggestionengagement
+type Suggestionengagement struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entity
-	Entity *Auditentity `json:"entity,omitempty"`
+	// EngagementType - The type of engagement with the suggestion.
+	EngagementType *string `json:"engagementType,omitempty"`
 
-	// Property - The property that was changed
-	Property *string `json:"property,omitempty"`
-
-	// OldValues - The old values which were modified and/or removed by this action.
-	OldValues *[]string `json:"oldValues,omitempty"`
-
-	// NewValues - The new values which were modified and/or added by this action.
-	NewValues *[]string `json:"newValues,omitempty"`
+	// Feedback - The given feedback on the suggestion, if any.
+	Feedback *Suggestionfeedback `json:"feedback,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Change) SetField(field string, fieldValue interface{}) {
+func (o *Suggestionengagement) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +40,7 @@ func (o *Change) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Change) MarshalJSON() ([]byte, error) {
+func (o Suggestionengagement) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,53 +78,35 @@ func (o Change) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Change
+	type Alias Suggestionengagement
 	
 	return json.Marshal(&struct { 
-		Entity *Auditentity `json:"entity,omitempty"`
+		EngagementType *string `json:"engagementType,omitempty"`
 		
-		Property *string `json:"property,omitempty"`
-		
-		OldValues *[]string `json:"oldValues,omitempty"`
-		
-		NewValues *[]string `json:"newValues,omitempty"`
+		Feedback *Suggestionfeedback `json:"feedback,omitempty"`
 		Alias
 	}{ 
-		Entity: o.Entity,
+		EngagementType: o.EngagementType,
 		
-		Property: o.Property,
-		
-		OldValues: o.OldValues,
-		
-		NewValues: o.NewValues,
+		Feedback: o.Feedback,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Change) UnmarshalJSON(b []byte) error {
-	var ChangeMap map[string]interface{}
-	err := json.Unmarshal(b, &ChangeMap)
+func (o *Suggestionengagement) UnmarshalJSON(b []byte) error {
+	var SuggestionengagementMap map[string]interface{}
+	err := json.Unmarshal(b, &SuggestionengagementMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entity, ok := ChangeMap["entity"].(map[string]interface{}); ok {
-		EntityString, _ := json.Marshal(Entity)
-		json.Unmarshal(EntityString, &o.Entity)
-	}
-	
-	if Property, ok := ChangeMap["property"].(string); ok {
-		o.Property = &Property
+	if EngagementType, ok := SuggestionengagementMap["engagementType"].(string); ok {
+		o.EngagementType = &EngagementType
 	}
     
-	if OldValues, ok := ChangeMap["oldValues"].([]interface{}); ok {
-		OldValuesString, _ := json.Marshal(OldValues)
-		json.Unmarshal(OldValuesString, &o.OldValues)
-	}
-	
-	if NewValues, ok := ChangeMap["newValues"].([]interface{}); ok {
-		NewValuesString, _ := json.Marshal(NewValues)
-		json.Unmarshal(NewValuesString, &o.NewValues)
+	if Feedback, ok := SuggestionengagementMap["feedback"].(map[string]interface{}); ok {
+		FeedbackString, _ := json.Marshal(Feedback)
+		json.Unmarshal(FeedbackString, &o.Feedback)
 	}
 	
 
@@ -138,7 +114,7 @@ func (o *Change) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Change) String() string {
+func (o *Suggestionengagement) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

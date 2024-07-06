@@ -42,6 +42,9 @@ type Program struct {
 	// DatePublished - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DatePublished *time.Time `json:"datePublished,omitempty"`
 
+	// TopicLinksJob
+	TopicLinksJob *Addressableentityref `json:"topicLinksJob,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -145,6 +148,8 @@ func (o Program) MarshalJSON() ([]byte, error) {
 		
 		DatePublished *string `json:"datePublished,omitempty"`
 		
+		TopicLinksJob *Addressableentityref `json:"topicLinksJob,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -167,6 +172,8 @@ func (o Program) MarshalJSON() ([]byte, error) {
 		PublishedBy: o.PublishedBy,
 		
 		DatePublished: DatePublished,
+		
+		TopicLinksJob: o.TopicLinksJob,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -224,6 +231,11 @@ func (o *Program) UnmarshalJSON(b []byte) error {
 	if datePublishedString, ok := ProgramMap["datePublished"].(string); ok {
 		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
 		o.DatePublished = &DatePublished
+	}
+	
+	if TopicLinksJob, ok := ProgramMap["topicLinksJob"].(map[string]interface{}); ok {
+		TopicLinksJobString, _ := json.Marshal(TopicLinksJob)
+		json.Unmarshal(TopicLinksJobString, &o.TopicLinksJob)
 	}
 	
 	if SelfUri, ok := ProgramMap["selfUri"].(string); ok {

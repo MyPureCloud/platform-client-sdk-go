@@ -95,7 +95,7 @@ func (a JourneyApi) DeleteJourneyActionmap(actionMapId string) (*APIResponse, er
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -172,7 +172,7 @@ func (a JourneyApi) DeleteJourneyActiontemplate(actionTemplateId string, hardDel
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -247,7 +247,7 @@ func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -322,7 +322,7 @@ func (a JourneyApi) DeleteJourneyOutcomesPredictor(predictorId string) (*APIResp
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -397,7 +397,7 @@ func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -476,7 +476,7 @@ func (a JourneyApi) DeleteJourneyView(viewId string) (*APIResponse, error) {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -554,7 +554,7 @@ func (a JourneyApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncquery
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Asyncquerystatus
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -640,7 +640,7 @@ func (a JourneyApi) GetAnalyticsJourneysAggregatesJobResults(jobId string, curso
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyasyncaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -728,7 +728,7 @@ func (a JourneyApi) GetExternalcontactsContactJourneySessions(contactId string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Sessionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -810,7 +810,7 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actionmap
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -902,7 +902,7 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actionmaplisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -984,7 +984,7 @@ func (a JourneyApi) GetJourneyActionmapsEstimatesJob(jobId string) (*string, *AP
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *string
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1066,7 +1066,7 @@ func (a JourneyApi) GetJourneyActionmapsEstimatesJobResults(jobId string) (*Acti
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actionmapestimateresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1148,7 +1148,7 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actiontarget
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1228,7 +1228,7 @@ func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Acti
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actiontargetlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1310,7 +1310,7 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actiontemplate
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1400,7 +1400,7 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Actiontemplatelisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1493,7 +1493,7 @@ func (a JourneyApi) GetJourneyDeploymentCustomerPing(deploymentId string, custom
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Deploymentping
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1575,7 +1575,7 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Outcome
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1663,7 +1663,7 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Outcomelisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1747,7 +1747,7 @@ func (a JourneyApi) GetJourneyOutcomesAttributionsJob(jobId string) (*Outcomeatt
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Outcomeattributionjobstateresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1831,7 +1831,7 @@ func (a JourneyApi) GetJourneyOutcomesAttributionsJobResults(jobId string) (*Out
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Outcomeattributionresponselisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1913,7 +1913,7 @@ func (a JourneyApi) GetJourneyOutcomesPredictor(predictorId string) (*Outcomepre
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Outcomepredictor
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1989,7 +1989,7 @@ func (a JourneyApi) GetJourneyOutcomesPredictors() (*Outcomepredictorlisting, *A
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Outcomepredictorlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2071,7 +2071,7 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeysegment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2161,7 +2161,7 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Segmentlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2243,7 +2243,7 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Session
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2263,7 +2263,7 @@ func (a JourneyApi) GetJourneySession(sessionId string) (*Session, *APIResponse,
 // Retrieve all events for a given session.
 //
 // Preview: GetJourneySessionEvents is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a JourneyApi) GetJourneySessionEvents(sessionId string, pageSize string, after string) (*Eventlisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneySessionEvents(sessionId string, pageSize string, after string, eventType string) (*Eventlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/sessions/{sessionId}/events"
@@ -2300,6 +2300,8 @@ func (a JourneyApi) GetJourneySessionEvents(sessionId string, pageSize string, a
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
+	queryParams["eventType"] = a.Configuration.APIClient.ParameterToString(eventType, "")
+	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
 	correctedQueryParams := make(map[string]string)
@@ -2331,7 +2333,7 @@ func (a JourneyApi) GetJourneySessionEvents(sessionId string, pageSize string, a
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Eventlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2413,7 +2415,7 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Outcomescoresresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2499,7 +2501,7 @@ func (a JourneyApi) GetJourneyView(viewId string) (*Journeyview, *APIResponse, e
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyview
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2589,7 +2591,7 @@ func (a JourneyApi) GetJourneyViewVersion(viewId string, versionId string) (*Jou
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyview
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2687,7 +2689,7 @@ func (a JourneyApi) GetJourneyViewVersionJob(viewId string, journeyVersionId str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyviewjob
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2785,7 +2787,7 @@ func (a JourneyApi) GetJourneyViewVersionJobResults(viewId string, journeyViewVe
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyviewresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2877,7 +2879,7 @@ func (a JourneyApi) GetJourneyViewVersionJobsLatest(viewId string, journeyVersio
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyviewjob
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2955,7 +2957,7 @@ func (a JourneyApi) GetJourneyViews() (*Journeyviewlisting, *APIResponse, error)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyviewlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3039,7 +3041,7 @@ func (a JourneyApi) GetJourneyViewsEventdefinition(eventDefinitionId string) (*J
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyeventdefinition
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3117,7 +3119,7 @@ func (a JourneyApi) GetJourneyViewsEventdefinitions() (*Journeyeventdefinitionli
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyeventdefinitionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3203,7 +3205,7 @@ func (a JourneyApi) GetJourneyViewsJobs(pageNumber int, pageSize int, interval s
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyviewjoblisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3288,7 +3290,7 @@ func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionma
 	postBody = &body
 
 	var successPayload *Actionmap
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3373,7 +3375,7 @@ func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchac
 	postBody = &body
 
 	var successPayload *Actiontarget
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3458,7 +3460,7 @@ func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Pat
 	postBody = &body
 
 	var successPayload *Actiontemplate
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3543,7 +3545,7 @@ func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*O
 	postBody = &body
 
 	var successPayload *Outcome
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3628,7 +3630,7 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 	postBody = &body
 
 	var successPayload *Journeysegment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3714,7 +3716,7 @@ func (a JourneyApi) PostAnalyticsJourneysAggregatesJobs(body Journeyasyncaggrega
 	postBody = &body
 
 	var successPayload *Asyncqueryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3798,7 +3800,7 @@ func (a JourneyApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregation
 	postBody = &body
 
 	var successPayload *Journeyaggregatequeryresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3877,7 +3879,7 @@ func (a JourneyApi) PostJourneyActionmaps(body Actionmap) (*Actionmap, *APIRespo
 	postBody = &body
 
 	var successPayload *Actionmap
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -3961,7 +3963,7 @@ func (a JourneyApi) PostJourneyActionmapsEstimatesJobs(body Actionmapestimatereq
 	postBody = &body
 
 	var successPayload *Estimatejobasyncresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4040,7 +4042,7 @@ func (a JourneyApi) PostJourneyActiontemplates(body Actiontemplate) (*Actiontemp
 	postBody = &body
 
 	var successPayload *Actiontemplate
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4124,7 +4126,7 @@ func (a JourneyApi) PostJourneyDeploymentActionevent(deploymentId string, body A
 	postBody = &body
 
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4198,7 +4200,7 @@ func (a JourneyApi) PostJourneyDeploymentAppevents(deploymentId string, body App
 	postBody = &body
 
 	var successPayload *Appeventresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4277,7 +4279,7 @@ func (a JourneyApi) PostJourneyFlowsPathsQuery(body Flowpathsquery) (*Flowpaths,
 	postBody = &body
 
 	var successPayload *Flowpaths
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4356,7 +4358,7 @@ func (a JourneyApi) PostJourneyOutcomes(body Outcomerequest) (*Outcome, *APIResp
 	postBody = &body
 
 	var successPayload *Outcome
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4437,7 +4439,7 @@ func (a JourneyApi) PostJourneyOutcomesAttributionsJobs(body Outcomeattributionl
 	postBody = &body
 
 	var successPayload *Outcomeattributionasyncresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4516,7 +4518,7 @@ func (a JourneyApi) PostJourneyOutcomesPredictors(body Outcomepredictorrequest) 
 	postBody = &body
 
 	var successPayload *Outcomepredictor
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4595,7 +4597,7 @@ func (a JourneyApi) PostJourneySegments(body Journeysegmentrequest) (*Journeyseg
 	postBody = &body
 
 	var successPayload *Journeysegment
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4687,7 +4689,7 @@ func (a JourneyApi) PostJourneyViewVersionJobs(viewId string, journeyVersionId s
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Journeyviewjob
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4781,7 +4783,7 @@ func (a JourneyApi) PostJourneyViewVersions(viewId string, body Journeyview) (*J
 	postBody = &body
 
 	var successPayload *Journeyview
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4867,7 +4869,7 @@ func (a JourneyApi) PostJourneyViews(body Journeyview) (*Journeyview, *APIRespon
 	postBody = &body
 
 	var successPayload *Journeyview
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -4950,7 +4952,7 @@ func (a JourneyApi) PostJourneyViewsEncodingsValidate(body []Label) (*Entitylist
 	postBody = &body
 
 	var successPayload *Entitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

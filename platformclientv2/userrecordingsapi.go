@@ -95,7 +95,7 @@ func (a UserRecordingsApi) DeleteUserrecording(recordingId string) (*APIResponse
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -173,7 +173,7 @@ func (a UserRecordingsApi) GetUserrecording(recordingId string, expand []string)
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Userrecording
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -259,7 +259,7 @@ func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Downloadresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -341,7 +341,7 @@ func (a UserRecordingsApi) GetUserrecordings(pageSize int, pageNumber int, expan
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Userrecordingentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -417,7 +417,7 @@ func (a UserRecordingsApi) GetUserrecordingsSummary() (*Faxsummary, *APIResponse
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Faxsummary
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -509,7 +509,7 @@ func (a UserRecordingsApi) PutUserrecording(recordingId string, body Userrecordi
 	postBody = &body
 
 	var successPayload *Userrecording
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

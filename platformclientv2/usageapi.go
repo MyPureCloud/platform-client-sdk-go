@@ -102,7 +102,7 @@ func (a UsageApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Apiusagequeryresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -188,7 +188,7 @@ func (a UsageApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Usageexecutionresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -270,7 +270,7 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Apiusagequeryresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -356,7 +356,7 @@ func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string, aft
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Apiusagequeryresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -448,7 +448,7 @@ func (a UsageApi) PostOauthClientUsageQuery(clientId string, body Apiusageclient
 	postBody = &body
 
 	var successPayload *Usageexecutionresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -534,7 +534,7 @@ func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutio
 	postBody = &body
 
 	var successPayload *Usageexecutionresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -620,7 +620,7 @@ func (a UsageApi) PostUsageSimplesearch(body Apiusagesimplesearch) (*Usageexecut
 	postBody = &body
 
 	var successPayload *Usageexecutionresult
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

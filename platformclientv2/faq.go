@@ -7,22 +7,31 @@ import (
 	"strings"
 )
 
-// Audituser
-type Audituser struct { 
+// Faq
+type Faq struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The ID (UUID) of the user who initiated the action of this AuditMessage.
-	Id *string `json:"id,omitempty"`
+	// Question - Question from the knowledge base that was matched to user request.
+	Question *string `json:"question,omitempty"`
 
-	// Name - The full username of the user who initiated the action of this AuditMessage.
-	Name *string `json:"name,omitempty"`
+	// Answer - Answer from the knowledge base corresponding to the identified question.
+	Answer *string `json:"answer,omitempty"`
 
-	// Display - The display name of the user who initiated the action of this AuditMessage.
-	Display *string `json:"display,omitempty"`
+	// SourceUri - A URI uniquely identifying the document, e.g. projects/acme-inc/knowledgeBases/MTAyNjgxNDU1Nzc3NTM1NzU0MjQ/documents/MTI5ODc3NzQzOTQ5MTc5NzgxMTI.
+	SourceUri *string `json:"sourceUri,omitempty"`
+
+	// DocumentUrl - URL pointing to a web page if document was sourced from a URL.
+	DocumentUrl *string `json:"documentUrl,omitempty"`
+
+	// DocumentDisplayName - A human-readable description of the document, e.g. 'Sample store FAQ'
+	DocumentDisplayName *string `json:"documentDisplayName,omitempty"`
+
+	// Confidence - Value between 0 and 1. 1 corresponds to very confident, 0 to not confident at all
+	Confidence *float32 `json:"confidence,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Audituser) SetField(field string, fieldValue interface{}) {
+func (o *Faq) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +52,7 @@ func (o *Audituser) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Audituser) MarshalJSON() ([]byte, error) {
+func (o Faq) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,50 +90,75 @@ func (o Audituser) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Audituser
+	type Alias Faq
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Question *string `json:"question,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
+		Answer *string `json:"answer,omitempty"`
 		
-		Display *string `json:"display,omitempty"`
+		SourceUri *string `json:"sourceUri,omitempty"`
+		
+		DocumentUrl *string `json:"documentUrl,omitempty"`
+		
+		DocumentDisplayName *string `json:"documentDisplayName,omitempty"`
+		
+		Confidence *float32 `json:"confidence,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Question: o.Question,
 		
-		Name: o.Name,
+		Answer: o.Answer,
 		
-		Display: o.Display,
+		SourceUri: o.SourceUri,
+		
+		DocumentUrl: o.DocumentUrl,
+		
+		DocumentDisplayName: o.DocumentDisplayName,
+		
+		Confidence: o.Confidence,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Audituser) UnmarshalJSON(b []byte) error {
-	var AudituserMap map[string]interface{}
-	err := json.Unmarshal(b, &AudituserMap)
+func (o *Faq) UnmarshalJSON(b []byte) error {
+	var FaqMap map[string]interface{}
+	err := json.Unmarshal(b, &FaqMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := AudituserMap["id"].(string); ok {
-		o.Id = &Id
+	if Question, ok := FaqMap["question"].(string); ok {
+		o.Question = &Question
 	}
     
-	if Name, ok := AudituserMap["name"].(string); ok {
-		o.Name = &Name
+	if Answer, ok := FaqMap["answer"].(string); ok {
+		o.Answer = &Answer
 	}
     
-	if Display, ok := AudituserMap["display"].(string); ok {
-		o.Display = &Display
+	if SourceUri, ok := FaqMap["sourceUri"].(string); ok {
+		o.SourceUri = &SourceUri
 	}
     
+	if DocumentUrl, ok := FaqMap["documentUrl"].(string); ok {
+		o.DocumentUrl = &DocumentUrl
+	}
+    
+	if DocumentDisplayName, ok := FaqMap["documentDisplayName"].(string); ok {
+		o.DocumentDisplayName = &DocumentDisplayName
+	}
+    
+	if Confidence, ok := FaqMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Audituser) String() string {
+func (o *Faq) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

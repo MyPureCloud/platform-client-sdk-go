@@ -22,6 +22,21 @@ type Campaignruleparameters struct {
 
 	// DialingMode - The dialing mode to set a campaign to. Required for the 'setCampaignDialingMode' action.
 	DialingMode *string `json:"dialingMode,omitempty"`
+
+	// AbandonRate - The abandon rate to set a campaign to. Required for the 'setCampaignAbandonRate' action.
+	AbandonRate *float32 `json:"abandonRate,omitempty"`
+
+	// OutboundLineCount - The  number of outbound lines to set a campaign to. Required for the 'setCampaignNumberOfLines' action.
+	OutboundLineCount *int `json:"outboundLineCount,omitempty"`
+
+	// RelativeWeight - The relative weight to set a campaign to. Required for the 'setCampaignWeight' action.
+	RelativeWeight *int `json:"relativeWeight,omitempty"`
+
+	// MaxCallsPerAgent - The maximum number of calls per agent to set a campaign to. Required for the 'setCampaignMaxCallsPerAgent' action.
+	MaxCallsPerAgent *float32 `json:"maxCallsPerAgent,omitempty"`
+
+	// Queue - The queue a campaign to. Required for the 'changeCampaignQueue' action.
+	Queue *Domainentityref `json:"queue,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +109,16 @@ func (o Campaignruleparameters) MarshalJSON() ([]byte, error) {
 		Priority *string `json:"priority,omitempty"`
 		
 		DialingMode *string `json:"dialingMode,omitempty"`
+		
+		AbandonRate *float32 `json:"abandonRate,omitempty"`
+		
+		OutboundLineCount *int `json:"outboundLineCount,omitempty"`
+		
+		RelativeWeight *int `json:"relativeWeight,omitempty"`
+		
+		MaxCallsPerAgent *float32 `json:"maxCallsPerAgent,omitempty"`
+		
+		Queue *Domainentityref `json:"queue,omitempty"`
 		Alias
 	}{ 
 		Operator: o.Operator,
@@ -103,6 +128,16 @@ func (o Campaignruleparameters) MarshalJSON() ([]byte, error) {
 		Priority: o.Priority,
 		
 		DialingMode: o.DialingMode,
+		
+		AbandonRate: o.AbandonRate,
+		
+		OutboundLineCount: o.OutboundLineCount,
+		
+		RelativeWeight: o.RelativeWeight,
+		
+		MaxCallsPerAgent: o.MaxCallsPerAgent,
+		
+		Queue: o.Queue,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +165,31 @@ func (o *Campaignruleparameters) UnmarshalJSON(b []byte) error {
 		o.DialingMode = &DialingMode
 	}
     
+	if AbandonRate, ok := CampaignruleparametersMap["abandonRate"].(float64); ok {
+		AbandonRateFloat32 := float32(AbandonRate)
+		o.AbandonRate = &AbandonRateFloat32
+	}
+    
+	if OutboundLineCount, ok := CampaignruleparametersMap["outboundLineCount"].(float64); ok {
+		OutboundLineCountInt := int(OutboundLineCount)
+		o.OutboundLineCount = &OutboundLineCountInt
+	}
+	
+	if RelativeWeight, ok := CampaignruleparametersMap["relativeWeight"].(float64); ok {
+		RelativeWeightInt := int(RelativeWeight)
+		o.RelativeWeight = &RelativeWeightInt
+	}
+	
+	if MaxCallsPerAgent, ok := CampaignruleparametersMap["maxCallsPerAgent"].(float64); ok {
+		MaxCallsPerAgentFloat32 := float32(MaxCallsPerAgent)
+		o.MaxCallsPerAgent = &MaxCallsPerAgentFloat32
+	}
+    
+	if Queue, ok := CampaignruleparametersMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
 
 	return nil
 }

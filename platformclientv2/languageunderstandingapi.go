@@ -96,7 +96,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomain(domainId str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -177,7 +177,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainFeedbackFeedb
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -258,7 +258,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainVersion(domai
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -333,7 +333,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMiner(minerId strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -414,7 +414,7 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingMinerDraft(minerId 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -490,7 +490,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nludomain
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -596,7 +596,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nlufeedbacklisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -686,7 +686,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedback
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nlufeedbackresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -776,7 +776,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nludomainversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -864,7 +864,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(do
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nludomainversionqualityreport
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -952,7 +952,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nludomainversionlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1032,7 +1032,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nludomainlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1114,7 +1114,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiner(minerId string) 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Miner
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1206,7 +1206,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDraft(minerId str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Draft
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1288,7 +1288,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerDrafts(minerId st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Draftlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1378,7 +1378,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntent(minerId st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Minerintent
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1462,7 +1462,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerIntents(minerId s
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Minedintentslisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1552,7 +1552,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopic(minerId str
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Minertopic
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1646,7 +1646,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopicPhrase(miner
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Minertopicphrase
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1728,7 +1728,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMinerTopics(minerId st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Minertopicslisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1806,7 +1806,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners(minerType strin
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Minerlisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1884,7 +1884,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingSettings() (*Nluorgani
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nluorganization
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -1974,7 +1974,7 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 	postBody = &body
 
 	var successPayload *Nludomain
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2065,7 +2065,7 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId s
 	postBody = &body
 
 	var successPayload *Draft
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2155,7 +2155,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domain
 	postBody = &body
 
 	var successPayload *Nlufeedbackresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2251,7 +2251,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(d
 	postBody = &body
 
 	var successPayload *Nludetectionresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2339,7 +2339,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionPublish(
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nludomainversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2427,7 +2427,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Nludomainversiontrainingresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2519,7 +2519,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domain
 	postBody = &body
 
 	var successPayload *Nludomainversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2603,7 +2603,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomains(body Nludomai
 	postBody = &body
 
 	var successPayload *Nludomain
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2693,7 +2693,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId s
 	postBody = &body
 
 	var successPayload *Draft
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2778,7 +2778,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId 
 	postBody = &body
 
 	var successPayload *Miner
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2862,7 +2862,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMiners(body Miner) (*
 	postBody = &body
 
 	var successPayload *Miner
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -2958,7 +2958,7 @@ func (a LanguageUnderstandingApi) PutLanguageunderstandingDomainVersion(domainId
 	postBody = &body
 
 	var successPayload *Nludomainversion
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

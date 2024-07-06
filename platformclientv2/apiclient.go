@@ -86,6 +86,16 @@ func contains(source []string, containvalue string) bool {
 	return false
 }
 
+// Function to get PathValue for a given PathName
+func getPathValue(pc *ProxyConfiguration, key string) (string, bool) {
+	for _, param := range pc.PathParams {
+		if param.PathName == key {
+			return param.PathValue, true
+		}
+	}
+	return "", false
+}
+
 // CallAPI invokes an API endpoint
 func (c *APIClient) CallAPI(path string, method string,
 	postBody interface{},
@@ -93,7 +103,8 @@ func (c *APIClient) CallAPI(path string, method string,
 	queryParams map[string]string,
 	formParams url.Values,
 	fileName string,
-	fileBytes []byte) (*APIResponse, error) {
+	fileBytes []byte,
+	pathName string) (*APIResponse, error) {
 
 	// Build request URL w/query params
 	urlString := path + "?"
@@ -175,8 +186,8 @@ func (c *APIClient) CallAPI(path string, method string,
 		c.client.CheckRetry = DefaultRetryPolicy
 
 	if c.configuration.ProxyConfiguration != nil {
-
                 var proxyUrl *url.URL
+                pathValue, exists :=  getPathValue(c.configuration.ProxyConfiguration, pathName)
 
                 if c.configuration.ProxyConfiguration.Auth != nil && c.configuration.ProxyConfiguration.Auth.UserName != "" && c.configuration.ProxyConfiguration.Auth.Password != "" {
                         proxyUrl = &url.URL{
@@ -192,6 +203,11 @@ func (c *APIClient) CallAPI(path string, method string,
                                 c.configuration.ProxyConfiguration.Port
                         proxyUrl, _ = url.Parse(urlString)
                 }
+
+                if exists {
+                   proxyUrl.Path = pathValue
+                }
+
 
                 tr := &http.Transport{
                         Proxy: http.ProxyURL(proxyUrl),
@@ -222,7 +238,7 @@ func (c *APIClient) CallAPI(path string, method string,
 			headerParams["Authorization"] = "Bearer " + c.configuration.AccessToken
 		}
 
-		return c.CallAPI(path, method, postBody, headerParams, queryParams, formParams, fileName, fileBytes)
+		return c.CallAPI(path, method, postBody, headerParams, queryParams, formParams, fileName, fileBytes, pathName)
 	}
 
 	if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusMultipleChoices {

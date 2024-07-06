@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 133.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 134.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -22,7 +22,7 @@ Some macOS users encounter the error "argument list too long" when building or i
 Retrieve the package from https://github.com/MyPureCloud/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/mypurecloud/platform-client-sdk-go/v133/platformclientv2
+go get github.com/mypurecloud/platform-client-sdk-go/v134/platformclientv2
 ```
 
 ## Using the SDK
@@ -31,7 +31,7 @@ go get github.com/mypurecloud/platform-client-sdk-go/v133/platformclientv2
 
 ```go
 import (
-	"github.com/mypurecloud/platform-client-sdk-go/v133/platformclientv2"
+	"github.com/mypurecloud/platform-client-sdk-go/v134/platformclientv2"
 )
 ```
 
@@ -121,6 +121,8 @@ Protocol - Protocol required to connect to the Proxy (http or https)
 The 'ProxyConfiguration' has another section which is an optional section. If the proxy requires authentication to connect to
 'Auth' needs to be mentioned under the 'ProxyConfiguration'.
 
+If you have different proxyParams for authorise APIs and other APIs, you can provide a new key in pathParams section with name 'login' for authorise sdk calls.
+
 Example logging configuration:
 ```go
 proxyconf := ProxyConfiguration{}
@@ -133,6 +135,12 @@ auth := Auth{}
 config.ProxyConfiguration.Auth = &auth
 config.ProxyConfiguration.Auth.UserName = userName
 config.ProxyConfiguration.Auth.Password = password
+
+config.ProxyConfiguration.PathParams = []*PathParams{
+		{PathName: "login", PathValue: "loginpath"},
+		{PathName: "other", PathValue: "otherPath"},
+}
+
 ```
 
 #### Configuration file
@@ -170,6 +178,7 @@ host = hostserverip
 protocol = http
 auth-username = username
 auth-password = password
+path-params = login:loginpath,other:generalpath
 ```
 
 JSON:
@@ -200,11 +209,21 @@ JSON:
     "proxy": {
         "host": "hostname",
         "protocol": "http",
-        "port": "8888"
+        "port": "8888",
         "auth": {
             "username": "username",
             "password": "password"
-        }
+        },
+        "pathParams":[
+            {
+              "pathName":"login",
+              "pathValue":"loginpath"
+            },
+            {
+              "pathName":"other",
+              "pathValue":"otherpath"
+            }
+        ]
     }
 }
 }

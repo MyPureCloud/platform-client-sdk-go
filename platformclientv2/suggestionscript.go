@@ -7,16 +7,22 @@ import (
 	"strings"
 )
 
-// Servicecontext
-type Servicecontext struct { 
+// Suggestionscript
+type Suggestionscript struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - Unused field for the purpose of ensuring a Swagger definition is created for a class with only @JsonIgnore members.
-	Name *string `json:"name,omitempty"`
+	// Script - The suggested script.
+	Script *Addressableentityref `json:"script,omitempty"`
+
+	// Page - The page of the script.
+	Page *Addressableentityref `json:"page,omitempty"`
+
+	// Data - The payload for the script.
+	Data *map[string]string `json:"data,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Servicecontext) SetField(field string, fieldValue interface{}) {
+func (o *Suggestionscript) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +43,7 @@ func (o *Servicecontext) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Servicecontext) MarshalJSON() ([]byte, error) {
+func (o Suggestionscript) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,34 +81,53 @@ func (o Servicecontext) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Servicecontext
+	type Alias Suggestionscript
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
+		Script *Addressableentityref `json:"script,omitempty"`
+		
+		Page *Addressableentityref `json:"page,omitempty"`
+		
+		Data *map[string]string `json:"data,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
+		Script: o.Script,
+		
+		Page: o.Page,
+		
+		Data: o.Data,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Servicecontext) UnmarshalJSON(b []byte) error {
-	var ServicecontextMap map[string]interface{}
-	err := json.Unmarshal(b, &ServicecontextMap)
+func (o *Suggestionscript) UnmarshalJSON(b []byte) error {
+	var SuggestionscriptMap map[string]interface{}
+	err := json.Unmarshal(b, &SuggestionscriptMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := ServicecontextMap["name"].(string); ok {
-		o.Name = &Name
+	if Script, ok := SuggestionscriptMap["script"].(map[string]interface{}); ok {
+		ScriptString, _ := json.Marshal(Script)
+		json.Unmarshal(ScriptString, &o.Script)
 	}
-    
+	
+	if Page, ok := SuggestionscriptMap["page"].(map[string]interface{}); ok {
+		PageString, _ := json.Marshal(Page)
+		json.Unmarshal(PageString, &o.Page)
+	}
+	
+	if Data, ok := SuggestionscriptMap["data"].(map[string]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Servicecontext) String() string {
+func (o *Suggestionscript) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

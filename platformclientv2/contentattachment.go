@@ -31,6 +31,9 @@ type Contentattachment struct {
 
 	// Filename - Suggested file name for attachment.
 	Filename *string `json:"filename,omitempty"`
+
+	// ContentSizeBytes - Size in bytes of the attachment content.
+	ContentSizeBytes *int `json:"contentSizeBytes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Contentattachment) MarshalJSON() ([]byte, error) {
 		Sha256 *string `json:"sha256,omitempty"`
 		
 		Filename *string `json:"filename,omitempty"`
+		
+		ContentSizeBytes *int `json:"contentSizeBytes,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -124,6 +129,8 @@ func (o Contentattachment) MarshalJSON() ([]byte, error) {
 		Sha256: o.Sha256,
 		
 		Filename: o.Filename,
+		
+		ContentSizeBytes: o.ContentSizeBytes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -163,6 +170,11 @@ func (o *Contentattachment) UnmarshalJSON(b []byte) error {
 		o.Filename = &Filename
 	}
     
+	if ContentSizeBytes, ok := ContentattachmentMap["contentSizeBytes"].(float64); ok {
+		ContentSizeBytesInt := int(ContentSizeBytes)
+		o.ContentSizeBytes = &ContentSizeBytesInt
+	}
+	
 
 	return nil
 }

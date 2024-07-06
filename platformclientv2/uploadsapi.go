@@ -104,7 +104,7 @@ func (a UploadsApi) GetKnowledgeKnowledgebaseUploadsUrlsJob(knowledgeBaseId stri
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Getuploadsourceurljobstatusresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -196,7 +196,7 @@ func (a UploadsApi) PostIntegrationsActionDraftFunctionUpload(actionId string, b
 	postBody = &body
 
 	var successPayload *Functionuploadresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -280,7 +280,7 @@ func (a UploadsApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Upload
 	postBody = &body
 
 	var successPayload *Uploadurlresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -372,7 +372,7 @@ func (a UploadsApi) PostKnowledgeKnowledgebaseUploadsUrlsJobs(knowledgeBaseId st
 	postBody = &body
 
 	var successPayload *Createuploadsourceurljobresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -462,7 +462,7 @@ func (a UploadsApi) PostLanguageunderstandingMinerUploads(minerId string, body i
 	postBody = &body
 
 	var successPayload *Uploadurlresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -546,7 +546,7 @@ func (a UploadsApi) PostUploadsLearningCoverart(body Learningcoverartuploadurlre
 	postBody = &body
 
 	var successPayload *Uploadurlresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -630,7 +630,7 @@ func (a UploadsApi) PostUploadsPublicassetsImages(body Uploadurlrequest) (*Uploa
 	postBody = &body
 
 	var successPayload *Uploadurlresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -714,7 +714,7 @@ func (a UploadsApi) PostUploadsRecordings(body Uploadurlrequest) (*Uploadurlresp
 	postBody = &body
 
 	var successPayload *Uploadurlresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
@@ -798,7 +798,7 @@ func (a UploadsApi) PostUploadsWorkforcemanagementHistoricaldataCsv(body Uploadu
 	postBody = &body
 
 	var successPayload *Uploadurlresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {

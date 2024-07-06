@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Auditfacet
-type Auditfacet struct { 
+// Dynamiclinebalancingsettingspatchrequest
+type Dynamiclinebalancingsettingspatchrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of the field on which to facet.
-	Name *string `json:"name,omitempty"`
+	// Enabled - Indicates that this campaign is subject of dynamic line balancing
+	Enabled *bool `json:"enabled,omitempty"`
 
-	// VarType - The type of the facet, DATE or STRING.
-	VarType *string `json:"type,omitempty"`
+	// RelativeWeight - Relative weight of this campaign in dynamic line balancing
+	RelativeWeight *int `json:"relativeWeight,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Auditfacet) SetField(field string, fieldValue interface{}) {
+func (o *Dynamiclinebalancingsettingspatchrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Auditfacet) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Auditfacet) MarshalJSON() ([]byte, error) {
+func (o Dynamiclinebalancingsettingspatchrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +78,43 @@ func (o Auditfacet) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Auditfacet
+	type Alias Dynamiclinebalancingsettingspatchrequest
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
+		Enabled *bool `json:"enabled,omitempty"`
 		
-		VarType *string `json:"type,omitempty"`
+		RelativeWeight *int `json:"relativeWeight,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
+		Enabled: o.Enabled,
 		
-		VarType: o.VarType,
+		RelativeWeight: o.RelativeWeight,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Auditfacet) UnmarshalJSON(b []byte) error {
-	var AuditfacetMap map[string]interface{}
-	err := json.Unmarshal(b, &AuditfacetMap)
+func (o *Dynamiclinebalancingsettingspatchrequest) UnmarshalJSON(b []byte) error {
+	var DynamiclinebalancingsettingspatchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &DynamiclinebalancingsettingspatchrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := AuditfacetMap["name"].(string); ok {
-		o.Name = &Name
+	if Enabled, ok := DynamiclinebalancingsettingspatchrequestMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
 	}
     
-	if VarType, ok := AuditfacetMap["type"].(string); ok {
-		o.VarType = &VarType
+	if RelativeWeight, ok := DynamiclinebalancingsettingspatchrequestMap["relativeWeight"].(float64); ok {
+		RelativeWeightInt := int(RelativeWeight)
+		o.RelativeWeight = &RelativeWeightInt
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Auditfacet) String() string {
+func (o *Dynamiclinebalancingsettingspatchrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -104,7 +104,7 @@ func (a DownloadsApi) GetDownload(downloadId string, contentDisposition string, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Urlresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
