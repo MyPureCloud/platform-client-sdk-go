@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)
+
+var actionId string // actionId
+var body platformclientv2.interface{} // Map of parameters used for variable substitution.
+// Test the execution of a draft. Responses will show execution steps broken out with intermediate results to help in debugging.
+data, response, err := apiInstance.PostIntegrationsActionDraftTest(actionId, body)
+if err != nil {
+	fmt.Printf("Error calling PostIntegrationsActionDraftTest: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

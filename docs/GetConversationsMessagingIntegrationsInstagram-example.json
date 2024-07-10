@@ -1,0 +1,18 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewConversationsApiWithConfig(config)
+
+var pageSize int // Page size
+var pageNumber int // Page number
+var expand string // Expand instructions for the return value.
+var supportedContentId string // Filter integrations returned based on the supported content ID
+var messagingSettingId string // Filter integrations returned based on the setting ID
+// Get a list of Instagram Integrations
+data, response, err := apiInstance.GetConversationsMessagingIntegrationsInstagram(pageSize, pageNumber, expand, supportedContentId, messagingSettingId)
+if err != nil {
+	fmt.Printf("Error calling GetConversationsMessagingIntegrationsInstagram: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

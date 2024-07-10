@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)
+
+var status string // Indicates the validity of the certificate in question.
+var varType string // Indicates the type of the certificate.
+// Retrieves the available mTLS client certificates in use. This endpoint will return inconsistent results while a certificate rotation is in progress.
+data, response, err := apiInstance.GetIntegrationsActionsCertificates(status, varType)
+if err != nil {
+	fmt.Printf("Error calling GetIntegrationsActionsCertificates: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

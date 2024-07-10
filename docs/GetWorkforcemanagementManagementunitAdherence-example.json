@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)
+
+var managementUnitId string // The ID of the management unit
+var forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes
+// Get a list of user schedule adherence records for the requested management unit
+data, response, err := apiInstance.GetWorkforcemanagementManagementunitAdherence(managementUnitId, forceDownloadService)
+if err != nil {
+	fmt.Printf("Error calling GetWorkforcemanagementManagementunitAdherence: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

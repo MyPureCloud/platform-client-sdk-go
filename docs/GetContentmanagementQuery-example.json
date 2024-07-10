@@ -1,0 +1,19 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewContentManagementApiWithConfig(config)
+
+var queryPhrase string // Phrase tokens are ANDed together over all searchable fields
+var pageSize int // Page size
+var pageNumber int // Page number
+var sortBy string // name or dateCreated
+var sortOrder string // ascending or descending
+var expand []string // Which fields, if any, to expand.
+// Query content
+data, response, err := apiInstance.GetContentmanagementQuery(queryPhrase, pageSize, pageNumber, sortBy, sortOrder, expand)
+if err != nil {
+	fmt.Printf("Error calling GetContentmanagementQuery: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

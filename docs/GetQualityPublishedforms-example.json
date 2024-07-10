@@ -1,0 +1,17 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewQualityApiWithConfig(config)
+
+var pageSize int // Page size
+var pageNumber int // Page number
+var name string // Name
+var onlyLatestPerContext bool // onlyLatestPerContext
+// Get the published evaluation forms.
+data, response, err := apiInstance.GetQualityPublishedforms(pageSize, pageNumber, name, onlyLatestPerContext)
+if err != nil {
+	fmt.Printf("Error calling GetQualityPublishedforms: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

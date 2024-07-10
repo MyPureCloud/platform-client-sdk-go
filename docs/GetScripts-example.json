@@ -1,0 +1,23 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewScriptsApiWithConfig(config)
+
+var pageSize int // Page size
+var pageNumber int // Page number
+var expand string // Expand
+var name string // Name filter
+var feature string // Feature filter
+var flowId string // Secure flow id filter
+var sortBy string // SortBy
+var sortOrder string // SortOrder
+var scriptDataVersion string // Advanced usage - controls the data version of the script
+var divisionIds string // Filters scripts to requested divisionIds
+// Get the list of scripts
+data, response, err := apiInstance.GetScripts(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion, divisionIds)
+if err != nil {
+	fmt.Printf("Error calling GetScripts: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

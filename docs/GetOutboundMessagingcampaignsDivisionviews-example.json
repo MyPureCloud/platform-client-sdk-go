@@ -1,0 +1,20 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewOutboundApiWithConfig(config)
+
+var pageSize int // Page size. The max that will be returned is 100.
+var pageNumber int // Page number
+var sortOrder string // The direction to sort
+var name string // Name
+var varType string // Campaign Type
+var id []string // id
+var senderSmsPhoneNumber string // Sender SMS Phone Number
+// Query a list of basic Messaging Campaign information objects
+data, response, err := apiInstance.GetOutboundMessagingcampaignsDivisionviews(pageSize, pageNumber, sortOrder, name, varType, id, senderSmsPhoneNumber)
+if err != nil {
+	fmt.Printf("Error calling GetOutboundMessagingcampaignsDivisionviews: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

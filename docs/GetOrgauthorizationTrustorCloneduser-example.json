@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)
+
+var trustorOrgId string // Trustor Organization Id
+var trusteeUserId string // Trustee User Id
+// Get Cloned User
+data, response, err := apiInstance.GetOrgauthorizationTrustorCloneduser(trustorOrgId, trusteeUserId)
+if err != nil {
+	fmt.Printf("Error calling GetOrgauthorizationTrustorCloneduser: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}
