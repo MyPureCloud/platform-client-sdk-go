@@ -41,7 +41,7 @@ type Worktypeupdate struct {
 	// ServiceLevelTarget - The target service level for Workitems created from the Worktype. The default value is 100.
 	ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
 
-	// Description - The description of the Worktype. Maximum length of 4096 characters.
+	// Description - The description of the Worktype. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
 	// DefaultStatusId - The ID of the default status for Workitems created from the Worktype.

@@ -34,7 +34,7 @@ type Userscheduleadherence struct {
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 
 	// ScheduledActivityCode - Activity code for which the user is currently scheduled
-	ScheduledActivityCode *Activitycodereference `json:"scheduledActivityCode,omitempty"`
+	ScheduledActivityCode *Activitycodesummary `json:"scheduledActivityCode,omitempty"`
 
 	// SystemPresence - Actual underlying system presence value
 	SystemPresence *string `json:"systemPresence,omitempty"`
@@ -180,7 +180,7 @@ func (o Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		
 		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 		
-		ScheduledActivityCode *Activitycodereference `json:"scheduledActivityCode,omitempty"`
+		ScheduledActivityCode *Activitycodesummary `json:"scheduledActivityCode,omitempty"`
 		
 		SystemPresence *string `json:"systemPresence,omitempty"`
 		

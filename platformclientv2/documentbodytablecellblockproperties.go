@@ -14,7 +14,7 @@ type Documentbodytablecellblockproperties struct {
 	// CellType - The type of the table cell.
 	CellType *string `json:"cellType,omitempty"`
 
-	// Width - The width for the table cell.
+	// Width - The width of the table cell converted to em unit.
 	Width *float32 `json:"width,omitempty"`
 
 	// Height - The height for the table cell.

@@ -14,12 +14,6 @@ type Activitycodereference struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// SecondaryPresences - The secondary presences of this activity code.
-	SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -89,18 +83,10 @@ func (o Activitycodereference) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
-		SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Name: o.Name,
-		
-		SecondaryPresences: o.SecondaryPresences,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -118,15 +104,6 @@ func (o *Activitycodereference) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if Name, ok := ActivitycodereferenceMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if SecondaryPresences, ok := ActivitycodereferenceMap["secondaryPresences"].([]interface{}); ok {
-		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
-		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
-	}
-	
 	if SelfUri, ok := ActivitycodereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

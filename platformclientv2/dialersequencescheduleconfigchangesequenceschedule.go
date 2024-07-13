@@ -15,6 +15,9 @@ type Dialersequencescheduleconfigchangesequenceschedule struct {
 	// Intervals - a list of start and end times
 	Intervals *[]Dialersequencescheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
 
+	// Recurrences - a list of recurrences for a schedule
+	Recurrences *[]Dialersequencescheduleconfigchangeschedulerecurrence `json:"recurrences,omitempty"`
+
 	// TimeZone - time zone identifier to be applied to the intervals; for example Africa/Abidjan
 	TimeZone *string `json:"timeZone,omitempty"`
 
@@ -121,6 +124,8 @@ func (o Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]byt
 	return json.Marshal(&struct { 
 		Intervals *[]Dialersequencescheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
 		
+		Recurrences *[]Dialersequencescheduleconfigchangeschedulerecurrence `json:"recurrences,omitempty"`
+		
 		TimeZone *string `json:"timeZone,omitempty"`
 		
 		Sequence *Dialersequencescheduleconfigchangeurireference `json:"sequence,omitempty"`
@@ -139,6 +144,8 @@ func (o Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]byt
 		Alias
 	}{ 
 		Intervals: o.Intervals,
+		
+		Recurrences: o.Recurrences,
 		
 		TimeZone: o.TimeZone,
 		
@@ -169,6 +176,11 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) UnmarshalJSON(b []b
 	if Intervals, ok := DialersequencescheduleconfigchangesequencescheduleMap["intervals"].([]interface{}); ok {
 		IntervalsString, _ := json.Marshal(Intervals)
 		json.Unmarshal(IntervalsString, &o.Intervals)
+	}
+	
+	if Recurrences, ok := DialersequencescheduleconfigchangesequencescheduleMap["recurrences"].([]interface{}); ok {
+		RecurrencesString, _ := json.Marshal(Recurrences)
+		json.Unmarshal(RecurrencesString, &o.Recurrences)
 	}
 	
 	if TimeZone, ok := DialersequencescheduleconfigchangesequencescheduleMap["timeZone"].(string); ok {

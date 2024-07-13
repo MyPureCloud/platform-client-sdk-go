@@ -7,22 +7,19 @@ import (
 	"strings"
 )
 
-// Aianswer
-type Aianswer struct { 
+// Documentelementlength
+type Documentelementlength struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// AnswerId - The unique identifier of the suggested ai answer.
-	AnswerId *string `json:"answerId,omitempty"`
+	// Value - The length value of the element in the selected unit.
+	Value *float32 `json:"value,omitempty"`
 
-	// Explanation - An explanation providing the reasoning behind the suggested answer.
-	Explanation *string `json:"explanation,omitempty"`
-
-	// FailureType - Describes the type of error associated with the AI answer.
-	FailureType *string `json:"failureType,omitempty"`
+	// Unit - The unit of length.
+	Unit *string `json:"unit,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Aianswer) SetField(field string, fieldValue interface{}) {
+func (o *Documentelementlength) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +40,7 @@ func (o *Aianswer) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Aianswer) MarshalJSON() ([]byte, error) {
+func (o Documentelementlength) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,42 +78,35 @@ func (o Aianswer) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Aianswer
+	type Alias Documentelementlength
 	
 	return json.Marshal(&struct { 
-		AnswerId *string `json:"answerId,omitempty"`
+		Value *float32 `json:"value,omitempty"`
 		
-		Explanation *string `json:"explanation,omitempty"`
-		
-		FailureType *string `json:"failureType,omitempty"`
+		Unit *string `json:"unit,omitempty"`
 		Alias
 	}{ 
-		AnswerId: o.AnswerId,
+		Value: o.Value,
 		
-		Explanation: o.Explanation,
-		
-		FailureType: o.FailureType,
+		Unit: o.Unit,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Aianswer) UnmarshalJSON(b []byte) error {
-	var AianswerMap map[string]interface{}
-	err := json.Unmarshal(b, &AianswerMap)
+func (o *Documentelementlength) UnmarshalJSON(b []byte) error {
+	var DocumentelementlengthMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentelementlengthMap)
 	if err != nil {
 		return err
 	}
 	
-	if AnswerId, ok := AianswerMap["answerId"].(string); ok {
-		o.AnswerId = &AnswerId
+	if Value, ok := DocumentelementlengthMap["value"].(float64); ok {
+		ValueFloat32 := float32(Value)
+		o.Value = &ValueFloat32
 	}
-    
-	if Explanation, ok := AianswerMap["explanation"].(string); ok {
-		o.Explanation = &Explanation
-	}
-    
-	if FailureType, ok := AianswerMap["failureType"].(string); ok {
-		o.FailureType = &FailureType
+	
+	if Unit, ok := DocumentelementlengthMap["unit"].(string); ok {
+		o.Unit = &Unit
 	}
     
 
@@ -124,7 +114,7 @@ func (o *Aianswer) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Aianswer) String() string {
+func (o *Documentelementlength) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

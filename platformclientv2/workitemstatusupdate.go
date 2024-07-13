@@ -17,7 +17,7 @@ type Workitemstatusupdate struct {
 	// DestinationStatusIds - A list of destination Statuses where a Workitem with this Status can transition to. If the list is empty Workitems with this Status can transition to all other Statuses defined on the Worktype. A Status can have a maximum of 24 destinations.
 	DestinationStatusIds *[]string `json:"destinationStatusIds,omitempty"`
 
-	// Description - The description of the Status. Maximum length of 4096 characters.
+	// Description - The description of the Status. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
 	// DefaultDestinationStatusId - Default destination status to which this Status will transition to if auto status transition enabled.

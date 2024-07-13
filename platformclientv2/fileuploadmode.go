@@ -11,7 +11,7 @@ import (
 type Fileuploadmode struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// FileTypes - A list of supported content types for uploading files
+	// FileTypes - A list of supported content types for uploading files.
 	FileTypes *[]string `json:"fileTypes,omitempty"`
 
 	// MaxFileSizeKB - The maximum file size for file uploads in kilobytes. Default is 10240 (10 MB)

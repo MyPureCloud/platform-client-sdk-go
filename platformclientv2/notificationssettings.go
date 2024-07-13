@@ -7,13 +7,16 @@ import (
 	"strings"
 )
 
-// Aiscoring
-type Aiscoring struct { 
+// Notificationssettings - Notification settings that handles messenger notifications
+type Notificationssettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Enabled - The toggle to enable or disable notifications
+	Enabled *bool `json:"enabled,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Aiscoring) SetField(field string, fieldValue interface{}) {
+func (o *Notificationssettings) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -34,7 +37,7 @@ func (o *Aiscoring) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Aiscoring) MarshalJSON() ([]byte, error) {
+func (o Notificationssettings) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -72,26 +75,34 @@ func (o Aiscoring) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Aiscoring
+	type Alias Notificationssettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		Alias
+	}{ 
+		Enabled: o.Enabled,
+		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Aiscoring) UnmarshalJSON(b []byte) error {
-	var AiscoringMap map[string]interface{}
-	err := json.Unmarshal(b, &AiscoringMap)
+func (o *Notificationssettings) UnmarshalJSON(b []byte) error {
+	var NotificationssettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &NotificationssettingsMap)
 	if err != nil {
 		return err
 	}
 	
+	if Enabled, ok := NotificationssettingsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Aiscoring) String() string {
+func (o *Notificationssettings) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

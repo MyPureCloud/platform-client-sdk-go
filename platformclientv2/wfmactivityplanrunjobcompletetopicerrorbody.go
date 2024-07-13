@@ -7,25 +7,25 @@ import (
 	"strings"
 )
 
-// Modelingstatusresponse
-type Modelingstatusresponse struct { 
+// Wfmactivityplanrunjobcompletetopicerrorbody
+type Wfmactivityplanrunjobcompletetopicerrorbody struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The ID generated for the modeling job.  Use to GET result when job is completed.
-	Id *string `json:"id,omitempty"`
+	// Status
+	Status *int `json:"status,omitempty"`
 
-	// Status - The status of the modeling job.
-	Status *string `json:"status,omitempty"`
+	// Code
+	Code *string `json:"code,omitempty"`
 
-	// ErrorDetails - If the request could not be properly processed, error details will be given here.
-	ErrorDetails *[]Modelingprocessingerror `json:"errorDetails,omitempty"`
+	// Message
+	Message *string `json:"message,omitempty"`
 
-	// ModelingResultUri - The uri of the modeling result. It has a value if the status is either 'Success', 'PartialFailure', or 'Failed'.
-	ModelingResultUri *string `json:"modelingResultUri,omitempty"`
+	// MessageParams
+	MessageParams *map[string]string `json:"messageParams,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Modelingstatusresponse) SetField(field string, fieldValue interface{}) {
+func (o *Wfmactivityplanrunjobcompletetopicerrorbody) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +46,7 @@ func (o *Modelingstatusresponse) SetField(field string, fieldValue interface{}) 
 	o.SetFieldNames[field] = true
 }
 
-func (o Modelingstatusresponse) MarshalJSON() ([]byte, error) {
+func (o Wfmactivityplanrunjobcompletetopicerrorbody) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,59 +84,60 @@ func (o Modelingstatusresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Modelingstatusresponse
+	type Alias Wfmactivityplanrunjobcompletetopicerrorbody
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Status *int `json:"status,omitempty"`
 		
-		Status *string `json:"status,omitempty"`
+		Code *string `json:"code,omitempty"`
 		
-		ErrorDetails *[]Modelingprocessingerror `json:"errorDetails,omitempty"`
+		Message *string `json:"message,omitempty"`
 		
-		ModelingResultUri *string `json:"modelingResultUri,omitempty"`
+		MessageParams *map[string]string `json:"messageParams,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
 		Status: o.Status,
 		
-		ErrorDetails: o.ErrorDetails,
+		Code: o.Code,
 		
-		ModelingResultUri: o.ModelingResultUri,
+		Message: o.Message,
+		
+		MessageParams: o.MessageParams,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Modelingstatusresponse) UnmarshalJSON(b []byte) error {
-	var ModelingstatusresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &ModelingstatusresponseMap)
+func (o *Wfmactivityplanrunjobcompletetopicerrorbody) UnmarshalJSON(b []byte) error {
+	var WfmactivityplanrunjobcompletetopicerrorbodyMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmactivityplanrunjobcompletetopicerrorbodyMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := ModelingstatusresponseMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if Status, ok := ModelingstatusresponseMap["status"].(string); ok {
-		o.Status = &Status
-	}
-    
-	if ErrorDetails, ok := ModelingstatusresponseMap["errorDetails"].([]interface{}); ok {
-		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
-		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
+	if Status, ok := WfmactivityplanrunjobcompletetopicerrorbodyMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
 	}
 	
-	if ModelingResultUri, ok := ModelingstatusresponseMap["modelingResultUri"].(string); ok {
-		o.ModelingResultUri = &ModelingResultUri
+	if Code, ok := WfmactivityplanrunjobcompletetopicerrorbodyMap["code"].(string); ok {
+		o.Code = &Code
 	}
     
+	if Message, ok := WfmactivityplanrunjobcompletetopicerrorbodyMap["message"].(string); ok {
+		o.Message = &Message
+	}
+    
+	if MessageParams, ok := WfmactivityplanrunjobcompletetopicerrorbodyMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Modelingstatusresponse) String() string {
+func (o *Wfmactivityplanrunjobcompletetopicerrorbody) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

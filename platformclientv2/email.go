@@ -89,6 +89,9 @@ type Email struct {
 
 	// QueueMediaSettings - Represents the queue settings for this media type.
 	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
+	// ParkTime - Represents the time when an email was put into parked state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ParkTime *time.Time `json:"parkTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -120,7 +123,7 @@ func (o Email) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartHoldTime","StartAlertingTime","ConnectedTime","DisconnectedTime", }
+		dateTimeFields := []string{ "StartHoldTime","StartAlertingTime","ConnectedTime","DisconnectedTime","ParkTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -185,6 +188,14 @@ func (o Email) MarshalJSON() ([]byte, error) {
 		DisconnectedTime = nil
 	}
 	
+	ParkTime := new(string)
+	if o.ParkTime != nil {
+		
+		*ParkTime = timeutil.Strftime(o.ParkTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ParkTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -237,6 +248,8 @@ func (o Email) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
+		ParkTime *string `json:"parkTime,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -290,6 +303,8 @@ func (o Email) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
+		
+		ParkTime: ParkTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -414,6 +429,11 @@ func (o *Email) UnmarshalJSON(b []byte) error {
 	if QueueMediaSettings, ok := EmailMap["queueMediaSettings"].(map[string]interface{}); ok {
 		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
+	if parkTimeString, ok := EmailMap["parkTime"].(string); ok {
+		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
+		o.ParkTime = &ParkTime
 	}
 	
 

@@ -1800,6 +1800,8 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 // DeleteOutboundMessagingcampaignProgress invokes DELETE /api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress
 //
 // Reset messaging campaign progress and recycle the messaging campaign
+//
+// Documented permissions are applicable based on campaign type.
 func (a OutboundApi) DeleteOutboundMessagingcampaignProgress(messagingCampaignId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables

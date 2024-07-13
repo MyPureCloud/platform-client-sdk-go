@@ -29,6 +29,9 @@ type Analyticsparticipant struct {
 	// Purpose - The participant's purpose
 	Purpose *string `json:"purpose,omitempty"`
 
+	// ScreenRecording - Flag determining if a screen recording was started or not
+	ScreenRecording *bool `json:"screenRecording,omitempty"`
+
 	// TeamId - The team ID the user is a member of
 	TeamId *string `json:"teamId,omitempty"`
 
@@ -117,6 +120,8 @@ func (o Analyticsparticipant) MarshalJSON() ([]byte, error) {
 		
 		Purpose *string `json:"purpose,omitempty"`
 		
+		ScreenRecording *bool `json:"screenRecording,omitempty"`
+		
 		TeamId *string `json:"teamId,omitempty"`
 		
 		UserId *string `json:"userId,omitempty"`
@@ -137,6 +142,8 @@ func (o Analyticsparticipant) MarshalJSON() ([]byte, error) {
 		ParticipantName: o.ParticipantName,
 		
 		Purpose: o.Purpose,
+		
+		ScreenRecording: o.ScreenRecording,
 		
 		TeamId: o.TeamId,
 		
@@ -178,6 +185,10 @@ func (o *Analyticsparticipant) UnmarshalJSON(b []byte) error {
     
 	if Purpose, ok := AnalyticsparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
+	}
+    
+	if ScreenRecording, ok := AnalyticsparticipantMap["screenRecording"].(bool); ok {
+		o.ScreenRecording = &ScreenRecording
 	}
     
 	if TeamId, ok := AnalyticsparticipantMap["teamId"].(string); ok {

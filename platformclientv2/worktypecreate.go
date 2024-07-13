@@ -11,7 +11,7 @@ import (
 type Worktypecreate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of the Worktype. Length between 3 and 256 characters.
+	// Name - The name of the Worktype. Valid length between 3 and 256 characters.
 	Name *string `json:"name,omitempty"`
 
 	// DefaultWorkbinId - The ID of the default Workbin for Workitems created from the Worktype.
@@ -41,7 +41,7 @@ type Worktypecreate struct {
 	// ServiceLevelTarget - The target service level for Workitems created from the Worktype. The default value is 100.
 	ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
 
-	// Description - The description of the Worktype. Maximum length of 4096 characters.
+	// Description - The description of the Worktype. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
 	// DivisionId - The ID of the division the Worktype belongs to. Defaults to the default Workbin division ID. The Worktype must be in the same division as its default Workbin.

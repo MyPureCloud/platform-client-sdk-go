@@ -32,6 +32,9 @@ type Createcallrequest struct {
 	// Priority - The priority to assign to this call (if calling a queue).
 	Priority *int `json:"priority,omitempty"`
 
+	// Attributes - The list of attributes to associate with the customer participant.
+	Attributes *map[string]string `json:"attributes,omitempty"`
+
 	// LanguageId - The language skill ID to use for routing this call (if calling a queue).
 	LanguageId *string `json:"languageId,omitempty"`
 
@@ -131,6 +134,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		
 		Priority *int `json:"priority,omitempty"`
 		
+		Attributes *map[string]string `json:"attributes,omitempty"`
+		
 		LanguageId *string `json:"languageId,omitempty"`
 		
 		RoutingSkillsIds *[]string `json:"routingSkillsIds,omitempty"`
@@ -159,6 +164,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		CallUserId: o.CallUserId,
 		
 		Priority: o.Priority,
+		
+		Attributes: o.Attributes,
 		
 		LanguageId: o.LanguageId,
 		
@@ -211,6 +218,11 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
 	if Priority, ok := CreatecallrequestMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
+	}
+	
+	if Attributes, ok := CreatecallrequestMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
 	}
 	
 	if LanguageId, ok := CreatecallrequestMap["languageId"].(string); ok {

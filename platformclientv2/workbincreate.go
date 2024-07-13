@@ -14,7 +14,7 @@ type Workbincreate struct {
 	// Name - Workbin name. Valid length between 3 and 256 characters.
 	Name *string `json:"name,omitempty"`
 
-	// Description - Workbin description. Maximum length of 4096 characters.
+	// Description - Workbin description. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
 	// DivisionId - The ID of the division the Workbin belongs to. Defaults to home division ID.

@@ -39,7 +39,7 @@ type Workitemupdate struct {
 	// AutoStatusTransition - Set it to false to disable auto status transition. By default, it is enabled.
 	AutoStatusTransition *bool `json:"autoStatusTransition,omitempty"`
 
-	// Description - The description of the Workitem. Maximum length of 4096 characters.
+	// Description - The description of the Workitem. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
 	// DateClosed - The closed date of the Workitem. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

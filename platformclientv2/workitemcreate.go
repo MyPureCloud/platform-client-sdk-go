@@ -39,7 +39,7 @@ type Workitemcreate struct {
 	// AutoStatusTransition - Set it to false to disable auto status transition. By default, it is enabled.
 	AutoStatusTransition *bool `json:"autoStatusTransition,omitempty"`
 
-	// Description - The description of the Workitem. Maximum length of 4096 characters.
+	// Description - The description of the Workitem. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
 	// TypeId - The ID of the Worktype of the Workitem.

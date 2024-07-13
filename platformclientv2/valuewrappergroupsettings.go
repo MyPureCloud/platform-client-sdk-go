@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Aiscoringsettings
-type Aiscoringsettings struct { 
+// Valuewrappergroupsettings
+type Valuewrappergroupsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - True if AI scoring feature is configured, false if not.
-	Enabled *bool `json:"enabled,omitempty"`
-
-	// Prompt - The prompt text that would be used by a LLM.
-	Prompt *string `json:"prompt,omitempty"`
+	// Value - The value for the associated field
+	Value *Groupsettings `json:"value,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Aiscoringsettings) SetField(field string, fieldValue interface{}) {
+func (o *Valuewrappergroupsettings) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Aiscoringsettings) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Aiscoringsettings) MarshalJSON() ([]byte, error) {
+func (o Valuewrappergroupsettings) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +75,35 @@ func (o Aiscoringsettings) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Aiscoringsettings
+	type Alias Valuewrappergroupsettings
 	
 	return json.Marshal(&struct { 
-		Enabled *bool `json:"enabled,omitempty"`
-		
-		Prompt *string `json:"prompt,omitempty"`
+		Value *Groupsettings `json:"value,omitempty"`
 		Alias
 	}{ 
-		Enabled: o.Enabled,
-		
-		Prompt: o.Prompt,
+		Value: o.Value,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Aiscoringsettings) UnmarshalJSON(b []byte) error {
-	var AiscoringsettingsMap map[string]interface{}
-	err := json.Unmarshal(b, &AiscoringsettingsMap)
+func (o *Valuewrappergroupsettings) UnmarshalJSON(b []byte) error {
+	var ValuewrappergroupsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &ValuewrappergroupsettingsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Enabled, ok := AiscoringsettingsMap["enabled"].(bool); ok {
-		o.Enabled = &Enabled
+	if Value, ok := ValuewrappergroupsettingsMap["value"].(map[string]interface{}); ok {
+		ValueString, _ := json.Marshal(Value)
+		json.Unmarshal(ValueString, &o.Value)
 	}
-    
-	if Prompt, ok := AiscoringsettingsMap["prompt"].(string); ok {
-		o.Prompt = &Prompt
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Aiscoringsettings) String() string {
+func (o *Valuewrappergroupsettings) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

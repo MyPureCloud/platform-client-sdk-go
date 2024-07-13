@@ -1883,7 +1883,7 @@ func (a TaskManagementApi) GetTaskmanagementWorktype(worktypeId string, expands 
 // Get a listing of a worktype's attribute change history
 //
 // Preview: GetTaskmanagementWorktypeHistory is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a TaskManagementApi) GetTaskmanagementWorktypeHistory(worktypeId string, after string, pageSize int, sortOrder string) (*Worktypechangelisting, *APIResponse, error) {
+func (a TaskManagementApi) GetTaskmanagementWorktypeHistory(worktypeId string, after string, pageSize int, sortOrder string, fields []string) (*Worktypechangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/taskmanagement/worktypes/{worktypeId}/history"
@@ -1921,6 +1921,8 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeHistory(worktypeId string, a
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

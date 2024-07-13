@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Modelingprocessingerror
-type Modelingprocessingerror struct { 
+// Activityplanasaimpactoverride
+type Activityplanasaimpactoverride struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// InternalErrorCode - An internal code representing the type of error. ModelInputMissing for 'Model Builder inputs not found.' ModelInputInvalid for 'Model Builder inputs are invalid. Ensure the input data format is correct.' ModelFailed for 'An error occured while building the model with the given input.'
-	InternalErrorCode *string `json:"internalErrorCode,omitempty"`
-
-	// Description - A text description of the error
-	Description *string `json:"description,omitempty"`
+	// IncreaseByPercent - Allowed average speed of answer increase percent, from 0.0 to 100.0
+	IncreaseByPercent *float64 `json:"increaseByPercent,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Modelingprocessingerror) SetField(field string, fieldValue interface{}) {
+func (o *Activityplanasaimpactoverride) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Modelingprocessingerror) SetField(field string, fieldValue interface{})
 	o.SetFieldNames[field] = true
 }
 
-func (o Modelingprocessingerror) MarshalJSON() ([]byte, error) {
+func (o Activityplanasaimpactoverride) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +75,26 @@ func (o Modelingprocessingerror) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Modelingprocessingerror
+	type Alias Activityplanasaimpactoverride
 	
 	return json.Marshal(&struct { 
-		InternalErrorCode *string `json:"internalErrorCode,omitempty"`
-		
-		Description *string `json:"description,omitempty"`
+		IncreaseByPercent *float64 `json:"increaseByPercent,omitempty"`
 		Alias
 	}{ 
-		InternalErrorCode: o.InternalErrorCode,
-		
-		Description: o.Description,
+		IncreaseByPercent: o.IncreaseByPercent,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Modelingprocessingerror) UnmarshalJSON(b []byte) error {
-	var ModelingprocessingerrorMap map[string]interface{}
-	err := json.Unmarshal(b, &ModelingprocessingerrorMap)
+func (o *Activityplanasaimpactoverride) UnmarshalJSON(b []byte) error {
+	var ActivityplanasaimpactoverrideMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivityplanasaimpactoverrideMap)
 	if err != nil {
 		return err
 	}
 	
-	if InternalErrorCode, ok := ModelingprocessingerrorMap["internalErrorCode"].(string); ok {
-		o.InternalErrorCode = &InternalErrorCode
-	}
-    
-	if Description, ok := ModelingprocessingerrorMap["description"].(string); ok {
-		o.Description = &Description
+	if IncreaseByPercent, ok := ActivityplanasaimpactoverrideMap["increaseByPercent"].(float64); ok {
+		o.IncreaseByPercent = &IncreaseByPercent
 	}
     
 
@@ -113,7 +102,7 @@ func (o *Modelingprocessingerror) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Modelingprocessingerror) String() string {
+func (o *Activityplanasaimpactoverride) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

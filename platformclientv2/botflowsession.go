@@ -36,6 +36,9 @@ type Botflowsession struct {
 	// DateCreated - Timestamp indicating when the session was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// DateCompleted - Timestamp indicating when the session was completed. Note: The 'interval' query param uses this timestamp to filter the output. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
+
 	// Conversation - The conversation details, across potentially multiple Bot Flow sessions.
 	Conversation *Addressableentityref `json:"conversation,omitempty"`
 }
@@ -69,7 +72,7 @@ func (o Botflowsession) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated", }
+		dateTimeFields := []string{ "DateCreated","DateCompleted", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -110,6 +113,14 @@ func (o Botflowsession) MarshalJSON() ([]byte, error) {
 		DateCreated = nil
 	}
 	
+	DateCompleted := new(string)
+	if o.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -126,6 +137,8 @@ func (o Botflowsession) MarshalJSON() ([]byte, error) {
 		BotResultCategory *string `json:"botResultCategory,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
 		
 		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		Alias
@@ -145,6 +158,8 @@ func (o Botflowsession) MarshalJSON() ([]byte, error) {
 		BotResultCategory: o.BotResultCategory,
 		
 		DateCreated: DateCreated,
+		
+		DateCompleted: DateCompleted,
 		
 		Conversation: o.Conversation,
 		Alias:    (Alias)(o),
@@ -191,6 +206,11 @@ func (o *Botflowsession) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := BotflowsessionMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if dateCompletedString, ok := BotflowsessionMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
 	}
 	
 	if Conversation, ok := BotflowsessionMap["conversation"].(map[string]interface{}); ok {

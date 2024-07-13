@@ -36,6 +36,9 @@ type Reportingturn struct {
 	// DateCreated - Timestamp indicating when the original turn was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// DateCompleted - Timestamp indicating when the original turn was completed. Note: The 'interval' query param uses this timestamp to filter the output. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
+
 	// AskActionResult - Result of the bot flow 'ask' action.
 	AskActionResult *string `json:"askActionResult,omitempty"`
 
@@ -75,7 +78,7 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated", }
+		dateTimeFields := []string{ "DateCreated","DateCompleted", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -116,6 +119,14 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		DateCreated = nil
 	}
 	
+	DateCompleted := new(string)
+	if o.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
 	return json.Marshal(&struct { 
 		UserInput *string `json:"userInput,omitempty"`
 		
@@ -132,6 +143,8 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		KnowledgeBaseEvents *Reportingturnknowledgeevents `json:"knowledgeBaseEvents,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
 		
 		AskActionResult *string `json:"askActionResult,omitempty"`
 		
@@ -155,6 +168,8 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		KnowledgeBaseEvents: o.KnowledgeBaseEvents,
 		
 		DateCreated: DateCreated,
+		
+		DateCompleted: DateCompleted,
 		
 		AskActionResult: o.AskActionResult,
 		
@@ -208,6 +223,11 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := ReportingturnMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if dateCompletedString, ok := ReportingturnMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
 	}
 	
 	if AskActionResult, ok := ReportingturnMap["askActionResult"].(string); ok {

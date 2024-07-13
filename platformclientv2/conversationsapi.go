@@ -10907,6 +10907,97 @@ func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conver
 	return successPayload, response, err
 }
 
+// PatchConversationsEmailParticipantParkingstate invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}/parkingstate
+//
+// Update conversation by setting its parking state
+//
+// Preview: PatchConversationsEmailParticipantParkingstate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) PatchConversationsEmailParticipantParkingstate(conversationId string, participantId string, body Parkingstaterequest) (*APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/emails/{conversationId}/participants/{participantId}/parkingstate"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsEmailParticipantParkingstate")
+	}
+	// verify the required parameter 'participantId' is set
+	if &participantId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsEmailParticipantParkingstate")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsEmailParticipantParkingstate")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PatchConversationsMessage invokes PATCH /api/v2/conversations/messages/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
@@ -17692,11 +17783,11 @@ func (a ConversationsApi) PostConversationsMessageParticipantReplace(conversatio
 // Create an outbound messaging conversation.
 //
 // If there is an existing conversation between the remote address and the address associated with the queue specified in createOutboundRequest then the result of this request depends on the state of that conversation and the useExistingConversation field of createOutboundRequest. If the existing conversation is in alerting or connected state, then the request will fail. If the existing conversation is disconnected but still within the conversation window then the request will fail unless useExistingConversation is set to true.
-func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessagingconversationrequest) (*Messageconversation, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessagingconversationrequest) (*Createoutboundmessagingconversationresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages"
-	defaultReturn := new(Messageconversation)
+	defaultReturn := new(Createoutboundmessagingconversationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -17757,14 +17848,14 @@ func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessaging
 	// body params
 	postBody = &body
 
-	var successPayload *Messageconversation
+	var successPayload *Createoutboundmessagingconversationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Messageconversation" == "string" {
+		if "Createoutboundmessagingconversationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

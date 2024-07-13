@@ -114,6 +114,9 @@ type Callbackmediaparticipant struct {
 	// EndAcwTime - The timestamp when this participant ended after-call work. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+	// ParkTime - The time when this participant's communication was last parked.  Does not reset on resume. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ParkTime *time.Time `json:"parkTime,omitempty"`
+
 	// OutboundPreview - The outbound preview associated with this callback.
 	OutboundPreview *Dialerpreview `json:"outboundPreview,omitempty"`
 
@@ -171,7 +174,7 @@ func (o Callbackmediaparticipant) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","CallbackScheduledTime", }
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","CallbackScheduledTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -252,6 +255,14 @@ func (o Callbackmediaparticipant) MarshalJSON() ([]byte, error) {
 		EndAcwTime = nil
 	}
 	
+	ParkTime := new(string)
+	if o.ParkTime != nil {
+		
+		*ParkTime = timeutil.Strftime(o.ParkTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ParkTime = nil
+	}
+	
 	CallbackScheduledTime := new(string)
 	if o.CallbackScheduledTime != nil {
 		
@@ -328,6 +339,8 @@ func (o Callbackmediaparticipant) MarshalJSON() ([]byte, error) {
 		StartAcwTime *string `json:"startAcwTime,omitempty"`
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
+		
+		ParkTime *string `json:"parkTime,omitempty"`
 		
 		OutboundPreview *Dialerpreview `json:"outboundPreview,omitempty"`
 		
@@ -415,6 +428,8 @@ func (o Callbackmediaparticipant) MarshalJSON() ([]byte, error) {
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
+		
+		ParkTime: ParkTime,
 		
 		OutboundPreview: o.OutboundPreview,
 		
@@ -598,6 +613,11 @@ func (o *Callbackmediaparticipant) UnmarshalJSON(b []byte) error {
 	if endAcwTimeString, ok := CallbackmediaparticipantMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if parkTimeString, ok := CallbackmediaparticipantMap["parkTime"].(string); ok {
+		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
+		o.ParkTime = &ParkTime
 	}
 	
 	if OutboundPreview, ok := CallbackmediaparticipantMap["outboundPreview"].(map[string]interface{}); ok {

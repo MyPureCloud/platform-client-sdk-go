@@ -11,7 +11,7 @@ import (
 type Documentbodytableproperties struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Width - The width for the table. The valid values in 'em'.
+	// Width - The width of the table converted to em unit.
 	Width *float32 `json:"width,omitempty"`
 
 	// Height - The height for the table.

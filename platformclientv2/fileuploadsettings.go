@@ -11,7 +11,7 @@ import (
 type Fileuploadsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// EnableAttachments - whether or not attachments is enabled
+	// EnableAttachments - whether or not attachments are enabled
 	EnableAttachments *bool `json:"enableAttachments,omitempty"`
 
 	// Modes - The list of supported file upload modes
