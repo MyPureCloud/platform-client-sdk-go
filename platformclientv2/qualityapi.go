@@ -5156,17 +5156,17 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 	return successPayload, response, err
 }
 
-// PutQualityFormsEvaluationPredictivescoringSettings invokes PUT /api/v2/quality/forms/evaluations/{formId}/predictivescoring/settings
+// PutQualityFormsEvaluationAiscoringSettings invokes PUT /api/v2/quality/forms/evaluations/{formId}/aiscoring/settings
 //
-// Update the Predictive Scoring settings of an evaluation form.
+// Update the AI Scoring settings of an evaluation form.
 //
-// Preview: PutQualityFormsEvaluationPredictivescoringSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a QualityApi) PutQualityFormsEvaluationPredictivescoringSettings(formId string, body Predictivescoringsettings) (*Predictivescoringsettings, *APIResponse, error) {
+// Preview: PutQualityFormsEvaluationAiscoringSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a QualityApi) PutQualityFormsEvaluationAiscoringSettings(formId string, body Aiscoringsettings) (*Aiscoringsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}/predictivescoring/settings"
+	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}/aiscoring/settings"
 	path = strings.Replace(path, "{formId}", url.PathEscape(fmt.Sprintf("%v", formId)), -1)
-	defaultReturn := new(Predictivescoringsettings)
+	defaultReturn := new(Aiscoringsettings)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5174,12 +5174,12 @@ func (a QualityApi) PutQualityFormsEvaluationPredictivescoringSettings(formId st
 	// verify the required parameter 'formId' is set
 	if &formId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->PutQualityFormsEvaluationPredictivescoringSettings")
+		return defaultReturn, nil, errors.New("Missing required parameter 'formId' when calling QualityApi->PutQualityFormsEvaluationAiscoringSettings")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualityFormsEvaluationPredictivescoringSettings")
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualityFormsEvaluationAiscoringSettings")
 	}
 
 	headerParams := make(map[string]string)
@@ -5232,14 +5232,14 @@ func (a QualityApi) PutQualityFormsEvaluationPredictivescoringSettings(formId st
 	// body params
 	postBody = &body
 
-	var successPayload *Predictivescoringsettings
+	var successPayload *Aiscoringsettings
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Predictivescoringsettings" == "string" {
+		if "Aiscoringsettings" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

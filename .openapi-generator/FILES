@@ -2499,7 +2499,7 @@ docs/PutQualityCalibration-example.txt
 docs/PutQualityConversationEvaluation-example.txt
 docs/PutQualityForm-example.txt
 docs/PutQualityFormsEvaluation-example.txt
-docs/PutQualityFormsEvaluationPredictivescoringSettings-example.txt
+docs/PutQualityFormsEvaluationAiscoringSettings-example.txt
 docs/PutQualityFormsSurvey-example.txt
 docs/PutQualitySurveysScorable-example.txt
 docs/PutRecordingCrossplatformMediaretentionpolicy-example.txt
@@ -2755,6 +2755,10 @@ platformclientv2/aggregateviewdata.go
 platformclientv2/aggregationrange.go
 platformclientv2/aggregationresult.go
 platformclientv2/aggregationresultentry.go
+platformclientv2/aianswer.go
+platformclientv2/aiscoring.go
+platformclientv2/aiscoringsetting.go
+platformclientv2/aiscoringsettings.go
 platformclientv2/alertingapi.go
 platformclientv2/alertingunreadstatus.go
 platformclientv2/alertlisting.go
@@ -5488,12 +5492,8 @@ platformclientv2/postoutputcontract.go
 platformclientv2/posttextmessage.go
 platformclientv2/posttextrequest.go
 platformclientv2/posttextresponse.go
-platformclientv2/predictedanswer.go
-platformclientv2/predictedscoring.go
 platformclientv2/predictionresults.go
 platformclientv2/predictiverouting.go
-platformclientv2/predictivescoringsetting.go
-platformclientv2/predictivescoringsettings.go
 platformclientv2/predictor.go
 platformclientv2/predictorlisting.go
 platformclientv2/predictormodel.go

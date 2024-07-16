@@ -31236,10 +31236,10 @@
     "return": "Evaluationformresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewQualityApiWithConfig(config)\n\nvar formId string // Form ID\nvar body platformclientv2.Evaluationform // Evaluation form\n// Update an evaluation form.\ndata, response, err := apiInstance.PutQualityFormsEvaluation(formId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutQualityFormsEvaluation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
-  "putqualityformsevaluationpredictivescoringsettings": {
-    "operationId": "putqualityformsevaluationpredictivescoringsettings",
-    "functionName": "PutQualityFormsEvaluationPredictivescoringSettings",
-    "signature": "PutQualityFormsEvaluationPredictivescoringSettings(formId, body)",
+  "putqualityformsevaluationaiscoringsettings": {
+    "operationId": "putqualityformsevaluationaiscoringsettings",
+    "functionName": "PutQualityFormsEvaluationAiscoringSettings",
+    "signature": "PutQualityFormsEvaluationAiscoringSettings(formId, body)",
     "parameters": [
       {
         "name": "formId",
@@ -31248,12 +31248,12 @@
       },
       {
         "name": "body",
-        "type": "Predictivescoringsettings",
+        "type": "Aiscoringsettings",
         "required": "true"
       }
     ],
-    "return": "Predictivescoringsettings",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewQualityApiWithConfig(config)\n\nvar formId string // Form ID\nvar body platformclientv2.Predictivescoringsettings // Predictive Scoring Settings\n// Update the Predictive Scoring settings of an evaluation form.\ndata, response, err := apiInstance.PutQualityFormsEvaluationPredictivescoringSettings(formId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutQualityFormsEvaluationPredictivescoringSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "return": "Aiscoringsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewQualityApiWithConfig(config)\n\nvar formId string // Form ID\nvar body platformclientv2.Aiscoringsettings // AI Scoring Settings\n// Update the AI Scoring settings of an evaluation form.\ndata, response, err := apiInstance.PutQualityFormsEvaluationAiscoringSettings(formId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutQualityFormsEvaluationAiscoringSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putqualityformssurvey": {
     "operationId": "putqualityformssurvey",

@@ -21,6 +21,12 @@ type Trustee struct {
 	// UsesDefaultRole - Denotes if trustee uses admin role by default.
 	UsesDefaultRole *bool `json:"usesDefaultRole,omitempty"`
 
+	// HasFullAccess - Denotes if trustee uses full access role by default.
+	HasFullAccess *bool `json:"hasFullAccess,omitempty"`
+
+	// IsTrustedUser - Denotes if trustee is given Trusted User access by default.
+	IsTrustedUser *bool `json:"isTrustedUser,omitempty"`
+
 	// DateCreated - Date Trust was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -122,6 +128,10 @@ func (o Trustee) MarshalJSON() ([]byte, error) {
 		
 		UsesDefaultRole *bool `json:"usesDefaultRole,omitempty"`
 		
+		HasFullAccess *bool `json:"hasFullAccess,omitempty"`
+		
+		IsTrustedUser *bool `json:"isTrustedUser,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateExpired *string `json:"dateExpired,omitempty"`
@@ -138,6 +148,10 @@ func (o Trustee) MarshalJSON() ([]byte, error) {
 		Enabled: o.Enabled,
 		
 		UsesDefaultRole: o.UsesDefaultRole,
+		
+		HasFullAccess: o.HasFullAccess,
+		
+		IsTrustedUser: o.IsTrustedUser,
 		
 		DateCreated: DateCreated,
 		
@@ -169,6 +183,14 @@ func (o *Trustee) UnmarshalJSON(b []byte) error {
     
 	if UsesDefaultRole, ok := TrusteeMap["usesDefaultRole"].(bool); ok {
 		o.UsesDefaultRole = &UsesDefaultRole
+	}
+    
+	if HasFullAccess, ok := TrusteeMap["hasFullAccess"].(bool); ok {
+		o.HasFullAccess = &HasFullAccess
+	}
+    
+	if IsTrustedUser, ok := TrusteeMap["isTrustedUser"].(bool); ok {
+		o.IsTrustedUser = &IsTrustedUser
 	}
     
 	if dateCreatedString, ok := TrusteeMap["dateCreated"].(string); ok {

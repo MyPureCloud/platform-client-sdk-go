@@ -12685,8 +12685,6 @@ func (a ConversationsApi) PostConversationAssign(conversationId string, body Con
 // PostConversationBarge invokes POST /api/v2/conversations/{conversationId}/barge
 //
 // Barge a conversation creating a barged in conference of connected participants.
-//
-// Preview: PostConversationBarge is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationBarge(conversationId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -13894,8 +13892,6 @@ func (a ConversationsApi) PostConversationsCall(conversationId string, body Call
 // PostConversationsCallParticipantBarge invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/barge
 //
 // Barge a given participant's call creating a barged in conference of connected participants.
-//
-// Preview: PostConversationsCallParticipantBarge is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantBarge(conversationId string, participantId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

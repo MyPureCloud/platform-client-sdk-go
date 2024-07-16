@@ -11,7 +11,7 @@ import (
 type Chatsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// MessageRetentionPeriodDays - Retention time for messages in days
+	// MessageRetentionPeriodDays - Retention time for messages in days, expressed as int in the range [10,3650]
 	MessageRetentionPeriodDays *int `json:"messageRetentionPeriodDays,omitempty"`
 }
 

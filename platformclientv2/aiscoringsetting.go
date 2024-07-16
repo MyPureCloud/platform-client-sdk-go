@@ -7,22 +7,16 @@ import (
 	"strings"
 )
 
-// Predictedanswer
-type Predictedanswer struct { 
+// Aiscoringsetting
+type Aiscoringsetting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// AnswerId - The unique identifier of the suggested predicted answer.
-	AnswerId *string `json:"answerId,omitempty"`
-
-	// Explanation - An explanation providing the reasoning behind the suggested answer.
-	Explanation *string `json:"explanation,omitempty"`
-
-	// FailureType - Describes the type of error associated with the predicted answer.
-	FailureType *string `json:"failureType,omitempty"`
+	// Enabled - True if AI Scoring feature is configured.
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Predictedanswer) SetField(field string, fieldValue interface{}) {
+func (o *Aiscoringsetting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +37,7 @@ func (o *Predictedanswer) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Predictedanswer) MarshalJSON() ([]byte, error) {
+func (o Aiscoringsetting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,42 +75,26 @@ func (o Predictedanswer) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Predictedanswer
+	type Alias Aiscoringsetting
 	
 	return json.Marshal(&struct { 
-		AnswerId *string `json:"answerId,omitempty"`
-		
-		Explanation *string `json:"explanation,omitempty"`
-		
-		FailureType *string `json:"failureType,omitempty"`
+		Enabled *bool `json:"enabled,omitempty"`
 		Alias
 	}{ 
-		AnswerId: o.AnswerId,
-		
-		Explanation: o.Explanation,
-		
-		FailureType: o.FailureType,
+		Enabled: o.Enabled,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Predictedanswer) UnmarshalJSON(b []byte) error {
-	var PredictedanswerMap map[string]interface{}
-	err := json.Unmarshal(b, &PredictedanswerMap)
+func (o *Aiscoringsetting) UnmarshalJSON(b []byte) error {
+	var AiscoringsettingMap map[string]interface{}
+	err := json.Unmarshal(b, &AiscoringsettingMap)
 	if err != nil {
 		return err
 	}
 	
-	if AnswerId, ok := PredictedanswerMap["answerId"].(string); ok {
-		o.AnswerId = &AnswerId
-	}
-    
-	if Explanation, ok := PredictedanswerMap["explanation"].(string); ok {
-		o.Explanation = &Explanation
-	}
-    
-	if FailureType, ok := PredictedanswerMap["failureType"].(string); ok {
-		o.FailureType = &FailureType
+	if Enabled, ok := AiscoringsettingMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
 	}
     
 
@@ -124,7 +102,7 @@ func (o *Predictedanswer) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Predictedanswer) String() string {
+func (o *Aiscoringsetting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -15,26 +15,29 @@ type Infrastructureascodejob struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// DryRun - dryRun
+	// DryRun - Whether or not the job was a dry run
 	DryRun *bool `json:"dryRun,omitempty"`
 
-	// AcceleratorId - acceleratorId
+	// AcceleratorId - Accelerator associated with the job
 	AcceleratorId *string `json:"acceleratorId,omitempty"`
 
-	// DateSubmitted - dateSubmitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateSubmitted - Date and time on which job was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateSubmitted *time.Time `json:"dateSubmitted,omitempty"`
 
-	// SubmittedBy - submittedBy
+	// SubmittedBy - User who submitted the job
 	SubmittedBy *Userreference `json:"submittedBy,omitempty"`
 
-	// Status - status
+	// Status - Job status
 	Status *string `json:"status,omitempty"`
 
-	// ErrorInfo - errorInfo
+	// ErrorInfo - Information about errors, if any
 	ErrorInfo *Errorinfo `json:"errorInfo,omitempty"`
 
-	// Results - results
+	// Results - The output results of the terraform job
 	Results *string `json:"results,omitempty"`
+
+	// RollbackResults - The results of rolling back the job if there were errors.  Not returned if job was successful.
+	RollbackResults *string `json:"rollbackResults,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -127,6 +130,8 @@ func (o Infrastructureascodejob) MarshalJSON() ([]byte, error) {
 		
 		Results *string `json:"results,omitempty"`
 		
+		RollbackResults *string `json:"rollbackResults,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -145,6 +150,8 @@ func (o Infrastructureascodejob) MarshalJSON() ([]byte, error) {
 		ErrorInfo: o.ErrorInfo,
 		
 		Results: o.Results,
+		
+		RollbackResults: o.RollbackResults,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -191,6 +198,10 @@ func (o *Infrastructureascodejob) UnmarshalJSON(b []byte) error {
 	
 	if Results, ok := InfrastructureascodejobMap["results"].(string); ok {
 		o.Results = &Results
+	}
+    
+	if RollbackResults, ok := InfrastructureascodejobMap["rollbackResults"].(string); ok {
+		o.RollbackResults = &RollbackResults
 	}
     
 	if SelfUri, ok := InfrastructureascodejobMap["selfUri"].(string); ok {

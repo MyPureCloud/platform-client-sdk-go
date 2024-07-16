@@ -91,6 +91,9 @@ type Widget struct {
 
 	// SelectedStatuses - Indicates the selected statuses used to filter the agent widget in the dashboard.
 	SelectedStatuses *[]string `json:"selectedStatuses,omitempty"`
+
+	// AgentInteractionSortOrder - The sort order of the interactions in the agent status widget.
+	AgentInteractionSortOrder *string `json:"agentInteractionSortOrder,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -209,6 +212,8 @@ func (o Widget) MarshalJSON() ([]byte, error) {
 		ShowOfflineAgents *bool `json:"showOfflineAgents,omitempty"`
 		
 		SelectedStatuses *[]string `json:"selectedStatuses,omitempty"`
+		
+		AgentInteractionSortOrder *string `json:"agentInteractionSortOrder,omitempty"`
 		Alias
 	}{ 
 		Row: o.Row,
@@ -264,6 +269,8 @@ func (o Widget) MarshalJSON() ([]byte, error) {
 		ShowOfflineAgents: o.ShowOfflineAgents,
 		
 		SelectedStatuses: o.SelectedStatuses,
+		
+		AgentInteractionSortOrder: o.AgentInteractionSortOrder,
 		Alias:    (Alias)(o),
 	})
 }
@@ -392,6 +399,10 @@ func (o *Widget) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SelectedStatusesString, &o.SelectedStatuses)
 	}
 	
+	if AgentInteractionSortOrder, ok := WidgetMap["agentInteractionSortOrder"].(string); ok {
+		o.AgentInteractionSortOrder = &AgentInteractionSortOrder
+	}
+    
 
 	return nil
 }

@@ -7,13 +7,22 @@ import (
 	"strings"
 )
 
-// Predictedscoring
-type Predictedscoring struct { 
+// Aianswer
+type Aianswer struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// AnswerId - The unique identifier of the suggested AI answer.
+	AnswerId *string `json:"answerId,omitempty"`
+
+	// Explanation - An explanation providing the reasoning behind the suggested answer.
+	Explanation *string `json:"explanation,omitempty"`
+
+	// FailureType - Describes the type of error associated with the AI answer.
+	FailureType *string `json:"failureType,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Predictedscoring) SetField(field string, fieldValue interface{}) {
+func (o *Aianswer) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -34,7 +43,7 @@ func (o *Predictedscoring) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Predictedscoring) MarshalJSON() ([]byte, error) {
+func (o Aianswer) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -72,26 +81,50 @@ func (o Predictedscoring) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Predictedscoring
+	type Alias Aianswer
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		AnswerId *string `json:"answerId,omitempty"`
+		
+		Explanation *string `json:"explanation,omitempty"`
+		
+		FailureType *string `json:"failureType,omitempty"`
+		Alias
+	}{ 
+		AnswerId: o.AnswerId,
+		
+		Explanation: o.Explanation,
+		
+		FailureType: o.FailureType,
+		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Predictedscoring) UnmarshalJSON(b []byte) error {
-	var PredictedscoringMap map[string]interface{}
-	err := json.Unmarshal(b, &PredictedscoringMap)
+func (o *Aianswer) UnmarshalJSON(b []byte) error {
+	var AianswerMap map[string]interface{}
+	err := json.Unmarshal(b, &AianswerMap)
 	if err != nil {
 		return err
 	}
 	
+	if AnswerId, ok := AianswerMap["answerId"].(string); ok {
+		o.AnswerId = &AnswerId
+	}
+    
+	if Explanation, ok := AianswerMap["explanation"].(string); ok {
+		o.Explanation = &Explanation
+	}
+    
+	if FailureType, ok := AianswerMap["failureType"].(string); ok {
+		o.FailureType = &FailureType
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Predictedscoring) String() string {
+func (o *Aianswer) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

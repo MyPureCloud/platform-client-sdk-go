@@ -7,22 +7,13 @@ import (
 	"strings"
 )
 
-// Predictivescoringsettings
-type Predictivescoringsettings struct { 
+// Aiscoring
+type Aiscoring struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
-	// QuestionGroupSettings
-	QuestionGroupSettings *[]Questiongroupsettings `json:"questionGroupSettings,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
-}
+	SetFieldNames map[string]bool `json:"-"`}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Predictivescoringsettings) SetField(field string, fieldValue interface{}) {
+func (o *Aiscoring) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +34,7 @@ func (o *Predictivescoringsettings) SetField(field string, fieldValue interface{
 	o.SetFieldNames[field] = true
 }
 
-func (o Predictivescoringsettings) MarshalJSON() ([]byte, error) {
+func (o Aiscoring) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,51 +72,26 @@ func (o Predictivescoringsettings) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Predictivescoringsettings
+	type Alias Aiscoring
 	
-	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		QuestionGroupSettings *[]Questiongroupsettings `json:"questionGroupSettings,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		Alias
-	}{ 
-		Id: o.Id,
-		
-		QuestionGroupSettings: o.QuestionGroupSettings,
-		
-		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+	return json.Marshal(&struct { Alias
+	}{ Alias:    (Alias)(o),
 	})
 }
 
-func (o *Predictivescoringsettings) UnmarshalJSON(b []byte) error {
-	var PredictivescoringsettingsMap map[string]interface{}
-	err := json.Unmarshal(b, &PredictivescoringsettingsMap)
+func (o *Aiscoring) UnmarshalJSON(b []byte) error {
+	var AiscoringMap map[string]interface{}
+	err := json.Unmarshal(b, &AiscoringMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := PredictivescoringsettingsMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if QuestionGroupSettings, ok := PredictivescoringsettingsMap["questionGroupSettings"].([]interface{}); ok {
-		QuestionGroupSettingsString, _ := json.Marshal(QuestionGroupSettings)
-		json.Unmarshal(QuestionGroupSettingsString, &o.QuestionGroupSettings)
-	}
-	
-	if SelfUri, ok := PredictivescoringsettingsMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Predictivescoringsettings) String() string {
+func (o *Aiscoring) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

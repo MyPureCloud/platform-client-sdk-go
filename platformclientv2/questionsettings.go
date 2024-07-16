@@ -15,7 +15,7 @@ type Questionsettings struct {
 	QuestionIndex *int `json:"questionIndex,omitempty"`
 
 	// Settings
-	Settings *Predictivescoringsetting `json:"settings,omitempty"`
+	Settings *Aiscoringsetting `json:"settings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Questionsettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		QuestionIndex *int `json:"questionIndex,omitempty"`
 		
-		Settings *Predictivescoringsetting `json:"settings,omitempty"`
+		Settings *Aiscoringsetting `json:"settings,omitempty"`
 		Alias
 	}{ 
 		QuestionIndex: o.QuestionIndex,
