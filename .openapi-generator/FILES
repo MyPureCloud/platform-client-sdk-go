@@ -198,6 +198,8 @@ docs/DeleteResponsemanagementLibrary-example.txt
 docs/DeleteResponsemanagementResponse-example.txt
 docs/DeleteResponsemanagementResponseasset-example.txt
 docs/DeleteRoutingAssessment-example.txt
+docs/DeleteRoutingDirectroutingbackupSettingsMe-example.txt
+docs/DeleteRoutingDirectroutingbackupSettingsMe-example.txt
 docs/DeleteRoutingEmailDomain-example.txt
 docs/DeleteRoutingEmailDomainRoute-example.txt
 docs/DeleteRoutingEmailOutboundDomain-example.txt
@@ -212,6 +214,8 @@ docs/DeleteRoutingSkill-example.txt
 docs/DeleteRoutingSkillgroup-example.txt
 docs/DeleteRoutingSmsAddress-example.txt
 docs/DeleteRoutingSmsPhonenumber-example.txt
+docs/DeleteRoutingUserDirectroutingbackupSettings-example.txt
+docs/DeleteRoutingUserDirectroutingbackupSettings-example.txt
 docs/DeleteRoutingUserUtilization-example.txt
 docs/DeleteRoutingUserUtilization-example.txt
 docs/DeleteRoutingUtilization-example.txt
@@ -1090,6 +1094,8 @@ docs/GetRoutingAssessments-example.txt
 docs/GetRoutingAssessmentsJob-example.txt
 docs/GetRoutingAssessmentsJobs-example.txt
 docs/GetRoutingAvailablemediatypes-example.txt
+docs/GetRoutingDirectroutingbackupSettingsMe-example.txt
+docs/GetRoutingDirectroutingbackupSettingsMe-example.txt
 docs/GetRoutingEmailDomain-example.txt
 docs/GetRoutingEmailDomainRoute-example.txt
 docs/GetRoutingEmailDomainRoutes-example.txt
@@ -1134,6 +1140,8 @@ docs/GetRoutingSmsAddresses-example.txt
 docs/GetRoutingSmsAvailablephonenumbers-example.txt
 docs/GetRoutingSmsPhonenumber-example.txt
 docs/GetRoutingSmsPhonenumbers-example.txt
+docs/GetRoutingUserDirectroutingbackupSettings-example.txt
+docs/GetRoutingUserDirectroutingbackupSettings-example.txt
 docs/GetRoutingUserUtilization-example.txt
 docs/GetRoutingUserUtilization-example.txt
 docs/GetRoutingUtilization-example.txt
@@ -2512,6 +2520,8 @@ docs/PutRecordingsDeletionprotection-example.txt
 docs/PutResponsemanagementLibrary-example.txt
 docs/PutResponsemanagementResponse-example.txt
 docs/PutResponsemanagementResponseasset-example.txt
+docs/PutRoutingDirectroutingbackupSettingsMe-example.txt
+docs/PutRoutingDirectroutingbackupSettingsMe-example.txt
 docs/PutRoutingEmailDomainRoute-example.txt
 docs/PutRoutingEmailOutboundDomainActivation-example.txt
 docs/PutRoutingMessageRecipient-example.txt
@@ -2519,6 +2529,8 @@ docs/PutRoutingQueue-example.txt
 docs/PutRoutingSettings-example.txt
 docs/PutRoutingSettingsTranscription-example.txt
 docs/PutRoutingSmsPhonenumber-example.txt
+docs/PutRoutingUserDirectroutingbackupSettings-example.txt
+docs/PutRoutingUserDirectroutingbackupSettings-example.txt
 docs/PutRoutingUserUtilization-example.txt
 docs/PutRoutingUserUtilization-example.txt
 docs/PutRoutingUtilization-example.txt
@@ -2662,6 +2674,7 @@ platformclientv2/activealertcount.go
 platformclientv2/activitycode.go
 platformclientv2/activitycodecontainer.go
 platformclientv2/activitycodereference.go
+platformclientv2/activitycodesreference.go
 platformclientv2/activitycodesummary.go
 platformclientv2/activityplanabandonrateimpactoverride.go
 platformclientv2/activityplanasaimpactoverride.go
@@ -2729,6 +2742,7 @@ platformclientv2/agentcopilotaggregationquery.go
 platformclientv2/agentcopilotaggregationview.go
 platformclientv2/agentcopilotasyncaggregatequeryresponse.go
 platformclientv2/agentcopilotasyncaggregationquery.go
+platformclientv2/agentdirectroutingbackupsettings.go
 platformclientv2/agentevaluatoractivity.go
 platformclientv2/agentintegrationassociationrequest.go
 platformclientv2/agentintegrationassociationresponse.go
@@ -2893,6 +2907,7 @@ platformclientv2/audioupdatedevent.go
 platformclientv2/auditapi.go
 platformclientv2/auditlogmessage.go
 platformclientv2/auditqueryentity.go
+platformclientv2/auditqueryexecutionlargeresultsresponse.go
 platformclientv2/auditqueryexecutionresultsresponse.go
 platformclientv2/auditqueryexecutionstatusresponse.go
 platformclientv2/auditqueryfilter.go
@@ -4537,6 +4552,7 @@ platformclientv2/identitynow.go
 platformclientv2/identityprovider.go
 platformclientv2/identityproviderapi.go
 platformclientv2/identityproviderentitylisting.go
+platformclientv2/identityresolutionconfig.go
 platformclientv2/idleeventtrigger.go
 platformclientv2/idletokentimeout.go
 platformclientv2/ignoredactivitycategories.go

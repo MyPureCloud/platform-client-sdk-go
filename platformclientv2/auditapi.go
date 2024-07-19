@@ -266,7 +266,7 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 // GetAuditsQueryTransactionIdResults invokes GET /api/v2/audits/query/{transactionId}/results
 //
 // Get results of audit query
-func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int, expand []string) (*Auditqueryexecutionresultsresponse, *APIResponse, error) {
+func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int, expand []string, allowRedirect bool) (*Auditqueryexecutionresultsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/audits/query/{transactionId}/results"
@@ -304,6 +304,8 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["allowRedirect"] = a.Configuration.APIClient.ParameterToString(allowRedirect, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

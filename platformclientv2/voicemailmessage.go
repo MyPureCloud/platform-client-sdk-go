@@ -27,6 +27,9 @@ type Voicemailmessage struct {
 	// AudioRecordingSizeBytes - The voicemail message's audio recording size in bytes
 	AudioRecordingSizeBytes *int `json:"audioRecordingSizeBytes,omitempty"`
 
+	// Transcription - The transcription of the voicemail's audio
+	Transcription *string `json:"transcription,omitempty"`
+
 	// CreatedDate - The date the voicemail message was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 
@@ -170,6 +173,8 @@ func (o Voicemailmessage) MarshalJSON() ([]byte, error) {
 		
 		AudioRecordingSizeBytes *int `json:"audioRecordingSizeBytes,omitempty"`
 		
+		Transcription *string `json:"transcription,omitempty"`
+		
 		CreatedDate *string `json:"createdDate,omitempty"`
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
@@ -210,6 +215,8 @@ func (o Voicemailmessage) MarshalJSON() ([]byte, error) {
 		AudioRecordingDurationSeconds: o.AudioRecordingDurationSeconds,
 		
 		AudioRecordingSizeBytes: o.AudioRecordingSizeBytes,
+		
+		Transcription: o.Transcription,
 		
 		CreatedDate: CreatedDate,
 		
@@ -274,6 +281,10 @@ func (o *Voicemailmessage) UnmarshalJSON(b []byte) error {
 		o.AudioRecordingSizeBytes = &AudioRecordingSizeBytesInt
 	}
 	
+	if Transcription, ok := VoicemailmessageMap["transcription"].(string); ok {
+		o.Transcription = &Transcription
+	}
+    
 	if createdDateString, ok := VoicemailmessageMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

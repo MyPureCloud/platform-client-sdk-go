@@ -7,43 +7,28 @@ import (
 	"strings"
 )
 
-// Userentitylisting
-type Userentitylisting struct { 
+// Agentdirectroutingbackupsettings
+type Agentdirectroutingbackupsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]User `json:"entities,omitempty"`
+	// QueueId - ID of queue to be used as backup. If queueId and userId are both specified, queue behaves as secondary backup.
+	QueueId *string `json:"queueId,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
+	// UserId - ID of user to be used as backup. If queueId and userId are both specified, user behaves as primary backup.
+	UserId *string `json:"userId,omitempty"`
 
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
+	// WaitForAgent - Flag indicating if Direct Routing interactions should wait for Direct Routing agent or go immediately to selected backup.
+	WaitForAgent *bool `json:"waitForAgent,omitempty"`
 
-	// Total
-	Total *int `json:"total,omitempty"`
+	// AgentWaitSeconds - Time (in seconds) that a Direct Routing interaction will wait for Direct Routing agent before going to selected backup. Valid range [60, 864000].
+	AgentWaitSeconds *int `json:"agentWaitSeconds,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
+	// BackedUpUsers - Set of users that this user is a backup for.
+	BackedUpUsers *[]string `json:"backedUpUsers,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Userentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Agentdirectroutingbackupsettings) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +49,7 @@ func (o *Userentitylisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Userentitylisting) MarshalJSON() ([]byte, error) {
+func (o Agentdirectroutingbackupsettings) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,103 +87,60 @@ func (o Userentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Userentitylisting
+	type Alias Agentdirectroutingbackupsettings
 	
 	return json.Marshal(&struct { 
-		Entities *[]User `json:"entities,omitempty"`
+		QueueId *string `json:"queueId,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
+		UserId *string `json:"userId,omitempty"`
 		
-		PageNumber *int `json:"pageNumber,omitempty"`
+		WaitForAgent *bool `json:"waitForAgent,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
+		AgentWaitSeconds *int `json:"agentWaitSeconds,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
+		BackedUpUsers *[]string `json:"backedUpUsers,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		QueueId: o.QueueId,
 		
-		PageSize: o.PageSize,
+		UserId: o.UserId,
 		
-		PageNumber: o.PageNumber,
+		WaitForAgent: o.WaitForAgent,
 		
-		Total: o.Total,
+		AgentWaitSeconds: o.AgentWaitSeconds,
 		
-		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
-		
-		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
-		
-		PageCount: o.PageCount,
+		BackedUpUsers: o.BackedUpUsers,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Userentitylisting) UnmarshalJSON(b []byte) error {
-	var UserentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &UserentitylistingMap)
+func (o *Agentdirectroutingbackupsettings) UnmarshalJSON(b []byte) error {
+	var AgentdirectroutingbackupsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentdirectroutingbackupsettingsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := UserentitylistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
+	if QueueId, ok := AgentdirectroutingbackupsettingsMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+    
+	if UserId, ok := AgentdirectroutingbackupsettingsMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+    
+	if WaitForAgent, ok := AgentdirectroutingbackupsettingsMap["waitForAgent"].(bool); ok {
+		o.WaitForAgent = &WaitForAgent
+	}
+    
+	if AgentWaitSeconds, ok := AgentdirectroutingbackupsettingsMap["agentWaitSeconds"].(float64); ok {
+		AgentWaitSecondsInt := int(AgentWaitSeconds)
+		o.AgentWaitSeconds = &AgentWaitSecondsInt
 	}
 	
-	if PageSize, ok := UserentitylistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if PageNumber, ok := UserentitylistingMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
-	}
-	
-	if Total, ok := UserentitylistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if LastUri, ok := UserentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := UserentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if SelfUri, ok := UserentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := UserentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := UserentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if PageCount, ok := UserentitylistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
+	if BackedUpUsers, ok := AgentdirectroutingbackupsettingsMap["backedUpUsers"].([]interface{}); ok {
+		BackedUpUsersString, _ := json.Marshal(BackedUpUsers)
+		json.Unmarshal(BackedUpUsersString, &o.BackedUpUsers)
 	}
 	
 
@@ -206,7 +148,7 @@ func (o *Userentitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Userentitylisting) String() string {
+func (o *Agentdirectroutingbackupsettings) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

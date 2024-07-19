@@ -11,7 +11,7 @@ import (
 type Createoutboundmessagingconversationrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// QueueId - The ID of the queue to be associated with the message. This will determine the fromAddress of the message.
+	// QueueId - The ID of the queue to be associated with the message. This will determine the fromAddress of the message, unless useUserFromAddress is true and the queue is configured to use the agent's Direct Routing address as the fromAddress.
 	QueueId *string `json:"queueId,omitempty"`
 
 	// ToAddress - The messaging address of the recipient of the message. For an SMS messenger type, the phone number address must be in E.164 format. E.g. +13175555555 or +34234234234.  For open messenger type, any string within the outbound.open.messaging.to.address.characters.max limit can be used. For whatsapp messenger type, use a Whatsapp ID of a phone number. E.g for a E.164 formatted phone number `+13175555555`, a Whatsapp ID would be 13175555555
@@ -25,6 +25,9 @@ type Createoutboundmessagingconversationrequest struct {
 
 	// ExternalContactId - The external contact with which the message will be associated.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
+
+	// UseUserFromAddress - An override to attempt to use the user's configured direct routing address as the fromAddress.  If set to true, users configured address with 'directrouting' integration will be used as fromAddress.  If set to false or not set, the queueId will be used for determining fromAddress.
+	UseUserFromAddress *bool `json:"useUserFromAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, error
 		UseExistingConversation *bool `json:"useExistingConversation,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		UseUserFromAddress *bool `json:"useUserFromAddress,omitempty"`
 		Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -110,6 +115,8 @@ func (o Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, error
 		UseExistingConversation: o.UseExistingConversation,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		UseUserFromAddress: o.UseUserFromAddress,
 		Alias:    (Alias)(o),
 	})
 }
@@ -139,6 +146,10 @@ func (o *Createoutboundmessagingconversationrequest) UnmarshalJSON(b []byte) err
     
 	if ExternalContactId, ok := CreateoutboundmessagingconversationrequestMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if UseUserFromAddress, ok := CreateoutboundmessagingconversationrequestMap["useUserFromAddress"].(bool); ok {
+		o.UseUserFromAddress = &UseUserFromAddress
 	}
     
 

@@ -5482,7 +5482,7 @@
   "getauditsquerytransactionidresults": {
     "operationId": "getauditsquerytransactionidresults",
     "functionName": "GetAuditsQueryTransactionIdResults",
-    "signature": "GetAuditsQueryTransactionIdResults(transactionId, cursor, pageSize, expand)",
+    "signature": "GetAuditsQueryTransactionIdResults(transactionId, cursor, pageSize, expand, allowRedirect)",
     "parameters": [
       {
         "name": "transactionId",
@@ -5503,10 +5503,15 @@
         "name": "expand",
         "type": "[]string",
         "required": "false"
+      },
+      {
+        "name": "allowRedirect",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Auditqueryexecutionresultsresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAuditApiWithConfig(config)\n\nvar transactionId string // Transaction ID\nvar cursor string // Indicates where to resume query results (not required for first page)\nvar pageSize int // Indicates maximum number of results in response. Default page size is 25 results. The maximum page size is 500.\nvar expand []string // Which fields, if any, to expand\n// Get results of audit query\ndata, response, err := apiInstance.GetAuditsQueryTransactionIdResults(transactionId, cursor, pageSize, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAuditsQueryTransactionIdResults: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAuditApiWithConfig(config)\n\nvar transactionId string // Transaction ID\nvar cursor string // Indicates where to resume query results (not required for first page)\nvar pageSize int // Indicates maximum number of results in response. Default page size is 25 results. The maximum page size is 500.\nvar expand []string // Which fields, if any, to expand\nvar allowRedirect bool // Result sets with large amounts of data will respond with a download url\n// Get results of audit query\ndata, response, err := apiInstance.GetAuditsQueryTransactionIdResults(transactionId, cursor, pageSize, expand, allowRedirect)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAuditsQueryTransactionIdResults: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postauditsquery": {
     "operationId": "postauditsquery",
@@ -19490,9 +19495,31 @@
   "getjourneyviews": {
     "operationId": "getjourneyviews",
     "functionName": "GetJourneyViews",
-    "signature": "GetJourneyViews()",
+    "signature": "GetJourneyViews(pageNumber, pageSize, nameOrCreatedBy, expand)",
+    "parameters": [
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "nameOrCreatedBy",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "string",
+        "required": "false"
+      }
+    ],
     "return": "Journeyviewlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\n// Get a list of Journey Views\ndata, response, err := apiInstance.GetJourneyViews()\nif err != nil {\n\tfmt.Printf(\"Error calling GetJourneyViews: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar nameOrCreatedBy string // Journey View Name or Created By\nvar expand string // Parameter to request additional data to return in Journey payload\n// Get a list of Journey Views\ndata, response, err := apiInstance.GetJourneyViews(pageNumber, pageSize, nameOrCreatedBy, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetJourneyViews: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getjourneyviewseventdefinition": {
     "operationId": "getjourneyviewseventdefinition",
@@ -32833,6 +32860,12 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar assessmentId string // Benefit Assessment ID\n// Delete single benefit assessment.\nresponse, err := apiInstance.DeleteRoutingAssessment(assessmentId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingAssessment: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
+  "deleteroutingdirectroutingbackupsettingsme": {
+    "operationId": "deleteroutingdirectroutingbackupsettingsme",
+    "functionName": "DeleteRoutingDirectroutingbackupSettingsMe",
+    "signature": "DeleteRoutingDirectroutingbackupSettingsMe()",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\n// Delete the user's Direct Routing Backup settings and revert to the Direct Routing Queue default.\nresponse, err := apiInstance.DeleteRoutingDirectroutingbackupSettingsMe()\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingDirectroutingbackupSettingsMe: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "deleteroutingemaildomain": {
     "operationId": "deleteroutingemaildomain",
     "functionName": "DeleteRoutingEmailDomain",
@@ -33033,6 +33066,19 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar addressId string // Address ID\n// Delete a phone number provisioned for SMS.\nresponse, err := apiInstance.DeleteRoutingSmsPhonenumber(addressId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
+  "deleteroutinguserdirectroutingbackupsettings": {
+    "operationId": "deleteroutinguserdirectroutingbackupsettings",
+    "functionName": "DeleteRoutingUserDirectroutingbackupSettings",
+    "signature": "DeleteRoutingUserDirectroutingbackupSettings(userId)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\n// Delete the user's Direct Routing Backup settings and revert to the Direct Routing Queue default.\nresponse, err := apiInstance.DeleteRoutingUserDirectroutingbackupSettings(userId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingUserDirectroutingbackupSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "deleteroutinguserutilization": {
     "operationId": "deleteroutinguserutilization",
     "functionName": "DeleteRoutingUserUtilization",
@@ -33219,6 +33265,13 @@
     "signature": "GetRoutingAvailablemediatypes()",
     "return": "Availablemediatypeentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\n// Get available media types\ndata, response, err := apiInstance.GetRoutingAvailablemediatypes()\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingAvailablemediatypes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getroutingdirectroutingbackupsettingsme": {
+    "operationId": "getroutingdirectroutingbackupsettingsme",
+    "functionName": "GetRoutingDirectroutingbackupSettingsMe",
+    "signature": "GetRoutingDirectroutingbackupSettingsMe()",
+    "return": "Agentdirectroutingbackupsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\n// Get the user's Direct Routing Backup settings.\ndata, response, err := apiInstance.GetRoutingDirectroutingbackupSettingsMe()\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingDirectroutingbackupSettingsMe: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getroutingemaildomain": {
     "operationId": "getroutingemaildomain",
@@ -34287,6 +34340,20 @@
     ],
     "return": "Smsphonenumberentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar phoneNumber string // Filter on phone number address. Allowable characters are the digits '0-9' and the wild card character '\\\\*'. If just digits are present, a contains search is done on the address pattern. For example, '317' could be matched anywhere in the address. An '\\\\*' will match multiple digits. For example, to match a specific area code within the US a pattern like '1317*' could be used.\nvar phoneNumberType []string // Filter on phone number type\nvar phoneNumberStatus []string // Filter on phone number status\nvar countryCode []string // Filter on country code\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Optional field to sort results\nvar sortOrder string // Sort order\nvar language string // A language tag (which is sometimes referred to as a \\\"locale identifier\\\") to use to localize country field and sort operations\nvar integrationId string // Filter on the Genesys Cloud integration id to which the phone number belongs to\nvar supportedContentId string // Filter based on the supported content ID\n// Get a list of provisioned phone numbers.\ndata, response, err := apiInstance.GetRoutingSmsPhonenumbers(phoneNumber, phoneNumberType, phoneNumberStatus, countryCode, pageSize, pageNumber, sortBy, sortOrder, language, integrationId, supportedContentId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingSmsPhonenumbers: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getroutinguserdirectroutingbackupsettings": {
+    "operationId": "getroutinguserdirectroutingbackupsettings",
+    "functionName": "GetRoutingUserDirectroutingbackupSettings",
+    "signature": "GetRoutingUserDirectroutingbackupSettings(userId)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Agentdirectroutingbackupsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\n// Get the user's Direct Routing Backup settings.\ndata, response, err := apiInstance.GetRoutingUserDirectroutingbackupSettings(userId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingUserDirectroutingbackupSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getroutinguserutilization": {
     "operationId": "getroutinguserutilization",
@@ -35368,6 +35435,20 @@
     "return": "Userroutingskill",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.Userroutingskillpost // Skill\n// Add routing skill to user\ndata, response, err := apiInstance.PostUserRoutingskills(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUserRoutingskills: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "putroutingdirectroutingbackupsettingsme": {
+    "operationId": "putroutingdirectroutingbackupsettingsme",
+    "functionName": "PutRoutingDirectroutingbackupSettingsMe",
+    "signature": "PutRoutingDirectroutingbackupSettingsMe(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Agentdirectroutingbackupsettings",
+        "required": "true"
+      }
+    ],
+    "return": "Agentdirectroutingbackupsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar body platformclientv2.Agentdirectroutingbackupsettings // directRoutingBackup\n// Update the user's Direct Routing Backup settings.\ndata, response, err := apiInstance.PutRoutingDirectroutingbackupSettingsMe(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutRoutingDirectroutingbackupSettingsMe: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "putroutingemaildomainroute": {
     "operationId": "putroutingemaildomainroute",
     "functionName": "PutRoutingEmailDomainRoute",
@@ -35490,6 +35571,25 @@
     ],
     "return": "Smsphonenumber",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar addressId string // Address ID\nvar body platformclientv2.Smsphonenumber // SmsPhoneNumber\n// Update a phone number provisioned for SMS.\ndata, response, err := apiInstance.PutRoutingSmsPhonenumber(addressId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putroutinguserdirectroutingbackupsettings": {
+    "operationId": "putroutinguserdirectroutingbackupsettings",
+    "functionName": "PutRoutingUserDirectroutingbackupSettings",
+    "signature": "PutRoutingUserDirectroutingbackupSettings(userId, body)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Agentdirectroutingbackupsettings",
+        "required": "true"
+      }
+    ],
+    "return": "Agentdirectroutingbackupsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.Agentdirectroutingbackupsettings // directRoutingBackup\n// Update the user's Direct Routing Backup settings.\ndata, response, err := apiInstance.PutRoutingUserDirectroutingbackupSettings(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutRoutingUserDirectroutingbackupSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putroutinguserutilization": {
     "operationId": "putroutinguserutilization",

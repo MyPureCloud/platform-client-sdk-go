@@ -2897,7 +2897,7 @@ func (a JourneyApi) GetJourneyViewVersionJobsLatest(viewId string, journeyVersio
 // Get a list of Journey Views
 //
 // Preview: GetJourneyViews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a JourneyApi) GetJourneyViews() (*Journeyviewlisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneyViews(pageNumber int, pageSize int, nameOrCreatedBy string, expand string) (*Journeyviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/views"
@@ -2923,6 +2923,14 @@ func (a JourneyApi) GetJourneyViews() (*Journeyviewlisting, *APIResponse, error)
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["nameOrCreatedBy"] = a.Configuration.APIClient.ParameterToString(nameOrCreatedBy, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

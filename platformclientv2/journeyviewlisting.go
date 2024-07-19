@@ -11,14 +11,35 @@ import (
 type Journeyviewlisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Total
-	Total *int `json:"total,omitempty"`
-
 	// Entities
 	Entities *[]Journeyview `json:"entities,omitempty"`
 
+	// PageSize
+	PageSize *int `json:"pageSize,omitempty"`
+
+	// PageNumber
+	PageNumber *int `json:"pageNumber,omitempty"`
+
+	// Total
+	Total *int `json:"total,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// PageCount
+	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,18 +105,46 @@ func (o Journeyviewlisting) MarshalJSON() ([]byte, error) {
 	type Alias Journeyviewlisting
 	
 	return json.Marshal(&struct { 
-		Total *int `json:"total,omitempty"`
-		
 		Entities *[]Journeyview `json:"entities,omitempty"`
 		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		Total *int `json:"total,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Total: o.Total,
-		
 		Entities: o.Entities,
 		
+		PageSize: o.PageSize,
+		
+		PageNumber: o.PageNumber,
+		
+		Total: o.Total,
+		
+		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
+		
 		SelfUri: o.SelfUri,
+		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
+		
+		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,20 +156,51 @@ func (o *Journeyviewlisting) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Total, ok := JourneyviewlistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
 	if Entities, ok := JourneyviewlistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
+	if PageSize, ok := JourneyviewlistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := JourneyviewlistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := JourneyviewlistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if LastUri, ok := JourneyviewlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := JourneyviewlistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if SelfUri, ok := JourneyviewlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
+	if NextUri, ok := JourneyviewlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := JourneyviewlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
+	if PageCount, ok := JourneyviewlistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
 
 	return nil
 }

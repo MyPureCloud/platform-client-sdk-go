@@ -7,43 +7,22 @@ import (
 	"strings"
 )
 
-// Flowoutcomelisting
-type Flowoutcomelisting struct { 
+// Identityresolutionconfig
+type Identityresolutionconfig struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Flowoutcome `json:"entities,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
+	// ResolveIdentities - Whether the channel should resolve identities
+	ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
-
-	// Total
-	Total *int `json:"total,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// SelfUri
+	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Flowoutcomelisting) SetField(field string, fieldValue interface{}) {
+func (o *Identityresolutionconfig) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +43,7 @@ func (o *Flowoutcomelisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Flowoutcomelisting) MarshalJSON() ([]byte, error) {
+func (o Identityresolutionconfig) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,111 +81,50 @@ func (o Flowoutcomelisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Flowoutcomelisting
+	type Alias Identityresolutionconfig
 	
 	return json.Marshal(&struct { 
-		Entities *[]Flowoutcome `json:"entities,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
-		
-		PageNumber *int `json:"pageNumber,omitempty"`
-		
-		Total *int `json:"total,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
+		ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Id: o.Id,
 		
-		PageSize: o.PageSize,
-		
-		PageNumber: o.PageNumber,
-		
-		Total: o.Total,
-		
-		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
+		ResolveIdentities: o.ResolveIdentities,
 		
 		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Flowoutcomelisting) UnmarshalJSON(b []byte) error {
-	var FlowoutcomelistingMap map[string]interface{}
-	err := json.Unmarshal(b, &FlowoutcomelistingMap)
+func (o *Identityresolutionconfig) UnmarshalJSON(b []byte) error {
+	var IdentityresolutionconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &IdentityresolutionconfigMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := FlowoutcomelistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := FlowoutcomelistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if PageNumber, ok := FlowoutcomelistingMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
-	}
-	
-	if Total, ok := FlowoutcomelistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if LastUri, ok := FlowoutcomelistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
+	if Id, ok := IdentityresolutionconfigMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if FirstUri, ok := FlowoutcomelistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
+	if ResolveIdentities, ok := IdentityresolutionconfigMap["resolveIdentities"].(bool); ok {
+		o.ResolveIdentities = &ResolveIdentities
 	}
     
-	if SelfUri, ok := FlowoutcomelistingMap["selfUri"].(string); ok {
+	if SelfUri, ok := IdentityresolutionconfigMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if NextUri, ok := FlowoutcomelistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := FlowoutcomelistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if PageCount, ok := FlowoutcomelistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Flowoutcomelisting) String() string {
+func (o *Identityresolutionconfig) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

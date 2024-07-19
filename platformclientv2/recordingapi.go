@@ -3011,6 +3011,10 @@ func (a RecordingApi) PatchRecordingMediaretentionpolicy(policyId string, body P
 // PatchRecordingsScreensession invokes PATCH /api/v2/recordings/screensessions/{recordingSessionId}
 //
 // Update a screen recording session
+//
+// This API is deprecated and the functionality to stop screen recording will be no longer supported.
+//
+// Deprecated: PatchRecordingsScreensession is deprecated
 func (a RecordingApi) PatchRecordingsScreensession(recordingSessionId string, body Screenrecordingsessionrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
