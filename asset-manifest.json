@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/platform-client-sdk-go/static/css/main.a251b5e7.css",
-    "main.js": "/platform-client-sdk-go/static/js/main.78e2c737.js",
+    "main.js": "/platform-client-sdk-go/static/js/main.dfe313ff.js",
     "static/js/453.ff9ed959.chunk.js": "/platform-client-sdk-go/static/js/453.ff9ed959.chunk.js",
     "index.html": "/platform-client-sdk-go/index.html",
     "main.a251b5e7.css.map": "/platform-client-sdk-go/static/css/main.a251b5e7.css.map",
-    "main.78e2c737.js.map": "/platform-client-sdk-go/static/js/main.78e2c737.js.map",
+    "main.dfe313ff.js.map": "/platform-client-sdk-go/static/js/main.dfe313ff.js.map",
     "453.ff9ed959.chunk.js.map": "/platform-client-sdk-go/static/js/453.ff9ed959.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a251b5e7.css",
-    "static/js/main.78e2c737.js"
+    "static/js/main.dfe313ff.js"
   ]
 }
