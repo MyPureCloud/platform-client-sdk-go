@@ -1,9 +1,9 @@
 {
-    "markdown_files": [
+    "markdownFiles": [
         "index",
         "releaseNotes"
     ],
-    "example_files": [
+    "codeExamples": [
         "DeleteAlertingAlert-example",
         "DeleteAlertingInteractionstatsAlert-example",
         "DeleteAlertingInteractionstatsRule-example",
