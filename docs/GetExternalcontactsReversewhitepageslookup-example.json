@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)
+
+var lookupVal string // User supplied value to lookup contacts/externalOrganizations (supports email addresses, e164 phone numbers, Twitter screen names)
+var expand []string // which field, if any, to expand
+// Look up contacts and externalOrganizations based on an attribute. Maximum of 25 values returned.
+data, response, err := apiInstance.GetExternalcontactsReversewhitepageslookup(lookupVal, expand)
+if err != nil {
+	fmt.Printf("Error calling GetExternalcontactsReversewhitepageslookup: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

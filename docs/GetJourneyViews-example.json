@@ -1,0 +1,17 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewJourneyApiWithConfig(config)
+
+var pageNumber int // Page number
+var pageSize int // Page size
+var nameOrCreatedBy string // Journey View Name or Created By
+var expand string // Parameter to request additional data to return in Journey payload
+// Get a list of Journey Views
+data, response, err := apiInstance.GetJourneyViews(pageNumber, pageSize, nameOrCreatedBy, expand)
+if err != nil {
+	fmt.Printf("Error calling GetJourneyViews: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewOutboundApiWithConfig(config)
+
+var dncListId string // DncList ID
+var expiredOnly bool // Set to true to only remove DNC entries that are expired
+// Deletes all or expired phone numbers from a DNC list.
+response, err := apiInstance.DeleteOutboundDnclistPhonenumbers(dncListId, expiredOnly)
+if err != nil {
+	fmt.Printf("Error calling DeleteOutboundDnclistPhonenumbers: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+}

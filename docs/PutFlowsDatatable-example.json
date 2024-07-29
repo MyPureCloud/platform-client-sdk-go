@@ -1,0 +1,16 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewArchitectApiWithConfig(config)
+
+var datatableId string // id of datatable
+var body platformclientv2.Datatable // datatable json-schema
+var expand string // Expand instructions for the result
+// Updates a specific datatable by id
+data, response, err := apiInstance.PutFlowsDatatable(datatableId, body, expand)
+if err != nil {
+	fmt.Printf("Error calling PutFlowsDatatable: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

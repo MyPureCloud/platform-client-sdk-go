@@ -1,0 +1,17 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewJourneyApiWithConfig(config)
+
+var pageNumber int // The number of the page to return
+var pageSize int // Max number of entities to return
+var interval string // An absolute timeframe for filtering the jobs, expressed as an ISO 8601 interval.
+var statuses string // Job statuses to filter for
+// Get the jobs for an organization.
+data, response, err := apiInstance.GetJourneyViewsJobs(pageNumber, pageSize, interval, statuses)
+if err != nil {
+	fmt.Printf("Error calling GetJourneyViewsJobs: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewOutboundApiWithConfig(config)
+
+var fileSpecificationTemplateId string // File Specification Template ID
+var body platformclientv2.Filespecificationtemplate // fileSpecificationTemplate
+// Update File Specification Template
+data, response, err := apiInstance.PutOutboundFilespecificationtemplate(fileSpecificationTemplateId, body)
+if err != nil {
+	fmt.Printf("Error calling PutOutboundFilespecificationtemplate: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

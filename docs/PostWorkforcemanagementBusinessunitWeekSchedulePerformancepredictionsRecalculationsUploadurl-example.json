@@ -1,0 +1,17 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)
+
+var businessUnitId string // The ID of the business unit to which the performance prediction belongs
+var weekId string // First day of schedule week in yyyy-MM-dd format
+var scheduleId string // The ID of the schedule the performance prediction belongs to
+var body platformclientv2.Uploadurlrequestbody // body
+// Upload daily activity changes to be able to request a performance prediction recalculation
+data, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekSchedulePerformancepredictionsRecalculationsUploadurl(businessUnitId, weekId, scheduleId, body)
+if err != nil {
+	fmt.Printf("Error calling PostWorkforcemanagementBusinessunitWeekSchedulePerformancepredictionsRecalculationsUploadurl: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

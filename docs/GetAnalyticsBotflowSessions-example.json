@@ -1,0 +1,19 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewAnalyticsApiWithConfig(config)
+
+var botFlowId string // ID of the bot flow.
+var after string // The cursor that points to the ID of the last item in the list of entities that has been returned.
+var pageSize string // Max number of entities to return. Maximum of 250
+var interval string // Date range filter based on the date the individual resources were completed. UTC is the default if no TZ is supplied, however alternate timezones can be used e.g: '2022-11-22T09:11:11.111+08:00/2022-11-30T07:17:44.586-07'. . Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
+var botResultCategories string // Optional case-insensitive comma separated list of Bot Result Categories to filter sessions by.
+var endLanguage string // Optional case-insensitive language code to filter sessions by the language the sessions ended in.
+// Get Bot Flow Sessions.
+data, response, err := apiInstance.GetAnalyticsBotflowSessions(botFlowId, after, pageSize, interval, botResultCategories, endLanguage)
+if err != nil {
+	fmt.Printf("Error calling GetAnalyticsBotflowSessions: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

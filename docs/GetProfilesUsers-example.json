@@ -1,0 +1,20 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewUsersApiWithConfig(config)
+
+var pageSize int // Page size
+var pageNumber int // Page number
+var id []string // id
+var jid []string // jid
+var sortOrder string // Ascending or descending sort order
+var expand []string // Which fields, if any, to expand
+var integrationPresenceSource string // Gets an integration presence for users instead of their defaults. This parameter will only be used when presence is provided as an \"expand\".
+// Get a user profile listing
+data, response, err := apiInstance.GetProfilesUsers(pageSize, pageNumber, id, jid, sortOrder, expand, integrationPresenceSource)
+if err != nil {
+	fmt.Printf("Error calling GetProfilesUsers: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

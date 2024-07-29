@@ -1,0 +1,19 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)
+
+var pageSize int // The total page size requested
+var pageNumber int // The page number requested
+var sortBy string // variable name requested to sort by
+var expand []string // variable name requested by expand list
+var nextPage string // next page token
+var previousPage string // Previous page token
+// List permitted client app integrations for the logged in user
+data, response, err := apiInstance.GetIntegrationsClientapps(pageSize, pageNumber, sortBy, expand, nextPage, previousPage)
+if err != nil {
+	fmt.Printf("Error calling GetIntegrationsClientapps: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

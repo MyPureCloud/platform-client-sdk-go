@@ -1,0 +1,23 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewInfrastructureAsCodeApiWithConfig(config)
+
+var pageSize int // The total page size requested
+var pageNumber int // The page number requested
+var sortBy string // variable name requested to sort by
+var sortOrder string // Sort order
+var name string // Filter by name
+var description string // Filter by description
+var origin string // Filter by origin
+var varType string // Filter by type
+var classification string // Filter by classification
+var tags string // Filter by tags
+// Get a list of available accelerators
+data, response, err := apiInstance.GetInfrastructureascodeAccelerators(pageSize, pageNumber, sortBy, sortOrder, name, description, origin, varType, classification, tags)
+if err != nil {
+	fmt.Printf("Error calling GetInfrastructureascodeAccelerators: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

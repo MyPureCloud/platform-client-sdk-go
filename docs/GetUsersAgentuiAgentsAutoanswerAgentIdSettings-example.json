@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewSettingsApiWithConfig(config)
+
+var agentId string // The agent to apply the auto answer settings to
+// Get agent auto answer settings
+data, response, err := apiInstance.GetUsersAgentuiAgentsAutoanswerAgentIdSettings(agentId)
+if err != nil {
+	fmt.Printf("Error calling GetUsersAgentuiAgentsAutoanswerAgentIdSettings: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

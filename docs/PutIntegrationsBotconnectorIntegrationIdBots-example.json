@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)
+
+var integrationId string // The integration ID for this group of bots
+var botList platformclientv2.Botlist // 
+// Set a list of botConnector bots plus versions for this integration
+response, err := apiInstance.PutIntegrationsBotconnectorIntegrationIdBots(integrationId, botList)
+if err != nil {
+	fmt.Printf("Error calling PutIntegrationsBotconnectorIntegrationIdBots: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+}

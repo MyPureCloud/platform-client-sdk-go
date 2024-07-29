@@ -1,0 +1,15 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewRoutingApiWithConfig(config)
+
+var queueId string // Queue ID
+var body platformclientv2.[]Queuemember // Queue Members
+// DEPRECATED: use PATCH /routing/queues/{queueId}/members.  Join or unjoin a set of users for a queue.
+data, response, err := apiInstance.PatchRoutingQueueUsers(queueId, body)
+if err != nil {
+	fmt.Printf("Error calling PatchRoutingQueueUsers: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

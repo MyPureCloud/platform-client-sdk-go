@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)
+
+var dialect string // The dialect of the general topics, dialect format is {language}-{country} where language follows ISO 639-1 standard and country follows ISO 3166-1 alpha 2 standard
+// Get the list of general topics from the org and the system with their current status
+data, response, err := apiInstance.GetSpeechandtextanalyticsTopicsGeneralStatus(dialect)
+if err != nil {
+	fmt.Printf("Error calling GetSpeechandtextanalyticsTopicsGeneralStatus: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

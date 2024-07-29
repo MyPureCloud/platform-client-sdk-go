@@ -1,0 +1,18 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)
+
+var pageSize int // Deprecated, paging is not supported
+var pageNumber int // Deprecated, paging is not supported
+var expand string // Deprecated, expand settings on the single MU route
+var feature string // If specified, the list of management units for which the user is authorized to use the requested feature will be returned
+var divisionId string // If specified, the list of management units belonging to the specified division will be returned
+// Get management units
+data, response, err := apiInstance.GetWorkforcemanagementManagementunits(pageSize, pageNumber, expand, feature, divisionId)
+if err != nil {
+	fmt.Printf("Error calling GetWorkforcemanagementManagementunits: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}

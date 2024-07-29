@@ -1,0 +1,14 @@
+config := platformclientv2.GetDefaultConfiguration()
+config.BasePath = ""    // expected format: https://api.mypurecloud.com
+config.AccessToken = "your_access_token" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)
+
+apiInstance := platformclientv2.NewOutboundApiWithConfig(config)
+
+var body platformclientv2.Campaign // Campaign
+// Create a campaign.
+data, response, err := apiInstance.PostOutboundCampaigns(body)
+if err != nil {
+	fmt.Printf("Error calling PostOutboundCampaigns: %v\n", err)
+} else {
+	fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n  Body: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())
+}
