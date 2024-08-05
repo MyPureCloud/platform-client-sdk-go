@@ -47,6 +47,15 @@ type Learningassignmenttopiclearningassignmentnotification struct {
 
 	// LengthInMinutes
 	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+
+	// PercentageScore
+	PercentageScore *float32 `json:"percentageScore,omitempty"`
+
+	// IsPassed
+	IsPassed *bool `json:"isPassed,omitempty"`
+
+	// VarType
+	VarType *string `json:"type,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -159,6 +168,12 @@ func (o Learningassignmenttopiclearningassignmentnotification) MarshalJSON() ([]
 		IsOverdue *bool `json:"isOverdue,omitempty"`
 		
 		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		PercentageScore *float32 `json:"percentageScore,omitempty"`
+		
+		IsPassed *bool `json:"isPassed,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -184,6 +199,12 @@ func (o Learningassignmenttopiclearningassignmentnotification) MarshalJSON() ([]
 		IsOverdue: o.IsOverdue,
 		
 		LengthInMinutes: o.LengthInMinutes,
+		
+		PercentageScore: o.PercentageScore,
+		
+		IsPassed: o.IsPassed,
+		
+		VarType: o.VarType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -252,6 +273,19 @@ func (o *Learningassignmenttopiclearningassignmentnotification) UnmarshalJSON(b 
 		o.LengthInMinutes = &LengthInMinutesInt
 	}
 	
+	if PercentageScore, ok := LearningassignmenttopiclearningassignmentnotificationMap["percentageScore"].(float64); ok {
+		PercentageScoreFloat32 := float32(PercentageScore)
+		o.PercentageScore = &PercentageScoreFloat32
+	}
+    
+	if IsPassed, ok := LearningassignmenttopiclearningassignmentnotificationMap["isPassed"].(bool); ok {
+		o.IsPassed = &IsPassed
+	}
+    
+	if VarType, ok := LearningassignmenttopiclearningassignmentnotificationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
 
 	return nil
 }

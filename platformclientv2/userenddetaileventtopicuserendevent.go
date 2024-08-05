@@ -86,6 +86,9 @@ type Userenddetaileventtopicuserendevent struct {
 	// DialingDurationMs
 	DialingDurationMs *int `json:"dialingDurationMs,omitempty"`
 
+	// CallbackDurationMs
+	CallbackDurationMs *int `json:"callbackDurationMs,omitempty"`
+
 	// ConversationExternalContactIds
 	ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 
@@ -206,6 +209,8 @@ func (o Userenddetaileventtopicuserendevent) MarshalJSON() ([]byte, error) {
 		
 		DialingDurationMs *int `json:"dialingDurationMs,omitempty"`
 		
+		CallbackDurationMs *int `json:"callbackDurationMs,omitempty"`
+		
 		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 		
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
@@ -260,6 +265,8 @@ func (o Userenddetaileventtopicuserendevent) MarshalJSON() ([]byte, error) {
 		ContactingDurationMs: o.ContactingDurationMs,
 		
 		DialingDurationMs: o.DialingDurationMs,
+		
+		CallbackDurationMs: o.CallbackDurationMs,
 		
 		ConversationExternalContactIds: o.ConversationExternalContactIds,
 		
@@ -381,6 +388,11 @@ func (o *Userenddetaileventtopicuserendevent) UnmarshalJSON(b []byte) error {
 	if DialingDurationMs, ok := UserenddetaileventtopicuserendeventMap["dialingDurationMs"].(float64); ok {
 		DialingDurationMsInt := int(DialingDurationMs)
 		o.DialingDurationMs = &DialingDurationMsInt
+	}
+	
+	if CallbackDurationMs, ok := UserenddetaileventtopicuserendeventMap["callbackDurationMs"].(float64); ok {
+		CallbackDurationMsInt := int(CallbackDurationMs)
+		o.CallbackDurationMs = &CallbackDurationMsInt
 	}
 	
 	if ConversationExternalContactIds, ok := UserenddetaileventtopicuserendeventMap["conversationExternalContactIds"].([]interface{}); ok {

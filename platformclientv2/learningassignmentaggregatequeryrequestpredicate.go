@@ -14,7 +14,7 @@ type Learningassignmentaggregatequeryrequestpredicate struct {
 	// Dimension - Each predicates specifies a dimension.
 	Dimension *string `json:"dimension,omitempty"`
 
-	// Value - Corresponding value for dimensions in predicates. If the dimension is type, Valid Values: Informational, AssessedContent, Assessment, External
+	// Value - Corresponding value for dimensions in predicates. If the dimension is type, Valid Values: Informational (deprecated), AssessedContent (deprecated), Assessment (deprecated), External, Native
 	Value *string `json:"value,omitempty"`
 }
 

@@ -30,7 +30,7 @@ type Actionmap struct {
 	// TriggerWithEventConditions - List of event conditions that must be satisfied to trigger the action map.
 	TriggerWithEventConditions *[]Eventcondition `json:"triggerWithEventConditions,omitempty"`
 
-	// TriggerWithOutcomeProbabilityConditions - Probability conditions for outcomes that must be satisfied to trigger the action map.
+	// TriggerWithOutcomeProbabilityConditions - (deprecated - use triggerWithOutcomeQuantileConditions instead) Probability conditions for outcomes that must be satisfied to trigger the action map.
 	TriggerWithOutcomeProbabilityConditions *[]Outcomeprobabilitycondition `json:"triggerWithOutcomeProbabilityConditions,omitempty"`
 
 	// TriggerWithOutcomePercentileConditions - (deprecated - use triggerWithOutcomeQuantileConditions instead) Percentile conditions for outcomes that must be satisfied to trigger the action map.

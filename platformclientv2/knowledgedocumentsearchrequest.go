@@ -58,6 +58,9 @@ type Knowledgedocumentsearchrequest struct {
 
 	// AnswerHighlightTopResults - The number of articles to be sent for answer-highlighting. Can range from 1-5.
 	AnswerHighlightTopResults *int `json:"answerHighlightTopResults,omitempty"`
+
+	// AnswerMode - Allows extracted answers from an article (AnswerHighlight) and/or AI-generated answers (AnswerGeneration). Default mode: AnswerHighlight. Use this property with answerHighlightTopResults.
+	AnswerMode *[]string `json:"answerMode,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -154,6 +157,8 @@ func (o Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		ConfidenceThreshold *float32 `json:"confidenceThreshold,omitempty"`
 		
 		AnswerHighlightTopResults *int `json:"answerHighlightTopResults,omitempty"`
+		
+		AnswerMode *[]string `json:"answerMode,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -187,6 +192,8 @@ func (o Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		ConfidenceThreshold: o.ConfidenceThreshold,
 		
 		AnswerHighlightTopResults: o.AnswerHighlightTopResults,
+		
+		AnswerMode: o.AnswerMode,
 		Alias:    (Alias)(o),
 	})
 }
@@ -270,6 +277,11 @@ func (o *Knowledgedocumentsearchrequest) UnmarshalJSON(b []byte) error {
 	if AnswerHighlightTopResults, ok := KnowledgedocumentsearchrequestMap["answerHighlightTopResults"].(float64); ok {
 		AnswerHighlightTopResultsInt := int(AnswerHighlightTopResults)
 		o.AnswerHighlightTopResults = &AnswerHighlightTopResultsInt
+	}
+	
+	if AnswerMode, ok := KnowledgedocumentsearchrequestMap["answerMode"].([]interface{}); ok {
+		AnswerModeString, _ := json.Marshal(AnswerMode)
+		json.Unmarshal(AnswerModeString, &o.AnswerMode)
 	}
 	
 

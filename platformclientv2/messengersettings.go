@@ -28,6 +28,9 @@ type Messengersettings struct {
 
 	// HomeScreen - The homescreen settings for messenger
 	HomeScreen *Messengerhomescreen `json:"homeScreen,omitempty"`
+
+	// SessionPersistenceType - The session persistence type for messenger
+	SessionPersistenceType *string `json:"sessionPersistenceType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Messengersettings) MarshalJSON() ([]byte, error) {
 		Apps *Messengerapps `json:"apps,omitempty"`
 		
 		HomeScreen *Messengerhomescreen `json:"homeScreen,omitempty"`
+		
+		SessionPersistenceType *string `json:"sessionPersistenceType,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -117,6 +122,8 @@ func (o Messengersettings) MarshalJSON() ([]byte, error) {
 		Apps: o.Apps,
 		
 		HomeScreen: o.HomeScreen,
+		
+		SessionPersistenceType: o.SessionPersistenceType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -157,6 +164,10 @@ func (o *Messengersettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(HomeScreenString, &o.HomeScreen)
 	}
 	
+	if SessionPersistenceType, ok := MessengersettingsMap["sessionPersistenceType"].(string); ok {
+		o.SessionPersistenceType = &SessionPersistenceType
+	}
+    
 
 	return nil
 }

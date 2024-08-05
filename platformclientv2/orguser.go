@@ -102,6 +102,9 @@ type Orguser struct {
 	// Team - The team the user is a member of
 	Team *Team `json:"team,omitempty"`
 
+	// WorkPlanBidRanks - The WFM work plan bid rank settings for the user
+	WorkPlanBidRanks *Workplanbidranks `json:"workPlanBidRanks,omitempty"`
+
 	// Skills - Routing (ACD) skills possessed by the user
 	Skills *[]Userroutingskill `json:"skills,omitempty"`
 
@@ -255,6 +258,8 @@ func (o Orguser) MarshalJSON() ([]byte, error) {
 		
 		Team *Team `json:"team,omitempty"`
 		
+		WorkPlanBidRanks *Workplanbidranks `json:"workPlanBidRanks,omitempty"`
+		
 		Skills *[]Userroutingskill `json:"skills,omitempty"`
 		
 		Languages *[]Userroutinglanguage `json:"languages,omitempty"`
@@ -329,6 +334,8 @@ func (o Orguser) MarshalJSON() ([]byte, error) {
 		Groups: o.Groups,
 		
 		Team: o.Team,
+		
+		WorkPlanBidRanks: o.WorkPlanBidRanks,
 		
 		Skills: o.Skills,
 		
@@ -494,6 +501,11 @@ func (o *Orguser) UnmarshalJSON(b []byte) error {
 	if Team, ok := OrguserMap["team"].(map[string]interface{}); ok {
 		TeamString, _ := json.Marshal(Team)
 		json.Unmarshal(TeamString, &o.Team)
+	}
+	
+	if WorkPlanBidRanks, ok := OrguserMap["workPlanBidRanks"].(map[string]interface{}); ok {
+		WorkPlanBidRanksString, _ := json.Marshal(WorkPlanBidRanks)
+		json.Unmarshal(WorkPlanBidRanksString, &o.WorkPlanBidRanks)
 	}
 	
 	if Skills, ok := OrguserMap["skills"].([]interface{}); ok {

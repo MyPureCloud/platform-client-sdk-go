@@ -6469,9 +6469,9 @@ func (a AnalyticsApi) PostAnalyticsQueuesObservationsQuery(body Queueobservation
 
 // PostAnalyticsRatelimitsAggregatesQuery invokes POST /api/v2/analytics/ratelimits/aggregates/query
 //
-// Query for limits rate limit aggregates. Data populated when limits are exceeded or are close to being exceeded. Not a source of truth for limits hit but a best effort estimate.
+// Query for limits rate limit aggregates. Data populated when limits reach 90% of the maximum. Not a source of truth for limits hit but a best effort estimate.
 //
-// The &#39;max&#39; property can be used to determine estimated rate limit value hit.
+// The &#39;max&#39; property can be used to determine estimated rate limit value hit. See https://developer.genesys.cloud/organization/organization/limits#available-limits for limits that are trackable (Operational Events Enabled).
 func (a AnalyticsApi) PostAnalyticsRatelimitsAggregatesQuery(body Ratelimitaggregationquery) (*Ratelimitaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

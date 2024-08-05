@@ -2787,6 +2787,11 @@ func (a TaskManagementApi) PatchTaskmanagementWorktype(worktypeId string, body W
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'worktypeId' when calling TaskManagementApi->PatchTaskmanagementWorktype")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PatchTaskmanagementWorktype")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -2878,6 +2883,11 @@ func (a TaskManagementApi) PatchTaskmanagementWorktypeStatus(worktypeId string, 
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'statusId' when calling TaskManagementApi->PatchTaskmanagementWorktypeStatus")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PatchTaskmanagementWorktypeStatus")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -2957,6 +2967,11 @@ func (a TaskManagementApi) PostTaskmanagementWorkbins(body Workbincreate) (*Work
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PostTaskmanagementWorkbins")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -3715,6 +3730,11 @@ func (a TaskManagementApi) PostTaskmanagementWorktypeStatuses(worktypeId string,
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'worktypeId' when calling TaskManagementApi->PostTaskmanagementWorktypeStatuses")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PostTaskmanagementWorktypeStatuses")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -3794,6 +3814,11 @@ func (a TaskManagementApi) PostTaskmanagementWorktypes(body Worktypecreate) (*Wo
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PostTaskmanagementWorktypes")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)

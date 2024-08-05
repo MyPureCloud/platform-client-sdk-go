@@ -43,6 +43,9 @@ type Knowledgedocumentsearch struct {
 
 	// ConfidenceThreshold - The confidence threshold for the search results. If applied, the returned results will have an equal or higher confidence than the threshold.
 	ConfidenceThreshold *float32 `json:"confidenceThreshold,omitempty"`
+
+	// AnswerGeneration - The results with AI-generated answer if the answerMode request property contains \"AnswerGeneration\".
+	AnswerGeneration *Knowledgeanswergenerationresponse `json:"answerGeneration,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -129,6 +132,8 @@ func (o Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		ConversationContext *Knowledgeconversationcontextresponse `json:"conversationContext,omitempty"`
 		
 		ConfidenceThreshold *float32 `json:"confidenceThreshold,omitempty"`
+		
+		AnswerGeneration *Knowledgeanswergenerationresponse `json:"answerGeneration,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -152,6 +157,8 @@ func (o Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		ConversationContext: o.ConversationContext,
 		
 		ConfidenceThreshold: o.ConfidenceThreshold,
+		
+		AnswerGeneration: o.AnswerGeneration,
 		Alias:    (Alias)(o),
 	})
 }
@@ -213,6 +220,11 @@ func (o *Knowledgedocumentsearch) UnmarshalJSON(b []byte) error {
 	if ConfidenceThreshold, ok := KnowledgedocumentsearchMap["confidenceThreshold"].(float64); ok {
 		ConfidenceThresholdFloat32 := float32(ConfidenceThreshold)
 		o.ConfidenceThreshold = &ConfidenceThresholdFloat32
+	}
+	
+	if AnswerGeneration, ok := KnowledgedocumentsearchMap["answerGeneration"].(map[string]interface{}); ok {
+		AnswerGenerationString, _ := json.Marshal(AnswerGeneration)
+		json.Unmarshal(AnswerGenerationString, &o.AnswerGeneration)
 	}
 	
 

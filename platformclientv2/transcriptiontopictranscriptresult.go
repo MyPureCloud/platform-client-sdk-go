@@ -26,8 +26,14 @@ type Transcriptiontopictranscriptresult struct {
 	// AgentAssistantId
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
+	// EngineProvider
+	EngineProvider *string `json:"engineProvider,omitempty"`
+
 	// EngineId
 	EngineId *string `json:"engineId,omitempty"`
+
+	// EngineName
+	EngineName *string `json:"engineName,omitempty"`
 
 	// Dialect
 	Dialect *string `json:"dialect,omitempty"`
@@ -115,7 +121,11 @@ func (o Transcriptiontopictranscriptresult) MarshalJSON() ([]byte, error) {
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		
+		EngineProvider *string `json:"engineProvider,omitempty"`
+		
 		EngineId *string `json:"engineId,omitempty"`
+		
+		EngineName *string `json:"engineName,omitempty"`
 		
 		Dialect *string `json:"dialect,omitempty"`
 		
@@ -136,7 +146,11 @@ func (o Transcriptiontopictranscriptresult) MarshalJSON() ([]byte, error) {
 		
 		AgentAssistantId: o.AgentAssistantId,
 		
+		EngineProvider: o.EngineProvider,
+		
 		EngineId: o.EngineId,
+		
+		EngineName: o.EngineName,
 		
 		Dialect: o.Dialect,
 		
@@ -177,8 +191,16 @@ func (o *Transcriptiontopictranscriptresult) UnmarshalJSON(b []byte) error {
 		o.AgentAssistantId = &AgentAssistantId
 	}
     
+	if EngineProvider, ok := TranscriptiontopictranscriptresultMap["engineProvider"].(string); ok {
+		o.EngineProvider = &EngineProvider
+	}
+    
 	if EngineId, ok := TranscriptiontopictranscriptresultMap["engineId"].(string); ok {
 		o.EngineId = &EngineId
+	}
+    
+	if EngineName, ok := TranscriptiontopictranscriptresultMap["engineName"].(string); ok {
+		o.EngineName = &EngineName
 	}
     
 	if Dialect, ok := TranscriptiontopictranscriptresultMap["dialect"].(string); ok {

@@ -592,6 +592,12 @@ type Viewfilter struct {
 
 	// ScreenMonitorUserIds - The list of Screen Monitor User Ids
 	ScreenMonitorUserIds *[]string `json:"screenMonitorUserIds,omitempty"`
+
+	// DashboardType - The type of dashboard being filtered
+	DashboardType *string `json:"dashboardType,omitempty"`
+
+	// DashboardAccessFilter - The type of dashboard access being filtered
+	DashboardAccessFilter *string `json:"dashboardAccessFilter,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1044,6 +1050,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		IsScreenRecorded *bool `json:"isScreenRecorded,omitempty"`
 		
 		ScreenMonitorUserIds *[]string `json:"screenMonitorUserIds,omitempty"`
+		
+		DashboardType *string `json:"dashboardType,omitempty"`
+		
+		DashboardAccessFilter *string `json:"dashboardAccessFilter,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1433,6 +1443,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		IsScreenRecorded: o.IsScreenRecorded,
 		
 		ScreenMonitorUserIds: o.ScreenMonitorUserIds,
+		
+		DashboardType: o.DashboardType,
+		
+		DashboardAccessFilter: o.DashboardAccessFilter,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2372,6 +2386,14 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ScreenMonitorUserIdsString, &o.ScreenMonitorUserIds)
 	}
 	
+	if DashboardType, ok := ViewfilterMap["dashboardType"].(string); ok {
+		o.DashboardType = &DashboardType
+	}
+    
+	if DashboardAccessFilter, ok := ViewfilterMap["dashboardAccessFilter"].(string); ok {
+		o.DashboardAccessFilter = &DashboardAccessFilter
+	}
+    
 
 	return nil
 }

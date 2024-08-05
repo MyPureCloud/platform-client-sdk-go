@@ -23,7 +23,7 @@ type Learningmodulerequest struct {
 	// InformSteps - The list of inform steps in a learning module
 	InformSteps *[]Learningmoduleinformsteprequest `json:"informSteps,omitempty"`
 
-	// VarType - The type for the learning module
+	// VarType - The type for the learning module. Informational, AssessedContent and Assessment are deprecated
 	VarType *string `json:"type,omitempty"`
 
 	// AssessmentForm - The assessment form for learning module

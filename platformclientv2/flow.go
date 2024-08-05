@@ -74,6 +74,9 @@ type Flow struct {
 	// CompatibleFlowTypes - Compatible flow types designate which flow types are allowed to embed a flow’s configuration within their own flow configuration.  Currently the only flows that can be embedded are Common Module flows and the embedding flow can invoke them using the Call Common Module action.
 	CompatibleFlowTypes *[]string `json:"compatibleFlowTypes,omitempty"`
 
+	// WorktypeId
+	WorktypeId *string `json:"worktypeId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -183,6 +186,8 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 		
 		CompatibleFlowTypes *[]string `json:"compatibleFlowTypes,omitempty"`
 		
+		WorktypeId *string `json:"worktypeId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -227,6 +232,8 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 		SupportedLanguages: o.SupportedLanguages,
 		
 		CompatibleFlowTypes: o.CompatibleFlowTypes,
+		
+		WorktypeId: o.WorktypeId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -338,6 +345,10 @@ func (o *Flow) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CompatibleFlowTypesString, &o.CompatibleFlowTypes)
 	}
 	
+	if WorktypeId, ok := FlowMap["worktypeId"].(string); ok {
+		o.WorktypeId = &WorktypeId
+	}
+    
 	if SelfUri, ok := FlowMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
