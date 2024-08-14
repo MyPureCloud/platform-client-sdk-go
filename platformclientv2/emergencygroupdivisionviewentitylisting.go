@@ -23,14 +23,17 @@ type Emergencygroupdivisionviewentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
+	// TotalNumberOfEntities - The total organization-wide number of entities.
+	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -113,11 +116,13 @@ func (o Emergencygroupdivisionviewentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
+		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
@@ -134,11 +139,13 @@ func (o Emergencygroupdivisionviewentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
+		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
+		
+		LastUri: o.LastUri,
 		
 		NextUri: o.NextUri,
 		
@@ -176,16 +183,21 @@ func (o *Emergencygroupdivisionviewentitylisting) UnmarshalJSON(b []byte) error 
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := EmergencygroupdivisionviewentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
+	if TotalNumberOfEntities, ok := EmergencygroupdivisionviewentitylistingMap["totalNumberOfEntities"].(float64); ok {
+		TotalNumberOfEntitiesInt := int(TotalNumberOfEntities)
+		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
-    
+	
 	if FirstUri, ok := EmergencygroupdivisionviewentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := EmergencygroupdivisionviewentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if LastUri, ok := EmergencygroupdivisionviewentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if NextUri, ok := EmergencygroupdivisionviewentitylistingMap["nextUri"].(string); ok {

@@ -2989,8 +2989,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivitycodes(
 // GetWorkforcemanagementBusinessunitActivityplan invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}
 //
 // Get an activity plan
-//
-// Preview: GetWorkforcemanagementBusinessunitActivityplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplan(businessUnitId string, activityPlanId string) (*Activityplanresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3079,8 +3077,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplan(b
 // GetWorkforcemanagementBusinessunitActivityplanRunsJob invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/runs/jobs/{jobId}
 //
 // Gets an activity plan run job
-//
-// Preview: GetWorkforcemanagementBusinessunitActivityplanRunsJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanRunsJob(businessUnitId string, activityPlanId string, jobId string) (*Activityplanrunjobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3175,8 +3171,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanRu
 // GetWorkforcemanagementBusinessunitActivityplans invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans
 //
 // Get activity plans
-//
-// Preview: GetWorkforcemanagementBusinessunitActivityplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplans(businessUnitId string, state string) (*Activityplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3261,8 +3255,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplans(
 // GetWorkforcemanagementBusinessunitActivityplansJobs invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/jobs
 //
 // Gets the latest job for all activity plans in the business unit
-//
-// Preview: GetWorkforcemanagementBusinessunitActivityplansJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplansJobs(businessUnitId string) (*Activityplanjoblisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -10837,8 +10829,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode
 // Update an activity plan
 //
 // If a job associated with the activity plan is in &#39;Processing&#39; state the activity plan cannot be updated
-//
-// Preview: PatchWorkforcemanagementBusinessunitActivityplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivityplan(businessUnitId string, activityPlanId string, body Updateactivityplanrequest) (*Activityplanresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -14100,8 +14090,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 // Run an activity plan manually
 //
 // Triggers a job running the activity plan. The activity plan cannot be updated until the job completes
-//
-// Preview: PostWorkforcemanagementBusinessunitActivityplanRunsJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplanRunsJobs(businessUnitId string, activityPlanId string) (*Activityplanjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -14190,8 +14178,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplanR
 // PostWorkforcemanagementBusinessunitActivityplans invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans
 //
 // Create an activity plan
-//
-// Preview: PostWorkforcemanagementBusinessunitActivityplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplans(businessUnitId string, body Createactivityplanrequest) (*Activityplanresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

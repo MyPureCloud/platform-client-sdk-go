@@ -32,6 +32,9 @@ type Campaignstats struct {
 	// TimeZoneRescheduledCalls - Number of campaign calls currently timezone rescheduled
 	TimeZoneRescheduledCalls *int `json:"timeZoneRescheduledCalls,omitempty"`
 
+	// FilteredOutContactsCount - Number of contacts that don't match filter. This is currently supported only for Campaigns with dynamic filter on.
+	FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
+
 	// LinesUtilization - Information on the campaign's lines utilization
 	LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
 }
@@ -113,6 +116,8 @@ func (o Campaignstats) MarshalJSON() ([]byte, error) {
 		
 		TimeZoneRescheduledCalls *int `json:"timeZoneRescheduledCalls,omitempty"`
 		
+		FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
+		
 		LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
 		Alias
 	}{ 
@@ -129,6 +134,8 @@ func (o Campaignstats) MarshalJSON() ([]byte, error) {
 		ScheduledCalls: o.ScheduledCalls,
 		
 		TimeZoneRescheduledCalls: o.TimeZoneRescheduledCalls,
+		
+		FilteredOutContactsCount: o.FilteredOutContactsCount,
 		
 		LinesUtilization: o.LinesUtilization,
 		Alias:    (Alias)(o),
@@ -173,6 +180,11 @@ func (o *Campaignstats) UnmarshalJSON(b []byte) error {
 	if TimeZoneRescheduledCalls, ok := CampaignstatsMap["timeZoneRescheduledCalls"].(float64); ok {
 		TimeZoneRescheduledCallsInt := int(TimeZoneRescheduledCalls)
 		o.TimeZoneRescheduledCalls = &TimeZoneRescheduledCallsInt
+	}
+	
+	if FilteredOutContactsCount, ok := CampaignstatsMap["filteredOutContactsCount"].(float64); ok {
+		FilteredOutContactsCountInt := int(FilteredOutContactsCount)
+		o.FilteredOutContactsCount = &FilteredOutContactsCountInt
 	}
 	
 	if LinesUtilization, ok := CampaignstatsMap["linesUtilization"].(map[string]interface{}); ok {

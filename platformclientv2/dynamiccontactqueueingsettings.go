@@ -13,6 +13,9 @@ type Dynamiccontactqueueingsettings struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Sort - Whether to sort contacts dynamically
 	Sort *bool `json:"sort,omitempty"`
+
+	// Filter - Whether to filter contacts dynamically
+	Filter *bool `json:"filter,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Dynamiccontactqueueingsettings) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Sort *bool `json:"sort,omitempty"`
+		
+		Filter *bool `json:"filter,omitempty"`
 		Alias
 	}{ 
 		Sort: o.Sort,
+		
+		Filter: o.Filter,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Dynamiccontactqueueingsettings) UnmarshalJSON(b []byte) error {
 	
 	if Sort, ok := DynamiccontactqueueingsettingsMap["sort"].(bool); ok {
 		o.Sort = &Sort
+	}
+    
+	if Filter, ok := DynamiccontactqueueingsettingsMap["filter"].(bool); ok {
+		o.Filter = &Filter
 	}
     
 

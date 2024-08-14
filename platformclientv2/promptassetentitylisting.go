@@ -23,14 +23,14 @@ type Promptassetentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -113,11 +113,11 @@ func (o Promptassetentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
@@ -134,11 +134,11 @@ func (o Promptassetentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
+		
+		LastUri: o.LastUri,
 		
 		NextUri: o.NextUri,
 		
@@ -176,16 +176,16 @@ func (o *Promptassetentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := PromptassetentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := PromptassetentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := PromptassetentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if LastUri, ok := PromptassetentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if NextUri, ok := PromptassetentitylistingMap["nextUri"].(string); ok {

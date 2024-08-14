@@ -11,6 +11,9 @@ import (
 type Downloadresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id
+	Id *string `json:"id,omitempty"`
+
 	// ContentLocationUri
 	ContentLocationUri *string `json:"contentLocationUri,omitempty"`
 
@@ -19,6 +22,15 @@ type Downloadresponse struct {
 
 	// Thumbnails
 	Thumbnails *[]Documentthumbnail `json:"thumbnails,omitempty"`
+
+	// State
+	State *string `json:"state,omitempty"`
+
+	// ResultUri
+	ResultUri *string `json:"resultUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,18 +96,34 @@ func (o Downloadresponse) MarshalJSON() ([]byte, error) {
 	type Alias Downloadresponse
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		ContentLocationUri *string `json:"contentLocationUri,omitempty"`
 		
 		ImageUri *string `json:"imageUri,omitempty"`
 		
 		Thumbnails *[]Documentthumbnail `json:"thumbnails,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		ResultUri *string `json:"resultUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		ContentLocationUri: o.ContentLocationUri,
 		
 		ImageUri: o.ImageUri,
 		
 		Thumbnails: o.Thumbnails,
+		
+		State: o.State,
+		
+		ResultUri: o.ResultUri,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +135,10 @@ func (o *Downloadresponse) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := DownloadresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if ContentLocationUri, ok := DownloadresponseMap["contentLocationUri"].(string); ok {
 		o.ContentLocationUri = &ContentLocationUri
 	}
@@ -120,6 +152,18 @@ func (o *Downloadresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ThumbnailsString, &o.Thumbnails)
 	}
 	
+	if State, ok := DownloadresponseMap["state"].(string); ok {
+		o.State = &State
+	}
+    
+	if ResultUri, ok := DownloadresponseMap["resultUri"].(string); ok {
+		o.ResultUri = &ResultUri
+	}
+    
+	if SelfUri, ok := DownloadresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }

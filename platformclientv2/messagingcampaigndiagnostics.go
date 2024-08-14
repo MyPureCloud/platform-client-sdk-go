@@ -13,6 +13,9 @@ type Messagingcampaigndiagnostics struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// TimeZoneRescheduledContactsCount - Current number of time zone rescheduled messages on the campaign
 	TimeZoneRescheduledContactsCount *int `json:"timeZoneRescheduledContactsCount,omitempty"`
+
+	// FilteredOutContactsCount - Number of contacts that don't match filter. This is currently supported only for Campaigns with dynamic filter on.
+	FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Messagingcampaigndiagnostics) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		TimeZoneRescheduledContactsCount *int `json:"timeZoneRescheduledContactsCount,omitempty"`
+		
+		FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
 		Alias
 	}{ 
 		TimeZoneRescheduledContactsCount: o.TimeZoneRescheduledContactsCount,
+		
+		FilteredOutContactsCount: o.FilteredOutContactsCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Messagingcampaigndiagnostics) UnmarshalJSON(b []byte) error {
 	if TimeZoneRescheduledContactsCount, ok := MessagingcampaigndiagnosticsMap["timeZoneRescheduledContactsCount"].(float64); ok {
 		TimeZoneRescheduledContactsCountInt := int(TimeZoneRescheduledContactsCount)
 		o.TimeZoneRescheduledContactsCount = &TimeZoneRescheduledContactsCountInt
+	}
+	
+	if FilteredOutContactsCount, ok := MessagingcampaigndiagnosticsMap["filteredOutContactsCount"].(float64); ok {
+		FilteredOutContactsCountInt := int(FilteredOutContactsCount)
+		o.FilteredOutContactsCount = &FilteredOutContactsCountInt
 	}
 	
 

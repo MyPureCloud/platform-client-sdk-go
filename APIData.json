@@ -27268,6 +27268,39 @@
     "return": "Dialercontact",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar contactListId string // Contact List ID\nvar contactId string // Contact ID\n// Get a contact.\ndata, response, err := apiInstance.GetOutboundContactlistContact(contactListId, contactId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundContactlistContact: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getoutboundcontactlistcontactsbulkjob": {
+    "operationId": "getoutboundcontactlistcontactsbulkjob",
+    "functionName": "GetOutboundContactlistContactsBulkJob",
+    "signature": "GetOutboundContactlistContactsBulkJob(contactListId, jobId)",
+    "parameters": [
+      {
+        "name": "contactListId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Contactsbulkoperationjob",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar contactListId string // Contact List ID\nvar jobId string // Job ID\n// Get bulk operation job.\ndata, response, err := apiInstance.GetOutboundContactlistContactsBulkJob(contactListId, jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundContactlistContactsBulkJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getoutboundcontactlistcontactsbulkjobs": {
+    "operationId": "getoutboundcontactlistcontactsbulkjobs",
+    "functionName": "GetOutboundContactlistContactsBulkJobs",
+    "signature": "GetOutboundContactlistContactsBulkJobs(contactListId)",
+    "parameters": [
+      {
+        "name": "contactListId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Contactsbulkoperationjoblisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar contactListId string // Contact List ID\n// Get 10 most recent bulk operation jobs associated with contact list.\ndata, response, err := apiInstance.GetOutboundContactlistContactsBulkJobs(contactListId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundContactlistContactsBulkJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getoutboundcontactlistexport": {
     "operationId": "getoutboundcontactlistexport",
     "functionName": "GetOutboundContactlistExport",
@@ -31785,7 +31818,7 @@
       }
     ],
     "return": "Batchdownloadjobstatusresult",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar jobId string // jobId\n// Get the status and results for a batch request job, only the user that submitted the job may retrieve results\ndata, response, err := apiInstance.GetRecordingBatchrequest(jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingBatchrequest: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar jobId string // jobId\n// Get the status and results for a batch request job, only the user that submitted the job may retrieve results. Each result may contain either a URL to a recording or an error; additionally, a recording could be associated with multiple results.\ndata, response, err := apiInstance.GetRecordingBatchrequest(jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingBatchrequest: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getrecordingcrossplatformmediaretentionpolicies": {
     "operationId": "getrecordingcrossplatformmediaretentionpolicies",
@@ -41930,6 +41963,25 @@
     ],
     "return": "Downloadresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUserRecordingsApiWithConfig(config)\n\nvar recordingId string // User Recording ID\nvar formatId string // The desired media format.\nvar async bool // When set to true, api will return 202 response until the recording is ready for download\n// Download a user recording.\ndata, response, err := apiInstance.GetUserrecordingMedia(recordingId, formatId, async)\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserrecordingMedia: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getuserrecordingtranscoding": {
+    "operationId": "getuserrecordingtranscoding",
+    "functionName": "GetUserrecordingTranscoding",
+    "signature": "GetUserrecordingTranscoding(recordingId, formatId)",
+    "parameters": [
+      {
+        "name": "recordingId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "formatId",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Downloadresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUserRecordingsApiWithConfig(config)\n\nvar recordingId string // User Recording ID\nvar formatId string // The desired media format.\n// Download a user recording.\ndata, response, err := apiInstance.GetUserrecordingTranscoding(recordingId, formatId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserrecordingTranscoding: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getuserrecordings": {
     "operationId": "getuserrecordings",

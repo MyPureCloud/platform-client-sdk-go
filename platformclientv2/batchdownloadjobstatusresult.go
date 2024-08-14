@@ -14,19 +14,19 @@ type Batchdownloadjobstatusresult struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// JobId - JobId returned when job was initially submitted
+	// JobId - JobId returned when job was initially submitted.
 	JobId *string `json:"jobId,omitempty"`
 
-	// ExpectedResultCount - Number of results expected when job is completed
+	// ExpectedResultCount - Number of results expected when job is completed, this includes both success and error results. This number could change as recordings are being discovered and processed.
 	ExpectedResultCount *int `json:"expectedResultCount,omitempty"`
 
-	// ResultCount - Current number of results available
+	// ResultCount - Current number of results available, this includes both success and error results.
 	ResultCount *int `json:"resultCount,omitempty"`
 
-	// ErrorCount - Number of error results produced so far
+	// ErrorCount - Current number of error results.
 	ErrorCount *int `json:"errorCount,omitempty"`
 
-	// Results - Current set of results for the job
+	// Results - Current set of results for the job.
 	Results *[]Batchdownloadjobresult `json:"results,omitempty"`
 
 	// SelfUri - The URI for this object

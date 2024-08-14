@@ -14,6 +14,9 @@ type Questionsettings struct {
 	// QuestionIndex - This field represents the location of the Question in the form. Note: Indexes are zero-based
 	QuestionIndex *int `json:"questionIndex,omitempty"`
 
+	// QuestionContextId - The context id of the question in the group
+	QuestionContextId *string `json:"questionContextId,omitempty"`
+
 	// Settings
 	Settings *Aiscoringsetting `json:"settings,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Questionsettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		QuestionIndex *int `json:"questionIndex,omitempty"`
 		
+		QuestionContextId *string `json:"questionContextId,omitempty"`
+		
 		Settings *Aiscoringsetting `json:"settings,omitempty"`
 		Alias
 	}{ 
 		QuestionIndex: o.QuestionIndex,
+		
+		QuestionContextId: o.QuestionContextId,
 		
 		Settings: o.Settings,
 		Alias:    (Alias)(o),
@@ -105,6 +112,10 @@ func (o *Questionsettings) UnmarshalJSON(b []byte) error {
 		o.QuestionIndex = &QuestionIndexInt
 	}
 	
+	if QuestionContextId, ok := QuestionsettingsMap["questionContextId"].(string); ok {
+		o.QuestionContextId = &QuestionContextId
+	}
+    
 	if Settings, ok := QuestionsettingsMap["settings"].(map[string]interface{}); ok {
 		SettingsString, _ := json.Marshal(Settings)
 		json.Unmarshal(SettingsString, &o.Settings)

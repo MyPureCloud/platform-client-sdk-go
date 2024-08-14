@@ -87,11 +87,26 @@ type Externalcontactsunresolvedcontactchangedtopiccontact struct {
 	// ExternalIds
 	ExternalIds *[]Externalcontactsunresolvedcontactchangedtopicexternalid `json:"externalIds,omitempty"`
 
+	// CanonicalContactId
+	CanonicalContactId *string `json:"canonicalContactId,omitempty"`
+
 	// Schema
 	Schema *Externalcontactsunresolvedcontactchangedtopicdataschema `json:"schema,omitempty"`
 
 	// CustomFields
 	CustomFields *map[string]interface{} `json:"customFields,omitempty"`
+
+	// MergeSet
+	MergeSet *[]string `json:"mergeSet,omitempty"`
+
+	// MergedFrom
+	MergedFrom *[]string `json:"mergedFrom,omitempty"`
+
+	// MergedTo
+	MergedTo *string `json:"mergedTo,omitempty"`
+
+	// MergeOperation
+	MergeOperation *Externalcontactsunresolvedcontactchangedtopicmergeoperation `json:"mergeOperation,omitempty"`
 
 	// CreateDate
 	CreateDate *time.Time `json:"createDate,omitempty"`
@@ -229,9 +244,19 @@ func (o Externalcontactsunresolvedcontactchangedtopiccontact) MarshalJSON() ([]b
 		
 		ExternalIds *[]Externalcontactsunresolvedcontactchangedtopicexternalid `json:"externalIds,omitempty"`
 		
+		CanonicalContactId *string `json:"canonicalContactId,omitempty"`
+		
 		Schema *Externalcontactsunresolvedcontactchangedtopicdataschema `json:"schema,omitempty"`
 		
 		CustomFields *map[string]interface{} `json:"customFields,omitempty"`
+		
+		MergeSet *[]string `json:"mergeSet,omitempty"`
+		
+		MergedFrom *[]string `json:"mergedFrom,omitempty"`
+		
+		MergedTo *string `json:"mergedTo,omitempty"`
+		
+		MergeOperation *Externalcontactsunresolvedcontactchangedtopicmergeoperation `json:"mergeOperation,omitempty"`
 		
 		CreateDate *string `json:"createDate,omitempty"`
 		
@@ -288,9 +313,19 @@ func (o Externalcontactsunresolvedcontactchangedtopiccontact) MarshalJSON() ([]b
 		
 		ExternalIds: o.ExternalIds,
 		
+		CanonicalContactId: o.CanonicalContactId,
+		
 		Schema: o.Schema,
 		
 		CustomFields: o.CustomFields,
+		
+		MergeSet: o.MergeSet,
+		
+		MergedFrom: o.MergedFrom,
+		
+		MergedTo: o.MergedTo,
+		
+		MergeOperation: o.MergeOperation,
 		
 		CreateDate: CreateDate,
 		
@@ -419,6 +454,10 @@ func (o *Externalcontactsunresolvedcontactchangedtopiccontact) UnmarshalJSON(b [
 		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
 	}
 	
+	if CanonicalContactId, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["canonicalContactId"].(string); ok {
+		o.CanonicalContactId = &CanonicalContactId
+	}
+    
 	if Schema, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["schema"].(map[string]interface{}); ok {
 		SchemaString, _ := json.Marshal(Schema)
 		json.Unmarshal(SchemaString, &o.Schema)
@@ -427,6 +466,25 @@ func (o *Externalcontactsunresolvedcontactchangedtopiccontact) UnmarshalJSON(b [
 	if CustomFields, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["customFields"].(map[string]interface{}); ok {
 		CustomFieldsString, _ := json.Marshal(CustomFields)
 		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+	if MergeSet, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["mergeSet"].([]interface{}); ok {
+		MergeSetString, _ := json.Marshal(MergeSet)
+		json.Unmarshal(MergeSetString, &o.MergeSet)
+	}
+	
+	if MergedFrom, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["mergedFrom"].([]interface{}); ok {
+		MergedFromString, _ := json.Marshal(MergedFrom)
+		json.Unmarshal(MergedFromString, &o.MergedFrom)
+	}
+	
+	if MergedTo, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["mergedTo"].(string); ok {
+		o.MergedTo = &MergedTo
+	}
+    
+	if MergeOperation, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["mergeOperation"].(map[string]interface{}); ok {
+		MergeOperationString, _ := json.Marshal(MergeOperation)
+		json.Unmarshal(MergeOperationString, &o.MergeOperation)
 	}
 	
 	if createDateString, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["createDate"].(string); ok {

@@ -29,6 +29,9 @@ type Campaigndiagnostics struct {
 	// TimeZoneRescheduledCallsCount - Current number of time zone rescheduled calls on the campaign
 	TimeZoneRescheduledCallsCount *int `json:"timeZoneRescheduledCallsCount,omitempty"`
 
+	// FilteredOutContactsCount - Number of contacts that don't match filter. This is currently supported only for Campaigns with dynamic filter on.
+	FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
+
 	// CampaignSkillStatistics - Information regarding the campaign's skills
 	CampaignSkillStatistics *Campaignskillstatistics `json:"campaignSkillStatistics,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 		
 		TimeZoneRescheduledCallsCount *int `json:"timeZoneRescheduledCallsCount,omitempty"`
 		
+		FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
+		
 		CampaignSkillStatistics *Campaignskillstatistics `json:"campaignSkillStatistics,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 		ScheduledInteractionsCount: o.ScheduledInteractionsCount,
 		
 		TimeZoneRescheduledCallsCount: o.TimeZoneRescheduledCallsCount,
+		
+		FilteredOutContactsCount: o.FilteredOutContactsCount,
 		
 		CampaignSkillStatistics: o.CampaignSkillStatistics,
 		Alias:    (Alias)(o),
@@ -163,6 +170,11 @@ func (o *Campaigndiagnostics) UnmarshalJSON(b []byte) error {
 	if TimeZoneRescheduledCallsCount, ok := CampaigndiagnosticsMap["timeZoneRescheduledCallsCount"].(float64); ok {
 		TimeZoneRescheduledCallsCountInt := int(TimeZoneRescheduledCallsCount)
 		o.TimeZoneRescheduledCallsCount = &TimeZoneRescheduledCallsCountInt
+	}
+	
+	if FilteredOutContactsCount, ok := CampaigndiagnosticsMap["filteredOutContactsCount"].(float64); ok {
+		FilteredOutContactsCountInt := int(FilteredOutContactsCount)
+		o.FilteredOutContactsCount = &FilteredOutContactsCountInt
 	}
 	
 	if CampaignSkillStatistics, ok := CampaigndiagnosticsMap["campaignSkillStatistics"].(map[string]interface{}); ok {

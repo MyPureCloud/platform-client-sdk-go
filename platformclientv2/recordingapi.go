@@ -1399,7 +1399,7 @@ func (a RecordingApi) GetOrphanrecordings(pageSize int, pageNumber int, sortBy s
 
 // GetRecordingBatchrequest invokes GET /api/v2/recording/batchrequests/{jobId}
 //
-// Get the status and results for a batch request job, only the user that submitted the job may retrieve results
+// Get the status and results for a batch request job, only the user that submitted the job may retrieve results. Each result may contain either a URL to a recording or an error; additionally, a recording could be associated with multiple results.
 func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobstatusresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

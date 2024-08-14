@@ -63,6 +63,9 @@ type Flowversion struct {
 	// OutputSchema
 	OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
 
+	// VirtualAgentEnabled
+	VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
+
 	// DatePublished - The date this version became the published version of the flow. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DatePublished *time.Time `json:"datePublished,omitempty"`
 
@@ -195,6 +198,8 @@ func (o Flowversion) MarshalJSON() ([]byte, error) {
 		
 		OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
 		
+		VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
+		
 		DatePublished *string `json:"datePublished,omitempty"`
 		
 		DatePublishedEnd *string `json:"datePublishedEnd,omitempty"`
@@ -241,6 +246,8 @@ func (o Flowversion) MarshalJSON() ([]byte, error) {
 		InputSchema: o.InputSchema,
 		
 		OutputSchema: o.OutputSchema,
+		
+		VirtualAgentEnabled: o.VirtualAgentEnabled,
 		
 		DatePublished: DatePublished,
 		
@@ -339,6 +346,10 @@ func (o *Flowversion) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(OutputSchemaString, &o.OutputSchema)
 	}
 	
+	if VirtualAgentEnabled, ok := FlowversionMap["virtualAgentEnabled"].(bool); ok {
+		o.VirtualAgentEnabled = &VirtualAgentEnabled
+	}
+    
 	if datePublishedString, ok := FlowversionMap["datePublished"].(string); ok {
 		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
 		o.DatePublished = &DatePublished
