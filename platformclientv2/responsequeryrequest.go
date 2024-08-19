@@ -17,6 +17,9 @@ type Responsequeryrequest struct {
 	// PageSize - The maximum number of hits to return. Default: 25, Maximum: 500.
 	PageSize *int `json:"pageSize,omitempty"`
 
+	// PageNumber - Page Number
+	PageNumber *int `json:"pageNumber,omitempty"`
+
 	// Filters - Filter the query results.
 	Filters *[]Responsefilter `json:"filters,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Responsequeryrequest) MarshalJSON() ([]byte, error) {
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
 		Filters *[]Responsefilter `json:"filters,omitempty"`
 		Alias
 	}{ 
 		QueryPhrase: o.QueryPhrase,
 		
 		PageSize: o.PageSize,
+		
+		PageNumber: o.PageNumber,
 		
 		Filters: o.Filters,
 		Alias:    (Alias)(o),
@@ -114,6 +121,11 @@ func (o *Responsequeryrequest) UnmarshalJSON(b []byte) error {
 	if PageSize, ok := ResponsequeryrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := ResponsequeryrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
 	}
 	
 	if Filters, ok := ResponsequeryrequestMap["filters"].([]interface{}); ok {

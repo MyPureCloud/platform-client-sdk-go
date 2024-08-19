@@ -436,6 +436,7 @@ docs/GetAuthorizationRoleComparedefaultRightRoleId-example.txt
 docs/GetAuthorizationRoleSubjectgrants-example.txt
 docs/GetAuthorizationRoleUsers-example.txt
 docs/GetAuthorizationRoles-example.txt
+docs/GetAuthorizationRolesSettings-example.txt
 docs/GetAuthorizationSettings-example.txt
 docs/GetAuthorizationSubject-example.txt
 docs/GetAuthorizationSubject-example.txt
@@ -2062,6 +2063,7 @@ docs/PostKnowledgeKnowledgebaseDocuments-example.txt
 docs/PostKnowledgeKnowledgebaseDocumentsBulkRemove-example.txt
 docs/PostKnowledgeKnowledgebaseDocumentsBulkUpdate-example.txt
 docs/PostKnowledgeKnowledgebaseDocumentsPresentations-example.txt
+docs/PostKnowledgeKnowledgebaseDocumentsQuery-example.txt
 docs/PostKnowledgeKnowledgebaseDocumentsSearch-example.txt
 docs/PostKnowledgeKnowledgebaseDocumentsSearchSuggestions-example.txt
 docs/PostKnowledgeKnowledgebaseDocumentsVersionsBulkAdd-example.txt
@@ -2427,6 +2429,7 @@ docs/PutAuthorizationRole-example.txt
 docs/PutAuthorizationRoleUsersAdd-example.txt
 docs/PutAuthorizationRoleUsersRemove-example.txt
 docs/PutAuthorizationRolesDefault-example.txt
+docs/PutAuthorizationRolesSettings-example.txt
 docs/PutChatsMessageReactions-example.txt
 docs/PutChatsSettings-example.txt
 docs/PutContentmanagementWorkspace-example.txt
@@ -4948,6 +4951,8 @@ platformclientv2/knowledgedocumentguestsearch.go
 platformclientv2/knowledgedocumentguestsearchrequest.go
 platformclientv2/knowledgedocumentguestsearchresult.go
 platformclientv2/knowledgedocumentpresentation.go
+platformclientv2/knowledgedocumentquery.go
+platformclientv2/knowledgedocumentqueryresponse.go
 platformclientv2/knowledgedocumentreference.go
 platformclientv2/knowledgedocumentreq.go
 platformclientv2/knowledgedocumentrequest.go
@@ -6105,6 +6110,7 @@ platformclientv2/ring.go
 platformclientv2/roledivision.go
 platformclientv2/roledivisiongrants.go
 platformclientv2/roledivisionpair.go
+platformclientv2/rolesettings.go
 platformclientv2/room.go
 platformclientv2/roomparticipant.go
 platformclientv2/roomparticipantresponse.go

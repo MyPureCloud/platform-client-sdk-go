@@ -11,7 +11,7 @@ import (
 type Workplanbidranks struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The globally unique identifier for the user.
 	Id *string `json:"id,omitempty"`
 
 	// WorkPlanBiddingPerformance - Work plan bidding agent performance ranking. The range of values is between 0 and 9999.

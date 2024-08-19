@@ -6013,6 +6013,13 @@
     "return": "Organizationroleentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAuthorizationApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar name string // \nvar permission []string // \nvar defaultRoleId []string // \nvar userCount bool // \nvar id []string // id\n// Retrieve a list of all roles defined for the organization\ndata, response, err := apiInstance.GetAuthorizationRoles(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, permission, defaultRoleId, userCount, id)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAuthorizationRoles: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getauthorizationrolessettings": {
+    "operationId": "getauthorizationrolessettings",
+    "functionName": "GetAuthorizationRolesSettings",
+    "signature": "GetAuthorizationRolesSettings()",
+    "return": "Rolesettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAuthorizationApiWithConfig(config)\n\n// Get authorization role settings\ndata, response, err := apiInstance.GetAuthorizationRolesSettings()\nif err != nil {\n\tfmt.Printf(\"Error calling GetAuthorizationRolesSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getauthorizationsettings": {
     "operationId": "getauthorizationsettings",
     "functionName": "GetAuthorizationSettings",
@@ -6426,6 +6433,20 @@
     ],
     "return": "Organizationroleentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAuthorizationApiWithConfig(config)\n\nvar body platformclientv2.[]Domainorganizationrole // Organization roles list\n// Restore specified default roles\ndata, response, err := apiInstance.PutAuthorizationRolesDefault(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutAuthorizationRolesDefault: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putauthorizationrolessettings": {
+    "operationId": "putauthorizationrolessettings",
+    "functionName": "PutAuthorizationRolesSettings",
+    "signature": "PutAuthorizationRolesSettings(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Rolesettings",
+        "required": "true"
+      }
+    ],
+    "return": "Rolesettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAuthorizationApiWithConfig(config)\n\nvar body platformclientv2.Rolesettings // Authorization Role Settings\n// Change authorization role settings\ndata, response, err := apiInstance.PutAuthorizationRolesSettings(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutAuthorizationRolesSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putuserroles": {
     "operationId": "putuserroles",
@@ -22069,6 +22090,30 @@
       }
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID.\nvar body platformclientv2.Knowledgedocumentpresentation // \n// Indicate that documents were presented to the user.\nresponse, err := apiInstance.PostKnowledgeKnowledgebaseDocumentsPresentations(knowledgeBaseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseDocumentsPresentations: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "postknowledgeknowledgebasedocumentsquery": {
+    "operationId": "postknowledgeknowledgebasedocumentsquery",
+    "functionName": "PostKnowledgeKnowledgebaseDocumentsQuery",
+    "signature": "PostKnowledgeKnowledgebaseDocumentsQuery(knowledgeBaseId, expand, body)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "body",
+        "type": "Knowledgedocumentquery",
+        "required": "false"
+      }
+    ],
+    "return": "Knowledgedocumentqueryresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge Base ID\nvar expand []string // Fields, if any, to expand for each document in the search result matching the query.\nvar body platformclientv2.Knowledgedocumentquery // \n// Query for knowledge documents.\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseDocumentsQuery(knowledgeBaseId, expand, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseDocumentsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postknowledgeknowledgebasedocumentssearch": {
     "operationId": "postknowledgeknowledgebasedocumentssearch",

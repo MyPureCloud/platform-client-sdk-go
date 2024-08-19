@@ -1147,8 +1147,6 @@ func (a ArchitectApi) DeleteFlow(flowId string) (*APIResponse, error) {
 // Deletes a log level for a flow by flow id.
 //
 // Deletes the associated log level for a flow by flow id
-//
-// Preview: DeleteFlowInstancesSettingsLoglevels is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) DeleteFlowInstancesSettingsLoglevels(flowId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1473,8 +1471,6 @@ func (a ArchitectApi) DeleteFlowsDatatableRow(datatableId string, rowId string) 
 // Resets the org log level to default, base
 //
 // Resets the org log level to default, base
-//
-// Preview: DeleteFlowsInstancesSettingsLoglevelsDefault is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) DeleteFlowsInstancesSettingsLoglevelsDefault() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -4863,8 +4859,6 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 // Retrieves the log level for a flow by flow id.
 //
 // Retrieves the log level for a flow by flow id.
-//
-// Preview: GetFlowInstancesSettingsLoglevels is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowInstancesSettingsLoglevels(flowId string, expand []string) (*Flowsettingsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6957,8 +6951,6 @@ func (a ArchitectApi) GetFlowsInstancesQuerycapabilities(expand string) (*Flowsq
 // Get the execution history enabled setting.
 //
 // Get the execution history enabled setting.
-//
-// Preview: GetFlowsInstancesSettingsExecutiondata is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsInstancesSettingsExecutiondata() (*Executiondataflowsettingsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7037,8 +7029,6 @@ func (a ArchitectApi) GetFlowsInstancesSettingsExecutiondata() (*Executiondatafl
 // Retrieve a list of LogLevels for the organization.
 //
 // Returns a paged set of LogLevels per flow id
-//
-// Preview: GetFlowsInstancesSettingsLoglevels is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsInstancesSettingsLoglevels(expand []string, pageNumber int, pageSize int) (*Flowsettingsresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7123,8 +7113,6 @@ func (a ArchitectApi) GetFlowsInstancesSettingsLoglevels(expand []string, pageNu
 // Gets the available flow log level characteristics for this organization.
 //
 // Log levels can be customized and this returns the set of available characteristics that can be enabled/disabled.
-//
-// Preview: GetFlowsInstancesSettingsLoglevelsCharacteristics is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsInstancesSettingsLoglevelsCharacteristics() (*Flowloglevelcharacteristicsdefinitions, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7203,8 +7191,6 @@ func (a ArchitectApi) GetFlowsInstancesSettingsLoglevelsCharacteristics() (*Flow
 // Returns the flow default log level.
 //
 // Returns the flow default log level which will be used if no specific flow id log level is found.
-//
-// Preview: GetFlowsInstancesSettingsLoglevelsDefault is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsInstancesSettingsLoglevelsDefault(expand []string) (*Flowsettingsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8093,8 +8079,6 @@ func (a ArchitectApi) PatchArchitectGrammarLanguage(grammarId string, languageCo
 // Edit the execution history enabled setting.
 //
 // Edit the execution history enabled setting.
-//
-// Preview: PatchFlowsInstancesSettingsExecutiondata is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PatchFlowsInstancesSettingsExecutiondata(body Executiondatasettingsrequest) (*Executiondataflowsettingsresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -9478,8 +9462,6 @@ func (a ArchitectApi) PostFlowHistory(flowId string) (*Operation, *APIResponse, 
 // Set the logLevel for a particular flow id
 //
 // Assigns a new loglevel to a flow id
-//
-// Preview: PostFlowInstancesSettingsLoglevels is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostFlowInstancesSettingsLoglevels(flowId string, body Flowloglevelrequest, expand []string) (*Flowsettingsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11842,8 +11824,6 @@ func (a ArchitectApi) PutFlow(flowId string, body Flow) (*Flow, *APIResponse, er
 // Edit the logLevel for a particular flow id
 //
 // Updates the loglevel for a flow id
-//
-// Preview: PutFlowInstancesSettingsLoglevels is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PutFlowInstancesSettingsLoglevels(flowId string, body Flowloglevelrequest, expand []string) (*Flowsettingsresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -12125,8 +12105,6 @@ func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, bod
 // Edit the flow default log level.
 //
 // Edit the flow default log level.
-//
-// Preview: PutFlowsInstancesSettingsLoglevelsDefault is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PutFlowsInstancesSettingsLoglevelsDefault(body Flowloglevelrequest, expand []string) (*Flowsettingsresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

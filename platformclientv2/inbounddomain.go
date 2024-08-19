@@ -29,9 +29,6 @@ type Inbounddomain struct {
 	// CustomSMTPServer - The custom SMTP server integration to use when sending outbound emails from this domain.
 	CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
 
-	// ImapSettings - The IMAP server integration and settings to use for processing inbound emails.
-	ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -111,8 +108,6 @@ func (o Inbounddomain) MarshalJSON() ([]byte, error) {
 		
 		CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
 		
-		ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -127,8 +122,6 @@ func (o Inbounddomain) MarshalJSON() ([]byte, error) {
 		MailFromSettings: o.MailFromSettings,
 		
 		CustomSMTPServer: o.CustomSMTPServer,
-		
-		ImapSettings: o.ImapSettings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -166,11 +159,6 @@ func (o *Inbounddomain) UnmarshalJSON(b []byte) error {
 	if CustomSMTPServer, ok := InbounddomainMap["customSMTPServer"].(map[string]interface{}); ok {
 		CustomSMTPServerString, _ := json.Marshal(CustomSMTPServer)
 		json.Unmarshal(CustomSMTPServerString, &o.CustomSMTPServer)
-	}
-	
-	if ImapSettings, ok := InbounddomainMap["imapSettings"].(map[string]interface{}); ok {
-		ImapSettingsString, _ := json.Marshal(ImapSettings)
-		json.Unmarshal(ImapSettingsString, &o.ImapSettings)
 	}
 	
 	if SelfUri, ok := InbounddomainMap["selfUri"].(string); ok {

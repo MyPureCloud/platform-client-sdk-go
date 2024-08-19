@@ -7,43 +7,28 @@ import (
 	"strings"
 )
 
-// Flowoutcomelisting
-type Flowoutcomelisting struct { 
+// Knowledgedocumentqueryresponse
+type Knowledgedocumentqueryresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Flowoutcome `json:"entities,omitempty"`
-
-	// PageSize
+	// PageSize - Page size of the returned results.
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// PageNumber
+	// PageNumber - Page number of the returned results.
 	PageNumber *int `json:"pageNumber,omitempty"`
 
-	// Total
+	// Total - The total number of documents matching the query.
 	Total *int `json:"total,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// PageCount
+	// PageCount - The total number of pages of results, calculated according to the pageSize and the total matching documents.
 	PageCount *int `json:"pageCount,omitempty"`
+
+	// Results - Documents matching the query.
+	Results *[]Knowledgedocumentresponse `json:"results,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Flowoutcomelisting) SetField(field string, fieldValue interface{}) {
+func (o *Knowledgedocumentqueryresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +49,7 @@ func (o *Flowoutcomelisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Flowoutcomelisting) MarshalJSON() ([]byte, error) {
+func (o Knowledgedocumentqueryresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,103 +87,63 @@ func (o Flowoutcomelisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Flowoutcomelisting
+	type Alias Knowledgedocumentqueryresponse
 	
 	return json.Marshal(&struct { 
-		Entities *[]Flowoutcome `json:"entities,omitempty"`
-		
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		PageCount *int `json:"pageCount,omitempty"`
+		
+		Results *[]Knowledgedocumentresponse `json:"results,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
-		
 		PageSize: o.PageSize,
 		
 		PageNumber: o.PageNumber,
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
-		
-		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
-		
 		PageCount: o.PageCount,
+		
+		Results: o.Results,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Flowoutcomelisting) UnmarshalJSON(b []byte) error {
-	var FlowoutcomelistingMap map[string]interface{}
-	err := json.Unmarshal(b, &FlowoutcomelistingMap)
+func (o *Knowledgedocumentqueryresponse) UnmarshalJSON(b []byte) error {
+	var KnowledgedocumentqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgedocumentqueryresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := FlowoutcomelistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := FlowoutcomelistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := KnowledgedocumentqueryresponseMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := FlowoutcomelistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := KnowledgedocumentqueryresponseMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := FlowoutcomelistingMap["total"].(float64); ok {
+	if Total, ok := KnowledgedocumentqueryresponseMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := FlowoutcomelistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := FlowoutcomelistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if SelfUri, ok := FlowoutcomelistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := FlowoutcomelistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := FlowoutcomelistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if PageCount, ok := FlowoutcomelistingMap["pageCount"].(float64); ok {
+	if PageCount, ok := KnowledgedocumentqueryresponseMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
+	}
+	
+	if Results, ok := KnowledgedocumentqueryresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
 	}
 	
 
@@ -206,7 +151,7 @@ func (o *Flowoutcomelisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Flowoutcomelisting) String() string {
+func (o *Knowledgedocumentqueryresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

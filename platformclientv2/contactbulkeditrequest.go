@@ -22,9 +22,6 @@ type Contactbulkeditrequest struct {
 
 	// Contact - Contact object with details of fields used for patching.
 	Contact *Dialercontact `json:"contact,omitempty"`
-
-	// GenerateDownloadUri
-	GenerateDownloadUri *bool `json:"generateDownloadUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -97,8 +94,6 @@ func (o Contactbulkeditrequest) MarshalJSON() ([]byte, error) {
 		ContactIds *[]string `json:"contactIds,omitempty"`
 		
 		Contact *Dialercontact `json:"contact,omitempty"`
-		
-		GenerateDownloadUri *bool `json:"generateDownloadUri,omitempty"`
 		Alias
 	}{ 
 		ContactListFilterId: o.ContactListFilterId,
@@ -108,8 +103,6 @@ func (o Contactbulkeditrequest) MarshalJSON() ([]byte, error) {
 		ContactIds: o.ContactIds,
 		
 		Contact: o.Contact,
-		
-		GenerateDownloadUri: o.GenerateDownloadUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -140,10 +133,6 @@ func (o *Contactbulkeditrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ContactString, &o.Contact)
 	}
 	
-	if GenerateDownloadUri, ok := ContactbulkeditrequestMap["generateDownloadUri"].(bool); ok {
-		o.GenerateDownloadUri = &GenerateDownloadUri
-	}
-    
 
 	return nil
 }

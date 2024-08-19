@@ -7,43 +7,37 @@ import (
 	"strings"
 )
 
-// Flowoutcomelisting
-type Flowoutcomelisting struct { 
+// Knowledgedocumentquery
+type Knowledgedocumentquery struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Flowoutcome `json:"entities,omitempty"`
-
-	// PageSize
+	// PageSize - Page size of the returned results.
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// PageNumber
+	// PageNumber - Page number of the returned results.
 	PageNumber *int `json:"pageNumber,omitempty"`
 
-	// Total
-	Total *int `json:"total,omitempty"`
+	// IncludeDraftDocuments - Indicates whether the results would also include draft documents.
+	IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
+	// Interval - Retrieves the documents created/modified/published in specified date and time range.
+	Interval *Documentqueryinterval `json:"interval,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
+	// Filter - Filter for the document query.
+	Filter *Documentquery `json:"filter,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// IncludeVariations - Indicates which document variations to include in returned documents. All: all variations regardless of the filter expression; AllMatching: all variations that match the filter expression; SingleMostRelevant: single variation that matches the filter expression and has the highest priority. The default is All.
+	IncludeVariations *string `json:"includeVariations,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// SortOrder - The sort order for results.
+	SortOrder *string `json:"sortOrder,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
+	// SortBy - The field in the documents that you want to sort the results by.
+	SortBy *string `json:"sortBy,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Flowoutcomelisting) SetField(field string, fieldValue interface{}) {
+func (o *Knowledgedocumentquery) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +58,7 @@ func (o *Flowoutcomelisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Flowoutcomelisting) MarshalJSON() ([]byte, error) {
+func (o Knowledgedocumentquery) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,111 +96,94 @@ func (o Flowoutcomelisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Flowoutcomelisting
+	type Alias Knowledgedocumentquery
 	
 	return json.Marshal(&struct { 
-		Entities *[]Flowoutcome `json:"entities,omitempty"`
-		
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
+		IncludeDraftDocuments *bool `json:"includeDraftDocuments,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
+		Interval *Documentqueryinterval `json:"interval,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
+		Filter *Documentquery `json:"filter,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		IncludeVariations *string `json:"includeVariations,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		SortOrder *string `json:"sortOrder,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
+		SortBy *string `json:"sortBy,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
-		
 		PageSize: o.PageSize,
 		
 		PageNumber: o.PageNumber,
 		
-		Total: o.Total,
+		IncludeDraftDocuments: o.IncludeDraftDocuments,
 		
-		LastUri: o.LastUri,
+		Interval: o.Interval,
 		
-		FirstUri: o.FirstUri,
+		Filter: o.Filter,
 		
-		SelfUri: o.SelfUri,
+		IncludeVariations: o.IncludeVariations,
 		
-		NextUri: o.NextUri,
+		SortOrder: o.SortOrder,
 		
-		PreviousUri: o.PreviousUri,
-		
-		PageCount: o.PageCount,
+		SortBy: o.SortBy,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Flowoutcomelisting) UnmarshalJSON(b []byte) error {
-	var FlowoutcomelistingMap map[string]interface{}
-	err := json.Unmarshal(b, &FlowoutcomelistingMap)
+func (o *Knowledgedocumentquery) UnmarshalJSON(b []byte) error {
+	var KnowledgedocumentqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgedocumentqueryMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := FlowoutcomelistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := FlowoutcomelistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := KnowledgedocumentqueryMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := FlowoutcomelistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := KnowledgedocumentqueryMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := FlowoutcomelistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
+	if IncludeDraftDocuments, ok := KnowledgedocumentqueryMap["includeDraftDocuments"].(bool); ok {
+		o.IncludeDraftDocuments = &IncludeDraftDocuments
+	}
+    
+	if Interval, ok := KnowledgedocumentqueryMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
 	}
 	
-	if LastUri, ok := FlowoutcomelistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := FlowoutcomelistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if SelfUri, ok := FlowoutcomelistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := FlowoutcomelistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := FlowoutcomelistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if PageCount, ok := FlowoutcomelistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
+	if Filter, ok := KnowledgedocumentqueryMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
 	}
 	
+	if IncludeVariations, ok := KnowledgedocumentqueryMap["includeVariations"].(string); ok {
+		o.IncludeVariations = &IncludeVariations
+	}
+    
+	if SortOrder, ok := KnowledgedocumentqueryMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+    
+	if SortBy, ok := KnowledgedocumentqueryMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Flowoutcomelisting) String() string {
+func (o *Knowledgedocumentquery) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
