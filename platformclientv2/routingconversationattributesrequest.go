@@ -20,6 +20,9 @@ type Routingconversationattributesrequest struct {
 	// LanguageId - Language requirement for the conversation.  To remove the language requirement, specify an empty string, i.e., \"\".
 	LanguageId *string `json:"languageId,omitempty"`
 
+	// LabelId - Label requirement for the conversation.  To remove the label requirement (setting it to System Default Label), specify an empty string, i.e., \"\".
+	LabelId *string `json:"labelId,omitempty"`
+
 	// RequestScoredAgents
 	RequestScoredAgents *[]Requestscoredagent `json:"requestScoredAgents,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
 		
 		LanguageId *string `json:"languageId,omitempty"`
 		
+		LabelId *string `json:"labelId,omitempty"`
+		
 		RequestScoredAgents *[]Requestscoredagent `json:"requestScoredAgents,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
 		SkillIds: o.SkillIds,
 		
 		LanguageId: o.LanguageId,
+		
+		LabelId: o.LabelId,
 		
 		RequestScoredAgents: o.RequestScoredAgents,
 		Alias:    (Alias)(o),
@@ -126,6 +133,10 @@ func (o *Routingconversationattributesrequest) UnmarshalJSON(b []byte) error {
 	
 	if LanguageId, ok := RoutingconversationattributesrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
+	}
+    
+	if LabelId, ok := RoutingconversationattributesrequestMap["labelId"].(string); ok {
+		o.LabelId = &LabelId
 	}
     
 	if RequestScoredAgents, ok := RoutingconversationattributesrequestMap["requestScoredAgents"].([]interface{}); ok {

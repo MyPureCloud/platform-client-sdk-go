@@ -185,8 +185,6 @@ func (a SettingsApi) GetEmailsSettings() (*Emailsettings, *APIResponse, error) {
 // Get the execution history enabled setting.
 //
 // Get the execution history enabled setting.
-//
-// Preview: GetSettingsExecutiondata is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SettingsApi) GetSettingsExecutiondata() (*Executiondataglobalsettingsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -426,8 +424,6 @@ func (a SettingsApi) PatchEmailsSettings(body Emailsettings) (*Emailsettings, *A
 // Edit the execution history on off setting.
 //
 // Edit the execution history on off setting.
-//
-// Preview: PatchSettingsExecutiondata is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SettingsApi) PatchSettingsExecutiondata(body Executiondatasettingsrequest) (*Executiondataglobalsettingsresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

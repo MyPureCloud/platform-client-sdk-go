@@ -11,11 +11,11 @@ import (
 type Journeyviewelementfilterrangedata struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Duration - an ISO 8601 time duration.Only one of number or duration must be specified. Periods are represented as an ISO-8601 string. For example: P1D or P1DT12H
+	// Duration - An ISO 8601 time duration. Only one of number or duration must be specified.
 	Duration *string `json:"duration,omitempty"`
 
-	// Number - an Integer value.Only one of number or duration must be specified.
-	Number *int `json:"number,omitempty"`
+	// Number - A numeric value. Only one of number or duration must be specified.
+	Number *float64 `json:"number,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Journeyviewelementfilterrangedata) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Duration *string `json:"duration,omitempty"`
 		
-		Number *int `json:"number,omitempty"`
+		Number *float64 `json:"number,omitempty"`
 		Alias
 	}{ 
 		Duration: o.Duration,
@@ -105,10 +105,9 @@ func (o *Journeyviewelementfilterrangedata) UnmarshalJSON(b []byte) error {
 	}
     
 	if Number, ok := JourneyviewelementfilterrangedataMap["number"].(float64); ok {
-		NumberInt := int(Number)
-		o.Number = &NumberInt
+		o.Number = &Number
 	}
-	
+    
 
 	return nil
 }

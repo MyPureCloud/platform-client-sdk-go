@@ -20,6 +20,9 @@ type Functionconfig struct {
 	// Zip - Zip file configuration and state.
 	Zip *Functionzipconfig `json:"zip,omitempty"`
 
+	// UploadExceptionHistory - History of failed zip upload file configuration including their state and error messages. Contains no more than last ten failures.
+	UploadExceptionHistory *[]Functionzipconfig `json:"uploadExceptionHistory,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Functionconfig) MarshalJSON() ([]byte, error) {
 		
 		Zip *Functionzipconfig `json:"zip,omitempty"`
 		
+		UploadExceptionHistory *[]Functionzipconfig `json:"uploadExceptionHistory,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Functionconfig) MarshalJSON() ([]byte, error) {
 		Function: o.Function,
 		
 		Zip: o.Zip,
+		
+		UploadExceptionHistory: o.UploadExceptionHistory,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -126,6 +133,11 @@ func (o *Functionconfig) UnmarshalJSON(b []byte) error {
 	if Zip, ok := FunctionconfigMap["zip"].(map[string]interface{}); ok {
 		ZipString, _ := json.Marshal(Zip)
 		json.Unmarshal(ZipString, &o.Zip)
+	}
+	
+	if UploadExceptionHistory, ok := FunctionconfigMap["uploadExceptionHistory"].([]interface{}); ok {
+		UploadExceptionHistoryString, _ := json.Marshal(UploadExceptionHistory)
+		json.Unmarshal(UploadExceptionHistoryString, &o.UploadExceptionHistory)
 	}
 	
 	if SelfUri, ok := FunctionconfigMap["selfUri"].(string); ok {

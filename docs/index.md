@@ -1,10 +1,8 @@
----
-title: Platform API Client SDK - Go
----
+# Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 140.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 141.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -13,16 +11,16 @@ Latest version: 140.0.0 [![GitHub release](https://img.shields.io/github/release
 Some macOS users encounter the error "argument list too long" when building or installing this package if their golang version is less than 1.15. Visit [Go Downloads](https://golang.org/dl/) and install _go1.15_ or newer if this error is thrown.
 :::
 
-## Preview API's
+## Preview APIs
 
-**Warning:** Preview API's are included in this SDK. These resources are subject to both breaking and non-breaking changes at any time without notice. This includes, but is not limited to, changing resource names, paths, contracts, documentation, and removing resources entirely. For a full list of the preview API's see [here](https://developer.genesys.cloud/platform/preview-apis)
+**Warning:** Preview APIs are included in this SDK. These resources are subject to both breaking and non-breaking changes at any time without notice. This includes, but is not limited to, changing resource names, paths, contracts, documentation, and removing resources entirely. For a full list of the preview APIs see [here](https://developer.genesys.cloud/platform/preview-apis)
 
 ## Get SDK Package
 
 Retrieve the package from https://github.com/MyPureCloud/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/mypurecloud/platform-client-sdk-go/v140/platformclientv2
+go get github.com/mypurecloud/platform-client-sdk-go/v141/platformclientv2
 ```
 
 ## Using the SDK
@@ -31,7 +29,7 @@ go get github.com/mypurecloud/platform-client-sdk-go/v140/platformclientv2
 
 ```go
 import (
-	"github.com/mypurecloud/platform-client-sdk-go/v140/platformclientv2"
+	"github.com/mypurecloud/platform-client-sdk-go/v141/platformclientv2"
 )
 ```
 

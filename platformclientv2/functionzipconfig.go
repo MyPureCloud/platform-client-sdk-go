@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// Functionzipconfig - Action function current zip file upload settings and state.
+// Functionzipconfig - Action function zip file upload settings and state.
 type Functionzipconfig struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
@@ -23,6 +23,12 @@ type Functionzipconfig struct {
 
 	// DateCreated - Date and time zip record was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+	// ErrorMessage - Error message if upload failed.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+
+	// RequestId - Upload request id used for zip upload
+	RequestId *string `json:"requestId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -103,6 +109,10 @@ func (o Functionzipconfig) MarshalJSON() ([]byte, error) {
 		Name *string `json:"name,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		ErrorMessage *string `json:"errorMessage,omitempty"`
+		
+		RequestId *string `json:"requestId,omitempty"`
 		Alias
 	}{ 
 		Status: o.Status,
@@ -112,6 +122,10 @@ func (o Functionzipconfig) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		DateCreated: DateCreated,
+		
+		ErrorMessage: o.ErrorMessage,
+		
+		RequestId: o.RequestId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -140,6 +154,14 @@ func (o *Functionzipconfig) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
+	if ErrorMessage, ok := FunctionzipconfigMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+    
+	if RequestId, ok := FunctionzipconfigMap["requestId"].(string); ok {
+		o.RequestId = &RequestId
+	}
+    
 
 	return nil
 }

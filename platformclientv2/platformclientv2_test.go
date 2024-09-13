@@ -7,6 +7,9 @@ import (
 	"reflect"
 	"testing"
 	"time"
+	"strings"
+	"net/http"
+	"net/url"
 
 	"github.com/google/uuid"
 )
@@ -367,13 +370,59 @@ func TestGetUser(t *testing.T) {
 }
 
 func TestDeleteUser(t *testing.T) {
+	/*
+	* DEVTOOLING-815: There is a difference between the internal swagger and public swagger for this api. 
+	* We need to call the api directly until the change is available in prod
+	*/ 
+
 	// Delete user
-	_, response, err := config.usersAPI.DeleteUser(config.userID)
+
+	// TODO: Uncomment below line when the api is the same is prod and dev
+	// _, response, err := config.usersAPI.DeleteUser(config.userID)
+	response, err := deleteUserDirectly(config.usersAPI, config.userID)
+
 	if err != nil {
 		t.Error(err)
 	} else if response != nil && response.Error != nil {
 		t.Error(response.Error)
 	}
+}
+
+func deleteUserDirectly(api *UsersApi, userId string) (*APIResponse, error) {
+	// SDK does not support nil values for boolean query params yet, so we must manually construct this HTTP request for now
+	apiClient := &api.Configuration.APIClient
+
+	// create path and map variables
+	path := api.Configuration.BasePath + "/api/v2/users/{userId}"
+	path = strings.Replace(path, "{userId}", userId, -1)
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+
+	// oauth required
+	if api.Configuration.AccessToken != "" {
+		headerParams["Authorization"] = "Bearer " + api.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range api.Configuration.DefaultHeader {
+		headerParams[key] = api.Configuration.DefaultHeader[key]
+	}
+
+	headerParams["Content-Type"] = "application/json"
+	headerParams["Accept"] = "application/json"
+
+	response, err := apiClient.CallAPI(path, http.MethodDelete, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if response.Error != nil {
+		err = fmt.Errorf(response.ErrorMessage)
+	} 
+	
+	return response, err
 }
 
 func Example_authorizeDefaultConfiguration() {

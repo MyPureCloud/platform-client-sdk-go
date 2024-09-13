@@ -411,8 +411,6 @@ func (a JourneyApi) DeleteJourneySegment(segmentId string) (*APIResponse, error)
 // Delete a Journey View by ID
 //
 // deletes all versions
-//
-// Preview: DeleteJourneyView is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) DeleteJourneyView(viewId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -2433,8 +2431,6 @@ func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomesc
 // Get a Journey View by ID
 //
 // returns the latest version
-//
-// Preview: GetJourneyView is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyView(viewId string) (*Journeyview, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2517,8 +2513,6 @@ func (a JourneyApi) GetJourneyView(viewId string) (*Journeyview, *APIResponse, e
 // GetJourneyViewVersion invokes GET /api/v2/journey/views/{viewId}/versions/{versionId}
 //
 // Get a Journey View by ID and version
-//
-// Preview: GetJourneyViewVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyViewVersion(viewId string, versionId string) (*Journeyview, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2609,8 +2603,6 @@ func (a JourneyApi) GetJourneyViewVersion(viewId string, versionId string) (*Jou
 // Get the job for a journey view version.
 //
 // used for long descriptions
-//
-// Preview: GetJourneyViewVersionJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyViewVersionJob(viewId string, journeyVersionId string, jobId string) (*Journeyviewjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2707,8 +2699,6 @@ func (a JourneyApi) GetJourneyViewVersionJob(viewId string, journeyVersionId str
 // Get the result of a job for a journey view version.
 //
 // used for long descriptions
-//
-// Preview: GetJourneyViewVersionJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyViewVersionJobResults(viewId string, journeyViewVersion string, jobId string) (*Journeyviewresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2805,8 +2795,6 @@ func (a JourneyApi) GetJourneyViewVersionJobResults(viewId string, journeyViewVe
 // Get the latest job of a journey view version.
 //
 // used for long descriptions
-//
-// Preview: GetJourneyViewVersionJobsLatest is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyViewVersionJobsLatest(viewId string, journeyVersionId string) (*Journeyviewjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2895,9 +2883,7 @@ func (a JourneyApi) GetJourneyViewVersionJobsLatest(viewId string, journeyVersio
 // GetJourneyViews invokes GET /api/v2/journey/views
 //
 // Get a list of Journey Views
-//
-// Preview: GetJourneyViews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a JourneyApi) GetJourneyViews(pageNumber int, pageSize int, nameOrCreatedBy string, expand string) (*Journeyviewlisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneyViews(pageNumber int, pageSize int, nameOrCreatedBy string, expand string, id string) (*Journeyviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/views"
@@ -2931,6 +2917,8 @@ func (a JourneyApi) GetJourneyViews(pageNumber int, pageSize int, nameOrCreatedB
 	queryParams["nameOrCreatedBy"] = a.Configuration.APIClient.ParameterToString(nameOrCreatedBy, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3143,8 +3131,6 @@ func (a JourneyApi) GetJourneyViewsEventdefinitions() (*Journeyeventdefinitionli
 // GetJourneyViewsJobs invokes GET /api/v2/journey/views/jobs
 //
 // Get the jobs for an organization.
-//
-// Preview: GetJourneyViewsJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyViewsJobs(pageNumber int, pageSize int, interval string, statuses string) (*Journeyviewjoblisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4703,8 +4689,6 @@ func (a JourneyApi) PostJourneySegments(body Journeysegmentrequest) (*Journeyseg
 // Submit a job request for a journey view version.
 //
 // used for long descriptions
-//
-// Preview: PostJourneyViewVersionJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyViewVersionJobs(viewId string, journeyVersionId string) (*Journeyviewjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4795,8 +4779,6 @@ func (a JourneyApi) PostJourneyViewVersionJobs(viewId string, journeyVersionId s
 // Update a Journey View by ID
 //
 // creates a new version
-//
-// Preview: PostJourneyViewVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyViewVersions(viewId string, body Journeyview) (*Journeyview, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4887,8 +4869,6 @@ func (a JourneyApi) PostJourneyViewVersions(viewId string, body Journeyview) (*J
 // PostJourneyViews invokes POST /api/v2/journey/views
 //
 // Create a new Journey View
-//
-// Preview: PostJourneyViews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyViews(body Journeyview) (*Journeyview, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

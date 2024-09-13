@@ -14,6 +14,9 @@ type Transfertoqueuerequest struct {
 	// TransferType - The type of transfer to perform. Attended, where the initiating agent maintains ownership of the conversation until the intended recipient accepts the transfer, or Unattended, where the initiating agent immediately disconnects. Default is Unattended.
 	TransferType *string `json:"transferType,omitempty"`
 
+	// KeepInternalMessageAlive - If true, the digital internal message will NOT be terminated.
+	KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
+
 	// QueueId - The id of the queue.
 	QueueId *string `json:"queueId,omitempty"`
 
@@ -86,12 +89,16 @@ func (o Transfertoqueuerequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		TransferType *string `json:"transferType,omitempty"`
 		
+		KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
+		
 		QueueId *string `json:"queueId,omitempty"`
 		
 		QueueName *string `json:"queueName,omitempty"`
 		Alias
 	}{ 
 		TransferType: o.TransferType,
+		
+		KeepInternalMessageAlive: o.KeepInternalMessageAlive,
 		
 		QueueId: o.QueueId,
 		
@@ -109,6 +116,10 @@ func (o *Transfertoqueuerequest) UnmarshalJSON(b []byte) error {
 	
 	if TransferType, ok := TransfertoqueuerequestMap["transferType"].(string); ok {
 		o.TransferType = &TransferType
+	}
+    
+	if KeepInternalMessageAlive, ok := TransfertoqueuerequestMap["keepInternalMessageAlive"].(bool); ok {
+		o.KeepInternalMessageAlive = &KeepInternalMessageAlive
 	}
     
 	if QueueId, ok := TransfertoqueuerequestMap["queueId"].(string); ok {

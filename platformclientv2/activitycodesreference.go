@@ -11,9 +11,6 @@ import (
 type Activitycodesreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
 	// Ids - The IDs of activity codes
 	Ids *[]string `json:"ids,omitempty"`
 
@@ -84,15 +81,11 @@ func (o Activitycodesreference) MarshalJSON() ([]byte, error) {
 	type Alias Activitycodesreference
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
 		Ids *[]string `json:"ids,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
 		Ids: o.Ids,
 		
 		SelfUri: o.SelfUri,
@@ -107,10 +100,6 @@ func (o *Activitycodesreference) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := ActivitycodesreferenceMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
 	if Ids, ok := ActivitycodesreferenceMap["ids"].([]interface{}); ok {
 		IdsString, _ := json.Marshal(Ids)
 		json.Unmarshal(IdsString, &o.Ids)

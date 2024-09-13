@@ -34,6 +34,9 @@ type Conversationappsettings struct {
 
 	// Humanize - The humanize conversations settings for the messenger app
 	Humanize *Humanize `json:"humanize,omitempty"`
+
+	// Notifications - The notification settings for messenger apps
+	Notifications *Notificationssettings `json:"notifications,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 		ConversationClear *Conversationclearsettings `json:"conversationClear,omitempty"`
 		
 		Humanize *Humanize `json:"humanize,omitempty"`
+		
+		Notifications *Notificationssettings `json:"notifications,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -131,6 +136,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 		ConversationClear: o.ConversationClear,
 		
 		Humanize: o.Humanize,
+		
+		Notifications: o.Notifications,
 		Alias:    (Alias)(o),
 	})
 }
@@ -177,6 +184,11 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	if Humanize, ok := ConversationappsettingsMap["humanize"].(map[string]interface{}); ok {
 		HumanizeString, _ := json.Marshal(Humanize)
 		json.Unmarshal(HumanizeString, &o.Humanize)
+	}
+	
+	if Notifications, ok := ConversationappsettingsMap["notifications"].(map[string]interface{}); ok {
+		NotificationsString, _ := json.Marshal(Notifications)
+		json.Unmarshal(NotificationsString, &o.Notifications)
 	}
 	
 

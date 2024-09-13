@@ -70,6 +70,15 @@ type Acdstartdetaileventtopicacdstartevent struct {
 
 	// ConversationExternalOrganizationIds
 	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+
+	// UtilizationLabel
+	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+
+	// RoutingPriority
+	RoutingPriority *int `json:"routingPriority,omitempty"`
+
+	// RequestedRoutingSkillIds
+	RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -174,6 +183,12 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 		
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+		
+		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+		
+		RoutingPriority *int `json:"routingPriority,omitempty"`
+		
+		RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -215,6 +230,12 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds: o.ConversationExternalContactIds,
 		
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
+		
+		UtilizationLabel: o.UtilizationLabel,
+		
+		RoutingPriority: o.RoutingPriority,
+		
+		RequestedRoutingSkillIds: o.RequestedRoutingSkillIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -309,6 +330,20 @@ func (o *Acdstartdetaileventtopicacdstartevent) UnmarshalJSON(b []byte) error {
 	if ConversationExternalOrganizationIds, ok := AcdstartdetaileventtopicacdstarteventMap["conversationExternalOrganizationIds"].([]interface{}); ok {
 		ConversationExternalOrganizationIdsString, _ := json.Marshal(ConversationExternalOrganizationIds)
 		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
+	}
+	
+	if UtilizationLabel, ok := AcdstartdetaileventtopicacdstarteventMap["utilizationLabel"].(string); ok {
+		o.UtilizationLabel = &UtilizationLabel
+	}
+    
+	if RoutingPriority, ok := AcdstartdetaileventtopicacdstarteventMap["routingPriority"].(float64); ok {
+		RoutingPriorityInt := int(RoutingPriority)
+		o.RoutingPriority = &RoutingPriorityInt
+	}
+	
+	if RequestedRoutingSkillIds, ok := AcdstartdetaileventtopicacdstarteventMap["requestedRoutingSkillIds"].([]interface{}); ok {
+		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
+		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
 	}
 	
 

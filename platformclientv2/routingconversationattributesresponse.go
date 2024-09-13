@@ -20,6 +20,9 @@ type Routingconversationattributesresponse struct {
 	// Language - Current language on in-queue conversation
 	Language *Language `json:"language,omitempty"`
 
+	// Label - Current label on in-queue conversation
+	Label *Utilizationlabel `json:"label,omitempty"`
+
 	// ScoredAgents - Current scored agents on in-queue conversation
 	ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Routingconversationattributesresponse) MarshalJSON() ([]byte, error) {
 		
 		Language *Language `json:"language,omitempty"`
 		
+		Label *Utilizationlabel `json:"label,omitempty"`
+		
 		ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Routingconversationattributesresponse) MarshalJSON() ([]byte, error) {
 		Skills: o.Skills,
 		
 		Language: o.Language,
+		
+		Label: o.Label,
 		
 		ScoredAgents: o.ScoredAgents,
 		Alias:    (Alias)(o),
@@ -127,6 +134,11 @@ func (o *Routingconversationattributesresponse) UnmarshalJSON(b []byte) error {
 	if Language, ok := RoutingconversationattributesresponseMap["language"].(map[string]interface{}); ok {
 		LanguageString, _ := json.Marshal(Language)
 		json.Unmarshal(LanguageString, &o.Language)
+	}
+	
+	if Label, ok := RoutingconversationattributesresponseMap["label"].(map[string]interface{}); ok {
+		LabelString, _ := json.Marshal(Label)
+		json.Unmarshal(LabelString, &o.Label)
 	}
 	
 	if ScoredAgents, ok := RoutingconversationattributesresponseMap["scoredAgents"].([]interface{}); ok {

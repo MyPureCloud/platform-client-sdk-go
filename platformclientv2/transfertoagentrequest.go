@@ -14,6 +14,9 @@ type Transfertoagentrequest struct {
 	// TransferType - The type of transfer to perform. Attended, where the initiating agent maintains ownership of the conversation until the intended recipient accepts the transfer, or Unattended, where the initiating agent immediately disconnects. Default is Unattended.
 	TransferType *string `json:"transferType,omitempty"`
 
+	// KeepInternalMessageAlive - If true, the digital internal message will NOT be terminated.
+	KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
+
 	// UserId - The id of the internal user.
 	UserId *string `json:"userId,omitempty"`
 
@@ -92,6 +95,8 @@ func (o Transfertoagentrequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		TransferType *string `json:"transferType,omitempty"`
 		
+		KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
+		
 		UserId *string `json:"userId,omitempty"`
 		
 		UserName *string `json:"userName,omitempty"`
@@ -102,6 +107,8 @@ func (o Transfertoagentrequest) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		TransferType: o.TransferType,
+		
+		KeepInternalMessageAlive: o.KeepInternalMessageAlive,
 		
 		UserId: o.UserId,
 		
@@ -123,6 +130,10 @@ func (o *Transfertoagentrequest) UnmarshalJSON(b []byte) error {
 	
 	if TransferType, ok := TransfertoagentrequestMap["transferType"].(string); ok {
 		o.TransferType = &TransferType
+	}
+    
+	if KeepInternalMessageAlive, ok := TransfertoagentrequestMap["keepInternalMessageAlive"].(bool); ok {
+		o.KeepInternalMessageAlive = &KeepInternalMessageAlive
 	}
     
 	if UserId, ok := TransfertoagentrequestMap["userId"].(string); ok {

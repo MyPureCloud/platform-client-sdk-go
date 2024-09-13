@@ -16,6 +16,9 @@ type Responsetext struct {
 
 	// ContentType - Response text content type.
 	ContentType *string `json:"contentType,omitempty"`
+
+	// VarType - Response text type.
+	VarType *string `json:"type,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Responsetext) MarshalJSON() ([]byte, error) {
 		Content *string `json:"content,omitempty"`
 		
 		ContentType *string `json:"contentType,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
 		Alias
 	}{ 
 		Content: o.Content,
 		
 		ContentType: o.ContentType,
+		
+		VarType: o.VarType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Responsetext) UnmarshalJSON(b []byte) error {
     
 	if ContentType, ok := ResponsetextMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
+	}
+    
+	if VarType, ok := ResponsetextMap["type"].(string); ok {
+		o.VarType = &VarType
 	}
     
 

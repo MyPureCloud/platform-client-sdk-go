@@ -2884,7 +2884,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettin
 // GetAnalyticsReportingSettingsDashboardsQuery invokes GET /api/v2/analytics/reporting/settings/dashboards/query
 //
 // Get list of dashboard configurations
-func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType string, dashboardAccessFilter string, sortBy string, pageNumber int, pageSize int) (*Dashboardconfigurationlisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType string, dashboardAccessFilter string, name string, sortBy string, pageNumber int, pageSize int) (*Dashboardconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/settings/dashboards/query"
@@ -2920,6 +2920,8 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 	queryParams["dashboardType"] = a.Configuration.APIClient.ParameterToString(dashboardType, "")
 	
@@ -4508,8 +4510,6 @@ func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesJobs(body Agentcopilot
 // PostAnalyticsAgentcopilotsAggregatesQuery invokes POST /api/v2/analytics/agentcopilots/aggregates/query
 //
 // Query for agent copilot aggregates
-//
-// Preview: PostAnalyticsAgentcopilotsAggregatesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesQuery(body Agentcopilotaggregationquery) (*Agentcopilotaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -100,6 +100,12 @@ type Acdenddetaileventtopicacdendevent struct {
 
 	// ConversationExternalOrganizationIds
 	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+
+	// UtilizationLabel
+	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+
+	// FlowType
+	FlowType *string `json:"flowType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -224,6 +230,10 @@ func (o Acdenddetaileventtopicacdendevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 		
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+		
+		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+		
+		FlowType *string `json:"flowType,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -285,6 +295,10 @@ func (o Acdenddetaileventtopicacdendevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds: o.ConversationExternalContactIds,
 		
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
+		
+		UtilizationLabel: o.UtilizationLabel,
+		
+		FlowType: o.FlowType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -426,6 +440,14 @@ func (o *Acdenddetaileventtopicacdendevent) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
+	if UtilizationLabel, ok := AcdenddetaileventtopicacdendeventMap["utilizationLabel"].(string); ok {
+		o.UtilizationLabel = &UtilizationLabel
+	}
+    
+	if FlowType, ok := AcdenddetaileventtopicacdendeventMap["flowType"].(string); ok {
+		o.FlowType = &FlowType
+	}
+    
 
 	return nil
 }

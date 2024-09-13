@@ -14,6 +14,9 @@ type Transfertoexternalrequest struct {
 	// TransferType - The type of transfer to perform. Attended, where the initiating agent maintains ownership of the conversation until the intended recipient accepts the transfer, or Unattended, where the initiating agent immediately disconnects. Default is Unattended.
 	TransferType *string `json:"transferType,omitempty"`
 
+	// KeepInternalMessageAlive - If true, the digital internal message will NOT be terminated.
+	KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
+
 	// Address - The address (like phone number) of the external contact.
 	Address *string `json:"address,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Transfertoexternalrequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		TransferType *string `json:"transferType,omitempty"`
 		
+		KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
+		
 		Address *string `json:"address,omitempty"`
 		Alias
 	}{ 
 		TransferType: o.TransferType,
+		
+		KeepInternalMessageAlive: o.KeepInternalMessageAlive,
 		
 		Address: o.Address,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Transfertoexternalrequest) UnmarshalJSON(b []byte) error {
 	
 	if TransferType, ok := TransfertoexternalrequestMap["transferType"].(string); ok {
 		o.TransferType = &TransferType
+	}
+    
+	if KeepInternalMessageAlive, ok := TransfertoexternalrequestMap["keepInternalMessageAlive"].(bool); ok {
+		o.KeepInternalMessageAlive = &KeepInternalMessageAlive
 	}
     
 	if Address, ok := TransfertoexternalrequestMap["address"].(string); ok {
