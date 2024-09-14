@@ -19,6 +19,12 @@ type Recordingsettings struct {
 
 	// RegionalRecordingStorageEnabled - Store call recordings in the region where they are intended to be recorded, otherwise in the organization's home region
 	RegionalRecordingStorageEnabled *bool `json:"regionalRecordingStorageEnabled,omitempty"`
+
+	// RecordingPlaybackUrlTtl - The duration in minutes for which the generated URL for recording playback remains valid.The default duration is set to 60 minutes, with a minimum allowable duration of 2 minutes and a maximum of 60 minutes.
+	RecordingPlaybackUrlTtl *int `json:"recordingPlaybackUrlTtl,omitempty"`
+
+	// RecordingBatchDownloadUrlTtl - TThe duration in minutes for which the generated URL for recording batch download remains valid.The default duration is set to 60 minutes, with a minimum allowable duration of 2 minutes and a maximum of 60 minutes.
+	RecordingBatchDownloadUrlTtl *int `json:"recordingBatchDownloadUrlTtl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Recordingsettings) MarshalJSON() ([]byte, error) {
 		MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
 		
 		RegionalRecordingStorageEnabled *bool `json:"regionalRecordingStorageEnabled,omitempty"`
+		
+		RecordingPlaybackUrlTtl *int `json:"recordingPlaybackUrlTtl,omitempty"`
+		
+		RecordingBatchDownloadUrlTtl *int `json:"recordingBatchDownloadUrlTtl,omitempty"`
 		Alias
 	}{ 
 		MaxSimultaneousStreams: o.MaxSimultaneousStreams,
@@ -96,6 +106,10 @@ func (o Recordingsettings) MarshalJSON() ([]byte, error) {
 		MaxConfigurableScreenRecordingStreams: o.MaxConfigurableScreenRecordingStreams,
 		
 		RegionalRecordingStorageEnabled: o.RegionalRecordingStorageEnabled,
+		
+		RecordingPlaybackUrlTtl: o.RecordingPlaybackUrlTtl,
+		
+		RecordingBatchDownloadUrlTtl: o.RecordingBatchDownloadUrlTtl,
 		Alias:    (Alias)(o),
 	})
 }
@@ -121,6 +135,16 @@ func (o *Recordingsettings) UnmarshalJSON(b []byte) error {
 		o.RegionalRecordingStorageEnabled = &RegionalRecordingStorageEnabled
 	}
     
+	if RecordingPlaybackUrlTtl, ok := RecordingsettingsMap["recordingPlaybackUrlTtl"].(float64); ok {
+		RecordingPlaybackUrlTtlInt := int(RecordingPlaybackUrlTtl)
+		o.RecordingPlaybackUrlTtl = &RecordingPlaybackUrlTtlInt
+	}
+	
+	if RecordingBatchDownloadUrlTtl, ok := RecordingsettingsMap["recordingBatchDownloadUrlTtl"].(float64); ok {
+		RecordingBatchDownloadUrlTtlInt := int(RecordingBatchDownloadUrlTtl)
+		o.RecordingBatchDownloadUrlTtl = &RecordingBatchDownloadUrlTtlInt
+	}
+	
 
 	return nil
 }

@@ -107,8 +107,6 @@ func (a ArchitectApi) DeleteArchitectEmergencygroup(emergencyGroupId string) (*A
 // DeleteArchitectGrammar invokes DELETE /api/v2/architect/grammars/{grammarId}
 //
 // Delete a grammar.
-//
-// Preview: DeleteArchitectGrammar is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) DeleteArchitectGrammar(grammarId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -191,8 +189,6 @@ func (a ArchitectApi) DeleteArchitectGrammar(grammarId string) (*interface{}, *A
 // DeleteArchitectGrammarLanguage invokes DELETE /api/v2/architect/grammars/{grammarId}/languages/{languageCode}
 //
 // Delete specified grammar language
-//
-// Preview: DeleteArchitectGrammarLanguage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) DeleteArchitectGrammarLanguage(grammarId string, languageCode string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -274,8 +270,6 @@ func (a ArchitectApi) DeleteArchitectGrammarLanguage(grammarId string, languageC
 // DeleteArchitectGrammarLanguageFilesDtmf invokes DELETE /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/dtmf
 //
 // Clear the DTMF mode file for the grammar language if there is one
-//
-// Preview: DeleteArchitectGrammarLanguageFilesDtmf is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) DeleteArchitectGrammarLanguageFilesDtmf(grammarId string, languageCode string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -357,8 +351,6 @@ func (a ArchitectApi) DeleteArchitectGrammarLanguageFilesDtmf(grammarId string, 
 // DeleteArchitectGrammarLanguageFilesVoice invokes DELETE /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/voice
 //
 // Clear the voice mode file for the grammar language if there is one
-//
-// Preview: DeleteArchitectGrammarLanguageFilesVoice is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) DeleteArchitectGrammarLanguageFilesVoice(grammarId string, languageCode string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -2697,8 +2689,6 @@ func (a ArchitectApi) GetArchitectEmergencygroupsDivisionviews(pageNumber int, p
 // Get a grammar
 //
 // Returns a specified grammar
-//
-// Preview: GetArchitectGrammar is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetArchitectGrammar(grammarId string, includeFileUrls bool) (*Grammar, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2783,8 +2773,6 @@ func (a ArchitectApi) GetArchitectGrammar(grammarId string, includeFileUrls bool
 // GetArchitectGrammarLanguage invokes GET /api/v2/architect/grammars/{grammarId}/languages/{languageCode}
 //
 // Get a grammar language.
-//
-// Preview: GetArchitectGrammarLanguage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetArchitectGrammarLanguage(grammarId string, languageCode string) (*Grammarlanguage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2875,8 +2863,6 @@ func (a ArchitectApi) GetArchitectGrammarLanguage(grammarId string, languageCode
 // Get a pageable list of grammars, filtered by query parameters
 //
 // Multiple IDs can be specified, in which case all matching grammars will be returned, and no other parameters will be evaluated.
-//
-// Preview: GetArchitectGrammars is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetArchitectGrammars(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string, includeFileUrls bool) (*Grammarlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7897,8 +7883,6 @@ func (a ArchitectApi) GetFlowsOutcomesDivisionviews(pageNumber int, pageSize int
 // PatchArchitectGrammar invokes PATCH /api/v2/architect/grammars/{grammarId}
 //
 // Updates a grammar
-//
-// Preview: PatchArchitectGrammar is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PatchArchitectGrammar(grammarId string, body Grammar) (*Grammar, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -7984,8 +7968,6 @@ func (a ArchitectApi) PatchArchitectGrammar(grammarId string, body Grammar) (*Gr
 // PatchArchitectGrammarLanguage invokes PATCH /api/v2/architect/grammars/{grammarId}/languages/{languageCode}
 //
 // Updates a grammar language
-//
-// Preview: PatchArchitectGrammarLanguage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PatchArchitectGrammarLanguage(grammarId string, languageCode string, body Grammarlanguageupdate) (*Grammarlanguage, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -8318,8 +8300,6 @@ func (a ArchitectApi) PostArchitectEmergencygroups(body Emergencygroup) (*Emerge
 // PostArchitectGrammarLanguageFilesDtmf invokes POST /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/dtmf
 //
 // Creates a presigned URL for uploading a grammar DTMF mode file
-//
-// Preview: PostArchitectGrammarLanguageFilesDtmf is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostArchitectGrammarLanguageFilesDtmf(grammarId string, languageCode string, body Grammarfileuploadrequest) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8416,8 +8396,6 @@ func (a ArchitectApi) PostArchitectGrammarLanguageFilesDtmf(grammarId string, la
 // PostArchitectGrammarLanguageFilesVoice invokes POST /api/v2/architect/grammars/{grammarId}/languages/{languageCode}/files/voice
 //
 // Creates a presigned URL for uploading a grammar voice mode file
-//
-// Preview: PostArchitectGrammarLanguageFilesVoice is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostArchitectGrammarLanguageFilesVoice(grammarId string, languageCode string, body Grammarfileuploadrequest) (*Uploadurlresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8514,8 +8492,6 @@ func (a ArchitectApi) PostArchitectGrammarLanguageFilesVoice(grammarId string, l
 // PostArchitectGrammarLanguages invokes POST /api/v2/architect/grammars/{grammarId}/languages
 //
 // Create a new language for a given grammar
-//
-// Preview: PostArchitectGrammarLanguages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostArchitectGrammarLanguages(grammarId string, body Grammarlanguage) (*Grammarlanguage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8606,8 +8582,6 @@ func (a ArchitectApi) PostArchitectGrammarLanguages(grammarId string, body Gramm
 // PostArchitectGrammars invokes POST /api/v2/architect/grammars
 //
 // Create a new grammar
-//
-// Preview: PostArchitectGrammars is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostArchitectGrammars(body Grammar) (*Grammar, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

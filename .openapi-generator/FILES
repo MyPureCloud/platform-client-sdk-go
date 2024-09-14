@@ -779,6 +779,8 @@ docs/GetIntegrationsClientappsUnifiedcommunications-example.txt
 docs/GetIntegrationsCredential-example.txt
 docs/GetIntegrationsCredentials-example.txt
 docs/GetIntegrationsCredentialsTypes-example.txt
+docs/GetIntegrationsSpeechAudioconnector-example.txt
+docs/GetIntegrationsSpeechAudioconnectorIntegrationId-example.txt
 docs/GetIntegrationsSpeechDialogflowAgent-example.txt
 docs/GetIntegrationsSpeechDialogflowAgents-example.txt
 docs/GetIntegrationsSpeechDialogflowcxAgent-example.txt
@@ -3012,6 +3014,8 @@ platformclientv2/attributedetaileventtopiccommunication.go
 platformclientv2/attributefilteritem.go
 platformclientv2/atzmtimeslot.go
 platformclientv2/atzmtimeslotwithtimezone.go
+platformclientv2/audioconnectorintegration.go
+platformclientv2/audioconnectorintegrationentitylisting.go
 platformclientv2/audiostate.go
 platformclientv2/audioupdatedevent.go
 platformclientv2/auditapi.go
@@ -3614,6 +3618,7 @@ platformclientv2/conversationcontentlocation.go
 platformclientv2/conversationcontentnotificationtemplate.go
 platformclientv2/conversationcontentquickreply.go
 platformclientv2/conversationcontentquickreplyv2.go
+platformclientv2/conversationcontentreaction.go
 platformclientv2/conversationcontentstory.go
 platformclientv2/conversationcontenttext.go
 platformclientv2/conversationdeletionprotectionquery.go
@@ -3640,6 +3645,9 @@ platformclientv2/conversationemaileventtopicurireference.go
 platformclientv2/conversationemaileventtopicwrapup.go
 platformclientv2/conversationencryptionconfiguration.go
 platformclientv2/conversationencryptionconfigurationlisting.go
+platformclientv2/conversationenrichment.go
+platformclientv2/conversationenrichmentlanguage.go
+platformclientv2/conversationenrichmentsentimentv2.go
 platformclientv2/conversationentitylisting.go
 platformclientv2/conversationeventcobrowse.go
 platformclientv2/conversationeventpresence.go

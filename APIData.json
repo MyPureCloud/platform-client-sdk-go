@@ -18164,6 +18164,39 @@
     "return": "Credentialtypelisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\n// List all credential types\ndata, response, err := apiInstance.GetIntegrationsCredentialsTypes()\nif err != nil {\n\tfmt.Printf(\"Error calling GetIntegrationsCredentialsTypes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getintegrationsspeechaudioconnector": {
+    "operationId": "getintegrationsspeechaudioconnector",
+    "functionName": "GetIntegrationsSpeechAudioconnector",
+    "signature": "GetIntegrationsSpeechAudioconnector(pageNumber, pageSize)",
+    "parameters": [
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Audioconnectorintegrationentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar pageNumber int // Page number\nvar pageSize int // Page size\n// Get a list of Audio Connector integrations\ndata, response, err := apiInstance.GetIntegrationsSpeechAudioconnector(pageNumber, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetIntegrationsSpeechAudioconnector: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getintegrationsspeechaudioconnectorintegrationid": {
+    "operationId": "getintegrationsspeechaudioconnectorintegrationid",
+    "functionName": "GetIntegrationsSpeechAudioconnectorIntegrationId",
+    "signature": "GetIntegrationsSpeechAudioconnectorIntegrationId(integrationId)",
+    "parameters": [
+      {
+        "name": "integrationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Audioconnectorintegration",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar integrationId string // The integration ID\n// Get an Audio Connector integration\ndata, response, err := apiInstance.GetIntegrationsSpeechAudioconnectorIntegrationId(integrationId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetIntegrationsSpeechAudioconnectorIntegrationId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getintegrationsspeechdialogflowagent": {
     "operationId": "getintegrationsspeechdialogflowagent",
     "functionName": "GetIntegrationsSpeechDialogflowAgent",
